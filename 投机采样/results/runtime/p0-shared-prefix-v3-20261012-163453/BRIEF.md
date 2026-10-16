@@ -1,0 +1,172 @@
+# 投机采样：CFG2七候选零拷贝共享KV
+
+2026-10-12T16:43:56+08:00
+
+{
+  "status": "FAIL",
+  "error": "RuntimeError(\"worker gate failed: ValueError('strict bitwise gate failed for S; numerical report preserved; no OFF or silent tolerance')\")",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/supervisor.py\", line 307, in run\n    result=self.execute_phases(mode)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/supervisor.py\", line 335, in execute_phases\n    return self.gpu()\n           ^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/supervisor.py\", line 269, in gpu\n    shared=self.command('equivalence_S','sequence',arm='S',timed=False)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/supervisor.py\", line 248, in command\n    if row.get('status') not in ('PASS','PASS_KERNEL_DIAGNOSTIC'):raise RuntimeError('worker gate failed: '+row.get('error','unknown'))\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: worker gate failed: ValueError('strict bitwise gate failed for S; numerical report preserved; no OFF or silent tolerance')\n",
+  "timed_out": false,
+  "budget": {
+    "EGL": 0,
+    "allocated_cap": 585,
+    "complete_episodes": 0,
+    "complete_policy_chunks": 0,
+    "counter_persisted": true,
+    "environment_steps": 0,
+    "extra_micro_calls": 0,
+    "stage": "equivalence_S",
+    "stage_attempted": 29,
+    "target_attempted": 111,
+    "target_completed": 111,
+    "target_completed_means_host_forward_return": true,
+    "target_failed": 0,
+    "target_hard_cap": 715,
+    "target_inflight": 0,
+    "target_reserved": 111,
+    "counter_source": "verified_worker_journal_prefix",
+    "counter_snapshot_status": "CLOSED",
+    "counts_are_budget_intents_and_host_returns": true,
+    "CUDA_device_completion_proven": false
+  },
+  "passed_gates": [
+    "CPU",
+    "KERNEL_DIAGNOSTIC",
+    "CAPTURE"
+  ],
+  "next_step": "失败已停止，不补跑、不训练；先CPU检查本关失败/已有原始结果。任何修复后的新GPU尝试须另确认预算，不能沿用本次一次性授权。",
+  "cleanup": {
+    "status": "PASS",
+    "remaining_owned_pids": [],
+    "occupied_owned_ports": [],
+    "other_processes_not_signalled": true,
+    "sample": {
+      "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+      "memory_total_bytes": 42949672960,
+      "memory_used_bytes": 0,
+      "memory_reserved_bytes": 543817728,
+      "memory_free_bytes": 42405855232,
+      "memory_accounting": "NVML_MEMORY_V2_ALLOCATED",
+      "memory_struct_version": 33554472,
+      "utilization_percent": 85,
+      "compute": [],
+      "graphics": []
+    },
+    "counter_recovery": {
+      "status": "CLOSED",
+      "ledger": {
+        "EGL": 0,
+        "allocated_cap": 585,
+        "complete_episodes": 0,
+        "complete_policy_chunks": 0,
+        "counter_persisted": true,
+        "environment_steps": 0,
+        "extra_micro_calls": 0,
+        "stage": "equivalence_S",
+        "stage_attempted": 29,
+        "target_attempted": 111,
+        "target_completed": 111,
+        "target_completed_means_host_forward_return": true,
+        "target_failed": 0,
+        "target_hard_cap": 715,
+        "target_inflight": 0,
+        "target_reserved": 111
+      },
+      "committed_records": 229,
+      "last_event": "CLOSE",
+      "last_checksum": "e5d9cb2dd2eb884c29eff18a6dcd8b449fc587e486f52a1db5a4a7cb20309a87",
+      "uncommitted_tail_bytes": 0,
+      "writer": {
+        "pid": 2006319,
+        "start_ticks": 1306359155,
+        "uid": 1003
+      },
+      "writer_same_process_alive": false,
+      "journal_terminal": true,
+      "counter_semantics": "write-ahead budget intent / confirmed Python forward return",
+      "exact_math_counts": false,
+      "CUDA_completion_proven": false,
+      "unconfirmed_call_upper_bound": 0,
+      "actual_invocation_lower_bound": 111,
+      "actual_invocation_upper_bound": 111,
+      "possible_unconfirmed_return_upper_bound": 0,
+      "note": "No resume, refund, inferred success, or fallback to stale parent counters.",
+      "parent_last_ack_budget": {
+        "target_reserved": 111,
+        "target_attempted": 111,
+        "target_completed": 111,
+        "stage": "equivalence_S",
+        "stage_attempted": 29,
+        "allocated_cap": 585,
+        "target_hard_cap": 715,
+        "extra_micro_calls": 0,
+        "EGL": 0,
+        "complete_episodes": 0,
+        "complete_policy_chunks": 0,
+        "environment_steps": 0
+      },
+      "parent_ack_is_not_final_counter": true,
+      "whole_stage_success_inferred": false,
+      "raw_journal_modified": false
+    }
+  },
+  "counter_recovery": {
+    "status": "CLOSED",
+    "ledger": {
+      "EGL": 0,
+      "allocated_cap": 585,
+      "complete_episodes": 0,
+      "complete_policy_chunks": 0,
+      "counter_persisted": true,
+      "environment_steps": 0,
+      "extra_micro_calls": 0,
+      "stage": "equivalence_S",
+      "stage_attempted": 29,
+      "target_attempted": 111,
+      "target_completed": 111,
+      "target_completed_means_host_forward_return": true,
+      "target_failed": 0,
+      "target_hard_cap": 715,
+      "target_inflight": 0,
+      "target_reserved": 111
+    },
+    "committed_records": 229,
+    "last_event": "CLOSE",
+    "last_checksum": "e5d9cb2dd2eb884c29eff18a6dcd8b449fc587e486f52a1db5a4a7cb20309a87",
+    "uncommitted_tail_bytes": 0,
+    "writer": {
+      "pid": 2006319,
+      "start_ticks": 1306359155,
+      "uid": 1003
+    },
+    "writer_same_process_alive": false,
+    "journal_terminal": true,
+    "counter_semantics": "write-ahead budget intent / confirmed Python forward return",
+    "exact_math_counts": false,
+    "CUDA_completion_proven": false,
+    "unconfirmed_call_upper_bound": 0,
+    "actual_invocation_lower_bound": 111,
+    "actual_invocation_upper_bound": 111,
+    "possible_unconfirmed_return_upper_bound": 0,
+    "note": "No resume, refund, inferred success, or fallback to stale parent counters.",
+    "parent_last_ack_budget": {
+      "target_reserved": 111,
+      "target_attempted": 111,
+      "target_completed": 111,
+      "stage": "equivalence_S",
+      "stage_attempted": 29,
+      "allocated_cap": 585,
+      "target_hard_cap": 715,
+      "extra_micro_calls": 0,
+      "EGL": 0,
+      "complete_episodes": 0,
+      "complete_policy_chunks": 0,
+      "environment_steps": 0
+    },
+    "parent_ack_is_not_final_counter": true,
+    "whole_stage_success_inferred": false,
+    "raw_journal_modified": false
+  }
+}
+
+下一步：失败已停止，不补跑、不训练；先CPU检查本关失败/已有原始结果。任何修复后的新GPU尝试须另确认预算，不能沿用本次一次性授权。

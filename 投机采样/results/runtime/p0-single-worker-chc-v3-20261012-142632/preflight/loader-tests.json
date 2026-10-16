@@ -1,0 +1,69 @@
+{
+  "status": "FAIL",
+  "tests_run": 37,
+  "executed_tests": [
+    "__main__.AdmissionOrder.test_CPU_Runtime_rejects_nonCPU_device_without_initialization",
+    "__main__.AdmissionOrder.test_GPU_Runtime_rejected_even_with_old_flags",
+    "__main__.AdmissionOrder.test_bad_interface_stops_Runtime_before_ready_or_forward",
+    "__main__.AdmissionOrder.test_changed_after_ready_rejected_before_load_reset_capture",
+    "__main__.AdmissionOrder.test_ready_contains_pre_capture_admission_zero_forwards",
+    "__main__.AdmissionOrder.test_valid_admission_precedes_fixture_load_and_does_not_patch",
+    "__main__.CPUOnlyEntry.test_CLI_cannot_reuse_stopped_GPU_job",
+    "__main__.CPUOnlyEntry.test_GPU_plan_disabled_even_with_old_approval",
+    "__main__.CPUOnlyEntry.test_no_CUDA_or_public_file_change",
+    "__main__.CPUOnlyEntry.test_old_job_cannot_be_CPU_probe_output_path",
+    "__main__.InvalidInterfaces.test_arbitrary_module_alias_rejected",
+    "__main__.InvalidInterfaces.test_backend_and_module_symbol_changed_together_rejected",
+    "__main__.InvalidInterfaces.test_backend_replaced_rejected",
+    "__main__.InvalidInterfaces.test_changed_forward_defaults_rejected",
+    "__main__.InvalidInterfaces.test_class_forward_replaced_rejected",
+    "__main__.InvalidInterfaces.test_cross_alias_backend_rejected",
+    "__main__.InvalidInterfaces.test_exported_model_class_mismatch_rejected",
+    "__main__.InvalidInterfaces.test_forged_exported_attention_subclass_rejected",
+    "__main__.InvalidInterfaces.test_forged_source_filename_forward_rejected_by_code",
+    "__main__.InvalidInterfaces.test_instance_forward_replaced_rejected",
+    "__main__.InvalidInterfaces.test_last_layer_nonoriginal_cache_rejected",
+    "__main__.InvalidInterfaces.test_last_layer_train_mode_rejected",
+    "__main__.InvalidInterfaces.test_mixed_alias_attention_rejected",
+    "__main__.InvalidInterfaces.test_module_file_mismatch_rejected",
+    "__main__.InvalidInterfaces.test_module_spec_origin_mismatch_rejected",
+    "__main__.InvalidInterfaces.test_nonCPU_parameters_rejected_without_CUDA",
+    "__main__.InvalidInterfaces.test_source_SHA_mismatch_rejected",
+    "__main__.InvalidInterfaces.test_train_mode_rejected",
+    "__main__.InvalidInterfaces.test_wrong_attention_class_rejected",
+    "__main__.InvalidInterfaces.test_wrong_layer_count_rejected",
+    "__main__.ProductionLoader.test_actual_loader_binding_from_pretrained_all30",
+    "__main__.ProductionLoader.test_admission_without_initialized_KV",
+    "__main__.ProductionLoader.test_all30_production_FP32_BF16_changing29_R_C_HC_bitwise",
+    "__main__.ProductionLoader.test_both_aliases_admitted_with_their_own_SDPA_identity",
+    "__main__.ProductionLoader.test_default_off_production_unchanged",
+    "__main__.ProductionLoader.test_production_admit_is_read_only_no_forward_no_patch",
+    "__main__.ProductionLoader.test_server_first_import_in_fresh_CPU_process"
+  ],
+  "tests_by_class": {
+    "ProductionLoader": 7,
+    "InvalidInterfaces": 20,
+    "AdmissionOrder": 6,
+    "CPUOnlyEntry": 4
+  },
+  "failures": [
+    {
+      "test": "test_CLI_cannot_reuse_stopped_GPU_job (__main__.CPUOnlyEntry.test_CLI_cannot_reuse_stopped_GPU_job)",
+      "trace": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v3/test_loader_cpu.py\", line 275, in test_CLI_cannot_reuse_stopped_GPU_job\n    self.assertIn('default-disabled',result.stderr)\nAssertionError: 'default-disabled' not found in 'Traceback (most recent call last):\\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v3/worker.py\", line 426, in <module>\\n    if __name__==\\'__main__\\':main()\\n                            ^^^^^^\\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v3/worker.py\", line 419, in main\\n    p=gpu_entry_gate(a.job,claim=True)\\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v3/task_contract.py\", line 121, in gpu_entry_gate\\n    job=Path(job).resolve();p=enabled_plan(job,cpu_gate=True)\\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v3/task_contract.py\", line 68, in enabled_plan\\n    job=Path(job).resolve();p=validate(json.loads(job_path(job,\\'plan.json\\').read_text()))\\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v3/task_contract.py\", line 53, in validate\\n    if type(p.get(k)) is not type(v) or p[k]!=v:raise ValueError(\\'scope mismatch: \\'+k)\\n                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nValueError: scope mismatch: execution_revision\\n'\n"
+    },
+    {
+      "test": "test_old_job_cannot_be_CPU_probe_output_path (__main__.CPUOnlyEntry.test_old_job_cannot_be_CPU_probe_output_path)",
+      "trace": "ValueError: new private CPU fixture required\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v3/test_loader_cpu.py\", line 267, in test_old_job_cannot_be_CPU_probe_output_path\n    with self.assertRaisesRegex(ValueError,'scope mismatch|new private job'):read_cpu_plan(WORKTREE.parent/'results/runtime/p0-single-worker-chc-20261012-085017')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: \"scope mismatch|new private job\" does not match \"new private CPU fixture required\"\n"
+    }
+  ],
+  "errors": [],
+  "CPU_only": true,
+  "CUDA_initialized": false,
+  "forbidden_CUDA_attempts": [],
+  "actual_production_loader_used": true,
+  "loader_checkpoint": "temporary RANDOM tiny CPU checkpoint, not target",
+  "FP32_BF16_all30_changing29": true,
+  "GPU_correctness": "NOT_RUN",
+  "GPU_performance": "NOT_RUN",
+  "training": false
+}

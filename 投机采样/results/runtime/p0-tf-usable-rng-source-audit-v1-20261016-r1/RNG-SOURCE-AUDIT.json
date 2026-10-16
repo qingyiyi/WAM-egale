@@ -1,0 +1,86 @@
+{
+  "schema": "tf-usable-rng-static-source-audit/v1",
+  "status": "COMPLETE_SOURCE_ONLY_NO_PROVEN_GAP",
+  "created_at": "2026-10-16T11:23:12.958822+08:00",
+  "scope": "Only already inspected local production WAM and quality-source paths; no remote, GPU, forward, environment execution, or new data.",
+  "sources": {
+    "投机采样/wam-p0-worktree/wan_va/wan_va_server.py": {
+      "sha256": "bad90775a446aa1cc8d175a19ce9d43d9b7dc523c260f1bf586eee95a6e1cea1",
+      "bytes": 155918
+    },
+    "投机采样/wam-p0-worktree/wan_va/modules/utils.py": {
+      "sha256": "563499ae1aa9fdbe990963c8c133423241f1a63d3f59743b778a1eb4c47757f4",
+      "bytes": 2612
+    },
+    "投机采样/wam-p0-worktree/wan_va/modules/model.py": {
+      "sha256": "f579ee02b490dbffcf78add6452742dbdbef43286600c0eeae3dede3f053cb5b",
+      "bytes": 50603
+    },
+    "投机采样/wam-p0-worktree/wan_va/utils/scheduler.py": {
+      "sha256": "9833300936d1001e5dfb0db76d5e0e131429685980de7b3c9716288ec28da7f1",
+      "bytes": 5346
+    },
+    "投机采样/wam-p0-worktree/wan_va/utils/p0_k3_b2.py": {
+      "sha256": "10a860e9d23d17fb89f6ceccdf20a59393f59c1cf1e861494e255bf0fce67914",
+      "bytes": 16046
+    },
+    "投机采样/wam-p0-worktree/wan_va/utils/p0_state_teacher.py": {
+      "sha256": "979147372672d161fa0a007023094724bc9ef27dbc429feb68bb09a9672b12b9",
+      "bytes": 4760
+    },
+    "投机采样/wam-p0-worktree/wan_va/utils/p0_trace.py": {
+      "sha256": "b76bb7592caa51c8d14e1d6d43b93da27e52bc24ecebf8a3134cc7852bc38752",
+      "bytes": 38233
+    },
+    "投机采样/experiments/tf_usable_quality_v1/server_entry.py": {
+      "sha256": "890866165c3563121374f2981162bf69a4d7d3b96c1f49d3e65c81630cfabb32",
+      "bytes": 15179
+    }
+  },
+  "findings": [
+    {
+      "coverage": "PASS",
+      "claim": "Video/action initial noise uses default device torch RNG without an explicit private Generator; quality wrapper captures target CPU/current CUDA RNG before draft/CAL and restores after setup and before each episode reset. Bank reset and READY compare the states.",
+      "evidence": [
+        "wan_va_server.py:2177-2200",
+        "server_entry.py:90-93",
+        "server_entry.py:121-145",
+        "server_entry.py:163-164",
+        "server_entry.py:230-231"
+      ]
+    },
+    {
+      "coverage": "PASS",
+      "claim": "Observed scheduler set_timesteps/step is arithmetic; VAE wrapper encode_chunk forwards encoder then quant_conv, and WAM _encode_obs takes mu rather than sampling logvar; observed cache path encodes and forwards. No Python random, NumPy draw, torch.Generator, or seed=None-to-random-seed call was found in these inspected production paths.",
+      "evidence": [
+        "scheduler.py:32-102",
+        "modules/utils.py:67-98",
+        "wan_va_server.py:2059-2109",
+        "wan_va_server.py:2640-2674",
+        "wan_va_server.py:2851-2924"
+      ]
+    },
+    {
+      "coverage": "PASS_WITH_SCOPE",
+      "claim": "LINGBOT_SEED seeds global torch and NumPy once at startup. Current quality wrapper does not capture/restore Python or NumPy RNG per episode, but the inspected production policy/video/cache paths show no such draw; therefore no proven active coverage gap.",
+      "evidence": [
+        "wan_va_server.py:3059-3064",
+        "server_entry.py:90-93",
+        "server_entry.py:163-164"
+      ]
+    },
+    {
+      "coverage": "UNKNOWN",
+      "claim": "External diffusers AutoencoderKLWan encoder internals and other unexpanded third-party dependencies were not audited. This receipt does not claim all dependency RNG is covered or attribute any prior failure to randomness.",
+      "evidence": [
+        "modules/utils.py:2",
+        "modules/utils.py:12-20",
+        "modules/utils.py:88-98"
+      ]
+    }
+  ],
+  "limits": [
+    "Static inspection only; no numerical execution.",
+    "No causal explanation of prior pairing/quality failures."
+  ]
+}

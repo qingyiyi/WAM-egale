@@ -1,0 +1,87 @@
+{
+  "status": "PASS_COMPLETED20_COLLECTION_AND_OBSERVED_CLEANUP_RECONCILED",
+  "at": "2026-10-13T13:54:45+08:00",
+  "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-chunk-scalar-v1-20261013-133800",
+  "original_supervisor_status": "FAIL_cleanup_guard",
+  "original_failure_preserved": true,
+  "original_failure_sha256": "a0178dd1c3290a9712bc4fa28b251225b3fb0f1e2d659cee08c6ab99889ae2b4",
+  "completed_slots": 10,
+  "workers": [
+    {
+      "worker": 0,
+      "full_chunks": 10,
+      "target_intents": 530,
+      "failed_forwards": 0
+    },
+    {
+      "worker": 1,
+      "full_chunks": 10,
+      "target_intents": 530,
+      "failed_forwards": 0
+    }
+  ],
+  "charged_target_intents": 1060,
+  "new_GPU_launches": 1,
+  "new_GPU_seconds": 461.00818253308535,
+  "GPU_seconds_charge_is_observed_upper_bound": true,
+  "supervisor_recorded_GPU_seconds": 301.99054584279656,
+  "aggregate_target_intents": 28241,
+  "aggregate_GPU_seconds": 9149.476306950673,
+  "owned_roots_exited": true,
+  "owned_GPU_processes_remaining": [],
+  "final_NVML": {
+    "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+    "memory_total_bytes": 42949672960,
+    "memory_used_bytes": 0,
+    "memory_reserved_bytes": 543817728,
+    "memory_free_bytes": 42405855232,
+    "memory_accounting": "NVML_MEMORY_V2_ALLOCATED",
+    "memory_struct_version": 33554472,
+    "utilization_percent": 0,
+    "compute": [],
+    "graphics": []
+  },
+  "current_NVML_samples": [
+    {
+      "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+      "memory_total_bytes": 42949672960,
+      "memory_used_bytes": 0,
+      "memory_reserved_bytes": 543817728,
+      "memory_free_bytes": 42405855232,
+      "memory_accounting": "NVML_MEMORY_V2_ALLOCATED",
+      "memory_struct_version": 33554472,
+      "utilization_percent": 23,
+      "compute": [],
+      "graphics": []
+    },
+    {
+      "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+      "memory_total_bytes": 42949672960,
+      "memory_used_bytes": 0,
+      "memory_reserved_bytes": 543817728,
+      "memory_free_bytes": 42405855232,
+      "memory_accounting": "NVML_MEMORY_V2_ALLOCATED",
+      "memory_struct_version": 33554472,
+      "utilization_percent": 0,
+      "compute": [],
+      "graphics": []
+    },
+    {
+      "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+      "memory_total_bytes": 42949672960,
+      "memory_used_bytes": 0,
+      "memory_reserved_bytes": 543817728,
+      "memory_free_bytes": 42405855232,
+      "memory_accounting": "NVML_MEMORY_V2_ALLOCATED",
+      "memory_struct_version": 33554472,
+      "utilization_percent": 0,
+      "compute": [],
+      "graphics": []
+    }
+  ],
+  "initial_absence_observation": "/rjs/cxz/论文探索/.pipeline/research/speculative-sampling/evidence/chunk-scalar-o2-20261013/INITIAL-CLEANUP-OBSERVATION.json",
+  "new_target_intents_for_reconcile": 0,
+  "new_GPU_launches_for_reconcile": 0,
+  "signals_sent": 0,
+  "root_cause": "Unknown exact race; workload complete before refusal, all four roots subsequently absent. Existing 2-second cleanup wait can race terminal process metadata; no live ownership guard relaxed."
+}

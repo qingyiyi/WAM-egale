@@ -1,0 +1,30 @@
+{
+  "status": "FAIL",
+  "error": "ValueError('dual overlap below90%')",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/kv_sync_attribution/supervisor.py\", line 267, in run\n    result=self.gpu();write(self.job/'FINAL_RESULT.json',result,exclusive=True)\n           ^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/kv_sync_attribution/supervisor.py\", line 218, in gpu\n    if r['lane'] in ['warmup','main']:self.micro(r)\n                                      ^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/kv_sync_attribution/supervisor.py\", line 188, in micro\n    validation=validate_cohort(r,rows)\n               ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/kv_sync_attribution/compare.py\", line 30, in validate_cohort\n    if len(rows)==2 and overlap(rows)<.9:raise ValueError('dual overlap below90%')\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: dual overlap below90%\n",
+  "timed_out": false,
+  "passed_gates": [
+    "CPU",
+    "CAPTURE",
+    "EQUIVALENCE"
+  ],
+  "next_step": "先CPU定位失败或检查已通过的OFF结果；失败停止不补跑，修复后新GPU预算另确认；不自动共享kernel/mega或训练。",
+  "cleanup": {
+    "status": "PASS",
+    "remaining_owned_pids": [],
+    "occupied_owned_ports": [],
+    "other_processes_not_signalled": true,
+    "resource_snapshot": {
+      "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+      "memory_total_bytes": 42949672960,
+      "memory_used_bytes": 0,
+      "memory_reserved_bytes": 543817728,
+      "memory_free_bytes": 42405855232,
+      "memory_accounting": "NVML_MEMORY_V2_ALLOCATED",
+      "memory_struct_version": 33554472,
+      "utilization_percent": 8,
+      "compute": [],
+      "graphics": []
+    }
+  }
+}

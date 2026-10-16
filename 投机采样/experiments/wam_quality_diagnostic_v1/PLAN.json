@@ -1,0 +1,25 @@
+{
+  "schema": "wam-quality-diagnostic-cpu-plan/v1",
+  "date": "2026-10-16",
+  "status": "IN_PROGRESS_CPU_EVIDENCE_ONLY",
+  "CPU_threads_max": 2,
+  "GPU_operations_allowed": false,
+  "SSH_allowed": false,
+  "modify_frozen_sources_or_HW": false,
+  "read_proposed_TEST_outcomes": false,
+  "risks": [
+    "historical_target_vs_current_TF_query_distribution",
+    "packed_sequential_and_CPU_GPU_acceptance_flips",
+    "sigma_region_and_within_chunk_error_accumulation",
+    "gripper_contact_stage_sensitivity",
+    "insufficient_condition_or_proxy_task_risk_mismatch"
+  ],
+  "steps": [
+    {"id": "Q01", "task": "audit complete task7 T/currentTF/parent episode evidence and missing fields", "status": "in_progress"},
+    {"id": "Q02", "task": "identify real query manifests and legal bounded replay inputs, max256queries/max20fullchunks; prepare only", "status": "pending"},
+    {"id": "SPLIT", "task": "metadata-only local and var/tmp exposure audit including mixed source provenance", "status": "pending"},
+    {"id": "D01", "task": "decide whether evidence supports one fixed balanced collection and three-condition training; never start collection", "status": "pending"}
+  ],
+  "D01_if_later_admitted": {"complete_episodes": 30, "FIT": 20, "CAL": 10, "balanced_tasks": true, "true_verifier_teacher": true, "counterfactual_and_committed_states_distinct": true},
+  "D02_if_later_admitted": {"conditions": ["TF_cont_same_start_old_data_500_updates", "TF_on_historical_target_new_FIT_50_50_500_updates", "MLP_on_matched_capacity_data_budget"], "seeds_max": 3, "main_seed_before_DEV": true, "freeze_normalization_loss_batch_lr_dtype": true, "no_cross_attention": true, "stop_after_nonwinning_on_policy_condition": true}
+}

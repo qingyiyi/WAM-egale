@@ -1,0 +1,7 @@
+S04 r1独立终态核验：FAILED，已清理，无自动重跑。
+
+实际target共19次：中档重建18次，short原生首个普通video B2 query 1次；完整policy/cache 0/6，实际commit 0/300，guarded query 0次。COUNTER-CLOSED的19次返回只表示底层target返回，不能称完整policy返回。两条partial事件保留初始30层144有效历史及首个普通query输入，输出事件未记录。
+
+失败来自记录合同错误：original ordinary update_cache=0会真实写临时KV和id/is_pred，再只撤销mask；我把B14只读合同误套在所有update_cache=0，要求全池metadata逐位不动。CPU实读原snapshot30层首128free的id全为-1，而下一cache id为2；源码写入/撤mask路径明确。未保存失败后cache，因此不伪报实际diff字段统计，也不能把此失败视为guarded kernel负结果或有效历史KV被污染。
+
+SUPERVISOR确认own_process_reaped/all_owned_live_exited均true，GPU资源时间42.80637490749359秒。原r1和冻结源保留。S04完整验证尚未完成，conditional static baseline仍HOLD。

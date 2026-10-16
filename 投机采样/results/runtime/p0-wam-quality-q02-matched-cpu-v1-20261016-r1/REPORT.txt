@@ -1,0 +1,9 @@
+Q02后CPU实证完成：96/96精确sigma/next_sigma/timestep链匹配；oldCAL task7 unique343行；同CPU BF16 draft、原norm，packed/B2 teacher分别报。
+root32没有恶化：37.50% vs旧37.24%，mean .01509 vs .01808。
+递归first64通过37.50% vs旧57.78%；最大差的sigma=.43925共20行全部未提交（selected10+unselected10）。
+已提交root12/first12均通过；first12平均残差.00283 vs旧.00170，不能据此归因成功率失败。
+最多支持一次补充递归候选监督的学习效率对照；D01保持HOLD，没有启动。
+核心teacher_rows和Q02 score hook可复用，无额外teacher forward；旧collector标志会令O3退回scalar路径，不能直接原样启用。
+训练main固定旧14997/init<18/2000→2500，D02需新小loader与3000 schema，复用数学而非冒用旧job。
+按真实TF10局3倍估新30局约1.3GiB（含默认原输出、teacher小PT和compact列），最差50chunk/50tree长尾接近4GiB；不用逐query全层KV。
+CPU2、0GPU/训练/远端；完整数字、分母及来源见COMPARISON/INTERPRETATION/TEACHER-REUSE-READONLY.json。

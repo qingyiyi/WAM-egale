@@ -1,0 +1,165 @@
+{
+  "id": "p0-minimal-frozen-task0-20ep-20261011-004242",
+  "created_at": "2026-10-11T00:42:42.243622+08:00",
+  "authorization": "user-approved-minimal-frozen-20",
+  "resource_owner_confirmation": true,
+  "gpu_telemetry_anomaly_recorded": true,
+  "scope": "action-only speculative sampling; NOT tile; frozen target/verifier/gate/bonus; no RL/joint training",
+  "frozen_reference": {
+    "status": "historical_reference_identity_only; not an authorized new run",
+    "suite": "libero_10",
+    "task_index": 0,
+    "target_checkpoint_id": "robbyant/lingbot-va-posttrain-libero-long",
+    "target_checkpoint_path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+    "registry": "/rjs/cxz/论文探索/投机采样/configs/libero_checkpoint_registry.json",
+    "draft_checkpoint": "/rjs/cxz/论文探索/投机采样/results/draft_pilots/phase-a-k2-b2-20260929-r2/beam2_two_head.pt",
+    "draft_checkpoint_sha256": "fca122869218a9304f796c7187f5a257ba71a2ec4a56ad4cb1b13190e59dcc56",
+    "selector": "global",
+    "threshold": 0.007839680526450805,
+    "seed": 20260922,
+    "baseline_action_draft_mode": "verifier_k2_b2",
+    "baseline_trace_enabled": false,
+    "vae_device": "cuda",
+    "text_encoder_device": "cpu",
+    "client_LIBERO_HORIZON": 800,
+    "initial_stabilization_steps": 5,
+    "new_run_preflight_required": [
+      "fresh source manifest and target-weight inventory",
+      "no bonus/gate/scheduler/stride/cache change mixed with training",
+      "diagnostic and clean timing runs separated",
+      "full-horizon contract including exact stopping behavior and failures",
+      "EGL independent parallel workers, conditions serial on one A100, resource ownership check"
+    ],
+    "source_launch": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-phase2b-task0-init4-5-k2b2-global-gpuvae-egl-par2-20261009/orchestration/launch_config.json"
+  },
+  "source_sha256": {
+    "/rjs/cxz/论文探索/投机采样/scripts/run_p0_parallel_formal_campaign.sh": "01ede776714f4fadafad1c624e9f30c84760876b64ac1a0e6c7c7e3e22259b4e",
+    "/rjs/cxz/论文探索/投机采样/scripts/run_p0_k2_b2_parallel_campaign.py": "d880feae0171121f24f8613706c6f12bb74c573ee80cb6b569c1a71c5c09eb53",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_libero_multichunk_client.py": "7b263689f8a52f45f2a9fc3729a81d78c58c77842bcd4d944e46b73acfe6c7e0",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_batched_verify.py": "985d53c15fc778b662b98dd7c03d108881a0f2aebcc67f11cc5662a3eb9190e8",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_rollout_contract.py": "29a4efc80c35d25502e3fa97b677ca401e503540ba2355b43c7f31fe8feb2995",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_merge_parallel_campaign.py": "1aae532727d721dd16d9344024791fd7b18638494736fd32c3df1afb943add5e",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_live_device_egl_audit.py": "00449c4d642929d2ea4ac1150bcf0ca803e53667c99a8a3e828e06e6a3fc843e",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/wan_va_server.py": "bad90775a446aa1cc8d175a19ce9d43d9b7dc523c260f1bf586eee95a6e1cea1",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/p0_trace.py": "b76bb7592caa51c8d14e1d6d43b93da27e52bc24ecebf8a3134cc7852bc38752",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_libero_cfg.py": "857aef575086ab49f6f77df11d2f6af2ed9750feb411ab8af38f1df069ab6402",
+    "/rjs/cxz/论文探索/投机采样/configs/libero_checkpoint_registry.json": "0f7e6c6e6a7616c2a04c70587d90d8cb2acdad282db800590b44054586b63667",
+    "/rjs/cxz/论文探索/third_party/LIBERO-official-20260922/libero/libero/init_files/libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket.pruned_init": "1899fe54c51e24a41d5f9e32254730d6777f4894ab68e0e873f1fa7ae2062030",
+    "/rjs/cxz/论文探索/投机采样/results/draft_pilots/phase-a-k2-b2-20260929-r2/beam2_two_head.pt": "fca122869218a9304f796c7187f5a257ba71a2ec4a56ad4cb1b13190e59dcc56",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_native_observer.py": "210d336419479cce61d6223d72f740c7ab3cd532fab330a017e25a9542ec82e6",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_native_binding_check.py": "1121b69ed126c58dcd8874dffc44e10f6dd4f0d6309b90f504c01e3a39bde712",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_minimal_frozen_train.py": "3354a6feed87cbf47ba45c7954c1a3cd802f3dd1aa57805538432671e5cbd08a",
+    "/rjs/cxz/论文探索/投机采样/scripts/run_p0_minimal_frozen_campaign.py": "806bdea493bfdbd9bd925b17666ae89803c1af5505f893ee9a783a3b9932a813",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/p0_state_teacher.py": "979147372672d161fa0a007023094724bc9ef27dbc429feb68bb09a9672b12b9",
+    "/rjs/cxz/论文探索/投机采样/tests/test_p0_minimal_frozen.py": "386e9d5dc197f4a7cd7d0113ab192d3ab6ecc6ea582ab1ddc19f3b39ad21b4ce"
+  },
+  "target_weight_inventory": [
+    {
+      "path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/._____temp/text_encoder/model-00001-of-00003.safetensors",
+      "bytes": 1007681536,
+      "mtime_ns": 1790081615592626806
+    },
+    {
+      "path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/._____temp/vae/diffusion_pytorch_model.safetensors",
+      "bytes": 1548746752,
+      "mtime_ns": 1790081614860636315
+    },
+    {
+      "path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/text_encoder/model-00001-of-00003.safetensors",
+      "bytes": 4935812536,
+      "mtime_ns": 1789580076519299180
+    },
+    {
+      "path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/text_encoder/model-00002-of-00003.safetensors",
+      "bytes": 4983103192,
+      "mtime_ns": 1789581265157383818
+    },
+    {
+      "path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/text_encoder/model-00003-of-00003.safetensors",
+      "bytes": 1442935480,
+      "mtime_ns": 1789577852507838936
+    },
+    {
+      "path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer/diffusion_pytorch_model-00001-of-00003.safetensors",
+      "bytes": 4821987820,
+      "mtime_ns": 1790085073013925387
+    },
+    {
+      "path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer/diffusion_pytorch_model-00002-of-00003.safetensors",
+      "bytes": 4821655760,
+      "mtime_ns": 1790085081285652440
+    },
+    {
+      "path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer/diffusion_pytorch_model-00003-of-00003.safetensors",
+      "bytes": 535373816,
+      "mtime_ns": 1790080522296088008
+    },
+    {
+      "path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/vae/diffusion_pytorch_model.safetensors",
+      "bytes": 2818777808,
+      "mtime_ns": 1789582414542881898
+    }
+  ],
+  "target_weight_inventory_kind": "paths/size/mtime only, not full weight content digest",
+  "ports": [
+    29870,
+    29871,
+    29880,
+    29881
+  ],
+  "episode_cap": 20,
+  "collect": {
+    "inits": [
+      0,
+      1
+    ],
+    "arms": [
+      "T",
+      "S0"
+    ],
+    "episodes": 4,
+    "diagnostic_timing": true
+  },
+  "eval": {
+    "inits": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "arms": [
+      "T",
+      "S0",
+      "A_off",
+      "B_on"
+    ],
+    "episodes": 16,
+    "development_only": true,
+    "historical_training_exposure_not_excluded": true
+  },
+  "training": {
+    "updates_per_arm": 1000,
+    "batch_size": 512,
+    "lr": 0.0001,
+    "max_unique_examples_per_arm": 4096,
+    "actual_unique_examples": "min(off_count,on_count,4096) shared budget; >=128 gate",
+    "same_parent_normalization_architecture_optimizer_loss": true,
+    "selection": "fixed final update checkpoint",
+    "offline": "historical target-only task0/init0 actual x_i + previous d_cfg",
+    "online": "S0-visited exact predictor root/internal query states with target CFG labels; one dataset-update round, not final-policy on-policy/RL"
+  },
+  "heuristic_screen_only": {
+    "new_success_failures_allowed_vs_T_and_S0": 0,
+    "mean_failure_penalized_steps_max_ratio_vs_T": 1.05,
+    "max_steps_max_ratio_vs_T": 1.1,
+    "e2e_must_improve_vs_S0": true,
+    "formal_noninferiority": false
+  },
+  "estimate_hours": [
+    2,
+    4
+  ],
+  "estimate_not_guarantee": "tail/failure full horizon may extend; do not shorten an episode to fill clock budget",
+  "supersedes_100episode_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-night-task0-50init-matched-20261011-002047",
+  "gates": "CPU/native -> collection coverage including teacher all nodes/chunks -> equal-budget training -> clean four-arm eval -> actual result report/next plan; any failed gate STOP"
+}

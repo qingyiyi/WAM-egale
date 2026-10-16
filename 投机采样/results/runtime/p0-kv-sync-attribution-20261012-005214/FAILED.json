@@ -1,0 +1,25 @@
+{
+  "status": "FAIL",
+  "error": "RuntimeError('stop/deadline/foreign task requested')",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/kv_sync_attribution/supervisor.py\", line 260, in run\n    if not self.wait_resource():\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/kv_sync_attribution/supervisor.py\", line 146, in wait_resource\n    self.guard();sample=self.nvml.sample()\n    ^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/kv_sync_attribution/supervisor.py\", line 34, in guard\n    if self.stop.is_set() or (self.job/'STOP_REQUESTED').exists():raise RuntimeError('stop/deadline/foreign task requested')\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: stop/deadline/foreign task requested\n",
+  "timed_out": false,
+  "passed_gates": [
+    "CPU"
+  ],
+  "next_step": "先CPU定位失败或检查已通过的OFF结果；失败停止不补跑，修复后新GPU预算另确认；不自动共享kernel/mega或训练。",
+  "cleanup": {
+    "status": "PASS",
+    "remaining_owned_pids": [],
+    "occupied_owned_ports": [],
+    "other_processes_not_signalled": true,
+    "resource_snapshot": {
+      "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+      "memory_total_bytes": 42949672960,
+      "memory_used_bytes": 543817728,
+      "memory_free_bytes": 42405855232,
+      "utilization_percent": 0,
+      "compute": [],
+      "graphics": []
+    }
+  }
+}

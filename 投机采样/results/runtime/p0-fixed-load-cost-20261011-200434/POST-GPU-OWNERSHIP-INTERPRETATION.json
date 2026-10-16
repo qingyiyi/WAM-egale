@@ -1,0 +1,19 @@
+{
+  "status": "OWNED_CLEANUP_PASS_GPU_NOT_FREE_OTHER_USER_PROCESS",
+  "timestamp": "2026-10-11T20:19:20.448897+08:00",
+  "cleanup_status": "PASS",
+  "remaining_owned_pids": [],
+  "listening_owned_ports": [],
+  "task_tmux_ended": true,
+  "free_GPU_inspection_status": "FAIL",
+  "observed_non_owned_GPU_pid": 3421190,
+  "observed_non_owned_GPU_user": "hlj",
+  "observed_non_owned_process_group": 3421189,
+  "observed_non_owned_start_time": "2026-10-11T20:15:43+08:00",
+  "observed_ps_exit_code": 0,
+  "observed_ps_output": "USER         PID    PPID    PGID                  STARTED     ELAPSED COMMAND         COMMAND\nhlj      3421190 3421189 3421189 Sun Oct 11 20:15:43 2026       03:36 python          .venv/bin/python -u bench/run_turn_union_quality.py --output-prefix bench/results/turn_union_quality_aligned_p75_20261011_v1\n",
+  "original_job_cleanup_before_other_process_start": true,
+  "other_process_signalled_or_modified": false,
+  "new_GPU_started_by_diagnosis": false,
+  "interpretation": "20:16 resource snapshot FAIL means GPU-not-free, not owned cleanup failure. Another user started a different process after this job ended; no interference, no restart. Future GPU authorization also requires a new free-resource gate."
+}

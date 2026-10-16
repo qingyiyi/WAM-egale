@@ -1,0 +1,49 @@
+{
+  "status": "PASS_DIAGNOSIS_ONLY_GPU_ATTEMPT_REMAINS_FAIL",
+  "timestamp": "2026-10-11T18:17:41.971567+08:00",
+  "root_cause": "New task Runtime constructor requests guarded draft loader while launch mode is off and predictor is absent.",
+  "real_original_loader_AST": true,
+  "real_unchanged_wrapper_constructor_AST": true,
+  "fresh_predictor_off_mode_expected_RuntimeError": "B=2 verifier draft requested while mode is disabled",
+  "cached_predictor_shortcut_hides_guard": true,
+  "CPU_preflight_blind_spot": "Existing wrapper fake-infer test prepopulates predictor and substitutes loader with lambda, bypassing the real default-off load guard.",
+  "model_imported": false,
+  "torch_imported": false,
+  "CUDA_initialized": false,
+  "new_GPU_started_in_diagnosis": false,
+  "production_files_changed": false,
+  "restarted": false,
+  "training": false,
+  "fixed_chunk_calls": 0,
+  "initializations": 0,
+  "new_full_episodes": 0,
+  "immutable_files_checked": 1128,
+  "immutable_files_unchanged": true,
+  "implementation_files_checked": 11,
+  "implementation_unchanged": true,
+  "plan_unchanged": true,
+  "target_stat_files_checked": 9,
+  "target_stats_unchanged": true,
+  "cleanup": {
+    "status": "PASS",
+    "owned_groups": [
+      3201000,
+      3200999
+    ],
+    "remaining_owned_pids": [],
+    "listening_owned_ports": []
+  },
+  "guarded_loader_source": {
+    "path": "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/wan_va_server.py",
+    "start_line": 826,
+    "end_line": 855
+  },
+  "wrapper_constructor": {
+    "path": "/rjs/cxz/论文探索/投机采样/experiments/fixed_load_cost/worker.py",
+    "start_line": 16,
+    "end_line": 41
+  },
+  "attempt_GPU_elapsed_sec_at_failure": 32.057531425729394,
+  "GPU_cleanup_must_be_read_separately": true,
+  "next_step": "Propose task-only exception-safe preload under verifier_k2_b2 with original off restored; first test real guard, fresh/cached predictors, success/error restoration on CPU. Fix and a NEW GPU attempt require user confirmation; do not resume the failed one-shot job."
+}

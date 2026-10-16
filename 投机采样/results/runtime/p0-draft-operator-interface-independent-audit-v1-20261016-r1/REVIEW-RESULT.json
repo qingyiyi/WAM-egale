@@ -1,0 +1,188 @@
+{
+  "schema": "draft-operator-interface-independent-readonly-audit/v1",
+  "status": "PASS_PREPARED_OPERATOR_STRUCTURE_TRAINING_HANDOFF_NOT_QUALITY",
+  "interface": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-v1-20261016-r1/OPERATOR-INTERFACE.prepared.json",
+  "interface_SHA": "fc3d34e943c80054cd896a1979f791dd8c018774bf49d0139ed4c8324b96dc5a",
+  "checks": {
+    "actual_checkpoint_seed23_3000_and_SHA": true,
+    "actual_TF53070_MLP52928": true,
+    "actual_FP32_model_parameters": true,
+    "exact_parent_normalization": true,
+    "stage1_2000_target_only_lr1e4": true,
+    "stage2_500_mixed_256_256_lr3e5": true,
+    "stage3_fixed500_same_old_draw_new_AdamW_by_source": true,
+    "historical_candidate_pool_not_current_TF_onpolicy": true,
+    "prepared_quality_permission_false": true
+  },
+  "models": {
+    "transformer64": {
+      "checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-train-v1-20261016-r1/TF_CONT-seed20260923/checkpoint.pt",
+      "SHA": "3657388fdce0763093d1b704c88a03b6836954160d43dddb9f75337a054d64ac",
+      "parameters": 53070,
+      "model_parameter_dtypes": [
+        "torch.float32"
+      ],
+      "seed": 20260923,
+      "total_updates": 3000,
+      "parent": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/transformer64-seed20260923/checkpoint.pt",
+      "parent_SHA": "9cb92a4862579edc9cfb99210b0535e620daba56dd5abcc094a7d735dbadab07",
+      "normalization_byteexact_parent": true,
+      "specification": {
+        "kind": "transformer",
+        "width": 64,
+        "heads": 4,
+        "ffn": 256,
+        "layers": 1,
+        "dropout": 0.0,
+        "tokens": 16,
+        "activation": "gelu",
+        "norm_first": true
+      },
+      "model_state_shapes": {
+        "position": [
+          1,
+          16,
+          64
+        ],
+        "embed.weight": [
+          64,
+          17
+        ],
+        "embed.bias": [
+          64
+        ],
+        "block.self_attn.in_proj_weight": [
+          192,
+          64
+        ],
+        "block.self_attn.in_proj_bias": [
+          192
+        ],
+        "block.self_attn.out_proj.weight": [
+          64,
+          64
+        ],
+        "block.self_attn.out_proj.bias": [
+          64
+        ],
+        "block.linear1.weight": [
+          256,
+          64
+        ],
+        "block.linear1.bias": [
+          256
+        ],
+        "block.linear2.weight": [
+          64,
+          256
+        ],
+        "block.linear2.bias": [
+          64
+        ],
+        "block.norm1.weight": [
+          64
+        ],
+        "block.norm1.bias": [
+          64
+        ],
+        "block.norm2.weight": [
+          64
+        ],
+        "block.norm2.bias": [
+          64
+        ],
+        "head.weight": [
+          14,
+          64
+        ],
+        "head.bias": [
+          14
+        ]
+      }
+    },
+    "mlp96": {
+      "checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-mlp-continue-v1-20261016-r1/MLP_CONT-seed20260923/checkpoint.pt",
+      "SHA": "3dc01a48f204b3efedb4caccf2d36a01c2eecc55926c3265fe882f0a70b103b0",
+      "parameters": 52928,
+      "model_parameter_dtypes": [
+        "torch.float32"
+      ],
+      "seed": 20260923,
+      "total_updates": 3000,
+      "parent": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/mlp96-seed20260923/checkpoint.pt",
+      "parent_SHA": "655e8647efa0fa44767b75b8e98a02ec6cbe84fc058b10aa15860f6cd609165e",
+      "normalization_byteexact_parent": true,
+      "specification": {
+        "kind": "mlp",
+        "hidden": 96
+      },
+      "model_state_shapes": {
+        "trunk.0.weight": [
+          96,
+          227
+        ],
+        "trunk.0.bias": [
+          96
+        ],
+        "trunk.2.weight": [
+          96,
+          96
+        ],
+        "trunk.2.bias": [
+          96
+        ],
+        "head.weight": [
+          224,
+          96
+        ],
+        "head.bias": [
+          224
+        ]
+      }
+    }
+  },
+  "source_and_evidence_SHA256": {
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-v1-20261016-r1/OPERATOR-INTERFACE.prepared.json": "fc3d34e943c80054cd896a1979f791dd8c018774bf49d0139ed4c8324b96dc5a",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-train-v1-20261016-r1/TF_CONT-seed20260923/checkpoint.pt": "3657388fdce0763093d1b704c88a03b6836954160d43dddb9f75337a054d64ac",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/transformer64-seed20260923/checkpoint.pt": "9cb92a4862579edc9cfb99210b0535e620daba56dd5abcc094a7d735dbadab07",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-train-v1-20261016-r1/PLAN.json": "798aa5cb5b9ac405efabbd50e14a37e551de39c76fbdb5cbb94a40aed6086f06",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-mlp-continue-v1-20261016-r1/MLP_CONT-seed20260923/checkpoint.pt": "3dc01a48f204b3efedb4caccf2d36a01c2eecc55926c3265fe882f0a70b103b0",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/mlp96-seed20260923/checkpoint.pt": "655e8647efa0fa44767b75b8e98a02ec6cbe84fc058b10aa15860f6cd609165e",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-mlp-continue-v1-20261016-r1/PLAN.json": "7f1007305f44ae288b58069f1ff5031e82ab5137c3843cabd734beb234049ab0",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/train.py": "37bc04e36ee211cc1559828f4d8482d3bf7b82cc187fb8d6bb22821f0f040822",
+    "/rjs/cxz/论文探索/投机采样/experiments/draft_architecture_v1/models.py": "b769b772bda92bbc069975bf90ab5ba53a36fade02741e3a89f670b74f84f66d",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/buffers.py": "69e572be7a7c2424bf2e05eb50e73184749db079100cd8634729d8f90496f468",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/wan_va_server.py": "bad90775a446aa1cc8d175a19ce9d43d9b7dc523c260f1bf586eee95a6e1cea1",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/gpu_actual_cal.py": "979189ec368deb423cda0a8db07b0d2d2778e9806508002934be0734e7d18515",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_train_v1/adapter.py": "9a0c40eabcca0351025adc7fdacfae889e239f871541deb2867b312c05c6bff8",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_train_v1/train.py": "d16f4d0dcd4953dde077e6cb45f58823d5b9134ccdfda0ef4b4b2171e332627f",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/adapter.py": "147c7e6472cdbffe3ba999db2ce39d77c949a44d2d8f1701a43b4582fbf9f714",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/p0_k3_b2.py": "10a860e9d23d17fb89f6ceccdf20a59393f59c1cf1e861494e255bf0fce67914",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_train_v1/adapter.py": "42737b89ec38ca1993dd3c3c9134baa13173cb5f076fc1390aa2dc90f6953af4",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/train.py": "545e38d3a555ef1758a832d20ae448b302518145223cccb3398632d4b3f472a4",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/adapter.py": "fadb4093e50ac57b7bc08b21c24214133a589e429c1f27b4d783912a475180ab",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_train_v1/gpu_actual_cal.py": "fca2476398972d586ca8d4a457ab3d52d9249e150cbc56568abf50ac68c393dd",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-train-v1-20261015-r1/PLAN.json": "51d1744543786cc4047a81af16cb3d64ccbe5204972ba37d14078956e2e3a2da",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/PLAN.json": "4b41d3002deb04fc494743166f825eba7fed35bb3efebe57e72ae4822d8996d4"
+  },
+  "corrections": [],
+  "scope": [
+    "源级核对center±delta两残差head，16token×17由7state+7prev+3标量构成；canonical channel/frame/subaction映射。",
+    "原root上一已提交direction；子层previous为该父候选draft方向，不是所有节点共用root方向。",
+    "ActionPredictor参数/内部特征FP32，输出转换为current_state.dtype；本轮原server输入BF16，因此返回方向BF16。cost在方向差float()之后FP32范数，再转Pythonfloat。",
+    "14997旧池=3906 A_off MLP51+11091 historical research TF64 seed22，非当前TFchild/cont on-policy。",
+    "重置AdamW与重复旧500 draws为训练源码/PLAN事实；本次不重复读取draws/data大tensor或模型forward。"
+  ],
+  "limitations": [
+    "只审准备交接，非今日50终态/质量/性能许可。",
+    "未读取TF/MLP/fresh/risk质量结果，无GPU/forward/episode/SSH。"
+  ],
+  "CUDA_initialized": false,
+  "CPU_threads": 2,
+  "affinity": [
+    14,
+    15
+  ],
+  "cpu_seconds": 2.392638503,
+  "wall_seconds": 2.4592335410416126
+}

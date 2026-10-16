@@ -1,0 +1,411 @@
+{
+  "timestamp": "2026-10-12T01:16:53.585195+08:00",
+  "track": "tile-sdpa",
+  "objective_requirements_achieved": true,
+  "goal_status_at_record_write": "active_pending_completion_tool",
+  "acceptance_scope": "A100 SM80 BF16 D128 contiguous inference, six existing real short/long K2160 fixtures, both predeclared processes and original gates only",
+  "PyTorch_version": "2.9.0+cu126",
+  "PyTorch_commit": "0fabc3ba44823f257e70ce397d989c8de5e362c1",
+  "source_sha256": "e77e8228c98d8d5a94bd11ab8dfd13ab0f2057d36bad9478ad82e1aa6f980a5c",
+  "binary_sha256": "f1163f975910d5afce8ab8c8a9de94b069f930bab3acedfd7f6637e9334ff5cd",
+  "primary_test_sha256": "ce840c07b88c89b32223f6709aa84f292a87bd2a324b394d366d38b3253ea889",
+  "original_all_gates_passed": true,
+  "independent_GPU_processes": 2,
+  "all_six_each": true,
+  "checks": 576,
+  "raw_cuda_event_values": 36960,
+  "raw_synchronized_wall_values": 36960,
+  "all_attention_gates_passed": 48,
+  "all_full_block_gates_passed": 12,
+  "original_atol": 0.02,
+  "original_rtol": 0.02,
+  "original_ratio_limit": 1,
+  "rounds": 7,
+  "core_ratio_range": [
+    0.914081183713246,
+    0.9963526264783508
+  ],
+  "eager_ratio_range": [
+    0.5094339655019392,
+    0.8269230863409216
+  ],
+  "full_block_ratio_range": [
+    0.9539375882412569,
+    0.9989395465617142
+  ],
+  "all_fixture_metrics": [
+    {
+      "process": 1,
+      "fixture_index": 0,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/oplab_outputs/c0-real-fixture-libero-k0-20260925/fixtures/block0_pos_b2_s128.pt",
+      "self_eager": 0.5192307759578011,
+      "self_core": 0.914081183713246,
+      "cross_eager": 0.7187500177635684,
+      "cross_core": 0.9791425020000031,
+      "full_block": 0.9747974454643737,
+      "full_block_torch_median_ms": 2.275328040122986,
+      "full_block_cuda_median_ms": 2.2179839611053467
+    },
+    {
+      "process": 1,
+      "fixture_index": 1,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/oplab_outputs/c0-real-fixture-libero-k0-20260925/fixtures/block0_pos_b2_s16.pt",
+      "self_eager": 0.5655737939563271,
+      "self_core": 0.9622641775857674,
+      "cross_eager": 0.569105715584232,
+      "cross_core": 0.9776422254444131,
+      "full_block": 0.9539375882412569,
+      "full_block_torch_median_ms": 1.7228800058364868,
+      "full_block_cuda_median_ms": 1.6435199975967407
+    },
+    {
+      "process": 1,
+      "fixture_index": 2,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile0/fixtures/block0_pos_b2_s128.pt",
+      "self_eager": 0.8269230863409216,
+      "self_core": 0.9860045138659314,
+      "cross_eager": 0.7230769420202446,
+      "cross_core": 0.9796866407571063,
+      "full_block": 0.9829876698594242,
+      "full_block_torch_median_ms": 3.1600639820098877,
+      "full_block_cuda_median_ms": 3.1063039302825928
+    },
+    {
+      "process": 1,
+      "fixture_index": 3,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile0/fixtures/block0_pos_b2_s16.pt",
+      "self_eager": 0.6603053780659971,
+      "self_core": 0.9918502951706372,
+      "cross_eager": 0.5760000265426937,
+      "cross_core": 0.9736307504560977,
+      "full_block": 0.9874671833321763,
+      "full_block_torch_median_ms": 1.7566720247268677,
+      "full_block_cuda_median_ms": 1.7346559762954712
+    },
+    {
+      "process": 1,
+      "fixture_index": 4,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile1/fixtures/block0_pos_b2_s128.pt",
+      "self_eager": 0.7837837784689865,
+      "self_core": 0.985566179672172,
+      "cross_eager": 0.6335403757584791,
+      "cross_core": 0.9757225606229417,
+      "full_block": 0.9989395465617142,
+      "full_block_torch_median_ms": 1.931264042854309,
+      "full_block_cuda_median_ms": 1.9292160272598267
+    },
+    {
+      "process": 1,
+      "fixture_index": 5,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile1/fixtures/block0_pos_b2_s16.pt",
+      "self_eager": 0.8068182006093945,
+      "self_core": 0.9957447190965435,
+      "cross_eager": 0.5806451896824573,
+      "cross_core": 0.975609689729519,
+      "full_block": 0.9775811217340952,
+      "full_block_torch_median_ms": 1.7356799840927124,
+      "full_block_cuda_median_ms": 1.6967679858207703
+    },
+    {
+      "process": 2,
+      "fixture_index": 0,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/oplab_outputs/c0-real-fixture-libero-k0-20260925/fixtures/block0_pos_b2_s128.pt",
+      "self_eager": 0.5094339655019392,
+      "self_core": 0.9143731452982538,
+      "cross_eager": 0.7301587521570905,
+      "cross_core": 0.9790941197618935,
+      "full_block": 0.9704075950111711,
+      "full_block_torch_median_ms": 1.8339839577674866,
+      "full_block_cuda_median_ms": 1.7797119617462158
+    },
+    {
+      "process": 2,
+      "fixture_index": 1,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/oplab_outputs/c0-real-fixture-libero-k0-20260925/fixtures/block0_pos_b2_s16.pt",
+      "self_eager": 0.5645161517459658,
+      "self_core": 0.9622641775857674,
+      "cross_eager": 0.5645161517459658,
+      "cross_core": 0.9776422254444131,
+      "full_block": 0.9696233447947498,
+      "full_block_torch_median_ms": 1.6855039596557617,
+      "full_block_cuda_median_ms": 1.6343039870262146
+    },
+    {
+      "process": 2,
+      "fixture_index": 2,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile0/fixtures/block0_pos_b2_s128.pt",
+      "self_eager": 0.817307698362021,
+      "self_core": 0.9855726873055961,
+      "cross_eager": 0.7187500177635684,
+      "cross_core": 0.9802326100038532,
+      "full_block": 0.998927318189955,
+      "full_block_torch_median_ms": 1.9092479944229126,
+      "full_block_cuda_median_ms": 1.9071999788284302
+    },
+    {
+      "process": 2,
+      "fixture_index": 3,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile0/fixtures/block0_pos_b2_s16.pt",
+      "self_eager": 0.797752824604378,
+      "self_core": 0.9909638564778571,
+      "cross_eager": 0.5806451896824573,
+      "cross_core": 0.9736307504560977,
+      "full_block": 0.9778708187482004,
+      "full_block_torch_median_ms": 1.7121279835700989,
+      "full_block_cuda_median_ms": 1.674239993095398
+    },
+    {
+      "process": 2,
+      "fixture_index": 4,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile1/fixtures/block0_pos_b2_s128.pt",
+      "self_eager": 0.817307698362021,
+      "self_core": 0.9869604366914723,
+      "cross_eager": 0.7230769420202446,
+      "cross_core": 0.9802326100038532,
+      "full_block": 0.9981253205006695,
+      "full_block_torch_median_ms": 1.9118080139160156,
+      "full_block_cuda_median_ms": 1.9082239866256714
+    },
+    {
+      "process": 2,
+      "fixture_index": 5,
+      "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile1/fixtures/block0_pos_b2_s16.pt",
+      "self_eager": 0.8068182006093945,
+      "self_core": 0.9963526264783508,
+      "cross_eager": 0.5806451896824573,
+      "cross_core": 0.9736307504560977,
+      "full_block": 0.9856459280172448,
+      "full_block_torch_median_ms": 1.7121279835700989,
+      "full_block_cuda_median_ms": 1.6875519752502441
+    }
+  ],
+  "actual_reports": [
+    {
+      "index": 1,
+      "path": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/release-r1.json",
+      "sha256": "e0d2b10a1bcb3bcd53d480f91278c45a6f06f7a3d975fcacdcc0490bb46f3645",
+      "report_integrity_passed": true,
+      "issues": [],
+      "original_correctness_passed": true,
+      "original_performance_passed": true,
+      "all_original_gates_passed": true,
+      "correctness_checks": 288,
+      "raw_cuda_event_samples": 18480,
+      "raw_synchronized_wall_samples": 18480,
+      "oracle_bitwise_count": 84,
+      "oracle_bitwise_is_not_new_acceptance_gate": true,
+      "results": [
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/oplab_outputs/c0-real-fixture-libero-k0-20260925/fixtures/block0_pos_b2_s128.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/oplab_outputs/c0-real-fixture-libero-k0-20260925/fixtures/block0_pos_b2_s16.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile0/fixtures/block0_pos_b2_s128.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile0/fixtures/block0_pos_b2_s16.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile1/fixtures/block0_pos_b2_s128.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile1/fixtures/block0_pos_b2_s16.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "path": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/release-r2.json",
+      "sha256": "f841441ecede992448b1daf7672f16ac294b64938684b087dc3e9f46797bc26e",
+      "report_integrity_passed": true,
+      "issues": [],
+      "original_correctness_passed": true,
+      "original_performance_passed": true,
+      "all_original_gates_passed": true,
+      "correctness_checks": 288,
+      "raw_cuda_event_samples": 18480,
+      "raw_synchronized_wall_samples": 18480,
+      "oracle_bitwise_count": 84,
+      "oracle_bitwise_is_not_new_acceptance_gate": true,
+      "results": [
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/oplab_outputs/c0-real-fixture-libero-k0-20260925/fixtures/block0_pos_b2_s128.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/oplab_outputs/c0-real-fixture-libero-k0-20260925/fixtures/block0_pos_b2_s16.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile0/fixtures/block0_pos_b2_s128.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile0/fixtures/block0_pos_b2_s16.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile1/fixtures/block0_pos_b2_s128.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        },
+        {
+          "fixture": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-real-k2160-par2-20261011-122816/workers/tile1/fixtures/block0_pos_b2_s16.pt",
+          "recomputed_correctness_passed": true,
+          "recomputed_performance_passed": true,
+          "reference_backends": [
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "resource_boundary_audit": {
+    "strict_original_resource_gate_passed_both": true,
+    "first_admission_before_absolute_deadline": true,
+    "two_ten_second_idle_confirmations": true,
+    "initial_nonidle_snapshots_retained": 1,
+    "no_queries_during_timed_children": true,
+    "cooperative_existing_lock": true,
+    "foreign_post_compute_graphics_PID": false,
+    "owned_controller_and_GPU_children_exited": true,
+    "physical_exclusivity_not_proven": true,
+    "user_confirmed_idle": true,
+    "clock_changes": false,
+    "original_protected_shared_speculative_input_guards_retained": true,
+    "only_expected_original_guard_deletions": [
+      "wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/operator_lab/wam_transformer_tile/collect_real_k2160.py",
+      "wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/operator_lab/wam_transformer_tile/test_real_k2160_capture.py"
+    ]
+  },
+  "one_owned_CUDA_TU": true,
+  "one_active_native_binary": true,
+  "one_primary_test": true,
+  "native_export_direct": true,
+  "default_scale_in_CPP": true,
+  "CUDA_math_and_device_SASS_unchanged_from_previous_owned_operator": true,
+  "device_SASS_identical_to_PyTorch_not_claimed": true,
+  "compiled_cuda": [
+    12,
+    4
+  ],
+  "wheel_cuda": "12.6",
+  "cleanup": {
+    "status": "completed_after_both_real_gates",
+    "removed": {
+      "__pycache__/setup.cpython-312.pyc": "8095afee20c92ee34e27c4ec3adba3882b4c7c6785e25c1fedc4a561db0a0ff4",
+      "__pycache__/test_standalone_sdpa.cpython-312.pyc": "ffc0a90787f3dd59253b830d06a959d73036568d8570bb8c5ddbd921ad4d9e29",
+      "build/lib.linux-x86_64-cpython-312/wam_transformer_tile/_parity.cpython-312-x86_64-linux-gnu.so": "d57fae6e61963b343e8593a331bed5ed349b1ec979fb6da6f7e6550b5e0cedcc",
+      "build/temp.linux-x86_64-cpython-312/.ninja_deps": "20089cf2ff600606c1aba49ab2b24ab399aff20967206189577dfbd958668a62",
+      "build/temp.linux-x86_64-cpython-312/.ninja_log": "7ad129bd21d8e85c8be5458ecb2f6d44e0a098c822d906839a29f34d486fd9dc",
+      "build/temp.linux-x86_64-cpython-312/build.ninja": "f77bc28e3f2023d50a457acbdefd769b915aa326ccee4e97b90aedfd12b5c469",
+      "build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/operator_lab/wam_transformer_tile/csrc/standalone_flash_sdpa.o": "df149cdc33b93538211fe9c47cbc978ca3c34a5f7a1196d28ccf6550f392fe13",
+      "collect_real_k2160.py": "f6fc1c60432104991f15569636aa77bcfc960532f1e020d56c3dedbaed7909aa",
+      "csrc/vendor/cutlass/include/cute/numeric/bfloat.hpp": "8e9d739b57f87bf6615eb7d17a1991f2cafa266c994af23d1361e5c6a635f57f",
+      "csrc/vendor/cutlass/include/cute/numeric/float8.hpp": "e0981f5afcb21709aa5c50262029302d6762de359f07f35ff6f00de6a7d1894c",
+      "csrc/vendor/cutlass/include/cute/numeric/half.hpp": "9a5671076315799a30652d0581c36c379649869431260cedeeed6f8015bb04bf",
+      "csrc/vendor/cutlass/include/cute/numeric/integer_subbyte.hpp": "bbc932827c2969f7652acdcac26f7f789e25a21c25d71160f73fb33b57328cac",
+      "csrc/vendor/cutlass/include/cute/numeric/tfloat.hpp": "fc35ad8254635225ab2feac313b6fbfbd864b9e944ec6fcdadf808f314122a90",
+      "csrc/vendor/cutlass/include/cute/numeric/uint128.hpp": "4955cefb52af9a5bc289fd439986a5053e9520406ccec8b7a0fe4074d7579273",
+      "csrc/vendor/cutlass/include/cute/tensor_predicate.hpp": "3464af0fa2f8e591c3986dc67db7cfaa4c5eef06cf3ed294aad9c331905033f8",
+      "csrc/vendor/cutlass/include/cute/tile.hpp": "7963ff398da08d7078c6527f49b7ed86072398cd6117aa092c87d1a242d7861c",
+      "test_real_k2160_capture.py": "4574b30686e0c791bf32196dd08c8302d0e1f51e18af9bbeae4786223c8b7365",
+      "wam_transformer_tile/__pycache__/__init__.cpython-312.pyc": "c5295aad3ab0a9f757d05d58a5cc32908f6b25061e93c64b1ff5a62c46bea542",
+      "wam_transformer_tile/__pycache__/contract.cpython-312.pyc": "a551f1088d85c4f66ea0f204b053d096a0929e3cacf7e78befaa080a4cbd81e1",
+      "wam_transformer_tile/__pycache__/fixtures.cpython-312.pyc": "52592d1e4f5bcaeb419859f977d8b358a13c8cf2b00958aa96495708218f4bc4"
+    },
+    "removed_dirs": [
+      "build",
+      "__pycache__",
+      "wam_transformer_tile/__pycache__"
+    ],
+    "metadata_only_changed": [
+      "csrc/vendor/cutlass/UPSTREAM.json"
+    ],
+    "active_cuda_sources": 1,
+    "active_operator_exports": 1,
+    "primary_test_entries": 1,
+    "final_package_files": 188,
+    "CUDA_source_sha256": "e77e8228c98d8d5a94bd11ab8dfd13ab0f2057d36bad9478ad82e1aa6f980a5c",
+    "primary_test_sha256": "ce840c07b88c89b32223f6709aa84f292a87bd2a324b394d366d38b3253ea889",
+    "no_GPU_retest": true,
+    "historical_failures_and_speculative_sources_preserved": true,
+    "archive": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/pre-cleanup-validated-package.tar.gz"
+  },
+  "post_cleanup_CPU_checks": 188,
+  "post_cleanup_CUDA_initialized": false,
+  "same_native_version_measurement_retry": false,
+  "all_failures_retained": true,
+  "previous_candidate_full_block_0_4013_percent_failure_retained": true,
+  "previous_candidate_historical_unique_cause_proven": false,
+  "universal_shapes_or_per_call_or_E2E_speedup_claimed": false,
+  "earlier_clock_calibration_remains_failed": true,
+  "system_clock_changes": false,
+  "no_profile_or_management_queries_in_timed_child": true,
+  "speculative_source_outputs_or_HW_modified": false,
+  "shared_model_server_or_protected_state_modified": false,
+  "next_step": "User reviews this baseline CUDA source and test; future optimization needs a new agreed experiment/finite budget. No automatic more GPU tests, episodes, training, fusion/persistent work."
+}

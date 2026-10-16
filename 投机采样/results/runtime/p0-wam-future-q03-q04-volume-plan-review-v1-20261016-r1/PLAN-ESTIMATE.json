@@ -1,0 +1,124 @@
+{
+  "status": "FUTURE_VOLUME_AND_WALL_CLOCK_PLANNING_ONLY_NO_EXECUTION_REGISTRATION",
+  "source": "parent relayed user execution prompt sections6/7; Q03/Q04 names are not inferred from an existing experiment",
+  "sources": [
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-autodl-failed-old100-research-dispatch-v1-20261016-r1/T50-RAW-FIELDS-AND-GPU-CAL.tar",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-autodl-failed-old100-research-dispatch-v1-20261016-r1/TF20-MIDRUN-SMALL-RAW.tar",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-autodl-failed-old100-research-dispatch-v1-20261016-r1/status.json",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-train-v1-20261015-r1/FINAL-RESULT.json",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/FINAL-RESULT.json",
+    "/rjs/cxz/论文探索/.pipeline/research/speculative-sampling/STATISTICAL-QUALITY-PROTOCOL-20261015.md"
+  ],
+  "observed_T50": {
+    "n": 50,
+    "stage_span_sec": 6704.532605,
+    "mean_stage_sec": 134.0906521,
+    "sum_episode_sec": 6019.003371670842,
+    "max_episode_sec": 348.2089589089155
+  },
+  "observed_TF_first10": {
+    "n": 10,
+    "stage_span_sec": 1036.192341,
+    "mean_stage_sec": 103.6192341,
+    "sum_episode_sec": 912.6476774513721,
+    "max_episode_sec": 221.896539054811
+  },
+  "observed_TF_first20": {
+    "n": 20,
+    "stage_span_sec": 2283.581207,
+    "mean_stage_sec": 114.17906035000001,
+    "sum_episode_sec": 2020.7467299848795,
+    "max_episode_sec": 231.9633770212531
+  },
+  "TF_full_stage_terminal_available": false,
+  "dispatcher_snapshot": {
+    "status": "RUNNING",
+    "stage": "remote_result_gate",
+    "at_UTC": "2026-10-15T20:40:44.220358+00:00",
+    "completed": 90
+  },
+  "counts": {
+    "Q03": {
+      "conditions": [
+        "T",
+        "TF-cont",
+        "TF-on",
+        "MLP-on",
+        "constant_velocity",
+        "fixed_few_step_target"
+      ],
+      "matched_groups": 20,
+      "total_episodes": 120,
+      "execution": "HOLD_D01_NOT_TRIGGERED"
+    },
+    "Q04": {
+      "primary_T": 100,
+      "primary_frozen_spec": 100,
+      "three_baselines": 150,
+      "total_episodes": 350,
+      "shared_T_subgroup_reused": true,
+      "extra_target_for_baselines": 0
+    },
+    "conditional_D01": 30,
+    "conditional_all_total": 500
+  },
+  "reuse_target_conditions": [
+    "Q04 baseline50 is the same predeclared subset of primary100 groups, not150 extra target episodes",
+    "same target weights, suite/task/init, policy/environment seed, horizon, reset/cache/settle/camera config; actual saved physical/controller/environment RNG and target initial CPU/CUDA RNG checked",
+    "all intended episodes complete with output/source/count/cleanup coverage; no failed-run fragments substituted",
+    "save and report raw camera pixel differences separately; statistical pairing is not identical-observation causal proof",
+    "different model/config/target initial RNG or lack of original required evidence prevents reuse; extra target acquisition would add episodes and time"
+  ],
+  "data_isolation": [
+    "current25–29 target/spec outcomes are already read and used for exploration; not final blindTEST",
+    "prospective project split FIT30/31 CAL32 DEV33/34 TEST40–49 is only a plan pending fixed manifests; do not readTEST for selection",
+    "prior source audit found no current draft training hits init30–49, but upstream target pretraining exposure unknown and benchmark metadata exposure known; cannot certify absolute blindTEST"
+  ],
+  "wall_hours_scenarios": {
+    "hardware": "current AutoDL A100 PCIe40GiB shared single-worker source, descriptive only; SXM4 different hardware, no same-speed promise",
+    "Q04_optimistic_proxy": 10.920520481944445,
+    "Q04_representative_proxy": 12.483491405555556,
+    "Q04_regular_with_25pct_slack": 15.604364256944445,
+    "Q04_all_arms_near_observed_max_proxy": 31.941776661409886,
+    "Q03_observed_proxy_interval": [
+      3.45397447,
+      4.4696884033333335
+    ],
+    "Q03_regular_planning_interval": [
+      4,
+      5.5
+    ],
+    "Q03_failure_tail_planning_interval": [
+      7,
+      12
+    ],
+    "D01_no_extra_capture_overhead_proxy": 1.1174221008333334,
+    "non_episode_startup_CAL_bank_archive_reserve_hours": [
+      1,
+      2
+    ],
+    "warning": "scenario intervals, not measured performance, confidence limits or guaranteed upper bounds; shared contention and many796-step failures can exceed them"
+  },
+  "training": {
+    "observed_six_stage1_2000_updates_CPU2_seconds": 936.4215703178197,
+    "observed_six_stage2_500_updates_CPU2_seconds": 587.6076229158789,
+    "nine_500_update_cells_linear_CPU2_minutes": 14.690190572896972,
+    "comment": "only indicative same-size throughput; new teacher packing/CAL/checkpoint IO and anyGPU training unmeasured; hours of complete episodes dominate minutes of small-draft training"
+  },
+  "budget18GPUh": {
+    "Q04_only": "plausible under current representative12.5–15.6h plus1–2h overhead, not guaranteed; long-tail scenario violates18h",
+    "Q03_plus_Q04_plus_optional_D01": "not safe to promise within18h; keepTEST18h separate or gate/extend beforehand; no silent truncation/cherry-picking",
+    "not_executed": true
+  },
+  "elapsed_CPU_wall_seconds": 0.02879529632627964,
+  "CPU_affinity": [
+    12,
+    13
+  ],
+  "CUDA_VISIBLE_DEVICES": "",
+  "GPU_used": false,
+  "NVML_used": false,
+  "SSH_used": false,
+  "TEST_data_read": false,
+  "new_job_registered_or_started": false
+}

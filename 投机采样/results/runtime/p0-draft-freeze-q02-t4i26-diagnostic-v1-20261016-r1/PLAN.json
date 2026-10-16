@@ -1,0 +1,34 @@
+{
+  "schema": "draft-freeze-q02-risk-case-diagnostic/v1",
+  "status": "PREDECLARED_CPU_READ_ONLY",
+  "created_at": "2026-10-16T15:05:42+0800",
+  "source_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1",
+  "primary_keys": [
+    "T-risk_DEV-t4-i26-r0",
+    "TF_CONT-risk_DEV-t4-i26-r0"
+  ],
+  "descriptive_success_reference": "TF_CONT-fresh_DEV-t4-i35-r0",
+  "scope": "one preregistered risk case plus same-task successful DEV reference; never TEST",
+  "max_wall_seconds": 300,
+  "max_CPU_cores": 2,
+  "GPU_or_SSH_or_environment_forward": false,
+  "reads": [
+    "RESULT.json relevant rows",
+    "PAIRING-PIXELS.json exact pair",
+    "each primary client initial_state/initial_observations/repro_metadata/commands",
+    "each primary first saved actions_0 and obs_data_0 only",
+    "TF primary and reference COUNTER first <=256 acceptance records and <=20 complete chunks"
+  ],
+  "stop_conditions": [
+    "wall>300sec",
+    "more than 256 acceptance records or 20 complete chunks",
+    "missing or ambiguous saved route/sigma/score fields",
+    "unexpected tensor size over 128MiB"
+  ],
+  "not_recomputed": [
+    "unsaved velocity",
+    "new teacher forward",
+    "full 50 raw audit"
+  ],
+  "decision_rule": "D01 signal only if saved actual paired input and action divergence plus recurring actual commit/cost pattern can be linked; otherwise UNKNOWN; never change original retention gate"
+}

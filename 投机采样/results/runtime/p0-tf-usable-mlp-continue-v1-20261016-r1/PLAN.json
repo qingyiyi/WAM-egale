@@ -1,0 +1,66 @@
+{
+  "schema": "tf-usable-matched-mlp-continuation-plan/v1",
+  "status": "PREPARED_NOT_TRAINED",
+  "condition": "MLP_CONT",
+  "architecture": "mlp96",
+  "seed": 20260923,
+  "data": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-data-numeric-audit-v1-20261015-r1/historical_train194_columnar.pt",
+  "data_audit": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-data-numeric-audit-v1-20261015-r1/RESULT.json",
+  "same_query_data": "/var/tmp/cxz-wam-quality-20261014/p0-morning-long10-train-six-v1-20261015-r1/dataset.pt",
+  "same_query_audit": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-data-numeric-audit-v1-20261015-r1/SAME-QUERY-RESULT.json",
+  "parent_checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/mlp96-seed20260923/checkpoint.pt",
+  "parent_checkpoint_sha256": "655e8647efa0fa44767b75b8e98a02ec6cbe84fc058b10aa15860f6cd609165e",
+  "parent_training_plan_sha256": "4b41d3002deb04fc494743166f825eba7fed35bb3efebe57e72ae4822d8996d4",
+  "initial_total_updates": 2500,
+  "continuation_updates": 500,
+  "total_updates": 3000,
+  "batch": 512,
+  "target_half": 256,
+  "same_query_half": 256,
+  "learning_rate": 3e-05,
+  "weight_decay": 0.01,
+  "optimizer": "new AdamW, no carried moments",
+  "normalization_refit": false,
+  "fit_rows": 159691,
+  "fit_episodes": 174,
+  "cal_rows": 20237,
+  "cal_episodes": 20,
+  "same_query_rows": 14997,
+  "threshold": 0.007839680526450805,
+  "old_recipe_unchanged": true,
+  "training_source": "same_stage2_historical_target_and_original_same_query",
+  "draw_rule": "same frozen stage2 target/same_query balanced task->episode->row draws for primary seed23; identical old500 schedule",
+  "selection": "fixed final update500, one primary seed23; no CAL-based checkpoint/seed search",
+  "cpu_threads": 2,
+  "maximum_wall_seconds": 900,
+  "output_limit_bytes": 134217728,
+  "no_GPU": true,
+  "new_FIT_CAL_HOLD": true,
+  "source_sha256": {
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/adapter.py": "fadb4093e50ac57b7bc08b21c24214133a589e429c1f27b4d783912a475180ab",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/train.py": "545e38d3a555ef1758a832d20ae448b302518145223cccb3398632d4b3f472a4",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/gpu_actual_cal.py": "979189ec368deb423cda0a8db07b0d2d2778e9806508002934be0734e7d18515",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/train.py": "37bc04e36ee211cc1559828f4d8482d3bf7b82cc187fb8d6bb22821f0f040822",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/adapter.py": "147c7e6472cdbffe3ba999db2ce39d77c949a44d2d8f1701a43b4582fbf9f714",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_train_v1/adapter.py": "42737b89ec38ca1993dd3c3c9134baa13173cb5f076fc1390aa2dc90f6953af4",
+    "/rjs/cxz/论文探索/投机采样/experiments/draft_architecture_v1/models.py": "b769b772bda92bbc069975bf90ab5ba53a36fade02741e3a89f670b74f84f66d"
+  },
+  "parent_data_source_proof_sha256": "bc31b4f6078cde8d5f6d630cc9208195b870b041337280a5be4ae9675b6df009",
+  "data_stat": {
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-data-numeric-audit-v1-20261015-r1/historical_train194_columnar.pt": {
+      "bytes": 252809145,
+      "mtime_ns": 1792053466738371957
+    },
+    "/var/tmp/cxz-wam-quality-20261014/p0-morning-long10-train-six-v1-20261015-r1/dataset.pt": {
+      "bytes": 56620743,
+      "mtime_ns": 1792028493232522259
+    }
+  },
+  "data_audit_sha256": {
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-data-numeric-audit-v1-20261015-r1/RESULT.json": "64ecb82887c12f48149a9c863139ea22c4e19a0c1b00d36d03f86913eb6526cc",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-data-numeric-audit-v1-20261015-r1/SAME-QUERY-RESULT.json": "2745cc8ec78dc96862c32c7b86e87187bfc75472a3bdd5f7f7a4e03c442b6385"
+  },
+  "no_new_target_forward": true,
+  "no_new_LIBERO_episode": true,
+  "deployed": false
+}

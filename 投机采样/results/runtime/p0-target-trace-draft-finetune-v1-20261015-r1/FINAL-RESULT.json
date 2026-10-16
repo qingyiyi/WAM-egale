@@ -1,0 +1,49 @@
+{
+  "status": "PASS_SIX_TWO_STAGE_FINETUNING_RUNS",
+  "complete_runs": 6,
+  "summary": [
+    {
+      "architecture": "transformer64",
+      "seeds": 3,
+      "selected": {
+        "seed": 20260923,
+        "checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/transformer64-seed20260923/checkpoint.pt",
+        "checkpoint_sha256": "9cb92a4862579edc9cfb99210b0535e620daba56dd5abcc094a7d735dbadab07",
+        "cal_macro_task_acceptance": 0.95059255361557,
+        "cal_macro_task_scaled_l2": 0.00271792346611619
+      },
+      "median_before_CAL": 0.9504251122474671,
+      "median_after_CAL": 0.95059255361557,
+      "median_before_same_query_FIT": 0.8097128868103027,
+      "median_after_same_query_FIT": 0.8114099562168121
+    },
+    {
+      "architecture": "mlp96",
+      "seeds": 3,
+      "selected": {
+        "seed": 20260922,
+        "checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/mlp96-seed20260922/checkpoint.pt",
+        "checkpoint_sha256": "6cbb682d3d29251dbcf8c7ae3fc694a986a9c5f4da1a164197acd0179ea778d2",
+        "cal_macro_task_acceptance": 0.9545665442943573,
+        "cal_macro_task_scaled_l2": 0.00285738545935601
+      },
+      "median_before_CAL": 0.9541111886501312,
+      "median_after_CAL": 0.9545665442943573,
+      "median_before_same_query_FIT": 0.8144297003746033,
+      "median_after_same_query_FIT": 0.8160918533802033
+    }
+  ],
+  "elapsed_seconds": 587.6076229158789,
+  "cpu_threads": 2,
+  "cpu_affinity": [
+    12,
+    13
+  ],
+  "CUDA_initialized": false,
+  "target_forwards": 0,
+  "new_LIBERO_episodes": 0,
+  "quality25_to29_tensors_read": false,
+  "deployed": false,
+  "same_query_provenance": "current3906 from A_off MLP51; aux11091 from historical research TF64 B_MIXED_HISTORICAL_C seed20260922; not newly pretrained TF on-policy",
+  "limitation": "Fixed developmental follow-up after observing init24 failure; FIT gains and CAL local errors do not establish closed-loop quality."
+}

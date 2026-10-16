@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "failed_stage": "loading_two_models",
+  "error": "RuntimeError(\"owned process exited before ready ['/rjs/cxz/miniconda3/envs/va/bin/python', '-m', 'torch.distributed.run', '--nproc_per_node=1', '--master_port=29872', '--local-ranks-filter=0', '--tee=3', '/rjs/cxz/论文探索/投机采样/experiments/fixed_load_cost/worker_entry.py', '--job', '/rjs/cxz/论文探索/投机采样/results/runtime/p0-fixed-load-cost-20261011-200434', '--worker', '1']\")",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/fixed_load_cost/supervisor.py\", line 237, in run\n    self.initialize()\n  File \"/rjs/cxz/论文探索/投机采样/experiments/fixed_load_cost/supervisor.py\", line 172, in initialize\n    self.wait_files([self.job/'workers'/f'worker{w}'/'ready.json' for w in [0,1]],servers,600)\n  File \"/rjs/cxz/论文探索/投机采样/experiments/fixed_load_cost/supervisor.py\", line 144, in wait_files\n    if p.poll() is not None:raise RuntimeError('owned process exited before ready '+str(p.args))\nRuntimeError: owned process exited before ready ['/rjs/cxz/miniconda3/envs/va/bin/python', '-m', 'torch.distributed.run', '--nproc_per_node=1', '--master_port=29872', '--local-ranks-filter=0', '--tee=3', '/rjs/cxz/论文探索/投机采样/experiments/fixed_load_cost/worker_entry.py', '--job', '/rjs/cxz/论文探索/投机采样/results/runtime/p0-fixed-load-cost-20261011-200434', '--worker', '1']\n",
+  "GPU_elapsed_sec": 50.12042889930308,
+  "timed_out": false,
+  "next_step": "已停止，不重试/补调用/初始化或训练；先CPU定位失败关卡，修复及是否再次GPU需用户另确认。",
+  "cleanup": "PASS"
+}

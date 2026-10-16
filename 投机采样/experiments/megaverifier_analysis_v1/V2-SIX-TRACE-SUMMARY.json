@@ -1,0 +1,1804 @@
+{
+  "status": "PASS_CPU_ATTRIBUTION_6_COMPLETED_PROFILES",
+  "profile_wall_or_speedup_claim": false,
+  "source_attribution_sha256": "26b4501cd31d085d6f3cfa3800656a38d6ddd53f2c6411270774eb9bc09cef4e",
+  "profiles": [
+    {
+      "trace": "short-candidate-00.trace.json",
+      "unique_kernels": 1748,
+      "unique_duration_ms": 66.65732,
+      "unassigned_count": 0,
+      "unassigned_duration_fraction": 0.0,
+      "duplicate_count": 0,
+      "cross_attn_ms": 41.06071099999998,
+      "cross_attn_percent": 61.5997027783295,
+      "cross_attn_KV_projection_60_kernel_ms": 33.560642,
+      "cross_attn_QO_projection_60_kernel_ms": 2.1618139999999997,
+      "self_attn_ms": 8.942717000000009,
+      "ffn_ms": 8.871675000000002,
+      "outside_pointwise_ms": 2.6287880000000023,
+      "outside_cast_copy_ms": 2.3277780000000012,
+      "outside_combined_percent": 7.435891511989987,
+      "cross_KV_mapping_basis": "Four matmul kernels in source execution order to_q,to_k,to_v,to_out at model.py:608,689; chronological middle two selected per each of 30 blocks; not separate custom NVTX labels."
+    },
+    {
+      "trace": "short-candidate-18.trace.json",
+      "unique_kernels": 1538,
+      "unique_duration_ms": 65.859015,
+      "unassigned_count": 0,
+      "unassigned_duration_fraction": 0.0,
+      "duplicate_count": 0,
+      "cross_attn_ms": 40.97935199999999,
+      "cross_attn_percent": 62.22284375191459,
+      "cross_attn_KV_projection_60_kernel_ms": 33.504079,
+      "cross_attn_QO_projection_60_kernel_ms": 2.132535,
+      "self_attn_ms": 8.294104000000003,
+      "ffn_ms": 8.797617000000002,
+      "outside_pointwise_ms": 2.6303309999999995,
+      "outside_cast_copy_ms": 2.331221000000002,
+      "outside_combined_percent": 7.533595818279398,
+      "cross_KV_mapping_basis": "Four matmul kernels in source execution order to_q,to_k,to_v,to_out at model.py:608,689; chronological middle two selected per each of 30 blocks; not separate custom NVTX labels."
+    },
+    {
+      "trace": "middle-candidate-00.trace.json",
+      "unique_kernels": 1745,
+      "unique_duration_ms": 74.244249,
+      "unassigned_count": 0,
+      "unassigned_duration_fraction": 0.0,
+      "duplicate_count": 0,
+      "cross_attn_ms": 43.39425099999998,
+      "cross_attn_percent": 58.447962750623255,
+      "cross_attn_KV_projection_60_kernel_ms": 35.664953000000004,
+      "cross_attn_QO_projection_60_kernel_ms": 2.243033,
+      "self_attn_ms": 14.239050000000011,
+      "ffn_ms": 9.155757,
+      "outside_pointwise_ms": 2.772291999999999,
+      "outside_cast_copy_ms": 2.4631959999999977,
+      "outside_combined_percent": 7.051708476437005,
+      "cross_KV_mapping_basis": "Four matmul kernels in source execution order to_q,to_k,to_v,to_out at model.py:608,689; chronological middle two selected per each of 30 blocks; not separate custom NVTX labels."
+    },
+    {
+      "trace": "middle-candidate-20.trace.json",
+      "unique_kernels": 1535,
+      "unique_duration_ms": 69.732226,
+      "unassigned_count": 0,
+      "unassigned_duration_fraction": 0.0,
+      "duplicate_count": 0,
+      "cross_attn_ms": 40.995673,
+      "cross_attn_percent": 58.79013958338286,
+      "cross_attn_KV_projection_60_kernel_ms": 33.522672,
+      "cross_attn_QO_projection_60_kernel_ms": 2.1170839999999997,
+      "self_attn_ms": 12.902341999999994,
+      "ffn_ms": 8.793826999999997,
+      "outside_pointwise_ms": 2.6236059999999983,
+      "outside_cast_copy_ms": 2.328850999999998,
+      "outside_combined_percent": 7.102106564044,
+      "cross_KV_mapping_basis": "Four matmul kernels in source execution order to_q,to_k,to_v,to_out at model.py:608,689; chronological middle two selected per each of 30 blocks; not separate custom NVTX labels."
+    },
+    {
+      "trace": "long-candidate-00.trace.json",
+      "unique_kernels": 1742,
+      "unique_duration_ms": 75.449303,
+      "unassigned_count": 0,
+      "unassigned_duration_fraction": 0.0,
+      "duplicate_count": 0,
+      "cross_attn_ms": 41.044064,
+      "cross_attn_percent": 54.39952705726122,
+      "cross_attn_KV_projection_60_kernel_ms": 33.529433,
+      "cross_attn_QO_projection_60_kernel_ms": 2.157784,
+      "self_attn_ms": 19.13329199999998,
+      "ffn_ms": 8.852517,
+      "outside_pointwise_ms": 2.6257810000000004,
+      "outside_cast_copy_ms": 2.3305159999999994,
+      "outside_combined_percent": 6.569042791555012,
+      "cross_KV_mapping_basis": "Four matmul kernels in source execution order to_q,to_k,to_v,to_out at model.py:608,689; chronological middle two selected per each of 30 blocks; not separate custom NVTX labels."
+    },
+    {
+      "trace": "long-candidate-20.trace.json",
+      "unique_kernels": 1532,
+      "unique_duration_ms": 74.875028,
+      "unassigned_count": 0,
+      "unassigned_duration_fraction": 0.0,
+      "duplicate_count": 0,
+      "cross_attn_ms": 41.02381099999999,
+      "cross_attn_percent": 54.78971039583449,
+      "cross_attn_KV_projection_60_kernel_ms": 33.54357,
+      "cross_attn_QO_projection_60_kernel_ms": 2.1333420000000003,
+      "self_attn_ms": 18.61064199999999,
+      "ffn_ms": 8.815920999999998,
+      "outside_pointwise_ms": 2.624918,
+      "outside_cast_copy_ms": 2.3305530000000005,
+      "outside_combined_percent": 6.618322733715705,
+      "cross_KV_mapping_basis": "Four matmul kernels in source execution order to_q,to_k,to_v,to_out at model.py:608,689; chronological middle two selected per each of 30 blocks; not separate custom NVTX labels."
+    }
+  ],
+  "captures_integrity_verified_no_tensor_deserialization": [
+    {
+      "marker": "/var/tmp/cxz-wam-quality-20261014/p0-megaverifier-profile-v2-20261014-marker-fix/fixed/worker0/captures/long-candidate-00-block0.json",
+      "sha256": "15b5b884fa2258158c00f7bb8898195da194180b0636df74523dd8090362bab4",
+      "bytes": 41369591,
+      "layout": {
+        "self_residual_hidden": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "temb": {
+          "shape": [
+            14,
+            16,
+            6,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            294912,
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "scale_shift_table": {
+          "shape": [
+            1,
+            6,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 3072,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 6144,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 9216,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 12288,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 15360,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "norm1_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_attn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_residual_hidden_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "norm3_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "block_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        }
+      }
+    },
+    {
+      "marker": "/var/tmp/cxz-wam-quality-20261014/p0-megaverifier-profile-v2-20261014-marker-fix/fixed/worker0/captures/long-candidate-20-block0.json",
+      "sha256": "e86c9cc6b3dcc789e8865968adabcd57b6b57ca27165e1c42e0d5697ac9d5b72",
+      "bytes": 41369591,
+      "layout": {
+        "self_residual_hidden": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "temb": {
+          "shape": [
+            14,
+            16,
+            6,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            294912,
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "scale_shift_table": {
+          "shape": [
+            1,
+            6,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 3072,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 6144,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 9216,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 12288,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 15360,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "norm1_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_attn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_residual_hidden_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "norm3_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "block_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        }
+      }
+    },
+    {
+      "marker": "/var/tmp/cxz-wam-quality-20261014/p0-megaverifier-profile-v2-20261014-marker-fix/fixed/worker0/captures/middle-candidate-00-block0.json",
+      "sha256": "1bab6908682d4c718f24acf6ad6cb8dd85934bb54d7a91211f47f80d7e121795",
+      "bytes": 41369637,
+      "layout": {
+        "self_residual_hidden": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "temb": {
+          "shape": [
+            14,
+            16,
+            6,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            294912,
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "scale_shift_table": {
+          "shape": [
+            1,
+            6,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 3072,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 6144,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 9216,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 12288,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 15360,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "norm1_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_attn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_residual_hidden_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "norm3_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "block_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        }
+      }
+    },
+    {
+      "marker": "/var/tmp/cxz-wam-quality-20261014/p0-megaverifier-profile-v2-20261014-marker-fix/fixed/worker0/captures/middle-candidate-20-block0.json",
+      "sha256": "6515844e98dbffdb6e55f2e4549dfb010bb818f58f9b62c873168ea61c8a1076",
+      "bytes": 41369637,
+      "layout": {
+        "self_residual_hidden": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "temb": {
+          "shape": [
+            14,
+            16,
+            6,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            294912,
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "scale_shift_table": {
+          "shape": [
+            1,
+            6,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 3072,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 6144,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 9216,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 12288,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 15360,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "norm1_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_attn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_residual_hidden_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "norm3_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "block_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        }
+      }
+    },
+    {
+      "marker": "/var/tmp/cxz-wam-quality-20261014/p0-megaverifier-profile-v2-20261014-marker-fix/fixed/worker0/captures/short-candidate-00-block0.json",
+      "sha256": "916f87bb34b51c1405def0ce534b305dc8847837b6e4120fa72b02ff6a6f3310",
+      "bytes": 41369614,
+      "layout": {
+        "self_residual_hidden": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "temb": {
+          "shape": [
+            14,
+            16,
+            6,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            294912,
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "scale_shift_table": {
+          "shape": [
+            1,
+            6,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 3072,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 6144,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 9216,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 12288,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 15360,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "norm1_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_attn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_residual_hidden_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "norm3_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "block_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        }
+      }
+    },
+    {
+      "marker": "/var/tmp/cxz-wam-quality-20261014/p0-megaverifier-profile-v2-20261014-marker-fix/fixed/worker0/captures/short-candidate-18-block0.json",
+      "sha256": "b4cc8f2094e9723fb2864b1c1590f3f450e9bb0f86e2e3d57e5529b4d556ad4f",
+      "bytes": 41369614,
+      "layout": {
+        "self_residual_hidden": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "temb": {
+          "shape": [
+            14,
+            16,
+            6,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            294912,
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "scale_shift_table": {
+          "shape": [
+            1,
+            6,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            18432,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 3072,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 6144,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_shift": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 9216,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_scale": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 12288,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "c_gate": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            294912,
+            18432,
+            1
+          ],
+          "storage_offset": 15360,
+          "contiguous": false,
+          "device": "cuda:0"
+        },
+        "norm1_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "self_attn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_residual_hidden_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "norm3_fp32": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_input": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "ffn_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        },
+        "block_output": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "stride": [
+            49152,
+            3072,
+            1
+          ],
+          "storage_offset": 0,
+          "contiguous": true,
+          "device": "cuda:0"
+        }
+      }
+    }
+  ],
+  "tensor_value_equivalence_rechecked_offline": false
+}

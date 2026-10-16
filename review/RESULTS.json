@@ -1,0 +1,499 @@
+{
+  "snapshot_id": "wam-research-20261016-complete50-retention-hold",
+  "data_as_of": "2026-10-16 afternoon Asia/Shanghai",
+  "main50_status": "COMPLETE50_PROSPECTIVE_DEV_ANALYSIS",
+  "full_episodes": 50,
+  "fresh_DEV": {
+    "T": {
+      "episodes": 10,
+      "successes": 10,
+      "success_rate": 1.0,
+      "actual_env_steps": {
+        "n": 10,
+        "mean": 257.5,
+        "p50": 251.5,
+        "p90": 297.2,
+        "min": 181,
+        "max": 380
+      },
+      "failure800_penalty": {
+        "n": 10,
+        "mean": 257.5,
+        "p50": 251.5,
+        "p90": 297.2,
+        "min": 181,
+        "max": 380
+      },
+      "failures": [],
+      "target_forwards": 12412,
+      "policy_chunks": 168,
+      "target_forwards_per_chunk": 73.88095238095238
+    },
+    "TF_CONT": {
+      "episodes": 10,
+      "successes": 10,
+      "success_rate": 1.0,
+      "actual_env_steps": {
+        "n": 10,
+        "mean": 265.0,
+        "p50": 257.0,
+        "p90": 316.4,
+        "min": 185,
+        "max": 383
+      },
+      "failure800_penalty": {
+        "n": 10,
+        "mean": 265.0,
+        "p50": 257.0,
+        "p90": 316.4,
+        "min": 185,
+        "max": 383
+      },
+      "failures": [],
+      "target_forwards": 7501,
+      "policy_chunks": 172,
+      "target_forwards_per_chunk": 43.61046511627907
+    },
+    "MLP_CONT": {
+      "episodes": 10,
+      "successes": 10,
+      "success_rate": 1.0,
+      "actual_env_steps": {
+        "n": 10,
+        "mean": 267.7,
+        "p50": 259.5,
+        "p90": 318.7,
+        "min": 187,
+        "max": 397
+      },
+      "failure800_penalty": {
+        "n": 10,
+        "mean": 267.7,
+        "p50": 259.5,
+        "p90": 318.7,
+        "min": 187,
+        "max": 397
+      },
+      "failures": [],
+      "target_forwards": 7597,
+      "policy_chunks": 174,
+      "target_forwards_per_chunk": 43.660919540229884
+    }
+  },
+  "fresh_comparisons": {
+    "TF_CONT_vs_T": {
+      "pairs": 10,
+      "four_cells": {
+        "reference_0_candidate_0": 0,
+        "reference_0_candidate_1": 0,
+        "reference_1_candidate_0": 0,
+        "reference_1_candidate_1": 10
+      },
+      "success_difference_pp": 0.0,
+      "both_success_steps_ratio": {
+        "n": 10,
+        "mean": 1.0285961011546938,
+        "p50": 1.0212123253829222,
+        "p90": 1.0748842592592593,
+        "min": 0.9826839826839827,
+        "max": 1.0925925925925926
+      }
+    },
+    "MLP_CONT_vs_T": {
+      "pairs": 10,
+      "four_cells": {
+        "reference_0_candidate_0": 0,
+        "reference_0_candidate_1": 0,
+        "reference_1_candidate_0": 0,
+        "reference_1_candidate_1": 10
+      },
+      "success_difference_pp": 0.0,
+      "both_success_steps_ratio": {
+        "n": 10,
+        "mean": 1.038003772025236,
+        "p50": 1.029561598622372,
+        "p90": 1.080034046692607,
+        "min": 0.9915254237288136,
+        "max": 1.11284046692607
+      }
+    },
+    "TF_CONT_vs_MLP_CONT": {
+      "pairs": 10,
+      "four_cells": {
+        "reference_0_candidate_0": 0,
+        "reference_0_candidate_1": 0,
+        "reference_1_candidate_0": 0,
+        "reference_1_candidate_1": 10
+      },
+      "success_difference_pp": 0.0,
+      "both_success_steps_ratio": {
+        "n": 10,
+        "mean": 0.9921968293493272,
+        "p50": 0.9930395031913059,
+        "p90": 1.0415156749006063,
+        "min": 0.9230769230769231,
+        "max": 1.1007462686567164
+      }
+    }
+  },
+  "known_risk_DEV": {
+    "T": {
+      "episodes": 8,
+      "successes": 5,
+      "success_rate": 0.625,
+      "actual_env_steps": {
+        "n": 8,
+        "mean": 451.25,
+        "p50": 256.5,
+        "p90": 796.0,
+        "min": 224,
+        "max": 796
+      },
+      "failure800_penalty": {
+        "n": 8,
+        "mean": 452.75,
+        "p50": 256.5,
+        "p90": 800.0,
+        "min": 224,
+        "max": 800
+      },
+      "failures": [
+        {
+          "site": "local",
+          "task": 5,
+          "init": 28,
+          "env_steps": 796
+        },
+        {
+          "site": "local",
+          "task": 8,
+          "init": 25,
+          "env_steps": 796
+        },
+        {
+          "site": "local",
+          "task": 0,
+          "init": 28,
+          "env_steps": 796
+        }
+      ],
+      "target_forwards": 17010,
+      "policy_chunks": 230,
+      "target_forwards_per_chunk": 73.95652173913044
+    },
+    "TF_CONT": {
+      "episodes": 8,
+      "successes": 5,
+      "success_rate": 0.625,
+      "actual_env_steps": {
+        "n": 8,
+        "mean": 470.5,
+        "p50": 315.5,
+        "p90": 796.0,
+        "min": 228,
+        "max": 796
+      },
+      "failure800_penalty": {
+        "n": 8,
+        "mean": 472.0,
+        "p50": 315.5,
+        "p90": 800.0,
+        "min": 228,
+        "max": 800
+      },
+      "failures": [
+        {
+          "site": "local",
+          "task": 4,
+          "init": 26,
+          "env_steps": 796
+        },
+        {
+          "site": "local",
+          "task": 5,
+          "init": 28,
+          "env_steps": 796
+        },
+        {
+          "site": "local",
+          "task": 8,
+          "init": 25,
+          "env_steps": 796
+        }
+      ],
+      "target_forwards": 10465,
+      "policy_chunks": 239,
+      "target_forwards_per_chunk": 43.78661087866109
+    }
+  },
+  "known_risk_TF_vs_T": {
+    "candidate": "TF_CONT",
+    "reference": "T",
+    "pairs": 8,
+    "rows": [
+      {
+        "site": "local",
+        "task": 0,
+        "init": 28,
+        "candidate_success": true,
+        "reference_success": false,
+        "candidate_steps": 281,
+        "reference_steps": 796,
+        "both_success_steps_ratio": null
+      },
+      {
+        "site": "local",
+        "task": 1,
+        "init": 29,
+        "candidate_success": true,
+        "reference_success": true,
+        "candidate_steps": 307,
+        "reference_steps": 264,
+        "both_success_steps_ratio": 1.1628787878787878
+      },
+      {
+        "site": "local",
+        "task": 3,
+        "init": 26,
+        "candidate_success": true,
+        "reference_success": true,
+        "candidate_steps": 236,
+        "reference_steps": 240,
+        "both_success_steps_ratio": 0.9833333333333333
+      },
+      {
+        "site": "local",
+        "task": 4,
+        "init": 26,
+        "candidate_success": false,
+        "reference_success": true,
+        "candidate_steps": 796,
+        "reference_steps": 249,
+        "both_success_steps_ratio": null
+      },
+      {
+        "site": "local",
+        "task": 5,
+        "init": 28,
+        "candidate_success": false,
+        "reference_success": false,
+        "candidate_steps": 796,
+        "reference_steps": 796,
+        "both_success_steps_ratio": null
+      },
+      {
+        "site": "local",
+        "task": 6,
+        "init": 25,
+        "candidate_success": true,
+        "reference_success": true,
+        "candidate_steps": 324,
+        "reference_steps": 245,
+        "both_success_steps_ratio": 1.3224489795918368
+      },
+      {
+        "site": "local",
+        "task": 6,
+        "init": 27,
+        "candidate_success": true,
+        "reference_success": true,
+        "candidate_steps": 228,
+        "reference_steps": 224,
+        "both_success_steps_ratio": 1.0178571428571428
+      },
+      {
+        "site": "local",
+        "task": 8,
+        "init": 25,
+        "candidate_success": false,
+        "reference_success": false,
+        "candidate_steps": 796,
+        "reference_steps": 796,
+        "both_success_steps_ratio": null
+      }
+    ],
+    "four_cells": {
+      "reference_0_candidate_0": 2,
+      "reference_0_candidate_1": 1,
+      "reference_1_candidate_0": 1,
+      "reference_1_candidate_1": 4
+    },
+    "success_difference_pp": 0.0,
+    "both_success_steps_ratio": {
+      "n": 4,
+      "mean": 1.121629560915275,
+      "p50": 1.0903679653679652,
+      "p90": 1.274577922077922,
+      "min": 0.9833333333333333,
+      "max": 1.3224489795918368
+    }
+  },
+  "engineering_numeric_checks": {
+    "fresh_TF_success_at_least_T": true,
+    "fresh_TF_success_at_least_equal_update_MLP": true,
+    "fresh_common_success_nonempty": true,
+    "fresh_length_P50": true,
+    "fresh_length_P90": true,
+    "fresh_length_max": true,
+    "risk_no_new_TF_failure": false
+  },
+  "retained_primary": false,
+  "original_permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "physical_initial_pairing_count": 28,
+  "physical_initial_pairing_passed": true,
+  "strict_initial_camera_pairs_exact": 25,
+  "pairing_scope": "Saved initial simulator/controller arrays and actual target initial Torch RNG; unsaved internals and complete subsequent RNG UNKNOWN",
+  "target_repeated_cases": [
+    {
+      "group": "repeatability",
+      "task": 2,
+      "init": 33,
+      "reference": "T",
+      "candidate": "T",
+      "reference_key": "T-repeatability-t2-i33-r0",
+      "candidate_key": "T-repeatability-t2-i33-r1",
+      "physical_RNG_equal": true,
+      "actual_saved_sim_controller_arrays_exact": true,
+      "actual_target_initial_RNG_equal": true,
+      "camera_pixels": {
+        "observation.images.agentview_rgb": {
+          "exact": true,
+          "changed_pixels": 0,
+          "changed_channels": 0,
+          "max_abs": 0
+        },
+        "observation.images.eye_in_hand_rgb": {
+          "exact": false,
+          "changed_pixels": 1,
+          "changed_channels": 3,
+          "max_abs": 1
+        }
+      },
+      "all_exact": false,
+      "scope": "Saved initial state/controller and actual initial Torch RNG; unsaved simulator internals UNKNOWN",
+      "old_success": true,
+      "new_success": true,
+      "old_env_steps": 258,
+      "new_env_steps": 263,
+      "complete_commands_bitwise_equal": false
+    },
+    {
+      "group": "repeatability",
+      "task": 8,
+      "init": 33,
+      "reference": "T",
+      "candidate": "T",
+      "reference_key": "T-repeatability-t8-i33-r0",
+      "candidate_key": "T-repeatability-t8-i33-r1",
+      "physical_RNG_equal": true,
+      "actual_saved_sim_controller_arrays_exact": true,
+      "actual_target_initial_RNG_equal": true,
+      "camera_pixels": {
+        "observation.images.agentview_rgb": {
+          "exact": true,
+          "changed_pixels": 0,
+          "changed_channels": 0,
+          "max_abs": 0
+        },
+        "observation.images.eye_in_hand_rgb": {
+          "exact": false,
+          "changed_pixels": 2,
+          "changed_channels": 6,
+          "max_abs": 2
+        }
+      },
+      "all_exact": false,
+      "scope": "Saved initial state/controller and actual initial Torch RNG; unsaved simulator internals UNKNOWN",
+      "old_success": true,
+      "new_success": true,
+      "old_env_steps": 536,
+      "new_env_steps": 382,
+      "complete_commands_bitwise_equal": false
+    }
+  ],
+  "raw_independent_audit": {
+    "PT_files": 3184,
+    "tensor_arrays": 34776,
+    "commands_complete": 50,
+    "source": "投机采样/results/runtime/p0-draft-freeze-full50-independent-raw-audit-v1-20261016-r1/SHORTREPORT.md",
+    "raw_tensors_in_GitHub": false
+  },
+  "GPU_CAL": {
+    "TF_CONT": {
+      "rows": 20237,
+      "complete_CAL": true,
+      "same_device_bitwise_exact": true,
+      "CPU_rng_unchanged": true,
+      "CUDA_rng_unchanged": true,
+      "target_forwards": 0
+    },
+    "MLP_CONT": {
+      "rows": 20237,
+      "complete_CAL": true,
+      "same_device_bitwise_exact": true,
+      "CPU_rng_unchanged": true,
+      "CUDA_rng_unchanged": true,
+      "target_forwards": 0
+    }
+  },
+  "job_accounting": {
+    "actual_GPU_job_lifetime_seconds": 8056.510846422985,
+    "target_forward_counter": 61859,
+    "output_bytes": 2206518844,
+    "all_observed_own_processes_exited": true,
+    "formal_performance_claim": false
+  },
+  "current_execution": {
+    "own_GPU_jobs_running": 0,
+    "CPU_waiters": 0,
+    "future120_registered": false,
+    "future120_started": false,
+    "AutoDL": "returned; no further SSH; instance power status unverified",
+    "user_preference": "quality first; notify before operator formal timing and pause at complete30-episode shard boundary"
+  },
+  "next_diagnostic": {
+    "registered": false,
+    "started": false,
+    "purpose": "record already-computed teacher outputs and mapping to committed actions and environment commands",
+    "complete_pairs_proposed": [
+      2,
+      4
+    ],
+    "runtime_estimate_minutes": [
+      20,
+      40
+    ],
+    "entry_preparation_review_estimate_hours": [
+      0.5,
+      1.5
+    ],
+    "new_teacher_forwards_needed": false,
+    "D01_supported_now": false
+  },
+  "system_evidence": {
+    "linear_M_for_candidate_states1_3_7": [
+      32,
+      96,
+      224
+    ],
+    "library_already_merges_linear_rows": true,
+    "attention_Q_per_instance": 16,
+    "same_frozen7_queries_batch_economy_short_mid_long": [
+      2.45,
+      2.91,
+      3.36
+    ],
+    "not_robot_speedup": true,
+    "uncached_two_process_verifier_latency_reduction_all_lengths_percent": 4.98,
+    "shared_projection_cache_single_process_static_pilot_verifier_reduction_percent": 10.27,
+    "cached_complete_chunk_or_TF_E2E_completed": false,
+    "source": ".pipeline/research/speculative-sampling/OVERNIGHT-RESULT-20261016.md"
+  },
+  "final_TEST40_to49_run": false,
+  "global_default_changed": false
+}

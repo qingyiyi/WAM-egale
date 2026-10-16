@@ -1,0 +1,365 @@
+{
+  "status": "PASS_LOCAL_FORMAL_E2E_PAIRED_AUDIT",
+  "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-formal-e2e-speed-v1-single-r2-20261015",
+  "source_plan_sha256": "7436eee7a2e2ff108a067071342edad125a79308e1c8de91cb094f057313ec65",
+  "label": "single_task",
+  "schedule": [
+    {
+      "pair": 0,
+      "arm": "T",
+      "task": 0,
+      "init": 25,
+      "key": "p00-T-t0-i25"
+    },
+    {
+      "pair": 0,
+      "arm": "A_OFF",
+      "task": 0,
+      "init": 25,
+      "key": "p00-A_OFF-t0-i25"
+    },
+    {
+      "pair": 1,
+      "arm": "A_OFF",
+      "task": 0,
+      "init": 26,
+      "key": "p01-A_OFF-t0-i26"
+    },
+    {
+      "pair": 1,
+      "arm": "T",
+      "task": 0,
+      "init": 26,
+      "key": "p01-T-t0-i26"
+    },
+    {
+      "pair": 2,
+      "arm": "T",
+      "task": 0,
+      "init": 27,
+      "key": "p02-T-t0-i27"
+    },
+    {
+      "pair": 2,
+      "arm": "A_OFF",
+      "task": 0,
+      "init": 27,
+      "key": "p02-A_OFF-t0-i27"
+    },
+    {
+      "pair": 3,
+      "arm": "A_OFF",
+      "task": 0,
+      "init": 28,
+      "key": "p03-A_OFF-t0-i28"
+    },
+    {
+      "pair": 3,
+      "arm": "T",
+      "task": 0,
+      "init": 28,
+      "key": "p03-T-t0-i28"
+    }
+  ],
+  "paired": [
+    {
+      "pair": 0,
+      "task": 0,
+      "init": 25,
+      "order": [
+        "T",
+        "A_OFF"
+      ],
+      "T_success": true,
+      "A_OFF_success": true,
+      "T_env_steps": 268,
+      "A_OFF_env_steps": 275,
+      "T_chunks": 17,
+      "A_OFF_chunks": 18,
+      "T_elapsed_sec": 254.49301569722593,
+      "A_OFF_elapsed_sec": 213.99828534573317,
+      "T_cold_launch_to_client_exit_sec": 296.6166581083089,
+      "A_OFF_cold_launch_to_client_exit_sec": 254.73504406400025,
+      "T_model_load_sec": 19.84684949181974,
+      "A_OFF_model_load_sec": 18.44258901849389,
+      "phases": {
+        "T": {
+          "environment_construct_sec": 5.995712028816342,
+          "local_reset_stabilization_sec": 5.3698310405015945,
+          "simulator_step_stabilization_sec": 0.2960664685815573,
+          "simulator_step_stabilization_calls": 5,
+          "reset_model_request_sec": 116.77110791951418,
+          "policy_model_request_sec": 112.37633666396141,
+          "cache_model_request_sec": 7.293787930160761,
+          "simulator_step_policy_sec": 12.65654420107603,
+          "simulator_step_policy_calls": 268,
+          "client_other_sec": 0.0254079420119524,
+          "original_episode_elapsed_sec": 254.49301569722593,
+          "environment_close_sec": 0.2474249303340912,
+          "outer_episode_wall_sec": 260.7455799728632,
+          "disjoint_phase_sum_sec": 254.49301569722593,
+          "phase_semantics": "local reset includes stabilization simulator steps; model-request timers include websocket transport; model loading and EGL construction are outside original episode elapsed"
+        },
+        "A_OFF": {
+          "environment_construct_sec": 6.550958603620529,
+          "local_reset_stabilization_sec": 5.44535356760025,
+          "simulator_step_stabilization_sec": 0.3018336985260248,
+          "simulator_step_stabilization_calls": 5,
+          "reset_model_request_sec": 116.14507038891315,
+          "policy_model_request_sec": 72.46479347534478,
+          "cache_model_request_sec": 6.685974512249231,
+          "simulator_step_policy_sec": 13.23292156867683,
+          "simulator_step_policy_calls": 275,
+          "client_other_sec": 0.02417183294892311,
+          "original_episode_elapsed_sec": 213.99828534573317,
+          "environment_close_sec": 0.19248653389513493,
+          "outer_episode_wall_sec": 220.74960905872285,
+          "disjoint_phase_sum_sec": 213.99828534573317,
+          "phase_semantics": "local reset includes stabilization simulator steps; model-request timers include websocket transport; model loading and EGL construction are outside original episode elapsed"
+        }
+      },
+      "target_intents": {
+        "T": 1256,
+        "A_OFF": 789
+      },
+      "A_OFF_accepted_depths": {
+        "0": 48,
+        "1": 17,
+        "2": 262
+      },
+      "episode_speedup": 1.1892292281037202,
+      "cold_launch_to_exit_speedup": 1.1644124552952606
+    },
+    {
+      "pair": 1,
+      "task": 0,
+      "init": 26,
+      "order": [
+        "A_OFF",
+        "T"
+      ],
+      "T_success": true,
+      "A_OFF_success": true,
+      "T_env_steps": 278,
+      "A_OFF_env_steps": 282,
+      "T_chunks": 18,
+      "A_OFF_chunks": 18,
+      "T_elapsed_sec": 252.76622117310762,
+      "A_OFF_elapsed_sec": 207.9404750224203,
+      "T_cold_launch_to_client_exit_sec": 289.1089253295213,
+      "A_OFF_cold_launch_to_client_exit_sec": 248.56915364414454,
+      "T_model_load_sec": 15.965460244566202,
+      "A_OFF_model_load_sec": 19.163661155849695,
+      "phases": {
+        "T": {
+          "environment_construct_sec": 5.919733116403222,
+          "local_reset_stabilization_sec": 5.488247910514474,
+          "simulator_step_stabilization_sec": 0.273341977968812,
+          "simulator_step_stabilization_calls": 5,
+          "reset_model_request_sec": 110.22980078682303,
+          "policy_model_request_sec": 117.39554517157376,
+          "cache_model_request_sec": 7.018509268760681,
+          "simulator_step_policy_sec": 12.610272398218513,
+          "simulator_step_policy_calls": 278,
+          "client_other_sec": 0.02384563721716404,
+          "original_episode_elapsed_sec": 252.76622117310762,
+          "environment_close_sec": 0.2211884092539549,
+          "outer_episode_wall_sec": 258.91623430885375,
+          "disjoint_phase_sum_sec": 252.76622117310762,
+          "phase_semantics": "local reset includes stabilization simulator steps; model-request timers include websocket transport; model loading and EGL construction are outside original episode elapsed"
+        },
+        "A_OFF": {
+          "environment_construct_sec": 6.236856807023287,
+          "local_reset_stabilization_sec": 5.702269405126572,
+          "simulator_step_stabilization_sec": 0.2738611288368702,
+          "simulator_step_stabilization_calls": 5,
+          "reset_model_request_sec": 110.58114022389054,
+          "policy_model_request_sec": 72.21394376270473,
+          "cache_model_request_sec": 6.776932084932923,
+          "simulator_step_policy_sec": 12.64352704398334,
+          "simulator_step_policy_calls": 282,
+          "client_other_sec": 0.02266250178217888,
+          "original_episode_elapsed_sec": 207.9404750224203,
+          "environment_close_sec": 0.20137344673275948,
+          "outer_episode_wall_sec": 214.3867953531444,
+          "disjoint_phase_sum_sec": 207.9404750224203,
+          "phase_semantics": "local reset includes stabilization simulator steps; model-request timers include websocket transport; model loading and EGL construction are outside original episode elapsed"
+        }
+      },
+      "target_intents": {
+        "T": 1330,
+        "A_OFF": 804
+      },
+      "A_OFF_accepted_depths": {
+        "0": 64,
+        "1": 20,
+        "2": 253
+      },
+      "episode_speedup": 1.2155700863232817,
+      "cold_launch_to_exit_speedup": 1.163092528139731
+    },
+    {
+      "pair": 2,
+      "task": 0,
+      "init": 27,
+      "order": [
+        "T",
+        "A_OFF"
+      ],
+      "T_success": true,
+      "A_OFF_success": true,
+      "T_env_steps": 272,
+      "A_OFF_env_steps": 277,
+      "T_chunks": 18,
+      "A_OFF_chunks": 18,
+      "T_elapsed_sec": 252.92003017291427,
+      "A_OFF_elapsed_sec": 217.47920393571258,
+      "T_cold_launch_to_client_exit_sec": 294.36277480609715,
+      "A_OFF_cold_launch_to_client_exit_sec": 253.82758429646492,
+      "T_model_load_sec": 20.483393255621195,
+      "A_OFF_model_load_sec": 15.886599214747548,
+      "phases": {
+        "T": {
+          "environment_construct_sec": 6.11698666960001,
+          "local_reset_stabilization_sec": 5.445019844919443,
+          "simulator_step_stabilization_sec": 0.2896934635937214,
+          "simulator_step_stabilization_calls": 5,
+          "reset_model_request_sec": 111.7008228879422,
+          "policy_model_request_sec": 116.11974045820534,
+          "cache_model_request_sec": 7.053597699850798,
+          "simulator_step_policy_sec": 12.577063092961907,
+          "simulator_step_policy_calls": 272,
+          "client_other_sec": 0.023786189034581184,
+          "original_episode_elapsed_sec": 252.92003017291427,
+          "environment_close_sec": 0.21621198579669,
+          "outer_episode_wall_sec": 259.2619804572314,
+          "disjoint_phase_sum_sec": 252.92003017291427,
+          "phase_semantics": "local reset includes stabilization simulator steps; model-request timers include websocket transport; model loading and EGL construction are outside original episode elapsed"
+        },
+        "A_OFF": {
+          "environment_construct_sec": 6.018504848703742,
+          "local_reset_stabilization_sec": 5.610319349914789,
+          "simulator_step_stabilization_sec": 0.2827983871102333,
+          "simulator_step_stabilization_calls": 5,
+          "reset_model_request_sec": 117.77393085695803,
+          "policy_model_request_sec": 73.47037663124502,
+          "cache_model_request_sec": 7.12932706438005,
+          "simulator_step_policy_sec": 13.47131441347301,
+          "simulator_step_policy_calls": 277,
+          "client_other_sec": 0.023935619741678238,
+          "original_episode_elapsed_sec": 217.47920393571258,
+          "environment_close_sec": 0.208629934117198,
+          "outer_episode_wall_sec": 223.71388719044626,
+          "disjoint_phase_sum_sec": 217.47920393571258,
+          "phase_semantics": "local reset includes stabilization simulator steps; model-request timers include websocket transport; model loading and EGL construction are outside original episode elapsed"
+        }
+      },
+      "target_intents": {
+        "T": 1330,
+        "A_OFF": 811
+      },
+      "A_OFF_accepted_depths": {
+        "0": 74,
+        "1": 25,
+        "2": 247
+      },
+      "episode_speedup": 1.1629619089817806,
+      "cold_launch_to_exit_speedup": 1.159695766013705
+    },
+    {
+      "pair": 3,
+      "task": 0,
+      "init": 28,
+      "order": [
+        "A_OFF",
+        "T"
+      ],
+      "T_success": false,
+      "A_OFF_success": true,
+      "T_env_steps": 796,
+      "A_OFF_env_steps": 293,
+      "T_chunks": 50,
+      "A_OFF_chunks": 19,
+      "T_elapsed_sec": 498.67093979753554,
+      "A_OFF_elapsed_sec": 218.74650543928146,
+      "T_cold_launch_to_client_exit_sec": 534.3792053088546,
+      "A_OFF_cold_launch_to_client_exit_sec": 259.8003684077412,
+      "T_model_load_sec": 15.333668204024434,
+      "A_OFF_model_load_sec": 19.06134244054556,
+      "phases": {
+        "T": {
+          "environment_construct_sec": 5.756611006334424,
+          "local_reset_stabilization_sec": 5.635575549677014,
+          "simulator_step_stabilization_sec": 0.2654798086732626,
+          "simulator_step_stabilization_calls": 5,
+          "reset_model_request_sec": 108.6699039991945,
+          "policy_model_request_sec": 327.4033260382712,
+          "cache_model_request_sec": 20.78235442750156,
+          "simulator_step_policy_sec": 36.112219128757715,
+          "simulator_step_policy_calls": 796,
+          "client_other_sec": 0.06756065413355827,
+          "original_episode_elapsed_sec": 498.67093979753554,
+          "environment_close_sec": 0.2060217671096325,
+          "outer_episode_wall_sec": 504.6455015446991,
+          "disjoint_phase_sum_sec": 498.67093979753554,
+          "phase_semantics": "local reset includes stabilization simulator steps; model-request timers include websocket transport; model loading and EGL construction are outside original episode elapsed"
+        },
+        "A_OFF": {
+          "environment_construct_sec": 5.975385749712586,
+          "local_reset_stabilization_sec": 5.3821584936231375,
+          "simulator_step_stabilization_sec": 0.29945046454668045,
+          "simulator_step_stabilization_calls": 5,
+          "reset_model_request_sec": 116.5708727426827,
+          "policy_model_request_sec": 76.72877147048712,
+          "cache_model_request_sec": 7.037316197529435,
+          "simulator_step_policy_sec": 13.00288873910904,
+          "simulator_step_policy_calls": 293,
+          "client_other_sec": 0.02449779585003853,
+          "original_episode_elapsed_sec": 218.74650543928146,
+          "environment_close_sec": 0.19091500528156757,
+          "outer_episode_wall_sec": 224.92122695036232,
+          "disjoint_phase_sum_sec": 218.74650543928146,
+          "phase_semantics": "local reset includes stabilization simulator steps; model-request timers include websocket transport; model loading and EGL construction are outside original episode elapsed"
+        }
+      },
+      "target_intents": {
+        "T": 3700,
+        "A_OFF": 863
+      },
+      "A_OFF_accepted_depths": {
+        "0": 90,
+        "1": 31,
+        "2": 255
+      },
+      "episode_speedup": 2.2796750000468196,
+      "cold_launch_to_exit_speedup": 2.056883939710887
+    }
+  ],
+  "summary": {
+    "pairs": 4,
+    "all_episode_total_speedup": 1.4669101917229956,
+    "both_success_pairs": 3,
+    "both_success_total_speedup": 1.188861291801294,
+    "per_pair_speedup_P50": 1.202399657213501,
+    "per_pair_speedup_P90": 1.9604435259297583,
+    "paired_bootstrap_95pct_ratio": [
+      1.1756765161456688,
+      2.011525851604588
+    ],
+    "T_successes": 3,
+    "A_OFF_successes": 4,
+    "task_summary": {
+      "0": {
+        "pairs": 4,
+        "T_successes": 3,
+        "A_OFF_successes": 4,
+        "complete_episode_speedup": 1.4669101917229956,
+        "T_env_steps": 1614,
+        "A_OFF_env_steps": 1127
+      }
+    }
+  },
+  "GPU_telemetry_samples": 525,
+  "GPU_foreign_processes": 0,
+  "caveat": "Fresh model for each episode: natural client episode elapsed, model loading, and cold server-launch-to-client-exit are distinct. No warm episode or AutoDL latency claim. Historic global/S0 1.0817x is a different candidate and must not be pooled."
+}

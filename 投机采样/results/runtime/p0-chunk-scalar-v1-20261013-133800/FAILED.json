@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-10-13T13:50:10+08:00",
+  "stage": "drain_and_cleanup",
+  "completed_slots": 10,
+  "new_GPU_seconds": 301.99054584279656,
+  "new_GPU_launches": 1,
+  "model_launches": 2,
+  "charged_target_intents": 1060,
+  "reservations": [
+    {
+      "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-chunk-scalar-v1-20261013-133800/workers/worker0",
+      "cap": 530,
+      "kind": "long-full-policy-10chunks-init3",
+      "ordinal": 1,
+      "at": "2026-10-13T13:45:30+08:00",
+      "plan_sha256": "9e3fa0851048e239eb0443e0c7b0c0afffc1490f42f7262e6abf68dc858cfd44",
+      "charged_target_intents": 530,
+      "exact_closed_count": true
+    },
+    {
+      "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-chunk-scalar-v1-20261013-133800/workers/worker1",
+      "cap": 530,
+      "kind": "long-full-policy-10chunks-init4",
+      "ordinal": 2,
+      "at": "2026-10-13T13:45:30+08:00",
+      "plan_sha256": "9e3fa0851048e239eb0443e0c7b0c0afffc1490f42f7262e6abf68dc858cfd44",
+      "charged_target_intents": 530,
+      "exact_closed_count": true
+    }
+  ],
+  "conservative_unclosed_reservations": true,
+  "aggregate_target_intents": 28241,
+  "aggregate_GPU_seconds": 8990.458670260385,
+  "owned_roots_exited": false,
+  "error": "owned cleanup failure: RuntimeError('refuse unowned cleanup')",
+  "status": "FAIL"
+}

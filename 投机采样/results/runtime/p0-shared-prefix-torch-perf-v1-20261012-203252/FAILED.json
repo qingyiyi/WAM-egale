@@ -1,0 +1,48 @@
+{
+  "status": "FAIL",
+  "error": "RuntimeError('ownership/resource/deadline guard: [2644614]')",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_perf_v1/run.py\", line 126, in gpu\n    raise RuntimeError('ownership/resource/deadline guard: '+str(foreign))\nRuntimeError: ownership/resource/deadline guard: [2644614]\n",
+  "GPU_started": true,
+  "GPU_elapsed_seconds": 379.3753120172769,
+  "other_processes_not_signalled": true,
+  "recovery": {
+    "status": "CLOSED",
+    "ledger": {
+      "EGL": 0,
+      "allocated_cap": 463,
+      "complete_episodes": 0,
+      "complete_policy_chunks": 0,
+      "counter_persisted": true,
+      "environment_steps": 0,
+      "extra_micro_calls": 0,
+      "stage": "finish",
+      "stage_attempted": 2,
+      "target_attempted": 461,
+      "target_completed": 461,
+      "target_completed_means_host_forward_return": true,
+      "target_failed": 0,
+      "target_hard_cap": 463,
+      "target_inflight": 0,
+      "target_reserved": 461
+    },
+    "committed_records": 941,
+    "last_event": "CLOSE",
+    "last_checksum": "9c12d253735f80c963de8c6d87cef4caad909e98d542ce4abf7725056a551019",
+    "uncommitted_tail_bytes": 0,
+    "writer": {
+      "pid": 2644614,
+      "start_ticks": 1307776072,
+      "uid": 1003
+    },
+    "writer_same_process_alive": false,
+    "journal_terminal": true,
+    "counter_semantics": "write-ahead budget intent / confirmed Python forward return",
+    "exact_math_counts": false,
+    "CUDA_completion_proven": false,
+    "unconfirmed_call_upper_bound": 0,
+    "actual_invocation_lower_bound": 461,
+    "actual_invocation_upper_bound": 461,
+    "possible_unconfirmed_return_upper_bound": 0,
+    "note": "No resume, refund, inferred success, or fallback to stale parent counters."
+  }
+}

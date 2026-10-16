@@ -1,0 +1,49 @@
+{
+  "status": "PASS_CPU_DIAGNOSIS_GPU_ATTEMPT_REMAINS_FAIL",
+  "timestamp": "2026-10-11T20:16:03.542320+08:00",
+  "original_GPU_attempt_status": "FAIL",
+  "original_failed_stage": "loading_two_models",
+  "reproduced_frozen_Runtime_error": "AttributeError(\"'VA_Server' object has no attribute 'action_per_frame'\")",
+  "original_module": "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/wan_va_server.py",
+  "original_module_sha256": "bad90775a446aa1cc8d175a19ce9d43d9b7dc523c260f1bf586eee95a6e1cea1",
+  "original_constructor_sets_action_per_frame": false,
+  "original_reset_assignment_lines": [
+    2121
+  ],
+  "task_constructor_preload_lines": [
+    47
+  ],
+  "task_build_reset_lines": [
+    133
+  ],
+  "previous_probe_manually_prefilled_action_per_frame_lines": [
+    34
+  ],
+  "failure_preserved_off_mode_and_no_hooks": true,
+  "original_reset_then_loader_countercheck": "PASS_CPU_ONLY_TARGET_CACHE_STUBBED_PROMPT_NONE",
+  "countercheck_actual_A_off_state_exact": true,
+  "countercheck_actual_A_off_output_dim": 112,
+  "proposed_repair": "Defer preload until original reset establishes geometry, before prefix/fixture seeds and timing; not implemented or fully lifecycle-validated.",
+  "CPU_stub_events": [
+    "target_clear_cache_CPU_stub",
+    "VAE_clear_cache_CPU_stub",
+    "target_create_cache_CPU_stub"
+  ],
+  "coverage_limits": "No real target constructor/cache allocation, text prompt encoding, prefix, EGL, restoration, instrumentation or cost measurement.",
+  "CUDA_initialized": false,
+  "new_GPU_started_in_diagnosis": false,
+  "EGL_started": false,
+  "full_episodes": 0,
+  "fixed_chunk_calls": 0,
+  "training": false,
+  "implementation_edited": false,
+  "immutable_files_checked": 1216,
+  "immutable_changed": [],
+  "implementation_files_checked": 11,
+  "implementation_changed": [],
+  "target_stat_files_checked": 9,
+  "target_stat_changed": [],
+  "frozen_plan_unchanged": true,
+  "actual_A_off_checkpoint_unchanged": true,
+  "not_tile": true
+}

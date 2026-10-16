@@ -1,0 +1,75 @@
+{
+  "status": "PASS_FINAL_R2_SOURCE_AND_ACTUAL_CPU_FULL_LOAD_BINDING_INTERFACES",
+  "at": "2026-10-16T02:38:48+0800",
+  "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-fixture-v1-20261016-r2",
+  "source_sha256": {
+    "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_fixture_v1/run_fixture.py": "0be4fbac99bc38e536cf7d27fc8602d8278c51bd241c7fd855a104f10c11ec65",
+    "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_fixture_v1/fixture_worker.py": "52f90c717ccdcedb68a156a19f2e14ee11aead81471306028a67ecc28572e003",
+    "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_fixture_v1/PLAN.txt": "58e80948933178e13ce5e2e125810f30f7a9a551c2b765e7cd0b54aa1abc71fb"
+  },
+  "actual_direct_CLI_inspect": {
+    "argv": [
+      "/rjs/cxz/miniconda3/envs/va/bin/python",
+      "-B",
+      "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_fixture_v1/run_fixture.py",
+      "--job",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-fixture-v1-20261016-r2",
+      "--inspect"
+    ],
+    "returncode": 0,
+    "stdout": "{\"status\": \"PASS_ACTUAL_FROZEN_PLAN_LOAD_CPU_ONLY\", \"job\": \"/rjs/cxz/\\u8bba\\u6587\\u63a2\\u7d22/\\u6295\\u673a\\u91c7\\u6837/results/runtime/p0-wam-candidate-tile-fixture-v1-20261016-r2\", \"GPU_used\": false}\n",
+    "stderr": ""
+  },
+  "actual_full_load": true,
+  "frozen_source_count": 232,
+  "target_weight_stats": 9,
+  "fixture_stats": 3,
+  "prerequisite_certificates": 7,
+  "actual_source_manifest_all_current_equal": true,
+  "actual_native_extension": "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/_shared_torch_v1.cpython-312-x86_64-linux-gnu.so",
+  "actual_candidate_extension": "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_v1/_wam_candidate_tile.cpython-312-x86_64-linux-gnu.so",
+  "candidate_binary_frozen": true,
+  "native_binary_in_current_source_map": false,
+  "actual_candidate_binding_doc": "grouped(arg0: torch.Tensor, arg1: torch.Tensor, arg2: torch.Tensor, arg3: torch.Tensor, arg4: torch.Tensor, arg5: torch.Tensor, arg6: typing.SupportsInt) -> torch.Tensor\n",
+  "candidate_production_admitted": false,
+  "no_CUDA_kernel_called": true,
+  "CUDA_initialized": false,
+  "CPU_threads": 2,
+  "CPU_affinity": [
+    14,
+    15
+  ],
+  "reviewer_GPU_NVML_SSH": false,
+  "math_and_terminal_checks": {
+    "hook_returns_only_original_native": true,
+    "G2_all30layers_all6queries": 180,
+    "G1_layers0_8_29_all6queries": 18,
+    "all_candidate_comparisons": 198,
+    "native_oracles": 180,
+    "all_attention_calls": 378,
+    "target_forwards": 6,
+    "first_mismatch_finishes_current_native_30layer_query": true,
+    "then_no_later_candidate_or_query": true,
+    "raw_QKV_bytes_compared": true,
+    "all_valid_KV_and_RNG_and_tensor_versions_checked": true,
+    "negative_terminal_not_promoted": true,
+    "shared_numerical_GPU_foreign_not_signaled": true
+  },
+  "resources": {
+    "total_seconds": 600,
+    "active_seconds": 540,
+    "cleanup_seconds": 60,
+    "CPU_worker": 7,
+    "output_cap_bytes": 134217728,
+    "initial_free_GiB": 22,
+    "runtime_free_GiB": 0.5,
+    "dual_project_GPU_locks": true,
+    "own_pinned_lifetime_cleanup": true
+  },
+  "blocking_findings": [],
+  "limitations": [
+    "全198次通过也只是6个固定query门，不是所有动作/接受路径/SR或性能合格。",
+    "槽位只读由当前冻结C++ const valid_slots实现证明，任何kernel改动必须重审；不因tensor version未变推断所有raw-pointer输入都未改。",
+    "本次只读实际CPU接口；candidate/native函数未调用，GPU数值结果仍须root唯一运行。"
+  ]
+}

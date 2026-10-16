@@ -1,0 +1,66 @@
+{
+  "status": "FAIL",
+  "timestamp": "2026-10-12T18:21:38+08:00",
+  "error": "RuntimeError('observation worker failed: 1')",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_observe_v1/run.py\", line 208, in gpu\n    raise RuntimeError('observation worker failed: ' + str(child.returncode))\nRuntimeError: observation worker failed: 1\n",
+  "GPU_started": true,
+  "GPU_elapsed_seconds": 34.03372607193887,
+  "other_processes_not_signalled": true,
+  "retries": 0,
+  "target_recovery": {
+    "status": "CLOSED",
+    "ledger": {
+      "EGL": 0,
+      "allocated_cap": 52,
+      "complete_episodes": 0,
+      "complete_policy_chunks": 0,
+      "counter_persisted": true,
+      "environment_steps": 0,
+      "extra_micro_calls": 0,
+      "stage": "capture",
+      "stage_attempted": 0,
+      "target_attempted": 0,
+      "target_completed": 0,
+      "target_completed_means_host_forward_return": true,
+      "target_failed": 0,
+      "target_hard_cap": 52,
+      "target_inflight": 0,
+      "target_reserved": 52
+    },
+    "committed_records": 3,
+    "last_event": "CLOSE",
+    "last_checksum": "3bb311d960d55350769e440123ce2c8d89e6b715f72658bfc8ab819fd0b1d409",
+    "uncommitted_tail_bytes": 0,
+    "writer": {
+      "pid": 2334777,
+      "start_ticks": 1306957289,
+      "uid": 1003
+    },
+    "writer_same_process_alive": false,
+    "journal_terminal": true,
+    "counter_semantics": "write-ahead budget intent / confirmed Python forward return",
+    "exact_math_counts": false,
+    "CUDA_completion_proven": false,
+    "unconfirmed_call_upper_bound": 0,
+    "actual_invocation_lower_bound": 0,
+    "actual_invocation_upper_bound": 0,
+    "possible_unconfirmed_return_upper_bound": 0,
+    "note": "No resume, refund, inferred success, or fallback to stale parent counters."
+  },
+  "direct_recovery": {
+    "status": "CLOSED",
+    "counter": {
+      "direct_attempted": 0,
+      "direct_host_returned": 0,
+      "direct_failed": 0,
+      "direct_cap": 24
+    },
+    "inflight": 0,
+    "owner": {
+      "pid": 2334777,
+      "start_ticks": 1306957289,
+      "uid": 1003
+    },
+    "uncommitted_tail_bytes": 0
+  }
+}

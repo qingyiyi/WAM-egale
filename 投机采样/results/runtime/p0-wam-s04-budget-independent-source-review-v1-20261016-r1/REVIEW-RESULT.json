@@ -1,0 +1,132 @@
+{
+  "schema": "S04-resource-only-continuation-independent-review/v1",
+  "status": "PASS_EXACT_V2_NUMERICS_RESOURCE_ONLY_CONTINUATION_REAL_CPU_GATES",
+  "at": "2026-10-16T04:31:01.737631+08:00",
+  "source_sha256": {
+    "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_chunk_correctness_budget_v1/PLAN.txt": "503421f7179ad616fae3112ddd150bdf03d2333bf83c249fac4ff556f8cd4812",
+    "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_chunk_correctness_budget_v1/private_adapter.py": "f6645533793e581a999f8163888695eb50e47993d5c86de02f249a383b2565ee",
+    "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_chunk_correctness_budget_v1/observer.py": "443186bdb4c2d1a6f394c6025dd8d79a43b4f2e49cb8fb19ea7942d3ee95d1b6",
+    "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_chunk_correctness_budget_v1/chunk_worker.py": "e3fa537c2985c7c5cf2a678bf6ddaa7b5b8fabf58660b1e87286b08ec2c089ea",
+    "/rjs/cxz/论文探索/投机采样/experiments/wam_candidate_tile_chunk_correctness_budget_v1/run_chunk.py": "f4ee60ac77112a3d54a5ee15455272429021e7d08637264bac935189460adece"
+  },
+  "GPU_used": false,
+  "NVML_used": false,
+  "SSH_used": false,
+  "CUDA_initialized": false,
+  "CPU_affinity": [
+    14,
+    15
+  ],
+  "CPU_threads": 2,
+  "formal_PLAN_created": false,
+  "observer_private_adapter_byte_equal_to_frozen_v2": true,
+  "worker_only_exact_resource_and_source_edits": true,
+  "worker_replacement_sites": [
+    {
+      "old": "Runtime(server, out, 580",
+      "new": "Runtime(server, out, 313",
+      "sites": 1
+    },
+    {
+      "old": "<= 580",
+      "new": "<= 313",
+      "sites": 2
+    },
+    {
+      "old": "780s work cap",
+      "new": "1140s work cap",
+      "sites": 1
+    },
+    {
+      "old": "116 * 2**20",
+      "new": "75 * 2**20",
+      "sites": 1
+    },
+    {
+      "old": "116MiB output cap",
+      "new": "75MiB output cap",
+      "sites": 1
+    },
+    {
+      "old": "old_bytes = sum(p.stat().st_size for p in Path(plan['original_failed_v1']).rglob('*') if p.is_file())",
+      "new": "old_bytes = sum(p.stat().st_size for folder in plan['previous_failed_jobs'] for p in Path(folder).rglob('*') if p.is_file())",
+      "sites": 1
+    }
+  ],
+  "author_proof_independently_executed": true,
+  "actual_original_VA_Server": "wan_va.wan_va_server.VA_Server",
+  "actual_original_O3_closure_compiled": true,
+  "original_wrapper_reverse_AST_compiled": true,
+  "prior_real_failure_receipts": {
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/PLAN.json": "58f4e0264721bc8c6f3109f854104cca4dbd344d49b5c9e2a2dbd3517579ca5c",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/CHUNK-RESULT.json": "0b73e3ba6d2a895b5b93cce2bcca32889e5d789c051ecd9a16e5409c2d492e11",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/SUPERVISOR-RESULT.json": "80be606c911860e31d26862b2128fe4a52d6896050c0aa9b0433d8298f2ad069",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/COUNTER-CLOSED.json": "5016dbfcb2a0cd310192ea42d7506a675ac30c337f78546e4c815ef77145e309",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/FAILED.json": "1b07ef9393555fa59e6932007e4226f3487e36e4876761a8dcda4823dc4916e1",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/PLAN.json": "82d4c074c175c6376d5e1bd4fd091fdde368ea4873c324ba184bc2b1244b216d",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/CHUNK-RESULT.json": "98b3efd6f5a1460511a21212f1d9de17b448654ccaa12523774c738fa09852e4",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/SUPERVISOR-RESULT.json": "8970f8f1994919f5c7985bbdfff2accc7e5623f305959bf2f3bd95b53d287163",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/COUNTER-CLOSED.json": "8788e2c793fe75d000b0dc6e4b996d568c381435c8650f9abba63d477882abbd",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/FAILED.json": "4b3cfb5afac404baf15ce73b86f22cd4724089acd64502a3e7982caae4a6ac92"
+  },
+  "all_real_prerequisites": {
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/PLAN.json": "58f4e0264721bc8c6f3109f854104cca4dbd344d49b5c9e2a2dbd3517579ca5c",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/CHUNK-RESULT.json": "0b73e3ba6d2a895b5b93cce2bcca32889e5d789c051ecd9a16e5409c2d492e11",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/SUPERVISOR-RESULT.json": "80be606c911860e31d26862b2128fe4a52d6896050c0aa9b0433d8298f2ad069",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/COUNTER-CLOSED.json": "5016dbfcb2a0cd310192ea42d7506a675ac30c337f78546e4c815ef77145e309",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v1-20261016-r1/FAILED.json": "1b07ef9393555fa59e6932007e4226f3487e36e4876761a8dcda4823dc4916e1",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/PLAN.json": "82d4c074c175c6376d5e1bd4fd091fdde368ea4873c324ba184bc2b1244b216d",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/CHUNK-RESULT.json": "98b3efd6f5a1460511a21212f1d9de17b448654ccaa12523774c738fa09852e4",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/SUPERVISOR-RESULT.json": "8970f8f1994919f5c7985bbdfff2accc7e5623f305959bf2f3bd95b53d287163",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/COUNTER-CLOSED.json": "8788e2c793fe75d000b0dc6e4b996d568c381435c8650f9abba63d477882abbd",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-chunk-correctness-v2-20261016-r1/FAILED.json": "4b3cfb5afac404baf15ce73b86f22cd4724089acd64502a3e7982caae4a6ac92",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-guarded-v2-20261016-r1/PLAN.json": "971a09f7c6d2b39dd56647306c4f833337fc805eab82ec05ebbc2637838a0f63",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-guarded-v2-20261016-r1/GUARDED-RESULT.json": "4d2f806792d1b741e277dfb015c92d7f5b26a7cc34613e63218b33dd7d5bcd7f",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-guarded-v2-20261016-r1/SUPERVISOR-RESULT.json": "9faa4fb70356cb4800c30eff8a6bce5363e65ac8bc7546b89b66dfa97fec9c56",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-graph-pilot-v1-20261016-r1/PLAN.json": "8d1ba2809c9a0d7d3e71aa77993d6c7a5b51033729e97899ed54c13fcdb528fd",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-graph-pilot-v1-20261016-r1/PILOT-RESULT.json": "c6447ac31ed3b6fa4fbdeac8b58aff77c6d14048d57a93caa265d9cdcaf41c4e",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-graph-pilot-v1-20261016-r1/SUPERVISOR-RESULT.json": "22d74a04b6f295fc5cf41f83b9eb51f2309bc1dc0ec39eb943e8c339483605a5",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-graph-pilot-v1-20261016-r2/PLAN.json": "0ac17507f59680c5e25cd5f532af34f6c0085178ad952f65dde86cadb1f1a4a3",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-graph-pilot-v1-20261016-r2/PILOT-RESULT.json": "3c7f830a60c820477615ff107fdbd43db50e9e96aa505dda9a5375dccea04dbc",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-wam-candidate-tile-graph-pilot-v1-20261016-r2/SUPERVISOR-RESULT.json": "b1e4a58e17e23828dec36034360737304ca5087ead1ba61751c88b3d90473fee"
+  },
+  "prior_states": {
+    "v1": "original scratch-contract FAILED, 19 target, 0 complete, cleaned",
+    "v2": "original sole deadline FAILED, 268 returned/0 failed/0 active, 5 complete/2 exact pairs, cleaned",
+    "old_FAILED_and_old_900_second_protocol_untouched": true
+  },
+  "new_resource_contract": {
+    "total_seconds": 1200,
+    "active_seconds": 1140,
+    "cleanup_seconds": 60,
+    "target_cap": 313,
+    "prior_actual_target": 287,
+    "cumulative_target_cap": 600,
+    "prior_actual_GPU_seconds": 828.6832520347089,
+    "new_reserved_cumulative_GPU_seconds": 2028.6832520347089,
+    "original_user_S04_GPU_seconds_cap": 10800,
+    "new_output_bytes": 78643200,
+    "prior_actual_bytes": 49876436,
+    "cumulative_output_reservation": 128519636,
+    "cumulative_output_cap": 134217728,
+    "CPU_worker": 7,
+    "initial_free_GiB": 22,
+    "runtime_free_GiB": 0.5,
+    "disk_floor_GiB": 5,
+    "shared_numerical_only": true
+  },
+  "numerical_contract_unchanged": [
+    "full three lengths, both arms, six entire policy/cache replays with new native references, no stitching old arms",
+    "all 50 actual commits, FP32 cost/route/bonus and actual scheduler raw/projected bindings",
+    "ordinary exact scratch semantics and all valid history/mask, B14 strict all-metadata/version read-only",
+    "input/output/validKV/slots/RNG/full-state/streamingVAE exact, finite and actual guarded returns",
+    "first recorded difference stops, complete result plus all-owned cleanup required"
+  ],
+  "unresolved_blockers": [],
+  "limitations": [
+    "Source/CPU admission only; not six-chunk execution PASS or static baseline permission.",
+    "Future numerical runtime is a separately registered fixed recipe with a revised estimate, not a change to the original failed 900-second job.",
+    "All measured observation wall includes heavy numerical auditing; it is not model or robot performance."
+  ],
+  "elapsed_seconds": 10.093180540949106
+}

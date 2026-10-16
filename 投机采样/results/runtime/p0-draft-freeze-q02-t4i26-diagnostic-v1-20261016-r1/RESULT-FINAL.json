@@ -1,0 +1,1097 @@
+{
+  "schema": "draft-freeze-q02-risk-case-diagnostic/v1",
+  "status": "COMPLETE_BOUNDED_READ_ONLY_CASE_AUDIT",
+  "source_plan": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-q02-t4i26-diagnostic-v1-20261016-r1/PLAN.json",
+  "source_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1",
+  "case_rows": {
+    "T-risk_DEV-t4-i26-r0": {
+      "arm": "T",
+      "task": 4,
+      "init": 26,
+      "key": "T-risk_DEV-t4-i26-r0",
+      "episode_attempt_id": "08429f24919646feb051ff99c19cb6bc",
+      "success": true,
+      "horizon_reached": false,
+      "env_steps": 249,
+      "infer_chunks": 16,
+      "target_forwards": 1182,
+      "target_forwards_per_chunk": 73.875,
+      "trees": 0,
+      "acceptance_depth_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      },
+      "accepted_depth_sum": 0,
+      "mean_accepted_depth": null,
+      "episode_wall_diagnostic_sec": 132.93130250275135,
+      "reset_wall_diagnostic_sec": 0.024816250428557396,
+      "horizon_penalty_score": 249,
+      "score_semantics": "actual policy env_steps for success; fixed 800 penalty for failure; not measured time",
+      "initial_pairing": {
+        "seed": 20260922,
+        "model_xml_sha256": "01239474763303a908b017a433831b77014a4e88c7003e1c18e4e8752fc01c96",
+        "init_state_sha256": "33e98cff1bf87eb58c019516257cc5f3f730356734ec6737af9dcb04dc618182",
+        "initial_state_hashes": {
+          "flattened": "a41f08a14468a1dcd94201df64dc34cae9b4c39aad0608c4df74a3ef623a53bc",
+          "qacc_warmstart": "224b19f6eae53a8ba150cf655a0a21aef33a27b4cd2c977bc90e0f1b5a54c220",
+          "ctrl": "8107c1922e8132efb48fee0d4a0824762afa97af66135c9d8e3473ea03358dc4",
+          "act": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "qacc": "224b19f6eae53a8ba150cf655a0a21aef33a27b4cd2c977bc90e0f1b5a54c220",
+          "qfrc_applied": "6287e17fe5efcb191aec8a2578e685d0a1040a0ab53bd1f02c7f49cc6c8fced7",
+          "xfrc_applied": "2c253d268f274610134a7a0131fbf74a507bb6726c1b2c37193efe293c352e2c",
+          "mocap_pos": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "mocap_quat": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "qpos": "41fac6982c6f4dfd03c6e98d69324369c95fd14829334a76ea432f43ac15a0c1",
+          "qvel": "94a8d52a8e0fb4b9ae617696dc6e36f436a88a7194a4a32f27a97956a5011589",
+          "body_xpos": "5faa4514d56d26e424612670e8649087c7927899f7588a51b66b31098cd64587",
+          "body_xquat": "6bc104c2f62bbe12e1d63b5d3279a860649de26fe96c705271034a38cf6c0e30",
+          "site_xpos": "89aa4e0a9c42b6fff3c30b72e8842d999c13620e4365cefbb35c01a71536a9ee",
+          "site_xmat": "e4ce3c2d18197946e5d4b6a304ba84a7dc443f64de275afc3fa7c17ee353959a",
+          "controller_goal_pos": "b9381174645f5abf8d8d8dcd1fadf0ce29ba7e706282bcb60df095c0ae2d0914",
+          "controller_goal_ori": "0a9b8055bc0cb08069b7cb63bb5343c6db1c6899aada3563eeafc4c60d3dc630",
+          "controller_joint_pos": "02fd25cb0fa655c894854244c02ce50ed88bfb4d716cc186f0383e584d412178",
+          "controller_joint_vel": "a4cd783440844137723b220afd1c12c84c9c6a07f061e520afc466b4232f47af",
+          "controller_initial_joint": "fec7cdc1a91c75e43084124f81a22f257a3903ddfa69e862b13713b36691ee2b"
+        },
+        "initial_obs_hashes": {
+          "observation.images.agentview_rgb": "91e52720fadc9ecc2d0160c64472b95aa09806409b4004707437a445e1e06354",
+          "observation.images.eye_in_hand_rgb": "d73a0086f00ba0dacbc7962a4804e58d76b5e1dbcd4fd57382d34a94ba05d4b4"
+        },
+        "initial_rng": {
+          "python": "5a15a57e560e189cb1dd667ddedddb61be69ebbac8ce1027f076c1ff421e7e49",
+          "numpy": "2560e01d5905366b9a4930f40d1d1747d799f08d44bf0032853560c4d14e7a7d"
+        }
+      },
+      "phase_counters": {},
+      "saved_output_audit": {
+        "action_files": 16,
+        "latent_files": 16,
+        "observation_files": 15,
+        "files": 47,
+        "tensor_arrays_read": 504,
+        "coverage_exact": true,
+        "all_saved_values_finite": true
+      },
+      "performance_claim": false,
+      "site": "local",
+      "group": "risk_DEV",
+      "rep": 0
+    },
+    "TF_CONT-fresh_DEV-t4-i35-r0": {
+      "arm": "TF_CONT",
+      "task": 4,
+      "init": 35,
+      "key": "TF_CONT-fresh_DEV-t4-i35-r0",
+      "episode_attempt_id": "d3c77e2f672a456cae344164af187099",
+      "success": true,
+      "horizon_reached": false,
+      "env_steps": 227,
+      "infer_chunks": 15,
+      "target_forwards": 654,
+      "target_forwards_per_chunk": 43.6,
+      "trees": 270,
+      "acceptance_depth_counts": {
+        "0": 36,
+        "1": 14,
+        "2": 220
+      },
+      "accepted_depth_sum": 454,
+      "mean_accepted_depth": 1.6814814814814816,
+      "episode_wall_diagnostic_sec": 84.0240479093045,
+      "reset_wall_diagnostic_sec": 0.028544319793581963,
+      "horizon_penalty_score": 227,
+      "score_semantics": "actual policy env_steps for success; fixed 800 penalty for failure; not measured time",
+      "initial_pairing": {
+        "seed": 20260922,
+        "model_xml_sha256": "01239474763303a908b017a433831b77014a4e88c7003e1c18e4e8752fc01c96",
+        "init_state_sha256": "9d8f4dd19a61e022827b357b0119593fe1d1db35f07456fe39348e2ac5f1257b",
+        "initial_state_hashes": {
+          "flattened": "39b534afa7ed2b04832b283576f2093341247dffaf5ad963e5ae8286ea7c7383",
+          "qacc_warmstart": "a1550c0167b1e1088d9e82f7dae6a9491192a81eba50ce09465c98426193f422",
+          "ctrl": "dae57bc5d6a4f782643b0694c784e348bc3d6e2b0d8152889745924df4637abe",
+          "act": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "qacc": "a1550c0167b1e1088d9e82f7dae6a9491192a81eba50ce09465c98426193f422",
+          "qfrc_applied": "6287e17fe5efcb191aec8a2578e685d0a1040a0ab53bd1f02c7f49cc6c8fced7",
+          "xfrc_applied": "2c253d268f274610134a7a0131fbf74a507bb6726c1b2c37193efe293c352e2c",
+          "mocap_pos": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "mocap_quat": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "qpos": "a24a4d7cafc1ba60b2649a7ff1d03f803b34e1a0de26c28103722feef154716f",
+          "qvel": "7e30a814d6e902b7eee42d39de36aa95f6867eeaf209e99544ddf6af02050ea7",
+          "body_xpos": "99293d3dcb6ebbc22e7d81703bf515ee01ed3f7aaf42ddcc2cd55692e3a35e36",
+          "body_xquat": "41a41a97eff6d4105c1c66e4b811adaffde7f216ba12be2d49025e42988d0a3e",
+          "site_xpos": "93b8933f6b4c7b3b5f79bd8e5a2498ae7a65643528149b094639fe8a8390e551",
+          "site_xmat": "b1549341d27ae54b86bcd255dbdc01bf0faaf7b4bc01f43fe29fcee1e2bb0f15",
+          "controller_goal_pos": "b50f7c8e3ea27f0f12acffbc481ff07b6d9a5fece5e00de2ace28c46c80bace4",
+          "controller_goal_ori": "0a9b8055bc0cb08069b7cb63bb5343c6db1c6899aada3563eeafc4c60d3dc630",
+          "controller_joint_pos": "5c1b4455c460cfcddf066b734edab6d3e443e99b4e8766bc46dabb1e56a2371b",
+          "controller_joint_vel": "079a0738e7a03c1db2e439110508ccbc06c8ee6b72846ea349cfba4b8bd073d0",
+          "controller_initial_joint": "fec7cdc1a91c75e43084124f81a22f257a3903ddfa69e862b13713b36691ee2b"
+        },
+        "initial_obs_hashes": {
+          "observation.images.agentview_rgb": "be0657ae7acbd3a7c079670374c4039ff660a34888ed927852dfc893c8cbdfe2",
+          "observation.images.eye_in_hand_rgb": "b9a1a0dd2e5bfb680c8dd811c3b6188ce04a872f9a5255c9c21bcbaed9ac3032"
+        },
+        "initial_rng": {
+          "python": "5a15a57e560e189cb1dd667ddedddb61be69ebbac8ce1027f076c1ff421e7e49",
+          "numpy": "2560e01d5905366b9a4930f40d1d1747d799f08d44bf0032853560c4d14e7a7d"
+        }
+      },
+      "phase_counters": {
+        "target_forward_count": 26,
+        "tree_scheduler_transition_count": 1916,
+        "committed_scheduler_update_count": 750,
+        "ordinary_target_scheduler_update_count": 76,
+        "draft_forward_count": 810,
+        "tree_count": 270,
+        "logical_candidate_rows": 1890,
+        "verifier_target_row_count": 1890,
+        "verifier_cfg_rows": 3780,
+        "verifier_forward_count": 270,
+        "accepted_depth_0": 36,
+        "accepted_depth_1": 14,
+        "committed_draft_scheduler_update_count": 454,
+        "accepted_depth_2": 220,
+        "bonus_target_tree_count": 220,
+        "bonus_target_scheduler_update_count": 220,
+        "terminal_target_forward_count": 15
+      },
+      "saved_output_audit": {
+        "action_files": 15,
+        "latent_files": 15,
+        "observation_files": 14,
+        "files": 44,
+        "tensor_arrays_read": 470,
+        "coverage_exact": true,
+        "all_saved_values_finite": true
+      },
+      "performance_claim": false,
+      "site": "local",
+      "group": "fresh_DEV",
+      "rep": 0
+    },
+    "TF_CONT-risk_DEV-t4-i26-r0": {
+      "arm": "TF_CONT",
+      "task": 4,
+      "init": 26,
+      "key": "TF_CONT-risk_DEV-t4-i26-r0",
+      "episode_attempt_id": "8c8d6d83a8724f648ae464fe17d5a2a9",
+      "success": false,
+      "horizon_reached": true,
+      "env_steps": 796,
+      "infer_chunks": 50,
+      "target_forwards": 2192,
+      "target_forwards_per_chunk": 43.84,
+      "trees": 904,
+      "acceptance_depth_counts": {
+        "0": 134,
+        "1": 32,
+        "2": 738
+      },
+      "accepted_depth_sum": 1508,
+      "mean_accepted_depth": 1.668141592920354,
+      "episode_wall_diagnostic_sec": 270.27651539072394,
+      "reset_wall_diagnostic_sec": 0.019850803539156914,
+      "horizon_penalty_score": 800,
+      "score_semantics": "actual policy env_steps for success; fixed 800 penalty for failure; not measured time",
+      "initial_pairing": {
+        "seed": 20260922,
+        "model_xml_sha256": "01239474763303a908b017a433831b77014a4e88c7003e1c18e4e8752fc01c96",
+        "init_state_sha256": "33e98cff1bf87eb58c019516257cc5f3f730356734ec6737af9dcb04dc618182",
+        "initial_state_hashes": {
+          "flattened": "a41f08a14468a1dcd94201df64dc34cae9b4c39aad0608c4df74a3ef623a53bc",
+          "qacc_warmstart": "224b19f6eae53a8ba150cf655a0a21aef33a27b4cd2c977bc90e0f1b5a54c220",
+          "ctrl": "8107c1922e8132efb48fee0d4a0824762afa97af66135c9d8e3473ea03358dc4",
+          "act": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "qacc": "224b19f6eae53a8ba150cf655a0a21aef33a27b4cd2c977bc90e0f1b5a54c220",
+          "qfrc_applied": "6287e17fe5efcb191aec8a2578e685d0a1040a0ab53bd1f02c7f49cc6c8fced7",
+          "xfrc_applied": "2c253d268f274610134a7a0131fbf74a507bb6726c1b2c37193efe293c352e2c",
+          "mocap_pos": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "mocap_quat": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "qpos": "41fac6982c6f4dfd03c6e98d69324369c95fd14829334a76ea432f43ac15a0c1",
+          "qvel": "94a8d52a8e0fb4b9ae617696dc6e36f436a88a7194a4a32f27a97956a5011589",
+          "body_xpos": "5faa4514d56d26e424612670e8649087c7927899f7588a51b66b31098cd64587",
+          "body_xquat": "6bc104c2f62bbe12e1d63b5d3279a860649de26fe96c705271034a38cf6c0e30",
+          "site_xpos": "89aa4e0a9c42b6fff3c30b72e8842d999c13620e4365cefbb35c01a71536a9ee",
+          "site_xmat": "e4ce3c2d18197946e5d4b6a304ba84a7dc443f64de275afc3fa7c17ee353959a",
+          "controller_goal_pos": "b9381174645f5abf8d8d8dcd1fadf0ce29ba7e706282bcb60df095c0ae2d0914",
+          "controller_goal_ori": "0a9b8055bc0cb08069b7cb63bb5343c6db1c6899aada3563eeafc4c60d3dc630",
+          "controller_joint_pos": "02fd25cb0fa655c894854244c02ce50ed88bfb4d716cc186f0383e584d412178",
+          "controller_joint_vel": "a4cd783440844137723b220afd1c12c84c9c6a07f061e520afc466b4232f47af",
+          "controller_initial_joint": "fec7cdc1a91c75e43084124f81a22f257a3903ddfa69e862b13713b36691ee2b"
+        },
+        "initial_obs_hashes": {
+          "observation.images.agentview_rgb": "91e52720fadc9ecc2d0160c64472b95aa09806409b4004707437a445e1e06354",
+          "observation.images.eye_in_hand_rgb": "d73a0086f00ba0dacbc7962a4804e58d76b5e1dbcd4fd57382d34a94ba05d4b4"
+        },
+        "initial_rng": {
+          "python": "5a15a57e560e189cb1dd667ddedddb61be69ebbac8ce1027f076c1ff421e7e49",
+          "numpy": "2560e01d5905366b9a4930f40d1d1747d799f08d44bf0032853560c4d14e7a7d"
+        }
+      },
+      "phase_counters": {
+        "target_forward_count": 88,
+        "tree_scheduler_transition_count": 6416,
+        "committed_scheduler_update_count": 2500,
+        "ordinary_target_scheduler_update_count": 254,
+        "draft_forward_count": 2712,
+        "tree_count": 904,
+        "logical_candidate_rows": 6328,
+        "verifier_target_row_count": 6328,
+        "verifier_cfg_rows": 12656,
+        "verifier_forward_count": 904,
+        "accepted_depth_0": 134,
+        "accepted_depth_1": 32,
+        "committed_draft_scheduler_update_count": 1508,
+        "accepted_depth_2": 738,
+        "bonus_target_tree_count": 738,
+        "bonus_target_scheduler_update_count": 738,
+        "terminal_target_forward_count": 50
+      },
+      "saved_output_audit": {
+        "action_files": 50,
+        "latent_files": 50,
+        "observation_files": 50,
+        "files": 150,
+        "tensor_arrays_read": 1692,
+        "coverage_exact": true,
+        "all_saved_values_finite": true
+      },
+      "performance_claim": false,
+      "site": "local",
+      "group": "risk_DEV",
+      "rep": 0
+    }
+  },
+  "initial_pairing_from_original_complete_audit": {
+    "group": "risk_DEV",
+    "task": 4,
+    "init": 26,
+    "reference": "T",
+    "candidate": "TF_CONT",
+    "reference_key": "T-risk_DEV-t4-i26-r0",
+    "candidate_key": "TF_CONT-risk_DEV-t4-i26-r0",
+    "physical_RNG_equal": true,
+    "actual_saved_sim_controller_arrays_exact": true,
+    "actual_target_initial_RNG_equal": true,
+    "camera_pixels": {
+      "observation.images.agentview_rgb": {
+        "exact": true,
+        "changed_pixels": 0,
+        "changed_channels": 0,
+        "max_abs": 0
+      },
+      "observation.images.eye_in_hand_rgb": {
+        "exact": true,
+        "changed_pixels": 0,
+        "changed_channels": 0,
+        "max_abs": 0
+      }
+    },
+    "all_exact": true,
+    "scope": "Saved initial state/controller and actual initial Torch RNG; unsaved simulator internals UNKNOWN"
+  },
+  "initial_state_arrays": {
+    "act": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        0
+      ],
+      "dtype": "float64"
+    },
+    "body_xpos": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        26,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "body_xquat": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        26,
+        4
+      ],
+      "dtype": "float64"
+    },
+    "controller_goal_ori": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        3,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "controller_goal_pos": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        3
+      ],
+      "dtype": "float64"
+    },
+    "controller_initial_joint": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        7
+      ],
+      "dtype": "float64"
+    },
+    "controller_joint_pos": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        7
+      ],
+      "dtype": "float64"
+    },
+    "controller_joint_vel": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        7
+      ],
+      "dtype": "float64"
+    },
+    "ctrl": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        9
+      ],
+      "dtype": "float64"
+    },
+    "flattened": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        84
+      ],
+      "dtype": "float64"
+    },
+    "mocap_pos": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        0,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "mocap_quat": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        0,
+        4
+      ],
+      "dtype": "float64"
+    },
+    "qacc": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        39
+      ],
+      "dtype": "float64"
+    },
+    "qacc_warmstart": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        39
+      ],
+      "dtype": "float64"
+    },
+    "qfrc_applied": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        39
+      ],
+      "dtype": "float64"
+    },
+    "qpos": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        44
+      ],
+      "dtype": "float64"
+    },
+    "qvel": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        39
+      ],
+      "dtype": "float64"
+    },
+    "site_xmat": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        16,
+        9
+      ],
+      "dtype": "float64"
+    },
+    "site_xpos": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        16,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "xfrc_applied": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        26,
+        6
+      ],
+      "dtype": "float64"
+    }
+  },
+  "initial_observation_arrays": {
+    "observation.images.agentview_rgb": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        128,
+        128,
+        3
+      ],
+      "dtype": "uint8"
+    },
+    "observation.images.eye_in_hand_rgb": {
+      "present_both": true,
+      "exact": true,
+      "shape": [
+        128,
+        128,
+        3
+      ],
+      "dtype": "uint8"
+    }
+  },
+  "actual_commands": {
+    "source": {
+      "T-risk_DEV-t4-i26-r0": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1/episodes/T-risk_DEV-t4-i26-r0/client/commands.npy",
+      "TF_CONT-risk_DEV-t4-i26-r0": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1/episodes/TF_CONT-risk_DEV-t4-i26-r0/client/commands.npy"
+    },
+    "shapes": {
+      "T-risk_DEV-t4-i26-r0": [
+        249,
+        7
+      ],
+      "TF_CONT-risk_DEV-t4-i26-r0": [
+        796,
+        7
+      ]
+    },
+    "common_prefix_exact": false,
+    "first_different_command_index": 0,
+    "first_difference_max_abs": 0.0078125,
+    "first_difference_channels": 1
+  },
+  "first_saved_tensors": {
+    "obs_data": {
+      "status": "ACTUAL_SAVED_FIRST_CHUNK_COMPARED",
+      "sources": {
+        "T": {
+          "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1/episodes/T-risk_DEV-t4-i26-r0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_133008/obs_data_0.pt",
+          "bytes": 1261165
+        },
+        "TF_CONT": {
+          "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1/episodes/TF_CONT-risk_DEV-t4-i26-r0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_142111/obs_data_0.pt",
+          "bytes": 1261229
+        }
+      },
+      "tensor_leaves": {
+        "/0/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": true,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8"
+        },
+        "/0/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": true,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8"
+        },
+        "/1/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": true,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8"
+        },
+        "/1/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": true,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8"
+        },
+        "/10/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 818,
+          "max_abs": 53.0
+        },
+        "/10/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 3880,
+          "max_abs": 37.0
+        },
+        "/11/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 815,
+          "max_abs": 47.0
+        },
+        "/11/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 3589,
+          "max_abs": 46.0
+        },
+        "/2/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": true,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8"
+        },
+        "/2/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": true,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8"
+        },
+        "/3/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 264,
+          "max_abs": 40.0
+        },
+        "/3/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 1794,
+          "max_abs": 39.0
+        },
+        "/4/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 440,
+          "max_abs": 52.0
+        },
+        "/4/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 2501,
+          "max_abs": 24.0
+        },
+        "/5/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 465,
+          "max_abs": 22.0
+        },
+        "/5/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 2549,
+          "max_abs": 39.0
+        },
+        "/6/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 553,
+          "max_abs": 38.0
+        },
+        "/6/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 1978,
+          "max_abs": 38.0
+        },
+        "/7/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 523,
+          "max_abs": 53.0
+        },
+        "/7/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 2032,
+          "max_abs": 17.0
+        },
+        "/8/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 575,
+          "max_abs": 40.0
+        },
+        "/8/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 2435,
+          "max_abs": 34.0
+        },
+        "/9/observation.images.agentview_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 629,
+          "max_abs": 43.0
+        },
+        "/9/observation.images.eye_in_hand_rgb": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "torch.uint8",
+          "changed_elements": 3514,
+          "max_abs": 39.0
+        }
+      },
+      "all_tensor_leaves_exact": false,
+      "earliest_different_saved_frame": 3,
+      "first_saved_frame_exact": true
+    },
+    "actions": {
+      "status": "ACTUAL_SAVED_FIRST_CHUNK_COMPARED",
+      "sources": {
+        "T": {
+          "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1/episodes/T-risk_DEV-t4-i26-r0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_133008/actions_0.pt",
+          "bytes": 2537
+        },
+        "TF_CONT": {
+          "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1/episodes/TF_CONT-risk_DEV-t4-i26-r0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_142111/actions_0.pt",
+          "bytes": 2537
+        }
+      },
+      "tensor_leaves": {
+        "": {
+          "present_both": true,
+          "exact": false,
+          "shape": [
+            1,
+            30,
+            4,
+            4,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "changed_elements": 62,
+          "max_abs": 0.015625
+        }
+      },
+      "all_tensor_leaves_exact": false
+    }
+  },
+  "limited_acceptance": {
+    "TF_CONT-risk_DEV-t4-i26-r0": {
+      "source": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1/episodes/TF_CONT-risk_DEV-t4-i26-r0/COUNTER.json",
+      "total_saved_acceptance_rows": 904,
+      "inspected_full_chunk_frames": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52
+      ],
+      "inspected_chunks": 14,
+      "inspected_acceptance_rows": 252,
+      "baseline_depth": {
+        "0": 35,
+        "1": 11,
+        "2": 206
+      },
+      "maximum_admissible_depth": {
+        "0": 35,
+        "1": 11,
+        "2": 206
+      },
+      "actual_committed_depth": {
+        "0": 35,
+        "1": 11,
+        "2": 206
+      },
+      "sigma_bins": {
+        ".5-.75": 28,
+        ".25-.5": 32,
+        "0-.25": 192
+      },
+      "changed_route": 0,
+      "effective_parent_changed": 0,
+      "first_costs_count": 504,
+      "first_costs_P50": 0.0018000041018240154,
+      "first_costs_P90": 0.01993186473846435,
+      "threshold_values": [
+        0.007839680526450805
+      ],
+      "first_three_actual": [
+        {
+          "frame_st_id": 0,
+          "sigma": 0.7101448774337769,
+          "next_sigma": 0.545454204082489,
+          "baseline_depth": 0,
+          "maximum_admissible_depth": 0,
+          "actual_parent": 0,
+          "actual_child": 0,
+          "changed_route": false,
+          "first_costs": [
+            0.02595706097781658,
+            0.04932386428117752
+          ]
+        },
+        {
+          "frame_st_id": 0,
+          "sigma": 0.545454204082489,
+          "next_sigma": 0.4392523765563965,
+          "baseline_depth": 0,
+          "maximum_admissible_depth": 0,
+          "actual_parent": 0,
+          "actual_child": 0,
+          "changed_route": false,
+          "first_costs": [
+            0.009090377949178219,
+            0.026939138770103455
+          ]
+        },
+        {
+          "frame_st_id": 0,
+          "sigma": 0.4392523765563965,
+          "next_sigma": 0.365079402923584,
+          "baseline_depth": 1,
+          "maximum_admissible_depth": 1,
+          "actual_parent": 0,
+          "actual_child": 0,
+          "changed_route": false,
+          "first_costs": [
+            0.006862441543489695,
+            0.020109573379158974
+          ]
+        }
+      ],
+      "available_fields": [
+        "actual_child",
+        "actual_depth",
+        "actual_parent",
+        "baseline_child",
+        "baseline_depth",
+        "baseline_parent",
+        "baseline_prefix_cost",
+        "bookkeeping_child_only_change",
+        "candidate_prefix_cost",
+        "changed_route",
+        "context",
+        "effective_parent_changed",
+        "effective_selector",
+        "first_costs",
+        "frame_st_id",
+        "maximum_admissible_depth",
+        "next_sigma",
+        "prefix_child",
+        "prefix_parent",
+        "second_costs",
+        "sigma",
+        "threshold",
+        "timestep"
+      ],
+      "total_target_forwards": 2192,
+      "total_requests": 101
+    },
+    "TF_CONT-fresh_DEV-t4-i35-r0": {
+      "source": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1/episodes/TF_CONT-fresh_DEV-t4-i35-r0/COUNTER.json",
+      "total_saved_acceptance_rows": 270,
+      "inspected_full_chunk_frames": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52
+      ],
+      "inspected_chunks": 14,
+      "inspected_acceptance_rows": 252,
+      "baseline_depth": {
+        "0": 33,
+        "1": 13,
+        "2": 206
+      },
+      "maximum_admissible_depth": {
+        "0": 33,
+        "1": 13,
+        "2": 206
+      },
+      "actual_committed_depth": {
+        "0": 33,
+        "1": 13,
+        "2": 206
+      },
+      "sigma_bins": {
+        ".5-.75": 28,
+        ".25-.5": 32,
+        "0-.25": 192
+      },
+      "changed_route": 0,
+      "effective_parent_changed": 0,
+      "first_costs_count": 504,
+      "first_costs_P50": 0.0016899222391657531,
+      "first_costs_P90": 0.01908875573426485,
+      "threshold_values": [
+        0.007839680526450805
+      ],
+      "first_three_actual": [
+        {
+          "frame_st_id": 0,
+          "sigma": 0.7101448774337769,
+          "next_sigma": 0.545454204082489,
+          "baseline_depth": 0,
+          "maximum_admissible_depth": 0,
+          "actual_parent": 0,
+          "actual_child": 0,
+          "changed_route": false,
+          "first_costs": [
+            0.025178682059049606,
+            0.04840893670916557
+          ]
+        },
+        {
+          "frame_st_id": 0,
+          "sigma": 0.545454204082489,
+          "next_sigma": 0.4392523765563965,
+          "baseline_depth": 0,
+          "maximum_admissible_depth": 0,
+          "actual_parent": 0,
+          "actual_child": 0,
+          "changed_route": false,
+          "first_costs": [
+            0.011244614608585835,
+            0.028827069327235222
+          ]
+        },
+        {
+          "frame_st_id": 0,
+          "sigma": 0.4392523765563965,
+          "next_sigma": 0.365079402923584,
+          "baseline_depth": 1,
+          "maximum_admissible_depth": 1,
+          "actual_parent": 0,
+          "actual_child": 0,
+          "changed_route": false,
+          "first_costs": [
+            0.006836614105850458,
+            0.019015178084373474
+          ]
+        }
+      ],
+      "available_fields": [
+        "actual_child",
+        "actual_depth",
+        "actual_parent",
+        "baseline_child",
+        "baseline_depth",
+        "baseline_parent",
+        "baseline_prefix_cost",
+        "bookkeeping_child_only_change",
+        "candidate_prefix_cost",
+        "changed_route",
+        "context",
+        "effective_parent_changed",
+        "effective_selector",
+        "first_costs",
+        "frame_st_id",
+        "maximum_admissible_depth",
+        "next_sigma",
+        "prefix_child",
+        "prefix_parent",
+        "second_costs",
+        "sigma",
+        "threshold",
+        "timestep"
+      ],
+      "total_target_forwards": 654,
+      "total_requests": 30
+    }
+  },
+  "limitations": [
+    "Only first saved chunk tensors and up to20 complete acceptance chunks/256 rows were inspected.",
+    "No unsaved velocity or teacher candidate reachability reconstructed.",
+    "A same-task successful DEV reference is descriptive, not causal or an independent TEST.",
+    "Original retention=false and all original gates remain unchanged."
+  ],
+  "D01_evidence_sufficient": false,
+  "D01_reason": "One paired failure plus selected successful reference cannot identify a causal selector or training remedy; teacher reachability for committed actions was not saved.",
+  "CPU_affinity": [
+    0,
+    1
+  ],
+  "CUDA_initialized": false,
+  "wall_seconds": 0.4082212932407856,
+  "GPU_used": false,
+  "SSH_used": false,
+  "supersedes_incomplete_receipts": [
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-q02-t4i26-diagnostic-v1-20261016-r1/RESULT.json",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-q02-t4i26-diagnostic-v1-20261016-r1/RESULT-CORRECTED.json"
+  ],
+  "correction": "obs_data_0 NumPy leaves included; actual committed depth is separate from baseline/admissible depth"
+}

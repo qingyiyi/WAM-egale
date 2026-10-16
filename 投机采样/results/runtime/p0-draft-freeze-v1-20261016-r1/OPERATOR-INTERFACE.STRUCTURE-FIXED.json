@@ -1,0 +1,201 @@
+{
+  "schema": "draft-operator-structure-interface/v1",
+  "status": "STRUCTURE_FIXED_FOR_OPERATOR_RESEARCH_WEIGHT_AND_RECIPE_NOT_ACCEPTED",
+  "updated": "2026-10-16T15:07:48.750508+08:00",
+  "quality_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1",
+  "architecture": "transformer64",
+  "parameters": 53070,
+  "input_tokens": 16,
+  "input_channels_per_token": 17,
+  "inputs": [
+    "state7",
+    "previous_direction7: root existing direction; recursive parent draft direction",
+    "sigma",
+    "next_sigma",
+    "t/1000"
+  ],
+  "blocks": 1,
+  "normalization": "pre-norm",
+  "hidden": 64,
+  "heads": 4,
+  "FFN": 256,
+  "activation": "GELU",
+  "dropout": 0,
+  "position": "learned",
+  "output": "two 7-dimensional residual heads per token",
+  "cross_attention": false,
+  "TF_checkpoint_sha256": "3657388fdce0763093d1b704c88a03b6836954160d43dddb9f75337a054d64ac",
+  "matched_MLP_checkpoint_sha256": "3dc01a48f204b3efedb4caccf2d36a01c2eecc55926c3265fe882f0a70b103b0",
+  "continuation": {
+    "seed": 20260923,
+    "parent_updates": 2500,
+    "additional_updates": 500,
+    "total_updates": 3000,
+    "optimizer_reset": true,
+    "same_original_500_draw_schedule_repeated": true,
+    "batch": 512,
+    "target_half": 256,
+    "historical_candidate_half": 256,
+    "lr": 3e-05,
+    "weight_decay": 0.01,
+    "normalization_refit": false,
+    "new_on_policy_data": false
+  },
+  "verifier_contract": {
+    "policy": "verifier_k2_b2_bonus",
+    "candidate_states": 7,
+    "CFG_paths": 2,
+    "external_batch": 14,
+    "action_tokens_per_state": 16,
+    "latent_dimensions": 112,
+    "target_D": 3072,
+    "target_heads": 24,
+    "target_head_dim": 128,
+    "target_FFN": 14336,
+    "target_layers": 30,
+    "linear_M_for_1_3_7_states": [
+      32,
+      96,
+      224
+    ],
+    "linear_merge_already_in_library": true,
+    "attention_Q_per_instance": 16,
+    "threshold": 0.007839680526450805,
+    "direction_dtype": "BF16",
+    "score_dtype": "FP32",
+    "selector": "prefix_then_cost",
+    "PF_enabled": false,
+    "shared_history": true,
+    "private_candidate_states_must_remain_separate": true
+  },
+  "operator_start_recommendation": [
+    "Work in new namespace; never edit today173 frozen sources or original tile code/HW.",
+    "Reproduce strongest existing B14 shared-prefix/O3/Graph first. Shared text-projection-cache pilot needs independent repeat and dynamic lifecycle checks.",
+    "Use actual short/mid/long validKV288/1152/2160 and same frozen candidates; profile separately from formal timing.",
+    "Compare single-state and 7-state new/old paths; n_v7 is not g7 and per-instance attention Q remains16.",
+    "Numerical integration must preserve directions, acceptance score/path, scheduler, bonus/fallback, all validKV, history and RNG.",
+    "Quality GPU priority tomorrow; formal operator timing waits for quality shard to complete and GPU to be released."
+  ],
+  "tomorrow_expanded_DEV": {
+    "init_indices": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "task_count": 10,
+    "arms": [
+      "T",
+      "TF_CONT",
+      "MLP_CONT"
+    ],
+    "full_episodes": 120,
+    "shards": 4,
+    "episodes_per_shard": 30,
+    "started": false,
+    "conditional_on_today_preregistered_retention": true,
+    "status": "SOURCE_PREPARED_ADMISSION_BLOCKED_NOT_REGISTERED",
+    "registered": false,
+    "CPU_waiter_started": false
+  },
+  "final_TEST": {
+    "init_indices": [
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "started": false,
+    "engine_must_be_frozen_first": true
+  },
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "global_default_changed": false,
+  "training_recipe": {
+    "stage1": {
+      "updates": 2000,
+      "batch": 512,
+      "lr": 0.0001,
+      "optimizer": "AdamW",
+      "weight_decay": 0.01,
+      "data": "FIT174 target-only159691 queries",
+      "sampling": "task uniform -> episode uniform -> actual query uniform",
+      "normalization": "FIT174 mean/populationstd; std clamp_min1e-5"
+    },
+    "stage2": {
+      "updates": 500,
+      "batch": 512,
+      "target_queries": 256,
+      "old_candidate_queries": 256,
+      "lr": 3e-05,
+      "optimizer": "new AdamW without carried moments",
+      "weight_decay": 0.01,
+      "old_candidate_pool": {
+        "rows": 14997,
+        "A_off_rows": 3906,
+        "historical_TF_rows": 11091,
+        "current_TF_child_on_policy": false
+      },
+      "normalization": "exact stage1, never refit"
+    },
+    "stage3": {
+      "seed": 20260923,
+      "parent_updates": 2500,
+      "additional_updates": 500,
+      "total_updates": 3000,
+      "optimizer_reset": true,
+      "same_original_500_draw_schedule_repeated": true,
+      "batch": 512,
+      "target_half": 256,
+      "historical_candidate_half": 256,
+      "lr": 3e-05,
+      "weight_decay": 0.01,
+      "normalization_refit": false,
+      "new_on_policy_data": false
+    },
+    "loss": "min_head MSE +0.1 mean_head MSE +0.01 relu(0.05 - mean(((head0-head1)/residual_std)^2))",
+    "selection": "fixed seed20260923 / final3000; no newDEV-based seed/checkpoint search",
+    "precision_scope": "CPU FP32 training; final GPU adapter decode and BF16 returned direction checked on all20237 actual CAL rows before each quality draft arm",
+    "not_uninterrupted_3000": true
+  },
+  "training_recipe_sources": [
+    "投机采样/results/runtime/p0-target-trace-draft-train-v1-20261015-r1/PLAN.json",
+    "投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/PLAN.json",
+    "投机采样/results/runtime/p0-tf-usable-train-v1-20261016-r1/PLAN.json",
+    "投机采样/results/runtime/p0-tf-usable-mlp-continue-v1-20261016-r1/PLAN.json"
+  ],
+  "prepared_interface_sha256": "fc3d34e943c80054cd896a1979f791dd8c018774bf49d0139ed4c8324b96dc5a",
+  "actual_complete50_RESULT": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-draft-freeze-quality-v1-local-20261016-r1/RESULT.json",
+  "actual_complete50_RESULT_sha256": "57df1b477213b0004f1009c2bdc82837c027ecc803e086e83cb277e9074106a0",
+  "research_checkpoint_fixture_only": true,
+  "TF_retention_passed": false,
+  "training_recipe_accepted_for_expansion": false,
+  "draft_precision": {
+    "model_parameters_and_internal_features": "FP32",
+    "adapter_return": "current_state.dtype; BF16 in actual current quality run",
+    "acceptance_score": "FP32"
+  },
+  "quality_blocker": {
+    "condition": "risk_no_new_TF_failure",
+    "task": 4,
+    "init": 26,
+    "target_success": true,
+    "target_actual_steps": 249,
+    "TF_success": false,
+    "TF_actual_steps": 796,
+    "TF_failure_penalty": 800,
+    "initial_saved_physical_controller_TorchRNG_and_both_cameras_exact": true,
+    "failure_cause": "UNKNOWN"
+  },
+  "production_default_changed": false
+}

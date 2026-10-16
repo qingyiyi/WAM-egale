@@ -1,0 +1,1945 @@
+{
+  "status": "PASS_OPTIMIZED_FULL_EPISODE_OFFLINE_AUDIT",
+  "at": "2026-10-13T16:14:13+08:00",
+  "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-optimized-e2e-resume-v2-20261013-160413",
+  "plan_sha256": "8a4b5e5e628f62478d30ef64a5d2e4ad85cb295ee77119c3e8ac4da84da58786",
+  "collection": {
+    "status": "PASS_GPU_FULL_EPISODE_COLLECTION",
+    "at": "2026-10-13T16:13:24+08:00",
+    "completed_episodes": 4,
+    "model_launches": 8,
+    "reused_target_episodes": 0,
+    "full_episode_data_total": 4,
+    "new_GPU_seconds": 2069.848624026403,
+    "aggregate_GPU_seconds": 11493.01267175749,
+    "aggregate_GPU_seconds_cap": 18000,
+    "aggregate_target_intents": 33239,
+    "aggregate_target_cap": 35000,
+    "cleanup": {
+      "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+      "memory_total_bytes": 42949672960,
+      "memory_used_bytes": 0,
+      "memory_reserved_bytes": 543817728,
+      "memory_free_bytes": 42405855232,
+      "memory_accounting": "NVML_MEMORY_V2_ALLOCATED",
+      "memory_struct_version": 33554472,
+      "utilization_percent": 0,
+      "compute": [],
+      "graphics": []
+    },
+    "owned_roots_exited": true,
+    "charged_target_intents": 3938,
+    "reservations": [
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-optimized-e2e-v1-20261013-152507/campaigns/S0/workers/worker0",
+        "cap": 1000,
+        "kind": "full-episode-S0-init3",
+        "ordinal": 1,
+        "at": "2026-10-13T15:29:29+08:00",
+        "plan_sha256": "2a5b240bfd5d76dac998dea61ede8f05a475fd1f0ef74850954cc1e437de7096",
+        "charged_target_intents": 959,
+        "exact_closed_count": true
+      },
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-optimized-e2e-v1-20261013-152507/campaigns/O3/workers/worker1",
+        "cap": 1050,
+        "kind": "full-episode-O3-init4",
+        "ordinal": 2,
+        "at": "2026-10-13T15:29:29+08:00",
+        "plan_sha256": "2a5b240bfd5d76dac998dea61ede8f05a475fd1f0ef74850954cc1e437de7096",
+        "charged_target_intents": 1010,
+        "exact_closed_count": true
+      },
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-optimized-e2e-resume-v2-20261013-160413/campaigns/O3/workers/worker0",
+        "cap": 1000,
+        "kind": "full-episode-O3-init3",
+        "ordinal": 1,
+        "at": "2026-10-13T16:06:08+08:00",
+        "plan_sha256": "8a4b5e5e628f62478d30ef64a5d2e4ad85cb295ee77119c3e8ac4da84da58786",
+        "charged_target_intents": 959,
+        "exact_closed_count": true
+      },
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-optimized-e2e-resume-v2-20261013-160413/campaigns/S0/workers/worker1",
+        "cap": 1050,
+        "kind": "full-episode-S0-init4",
+        "ordinal": 2,
+        "at": "2026-10-13T16:06:08+08:00",
+        "plan_sha256": "8a4b5e5e628f62478d30ef64a5d2e4ad85cb295ee77119c3e8ac4da84da58786",
+        "charged_target_intents": 1010,
+        "exact_closed_count": true
+      }
+    ],
+    "conservative_unclosed_reservations": true,
+    "reused_completed_episodes": 2,
+    "new_GPU_windows": 3,
+    "interrupted_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-optimized-e2e-v1-20261013-152507",
+    "raw_failed_GPU_seconds": 471.7002701666206,
+    "first_GPU_seconds_conservative_upper_bound": 975.69805797562,
+    "second_GPU_seconds_conservative_upper_bound": 658.8954466246068,
+    "resume_GPU_seconds": 435.25511942617595,
+    "failed_pre_service_target_intents": 0,
+    "raw_failure_and_full_estimate_preserved": true,
+    "all_completed_measurements_retained": true
+  },
+  "paired": [
+    {
+      "init": 3,
+      "records": {
+        "S0": {
+          "status": "completed",
+          "started_at": "2026-10-13T07:30:33.625445Z",
+          "finished_at": "2026-10-13T07:36:30.240595Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 3,
+          "episode_attempt_id": "e57efe91d2084320b3fcf7313122ed42",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 288,
+          "env_steps": 283,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 18,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 356.6153654400259,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 145.21481683664024,
+          "policy_infer_wall_sec": 180.3928002268076,
+          "cache_infer_wall_sec": 10.742895267903805,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 18,
+          "cache_infer_calls": 17,
+          "model_request_wall_sec": 336.35051233135164,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 3,
+            "episode_attempt_id": "e57efe91d2084320b3fcf7313122ed42",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-optimized-e2e-v1-20261013-152507-S0",
+            "parallel_worker_id": "worker0"
+          },
+          "outer_episode_wall_sec": 364.8514432236552,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        },
+        "O3": {
+          "status": "completed",
+          "started_at": "2026-10-13T08:07:11.079248Z",
+          "finished_at": "2026-10-13T08:12:22.519669Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 3,
+          "episode_attempt_id": "7adefac974654210bdabfb9ac5acca08",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 288,
+          "env_steps": 283,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 18,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 311.4407587237656,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 135.5173401478678,
+          "policy_infer_wall_sec": 145.33706014044583,
+          "cache_infer_wall_sec": 9.644018366932869,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 18,
+          "cache_infer_calls": 17,
+          "model_request_wall_sec": 290.4984186552465,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 3,
+            "episode_attempt_id": "7adefac974654210bdabfb9ac5acca08",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-optimized-e2e-resume-v2-20261013-160413-O3",
+            "parallel_worker_id": "worker0"
+          },
+          "outer_episode_wall_sec": 319.74099516123533,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        }
+      },
+      "S0_over_O3_E2E": 1.1450504002795865,
+      "E2E_time_reduction_percent": 12.667599630913152,
+      "server_seconds": {
+        "S0": {
+          "reset": 145.19667849317193,
+          "policy": 180.23767051659524,
+          "cache": 10.337222278118134
+        },
+        "O3": {
+          "reset": 135.4952906128019,
+          "policy": 145.189461087808,
+          "cache": 9.257888609543443
+        }
+      },
+      "client_residual_seconds": {
+        "S0": 20.264853108674288,
+        "O3": 20.942340068519115
+      },
+      "target_intents": {
+        "S0": 959,
+        "O3": 959
+      },
+      "phase_counters": {
+        "target_forward_count": 28,
+        "tree_scheduler_transition_count": 3232,
+        "committed_scheduler_update_count": 900,
+        "ordinary_target_scheduler_update_count": 226,
+        "draft_forward_count": 1503,
+        "tree_count": 501,
+        "logical_candidate_rows": 3507,
+        "verifier_target_row_count": 3507,
+        "verifier_cfg_rows": 7014,
+        "verifier_forward_count": 501,
+        "accepted_depth_0": 130,
+        "accepted_depth_1": 68,
+        "committed_draft_scheduler_update_count": 674,
+        "accepted_depth_2": 303,
+        "terminal_target_forward_count": 18
+      },
+      "full_commands_outputs_env_RNG_bitwise": true,
+      "optimization_stats": {
+        "S0": {
+          "arm": "S0",
+          "template_stats": {
+            "AST_builds": 0,
+            "bindings": 0,
+            "pinned_code_builds": 0,
+            "templates": 0
+          },
+          "scalar_stats": {
+            "action_templates": 0,
+            "score_templates": 0,
+            "template_compile_sec": 0.0,
+            "table_reads": 0,
+            "error_readbacks": 0,
+            "error_scalars": 0
+          },
+          "installs": [],
+          "workspaces": []
+        },
+        "O3": {
+          "arm": "O3",
+          "template_stats": {
+            "AST_builds": 1,
+            "bindings": 540,
+            "pinned_code_builds": 1,
+            "templates": 1
+          },
+          "scalar_stats": {
+            "action_templates": 1,
+            "score_templates": 1,
+            "template_compile_sec": 0.0931986179202795,
+            "table_reads": 36,
+            "error_readbacks": 501,
+            "error_scalars": 3006
+          },
+          "installs": [
+            {
+              "arm": "O3",
+              "wall_sec": 0.0756442230194807,
+              "ok": true,
+              "AST_builds_observed": 1,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 0,
+                "bindings": 0,
+                "pinned_code_builds": 0,
+                "templates": 0
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 30,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.017486078664660454,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 30,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 60,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016133666038513184,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 60,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 90,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016273347660899162,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 90,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 120,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01776180788874626,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 120,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 150,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016154056414961815,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 150,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 180,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.023246319964528084,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 180,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 210,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01645912230014801,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 210,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 240,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.018738187849521637,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 240,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 270,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01637502945959568,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 270,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 300,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01614287868142128,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 300,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 330,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01673680730164051,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 330,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 360,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01820962131023407,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 360,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 390,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016649087890982628,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 390,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 420,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.020427504554390907,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 420,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 450,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016798824071884155,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 450,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 480,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.019546665251255035,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 480,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 510,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01717456802725792,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 510,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 540,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            }
+          ],
+          "workspaces": [
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 28,
+              "verifier_view_reads": 56,
+              "batch_scatters": 28,
+              "batch_compacts": 28,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 28,
+              "verifier_view_reads": 56,
+              "batch_scatters": 28,
+              "batch_compacts": 28,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 28,
+              "verifier_view_reads": 56,
+              "batch_scatters": 28,
+              "batch_compacts": 28,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 28,
+              "verifier_view_reads": 56,
+              "batch_scatters": 28,
+              "batch_compacts": 28,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 30,
+              "verifier_view_reads": 60,
+              "batch_scatters": 30,
+              "batch_compacts": 30,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 33,
+              "verifier_view_reads": 66,
+              "batch_scatters": 33,
+              "batch_compacts": 33,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 35,
+              "verifier_view_reads": 70,
+              "batch_scatters": 35,
+              "batch_compacts": 35,
+              "channel_index_uploads": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "init": 4,
+      "records": {
+        "S0": {
+          "status": "completed",
+          "started_at": "2026-10-13T08:07:11.140517Z",
+          "finished_at": "2026-10-13T08:13:01.708011Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 4,
+          "episode_attempt_id": "0c32c403eae44fa8be3f3744d2ac9c2e",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 296,
+          "env_steps": 291,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 19,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 350.5676776263863,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 135.76989100314677,
+          "policy_infer_wall_sec": 182.44679333642125,
+          "cache_infer_wall_sec": 10.839031618088484,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 19,
+          "cache_infer_calls": 18,
+          "model_request_wall_sec": 329.0557159576565,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 4,
+            "episode_attempt_id": "0c32c403eae44fa8be3f3744d2ac9c2e",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-optimized-e2e-resume-v2-20261013-160413-S0",
+            "parallel_worker_id": "worker1"
+          },
+          "outer_episode_wall_sec": 358.898765610531,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        },
+        "O3": {
+          "status": "completed",
+          "started_at": "2026-10-13T07:30:33.627542Z",
+          "finished_at": "2026-10-13T07:36:04.504786Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 4,
+          "episode_attempt_id": "f25aa5bae0b44ad3923a458315e3cd9c",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 296,
+          "env_steps": 291,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 19,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 330.8774956930429,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 145.20926422439516,
+          "policy_infer_wall_sec": 154.49467577971518,
+          "cache_infer_wall_sec": 10.597078097984195,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 19,
+          "cache_infer_calls": 18,
+          "model_request_wall_sec": 310.30101810209453,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 4,
+            "episode_attempt_id": "f25aa5bae0b44ad3923a458315e3cd9c",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-optimized-e2e-v1-20261013-152507-O3",
+            "parallel_worker_id": "worker1"
+          },
+          "outer_episode_wall_sec": 339.1557782869786,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        }
+      },
+      "S0_over_O3_E2E": 1.0595089789715106,
+      "E2E_time_reduction_percent": 5.616656409016696,
+      "server_seconds": {
+        "S0": {
+          "reset": 135.74323918297887,
+          "policy": 182.28944246284664,
+          "cache": 10.403781028464437
+        },
+        "O3": {
+          "reset": 145.17394880391657,
+          "policy": 154.33268050849438,
+          "cache": 10.205736201256514
+        }
+      },
+      "client_residual_seconds": {
+        "S0": 21.511961668729782,
+        "O3": 20.576477590948343
+      },
+      "target_intents": {
+        "S0": 1010,
+        "O3": 1010
+      },
+      "phase_counters": {
+        "target_forward_count": 31,
+        "tree_scheduler_transition_count": 3394,
+        "committed_scheduler_update_count": 950,
+        "ordinary_target_scheduler_update_count": 244,
+        "draft_forward_count": 1575,
+        "tree_count": 525,
+        "logical_candidate_rows": 3675,
+        "verifier_target_row_count": 3675,
+        "verifier_cfg_rows": 7350,
+        "verifier_forward_count": 525,
+        "accepted_depth_0": 131,
+        "accepted_depth_1": 82,
+        "committed_draft_scheduler_update_count": 706,
+        "accepted_depth_2": 312,
+        "terminal_target_forward_count": 19
+      },
+      "full_commands_outputs_env_RNG_bitwise": true,
+      "optimization_stats": {
+        "S0": {
+          "arm": "S0",
+          "template_stats": {
+            "AST_builds": 0,
+            "bindings": 0,
+            "pinned_code_builds": 0,
+            "templates": 0
+          },
+          "scalar_stats": {
+            "action_templates": 0,
+            "score_templates": 0,
+            "template_compile_sec": 0.0,
+            "table_reads": 0,
+            "error_readbacks": 0,
+            "error_scalars": 0
+          },
+          "installs": [],
+          "workspaces": []
+        },
+        "O3": {
+          "arm": "O3",
+          "template_stats": {
+            "AST_builds": 1,
+            "bindings": 570,
+            "pinned_code_builds": 1,
+            "templates": 1
+          },
+          "scalar_stats": {
+            "action_templates": 1,
+            "score_templates": 1,
+            "template_compile_sec": 0.10714759118855,
+            "table_reads": 38,
+            "error_readbacks": 525,
+            "error_scalars": 3150
+          },
+          "installs": [
+            {
+              "arm": "O3",
+              "wall_sec": 0.09078243933618069,
+              "ok": true,
+              "AST_builds_observed": 1,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 0,
+                "bindings": 0,
+                "pinned_code_builds": 0,
+                "templates": 0
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 30,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016891317442059517,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 30,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 60,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.018919765949249268,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 60,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 90,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016223929822444916,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 90,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 120,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.017238296568393707,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 120,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 150,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.017102805897593498,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 150,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 180,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01725059188902378,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 180,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 210,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.017354793846607208,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 210,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 240,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.017186902463436127,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 240,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 270,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016723165288567543,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 270,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 300,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016689639538526535,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 300,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 330,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.017209256067872047,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 330,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 360,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.017763232812285423,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 360,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 390,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.020966684445738792,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 390,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 420,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01697990857064724,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 420,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 450,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.01750287599861622,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 450,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 480,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.016596907749772072,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 480,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 510,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.022380545735359192,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 510,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 540,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            },
+            {
+              "arm": "O3",
+              "wall_sec": 0.022077441215515137,
+              "ok": true,
+              "AST_builds_observed": 0,
+              "bindings": 30,
+              "template_stats_before": {
+                "AST_builds": 1,
+                "bindings": 540,
+                "pinned_code_builds": 1,
+                "templates": 1
+              },
+              "template_stats_after": {
+                "AST_builds": 1,
+                "bindings": 570,
+                "pinned_code_builds": 1,
+                "templates": 1
+              }
+            }
+          ],
+          "workspaces": [
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 28,
+              "verifier_view_reads": 56,
+              "batch_scatters": 28,
+              "batch_compacts": 28,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 28,
+              "verifier_view_reads": 56,
+              "batch_scatters": 28,
+              "batch_compacts": 28,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 27,
+              "verifier_view_reads": 54,
+              "batch_scatters": 27,
+              "batch_compacts": 27,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 28,
+              "verifier_view_reads": 56,
+              "batch_scatters": 28,
+              "batch_compacts": 28,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 30,
+              "verifier_view_reads": 60,
+              "batch_scatters": 30,
+              "batch_compacts": 30,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 33,
+              "verifier_view_reads": 66,
+              "batch_scatters": 33,
+              "batch_compacts": 33,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 34,
+              "verifier_view_reads": 68,
+              "batch_scatters": 34,
+              "batch_compacts": 34,
+              "channel_index_uploads": 1
+            },
+            {
+              "enabled": true,
+              "ok": true,
+              "closed": true,
+              "storage_allocations": 5,
+              "trees": 26,
+              "verifier_view_reads": 52,
+              "batch_scatters": 26,
+              "batch_compacts": 26,
+              "channel_index_uploads": 1
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "total_elapsed_seconds": {
+    "S0": 707.1830430664122,
+    "O3": 642.3182544168085
+  },
+  "S0_over_O3_total": 1.1009854354964543,
+  "E2E_time_reduction_percent": 9.172277147419127,
+  "E2E_verdict": "positive_pilot",
+  "successes": {
+    "S0": 2,
+    "O3": 2
+  },
+  "full_output_tensor_pairs": 74,
+  "full_output_elements": 927072,
+  "actual_command_pairs": 574,
+  "full_env_state_array_pairs": 80,
+  "CUDA_initialized": false,
+  "caveat": "Two initial states in libero_10/task0, one run per arm and state, balanced two parallel workers across the original first wave and resumed second wave; interrupted model-load-only attempt preserved. Pilot only.",
+  "whole_episode_KV_archives": false,
+  "prior_long_KV_all30_byte_gate": "/rjs/cxz/论文探索/.pipeline/research/speculative-sampling/evidence/chunk-rows-o3-20261013/FINAL-AUDIT.json"
+}

@@ -1,0 +1,199 @@
+{
+  "schema_version": "p0-phase4-full-draft-compare/v1",
+  "created_at": "2026-10-07T01:11:46.405647Z",
+  "branch": "action",
+  "model_kind": "transformer",
+  "parameter_count": 583136,
+  "config": {
+    "seed": 20261007,
+    "epochs": 3,
+    "batch_size_action": 256,
+    "batch_size_video": 8,
+    "lr": 0.0002,
+    "weight_decay": 0.0001,
+    "context_window": 8,
+    "d_model": 128,
+    "transformer_layers": 2,
+    "transformer_heads": 4,
+    "transformer_ff_dim": 512,
+    "amp_bfloat16": true,
+    "horizons_action": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      49
+    ],
+    "horizons_video": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      19
+    ],
+    "latency_repeats": 30,
+    "device": "cuda"
+  },
+  "split_counts": {
+    "train": 67277,
+    "validation": 10290,
+    "test": 2450
+  },
+  "training_history": [
+    {
+      "epoch": 1,
+      "global_step": 263,
+      "train_normalized_residual_mse": 0.970783968162174,
+      "validation": {
+        "sample_count": 10290,
+        "direction_mse": 0.00316889985000813,
+        "direction_rel_l2": 0.08401049571319966,
+        "direction_cosine": 0.9928528610540897,
+        "one_step_state_rel_l2": 0.014493738359566216
+      }
+    },
+    {
+      "epoch": 2,
+      "global_step": 526,
+      "train_normalized_residual_mse": 0.8545704991645233,
+      "validation": {
+        "sample_count": 10290,
+        "direction_mse": 0.0029744710202428723,
+        "direction_rel_l2": 0.08079608045120165,
+        "direction_cosine": 0.9930196155959594,
+        "one_step_state_rel_l2": 0.014564421578908684
+      }
+    },
+    {
+      "epoch": 3,
+      "global_step": 789,
+      "train_normalized_residual_mse": 0.8064407724391371,
+      "validation": {
+        "sample_count": 10290,
+        "direction_mse": 0.0028763933941736396,
+        "direction_rel_l2": 0.07924930866304478,
+        "direction_cosine": 0.9931777368365734,
+        "one_step_state_rel_l2": 0.014608674135106182
+      }
+    }
+  ],
+  "best_validation": {
+    "sample_count": 10290,
+    "direction_mse": 0.0028763933941736396,
+    "direction_rel_l2": 0.07924930866304478,
+    "direction_cosine": 0.9931777368365734,
+    "one_step_state_rel_l2": 0.014608674135106182
+  },
+  "test_teacher_forced": {
+    "sample_count": 2450,
+    "direction_mse": 0.00268741073089392,
+    "direction_rel_l2": 0.07911347720087791,
+    "direction_cosine": 0.9932935815927934,
+    "one_step_state_rel_l2": 0.013817177986612125
+  },
+  "test_recursive": {
+    "1": {
+      "direction_rel_l2": 0.08027011205869106,
+      "endpoint_state_rel_l2": 0.012555651079722641,
+      "zoh_endpoint_state_rel_l2": 0.011927349348843564,
+      "direction_cosine": 0.9931211781750122,
+      "sample_count": 2400
+    },
+    "2": {
+      "direction_rel_l2": 0.13578939115747493,
+      "endpoint_state_rel_l2": 0.02449429848072852,
+      "zoh_endpoint_state_rel_l2": 0.02324771493653509,
+      "direction_cosine": 0.98309382365105,
+      "sample_count": 2350
+    },
+    "4": {
+      "direction_rel_l2": 0.22591484827134345,
+      "endpoint_state_rel_l2": 0.04701346839881605,
+      "zoh_endpoint_state_rel_l2": 0.044386570438328714,
+      "direction_cosine": 0.9695439543061786,
+      "sample_count": 2250
+    },
+    "8": {
+      "direction_rel_l2": 0.39876150078162914,
+      "endpoint_state_rel_l2": 0.08863721169713067,
+      "zoh_endpoint_state_rel_l2": 0.08184201291194412,
+      "direction_cosine": 0.9415880863550232,
+      "sample_count": 2050
+    },
+    "16": {
+      "direction_rel_l2": 0.8112030188423215,
+      "endpoint_state_rel_l2": 0.16991837866378554,
+      "zoh_endpoint_state_rel_l2": 0.148432467421799,
+      "direction_cosine": 0.8557800008311416,
+      "sample_count": 1650
+    },
+    "32": {
+      "direction_rel_l2": 1.9106536229217754,
+      "endpoint_state_rel_l2": 0.36062916689059316,
+      "zoh_endpoint_state_rel_l2": 0.2845689825363019,
+      "direction_cosine": 0.610605289515327,
+      "sample_count": 850
+    }
+  },
+  "latency": {
+    "batch_size": 256,
+    "repeats": 30,
+    "batch_latency_ms": 2.581729181110859,
+    "per_sample_latency_ms": 0.010084879613714293,
+    "peak_cuda_memory_bytes": 52473856,
+    "amp_bfloat16": true
+  },
+  "checkpoint": "/rjs/cxz/论文探索/投机采样/results/draft_full_phase4-20261007-f32/models/action/transformer/best.pt",
+  "interpretation_guard": "Offline target-trace metrics only; not online verifier acceptance, task success, or E2E speedup.",
+  "test_recursive_original_buggy": {
+    "1": {
+      "direction_rel_l2": 0.08026777599938213,
+      "endpoint_state_rel_l2": 0.01255384342415103,
+      "zoh_endpoint_state_rel_l2": 0.011927349348843564,
+      "direction_cosine": 0.9931214561313391,
+      "sample_count": 2400
+    },
+    "2": {
+      "direction_rel_l2": 0.1357807317439546,
+      "endpoint_state_rel_l2": 0.024489810623505966,
+      "zoh_endpoint_state_rel_l2": 0.02324771493653509,
+      "direction_cosine": 0.9830936952854724,
+      "sample_count": 2350
+    },
+    "4": {
+      "direction_rel_l2": 0.22589469690952035,
+      "endpoint_state_rel_l2": 0.04700306432404452,
+      "zoh_endpoint_state_rel_l2": 0.044386570438328714,
+      "direction_cosine": 0.9695451682143741,
+      "sample_count": 2250
+    },
+    "8": {
+      "direction_rel_l2": 0.3987000410658557,
+      "endpoint_state_rel_l2": 0.0886158337444067,
+      "zoh_endpoint_state_rel_l2": 0.08184201291194412,
+      "direction_cosine": 0.9415984973965622,
+      "sample_count": 2050
+    },
+    "16": {
+      "direction_rel_l2": 0.8110754001682455,
+      "endpoint_state_rel_l2": 0.16987691649659115,
+      "zoh_endpoint_state_rel_l2": 0.148432467421799,
+      "direction_cosine": 0.8558196809616956,
+      "sample_count": 1650
+    },
+    "32": {
+      "direction_rel_l2": 1.910353151068968,
+      "endpoint_state_rel_l2": 0.3605211739154423,
+      "zoh_endpoint_state_rel_l2": 0.2845689825363019,
+      "direction_cosine": 0.6106864432376974,
+      "sample_count": 850
+    }
+  },
+  "recursive_metrics_fix": {
+    "schema_version": "p0-phase4-recursive-metrics-fixed/v1",
+    "reason": "recursive evaluator now supplies each future transition's sigma/next_sigma/timestep to the current token"
+  }
+}

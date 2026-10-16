@@ -1,0 +1,1051 @@
+{
+  "pytorch_tag": "v2.9.0",
+  "pytorch_commit": "0fabc3ba44823f257e70ce397d989c8de5e362c1",
+  "flash_attention_commit": "979702c87a8713a8e0a5e9fee122b90d2ef13be5",
+  "cutlass_commit": "e51efbfe18fe4f4cbb66ab814c55bf4aa0185491",
+  "source_of_truth": "Installed va PyTorch2.9 git version; pinned ATen/CMakeLists.txt and native flash_api.cpp",
+  "namespace_isolation": "FLASH_NAMESPACE=wam_flash compile-time name only; no header body modification",
+  "kernel_math_changes": [],
+  "owned_cuda_translation_units": [
+    "csrc/standalone_flash_sdpa.cu"
+  ],
+  "contract": "SM80 BF16 [B,S,H,128], inference, full noncausal visibility, dropout/alibi/local/softcap off",
+  "wrapper_not_whole_pytorch_api": true,
+  "preexisting_host_only_smem_attribute_cache_retained": true,
+  "compiler_difference": "Local nvcc12.4 versus baseline PyTorch wheel CUDA12.6; source alignment is not identical SASS/build claim",
+  "files": [
+    {
+      "path": "csrc/vendor/flash_attn/flash_fwd_launch_template.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/flash_fwd_launch_template.h",
+      "sha256": "62a3854739485046b5385809d10eaf4f7d19747f7a63564707196587a57b09ee",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/kernel_traits.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/kernel_traits.h",
+      "sha256": "880a6f432613dc01979a605d304da75985f9ed34ff66f1f4ded85fc90b7047ac",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/block_info.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/block_info.h",
+      "sha256": "89cb30fd392372f0313db50cde8a93632ae8dc8c02a5902a245d985fc3fa609b",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/rotary.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/rotary.h",
+      "sha256": "f000eba29dade79f629849ed5dbce654d475d61826142a0f94011506be3d2427",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/flash.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/flash.h",
+      "sha256": "8aff12bf7cab089990eb4a0b87349df8445c04515b7e64a47a934e7478fb2130",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/mask.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/mask.h",
+      "sha256": "4ea99928f81a7861894a6fbeb9ab127abccce49fdb81fdca0b8e570b3f6f1a22",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/namespace_config.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/namespace_config.h",
+      "sha256": "2f50a22748285224426a7d374715fc63123ad4b4153e1f46b455a87a8a07f4a5",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/utils.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/utils.h",
+      "sha256": "abc6d4c73522af35f6c31be3938830b9474f620d7c8083168d80dab226a0fdc9",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/flash_fwd_kernel.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/flash_fwd_kernel.h",
+      "sha256": "f62f9f9125bc24330b48e2cbf2fbdb369c4f9f3e326c8e66a797f8e09f934ec1",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/hardware_info.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/hardware_info.h",
+      "sha256": "deef803b86266ec3f3c6f3f3a4c414ad91cc92d637ba9be02eec520db712cfe3",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/philox_unpack.cuh",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/philox_unpack.cuh",
+      "sha256": "14d35e2e51b5f248d7007d4f783c46c29f5803444ba7d4e30204a50fd6811ac5",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/philox.cuh",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/philox.cuh",
+      "sha256": "81ef706f740783b4e035b8a78d7f579ee5750d4defdb2068781b3b7cb027abee",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/softmax.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/softmax.h",
+      "sha256": "77e70b8d0dbe72f459ced29199a554a0d1e0559cad2370a2e5b5f1fa5faf73f1",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/static_switch.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/static_switch.h",
+      "sha256": "af085a777a0bbc1a561f6f988dcd93574826107d2e3bfcf4ca6b45ee398c24c4",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/flash_attn/dropout.h",
+      "upstream": "https://raw.githubusercontent.com/Dao-AILab/flash-attention/979702c87a8713a8e0a5e9fee122b90d2ef13be5/csrc/flash_attn/src/dropout.h",
+      "sha256": "a1d14c0c10227d67bfd36bada415565f4deefa604e6eb1863d7dcc0fd8f12098",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/layout_composed.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/layout_composed.hpp",
+      "sha256": "54f1fbd500c43c68755c018f8eb1706b43e463e5a35527714e7e9e7eef2d34f1",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/config.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/config.hpp",
+      "sha256": "0abde1dda75c7f8e75f1661ba30815449590da23c7bf86f615d35de5ef86fc3d",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/pointer.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/pointer.hpp",
+      "sha256": "5200e0be69bd7dd2fb4a214bd54100e66ae986aacaf69acb9f22ff788e1bc6d2",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/pointer_swizzle.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/pointer_swizzle.hpp",
+      "sha256": "5452d2cd15476b2d0e62fcb739b918f5b2dc1cc7fff1f9c3aaee068f30d51fa2",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/pointer_flagged.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/pointer_flagged.hpp",
+      "sha256": "2320c0cecbbae3381e59c99cbb9f926c59bf7bbc9289dd725c9b88feeeb22efa",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/layout.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/layout.hpp",
+      "sha256": "215312b0c805c3985edc57363363dd2cb5435390cbe8dc2ef745a38e65d8aab7",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/pointer_sparse.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/pointer_sparse.hpp",
+      "sha256": "21a60a84ded6bcb2243292ca5ec7a5e495928921071848935e99ebef8659cbca",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/int_tuple.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/int_tuple.hpp",
+      "sha256": "c24e9f65815221a0c81ddd59dece334ad5169ebd3e82527181cc6859931df9b3",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/underscore.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/underscore.hpp",
+      "sha256": "65edce496beb4b954cc64602ccb9b81a11635187b0626c9a95e327a68604f5f5",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/swizzle_layout.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/swizzle_layout.hpp",
+      "sha256": "481415b5c76197ae64af2091c0e498c6b0286aedc302c718452f42ada1af4be2",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/tensor_zip.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/tensor_zip.hpp",
+      "sha256": "aec4c5c59b3c603af1d4b91f2251f4ea2b253d9c4894a2112ed5fdd47c31d41f",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/tensor_impl.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/tensor_impl.hpp",
+      "sha256": "fa20483f0263acb393bc761fa405c25bfffdb9bc003db08b85e9f5d4b8a8615d",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/tensor.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/tensor.hpp",
+      "sha256": "165ce9484ddf256881662136a0d25004299d87e36986c1de33b27030a0955b5c",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/pointer_base.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/pointer_base.hpp",
+      "sha256": "b5abdc6ed02e90ea2098a7094b13ce06f98abf562b53b5f1acc9992131ff651f",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/stride.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/stride.hpp",
+      "sha256": "e77d5febafa814d8bc6150261e099f3b54dcbb74d653415fd6f4c8c4c68fbeb8",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/swizzle.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/swizzle.hpp",
+      "sha256": "308f641a775688413cc2c0e2ba5a5b52670589b731e468acb8929dd6ff6c0a34",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/floating_point_nvrtc.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/floating_point_nvrtc.h",
+      "sha256": "9e460f494422cc738a3d9c224df0ff89079002eec477b99cfcb475033d784c2c",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/gemm_coord.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/gemm_coord.h",
+      "sha256": "1b9d463105ef5a9f3b66b7ee4c589e3e9535241ec44d146fe4a12c5209f29ac9",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/bfloat16.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/bfloat16.h",
+      "sha256": "355024524c529f73ac8a8d7e406cad60e9cb1f4aac9ae5fa203216bf7a1dc86d",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/pitch_linear_coord.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/pitch_linear_coord.h",
+      "sha256": "5ae2681cc9098e616dafebe3386bdd5d56c7dce33754beb6f6485716d127c952",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/numeric_size.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/numeric_size.h",
+      "sha256": "8b6948eb7e6e2675e95b57f3c32e90fbfcd53a1c05043305b34ccbec1642bf26",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/uint128.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/uint128.h",
+      "sha256": "8637bb2379477ec4850d6c97a2cd3507a460bc2f8dabc48d0264866fbba0dda8",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/functional.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/functional.h",
+      "sha256": "0f331598ec621fc1e8541b46449f0fccffa1e62c938c8b12dcc777529c347557",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/array_subbyte.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/array_subbyte.h",
+      "sha256": "19496f601472bde0d7fb9f4a36b8c49ac357781be2b9180630ab03fb697c6287",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/matrix_shape.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/matrix_shape.h",
+      "sha256": "a5aa67691c6391a462696556df9a50d84746005d52f5980ee57870165edc0722",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/integer_subbyte.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/integer_subbyte.h",
+      "sha256": "53979fc7ccb56dfabdf21e349b4518116e82caa1c132d9f7967150f5c278e190",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/real.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/real.h",
+      "sha256": "6fd96474fd128d6ee44bfdc9274a9cabf805bd726ff7a1563b70fd3b41fbbf44",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/fast_math.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/fast_math.h",
+      "sha256": "21b92aec79d98f910dc1227dc0777caa8f7fb72581ca7bec2c313de444510fd6",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/matrix.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/matrix.h",
+      "sha256": "426fba40f1ef378eb1f9a1c03bb0d9bb2d4e67d582248c6e89a7c19ef82e6e27",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/matrix_coord.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/matrix_coord.h",
+      "sha256": "22b96274790f0f1dfd44aa476c1575c3ba44ac905353efc3325404530e39fe7e",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/subbyte_reference.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/subbyte_reference.h",
+      "sha256": "e49ab0b69c5d1cff243946d4678dc3bf56e0835d2278235f49de6894feca276b",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/float8.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/float8.h",
+      "sha256": "fd58616e2616d5cac1aaf73f152c30b7eb87cfd839bf9a504099d042cb2617c8",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/half.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/half.h",
+      "sha256": "1da1a1eba18a9fa62e7d3eabd5977af312cb589213f2188a48234d61bb15ed4d",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/numeric_types.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/numeric_types.h",
+      "sha256": "7d34dd8a8db77549eb2d635c6c7f223ca85d210ca0bb640b2144287a02d68aa5",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/float_subbyte.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/float_subbyte.h",
+      "sha256": "1c289e9f5dc312d9fd757677c4066ba903019a99ce0a3c2de9d4b8caf03f8464",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/quaternion.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/quaternion.h",
+      "sha256": "521209fca5d47f6a11fecbcbe03af5ad0e84375e63f44d2031614b3b4e1d4bd6",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/tensor_coord.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/tensor_coord.h",
+      "sha256": "e97dbe66edce5c63d4207355163188fc50c10a86359f51e111478f51f7089214",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/tfloat32.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/tfloat32.h",
+      "sha256": "16a926b8caf6eef11d511f998fa51b922f6065a1fc4a5bde788dceaf241b2228",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/cutlass.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/cutlass.h",
+      "sha256": "07f5cf03084d62bcb9848c6c8c0e823f07305433491195001c06fed00c6543bf",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/trace.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/trace.h",
+      "sha256": "b124b4c1cb13a7877188f142a39fb88f652ac3ff0bf7a1d8af9faed29b805f96",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/tensor_view.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/tensor_view.h",
+      "sha256": "026cc5dd6c3352da4785365f1184ad17af34c77523df04d447d552bc3ed6bc68",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/exmy_base.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/exmy_base.h",
+      "sha256": "49bdc92fd4e2f2264ab777358b7a2810d697ef7069b484a5eaa9715def8db859",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/cuda_host_adapter.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/cuda_host_adapter.hpp",
+      "sha256": "3dd7abd0bd4da92fc435ef6b0a8c04520aef903c1538da0a86b1bf56a138a685",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/array.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/array.h",
+      "sha256": "038bdd0e14c8aca1ef163957175a02f7cdca5db37b330f9f494001d19b52527d",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/numeric_conversion.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/numeric_conversion.h",
+      "sha256": "ba20f879975c30975b2771e1ce6b52b317234c5060f4ccb21045c905b0951e4d",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/complex.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/complex.h",
+      "sha256": "fc335a8d29b5120c194cb48dd5dbce29e3d0154185f8968a556ea7e276712f60",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/tensor_ref.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/tensor_ref.h",
+      "sha256": "734908cf9b867f28439ae59023fde6b1e36a71f7aacd8ee065146e8d3b23863e",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/coord.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/coord.h",
+      "sha256": "0d921cbfa4e2b586f0523dddec213925c92ab15793be926676a4a5d6b99ebfef",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/core_io.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/core_io.h",
+      "sha256": "47649140f1df9d488a306dc2fed79aaae9e1f7982db9cc7bab25b5f0da81484b",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/arch/synclog.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/arch/synclog.hpp",
+      "sha256": "d26f6f79ce325e8c5aea964cbadb4ea239e9e26faffe7320d6725eefe0b9d5fd",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/arch/config.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/arch/config.h",
+      "sha256": "bce8d8f59a33a86c480995e18e96d04da0e4061cf4b10246f980268514b5dd76",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/platform/platform.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/platform/platform.h",
+      "sha256": "e4f00bea10f586f24481b1ae8652ddaedd3cccab4351e7ba775adcc4a02fec0a",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/detail/dependent_false.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/detail/dependent_false.hpp",
+      "sha256": "4bf38c035f080d1a0cd49722cd81990f0ae34368ada7efa304f76f7367231513",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/detail/helper_macros.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/detail/helper_macros.hpp",
+      "sha256": "f59a5e9fc0f822ce6411d1f6d0979ded68efdb1bf6755d322b93163f31e3b01a",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/conv/conv3d_problem_size.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/conv/conv3d_problem_size.h",
+      "sha256": "17e17e6f572a8abe2da85c856a71a72191c6f52ed3c7a0eac902804b12af6738",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/conv/convolution.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/conv/convolution.h",
+      "sha256": "bcd79d6d36415c0082fb1d16329d05ee25b27cab0d30c0f33df8fdd035c9d247",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/conv/conv2d_problem_size.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/conv/conv2d_problem_size.h",
+      "sha256": "a341c409c9ff1eeeb82b70fd20c0b23f61390086a16081f71b435cfd00e2fa15",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/gemm/gemm_enumerated_types.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/gemm/gemm_enumerated_types.h",
+      "sha256": "93833fb86b1a2bf87f0ec4b64d51d2d5f65399ea40ba84cdef2e8b3489a8c144",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/layout/tensor_op_multiplicand_sm70.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/layout/tensor_op_multiplicand_sm70.h",
+      "sha256": "9299f947d97c8a66c0a39fb2904bdd1513e54743e204e02fd144f770cc023f2e",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/layout/tensor_op_multiplicand_sm75.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/layout/tensor_op_multiplicand_sm75.h",
+      "sha256": "d4fef95a420e5724b775f854252352fa0447742d19e35fd26e7e70c72051db2f",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/layout/tensor.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/layout/tensor.h",
+      "sha256": "5476d9db5a0ac0427f2397d55c8ffa45df0526080ada4a79ada61b6d33930eab",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/layout/matrix.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/layout/matrix.h",
+      "sha256": "f7ff90051e0b2c7ea6f1295e62a2550e89aec5f8385a26c38ad38890a670341d",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/layout/pitch_linear.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/layout/pitch_linear.h",
+      "sha256": "f3d01d0cafed30d817c41ec5c4acc8c89d405bce9854eb7f0cd68f8363ed146a",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/layout/layout.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/layout/layout.h",
+      "sha256": "259da643dfd0498946ea81718676afbd68d2348cac171da6b41bf896f94b0d08",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/layout/vector.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/layout/vector.h",
+      "sha256": "4c08c6e7935d76ba92318c281abb803b3cf669a76ac87f15881fdc8ab526c90a",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cutlass/transform/thread/unary_op.h",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cutlass/transform/thread/unary_op.h",
+      "sha256": "7f9a91bdc04947599cecede830e1f33ed90d9ee8beb4c446cb0d62d66a1929f5",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/container/array.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/container/array.hpp",
+      "sha256": "0b73e0922ec56db8284aaac660c91044c12b8ba77b3ad14eaa51e24c99f644ba",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/container/type_list.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/container/type_list.hpp",
+      "sha256": "cbbfbf214046726a7db6bf4d7ce155a4374e957d756ec44b2d337c9928a1f7a8",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/container/bit_field.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/container/bit_field.hpp",
+      "sha256": "44c497437463c5b0e44289b4c0c7d9c69043c3095ab93132ce855ada7158ff8a",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/container/alignment.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/container/alignment.hpp",
+      "sha256": "7b7944102b31e03d868548d44c2555baa7b167a9a42200361269860af0f06260",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/container/array_subbyte.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/container/array_subbyte.hpp",
+      "sha256": "c3a2dcf73642be42e3cbec1ce386c5b21ea2f3e9f5896790af1d2fb6e043c37e",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/container/tuple.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/container/tuple.hpp",
+      "sha256": "3fe2de09d1da2dd70a1fcfbbb74a49b844b40d4336f5131ef86b987c7231569c",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/container/cuda_types.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/container/cuda_types.hpp",
+      "sha256": "2726a840e42e21c4840127fcb9c492ba99b5de2ee368034e837e0d4da2088443",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/container/array_aligned.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/container/array_aligned.hpp",
+      "sha256": "def0627cc4c07ea19b41f2582c30832ba44daa1cab68ba26418c52c176a0f765",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/config.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/config.hpp",
+      "sha256": "c0de8fc217134ff6b92c749c8849ed04158dec647e32f1030682804d75bb2440",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/copy_sm90_desc.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/copy_sm90_desc.hpp",
+      "sha256": "5afb140619f0486e919f7ba11dfef49c772f4ca778b446d49be6ddfa943e22fa",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm70.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm70.hpp",
+      "sha256": "c7ecaf1ab57557ed6c4baab62032b27d372b6f71138c5b2adf6da9f53402b302",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm80.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm80.hpp",
+      "sha256": "4d1315c12cccc6652a1dced6d6cb2d13a0390da5829978b5e01895571b677a60",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/copy_sm100.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/copy_sm100.hpp",
+      "sha256": "12c146b27ef2de19b06dd55750353973eb6570ec56ad9c2e95a7162e8e7b37db",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm100.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm100.hpp",
+      "sha256": "68306540dfc897b8247e456a271479c66e15c74de9d204997d67daf48470f5a3",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm90_gmma_sparse_ext.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm90_gmma_sparse_ext.hpp",
+      "sha256": "d9208b9dfcfefe4a4bd26e343f5d6b164c4916b6673bf559767660764af951e0",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/copy_sm75.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/copy_sm75.hpp",
+      "sha256": "dbffdbb5e9425898fa342471d021b212ced2e3b2340637fe7fde5a8109d4ec9a",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm90_gmma_ext.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm90_gmma_ext.hpp",
+      "sha256": "af6c9ea73dce26b0e19e66d9d8596fea671f2a2b730d6b9a1579a513ccc647e1",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm75.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm75.hpp",
+      "sha256": "68f7a26da6c89c3b219afc5f65a2e44da83c8f7bff8f9491799c27257dcafdd5",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/tmem_allocator_sm100.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/tmem_allocator_sm100.hpp",
+      "sha256": "2452d93263bfbdf2fe0523d57267fc2bb111148072b6752307894049737a52e4",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm90.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm90.hpp",
+      "sha256": "eede4c08af6c2d79a6a956072c91a902026dec8112fa8f43392fd11a2dab9de5",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm90_desc.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm90_desc.hpp",
+      "sha256": "4ae842109e111094fe5fd5276e46bb99f5446f97e806b50ecd55ac47dc9fa658",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/copy_sm100_tma.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/copy_sm100_tma.hpp",
+      "sha256": "9a9f051c5efead9a0d810905603f2806c76b6b902f66b577814645c750f5f6c7",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/copy_sm50.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/copy_sm50.hpp",
+      "sha256": "523dc2ea1257bb0efff64f626c3aadcfc623e02cbdef249ab8ab57d6475796a5",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm120_sparse.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm120_sparse.hpp",
+      "sha256": "9926f677ef823178f653c9e6c6d810ccec16a6f34ab781901a57797c2388a724",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm100_umma.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm100_umma.hpp",
+      "sha256": "e3d855544c26b25c23cbef001b9ec1b1430c6723f1bff95b70f69d6f70bfc159",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma.hpp",
+      "sha256": "8f65943f681e16ed11df4bc7bcf6c97ebd808b6b2d950f6cc5ef29805a154029",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm90_gmma_sparse.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm90_gmma_sparse.hpp",
+      "sha256": "0831b148aff7d99793625f9f10669555ab8b97fa506cb9fcf11f267411b4101e",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/cluster_sm90.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/cluster_sm90.hpp",
+      "sha256": "d70030bec8a3ebb36949408c3ee0951124aa1d1d0b610ac5682c1bc3bda2d5d6",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/copy_sm90_tma.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/copy_sm90_tma.hpp",
+      "sha256": "d31756a7105dc875751fdef875be1b9f2bc008111d0c45734fed39465c12c636",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/copy.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/copy.hpp",
+      "sha256": "ec31401d27eb23ace72211c1345178934c6a242a36adc8e2f7196bef08920eea",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm61.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm61.hpp",
+      "sha256": "33e3511cf8884660145c946cb75c05763bfafdcb2932b4763ceedf9b59bbcffa",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/util.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/util.hpp",
+      "sha256": "6c4f78507adbfc43094eb1770d60c96ce3e02cc53c5d1b49edb0a8444c6ad7f2",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/simd_sm100.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/simd_sm100.hpp",
+      "sha256": "b566b7e35f5237c9caacf7e8d8a99231c31cadb2f167eff1a1ab6fdee72d31cf",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm120.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm120.hpp",
+      "sha256": "4de2816faaf3176326eb9fea837f5ea06dbb21d2b49dacd8f9a8f33d89c98133",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm100_desc.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm100_desc.hpp",
+      "sha256": "3fdf3acfa952e514e19e8539cea20555fd25a4b2a2ef4e189a72ef6973586fe5",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/copy_sm80.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/copy_sm80.hpp",
+      "sha256": "f98ebf662eb95419bf2dfcbcbe9b9e54ba0fd965b8d65f5a850f56c71b158b94",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm89.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm89.hpp",
+      "sha256": "d32ca9bf45e776617e2bc0c25619b56109b952c38ac2ea4f357787e82ad6caf0",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/mma_sm90_gmma.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/mma_sm90_gmma.hpp",
+      "sha256": "bbe378e69891013e93ae348850a80d39ea299249d0211758c5d849cd46b4c17a",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/arch/copy_sm90.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/arch/copy_sm90.hpp",
+      "sha256": "7668c6f9304866f65655555c39f5e10fa6ffb02df964a8e7918ac877d41cc0db",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/util/debug.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/util/debug.hpp",
+      "sha256": "11960fcac4506a9ef06f25cc0cddc3a01c5a9f3a09b06e86fe837d6195093043",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/util/print_tensor.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/util/print_tensor.hpp",
+      "sha256": "1d07ad75a942234b8d440719b9a67aeb239934fd0c68ecdd560c175b59fb6c6b",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/util/print.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/util/print.hpp",
+      "sha256": "de44a6e9bce60ba5e3ddc601bbb815d2248d65e6ce87fa94f134374dc0cb175f",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/util/type_traits.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/util/type_traits.hpp",
+      "sha256": "1fd25a67665714db5cb9fa6c6bd2a955ba3c03878c3fd058c7571c23ddea69fc",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/util/print_latex.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/util/print_latex.hpp",
+      "sha256": "7e5ed4dc823eae7df6d9b5009dadf550696491fca4580e6570d1fce8a6c1dbd9",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/numeric/numeric_types.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/numeric/numeric_types.hpp",
+      "sha256": "6e69e574f97e0bd3480cc6547dfc642a5e7c5f5dabe6ae7f7a1e06c30b3161ff",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/numeric/math.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/numeric/math.hpp",
+      "sha256": "bed15cfe8363236e8c7ac06cf94efeb086ed30309c61fa30716afc770b8c10ff",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/numeric/int.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/numeric/int.hpp",
+      "sha256": "07489f8b8c918f30b0f268998a49750c7c5e98f78182e333e52f3a1f0a9876b2",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/numeric/integer_sequence.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/numeric/integer_sequence.hpp",
+      "sha256": "34dcf102cedc0bf4e30891fec07cffee5d2e7ad7f0998ca64dd981cc45fe69d3",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/numeric/arithmetic_tuple.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/numeric/arithmetic_tuple.hpp",
+      "sha256": "bd9a8feffdbd69568f515925168f5d047ae4eeef7a9d70b06ad289e88a33ef83",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/numeric/real.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/numeric/real.hpp",
+      "sha256": "04d22a2a9a9f7d7a02b744de255a55df30ba12b2105ce0585b2f7f8a10724fa1",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/numeric/complex.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/numeric/complex.hpp",
+      "sha256": "2852d6ca5131305f3e6c9c40082a616afd1085b8c1420d31a7a22c5d91803223",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/numeric/integral_ratio.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/numeric/integral_ratio.hpp",
+      "sha256": "3ef86e565a871b333686675b788676acd3780d204146669412a84fec64cb699c",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/numeric/integral_constant.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/numeric/integral_constant.hpp",
+      "sha256": "e7f31b04fc2d76e3f239c4df691bd4d394b3df2aab471c4276130a2ef94254c0",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/axpby.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/axpby.hpp",
+      "sha256": "2b11f2d6dc6d00c3374b68b0cfbd69c6e3529611a6e56b86e38d025f42c69a0b",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/tensor_algorithms.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/tensor_algorithms.hpp",
+      "sha256": "36d7105ddd3e1adf8fa2248b111efd93bda03855024c08bd3e1ec06869d97d28",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/cooperative_gemm.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/cooperative_gemm.hpp",
+      "sha256": "d0de07433f3be215a196acc0cfc969db16ca6b162193634ee0eb502378aee029",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/prefer.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/prefer.hpp",
+      "sha256": "4faa5471b2712b90de71825644025212246a5cdd499fae27f4da6c1ec71e38d7",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/clear.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/clear.hpp",
+      "sha256": "28f97f81b281fea7ccde08a6e1f082f63384e741943b64d304df2e00bc2e5965",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/cooperative_copy.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/cooperative_copy.hpp",
+      "sha256": "e03e105882db8a5df784bfb08a817b8d90789b297fd0ad6e113314486c34965a",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/functional.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/functional.hpp",
+      "sha256": "db90b96cc1e9b76f1dbbbda3f455367fe2e90cb60a95d91940dccffdb162680b",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/gemm.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/gemm.hpp",
+      "sha256": "25272aefdc06ac7b90ac8b638b651730d9ffd0b9e89b6bc56440deef21e2e0ea",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/copy.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/copy.hpp",
+      "sha256": "4b7d89e50c47fee5b8aef3638f2282cc657936d2e575ad2cfb00b4e0ead1530d",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/tuple_algorithms.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/tuple_algorithms.hpp",
+      "sha256": "4e1e2fceff0dee3cb073aae9bb3b0073b357d30b2a5ec77f2b67fb65b86ce395",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/prefetch.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/prefetch.hpp",
+      "sha256": "d708f5dad04c2da8138d2e88e120c75ccab34b3da7702821b9db29b7f977ed55",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/algorithm/fill.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/algorithm/fill.hpp",
+      "sha256": "e06904e6b029b9a96f4806abd9d7a2006052bff8249fe54d010dc3f682580bce",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm90_gmma.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm90_gmma.hpp",
+      "sha256": "956d254e25fbc5a0f400424bdfecb5a5857d258a0da3839bfa971f0fc56f19d3",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm75.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm75.hpp",
+      "sha256": "6cc3179ea53ef83d2f12373c2c421fd94dad84afab477876f43f77d24c281b0f",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm90_gmma_sparse.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm90_gmma_sparse.hpp",
+      "sha256": "3e4fde935f2c1134dfb99de542358f0d5aa3b23f53473b97b8b102424fdb7205",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm100.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm100.hpp",
+      "sha256": "69857d95bda1dc2169701bbac599f0f6a446761d00210f5f2dd1b87036db9795",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_atom.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_atom.hpp",
+      "sha256": "5c040e4f1c789365b86e21c82afd9f0c27f1db03f72810fe7f6bae23560e27fa",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm80.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm80.hpp",
+      "sha256": "58b972a2ec119bb15db0605a2613cd39ca52e09f630095e35677f5a17770d084",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_atom.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_atom.hpp",
+      "sha256": "c53c580b4bf42ccf0ea99ad447f917536f9bea26130b3f7191dde48da7fc0398",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm90_gmma_ext.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm90_gmma_ext.hpp",
+      "sha256": "d0e1e9736ad8eadda9ef36268a9e92d1488d37579566c4936f3a9ccdffdb0e42",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm120_sparse.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm120_sparse.hpp",
+      "sha256": "be6f0182446037c966eb98404580457b5434021e07e8044b4236b3034129e456",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm61.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm61.hpp",
+      "sha256": "9a9d01cbfea0a69525d073bc7b973740d5ba2e0929f76067d54858357d8ef057",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_traits_sm75.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_traits_sm75.hpp",
+      "sha256": "353af92d4da6f63dfbab76702b0935d9be01064b3dbeb6561df40be80f7ee9ad",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_traits_sm90_tma.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_traits_sm90_tma.hpp",
+      "sha256": "e3fa31ddfd411f72bfd30218347358622c2e92f6598835593ed9cdd853a0bb73",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_traits_sm80.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_traits_sm80.hpp",
+      "sha256": "9d768405d7ddcb1612572cb7439fb522fb96f3121337bfc0bc188e4d5ebd1e78",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_traits_sm90.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_traits_sm90.hpp",
+      "sha256": "843805a1b64a5c9c2d21871cb96e5b49f2c2a202bea17c3dd18812264fb22c9b",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/partitioner.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/partitioner.hpp",
+      "sha256": "3c23e2fe7e93f85163d818080cff3b758090b40c18c2a9a087af1f64ec896642",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm120.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm120.hpp",
+      "sha256": "084d939b07fd21651841edfeca3edfa679c2fd59279e769d65256d9a865c2bcb",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits.hpp",
+      "sha256": "c4d72caf948ac44900792a8617698fe76bbf507f6733a2221928a3db3f1f0016",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm90_gmma_sparse_ext.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm90_gmma_sparse_ext.hpp",
+      "sha256": "6b5b3fd9c3a115bba3af79fb4c3525b4ad9340dcd4e5211a6bb8daf551f1b986",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_traits_sm100_tma.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_traits_sm100_tma.hpp",
+      "sha256": "1cb82de8a634f72cabca92fa58ca2aebbeb1f5406eae618e7e5f203bc08f2cda",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm89.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm89.hpp",
+      "sha256": "f8e2e4f27ad0ab93f505fd2c61331eda4a19ffa8e6c289e20fcdfa57be7041e8",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm90.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm90.hpp",
+      "sha256": "10965f179974148f8febbe9cd771a5f5c742c4d2444d72cad22bc23b5693ec25",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_traits_sm90_tma_swizzle.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_traits_sm90_tma_swizzle.hpp",
+      "sha256": "ab2331957477cb12f1f1161a072b3643c5847f5f5338872d7f16e528df11a561",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/mma_traits_sm70.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/mma_traits_sm70.hpp",
+      "sha256": "23c72c128f8d58cac840089bcf07b120a2f4f6cb1b1b95c3b055dae2c34df8eb",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_traits.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_traits.hpp",
+      "sha256": "f1434137f94707650fba379eb53b8c307273917d33329e2688f556e5e5d162ca",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_traits_sm100.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_traits_sm100.hpp",
+      "sha256": "93ac53170f27107eca7128cac2cd170311b4f4fd9fa312325c2e1fe9a4171828",
+      "byte_identical": true
+    },
+    {
+      "path": "csrc/vendor/cutlass/include/cute/atom/copy_traits_sm50.hpp",
+      "upstream": "https://raw.githubusercontent.com/NVIDIA/cutlass/e51efbfe18fe4f4cbb66ab814c55bf4aa0185491/include/cute/atom/copy_traits_sm50.hpp",
+      "sha256": "312058966e3779166e8eb164cd9b5845b3a716f91fd5590c347b04b8c6a103b7",
+      "byte_identical": true
+    }
+  ],
+  "upstream_artifacts_manifest": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/baseline-upstream-manifest.json"
+}

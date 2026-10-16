@@ -1,0 +1,122 @@
+{
+  "schema": "draft-freeze-today50-preregistration/v1",
+  "registered_before_new_DEV_outcomes": true,
+  "primary": "TF_CONT",
+  "fixed_TF_checkpoint_sha256": "3657388fdce0763093d1b704c88a03b6836954160d43dddb9f75337a054d64ac",
+  "MLP_control": "same_seed23_child2500_plus_fixed500_same_data_draws_normalization_optimizer_reset",
+  "new_episodes": 50,
+  "fresh_DEV": {
+    "init": 35,
+    "tasks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "arms": [
+      "T",
+      "TF_CONT",
+      "MLP_CONT"
+    ]
+  },
+  "risk_DEV": {
+    "pairs": [
+      [
+        1,
+        29
+      ],
+      [
+        3,
+        26
+      ],
+      [
+        4,
+        26
+      ],
+      [
+        5,
+        28
+      ],
+      [
+        6,
+        27
+      ],
+      [
+        8,
+        25
+      ],
+      [
+        0,
+        28
+      ],
+      [
+        6,
+        25
+      ]
+    ],
+    "arms": [
+      "T",
+      "TF_CONT"
+    ],
+    "already_exposed_not_independent_TEST": true
+  },
+  "repeatability": {
+    "pairs": [
+      [
+        2,
+        33
+      ],
+      [
+        8,
+        33
+      ]
+    ],
+    "repeats": 2,
+    "arm": "T",
+    "not_new_independent_samples": true
+  },
+  "observation_protocol": "unchanged real simulator cached observation; no image injection/force resampling",
+  "decision_rule": {
+    "retain_predeclared_TF_for_expanded_TEST_if": [
+      "all50complete_and_owned_cleanup",
+      "fresh_TF_success_at_least_T_and_matched_MLP",
+      "fresh_common_success_nonempty",
+      "fresh_length_P50_at_most1.10_P90_at_most1.20_max_at_most1.30",
+      "risk_T_success_TF_failure_count_zero"
+    ],
+    "tie": "retain predeclared TF candidate; do not claim architecture superiority or measured total-cost advantage",
+    "if_failed": "report unmet conditions; no automatic global preset/architecture replacement, threshold/PF search or unbounded training",
+    "strict_engineering_screen": "all current fresh/risk physical_controller_actual_target_RNG_and_initial_pixels exact, plus numeric checks; preserve original FAILED regardless",
+    "independent_TEST_requires_frozen_candidate_engine_and_prospective_manifest": true,
+    "independent_TEST_completion_is_a_status_not_formal_performance_permission": true,
+    "no_3pp_NI_claim_from_DEV": true,
+    "original_formal45_permission": false
+  },
+  "statistics": "fresh and known-risk and repeated-target strata separate; all failures horizon800 penalty; actual steps separate; paired four cells and both-success length distribution; no old13/old50 pooling",
+  "target_and_draft_forward_budget": {
+    "job": 100000,
+    "per_episode": 4000
+  },
+  "budget": {
+    "max_GPU_job_lifetime_seconds": 14400,
+    "cleanup_reserve_seconds": 300,
+    "absolute_work_stop": "2026-10-16T18:15:29+08:00",
+    "absolute_cleanup_deadline": "2026-10-16T18:20:29+08:00",
+    "new_output_bytes": 3221225472,
+    "disk_floor_bytes": 5368709120,
+    "workers": 1,
+    "server_threads": 2,
+    "client_threads": 2
+  },
+  "AutoDL": "released_to_user_no_further_SSH",
+  "global_default_changed": false,
+  "old_FAILED_or_quality_threshold_changed": false,
+  "TEST40to49_outcomes_read": false,
+  "fixed_MLP_checkpoint_sha256": "3dc01a48f204b3efedb4caccf2d36a01c2eecc55926c3265fe882f0a70b103b0"
+}

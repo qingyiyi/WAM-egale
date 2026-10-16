@@ -1,0 +1,3877 @@
+{
+  "status": "PASS_BONUS_FULL_EPISODE_OFFLINE_AUDIT",
+  "at": "2026-10-13T19:09:06+08:00",
+  "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-bonus-e2e-v1-20261013-183704",
+  "collection": {
+    "status": "PASS_GPU_FULL_EPISODE_COLLECTION",
+    "at": "2026-10-13T19:06:11+08:00",
+    "completed_episodes": 6,
+    "model_launches": 7,
+    "reused_target_episodes": 0,
+    "full_episode_data_total": 6,
+    "new_GPU_seconds": 1650.6229036469012,
+    "aggregate_GPU_seconds": 13143.63557540439,
+    "aggregate_GPU_seconds_cap": 18000,
+    "aggregate_target_intents": 42216,
+    "aggregate_target_cap": 50000,
+    "cleanup": {
+      "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+      "memory_total_bytes": 42949672960,
+      "memory_used_bytes": 0,
+      "memory_reserved_bytes": 543817728,
+      "memory_free_bytes": 42405855232,
+      "memory_accounting": "NVML_MEMORY_V2_ALLOCATED",
+      "memory_struct_version": 33554472,
+      "utilization_percent": 0,
+      "compute": [],
+      "graphics": []
+    },
+    "owned_roots_exited": true,
+    "charged_target_intents": 8977,
+    "reservations": [
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-bonus-e2e-v1-20261013-183704/fixed/worker0",
+        "cap": 3200,
+        "kind": "single-model-fixed-complete-chunks",
+        "ordinal": 1,
+        "at": "2026-10-13T18:38:40+08:00",
+        "plan_sha256": "453abc8978b6410f78b5b52564aa8258c026203e756ca5e89b5ab30ec5f4ebd6",
+        "charged_target_intents": 2478,
+        "exact_closed_count": true
+      },
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-bonus-e2e-v1-20261013-183704/campaigns/T/workers/worker0",
+        "cap": 1500,
+        "kind": "full-episode-T-init3",
+        "ordinal": 2,
+        "at": "2026-10-13T18:45:27+08:00",
+        "plan_sha256": "453abc8978b6410f78b5b52564aa8258c026203e756ca5e89b5ab30ec5f4ebd6",
+        "charged_target_intents": 1404,
+        "exact_closed_count": true
+      },
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-bonus-e2e-v1-20261013-183704/campaigns/BONUS/workers/worker1",
+        "cap": 4000,
+        "kind": "full-episode-BONUS-init4",
+        "ordinal": 3,
+        "at": "2026-10-13T18:45:27+08:00",
+        "plan_sha256": "453abc8978b6410f78b5b52564aa8258c026203e756ca5e89b5ab30ec5f4ebd6",
+        "charged_target_intents": 866,
+        "exact_closed_count": true
+      },
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-bonus-e2e-v1-20261013-183704/campaigns/OFF/workers/worker0",
+        "cap": 1200,
+        "kind": "full-episode-OFF-init3",
+        "ordinal": 4,
+        "at": "2026-10-13T18:52:32+08:00",
+        "plan_sha256": "453abc8978b6410f78b5b52564aa8258c026203e756ca5e89b5ab30ec5f4ebd6",
+        "charged_target_intents": 959,
+        "exact_closed_count": true
+      },
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-bonus-e2e-v1-20261013-183704/campaigns/T/workers/worker1",
+        "cap": 1500,
+        "kind": "full-episode-T-init4",
+        "ordinal": 5,
+        "at": "2026-10-13T18:52:32+08:00",
+        "plan_sha256": "453abc8978b6410f78b5b52564aa8258c026203e756ca5e89b5ab30ec5f4ebd6",
+        "charged_target_intents": 1404,
+        "exact_closed_count": true
+      },
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-bonus-e2e-v1-20261013-183704/campaigns/BONUS/workers/worker0",
+        "cap": 4000,
+        "kind": "full-episode-BONUS-init3",
+        "ordinal": 6,
+        "at": "2026-10-13T18:59:49+08:00",
+        "plan_sha256": "453abc8978b6410f78b5b52564aa8258c026203e756ca5e89b5ab30ec5f4ebd6",
+        "charged_target_intents": 856,
+        "exact_closed_count": true
+      },
+      {
+        "out": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-bonus-e2e-v1-20261013-183704/campaigns/OFF/workers/worker1",
+        "cap": 1200,
+        "kind": "full-episode-OFF-init4",
+        "ordinal": 7,
+        "at": "2026-10-13T18:59:49+08:00",
+        "plan_sha256": "453abc8978b6410f78b5b52564aa8258c026203e756ca5e89b5ab30ec5f4ebd6",
+        "charged_target_intents": 1010,
+        "exact_closed_count": true
+      }
+    ],
+    "conservative_unclosed_reservations": true
+  },
+  "fixed": {
+    "status": "PASS_FIXED_BONUS_WORKER",
+    "at": "2026-10-13T18:45:08+08:00",
+    "chunks": 44,
+    "fixtures": [
+      {
+        "init": 3,
+        "arms": {
+          "T": {
+            "samples": [
+              6.733717219904065,
+              6.6593463979661465,
+              6.557755019515753,
+              6.536271600052714,
+              6.623607564717531,
+              6.568884203210473
+            ],
+            "median": 6.596245883964002,
+            "request_wall_samples": [
+              6.731280332431197,
+              6.657611550763249,
+              6.556028274819255,
+              6.534705767408013,
+              6.621315944939852,
+              6.5672951862216
+            ],
+            "request_wall_median": 6.594305565580726,
+            "forwards": 72,
+            "phase_counters": {}
+          },
+          "OFF": {
+            "samples": [
+              5.127186147496104,
+              5.041017573326826,
+              5.068713095039129,
+              5.150180419906974,
+              5.217221412807703,
+              5.319536963477731
+            ],
+            "median": 5.138683283701539,
+            "request_wall_samples": [
+              5.126085733994842,
+              5.039608459919691,
+              5.067221572622657,
+              5.148774661123753,
+              5.2154345996677876,
+              5.317917212843895
+            ],
+            "request_wall_median": 5.137430197559297,
+            "forwards": 53,
+            "phase_counters": {
+              "target_forward_count": 2,
+              "tree_scheduler_transition_count": 192,
+              "committed_scheduler_update_count": 50,
+              "ordinary_target_scheduler_update_count": 18,
+              "draft_forward_count": 87,
+              "tree_count": 29,
+              "logical_candidate_rows": 203,
+              "verifier_target_row_count": 203,
+              "verifier_cfg_rows": 406,
+              "verifier_forward_count": 29,
+              "accepted_depth_0": 10,
+              "accepted_depth_1": 6,
+              "committed_draft_scheduler_update_count": 32,
+              "accepted_depth_2": 13,
+              "terminal_target_forward_count": 1
+            }
+          },
+          "BONUS": {
+            "samples": [
+              4.224706921726465,
+              4.695651561021805,
+              4.288485551252961,
+              4.375980742275715,
+              4.59440715610981,
+              4.510715680196881
+            ],
+            "median": 4.443348211236298,
+            "request_wall_samples": [
+              4.22352409362793,
+              4.6941910441964865,
+              4.28677723929286,
+              4.374829204753041,
+              4.592778462916613,
+              4.50846959464252
+            ],
+            "request_wall_median": 4.441649399697781,
+            "forwards": 45,
+            "phase_counters": {
+              "target_forward_count": 2,
+              "tree_scheduler_transition_count": 149,
+              "committed_scheduler_update_count": 50,
+              "ordinary_target_scheduler_update_count": 11,
+              "draft_forward_count": 63,
+              "tree_count": 21,
+              "logical_candidate_rows": 147,
+              "verifier_target_row_count": 147,
+              "verifier_cfg_rows": 294,
+              "verifier_forward_count": 21,
+              "accepted_depth_0": 6,
+              "accepted_depth_1": 3,
+              "committed_draft_scheduler_update_count": 27,
+              "accepted_depth_2": 12,
+              "bonus_target_tree_count": 12,
+              "bonus_target_scheduler_update_count": 12,
+              "terminal_target_forward_count": 1
+            }
+          }
+        },
+        "T_over_BONUS": 1.4845214847856119,
+        "OFF_over_BONUS": 1.1564889897008035
+      },
+      {
+        "init": 4,
+        "arms": {
+          "T": {
+            "samples": [
+              6.504005536437035,
+              6.465422233566642,
+              6.536587756127119,
+              6.779003424569964,
+              6.641186591237783,
+              6.547481028363109
+            ],
+            "median": 6.542034392245114,
+            "request_wall_samples": [
+              6.502203080803156,
+              6.463460261002183,
+              6.53482105769217,
+              6.776489708572626,
+              6.639148073270917,
+              6.545615155249834
+            ],
+            "request_wall_median": 6.540218106471002,
+            "forwards": 72,
+            "phase_counters": {}
+          },
+          "OFF": {
+            "samples": [
+              5.117631843313575,
+              5.257032807916403,
+              5.288285415619612,
+              5.139489553868771,
+              5.143589003011584,
+              5.2053805366158485
+            ],
+            "median": 5.174484769813716,
+            "request_wall_samples": [
+              5.116013767197728,
+              5.254743421450257,
+              5.286747796460986,
+              5.137608038261533,
+              5.141595184803009,
+              5.201620578765869
+            ],
+            "request_wall_median": 5.171607881784439,
+            "forwards": 53,
+            "phase_counters": {
+              "target_forward_count": 2,
+              "tree_scheduler_transition_count": 193,
+              "committed_scheduler_update_count": 50,
+              "ordinary_target_scheduler_update_count": 19,
+              "draft_forward_count": 87,
+              "tree_count": 29,
+              "logical_candidate_rows": 203,
+              "verifier_target_row_count": 203,
+              "verifier_cfg_rows": 406,
+              "verifier_forward_count": 29,
+              "accepted_depth_0": 10,
+              "accepted_depth_1": 7,
+              "committed_draft_scheduler_update_count": 31,
+              "accepted_depth_2": 12,
+              "terminal_target_forward_count": 1
+            }
+          },
+          "BONUS": {
+            "samples": [
+              4.3702306635677814,
+              4.4407527800649405,
+              4.419745232909918,
+              4.404030812904239,
+              4.524208553135395,
+              4.579121770337224
+            ],
+            "median": 4.430249006487429,
+            "request_wall_samples": [
+              4.368727130815387,
+              4.439138336107135,
+              4.418012058362365,
+              4.402530072256923,
+              4.52233262360096,
+              4.577239977195859
+            ],
+            "request_wall_median": 4.42857519723475,
+            "forwards": 46,
+            "phase_counters": {
+              "target_forward_count": 3,
+              "tree_scheduler_transition_count": 150,
+              "committed_scheduler_update_count": 50,
+              "ordinary_target_scheduler_update_count": 13,
+              "draft_forward_count": 63,
+              "tree_count": 21,
+              "logical_candidate_rows": 147,
+              "verifier_target_row_count": 147,
+              "verifier_cfg_rows": 294,
+              "verifier_forward_count": 21,
+              "accepted_depth_0": 6,
+              "accepted_depth_1": 4,
+              "committed_draft_scheduler_update_count": 26,
+              "accepted_depth_2": 11,
+              "bonus_target_tree_count": 11,
+              "bonus_target_scheduler_update_count": 11,
+              "terminal_target_forward_count": 1
+            }
+          }
+        },
+        "T_over_BONUS": 1.4766741965666703,
+        "OFF_over_BONUS": 1.1679896010893442
+      }
+    ],
+    "details": [
+      {
+        "init": 3,
+        "slot": 0,
+        "arm": "R_BONUS",
+        "lane": "oracle",
+        "round": -1,
+        "at": "2026-10-13T18:39:49+08:00",
+        "wall_seconds": 6.582965498790145,
+        "completed_wall_seconds": 6.5845190435647964,
+        "forward_intents": 45,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 149,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 11,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 3,
+          "committed_draft_scheduler_update_count": 27,
+          "accepted_depth_2": 12,
+          "bonus_target_tree_count": 12,
+          "bonus_target_scheduler_update_count": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b178bb6e22105e006de572bf191e325a003661cb2331bbc01d4ae927c116b25c",
+          "returned": "4d1c9576897dc10a8eb7f4416446f6ca59256df27161dd65a8a2fce1b2360bba",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": false,
+          "requests": 0,
+          "leases": 0,
+          "candidates": 0,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 0,
+          "bindings": 0,
+          "pinned_code_builds": 0,
+          "templates": 0
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 0,
+          "error_readbacks": 0,
+          "error_scalars": 0
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 1,
+        "arm": "T",
+        "lane": "warmup",
+        "round": -1,
+        "at": "2026-10-13T18:39:58+08:00",
+        "wall_seconds": 6.5225059520453215,
+        "completed_wall_seconds": 6.5332497246563435,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "66b0ecc5792310c87b5da6464f70e6f76e9b2ef73949307cd91b9c742afe58c5",
+          "returned": "e324fe0fd92bcf106d3f18e65ad791c1457c45ecc6420f2af8369b5000239e40",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": false,
+          "requests": 0,
+          "leases": 0,
+          "candidates": 0,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 0,
+          "bindings": 0,
+          "pinned_code_builds": 0,
+          "templates": 0
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 0,
+          "error_readbacks": 0,
+          "error_scalars": 0
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 2,
+        "arm": "OFF",
+        "lane": "warmup",
+        "round": -1,
+        "at": "2026-10-13T18:40:04+08:00",
+        "wall_seconds": 5.04216356575489,
+        "completed_wall_seconds": 5.043396392837167,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 192,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 18,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 6,
+          "committed_draft_scheduler_update_count": 32,
+          "accepted_depth_2": 13,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b5169d1592a769cd23a19a41f7198bc1a386ef72c62594297db83d8c8e26a175",
+          "returned": "022bf4e1818aeb559c70f2453d05f9f9d78911150ed415513bc687fc90d1c132",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 30,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 2,
+          "error_readbacks": 29,
+          "error_scalars": 174
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 3,
+        "arm": "BONUS",
+        "lane": "warmup",
+        "round": -1,
+        "at": "2026-10-13T18:40:11+08:00",
+        "wall_seconds": 4.517691556364298,
+        "completed_wall_seconds": 4.519136421382427,
+        "forward_intents": 45,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 149,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 11,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 3,
+          "committed_draft_scheduler_update_count": 27,
+          "accepted_depth_2": 12,
+          "bonus_target_tree_count": 12,
+          "bonus_target_scheduler_update_count": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b178bb6e22105e006de572bf191e325a003661cb2331bbc01d4ae927c116b25c",
+          "returned": "4d1c9576897dc10a8eb7f4416446f6ca59256df27161dd65a8a2fce1b2360bba",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 60,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 4,
+          "error_readbacks": 50,
+          "error_scalars": 300
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 4,
+        "arm": "T",
+        "lane": "main",
+        "round": 0,
+        "at": "2026-10-13T18:40:19+08:00",
+        "wall_seconds": 6.731280332431197,
+        "completed_wall_seconds": 6.733717219904065,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "66b0ecc5792310c87b5da6464f70e6f76e9b2ef73949307cd91b9c742afe58c5",
+          "returned": "e324fe0fd92bcf106d3f18e65ad791c1457c45ecc6420f2af8369b5000239e40",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 60,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 4,
+          "error_readbacks": 50,
+          "error_scalars": 300
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 5,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 0,
+        "at": "2026-10-13T18:40:26+08:00",
+        "wall_seconds": 5.126085733994842,
+        "completed_wall_seconds": 5.127186147496104,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 192,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 18,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 6,
+          "committed_draft_scheduler_update_count": 32,
+          "accepted_depth_2": 13,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b5169d1592a769cd23a19a41f7198bc1a386ef72c62594297db83d8c8e26a175",
+          "returned": "022bf4e1818aeb559c70f2453d05f9f9d78911150ed415513bc687fc90d1c132",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 90,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 6,
+          "error_readbacks": 79,
+          "error_scalars": 474
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 6,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 0,
+        "at": "2026-10-13T18:40:32+08:00",
+        "wall_seconds": 4.22352409362793,
+        "completed_wall_seconds": 4.224706921726465,
+        "forward_intents": 45,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 149,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 11,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 3,
+          "committed_draft_scheduler_update_count": 27,
+          "accepted_depth_2": 12,
+          "bonus_target_tree_count": 12,
+          "bonus_target_scheduler_update_count": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b178bb6e22105e006de572bf191e325a003661cb2331bbc01d4ae927c116b25c",
+          "returned": "4d1c9576897dc10a8eb7f4416446f6ca59256df27161dd65a8a2fce1b2360bba",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 120,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 8,
+          "error_readbacks": 100,
+          "error_scalars": 600
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 7,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 1,
+        "at": "2026-10-13T18:40:38+08:00",
+        "wall_seconds": 5.039608459919691,
+        "completed_wall_seconds": 5.041017573326826,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 192,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 18,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 6,
+          "committed_draft_scheduler_update_count": 32,
+          "accepted_depth_2": 13,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b5169d1592a769cd23a19a41f7198bc1a386ef72c62594297db83d8c8e26a175",
+          "returned": "022bf4e1818aeb559c70f2453d05f9f9d78911150ed415513bc687fc90d1c132",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 150,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 10,
+          "error_readbacks": 129,
+          "error_scalars": 774
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 8,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 1,
+        "at": "2026-10-13T18:40:44+08:00",
+        "wall_seconds": 4.6941910441964865,
+        "completed_wall_seconds": 4.695651561021805,
+        "forward_intents": 45,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 149,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 11,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 3,
+          "committed_draft_scheduler_update_count": 27,
+          "accepted_depth_2": 12,
+          "bonus_target_tree_count": 12,
+          "bonus_target_scheduler_update_count": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b178bb6e22105e006de572bf191e325a003661cb2331bbc01d4ae927c116b25c",
+          "returned": "4d1c9576897dc10a8eb7f4416446f6ca59256df27161dd65a8a2fce1b2360bba",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 180,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 12,
+          "error_readbacks": 150,
+          "error_scalars": 900
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 9,
+        "arm": "T",
+        "lane": "main",
+        "round": 1,
+        "at": "2026-10-13T18:40:52+08:00",
+        "wall_seconds": 6.657611550763249,
+        "completed_wall_seconds": 6.6593463979661465,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "66b0ecc5792310c87b5da6464f70e6f76e9b2ef73949307cd91b9c742afe58c5",
+          "returned": "e324fe0fd92bcf106d3f18e65ad791c1457c45ecc6420f2af8369b5000239e40",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 180,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 12,
+          "error_readbacks": 150,
+          "error_scalars": 900
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 10,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 2,
+        "at": "2026-10-13T18:40:58+08:00",
+        "wall_seconds": 4.28677723929286,
+        "completed_wall_seconds": 4.288485551252961,
+        "forward_intents": 45,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 149,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 11,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 3,
+          "committed_draft_scheduler_update_count": 27,
+          "accepted_depth_2": 12,
+          "bonus_target_tree_count": 12,
+          "bonus_target_scheduler_update_count": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b178bb6e22105e006de572bf191e325a003661cb2331bbc01d4ae927c116b25c",
+          "returned": "4d1c9576897dc10a8eb7f4416446f6ca59256df27161dd65a8a2fce1b2360bba",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 210,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 14,
+          "error_readbacks": 171,
+          "error_scalars": 1026
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 11,
+        "arm": "T",
+        "lane": "main",
+        "round": 2,
+        "at": "2026-10-13T18:41:06+08:00",
+        "wall_seconds": 6.556028274819255,
+        "completed_wall_seconds": 6.557755019515753,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "66b0ecc5792310c87b5da6464f70e6f76e9b2ef73949307cd91b9c742afe58c5",
+          "returned": "e324fe0fd92bcf106d3f18e65ad791c1457c45ecc6420f2af8369b5000239e40",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 210,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 14,
+          "error_readbacks": 171,
+          "error_scalars": 1026
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 12,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 2,
+        "at": "2026-10-13T18:41:12+08:00",
+        "wall_seconds": 5.067221572622657,
+        "completed_wall_seconds": 5.068713095039129,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 192,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 18,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 6,
+          "committed_draft_scheduler_update_count": 32,
+          "accepted_depth_2": 13,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b5169d1592a769cd23a19a41f7198bc1a386ef72c62594297db83d8c8e26a175",
+          "returned": "022bf4e1818aeb559c70f2453d05f9f9d78911150ed415513bc687fc90d1c132",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 240,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 16,
+          "error_readbacks": 200,
+          "error_scalars": 1200
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 13,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 3,
+        "at": "2026-10-13T18:41:18+08:00",
+        "wall_seconds": 4.374829204753041,
+        "completed_wall_seconds": 4.375980742275715,
+        "forward_intents": 45,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 149,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 11,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 3,
+          "committed_draft_scheduler_update_count": 27,
+          "accepted_depth_2": 12,
+          "bonus_target_tree_count": 12,
+          "bonus_target_scheduler_update_count": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b178bb6e22105e006de572bf191e325a003661cb2331bbc01d4ae927c116b25c",
+          "returned": "4d1c9576897dc10a8eb7f4416446f6ca59256df27161dd65a8a2fce1b2360bba",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 270,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 18,
+          "error_readbacks": 221,
+          "error_scalars": 1326
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 14,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 3,
+        "at": "2026-10-13T18:41:24+08:00",
+        "wall_seconds": 5.148774661123753,
+        "completed_wall_seconds": 5.150180419906974,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 192,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 18,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 6,
+          "committed_draft_scheduler_update_count": 32,
+          "accepted_depth_2": 13,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b5169d1592a769cd23a19a41f7198bc1a386ef72c62594297db83d8c8e26a175",
+          "returned": "022bf4e1818aeb559c70f2453d05f9f9d78911150ed415513bc687fc90d1c132",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 300,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 20,
+          "error_readbacks": 250,
+          "error_scalars": 1500
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 15,
+        "arm": "T",
+        "lane": "main",
+        "round": 3,
+        "at": "2026-10-13T18:41:32+08:00",
+        "wall_seconds": 6.534705767408013,
+        "completed_wall_seconds": 6.536271600052714,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "66b0ecc5792310c87b5da6464f70e6f76e9b2ef73949307cd91b9c742afe58c5",
+          "returned": "e324fe0fd92bcf106d3f18e65ad791c1457c45ecc6420f2af8369b5000239e40",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 300,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 20,
+          "error_readbacks": 250,
+          "error_scalars": 1500
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 16,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 4,
+        "at": "2026-10-13T18:41:39+08:00",
+        "wall_seconds": 5.2154345996677876,
+        "completed_wall_seconds": 5.217221412807703,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 192,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 18,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 6,
+          "committed_draft_scheduler_update_count": 32,
+          "accepted_depth_2": 13,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b5169d1592a769cd23a19a41f7198bc1a386ef72c62594297db83d8c8e26a175",
+          "returned": "022bf4e1818aeb559c70f2453d05f9f9d78911150ed415513bc687fc90d1c132",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 330,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 22,
+          "error_readbacks": 279,
+          "error_scalars": 1674
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 17,
+        "arm": "T",
+        "lane": "main",
+        "round": 4,
+        "at": "2026-10-13T18:41:47+08:00",
+        "wall_seconds": 6.621315944939852,
+        "completed_wall_seconds": 6.623607564717531,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "66b0ecc5792310c87b5da6464f70e6f76e9b2ef73949307cd91b9c742afe58c5",
+          "returned": "e324fe0fd92bcf106d3f18e65ad791c1457c45ecc6420f2af8369b5000239e40",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 330,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 22,
+          "error_readbacks": 279,
+          "error_scalars": 1674
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 18,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 4,
+        "at": "2026-10-13T18:41:53+08:00",
+        "wall_seconds": 4.592778462916613,
+        "completed_wall_seconds": 4.59440715610981,
+        "forward_intents": 45,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 149,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 11,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 3,
+          "committed_draft_scheduler_update_count": 27,
+          "accepted_depth_2": 12,
+          "bonus_target_tree_count": 12,
+          "bonus_target_scheduler_update_count": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b178bb6e22105e006de572bf191e325a003661cb2331bbc01d4ae927c116b25c",
+          "returned": "4d1c9576897dc10a8eb7f4416446f6ca59256df27161dd65a8a2fce1b2360bba",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 360,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 24,
+          "error_readbacks": 300,
+          "error_scalars": 1800
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 19,
+        "arm": "T",
+        "lane": "main",
+        "round": 5,
+        "at": "2026-10-13T18:42:01+08:00",
+        "wall_seconds": 6.5672951862216,
+        "completed_wall_seconds": 6.568884203210473,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "66b0ecc5792310c87b5da6464f70e6f76e9b2ef73949307cd91b9c742afe58c5",
+          "returned": "e324fe0fd92bcf106d3f18e65ad791c1457c45ecc6420f2af8369b5000239e40",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 360,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 24,
+          "error_readbacks": 300,
+          "error_scalars": 1800
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 20,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 5,
+        "at": "2026-10-13T18:42:07+08:00",
+        "wall_seconds": 4.50846959464252,
+        "completed_wall_seconds": 4.510715680196881,
+        "forward_intents": 45,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 149,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 11,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 3,
+          "committed_draft_scheduler_update_count": 27,
+          "accepted_depth_2": 12,
+          "bonus_target_tree_count": 12,
+          "bonus_target_scheduler_update_count": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b178bb6e22105e006de572bf191e325a003661cb2331bbc01d4ae927c116b25c",
+          "returned": "4d1c9576897dc10a8eb7f4416446f6ca59256df27161dd65a8a2fce1b2360bba",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 390,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 26,
+          "error_readbacks": 321,
+          "error_scalars": 1926
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 3,
+        "slot": 21,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 5,
+        "at": "2026-10-13T18:42:14+08:00",
+        "wall_seconds": 5.317917212843895,
+        "completed_wall_seconds": 5.319536963477731,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 192,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 18,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 6,
+          "committed_draft_scheduler_update_count": 32,
+          "accepted_depth_2": 13,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "b5169d1592a769cd23a19a41f7198bc1a386ef72c62594297db83d8c8e26a175",
+          "returned": "022bf4e1818aeb559c70f2453d05f9f9d78911150ed415513bc687fc90d1c132",
+          "final_state_light": "02675ae00245d9c7de698c537cc214e081c5e641f10ec582106f5376113a6a40"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 420,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 28,
+          "error_readbacks": 350,
+          "error_scalars": 2100
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 0,
+        "arm": "R_BONUS",
+        "lane": "oracle",
+        "round": -1,
+        "at": "2026-10-13T18:42:45+08:00",
+        "wall_seconds": 5.831339027732611,
+        "completed_wall_seconds": 5.833466663956642,
+        "forward_intents": 46,
+        "phase_counters": {
+          "target_forward_count": 3,
+          "tree_scheduler_transition_count": 150,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 13,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 4,
+          "committed_draft_scheduler_update_count": 26,
+          "accepted_depth_2": 11,
+          "bonus_target_tree_count": 11,
+          "bonus_target_scheduler_update_count": 11,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "017536efd108e368a6d1dacf31e5a8eaf514623d3a3ea478cc43f64706fdb0d4",
+          "returned": "bc585c3eff868706023569684c0e1c6d557b4ec4a6aa912bf8b5a1cae0ed2ea7",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 420,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 28,
+          "error_readbacks": 350,
+          "error_scalars": 2100
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 1,
+        "arm": "T",
+        "lane": "warmup",
+        "round": -1,
+        "at": "2026-10-13T18:42:53+08:00",
+        "wall_seconds": 6.581302588805556,
+        "completed_wall_seconds": 6.583065930753946,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "8d4d73064d8e8bc22120c1ab570c9d027c4ac8c98c07447d961741aef544a38e",
+          "returned": "e507161c99cecd0417b0ab02990492cc0e768840936e2591ac44fa9cbf8a5cf6",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 420,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 28,
+          "error_readbacks": 350,
+          "error_scalars": 2100
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 2,
+        "arm": "OFF",
+        "lane": "warmup",
+        "round": -1,
+        "at": "2026-10-13T18:43:00+08:00",
+        "wall_seconds": 5.114070404320955,
+        "completed_wall_seconds": 5.115758879110217,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 193,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 19,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 7,
+          "committed_draft_scheduler_update_count": 31,
+          "accepted_depth_2": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "282b137e231a4d5f58bb31fe1319c753de7747aa354480611de2f6a4995c53f0",
+          "returned": "40664d907cf58f87ef6182973b1e81010eb5eed4a1af414e2ac83c7699eb2a63",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 450,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 30,
+          "error_readbacks": 379,
+          "error_scalars": 2274
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 3,
+        "arm": "BONUS",
+        "lane": "warmup",
+        "round": -1,
+        "at": "2026-10-13T18:43:06+08:00",
+        "wall_seconds": 4.397573037073016,
+        "completed_wall_seconds": 4.399079643189907,
+        "forward_intents": 46,
+        "phase_counters": {
+          "target_forward_count": 3,
+          "tree_scheduler_transition_count": 150,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 13,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 4,
+          "committed_draft_scheduler_update_count": 26,
+          "accepted_depth_2": 11,
+          "bonus_target_tree_count": 11,
+          "bonus_target_scheduler_update_count": 11,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "017536efd108e368a6d1dacf31e5a8eaf514623d3a3ea478cc43f64706fdb0d4",
+          "returned": "bc585c3eff868706023569684c0e1c6d557b4ec4a6aa912bf8b5a1cae0ed2ea7",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 480,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 32,
+          "error_readbacks": 400,
+          "error_scalars": 2400
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 4,
+        "arm": "T",
+        "lane": "main",
+        "round": 0,
+        "at": "2026-10-13T18:43:14+08:00",
+        "wall_seconds": 6.502203080803156,
+        "completed_wall_seconds": 6.504005536437035,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "8d4d73064d8e8bc22120c1ab570c9d027c4ac8c98c07447d961741aef544a38e",
+          "returned": "e507161c99cecd0417b0ab02990492cc0e768840936e2591ac44fa9cbf8a5cf6",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 480,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 32,
+          "error_readbacks": 400,
+          "error_scalars": 2400
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 5,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 0,
+        "at": "2026-10-13T18:43:20+08:00",
+        "wall_seconds": 5.116013767197728,
+        "completed_wall_seconds": 5.117631843313575,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 193,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 19,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 7,
+          "committed_draft_scheduler_update_count": 31,
+          "accepted_depth_2": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "282b137e231a4d5f58bb31fe1319c753de7747aa354480611de2f6a4995c53f0",
+          "returned": "40664d907cf58f87ef6182973b1e81010eb5eed4a1af414e2ac83c7699eb2a63",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 510,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 34,
+          "error_readbacks": 429,
+          "error_scalars": 2574
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 6,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 0,
+        "at": "2026-10-13T18:43:26+08:00",
+        "wall_seconds": 4.368727130815387,
+        "completed_wall_seconds": 4.3702306635677814,
+        "forward_intents": 46,
+        "phase_counters": {
+          "target_forward_count": 3,
+          "tree_scheduler_transition_count": 150,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 13,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 4,
+          "committed_draft_scheduler_update_count": 26,
+          "accepted_depth_2": 11,
+          "bonus_target_tree_count": 11,
+          "bonus_target_scheduler_update_count": 11,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "017536efd108e368a6d1dacf31e5a8eaf514623d3a3ea478cc43f64706fdb0d4",
+          "returned": "bc585c3eff868706023569684c0e1c6d557b4ec4a6aa912bf8b5a1cae0ed2ea7",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 540,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 36,
+          "error_readbacks": 450,
+          "error_scalars": 2700
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 7,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 1,
+        "at": "2026-10-13T18:43:33+08:00",
+        "wall_seconds": 5.254743421450257,
+        "completed_wall_seconds": 5.257032807916403,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 193,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 19,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 7,
+          "committed_draft_scheduler_update_count": 31,
+          "accepted_depth_2": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "282b137e231a4d5f58bb31fe1319c753de7747aa354480611de2f6a4995c53f0",
+          "returned": "40664d907cf58f87ef6182973b1e81010eb5eed4a1af414e2ac83c7699eb2a63",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 570,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 38,
+          "error_readbacks": 479,
+          "error_scalars": 2874
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 8,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 1,
+        "at": "2026-10-13T18:43:38+08:00",
+        "wall_seconds": 4.439138336107135,
+        "completed_wall_seconds": 4.4407527800649405,
+        "forward_intents": 46,
+        "phase_counters": {
+          "target_forward_count": 3,
+          "tree_scheduler_transition_count": 150,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 13,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 4,
+          "committed_draft_scheduler_update_count": 26,
+          "accepted_depth_2": 11,
+          "bonus_target_tree_count": 11,
+          "bonus_target_scheduler_update_count": 11,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "017536efd108e368a6d1dacf31e5a8eaf514623d3a3ea478cc43f64706fdb0d4",
+          "returned": "bc585c3eff868706023569684c0e1c6d557b4ec4a6aa912bf8b5a1cae0ed2ea7",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 600,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 40,
+          "error_readbacks": 500,
+          "error_scalars": 3000
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 9,
+        "arm": "T",
+        "lane": "main",
+        "round": 1,
+        "at": "2026-10-13T18:43:46+08:00",
+        "wall_seconds": 6.463460261002183,
+        "completed_wall_seconds": 6.465422233566642,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "8d4d73064d8e8bc22120c1ab570c9d027c4ac8c98c07447d961741aef544a38e",
+          "returned": "e507161c99cecd0417b0ab02990492cc0e768840936e2591ac44fa9cbf8a5cf6",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 600,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 40,
+          "error_readbacks": 500,
+          "error_scalars": 3000
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 10,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 2,
+        "at": "2026-10-13T18:43:52+08:00",
+        "wall_seconds": 4.418012058362365,
+        "completed_wall_seconds": 4.419745232909918,
+        "forward_intents": 46,
+        "phase_counters": {
+          "target_forward_count": 3,
+          "tree_scheduler_transition_count": 150,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 13,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 4,
+          "committed_draft_scheduler_update_count": 26,
+          "accepted_depth_2": 11,
+          "bonus_target_tree_count": 11,
+          "bonus_target_scheduler_update_count": 11,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "017536efd108e368a6d1dacf31e5a8eaf514623d3a3ea478cc43f64706fdb0d4",
+          "returned": "bc585c3eff868706023569684c0e1c6d557b4ec4a6aa912bf8b5a1cae0ed2ea7",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 630,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 42,
+          "error_readbacks": 521,
+          "error_scalars": 3126
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 11,
+        "arm": "T",
+        "lane": "main",
+        "round": 2,
+        "at": "2026-10-13T18:44:00+08:00",
+        "wall_seconds": 6.53482105769217,
+        "completed_wall_seconds": 6.536587756127119,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "8d4d73064d8e8bc22120c1ab570c9d027c4ac8c98c07447d961741aef544a38e",
+          "returned": "e507161c99cecd0417b0ab02990492cc0e768840936e2591ac44fa9cbf8a5cf6",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 630,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 42,
+          "error_readbacks": 521,
+          "error_scalars": 3126
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 12,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 2,
+        "at": "2026-10-13T18:44:06+08:00",
+        "wall_seconds": 5.286747796460986,
+        "completed_wall_seconds": 5.288285415619612,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 193,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 19,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 7,
+          "committed_draft_scheduler_update_count": 31,
+          "accepted_depth_2": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "282b137e231a4d5f58bb31fe1319c753de7747aa354480611de2f6a4995c53f0",
+          "returned": "40664d907cf58f87ef6182973b1e81010eb5eed4a1af414e2ac83c7699eb2a63",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 660,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 44,
+          "error_readbacks": 550,
+          "error_scalars": 3300
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 13,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 3,
+        "at": "2026-10-13T18:44:12+08:00",
+        "wall_seconds": 4.402530072256923,
+        "completed_wall_seconds": 4.404030812904239,
+        "forward_intents": 46,
+        "phase_counters": {
+          "target_forward_count": 3,
+          "tree_scheduler_transition_count": 150,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 13,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 4,
+          "committed_draft_scheduler_update_count": 26,
+          "accepted_depth_2": 11,
+          "bonus_target_tree_count": 11,
+          "bonus_target_scheduler_update_count": 11,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "017536efd108e368a6d1dacf31e5a8eaf514623d3a3ea478cc43f64706fdb0d4",
+          "returned": "bc585c3eff868706023569684c0e1c6d557b4ec4a6aa912bf8b5a1cae0ed2ea7",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 690,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 46,
+          "error_readbacks": 571,
+          "error_scalars": 3426
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 14,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 3,
+        "at": "2026-10-13T18:44:18+08:00",
+        "wall_seconds": 5.137608038261533,
+        "completed_wall_seconds": 5.139489553868771,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 193,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 19,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 7,
+          "committed_draft_scheduler_update_count": 31,
+          "accepted_depth_2": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "282b137e231a4d5f58bb31fe1319c753de7747aa354480611de2f6a4995c53f0",
+          "returned": "40664d907cf58f87ef6182973b1e81010eb5eed4a1af414e2ac83c7699eb2a63",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 720,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 48,
+          "error_readbacks": 600,
+          "error_scalars": 3600
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 15,
+        "arm": "T",
+        "lane": "main",
+        "round": 3,
+        "at": "2026-10-13T18:44:27+08:00",
+        "wall_seconds": 6.776489708572626,
+        "completed_wall_seconds": 6.779003424569964,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "8d4d73064d8e8bc22120c1ab570c9d027c4ac8c98c07447d961741aef544a38e",
+          "returned": "e507161c99cecd0417b0ab02990492cc0e768840936e2591ac44fa9cbf8a5cf6",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 720,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 48,
+          "error_readbacks": 600,
+          "error_scalars": 3600
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 16,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 4,
+        "at": "2026-10-13T18:44:33+08:00",
+        "wall_seconds": 5.141595184803009,
+        "completed_wall_seconds": 5.143589003011584,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 193,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 19,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 7,
+          "committed_draft_scheduler_update_count": 31,
+          "accepted_depth_2": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "282b137e231a4d5f58bb31fe1319c753de7747aa354480611de2f6a4995c53f0",
+          "returned": "40664d907cf58f87ef6182973b1e81010eb5eed4a1af414e2ac83c7699eb2a63",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 750,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 50,
+          "error_readbacks": 629,
+          "error_scalars": 3774
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 17,
+        "arm": "T",
+        "lane": "main",
+        "round": 4,
+        "at": "2026-10-13T18:44:42+08:00",
+        "wall_seconds": 6.639148073270917,
+        "completed_wall_seconds": 6.641186591237783,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "8d4d73064d8e8bc22120c1ab570c9d027c4ac8c98c07447d961741aef544a38e",
+          "returned": "e507161c99cecd0417b0ab02990492cc0e768840936e2591ac44fa9cbf8a5cf6",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 750,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 50,
+          "error_readbacks": 629,
+          "error_scalars": 3774
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 18,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 4,
+        "at": "2026-10-13T18:44:47+08:00",
+        "wall_seconds": 4.52233262360096,
+        "completed_wall_seconds": 4.524208553135395,
+        "forward_intents": 46,
+        "phase_counters": {
+          "target_forward_count": 3,
+          "tree_scheduler_transition_count": 150,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 13,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 4,
+          "committed_draft_scheduler_update_count": 26,
+          "accepted_depth_2": 11,
+          "bonus_target_tree_count": 11,
+          "bonus_target_scheduler_update_count": 11,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "017536efd108e368a6d1dacf31e5a8eaf514623d3a3ea478cc43f64706fdb0d4",
+          "returned": "bc585c3eff868706023569684c0e1c6d557b4ec4a6aa912bf8b5a1cae0ed2ea7",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 780,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 52,
+          "error_readbacks": 650,
+          "error_scalars": 3900
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 19,
+        "arm": "T",
+        "lane": "main",
+        "round": 5,
+        "at": "2026-10-13T18:44:55+08:00",
+        "wall_seconds": 6.545615155249834,
+        "completed_wall_seconds": 6.547481028363109,
+        "forward_intents": 72,
+        "phase_counters": {},
+        "hashes": {
+          "saved": "8d4d73064d8e8bc22120c1ab570c9d027c4ac8c98c07447d961741aef544a38e",
+          "returned": "e507161c99cecd0417b0ab02990492cc0e768840936e2591ac44fa9cbf8a5cf6",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 780,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 52,
+          "error_readbacks": 650,
+          "error_scalars": 3900
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 20,
+        "arm": "BONUS",
+        "lane": "main",
+        "round": 5,
+        "at": "2026-10-13T18:45:01+08:00",
+        "wall_seconds": 4.577239977195859,
+        "completed_wall_seconds": 4.579121770337224,
+        "forward_intents": 46,
+        "phase_counters": {
+          "target_forward_count": 3,
+          "tree_scheduler_transition_count": 150,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 13,
+          "draft_forward_count": 63,
+          "tree_count": 21,
+          "logical_candidate_rows": 147,
+          "verifier_target_row_count": 147,
+          "verifier_cfg_rows": 294,
+          "verifier_forward_count": 21,
+          "accepted_depth_0": 6,
+          "accepted_depth_1": 4,
+          "committed_draft_scheduler_update_count": 26,
+          "accepted_depth_2": 11,
+          "bonus_target_tree_count": 11,
+          "bonus_target_scheduler_update_count": 11,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "017536efd108e368a6d1dacf31e5a8eaf514623d3a3ea478cc43f64706fdb0d4",
+          "returned": "bc585c3eff868706023569684c0e1c6d557b4ec4a6aa912bf8b5a1cae0ed2ea7",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 21,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 810,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 54,
+          "error_readbacks": 671,
+          "error_scalars": 4026
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      },
+      {
+        "init": 4,
+        "slot": 21,
+        "arm": "OFF",
+        "lane": "main",
+        "round": 5,
+        "at": "2026-10-13T18:45:07+08:00",
+        "wall_seconds": 5.201620578765869,
+        "completed_wall_seconds": 5.2053805366158485,
+        "forward_intents": 53,
+        "phase_counters": {
+          "target_forward_count": 2,
+          "tree_scheduler_transition_count": 193,
+          "committed_scheduler_update_count": 50,
+          "ordinary_target_scheduler_update_count": 19,
+          "draft_forward_count": 87,
+          "tree_count": 29,
+          "logical_candidate_rows": 203,
+          "verifier_target_row_count": 203,
+          "verifier_cfg_rows": 406,
+          "verifier_forward_count": 29,
+          "accepted_depth_0": 10,
+          "accepted_depth_1": 7,
+          "committed_draft_scheduler_update_count": 31,
+          "accepted_depth_2": 12,
+          "terminal_target_forward_count": 1
+        },
+        "hashes": {
+          "saved": "282b137e231a4d5f58bb31fe1319c753de7747aa354480611de2f6a4995c53f0",
+          "returned": "40664d907cf58f87ef6182973b1e81010eb5eed4a1af414e2ac83c7699eb2a63",
+          "final_state_light": "44e42d85665d1031c11379aa8bfb95db50e537bedda45bf91d4131e6d79f9c95"
+        },
+        "all30_GPU_valid_KV_bytes_and_metadata_equal": true,
+        "shared": {
+          "enabled": true,
+          "requests": 1,
+          "leases": 1,
+          "candidates": 29,
+          "revocations": 0,
+          "shared_layer_calls_diagnostic": null,
+          "request_active": false,
+          "last_request_clean": true,
+          "prompt_shared": false,
+          "rowproof_reuse": false
+        },
+        "template_stats": {
+          "AST_builds": 1,
+          "bindings": 840,
+          "pinned_code_builds": 1,
+          "templates": 1
+        },
+        "scalar_stats": {
+          "action_templates": 1,
+          "score_templates": 1,
+          "template_compile_sec": 0.09886433370411396,
+          "table_reads": 56,
+          "error_readbacks": 700,
+          "error_scalars": 4200
+        },
+        "complete_server_infer_timer": true,
+        "original_artifact_CPU_copy_retained": true
+      }
+    ],
+    "target_intents": 2478,
+    "original_bonus_optimized_bonus_bitwise": true,
+    "GPU_all30_valid_KV_and_metadata_equal": true,
+    "reset_and_fixture_restore_outside_chunk_timer": true,
+    "primary_fixed_timer": "complete infer wall time with CUDA completion; original request timer also retained",
+    "no_whole_episode_quality_claim": true
+  },
+  "paired": [
+    {
+      "init": 3,
+      "records": {
+        "T": {
+          "status": "completed",
+          "started_at": "2026-10-13T10:46:23.374953Z",
+          "finished_at": "2026-10-13T10:52:11.348582Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 3,
+          "episode_attempt_id": "40d201e643f64d5287a00c8250834f2f",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 298,
+          "env_steps": 293,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 19,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 347.973935469985,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 130.56218210421503,
+          "policy_infer_wall_sec": 186.94970072247088,
+          "cache_infer_wall_sec": 9.808210633695126,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 19,
+          "cache_infer_calls": 18,
+          "model_request_wall_sec": 327.32009346038103,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 3,
+            "episode_attempt_id": "40d201e643f64d5287a00c8250834f2f",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-bonus-e2e-v1-20261013-183704-T",
+            "parallel_worker_id": "worker0"
+          },
+          "outer_episode_wall_sec": 354.5229331627488,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        },
+        "OFF": {
+          "status": "completed",
+          "started_at": "2026-10-13T10:53:34.734154Z",
+          "finished_at": "2026-10-13T10:58:22.966697Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 3,
+          "episode_attempt_id": "c2b88ec808f94d2ea985a6a204da9247",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 288,
+          "env_steps": 283,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 18,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 288.232826417312,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 123.77921002171934,
+          "policy_infer_wall_sec": 135.4769249074161,
+          "cache_infer_wall_sec": 9.620371310040355,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 18,
+          "cache_infer_calls": 17,
+          "model_request_wall_sec": 268.8765062391758,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 3,
+            "episode_attempt_id": "c2b88ec808f94d2ea985a6a204da9247",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-bonus-e2e-v1-20261013-183704-OFF",
+            "parallel_worker_id": "worker0"
+          },
+          "outer_episode_wall_sec": 294.98009643144906,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        },
+        "BONUS": {
+          "status": "completed",
+          "started_at": "2026-10-13T11:00:45.801707Z",
+          "finished_at": "2026-10-13T11:05:44.312065Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 3,
+          "episode_attempt_id": "7b7076c05b6845ea815ceab801a76fee",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 290,
+          "env_steps": 285,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 19,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 298.5106330215931,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 122.12487866356969,
+          "policy_infer_wall_sec": 146.86354557052255,
+          "cache_infer_wall_sec": 10.377662116661668,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 19,
+          "cache_infer_calls": 18,
+          "model_request_wall_sec": 279.3660863507539,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 3,
+            "episode_attempt_id": "7b7076c05b6845ea815ceab801a76fee",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-bonus-e2e-v1-20261013-183704-BONUS",
+            "parallel_worker_id": "worker0"
+          },
+          "outer_episode_wall_sec": 304.78121862001717,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        }
+      },
+      "phase_counters": {
+        "T": {},
+        "OFF": {
+          "target_forward_count": 28,
+          "tree_scheduler_transition_count": 3232,
+          "committed_scheduler_update_count": 900,
+          "ordinary_target_scheduler_update_count": 226,
+          "draft_forward_count": 1503,
+          "tree_count": 501,
+          "logical_candidate_rows": 3507,
+          "verifier_target_row_count": 3507,
+          "verifier_cfg_rows": 7014,
+          "verifier_forward_count": 501,
+          "accepted_depth_0": 130,
+          "accepted_depth_1": 68,
+          "committed_draft_scheduler_update_count": 674,
+          "accepted_depth_2": 303,
+          "terminal_target_forward_count": 18
+        },
+        "BONUS": {
+          "target_forward_count": 36,
+          "tree_scheduler_transition_count": 2598,
+          "committed_scheduler_update_count": 950,
+          "ordinary_target_scheduler_update_count": 142,
+          "draft_forward_count": 1098,
+          "tree_count": 366,
+          "logical_candidate_rows": 2562,
+          "verifier_target_row_count": 2562,
+          "verifier_cfg_rows": 5124,
+          "verifier_forward_count": 366,
+          "accepted_depth_0": 78,
+          "accepted_depth_1": 28,
+          "committed_draft_scheduler_update_count": 548,
+          "accepted_depth_2": 260,
+          "bonus_target_tree_count": 260,
+          "bonus_target_scheduler_update_count": 260,
+          "terminal_target_forward_count": 19
+        }
+      },
+      "updates_per_tree": {
+        "OFF": 1.7405189620758483,
+        "BONUS": 2.4972677595628414
+      },
+      "T_over_BONUS": 1.1657003033617699,
+      "OFF_over_BONUS": 0.9655697135467278,
+      "all_initial_inputs_env_and_rng_match": true
+    },
+    {
+      "init": 4,
+      "records": {
+        "T": {
+          "status": "completed",
+          "started_at": "2026-10-13T10:53:34.726630Z",
+          "finished_at": "2026-10-13T10:59:29.343998Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 4,
+          "episode_attempt_id": "0bc90d8d39c7442c92dfcb4bfb3f56f2",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 305,
+          "env_steps": 300,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 19,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 354.6176752913743,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 123.54175818897784,
+          "policy_infer_wall_sec": 200.20317814312875,
+          "cache_infer_wall_sec": 10.365854924544692,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 19,
+          "cache_infer_calls": 18,
+          "model_request_wall_sec": 334.1107912566513,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 4,
+            "episode_attempt_id": "0bc90d8d39c7442c92dfcb4bfb3f56f2",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-bonus-e2e-v1-20261013-183704-T",
+            "parallel_worker_id": "worker1"
+          },
+          "outer_episode_wall_sec": 361.37620736286044,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        },
+        "OFF": {
+          "status": "completed",
+          "started_at": "2026-10-13T11:00:45.876303Z",
+          "finished_at": "2026-10-13T11:05:48.678633Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 4,
+          "episode_attempt_id": "c08bba72c15b44c187a692cba49758c9",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 296,
+          "env_steps": 291,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 19,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 302.80247766524553,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 121.98616598546505,
+          "policy_infer_wall_sec": 147.81034197472036,
+          "cache_infer_wall_sec": 13.19120161794126,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 19,
+          "cache_infer_calls": 18,
+          "model_request_wall_sec": 282.98770957812667,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 4,
+            "episode_attempt_id": "c08bba72c15b44c187a692cba49758c9",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-bonus-e2e-v1-20261013-183704-OFF",
+            "parallel_worker_id": "worker1"
+          },
+          "outer_episode_wall_sec": 309.15241060964763,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        },
+        "BONUS": {
+          "status": "completed",
+          "started_at": "2026-10-13T10:46:23.489958Z",
+          "finished_at": "2026-10-13T10:51:05.588738Z",
+          "benchmark": "libero_10",
+          "task_index": 0,
+          "episode_index": 4,
+          "episode_attempt_id": "b7060aef9c784a0380d9be7526532331",
+          "init_state_count": 50,
+          "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+          "success": true,
+          "horizon_reached": false,
+          "max_policy_chunks": null,
+          "truncated_after_max_policy_chunks": false,
+          "libero_horizon": 800,
+          "horizon_basis": "env.env.timestep",
+          "stabilization_env_steps": 5,
+          "simulator_timestep_start": 5,
+          "simulator_timestep_final": 300,
+          "env_steps": 295,
+          "env_steps_semantics": "policy actions after stabilization; excludes reset/no-op steps",
+          "infer_chunks": 19,
+          "action_shapes": [
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4
+            ]
+          ],
+          "elapsed_sec": 282.0990403704345,
+          "timing_clock": "client time.monotonic around each websocket model.infer call",
+          "reset_infer_wall_sec": 130.7296259663999,
+          "policy_infer_wall_sec": 121.91359575465322,
+          "cache_infer_wall_sec": 9.559737103059888,
+          "reset_infer_calls": 1,
+          "policy_infer_calls": 19,
+          "cache_infer_calls": 18,
+          "model_request_wall_sec": 262.202958824113,
+          "trace_context": {
+            "libero_benchmark": "libero_10",
+            "task_index": 0,
+            "episode_index": 4,
+            "episode_attempt_id": "b7060aef9c784a0380d9be7526532331",
+            "prompt": "put both the alphabet soup and the tomato sauce in the basket",
+            "campaign_id": "p0-bonus-e2e-v1-20261013-183704-BONUS",
+            "parallel_worker_id": "worker1"
+          },
+          "outer_episode_wall_sec": 288.7202582191676,
+          "outer_episode_includes_construction_and_close": true,
+          "instrumentation": "common RAM commands + initial/final snapshots; no per-step file I/O"
+        }
+      },
+      "phase_counters": {
+        "T": {},
+        "OFF": {
+          "target_forward_count": 31,
+          "tree_scheduler_transition_count": 3394,
+          "committed_scheduler_update_count": 950,
+          "ordinary_target_scheduler_update_count": 244,
+          "draft_forward_count": 1575,
+          "tree_count": 525,
+          "logical_candidate_rows": 3675,
+          "verifier_target_row_count": 3675,
+          "verifier_cfg_rows": 7350,
+          "verifier_forward_count": 525,
+          "accepted_depth_0": 131,
+          "accepted_depth_1": 82,
+          "committed_draft_scheduler_update_count": 706,
+          "accepted_depth_2": 312,
+          "terminal_target_forward_count": 19
+        },
+        "BONUS": {
+          "target_forward_count": 39,
+          "tree_scheduler_transition_count": 2650,
+          "committed_scheduler_update_count": 950,
+          "ordinary_target_scheduler_update_count": 158,
+          "draft_forward_count": 1119,
+          "tree_count": 373,
+          "logical_candidate_rows": 2611,
+          "verifier_target_row_count": 2611,
+          "verifier_cfg_rows": 5222,
+          "verifier_forward_count": 373,
+          "accepted_depth_0": 89,
+          "accepted_depth_1": 30,
+          "committed_draft_scheduler_update_count": 538,
+          "accepted_depth_2": 254,
+          "bonus_target_tree_count": 254,
+          "bonus_target_scheduler_update_count": 254,
+          "terminal_target_forward_count": 19
+        }
+      },
+      "updates_per_tree": {
+        "OFF": 1.7504761904761905,
+        "BONUS": 2.442359249329759
+      },
+      "T_over_BONUS": 1.2570679957851432,
+      "OFF_over_BONUS": 1.0733906689920836,
+      "all_initial_inputs_env_and_rng_match": true
+    }
+  ],
+  "totals": {
+    "T": {
+      "elapsed_sec": 702.5916107613593,
+      "reset_sec": 254.10394029319286,
+      "policy_sec": 387.15287886559963,
+      "cache_sec": 20.174065558239818,
+      "client_remainder_sec": 41.16072604432702,
+      "env_steps": 593,
+      "infer_chunks": 38,
+      "successes": 2,
+      "target_forwards": 2808,
+      "tree_count": 0,
+      "bonus_updates": 0
+    },
+    "OFF": {
+      "elapsed_sec": 591.0353040825576,
+      "reset_sec": 245.7653760071844,
+      "policy_sec": 283.28726688213646,
+      "cache_sec": 22.811572927981615,
+      "client_remainder_sec": 39.171088265255094,
+      "env_steps": 574,
+      "infer_chunks": 37,
+      "successes": 2,
+      "target_forwards": 1969,
+      "tree_count": 1026,
+      "bonus_updates": 0
+    },
+    "BONUS": {
+      "elapsed_sec": 580.6096733920276,
+      "reset_sec": 252.8545046299696,
+      "policy_sec": 268.77714132517576,
+      "cache_sec": 19.937399219721556,
+      "client_remainder_sec": 39.0406282171607,
+      "env_steps": 580,
+      "infer_chunks": 38,
+      "successes": 2,
+      "target_forwards": 1722,
+      "tree_count": 739,
+      "bonus_updates": 514
+    }
+  },
+  "speedups": {
+    "T": 1.2100928437114922,
+    "OFF": 1.0179563503129763
+  },
+  "time_reduction_pct": {
+    "T": 17.361712764709324,
+    "OFF": 1.7639607344121844
+  },
+  "successes": {
+    "T": 2,
+    "OFF": 2,
+    "BONUS": 2
+  },
+  "BONUS_env_steps_over_T": 0.9780775716694773,
+  "BONUS_env_steps_over_OFF": 1.0104529616724738,
+  "baseline_and_previous_archived_output_pairs": 221,
+  "numerical_oracle_bonus_full_chunk_pairs": 2,
+  "whole_episode_bonus_KV_archived": false,
+  "CUDA_initialized": false,
+  "historical_timings_used_as_primary": false,
+  "caveat": "Two states, one LIBERO task, paired two-model collection load; not a single-demand deployment E2E or stable multi-task speedup claim."
+}

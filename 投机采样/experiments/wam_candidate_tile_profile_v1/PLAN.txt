@@ -1,0 +1,9 @@
+2026-10-16，北京时间。一次真实长KV attention的三组NCU归因。
+仅在两进程三臂完整30层pilot实际数值/清理通过后执行；不是正式计时。
+固定旧真实layer00 Q/currentKV/公共prefix与原original_out，不造随机输入。
+native BM128、研究G1 BM64、研究G2 BM64各两次预热及一次被profile的调用，顺序固定。
+3个实际profile launch；NCU硬件counter replay另计为工具内部重放，不能宣称总物理调用只有9次。
+三个输出都需逐位等于冻结原输出，所有有效输入、slots/CFG rows/RNG不变。
+clock-control none/cache-control none；profile数值不混入Graph或机器人计时。
+读取实际HBM/L2字节与CTA/资源，不能将存储去重、L2和shared-memory复用混称。
+单GPU独占，CPU2，墙钟240秒含60秒清理，输出64MiB。不改kernel/分组/生产，无自动重试。

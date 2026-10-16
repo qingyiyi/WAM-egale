@@ -1,0 +1,106 @@
+{
+  "status": "PASS_CPU_ACTUAL_TORCH_CHILD_TOPOLOGY",
+  "roots": [
+    {
+      "root": {
+        "pid": 3623544,
+        "ppid": 3623543,
+        "pgid": 3623544,
+        "start_ticks": 1299393764,
+        "uid": 1003,
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "\nimport ast, contextlib, os, pathlib, signal, subprocess, sys, time\nfrom typing import Optional\nsource=pathlib.Path(sys.argv[1]); marker=pathlib.Path(sys.argv[2])\ntree=ast.parse(source.read_text());cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='SubprocessHandler')\nmethods=[next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name==name) for name in ['__init__','_popen']]\nmodule=ast.Module(body=[ast.ClassDef(name='Handler',bases=[],keywords=[],body=methods,decorator_list=[])],type_ignores=[])\n# Only the NUMA context is a CPU no-op; constructor and child Popen are original.\nns=dict(Popen=subprocess.Popen,IS_WINDOWS=False,os=os,Optional=Optional,NumaOptions=object,maybe_temporarily_apply_numa_binding_to_current_thread=lambda **kw:contextlib.nullcontext())\nexec(compile(ast.fix_missing_locations(module),str(source),'exec'),ns)\nchild_code='import pathlib,sys,time; p=pathlib.Path(sys.argv[1]);\\nwhile not p.exists(): time.sleep(.01)'\np=ns['Handler'](entrypoint=sys.executable,args=('-c',child_code,str(marker)),env=os.environ.copy(),stdout=None,stderr=None,local_rank_id=0,numa_options=None).proc\nprint(p.pid,flush=True)\ndef stop(*args): marker.touch()\nsignal.signal(signal.SIGTERM,stop)\nwhile not marker.exists(): time.sleep(.01)\np.wait(timeout=10)\n",
+          "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/subprocess_handler/subprocess_handler.py",
+          "/rjs/cxz/.tmp/p0-CPU-ownership-pfwqkwr4/release"
+        ]
+      },
+      "child": {
+        "pid": 3623546,
+        "ppid": 3623544,
+        "pgid": 3623546,
+        "start_ticks": 1299393769,
+        "uid": 1003,
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "import pathlib,sys,time; p=pathlib.Path(sys.argv[1]);\nwhile not p.exists(): time.sleep(.01)",
+          "/rjs/cxz/.tmp/p0-CPU-ownership-pfwqkwr4/release"
+        ]
+      }
+    },
+    {
+      "root": {
+        "pid": 3623547,
+        "ppid": 3623543,
+        "pgid": 3623547,
+        "start_ticks": 1299393769,
+        "uid": 1003,
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "\nimport ast, contextlib, os, pathlib, signal, subprocess, sys, time\nfrom typing import Optional\nsource=pathlib.Path(sys.argv[1]); marker=pathlib.Path(sys.argv[2])\ntree=ast.parse(source.read_text());cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='SubprocessHandler')\nmethods=[next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name==name) for name in ['__init__','_popen']]\nmodule=ast.Module(body=[ast.ClassDef(name='Handler',bases=[],keywords=[],body=methods,decorator_list=[])],type_ignores=[])\n# Only the NUMA context is a CPU no-op; constructor and child Popen are original.\nns=dict(Popen=subprocess.Popen,IS_WINDOWS=False,os=os,Optional=Optional,NumaOptions=object,maybe_temporarily_apply_numa_binding_to_current_thread=lambda **kw:contextlib.nullcontext())\nexec(compile(ast.fix_missing_locations(module),str(source),'exec'),ns)\nchild_code='import pathlib,sys,time; p=pathlib.Path(sys.argv[1]);\\nwhile not p.exists(): time.sleep(.01)'\np=ns['Handler'](entrypoint=sys.executable,args=('-c',child_code,str(marker)),env=os.environ.copy(),stdout=None,stderr=None,local_rank_id=0,numa_options=None).proc\nprint(p.pid,flush=True)\ndef stop(*args): marker.touch()\nsignal.signal(signal.SIGTERM,stop)\nwhile not marker.exists(): time.sleep(.01)\np.wait(timeout=10)\n",
+          "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/subprocess_handler/subprocess_handler.py",
+          "/rjs/cxz/.tmp/p0-CPU-ownership-pfwqkwr4/release"
+        ]
+      },
+      "child": {
+        "pid": 3623548,
+        "ppid": 3623547,
+        "pgid": 3623548,
+        "start_ticks": 1299393775,
+        "uid": 1003,
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "import pathlib,sys,time; p=pathlib.Path(sys.argv[1]);\nwhile not p.exists(): time.sleep(.01)",
+          "/rjs/cxz/.tmp/p0-CPU-ownership-pfwqkwr4/release"
+        ]
+      }
+    },
+    {
+      "root": {
+        "pid": 3623549,
+        "ppid": 3623543,
+        "pgid": 3623549,
+        "start_ticks": 1299393775,
+        "uid": 1003,
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "\nimport ast, contextlib, os, pathlib, signal, subprocess, sys, time\nfrom typing import Optional\nsource=pathlib.Path(sys.argv[1]); marker=pathlib.Path(sys.argv[2])\ntree=ast.parse(source.read_text());cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='SubprocessHandler')\nmethods=[next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name==name) for name in ['__init__','_popen']]\nmodule=ast.Module(body=[ast.ClassDef(name='Handler',bases=[],keywords=[],body=methods,decorator_list=[])],type_ignores=[])\n# Only the NUMA context is a CPU no-op; constructor and child Popen are original.\nns=dict(Popen=subprocess.Popen,IS_WINDOWS=False,os=os,Optional=Optional,NumaOptions=object,maybe_temporarily_apply_numa_binding_to_current_thread=lambda **kw:contextlib.nullcontext())\nexec(compile(ast.fix_missing_locations(module),str(source),'exec'),ns)\nchild_code='import pathlib,sys,time; p=pathlib.Path(sys.argv[1]);\\nwhile not p.exists(): time.sleep(.01)'\np=ns['Handler'](entrypoint=sys.executable,args=('-c',child_code,str(marker)),env=os.environ.copy(),stdout=None,stderr=None,local_rank_id=0,numa_options=None).proc\nprint(p.pid,flush=True)\ndef stop(*args): marker.touch()\nsignal.signal(signal.SIGTERM,stop)\nwhile not marker.exists(): time.sleep(.01)\np.wait(timeout=10)\n",
+          "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/subprocess_handler/subprocess_handler.py",
+          "/rjs/cxz/.tmp/p0-CPU-ownership-pfwqkwr4/release"
+        ]
+      },
+      "child": {
+        "pid": 3623550,
+        "ppid": 3623549,
+        "pgid": 3623550,
+        "start_ticks": 1299393779,
+        "uid": 1003,
+        "argv": [
+          "/usr/bin/python3",
+          "-c",
+          "import pathlib,sys,time; p=pathlib.Path(sys.argv[1]);\nwhile not p.exists(): time.sleep(.01)",
+          "/rjs/cxz/.tmp/p0-CPU-ownership-pfwqkwr4/release"
+        ]
+      }
+    }
+  ],
+  "installed_Torch_method": "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/subprocess_handler/subprocess_handler.py",
+  "installed_method_executed_verbatim": true,
+  "installed_constructor_executed_verbatim": true,
+  "CPU_NUMA_context_only_stub": true,
+  "old_guard_false_positive_reproduced": true,
+  "new_guard_own_children_accepted": true,
+  "independent_same_user_peer_rejected": true,
+  "helpers_cleaned_up": true,
+  "new_GPU_started": false,
+  "CUDA_initialized": false,
+  "imports_torch": false,
+  "NVML_rows_synthetic": true,
+  "real_proc_topology": true,
+  "training": false
+}

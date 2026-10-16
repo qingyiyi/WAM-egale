@@ -1,0 +1,9 @@
+2026-10-16 北京时间。观察 v1 中档失败后提出的唯一几何特化假设；原 negative 保留。
+
+固定规则：对每层实际、已校验的有效 prefix P，且仅当 ceil((P+32)/64)==ceil((P+16)/64) 选 G2，否则选 G1。不能使用 task/K 白名单；G4 停止，不修改旧 compiled v1 kernel/.so/CFG/私有 mask，不增加组大小搜索。
+保持 KV tile 数量不是逐位充分条件：suffix 列位置、Q行片段、softmax 归约、BM64 等差异仍在；G1 也是研究 kernel，不是原 native。公式不是全部输入逐位证明。
+
+只用 full-matrix-r4 三档 first/last 六真实完整30层 fixture，无新采样/训练/环境/合成输入。先完整 probe 六 query：每层原 native 作 oracle、guarded 作候选，始终返回 native，180候选+180oracle。任何数值不逐位时，停止剩余候选但完成当前完整 native query，验证 frozen/全有效KV/真实QKV字节/slots/参数与输入版本/RNG后停止；不再修改公式。
+只有 probe 六 query/180层全部逐位有限才开始独立六 query actual-guarded pass：完整30层确实返回 guarded 输出，并与冻结原完整输出逐位。共180实际 kernel，无额外 oracle。不把只返回 native 的 probe 写成已执行完整 custom 路径。
+完整预期12 target forwards、180候选对照+180native oracle+180 actual guarded=540 attention calls；硬帽 target12、候选180、attention600。通过仍只是这些固定 fixture 的数值门，不是生产、接受路径或机器人质量。
+预算 GPU600秒含60清理，CPU7，证据128MiB，0episode/0新chunk；共享GPU数值允许，22GiB初始/0.5GiB运行 headroom，两项目锁、pinned own cleanup、一次attempt无自动重跑。当前 native .so 新增小文件 SHA 绑定，不追认旧 manifest 已认证二进制。CPU prepare 不调用 GPU/NVML。

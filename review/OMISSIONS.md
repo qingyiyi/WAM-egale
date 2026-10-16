@@ -1,0 +1,553 @@
+# 未发布原件与快照边界
+
+这是文本与源码评审快照。此页不是缺失实验的替代结果，也不将原FAILED改成PASS。
+模型权重、原始PT/NPY/相机/视频、完整KV、编译产物与大profiler原件留在服务器；凭据和私有连接信息不发布。
+原始173来源中的171个Python文件已复制；两份编译.so未发布，C++/CUDA与vendor许可证另有源码。
+本地绝对Markdown链接已改为快照相对链接；指向未发布原件的链接统一到此页。源路径、原因和逐文件变化见SOURCE_MANIFEST.json。
+
+以下是未发布引用索引；不存在条目也不意味着实验从未执行，应按原报告和实际本地证据核验。
+
+- `.pipeline/knowledge/records/CHAT-20261015-OVERNIGHT-DRAFT-ACCEPTANCE-RESULT.yaml` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/maintenance/hw-upgrade-20261016/AUTODL-READONLY-TERMINAL.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/maintenance/hw-upgrade-20261016/LEGACY-RECORD-INVENTORY.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/maintenance/hw-upgrade-20261016/README.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/memory/global/knowledge/decision-性能证据与reset使用.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/memory/global/knowledge/decision-投机候选与闭环质量.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/memory/global/knowledge/decision-投稿时间与研究规划.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/memory/global/knowledge/decision-算子基线与接口限制.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/memory/global/knowledge/decision-训练数据与接受标准.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/FAILED-RUNTIME-CLEANUP-AUDIT-20261015.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-ccfa-20261014` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/acceptance-ccfa-20261014/dpm-solver/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-ccfa-20261014/independent-search/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-ccfa-20261014/local-origin/ORIGIN-RECOMPUTE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-ccfa-20261014/local-origin/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-ccfa-20261014/primary-methods/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-ccfa-20261014/references.bib` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/WORKPLAN.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/calibration/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/cvpr-schedule/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/flash-libero-review/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/harness-cpu/CPU-HARNESS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/harness-cpu/POST-METADATA-BINDING.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/independent-full-audit/FINAL-REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/plots/pilot/pilot_penalized_env_steps_pairs.pdf` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/plots/validation_sigma_head_pass.pdf` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/acceptance-comparison-20261014/sim-data-review/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/baseline-reset-analysis-20261013/COMPARISON.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/bonus-acceptance-20261013/FULL-FROZEN-VERIFY.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/bonus-acceptance-20261013/V1-FAILED-FREEZE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/bonus-acceptance-20261013/analyze-schema-corrected.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/bonus-e2e-20261013/SUMMARY.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-rows-o3-20261013/ARCHIVED-BYTES.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-rows-o3-20261013/CPU-CLEANUP.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-rows-o3-20261013/CPU-O3.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-rows-o3-20261013/O3-LONG-RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-scalar-o2-20261013/ARCHIVED-BYTES.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-scalar-o2-20261013/CPU-O2.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-scalar-o2-20261013/O2-LONG-RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-template-o1-20261013/ARCHIVED-BYTES.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-template-o1-20261013/CPU-O1.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/chunk-template-o1-20261013/O1-LONG-RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/controlled-target-s0-four-results-20261011/matched_grasp_overview.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/controlled-target-s0-four-results-20261011/pair_comparison.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/controlled-target-s0-four-results-20261011/stage_summary.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/controlled-target-s0-four-results-20261011/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/controlled-target-s0-four-startup-20261011` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/cpu-validation.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/effective-KV.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/immutable-before.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/labeled-policy-rows.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/paired-readout.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/paired-requests.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/paired-requests.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/readout.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/test_readout.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/cost-ledger-cpu-readout-20261011/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/cost-wrapper-cpu-20261011/combined-pytest.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/cost-wrapper-cpu-20261011/prepared-plan-NOT-GPU-APPROVED.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/cost-wrapper-cpu-20261011/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/current-chunk-lengths-20261014/KERNEL-GATE-FIX-CPU.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/current-chunk-lengths-result-20261014/SUMMARY-RECOMPUTED.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/current-chunk-lengths-result-20261014/independent-review/REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-architecture-verifier-20261014/DRAFT-CODE-REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-architecture-verifier-20261014/DRAFT-RESULT-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-architecture-verifier-20261014/HW-CLOSEOUT-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-architecture-verifier-20261014/OLD-TRAIN-DATA-COMPATIBILITY.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-architecture-verifier-20261014/PROCESS-CLOSEOUT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-architecture-verifier-20261014/PROFILE-CODE-REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-architecture-verifier-20261014/PROFILE-OBSERVER-CPU.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-architecture-verifier-20261014/WORKPLAN.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-data-verifier-followup-20261014/DATA-REBUILD-RESULT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-data-verifier-followup-20261014/FORMAL-CHUNK-V2-CODE-REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-data-verifier-followup-20261014/GPU-RESULT-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-data-verifier-followup-20261014/HW-CLOSEOUT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-data-verifier-followup-20261014/PROFILE-ATTRIBUTION-REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-data-verifier-followup-20261014/REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/draft-data-verifier-followup-20261014/SHARED-CHUNK-RESULT-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/e2e-bottleneck-and-throughput-20261015/AUTODL-METADATA-SNAPSHOT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/e2e-bottleneck-and-throughput-20261015/AUTODL-PHASE-ANALYSIS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/e2e-bottleneck-and-throughput-20261015/AUTODL-PHASE-SNAPSHOT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/e2e-bottleneck-and-throughput-20261015/AUTODL-THROUGHPUT-ANALYSIS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/e2e-bottleneck-and-throughput-20261015/E2E-COST-BREAKDOWN.svg` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/e2e-bottleneck-and-throughput-20261015/FASTWAM-RESET-REVIEW.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/e2e-bottleneck-and-throughput-20261015/LOCAL-COST-ANALYSIS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/e2e-bottleneck-and-throughput-20261015/analyze_existing.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/fixed-load-cost-plan-20261011/artifact-inventory.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fixed-load-cost-plan-20261011/planning-contract-tests.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fixed-load-cost-plan-20261011/planning-validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fixed-load-cost-plan-20261011/proposed-budget-NOT-GPU-APPROVED.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fixed-load-cost-plan-20261011/proposed-fixtures.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/ACCEPTANCE-PATHS-RESULT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/BASELINE-SPLIT-PROVENANCE-READONLY.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/COLDFIX-COLLECTION-INDEPENDENT-REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/DRAFT-AUX-HISTORY-RESULT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/DRAFT-RESIDUAL-LR-RESULT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/DRAFT-RESIDUAL-RESULT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/FINAL-HW-YAML-AND-LOCAL-LINKS-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/FINAL-PRESERVATION-AND-HW-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/FRESH9-RESULT-INDEPENDENT-REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/FRESH9-RESULT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/HISTORY-AUX-RESULT-REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/LOCAL-CONFIDENCE-AND-RUNTIME-ESTIMATE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/MORNING-CURRENT-TEACHER-WEIGHT-SHA256.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/MORNING-LONG8-WAVE0-V4-INDEPENDENT-TERMINAL-REVIEW.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/MORNING-LONG8-WAVE1-V4-INDEPENDENT-TERMINAL-REVIEW.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/MORNING-LONG8-WAVE2-V4-INDEPENDENT-TERMINAL-REVIEW.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/MORNING-LONG8-WAVE3-V4-INDEPENDENT-TERMINAL-REVIEW.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/MORNING-OPERATOR-START-REVIEW-20261015.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/MORNING-PROVENANCE-pairs.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/MORNING-PROVENANCE-summary.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/NEXT-SCALE-STRUCTURE-CONTRACT-20261015.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/NIGHT-FINAL-ACCOUNTING-AND-OWNED-CLEANUP.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/NIGHT-RESET-DIAGNOSTIC.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/OVERNIGHT-BENCHMARK-MODEL-LITERATURE.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/OVERNIGHT-NATIVE-NUMERIC-RELOAD-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/QUALITY-CALLS-PER-CHUNK-DIAGNOSTIC.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/QUALITY-INDEPENDENT-RESULT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/REFRESH-ARM-PAIR-METRICS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/REFRESH-BINDING-INDEPENDENT-RESULT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/RESIDUAL-RESULT-INDEPENDENT-REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/RETENTION-RESULT-REVIEW.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/TRAINING-45-REPRODUCIBLE-SELECTION.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/VISIBLE-FEATURE-CONFLICT-RESULT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/fusion-withdraw-draft-onpolicy-20261014/WAM-TRAINING-AND-CLOSED-LOOP-EVIDENCE.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/gpu-nonperturb-plan-20261011/planning-validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/gpu-nonperturb-plan-20261011/proposed-budget-NOT-GPU-APPROVED.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/gpu-nonperturb-plan-20261011/reference-inventory.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/gpu-nonperturb-plan-20261011/time-evidence.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/closed_run_geometry.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/cost_source_feasibility.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/event_intervals.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/init3_reference.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/init4_overview.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/input-sha256.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/phase_decomposition.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/stage_summary.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/state_timeseries.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/summary.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/init4-grasp-rework-and-cost-design-20261011/visual_manifest.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/actions.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/aggregate_cost.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/chunks.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/coarse_B_on_init3.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/coarse_S0_init4.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/command6_runs.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/dense_S0_init4_260_284.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/dense_T_init3_212_252.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/episodes.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/fine_B_on_init3_224_240.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/fine_S0_init4_238_254.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/grasp_S0_init4_220_260.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/grasp_T_init4_220_260.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/input-sha256.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/observations.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/paired_cost_deltas.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/summary.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/visual-windows.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/minimal-frozen-failure-cost-20261011/worker-demand-envelope.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/bilateral_contact_intervals.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/episodes.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/goal_intervals.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/init4_old_new_tensor_comparison.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/init4_pixel_differences.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/new_init3_contact_sheet.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/new_init4_contact_sheet.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/old_new_comparison.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/old_new_init4_S0.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/native-six-results-reproduction-gate-20261011/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/old-targetonly-source-audit-20261015/MANIFEST.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/optimized-e2e-o4-20261013/CPU-O4.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-174601/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-174601/AUTH/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-174601/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-174601/CPU/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-174601/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-174601/FAILED/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-174601/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-174601/START/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-200434/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-200434/AUTH/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-200434/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-200434/CPU/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-200434/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-200434/FAILED/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-200434/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-200434/START/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-205205/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-205205/AUTH/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-205205/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-205205/CPU/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-205205/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-205205/FAILED/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-205205/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-205205/START/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/AUTH/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/CPU/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/FINAL/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/FINAL/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/FIXTURES/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/FIXTURES/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/G1/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/G1/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/INITIAL/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/INITIAL/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/L1/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/L1/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/L2/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/L2/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/S1/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/S1/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/S2/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/S2/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-fixed-load-cost-20261011-213036/START/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/A_off_OFF/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/A_off_OFF/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/A_off_ON/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/A_off_ON/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/CPU/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/FINAL/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/FINAL/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/POST_CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/POST_CPU/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/START/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/T_ON/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-gpu-nonperturb-six-20261011-152919/T_ON/event.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-005214/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-005214/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-005214/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-005214/WAIT/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-014447/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-014447/CAPTURE/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-014447/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-014447/EQUIVALENCE/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-014447/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-014447/PARTIAL/CPU-PARTIAL-ANALYSIS.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-014447/PARTIAL/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-014447/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-kv-sync-attribution-20261012-014447/WAIT/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v1-20261012-162355/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v1-20261012-162355/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v2-20261012-162805/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v2-20261012-162805/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/ADMISSION/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/CAPTURE/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/KERNEL/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/POSTMORTEM/ANALYSIS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/POSTMORTEM/RAW-GPU-FREEZE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/POSTMORTEM/SUBAGENT-READONLY-REVIEW.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/POSTMORTEM/analyze_cpu.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/p0-shared-prefix-v3-20261012-163453/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-20261012-085017/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-20261012-085017/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-20261012-085017/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-20261012-085017/POSTMORTEM/cpu-diagnosis.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-20261012-085017/POSTMORTEM/cpu_diagnose.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-20261012-085017/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v2-20261012-102720/ADMISSION/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v2-20261012-102720/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v2-20261012-102720/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v2-20261012-102720/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v2-20261012-102720/POSTMORTEM/AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v2-20261012-102720/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v3-20261012-142632/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v3-20261012-142632/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v3-20261012-142632/POSTMORTEM/AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-145820/ADMISSION/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-145820/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-145820/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-145820/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-145820/POSTMORTEM/AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-145820/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-145820/WAIT/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-152028/ADMISSION/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-152028/AUTH/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-152028/CAPTURE/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-152028/CPU/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-152028/FAILED/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-152028/START/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/p0-single-worker-chc-v4-20261012-152028/WAIT/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/prefix-acceptance-20261013/CPU-CORE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/prefix-acceptance-20261013/DATA-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/prefix-acceptance-20261013/LABEL-COLLECTION-SPEC.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/project-review-20261014/CLEANUP-CANDIDATES.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/project-review-20261014/CLEANUP-EXECUTION-20261015.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/project-review-20261014/DEPENDENCIES.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/project-review-20261014/INVENTORY.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/prompt-kv-cpu-20261012/FAST-ACTUAL-MATRIX-COUNTS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/prompt-kv-cpu-20261012/FAST-CPU-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/prompt-kv-cpu-20261012/FINAL-GPU-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/prompt-kv-cpu-20261012/HOST-GUARD-PROFILE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/prompt-kv-cpu-20261012/INITIAL-LONG-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/prompt-kv-cpu-20261012/INITIAL-SHORT-MIDDLE-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011/actions.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011/checks.jsonl` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011/episodes.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011/native_event_intervals.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011/observations.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011/pair_comparison.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011/summary.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011/tensor_comparison.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/repro-policy-six-results-20261011/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/repro-seed-replay-gate-20261011` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/repro-seed-replay-gate-20261011/independent-validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/repro-seed-replay-gate-20261011/measured-state-differences.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/repro-seed-replay-gate-20261011/replay-comparison.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/repro-seed-replay-gate-20261011/source-audit.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/repro-seed-replay-gate-20261011/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/reset-deferred-priority-20261014/REVIEW.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-backend-observation-20261012/CPU-EXPORT-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-backend-observation-20261012/audit_real_exports.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-implementation-20261012/AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-implementation-20261012/CPU-FINAL-RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-implementation-20261012/V2-STATIC-REVIEW-DEFERRED.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-numerical-plan-cpu-20261012/CPU-STUDY.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-numerical-plan-cpu-20261012/CPU-v1-PARSE-FAIL.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-numerical-plan-cpu-20261012/PLAN-READONLY-REVIEW.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-numerical-plan-cpu-20261012/RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-numerical-plan-cpu-20261012/STATIC-COMPARISON.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-numerical-plan-cpu-20261012/inspect_and_study_v2.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-rowproof-cpu-20261012/CPU-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-rowproof-cpu-20261012/CPU-GATE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-rowproof-cpu-20261012/CPU-S0-S1-ACTUAL-OUTPUTS.pt` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-rowproof-cpu-20261012/GPU-DESIGN.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-rowproof-cpu-20261012/SOURCE-FREEZE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-rowproof-cpu-20261012/tests.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-rowproof-gpu-result-20261012/MEASUREMENT-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-rowproof-gpu-result-20261012/TRACE-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-rowproof-perf-20261012/PREPARED-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-short-middle-20261012/CPU-MEASUREMENT-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-short-middle-20261012/FINAL-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-short-middle-20261012/PREPARED-CPU-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-short-middle-20261012/PROFILE-ANALYSIS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-torch-alignment-20261012/CPU-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-torch-alignment-20261012/audit_results.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-torch-performance-20261012/CPU-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-torch-performance-20261012/EXIT-RACE-CPU-REPRO.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-torch-performance-20261012/PROFILE-ANALYSIS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-torch-performance-20261012/RECONCILED-RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/shared-prefix-torch-performance-20261012/exit_guard.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-counter-fix-cpu-20261012/AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-counter-fix-cpu-20261012/CPU-001/CPU-RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-counter-fix-cpu-20261012/CPU-001/counter-tests.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-cpu-20261012/CPU-RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-cpu-20261012/CPU-tests-004.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-cpu-20261012/CPU-tests-004.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-cpu-20261012/SOURCE-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-loader-fix-cpu-20261012/AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-loader-fix-cpu-20261012/CPU-001/CPU-RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-loader-fix-cpu-20261012/CPU-001/existing-interface-tests.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-loader-fix-cpu-20261012/CPU-001/preflight/worker-CPU-probe.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-loader-fix-cpu-20261012/CPU-001/production-loader-tests.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-plan-20261012/CPU-AUDIT-DRAFT1-FAILED.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-plan-20261012/CPU-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-plan-20261012/HISTORICAL-RESOURCE-CPU-READOUT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/single-worker-chc-plan-20261012/PLAN.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/speculation-draft-cost-analysis-20261013/ANALYSIS.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/speculation-draft-cost-analysis-20261013/CPU-LEAF-CONSUMPTION.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/speculative-e2e-attribution-20261013/ATTRIBUTION.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/speculative-e2e-attribution-20261013/CPU-SETUP-PROFILE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/speculative-e2e-attribution-20261013/PLAN.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010/chunks.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010/episodes.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010/executed_actions.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010/execution_contract.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010/integrity.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010/observations.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010/paired_episode_steps.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010/provenance.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step2b-action-observation-alignment-20261010/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/candidate-signals.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/episode_command_summary.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/fine_98_104.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/first_transfer_84_108.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/first_transfer_commands_84_108.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/init0_chunk_command_features.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/init0_command_timeline.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/k2_rehandling.png` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/manual_visual_events.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/positive_command6_intervals.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step2c-init0-visual-rework-20261010/visual_provenance.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step3a-minimal-design-20261011` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step3a-minimal-design-20261011/diagnostic-contract.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step3a-minimal-design-20261011/frozen-reference.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step3a-minimal-design-20261011/minimal-comparison.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step3a-minimal-design-20261011/source-audit.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/step3a-minimal-design-20261011/source-feasibility.csv` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `.pipeline/research/speculative-sampling/evidence/step3a-minimal-design-20261011/validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/tf-libero-pilot-20261015/PROMPT-CROSS-ATTN-DESIGN.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/thread-continuation-20261014/PERIODIC-INDEPENDENT-RAW-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/thread-continuation-20261014/QUALITY-INDEPENDENT-RAW-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/thread-continuation-20261014/method-training-criteria/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/thread-continuation-20261014/periodic-v4-entry-fix-cpu/REVIEW.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/thread-continuation-20261014/resource-resume-audit/INDEPENDENT-PROMOTION.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/thread-continuation-20261014/resource-resume-audit/PF4-INDEPENDENT-QUALITY-AND-REFRESH.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/thread-continuation-20261014/wam-training-literature/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/thread-continuation-20261014/zero-control-audit/REPORT.md` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/trace-success-followup-20261014/training/TRAINING-RESULT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/trajectory-autodl-paper-20261014/LOCAL-EVIDENCE.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/verifier-kv-sync-attribution-plan-20261012/CPU-AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/verifier-kv-sync-attribution-plan-20261012/PLAN.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/verifier-systems-fastwam-dual-20261011/AUDIT.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/waspecdec-literature-review-20261011/bibliography.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/waspecdec-literature-review-20261011/claim-audit.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/waspecdec-literature-review-20261011/external-changes-detected.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/waspecdec-literature-review-20261011/immutable-before.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/waspecdec-literature-review-20261011/immutable-prewrite.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/waspecdec-literature-review-20261011/post-write-validation.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/speculative-sampling/evidence/waspecdec-literature-review-20261011/write-journal.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/tile-sdpa/evidence/pytorch29-final-parity-20261012.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `.pipeline/research/tile-sdpa/evidence/pytorch29-release-first-20261012.json` — legacy bulk/maintenance evidence retained on server; not part of review snapshot
+- `/rjs/cxz/miniconda3/envs/libero-va/lib/python3.10/site-packages/robosuite/environments/manipulation/manipulation_env.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/rjs/cxz/miniconda3/envs/libero-va/lib/python3.10/site-packages/robosuite/models/grippers/panda_gripper.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/rjs/cxz/miniconda3/envs/libero-va/lib/python3.10/site-packages/robosuite/robots/single_arm.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include/ATen/native/transformers/cuda/sdp_utils.h` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/functional.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-formal-e2e-speed/p0-formal-e2e-speed-v1-multi-r3-20261015/FINAL-ANALYSIS.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-acceptance-criteria-v1-20261014-143500/FINAL_RESULT.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-acceptance-criteria-v1-20261014-143500/GPU-COLLECTION.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-current-chunk-lengths-v1-20261014-182138/FAILED.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-current-chunk-lengths-v1-20261014-182138/plan.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-current-chunk-lengths-v1-20261014-183953/GPU-COLLECTION.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-current-chunk-lengths-v1-20261014-183953/fixed/worker0/WORKER-RESULT.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-current-chunk-lengths-v1-20261014-183953/plan.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-draft-architecture-v1-20261014-cpu18/FINAL-RESULT.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-draft-architecture-v1-20261014-cpu18/RESULT.md` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-draft-architecture-v1-20261014-cpu18/TRANSFORMER-STRATIFIED-DIAGNOSTIC.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-draft-architecture-v1-20261014-cpu18/plan.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-draft-data-rebuild-v1-20261014/MERGE-READY-MANIFEST.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-draft-expanded-data-v1-20261014/RESULT.md` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-draft-root-retention-v1-20261014/RESULT.md` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-megaverifier-chunk-v2-20261014-import-fix/plan.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-megaverifier-profile-v1-20261014-prepared/plan.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-megaverifier-profile-v1-20261014-prepared/preflight/CPU-GATE.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-morning-long10-crosscheck-v1-20261015-r1.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-morning-long10-overlap-v1-20261015-r1.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-morning-long10-posttrain-audit-v1-20261015-r1.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-morning-long10-train-six-v1-20261015-r1/FINAL-RESULT.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-periodic-refresh-quality-v4-20261014-115000/FINAL_RESULT.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `/var/tmp/cxz-wam-quality-20261014/p0-trace-quality-resume-v1-20261014-100500/FINAL_RESULT.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `third_party/LIBERO-official-20260922/libero/libero/bddl_files/libero_10/LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket.bddl` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `third_party/LIBERO-official-20260922/libero/libero/envs/bddl_base_domain.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `third_party/LIBERO-official-20260922/libero/libero/envs/object_states/base_object_states.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `third_party/LIBERO-official-20260922/libero/libero/envs/predicates/base_predicates.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `third_party/LIBERO-official-20260922/libero/libero/envs/problems/libero_living_room_tabletop_manipulation.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/operator_lab/wam_transformer_tile/csrc/standalone_flash_sdpa.cu` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/operator_lab/wam_transformer_tile/test_standalone_sdpa.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/operator_lab/wam_transformer_tile/wam_transformer_tile/contract.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/pre-cleanup-validated-package.tar.gz` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/release-r1.json` — text larger than the one MiB per-file review limit
+- `wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/release-r2.json` — text larger than the one MiB per-file review limit
+- `wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/release-confirmed-idle-20261012/release-r1.json` — text larger than the one MiB per-file review limit
+- `wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/release-confirmed-idle-20261012/release-r2.json` — text larger than the one MiB per-file review limit
+- `投机采样/experiments/autodl_research_quality_dispatch_v1/watch.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/chunk_template_v2/state_check.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/chunk_template_v2/template.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/draft_teacher_train_v1` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/draft_teacher_train_v1/training.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/fixed_load_cost/contract.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/fixed_load_cost/supervisor.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/fixed_load_cost/test_cpu.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/fixed_load_cost/worker.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/kv_sync_attribution/attention_control.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/kv_sync_attribution/capture.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/kv_sync_attribution/worker.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/megaverifier_analysis_v1/retained-v1-short-first.attribution.json` — text larger than the one MiB per-file review limit
+- `投机采样/experiments/megaverifier_analysis_v1/v2-six-profiles.attribution.json` — text larger than the one MiB per-file review limit
+- `投机采样/experiments/megaverifier_pointwise_v1/csrc/pointwise.cu` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/morning_long10_posttrain_audit_v1/audit.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/morning_long10_train_cpu_v1/run.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/periodic_refresh_quality_v4/audit.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/scalar_readback_v1/scalar.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/seven_rows_v2/buffers.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/shared_prefix_observe_v2/observation.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/shared_prefix_observe_v2/test_observe_cpu.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/shared_prefix_rowproof_cpu_v1/prefix_adapter.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/shared_prefix_torch_v2/ADDRESS-ONLY.diff` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/shared_prefix_torch_v2/_shared_torch_v1.cpython-312-x86_64-linux-gnu.so` — frozen compiled module excluded; associated C++/CUDA source is exported
+- `投机采样/experiments/shared_prefix_torch_v2/build/lib.linux-x86_64-cpython-312/_shared_torch_v1.cpython-312-x86_64-linux-gnu.so` — frozen compiled module excluded; associated C++/CUDA source is exported
+- `投机采样/experiments/shared_prefix_torch_v2/csrc/vendor/cutlass/include/cute/arch/mma_sm90_gmma_ext.hpp` — text larger than the one MiB per-file review limit
+- `投机采样/experiments/shared_prefix_torch_v2/csrc/vendor/cutlass/include/cute/arch/mma_sm90_gmma_sparse_ext.hpp` — text larger than the one MiB per-file review limit
+- `投机采样/experiments/single_worker_chc/adapter.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/single_worker_chc/capture.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/single_worker_chc/contract.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/single_worker_chc/test_cpu.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/single_worker_chc_counter_fix/counter_journal.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/single_worker_chc_counter_fix/worker.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/experiments/trace_preserving_train_v1` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/draft_pilots/phase-a-k2-b2-20260929-r2/beam2_two_head.pt` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-bonus-acceptance-v2-20261013-202930/plan.json` — text larger than the one MiB per-file review limit
+- `投机采样/results/runtime/p0-chunk-rows-v2-20261013-144300/plan.json` — text larger than the one MiB per-file review limit
+- `投机采样/results/runtime/p0-fixed-load-cost-20261011-174601/preflight/cpu-tests.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-cost-20261011-174601/workers/worker0/model.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-cost-20261011-174601/workers/worker1/model.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-cost-20261011-200434/preflight/cpu-tests.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-cost-20261011-200434/preflight/probe-real-module-CPU.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-cost-20261011-200434/workers/worker0/model.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-cost-20261011-200434/workers/worker1/model.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-cost-20261011-213036/fixtures/T-init3-chunk14.pt` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-lifecycle-cpu-fix-20261011-203648/combined-CPU.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-lifecycle-cpu-fix-20261011-203648/probe-real-constructor-CPU.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-lifecycle-cpu-fix-20261011-203648/worker.py.patch` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-ownership-cpu-fix-20261011-211415/ownership-CPU-tests.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-preload-cpu-fix-20261011-195019/baseline-implementation` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-preload-cpu-fix-20261011-195019/combined-CPU-tests.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-preload-cpu-fix-20261011-195019/real-module-CPU.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-fixed-load-preload-cpu-fix-20261011-195019/worker.py.patch` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-kv-sync-attribution-20261012-014447/OWNERSHIP-CLEANUP.json` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-libero-libero_10-alltasks-50init-targetonly-transformer-output-v2-20261002-r2/client/episodes.jsonl` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-libero-libero_10-continuation-targetonly-transformer-output-par2-20261004-1110/client/episodes.jsonl` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-minimal-frozen-task0-20ep-20261011-004242/supervisor.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-minimal-frozen-task0-20ep-20261011-004242/training/A_off.pt` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-native-failure-task0-6ep-20261011-075638/supervisor.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-optimized-e2e-resume-v2-20261013-160413/plan.json` — text larger than the one MiB per-file review limit
+- `投机采样/results/runtime/p0-prefix-acceptance-v1-20261013-214600/plan.json` — text larger than the one MiB per-file review limit
+- `投机采样/results/runtime/p0-prompt-kv-gpu-v4-20261013-011114/FINAL_RESULT.json` — text larger than the one MiB per-file review limit
+- `投机采样/results/runtime/p0-repro-observer-task0-6ep-20261011-120724/supervisor.log` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-shared-prefix-torch-lengths-v1-20261012-213536/traces/short-R-S-first-query.json` — text larger than the one MiB per-file review limit
+- `投机采样/results/runtime/p0-shared-prefix-torch-model-v1-20261012-194914/numerical/S-all29-outputs.pt` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-shared-prefix-v3-20261012-163453/triton-cache/T77U66JXCHHX5NJK6T5CHV7KSSXAC35H2JZOTJUVOOT5X4UL3BOA/_attention.ptx` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-shared-prefix-v3-20261012-163453/worker/direct-attention-micro.jsonl` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/results/runtime/p0-single-worker-chc-v3-20261012-142632/preflight/CPU-GATE.json` — not present in the current local workspace
+- `投机采样/results/runtime/p0-single-worker-chc-v3-20261012-142632/tested-source` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/scripts/p0_minimal_frozen_train.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/scripts/p0_phase_b_k2_beam2_verifier_replay.py` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/tests` — linked raw/private/bulk/non-selected artifact; original retained on server
+- `投机采样/traces` — linked raw/private/bulk/non-selected artifact; original retained on server

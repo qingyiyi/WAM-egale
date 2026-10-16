@@ -1,0 +1,31 @@
+{
+  "status": "FAIL",
+  "error": "RuntimeError('new-job CPU preflight failed: test_loader_cpu.py')",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v3/supervisor.py\", line 318, in run\n    if mode=='cpu':self.cpu();return\n                   ^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v3/supervisor.py\", line 179, in cpu\n    if child.wait(timeout=900)!=0:raise RuntimeError('new-job CPU preflight failed: '+script)\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: new-job CPU preflight failed: test_loader_cpu.py\n",
+  "timed_out": false,
+  "budget": {
+    "target_reserved": 0,
+    "target_attempted": 0,
+    "target_completed": 0,
+    "stage": null,
+    "stage_attempted": 0,
+    "allocated_cap": 895,
+    "target_hard_cap": 900,
+    "extra_micro_calls": 0,
+    "EGL": 0,
+    "complete_episodes": 0,
+    "complete_policy_chunks": 0,
+    "environment_steps": 0,
+    "counter_source": "no_GPU_attempt"
+  },
+  "passed_gates": [],
+  "next_step": "失败已停止，不补跑、不训练；先CPU检查本关失败/已有原始结果。任何修复后的新GPU尝试须另确认预算，不能沿用本次一次性授权。",
+  "cleanup": {
+    "status": "PASS",
+    "remaining_owned_pids": [],
+    "occupied_owned_ports": [],
+    "other_processes_not_signalled": true,
+    "sample": null
+  },
+  "counter_recovery": null
+}

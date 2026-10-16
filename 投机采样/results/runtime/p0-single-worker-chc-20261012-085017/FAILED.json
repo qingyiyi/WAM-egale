@@ -1,0 +1,42 @@
+{
+  "status": "FAIL",
+  "error": "RuntimeError(\"worker gate failed: LeaseError('requires unmodified eval original WanAttention interface')\")",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc/supervisor.py\", line 260, in run\n    result=self.gpu();write(self.job/'FINAL_RESULT.json',result,exclusive=True)\n           ^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc/supervisor.py\", line 212, in gpu\n    captured=self.command('capture','capture');probe=self.command('resource_probe','resource_probe')\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc/supervisor.py\", line 200, in command\n    if row.get('status')!='PASS':raise RuntimeError('worker gate failed: '+row.get('error','unknown'))\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: worker gate failed: LeaseError('requires unmodified eval original WanAttention interface')\n",
+  "timed_out": false,
+  "budget": {
+    "target_reserved": 52,
+    "target_attempted": 52,
+    "target_completed": 52,
+    "stage": "capture",
+    "stage_attempted": 52,
+    "allocated_cap": 895,
+    "target_hard_cap": 900,
+    "extra_micro_calls": 0,
+    "EGL": 0,
+    "complete_episodes": 0,
+    "complete_policy_chunks": 0,
+    "environment_steps": 0
+  },
+  "passed_gates": [
+    "CPU"
+  ],
+  "next_step": "失败已停止，不补跑、不训练；先CPU检查本关失败/已有原始结果。任何修复后的新GPU尝试须另确认预算，不能沿用本次一次性授权。",
+  "cleanup": {
+    "status": "PASS",
+    "remaining_owned_pids": [],
+    "occupied_owned_ports": [],
+    "other_processes_not_signalled": true,
+    "sample": {
+      "uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+      "memory_total_bytes": 42949672960,
+      "memory_used_bytes": 0,
+      "memory_reserved_bytes": 543817728,
+      "memory_free_bytes": 42405855232,
+      "memory_accounting": "NVML_MEMORY_V2_ALLOCATED",
+      "memory_struct_version": 33554472,
+      "utilization_percent": 100,
+      "compute": [],
+      "graphics": []
+    }
+  }
+}
