@@ -72,7 +72,12 @@ def main():
             rc=child.wait(timeout=max(1,min(5500,deadline-time.time()-600)))
         except subprocess.TimeoutExpired:
             if matches(pin):os.killpg(pin['pgid'],signal.SIGTERM)
-            rc=child.wait(timeout=10)
+            try:rc=child.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                if matches(pin):os.killpg(pin['pgid'],signal.SIGKILL)
+                rc=child.wait(timeout=10)
+        write(job/'CONTROL-OWNED-CLEANUP.json',dict(pin=pin,reaped=True,returncode=rc,
+            observed_process=proc(pin['pid']),source='actual wait return; no fabricated exit0'))
         if rc!=0:
             result=dict(status='HANDOFF_NOT_COMPLETED_PRIOR_STATUS_REQUIRES_EVIDENCE',control_returncode=rc,
                 raw_control_result=read(job/'handoff-control/RESULT.json') if (job/'handoff-control/RESULT.json').exists() else None,
@@ -115,6 +120,15 @@ def main():
         pending=[r for r in p['cases'] if r['case_id'] not in set(complete)|set(blocked)]
         p['worker_forward_caps']={str(i):sum(r['execution_worker_index']==i for r in pending)*12000+250 for i in range(4)}
         require(sum(p['worker_forward_caps'].values())+debit<=p['job_forward_attempt_cap'],'fixed series forward cap')
+        extra=Path(p['prior_attempted_transition_job'])
+        outside=sum(f.stat().st_size for f in extra.rglob('*') if f.is_file())
+        # The frozen evaluator scans prior+new. A named sparse accounting
+        # reserve makes it also count this closed external preparation job.
+        with (job/'EXTERNAL-PREPARATION-BUDGET.reserve').open('xb') as f:f.truncate(outside)
+        write(job/'EXTERNAL-PREPARATION-BUDGET.json',dict(external_root=str(extra),
+            external_logical_bytes=outside,reserve_is_accounting_only_not_tensor_data=True,
+            actual_disk_allocation_must_be_reported_separately=True))
+        p['external_preparation_evidence_bytes']=outside
         write(job/'plan.json',p)
         write(job/'PRIOR-READONLY-REUSE.json',dict(status='FULL_RAW_THREE_ARM_CASES_ONLY',
             prior_job=str(prior),completed_case_ids=complete,blocked_partial_case_ids=blocked,
@@ -137,6 +151,19 @@ def main():
         observed=proc(prior_pin['pid'])
         if (job/'handoff-control/RUNNER-PAUSED-ADMITTED-CASES.json').exists() and observed is not None and observed['state'] in ('T','t') and matches(prior_pin):
             os.kill(prior_pin['pid'],signal.SIGCONT)
+        orphan_cleanup=[]
+        for f in (job/'handoff-control').glob('OWNED-MANUAL-*.json'):
+            item=read(f)
+            if item.get('controller_owner_job')!=str(job) or item.get('owner_job')!=str(prior):continue
+            if matches(item) and proc(item['pid'])['state'] not in ('Z','X'):
+                os.killpg(item['pgid'],signal.SIGTERM);stop=time.time()+10
+                while matches(item) and proc(item['pid'])['state'] not in ('Z','X') and time.time()<stop:time.sleep(.1)
+                if matches(item) and proc(item['pid'])['state'] not in ('Z','X'):
+                    os.killpg(item['pgid'],signal.SIGKILL)
+            orphan_cleanup.append(dict(pid=item['pid'],birth_ticks=item['birth_ticks'],observed=proc(item['pid']),
+                only_birth_pinned_manual_control_groups=True))
+        write(job/'MANUAL-CHILD-POSTCONTROL-OBSERVATION.json',dict(records=orphan_cleanup,
+            no_original_server_or_foreign_process_signal=True))
         if result is not None:
             result.update(wall_sec=time.time()-started,finished_at=datetime.now(timezone.utc).isoformat())
             write(job/'TRANSITION-RESULT.json',result)

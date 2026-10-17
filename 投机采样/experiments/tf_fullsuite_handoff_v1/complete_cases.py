@@ -14,6 +14,8 @@ from pathlib import Path
 import signal
 import time
 import traceback
+import shutil
+import threading
 
 
 def read(path):
@@ -114,8 +116,35 @@ def main():
         started_at=datetime.now(timezone.utc).isoformat(),deadline_unix=deadline,
         prior_runner=pin,scope='complete admitted cases with unchanged v1 pending arms; no new case or episode retry'))
     paused, handed, selected = False, False, None
+    budget_lock=threading.Lock();last_storage=[0.0]
+    def budget():
+        require(time.time()<deadline,'bounded control lifecycle')
+        require(time.time()<datetime.fromisoformat(p['absolute_work_stop']).timestamp(),'original work stop')
+        require(not (job/'STOP_REQUESTED').exists(),'original stop requested')
+        total_attempts=0
+        for i in (0,1):
+            w=job/('server-worker%d'%i)
+            require(not (w/'FAILED.json').exists() and not (job/('WORKER-%d-STOP.json'%i)).exists(),'original hard server failure')
+            live=read(w/'LIVE-COUNTER.json');n=live['target_forward_attempts']
+            require(type(n) is int and 0<=n<=3000500,'original worker forward cap');total_attempts+=n
+        require(total_attempts<=p['job_forward_attempt_cap'],'original series forward cap')
+        if time.monotonic()-last_storage[0]>=10:
+            with budget_lock:
+                if time.monotonic()-last_storage[0]>=10:
+                    total=0
+                    roots=[job,out.parent,out.parent.with_name('p0-tf-fullsuite-long-v2-20261017-r1')]
+                    for folder in roots:
+                        if folder.exists():
+                            for f in folder.rglob('*'):
+                                if f.is_file():
+                                    try:total+=f.stat().st_size
+                                    except FileNotFoundError:pass
+                    require(total<=p['new_evidence_cap_bytes'],'series10GiB cap including prior preparation')
+                    require(shutil.disk_usage(job).free>=p['remote_data_disk_floor_bytes'],'original disk free floor')
+                    last_storage[0]=time.monotonic()
     try:
         while time.time()+4200 < deadline:
+            budget()
             require(matches(pin),'prior runner exited; no takeover or retry')
             require(not (job/'HARD-STOP.json').exists(),'prior hard failure; handoff cancelled')
             candidate = clients(job,pin['pid'])
@@ -142,6 +171,7 @@ def main():
             write(out/'RESULT.json',dict(status='NO_COMMON_LAST_ARM_WINDOW_NO_CHANGE',wall_sec=time.time()-started))
             return 2
         while True:
+            budget()
             require(time.time()<deadline,'bounded handoff deadline')
             done=[]
             for worker,row in selected.items():
@@ -160,6 +190,7 @@ def main():
             if not f.exists():
                 f.write_text('actual complete last-arm client exited; controlled full-case handoff\n')
         while True:
+            budget()
             require(time.time()<deadline,'finish drain deadline')
             if all((terminal(job,row['case_id'],row['arm']).parent/'FINISH_READY.json').is_file() for row in selected.values()):
                 break
@@ -175,6 +206,7 @@ def main():
         def finish_pending(worker,row):
             order=p['cases'][row['case_id']]['within_case_order'].split('_')
             for arm in order[order.index(row['arm'])+1:]:
+                budget()
                 require(time.time()+1320<deadline,'whole pending episode plus drain reserve')
                 e=terminal(job,row['case_id'],arm).parent;e.mkdir(parents=True,exist_ok=False)
                 child=original_runner.spawn([p['client_python'],'-B',v1/'client_entry.py','--job',job,
@@ -182,8 +214,10 @@ def main():
                     '--worker-index',worker,'--master-port',29771+worker],e/'client.log',
                     original_runner.environment(worker),original_runner.affinity[worker]['client'],
                     'client-case%d-%s'%(row['case_id'],arm))
+                write(out/('OWNED-MANUAL-%d.json'%child['pin']['pid']),dict(child['pin'],controller_owner_job=str(out.parent),created_by_control_pid=os.getpid()))
                 limit=time.monotonic()+1200
                 while not original_runner.wait_reaped(child):
+                    budget()
                     require(time.monotonic()<limit,'original complete pending client1200s cap')
                     require(time.time()<deadline,'orchestration cap')
                     time.sleep(.2)
@@ -192,6 +226,7 @@ def main():
                 (e/'FINISH_REQUESTED').write_text('actual authorized pending arm naturally finished; handoff drain\n')
                 limit=time.time()+120
                 while not (e/'FINISH_READY.json').exists():
+                    budget()
                     require(time.time()<limit,'original FINISH drain120s cap');time.sleep(.2)
                 ready=read(e/'FINISH_READY.json')
                 require(ready.get('full_episode_terminal') is True and ready.get('async_drained') is True,'pending arm drain missing')
@@ -202,7 +237,7 @@ def main():
         finally:
             manual_cleanup=original_runner.cleanup()
             write(out/'MANUAL-PENDING-OWNED-CLEANUP.json',manual_cleanup)
-        require(manual_cleanup['all_owned_work_exited'] is True,'manual owned client cleanup did not close')
+        require(manual_cleanup['all_owned_work_exited'] is True and manual_cleanup['all_owned_groups_empty'] is True,'manual owned client group cleanup did not close')
         for worker,row in selected.items():
             c=row['case_id']
             for arm in ('T','C','P'):
