@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-17T18:30:35+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-17T19:53:41+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -12,7 +12,7 @@
 
 | 路线 | 当前结论 | 证据入口 |
 |---|---|---|
-| 投机采样 | M17三套同配方TF训练/三臂已获准并登记，控制器待资产；M16 Long双卡四worker继续。90/fixture仍UNKNOWN，旧NO_GO/四false不变 | [当前状态](experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)、[评测范围](experiments/libero-fullscale-20261017/SCOPE-REVIEW.md) |
+| 投机采样 | M17本机Object单worker完整Target链启动中，Goal/Spatial等待AutoDL；M16 Long双卡四worker继续。90/fixture仍UNKNOWN，旧NO_GO/四false不变 | [当前状态](experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)、[评测范围](experiments/libero-fullscale-20261017/SCOPE-REVIEW.md) |
 | tile / SDPA | 固定 PyTorch2.9 基线有限验收完成；没有新 MegaTransformer/verifier/E2E 收益 | [原最终报告](research/tile-sdpa/PYTORCH29_FINAL_20261012.md) |
 
 算子原代码与 HW 保留；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。

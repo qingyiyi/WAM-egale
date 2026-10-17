@@ -2,6 +2,8 @@
 
 当前Cycle：wam-research-20261016，M17。用户已明确批准[三个套件的独立训练与评估](../../memory/global/requirements/decision-四套LIBERO同配方TF与三臂评估.md)。这是新增执行范围，原Long M16和4f04 paused72/旧FAILED/四false保持，原tile与保护文件不动。
 
+19:48新资源修订：用户允许本机空闲GPU分担。Object零新增数据时登记652e83c独立v4入口：完整套件固定本机SXM4、单模型、server2/client2、nice10；复用已完成的原始512 BF16 bank，仅绑定本地路径，精确身份退役远端零工作Object控制器后才启动。最终两250case shard顺序。Goal/Spatial/Long远端不变，同case三臂同物理卡、成本按硬件分层。保持17:11起点、原截止及各套1560局/6241000尝试/5GiB；原18:30/OS盘准备分配被此前瞻修订替代，不覆盖其记录。[v4登记](../../../投机采样/results/runtime/p0-tf-suite-local-placement-v4-20261017-r1/AMENDMENT.json)。
+
 18:30资源修订：用户要求本机减负并明确暂不扩容。新套件模型/episode/训练0时，以8eaf130独立共享资源入口替换旧准备控制器：Object/Goal全部固定AutoDL GPU0、Spatial固定GPU1。原17:11起点/96h及方法/数据/预算不变；原本机分配只保留历史身份。三套完整bank现已完成；Long清理后以37f15d1有界调度核查并轮换远端Long Transformer缓存给Spatial，T5/VAE/tokenizer/原结果不删。[新资源登记](../../../投机采样/results/runtime/p0-tf-suite-remote-placement-v2-20261017-r1/REGISTRATION.json)、[不扩容决定](../../memory/global/requirements/decision-本轮AutoDL不扩容并先清理废弃资源.md)。
 
 ## 可见执行清单
@@ -11,7 +13,7 @@
 - [x] Object/Goal远端有界下载完成；本机回传、Spatial空间调度仍在推进。原始配置与归一化归档，runtime使用独立模型目录及共享base组件，不改旧registry。
 - [x] 复用原数学构建三套完整512-token BF16 prompt bank；新suite在线审计仍待实际任务。
 - [x] 独立通用server/client/collector/训练/监督入口完成并冻结来源（9aa66fb），三控制器已登记等待；尚未新GPU任务；不执行smoke或独立测试。
-- [ ] 全部新增重计算迁现有AutoDL，Long自然结束/实际清理后接续；不截断当前episode。
+- [ ] 本机空闲时先跑Object单worker；AutoDL Long自然收尾/实际清理后Goal/Spatial接续，不截断当前episode。
 - [ ] 三套各一次固定训练链、最终checkpoint冻结，完整T/C/P各500局；全成败、长度、800罚分与探索性成本汇总。
 - [ ] 质量满足登记条件后申请/使用无争用窗口，测完整chunk和完整任务E2E；不以并行墙钟或调用数伪装正式加速。
 
@@ -31,7 +33,7 @@ Target初始200完整局：init0–17 FIT180、18–19 CAL20，各任务均衡�
 
 源资产本地新增上限40GiB（3个target约28.44GiB＋下载暂存/metadata），研究原始新增上限15GiB（每套compact teacher≤1GiB，代表fixture总≤3GiB，不逐query存历史）。AutoDL利用现有OS盘先缓存至多两套新transformer，数据盘保留≥5GiB；第三套按空间和已结束缓存依赖核验顺序切换。归档可回传本项目，旧失败与不可重建tensor不删除，不自动扩容。
 
-本机不新启动模型或重CPU编码，只保留轻量调度与归档；新增三套改用AutoDL。AutoDL现Long4worker/16CPU不加GPUworker；自然收尾后新phase同样最多每GPU2独立worker，总CPU不越20quota。模型加载峰值/其他用户负载以实际准入为准；不杀他人进程。
+本机最新授权允许空闲GPU启动Object单模型，CPU忙故nice10/server2/client2；不重新T5编码，两个最终shard顺序，后续每phase仍实际显存/可用内存/其他进程准入。AutoDL Long4worker/16CPU不加GPUworker；自然收尾后Goal/Spatial最多每GPU2独立worker，总CPU不越20quota。模型加载峰值/其他用户负载以实际准入为准；不杀他人进程。原全部迁远端安排保留历史，不再作为当前唯一分配。
 
 训练及新套件首批完整任务后给出基于实测的工期；当前仅粗估新增总体约48–72小时，受新任务长度与失败尾部影响，96小时为止损帽。正式性能需质量与独占条件，不能保证按该时间已放行。
 

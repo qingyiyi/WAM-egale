@@ -4,6 +4,7 @@
 
 ## 当前资源偏好
 
+- [空闲本机可分担](global/requirements/decision-本机GPU空闲时分担完整研究任务.md)（constraint，当前Cycle）：先核资源，尚未执行完整分片可放本机，同case对照同卡，原预算和计时边界不变。
 - [本轮AutoDL暂不扩容](global/requirements/decision-本轮AutoDL不扩容并先清理废弃资源.md)（constraint，M17）：先核依赖清理废弃项，必要时分阶段轮换可重建权重；原始结果及在用组件保留。
 - [本机减负与容量告知](global/requirements/preference-本机压力时优先远端计算与容量告知.md)（guideline）：优先现有AutoDL；容量不足先明确告知，项目清理仍核依赖。
 

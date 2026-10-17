@@ -3,10 +3,10 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: 2026-10-17T18:42:29+08:00
+updated: 2026-10-17T19:52:20+08:00
 current: M17
 next: produce_assets_and_complete_suite_target_collection_then_fixed_TF_training
-execution_status: remote_shared_controllers_waiting_Long_bank_and_asset_rotation
+execution_status: local_Object_T_POOL_starting_remote_Goal_Spatial_waiting_Long
 ---
 # 当前研究进度
 
@@ -15,11 +15,11 @@ M17已批准三小套件各自同配方TF及Target/TF/PF2全套对照。四套�
 | ID | 工作 | 状态 | 实际进展 | 证据 |
 |---|---|---|---|---|
 | `M16` | Long全量三臂 | in_progress | 18:42新285闭合局＋原69＝354；另有运行中局，非全量 | 原v2 status，旧源不动 |
-| `M17` | 三套独立TF与全量三臂 | in_progress | 8eaf130远端共享资源控制器32543/31852/31853等待（Object结果改OS盘）；新模型/episode/训练0 | [实际作业](../../experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md) |
+| `M17` | 三套独立TF与全量三臂 | in_progress | 652e83c本机Object控制器518248启动完整T_POOL；远端Object零局退役，Goal/Spatial等待；尚未有新闭合局/训练 | [实际作业](../../experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md) |
 
 Object/Goal远端权重完整，本机Object也已完整；Goal/Spatial完整bank完成（2455秒CPU），Object远端bank v3 r3完成（1220.5秒CPU）。原本机3600秒bank超时、传输3200秒超时、缺收据/启动参数失败及旧控制器替换全部保留。
 
-用户要求本机减负并暂不扩容，已在新namespace将Object迁远端，保持17:11起点和10/21截止；Long清理后才核查可重建Long远端Transformer缓存轮换Spatial。Object新增结果放远端OS盘，独立新namespace仍GPU0/原5GiB及5GiB空闲线；归档Long到本机后才退远端重复payload/COUNTER，归档128d435/PID443492已启动等待，复制0/删除0。本机本次清理7个失败下载残片985,044,916B，剩约94.9GiB；没有删除权重、原始结果或失败记录。LIBERO90仍缺可信同代Target，未启动。
+最新授权允许本机空闲GPU分担，Object在零新增数据时改为本机SXM4单模型/nice10/server2-client2；CPU1导入完整bank128.9秒，未重做T5/teacher。远端Object32543已按PID/出生/UID退役，原FAILED_OR_PARTIAL终态保留；新本机控制器518248/birth1350697010启动T_POOL200，尚无新闭合局或训练。Goal/Spatial远端不变。17:11起点和10/21截止、5GiB/套及四false不改，硬件分层计时。Long完成后才轮换可重建缓存；归档443492仍等待、复制0/删除0。本机本次清理7个失败下载残片985,044,916B，剩约94.9GiB；没有删除权重、原始结果或失败记录。LIBERO90仍缺可信同代Target，未启动。
 
 ## 历史质量不覆盖
 

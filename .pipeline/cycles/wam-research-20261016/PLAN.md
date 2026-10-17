@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: 2026-10-17T18:30:35+08:00
+updated: 2026-10-17T19:53:41+08:00
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -20,8 +20,8 @@ execution: EXECUTION.md
 - [x] 三个社区Target固定发布revision、norm_stats与非官方身份核查；官方90 Target仍BLOCKED。
 - [x] 独立完整任务server/client、collector、固定TF训练、预算guard与campaign源码冻结；只做静态审查，没有smoke/独立测试/SHA。
 - [x] Object/Goal远端权重完整；Object本机完整副本已就绪。三套完整512-token BF16 bank完成；本机bank超时和准备失败保留。
-- [x] 新96h master已登记；用户要求本机减负后，三套远端共享资源控制器已启动等待。原本机/远端准备控制器已记录替换原因并退出，新模型/episode/训练仍0。
-- [ ] Object/Goal固定AutoDL GPU0、Spatial固定GPU1；等待原Long实际清理后进行完整Target200→固定训练链→最终500组三臂。原子租约限制同卡最多2模型。
+- [x] 新96h master已登记；旧三套远端共享控制器等待记录保留。用户最新允许本机空闲GPU分担，Object零新增数据前登记v4本机单worker安排，bank回传/零工作远端控制器退役进行中。
+- [ ] Object固定本机SXM4单模型、nice10，完整Target200→固定训练链→最终500组三臂（两shard顺序）；Goal固定AutoDL GPU0、Spatial固定GPU1，仍等待Long实际清理/所需资产。相同case全部臂同一物理卡。
 - [ ] 本轮暂不扩容：Long全量及实际清理后，核验并轮换其可重建远端Transformer缓存给Spatial。保留共享T5/VAE/tokenizer、本机原件和全部结果，不提前删在用文件。
 - [ ] 全成败、罚分、配对差、长度及探索性成本汇总；质量和无争用放行后才正式完整任务E2E。
 

@@ -1,21 +1,23 @@
 # M17实际执行索引
 
-核对：2026-10-17 18:42 北京。新三套模型/机器人episode/训练仍0；控制器等待不是已开始训练。旧M16/4f04、FAILED、NO_GO、四false不改。
+核对：2026-10-17 19:51 北京。Object本机完整Target采集控制器已启动，尚无新闭合episode/训练；Goal/Spatial仍等待。旧M16/4f04、FAILED、NO_GO、四false不改。
 
 |工作|实际终态或状态|证据|
 |---|---|---|
 |Object/Goal资产|远端完整，各10,177,831,668B；本机Object完整副本已装配；非官方community Target|asset r2；local asset admission r1；固定revision见PLAN|
 |完整reset bank|Goal/Spatial CPU2455.0秒成功；Object远端v3 r3 CPU1220.5秒成功；全部512 BF16，尚未在新suite在线reset重新审计|[真实远端快照](../../../投机采样/results/runtime/p0-tf-suite-cache-rotation-inputs-cpu1-v2-20261017-r1/ACTUAL-CAPACITY-AND-PLACEMENT-r1.json)|
-|三条新远端pipeline|8eaf130，共享GPU/CPU原子租约；Object32543、Goal31852、Spatial31853，等待原Long实际清理/Spatial资产|[新登记与现场](../../../投机采样/results/runtime/p0-tf-suite-remote-placement-v2-20261017-r1/ACTUAL-20261017-1830.json)|
+|Object本机v4|652e83c/controller518248；启动T_POOL200，单模型/nice10，尚未确认READY；其远端32543零工作退役，原终态保留|[v4资源登记](../../../投机采样/results/runtime/p0-tf-suite-local-placement-v4-20261017-r1/AMENDMENT.json)|
+|Goal/Spatial远端pipeline|8eaf130、31852/31853；原共享租约，继续等待Long清理/Spatial资产|[原登记](../../../投机采样/results/runtime/p0-tf-suite-remote-placement-v2-20261017-r1/ACTUAL-20261017-1830.json)|
+|Object bank本机复用|CPU1实际128.9秒；原11个512 BF16 tensor保留，仅绑定本地路径，T5/teacher0；子进程exit0、SSH关闭|[完整准备收据](../../../投机采样/results/runtime/p0-tf-suite-object-bank-import-local-cpu1-v1-20261017-r1/RESULT.json)|
 |空间轮换调度|37f15d1、PID32254；等待Long500全终态＋owned/guard实际清理＋文件无消费者，尚未删权重|同一快照；`p0-tf-suite-cache-rotation-cpu1-v2-20261017-r1/status.json`|
 |Long M16|双卡四worker继续；新285闭合局＋原69＝354/1500，另有组内运行局；不是完整质量结果|同一现场快照；[原索引](../libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)|
 |本机清理|7个已停失败下载残片，985,044,916B（约0.917GiB）；完整权重、失败记录与原始结果保留|[逐文件清理结果](../../../投机采样/results/runtime/p0-tf-suite-abandoned-download-cleanup-cpu1-v1-20261017-r1/RESULT.json)|
 
-Object最终准备job现为`/root/wam-suite-research-20261017-v3/object-chain-r1`，占现有OS盘、5GiB上限和实际空闲≥5GiB；原数据盘R2准备0局终态保留。Goal/Spatial仍数据盘原job。Long完整归档producer128d435已在本机CPU1启动等待（PID443492）：全部原件完整回传本机后，才退远端重复payload和明确登记的COUNTER副本，其他JSON/FAILED不动；需先等Long及轮换审计完成，当前归档状态WAITING、复制0/删除0。所有原件在本机保留，登记定位映射，不能宣称凭size校验证明独立密码学身份。
+Object当前为本机`p0-tf-suite-object-local-chain-v4-20261017-r1`。原远端OS盘`/root/wam-suite-research-20261017-v3/object-chain-r1`仅零工作准备，PID/出生核对退役，原FAILED_OR_PARTIAL_NO_RETRY及更早R2终态保留，不再排队启动模型。Goal/Spatial仍数据盘原job。Long完整归档producer128d435已在本机CPU1启动等待（PID443492）：全部原件完整回传本机后，才退远端重复payload和明确登记的COUNTER副本，其他JSON/FAILED不动；需先等Long及轮换审计完成，当前归档状态WAITING、复制0/删除0。所有原件在本机保留，登记定位映射，不能宣称凭size校验证明独立密码学身份。
 
 ## 本轮资源修订与原记录
 
-用户要求本机减负，继而明确暂不扩容。新三套零新增数据前，Object从本机前瞻迁至AutoDL GPU0，Goal同GPU0，Spatial GPU1。每套500case的所有臂固定同物理卡；最终两shard共享同卡最多2模型槽位，全局flock＋PID出生身份＋实际清理释放，CPU0–15放server/client，16–19共享训练/控制，物理CPU池不超20。
+19:51最新用户允许本机空闲GPU分担，Object在零新增episode时前瞻分配本机SXM4、单模型/nice10/server2-client2，两个最终shard顺序。Goal仍AutoDL GPU0，Spatial GPU1；Long不动。原18:30全远端/18:42 OS盘安排保留历史身份。每套500case的所有臂固定同物理卡；最终两shard共享同卡最多2模型槽位，全局flock＋PID出生身份＋实际清理释放，CPU0–15放server/client，16–19共享训练/控制，物理CPU池不超20。
 
 原9aa准备控制器Object本机r1/r2、Goal/Spatial远端r1分别记录替换原因并退出，没有新增模型或episode，不覆盖其FAILED/PARTIAL。新namespace保持原17:11:31起点、10/21 16:56停新/17:11清理。源8eaf只改变资源调度和独立report_v2选择，原模型/数据/数学/阈值/树/bonus/训练固定预算不变。
 
@@ -29,4 +31,4 @@ Object最终准备job现为`/root/wam-suite-research-20261017-v3/object-chain-r1
 
 原96h与18,723,000尝试/15GiB研究证据帽不重置；原Long仍10/19 13:40停新/13:55清理。每局horizon800、1200秒、4000尝试，等待/准备/失败/清理计账，无自动重试。全成败、实际命令（如796）与800罚分分列。并行C_update/ΣT_round÷Σg/policy/episode只作探索性成本，formal E2E仍UNKNOWN；旧fixture缺口不借compact表冒充修复。
 
-NEXT：监督Long及bank实际终态；Long清理后Goal/Object直接完整T_POOL，轮换Spatial后接入同流程。当前完整新增工作粗估48–72小时，首批新suite任务后按实测修订，96h为止损帽。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文证据包；不自动120/TEST/正式性能。
+NEXT：监督本机Object实际模型装载→T_POOL200→固定训练链；并行监督远端Long，清理后Goal直接T_POOL、轮换Spatial后接入同流程。当前完整新增工作粗估48–72小时，首批新suite任务后按实测修订，96h为止损帽。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文证据包；不自动120/TEST/正式性能。

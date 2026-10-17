@@ -1,16 +1,16 @@
 # 当前研究恢复入口
 
-更新时间：2026-10-17 18:42，北京。派生短状态；先读[INDEX](INDEX.md)、[上下文](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再读当前Cycle四文件；原始FAILED/tile/协议不改。
+更新时间：2026-10-17 19:51，北京。派生短状态；先读[INDEX](INDEX.md)、[上下文](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再读当前Cycle四文件；原始FAILED/tile/协议不改。
 
 ## 当前M17：三套独立TF训练与完整三臂
 
 用户明确批准Spatial/Object/Goal分别用对应社区Target、同一TF64训练方法，比较Target/连续TF/同权重TF+PF2的成功率、trace长度和E2E成本。M16 Long继续；90尚无可信同代Target，未启动，不将本次当取消90。三个Wjjjh Target非官方，发布者SR不继承。[完整PLAN](experiments/libero-four-suite-20261017/PLAN.md)、[实际作业](experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)。
 
-Object/Goal远端各10,177,831,668B权重完整，本机Object完整副本也已就绪。Goal/Spatial完整512-token BF16 bank完成（CPU2455秒），Object远端也完成（CPU1220.5秒）；原本机bank超时、传输超时和准备错误保留。新共享入口8eaf130继承9aa数学/固定训练，三个远端controller32543/31852/31853等待原Long清理/必要资产，新套件模型/episode/训练仍0。旧准备控制器退出不改原记录。
+Object/Goal远端各10,177,831,668B权重完整，本机Object完整副本也已就绪。Goal/Spatial完整512-token BF16 bank完成（CPU2455秒），Object远端也完成（CPU1220.5秒）；原本机bank超时、传输超时和准备错误保留。新入口继承9aa固定数学/训练。最新空闲本机授权下，Object source652e83c/controller518248已启动T_POOL200；远端Object32543零工作退役，旧终态保留。Goal31852/Spatial31853等待Long清理/资产；尚无新增闭合episode或训练。
 
 固定训练：Target200=FIT180(init0–17)/CAL20(18–19)；PARENT2000采30(init20/21 FIT、22 CAL)，target/该FIT 50:50训CHILD2500与CONT3000；CONT采30(init23/24 FIT、25 CAL)，ON从同CHILD+500，不是CONT续到3500。仅final/seed20260923、不搜结构/seed/tau。所有自然失败保留，只实际reached teacher标签训练，反事实另列；没有完整条件则不能新latent重新query教师。
 
-每套最终500case×T/C/P=1500局，Target前200只读复用；另训练采集60局，总1560/套、4680新局。为本机减负，零新增数据前新登记Object/Goal全套固定AutoDL GPU0、Spatial固定GPU1；同卡原子双租约限制模型/CPU；最终case0–249、250–499两shard，可显存许可独立双worker。完整50init含FIT/CAL/DEV，训练未见26–49子集另报，四权限不变，不签独立TEST。
+每套最终500case×T/C/P=1500局，Target前200只读复用；另训练采集60局，总1560/套、4680新局。最新用户允许空闲本机GPU分担，零新增数据前Object全套固定本机SXM4单worker/nice10，两最终shard顺序；Goal固定AutoDL GPU0、Spatial GPU1，原租约/限额不变。同case所有臂同物理卡，不混硬件计时。完整50init含FIT/CAL/DEV，训练未见26–49子集另报，四权限不变，不签独立TEST。
 
 M17 master10/17 17:11:31起，10/21 16:56停新/17:11清理；18,723,000尝试、研究证据15GiB、资产本地40GiB。每局1200秒/4000尝试/horizon800，整局预留不足不启动，失败/等待/准备/清理计账，无自动重试。现有AutoDL可用至已批准工作完成，不采购新卡；source/local/remote控制器与终态以job记录为准。粗估新增48–72h，实际首批任务后更新，96h是止损帽。
 
@@ -34,7 +34,7 @@ TF64=53070参数，16token×17feature(state7/previous7/σ/nextσ/t÷1000)，1层
 
 系统主线：投机改变小action工作负载→候选可调度→超过最强B14→质量约束有效成本；H1/H2有证据，H3有限pilot、H4未立。D3072/H24×128/FF14336，Linear M32/96/224已落库，attentionQ16；G1→G2 L2−32.81%、DRAM−1.31%、occupancy降，不能写HBM减半。原tile不动，不恢复撤回融合，旧倍数不乘。
 
-AutoDL[无smoke/独立测试/SHA](memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)包含隐式loader，沿源码完整任务inline审计。全部臂[默认优化reset](memory/global/requirements/decision-实验默认启用等价reset优化.md)，原512-token BF16，冷启动/首次bank另列。M15 reset15–107ms不冒充新套件结果。本机他人GPU在用，新增重计算优先AutoDL，不杀别人/改系统或时钟。本轮用户明确暂不扩容：37f15d1调度PID32254已启动等待Long全量及实际清理，届时才核查轮换其远端Transformer缓存给Spatial，T5/VAE/tokenizer、本机原件与全部结果保留。本机本次清7个失败下载残片0.917GiB，项目144.52GiB、余约94.9GiB。Object新增结果已改远端OS盘（5GiB套件帽/空闲线5GiB），不占数据盘；Long原始结果准备完整归档到本机后才退远端重复bulk/COUNTER，归档128d435/PID443492已启动等待，当前复制0/删除0，不删唯一证据。新96h不覆盖旧job deadline；实例关机与进程退出分列。
+AutoDL[无smoke/独立测试/SHA](memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)包含隐式loader，沿源码完整任务inline审计。全部臂[默认优化reset](memory/global/requirements/decision-实验默认启用等价reset优化.md)，原512-token BF16，冷启动/首次bank另列。M15 reset15–107ms不冒充新套件结果。本机现无可见compute进程/显存0但CPU忙，故仅Object低优先级单模型，阶段实际内存/显存准入；[空闲授权](memory/global/requirements/decision-本机GPU空闲时分担完整研究任务.md)，不杀他人/改系统或时钟。本轮用户明确暂不扩容：37f15d1调度PID32254已启动等待Long全量及实际清理，届时才核查轮换其远端Transformer缓存给Spatial，T5/VAE/tokenizer、本机原件与全部结果保留。本机本次清7个失败下载残片0.917GiB，项目144.52GiB、余约94.9GiB。Object现本机独立v4入口（原5GiB帽/空闲线不改），完整bank128.9秒CPU导入/路径元数据绑定、未重编码；旧远端OS准备0局退役，原件保留；Long原始结果准备完整归档到本机后才退远端重复bulk/COUNTER，归档128d435/PID443492已启动等待，当前复制0/删除0，不删唯一证据。新96h不覆盖旧job deadline；实例关机与进程退出分列。
 
 HW固定v15/legacy，不升级/旧全量sync；保护state/cycle/rules/结构规则/原tile记录不动。Cycle旧四文已逐字归档，当前入口语义压缩，[当前Cycle](cycles/wam-research-20261016/PROGRESS.md)引用历史和原始结果，不以截前80行当摘要。磁盘清理和文档精简分开；旧2.38GiB清理不当本轮回收量。
 

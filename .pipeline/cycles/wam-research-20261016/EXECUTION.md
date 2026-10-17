@@ -1,5 +1,13 @@
 # 最近执行检查点
 
+## 2026-10-17 19:51 北京：空闲本机分担Object，完整链已启动
+
+用户新授权已用Maintain记录。nvidia-smi无可见compute进程/显存0MiB，利用率约25%不签独占；CPU0–15忙，故仅本机一个model、nice10、server8/9/client10/11、control7，内存24GiB/显存22GiB阶段准入。source652e83cf96a9af0585801a093589becc877cad9b，独立`p0-tf-suite-object-local-chain-v4-20261017-r1`，controller518248/birth1350697010/UID1003已实际启动完整T_POOL。尚未声称READY或episode完成。
+
+CPU1导入已完成原512 BF16 bank128.9秒，只改checkpoint_path元数据，T5/teacher调用0，子进程exit0/SSH关闭；`p0-tf-suite-object-bank-import-local-cpu1-v1-20261017-r1/RESULT.json`。远端零工作Object32543/birth6696082227经原状态/UID/PGID核对退役，原FAILED_OR_PARTIAL_NO_RETRY保留，新receipt记录是资源替换。Goal/Spatial/Long、轮换与归档不动。
+
+[v4登记](../../../投机采样/results/runtime/p0-tf-suite-local-placement-v4-20261017-r1/AMENDMENT.json)保持M17原17:11起点、10/21停新/清理、1560局/6241000尝试/5GiB；最终两250case shard顺序，同case全部臂固定本机SXM4，禁止混PCIe计时。旧4false/FAILED/tile/保护不变。CPU忙可能放慢装载，900秒原setup帽不改。
+
 ## 2026-10-17 18:48 北京：归档已登记启动等待
 
 128d435独立CPU1归档producer已实际启动，本机443492/birth1350318267，`p0-long-evidence-archive-local-cpu1-v1-20261017-r1`，状态WAITING_FULL1500_AND_STRICT_OWNED_CLEANUP；复制0文件/0B。保持17:11/master96h截止，完整manifest后传输≤10800秒，总≤12GiB、单文件64MiB、metadata128MiB、本机实际空闲≥5GiB；密码仅RAM。先等Long1500及原own实际清理，再等37f空间轮换完成审计，全部原件复制、INDEX/COPY-RESULT持久化后才退远端重复bulk和精确COUNTER；其他JSON/FAILED/proof/plan/md/csv/log均保留。旧源不改，无GPU/test/SHA，无自动重试。登记在`p0-tf-suite-storage-placement-v3-20261017-r1/ARCHIVE-REGISTRATION.json`。
