@@ -70,8 +70,15 @@ def main():
                 # Cleanup receipts can precede the supervising process's actual
                 # final exit by a few milliseconds. Wait; never race a new model
                 # launch against that old lifetime or treat the race as a retry.
-                still_live = [read(path) for path in pins if matches(read(path))
-                              and process(read(path)['pid'])['state'] not in ('Z', 'X')]
+                still_live = []
+                for path in pins:
+                    pin = read(path)
+                    actual = process(pin['pid'])
+                    if (actual is not None and actual['birth_ticks'] == pin['birth_ticks']
+                            and actual['pgid'] == pin['pgid'] == pin['pid']
+                            and actual['uid'] == pin.get('uid', os.getuid())
+                            and actual['state'] not in ('Z', 'X')):
+                        still_live.append(pin)
                 if not still_live:
                     break
             if time.time() - last >= 60:
