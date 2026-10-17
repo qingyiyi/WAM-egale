@@ -32,6 +32,7 @@
 | 主draft结构与投入 | [固定TF64，集中训练与效果](global/requirements/decision-TF64固定为主模型与训练收口.md)（当前Cycle约束；MLP仅对照） |
 | 训练数据、σ、阈值、PF | [训练与接受标准](global/knowledge/decision-训练数据与接受标准.md)（含PF周期定义、旧pilot和FLASH适用边界；非启用决定） |
 | 速度口径与 reset | [性能证据和 reset](global/knowledge/decision-性能证据与reset使用.md) |
+| 论文评测范围 | [LIBERO范围与Long主实验](global/knowledge/decision-LIBERO评测范围依据与Long证据边界.md)（文献事实与范围建议，未把问句记为用户取消90的决定） |
 | tile 与 B14 verifier 接口 | [算子基线边界](global/knowledge/decision-算子基线与接口限制.md) |
 | 截稿与规划 | [投稿时间](global/knowledge/decision-投稿时间与研究规划.md) |
 
