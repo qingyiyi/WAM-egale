@@ -41,6 +41,7 @@ def main():
     ap.add_argument('--source-commit', required=True)
     ap.add_argument('--resume-from', type=Path)
     ap.add_argument('--suites', nargs='+', choices=tuple(REVISIONS), default=list(REVISIONS))
+    ap.add_argument('--transport-host', choices=('huggingface.co','hf-mirror.com'), default='huggingface.co')
     ap.add_argument('--wall-cap', type=int, default=7200)
     args = ap.parse_args()
     job, base = args.job.resolve(), args.shared_components.resolve(strict=True)
@@ -68,7 +69,7 @@ def main():
     cap = 40 * 2**30
     registration = dict(goal='three pinned suite model assets, no model load', source_commit=args.source_commit,
         scientific_parent='4f04b35e44cbc00483dc6245ad57abec718385c9', revisions=REVISIONS,
-        input_shared_components=str(base), asset_root=str(target), suites=args.suites, wall_cap_sec=args.wall_cap,
+        input_shared_components=str(base), asset_root=str(target), suites=args.suites, transport_host=args.transport_host, wall_cap_sec=args.wall_cap,
         birth_epoch=birth, deadline_epoch=birth+args.wall_cap, work_deadline_epoch=birth+args.wall_cap-120, storage_cap_bytes=cap,
         cpu=1, gpu=0, max_downloads=2, cleanup='HTTP threads joined before exit; retain partial files and receipts',
         predecessor=str(args.resume_from.resolve()) if args.resume_from else None,
@@ -91,12 +92,14 @@ def main():
     def fetch(suite, relative, dest, expected=None):
         guard()
         method='resolve' if expected is not None else 'raw'
-        url = 'https://huggingface.co/Wjjjh/lingbot-va-libero-' + suite + '/'+method+'/' + REVISIONS[suite] + '/' + relative
+        suffix='/Wjjjh/lingbot-va-libero-' + suite + '/'+method+'/' + REVISIONS[suite] + '/' + relative
+        publisher_url='https://huggingface.co'+suffix
+        url = 'https://'+args.transport_host+suffix
         dest.parent.mkdir(parents=True, exist_ok=True)
         if dest.exists():
             if not args.resume_from or (expected is not None and dest.stat().st_size!=expected):
                 raise FileExistsError('existing file has no admitted predecessor or expected byte count')
-            return dict(source=url,file=str(dest),bytes=dest.stat().st_size,
+            return dict(source=publisher_url,transport=url,file=str(dest),bytes=dest.stat().st_size,
                 status='REUSED_PREDECESSOR_COMPLETE_PUBLISHED_ASSET',predecessor=str(args.resume_from.resolve()),
                 cryptographic_identity='UNKNOWN_NOT_COMPUTED')
         part = dest.with_name(dest.name+'.partial.'+job.name)
@@ -122,7 +125,7 @@ def main():
             if expected is not None and received != expected:
                 raise ValueError('incomplete model asset')
             os.link(part, dest); part.unlink()
-            return dict(source=url, bytes=received, endpoint_host=urlsplit(r.url).hostname,
+            return dict(source=publisher_url, transport=url, bytes=received, endpoint_host=urlsplit(r.url).hostname,
                 file=str(dest), status='COMPLETE_SIZE_ONLY_NO_DIGEST', cryptographic_identity='UNKNOWN_NOT_COMPUTED')
 
     def suite_assets(suite):
