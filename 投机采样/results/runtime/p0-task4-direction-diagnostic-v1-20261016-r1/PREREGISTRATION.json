@@ -1,0 +1,102 @@
+{
+  "goal": "Locate teacher/draft/path/scheduler/decode/submission/environment divergence on known task4 risk",
+  "commit": "b0dfac3a02f65de33a1217246b83003615166640",
+  "created_at": "2026-10-16T09:52:18.137328+00:00",
+  "cases": [
+    {
+      "arm": "T",
+      "task": 4,
+      "init": 26,
+      "group": "known_risk_diagnostic",
+      "rep": 0,
+      "text_bank": true,
+      "key": "T-task4-init26-repeat0"
+    },
+    {
+      "arm": "T",
+      "task": 4,
+      "init": 26,
+      "group": "known_risk_diagnostic",
+      "rep": 1,
+      "text_bank": true,
+      "key": "T-task4-init26-repeat1"
+    },
+    {
+      "arm": "TF_CONT",
+      "task": 4,
+      "init": 26,
+      "group": "known_risk_diagnostic",
+      "rep": 0,
+      "text_bank": true,
+      "key": "TF_CONT-task4-init26-repeat0"
+    },
+    {
+      "arm": "TF_CONT",
+      "task": 4,
+      "init": 26,
+      "group": "known_risk_diagnostic",
+      "rep": 1,
+      "text_bank": true,
+      "key": "TF_CONT-task4-init26-repeat1"
+    }
+  ],
+  "full_episodes": 4,
+  "pairs": 2,
+  "scientific_role": "known, previously unblinded diagnostic DEV; NOT independent TEST",
+  "arm_order": [
+    "T",
+    "TF_CONT"
+  ],
+  "within_arm_order": [
+    0,
+    1
+  ],
+  "paired_by_repeat": true,
+  "fixed_TF_checkpoint": {
+    "checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-train-v1-20261016-r1/TF_CONT-seed20260923/checkpoint.pt",
+    "checkpoint_sha256": "3657388fdce0763093d1b704c88a03b6836954160d43dddb9f75337a054d64ac",
+    "architecture": "transformer64",
+    "bytes": 222820
+  },
+  "all_old_retention_unchanged": true,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "threshold": 0.007839680526450805,
+  "production_API_unchanged": true,
+  "observation_only_generated_AST_reverse_exact": true,
+  "extra_target_forwards_for_logging": 0,
+  "real_CAL_adapter_check_rows": 20237,
+  "required_log_scope": "every complete policy chunk and all action scheduler updates",
+  "bounded_tensor_scope": "compact action states/directions plus existing episode artifacts; no per-query 30-layer KV copies",
+  "GPU": "local NVIDIA A100-SXM4-40GB",
+  "GPU_workers": 1,
+  "shared_quality_GPU_allowed": true,
+  "CPU_worker_affinity": [
+    12,
+    13,
+    14,
+    15
+  ],
+  "CPU_server_threads": 2,
+  "CPU_client_threads": 2,
+  "guard_CPUs": [
+    0,
+    1
+  ],
+  "max_run_wall_sec": 2400,
+  "cleanup_reserve_sec": 300,
+  "storage_cap_bytes": 1073741824,
+  "hard_absolute_deadline": "2026-10-16T10:32:18.137328+00:00",
+  "task_work_deadline": "2026-10-16T10:27:18.137328+00:00",
+  "cleanup": "pinned own roots and descendants only; independent attached watchdog; never signal other users",
+  "timeout": "PARTIAL/FAILED with all completed and interrupted episodes retained; no auto retry",
+  "training_trigger": "specific reachable recursive/target mismatch evidence with a falsifiable control; local error alone insufficient",
+  "evidence_path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1",
+  "terminal_status": "REGISTERED_NOT_STARTED",
+  "original_frozen_sources": 173,
+  "pinned_Python_sources": 171
+}

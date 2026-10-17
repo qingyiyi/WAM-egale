@@ -1,0 +1,794 @@
+{
+  "status": "PASS_FIXED_FINAL_CELL",
+  "condition": "TF_ON",
+  "architecture": "transformer64",
+  "seed": 20260923,
+  "checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-onpolicy-train-cpu1-v2-20261017-r1/TF_ON-seed20260923/checkpoint.pt",
+  "checkpoint_sha256": "be2606d19f51085e8066116845e0c41bf5fb61ea80864008d425af33e78cb302",
+  "initial_total_updates": 2500,
+  "continuation_updates": 500,
+  "total_updates": 3000,
+  "parent_checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/transformer64-seed20260923/checkpoint.pt",
+  "parent_checkpoint_sha256": "9cb92a4862579edc9cfb99210b0535e620daba56dd5abcc094a7d735dbadab07",
+  "full_old_and_new_CAL_CPU_loader_parity": true,
+  "same_CPU_original_decode_batch_exact": true,
+  "normalization_exact_parent": true,
+  "CPU_rng_unchanged": true,
+  "CUDA_initialized": false,
+  "old_TF_CONT_all_model_tensors_bitwise_exact": null,
+  "CAL_metrics": {
+    "old_CAL": {
+      "before": {
+        "groups": {
+          "all": {
+            "rows": 20237,
+            "pass_count": 19241,
+            "pass_rate": 0.9507831931114197,
+            "scaled_l2_mean": 0.0027409447357058525,
+            "scaled_l2_p50": 0.0013980184448882937,
+            "scaled_l2_p90": 0.004032616037875414
+          },
+          "task0": {
+            "rows": 1813,
+            "pass_count": 1723,
+            "pass_rate": 0.950358510017395,
+            "scaled_l2_mean": 0.0026705774944275618,
+            "scaled_l2_p50": 0.0013584410771727562,
+            "scaled_l2_p90": 0.003961699549108744
+          },
+          "task1": {
+            "rows": 1617,
+            "pass_count": 1539,
+            "pass_rate": 0.9517624974250793,
+            "scaled_l2_mean": 0.0025820608716458082,
+            "scaled_l2_p50": 0.0014103808207437396,
+            "scaled_l2_p90": 0.0040954104624688625
+          },
+          "task2": {
+            "rows": 1568,
+            "pass_count": 1487,
+            "pass_rate": 0.9483418464660645,
+            "scaled_l2_mean": 0.002723155077546835,
+            "scaled_l2_p50": 0.0014287696685642004,
+            "scaled_l2_p90": 0.004105450585484505
+          },
+          "task3": {
+            "rows": 1470,
+            "pass_count": 1399,
+            "pass_rate": 0.9517006874084473,
+            "scaled_l2_mean": 0.0026154248043894768,
+            "scaled_l2_p50": 0.001421603374183178,
+            "scaled_l2_p90": 0.004062430001795292
+          },
+          "task4": {
+            "rows": 1470,
+            "pass_count": 1400,
+            "pass_rate": 0.9523809552192688,
+            "scaled_l2_mean": 0.0025071229320019484,
+            "scaled_l2_p50": 0.0013716502580791712,
+            "scaled_l2_p90": 0.0037475323770195246
+          },
+          "task5": {
+            "rows": 3234,
+            "pass_count": 3082,
+            "pass_rate": 0.9529993534088135,
+            "scaled_l2_mean": 0.00290369288995862,
+            "scaled_l2_p50": 0.0013651798944920301,
+            "scaled_l2_p90": 0.003975468687713146
+          },
+          "task6": {
+            "rows": 1470,
+            "pass_count": 1399,
+            "pass_rate": 0.9517006874084473,
+            "scaled_l2_mean": 0.002675669966265559,
+            "scaled_l2_p50": 0.0013766682241111994,
+            "scaled_l2_p90": 0.0038467934355139732
+          },
+          "task7": {
+            "rows": 2401,
+            "pass_count": 2265,
+            "pass_rate": 0.9433569312095642,
+            "scaled_l2_mean": 0.0029988968744874,
+            "scaled_l2_p50": 0.0013945505488663912,
+            "scaled_l2_p90": 0.0043045636266469955
+          },
+          "task8": {
+            "rows": 3234,
+            "pass_count": 3088,
+            "pass_rate": 0.9548546671867371,
+            "scaled_l2_mean": 0.0026233938988298178,
+            "scaled_l2_p50": 0.0013889241963624954,
+            "scaled_l2_p90": 0.003956320229917765
+          },
+          "task9": {
+            "rows": 1960,
+            "pass_count": 1859,
+            "pass_rate": 0.9484694004058838,
+            "scaled_l2_mean": 0.0028792398516088724,
+            "scaled_l2_p50": 0.0014491404872387648,
+            "scaled_l2_p90": 0.004050244577229023
+          },
+          "sigma/high": {
+            "rows": 413,
+            "pass_count": 0,
+            "pass_rate": 0.0,
+            "scaled_l2_mean": 0.03588980436325073,
+            "scaled_l2_p50": 0.032910749316215515,
+            "scaled_l2_p90": 0.041221555322408676
+          },
+          "sigma/mid": {
+            "rows": 1239,
+            "pass_count": 676,
+            "pass_rate": 0.5456013083457947,
+            "scaled_l2_mean": 0.00911524798721075,
+            "scaled_l2_p50": 0.007488653063774109,
+            "scaled_l2_p90": 0.012485569342970848
+          },
+          "sigma/low": {
+            "rows": 18585,
+            "pass_count": 18565,
+            "pass_rate": 0.9989238381385803,
+            "scaled_l2_mean": 0.0015793496277183294,
+            "scaled_l2_p50": 0.001343630370683968,
+            "scaled_l2_p90": 0.00245200889185071
+          }
+        },
+        "macro_task_acceptance": 0.95059255361557,
+        "macro_task_scaled_l2": 0.00271792346611619
+      },
+      "after": {
+        "groups": {
+          "all": {
+            "rows": 20237,
+            "pass_count": 19163,
+            "pass_rate": 0.9469289183616638,
+            "scaled_l2_mean": 0.002641144208610058,
+            "scaled_l2_p50": 0.0013498580083251,
+            "scaled_l2_p90": 0.0038550924509763718,
+            "pretrain_pass_count": 19241,
+            "pretrain_pass_to_fail_count": 90,
+            "pretrain_pass_retention": 0.995322488436152
+          },
+          "task0": {
+            "rows": 1813,
+            "pass_count": 1716,
+            "pass_rate": 0.9464974999427795,
+            "scaled_l2_mean": 0.0025903871282935143,
+            "scaled_l2_p50": 0.0013175855856388807,
+            "scaled_l2_p90": 0.0038795697037130594,
+            "pretrain_pass_count": 1723,
+            "pretrain_pass_to_fail_count": 8,
+            "pretrain_pass_retention": 0.9953569355774812
+          },
+          "task1": {
+            "rows": 1617,
+            "pass_count": 1534,
+            "pass_rate": 0.9486703872680664,
+            "scaled_l2_mean": 0.002490348881110549,
+            "scaled_l2_p50": 0.001365138916298747,
+            "scaled_l2_p90": 0.0037397390697151423,
+            "pretrain_pass_count": 1539,
+            "pretrain_pass_to_fail_count": 6,
+            "pretrain_pass_retention": 0.9961013645224172
+          },
+          "task2": {
+            "rows": 1568,
+            "pass_count": 1483,
+            "pass_rate": 0.9457908272743225,
+            "scaled_l2_mean": 0.00260538631118834,
+            "scaled_l2_p50": 0.0013858370948582888,
+            "scaled_l2_p90": 0.0038845802191644907,
+            "pretrain_pass_count": 1487,
+            "pretrain_pass_to_fail_count": 6,
+            "pretrain_pass_retention": 0.995965030262273
+          },
+          "task3": {
+            "rows": 1470,
+            "pass_count": 1395,
+            "pass_rate": 0.9489796161651611,
+            "scaled_l2_mean": 0.002515784464776516,
+            "scaled_l2_p50": 0.0013781735906377435,
+            "scaled_l2_p90": 0.003841474885120988,
+            "pretrain_pass_count": 1399,
+            "pretrain_pass_to_fail_count": 5,
+            "pretrain_pass_retention": 0.9964260185847034
+          },
+          "task4": {
+            "rows": 1470,
+            "pass_count": 1395,
+            "pass_rate": 0.9489796161651611,
+            "scaled_l2_mean": 0.0024231739807873964,
+            "scaled_l2_p50": 0.0013207579031586647,
+            "scaled_l2_p90": 0.003692494472488761,
+            "pretrain_pass_count": 1400,
+            "pretrain_pass_to_fail_count": 5,
+            "pretrain_pass_retention": 0.9964285714285714
+          },
+          "task5": {
+            "rows": 3234,
+            "pass_count": 3073,
+            "pass_rate": 0.9502164721488953,
+            "scaled_l2_mean": 0.002790307393297553,
+            "scaled_l2_p50": 0.0013188106240704656,
+            "scaled_l2_p90": 0.003884322475641966,
+            "pretrain_pass_count": 3082,
+            "pretrain_pass_to_fail_count": 12,
+            "pretrain_pass_retention": 0.9961064243997404
+          },
+          "task6": {
+            "rows": 1470,
+            "pass_count": 1392,
+            "pass_rate": 0.9469387531280518,
+            "scaled_l2_mean": 0.0026066305581480265,
+            "scaled_l2_p50": 0.0013202594127506018,
+            "scaled_l2_p90": 0.0038234537933021784,
+            "pretrain_pass_count": 1399,
+            "pretrain_pass_to_fail_count": 8,
+            "pretrain_pass_retention": 0.9942816297355254
+          },
+          "task7": {
+            "rows": 2401,
+            "pass_count": 2255,
+            "pass_rate": 0.939191997051239,
+            "scaled_l2_mean": 0.00289540970697999,
+            "scaled_l2_p50": 0.001348536228761077,
+            "scaled_l2_p90": 0.0041080256924033165,
+            "pretrain_pass_count": 2265,
+            "pretrain_pass_to_fail_count": 11,
+            "pretrain_pass_retention": 0.9951434878587196
+          },
+          "task8": {
+            "rows": 3234,
+            "pass_count": 3066,
+            "pass_rate": 0.948051929473877,
+            "scaled_l2_mean": 0.0025215549394488335,
+            "scaled_l2_p50": 0.0013338043354451656,
+            "scaled_l2_p90": 0.003834931645542383,
+            "pretrain_pass_count": 3088,
+            "pretrain_pass_to_fail_count": 23,
+            "pretrain_pass_retention": 0.9925518134715026
+          },
+          "task9": {
+            "rows": 1960,
+            "pass_count": 1854,
+            "pass_rate": 0.9459183812141418,
+            "scaled_l2_mean": 0.0027642182540148497,
+            "scaled_l2_p50": 0.0014021967072039843,
+            "scaled_l2_p90": 0.0039016075897961855,
+            "pretrain_pass_count": 1859,
+            "pretrain_pass_to_fail_count": 6,
+            "pretrain_pass_retention": 0.9967724583109199
+          },
+          "sigma/high": {
+            "rows": 413,
+            "pass_count": 0,
+            "pass_rate": 0.0,
+            "scaled_l2_mean": 0.03233395516872406,
+            "scaled_l2_p50": 0.029151184484362602,
+            "scaled_l2_p90": 0.03655233606696129,
+            "pretrain_pass_count": 0,
+            "pretrain_pass_to_fail_count": 0,
+            "pretrain_pass_retention": null
+          },
+          "sigma/mid": {
+            "rows": 1239,
+            "pass_count": 599,
+            "pass_rate": 0.4834544062614441,
+            "scaled_l2_mean": 0.00942172296345234,
+            "scaled_l2_p50": 0.007951435633003712,
+            "scaled_l2_p90": 0.012610921636223793,
+            "pretrain_pass_count": 676,
+            "pretrain_pass_to_fail_count": 89,
+            "pretrain_pass_retention": 0.8683431952662721
+          },
+          "sigma/low": {
+            "rows": 18585,
+            "pass_count": 18564,
+            "pass_rate": 0.9988700747489929,
+            "scaled_l2_mean": 0.0015292653115466237,
+            "scaled_l2_p50": 0.0013023046776652336,
+            "scaled_l2_p90": 0.002332158852368593,
+            "pretrain_pass_count": 18565,
+            "pretrain_pass_to_fail_count": 1,
+            "pretrain_pass_retention": 0.9999461352006463
+          }
+        },
+        "macro_task_acceptance": 0.9469235479831696,
+        "macro_task_scaled_l2": 0.002620320161804557
+      }
+    },
+    "new_CAL": {
+      "before": {
+        "groups": {
+          "all": {
+            "rows": 6805,
+            "pass_count": 6169,
+            "pass_rate": 0.9065393209457397,
+            "scaled_l2_mean": 0.0037370959762483835,
+            "scaled_l2_p50": 0.0018446422182023525,
+            "scaled_l2_p90": 0.007516023702919483
+          },
+          "task0": {
+            "rows": 603,
+            "pass_count": 552,
+            "pass_rate": 0.9154228568077087,
+            "scaled_l2_mean": 0.0037951769772917032,
+            "scaled_l2_p50": 0.0017406947445124388,
+            "scaled_l2_p90": 0.006926816888153553
+          },
+          "task1": {
+            "rows": 569,
+            "pass_count": 519,
+            "pass_rate": 0.9121265411376953,
+            "scaled_l2_mean": 0.003826686879619956,
+            "scaled_l2_p50": 0.0018615233711898327,
+            "scaled_l2_p90": 0.0071724783629179
+          },
+          "task2": {
+            "rows": 538,
+            "pass_count": 486,
+            "pass_rate": 0.9033457040786743,
+            "scaled_l2_mean": 0.0037253466434776783,
+            "scaled_l2_p50": 0.0018893643282353878,
+            "scaled_l2_p90": 0.007657541427761316
+          },
+          "task3": {
+            "rows": 1672,
+            "pass_count": 1504,
+            "pass_rate": 0.89952152967453,
+            "scaled_l2_mean": 0.003961704671382904,
+            "scaled_l2_p50": 0.001926878234371543,
+            "scaled_l2_p90": 0.007847092114388943
+          },
+          "task4": {
+            "rows": 537,
+            "pass_count": 487,
+            "pass_rate": 0.9068901538848877,
+            "scaled_l2_mean": 0.0034366007894277573,
+            "scaled_l2_p50": 0.001798994024284184,
+            "scaled_l2_p90": 0.007164747919887304
+          },
+          "task5": {
+            "rows": 403,
+            "pass_count": 367,
+            "pass_rate": 0.9106699824333191,
+            "scaled_l2_mean": 0.003682932583615184,
+            "scaled_l2_p50": 0.0018236928153783083,
+            "scaled_l2_p90": 0.0070369360037148
+          },
+          "task6": {
+            "rows": 503,
+            "pass_count": 457,
+            "pass_rate": 0.9085487127304077,
+            "scaled_l2_mean": 0.0033890134654939175,
+            "scaled_l2_p50": 0.00173639552667737,
+            "scaled_l2_p90": 0.00728947576135397
+          },
+          "task7": {
+            "rows": 570,
+            "pass_count": 517,
+            "pass_rate": 0.9070175290107727,
+            "scaled_l2_mean": 0.0038666767068207264,
+            "scaled_l2_p50": 0.0018171409610658884,
+            "scaled_l2_p90": 0.007427791599184275
+          },
+          "task8": {
+            "rows": 838,
+            "pass_count": 765,
+            "pass_rate": 0.9128878116607666,
+            "scaled_l2_mean": 0.0035181264393031597,
+            "scaled_l2_p50": 0.001823727274313569,
+            "scaled_l2_p90": 0.007160217501223087
+          },
+          "task9": {
+            "rows": 572,
+            "pass_count": 515,
+            "pass_rate": 0.9003496766090393,
+            "scaled_l2_mean": 0.0037592840380966663,
+            "scaled_l2_p50": 0.0019324582535773516,
+            "scaled_l2_p90": 0.007833970710635185
+          },
+          "sigma/high": {
+            "rows": 203,
+            "pass_count": 0,
+            "pass_rate": 0.0,
+            "scaled_l2_mean": 0.03705541789531708,
+            "scaled_l2_p50": 0.03351528197526932,
+            "scaled_l2_p90": 0.042541392147541046
+          },
+          "sigma/mid": {
+            "rows": 609,
+            "pass_count": 228,
+            "pass_rate": 0.37438422441482544,
+            "scaled_l2_mean": 0.009351817891001701,
+            "scaled_l2_p50": 0.008655598387122154,
+            "scaled_l2_p90": 0.012651996687054634
+          },
+          "sigma/low": {
+            "rows": 5993,
+            "pass_count": 5941,
+            "pass_rate": 0.9913232326507568,
+            "scaled_l2_mean": 0.002037949860095978,
+            "scaled_l2_p50": 0.0017314699944108725,
+            "scaled_l2_p90": 0.0032706335186958313
+          },
+          "root": {
+            "rows": 3661,
+            "pass_count": 3175,
+            "pass_rate": 0.8672493696212769,
+            "scaled_l2_mean": 0.0046525318175554276,
+            "scaled_l2_p50": 0.0015156695153564215,
+            "scaled_l2_p90": 0.010615025646984577
+          },
+          "nonroot": {
+            "rows": 3144,
+            "pass_count": 2994,
+            "pass_rate": 0.9522900581359863,
+            "scaled_l2_mean": 0.002671126276254654,
+            "scaled_l2_p50": 0.0020363503135740757,
+            "scaled_l2_p90": 0.004945771303027868
+          },
+          "root/high": {
+            "rows": 203,
+            "pass_count": 0,
+            "pass_rate": 0.0,
+            "scaled_l2_mean": 0.03705541789531708,
+            "scaled_l2_p50": 0.03351528197526932,
+            "scaled_l2_p90": 0.042541392147541046
+          },
+          "root/mid": {
+            "rows": 506,
+            "pass_count": 224,
+            "pass_rate": 0.4426877498626709,
+            "scaled_l2_mean": 0.00936889462172985,
+            "scaled_l2_p50": 0.008285269141197205,
+            "scaled_l2_p90": 0.012940376996994019
+          },
+          "nonroot/mid": {
+            "rows": 103,
+            "pass_count": 4,
+            "pass_rate": 0.03883495181798935,
+            "scaled_l2_mean": 0.009267931804060936,
+            "scaled_l2_p50": 0.00923420861363411,
+            "scaled_l2_p90": 0.010410977527499199
+          },
+          "root/low": {
+            "rows": 2952,
+            "pass_count": 2951,
+            "pass_rate": 0.9996612668037415,
+            "scaled_l2_mean": 0.001615856890566647,
+            "scaled_l2_p50": 0.001343882642686367,
+            "scaled_l2_p90": 0.002500290749594569
+          },
+          "nonroot/low": {
+            "rows": 3041,
+            "pass_count": 2990,
+            "pass_rate": 0.9832292199134827,
+            "scaled_l2_mean": 0.0024476894177496433,
+            "scaled_l2_p50": 0.0020121068228036165,
+            "scaled_l2_p90": 0.0038792267441749573
+          }
+        },
+        "macro_task_acceptance": 0.9076780498027801,
+        "macro_task_scaled_l2": 0.0036961549194529653
+      },
+      "after": {
+        "groups": {
+          "all": {
+            "rows": 6805,
+            "pass_count": 6151,
+            "pass_rate": 0.9038941860198975,
+            "scaled_l2_mean": 0.003567824140191078,
+            "scaled_l2_p50": 0.0017794157611206174,
+            "scaled_l2_p90": 0.007687793578952551,
+            "pretrain_pass_count": 6169,
+            "pretrain_pass_to_fail_count": 46,
+            "pretrain_pass_retention": 0.992543361971146
+          },
+          "task0": {
+            "rows": 603,
+            "pass_count": 547,
+            "pass_rate": 0.907131016254425,
+            "scaled_l2_mean": 0.003651589388027787,
+            "scaled_l2_p50": 0.001663158880546689,
+            "scaled_l2_p90": 0.00744982436299324,
+            "pretrain_pass_count": 552,
+            "pretrain_pass_to_fail_count": 7,
+            "pretrain_pass_retention": 0.9873188405797102
+          },
+          "task1": {
+            "rows": 569,
+            "pass_count": 515,
+            "pass_rate": 0.9050966501235962,
+            "scaled_l2_mean": 0.0036725029349327087,
+            "scaled_l2_p50": 0.001787896384485066,
+            "scaled_l2_p90": 0.007415378466248512,
+            "pretrain_pass_count": 519,
+            "pretrain_pass_to_fail_count": 5,
+            "pretrain_pass_retention": 0.9903660886319846
+          },
+          "task2": {
+            "rows": 538,
+            "pass_count": 487,
+            "pass_rate": 0.9052044749259949,
+            "scaled_l2_mean": 0.003525946056470275,
+            "scaled_l2_p50": 0.0018014195375144482,
+            "scaled_l2_p90": 0.0074521806091070175,
+            "pretrain_pass_count": 486,
+            "pretrain_pass_to_fail_count": 2,
+            "pretrain_pass_retention": 0.9958847736625515
+          },
+          "task3": {
+            "rows": 1672,
+            "pass_count": 1499,
+            "pass_rate": 0.8965311050415039,
+            "scaled_l2_mean": 0.0037746315356343985,
+            "scaled_l2_p50": 0.0018823291175067425,
+            "scaled_l2_p90": 0.008091221563518047,
+            "pretrain_pass_count": 1504,
+            "pretrain_pass_to_fail_count": 11,
+            "pretrain_pass_retention": 0.992686170212766
+          },
+          "task4": {
+            "rows": 537,
+            "pass_count": 490,
+            "pass_rate": 0.9124767184257507,
+            "scaled_l2_mean": 0.0032887179404497147,
+            "scaled_l2_p50": 0.0016966970870271325,
+            "scaled_l2_p90": 0.0072383759543299675,
+            "pretrain_pass_count": 487,
+            "pretrain_pass_to_fail_count": 3,
+            "pretrain_pass_retention": 0.9938398357289527
+          },
+          "task5": {
+            "rows": 403,
+            "pass_count": 368,
+            "pass_rate": 0.9131513833999634,
+            "scaled_l2_mean": 0.003478260478004813,
+            "scaled_l2_p50": 0.0017234697006642818,
+            "scaled_l2_p90": 0.007160977926105261,
+            "pretrain_pass_count": 367,
+            "pretrain_pass_to_fail_count": 1,
+            "pretrain_pass_retention": 0.997275204359673
+          },
+          "task6": {
+            "rows": 503,
+            "pass_count": 453,
+            "pass_rate": 0.9005964398384094,
+            "scaled_l2_mean": 0.0032633785158395767,
+            "scaled_l2_p50": 0.001672619255259633,
+            "scaled_l2_p90": 0.0077239447273314,
+            "pretrain_pass_count": 457,
+            "pretrain_pass_to_fail_count": 5,
+            "pretrain_pass_retention": 0.9890590809628009
+          },
+          "task7": {
+            "rows": 570,
+            "pass_count": 515,
+            "pass_rate": 0.9035087823867798,
+            "scaled_l2_mean": 0.0037200150545686483,
+            "scaled_l2_p50": 0.001726929098367691,
+            "scaled_l2_p90": 0.007782753091305494,
+            "pretrain_pass_count": 517,
+            "pretrain_pass_to_fail_count": 2,
+            "pretrain_pass_retention": 0.9961315280464217
+          },
+          "task8": {
+            "rows": 838,
+            "pass_count": 763,
+            "pass_rate": 0.9105011820793152,
+            "scaled_l2_mean": 0.0033544073812663555,
+            "scaled_l2_p50": 0.0017485797870904207,
+            "scaled_l2_p90": 0.007291197311133146,
+            "pretrain_pass_count": 765,
+            "pretrain_pass_to_fail_count": 7,
+            "pretrain_pass_retention": 0.9908496732026144
+          },
+          "task9": {
+            "rows": 572,
+            "pass_count": 514,
+            "pass_rate": 0.8986014127731323,
+            "scaled_l2_mean": 0.003564121900126338,
+            "scaled_l2_p50": 0.001875655958428979,
+            "scaled_l2_p90": 0.007837374694645405,
+            "pretrain_pass_count": 515,
+            "pretrain_pass_to_fail_count": 3,
+            "pretrain_pass_retention": 0.9941747572815534
+          },
+          "sigma/high": {
+            "rows": 203,
+            "pass_count": 0,
+            "pass_rate": 0.0,
+            "scaled_l2_mean": 0.03323068842291832,
+            "scaled_l2_p50": 0.029356002807617188,
+            "scaled_l2_p90": 0.03816079720854759,
+            "pretrain_pass_count": 0,
+            "pretrain_pass_to_fail_count": 0,
+            "pretrain_pass_retention": null
+          },
+          "sigma/mid": {
+            "rows": 609,
+            "pass_count": 192,
+            "pass_rate": 0.31527093052864075,
+            "scaled_l2_mean": 0.009558295831084251,
+            "scaled_l2_p50": 0.009094945155084133,
+            "scaled_l2_p90": 0.012521928176283836,
+            "pretrain_pass_count": 228,
+            "pretrain_pass_to_fail_count": 46,
+            "pretrain_pass_retention": 0.7982456140350878
+          },
+          "sigma/low": {
+            "rows": 5993,
+            "pass_count": 5959,
+            "pass_rate": 0.9943267107009888,
+            "scaled_l2_mean": 0.0019543154630810022,
+            "scaled_l2_p50": 0.0016586193814873695,
+            "scaled_l2_p90": 0.003072701394557953,
+            "pretrain_pass_count": 5941,
+            "pretrain_pass_to_fail_count": 0,
+            "pretrain_pass_retention": 1.0
+          },
+          "root": {
+            "rows": 3661,
+            "pass_count": 3135,
+            "pass_rate": 0.8563234210014343,
+            "scaled_l2_mean": 0.00442150142043829,
+            "scaled_l2_p50": 0.0014552390202879906,
+            "scaled_l2_p90": 0.010605603456497192,
+            "pretrain_pass_count": 3175,
+            "pretrain_pass_to_fail_count": 46,
+            "pretrain_pass_retention": 0.9855118110236221
+          },
+          "nonroot": {
+            "rows": 3144,
+            "pass_count": 3016,
+            "pass_rate": 0.9592875242233276,
+            "scaled_l2_mean": 0.0025737686082720757,
+            "scaled_l2_p50": 0.0019649965688586235,
+            "scaled_l2_p90": 0.004698616452515125,
+            "pretrain_pass_count": 2994,
+            "pretrain_pass_to_fail_count": 0,
+            "pretrain_pass_retention": 1.0
+          },
+          "root/high": {
+            "rows": 203,
+            "pass_count": 0,
+            "pass_rate": 0.0,
+            "scaled_l2_mean": 0.03323068842291832,
+            "scaled_l2_p50": 0.029356002807617188,
+            "scaled_l2_p90": 0.03816079720854759,
+            "pretrain_pass_count": 0,
+            "pretrain_pass_to_fail_count": 0,
+            "pretrain_pass_retention": null
+          },
+          "root/mid": {
+            "rows": 506,
+            "pass_count": 184,
+            "pass_rate": 0.3636363744735718,
+            "scaled_l2_mean": 0.009593871422111988,
+            "scaled_l2_p50": 0.008832366205751896,
+            "scaled_l2_p90": 0.01283293403685093,
+            "pretrain_pass_count": 224,
+            "pretrain_pass_to_fail_count": 46,
+            "pretrain_pass_retention": 0.7946428571428572
+          },
+          "nonroot/mid": {
+            "rows": 103,
+            "pass_count": 8,
+            "pass_rate": 0.0776699036359787,
+            "scaled_l2_mean": 0.009383521974086761,
+            "scaled_l2_p50": 0.00944196991622448,
+            "scaled_l2_p90": 0.010762794874608517,
+            "pretrain_pass_count": 4,
+            "pretrain_pass_to_fail_count": 0,
+            "pretrain_pass_retention": 1.0
+          },
+          "root/low": {
+            "rows": 2952,
+            "pass_count": 2951,
+            "pass_rate": 0.9996612668037415,
+            "scaled_l2_mean": 0.0015537895960733294,
+            "scaled_l2_p50": 0.0013003707863390446,
+            "scaled_l2_p90": 0.0024128935765475035,
+            "pretrain_pass_count": 2951,
+            "pretrain_pass_to_fail_count": 0,
+            "pretrain_pass_retention": 1.0
+          },
+          "nonroot/low": {
+            "rows": 3041,
+            "pass_count": 3008,
+            "pass_rate": 0.9891483187675476,
+            "scaled_l2_mean": 0.002343119354918599,
+            "scaled_l2_p50": 0.0019391363020986319,
+            "scaled_l2_p90": 0.0036395033821463585,
+            "pretrain_pass_count": 2990,
+            "pretrain_pass_to_fail_count": 0,
+            "pretrain_pass_retention": 1.0
+          }
+        },
+        "macro_task_acceptance": 0.905279916524887,
+        "macro_task_scaled_l2": 0.0035293571185320617
+      }
+    }
+  },
+  "loss_log": [
+    {
+      "update": 1,
+      "loss": 0.006421414203941822,
+      "seconds": 32.340801518410444
+    },
+    {
+      "update": 50,
+      "loss": 0.006078139878809452,
+      "seconds": 56.98258861154318
+    },
+    {
+      "update": 100,
+      "loss": 0.006726444233208895,
+      "seconds": 83.5743911638856
+    },
+    {
+      "update": 150,
+      "loss": 0.005979168228805065,
+      "seconds": 113.25508241914213
+    },
+    {
+      "update": 200,
+      "loss": 0.006519339047372341,
+      "seconds": 136.9452947396785
+    },
+    {
+      "update": 250,
+      "loss": 0.006509662605822086,
+      "seconds": 158.9888484403491
+    },
+    {
+      "update": 300,
+      "loss": 0.0052990964613854885,
+      "seconds": 178.79661224782467
+    },
+    {
+      "update": 350,
+      "loss": 0.005205530673265457,
+      "seconds": 209.53839778341353
+    },
+    {
+      "update": 400,
+      "loss": 0.005376073997467756,
+      "seconds": 232.6591102797538
+    },
+    {
+      "update": 450,
+      "loss": 0.005478502716869116,
+      "seconds": 260.3040286246687
+    },
+    {
+      "update": 500,
+      "loss": 0.005867203697562218,
+      "seconds": 288.07233688794076
+    }
+  ],
+  "elapsed_seconds": 536.3173768445849,
+  "new_GPU_CAL_required": true,
+  "robot_quality_validated": false,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "infrastructure_continuation_schema": "tf-effect-cpu-reuse/v2",
+  "training_CPU_threads": 2,
+  "validation_CPU_threads": 1,
+  "validation_batch_size": 1,
+  "actual_optimizer_updates_this_job": 500,
+  "model_total_continuation_updates": 500,
+  "original_failed_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-onpolicy-train-v1-20261016-r1",
+  "CONT_reuse_proof": null,
+  "CPU2_output_bitwise_parity_inherited": false,
+  "full_CPU1_adapter_vs_original_decode_bitwise_exact": true,
+  "old_CAL_before_after_thread_mismatch_is_descriptive_only": true,
+  "old_CAL_before_CPU_reference_threads": 2,
+  "after_CPU_reference_threads": 1,
+  "production_GPU_CAL_still_required": true
+}

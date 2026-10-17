@@ -1,0 +1,2179 @@
+{
+  "schema": "tf-effect-recorded-risk-component-audit/v1",
+  "source_commit": "b0dfac3a02f65de33a1217246b83003615166640",
+  "goal": "only inspect task1/init29 and task3/init26 recorded T/TF_ON components; no quality certificate",
+  "input_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1",
+  "cases": [
+    {
+      "arm": "T",
+      "task": 1,
+      "init": 29,
+      "role": "risk_DEV",
+      "rep": 0,
+      "key": "T-risk_DEV-t1-i29-r0"
+    },
+    {
+      "arm": "TF_ON",
+      "task": 1,
+      "init": 29,
+      "role": "risk_DEV",
+      "rep": 0,
+      "key": "TF_ON-risk_DEV-t1-i29-r0"
+    },
+    {
+      "arm": "T",
+      "task": 3,
+      "init": 26,
+      "role": "risk_DEV",
+      "rep": 0,
+      "key": "T-risk_DEV-t3-i26-r0"
+    },
+    {
+      "arm": "TF_ON",
+      "task": 3,
+      "init": 26,
+      "role": "risk_DEV",
+      "rep": 0,
+      "key": "TF_ON-risk_DEV-t3-i26-r0"
+    }
+  ],
+  "inputs": {
+    "files": {
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/CLOCK-GUARD.json": {
+        "bytes": 1880,
+        "mtime_ns": 1792170709346997830,
+        "sha256": "6dc0fd72a3af9fe7cd8d5d07ec0d45e2cb15c11a9a0aef4c897753c8ceafdc0e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/CLOCK-LAUNCH.json": {
+        "bytes": 382,
+        "mtime_ns": 1792170709346997830,
+        "sha256": "fbf43865ffbe93c9f771104aefe62d68727007c88aaa1cf48ad5385bbdb0733e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/CLOCK-RESULT.json": {
+        "bytes": 199768,
+        "mtime_ns": 1792195602217344334,
+        "sha256": "fee1db1f66d10a4ee3bbefc600d83ff9a168528b8b50434e228623fdde7fdeae"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/CLOCK-STOP.json": {
+        "bytes": 776,
+        "mtime_ns": 1792195598869355566,
+        "sha256": "d3f3b3673da3334dcd355f9967b475c54b98f6367178e159a9a17939118d43ad"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/FAILED.json": {
+        "bytes": 5000,
+        "mtime_ns": 1792195601925345315,
+        "sha256": "f456c47b623520c08459bf4bc36b3a3ba3457dacf3082009fdc7d09c1e290172"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/FINAL-OWNED-CLEANUP.json": {
+        "bytes": 52740,
+        "mtime_ns": 1792195601925345315,
+        "sha256": "70aa8427a52933d53a0c2188d92bd48bc38e11c9eddb3ed5d869fced2ca2b73c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/PREREGISTRATION.json": {
+        "bytes": 98509,
+        "mtime_ns": 1792170697711298987,
+        "sha256": "f7dd0429704ad5e7b2b3167ab8c6a99f5b4dbe08fa8a9c9dbedd9704540f3363"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/ROOT-LAUNCH.json": {
+        "bytes": 941,
+        "mtime_ns": 1792170709019006302,
+        "sha256": "4059a561a3041089b6918c24aef3cc62101c7a5dea9e7c3571251953920c0059"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/RUN-STARTED.json": {
+        "bytes": 238,
+        "mtime_ns": 1792170708923008783,
+        "sha256": "246bdd81a7e6928adc82faf282249682803ba1ba6ccc522152f46722a51b242c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/STOP_REQUESTED": {
+        "bytes": 61,
+        "mtime_ns": 1792195598869355566,
+        "sha256": "a19510b7996910a7777d88caa13f5d3a55d9a30a4838f2b20000a34e13751298"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/SUPERVISOR-RESULT.json": {
+        "bytes": 530156,
+        "mtime_ns": 1792195601961345194,
+        "sha256": "eb259cee9fdc5e3af4741a4344da355999c9f016466a98ed91d7e08aac7b7b19"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/T-READY.json": {
+        "bytes": 1710,
+        "mtime_ns": 1792170796420779156,
+        "sha256": "cad84cc7ea0a6109684c9f91d4a01016bcd5fe2260716e4e694d9c0fbfe21640"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/TF_ON-READY.json": {
+        "bytes": 1972,
+        "mtime_ns": 1792188691964931080,
+        "sha256": "d7bd067bcc3e22c92eb5d4c7011a739ce3b5c4aa9fa31f164dae2b99655401b3"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/arms/T/OWNED-CLEANUP.json": {
+        "bytes": 180,
+        "mtime_ns": 1792182678401242314,
+        "sha256": "e5c1f67efcedf8d1519898ea0d45c2596e1b805df7ac271fe46474e5fe8f2a69"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/arms/T/TARGET-INITIAL-RNG.pt": {
+        "bytes": 6821,
+        "mtime_ns": 1792170795848793541,
+        "sha256": "2aabcb8bb93cde6b5a6e87597abdfea2f44247e5f3e60ddeded2b7d45d2ba367"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/arms/TF_ON/TARGET-INITIAL-RNG.pt": {
+        "bytes": 6821,
+        "mtime_ns": 1792188511305374980,
+        "sha256": "2aabcb8bb93cde6b5a6e87597abdfea2f44247e5f3e60ddeded2b7d45d2ba367"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/CLIENT-CLEANUP.json": {
+        "bytes": 122,
+        "mtime_ns": 1792178681263168562,
+        "sha256": "0aad8afce34ff52ce4ed03fd3b14a15ccc74c3d2482db0ab0df6a994ac8aa12b"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/COUNTER.json": {
+        "bytes": 52356,
+        "mtime_ns": 1792178681235169175,
+        "sha256": "4d26ce618506935de2f30d37060aae0b609c77878a2d8013b940b0be2fbc5722"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/FINAL-SERVER-STATE.json": {
+        "bytes": 38624,
+        "mtime_ns": 1792178681219169526,
+        "sha256": "1c95022de10d669e7ea8e621b5d392d5865cd6ec0e4b66df71541c1b3b439f08"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/FINISH_READY.json": {
+        "bytes": 518,
+        "mtime_ns": 1792178681235169175,
+        "sha256": "a7f8bce7e9202cc79f033054d57a7f64a53a76079db6fa26c63790ee07784ca8"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/FINISH_REQUESTED": {
+        "bytes": 38,
+        "mtime_ns": 1792178667639467912,
+        "sha256": "a012380b83b806ec764d91d30d37cf937ebc277e283f14bda18f7788d693a785"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/FINISH_SERVER.json": {
+        "bytes": 518,
+        "mtime_ns": 1792178681235169175,
+        "sha256": "a7f8bce7e9202cc79f033054d57a7f64a53a76079db6fa26c63790ee07784ca8"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/RESET.json": {
+        "bytes": 36323,
+        "mtime_ns": 1792178319459981344,
+        "sha256": "6581dac7eb0dc664f6b8cfd937dc37d43ff27353136cc84bca4f0ef3623ec5dd"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/TEACHER-INDEX.json": {
+        "bytes": 148,
+        "mtime_ns": 1792178667751465442,
+        "sha256": "dcd878c07bcec60cbde53ac7f08f1eb41b3f2e23c7dafc22ffc99127ccf7119c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/client/COMMAND-MAPPING.json": {
+        "bytes": 167528,
+        "mtime_ns": 1792178665495515202,
+        "sha256": "74d636d693b9bf06e2d0dea1e5a9dfa61d1d5316c68cb4f0dae78d152e07e672"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/client/commands.npy": {
+        "bytes": 7520,
+        "mtime_ns": 1792178665463515908,
+        "sha256": "c0d32385a06153571c99c035ade64f8b677ce9f3892d6162ea4c8a77a7f7e49c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/client/episodes.jsonl": {
+        "bytes": 1805,
+        "mtime_ns": 1792178665495515202,
+        "sha256": "9671f1a00f1b11e1827c401257ca6eee7efdec6a31e6923020af3ff02234b984"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/client/final_state.npz": {
+        "bytes": 13998,
+        "mtime_ns": 1792178665447516262,
+        "sha256": "8384dd3bad00472cf6dd12b5e33c04f89ef0c7d3089c52dfeede2723bda23973"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/client/initial_observations.npz": {
+        "bytes": 98922,
+        "mtime_ns": 1792178665471515732,
+        "sha256": "c0405d569ccbd3335a3a8b5c77fd2f18919028352740360f05677b5243d117b1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/client/initial_state.npz": {
+        "bytes": 13998,
+        "mtime_ns": 1792178665447516262,
+        "sha256": "665a177fd938b0df5124c1082452e7c5a95fe9207fb9d4cb31474c98940d8179"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/client/repro_metadata.json": {
+        "bytes": 4630,
+        "mtime_ns": 1792178665467515820,
+        "sha256": "b6074bf8a830337e17de4b29be1c27c287ad19656b358f0e476d03b438596462"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/client/run_metadata.json": {
+        "bytes": 1662,
+        "mtime_ns": 1792178280289074138,
+        "sha256": "01068c2803fb1bf85009a1a78415f722f25bd59382a9f002378866ab38a5f56d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/client.log": {
+        "bytes": 3344,
+        "mtime_ns": 1792178665511514849,
+        "sha256": "2d1d1b86f680f2725f88f3df762d54bd1ab3cbabd392f30f89adfbccc9b16d69"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_0.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178336831507404,
+        "sha256": "6a8b55ffe86f5f0e271286aa0124767056a455db3dce71c7e2b71e5d06e59d33"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_12.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178398825865649,
+        "sha256": "6d12c81a1291cff65452b3b8e0a45b14c0895e511ce9100dbfab287e7dd56fcf"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_16.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178417409387679,
+        "sha256": "223a02e02353edbbf1ba35ec31a463dfdf36a5b529d0abb550e016d9e1abb94c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_20.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178438876843138,
+        "sha256": "61dbdb89eaf9e253419801414781c04abbf70d80d12c919f1862d7db7b6ab74f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_24.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178458276357802,
+        "sha256": "d55ee8efe377131f0c5aa81e280a0bb03cd915d43496adf3abac1360a97b8861"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_28.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178478135867334,
+        "sha256": "fdcb8194c087fe1476d23187976ece0ba23cd8507fbb373c66b810129caa48b1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_32.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178497195402464,
+        "sha256": "5ae06557f626969dcec17fc8174220597f777aa571045fde9291315a22aa9991"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_36.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178517374916277,
+        "sha256": "e1d697e0422c6ef522d94a27c69151f3ad80cf08cb671088087ffe483f3e0a97"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_4.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178358362928641,
+        "sha256": "5700488dfafc99fb7631d972a6dd9ebdc75779baaee487add202d8c19db97f63"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_40.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178538018425051,
+        "sha256": "d9f1c9f7379479da536997b1615d32e0a1f69f901f9d58a84d13897413ed427e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_44.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178557893957743,
+        "sha256": "fb72b9c741b10004a0ed5e0e0550004104934a0d5f2fcf8e988b573a765bb2a4"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_48.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178577917492333,
+        "sha256": "2b8fe6437bfd21394832f6407c2ef6ed4c8886b21a66c767314c047492cc6779"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_52.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178597469042908,
+        "sha256": "effe8bb614bde5d8ff1984c2c0dec5ba521953d37dcb055dc00de436283b013a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_56.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178620920510106,
+        "sha256": "34705c0d0f42297852fbbef588cd2a4685fdc8679b6876973ff963f0ad04b126"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_60.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178640652066904,
+        "sha256": "0ac094e0031f73bfab9a31438ba1d7b1800ef51543b5c64012b918507de8c9e8"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_64.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178663263564487,
+        "sha256": "fca8225bf35745406fc026825788aea04a680a3d7f832f11621b86c11e3b5dae"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_8.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178379846360359,
+        "sha256": "8e9b867918bbc008cb276a6d717b80f7e1d6104c141e5c59b0bf981e1e58a15c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_0.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178336831507404,
+        "sha256": "7e7fd1a12050dd3007f9102fba39bf835d4011fd09570e80b6d54cf0424cb1c8"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_12.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178398817865856,
+        "sha256": "0960e0a2761605c9b6f3952568953550471690efea82e7b599ae883ed962a3f4"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_16.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178417405387781,
+        "sha256": "32fcb1735d976f10fe8833e48600fc345c31c48e213f10018f77c4717e62d886"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_20.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178438864843441,
+        "sha256": "281da254d96f4557fe64da8bc2c6d8d8e8f05b0f22b27952bc5f1e8f84a5effc"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_24.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178458248358498,
+        "sha256": "32e99624bf6696eb94a928898413f5508ffea053ffc86308e49649fabc15536b"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_28.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178478135867334,
+        "sha256": "b7dba6643b923546d777b0dff484466bddaab288ee26a766b4fdb05702bfb46c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_32.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178497195402464,
+        "sha256": "7b867b33888c33128c65ff90b2e9cb7b0e353f819652c86f20a61b1b499d1654"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_36.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178517358916661,
+        "sha256": "7852eab9367ce8ec43f02d67f1c3d348656850707b4d27ff718e305227885835"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_4.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178358358928747,
+        "sha256": "adf9038bf0fc1ff8dc9659acbf09c70dd103f2a4ca382f8354cd218b089aab34"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_40.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178538018425051,
+        "sha256": "099723d8079a97f0b23f19aa4d14bc34310006c6f8131e578169ca567f12b07d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_44.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178557893957743,
+        "sha256": "95bc4c6474b1d89b57721c62552d76745ec5d1e22f0fef17e7b939bfa261c3a3"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_48.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178577913492426,
+        "sha256": "eda21fc081808b2cbb1e037c8d5d5582091c27424e6cf384270c2718ea0a3899"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_52.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178597469042908,
+        "sha256": "32d63867c7b6e70dcc95d9b184bb32b68e372ac458a11372f50b80ea849f77e1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_56.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178620920510106,
+        "sha256": "64a33f8fab6bb3296e791b9478715b68dac4eddc6eecb3418121b019bc17a112"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_60.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178640652066904,
+        "sha256": "eae9c84e3b9aa3618d873f9b565ba072b9e326793ee7a050cf106d333d7a0a6a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_64.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178663263564487,
+        "sha256": "e2daf11c0c73d3926d980ff11173e42cf714c08a287fa2f891fbaa29603b6f7a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_8.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178379842360464,
+        "sha256": "42e76dbb88234f63f77649f64036716f1a5df5c5a4d448d59ab7cbde76553279"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/CLIENT-CLEANUP.json": {
+        "bytes": 122,
+        "mtime_ns": 1792179044727767755,
+        "sha256": "31f0ac2d93ae0195475a8ecfc0ee8c9704026b0a1fa157223e584f0202351306"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/COUNTER.json": {
+        "bytes": 50047,
+        "mtime_ns": 1792179044683768597,
+        "sha256": "104ed2d39ce84dcea022a36046fcf13a2a3dda891186b5323aea26913c4e6eff"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/FINAL-SERVER-STATE.json": {
+        "bytes": 38624,
+        "mtime_ns": 1792179044679768674,
+        "sha256": "d1007e8f8b39744f014e113e5714421b10aa4490f04657f41dbb4e41e9a64dd9"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/FINISH_READY.json": {
+        "bytes": 518,
+        "mtime_ns": 1792179044683768597,
+        "sha256": "99325c79705c9c325d5308d8ffe693590c474b937750b5699ff9b9d1fea595b4"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/FINISH_REQUESTED": {
+        "bytes": 38,
+        "mtime_ns": 1792179028488079390,
+        "sha256": "a012380b83b806ec764d91d30d37cf937ebc277e283f14bda18f7788d693a785"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/FINISH_SERVER.json": {
+        "bytes": 518,
+        "mtime_ns": 1792179044683768597,
+        "sha256": "99325c79705c9c325d5308d8ffe693590c474b937750b5699ff9b9d1fea595b4"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/RESET.json": {
+        "bytes": 36323,
+        "mtime_ns": 1792178708398578126,
+        "sha256": "bc84d94c476f75766184e57dc96cf9afdea8c7b7a930690657178b534ae05245"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/TEACHER-INDEX.json": {
+        "bytes": 148,
+        "mtime_ns": 1792179028672075852,
+        "sha256": "dcd878c07bcec60cbde53ac7f08f1eb41b3f2e23c7dafc22ffc99127ccf7119c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/client/COMMAND-MAPPING.json": {
+        "bytes": 151979,
+        "mtime_ns": 1792179025972127796,
+        "sha256": "ac997523b0bb43a9263e72eedd588f7fa1299a0cda27af97c1ff8392148ac08f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/client/commands.npy": {
+        "bytes": 6848,
+        "mtime_ns": 1792179025952128181,
+        "sha256": "1b1b9b4f4fa96ffda9de8dd54998c39db62a8d272a6918752d52b99ab61ff718"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/client/episodes.jsonl": {
+        "bytes": 1818,
+        "mtime_ns": 1792179025972127796,
+        "sha256": "e0a5087c600ae776a55ee7cd80c42d8b7c5b779b817cb0768ed4738a6eda39f2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/client/final_state.npz": {
+        "bytes": 11974,
+        "mtime_ns": 1792179025952128181,
+        "sha256": "4d20f07b2479fe0275a4caebe0f1383d6807d2cee7a13c52c3840be37f755bd4"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/client/initial_observations.npz": {
+        "bytes": 98922,
+        "mtime_ns": 1792179025956128104,
+        "sha256": "3e14d05ce955214fd8bb0655eed43fda58483f5a9b35f02d873c0cb3a5a806ab"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/client/initial_state.npz": {
+        "bytes": 11974,
+        "mtime_ns": 1792179025952128181,
+        "sha256": "d40bdc1ddb9fe00da8ad2ed6e77885886d1ab3c4d1422719f1867f64bee23dfd"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/client/repro_metadata.json": {
+        "bytes": 4630,
+        "mtime_ns": 1792179025956128104,
+        "sha256": "aac906ba4d001ae9ca704814f7458d07ebb06c5ac3167223ce9216e710539ee5"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/client/run_metadata.json": {
+        "bytes": 1662,
+        "mtime_ns": 1792178682343144917,
+        "sha256": "98299f53e042ec0dc2baed89728a30be221bb871c74fe8db38ec5e265e6864e9"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/client.log": {
+        "bytes": 3357,
+        "mtime_ns": 1792179025992127411,
+        "sha256": "93afc065ca38856d43bf2e180ebbeff1296a2b1642f25f97443296294cc26c4d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_0.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178724950221634,
+        "sha256": "4291fc65aaab5c15610964302930de749d5190804421db1a5338cf98086e9e62"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_12.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178786404920641,
+        "sha256": "e24924983c1ab97070cbec983b129bd2dca1366165fc433ae27a8f9553ff07ca"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_16.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178806240507863,
+        "sha256": "f3643a2b7f7db7a4993eb43b0db55758d9b0a90a86abe163b02e2aab0cc6ce47"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_20.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178823996141138,
+        "sha256": "1ff4e2061bc46e61eec27c362d3ec89962b6884eaaf7fda946d7c1876921f8d6"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_24.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178844235726184,
+        "sha256": "1eec00ae8574e8b14aa6257d4344b59b0a25e42cd94bfcfd073991810688e0d7"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_28.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178863439335386,
+        "sha256": "84f31edfc9b462ad62d58baf6f1ca6afd6461fec3970488cd0b4065223dd6261"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_32.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178884370912532,
+        "sha256": "85d33160c26e85008e14cd1da47cace9e8c0ed86e9dae0a577f0b07e3e1844f9"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_36.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178905634486162,
+        "sha256": "24ac4380d78ef284d098d53e76a5cf1cf7b87db234e84f67ef31c019c9b85728"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_4.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178746737756415,
+        "sha256": "3dcc95c3a46684d24829e55477586fcded649da3239e4ea6ab19e750f3dc618b"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_40.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178926634068114,
+        "sha256": "f8c589bd4b89e01b086179a60fbcb3b1c55c51cc38888cf008c46b4ece257482"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_44.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178947277659969,
+        "sha256": "69e4a259f960f609e46f393beed5c3011c18f37023344ba9961a99f2ea416f91"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_48.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178966337285524,
+        "sha256": "fa4ffc9afaac1cd94ebbf48d3b2370b65003919434276fb3c58818213a772bbd"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_52.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178985112918811,
+        "sha256": "6847433fdbd368916933c614d7d471e125f166e2d97690a4c6f9b74b8dcb4f15"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_56.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792179005764517835,
+        "sha256": "9c98555c02dd0411e898b90f240c10f8bc3666f92783f8bcda48cd2f6123ef62"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_60.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792179024572154746,
+        "sha256": "a5e04f30dd85dc6344f8eb46079e3554accc7c63a5cd026f5b6e52421573c1ba"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_8.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792178767057326527,
+        "sha256": "5e7d06725643e4e542e0450803d20696f30f5c9cfb9c6a4100aafc3e254d5fd5"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_0.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178724946221720,
+        "sha256": "f32f09715203b4390f53176f6b494bb8a41a2dcc4eb5e6f5f23f3295f529b3a0"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_12.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178786400920724,
+        "sha256": "4872730859bbe517f343d15d8c229c657f47caf8d026f23a95af75d60a57e747"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_16.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178806240507863,
+        "sha256": "298280895429aa627651b2eda5488fdef7e5cb86d57d637374314120b1b6ffb6"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_20.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178823988141303,
+        "sha256": "9a12c51d0906ffe0481e3432a375184120878569e4eef5fd7913100531171d13"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_24.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178844227726348,
+        "sha256": "3601a1dfaff09a71869c72444dad106fa10a75a28dbb4fcf7b25293ac7c1c753"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_28.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178863439335386,
+        "sha256": "f160fd596be05d8369c50af77f5acb27d501e464120c238f9f19aa58cab58b53"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_32.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178884370912532,
+        "sha256": "8143de33663c55a19fef68b0e3ac1b6920d53bda316fd1bdaa01b8f9027f2f4f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_36.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178905634486162,
+        "sha256": "6d9052a5bb30cd6b5e39377fd50b85f14df77c4af472a81ab381842c078d52b4"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_4.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178746733756500,
+        "sha256": "0dcac10d63c11cbd2298bfa061caf67f212abbf1fcd0dc726b7680482ce38453"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_40.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178926630068193,
+        "sha256": "db45e904fe5374b68cf154de59d142aa71111e0d33b337d5d7eb929d0fb87913"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_44.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178947277659969,
+        "sha256": "8739a1bf6b0e7bbbb92e303d5ed8768774ef71a315654ead39e9fa285ae4c684"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_48.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178966337285524,
+        "sha256": "7de72b99bb095e526cad8df03639f457ce056631aa296d9d701fd636d72ecbe5"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_52.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178985108918889,
+        "sha256": "47cc7734e611bc029cfaed37f120df185895d13b6748dcc216db6a88953a9ade"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_56.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792179005756517990,
+        "sha256": "57d8a916d6e51cafb89b8655b072b04ee640f8beaa419148af4317af77d85018"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_60.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792179024572154746,
+        "sha256": "a200a3e3052166f18074ea9a73ef8c9ffb57a52ed42fd36bf23435e8de6e2538"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/T-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_8.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792178767057326527,
+        "sha256": "6428d532d6b789a061ba90cfbc736243951990ccf8263b8d8e9f2a5bd48c014e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/CLIENT-CLEANUP.json": {
+        "bytes": 122,
+        "mtime_ns": 1792194458572144124,
+        "sha256": "aa687c14dcfc3ccb9cb15915bc5029d6aa8ea45540fa49be69ca867d4b7a97bc"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/COUNTER.json": {
+        "bytes": 1571387,
+        "mtime_ns": 1792194457876137088,
+        "sha256": "131dd5ff27155a075db002097009d4a7ea99dc5fa2b692a6d2115ef9412cad04"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/FINAL-SERVER-STATE.json": {
+        "bytes": 38625,
+        "mtime_ns": 1792194457708135385,
+        "sha256": "8903e6c5b39a0a2eeb880fb5cbc935a9f64c9eb0c14e2c469688cd0bd1b2a0ef"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/FINISH_READY.json": {
+        "bytes": 527,
+        "mtime_ns": 1792194457884137169,
+        "sha256": "71f29dc55238c665f7b2262cce462a40338a27789c2700ed14a238bf25147655"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/FINISH_REQUESTED": {
+        "bytes": 38,
+        "mtime_ns": 1792194445940014146,
+        "sha256": "a012380b83b806ec764d91d30d37cf937ebc277e283f14bda18f7788d693a785"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/FINISH_SERVER.json": {
+        "bytes": 527,
+        "mtime_ns": 1792194457876137088,
+        "sha256": "71f29dc55238c665f7b2262cce462a40338a27789c2700ed14a238bf25147655"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/RESET.json": {
+        "bytes": 36331,
+        "mtime_ns": 1792193840717123726,
+        "sha256": "d2c1d1b4be44e1de834bdff20944bd6f657b5b1a9fe4ce5b1ea592b4a4b726ad"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/TEACHER-INDEX.json": {
+        "bytes": 148,
+        "mtime_ns": 1792194446240017286,
+        "sha256": "dcd878c07bcec60cbde53ac7f08f1eb41b3f2e23c7dafc22ffc99127ccf7119c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/client/COMMAND-MAPPING.json": {
+        "bytes": 501811,
+        "mtime_ns": 1792194444495998979,
+        "sha256": "98e000ce8a1d907d09d1b0357954bf544b6a9cb00f909b4d70c450701dbf4b57"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/client/commands.npy": {
+        "bytes": 22416,
+        "mtime_ns": 1792194444227996159,
+        "sha256": "db98d3ff9c74e879fa6c2bde969a5d365cac48e7a91c8563886345af7eb22689"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/client/episodes.jsonl": {
+        "bytes": 2175,
+        "mtime_ns": 1792194444495998979,
+        "sha256": "99ca1bd3363dfc606175b470362c9bed152abe7e3fc2ed410abd2b098b7f7480"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/client/final_state.npz": {
+        "bytes": 13998,
+        "mtime_ns": 1792194444227996159,
+        "sha256": "24758604e9d83e7e935da2e3d0a09ffbcafc5d51af9c6b9ff9c211c696a168cd"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/client/initial_observations.npz": {
+        "bytes": 98922,
+        "mtime_ns": 1792194444255996454,
+        "sha256": "c0405d569ccbd3335a3a8b5c77fd2f18919028352740360f05677b5243d117b1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/client/initial_state.npz": {
+        "bytes": 13998,
+        "mtime_ns": 1792194444223996117,
+        "sha256": "665a177fd938b0df5124c1082452e7c5a95fe9207fb9d4cb31474c98940d8179"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/client/repro_metadata.json": {
+        "bytes": 4630,
+        "mtime_ns": 1792194444227996159,
+        "sha256": "699835a179b4258537fd90f3dae4efb764a2a96d7c469c96f82593dc7b44f773"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/client/run_metadata.json": {
+        "bytes": 1674,
+        "mtime_ns": 1792193810947725514,
+        "sha256": "a65a621a18702ad646d4ac317e87c0cedbc316291bf1c9effbf38f7b0e62c136"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/client.log": {
+        "bytes": 3718,
+        "mtime_ns": 1792194444519999232,
+        "sha256": "aeec45b504f64b3221600fcb2c2f31f267ca8cfeaff9f660a8005a005f6fb23a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_0.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193847977451290,
+        "sha256": "9f024d0d119e1e3448ec916f095f27b21ff9e83e4eb97bca705930e8d8156b10"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_100.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194140707081311,
+        "sha256": "653bafa9c726de0534277949322b20ce6f8f7efc5d23bb968cce9f54cb46218d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_104.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194154435393167,
+        "sha256": "542480b584729acd8eeae182148bf5a6b61b05ed3ec629ce1044ac09fe1fd17e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_108.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194167091671751,
+        "sha256": "799724b5a2140cf4982adb8e8ae7781b67e85c1ab94aa06e84bffa2dfae23759"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_112.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194180107949551,
+        "sha256": "0b86776524e112561e5bed03a13e6c4d09a2a92848cb127874b7451ca9909a4f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_116.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194189932153513,
+        "sha256": "5e2561eee094ecddbca6134758a088a0efc1fa4a3b7fad31a30a29c775143680"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_12.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193881190885468,
+        "sha256": "620b3e32be4274ad9451c35145f5ddfc0fc1c2d8c6816d6d4d438897d3228682"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_120.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194203036418102,
+        "sha256": "31d1cc79cccec70879c25b29be31f08fac723c79169200e1756d68627d0f49a7"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_124.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194215220656625,
+        "sha256": "e55d4a8901f9623d0c6e923131182ad0eff5bff85730e2677b73b7b1f136e9c2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_128.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194226688874697,
+        "sha256": "7dc4266a88e728377faf5656104361cf26277d630764836add615ac4bfae2b4f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_132.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194238797098325,
+        "sha256": "7250956c746e90c2814def2def663f8af48621507662a04d5aead40fc5491d7a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_136.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194249933298139,
+        "sha256": "307b52a2d4cba97071a728c8bb1b70261f8e3086bc05f9cad606e4930f34cd18"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_140.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194261861506067,
+        "sha256": "e596276a3f1854ce431042d229b587496be73f2730cc4dbc6cbb9c1001c9f265"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_144.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194275953743795,
+        "sha256": "2ee65a3f0e68b6a401effcac45316dfc8b4f8536a9e66bc687d5d69bb47c4849"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_148.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194286997924246,
+        "sha256": "2091763e3504e8746d3a2ab7f2f592d7a4cc0babf76eb518c4ccf8b45697c0ca"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_152.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194299058115557,
+        "sha256": "a87f8625a7e2120220cae5afa5ad61d1db131ffeb44fc5136ff19cd148693bb7"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_156.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194312914328140,
+        "sha256": "ff90b532cf6207d1aa19f3709bb1d88bdbb769ed8c8379c001689bb82e6f2242"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_16.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193892875365775,
+        "sha256": "0c0c86a0351637592b0ecf1f175d4e0dad8cfac05ca637f2998d475df58fbe80"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_160.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194326382527556,
+        "sha256": "e2f4abd3579e134e0dbef6b5c25ac697570dc8b383f6c9836e30f97ed1d7342b"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_164.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194337738690317,
+        "sha256": "6a862382930afe99490c9eb2bea73feb4781aeaf5f563037424d9e7430d2c44e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_168.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194351602882508,
+        "sha256": "f12ba5b7bc6f1691dd883dc9b8af195c1ec3f4f0a8994cb41336fbd3ff73ba61"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_172.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194364379053431,
+        "sha256": "82c2ec4e603c6d8f7fb781179d766bcc48c842a66d7ba95b5ee2b2e8c65da3a7"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_176.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194377963228826,
+        "sha256": "210ca5e61e6e678ba98faa7b92443a30743ee80fbf356a1db6c8d151d6651f8e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_180.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194390343383120,
+        "sha256": "b70578dba652c2b7c373ff305f7965fbca2b3bbc6609de7e9b238baf7f675cc3"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_184.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194401511517879,
+        "sha256": "fba4ebc897b0a1bcad2bc14ce78317cd1d042c3af22596593c083f19e90f68a1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_188.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194413783661226,
+        "sha256": "7ab2b1a9c035780815752e669884911928e115a766f86abd518e09ef400cff2f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_192.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194426767807615,
+        "sha256": "e26f28476c93f3a008c7674a08981a30dd29fd7d545127e80a668cb7778cfebc"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_196.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194440615957922,
+        "sha256": "58ba06198432c0ad418d2e023220d19509d1352f3ee81fcce6a5cbd7878d67bc"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_20.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193904999851321,
+        "sha256": "f8dba022c03758f7397d8e509da32237db504eebda1143d3722d9d599edd0488"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_24.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193916036282162,
+        "sha256": "92684332e2f6fddfd8001c176c0081b6db8319a0a247ef603fdd9401804abef6"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_28.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193927872732715,
+        "sha256": "1d4680183658bd010f6df7e518d2addd51720fb22331b0595c27f1436c10bcb1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_32.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193941073221465,
+        "sha256": "3bbff4f0e796ccd6f6e48d5657d1915804b22918939c68f6a65cdaa193fcfe0e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_36.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193953005651105,
+        "sha256": "ee895fc2b8bde4ddfabcb529b7bda85c8e412db76a1c39975db3ec55a9d69b76"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_4.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193858353910542,
+        "sha256": "8dff204d4ecdb0e6cd1a806e0bfcc365f8fa2ddafb23e933e764fd657ca11a89"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_40.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193962497984811,
+        "sha256": "3e681b43011b503ecb8437716794d6f7755fee1543c9935ab659f173decc6999"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_44.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193971162283304,
+        "sha256": "8f25c67aaa794985af52c0edb2cd261d1c8ed0c04af0ec191ecb57d0eaa6a05f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_48.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193981762640695,
+        "sha256": "f2a58f1a7b38de7dca62abe83d646b774cd100fa21ddfcbed64f2d9fc518d6a5"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_52.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193992851005545,
+        "sha256": "094e4ae205494e86e4ac38f5dbec77bab831675137a20ca5e7f567acc076b7ed"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_56.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194004443377346,
+        "sha256": "0d40b0083a42862d359e6f1bc3a2a54facd40bf3b03f3ce48e96fb1bc5e14b63"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_60.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194016267746682,
+        "sha256": "2cb0edcdd6ab553fc7802ae5b32309e22aeca8110d11ac262ba1e65bf561677a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_64.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194029460147208,
+        "sha256": "8d9749dbc6590a6f1c6a0420ded54a3446e2a93e8a196915602a267da0a6bcf8"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_68.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194038564416677,
+        "sha256": "6cf56fc8c117ddd6be216e4756df8b069ac9c317e59c543a4293e869106df73f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_72.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194049408730411,
+        "sha256": "2c5ab4318a9b1f8e48988673cacd4ff1a7941a67d5fb4858700b08381f1c930a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_76.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194063313121414,
+        "sha256": "19b91b6fdadfe1d50d8643c1eb53cdff2648ccc17d446f7d5d1e4af6183c6273"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_8.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792193869790404849,
+        "sha256": "82c472d24c5015b5c93b2741dc8bbb39782fb3434f64d472defad3598fde8e2d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_80.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194076261474433,
+        "sha256": "55c918f6797d7d79ae8f68a0862b9c0752ce276b0ac880ad23f1b0ba9a9e4436"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_84.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194088585800742,
+        "sha256": "e096bc950b825f8f96f9fbdd4bbafcbc6f00a16919cddc91942d79623c409735"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_88.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194101834141236,
+        "sha256": "5c93c887486feda27e6408ba82718b3a290cb9e535f3df93fdb9dc20f580128e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_92.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194115062470850,
+        "sha256": "0910a8c2b1ee23cd55b5e2c3914c74838ee6cf1244512b992133a7ead5597cc1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_96.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194127006759788,
+        "sha256": "5ad50d5d90b16ea555161a549e1bdef2055e910cb9f7fdd4809b9173735b00ce"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_0.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193847965450752,
+        "sha256": "7e7fd1a12050dd3007f9102fba39bf835d4011fd09570e80b6d54cf0424cb1c8"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_100.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194140707081311,
+        "sha256": "2ff4c48b07ad424fccc115006bd8ff7ac49427cacfc5d43c8b532d40669de361"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_104.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194154423392898,
+        "sha256": "ef5c5964340a7c277a876fd724c2dea0ced441e9f14a7433144c01884acc6b00"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_108.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194167091671751,
+        "sha256": "2d931e04ef993f54438b3a45606bb160f818ccbd649171978f7c2693f8f13c51"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_112.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194180107949551,
+        "sha256": "fdf98af37a5fe2950755511e71b347071b4938dc31f9fb5c9cb6771df52d768f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_116.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194189932153513,
+        "sha256": "fd2435468d30e78d4c4455d52bf1ea539f51a349772f0cb8611d1221c9ffbefe"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_12.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193881190885468,
+        "sha256": "ea99c7c3210c944db1da5501b4611a1444db55d6e26f2caf6aa606a821ff5f2d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_120.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194203036418102,
+        "sha256": "f53e402874de86cf02c5a3b89ba312e73ff6dba100bba2fb2ad2652710ef6221"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_124.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194215216656548,
+        "sha256": "34027505d11ef7bb8067fb6a2c8703d1b9b0a149b80bf5241db1d5145746b079"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_128.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194226688874697,
+        "sha256": "dd17ce499576ec80cbc743a4cc5d1206bcbc09a1c060fb8ab73cd4adc0c55e02"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_132.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194238797098325,
+        "sha256": "6ed46d182cf68f30a1d269e143aebb2615ebf917428dd794cfe5e26bb84cf790"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_136.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194249929298068,
+        "sha256": "04825b5f407d865026e99e99a036235c990b5e5e81ebca5e67eaeedb35c01315"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_140.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194261861506067,
+        "sha256": "a793be70e3be33385c1f2525cb8dfeb96dc6190105197f805f8b7a546bc3e726"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_144.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194275949743729,
+        "sha256": "dfd8d429fca59145cd51f50df2089eeb539044041d76076ea012d956ad557750"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_148.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194286973923859,
+        "sha256": "0ce61eee56899dfe7c8bd2f5c630265ae35eac404233e755d3c1d9323a0abfc6"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_152.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194299058115557,
+        "sha256": "5d0f6b35ab0639862d43d31c613ae7b7578d0a2c2a4038f84877eecf07424caa"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_156.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194312914328140,
+        "sha256": "92d16fbe4126011a42f1e5a638b58ad4b6717063a6d8c2d364d45ce934353360"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_16.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193892875365775,
+        "sha256": "a12cfe4d8414477b9f7ab10d86bae01250da0cc63a4cd7d5a4f18ca799f71782"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_160.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194326370527381,
+        "sha256": "607a2eee0a33f4f71fd803c978f31802b486bce7c244c1cfa63725bb6be51114"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_164.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194337714689978,
+        "sha256": "c08ed3a2091b9993f598aad3592b6376fb8246853e915463d055a1a81b78f821"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_168.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194351602882508,
+        "sha256": "7ea9339c9b40d2ac1ecd34969788c56435b48e07f23cbb1bccdd6508c1f34f70"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_172.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194364375053378,
+        "sha256": "bb0164455ad94bc2dd9f03e0f890b3c3e72882ff244a11d88900d3ad7b137f96"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_176.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194377963228826,
+        "sha256": "74bb971d948ca1e2f0cfade44ae1e9d81df88429ff3d2c4f4101efa6d11d5705"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_180.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194390339383071,
+        "sha256": "a98d9c83536d1315e00e300a1292aa1373f41cb9f08144ea226f59aae5c00f2d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_184.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194401491517641,
+        "sha256": "8684e577852d38b4305dabc44102bb13925e852642596d2cd3a0b4bc2d88ac3e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_188.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194413783661226,
+        "sha256": "9be3fb59dc2fbe3656c7aff76ec426074a553ee10e39006d1d6964879b552a81"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_192.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194426763807571,
+        "sha256": "e8fa6ce6a3169490ad18e3e40fb57908702cfc0b3f6ba13dd774a731302acb73"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_196.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194440615957922,
+        "sha256": "305935c9542bfcbaf7d1037845dc464bfaaa29de0edaaa5f1e4da2c70333eb8b"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_20.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193904995851162,
+        "sha256": "32a32cff8d97feb3104aae677962681207aa87bee25656752b87c7d2e3bdc1e1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_24.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193916024281699,
+        "sha256": "d7538f52f170bce128988aa9b0ffa5736b6018263c0c9c5ac07a4c947ee6269d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_28.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193927868732564,
+        "sha256": "60f0a508b0896d19317d8807d59c2a3c3c6af8b0ca31a7142586c80b32bdd184"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_32.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193941069221319,
+        "sha256": "49dad8f5ac4d5db9599f2fe5084816b40a5ff597f24ba52cae00ca8d3f893e05"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_36.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193952989650536,
+        "sha256": "0817724cd6555e362bafb3d69e7991815845017bc4f87b434921e472c0bbdc92"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_4.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193858353910542,
+        "sha256": "0a9c24e4194ab2e839366008e3ef6cc72f98bf0b0db785b5e7065681aa0e8456"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_40.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193962493984672,
+        "sha256": "39756423e96d0420d514406fc811560c87f4c57585a0066d888d9504ffb14dbf"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_44.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193971146282758,
+        "sha256": "e99af652147869021579fd486ffaa62c36e8330b99657dac9a8d2d6e548a13d3"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_48.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193981762640695,
+        "sha256": "756fbeadb7499ea75183eae04f59f233a9123a8ed2502cbdc70301b32afca5dd"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_52.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193992851005545,
+        "sha256": "19e900200f93613e0fac9bc06d5153a82b04c438c4b53bffaa11c9d59bd16976"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_56.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194004443377346,
+        "sha256": "d4f47388289f8f92abb8705f7c7fe66afe9fad98e1da190e58d7186d888114a2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_60.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194016267746682,
+        "sha256": "784c036174ad4e2110c5fce34701b9439050db995c4d3267b6470e5981d04a5d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_64.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194029460147208,
+        "sha256": "e6ccc97b59b792ae5e458bfed2e2059f99d7336aef1754339a3bab550ec8ed20"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_68.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194038560416559,
+        "sha256": "14275ee0e4dc7d707ecb9b913f68d016b11bee73ec79a249adbf2d3fd47cf75a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_72.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194049392729953,
+        "sha256": "a250fd6c0b6ea44159874ce1bed090efe8c1ee2b51387b2cc7cc8097e17ca0bb"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_76.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194063313121414,
+        "sha256": "4b20a48d60bc572ce6f978ce0a9f6a8c786f2fd2d863b7a71ed9bf1996e28c72"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_8.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792193869786404678,
+        "sha256": "bc7769f70fca4b713034878f2c8f7ee0d2bda84298fafe0df7443f9ee040654a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_80.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194076261474433,
+        "sha256": "6279cf70821f0d2603ea8b5c08beb98217ebbca0b04dd5810b04a4bf8f7139ce"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_84.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194088585800742,
+        "sha256": "f18743901fa5ca140b82ae51ae29e5dcc4cf9a7d08aeb1176315220f649905f3"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_88.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194101822140932,
+        "sha256": "da34592d5787d2eacbc9b834c9717ac3b7cfb0589fa92807b922fad36d4a2c25"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_92.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194115062470850,
+        "sha256": "bde19466a7b1262ea75d32692e6e2244ef974f995000ff10b8435cdae60e22c4"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t1-i29-r0/server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_96.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194127006759788,
+        "sha256": "fbd152c258c4aae452815f56c98327db04e8bdebe3b38888dfc0bac669c19117"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/CLIENT-CLEANUP.json": {
+        "bytes": 122,
+        "mtime_ns": 1792195116974452671,
+        "sha256": "d453caea6eb58601ce4b3e6605e3a1b6a311dd95b24d1584816189ce117ac4f0"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/COUNTER.json": {
+        "bytes": 1573943,
+        "mtime_ns": 1792195116962452681,
+        "sha256": "da7596a2fa6e7e95b160247d8a72459f7d08e9e7c9448a5ef431b5bcf9bb42eb"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/FINAL-SERVER-STATE.json": {
+        "bytes": 38625,
+        "mtime_ns": 1792195116814452801,
+        "sha256": "77bb11192a42046d966b9d6c51c4b9a87af9ce8b0c081adbb35f1e1390fb09c7"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/FINISH_READY.json": {
+        "bytes": 527,
+        "mtime_ns": 1792195116962452681,
+        "sha256": "9943a7d980cc3e57b35f896155d23767b91a16099633f9222e99a741d743c88f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/FINISH_REQUESTED": {
+        "bytes": 38,
+        "mtime_ns": 1792195103230463037,
+        "sha256": "a012380b83b806ec764d91d30d37cf937ebc277e283f14bda18f7788d693a785"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/FINISH_SERVER.json": {
+        "bytes": 527,
+        "mtime_ns": 1792195116962452681,
+        "sha256": "9943a7d980cc3e57b35f896155d23767b91a16099633f9222e99a741d743c88f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/RESET.json": {
+        "bytes": 36331,
+        "mtime_ns": 1792194483132383487,
+        "sha256": "a288e14cce027bc4fac5ab5f1984e86224f01d7cb4474601f93335e613483c88"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/TEACHER-INDEX.json": {
+        "bytes": 148,
+        "mtime_ns": 1792195103582462791,
+        "sha256": "dcd878c07bcec60cbde53ac7f08f1eb41b3f2e23c7dafc22ffc99127ccf7119c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/client/COMMAND-MAPPING.json": {
+        "bytes": 491851,
+        "mtime_ns": 1792195101662464120,
+        "sha256": "1d98e9ebf86eacf52af92b5b5fbeb03c937ee42c2facf6eefac61d81cbe3ac6c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/client/commands.npy": {
+        "bytes": 22416,
+        "mtime_ns": 1792195101554464194,
+        "sha256": "737205ce83250f27e6698f28e577cb7e8c5160a02be1673d132ca7811400048a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/client/episodes.jsonl": {
+        "bytes": 2192,
+        "mtime_ns": 1792195101662464120,
+        "sha256": "508af8ed7f719d64cc8596dfc4006d85e45e76365cf317cdf8ddb1587da52df4"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/client/final_state.npz": {
+        "bytes": 11974,
+        "mtime_ns": 1792195101554464194,
+        "sha256": "e56ef9fd2ae3bfa73254c6d42004f8d4317f11c8e511cf83b5648c19c096d54a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/client/initial_observations.npz": {
+        "bytes": 98922,
+        "mtime_ns": 1792195101558464191,
+        "sha256": "3e14d05ce955214fd8bb0655eed43fda58483f5a9b35f02d873c0cb3a5a806ab"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/client/initial_state.npz": {
+        "bytes": 11974,
+        "mtime_ns": 1792195101554464194,
+        "sha256": "d40bdc1ddb9fe00da8ad2ed6e77885886d1ab3c4d1422719f1867f64bee23dfd"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/client/repro_metadata.json": {
+        "bytes": 4630,
+        "mtime_ns": 1792195101558464191,
+        "sha256": "96f32a3b9062938634b57714fb840f0040b7817feeec35ef346e2583cf1614d3"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/client/run_metadata.json": {
+        "bytes": 1674,
+        "mtime_ns": 1792194459980158322,
+        "sha256": "0903cdb14215c74a46e0eb3ee32d38fcf0bae26fb2219da233c80169d4954e4a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/client.log": {
+        "bytes": 3735,
+        "mtime_ns": 1792195101682464106,
+        "sha256": "660b720c0adb42fa67f6c15d6567bb8d354a07ec30a7c6990e75acf28727710a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_0.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194493476479180,
+        "sha256": "edd37148538103f954fd56ea071e7c19594d581cd1a7a4f3a01744bcbdf87777"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_100.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194801874206799,
+        "sha256": "248267ce70f4a6e702c756f5ab3f52a316d078d70e16474cb757dcc55bc99743"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_104.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194816838246022,
+        "sha256": "3699d8a9ed4ea1a725183588976505e4e5057dec14d730f7ea4bf34c66dce1d2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_108.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194829550276764,
+        "sha256": "a6e7cf62fd577ea897f2f7e6fe99d9d5bec24bed293518b87cc2b942f5bc74f0"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_112.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194842914306600,
+        "sha256": "0b1026b598e75a0fc170ea38ca50ab2962ed9bb23bbb484b5e415a7005cdecb6"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_116.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194856142333685,
+        "sha256": "37cda7de3e96cff32ea4a8d62d2f830b70c1a0a3de7bb1e84260805c17c3b5d1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_12.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194530228795759,
+        "sha256": "03193f78378d1f9d83a9fab3fdd1ba5821fcd68166669f49fcca34700b6953ce"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_120.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194869430358506,
+        "sha256": "fe73425580d4bc2c16d4ba538a11183c81f72e0fcf2f9dc66a28dfdd96fde75d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_124.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194881434378924,
+        "sha256": "bc71c73b0cf8a2acc9dbb00d432f574dce75b73d0d20f3185c61de681bd86f10"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_128.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194895270400157,
+        "sha256": "4b8fcbe5e4c88e659e8bec4678615348219496c1879972330798b798c30ac69c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_132.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194907942417494,
+        "sha256": "89723844726635d34a27d3dde796dc6597cb0cd943ad1d40ce3152bbfb4c8fce"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_136.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194918902430901,
+        "sha256": "ae3a761bd15515976e9e918c64635014a5741f4b5dee0aab66a7ee1565825a57"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_140.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194930858443886,
+        "sha256": "c128abaa5742fca9abdc0e4dbdd3819088383ab015a40699cde2a9a0ef7fbfcc"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_144.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194944418456590,
+        "sha256": "e0371936e5aa6807fa0a7919a44e28d42213f7618b6a39390ac89fc8066a157d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_148.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194956050465816,
+        "sha256": "02e70c7bcb17ab98b9e7299ee656bc103d7527023ae9baf0c2ece9acfe07ca50"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_152.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194969474474590,
+        "sha256": "b777f6075240523e55e74177e4e079a5ad0b2adc9b7f85d7aeca65e09611d3c2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_156.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194982958481436,
+        "sha256": "60b7bdd60effbb21cf22fc92ddb83d0e8798d1c03c8f4f64c7420eab16840c3e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_16.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194541672887153,
+        "sha256": "b29ccc8acb93737e1addb86ace54bd238ec2c551d1906674c357b849c4fccc25"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_160.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194994810485863,
+        "sha256": "c673803b9e9a8c7aea805feab6c1f1bcd589b7ba13009fe4eec7263b8ed55eb1"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_164.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792195007250488950,
+        "sha256": "47f7a7ad6c383073a6711e5746903f5b442a2f376fc3852cf6d3f0fd4b551292"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_168.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792195018450490393,
+        "sha256": "135057c5deb450537302bf9f1f90b56018f208d42402c7908a99d10a364c9ff6"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_172.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792195028754490628,
+        "sha256": "02d6dc3d98077d478d1e1fa582054759f2a292ef6c6e1f2bd8ace0ef9925b19c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_176.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792195042046489419,
+        "sha256": "54bede8e771954099f03cc284608da63e403788ac55bb805513369924eb4adfb"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_180.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792195052682487249,
+        "sha256": "8771cb49045e2c9daeb999fe6c5b189844388c03deed608fb06acd509e4a9d52"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_184.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792195062918484176,
+        "sha256": "bcf31b780feaef25c05a368e0ca633f596ed93e39dee76ca1ceea49946ac3765"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_188.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792195075546479081,
+        "sha256": "40cf3e1e842de3680bede5d8bff60601cc02062bf5060c79667e0881eb244e0e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_192.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792195087186473138,
+        "sha256": "7972834dafd8cc0aa44cd7274b85b9a9a4288ded062c78926e2d144bb7947bee"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_196.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792195098966465935,
+        "sha256": "3e337e67ade4047e26e89061e969a255098ccdc13f136ec7ef4564d69b06ee1a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_20.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194554724987388,
+        "sha256": "822c49586f3ff6817e95f7dc41cc2fb0c34fd6822d2a86714720057d6d91160a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_24.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194567993085021,
+        "sha256": "0037fb83492169570d5abe4a05b10c374bd3b74c7782d07eb4c8934475e9c447"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_28.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194581193177993,
+        "sha256": "b41db85dbae6b4c3a674310e1390e5f986100561f6d5976b1798bf1a073d5394"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_32.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194591445247409,
+        "sha256": "ca923bd69ee1aee987b2610bfccef7e5da3d80de2b2a6585f9e60bf3a70225b5"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_36.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194604141330070,
+        "sha256": "598c6ebb1f4830398001837a4af1c68abd7788218f9efe84b07a560a8f475f27"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_4.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194505668588193,
+        "sha256": "24d58ba4794780221dd1c440b091fd2bf78158b0387dc717ccebbc9d98de0054"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_40.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194615625401756,
+        "sha256": "6604fd8686744bec2046a240589cead83f80129239fe9300b8dae19e875d4d5d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_44.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194627997475792,
+        "sha256": "2a3cd7433155df0aa229472d90583867550d31e1a3d79de78c0f8bbae7d3fa63"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_48.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194640833549178,
+        "sha256": "4c3663f29ca676a18ee1488579769e0198032df2665b0658410d1929b4caf988"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_52.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194652525613062,
+        "sha256": "084929732f82ff31876231694c79f2afb37279f0e7d8b7322fda95ab277a3cbc"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_56.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194664793677132,
+        "sha256": "5652d65202f2d974df851b703b6eaaabe001254b6908390b13f6af7f57ae70f2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_60.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194678569745547,
+        "sha256": "0ccaa0d770a4c9854bf506f2e6a963e7729f22a088846850d107ba56323567f0"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_64.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194689857798891,
+        "sha256": "514927c4a29a9d9b98bda7159b17fc6bd76d0bb6fb35ef72a05013f5b9f725a3"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_68.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194700533847142,
+        "sha256": "a829132a8431393029aae2f89fdf327c511a44e1b8b65f75c26308fa9960bac2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_72.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194713401902523,
+        "sha256": "572cefa852d548280692bbd3fc8de7946bccdceadf1b18eecf6d9b97c4238e31"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_76.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194727665960450,
+        "sha256": "85ab90f66d11c9a7a7ecffc6544ca317856b5b5a98e063cbaaa0c6b9943f7c30"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_8.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194517248688033,
+        "sha256": "3b4d1f233926479eeb1773d46e55fa65ff3e0a4aef4f9cc95e9f0fd34360eb0f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_80.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194740230008535,
+        "sha256": "07303413501741f042905aa4d16f502062128eba433c90c7297f91f21a4fe487"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_84.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194751038047752,
+        "sha256": "91501a1ff70f581d0a340f6a2034c0adfb4fc6be2c800fe3f9cbd9cf8b50d77b"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_88.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194764474093796,
+        "sha256": "0f0305180f5cddc302346e51cd435c88edc43805a1c724b507d1f65c44c0f755"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_92.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194775422129148,
+        "sha256": "4cf6a64fb3cbf22822a0b453aa79949006d6607a21b6995fde4491389050f157"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_96.pt": {
+        "bytes": 2537,
+        "mtime_ns": 1792194790206173879,
+        "sha256": "05204907e09f1fca4eee4c5576d4ed71de96ba07ea88d6a52a52dccd76ba382d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_0.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194493456478997,
+        "sha256": "f32f09715203b4390f53176f6b494bb8a41a2dcc4eb5e6f5f23f3295f529b3a0"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_100.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194801870206788,
+        "sha256": "8dced2d6554459d8b9cbbb8acf2af3b81b19a3d3829dfbeab9be1e11659bb045"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_104.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194816838246022,
+        "sha256": "ec809b554554c4928dde2b326fce0e675ff1eadae0a487a40e07be92d7fe789e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_108.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194829546276755,
+        "sha256": "b63e9512a98ad55bf6e2ea613466b0bf0e7679dac5788863e9142655685e9643"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_112.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194842910306591,
+        "sha256": "764e6b08b3688250d5e08e49cb8df3ff3a8df8ee33b7391dc0e15c1b29ea62f6"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_116.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194856142333685,
+        "sha256": "49875f844030df44fd034fbc5da33a3dbe86bd07b7a266ba59f740138f8f6711"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_12.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194530224795727,
+        "sha256": "5d9cf737f587aa00cb0ca689bf5e873241ffbe9f761ac11e080025f3a38b3e04"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_120.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194869426358499,
+        "sha256": "f05121483d07f82671bd8c20ccae2f851e55b8a98bf8b345801b556b7c18b975"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_124.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194881434378924,
+        "sha256": "66db98502c4e5cefbd8c46552dd31be5f4be2aa587453d9df51390f6f40e5443"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_128.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194895262400145,
+        "sha256": "72ef7463db5dc198d3ab84b22b4f7a410f5ea52f1dbcb449f4110141f9933253"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_132.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194907930417479,
+        "sha256": "9ec4af2b300e4aa1e986ef2b344fa02f12e6ccd56498e7422d65cfdeb4ad7323"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_136.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194918902430901,
+        "sha256": "45ce0e7987465ef4fca57de2220a410ce260ac560520ea7168cca5cfa50c7f28"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_140.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194930858443886,
+        "sha256": "65ae61186009d8f949d3ff4af274d8096c7297ee124816cc631596d825fb96e2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_144.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194944410456583,
+        "sha256": "fb6a6c572638436ab0aa6b6de61593510d36db8e5d68d4c7ef13877c53072138"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_148.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194956050465816,
+        "sha256": "35244bab397fd6744b8d658ae385f0e2afa00420bc724918af48f6e7b76c0d0f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_152.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194969470474588,
+        "sha256": "cef9d250f067c8e3f28c7457c15b377856917036d59bdf9a76bf33f0ed3aa647"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_156.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194982954481435,
+        "sha256": "1a91bf7c429bbd7db5f4141a6445f60db1769826ba9de9f8703d918136977e47"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_16.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194541672887153,
+        "sha256": "8c8bb772d9cad32fe695a4473d70a7fb6e791edb5393aa8483d6f693cb6a7170"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_160.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194994810485863,
+        "sha256": "41e32d998078aa29b7b1b7ed0b879705184e0744a7921459e202020bc7cbe204"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_164.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792195007250488950,
+        "sha256": "f8632f08d691ffcae482b28add30478ec9d821cf982023439b0586775da19a1f"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_168.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792195018450490393,
+        "sha256": "ce2889e1505dbe40a519407db61b002b072e0214b70c0f87ef06a151206f50a9"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_172.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792195028730490629,
+        "sha256": "f4d6bf8fa9faca5e62b3e1803a94be0b416e74860830bd45f46d007c873b358a"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_176.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792195042046489419,
+        "sha256": "05beda27ae81916fd9577f31298386d45e03d0dafbb3c70f56b33c41b113de60"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_180.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792195052682487249,
+        "sha256": "41585b5be758670e979391e39028ea50cb59f2f032a8bef110cd3303afb4decf"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_184.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792195062918484176,
+        "sha256": "79a32c28d5c372b715e0b749945af223e654c3050b842c942a8dd1f76451e07b"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_188.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792195075542479082,
+        "sha256": "ab4ab3f2dac3af2cfb5141ef1985ac2c89dae98dd193e38384b0a3087843be23"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_192.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792195087186473138,
+        "sha256": "1378ca24e4c01187d1aa87f7ab95187627aec9f7a98a6fdf5bc4d3d1fd01d6ea"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_196.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792195098966465935,
+        "sha256": "71477697074f0f395a9530e9d0fe10c8b13c44d86403113dc6e894c89ae24124"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_20.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194554708987268,
+        "sha256": "1c36f16e8d34512eff3f32ae3a0d983196fc90fb60b91aef175ae2fb56810479"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_24.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194567993085021,
+        "sha256": "f78b0f1ed8166472db6126282a4f8b2f86a1fa897bb4b0299d92343ab09a1bcb"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_28.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194581193177993,
+        "sha256": "bdf4920ffdbdaa9dc04278cc49600f01e48cb2e0aee98b101132f63c50a982c4"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_32.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194591429247302,
+        "sha256": "664061f077223691d2bd327525a64e2bd93515ebca356da4fbdd6dc15f959a29"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_36.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194604141330070,
+        "sha256": "9498a5dd25af0f4a04254e749524195a0e1723f747c1336dd8fcc389ed986866"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_4.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194505664588158,
+        "sha256": "6acd0f0341720fa629b6d2e969274784b805bdec40868733b18b5b2738b9f489"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_40.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194615625401756,
+        "sha256": "cf5a71256feab2dcc9117d73030f3d0c1b81a5b35ecdeaeed2daa1a726c3f098"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_44.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194627997475792,
+        "sha256": "511262a81fff1944cf7db1ff1ccef447fe053a8febb489d1cca025f8af90bf94"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_48.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194640821549111,
+        "sha256": "4bfcbd900b4665458c03d37678daeeb2a31cdcdc2f1bbaad2bdc0b7fc2bd0141"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_52.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194652525613062,
+        "sha256": "60cd9d2e3ef5f002ae0618b40b678b50da96c8a5ce51f6c52da1f31aece18f7b"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_56.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194664793677132,
+        "sha256": "96d08600a23788726ee3660908f9f64ea5ab063709f9d51dba98da514511f8e2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_60.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194678569745547,
+        "sha256": "4ba1fa24a75b9e31af8f97a68560a0df2f4245cb0ebfe074edba10c876c6787d"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_64.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194689857798891,
+        "sha256": "bd3bacd242cf11a90278bdff7e81c8d5bf71250cda9623d02ba4e9e06ba03398"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_68.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194700533847142,
+        "sha256": "e0554fc94ee9ba5ee41a8df49e2fd7175f774d6da9214d82b5d239f209388827"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_72.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194713401902523,
+        "sha256": "1a86955c079135e4adf7460176cfd3c39d1ac0ff606400d3802f30be780e9a36"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_76.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194727665960450,
+        "sha256": "7bf51ffd1a5354ea1d1a85c7408cce38ee3dacc96e2ddb6922bf8de383aba222"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_8.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194517220687797,
+        "sha256": "dfea856eb9a46cde1434d833f92c4bbd0423950b81472b338046f867a56ae62c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_80.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194740230008535,
+        "sha256": "ddfbc242ff06d50d62ef4427f63b3b015d3c90db580c7ad982c355cb2f93f970"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_84.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194751038047752,
+        "sha256": "93558d0e3633ee8fce3afaa986ec4850bc7f7ee6a028145572cb2d17d1833307"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_88.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194764474093796,
+        "sha256": "96fa2aca5abc7118ab6bdf06e383b61319064237eb959a52ae46918dd84384a2"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_92.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194775422129148,
+        "sha256": "e12e048720c4cffacde143b5fd408e845dffab37d2bde6f6ee95e7ffff36af2c"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/episodes/TF_ON-risk_DEV-t3-i26-r0/server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_96.pt": {
+        "bytes": 50729,
+        "mtime_ns": 1792194790206173879,
+        "sha256": "e1bbac10c6571e0a9f03fffe3f8f8419830837c281f1d3af7a815fed756cf99e"
+      },
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/plan.json": {
+        "bytes": 98605,
+        "mtime_ns": 1792170697715298883,
+        "sha256": "0bd26cab41f8d4755ce03b4d1a0f2399da61482a8cba3e16d3dfce4030a4f5e6"
+      }
+    },
+    "absent": [
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/arms/TF_ON/OWNED-CLEANUP.json"
+    ],
+    "episode_file_inventory": {
+      "T-risk_DEV-t1-i29-r0": [
+        "CLIENT-CLEANUP.json",
+        "COUNTER.json",
+        "FINAL-SERVER-STATE.json",
+        "FINISH_READY.json",
+        "FINISH_REQUESTED",
+        "FINISH_SERVER.json",
+        "RESET.json",
+        "TEACHER-INDEX.json",
+        "client/COMMAND-MAPPING.json",
+        "client/commands.npy",
+        "client/episodes.jsonl",
+        "client/final_state.npz",
+        "client/initial_observations.npz",
+        "client/initial_state.npz",
+        "client/repro_metadata.json",
+        "client/run_metadata.json",
+        "client.log",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_0.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_12.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_16.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_20.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_24.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_28.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_32.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_36.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_4.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_40.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_44.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_48.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_52.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_56.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_60.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_64.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/actions_8.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_0.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_12.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_16.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_20.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_24.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_28.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_32.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_36.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_4.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_40.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_44.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_48.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_52.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_56.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_60.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_64.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_031839/latents_8.pt"
+      ],
+      "TF_ON-risk_DEV-t1-i29-r0": [
+        "CLIENT-CLEANUP.json",
+        "COUNTER.json",
+        "FINAL-SERVER-STATE.json",
+        "FINISH_READY.json",
+        "FINISH_REQUESTED",
+        "FINISH_SERVER.json",
+        "RESET.json",
+        "TEACHER-INDEX.json",
+        "client/COMMAND-MAPPING.json",
+        "client/commands.npy",
+        "client/episodes.jsonl",
+        "client/final_state.npz",
+        "client/initial_observations.npz",
+        "client/initial_state.npz",
+        "client/repro_metadata.json",
+        "client/run_metadata.json",
+        "client.log",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_0.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_100.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_104.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_108.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_112.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_116.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_12.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_120.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_124.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_128.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_132.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_136.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_140.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_144.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_148.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_152.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_156.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_16.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_160.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_164.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_168.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_172.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_176.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_180.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_184.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_188.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_192.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_196.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_20.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_24.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_28.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_32.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_36.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_4.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_40.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_44.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_48.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_52.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_56.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_60.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_64.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_68.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_72.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_76.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_8.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_80.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_84.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_88.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_92.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/actions_96.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_0.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_100.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_104.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_108.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_112.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_116.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_12.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_120.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_124.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_128.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_132.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_136.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_140.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_144.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_148.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_152.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_156.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_16.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_160.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_164.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_168.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_172.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_176.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_180.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_184.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_188.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_192.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_196.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_20.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_24.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_28.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_32.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_36.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_4.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_40.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_44.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_48.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_52.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_56.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_60.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_64.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_68.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_72.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_76.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_8.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_80.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_84.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_88.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_92.pt",
+        "server_output/real/put both the cream cheese box and the butter in the basket_20261017_073720/latents_96.pt"
+      ],
+      "T-risk_DEV-t3-i26-r0": [
+        "CLIENT-CLEANUP.json",
+        "COUNTER.json",
+        "FINAL-SERVER-STATE.json",
+        "FINISH_READY.json",
+        "FINISH_REQUESTED",
+        "FINISH_SERVER.json",
+        "RESET.json",
+        "TEACHER-INDEX.json",
+        "client/COMMAND-MAPPING.json",
+        "client/commands.npy",
+        "client/episodes.jsonl",
+        "client/final_state.npz",
+        "client/initial_observations.npz",
+        "client/initial_state.npz",
+        "client/repro_metadata.json",
+        "client/run_metadata.json",
+        "client.log",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_0.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_12.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_16.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_20.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_24.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_28.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_32.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_36.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_4.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_40.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_44.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_48.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_52.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_56.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_60.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/actions_8.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_0.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_12.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_16.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_20.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_24.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_28.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_32.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_36.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_4.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_40.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_44.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_48.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_52.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_56.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_60.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_032508/latents_8.pt"
+      ],
+      "TF_ON-risk_DEV-t3-i26-r0": [
+        "CLIENT-CLEANUP.json",
+        "COUNTER.json",
+        "FINAL-SERVER-STATE.json",
+        "FINISH_READY.json",
+        "FINISH_REQUESTED",
+        "FINISH_SERVER.json",
+        "RESET.json",
+        "TEACHER-INDEX.json",
+        "client/COMMAND-MAPPING.json",
+        "client/commands.npy",
+        "client/episodes.jsonl",
+        "client/final_state.npz",
+        "client/initial_observations.npz",
+        "client/initial_state.npz",
+        "client/repro_metadata.json",
+        "client/run_metadata.json",
+        "client.log",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_0.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_100.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_104.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_108.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_112.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_116.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_12.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_120.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_124.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_128.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_132.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_136.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_140.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_144.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_148.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_152.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_156.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_16.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_160.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_164.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_168.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_172.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_176.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_180.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_184.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_188.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_192.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_196.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_20.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_24.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_28.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_32.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_36.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_4.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_40.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_44.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_48.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_52.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_56.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_60.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_64.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_68.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_72.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_76.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_8.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_80.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_84.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_88.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_92.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/actions_96.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_0.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_100.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_104.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_108.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_112.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_116.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_12.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_120.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_124.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_128.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_132.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_136.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_140.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_144.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_148.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_152.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_156.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_16.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_160.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_164.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_168.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_172.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_176.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_180.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_184.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_188.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_192.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_196.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_20.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_24.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_28.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_32.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_36.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_4.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_40.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_44.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_48.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_52.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_56.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_60.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_64.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_68.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_72.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_76.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_8.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_80.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_84.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_88.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_92.pt",
+        "server_output/real/put the black bowl in the bottom drawer of the cabinet and close it_20261017_074802/latents_96.pt"
+      ]
+    }
+  },
+  "source_sha256": {
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_recorded_risk_audit_v1/audit.py": "f7c769669a45214c85c88e94e6bd218ddbc5699adf11b1e5c15d323102bb97bc",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_quality_report_v1/report.py": "16d893964443a4f3d8c8a2d0c74b704a8cb34445f2e350b1ea640cde0adc4e90",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/protocol.py": "d27d2d5dc719fc6a8eb531a5de4a7b4c18d3830fee5789def027a5eebca7ccc1",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/wan_va_server.py": "bad90775a446aa1cc8d175a19ce9d43d9b7dc523c260f1bf586eee95a6e1cea1",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_libero_cfg.py": "857aef575086ab49f6f77df11d2f6af2ed9750feb411ab8af38f1df069ab6402"
+  },
+  "created_at": "2026-10-17T00:14:47.164710+00:00",
+  "birth_epoch": 1792196086.5367196,
+  "deadline_epoch": 1792196686.5367196,
+  "cumulative_prepare_wait_run_cap_sec": 600,
+  "hard_report_by": "2026-10-17T08:50:00+08:00",
+  "waiting_counts": true,
+  "CPU_cores_max": 1,
+  "GPU": false,
+  "storage_cap_bytes": 67108864,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "no_children": true,
+  "no_CUDA": true,
+  "no_forward": true,
+  "no_new_episode": true,
+  "no_retry": true,
+  "no_quality_certificate": true,
+  "no_TEST": true,
+  "no_120": true,
+  "cleanup": "single CPU process exits; no signals or writes to source/active jobs",
+  "terminal_status": "REGISTERED_NOT_RUN",
+  "evidence_path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-recorded-risk-audit-v1-20261017-r1"
+}

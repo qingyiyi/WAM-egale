@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-17T00:41:37.779060+00:00",
+  "status": "PAUSED_BY_EXPLICIT_USER_GPU_CLEAN",
+  "GPU_job_wall_ledger": [
+    {
+      "job": "p0-tf-effect-collector-qualification-v1-20261016-r2",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_job_wall_sec_includes_setup_wait_cleanup": 968.065379280597,
+      "full_episodes": null,
+      "known_target_forwards": null,
+      "global_cleanup_all_roots_reaped": true,
+      "all_observed_owned_lifetimes_exited": true,
+      "failure": "ValueError('STOP_REQUESTED')",
+      "artifact_bytes": 417717
+    },
+    {
+      "job": "p0-tf-effect-collector-qualification-v1-20261016-r3",
+      "status": "COMPLETE",
+      "GPU_job_wall_sec_includes_setup_wait_cleanup": 793.3273978997022,
+      "full_episodes": null,
+      "known_target_forwards": null,
+      "global_cleanup_all_roots_reaped": true,
+      "all_observed_owned_lifetimes_exited": true,
+      "failure": null,
+      "artifact_bytes": 7471482
+    },
+    {
+      "job": "p0-tf-effect-collect30-v1-20261016-r1",
+      "status": "COMPLETE",
+      "GPU_job_wall_sec_includes_setup_wait_cleanup": 9383.734257645905,
+      "full_episodes": 30,
+      "known_target_forwards": 23685,
+      "global_cleanup_all_roots_reaped": true,
+      "all_observed_owned_lifetimes_exited": true,
+      "failure": null,
+      "artifact_bytes": 139012556
+    },
+    {
+      "job": "p0-tf-effect-dev96-v1-20261017-r1",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_job_wall_sec_includes_setup_wait_cleanup": 24893.568116359413,
+      "full_episodes": 70,
+      "known_target_forwards": 76533,
+      "global_cleanup_all_roots_reaped": true,
+      "all_observed_owned_lifetimes_exited": true,
+      "failure": "SystemExit('owned stop')",
+      "artifact_bytes": 140536657
+    },
+    {
+      "job": "p0-tf-effect-dev96-continue-v2-20261017-r1",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_job_wall_sec_includes_setup_wait_cleanup": 1634.2787492498755,
+      "full_episodes": 2,
+      "known_target_forwards": 4367,
+      "global_cleanup_all_roots_reaped": true,
+      "all_observed_owned_lifetimes_exited": true,
+      "failure": "ValueError('STOP_REQUESTED')",
+      "artifact_bytes": 13007685
+    }
+  ],
+  "sum_admitted_GPU_job_wall_sec": 37672.97390043549,
+  "actual_CUDA_active_time_sec": "UNKNOWN",
+  "qualification_r1": "FAILED_PRE_GPU_GUARD_ADMISSION; no admitted GPU worker; retained, not silently reset",
+  "CPU_training_failed_plus_recovery_wall_sec": 2827.0527377099997,
+  "CPU_training_GPU_usage": false,
+  "all_attempt_target_forwards": "UNKNOWN; missing old interrupted task4 attempt debited original cap4000",
+  "original_DEV_known_forwards": 76533,
+  "continuation_known_forwards": 4367,
+  "selected_DEV_known_forwards": 80900,
+  "DEV_conservative_upper_debited": 88900,
+  "original_DEV_forward_cap": 280000,
+  "logical_DEV_terminal_count": 72,
+  "logical_DEV_planned_count": 96,
+  "logical_DEV_missing_count": 24,
+  "final_report": "p0-tf-effect-dev96-completion-report-cpu-v2-20261017-r1/RESULT.json",
+  "resume_authorized": false,
+  "unused_user_clock_window_is_not_resume_authorization": true,
+  "AutoDL_connected_this_round": false,
+  "AutoDL_power_state": "UNKNOWN; no remote lease started or closed",
+  "overall_suggested_60_GPU_hour_remaining": "UNKNOWN; proposal is not a project-wide measured ledger",
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "supersedes_derived_ledger": "FINAL-RESOURCE-LEDGER-20261017-PAUSED.json",
+  "correction": "One further case created client startup metadata before the STOP guard fired. It has no robot terminal or COUNTER; count its actual unclosed work UNKNOWN and debit original per-case cap4000, without changing any original job counter.",
+  "new_unclosed_attempt": {
+    "key": "TF_ON-risk_DEV-t6-i27-r0",
+    "source_job": "p0-tf-effect-dev96-continue-v2-20261017-r1",
+    "observed_artifacts": [
+      "client.log",
+      "client/run_metadata.json"
+    ],
+    "full_robot_terminal": false,
+    "actual_target_forwards": "UNKNOWN",
+    "upper_debit": 4000,
+    "reason": "User pause during transition after two full terminals; new client metadata exists, no complete episode/counter."
+  },
+  "DEV_unknown_attempt_upper_debits_total": 8000
+}

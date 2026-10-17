@@ -1,0 +1,1510 @@
+{
+  "schema": "tf-effect-closure-job/v1",
+  "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3",
+  "kind": "qualification",
+  "commit": "b0dfac3a02f65de33a1217246b83003615166640",
+  "goal": "Replay collector ON for all50 chunks against original full OFF record; preserve old two-pass/per-request-KV PARTIAL and same original cumulative45min cap",
+  "created_at": "2026-10-16T13:04:55.331414+00:00",
+  "reference_plan": {
+    "schema": "task4-direction-diagnostic-completion/v1",
+    "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2",
+    "site": "local",
+    "cases": [
+      {
+        "arm": "TF_CONT",
+        "task": 4,
+        "init": 26,
+        "group": "known_risk_diagnostic",
+        "rep": 0,
+        "text_bank": true,
+        "key": "TF_CONT-task4-init26-repeat0"
+      },
+      {
+        "arm": "TF_CONT",
+        "task": 4,
+        "init": 26,
+        "group": "known_risk_diagnostic",
+        "rep": 1,
+        "text_bank": true,
+        "key": "TF_CONT-task4-init26-repeat1"
+      }
+    ],
+    "arms": [
+      "TF_CONT"
+    ],
+    "init": null,
+    "seed": 20260922,
+    "horizon": 800,
+    "mode": "verifier_k2_b2_bonus",
+    "selector": "prefix_then_cost",
+    "threshold": 0.007839680526450805,
+    "selected": {
+      "TF_CONT": {
+        "checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-train-v1-20261016-r1/TF_CONT-seed20260923/checkpoint.pt",
+        "checkpoint_sha256": "3657388fdce0763093d1b704c88a03b6836954160d43dddb9f75337a054d64ac",
+        "architecture": "transformer64",
+        "bytes": 222820
+      },
+      "MLP_CONT": {
+        "checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-mlp-continue-v1-20261016-r1/MLP_CONT-seed20260923/checkpoint.pt",
+        "checkpoint_sha256": "3dc01a48f204b3efedb4caccf2d36a01c2eecc55926c3265fe882f0a70b103b0",
+        "architecture": "mlp96",
+        "bytes": 219141
+      }
+    },
+    "training_dirs": {
+      "TF_CONT": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-train-v1-20261016-r1",
+      "MLP_CONT": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-mlp-continue-v1-20261016-r1"
+    },
+    "target_checkpoint_path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+    "target_checkpoint_id": "robbyant/lingbot-va-posttrain-libero-long",
+    "registry": "/rjs/cxz/论文探索/投机采样/configs/libero_checkpoint_registry.json",
+    "target_weight_stats": {
+      "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/text_encoder/model-00001-of-00003.safetensors": {
+        "bytes": 4935812536,
+        "mtime_ns": 1789580076519299180
+      },
+      "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/text_encoder/model-00002-of-00003.safetensors": {
+        "bytes": 4983103192,
+        "mtime_ns": 1789581265157383818
+      },
+      "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/text_encoder/model-00003-of-00003.safetensors": {
+        "bytes": 1442935480,
+        "mtime_ns": 1789577852507838936
+      },
+      "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer/diffusion_pytorch_model-00001-of-00003.safetensors": {
+        "bytes": 4821987820,
+        "mtime_ns": 1790085073013925387
+      },
+      "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer/diffusion_pytorch_model-00002-of-00003.safetensors": {
+        "bytes": 4821655760,
+        "mtime_ns": 1790085081285652440
+      },
+      "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer/diffusion_pytorch_model-00003-of-00003.safetensors": {
+        "bytes": 535373816,
+        "mtime_ns": 1790080522296088008
+      },
+      "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/vae/diffusion_pytorch_model.safetensors": {
+        "bytes": 2818777808,
+        "mtime_ns": 1789582414542881898
+      }
+    },
+    "bank": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-reset-text-bank-v1-20261015-cpu7-r2/bank.pt",
+    "bank_result": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-reset-text-bank-v1-20261015-cpu7-r2/RESULT.json",
+    "bank_result_status": "PASS_COMPLETE_CPU_TEXT_BANK",
+    "reset_equivalence_result": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-reset-online-v1-20261015-r1/RESULT.json",
+    "reset_equivalence_status": "PASS_COMPLETE_RESET_BANK_EQUIVALENCE",
+    "bank_reset_equivalence_pairs": 4,
+    "bank_stat": {
+      "bytes": 46142210,
+      "mtime_ns": 1792050782882453864
+    },
+    "real_CAL_data": {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-autodl-postquality-two-stage-preparation-v1-20261015-r1/bundle-r1/论文探索/handoff/data/actual_cal20_columnar.pt",
+      "bytes": 28417401,
+      "mtime_ns": 1792066422558379785
+    },
+    "source_sha256": {
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/analyze.py": "609f203b49eee362684f28e2a73013a52b500f7c15e4b5624afbd2cd0ee6290e",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/buffers.py": "69e572be7a7c2424bf2e05eb50e73184749db079100cd8634729d8f90496f468",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/cleanup.py": "7a888175ec238804d8ce501743ae70e7354770122219bf00f061966ea19368aa",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/client_entry.py": "b26f7e68c5d3e7585f0e640db8f41b3d0390e2734d92db69e05f85c866034d6e",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/cpu_check.py": "1fb233aec5e602bac17b4981d44f71af3c8d6f047ac8c9f1253e694c3b29c489",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/create_job.py": "5f08fb57e4a9b55dac4a27d24344c46e99d8bfc4accef59733d1427343564b5b",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/experiment.py": "8cb6048b8538c7c1d7b25c49113ad3f1d92232903379544de24bbdb0ab0767bf",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/fixed_worker.py": "159435f2b0eaeeb495f8fce2d5cc72164feca4a5539dcc9f3442fdb5585f3c91",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/measured_online.py": "8a75976ad31b7b2fb40e87baaefa84942c019e9202bb920024cf30a6e9f40ced",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/old_trace_opportunity.py": "dba12e536e78468d1a8c47ca37313dfc657f3344192863c1c220627a3e01d5e1",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/online.py": "e1eb67325046d811c7326cff506ff14663a98d20a2b51c0c68d5204a5393d884",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/paths.py": "9f6d6e81384875dc88e2b3cce74a77cdf46e17f72942249de8db01ae621d5b26",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/prefix_kernel.py": "94f5230b26dd492c3f9d7e21052f0a67662db45e0ace335b5b88079b17400057",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/preflight.py": "cdc7d36bfc7f2b2c83e9072ae960e275d77294511672e11e44ab9b4b2216a14d",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/runtime.py": "440a09cab23bb843a2bf7492275eced494e9b7fb74a40509a6a32b150f92d23a",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/scalar.py": "977a4f639fa5b8360b989cd08107e25bfb8f8d43dc0417f57c05ff2eedbb8f7e",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/selection.py": "328677c2b98ddbe459bbaa06c77ed6b2f83b53cfedee75cf081fa6baf482c360",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/server_entry.py": "9ac15d4939b3f5677e3ee9542a76c5b8512274ccdb0c8220abdfd7df334682c2",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/settings.py": "9c12b85a7425c74a5e3d6d659be62686274efdaaee0123fc61069f71f5131c88",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/state_check.py": "ef0b64dd722260008076d7efeaa808850e8e0660641853951db8872f338dcbc5",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/supervisor.py": "724939a2fa400c920af47c13706bfa20f4dac3b340c7a11206f77dc3167cc569",
+      "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/template.py": "2f6242823deb603b379a3a153d6b4e65418c804bdef2c0d0fc1f1573accf46d1",
+      "/rjs/cxz/论文探索/投机采样/experiments/draft_architecture_v1/models.py": "b769b772bda92bbc069975bf90ab5ba53a36fade02741e3a89f670b74f84f66d",
+      "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_clock_v1/watch.py": "f53983a99f0ef0fd17f70fb7a30ce25b178be3c1a00016027360521227e1e689",
+      "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/analyze.py": "7edffef4403d9f9ba184b0b8fa6ac87d939d2cbcc5379f11ff9e8d4a6f005d0e",
+      "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/client_entry.py": "756f69bbd8059a03d04acb3911a781d5303f51b2088e7892d596c3e016f8aa06",
+      "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/protocol.py": "0dc5bb8b643af9d7daa68173e33ecd9e61440b62713bb59708910a5cdd7a2219",
+      "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/run.py": "a4b0830f03ab792e99d92966c7d69d7245a6179d4f5445dad505ce928dc86bf5",
+      "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/server_entry.py": "bd8f5bb07fabfb93220d0421a354bba0150b0a7a3feb13008a47bf16bbafdb3d",
+      "/rjs/cxz/论文探索/投机采样/experiments/formal_e2e_speed_v1/run.py": "3b1115736fdda1297bf906b093d225fbe4eb753c3e7808d79b649bca97ef8c06",
+      "/rjs/cxz/论文探索/投机采样/experiments/formal_e2e_speed_v1/server_entry.py": "e5b416210885dd51116e7229a4a07c500955864b45e44435ebe6548991b12c7b",
+      "/rjs/cxz/论文探索/投机采样/experiments/formal_e2e_speed_v1/speed_contract.py": "e1f946ae6f85d693deb74be2ebd14839c3197d05d3400ba18b9a445a8b10951f",
+      "/rjs/cxz/论文探索/投机采样/experiments/morning_onpolicy_long8_v4/cleanup.py": "7a888175ec238804d8ce501743ae70e7354770122219bf00f061966ea19368aa",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/analyze.py": "3d7a3ed5c085672dea9e1bbfa82384b0fd8725069797dd42c9bf27aaa644dc12",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/buffers.py": "69e572be7a7c2424bf2e05eb50e73184749db079100cd8634729d8f90496f468",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/cleanup.py": "7a888175ec238804d8ce501743ae70e7354770122219bf00f061966ea19368aa",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/client_entry.py": "12adf306264af93e6da079fe8a165f7221ef282071c52a31447104e4b522a119",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/cpu_check.py": "a65a3eee1021403e5804f513265abcfeade2d8d5eb56627cd1d15f73688497cb",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/create_job.py": "c94319e5d4603731739ebf7c533f54facf7ee18527498bf0b9e3fb7e3d218618",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/experiment.py": "24344d61e619f54780c7c83718aa4faf55cdbcfaa03a464be85dac97feee9fbd",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/fixed_worker.py": "22d01f3aa3e5bf429dd61d9781c1e37066dbaead9ab6640d3215ef74acb232b7",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/measured_online.py": "8a75976ad31b7b2fb40e87baaefa84942c019e9202bb920024cf30a6e9f40ced",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/old_trace_opportunity.py": "dba12e536e78468d1a8c47ca37313dfc657f3344192863c1c220627a3e01d5e1",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/online.py": "e1eb67325046d811c7326cff506ff14663a98d20a2b51c0c68d5204a5393d884",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/paths.py": "9f6d6e81384875dc88e2b3cce74a77cdf46e17f72942249de8db01ae621d5b26",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/prefix_kernel.py": "94f5230b26dd492c3f9d7e21052f0a67662db45e0ace335b5b88079b17400057",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/preflight.py": "60bf2352c835b007970ab2c58e5b7aac19f8f5af78c5d754cb5513a968cee332",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/runtime.py": "440a09cab23bb843a2bf7492275eced494e9b7fb74a40509a6a32b150f92d23a",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/scalar.py": "977a4f639fa5b8360b989cd08107e25bfb8f8d43dc0417f57c05ff2eedbb8f7e",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/selection.py": "a284c8d5208ae832f68a1f68c5f87d6242b23d0af2460aec3d446b1726d1d794",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/server_entry.py": "d3c04ba615d6d92d1c187d458fb012e19fcfae1d7e8cb6a82191be6be7aca0c4",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/settings.py": "4b2b973a72fee8bebb45d0e9ed0862596db65204d86834e7d4b44f8008496c41",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/state_check.py": "ef0b64dd722260008076d7efeaa808850e8e0660641853951db8872f338dcbc5",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/supervisor.py": "0223f9a12e78d6d6c8a7727db9939bd4eca2e550adc11fd7d1143a938a285045",
+      "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/template.py": "2f6242823deb603b379a3a153d6b4e65418c804bdef2c0d0fc1f1573accf46d1",
+      "/rjs/cxz/论文探索/投机采样/experiments/reset_text_bank_v1/bank.py": "a098d7d12186ee83be0f990ab7bcfc55002417f43af35be9c5667345c6f1a76e",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/create_job.py": "8ff7c4fe15eda4ed4d7efc83b51b84f254ab6a422d8ee5a7872d367e32c52c5e",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/launch.py": "16164113d52f20c938b709a5c5168cb7d54b51c2f7fb75bef511b0adaefb7e39",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/ledger_core.py": "3e1f1c44aeac2c2135501736b9f280b2b28edbe0de90da606a4d0171a17e8d1b",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_adapter.py": "aff637d5f1515f3fdf67bea857c28a1df29c80865101e95ee1ba9b00c254ea76",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_attention.py": "2b7d7cf52ab0517aea65f0ca332b7d022ae1bef4b1aaa124cb714c70ac0ecc7f",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_compare.py": "0c11958807c7e9cf3197bc01060fb46085a79276d773b43aa971b771d34efa74",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_kernel.py": "983be375adaead1bd530c95e2466a7ca4a7fe5cdcc6e1123826b02938aa108b9",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_micro.py": "a6986e90316a6c7579d236045cb93046a984f33f03505b9db62cc7b65e317f17",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/supervisor.py": "60b8a9222d7c9d4544a09bf058bc5e440fa77e0e395c479380494a1d6e479e41",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/task_contract.py": "f2aa722ed12dddedce28edc35c14cc3652fd9db90d32f816234ca136de374815",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/test_entry_cpu.py": "e8d918b18cfeacf453781c2cb4e252f61e3333f1ee3b1a588bf678c8aaf30280",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/test_prefix_cpu.py": "4ee687b720c5b1a32c6dbc62a3073c197bc9badf95243a22e3ce0b7640658cac",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/worker.py": "2bc2ae87814f106945c1889d916e6bf6f6014e6e4317c6a0eedc9a12a6cca86c",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/_shared_torch_v1.cpython-312-x86_64-linux-gnu.so": "b63eef1c2ca3201533d057da8b325471d234b7f5a5585f57f083d8351cabac48",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/build/lib.linux-x86_64-cpython-312/_shared_torch_v1.cpython-312-x86_64-linux-gnu.so": "b63eef1c2ca3201533d057da8b325471d234b7f5a5585f57f083d8351cabac48",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/direct_counter.py": "b7fd75e46b3418b7fb511f7a03613bf25b8752db106b770308890df67011a62c",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/ledger_core.py": "1879aa4ac38f79f8d2256ff5e5fd689d8e017c5b666bca1e988655c3a296a292",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/micro_worker.py": "3f07c694cffe38ccb4991e2ef26017ad306c718cb1eae2cce72ca078089068b1",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/prepare_source.py": "636779b05be26defd20e453e701a842389ce08c4df02ebbea361d3a59798c44d",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/run.py": "7ca199c0d2c384c0fa46a51b183d828dc3ca8acad017774cd0d0818f1e9f1bfc",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/setup.py": "c0ed0df059b51f0dfa6923e4706678d393a081515b8170055e7f5805bba970d9",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/task_contract.py": "77653939c6c2e95e0f0dc88c4e1397d0591244b295dc366a4bb3dbd88890a93f",
+      "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/test_cpu.py": "01f60e64d6d53f04fdec57af424a1c7a4f7892cd374fb3f05c28899fd0af00a6",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/adapter.py": "ca4cda2ee776dde6ea82471eba2b192010eb0787032fafc617b466320388a4e7",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/capture.py": "b166953b0d98da2880d251d7af82422579cda6e9a0427c7dcb83c988e0b21453",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/contract.py": "9ff92f9bdc1c44a1b9b86af113eae3bfc4f6c1a0c5516265ece4fbcace3f5f21",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/counter_journal.py": "a7d1256c4bf7c618fb3fdbc336fe5c9bfdcfa92053088b9fad44b25cc93d188e",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/counter_recovery.py": "8398d602da9bb147738cd48f8873f1fb5238fb9aba12e9d441f36c487e443e03",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/create_job.py": "d2c1b4a092cd1377b896bdb683444bd6e980029a0ac2876efdac63a9225e9e09",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/gpu_compare.py": "d52d8795c14ceab8004db09e1b3de7dec42f46c0a9caab28fa61ebbce9c95fc6",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/launch.py": "76f1b85e2a49126b0e6be75de7693951032df3c78a3dc4ddfe17daf7b1d6dc8d",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/ledger_core.py": "3626cc2399f9a6332c5998c8660008306367cad2e1cc531be09480791dc46dc7",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/ownership.py": "1a42ba16590cdfee84173868e50fc98159e12e36dfe3550128492b199c2b0112",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/production_fixture.py": "c84dfea43f92724b572abb39a6fbf92b7847a80f44ddb5673eefec1ff376e11e",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/resource_guard.py": "7cfba486f71da8789e44849b15a658796f99f06efc82bdfdb1d3a61c3f620775",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/supervisor.py": "7f38593660be4aa458a6ad7ea2f6ec3199d60bfbc320a3283d557b8a2eb578ea",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/task_contract.py": "99ff5c58dba5782365432342719deb08588856d67e02b506c1c3dd56363d6f2b",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/test_counter_cpu.py": "913dc209dafeb29306a86c895eb57fd4bf40b6d953589c8b8befa4a20448f5c2",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/test_cpu.py": "a9df889c6417b5d7e52d5ac5c019a064b4b6c5c2cf31745adf45260253e79de9",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/test_job_cpu.py": "b789e02d00be80cc16ad0d0cb4c5b81f88cfed5181b2ecdb2804c9a0df3d7f8f",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/test_loader_cpu.py": "dd1d80cb849ad3fdeb02f2035c726c44b50864e0473b04d3f43f725ad5c098ae",
+      "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/worker.py": "7a88a25d2b6e8f184f39c590cd5267301ec3476e3a56ea456dabe431cc37f7de",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/analyze.py": "3b6390699acbd11f868915d13e1acf50babd5d7768e38e57da4406949e9b0702",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/client_entry.py": "5dbdaa3870548a67629047d4fa91b0e688738aa35b1e7f596ec50ee91c1d89c0",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/create_job.py": "1355b7ae55f87a3a7a079b27d56d8f662e46e3a1e1d8115bce25cbdafebc4f06",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/disk_guard.py": "2e8c24c642162df27b49d7f12ebe0ec86d845e27394000b79a1acac5ca985ad8",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/launch_identity.py": "b1027615632c34542a0a6072b862b1228a7e54422637a83b6fd5ef101e8b3f9f",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/online_shared.py": "5ff1ec86ef7478a7cbde91e1ffea94190f66a14857b8e42d509cb35834190196",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/prefix_adapter.py": "13514fc4b3a33c7ec94df3c29f8eedbec7d4eea59c1808675f18c1fea3e6fcf9",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/prefix_attention.py": "e55b38e48ecaa9c0c91de4298cf79be28d22a41cc99a3dbce7728b3f6274989f",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/prefix_kernel.py": "cea7a77a27cc893618aaeb0300b28879f6c0a6afda5710e3d5653c6f3df75847",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/preflight.py": "3ef59c51a039a8988256aeabd7fd21c8045b33f59002e58f9d8c1d7a0e256637",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/probe.py": "1bba15eadc41e87259d8b26cdc6ca8a77342097dd38d9d87adb2c479faaadc8b",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/runtime.py": "2ac15517a0d14369dd350a31cc0bf758a51ba54ca0a432b247f86f2a6b3bb913",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/server_entry.py": "395069d6190584d5e00c8701030f328fce6721e3442fe45040c163440c770efd",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/supervisor.py": "e084941bfbcd9f58a1560538e6e7181d96078f66a7b833efa110d70c7da74ed8",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/task_contract.py": "a1f923b6a853888dda11afdee05f09ec1d57b4f116e07b95b48755b22c79394b",
+      "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/test_cpu.py": "206c7585c6fa291f31a94f7a8abefa3f0938b2b7803b2d21bcfb0c2b710baa5b",
+      "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/adapter.py": "147c7e6472cdbffe3ba999db2ce39d77c949a44d2d8f1701a43b4582fbf9f714",
+      "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/gpu_actual_cal.py": "2a31eff2f339d45489fed6c9c2832c3e1122e64e52e43dfd6fdf6116813365cf",
+      "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/train.py": "37bc04e36ee211cc1559828f4d8482d3bf7b82cc187fb8d6bb22821f0f040822",
+      "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_train_v1/adapter.py": "42737b89ec38ca1993dd3c3c9134baa13173cb5f076fc1390aa2dc90f6953af4",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/adapter.py": "fadb4093e50ac57b7bc08b21c24214133a589e429c1f27b4d783912a475180ab",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/gpu_actual_cal.py": "979189ec368deb423cda0a8db07b0d2d2778e9806508002934be0734e7d18515",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/train.py": "545e38d3a555ef1758a832d20ae448b302518145223cccb3398632d4b3f472a4",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/analyze.py": "0ed220ae04a865bb2cc254e666d024463437fca7e351be8751fde5ed3416ad0e",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/capture_client.py": "b1dacc33bd80feb4c5cb0aefb708ba6f118ed9adfe5802f32b00cc13d959693c",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/client_entry.py": "30ea9648935e027b6a95ed7845b8eac7ea6dc42190bdd3228ca1b9f45996e148",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/legacy.py": "e39eb7fffc2ad57585f49d3b57d99632616bec4e68b9711f70a353bde0ebd33d",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/protocol.py": "9cf28fa92146fe837e4e385a49ef649ee9f21bf60700b8b15bae0414cc9b1e22",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/run.py": "c19da78acd0b94458bcf64b9f3b5310e55e90d32210f2b5c4ea71a97bbede8a9",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/saved_outputs.py": "659c5e49142a63fea8401a9196990378733255df642545852c8d2d2fed65ff53",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/server_entry.py": "890866165c3563121374f2981162bf69a4d7d3b96c1f49d3e65c81630cfabb32",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_train_v1/adapter.py": "9a0c40eabcca0351025adc7fdacfae889e239f871541deb2867b312c05c6bff8",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_train_v1/gpu_actual_cal.py": "fca2476398972d586ca8d4a457ab3d52d9249e150cbc56568abf50ac68c393dd",
+      "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_train_v1/train.py": "d16f4d0dcd4953dde077e6cb45f58823d5b9134ccdfda0ef4b4b2171e332627f",
+      "/rjs/cxz/论文探索/投机采样/scripts/p0_batched_verify.py": "985d53c15fc778b662b98dd7c03d108881a0f2aebcc67f11cc5662a3eb9190e8",
+      "/rjs/cxz/论文探索/投机采样/scripts/p0_libero_multichunk_client.py": "7b263689f8a52f45f2a9fc3729a81d78c58c77842bcd4d944e46b73acfe6c7e0",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/__init__.py": "82548e574a8b43d4bb1480e915ea993b526ed9f5fb761f8e65fdcaca601838e8",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/__init__.py": "089e67a9881536877a3c275ec6b8aec50c464273a3f68c5eb3a5143ef8e54df9",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/shared_config.py": "e7989a7c793e10ca81e1dc731aa66d55c4cdb8632f9c06a55371a567c18aa570",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_demo_cfg.py": "65707ff4c57e13c9ac66e87e3e7c2477618e26a7e80cb4a0300b238e7e2bd44c",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_demo_i2va.py": "c1133c46dedf386193a3d4654e879fe6d6453edaaa287ea963e148f13127bf7c",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_demo_train_cfg.py": "7022e4d23e60986489db57a88153987761d935ea181b0d0397ca25290db9b578",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_franka_cfg.py": "86452cea3fc4949d539ed2022ab903420dffe6d82c20c4d4cd64f3954cf6cd3f",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_franka_i2va.py": "d84297e7bcc2227368e3e097982cc2bb8827ba3db1dba508c6f52809e7283172",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_libero_cfg.py": "857aef575086ab49f6f77df11d2f6af2ed9750feb411ab8af38f1df069ab6402",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_libero_i2va.py": "3093b78f540e6c57ae5cd9bc75f51f39a22e437256f94e9bdda5c61430d9fd34",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_libero_train_cfg.py": "fcb92781027a68a4bf06ec08cfd4ca7575ff8040b496a94d21636c36c3b0d104",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_robotwin_cfg.py": "829e6162b3d51951fa85b4c606648b7ec30d42a00246db41519f6974be7117ad",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_robotwin_i2va.py": "b33f161e42f597907498dd55619b726cd256b199b2334dac8383c05771799a1e",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_robotwin_train_cfg.py": "d7ffd1eb2c341e128491edb00f453ef8e313c66bee251dea413db8d1d397363c",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/dataset/__init__.py": "b66a083629ce810dd99b240c5b220450b8d71c975bf1877153998f6fc3d04ecd",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/dataset/lerobot_latent_dataset.py": "984b20899e87c914f491f10c23608f06cb815c56112bdd929e39e187c89566ee",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/distributed/__init__.py": "013ec40a0739296f1ba474036e5d46e06998f795daa0b7c3214773d885a3ab1a",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/distributed/fsdp.py": "cf5c7755e934f933645235f9104cae3ff9adea2b2863bcb1a5ec42eb6f3a8d8f",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/distributed/util.py": "2513e68bcc1163424a7629ec88ce7a9b70c11342945d4ff0dc1801310d1e1648",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/modules/__init__.py": "7de311f2f55aed977114d312b7a4f22c26a451aa4e5685040a37e20533d3d8b1",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/modules/model.py": "f579ee02b490dbffcf78add6452742dbdbef43286600c0eeae3dede3f053cb5b",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/modules/utils.py": "563499ae1aa9fdbe990963c8c133423241f1a63d3f59743b778a1eb4c47757f4",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/train.py": "103e04031b32cbbef0c829a7b3f52986aaaffa996040c173ff8f9a67cc4985ab",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/image_tools.py": "aa8ca88152654c3973042e49339d08f47e927fc5ecc885ec9a114d90f726ebc8",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/msgpack_numpy.py": "c37345c1d0ae4a0f27d91af4798af842986c255e7aa93b08255471cd3393eab1",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/qwenpi_policy.py": "447d6c071b6a3f6718cbf53fd79b9d851a52feebbf2587df184a101778623a33",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/replay_policy.py": "2369969eef4a89e85b84d53e7db4b529525f3d347bd8df50f551071b86633b84",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/websocket_client_policy.py": "39b306a47e582716eb4e4cb9333f2f7ef2a66a1f3c39d65d1674770ec3ed6e53",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/websocket_policy_server.py": "441423a7ed7382c656247f51e1d53117252b6c92c802a175f8d5d6ec86db3d76",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/__init__.py": "c04beb288fa33eb00ee2362cc3a312d0614877d2afdb47c272ee76978731aaf5",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/logging.py": "3f894f412c096b15692b9adc5a3c4496447aee7e32a86f09562276fcbc2c7fd5",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/p0_k3_b2.py": "10a860e9d23d17fb89f6ceccdf20a59393f59c1cf1e861494e255bf0fce67914",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/p0_state_teacher.py": "979147372672d161fa0a007023094724bc9ef27dbc429feb68bb09a9672b12b9",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/p0_trace.py": "b76bb7592caa51c8d14e1d6d43b93da27e52bc24ecebf8a3134cc7852bc38752",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/scheduler.py": "9833300936d1001e5dfb0db76d5e0e131429685980de7b3c9716288ec28da7f1",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/sever_utils.py": "d61e653a1541fc829786fcce61cb29e828407b0b1014f555c56c950d2d646e44",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/utils.py": "7d81e83d799b338db61e08bd52976fea404ed7db497d93199d4a478c592d2465",
+      "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/wan_va_server.py": "bad90775a446aa1cc8d175a19ce9d43d9b7dc523c260f1bf586eee95a6e1cea1",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/action_observed.py": "2294487a0a2049da8531f46dae4ca09ae6efe3823b92fbd07cf03b3cbfde4162",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/build.py": "c5ed80765e47d62c62ee1c74941b2e1419b0e77ba01d4f856a8eb76d717152fa",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/client_entry.py": "95373d8264fe97002a85d53360af5a707e10ce7009808fe04846c4f9eaf11fdb",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/client_observer.py": "0123c3ec9b665fcbdcf0b926276d1aae60b1afb141e34070c2c515d8bae74b3e",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/clock.py": "ce571891fb1570874986799788a056205107f5b2a710dd181a33549324b05114",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/launch.py": "2b2f2941c7c682f9669d3959d907aafee910e76261cccd61962a046f1a696b8c",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/observer.py": "b2ca85a75e4d86c1a28134b12672bdc534349362c0b1ab9d8a125edf8535c039",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/protocol.py": "f28bb67a5ee658beb8354f9b9303acf9a244ddad983442c1c0f43a2668f337c8",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/run.py": "ae8a20fe77feee70d30d158a2f2a352da4162519c301e00802d614d4e37faa7e",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/server_entry.py": "c4335471c65199132f110af1468b04d5e4c78c7297960bbf9a516191a2e74e7f",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/server_entry.py": "fe812c5f55bdd67572703ad946d8c7f846380411f00c68d602f700852111d1b2",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/client_entry.py": "4f50b296ee90b21ad677dfccf344ad01a65cca290e2938e3f35d4d2a9899bd8c",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/launch.py": "315df5c7e2eb2b73876338eed83182f048847bb0aea7c07ea5356932b0b22425",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/clock.py": "318d136977e36490f0f03e0eca075d7b741f09d89082094f3c0ab491f77ccef5",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/run.py": "04d2b93c7593af410436d08be084f8287281c2510d88c16fcd8be2e35671b7cb",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/observer.py": "5261e87fbddb5a746ae921e05d9e632f4a32fec1f5da26b19acbf2d092d75105",
+      "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/protocol.py": "4f6f59b4f51fb14371f1d12600582041e823db37e362f9f222982d5f5a3c63d5"
+    },
+    "global_started": "2026-10-16T09:52:18.137328+00:00",
+    "absolute_work_stop": "2026-10-16T10:47:18.137328+00:00",
+    "absolute_cleanup_deadline": "2026-10-16T10:52:18.137328+00:00",
+    "max_run_wall_sec": 3600,
+    "cleanup_reserve_sec": 300,
+    "combined_two_site_GPU_seconds_cap": 14400,
+    "init_role": "fresh35DEV; known-risk25to29DEV; repeat33DEV; no TEST40to49",
+    "no_old_T_reuse": true,
+    "workers": 1,
+    "persistent_model_within_arm": true,
+    "fresh_initial_RNG_per_episode": true,
+    "trace_mode": "off",
+    "teacher_enabled": false,
+    "performance_claim": false,
+    "shared_GPU_allowed": true,
+    "initial_free_GiB": 22.0,
+    "runtime_free_GiB": 0.5,
+    "output_budget_GiB": 1,
+    "disk_floor_GiB": 5.0,
+    "per_episode_wall_sec": 900,
+    "model_ready_wall_sec": 900,
+    "job_target_forward_cap": 16000,
+    "per_episode_target_forward_cap": 4000,
+    "port": 19568,
+    "master_port": 29568,
+    "OMP_NUM_THREADS": 2,
+    "client_threads": 2,
+    "va_python": "/rjs/cxz/miniconda3/envs/va/bin/python",
+    "client_python": "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+    "required_gpu_name": "NVIDIA A100-SXM4-40GB",
+    "selection": {
+      "retain_predeclared_TF_for_expanded_TEST_if": [
+        "all50complete_and_owned_cleanup",
+        "fresh_TF_success_at_least_T_and_matched_MLP",
+        "fresh_common_success_nonempty",
+        "fresh_length_P50_at_most1.10_P90_at_most1.20_max_at_most1.30",
+        "risk_T_success_TF_failure_count_zero"
+      ],
+      "tie": "retain predeclared TF candidate; do not claim architecture superiority or measured total-cost advantage",
+      "if_failed": "report unmet conditions; no automatic global preset/architecture replacement, threshold/PF search or unbounded training",
+      "strict_engineering_screen": "all current fresh/risk physical_controller_actual_target_RNG_and_initial_pixels exact, plus numeric checks; preserve original FAILED regardless",
+      "independent_TEST_requires_frozen_candidate_engine_and_prospective_manifest": true,
+      "independent_TEST_completion_is_a_status_not_formal_performance_permission": true,
+      "no_3pp_NI_claim_from_DEV": true,
+      "original_formal45_permission": false
+    },
+    "profile": "task4_diagnostic",
+    "observation_protocol": "unchanged_legacy_cached_observations",
+    "preregistration": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/PREREGISTRATION.json",
+    "preregistration_sha256": "34505a4714598185514180fec919d64546ea2ec2c8808408f62be29ba7e8ed44",
+    "formal_performance_permission": false,
+    "independent_test_complete": false,
+    "original_morning_FAILED_preserved": true,
+    "planned_full_episodes": 2,
+    "absolute_no_AutoDL": true,
+    "commit": "b0dfac3a02f65de33a1217246b83003615166640",
+    "permissions": {
+      "engineering_quality_screen": false,
+      "independent_test_complete": false,
+      "noninferiority_established": false,
+      "formal_performance_permission": false
+    },
+    "cumulative_diagnostic_cap_sec": 3600,
+    "prior_evidence_sha256": {
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/FAILED.json": "df76f8a1ac7f609df799efcccefe6f6049af5852c281b06cf1e2fd052fb667fa",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/FINAL-OWNED-CLEANUP.json": "61f731d8fd50b03bdf01f731aad95e4af0720a0ca28b74ca00cc370939f5c7ed",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/CLOCK-RESULT.json": "852b9a16e8df2a51eb2dbe3b9d7288df145753d14283df2278cb11773f4e7d6d",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/CLOCK-GUARD.json": "69b542193a7ec99d37f417c34cc1c7ff6f07299ba67f05a39a8dc680d9d4e10c",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/plan.json": "17331d491732e08f2b73ea1a70846f4c370c2926146c47a1b9718e65d4c83130",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/PREREGISTRATION.json": "d234be75869aa018184e7727fb2ccf5ab98e5fd36fce56b786bfc9a7664aaebb",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/T-READY.json": "169e2ea8b42c139c77ae8026caf0b5db5f687bc8ee23831e0831c068fc306d64",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/arms/TF_CONT/FULL-REAL-CAL-PARITY.json": "94a6be82741a3d532f581326f8ee01dde65fd4224d0a54fa24930e971c9744a0",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat0/FINISH_READY.json": "5a687958b1af3a709f1993f03876b202330a0233824022d69f19bd03ac8120ab",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat0/CLIENT-CLEANUP.json": "c87b6a3c721c8f887704ac7ba36efdaf0f80382520a16cac35a78b482540c7b1",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat0/COUNTER.json": "a9032fcd088932597c0b71a8d866f7d0946ffd82067aa5f976dc3c7ea881424c",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat0/client/episodes.jsonl": "fa1e9e23a59d123d37a3d2635ecb4f8aef8d3036d8deca75af3eec2f3e445db0",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat0/client/repro_metadata.json": "47eda2fd588328228cf3b44721e8333f1bf9588fd042699b3511b85c62931f99",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat1/FINISH_READY.json": "5a687958b1af3a709f1993f03876b202330a0233824022d69f19bd03ac8120ab",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat1/CLIENT-CLEANUP.json": "720fe72c783512aa257801d91f87fcd8d33d719cbdfae1034640c5a14d29cb47",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat1/COUNTER.json": "16b98d114c7d28561af59f8d7c180492efb55ccbcec5d9de1665aa8ee5f21420",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat1/client/episodes.jsonl": "f695939ff4933ab4fb69e9d9db74e30f2c69274c8aaebf3fb901fbb2396a244d",
+      "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/episodes/T-task4-init26-repeat1/client/repro_metadata.json": "47eda2fd588328228cf3b44721e8333f1bf9588fd042699b3511b85c62931f99"
+    },
+    "prior_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1",
+    "reference_target_READY": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/T-READY.json",
+    "existing_CAL_certificate": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/arms/TF_CONT/FULL-REAL-CAL-PARITY.json",
+    "existing_CAL_sha256": "94a6be82741a3d532f581326f8ee01dde65fd4224d0a54fa24930e971c9744a0",
+    "target_reference_cases": [
+      {
+        "arm": "T",
+        "task": 4,
+        "init": 26,
+        "group": "known_risk_diagnostic",
+        "rep": 0,
+        "text_bank": true,
+        "key": "T-task4-init26-repeat0"
+      },
+      {
+        "arm": "T",
+        "task": 4,
+        "init": 26,
+        "group": "known_risk_diagnostic",
+        "rep": 1,
+        "text_bank": true,
+        "key": "T-task4-init26-repeat1"
+      }
+    ]
+  },
+  "source_episode": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0",
+  "source_sha256": {
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/analyze.py": "609f203b49eee362684f28e2a73013a52b500f7c15e4b5624afbd2cd0ee6290e",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/buffers.py": "69e572be7a7c2424bf2e05eb50e73184749db079100cd8634729d8f90496f468",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/cleanup.py": "7a888175ec238804d8ce501743ae70e7354770122219bf00f061966ea19368aa",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/client_entry.py": "b26f7e68c5d3e7585f0e640db8f41b3d0390e2734d92db69e05f85c866034d6e",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/cpu_check.py": "1fb233aec5e602bac17b4981d44f71af3c8d6f047ac8c9f1253e694c3b29c489",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/create_job.py": "5f08fb57e4a9b55dac4a27d24344c46e99d8bfc4accef59733d1427343564b5b",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/experiment.py": "8cb6048b8538c7c1d7b25c49113ad3f1d92232903379544de24bbdb0ab0767bf",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/fixed_worker.py": "159435f2b0eaeeb495f8fce2d5cc72164feca4a5539dcc9f3442fdb5585f3c91",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/measured_online.py": "8a75976ad31b7b2fb40e87baaefa84942c019e9202bb920024cf30a6e9f40ced",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/old_trace_opportunity.py": "dba12e536e78468d1a8c47ca37313dfc657f3344192863c1c220627a3e01d5e1",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/online.py": "e1eb67325046d811c7326cff506ff14663a98d20a2b51c0c68d5204a5393d884",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/paths.py": "9f6d6e81384875dc88e2b3cce74a77cdf46e17f72942249de8db01ae621d5b26",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/prefix_kernel.py": "94f5230b26dd492c3f9d7e21052f0a67662db45e0ace335b5b88079b17400057",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/preflight.py": "cdc7d36bfc7f2b2c83e9072ae960e275d77294511672e11e44ab9b4b2216a14d",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/runtime.py": "440a09cab23bb843a2bf7492275eced494e9b7fb74a40509a6a32b150f92d23a",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/scalar.py": "977a4f639fa5b8360b989cd08107e25bfb8f8d43dc0417f57c05ff2eedbb8f7e",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/selection.py": "328677c2b98ddbe459bbaa06c77ed6b2f83b53cfedee75cf081fa6baf482c360",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/server_entry.py": "9ac15d4939b3f5677e3ee9542a76c5b8512274ccdb0c8220abdfd7df334682c2",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/settings.py": "9c12b85a7425c74a5e3d6d659be62686274efdaaee0123fc61069f71f5131c88",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/state_check.py": "ef0b64dd722260008076d7efeaa808850e8e0660641853951db8872f338dcbc5",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/supervisor.py": "724939a2fa400c920af47c13706bfa20f4dac3b340c7a11206f77dc3167cc569",
+    "/rjs/cxz/论文探索/投机采样/experiments/bonus_acceptance_v2/template.py": "2f6242823deb603b379a3a153d6b4e65418c804bdef2c0d0fc1f1573accf46d1",
+    "/rjs/cxz/论文探索/投机采样/experiments/draft_architecture_v1/models.py": "b769b772bda92bbc069975bf90ab5ba53a36fade02741e3a89f670b74f84f66d",
+    "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_clock_v1/watch.py": "f53983a99f0ef0fd17f70fb7a30ce25b178be3c1a00016027360521227e1e689",
+    "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/analyze.py": "7edffef4403d9f9ba184b0b8fa6ac87d939d2cbcc5379f11ff9e8d4a6f005d0e",
+    "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/client_entry.py": "756f69bbd8059a03d04acb3911a781d5303f51b2088e7892d596c3e016f8aa06",
+    "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/protocol.py": "0dc5bb8b643af9d7daa68173e33ecd9e61440b62713bb59708910a5cdd7a2219",
+    "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/run.py": "a4b0830f03ab792e99d92966c7d69d7245a6179d4f5445dad505ce928dc86bf5",
+    "/rjs/cxz/论文探索/投机采样/experiments/draft_freeze_quality_v1/server_entry.py": "bd8f5bb07fabfb93220d0421a354bba0150b0a7a3feb13008a47bf16bbafdb3d",
+    "/rjs/cxz/论文探索/投机采样/experiments/formal_e2e_speed_v1/run.py": "3b1115736fdda1297bf906b093d225fbe4eb753c3e7808d79b649bca97ef8c06",
+    "/rjs/cxz/论文探索/投机采样/experiments/formal_e2e_speed_v1/server_entry.py": "e5b416210885dd51116e7229a4a07c500955864b45e44435ebe6548991b12c7b",
+    "/rjs/cxz/论文探索/投机采样/experiments/formal_e2e_speed_v1/speed_contract.py": "e1f946ae6f85d693deb74be2ebd14839c3197d05d3400ba18b9a445a8b10951f",
+    "/rjs/cxz/论文探索/投机采样/experiments/morning_onpolicy_long8_v4/cleanup.py": "7a888175ec238804d8ce501743ae70e7354770122219bf00f061966ea19368aa",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/analyze.py": "3d7a3ed5c085672dea9e1bbfa82384b0fd8725069797dd42c9bf27aaa644dc12",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/buffers.py": "69e572be7a7c2424bf2e05eb50e73184749db079100cd8634729d8f90496f468",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/cleanup.py": "7a888175ec238804d8ce501743ae70e7354770122219bf00f061966ea19368aa",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/client_entry.py": "12adf306264af93e6da079fe8a165f7221ef282071c52a31447104e4b522a119",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/cpu_check.py": "a65a3eee1021403e5804f513265abcfeade2d8d5eb56627cd1d15f73688497cb",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/create_job.py": "c94319e5d4603731739ebf7c533f54facf7ee18527498bf0b9e3fb7e3d218618",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/experiment.py": "24344d61e619f54780c7c83718aa4faf55cdbcfaa03a464be85dac97feee9fbd",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/fixed_worker.py": "22d01f3aa3e5bf429dd61d9781c1e37066dbaead9ab6640d3215ef74acb232b7",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/measured_online.py": "8a75976ad31b7b2fb40e87baaefa84942c019e9202bb920024cf30a6e9f40ced",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/old_trace_opportunity.py": "dba12e536e78468d1a8c47ca37313dfc657f3344192863c1c220627a3e01d5e1",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/online.py": "e1eb67325046d811c7326cff506ff14663a98d20a2b51c0c68d5204a5393d884",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/paths.py": "9f6d6e81384875dc88e2b3cce74a77cdf46e17f72942249de8db01ae621d5b26",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/prefix_kernel.py": "94f5230b26dd492c3f9d7e21052f0a67662db45e0ace335b5b88079b17400057",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/preflight.py": "60bf2352c835b007970ab2c58e5b7aac19f8f5af78c5d754cb5513a968cee332",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/runtime.py": "440a09cab23bb843a2bf7492275eced494e9b7fb74a40509a6a32b150f92d23a",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/scalar.py": "977a4f639fa5b8360b989cd08107e25bfb8f8d43dc0417f57c05ff2eedbb8f7e",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/selection.py": "a284c8d5208ae832f68a1f68c5f87d6242b23d0af2460aec3d446b1726d1d794",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/server_entry.py": "d3c04ba615d6d92d1c187d458fb012e19fcfae1d7e8cb6a82191be6be7aca0c4",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/settings.py": "4b2b973a72fee8bebb45d0e9ed0862596db65204d86834e7d4b44f8008496c41",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/state_check.py": "ef0b64dd722260008076d7efeaa808850e8e0660641853951db8872f338dcbc5",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/supervisor.py": "0223f9a12e78d6d6c8a7727db9939bd4eca2e550adc11fd7d1143a938a285045",
+    "/rjs/cxz/论文探索/投机采样/experiments/prefix_acceptance_v1/template.py": "2f6242823deb603b379a3a153d6b4e65418c804bdef2c0d0fc1f1573accf46d1",
+    "/rjs/cxz/论文探索/投机采样/experiments/reset_text_bank_v1/bank.py": "a098d7d12186ee83be0f990ab7bcfc55002417f43af35be9c5667345c6f1a76e",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/create_job.py": "8ff7c4fe15eda4ed4d7efc83b51b84f254ab6a422d8ee5a7872d367e32c52c5e",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/launch.py": "16164113d52f20c938b709a5c5168cb7d54b51c2f7fb75bef511b0adaefb7e39",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/ledger_core.py": "3e1f1c44aeac2c2135501736b9f280b2b28edbe0de90da606a4d0171a17e8d1b",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_adapter.py": "aff637d5f1515f3fdf67bea857c28a1df29c80865101e95ee1ba9b00c254ea76",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_attention.py": "2b7d7cf52ab0517aea65f0ca332b7d022ae1bef4b1aaa124cb714c70ac0ecc7f",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_compare.py": "0c11958807c7e9cf3197bc01060fb46085a79276d773b43aa971b771d34efa74",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_kernel.py": "983be375adaead1bd530c95e2466a7ca4a7fe5cdcc6e1123826b02938aa108b9",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/prefix_micro.py": "a6986e90316a6c7579d236045cb93046a984f33f03505b9db62cc7b65e317f17",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/supervisor.py": "60b8a9222d7c9d4544a09bf058bc5e440fa77e0e395c479380494a1d6e479e41",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/task_contract.py": "f2aa722ed12dddedce28edc35c14cc3652fd9db90d32f816234ca136de374815",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/test_entry_cpu.py": "e8d918b18cfeacf453781c2cb4e252f61e3333f1ee3b1a588bf678c8aaf30280",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/test_prefix_cpu.py": "4ee687b720c5b1a32c6dbc62a3073c197bc9badf95243a22e3ce0b7640658cac",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_gpu_v3/worker.py": "2bc2ae87814f106945c1889d916e6bf6f6014e6e4317c6a0eedc9a12a6cca86c",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/_shared_torch_v1.cpython-312-x86_64-linux-gnu.so": "b63eef1c2ca3201533d057da8b325471d234b7f5a5585f57f083d8351cabac48",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/build/lib.linux-x86_64-cpython-312/_shared_torch_v1.cpython-312-x86_64-linux-gnu.so": "b63eef1c2ca3201533d057da8b325471d234b7f5a5585f57f083d8351cabac48",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/direct_counter.py": "b7fd75e46b3418b7fb511f7a03613bf25b8752db106b770308890df67011a62c",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/ledger_core.py": "1879aa4ac38f79f8d2256ff5e5fd689d8e017c5b666bca1e988655c3a296a292",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/micro_worker.py": "3f07c694cffe38ccb4991e2ef26017ad306c718cb1eae2cce72ca078089068b1",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/prepare_source.py": "636779b05be26defd20e453e701a842389ce08c4df02ebbea361d3a59798c44d",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/run.py": "7ca199c0d2c384c0fa46a51b183d828dc3ca8acad017774cd0d0818f1e9f1bfc",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/setup.py": "c0ed0df059b51f0dfa6923e4706678d393a081515b8170055e7f5805bba970d9",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/task_contract.py": "77653939c6c2e95e0f0dc88c4e1397d0591244b295dc366a4bb3dbd88890a93f",
+    "/rjs/cxz/论文探索/投机采样/experiments/shared_prefix_torch_v2/test_cpu.py": "01f60e64d6d53f04fdec57af424a1c7a4f7892cd374fb3f05c28899fd0af00a6",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/adapter.py": "ca4cda2ee776dde6ea82471eba2b192010eb0787032fafc617b466320388a4e7",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/capture.py": "b166953b0d98da2880d251d7af82422579cda6e9a0427c7dcb83c988e0b21453",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/contract.py": "9ff92f9bdc1c44a1b9b86af113eae3bfc4f6c1a0c5516265ece4fbcace3f5f21",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/counter_journal.py": "a7d1256c4bf7c618fb3fdbc336fe5c9bfdcfa92053088b9fad44b25cc93d188e",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/counter_recovery.py": "8398d602da9bb147738cd48f8873f1fb5238fb9aba12e9d441f36c487e443e03",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/create_job.py": "d2c1b4a092cd1377b896bdb683444bd6e980029a0ac2876efdac63a9225e9e09",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/gpu_compare.py": "d52d8795c14ceab8004db09e1b3de7dec42f46c0a9caab28fa61ebbce9c95fc6",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/launch.py": "76f1b85e2a49126b0e6be75de7693951032df3c78a3dc4ddfe17daf7b1d6dc8d",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/ledger_core.py": "3626cc2399f9a6332c5998c8660008306367cad2e1cc531be09480791dc46dc7",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/ownership.py": "1a42ba16590cdfee84173868e50fc98159e12e36dfe3550128492b199c2b0112",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/production_fixture.py": "c84dfea43f92724b572abb39a6fbf92b7847a80f44ddb5673eefec1ff376e11e",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/resource_guard.py": "7cfba486f71da8789e44849b15a658796f99f06efc82bdfdb1d3a61c3f620775",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/supervisor.py": "7f38593660be4aa458a6ad7ea2f6ec3199d60bfbc320a3283d557b8a2eb578ea",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/task_contract.py": "99ff5c58dba5782365432342719deb08588856d67e02b506c1c3dd56363d6f2b",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/test_counter_cpu.py": "913dc209dafeb29306a86c895eb57fd4bf40b6d953589c8b8befa4a20448f5c2",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/test_cpu.py": "a9df889c6417b5d7e52d5ac5c019a064b4b6c5c2cf31745adf45260253e79de9",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/test_job_cpu.py": "b789e02d00be80cc16ad0d0cb4c5b81f88cfed5181b2ecdb2804c9a0df3d7f8f",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/test_loader_cpu.py": "dd1d80cb849ad3fdeb02f2035c726c44b50864e0473b04d3f43f725ad5c098ae",
+    "/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/worker.py": "7a88a25d2b6e8f184f39c590cd5267301ec3476e3a56ea456dabe431cc37f7de",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/analyze.py": "3b6390699acbd11f868915d13e1acf50babd5d7768e38e57da4406949e9b0702",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/client_entry.py": "5dbdaa3870548a67629047d4fa91b0e688738aa35b1e7f596ec50ee91c1d89c0",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/create_job.py": "1355b7ae55f87a3a7a079b27d56d8f662e46e3a1e1d8115bce25cbdafebc4f06",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/disk_guard.py": "2e8c24c642162df27b49d7f12ebe0ec86d845e27394000b79a1acac5ca985ad8",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/launch_identity.py": "b1027615632c34542a0a6072b862b1228a7e54422637a83b6fd5ef101e8b3f9f",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/online_shared.py": "5ff1ec86ef7478a7cbde91e1ffea94190f66a14857b8e42d509cb35834190196",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/prefix_adapter.py": "13514fc4b3a33c7ec94df3c29f8eedbec7d4eea59c1808675f18c1fea3e6fcf9",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/prefix_attention.py": "e55b38e48ecaa9c0c91de4298cf79be28d22a41cc99a3dbce7728b3f6274989f",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/prefix_kernel.py": "cea7a77a27cc893618aaeb0300b28879f6c0a6afda5710e3d5653c6f3df75847",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/preflight.py": "3ef59c51a039a8988256aeabd7fd21c8045b33f59002e58f9d8c1d7a0e256637",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/probe.py": "1bba15eadc41e87259d8b26cdc6ca8a77342097dd38d9d87adb2c479faaadc8b",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/runtime.py": "2ac15517a0d14369dd350a31cc0bf758a51ba54ca0a432b247f86f2a6b3bb913",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/server_entry.py": "395069d6190584d5e00c8701030f328fce6721e3442fe45040c163440c770efd",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/supervisor.py": "e084941bfbcd9f58a1560538e6e7181d96078f66a7b833efa110d70c7da74ed8",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/task_contract.py": "a1f923b6a853888dda11afdee05f09ec1d57b4f116e07b95b48755b22c79394b",
+    "/rjs/cxz/论文探索/投机采样/experiments/speculative_e2e_v3/test_cpu.py": "206c7585c6fa291f31a94f7a8abefa3f0938b2b7803b2d21bcfb0c2b710baa5b",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/adapter.py": "147c7e6472cdbffe3ba999db2ce39d77c949a44d2d8f1701a43b4582fbf9f714",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/gpu_actual_cal.py": "2a31eff2f339d45489fed6c9c2832c3e1122e64e52e43dfd6fdf6116813365cf",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_finetune_v1/train.py": "37bc04e36ee211cc1559828f4d8482d3bf7b82cc187fb8d6bb22821f0f040822",
+    "/rjs/cxz/论文探索/投机采样/experiments/target_trace_draft_train_v1/adapter.py": "42737b89ec38ca1993dd3c3c9134baa13173cb5f076fc1390aa2dc90f6953af4",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/adapter.py": "fadb4093e50ac57b7bc08b21c24214133a589e429c1f27b4d783912a475180ab",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/gpu_actual_cal.py": "979189ec368deb423cda0a8db07b0d2d2778e9806508002934be0734e7d18515",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_mlp_continue_v1/train.py": "545e38d3a555ef1758a832d20ae448b302518145223cccb3398632d4b3f472a4",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/analyze.py": "0ed220ae04a865bb2cc254e666d024463437fca7e351be8751fde5ed3416ad0e",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/capture_client.py": "b1dacc33bd80feb4c5cb0aefb708ba6f118ed9adfe5802f32b00cc13d959693c",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/client_entry.py": "30ea9648935e027b6a95ed7845b8eac7ea6dc42190bdd3228ca1b9f45996e148",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/legacy.py": "e39eb7fffc2ad57585f49d3b57d99632616bec4e68b9711f70a353bde0ebd33d",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/protocol.py": "9cf28fa92146fe837e4e385a49ef649ee9f21bf60700b8b15bae0414cc9b1e22",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/run.py": "c19da78acd0b94458bcf64b9f3b5310e55e90d32210f2b5c4ea71a97bbede8a9",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/saved_outputs.py": "659c5e49142a63fea8401a9196990378733255df642545852c8d2d2fed65ff53",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_quality_v1/server_entry.py": "890866165c3563121374f2981162bf69a4d7d3b96c1f49d3e65c81630cfabb32",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_train_v1/adapter.py": "9a0c40eabcca0351025adc7fdacfae889e239f871541deb2867b312c05c6bff8",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_train_v1/gpu_actual_cal.py": "fca2476398972d586ca8d4a457ab3d52d9249e150cbc56568abf50ac68c393dd",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_usable_train_v1/train.py": "d16f4d0dcd4953dde077e6cb45f58823d5b9134ccdfda0ef4b4b2171e332627f",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_batched_verify.py": "985d53c15fc778b662b98dd7c03d108881a0f2aebcc67f11cc5662a3eb9190e8",
+    "/rjs/cxz/论文探索/投机采样/scripts/p0_libero_multichunk_client.py": "7b263689f8a52f45f2a9fc3729a81d78c58c77842bcd4d944e46b73acfe6c7e0",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/__init__.py": "82548e574a8b43d4bb1480e915ea993b526ed9f5fb761f8e65fdcaca601838e8",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/__init__.py": "089e67a9881536877a3c275ec6b8aec50c464273a3f68c5eb3a5143ef8e54df9",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/shared_config.py": "e7989a7c793e10ca81e1dc731aa66d55c4cdb8632f9c06a55371a567c18aa570",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_demo_cfg.py": "65707ff4c57e13c9ac66e87e3e7c2477618e26a7e80cb4a0300b238e7e2bd44c",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_demo_i2va.py": "c1133c46dedf386193a3d4654e879fe6d6453edaaa287ea963e148f13127bf7c",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_demo_train_cfg.py": "7022e4d23e60986489db57a88153987761d935ea181b0d0397ca25290db9b578",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_franka_cfg.py": "86452cea3fc4949d539ed2022ab903420dffe6d82c20c4d4cd64f3954cf6cd3f",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_franka_i2va.py": "d84297e7bcc2227368e3e097982cc2bb8827ba3db1dba508c6f52809e7283172",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_libero_cfg.py": "857aef575086ab49f6f77df11d2f6af2ed9750feb411ab8af38f1df069ab6402",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_libero_i2va.py": "3093b78f540e6c57ae5cd9bc75f51f39a22e437256f94e9bdda5c61430d9fd34",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_libero_train_cfg.py": "fcb92781027a68a4bf06ec08cfd4ca7575ff8040b496a94d21636c36c3b0d104",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_robotwin_cfg.py": "829e6162b3d51951fa85b4c606648b7ec30d42a00246db41519f6974be7117ad",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_robotwin_i2va.py": "b33f161e42f597907498dd55619b726cd256b199b2334dac8383c05771799a1e",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_robotwin_train_cfg.py": "d7ffd1eb2c341e128491edb00f453ef8e313c66bee251dea413db8d1d397363c",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/dataset/__init__.py": "b66a083629ce810dd99b240c5b220450b8d71c975bf1877153998f6fc3d04ecd",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/dataset/lerobot_latent_dataset.py": "984b20899e87c914f491f10c23608f06cb815c56112bdd929e39e187c89566ee",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/distributed/__init__.py": "013ec40a0739296f1ba474036e5d46e06998f795daa0b7c3214773d885a3ab1a",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/distributed/fsdp.py": "cf5c7755e934f933645235f9104cae3ff9adea2b2863bcb1a5ec42eb6f3a8d8f",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/distributed/util.py": "2513e68bcc1163424a7629ec88ce7a9b70c11342945d4ff0dc1801310d1e1648",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/modules/__init__.py": "7de311f2f55aed977114d312b7a4f22c26a451aa4e5685040a37e20533d3d8b1",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/modules/model.py": "f579ee02b490dbffcf78add6452742dbdbef43286600c0eeae3dede3f053cb5b",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/modules/utils.py": "563499ae1aa9fdbe990963c8c133423241f1a63d3f59743b778a1eb4c47757f4",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/train.py": "103e04031b32cbbef0c829a7b3f52986aaaffa996040c173ff8f9a67cc4985ab",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/image_tools.py": "aa8ca88152654c3973042e49339d08f47e927fc5ecc885ec9a114d90f726ebc8",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/msgpack_numpy.py": "c37345c1d0ae4a0f27d91af4798af842986c255e7aa93b08255471cd3393eab1",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/qwenpi_policy.py": "447d6c071b6a3f6718cbf53fd79b9d851a52feebbf2587df184a101778623a33",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/replay_policy.py": "2369969eef4a89e85b84d53e7db4b529525f3d347bd8df50f551071b86633b84",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/websocket_client_policy.py": "39b306a47e582716eb4e4cb9333f2f7ef2a66a1f3c39d65d1674770ec3ed6e53",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/Simple_Remote_Infer/deploy/websocket_policy_server.py": "441423a7ed7382c656247f51e1d53117252b6c92c802a175f8d5d6ec86db3d76",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/__init__.py": "c04beb288fa33eb00ee2362cc3a312d0614877d2afdb47c272ee76978731aaf5",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/logging.py": "3f894f412c096b15692b9adc5a3c4496447aee7e32a86f09562276fcbc2c7fd5",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/p0_k3_b2.py": "10a860e9d23d17fb89f6ceccdf20a59393f59c1cf1e861494e255bf0fce67914",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/p0_state_teacher.py": "979147372672d161fa0a007023094724bc9ef27dbc429feb68bb09a9672b12b9",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/p0_trace.py": "b76bb7592caa51c8d14e1d6d43b93da27e52bc24ecebf8a3134cc7852bc38752",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/scheduler.py": "9833300936d1001e5dfb0db76d5e0e131429685980de7b3c9716288ec28da7f1",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/sever_utils.py": "d61e653a1541fc829786fcce61cb29e828407b0b1014f555c56c950d2d646e44",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/utils/utils.py": "7d81e83d799b338db61e08bd52976fea404ed7db497d93199d4a478c592d2465",
+    "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/wan_va_server.py": "bad90775a446aa1cc8d175a19ce9d43d9b7dc523c260f1bf586eee95a6e1cea1",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/action_observed.py": "2294487a0a2049da8531f46dae4ca09ae6efe3823b92fbd07cf03b3cbfde4162",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/build.py": "c5ed80765e47d62c62ee1c74941b2e1419b0e77ba01d4f856a8eb76d717152fa",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/client_entry.py": "95373d8264fe97002a85d53360af5a707e10ce7009808fe04846c4f9eaf11fdb",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/client_observer.py": "0123c3ec9b665fcbdcf0b926276d1aae60b1afb141e34070c2c515d8bae74b3e",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/clock.py": "ce571891fb1570874986799788a056205107f5b2a710dd181a33549324b05114",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/launch.py": "2b2f2941c7c682f9669d3959d907aafee910e76261cccd61962a046f1a696b8c",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/observer.py": "b2ca85a75e4d86c1a28134b12672bdc534349362c0b1ab9d8a125edf8535c039",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/protocol.py": "f28bb67a5ee658beb8354f9b9303acf9a244ddad983442c1c0f43a2668f337c8",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/run.py": "ae8a20fe77feee70d30d158a2f2a352da4162519c301e00802d614d4e37faa7e",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_diagnostic_v1/server_entry.py": "c4335471c65199132f110af1468b04d5e4c78c7297960bbf9a516191a2e74e7f",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/server_entry.py": "fe812c5f55bdd67572703ad946d8c7f846380411f00c68d602f700852111d1b2",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/client_entry.py": "4f50b296ee90b21ad677dfccf344ad01a65cca290e2938e3f35d4d2a9899bd8c",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/launch.py": "315df5c7e2eb2b73876338eed83182f048847bb0aea7c07ea5356932b0b22425",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/clock.py": "318d136977e36490f0f03e0eca075d7b741f09d89082094f3c0ab491f77ccef5",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/run.py": "04d2b93c7593af410436d08be084f8287281c2510d88c16fcd8be2e35671b7cb",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/observer.py": "5261e87fbddb5a746ae921e05d9e632f4a32fec1f5da26b19acbf2d092d75105",
+    "/rjs/cxz/论文探索/投机采样/experiments/task4_direction_completion_v1/protocol.py": "4f6f59b4f51fb14371f1d12600582041e823db37e362f9f222982d5f5a3c63d5",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_closure_v1/clock.py": "71b479f8fc4846269cd2f52cb64c1e5f3b4d52f51e2f35d46b0ad9e43686ef95",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_closure_v1/replay_worker.py": "e655289064d12d922ee6d5166ad727da02f60f77fc22fbf127759fa3064f1f2c",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_closure_v1/run.py": "663fb1fb6b0937fc5e04c23b45ed9726f8a0e6137a9c5bd6f9fd5a0507bdd402",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_closure_v1/protocol.py": "a7c389afc6fc9567ff055caf8c1cfa58b7b0fb4afd19623da4780c78b038bb5b",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_collector_v1/collector.py": "19df4c1adff9640ea1117d7f6919d0f783fe474821ba8925b7a36e1c955ed5c0",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_closure_reuse_v3/clock.py": "2e840af5a17de50ebcdbe20ba320cc07fb9f63eb738ba11f8772afd966dc04b7",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_closure_reuse_v3/replay_worker.py": "037a7ea2c3e87dd2913db165e6238ad4d6f8fe8666870e5be230063161dc3a17",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_closure_reuse_v3/run.py": "663fb1fb6b0937fc5e04c23b45ed9726f8a0e6137a9c5bd6f9fd5a0507bdd402"
+  },
+  "evidence_stat": {
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/COUNTER.json": {
+      "bytes": 1477789,
+      "mtime_ns": 1792147174844240089
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/client/COMMAND-MAPPING.json": {
+      "bytes": 508251,
+      "mtime_ns": 1792147156288184682
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/client/initial_observations.npz": {
+      "bytes": 98922,
+      "mtime_ns": 1792147156152184260
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/arms/TF_CONT/TARGET-INITIAL-RNG.pt": {
+      "bytes": 6821,
+      "mtime_ns": 1792146306745398079
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-supervision-alignment-cpu-v1-20261016-r1/RESULT.json": {
+      "bytes": 14803,
+      "mtime_ns": 1792155440184140310
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-000.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146391040897929
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-001.pt": {
+      "bytes": 415197,
+      "mtime_ns": 1792146401852832279
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-002.pt": {
+      "bytes": 415197,
+      "mtime_ns": 1792146414016758039
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-003.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146427572674841
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-004.pt": {
+      "bytes": 419021,
+      "mtime_ns": 1792146441480588989
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-005.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146459320478154
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-006.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146474216385015
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-007.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146489532288703
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-008.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146498768230364
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-009.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146510564155575
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-010.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146525192062407
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-011.pt": {
+      "bytes": 415197,
+      "mtime_ns": 1792146537251985250
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-012.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146551751892082
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-013.pt": {
+      "bytes": 417045,
+      "mtime_ns": 1792146566795794967
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-014.pt": {
+      "bytes": 417045,
+      "mtime_ns": 1792146581071702397
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-015.pt": {
+      "bytes": 417173,
+      "mtime_ns": 1792146594927612177
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-016.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146607779528174
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-017.pt": {
+      "bytes": 419021,
+      "mtime_ns": 1792146625119778971
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-018.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146639247995701
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-019.pt": {
+      "bytes": 417045,
+      "mtime_ns": 1792146654000214172
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-020.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146668108415820
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-021.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146684860646288
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-022.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146702476878459
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-023.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146727969196666
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-024.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146743501380621
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-025.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146757893544614
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-026.pt": {
+      "bytes": 417173,
+      "mtime_ns": 1792146770849687068
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-027.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146787805866308
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-028.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146803854028659
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-029.pt": {
+      "bytes": 417173,
+      "mtime_ns": 1792146822366207417
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-030.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146849834456512
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-031.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146867098603596
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-032.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146881174718309
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-033.pt": {
+      "bytes": 419021,
+      "mtime_ns": 1792146899058857521
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-034.pt": {
+      "bytes": 417045,
+      "mtime_ns": 1792146914806974233
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-035.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146929835080643
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-036.pt": {
+      "bytes": 436945,
+      "mtime_ns": 1792146946095190479
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-037.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146960451283008
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-038.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146974751371155
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-039.pt": {
+      "bytes": 419021,
+      "mtime_ns": 1792146990551464011
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-040.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792147005191545923
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-041.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792147019751623562
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-042.pt": {
+      "bytes": 474321,
+      "mtime_ns": 1792147037215711806
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-043.pt": {
+      "bytes": 415197,
+      "mtime_ns": 1792147056263802183
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-044.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792147070087864063
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-045.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792147085763930571
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-046.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792147099983987634
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-047.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792147121496068237
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-048.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792147137124122620
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-049.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792147152052171394
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_172.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147056063801266
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_188.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147121448068064
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_28.pt": {
+      "bytes": 1730029,
+      "mtime_ns": 1792146491124278661
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_20.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146459072479700
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_40.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146525004063608
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_88.pt": {
+      "bytes": 1682733,
+      "mtime_ns": 1792146704996910843
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_116.pt": {
+      "bytes": 1672237,
+      "mtime_ns": 1792146823698219936
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_36.pt": {
+      "bytes": 1692781,
+      "mtime_ns": 1792146512340144288
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_32.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146498592231477
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_160.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147005091545378
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_188.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147121448068064
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_176.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147070027863801
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_172.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147056071801303
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_168.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147036971710610
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_44.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146537127986045
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_16.pt": {
+      "bytes": 1731693,
+      "mtime_ns": 1792146444280571645
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_84.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146684676643807
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_36.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146510440156363
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_40.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146525004063608
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_92.pt": {
+      "bytes": 1674541,
+      "mtime_ns": 1792146730925232244
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_180.pt": {
+      "bytes": 1674669,
+      "mtime_ns": 1792147087571937996
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_112.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146803754027668
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_60.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146594787613090
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_136.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146914678973305
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_104.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146770721685683
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_192.pt": {
+      "bytes": 1722221,
+      "mtime_ns": 1792147139172129492
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_144.pt": {
+      "bytes": 1640365,
+      "mtime_ns": 1792146948091203591
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_20.pt": {
+      "bytes": 1738669,
+      "mtime_ns": 1792146460524470645
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_84.pt": {
+      "bytes": 1679789,
+      "mtime_ns": 1792146687644683664
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_164.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147019647623020
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_72.pt": {
+      "bytes": 1687597,
+      "mtime_ns": 1792146641152024344
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_188.pt": {
+      "bytes": 1658797,
+      "mtime_ns": 1792147123928076928
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_56.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146580927703333
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_4.pt": {
+      "bytes": 1689325,
+      "mtime_ns": 1792146403884819905
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_28.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146489376289687
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_144.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146945939189451
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_104.pt": {
+      "bytes": 1672109,
+      "mtime_ns": 1792146773937720313
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_120.pt": {
+      "bytes": 1671533,
+      "mtime_ns": 1792146852398478809
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_184.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147099851987118
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_80.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146667976413967
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_48.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146551603893035
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_148.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146960335282277
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_184.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147099851987118
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_128.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146881022717096
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_168.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147036971710610
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_140.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146929743080006
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_36.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146510440156363
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_88.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146702352876861
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_172.pt": {
+      "bytes": 1668845,
+      "mtime_ns": 1792147058011810179
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_76.pt": {
+      "bytes": 1684589,
+      "mtime_ns": 1792146656344248159
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_68.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146624975776725
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_156.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146990319462682
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_180.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147085583929829
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_164.pt": {
+      "bytes": 1669165,
+      "mtime_ns": 1792147021891634659
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_152.pt": {
+      "bytes": 1655341,
+      "mtime_ns": 1792146977023384799
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_116.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146822274206551
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_196.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147151864170799
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_120.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146849678455149
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_180.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147085591929862
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_12.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146427420675777
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_64.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146607695528724
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_8.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146413972758309
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_100.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146757769543226
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_124.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146866942602299
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_20.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146459072479700
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_132.pt": {
+      "bytes": 1678829,
+      "mtime_ns": 1792146901618876861
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_8.pt": {
+      "bytes": 1706989,
+      "mtime_ns": 1792146415640748098
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_68.pt": {
+      "bytes": 1685549,
+      "mtime_ns": 1792146627803820719
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_48.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146551619892932
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_4.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146401696833228
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_80.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146667976413967
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_48.pt": {
+      "bytes": 1802925,
+      "mtime_ns": 1792146553755879171
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_60.pt": {
+      "bytes": 1684077,
+      "mtime_ns": 1792146596291603276
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_84.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146684660643591
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_32.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146498592231477
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_24.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146474080385867
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_196.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147151892170887
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_176.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147070027863801
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_16.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146441380589608
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_64.pt": {
+      "bytes": 1698541,
+      "mtime_ns": 1792146609183525432
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_40.pt": {
+      "bytes": 1685805,
+      "mtime_ns": 1792146527188049658
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_32.pt": {
+      "bytes": 1715501,
+      "mtime_ns": 1792146500164221529
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_92.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146727793194537
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_80.pt": {
+      "bytes": 1684333,
+      "mtime_ns": 1792146670184444903
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_96.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146743437379878
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_100.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146757745542957
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_72.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146639063992928
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_184.pt": {
+      "bytes": 1664173,
+      "mtime_ns": 1792147102523997504
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_92.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146727793194537
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_0.pt": {
+      "bytes": 1261229,
+      "mtime_ns": 1792146391756893592
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_152.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146974631370431
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_160.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147005091545378
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_44.pt": {
+      "bytes": 1765485,
+      "mtime_ns": 1792146538675976120
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_128.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146881022717096
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_120.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146849678455149
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_124.pt": {
+      "bytes": 1674477,
+      "mtime_ns": 1792146868098611898
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_60.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146594783613117
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_192.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147137004122216
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_0.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146390876898923
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_148.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146960335282277
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_168.pt": {
+      "bytes": 1663597,
+      "mtime_ns": 1792147038575718459
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_136.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146914678973305
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_156.pt": {
+      "bytes": 1649773,
+      "mtime_ns": 1792146992079472746
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_128.pt": {
+      "bytes": 1676589,
+      "mtime_ns": 1792146883822739377
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_112.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146803754027668
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_196.pt": {
+      "bytes": 1724269,
+      "mtime_ns": 1792147153820176969
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_0.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146390868898971
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_72.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146639067992989
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_100.pt": {
+      "bytes": 1658221,
+      "mtime_ns": 1792146758777554487
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_28.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146489360289788
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_68.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146624983776850
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_96.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146743437379878
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_112.pt": {
+      "bytes": 1658029,
+      "mtime_ns": 1792146805098040954
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_156.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146990319462682
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_88.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146702352876861
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_124.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146866938602266
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_132.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146898878856155
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_44.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146537127986045
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_152.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146974611370311
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_132.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146898878856155
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_56.pt": {
+      "bytes": 1714733,
+      "mtime_ns": 1792146583163688799
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_116.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146822274206551
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_16.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146441380589608
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_176.pt": {
+      "bytes": 1673965,
+      "mtime_ns": 1792147071375869671
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_164.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792147019647623020
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_136.pt": {
+      "bytes": 1663661,
+      "mtime_ns": 1792146917402992956
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_12.pt": {
+      "bytes": 1712621,
+      "mtime_ns": 1792146429252664497
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_160.pt": {
+      "bytes": 1663661,
+      "mtime_ns": 1792147007119556421
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_108.pt": {
+      "bytes": 1660973,
+      "mtime_ns": 1792146790369892716
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_52.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146566675795743
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_52.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146566675795743
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_96.pt": {
+      "bytes": 1669229,
+      "mtime_ns": 1792146744897396800
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_148.pt": {
+      "bytes": 1665389,
+      "mtime_ns": 1792146962415295350
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_192.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792147137004122216
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_12.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146427420675777
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_24.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146474088385817
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_108.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146787685865067
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_4.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146401704833180
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_104.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146770721685683
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_56.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146580927703333
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_140.pt": {
+      "bytes": 1644205,
+      "mtime_ns": 1792146932363098076
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_108.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146787677864984
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_76.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146653860212133
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_24.pt": {
+      "bytes": 1725165,
+      "mtime_ns": 1792146476280372067
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/obs_data_52.pt": {
+      "bytes": 1787309,
+      "mtime_ns": 1792146568579783420
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_8.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146413968758333
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_76.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146653860212133
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_64.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146607695528724
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/actions_140.pt": {
+      "bytes": 2537,
+      "mtime_ns": 1792146929743080006
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/server_output/real/put the white mug on the left plate and put the yellow and white mug on the right plate_20261016_182610/latents_144.pt": {
+      "bytes": 50729,
+      "mtime_ns": 1792146945935189425
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/RESET.json": {
+      "bytes": 36374,
+      "mtime_ns": 1792146370993018796
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/FINAL-SERVER-STATE.json": {
+      "bytes": 38625,
+      "mtime_ns": 1792147174732239767
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/FAILED.json": {
+      "bytes": 518,
+      "mtime_ns": 1792156976926740792
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/FINAL-OWNED-CLEANUP.json": {
+      "bytes": 1434,
+      "mtime_ns": 1792156976926740792
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/SUPERVISOR-RESULT.json": {
+      "bytes": 13219,
+      "mtime_ns": 1792156976926740792
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/CLOCK-RESULT.json": {
+      "bytes": 5678,
+      "mtime_ns": 1792156978882656299
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/PREREGISTRATION.json": {
+      "bytes": 145069,
+      "mtime_ns": 1792155991108034788
+    }
+  },
+  "max_run_wall_sec": 2700,
+  "cleanup_reserve_sec": 180,
+  "absolute_cleanup_deadline": "2026-10-16T13:49:55.331414+00:00",
+  "absolute_work_stop": "2026-10-16T13:46:55.331414+00:00",
+  "target_forward_cap": 6000,
+  "storage_cap_bytes": 1073741824,
+  "disk_floor_bytes": 5368709120,
+  "GPU": "local A100-SXM4-40GB",
+  "shared_GPU_allowed": true,
+  "workers": 1,
+  "CPU_affinity": [
+    12,
+    13
+  ],
+  "CPU_threads": 2,
+  "initial_free_GiB": 22,
+  "master_port": 29667,
+  "port": 19667,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "real_robot_episode_count": 0,
+  "recorded_full_episode_replay_passes": 1,
+  "policy_chunks_per_pass": 50,
+  "gates": [
+    "all50 original actions/video/physical commands/teacher queries/routes/targetcounts exact",
+    "all50 original policy before/after RNG exact",
+    "full reset and final all-valid30layer KV and RNG exact to original OFF record",
+    "O3 active in all50 chunks; zero extra teacher forward",
+    "separate CPU full teacher/proposal/sigma/time/step/score/flags audit before collection"
+  ],
+  "timeout": "PARTIAL/FAILED retained; no auto retry, no reset of this cap",
+  "no_smoke": true,
+  "no_training": true,
+  "no_120": true,
+  "no_TEST": true,
+  "no_AutoDL": true,
+  "cleanup": "independent CPU clock and exact owned PID identity/ancestry; never foreign processes",
+  "evidence_path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1",
+  "terminal_status": "REGISTERED_NOT_STARTED",
+  "performance_claim": false,
+  "predecessors": [
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2"
+  ],
+  "original_absolute_budget_retained": true,
+  "OFF_baseline_reused": true,
+  "per_request_KV_comparison": false,
+  "preregistration_sha256": "0f5b400b23350f0af1ee2a81bf071e771b97e2f96bc0a6e90a682cb53d4ded71"
+}

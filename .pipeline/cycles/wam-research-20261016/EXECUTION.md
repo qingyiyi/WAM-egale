@@ -1,9 +1,30 @@
 ---
 kind: execution-log
 cycle: wam-research-20261016
-updated: 2026-10-16T05:21:36+08:00
+updated: 2026-10-17T00:27:00+08:00
 ---
 # 研究恢复检查点
+
+## 2026-10-17 00:27 - 完整新30与数据审计结束，固定训练实际运行
+
+- collect30实际30完整终态、9383.734秒、23685 target forward、约132.3MiB，原4h/2GiB内；supervisor/独立clock及全部观察到的自有worker已退出。生成池29成功/1完整失败均保留，不用于签新TF质量。
+- pack CPU2核49.367秒PASS：9797树/29391全node，FIT11416/CAL6805到达行，11170反事实只存原档；原GPU六score重算max2.98e-8/0接受翻转，额外teacher0。新FIT/CAL与DEV分离，normalizer/阈值不改。
+- 固定TF_CONT/TF_ON/MLP_ON各500 CPU训练已启动，PID3748099、CPU12–13、1800秒从prepare累计/256MiB；当前CONT150/500，尚无整体终态/新质量结果。TF_CONT须复现旧全部参数，不根据CAL选checkpoint或seed。
+- 未来DEV96清单和7h预算修订仍未执行；全轮硬截止09:04:55，北京。新launcher/最终报告器将随DEV预先冻结；报告绑定实际RNG字节和全轮截止。AutoDL未连接，用户双卡问题仅纳入最终评估。来源及精确接续见[RUNBOOK](../../experiments/tf-effect-closure-20261016/RUNBOOK.md)。旧四false、FAILED和tile保护保持。
+
+## 2026-10-16 21:18 - 用户授权TF 1→2→3，诊断完成、采集资格运行
+
+- 新CPU监督对齐诊断57.14秒/2核/0GPU完成，当前真实parent误差较同task/step targetFIT高48%，jointNN20.52%超旧CAL对应P95；旧mixed误差接近及选择失败DEV的限制同时保留。支持有限当前TF到达分布实验，不把因果UNKNOWN改成已证实失败根因。
+- 已准备独立O3旁路collector、严格新训练schema及完整任务入口，不改原生产action/score/阈值。一次新20FIT/10CAL、TF-cont/TF-on同child2500/500预算，必要MLP-on后置baseline；先完整记录50chunk OFF/ON资格，未采/未训。
+- 资格r1仅CPU监督父PID准入错误，0GPU/无worker已清理、FAILED保留；r2修独立clock lifetime/UID/PGID/argv检查，原绝对45分钟帽不重置。r2实际root3647250/clock3647251，单GPUworker3647255，当前OFF重放；lhw既有进程保留，非正式计时。
+- 原四false、原retention/default/FAILED、原120和TEST40–49不变；AutoDL不连接。后续依资格和完整CPU audit准入，不用未运行代码冒充结果。[执行清单](../../experiments/tf-effect-closure-20261016/PLAN.md)。
+
+## 2026-10-16T17:52:30+08:00 - 固定公开提交后的独立 M11 诊断启动
+
+- 固定b0dfac3a02f65de33a1217246b83003615166640，173旧冻结来源逐项一致，171Python与固定公开快照逐字节一致。新增10源在独立namespace，观察AST删除后与原函数一致，额外teacher forward为0。
+- 新任务2对task4/init26完整T/TF、horizon800；40分钟硬帽含等待/setup/失败，留300秒清理，新增1GiB；本机单GPUworker、server2/client2、CPU12–15，CPU clock0–1。独立root3492327/clock3492373实际已启动，先clock准入后worker。
+- 当前GPU另有lhw两个进程，质量按共享授权；不作正式计时、不杀他人。AutoDL不连接。所有旧FAILED/retention/default及四权限不变，120未注册。
+- [事前登记](../../../投机采样/results/runtime/p0-task4-direction-diagnostic-v1-20261016-r1/PREREGISTRATION.json)；终态以同目录status/清理和后续CPU报告为准。
 
 ## 2026-10-16T05:21:36+08:00 - 夜间实验与归档终态，质量未通过
 
@@ -33,7 +54,7 @@ updated: 2026-10-16T05:21:36+08:00
 
 - M2：旧100实际completed_episodes=100，终态FAILED，错误为paired initial state differs task2/init25/initial_obs_hashes。QUALITY不存在，all_roots_reaped=true。
 - 两个接续watcher按原门停止，新TF/新bank链未启动；未修改远端文件或重启GPU。
-- 通过既有archive.py --inspect只读取回[终态证据](../../../review/OMISSIONS.md)。此处记录观察，不把100局完整误当原配对PASS，也不证明数据无用。
+- 通过既有archive.py --inspect只读取回[终态证据](../../../review/OMISSIONS-20261017.md)。此处记录观察，不把100局完整误当原配对PASS，也不证明数据无用。
 - 下一步：CPU检查物理/RNG与相机差异、独立失败归档；需要新的协议/namespace才能改变后续资格，不改原FAILED。
 
 ## 2026-10-16T00:06:11+08:00 - 只迁移恢复入口
@@ -80,3 +101,72 @@ updated: 2026-10-16T05:21:36+08:00
 ## 2026-10-16T15:18:27.460014+08:00 - M10完整50终态，TF retention HOLD
 
 50完整DEV及全3184PT/34776数组独审一致；fresh三臂10/10、TF长度三项过，但risk task4/init26 T249成功/TF796失败，原风险条件未过。来源/预算/58pins清理通过，实际8056.511秒/2.207GB，AutoDL不再连接。结构接口暂冻供算子，权重/配方未accepted；原未来120前置实际拒绝，未注册/waiter/GPU。task4有限诊断缺teacher到命令映射，D01 HOLD；M11只登记为下一待准备作业。见[统一结果](../../research/speculative-sampling/DRAFT-FREEZE-RESULT-20261016.md)。四权限、默认及原FAILED不变。
+
+## 2026-10-16T15:55:55.344198+08:00 - GitHub研究评审快照发布
+
+用户指定qingyiyi/WAM-egale并授权HW同步。隔离clone发布commit `b0dfac3a02f65de33a1217246b83003615166640`，942新增文本/源码，171冻结Python原字节；公开四入口HTTP200/内容一致。22端口失败保留、443严格hostkey成功，无强推/凭据/权重/原始轨迹上传；0GPU/AutoDL。完整prompt与阅读包已上线，原TF保留HOLD、四权限及M11未登记不变。详情见[同步记录](../../../review/OMISSIONS-20261017.md)。
+
+## 2026-10-16T18:59:29+08:00 - M11有限诊断终态PARTIAL，资源已清理
+
+- r1两Target完整249步成功/命令逐位一致；TF在20237真实GPU CAL后因新增观察绑定globals缺torch失败，原FAILED保留。独立r2仅修inspect.unwrap绑定并复用该CAL，完成一局TF796步失败，第二TF累计工作截止中止；不计算法失败。原定2对实际只有1对完整。
+- 完整r0实际初态/双相机/RNG/reset和796条命令映射通过；50chunk/2500合法提交、depth0/1/2=134/32/738。首teacher差异索引1、depth0、state同，首draft索引3；完整KV根因重放未做，训练不触发。
+- 首次birth累计3298.856秒（54.98分钟），两GPU作业生命周期记账上界2903.054秒；非CUDA活跃时间。12观察身份+2guard真核无匹配存活，224709965B；491保护记录不变、默认配置对固定快照逐字节一致，四权限false、120未运行。AutoDL不连接。
+- 五份报告/时间表：[HW实验](../../../review/OMISSIONS-20261017.md)。系统CPU派生矩阵24/54有历史证据、30格未测，无本轮新系统GPU计时。当前关闭有限Attempt，研究仍active；下一步同真实根query数值复验/必要补缺完整诊断另登记。
+
+## 2026-10-16T19:28:21.985397+08:00 - M12 draft优先的数值诊断启动
+
+用户明确优先draft；已用Maintain保存当前Cycle约束，不改变科学门。原190冻结源及新增入口CPU校验通过；worker/supervisor分进程实际导入通过，无CUDA。独立r1实际supervisor3571999，原完整T/TF首policy chunk重放、单query四路径数值归因，20分钟含setup/失败/清理、1GiB、CPU12–13/单GPUworker，OS timeout与CPU监督。旧M11累计帽关闭不复用；AutoDL不连接，120/训练不启动。
+
+## 2026-10-16T19:54:50.062514+08:00 - M12完成，用户明确TF64唯一主模型
+
+两完整记录policy chunk/各50提交与原动作视频逐位复现；同query全部原始输入、30层有效KV/RNG相同。B2普通=只读、B14原生=已有shared-prefix；首差异FP32时间MLP linear_2，时间编码反事实不能恢复方向逐位一致，整局失败因果UNKNOWN。两作业监督377.039秒、含准备间隔累计703.318秒<1200；121目标调用、约0.45GiB，两个root/17观察子进程退出，491保护项不变。旧FAILED/retention/阈值/四false均保留，AutoDL/120/新训练未启动。
+
+用户进一步明确TF64固定主draft，MLP只作最终baseline，新增MLP诊断不优先；Maintain已保存Cycle约束。后继为TF数据覆盖与递归监督核查，证据支持才一次新FIT/CAL及TF-cont/TF-on训练；不继续数值逐位大改Transformer。见[M12结果与TF下一步](../../experiments/draft-teacher-path-20261016/RESULT.md)。
+
+## 2026-10-16T20:02:47.691561+08:00 - 固定TF主线后的M13 CPU审计完成
+
+只读TF完整task4/init26的904树/2712 query，其中1674实际访问；原六score CPU核验max2.98e-8。root/到达parent/反事实parent局部通过85.18/95.84/65.99%，高σ根50次全拒绝；同task同step固定normalizer尺度未显示简单递归爆炸，失败因果仍UNKNOWN，不能强行触发训练。原14997不是当前TF on-policy，DEV数据不转FIT/CAL。CPU2核33.83秒、0模型前后向/0GPU，自有进程退出。见[TF审计](../../experiments/tf-training-support-20261016/EXPERIMENT.md)。TF64唯一主draft、MLP仅后置baseline；四权限false，训练/采集/120尚未启动。
+
+
+## 2026-10-17T00:45:00+08:00 - M13新数据完成，训练基础设施收口
+
+- 一次30完整episode生成池已结束清理，29成功/1失败只是数据来源；全量CPU审计PASS，FIT11416/CAL6805实际到达行，11170反事实另留，额外teacher0。
+- 原CPU三条件job已CONT500，但完整逐行CPU2校验慢；写STOP防ON部分更新后重复，原1800秒/00:52:10帽不变。独立续接正在审查，拟复用CONT500、ON/MLP首次各500，训练2线程不变、校验1线程完整保留；尚未登记或执行续接。
+- 用户最新睡前09:00汇报要求已前瞻收紧未来DEV清理≤08:40、分析≤08:55，并保留原7h/master12h更早帽。原预算不覆盖。AutoDL不连接；单机双卡帮助将在终报按实际episode成本评估。
+- [接续入口](../../experiments/tf-effect-closure-20261016/RUNBOOK.md)。DEV96尚未启动，旧四权限false，原FAILED/default/tile未改。
+
+
+## 2026-10-17T01:13:06.507381+08:00 - M13固定训练完成，DEV96实际启动
+
+- 原CPU1765.165秒FAILED保留；独立CPU1校验续接1061.888秒三条件PASS并清理。CONT仅复用已500权重且与旧模型/norm全tensor一致，ON/MLP首次各500；旧+新累计2827.053秒、0GPU训练/teacher。
+- DEV实际root3787524/clock3787527，namespace `p0-tf-effect-dev96-v1-20261017-r1`，固定96完整episode，7h/3GiB、08:06:37停工/08:11:37清理。报告CPU≤08:55、用户09:00汇报约束不变。
+- 本机16允许核存在CPU争用，root账户gem5/qemu提交者UNKNOWN；不杀他人。AutoDL不连接，四权限false/原FAILED/default/tile保持。[RUNBOOK](../../experiments/tf-effect-closure-20261016/RUNBOOK.md)。
+
+
+## 2026-10-17T01:43:38.560246+08:00 - 用户明确夜间上限改为10/17 10:00
+
+- Maintain已保存Cycle/实验专属决定，替代此前09:00用户上限；旧登记/FAILED不改。
+- 当前原DEV仍root3787524/clock3787527按08:11:37帽运行。只在原预算终态且清理后，必要时单独登记原96缺项接续，09:40 GPU清理/09:55 CPU/10:00汇报；正在准备独立源码，无接续job。
+- 已完整机器人success/failure不重测替换；无终态才允许完整重跑，已有终态但缺审计保持缺口。累计forward未知中断保守扣4000，原280k及总3GiB不重置。
+
+## 2026-10-17 04:45 - Target28完成，固定TF-cont实际运行
+
+- DEV96现完成30条：T的fresh20/risk8已全终态并完成T臂清理，TF_CONT2/20完成，当前task2/init36；42466个完整落盘target forward、约50.7MiB。尚无新TF_ON/MLP_ON结果，进度不等于质量PASS。
+- TF_CONT READY复用原完整20237行GPU CAL、实际新增执行0，O3与setup RNG恢复通过；新两臂完整旧/新GPU CAL仍须各自实际执行。原root3787524/clock3787527继续守原08:06/08:11帽，clock无error。
+- 10:00授权的条件缺项接续/双namespace CPU汇总源码已独立审查；最新静态证据为master/CONTINUATION-SOURCE-REVIEW-20261017-r2.json，新5份Python语法、原204冻结源SHA不变。未登记或启动接续；旧完整成败/FAILED/四权限保持。精确接续见RUNBOOK。
+
+
+## 2026-10-17 08:16 - 原70终态保留，独立补缺与两风险组件核验
+
+- 原DEV守原预算停工，70/96完整；SUPERVISOR FAILED_OR_PARTIAL，24893.568秒、76533已落盘forward。局部TF_ON arm cleanup缺失，原FAILED/严格审计缺口不变；全局clock/owned退出证明齐全。
+- 一次独立pending26已prepare/launch，root4005474/clock4005493；新TF_ON27042行GPU CAL实际PASS，当前风险task4/init26。09:35停工/09:40清理/09:55 CPU/10:00汇报；扣除旧中断保守4000后新forward199467、新空间3080688815B。
+- 新独立CPU recorded-risk组件诊断固定四条既有完整记录，12.431秒/单核/无模型或CUDA，COMPLETE_RECORDED_COMPONENT_DIAGNOSTIC。task1/init29 T264成功→TF796失败、task3/init26 T240成功→TF796失败；保存物理/controller/reset/RNG/双相机exact，命令/保存动作核验完成。全局退出不替代缺失局部收据，不冒称严格质量PASS/失败因果。
+- fresh20 T20、CONT19、ON20成功，但当前TF_ON新增风险失败使无新增风险门不满足。继续仅原固定余项；不追加训练/调阈值/独立TEST，四旧权限始终false。证据入口为本实验RUNBOOK及master/CONTINUATION-ACTUAL-LAUNCH-20261017.json。
+
+
+## 2026-10-17早 - 用户暂停，72终态与GitHub文献交接
+
+- 用户明确暂停，先写网页版draft结构/训练/官方开源调研Prompt并同步GitHub。STOP在task5完整终态后记录；接续2局终态、1634.279秒、4367已知forward。下一case只出现client启动元数据，无完整终态/COUNTER，实际未闭合计算UNKNOWN，另按4000上界扣账。所有60个观察自有pins及clock退出、GPU compute空；不自动恢复。
+- 双根CPU报告49.693秒终态PARTIAL_OR_GAPPED_FIXED_DEV96_NO_SELECTION：raw72、审计完整50、旧TF_ON arm缺口22、剩24；用户暂停非budget completion的issue保留，不改冻结report来接纳/改PASS。风险4局TF全失败，其中1/29、3/26、4/26 T成功且实际初态/RNG/双相机exact。当前权重NO-GO、总体严格证书未建立，四权限false。
+- 新只读总览见本实验RESULT；全轮已准入GPU作业墙钟10.4647h（不是CUDA active），旧/新未闭合各4000扣账、保守DEV上界88900，原280k/3GiB不重置。r1派生资源账本漏下一client setup，独立r2纠正并保留r1，生产原件不改。
+- 用户授权GitHub新审阅分支review/tf-draft-handoff-20261017，父提交b0dfac3a不改main；发布尚在准备，尚未声称已上传。Maintain保存当前Cycle暂停，旧10:00继续安排被暂停状态替代。

@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-10-17T00:29:01.227634+00:00",
+  "kind": "OFFICIAL_DOCUMENTATION_CHECK_NOT_RENTAL_AUTHORIZATION",
+  "primary_sources": [
+    {
+      "url": "https://www.autodl.com/docs/gpu/",
+      "checked_via": "web indexed official documentation",
+      "supports": "Instance CPU/RAM depend on selected host per-GPU quota and GPU count; inspect exact quota, do not infer from GPU name."
+    },
+    {
+      "url": "https://api.autodl.com/docs/env/",
+      "checked_via": "web indexed official documentation",
+      "supports": "Official example: a host quota of 8 CPU cores and 32 GB RAM per GPU yields 16 cores and64GB for two GPUs; example is not universal."
+    }
+  ],
+  "direct_www_env_retry": "2026-10-17 direct fetch timed out; official gpu and api.env indexed primary content available",
+  "proposed_future_resource_only": {
+    "GPU": "2 x same A100 >=40GiB each",
+    "host_CPU_total_min_recommended": 16,
+    "host_RAM_total_GiB_recommended": 64,
+    "reason": "Two independent complete-episode workers, no draft DDP; measured local model startup host and VRAM observations are separate evidence.",
+    "achieved_two_GPU_throughput": "UNKNOWN; not benchmarked",
+    "lease_started": false,
+    "SSH_connected": false
+  },
+  "formal_timing_boundary": "local same A100-SXM4 under exclusive window after quality permission; no PCIe/SXM4 mixed speedup"
+}

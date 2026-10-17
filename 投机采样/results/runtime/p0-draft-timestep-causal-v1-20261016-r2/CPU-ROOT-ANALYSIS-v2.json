@@ -1,0 +1,82 @@
+{
+  "root_conditional112": {
+    "elements": 112,
+    "dtype": "torch.bfloat16",
+    "different": 65,
+    "max_abs": 0.015625,
+    "RMS": 0.0034455342683941126
+  },
+  "causal_conditional112": {
+    "ordinary_B2": {
+      "elements": 112,
+      "dtype": "torch.bfloat16",
+      "different": 0,
+      "max_abs": 0.0,
+      "RMS": 0.0
+    },
+    "dense_B14": {
+      "elements": 112,
+      "dtype": "torch.bfloat16",
+      "different": 65,
+      "max_abs": 0.015625,
+      "RMS": 0.0034455342683941126
+    },
+    "B14_root_time_from_B2": {
+      "elements": 112,
+      "dtype": "torch.bfloat16",
+      "different": 72,
+      "max_abs": 0.015625,
+      "RMS": 0.0035426674876362085
+    },
+    "B14_all_candidate_time_pairs_B2": {
+      "elements": 112,
+      "dtype": "torch.bfloat16",
+      "different": 72,
+      "max_abs": 0.015625,
+      "RMS": 0.0035426674876362085
+    }
+  },
+  "time_suboperator_dtypes": {
+    "condition_embedder_action.timesteps_proj": "torch.float32",
+    "condition_embedder_action.time_embedder.linear_1": "torch.float32",
+    "condition_embedder_action.time_embedder.act": "torch.float32",
+    "condition_embedder_action.time_embedder.linear_2": "torch.float32",
+    "condition_embedder_action.act_fn": "torch.bfloat16",
+    "condition_embedder_action.time_proj": "torch.bfloat16"
+  },
+  "root_depth": 0,
+  "root_sigma_path": [
+    0.7101448774337769,
+    0.545454204082489,
+    0.4392523765563965
+  ],
+  "root_threshold": 0.007839680526450805,
+  "recorded_first_costs": [
+    0.02595706097781658,
+    0.04932386428117752
+  ],
+  "all_scores_below_are_CPU_diagnostic_not_production_recalibration": true,
+  "CPU_root_first_costs_B2": [
+    0.026259562000632286,
+    0.04914472997188568
+  ],
+  "CPU_root_first_costs_B14": [
+    0.02595706097781658,
+    0.04932386428117752
+  ],
+  "teacher_numeric_difference_local_norm": 0.006005298346281052,
+  "canonical_time_returned_exact": {
+    "B14_root_time_from_B2": true,
+    "B14_all_candidate_time_pairs_B2": true
+  },
+  "canonical_time_block0_exact": {
+    "B14_root_time_from_B2": false,
+    "B14_all_candidate_time_pairs_B2": false
+  },
+  "score_arithmetic": "CPU: cast both operands to FP32, subtract in FP32, norm FP32; not new production calibration",
+  "supersedes": "CPU-ROOT-ANALYSIS.json CPU-derived three norm fields only; BF16 subtraction was used in V1. Other dtype/difference/guard facts unchanged.",
+  "CPU_B14_cost_minus_recorded_GPU": [
+    0.0,
+    0.0
+  ]
+}

@@ -1,0 +1,786 @@
+{
+  "schema": "tf-effect-collector-baseline-reuse-cpu-audit/v1",
+  "status": "PASS_FULL_50_CHUNK_QUALIFICATION_AUDIT_BASELINE_REUSED",
+  "source_commit": "b0dfac3a02f65de33a1217246b83003615166640",
+  "qualification": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3",
+  "source_episode": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0",
+  "validation_scope": "one complete ON replay versus original complete recorded OFF episode; all50 policy outputs/teacher/proposals/routes and per-chunk RNG; RESET and final complete valid KV/RNG; no new OFF replay and no all-request KV claim",
+  "complete_chunks": 50,
+  "actual_teacher_trees": 904,
+  "actual_teacher_rows": 2712,
+  "actually_reached_rows": 1674,
+  "root_rows": 904,
+  "counterfactual_parent_rows": 1038,
+  "all_state_previous_target_proposal_bytes_exact": true,
+  "all_sigma_time_step_route_cost_flags_exact": true,
+  "counter_coverage_checked": true,
+  "all_original_teacher_proposal_routes_exact": true,
+  "teacher_cpu_norm_max_abs": 2.9802322387695312e-08,
+  "cpu_norm_atol": 1e-06,
+  "cpu_norm_bitwise_GPU_equivalence_claimed": false,
+  "cpu_norm_uses_separate_FP32_operands_before_subtraction": true,
+  "cpu_reduction_depth_flips": 0,
+  "cpu_reduction_edge_gate_flips": 0,
+  "deployment_acceptance_uses_original_GPU_costs": true,
+  "collector_equivalence_passed": true,
+  "baseline_reused": true,
+  "new_ON_passes": 1,
+  "new_OFF_passes": 0,
+  "new_policy_chunk_replays": 50,
+  "all_intermediate_request_KV_equivalence_established": false,
+  "per_chunk_RNG_exact": true,
+  "reset_and_final_full_valid_KV_RNG_exact": true,
+  "old_two_new_pass_allrequestKV_contract_passed": false,
+  "terminal_proof": {
+    "status": "PASS_NEW_BASELINE_REUSE_TERMINAL_CONTRACT",
+    "validation_scope": "one complete ON replay versus original complete recorded OFF episode; all50 policy outputs/teacher/proposals/routes and per-chunk RNG; RESET and final complete valid KV/RNG; no new OFF replay and no all-request KV claim",
+    "recorded_full_episode_baseline_reused": true,
+    "new_ON_passes": 1,
+    "new_OFF_passes": 0,
+    "all_intermediate_request_KV_equivalence_established": false,
+    "per_chunk_RNG_exact": true,
+    "reset_and_final_full_valid_KV_RNG_exact": true,
+    "predecessors_retained": [
+      {
+        "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1",
+        "status": "FAILED_PRE_GPU_GUARD_ADMISSION",
+        "failure_receipt_retained": true
+      },
+      {
+        "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2",
+        "status": "FAILED_OR_PARTIAL",
+        "failure_receipt_retained": true
+      }
+    ],
+    "total_replay_target_forwards": 2192,
+    "new_teacher_forwards": 0,
+    "process_observations": [
+      {
+        "pid": 3663176,
+        "start_ticks": 1342625620,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3663179,
+        "start_ticks": 1342625664,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3663479,
+        "start_ticks": 1342630178,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3663924,
+        "start_ticks": 1342634752,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3664330,
+        "start_ticks": 1342639320,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3664828,
+        "start_ticks": 1342643900,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3665096,
+        "start_ticks": 1342648468,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3665503,
+        "start_ticks": 1342653032,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3665902,
+        "start_ticks": 1342657597,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3666338,
+        "start_ticks": 1342662174,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3666649,
+        "start_ticks": 1342666736,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3667237,
+        "start_ticks": 1342671295,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3667644,
+        "start_ticks": 1342675894,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3668265,
+        "start_ticks": 1342680483,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3668528,
+        "start_ticks": 1342685062,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3668790,
+        "start_ticks": 1342689622,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3669201,
+        "start_ticks": 1342694219,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3669556,
+        "start_ticks": 1342698814,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3669993,
+        "start_ticks": 1342703395,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3663169,
+        "start_ticks": 1342625467,
+        "same_pinned_lifetime": false,
+        "live": false
+      },
+      {
+        "pid": 3663170,
+        "start_ticks": 1342625549,
+        "same_pinned_lifetime": false,
+        "live": false
+      }
+    ],
+    "clock_is_not_robot_quality_certificate": true
+  },
+  "row_check_source_proof": {
+    "source": "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_collector_audit_v1/audit.py",
+    "source_sha256": "0f5b120f86ea9bd696677822a859a3d75a193b0c1aabdf5dee527b53d53bd77a",
+    "extracted_checks_ast_sha256": "b948ac55f95f3736061cb7c9fee7dfc20202d98c1007d6a2e483ebc95999b25e",
+    "all_original_row_checks_AST_unchanged": true,
+    "old_terminal_and_reporting_contract_not_reused": true
+  },
+  "chunk_reports": [
+    {
+      "chunk": 0,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 1.862645149230957e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 1,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 2,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 9.313225746154785e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 3,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 4,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 7.450580596923828e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 5,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 6,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 2.3283064365386963e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 7,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 9.313225746154785e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 8,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 1.862645149230957e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 9,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 2.3283064365386963e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 10,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 11,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 2.3283064365386963e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 12,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 2.3283064365386963e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 13,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 14,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 7.450580596923828e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 15,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 16,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 17,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 18,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 7.450580596923828e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 19,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 1.862645149230957e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 20,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 2.3283064365386963e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 21,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 22,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 7.450580596923828e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 23,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 24,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 2.3283064365386963e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 25,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 26,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 27,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 9.313225746154785e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 28,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 9.313225746154785e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 29,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 7.450580596923828e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 30,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 1.862645149230957e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 31,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 32,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 33,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 34,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 1.862645149230957e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 35,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 36,
+      "trees": 19,
+      "rows": 57,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 37,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 2.9802322387695312e-08,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 38,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 39,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 40,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 7.450580596923828e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 41,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 42,
+      "trees": 21,
+      "rows": 63,
+      "reached_rows": 35,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 1.4901161193847656e-08,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 43,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 44,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 45,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 46,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 47,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 3.725290298461914e-09,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 48,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 34,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 4.656612873077393e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    },
+    {
+      "chunk": 49,
+      "trees": 18,
+      "rows": 54,
+      "reached_rows": 33,
+      "all_saved_fields_bytes_exact": true,
+      "cpu_norm_max_abs": 2.3283064365386963e-10,
+      "cpu_reduction_depth_flips": 0,
+      "cpu_reduction_edge_gate_flips": 0
+    }
+  ],
+  "data_role": "previously_unblinded_DEV_not_new_FIT_CAL",
+  "new_robot_episodes": 0,
+  "new_teacher_forwards": 0,
+  "training_steps": 0,
+  "GPU": false,
+  "CUDA_initialized": false,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "elapsed_run_sec": 17.71962833404541,
+  "elapsed_registered_wall_sec": 23.802553176879883,
+  "evidence": [
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/plan.json",
+      "sha256": "c855911d2efd9ef27c8dabf5d51092b0072bee8bc7c53ff3a2d355a59b48701e"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/PREREGISTRATION.json",
+      "sha256": "0f5b400b23350f0af1ee2a81bf071e771b97e2f96bc0a6e90a682cb53d4ded71"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/WORKER-RESULT.json",
+      "sha256": "240ea0efe1d216c359bba1335b822227b0ae4c01f9b8ad20e85309509a2fda7b"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/SUPERVISOR-RESULT.json",
+      "sha256": "e8d31e92325ae37df8f04e2e1de311bda018ec8d8331cb05a43270dc75311499"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/FINAL-OWNED-CLEANUP.json",
+      "sha256": "453b50e75c0e7963473a023da62f2709a2346b10167daf2c86d8c4221809e773"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/CLOCK-GUARD.json",
+      "sha256": "0ef231dc430dff376656e23b0de06ea22f4452f876ec919b1050041dd5ff1950"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/CLOCK-RESULT.json",
+      "sha256": "6bcdc7b4cb1f27b085f18b9c8e80a766c9d97afdc4b569258d514c37c56f9db4"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/RUN-STARTED.json",
+      "sha256": "a654e9ddb80db720cad5f4b1f193413828c8a16e2686b7811b3ba9aba21f6645"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/ON-REQUEST-PROOF.json",
+      "sha256": "8f54ead0b498f8ebf2910e7bcca25de2010a5845e71ee20db10708571111a4f3"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/COUNTER.json",
+      "sha256": "4e6cbe2e338ee0f097e5aae8f7224767d29871474d5c05e7105a933fc643cf24"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/RESET.json",
+      "sha256": "635a9ed47fe3e80dfd1e2340771ec4a40912cb45a891260dba40a835f8ca942c"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/FINAL-SERVER-STATE.json",
+      "sha256": "81da9afae447f7165a2bec6770a02253579e49cb01094276494246556684136b"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/plan.json",
+      "sha256": "4294d0a80e1b445a6d3c7f00c157c52ca204284ccd09eed9a940e7450bc6cf02"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/FAILED.json",
+      "sha256": "aff264437c7a8088b3eaeb04a0f1e71a12b2f0cd4985c575f9483df07261a4cb"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/FINAL-OWNED-CLEANUP.json",
+      "sha256": "df5e3b47b52235ea38bcb1e496bd7b8304517ac5bcda7d4296b1d845c1d2ffb4"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/plan.json",
+      "sha256": "6d28337279f531c868249b82cdf5443d762a71bbee34f0b35be8507c2311932c"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/FAILED.json",
+      "sha256": "607a7029bf0ab71a4ed84f13be48d22241ce2dd7caeeb73d9aaec1151e8887d2"
+    },
+    {
+      "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/FINAL-OWNED-CLEANUP.json",
+      "sha256": "7f6c6ee4ff1ef90ae307c8c4f374a65e6e5ba96ccba51982fc120d14fe8f10ee"
+    }
+  ],
+  "performance_claim": false,
+  "source_evidence_modified": false
+}

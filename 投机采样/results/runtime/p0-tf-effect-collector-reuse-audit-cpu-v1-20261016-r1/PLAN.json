@@ -1,0 +1,633 @@
+{
+  "schema": "tf-effect-collector-baseline-reuse-cpu-audit/v1",
+  "source_commit": "b0dfac3a02f65de33a1217246b83003615166640",
+  "qualification": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3",
+  "birth_epoch": 1792158007.726289,
+  "deadline_epoch": 1792158907.726289,
+  "wall_cap_seconds": 900,
+  "storage_cap_bytes": 67108864,
+  "cpu_threads": 2,
+  "GPU": false,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "source_sha256": {
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_collector_audit_v1/audit_reuse.py": "94a6933616eb664ee9d5d9066c6405af28c7d19a11c3a2d82f8004992d60ec8a",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_collector_audit_v1/audit.py": "0f5b120f86ea9bd696677822a859a3d75a193b0c1aabdf5dee527b53d53bd77a"
+  },
+  "validation_scope": "one complete ON replay versus original complete recorded OFF episode; all50 policy outputs/teacher/proposals/routes and per-chunk RNG; RESET and final complete valid KV/RNG; no new OFF replay and no all-request KV claim",
+  "cleanup_plan": "single pinned CPU process, alarm plus caller external timeout; no workers/models/CUDA",
+  "numerical_norm_atol": 1e-06,
+  "evidence_path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-reuse-audit-cpu-v1-20261016-r1",
+  "terminal_status": "REGISTERED_NOT_PREPARED",
+  "source_episode": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0",
+  "traces": [
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-000.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-001.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-002.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-003.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-004.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-005.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-006.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-007.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-008.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-009.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-010.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-011.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-012.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-013.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-014.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-015.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-016.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-017.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-018.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-019.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-020.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-021.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-022.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-023.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-024.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-025.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-026.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-027.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-028.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-029.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-030.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-031.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-032.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-033.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-034.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-035.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-036.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-037.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-038.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-039.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-040.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-041.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-042.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-043.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-044.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-045.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-046.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-047.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-048.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-049.pt"
+  ],
+  "teachers": [
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00000.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00001.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00002.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00003.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00004.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00005.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00006.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00007.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00008.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00009.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00010.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00011.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00012.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00013.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00014.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00015.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00016.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00017.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00018.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00019.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00020.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00021.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00022.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00023.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00024.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00025.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00026.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00027.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00028.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00029.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00030.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00031.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00032.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00033.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00034.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00035.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00036.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00037.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00038.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00039.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00040.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00041.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00042.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00043.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00044.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00045.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00046.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00047.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00048.pt",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00049.pt"
+  ],
+  "evidence_stat": {
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/plan.json": {
+      "bytes": 146514,
+      "mtime_ns": 1792157126560811594
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/PREREGISTRATION.json": {
+      "bytes": 146418,
+      "mtime_ns": 1792157126532812611
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/WORKER-RESULT.json": {
+      "bytes": 73328,
+      "mtime_ns": 1792157931587691710
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/SUPERVISOR-RESULT.json": {
+      "bytes": 10536,
+      "mtime_ns": 1792157939563530844
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/FINAL-OWNED-CLEANUP.json": {
+      "bytes": 1148,
+      "mtime_ns": 1792157939559530924
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/CLOCK-GUARD.json": {
+      "bytes": 1953,
+      "mtime_ns": 1792157147688052694
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/CLOCK-RESULT.json": {
+      "bytes": 5343,
+      "mtime_ns": 1792157940035521339
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/RUN-STARTED.json": {
+      "bytes": 218,
+      "mtime_ns": 1792157146960078552
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/ON-REQUEST-PROOF.json": {
+      "bytes": 11101,
+      "mtime_ns": 1792157931571692033
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/COUNTER.json": {
+      "bytes": 1477789,
+      "mtime_ns": 1792147174844240089
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/RESET.json": {
+      "bytes": 36374,
+      "mtime_ns": 1792146370993018796
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/FINAL-SERVER-STATE.json": {
+      "bytes": 38625,
+      "mtime_ns": 1792147174732239767
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/plan.json": {
+      "bytes": 144156,
+      "mtime_ns": 1792155895384477842
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/FAILED.json": {
+      "bytes": 294,
+      "mtime_ns": 1792155963120177111
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/FINAL-OWNED-CLEANUP.json": {
+      "bytes": 558,
+      "mtime_ns": 1792155963120177111
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/plan.json": {
+      "bytes": 145165,
+      "mtime_ns": 1792155991112034767
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/FAILED.json": {
+      "bytes": 518,
+      "mtime_ns": 1792156976926740792
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/FINAL-OWNED-CLEANUP.json": {
+      "bytes": 1434,
+      "mtime_ns": 1792156976926740792
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-000.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146391040897929
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-001.pt": {
+      "bytes": 415197,
+      "mtime_ns": 1792146401852832279
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-002.pt": {
+      "bytes": 415197,
+      "mtime_ns": 1792146414016758039
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-003.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146427572674841
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-004.pt": {
+      "bytes": 419021,
+      "mtime_ns": 1792146441480588989
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-005.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146459320478154
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-006.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146474216385015
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-007.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146489532288703
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-008.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146498768230364
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-009.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146510564155575
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-010.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146525192062407
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-011.pt": {
+      "bytes": 415197,
+      "mtime_ns": 1792146537251985250
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-012.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146551751892082
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-013.pt": {
+      "bytes": 417045,
+      "mtime_ns": 1792146566795794967
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-014.pt": {
+      "bytes": 417045,
+      "mtime_ns": 1792146581071702397
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-015.pt": {
+      "bytes": 417173,
+      "mtime_ns": 1792146594927612177
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-016.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146607779528174
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-017.pt": {
+      "bytes": 419021,
+      "mtime_ns": 1792146625119778971
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-018.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146639247995701
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-019.pt": {
+      "bytes": 417045,
+      "mtime_ns": 1792146654000214172
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-020.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146668108415820
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-021.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146684860646288
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-022.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146702476878459
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-023.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146727969196666
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-024.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146743501380621
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-025.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146757893544614
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-026.pt": {
+      "bytes": 417173,
+      "mtime_ns": 1792146770849687068
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-027.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146787805866308
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-028.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146803854028659
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-029.pt": {
+      "bytes": 417173,
+      "mtime_ns": 1792146822366207417
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-030.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146849834456512
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-031.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792146867098603596
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-032.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146881174718309
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-033.pt": {
+      "bytes": 419021,
+      "mtime_ns": 1792146899058857521
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-034.pt": {
+      "bytes": 417045,
+      "mtime_ns": 1792146914806974233
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-035.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792146929835080643
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-036.pt": {
+      "bytes": 436945,
+      "mtime_ns": 1792146946095190479
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-037.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792146960451283008
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-038.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792146974751371155
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-039.pt": {
+      "bytes": 419021,
+      "mtime_ns": 1792146990551464011
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-040.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792147005191545923
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-041.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792147019751623562
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-042.pt": {
+      "bytes": 474321,
+      "mtime_ns": 1792147037215711806
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-043.pt": {
+      "bytes": 415197,
+      "mtime_ns": 1792147056263802183
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-044.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792147070087864063
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-045.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792147085763930571
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-046.pt": {
+      "bytes": 415133,
+      "mtime_ns": 1792147099983987634
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-047.pt": {
+      "bytes": 417109,
+      "mtime_ns": 1792147121496068237
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-048.pt": {
+      "bytes": 415069,
+      "mtime_ns": 1792147137124122620
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/direction_trace/chunk-049.pt": {
+      "bytes": 419085,
+      "mtime_ns": 1792147152052171394
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00000.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157268300026654
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00001.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157280927632408
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00002.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157294711207427
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00003.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157305306884442
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00004.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157316414549231
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00005.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157327106229772
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00006.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157339569861247
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00007.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157353021468074
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00008.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157367629046353
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00009.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157378448737413
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00010.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157391484368974
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00011.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157402660056316
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00012.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157413223763441
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00013.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157423915469599
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00014.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157438883062503
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00015.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157447994817055
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00016.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157457818554404
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00017.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157469410247064
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00018.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157482921892264
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00019.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157496957527538
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00020.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157508577228473
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00021.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157522448874774
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00022.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157535364548628
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00023.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157545500294774
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00024.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157556296026371
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00025.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157564383826607
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00026.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157577079515251
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00027.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157592363143951
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00028.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157608458756963
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00029.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157619506493675
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00030.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157635394118279
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00031.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157649509787872
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00032.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157663729457913
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00033.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157680225078664
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00034.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157695088740080
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00035.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157708316441199
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00036.pt": {
+      "bytes": 144719,
+      "mtime_ns": 1792157726376036733
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00037.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157739439746667
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00038.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157753615434227
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00039.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157767963120385
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00040.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157777690908933
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00041.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157792446590196
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00042.pt": {
+      "bytes": 158287,
+      "mtime_ns": 1792157807070276634
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00043.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157823409928938
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00044.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157837293635643
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00045.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157851337340912
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00046.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157863493087342
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00047.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157876820810922
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00048.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157890972519196
+    },
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/teacher/chunk-00049.pt": {
+      "bytes": 137359,
+      "mtime_ns": 1792157910136126995
+    }
+  },
+  "receipt_sha256": {
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/plan.json": "c855911d2efd9ef27c8dabf5d51092b0072bee8bc7c53ff3a2d355a59b48701e",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/PREREGISTRATION.json": "0f5b400b23350f0af1ee2a81bf071e771b97e2f96bc0a6e90a682cb53d4ded71",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/WORKER-RESULT.json": "240ea0efe1d216c359bba1335b822227b0ae4c01f9b8ad20e85309509a2fda7b",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/SUPERVISOR-RESULT.json": "e8d31e92325ae37df8f04e2e1de311bda018ec8d8331cb05a43270dc75311499",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/FINAL-OWNED-CLEANUP.json": "453b50e75c0e7963473a023da62f2709a2346b10167daf2c86d8c4221809e773",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/CLOCK-GUARD.json": "0ef231dc430dff376656e23b0de06ea22f4452f876ec919b1050041dd5ff1950",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/CLOCK-RESULT.json": "6bcdc7b4cb1f27b085f18b9c8e80a766c9d97afdc4b569258d514c37c56f9db4",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/RUN-STARTED.json": "a654e9ddb80db720cad5f4b1f193413828c8a16e2686b7811b3ba9aba21f6645",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3/ON-REQUEST-PROOF.json": "8f54ead0b498f8ebf2910e7bcca25de2010a5845e71ee20db10708571111a4f3",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/COUNTER.json": "4e6cbe2e338ee0f097e5aae8f7224767d29871474d5c05e7105a933fc643cf24",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/RESET.json": "635a9ed47fe3e80dfd1e2340771ec4a40912cb45a891260dba40a835f8ca942c",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-task4-direction-diagnostic-completion-v1-20261016-r2/episodes/TF_CONT-task4-init26-repeat0/FINAL-SERVER-STATE.json": "81da9afae447f7165a2bec6770a02253579e49cb01094276494246556684136b",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/plan.json": "4294d0a80e1b445a6d3c7f00c157c52ca204284ccd09eed9a940e7450bc6cf02",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/FAILED.json": "aff264437c7a8088b3eaeb04a0f1e71a12b2f0cd4985c575f9483df07261a4cb",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/FINAL-OWNED-CLEANUP.json": "df5e3b47b52235ea38bcb1e496bd7b8304517ac5bcda7d4296b1d845c1d2ffb4",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/plan.json": "6d28337279f531c868249b82cdf5443d762a71bbee34f0b35be8507c2311932c",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/FAILED.json": "607a7029bf0ab71a4ed84f13be48d22241ce2dd7caeeb73d9aaec1151e8887d2",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r2/FINAL-OWNED-CLEANUP.json": "7f6c6ee4ff1ef90ae307c8c4f374a65e6e5ba96ccba51982fc120d14fe8f10ee"
+  },
+  "row_check_source_proof": {
+    "source": "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_collector_audit_v1/audit.py",
+    "source_sha256": "0f5b120f86ea9bd696677822a859a3d75a193b0c1aabdf5dee527b53d53bd77a",
+    "extracted_checks_ast_sha256": "b948ac55f95f3736061cb7c9fee7dfc20202d98c1007d6a2e483ebc95999b25e",
+    "all_original_row_checks_AST_unchanged": true,
+    "old_terminal_and_reporting_contract_not_reused": true
+  },
+  "preregistration_sha256": "965a7dc3fd500a98e84f66d47fd9ba7714e6eb60799240aa587462e8d2914be2"
+}

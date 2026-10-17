@@ -1,0 +1,30 @@
+{
+  "schema": "tf-effect-training-registration/v1",
+  "goal": "one finite mechanism-triggered TF training comparison",
+  "source_commit": "b0dfac3a02f65de33a1217246b83003615166640",
+  "inputs": {
+    "onpolicy": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collect30-pack-cpu-v1-20261016-r1/columns.pt",
+    "data_audit": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collect30-pack-cpu-v1-20261016-r1/DATA-AUDIT.json",
+    "trigger": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-closure-v1-20261016-r1/TRAINING-TRIGGER.json"
+  },
+  "cpu_threads": 2,
+  "GPU": false,
+  "birth_epoch": 1792167730.55049,
+  "deadline_epoch": 1792169530.5505033,
+  "wall_cap_seconds": 1800,
+  "storage_cap_bytes": 268435456,
+  "terminal_status": "REGISTERED_NOT_PREPARED",
+  "cleanup_plan": "single CPU process; alarm and external timeout; no workers/services",
+  "evidence_path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-onpolicy-train-v1-20261016-r1",
+  "conditions": [
+    "TF_CONT",
+    "TF_ON",
+    "MLP_ON"
+  ],
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  }
+}

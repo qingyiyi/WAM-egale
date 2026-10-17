@@ -1,0 +1,26 @@
+{
+  "schema": "tf-effect-collector-baseline-reuse-cpu-audit/v1",
+  "source_commit": "b0dfac3a02f65de33a1217246b83003615166640",
+  "qualification": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r3",
+  "birth_epoch": 1792158007.726289,
+  "deadline_epoch": 1792158907.726289,
+  "wall_cap_seconds": 900,
+  "storage_cap_bytes": 67108864,
+  "cpu_threads": 2,
+  "GPU": false,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "source_sha256": {
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_collector_audit_v1/audit_reuse.py": "94a6933616eb664ee9d5d9066c6405af28c7d19a11c3a2d82f8004992d60ec8a",
+    "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_collector_audit_v1/audit.py": "0f5b120f86ea9bd696677822a859a3d75a193b0c1aabdf5dee527b53d53bd77a"
+  },
+  "validation_scope": "one complete ON replay versus original complete recorded OFF episode; all50 policy outputs/teacher/proposals/routes and per-chunk RNG; RESET and final complete valid KV/RNG; no new OFF replay and no all-request KV claim",
+  "cleanup_plan": "single pinned CPU process, alarm plus caller external timeout; no workers/models/CUDA",
+  "numerical_norm_atol": 1e-06,
+  "evidence_path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-reuse-audit-cpu-v1-20261016-r1",
+  "terminal_status": "REGISTERED_NOT_PREPARED"
+}

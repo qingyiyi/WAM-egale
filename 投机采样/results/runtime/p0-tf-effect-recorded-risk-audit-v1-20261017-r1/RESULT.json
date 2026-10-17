@@ -1,0 +1,798 @@
+{
+  "schema": "tf-effect-recorded-risk-component-result/v1",
+  "source_commit": "b0dfac3a02f65de33a1217246b83003615166640",
+  "status": "COMPLETE_RECORDED_COMPONENT_DIAGNOSTIC",
+  "recorded_component_diagnostic_complete": true,
+  "not_a_quality_certificate": true,
+  "source_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1",
+  "original_namespace_untouched": true,
+  "original_campaign_status": "FAILED_OR_PARTIAL",
+  "fixed_recorded_cases": [
+    {
+      "arm": "T",
+      "task": 1,
+      "init": 29,
+      "role": "risk_DEV",
+      "rep": 0,
+      "key": "T-risk_DEV-t1-i29-r0"
+    },
+    {
+      "arm": "TF_ON",
+      "task": 1,
+      "init": 29,
+      "role": "risk_DEV",
+      "rep": 0,
+      "key": "TF_ON-risk_DEV-t1-i29-r0"
+    },
+    {
+      "arm": "T",
+      "task": 3,
+      "init": 26,
+      "role": "risk_DEV",
+      "rep": 0,
+      "key": "T-risk_DEV-t3-i26-r0"
+    },
+    {
+      "arm": "TF_ON",
+      "task": 3,
+      "init": 26,
+      "role": "risk_DEV",
+      "rep": 0,
+      "key": "TF_ON-risk_DEV-t3-i26-r0"
+    }
+  ],
+  "recorded_outcomes": [
+    {
+      "case": {
+        "arm": "T",
+        "task": 1,
+        "init": 29,
+        "role": "risk_DEV",
+        "rep": 0,
+        "key": "T-risk_DEV-t1-i29-r0"
+      },
+      "success": true,
+      "actual_env_steps": 264,
+      "failure800_penalty": 264,
+      "terminal_sha256": "9671f1a00f1b11e1827c401257ca6eee7efdec6a31e6923020af3ff02234b984",
+      "original_episode_attempt_id": "5380225d9aac4490be304a4995d3be7e",
+      "episode_wall_sec": 360.81167907454073,
+      "timing_scope": "instrumented shared-resource diagnostic; not formal performance",
+      "recorded_component_audit": {
+        "component_status": "RECORDED_EPISODE_COMPONENTS_VERIFIED",
+        "arm": "T",
+        "role": "risk_DEV",
+        "task": 1,
+        "init": 29,
+        "key": "T-risk_DEV-t1-i29-r0",
+        "episode_attempt_id": "5380225d9aac4490be304a4995d3be7e",
+        "success": true,
+        "horizon_reached": false,
+        "termination_reason": "success",
+        "env_steps": 264,
+        "failure800_penalty": 264,
+        "policy_chunks": 17,
+        "target_forwards": 1256,
+        "trees": 0,
+        "accepted_depth": {
+          "0": 0,
+          "1": 0,
+          "2": 0
+        },
+        "accepted_depth_sum": 0,
+        "legal_scheduler_updates_g": "UNKNOWN",
+        "target_contract_scheduler_updates": 850,
+        "sum_T_round_sec": "UNKNOWN",
+        "cost_per_legal_commit": "UNKNOWN",
+        "complete_episode_wall_sec": 360.81167907454073,
+        "reset_wall_sec": 0.06550539657473564,
+        "request_wall_sec": {
+          "reset": 0.3346191104501486,
+          "policy": 298.60223689861596,
+          "cache": 18.83372319303453
+        },
+        "phase_counters": {},
+        "initial_pairing": {
+          "seed": 20260922,
+          "model_xml_sha256": "57cdf52d3634bb45ca0c39beb7c8afd369754b47426d57e5d9d0504905f9fbdc",
+          "init_state_sha256": "92671e197d63e9a4a167fac77bdd3dfae3c79672f766c3c533ceefa427b4266e",
+          "initial_state_hashes": {
+            "flattened": "650ff43755e4196c200cd23eb989602d998601f76c3d5abd0093aa1fe8b16e5a",
+            "qacc_warmstart": "5b35c2f0a1fe64d93584a4533e6715a9d81fafe26ae57170f91fbfbb991472fd",
+            "ctrl": "bace658434a77b4f4909cb75d4636888fe83c31bae2cc893623d461071437510",
+            "act": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "qacc": "5b35c2f0a1fe64d93584a4533e6715a9d81fafe26ae57170f91fbfbb991472fd",
+            "qfrc_applied": "b960fb5cb94682dfc4a873035d65f8befdcb9bed0e7db0feb905f0dcf437b38c",
+            "xfrc_applied": "834b357d7d39eea0e0c10d11b2219f6830900756c8044936f5374c9e9490f05a",
+            "mocap_pos": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "mocap_quat": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "qpos": "617cd032645a250288fa81a6c7868285bd507f72b17b4c1a2bb2e039df93fb7b",
+            "qvel": "7b7d77f5da1747796456c4544efa685252ea7b2dd74d739715432bfcd67e0e39",
+            "body_xpos": "7be343218b24af6d9b8a9e9ba7404bdb818a3ce1022790905b670432b7f081fb",
+            "body_xquat": "ccd05bf25ab595031ee09795560f38c86c38374710041fcb4ca28da5a9dce081",
+            "site_xpos": "4f036129e04b14c90536b92c53393c8e2cfe7e8835dcd0e519c298fea3d13e17",
+            "site_xmat": "862409fb1f6a6061f1c15871e36ebc68d07e773685cc6ec2c9f7d30758ef1622",
+            "controller_goal_pos": "3ce4d5aa636a353a0023c25f6711eae99a0dded31e0b47e83390fc057e467a3d",
+            "controller_goal_ori": "0a9b8055bc0cb08069b7cb63bb5343c6db1c6899aada3563eeafc4c60d3dc630",
+            "controller_joint_pos": "6049aef32ec126e031722e69df4c33e731bbc4b9c3035285eb45c7443e8f3ea8",
+            "controller_joint_vel": "73d3d91ae989b8583c75e60acd459933dbe679097450ef5dfea725d65eefb0d6",
+            "controller_initial_joint": "fec7cdc1a91c75e43084124f81a22f257a3903ddfa69e862b13713b36691ee2b"
+          },
+          "initial_obs_hashes": {
+            "observation.images.agentview_rgb": "87cdf93043af6c795b6245f991d3c339785f909beea529186cd7cac8e8ad5cd4",
+            "observation.images.eye_in_hand_rgb": "c9a7a880a04a5f0cd5146c52a77bb276344c8d6c33e71f060699126ab4d872ba"
+          },
+          "initial_rng": {
+            "python": "5a15a57e560e189cb1dd667ddedddb61be69ebbac8ce1027f076c1ff421e7e49",
+            "numpy": "07b511fec70b5df7ae184a0c8b24ca0e10e2f0f6b9456b4fc210ba6fab6a4fe0"
+          }
+        },
+        "saved_output_audit": {
+          "files": 34,
+          "action_files": 17,
+          "latent_files": 17,
+          "observation_files": 0,
+          "observations_suppressed": 16,
+          "all_saved_tensors_finite": true,
+          "original_executor_drained": true,
+          "saved_physical_to_transport_bitwise_equal": true
+        },
+        "teacher_enabled": false,
+        "extra_teacher_forwards": 0,
+        "performance_claim": false,
+        "timing_scope": "shared-resource complete episode diagnostic; not formal performance",
+        "original_helper": "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_quality_report_v1/report.py",
+        "original_helper_unchanged": true,
+        "normalized_action_dtype": "torch.bfloat16",
+        "no_teacher_forward": true,
+        "no_arm_cleanup_requirement_removed_from_old_gate": true,
+        "not_a_quality_certificate": true
+      }
+    },
+    {
+      "case": {
+        "arm": "TF_ON",
+        "task": 1,
+        "init": 29,
+        "role": "risk_DEV",
+        "rep": 0,
+        "key": "TF_ON-risk_DEV-t1-i29-r0"
+      },
+      "success": false,
+      "actual_env_steps": 796,
+      "failure800_penalty": 800,
+      "terminal_sha256": "99ca1bd3363dfc606175b470362c9bed152abe7e3fc2ed410abd2b098b7f7480",
+      "original_episode_attempt_id": "0e0f6784e6664650a04a0c217ef4625b",
+      "episode_wall_sec": 615.9901324100792,
+      "timing_scope": "instrumented shared-resource diagnostic; not formal performance",
+      "recorded_component_audit": {
+        "component_status": "RECORDED_EPISODE_COMPONENTS_VERIFIED",
+        "arm": "TF_ON",
+        "role": "risk_DEV",
+        "task": 1,
+        "init": 29,
+        "key": "TF_ON-risk_DEV-t1-i29-r0",
+        "episode_attempt_id": "0e0f6784e6664650a04a0c217ef4625b",
+        "success": false,
+        "horizon_reached": true,
+        "termination_reason": "full_horizon",
+        "env_steps": 796,
+        "failure800_penalty": 800,
+        "policy_chunks": 50,
+        "target_forwards": 2193,
+        "trees": 911,
+        "accepted_depth": {
+          "0": 142,
+          "1": 31,
+          "2": 738
+        },
+        "accepted_depth_sum": 1507,
+        "legal_scheduler_updates_g": 2500,
+        "target_contract_scheduler_updates": 2500,
+        "sum_T_round_sec": "UNKNOWN",
+        "cost_per_legal_commit": "UNKNOWN",
+        "complete_episode_wall_sec": 615.9901324100792,
+        "reset_wall_sec": 0.06801063753664494,
+        "request_wall_sec": {
+          "reset": 0.2550324145704508,
+          "policy": 462.97522886656225,
+          "cache": 52.18077261187136
+        },
+        "phase_counters": {
+          "target_forward_count": 82,
+          "tree_scheduler_transition_count": 6459,
+          "committed_scheduler_update_count": 2500,
+          "ordinary_target_scheduler_update_count": 255,
+          "draft_forward_count": 2733,
+          "tree_count": 911,
+          "logical_candidate_rows": 6377,
+          "verifier_target_row_count": 6377,
+          "verifier_cfg_rows": 12754,
+          "verifier_forward_count": 911,
+          "accepted_depth_0": 142,
+          "accepted_depth_1": 31,
+          "committed_draft_scheduler_update_count": 1507,
+          "accepted_depth_2": 738,
+          "bonus_target_tree_count": 738,
+          "bonus_target_scheduler_update_count": 738,
+          "terminal_target_forward_count": 50
+        },
+        "initial_pairing": {
+          "seed": 20260922,
+          "model_xml_sha256": "57cdf52d3634bb45ca0c39beb7c8afd369754b47426d57e5d9d0504905f9fbdc",
+          "init_state_sha256": "92671e197d63e9a4a167fac77bdd3dfae3c79672f766c3c533ceefa427b4266e",
+          "initial_state_hashes": {
+            "flattened": "650ff43755e4196c200cd23eb989602d998601f76c3d5abd0093aa1fe8b16e5a",
+            "qacc_warmstart": "5b35c2f0a1fe64d93584a4533e6715a9d81fafe26ae57170f91fbfbb991472fd",
+            "ctrl": "bace658434a77b4f4909cb75d4636888fe83c31bae2cc893623d461071437510",
+            "act": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "qacc": "5b35c2f0a1fe64d93584a4533e6715a9d81fafe26ae57170f91fbfbb991472fd",
+            "qfrc_applied": "b960fb5cb94682dfc4a873035d65f8befdcb9bed0e7db0feb905f0dcf437b38c",
+            "xfrc_applied": "834b357d7d39eea0e0c10d11b2219f6830900756c8044936f5374c9e9490f05a",
+            "mocap_pos": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "mocap_quat": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "qpos": "617cd032645a250288fa81a6c7868285bd507f72b17b4c1a2bb2e039df93fb7b",
+            "qvel": "7b7d77f5da1747796456c4544efa685252ea7b2dd74d739715432bfcd67e0e39",
+            "body_xpos": "7be343218b24af6d9b8a9e9ba7404bdb818a3ce1022790905b670432b7f081fb",
+            "body_xquat": "ccd05bf25ab595031ee09795560f38c86c38374710041fcb4ca28da5a9dce081",
+            "site_xpos": "4f036129e04b14c90536b92c53393c8e2cfe7e8835dcd0e519c298fea3d13e17",
+            "site_xmat": "862409fb1f6a6061f1c15871e36ebc68d07e773685cc6ec2c9f7d30758ef1622",
+            "controller_goal_pos": "3ce4d5aa636a353a0023c25f6711eae99a0dded31e0b47e83390fc057e467a3d",
+            "controller_goal_ori": "0a9b8055bc0cb08069b7cb63bb5343c6db1c6899aada3563eeafc4c60d3dc630",
+            "controller_joint_pos": "6049aef32ec126e031722e69df4c33e731bbc4b9c3035285eb45c7443e8f3ea8",
+            "controller_joint_vel": "73d3d91ae989b8583c75e60acd459933dbe679097450ef5dfea725d65eefb0d6",
+            "controller_initial_joint": "fec7cdc1a91c75e43084124f81a22f257a3903ddfa69e862b13713b36691ee2b"
+          },
+          "initial_obs_hashes": {
+            "observation.images.agentview_rgb": "87cdf93043af6c795b6245f991d3c339785f909beea529186cd7cac8e8ad5cd4",
+            "observation.images.eye_in_hand_rgb": "c9a7a880a04a5f0cd5146c52a77bb276344c8d6c33e71f060699126ab4d872ba"
+          },
+          "initial_rng": {
+            "python": "5a15a57e560e189cb1dd667ddedddb61be69ebbac8ce1027f076c1ff421e7e49",
+            "numpy": "07b511fec70b5df7ae184a0c8b24ca0e10e2f0f6b9456b4fc210ba6fab6a4fe0"
+          }
+        },
+        "saved_output_audit": {
+          "files": 100,
+          "action_files": 50,
+          "latent_files": 50,
+          "observation_files": 0,
+          "observations_suppressed": 50,
+          "all_saved_tensors_finite": true,
+          "original_executor_drained": true,
+          "saved_physical_to_transport_bitwise_equal": true
+        },
+        "teacher_enabled": false,
+        "extra_teacher_forwards": 0,
+        "performance_claim": false,
+        "timing_scope": "shared-resource complete episode diagnostic; not formal performance",
+        "original_helper": "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_quality_report_v1/report.py",
+        "original_helper_unchanged": true,
+        "normalized_action_dtype": "torch.bfloat16",
+        "no_teacher_forward": true,
+        "no_arm_cleanup_requirement_removed_from_old_gate": true,
+        "not_a_quality_certificate": true
+      }
+    },
+    {
+      "case": {
+        "arm": "T",
+        "task": 3,
+        "init": 26,
+        "role": "risk_DEV",
+        "rep": 0,
+        "key": "T-risk_DEV-t3-i26-r0"
+      },
+      "success": true,
+      "actual_env_steps": 240,
+      "failure800_penalty": 240,
+      "terminal_sha256": "e0a5087c600ae776a55ee7cd80c42d8b7c5b779b817cb0768ed4738a6eda39f2",
+      "original_episode_attempt_id": "9fa78b3416184149ae34122525b95e63",
+      "episode_wall_sec": 326.86699876375496,
+      "timing_scope": "instrumented shared-resource diagnostic; not formal performance",
+      "recorded_component_audit": {
+        "component_status": "RECORDED_EPISODE_COMPONENTS_VERIFIED",
+        "arm": "T",
+        "role": "risk_DEV",
+        "task": 3,
+        "init": 26,
+        "key": "T-risk_DEV-t3-i26-r0",
+        "episode_attempt_id": "9fa78b3416184149ae34122525b95e63",
+        "success": true,
+        "horizon_reached": false,
+        "termination_reason": "success",
+        "env_steps": 240,
+        "failure800_penalty": 240,
+        "policy_chunks": 16,
+        "target_forwards": 1182,
+        "trees": 0,
+        "accepted_depth": {
+          "0": 0,
+          "1": 0,
+          "2": 0
+        },
+        "accepted_depth_sum": 0,
+        "legal_scheduler_updates_g": "UNKNOWN",
+        "target_contract_scheduler_updates": 800,
+        "sum_T_round_sec": "UNKNOWN",
+        "cost_per_legal_commit": "UNKNOWN",
+        "complete_episode_wall_sec": 326.86699876375496,
+        "reset_wall_sec": 0.09705671109259129,
+        "request_wall_sec": {
+          "reset": 0.3513546045869589,
+          "policy": 274.4660520963371,
+          "cache": 18.029917096719146
+        },
+        "phase_counters": {},
+        "initial_pairing": {
+          "seed": 20260922,
+          "model_xml_sha256": "9b7eb24e4167bb51bcc0ed6924aeb863d0e483ac8443c41e609a318901218b72",
+          "init_state_sha256": "6b4fb60fcd8ce248937b527d067cfcedff974e9730db58786bce5d3aae840af4",
+          "initial_state_hashes": {
+            "flattened": "ec6da364373a9d260d62c259816545972620043b0349cda5963c5a4f639331eb",
+            "qacc_warmstart": "dcafd587a787111f4197316ac6a3689ec4b9cc9a7d5593a80b4ac545375d7399",
+            "ctrl": "5e5897815ce7c18c6cafb6392c24e13f567796ee8ecf4ce77a1670f9f7ed66d6",
+            "act": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "qacc": "dcafd587a787111f4197316ac6a3689ec4b9cc9a7d5593a80b4ac545375d7399",
+            "qfrc_applied": "5d89f056865052bcb89c910d2d62872e029fb273c3db03f8968a52a41593c1b5",
+            "xfrc_applied": "8aa01aabc92db2f90ff1ad773b41d39fae8e25472e3ca428f60d9bf417089d18",
+            "mocap_pos": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "mocap_quat": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "qpos": "b361c9f94ce7ccb5a808f9455d597a64a52b3ec315fb8c4478b175feb16e3af2",
+            "qvel": "30cc0ef2145b58a04513b942a8b8f1ea1b9b50d0c9a2f81e861aca631882e63c",
+            "body_xpos": "ca934b1a1081b175272291732d12e3f1dec90d35432b30e9d0e799d816ef4ebc",
+            "body_xquat": "107eed236b299ba3a10fcc435a5887041b05cd6f2a3a502a3ea4277b8120bced",
+            "site_xpos": "c511793da711b356b81b3fbf971584e0b540eef8fbc33aad6997b4a4eb7a6b55",
+            "site_xmat": "b6f4b5d02ae172f67e566a6dfefea80401a391dbdaa185abd4ae67f7c31b922c",
+            "controller_goal_pos": "7206f2c47938c808289dbdc647d8764f6539a1209a29e29b278f08974b06144a",
+            "controller_goal_ori": "0a9b8055bc0cb08069b7cb63bb5343c6db1c6899aada3563eeafc4c60d3dc630",
+            "controller_joint_pos": "422400b16b4760648964a50338ae1d36ff44503c0a81a622324a43f0853b235f",
+            "controller_joint_vel": "4d994eba2286e197130eb4b5c1061802ef6a5c0f7eeaec3f69c5fd1295757fb7",
+            "controller_initial_joint": "fec7cdc1a91c75e43084124f81a22f257a3903ddfa69e862b13713b36691ee2b"
+          },
+          "initial_obs_hashes": {
+            "observation.images.agentview_rgb": "e35113cb9b92f7665b09925f7f5643ea44ec0da2ffd21c79d10c3921e7bae59b",
+            "observation.images.eye_in_hand_rgb": "2c57480d60848c137aa999a7ffffcfdd5e2e3a6a77b687f225de3af225f5e961"
+          },
+          "initial_rng": {
+            "python": "5a15a57e560e189cb1dd667ddedddb61be69ebbac8ce1027f076c1ff421e7e49",
+            "numpy": "ad5d3ed005e85173fe660e63beb51867a09d9a3d2f6611bbf495858e881538ba"
+          }
+        },
+        "saved_output_audit": {
+          "files": 32,
+          "action_files": 16,
+          "latent_files": 16,
+          "observation_files": 0,
+          "observations_suppressed": 15,
+          "all_saved_tensors_finite": true,
+          "original_executor_drained": true,
+          "saved_physical_to_transport_bitwise_equal": true
+        },
+        "teacher_enabled": false,
+        "extra_teacher_forwards": 0,
+        "performance_claim": false,
+        "timing_scope": "shared-resource complete episode diagnostic; not formal performance",
+        "original_helper": "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_quality_report_v1/report.py",
+        "original_helper_unchanged": true,
+        "normalized_action_dtype": "torch.bfloat16",
+        "no_teacher_forward": true,
+        "no_arm_cleanup_requirement_removed_from_old_gate": true,
+        "not_a_quality_certificate": true
+      }
+    },
+    {
+      "case": {
+        "arm": "TF_ON",
+        "task": 3,
+        "init": 26,
+        "role": "risk_DEV",
+        "rep": 0,
+        "key": "TF_ON-risk_DEV-t3-i26-r0"
+      },
+      "success": false,
+      "actual_env_steps": 796,
+      "failure800_penalty": 800,
+      "terminal_sha256": "508af8ed7f719d64cc8596dfc4006d85e45e76365cf317cdf8ddb1587da52df4",
+      "original_episode_attempt_id": "b1df9adaf40146a2b975f7d3b570db5d",
+      "episode_wall_sec": 625.5141726471484,
+      "timing_scope": "instrumented shared-resource diagnostic; not formal performance",
+      "recorded_component_audit": {
+        "component_status": "RECORDED_EPISODE_COMPONENTS_VERIFIED",
+        "arm": "TF_ON",
+        "role": "risk_DEV",
+        "task": 3,
+        "init": 26,
+        "key": "TF_ON-risk_DEV-t3-i26-r0",
+        "episode_attempt_id": "b1df9adaf40146a2b975f7d3b570db5d",
+        "success": false,
+        "horizon_reached": true,
+        "termination_reason": "full_horizon",
+        "env_steps": 796,
+        "failure800_penalty": 800,
+        "policy_chunks": 50,
+        "target_forwards": 2205,
+        "trees": 906,
+        "accepted_depth": {
+          "0": 148,
+          "1": 21,
+          "2": 737
+        },
+        "accepted_depth_sum": 1495,
+        "legal_scheduler_updates_g": 2500,
+        "target_contract_scheduler_updates": 2500,
+        "sum_T_round_sec": "UNKNOWN",
+        "cost_per_legal_commit": "UNKNOWN",
+        "complete_episode_wall_sec": 625.5141726471484,
+        "reset_wall_sec": 0.05072180740535259,
+        "request_wall_sec": {
+          "reset": 0.24309713020920753,
+          "policy": 485.0939125511795,
+          "cache": 54.146429523825645
+        },
+        "phase_counters": {
+          "target_forward_count": 99,
+          "tree_scheduler_transition_count": 6441,
+          "committed_scheduler_update_count": 2500,
+          "ordinary_target_scheduler_update_count": 268,
+          "draft_forward_count": 2718,
+          "tree_count": 906,
+          "logical_candidate_rows": 6342,
+          "verifier_target_row_count": 6342,
+          "verifier_cfg_rows": 12684,
+          "verifier_forward_count": 906,
+          "accepted_depth_0": 148,
+          "accepted_depth_1": 21,
+          "committed_draft_scheduler_update_count": 1495,
+          "accepted_depth_2": 737,
+          "bonus_target_tree_count": 737,
+          "bonus_target_scheduler_update_count": 737,
+          "terminal_target_forward_count": 50
+        },
+        "initial_pairing": {
+          "seed": 20260922,
+          "model_xml_sha256": "9b7eb24e4167bb51bcc0ed6924aeb863d0e483ac8443c41e609a318901218b72",
+          "init_state_sha256": "6b4fb60fcd8ce248937b527d067cfcedff974e9730db58786bce5d3aae840af4",
+          "initial_state_hashes": {
+            "flattened": "ec6da364373a9d260d62c259816545972620043b0349cda5963c5a4f639331eb",
+            "qacc_warmstart": "dcafd587a787111f4197316ac6a3689ec4b9cc9a7d5593a80b4ac545375d7399",
+            "ctrl": "5e5897815ce7c18c6cafb6392c24e13f567796ee8ecf4ce77a1670f9f7ed66d6",
+            "act": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "qacc": "dcafd587a787111f4197316ac6a3689ec4b9cc9a7d5593a80b4ac545375d7399",
+            "qfrc_applied": "5d89f056865052bcb89c910d2d62872e029fb273c3db03f8968a52a41593c1b5",
+            "xfrc_applied": "8aa01aabc92db2f90ff1ad773b41d39fae8e25472e3ca428f60d9bf417089d18",
+            "mocap_pos": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "mocap_quat": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "qpos": "b361c9f94ce7ccb5a808f9455d597a64a52b3ec315fb8c4478b175feb16e3af2",
+            "qvel": "30cc0ef2145b58a04513b942a8b8f1ea1b9b50d0c9a2f81e861aca631882e63c",
+            "body_xpos": "ca934b1a1081b175272291732d12e3f1dec90d35432b30e9d0e799d816ef4ebc",
+            "body_xquat": "107eed236b299ba3a10fcc435a5887041b05cd6f2a3a502a3ea4277b8120bced",
+            "site_xpos": "c511793da711b356b81b3fbf971584e0b540eef8fbc33aad6997b4a4eb7a6b55",
+            "site_xmat": "b6f4b5d02ae172f67e566a6dfefea80401a391dbdaa185abd4ae67f7c31b922c",
+            "controller_goal_pos": "7206f2c47938c808289dbdc647d8764f6539a1209a29e29b278f08974b06144a",
+            "controller_goal_ori": "0a9b8055bc0cb08069b7cb63bb5343c6db1c6899aada3563eeafc4c60d3dc630",
+            "controller_joint_pos": "422400b16b4760648964a50338ae1d36ff44503c0a81a622324a43f0853b235f",
+            "controller_joint_vel": "4d994eba2286e197130eb4b5c1061802ef6a5c0f7eeaec3f69c5fd1295757fb7",
+            "controller_initial_joint": "fec7cdc1a91c75e43084124f81a22f257a3903ddfa69e862b13713b36691ee2b"
+          },
+          "initial_obs_hashes": {
+            "observation.images.agentview_rgb": "e35113cb9b92f7665b09925f7f5643ea44ec0da2ffd21c79d10c3921e7bae59b",
+            "observation.images.eye_in_hand_rgb": "2c57480d60848c137aa999a7ffffcfdd5e2e3a6a77b687f225de3af225f5e961"
+          },
+          "initial_rng": {
+            "python": "5a15a57e560e189cb1dd667ddedddb61be69ebbac8ce1027f076c1ff421e7e49",
+            "numpy": "ad5d3ed005e85173fe660e63beb51867a09d9a3d2f6611bbf495858e881538ba"
+          }
+        },
+        "saved_output_audit": {
+          "files": 100,
+          "action_files": 50,
+          "latent_files": 50,
+          "observation_files": 0,
+          "observations_suppressed": 50,
+          "all_saved_tensors_finite": true,
+          "original_executor_drained": true,
+          "saved_physical_to_transport_bitwise_equal": true
+        },
+        "teacher_enabled": false,
+        "extra_teacher_forwards": 0,
+        "performance_claim": false,
+        "timing_scope": "shared-resource complete episode diagnostic; not formal performance",
+        "original_helper": "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_quality_report_v1/report.py",
+        "original_helper_unchanged": true,
+        "normalized_action_dtype": "torch.bfloat16",
+        "no_teacher_forward": true,
+        "no_arm_cleanup_requirement_removed_from_old_gate": true,
+        "not_a_quality_certificate": true
+      }
+    }
+  ],
+  "recorded_pair_comparisons": [
+    {
+      "role": "risk_DEV",
+      "task": 1,
+      "init": 29,
+      "reference": "T",
+      "candidate": "TF_ON",
+      "reference_key": "T-risk_DEV-t1-i29-r0",
+      "candidate_key": "TF_ON-risk_DEV-t1-i29-r0",
+      "initial_metadata_without_cameras_equal": true,
+      "actual_sim_controller_arrays_exact": true,
+      "actual_target_initial_RNG_equal": true,
+      "full_reset_state_equal": true,
+      "physical_RNG_equal": true,
+      "camera_pixels": {
+        "observation.images.agentview_rgb": {
+          "exact": true,
+          "changed_channels": 0,
+          "changed_pixels": 0,
+          "max_abs": 0
+        },
+        "observation.images.eye_in_hand_rgb": {
+          "exact": true,
+          "changed_channels": 0,
+          "changed_pixels": 0,
+          "max_abs": 0
+        }
+      },
+      "all_exact": true,
+      "scope": "saved initial sim/controller, reset and CPU/CUDA RNG; unsaved simulator state UNKNOWN",
+      "actual_RNG_tensor_exact": {
+        "CPU": true,
+        "CUDA": true
+      },
+      "recorded_comparison_complete": true,
+      "quality_gate_PASS": false,
+      "pixel_difference_cannot_be_deleted_or_explained_by_global_cleanup": true
+    },
+    {
+      "role": "risk_DEV",
+      "task": 3,
+      "init": 26,
+      "reference": "T",
+      "candidate": "TF_ON",
+      "reference_key": "T-risk_DEV-t3-i26-r0",
+      "candidate_key": "TF_ON-risk_DEV-t3-i26-r0",
+      "initial_metadata_without_cameras_equal": true,
+      "actual_sim_controller_arrays_exact": true,
+      "actual_target_initial_RNG_equal": true,
+      "full_reset_state_equal": true,
+      "physical_RNG_equal": true,
+      "camera_pixels": {
+        "observation.images.agentview_rgb": {
+          "exact": true,
+          "changed_channels": 0,
+          "changed_pixels": 0,
+          "max_abs": 0
+        },
+        "observation.images.eye_in_hand_rgb": {
+          "exact": true,
+          "changed_channels": 0,
+          "changed_pixels": 0,
+          "max_abs": 0
+        }
+      },
+      "all_exact": true,
+      "scope": "saved initial sim/controller, reset and CPU/CUDA RNG; unsaved simulator state UNKNOWN",
+      "actual_RNG_tensor_exact": {
+        "CPU": true,
+        "CUDA": true
+      },
+      "recorded_comparison_complete": true,
+      "quality_gate_PASS": false,
+      "pixel_difference_cannot_be_deleted_or_explained_by_global_cleanup": true
+    }
+  ],
+  "arm_components": {
+    "T": {
+      "arm": "T",
+      "actual_CPU_CUDA_RNG_bound_to_READY": true,
+      "RNG_fingerprints": {
+        "CPU": {
+          "shape": [
+            5056
+          ],
+          "dtype": "torch.uint8",
+          "bytes_sha256": "0263204d76f368773896dd7612e39a71d6c0e9077db30cee631fbd24806b5c09"
+        },
+        "CUDA": {
+          "shape": [
+            16
+          ],
+          "dtype": "torch.uint8",
+          "bytes_sha256": "00e0273d57a08b1e81f7caf7b03889ddd5714d2e3e6b42710bfee8213eb7ab5f"
+        }
+      },
+      "READY_sha256": "cad84cc7ea0a6109684c9f91d4a01016bcd5fe2260716e4e694d9c0fbfe21640",
+      "RNG_file_sha256": "2aabcb8bb93cde6b5a6e87597abdfea2f44247e5f3e60ddeded2b7d45d2ba367",
+      "local_arm_cleanup_receipt_present": true,
+      "local_arm_cleanup_receipt_sha256": "e5c1f67efcedf8d1519898ea0d45c2596e1b805df7ac271fe46474e5fe8f2a69",
+      "local_arm_cleanup_audit_gap": null
+    },
+    "TF_ON": {
+      "arm": "TF_ON",
+      "actual_CPU_CUDA_RNG_bound_to_READY": true,
+      "RNG_fingerprints": {
+        "CPU": {
+          "shape": [
+            5056
+          ],
+          "dtype": "torch.uint8",
+          "bytes_sha256": "0263204d76f368773896dd7612e39a71d6c0e9077db30cee631fbd24806b5c09"
+        },
+        "CUDA": {
+          "shape": [
+            16
+          ],
+          "dtype": "torch.uint8",
+          "bytes_sha256": "00e0273d57a08b1e81f7caf7b03889ddd5714d2e3e6b42710bfee8213eb7ab5f"
+        }
+      },
+      "READY_sha256": "d7bd067bcc3e22c92eb5d4c7011a739ce3b5c4aa9fa31f164dae2b99655401b3",
+      "RNG_file_sha256": "2aabcb8bb93cde6b5a6e87597abdfea2f44247e5f3e60ddeded2b7d45d2ba367",
+      "local_arm_cleanup_receipt_present": false,
+      "local_arm_cleanup_receipt_sha256": null,
+      "local_arm_cleanup_audit_gap": "MISSING original OWNED-CLEANUP.json; global exit proof is separate and cannot restore the old strict gate"
+    }
+  },
+  "global_owned_exit_component": {
+    "component_status": "RECORDED_GLOBAL_EXIT_PROOF_VERIFIED",
+    "original_status": "FAILED_OR_PARTIAL",
+    "original_failure": {
+      "error": "SystemExit('owned stop')",
+      "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/run.py\", line 122, in execute\n    closed=cleanup(roots,d.pins,deadline=min(time.monotonic()+30,end),wait_seconds=.5)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/morning_onpolicy_long8_v4/cleanup.py\", line 61, in roots\n    group_owned(info,pins)\n  File \"/rjs/cxz/论文探索/投机采样/experiments/morning_onpolicy_long8_v4/cleanup.py\", line 43, in group_owned\n    member=ownership.read_process(int(path.name))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/single_worker_chc_gpu_v4/ownership.py\", line 34, in read_process\n    for x in (base / 'cmdline').read_bytes().split(b'\\0') if x)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/pathlib.py\", line 1019, in read_bytes\n    with self.open(mode='rb') as f:\n         ^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/pathlib.py\", line 448, in __fspath__\n    return str(self)\n           ^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/pathlib.py\", line 443, in __str__\n    self._str = self._format_parsed_parts(self.drive, self.root,\n                                          ^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/pathlib.py\", line 557, in drive\n    self._load_parts()\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/pathlib.py\", line 415, in _load_parts\n    drv, root, tail = self._parse_path(path)\n                      ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/pathlib.py\", line 387, in _parse_path\n    @classmethod\n    \n  File \"/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/run.py\", line 150, in <lambda>\n    signal.signal(signal.SIGTERM,lambda *_: (_ for _ in ()).throw(SystemExit('owned stop')))\n                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/run.py\", line 150, in <genexpr>\n    signal.signal(signal.SIGTERM,lambda *_: (_ for _ in ()).throw(SystemExit('owned stop')))\nSystemExit: owned stop\n",
+      "current": "TF_ON-risk_DEV-t4-i26-r0",
+      "completed": [
+        "T-fresh_DEV-t0-i36-r0",
+        "T-fresh_DEV-t1-i36-r0",
+        "T-fresh_DEV-t2-i36-r0",
+        "T-fresh_DEV-t3-i36-r0",
+        "T-fresh_DEV-t4-i36-r0",
+        "T-fresh_DEV-t5-i36-r0",
+        "T-fresh_DEV-t6-i36-r0",
+        "T-fresh_DEV-t7-i36-r0",
+        "T-fresh_DEV-t8-i36-r0",
+        "T-fresh_DEV-t9-i36-r0",
+        "T-fresh_DEV-t0-i37-r0",
+        "T-fresh_DEV-t1-i37-r0",
+        "T-fresh_DEV-t2-i37-r0",
+        "T-fresh_DEV-t3-i37-r0",
+        "T-fresh_DEV-t4-i37-r0",
+        "T-fresh_DEV-t5-i37-r0",
+        "T-fresh_DEV-t6-i37-r0",
+        "T-fresh_DEV-t7-i37-r0",
+        "T-fresh_DEV-t8-i37-r0",
+        "T-fresh_DEV-t9-i37-r0",
+        "T-risk_DEV-t1-i29-r0",
+        "T-risk_DEV-t3-i26-r0",
+        "T-risk_DEV-t4-i26-r0",
+        "T-risk_DEV-t5-i28-r0",
+        "T-risk_DEV-t6-i27-r0",
+        "T-risk_DEV-t8-i25-r0",
+        "T-risk_DEV-t0-i28-r0",
+        "T-risk_DEV-t6-i25-r0",
+        "TF_CONT-fresh_DEV-t0-i36-r0",
+        "TF_CONT-fresh_DEV-t1-i36-r0",
+        "TF_CONT-fresh_DEV-t2-i36-r0",
+        "TF_CONT-fresh_DEV-t3-i36-r0",
+        "TF_CONT-fresh_DEV-t4-i36-r0",
+        "TF_CONT-fresh_DEV-t5-i36-r0",
+        "TF_CONT-fresh_DEV-t6-i36-r0",
+        "TF_CONT-fresh_DEV-t7-i36-r0",
+        "TF_CONT-fresh_DEV-t8-i36-r0",
+        "TF_CONT-fresh_DEV-t9-i36-r0",
+        "TF_CONT-fresh_DEV-t0-i37-r0",
+        "TF_CONT-fresh_DEV-t1-i37-r0",
+        "TF_CONT-fresh_DEV-t2-i37-r0",
+        "TF_CONT-fresh_DEV-t3-i37-r0",
+        "TF_CONT-fresh_DEV-t4-i37-r0",
+        "TF_CONT-fresh_DEV-t5-i37-r0",
+        "TF_CONT-fresh_DEV-t6-i37-r0",
+        "TF_CONT-fresh_DEV-t7-i37-r0",
+        "TF_CONT-fresh_DEV-t8-i37-r0",
+        "TF_CONT-fresh_DEV-t9-i37-r0",
+        "TF_ON-fresh_DEV-t0-i36-r0",
+        "TF_ON-fresh_DEV-t1-i36-r0",
+        "TF_ON-fresh_DEV-t2-i36-r0",
+        "TF_ON-fresh_DEV-t3-i36-r0",
+        "TF_ON-fresh_DEV-t4-i36-r0",
+        "TF_ON-fresh_DEV-t5-i36-r0",
+        "TF_ON-fresh_DEV-t6-i36-r0",
+        "TF_ON-fresh_DEV-t7-i36-r0",
+        "TF_ON-fresh_DEV-t8-i36-r0",
+        "TF_ON-fresh_DEV-t9-i36-r0",
+        "TF_ON-fresh_DEV-t0-i37-r0",
+        "TF_ON-fresh_DEV-t1-i37-r0",
+        "TF_ON-fresh_DEV-t2-i37-r0",
+        "TF_ON-fresh_DEV-t3-i37-r0",
+        "TF_ON-fresh_DEV-t4-i37-r0",
+        "TF_ON-fresh_DEV-t5-i37-r0",
+        "TF_ON-fresh_DEV-t6-i37-r0",
+        "TF_ON-fresh_DEV-t7-i37-r0",
+        "TF_ON-fresh_DEV-t8-i37-r0",
+        "TF_ON-fresh_DEV-t9-i37-r0",
+        "TF_ON-risk_DEV-t1-i29-r0",
+        "TF_ON-risk_DEV-t3-i26-r0"
+      ]
+    },
+    "completed_ledger": 70,
+    "root_lifetime": {
+      "pid": 3787524,
+      "ppid": 3787523,
+      "pgid": 3787524,
+      "start_ticks": 1343981680,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/run.py",
+        "--job",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1"
+      ]
+    },
+    "clock_lifetime": {
+      "pid": 3787527,
+      "ppid": 3787523,
+      "pgid": 3787527,
+      "start_ticks": 1343981745,
+      "uid": 1003,
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/clock.py",
+        "--job",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1"
+      ]
+    },
+    "root_and_clock_lifetimes_exited": true,
+    "observed_owned_lifetimes_checked": 923,
+    "observed_owned_lifetimes_exited": true,
+    "global_receipt_does_not_replace_missing_arm_receipt": true,
+    "observation_scope": "pinned supervisor and descendants proved while live; not unobserved historical processes",
+    "old_FAILED_sha256": "f456c47b623520c08459bf4bc36b3a3ba3457dacf3082009fdc7d09c1e290172",
+    "proof_sha256": {
+      "ROOT-LAUNCH.json": "4059a561a3041089b6918c24aef3cc62101c7a5dea9e7c3571251953920c0059",
+      "CLOCK-LAUNCH.json": "fbf43865ffbe93c9f771104aefe62d68727007c88aaa1cf48ad5385bbdb0733e",
+      "RUN-STARTED.json": "246bdd81a7e6928adc82faf282249682803ba1ba6ccc522152f46722a51b242c",
+      "CLOCK-GUARD.json": "6dc0fd72a3af9fe7cd8d5d07ec0d45e2cb15c11a9a0aef4c897753c8ceafdc0e",
+      "CLOCK-RESULT.json": "fee1db1f66d10a4ee3bbefc600d83ff9a168528b8b50434e228623fdde7fdeae",
+      "SUPERVISOR-RESULT.json": "eb259cee9fdc5e3af4741a4344da355999c9f016466a98ed91d7e08aac7b7b19",
+      "FINAL-OWNED-CLEANUP.json": "70aa8427a52933d53a0c2188d92bd48bc38e11c9eddb3ed5d869fced2ca2b73c",
+      "CLOCK-STOP.json": "d3f3b3673da3334dcd355f9967b475c54b98f6367178e159a9a17939118d43ad"
+    }
+  },
+  "component_audit_gaps": [],
+  "original_local_arm_cleanup_gaps": [
+    "MISSING original OWNED-CLEANUP.json; global exit proof is separate and cannot restore the old strict gate"
+  ],
+  "old_strict_gate": "BLOCKED; original campaign PARTIAL and missing local TF_ON cleanup receipt are retained",
+  "quality_gate_PASS": false,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "independent_TEST_started": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "sum_T_round_sec": "UNKNOWN",
+  "cost_per_legal_commit": "UNKNOWN",
+  "performance_claim": false,
+  "no_root_cause_inference": true,
+  "no_new_forward": true,
+  "no_new_episode": true,
+  "limitations": [
+    "Two fixed previously registered known-risk pairs only; no DEV/TEST aggregation or selection.",
+    "Global observed exit proof does not recreate or satisfy an absent original per-arm receipt.",
+    "Only saved physical/controller/RNG/camera states can be compared; unsaved simulator state UNKNOWN.",
+    "Local recorded acceptance/residual and action audits do not establish environment safety or explain failure."
+  ],
+  "CPU_run_wall_sec": 12.43133294582367,
+  "CPU_prepare_wait_run_wall_sec": 18.091111183166504,
+  "GPU": false,
+  "CUDA_initialized": false,
+  "subprocesses_started": 0,
+  "input_plan_sha256": "0bd26cab41f8d4755ce03b4d1a0f2399da61482a8cba3e16d3dfce4030a4f5e6",
+  "diagnostic_source_sha256": "f7c769669a45214c85c88e94e6bd218ddbc5699adf11b1e5c15d323102bb97bc"
+}

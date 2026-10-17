@@ -1,0 +1,2902 @@
+{
+  "status": "COMPLETE_SAME_REAL_QUERY_TEACHER_PATH_DIAGNOSIS",
+  "chunks": [
+    {
+      "arm": "T",
+      "full_policy_chunk": true,
+      "all50_commits_exact": true,
+      "actions_video_and_decoded_exact": true,
+      "not_closed_loop_episode": true
+    },
+    {
+      "arm": "TF_CONT",
+      "full_policy_chunk": true,
+      "all50_commits_exact": true,
+      "actions_video_and_decoded_exact": true,
+      "not_closed_loop_episode": true
+    }
+  ],
+  "all_actual_input_fields_exact": true,
+  "all30_actual_valid_KV_exact": true,
+  "actual_query_RNG_exact": true,
+  "comparisons_to_ordinary_B2": {
+    "B2_repeat": {
+      "bitwise": true,
+      "different": 0,
+      "max_abs": 0.0,
+      "elements": 960,
+      "finite": true
+    },
+    "B2_readonly": {
+      "bitwise": true,
+      "different": 0,
+      "max_abs": 0.0,
+      "elements": 960,
+      "finite": true
+    },
+    "B14_dense": {
+      "bitwise": false,
+      "different": 793,
+      "max_abs": 0.015625,
+      "elements": 960,
+      "finite": true
+    },
+    "B14_shared_repeat": {
+      "bitwise": false,
+      "different": 793,
+      "max_abs": 0.015625,
+      "elements": 960,
+      "finite": true
+    }
+  },
+  "comparisons_to_actual_shared_B14": {
+    "T": {
+      "bitwise": false,
+      "different": 793,
+      "max_abs": 0.015625,
+      "elements": 960,
+      "finite": true
+    },
+    "TF_CONT": {
+      "bitwise": true,
+      "different": 0,
+      "max_abs": 0.0,
+      "elements": 960,
+      "finite": true
+    },
+    "B2_repeat": {
+      "bitwise": false,
+      "different": 793,
+      "max_abs": 0.015625,
+      "elements": 960,
+      "finite": true
+    },
+    "B2_readonly": {
+      "bitwise": false,
+      "different": 793,
+      "max_abs": 0.015625,
+      "elements": 960,
+      "finite": true
+    },
+    "B14_dense": {
+      "bitwise": true,
+      "different": 0,
+      "max_abs": 0.0,
+      "elements": 960,
+      "finite": true
+    },
+    "B14_shared_repeat": {
+      "bitwise": true,
+      "different": 0,
+      "max_abs": 0.0,
+      "elements": 960,
+      "finite": true
+    }
+  },
+  "stage_results": {
+    "TF_CONT": {
+      "first_difference": "condition_embedder_action",
+      "stages": [
+        {
+          "stage": "action_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder.text_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "rope",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 4096,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder_action",
+          "bitwise": false,
+          "children": [
+            {
+              "bitwise": false,
+              "different": 96,
+              "max_abs": 0.000244140625,
+              "elements": 98304,
+              "finite": true
+            },
+            {
+              "bitwise": false,
+              "different": 1464,
+              "max_abs": 0.00390625,
+              "elements": 589824,
+              "finite": true
+            }
+          ]
+        },
+        {
+          "stage": "block0.full_inputs",
+          "bitwise": false,
+          "children": {
+            "kwargs": {
+              "bitwise": true,
+              "children": {
+                "update_cache": {
+                  "bitwise": true
+                },
+                "cache_name": {
+                  "bitwise": true
+                }
+              }
+            },
+            "args": {
+              "bitwise": false,
+              "children": [
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 98304,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 3145728,
+                  "finite": true
+                },
+                {
+                  "bitwise": false,
+                  "different": 1464,
+                  "max_abs": 0.00390625,
+                  "elements": 589824,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 4096,
+                  "finite": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "stage": "blocks.0.norm1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_q",
+          "bitwise": false,
+          "different": 19198,
+          "max_abs": 0.125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_k",
+          "bitwise": false,
+          "different": 19030,
+          "max_abs": 0.125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_v",
+          "bitwise": false,
+          "different": 26722,
+          "max_abs": 0.03125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_q",
+          "bitwise": false,
+          "different": 19128,
+          "max_abs": 0.03125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_k",
+          "bitwise": false,
+          "different": 18772,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.0",
+          "bitwise": false,
+          "different": 56260,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.1",
+          "bitwise": false,
+          "different": 56260,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1",
+          "bitwise": false,
+          "different": 56260,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm2",
+          "bitwise": false,
+          "different": 98292,
+          "max_abs": 0.07878494262695312,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_q",
+          "bitwise": false,
+          "different": 33520,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_v",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_q",
+          "bitwise": false,
+          "different": 34184,
+          "max_abs": 0.03125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.0",
+          "bitwise": false,
+          "different": 25284,
+          "max_abs": 0.0009765625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.1",
+          "bitwise": false,
+          "different": 25284,
+          "max_abs": 0.0009765625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2",
+          "bitwise": false,
+          "different": 25284,
+          "max_abs": 0.0009765625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm3",
+          "bitwise": false,
+          "different": 98283,
+          "max_abs": 0.1510601043701172,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.0.proj",
+          "bitwise": false,
+          "different": 166424,
+          "max_abs": 0.0625,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.1",
+          "bitwise": false,
+          "different": 141312,
+          "max_abs": 0.03125,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.2",
+          "bitwise": false,
+          "different": 53287,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn",
+          "bitwise": false,
+          "different": 53287,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0",
+          "bitwise": false,
+          "different": 44959,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.1",
+          "bitwise": false,
+          "different": 54571,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.2",
+          "bitwise": false,
+          "different": 60662,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.3",
+          "bitwise": false,
+          "different": 66156,
+          "max_abs": 0.75,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.4",
+          "bitwise": false,
+          "different": 68915,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.5",
+          "bitwise": false,
+          "different": 70013,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.6",
+          "bitwise": false,
+          "different": 74886,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.7",
+          "bitwise": false,
+          "different": 75639,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.8",
+          "bitwise": false,
+          "different": 75897,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.9",
+          "bitwise": false,
+          "different": 75940,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.10",
+          "bitwise": false,
+          "different": 74859,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.11",
+          "bitwise": false,
+          "different": 75432,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.12",
+          "bitwise": false,
+          "different": 74553,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.13",
+          "bitwise": false,
+          "different": 74638,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.14",
+          "bitwise": false,
+          "different": 75664,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.15",
+          "bitwise": false,
+          "different": 76906,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.16",
+          "bitwise": false,
+          "different": 78002,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.17",
+          "bitwise": false,
+          "different": 78758,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.18",
+          "bitwise": false,
+          "different": 79635,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.19",
+          "bitwise": false,
+          "different": 79734,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.20",
+          "bitwise": false,
+          "different": 79990,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.21",
+          "bitwise": false,
+          "different": 79420,
+          "max_abs": 2.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.22",
+          "bitwise": false,
+          "different": 79614,
+          "max_abs": 2.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.23",
+          "bitwise": false,
+          "different": 79818,
+          "max_abs": 2.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.24",
+          "bitwise": false,
+          "different": 79726,
+          "max_abs": 1.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.25",
+          "bitwise": false,
+          "different": 80033,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.26",
+          "bitwise": false,
+          "different": 79923,
+          "max_abs": 0.375,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.27",
+          "bitwise": false,
+          "different": 80412,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.28",
+          "bitwise": false,
+          "different": 81833,
+          "max_abs": 6.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.29",
+          "bitwise": false,
+          "different": 84140,
+          "max_abs": 5.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "norm_out",
+          "bitwise": false,
+          "different": 98304,
+          "max_abs": 0.677154541015625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "action_proj_out",
+          "bitwise": false,
+          "different": 793,
+          "max_abs": 0.015625,
+          "elements": 960,
+          "finite": true
+        }
+      ]
+    },
+    "B2_repeat": {
+      "first_difference": null,
+      "stages": [
+        {
+          "stage": "action_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder.text_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "rope",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 4096,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder_action",
+          "bitwise": true,
+          "children": [
+            {
+              "bitwise": true,
+              "different": 0,
+              "max_abs": 0.0,
+              "elements": 98304,
+              "finite": true
+            },
+            {
+              "bitwise": true,
+              "different": 0,
+              "max_abs": 0.0,
+              "elements": 589824,
+              "finite": true
+            }
+          ]
+        },
+        {
+          "stage": "block0.full_inputs",
+          "bitwise": true,
+          "children": {
+            "kwargs": {
+              "bitwise": true,
+              "children": {
+                "update_cache": {
+                  "bitwise": true
+                },
+                "cache_name": {
+                  "bitwise": true
+                }
+              }
+            },
+            "args": {
+              "bitwise": true,
+              "children": [
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 98304,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 3145728,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 589824,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 4096,
+                  "finite": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "stage": "blocks.0.norm1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_q",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_v",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_q",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.0",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm2",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_q",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_v",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_q",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.0",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm3",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.0.proj",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.2",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.2",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.3",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.4",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.5",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.6",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.7",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.8",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.9",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.10",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.11",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.12",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.13",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.14",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.15",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.16",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.17",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.18",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.19",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.20",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.21",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.22",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.23",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.24",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.25",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.26",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.27",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.28",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.29",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "norm_out",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "action_proj_out",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 960,
+          "finite": true
+        }
+      ]
+    },
+    "B2_readonly": {
+      "first_difference": null,
+      "stages": [
+        {
+          "stage": "action_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder.text_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "rope",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 4096,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder_action",
+          "bitwise": true,
+          "children": [
+            {
+              "bitwise": true,
+              "different": 0,
+              "max_abs": 0.0,
+              "elements": 98304,
+              "finite": true
+            },
+            {
+              "bitwise": true,
+              "different": 0,
+              "max_abs": 0.0,
+              "elements": 589824,
+              "finite": true
+            }
+          ]
+        },
+        {
+          "stage": "block0.full_inputs",
+          "bitwise": true,
+          "children": {
+            "kwargs": {
+              "bitwise": true,
+              "children": {
+                "update_cache": {
+                  "bitwise": true
+                },
+                "cache_name": {
+                  "bitwise": true
+                }
+              }
+            },
+            "args": {
+              "bitwise": true,
+              "children": [
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 98304,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 3145728,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 589824,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 4096,
+                  "finite": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "stage": "blocks.0.norm1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_q",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_v",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_q",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.0",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm2",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_q",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_v",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_q",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.0",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm3",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.0.proj",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.2",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.2",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.3",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.4",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.5",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.6",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.7",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.8",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.9",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.10",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.11",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.12",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.13",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.14",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.15",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.16",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.17",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.18",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.19",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.20",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.21",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.22",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.23",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.24",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.25",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.26",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.27",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.28",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.29",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "norm_out",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "action_proj_out",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 960,
+          "finite": true
+        }
+      ]
+    },
+    "B14_dense": {
+      "first_difference": "condition_embedder_action",
+      "stages": [
+        {
+          "stage": "action_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder.text_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "rope",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 4096,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder_action",
+          "bitwise": false,
+          "children": [
+            {
+              "bitwise": false,
+              "different": 96,
+              "max_abs": 0.000244140625,
+              "elements": 98304,
+              "finite": true
+            },
+            {
+              "bitwise": false,
+              "different": 1464,
+              "max_abs": 0.00390625,
+              "elements": 589824,
+              "finite": true
+            }
+          ]
+        },
+        {
+          "stage": "block0.full_inputs",
+          "bitwise": false,
+          "children": {
+            "kwargs": {
+              "bitwise": true,
+              "children": {
+                "update_cache": {
+                  "bitwise": true
+                },
+                "cache_name": {
+                  "bitwise": true
+                }
+              }
+            },
+            "args": {
+              "bitwise": false,
+              "children": [
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 98304,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 3145728,
+                  "finite": true
+                },
+                {
+                  "bitwise": false,
+                  "different": 1464,
+                  "max_abs": 0.00390625,
+                  "elements": 589824,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 4096,
+                  "finite": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "stage": "blocks.0.norm1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_q",
+          "bitwise": false,
+          "different": 19198,
+          "max_abs": 0.125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_k",
+          "bitwise": false,
+          "different": 19030,
+          "max_abs": 0.125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_v",
+          "bitwise": false,
+          "different": 26722,
+          "max_abs": 0.03125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_q",
+          "bitwise": false,
+          "different": 19128,
+          "max_abs": 0.03125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_k",
+          "bitwise": false,
+          "different": 18772,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.0",
+          "bitwise": false,
+          "different": 56260,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.1",
+          "bitwise": false,
+          "different": 56260,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1",
+          "bitwise": false,
+          "different": 56260,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm2",
+          "bitwise": false,
+          "different": 98292,
+          "max_abs": 0.07878494262695312,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_q",
+          "bitwise": false,
+          "different": 33520,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_v",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_q",
+          "bitwise": false,
+          "different": 34184,
+          "max_abs": 0.03125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.0",
+          "bitwise": false,
+          "different": 25284,
+          "max_abs": 0.0009765625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.1",
+          "bitwise": false,
+          "different": 25284,
+          "max_abs": 0.0009765625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2",
+          "bitwise": false,
+          "different": 25284,
+          "max_abs": 0.0009765625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm3",
+          "bitwise": false,
+          "different": 98283,
+          "max_abs": 0.1510601043701172,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.0.proj",
+          "bitwise": false,
+          "different": 166424,
+          "max_abs": 0.0625,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.1",
+          "bitwise": false,
+          "different": 141312,
+          "max_abs": 0.03125,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.2",
+          "bitwise": false,
+          "different": 53287,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn",
+          "bitwise": false,
+          "different": 53287,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0",
+          "bitwise": false,
+          "different": 44959,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.1",
+          "bitwise": false,
+          "different": 54571,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.2",
+          "bitwise": false,
+          "different": 60662,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.3",
+          "bitwise": false,
+          "different": 66156,
+          "max_abs": 0.75,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.4",
+          "bitwise": false,
+          "different": 68915,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.5",
+          "bitwise": false,
+          "different": 70013,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.6",
+          "bitwise": false,
+          "different": 74886,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.7",
+          "bitwise": false,
+          "different": 75639,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.8",
+          "bitwise": false,
+          "different": 75897,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.9",
+          "bitwise": false,
+          "different": 75940,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.10",
+          "bitwise": false,
+          "different": 74859,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.11",
+          "bitwise": false,
+          "different": 75432,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.12",
+          "bitwise": false,
+          "different": 74553,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.13",
+          "bitwise": false,
+          "different": 74638,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.14",
+          "bitwise": false,
+          "different": 75664,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.15",
+          "bitwise": false,
+          "different": 76906,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.16",
+          "bitwise": false,
+          "different": 78002,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.17",
+          "bitwise": false,
+          "different": 78758,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.18",
+          "bitwise": false,
+          "different": 79635,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.19",
+          "bitwise": false,
+          "different": 79734,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.20",
+          "bitwise": false,
+          "different": 79990,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.21",
+          "bitwise": false,
+          "different": 79420,
+          "max_abs": 2.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.22",
+          "bitwise": false,
+          "different": 79614,
+          "max_abs": 2.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.23",
+          "bitwise": false,
+          "different": 79818,
+          "max_abs": 2.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.24",
+          "bitwise": false,
+          "different": 79726,
+          "max_abs": 1.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.25",
+          "bitwise": false,
+          "different": 80033,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.26",
+          "bitwise": false,
+          "different": 79923,
+          "max_abs": 0.375,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.27",
+          "bitwise": false,
+          "different": 80412,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.28",
+          "bitwise": false,
+          "different": 81833,
+          "max_abs": 6.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.29",
+          "bitwise": false,
+          "different": 84140,
+          "max_abs": 5.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "norm_out",
+          "bitwise": false,
+          "different": 98304,
+          "max_abs": 0.677154541015625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "action_proj_out",
+          "bitwise": false,
+          "different": 793,
+          "max_abs": 0.015625,
+          "elements": 960,
+          "finite": true
+        }
+      ]
+    },
+    "B14_shared_repeat": {
+      "first_difference": "condition_embedder_action",
+      "stages": [
+        {
+          "stage": "action_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder.text_embedder",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "rope",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 4096,
+          "finite": true
+        },
+        {
+          "stage": "condition_embedder_action",
+          "bitwise": false,
+          "children": [
+            {
+              "bitwise": false,
+              "different": 96,
+              "max_abs": 0.000244140625,
+              "elements": 98304,
+              "finite": true
+            },
+            {
+              "bitwise": false,
+              "different": 1464,
+              "max_abs": 0.00390625,
+              "elements": 589824,
+              "finite": true
+            }
+          ]
+        },
+        {
+          "stage": "block0.full_inputs",
+          "bitwise": false,
+          "children": {
+            "kwargs": {
+              "bitwise": true,
+              "children": {
+                "update_cache": {
+                  "bitwise": true
+                },
+                "cache_name": {
+                  "bitwise": true
+                }
+              }
+            },
+            "args": {
+              "bitwise": false,
+              "children": [
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 98304,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 3145728,
+                  "finite": true
+                },
+                {
+                  "bitwise": false,
+                  "different": 1464,
+                  "max_abs": 0.00390625,
+                  "elements": 589824,
+                  "finite": true
+                },
+                {
+                  "bitwise": true,
+                  "different": 0,
+                  "max_abs": 0.0,
+                  "elements": 4096,
+                  "finite": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "stage": "blocks.0.norm1",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_q",
+          "bitwise": false,
+          "different": 19198,
+          "max_abs": 0.125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_k",
+          "bitwise": false,
+          "different": 19030,
+          "max_abs": 0.125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_v",
+          "bitwise": false,
+          "different": 26722,
+          "max_abs": 0.03125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_q",
+          "bitwise": false,
+          "different": 19128,
+          "max_abs": 0.03125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.norm_k",
+          "bitwise": false,
+          "different": 18772,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.0",
+          "bitwise": false,
+          "different": 56260,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1.to_out.1",
+          "bitwise": false,
+          "different": 56260,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn1",
+          "bitwise": false,
+          "different": 56260,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm2",
+          "bitwise": false,
+          "different": 98292,
+          "max_abs": 0.07878494262695312,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_q",
+          "bitwise": false,
+          "different": 33520,
+          "max_abs": 0.0625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_v",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_q",
+          "bitwise": false,
+          "different": 34184,
+          "max_abs": 0.03125,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.norm_k",
+          "bitwise": true,
+          "different": 0,
+          "max_abs": 0.0,
+          "elements": 3145728,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.0",
+          "bitwise": false,
+          "different": 25284,
+          "max_abs": 0.0009765625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2.to_out.1",
+          "bitwise": false,
+          "different": 25284,
+          "max_abs": 0.0009765625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.attn2",
+          "bitwise": false,
+          "different": 25284,
+          "max_abs": 0.0009765625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.norm3",
+          "bitwise": false,
+          "different": 98283,
+          "max_abs": 0.1510601043701172,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.0.proj",
+          "bitwise": false,
+          "different": 166424,
+          "max_abs": 0.0625,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.1",
+          "bitwise": false,
+          "different": 141312,
+          "max_abs": 0.03125,
+          "elements": 458752,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn.net.2",
+          "bitwise": false,
+          "different": 53287,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0.ffn",
+          "bitwise": false,
+          "different": 53287,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.0",
+          "bitwise": false,
+          "different": 44959,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.1",
+          "bitwise": false,
+          "different": 54571,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.2",
+          "bitwise": false,
+          "different": 60662,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.3",
+          "bitwise": false,
+          "different": 66156,
+          "max_abs": 0.75,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.4",
+          "bitwise": false,
+          "different": 68915,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.5",
+          "bitwise": false,
+          "different": 70013,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.6",
+          "bitwise": false,
+          "different": 74886,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.7",
+          "bitwise": false,
+          "different": 75639,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.8",
+          "bitwise": false,
+          "different": 75897,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.9",
+          "bitwise": false,
+          "different": 75940,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.10",
+          "bitwise": false,
+          "different": 74859,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.11",
+          "bitwise": false,
+          "different": 75432,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.12",
+          "bitwise": false,
+          "different": 74553,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.13",
+          "bitwise": false,
+          "different": 74638,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.14",
+          "bitwise": false,
+          "different": 75664,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.15",
+          "bitwise": false,
+          "different": 76906,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.16",
+          "bitwise": false,
+          "different": 78002,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.17",
+          "bitwise": false,
+          "different": 78758,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.18",
+          "bitwise": false,
+          "different": 79635,
+          "max_abs": 0.25,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.19",
+          "bitwise": false,
+          "different": 79734,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.20",
+          "bitwise": false,
+          "different": 79990,
+          "max_abs": 1.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.21",
+          "bitwise": false,
+          "different": 79420,
+          "max_abs": 2.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.22",
+          "bitwise": false,
+          "different": 79614,
+          "max_abs": 2.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.23",
+          "bitwise": false,
+          "different": 79818,
+          "max_abs": 2.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.24",
+          "bitwise": false,
+          "different": 79726,
+          "max_abs": 1.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.25",
+          "bitwise": false,
+          "different": 80033,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.26",
+          "bitwise": false,
+          "different": 79923,
+          "max_abs": 0.375,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.27",
+          "bitwise": false,
+          "different": 80412,
+          "max_abs": 0.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.28",
+          "bitwise": false,
+          "different": 81833,
+          "max_abs": 6.5,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "blocks.29",
+          "bitwise": false,
+          "different": 84140,
+          "max_abs": 5.0,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "norm_out",
+          "bitwise": false,
+          "different": 98304,
+          "max_abs": 0.677154541015625,
+          "elements": 98304,
+          "finite": true
+        },
+        {
+          "stage": "action_proj_out",
+          "bitwise": false,
+          "different": 793,
+          "max_abs": 0.015625,
+          "elements": 960,
+          "finite": true
+        }
+      ]
+    }
+  },
+  "target_accounting": {
+    "status": "CLOSED",
+    "cap": 256,
+    "target_intents": 117,
+    "returned": 117,
+    "failed": 0,
+    "active": 0,
+    "phase_counters": {
+      "target_forward_count": 1,
+      "tree_scheduler_transition_count": 127,
+      "committed_scheduler_update_count": 50,
+      "ordinary_target_scheduler_update_count": 4,
+      "draft_forward_count": 54,
+      "tree_count": 18,
+      "logical_candidate_rows": 126,
+      "verifier_target_row_count": 126,
+      "verifier_cfg_rows": 252,
+      "verifier_forward_count": 18,
+      "accepted_depth_0": 2,
+      "accepted_depth_1": 1,
+      "committed_draft_scheduler_update_count": 31,
+      "accepted_depth_2": 15,
+      "bonus_target_tree_count": 15,
+      "bonus_target_scheduler_update_count": 15,
+      "terminal_target_forward_count": 1
+    },
+    "requests": [
+      {
+        "kind": "reset",
+        "ok": true,
+        "wall_sec": 0.08481995761394501,
+        "target_forwards": 0,
+        "trace_context": {
+          "libero_benchmark": "libero_10",
+          "task_index": 4,
+          "episode_index": 26,
+          "episode_attempt_id": "9afd3f314b9a42d0a89d9bf59ee4e242",
+          "prompt": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+          "campaign_id": "p0-task4-direction-diagnostic-v1-20261016-r1",
+          "parallel_worker_id": "T-task4-init26-repeat0"
+        }
+      },
+      {
+        "kind": "policy",
+        "ok": true,
+        "wall_sec": 35.496004201471806,
+        "target_forwards": 72,
+        "trace_context": {
+          "libero_benchmark": "libero_10",
+          "task_index": 4,
+          "episode_index": 26,
+          "episode_attempt_id": "9afd3f314b9a42d0a89d9bf59ee4e242",
+          "prompt": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+          "campaign_id": "p0-task4-direction-diagnostic-v1-20261016-r1",
+          "parallel_worker_id": "T-task4-init26-repeat0",
+          "rollout_chunk": 0,
+          "env_steps_before": 0,
+          "simulator_timestep_before": 5
+        }
+      },
+      {
+        "kind": "reset",
+        "ok": true,
+        "wall_sec": 0.039006467908620834,
+        "target_forwards": 0,
+        "trace_context": {
+          "libero_benchmark": "libero_10",
+          "task_index": 4,
+          "episode_index": 26,
+          "episode_attempt_id": "2723cb7857eb459f93bfe1e8c7cb27b7",
+          "prompt": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+          "campaign_id": "p0-task4-direction-diagnostic-completion-v1-20261016-r2",
+          "parallel_worker_id": "TF_CONT-task4-init26-repeat0"
+        }
+      },
+      {
+        "kind": "policy",
+        "ok": true,
+        "wall_sec": 19.017508752644062,
+        "target_forwards": 41,
+        "trace_context": {
+          "libero_benchmark": "libero_10",
+          "task_index": 4,
+          "episode_index": 26,
+          "episode_attempt_id": "2723cb7857eb459f93bfe1e8c7cb27b7",
+          "prompt": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+          "campaign_id": "p0-task4-direction-diagnostic-completion-v1-20261016-r2",
+          "parallel_worker_id": "TF_CONT-task4-init26-repeat0",
+          "rollout_chunk": 0,
+          "env_steps_before": 0,
+          "simulator_timestep_before": 5
+        }
+      }
+    ],
+    "per_request_file_io": false,
+    "cuda_events": false
+  },
+  "query_scheduler_index": 1,
+  "root_cause_of_episode_failure": "UNKNOWN",
+  "training_trigger": false,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "no_environment_episode": true,
+  "no_training": true,
+  "performance_claim": false
+}

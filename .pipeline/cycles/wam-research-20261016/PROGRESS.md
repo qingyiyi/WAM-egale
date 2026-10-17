@@ -3,11 +3,26 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: 2026-10-16T15:18:27.460014+08:00
-current: M11
-next: prospectively_log_teacher_to_command_before_any_data_or_expansion
+updated: 2026-10-17T08:43:33+08:00
+current: M13
+next: web_literature_review_then_explicit_user_resume
+execution_status: paused_by_user
 ---
 # 现有 WAM 研究进度
+
+2026-10-17早用户明确暂停实验并要求网页版文献/开源Prompt及GitHub同步。GPU已清理，旧/新DEV共72/96完整、剩24；双根CPU报告72 raw/50严格组件/22旧TF_ON arm收据缺口，整体PARTIAL，用户暂停作为非预算completion issue保留。fresh T20、CONT19、ON20成功，MLP0完整；风险ON已完成4均失败，其中task1/29、3/26、4/26为T成功/TF失败，三对保存物理/reset/RNG/双相机exact。当前TF-on权重/配方不满足无新增风险条件，不能推荐TEST；TF64结构/API仅暂冻研究。一次新30/固定三条件500更新均已完成，不自动追加。原四权限false、FAILED/default/tile保持。当前只做CPU交接发布，见[本轮结果](../../experiments/tf-effect-closure-20261016/RESULT.md)、[暂停决定](../../memory/global/requirements/decision-暂停TF实验并先外部文献复核.md)。
+
+2026-10-16 22:07：[TF实际接续](../../experiments/tf-effect-closure-20261016/RUNBOOK.md)。r2复制KV诊断主动停止PARTIAL；r3复用原完整OFF、ON完整50/101请求/2192forward/904树/2712行及RESET/final全KV、逐chunk RNG核验完成，原45分钟内清理。CPU独立2712行23.8秒通过。新30本机root3672051/clock3672054正在运行（4h/2GiB），尚未新训练/DEV；未来DEV96清单已冻、按首条270.5秒任务前瞻预算7h/总12h。全部旧FAILED/四false/默认/tile不变；原双新pass/中间KV门不冒称PASS。
+
+2026-10-16 21:18 用户已授权[TF收口1→2→3](../../experiments/tf-effect-closure-20261016/EXPERIMENT.md)：新CPU诊断完成，当前到达parent同step误差较target FIT高约48%，联合覆盖20.52%超过旧CAL对应P95，但与旧mixed误差接近，不能称严重偏移/失败根因。支持唯一一次新数据对照。完整记录50chunk采集OFF/ON资格r2实际运行（root3647250/clock3647251），r1父PID准入FAILED/0GPU保留，共用原45分钟帽。新30FIT/CAL、训练、DEV尚未启动。原四权限/默认/FAILED不变，AutoDL不连接。
+
+M13 TF优先CPU覆盖审计已完成：[2712真实query](../../experiments/tf-training-support-20261016/EXPERIMENT.md)。未发现足以宣称严重递归尺度偏移的证据；结构固定TF64，继续核监督/分层误差，训练不强行触发。此条替代下方M12已完成后的“数据核验待开始”，不改变原FAILED/四权限。
+
+2026-10-16T19:54:50.062514+08:00 用户进一步固定TF64为主draft，MLP仅baseline、算子后置。M12两真实记录chunk与同query/时间反事实完成，根因边界见[结果](../../experiments/draft-teacher-path-20261016/RESULT.md)；11.72分钟/约0.45GiB、自有进程清理。训练尚未触发，下一步核TF训练来源与递归监督，旧四权限false、120未启动。
+
+外部评审：代码与关键HW已发布`qingyiyi/WAM-egale@b0dfac3a`，[入口/完整prompt](../../../review/OMISSIONS-20261017.md)。网页执行方案已返回；本次固定此 commit 继续，原研究准入不变。
+
+M11有限诊断终态PARTIAL：[五报告/时间表](../../../review/OMISSIONS-20261017.md)。T两次249成功、TF一次796失败，第二TF预算中断；1对完整而非原定2对。原r1实现FAILED/r2预算FAILED均保留，累计54.98分钟、全部自有worker/guard清理。首teacher分歧早于draft提交，完整r0链路/初态核验通过；不触发训练，四权限false、120不启动。下一步同真实query及完整KV数值复验，研究仍active。
 
 当前：M10的50完整DEV已结束，TF保留条件未过；研究active。结构接口暂冻供算子，权重/配方未accepted；未来120门实际拒绝，无注册/CPU waiter/GPU。最新依据见[今天结果](../../research/speculative-sampling/DRAFT-FREEZE-RESULT-20261016.md)。下方夜间/晨间结论为各自历史范围，晨间扩大建议superseded_by今日HOLD。
 
@@ -30,7 +45,9 @@ next: prospectively_log_teacher_to_command_before_any_data_or_expansion
 | M7 | 晨报与证据 | completed_bounded_window | 最终独审PASS：51本地链接、491保护记录、数字与边界一致 | 夜间结果回传；研究整体仍active |
 | M8/M9 | 晨间TF固定补训与80完整DEV | completed_research_only | CONT20/20、主长度通过；原聚合PARTIAL/像素问题保留 | 不借旧描述签证书 |
 | M10 | 等预算MLP与前瞻50完整DEV | completed_retention_hold | fresh三臂10/10；风险task4新增失败，retained=false；全raw/来源/清理独审 | 当前120门拒绝 |
-| M11 | 风险病例前瞻日志诊断 | planned_not_registered | teacher到命令映射缺失；D01 HOLD | 独立入口/预算/完整episode/无新teacher调用 |
+| M11 | 风险病例前瞻日志诊断 | completed_bounded_partial | 1对完整风险复现、teacher早于draft偏离；第二TF预算中断 | 同query/全有效KV数值复验，训练HOLD |
+| M12 | 同query教师路径定位 | completed_bounded_window | 两真实记录chunk与时间编码反事实完成，11.72分钟/约0.45GiB清理 | 数值差异不等于单一失败因果，见M13有限监督实验 |
+| M13 | TF64一次数据配方收口1→2→3 | paused_partial_quality_NO_GO | 新30/固定训练完成；DEV72/96，fresh ON20/20但风险3条新增失败；四false | [本轮结果](../../experiments/tf-effect-closure-20261016/RESULT.md)，先文献/源码复核，不自动恢复 |
 
 ## 作业终态与边界
 

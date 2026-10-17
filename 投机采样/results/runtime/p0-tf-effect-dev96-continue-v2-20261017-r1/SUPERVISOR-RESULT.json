@@ -1,0 +1,1270 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "failure": {
+    "error": "ValueError('STOP_REQUESTED')",
+    "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_continue_v2/run.py:pending-only-driver\", line 93, in execute\n    client_env=dict(env,TF_EFFECT_CASE=current)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_continue_v2/run.py:pending-only-driver\", line 35, in guard\n    child=spawn([p['reference_plan']['va_python'],'-B',str(EXP/'wam_quality_diagnostic_v1/resource_probe.py'),'--out',str(out)],job/f'probe-{seq:04d}.log',dict(env0,CUDA_VISIBLE_DEVICES=''))\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/tf_effect_closure_v1/protocol.py\", line 17, in require\n    if not x:raise ValueError(s)\n             ^^^^^^^^^^^^^^^^^^^\nValueError: STOP_REQUESTED\n",
+    "current": "TF_ON-risk_DEV-t6-i27-r0",
+    "completed": [
+      "TF_ON-risk_DEV-t4-i26-r0",
+      "TF_ON-risk_DEV-t5-i28-r0"
+    ]
+  },
+  "completed": [
+    "TF_ON-risk_DEV-t4-i26-r0",
+    "TF_ON-risk_DEV-t5-i28-r0"
+  ],
+  "full_episodes": 2,
+  "elapsed_sec": 1634.2787492498755,
+  "total_target_forwards": 4367,
+  "observed_pins": [
+    {
+      "pid": 4005494,
+      "ppid": 4005474,
+      "pgid": 4005494,
+      "start_ticks": 1346481494,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0001.json"
+      ]
+    },
+    {
+      "pid": 4005508,
+      "ppid": 4005474,
+      "pgid": 4005508,
+      "start_ticks": 1346481730,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0002.json"
+      ]
+    },
+    {
+      "pid": 4005536,
+      "ppid": 4005474,
+      "pgid": 4005536,
+      "start_ticks": 1346481933,
+      "uid": 1003,
+      "argv": [
+        "/usr/bin/timeout",
+        "--signal=TERM",
+        "--kill-after=20",
+        "120",
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_train_v1/gpu_actual_cal.py",
+        "--prepare",
+        "--job",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/cal/TF_ON",
+        "--training-dir",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-onpolicy-train-cpu1-v2-20261017-r1",
+        "--condition",
+        "TF_ON",
+        "--wall-cap-seconds",
+        "900"
+      ]
+    },
+    {
+      "pid": 4005570,
+      "ppid": 4005474,
+      "pgid": 4005570,
+      "start_ticks": 1346482717,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/server_entry.py",
+        "--config-name",
+        "libero",
+        "--port",
+        "19668",
+        "--save_root",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/arms/TF_ON/server_output"
+      ]
+    },
+    {
+      "pid": 4005685,
+      "ppid": 4005474,
+      "pgid": 4005685,
+      "start_ticks": 1346484771,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0003.json"
+      ]
+    },
+    {
+      "pid": 4005860,
+      "ppid": 4005474,
+      "pgid": 4005860,
+      "start_ticks": 1346487817,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0004.json"
+      ]
+    },
+    {
+      "pid": 4006000,
+      "ppid": 4005474,
+      "pgid": 4006000,
+      "start_ticks": 1346490879,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0005.json"
+      ]
+    },
+    {
+      "pid": 4006167,
+      "ppid": 4005474,
+      "pgid": 4006167,
+      "start_ticks": 1346493934,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0006.json"
+      ]
+    },
+    {
+      "pid": 4007347,
+      "ppid": 4005474,
+      "pgid": 4007347,
+      "start_ticks": 1346496987,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0007.json"
+      ]
+    },
+    {
+      "pid": 4007937,
+      "ppid": 4005474,
+      "pgid": 4007937,
+      "start_ticks": 1346500040,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0008.json"
+      ]
+    },
+    {
+      "pid": 4008107,
+      "ppid": 4005474,
+      "pgid": 4008107,
+      "start_ticks": 1346503086,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0009.json"
+      ]
+    },
+    {
+      "pid": 4008239,
+      "ppid": 4005474,
+      "pgid": 4008239,
+      "start_ticks": 1346506130,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0010.json"
+      ]
+    },
+    {
+      "pid": 4008264,
+      "ppid": 4005474,
+      "pgid": 4008264,
+      "start_ticks": 1346506336,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/client_entry.py",
+        "--port",
+        "19668",
+        "--master-port",
+        "29668",
+        "--benchmarks",
+        "libero_10",
+        "--task-indices",
+        "4",
+        "--episodes-per-task",
+        "1",
+        "--episode-start",
+        "26",
+        "--condition",
+        "TF_ON-risk_DEV-t4-i26-r0",
+        "--campaign-id",
+        "p0-tf-effect-dev96-continue-v2-20261017-r1",
+        "--worker-id",
+        "TF_ON-risk_DEV-t4-i26-r0",
+        "--trace-mode",
+        "off",
+        "--latency-benchmark",
+        "--out-dir",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/episodes/TF_ON-risk_DEV-t4-i26-r0/client",
+        "--fail-fast",
+        "--no-resume",
+        "--worktree",
+        "/rjs/cxz/论文探索/投机采样/wam-p0-worktree"
+      ]
+    },
+    {
+      "pid": 4008497,
+      "ppid": 4005474,
+      "pgid": 4008497,
+      "start_ticks": 1346509191,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0011.json"
+      ]
+    },
+    {
+      "pid": 4010145,
+      "ppid": 4005474,
+      "pgid": 4010145,
+      "start_ticks": 1346512239,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0012.json"
+      ]
+    },
+    {
+      "pid": 4010694,
+      "ppid": 4005474,
+      "pgid": 4010694,
+      "start_ticks": 1346515295,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0013.json"
+      ]
+    },
+    {
+      "pid": 4011820,
+      "ppid": 4005474,
+      "pgid": 4011820,
+      "start_ticks": 1346518337,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0014.json"
+      ]
+    },
+    {
+      "pid": 4011986,
+      "ppid": 4005474,
+      "pgid": 4011986,
+      "start_ticks": 1346521388,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0015.json"
+      ]
+    },
+    {
+      "pid": 4012163,
+      "ppid": 4005474,
+      "pgid": 4012163,
+      "start_ticks": 1346524435,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0016.json"
+      ]
+    },
+    {
+      "pid": 4012327,
+      "ppid": 4005474,
+      "pgid": 4012327,
+      "start_ticks": 1346527482,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0017.json"
+      ]
+    },
+    {
+      "pid": 4012472,
+      "ppid": 4005474,
+      "pgid": 4012472,
+      "start_ticks": 1346530517,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0018.json"
+      ]
+    },
+    {
+      "pid": 4013964,
+      "ppid": 4005474,
+      "pgid": 4013964,
+      "start_ticks": 1346533563,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0019.json"
+      ]
+    },
+    {
+      "pid": 4014298,
+      "ppid": 4005474,
+      "pgid": 4014298,
+      "start_ticks": 1346536615,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0020.json"
+      ]
+    },
+    {
+      "pid": 4014546,
+      "ppid": 4005474,
+      "pgid": 4014546,
+      "start_ticks": 1346539667,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0021.json"
+      ]
+    },
+    {
+      "pid": 4014718,
+      "ppid": 4005474,
+      "pgid": 4014718,
+      "start_ticks": 1346542714,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0022.json"
+      ]
+    },
+    {
+      "pid": 4014883,
+      "ppid": 4005474,
+      "pgid": 4014883,
+      "start_ticks": 1346545760,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0023.json"
+      ]
+    },
+    {
+      "pid": 4015323,
+      "ppid": 4005474,
+      "pgid": 4015323,
+      "start_ticks": 1346548801,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0024.json"
+      ]
+    },
+    {
+      "pid": 4015487,
+      "ppid": 4005474,
+      "pgid": 4015487,
+      "start_ticks": 1346551853,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0025.json"
+      ]
+    },
+    {
+      "pid": 4015665,
+      "ppid": 4005474,
+      "pgid": 4015665,
+      "start_ticks": 1346554895,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0026.json"
+      ]
+    },
+    {
+      "pid": 4015871,
+      "ppid": 4005474,
+      "pgid": 4015871,
+      "start_ticks": 1346557935,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0027.json"
+      ]
+    },
+    {
+      "pid": 4016051,
+      "ppid": 4005474,
+      "pgid": 4016051,
+      "start_ticks": 1346560993,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0028.json"
+      ]
+    },
+    {
+      "pid": 4016262,
+      "ppid": 4005474,
+      "pgid": 4016262,
+      "start_ticks": 1346564042,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0029.json"
+      ]
+    },
+    {
+      "pid": 4016448,
+      "ppid": 4005474,
+      "pgid": 4016448,
+      "start_ticks": 1346567085,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0030.json"
+      ]
+    },
+    {
+      "pid": 4016755,
+      "ppid": 4005474,
+      "pgid": 4016755,
+      "start_ticks": 1346570142,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0031.json"
+      ]
+    },
+    {
+      "pid": 4017038,
+      "ppid": 4005474,
+      "pgid": 4017038,
+      "start_ticks": 1346573200,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0032.json"
+      ]
+    },
+    {
+      "pid": 4017199,
+      "ppid": 4005474,
+      "pgid": 4017199,
+      "start_ticks": 1346575971,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0033.json"
+      ]
+    },
+    {
+      "pid": 4017202,
+      "ppid": 4005474,
+      "pgid": 4017202,
+      "start_ticks": 1346576009,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/client_entry.py",
+        "--port",
+        "19668",
+        "--master-port",
+        "29668",
+        "--benchmarks",
+        "libero_10",
+        "--task-indices",
+        "5",
+        "--episodes-per-task",
+        "1",
+        "--episode-start",
+        "28",
+        "--condition",
+        "TF_ON-risk_DEV-t5-i28-r0",
+        "--campaign-id",
+        "p0-tf-effect-dev96-continue-v2-20261017-r1",
+        "--worker-id",
+        "TF_ON-risk_DEV-t5-i28-r0",
+        "--trace-mode",
+        "off",
+        "--latency-benchmark",
+        "--out-dir",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/episodes/TF_ON-risk_DEV-t5-i28-r0/client",
+        "--fail-fast",
+        "--no-resume",
+        "--worktree",
+        "/rjs/cxz/论文探索/投机采样/wam-p0-worktree"
+      ]
+    },
+    {
+      "pid": 4017398,
+      "ppid": 4005474,
+      "pgid": 4017398,
+      "start_ticks": 1346579015,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0034.json"
+      ]
+    },
+    {
+      "pid": 4017587,
+      "ppid": 4005474,
+      "pgid": 4017587,
+      "start_ticks": 1346582066,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0035.json"
+      ]
+    },
+    {
+      "pid": 4017770,
+      "ppid": 4005474,
+      "pgid": 4017770,
+      "start_ticks": 1346585096,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0036.json"
+      ]
+    },
+    {
+      "pid": 4017961,
+      "ppid": 4005474,
+      "pgid": 4017961,
+      "start_ticks": 1346588150,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0037.json"
+      ]
+    },
+    {
+      "pid": 4018152,
+      "ppid": 4005474,
+      "pgid": 4018152,
+      "start_ticks": 1346591200,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0038.json"
+      ]
+    },
+    {
+      "pid": 4018360,
+      "ppid": 4005474,
+      "pgid": 4018360,
+      "start_ticks": 1346594242,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0039.json"
+      ]
+    },
+    {
+      "pid": 4018583,
+      "ppid": 4005474,
+      "pgid": 4018583,
+      "start_ticks": 1346597298,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0040.json"
+      ]
+    },
+    {
+      "pid": 4018853,
+      "ppid": 4005474,
+      "pgid": 4018853,
+      "start_ticks": 1346600349,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0041.json"
+      ]
+    },
+    {
+      "pid": 4019061,
+      "ppid": 4005474,
+      "pgid": 4019061,
+      "start_ticks": 1346603400,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0042.json"
+      ]
+    },
+    {
+      "pid": 4019258,
+      "ppid": 4005474,
+      "pgid": 4019258,
+      "start_ticks": 1346606453,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0043.json"
+      ]
+    },
+    {
+      "pid": 4019453,
+      "ppid": 4005474,
+      "pgid": 4019453,
+      "start_ticks": 1346609506,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0044.json"
+      ]
+    },
+    {
+      "pid": 4019634,
+      "ppid": 4005474,
+      "pgid": 4019634,
+      "start_ticks": 1346612555,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0045.json"
+      ]
+    },
+    {
+      "pid": 4019830,
+      "ppid": 4005474,
+      "pgid": 4019830,
+      "start_ticks": 1346615605,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0046.json"
+      ]
+    },
+    {
+      "pid": 4020156,
+      "ppid": 4005474,
+      "pgid": 4020156,
+      "start_ticks": 1346618652,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0047.json"
+      ]
+    },
+    {
+      "pid": 4021528,
+      "ppid": 4005474,
+      "pgid": 4021528,
+      "start_ticks": 1346621705,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0048.json"
+      ]
+    },
+    {
+      "pid": 4021732,
+      "ppid": 4005474,
+      "pgid": 4021732,
+      "start_ticks": 1346624757,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0049.json"
+      ]
+    },
+    {
+      "pid": 4021902,
+      "ppid": 4005474,
+      "pgid": 4021902,
+      "start_ticks": 1346627817,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0050.json"
+      ]
+    },
+    {
+      "pid": 4022194,
+      "ppid": 4005474,
+      "pgid": 4022194,
+      "start_ticks": 1346630878,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0051.json"
+      ]
+    },
+    {
+      "pid": 4022478,
+      "ppid": 4005474,
+      "pgid": 4022478,
+      "start_ticks": 1346633925,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0052.json"
+      ]
+    },
+    {
+      "pid": 4023254,
+      "ppid": 4005474,
+      "pgid": 4023254,
+      "start_ticks": 1346636976,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0053.json"
+      ]
+    },
+    {
+      "pid": 4024920,
+      "ppid": 4005474,
+      "pgid": 4024920,
+      "start_ticks": 1346640026,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0054.json"
+      ]
+    },
+    {
+      "pid": 4025860,
+      "ppid": 4005474,
+      "pgid": 4025860,
+      "start_ticks": 1346642234,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/wam_quality_diagnostic_v1/resource_probe.py",
+        "--out",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/GPU-0055.json"
+      ]
+    },
+    {
+      "pid": 4025863,
+      "ppid": 4005474,
+      "pgid": 4025863,
+      "start_ticks": 1346642271,
+      "uid": 1003,
+      "argv": [
+        "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+        "-B",
+        "/rjs/cxz/论文探索/投机采样/experiments/tf_effect_campaign_v1/client_entry.py",
+        "--port",
+        "19668",
+        "--master-port",
+        "29668",
+        "--benchmarks",
+        "libero_10",
+        "--task-indices",
+        "6",
+        "--episodes-per-task",
+        "1",
+        "--episode-start",
+        "27",
+        "--condition",
+        "TF_ON-risk_DEV-t6-i27-r0",
+        "--campaign-id",
+        "p0-tf-effect-dev96-continue-v2-20261017-r1",
+        "--worker-id",
+        "TF_ON-risk_DEV-t6-i27-r0",
+        "--trace-mode",
+        "off",
+        "--latency-benchmark",
+        "--out-dir",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/episodes/TF_ON-risk_DEV-t6-i27-r0/client",
+        "--fail-fast",
+        "--no-resume",
+        "--worktree",
+        "/rjs/cxz/论文探索/投机采样/wam-p0-worktree"
+      ]
+    }
+  ],
+  "cleanup": {
+    "all_roots_reaped": true,
+    "signals": [],
+    "exits": [
+      {
+        "pid": 4005494,
+        "returncode": 0
+      },
+      {
+        "pid": 4005508,
+        "returncode": 0
+      },
+      {
+        "pid": 4005536,
+        "returncode": 0
+      },
+      {
+        "pid": 4005570,
+        "returncode": -15
+      },
+      {
+        "pid": 4005685,
+        "returncode": 0
+      },
+      {
+        "pid": 4005860,
+        "returncode": 0
+      },
+      {
+        "pid": 4006000,
+        "returncode": 0
+      },
+      {
+        "pid": 4006167,
+        "returncode": 0
+      },
+      {
+        "pid": 4007347,
+        "returncode": 0
+      },
+      {
+        "pid": 4007937,
+        "returncode": 0
+      },
+      {
+        "pid": 4008107,
+        "returncode": 0
+      },
+      {
+        "pid": 4008239,
+        "returncode": 0
+      },
+      {
+        "pid": 4008264,
+        "returncode": 0
+      },
+      {
+        "pid": 4008497,
+        "returncode": 0
+      },
+      {
+        "pid": 4010145,
+        "returncode": 0
+      },
+      {
+        "pid": 4010694,
+        "returncode": 0
+      },
+      {
+        "pid": 4011820,
+        "returncode": 0
+      },
+      {
+        "pid": 4011986,
+        "returncode": 0
+      },
+      {
+        "pid": 4012163,
+        "returncode": 0
+      },
+      {
+        "pid": 4012327,
+        "returncode": 0
+      },
+      {
+        "pid": 4012472,
+        "returncode": 0
+      },
+      {
+        "pid": 4013964,
+        "returncode": 0
+      },
+      {
+        "pid": 4014298,
+        "returncode": 0
+      },
+      {
+        "pid": 4014546,
+        "returncode": 0
+      },
+      {
+        "pid": 4014718,
+        "returncode": 0
+      },
+      {
+        "pid": 4014883,
+        "returncode": 0
+      },
+      {
+        "pid": 4015323,
+        "returncode": 0
+      },
+      {
+        "pid": 4015487,
+        "returncode": 0
+      },
+      {
+        "pid": 4015665,
+        "returncode": 0
+      },
+      {
+        "pid": 4015871,
+        "returncode": 0
+      },
+      {
+        "pid": 4016051,
+        "returncode": 0
+      },
+      {
+        "pid": 4016262,
+        "returncode": 0
+      },
+      {
+        "pid": 4016448,
+        "returncode": 0
+      },
+      {
+        "pid": 4016755,
+        "returncode": 0
+      },
+      {
+        "pid": 4017038,
+        "returncode": 0
+      },
+      {
+        "pid": 4017199,
+        "returncode": 0
+      },
+      {
+        "pid": 4017202,
+        "returncode": 0
+      },
+      {
+        "pid": 4017398,
+        "returncode": 0
+      },
+      {
+        "pid": 4017587,
+        "returncode": 0
+      },
+      {
+        "pid": 4017770,
+        "returncode": 0
+      },
+      {
+        "pid": 4017961,
+        "returncode": 0
+      },
+      {
+        "pid": 4018152,
+        "returncode": 0
+      },
+      {
+        "pid": 4018360,
+        "returncode": 0
+      },
+      {
+        "pid": 4018583,
+        "returncode": 0
+      },
+      {
+        "pid": 4018853,
+        "returncode": 0
+      },
+      {
+        "pid": 4019061,
+        "returncode": 0
+      },
+      {
+        "pid": 4019258,
+        "returncode": 0
+      },
+      {
+        "pid": 4019453,
+        "returncode": 0
+      },
+      {
+        "pid": 4019634,
+        "returncode": 0
+      },
+      {
+        "pid": 4019830,
+        "returncode": 0
+      },
+      {
+        "pid": 4020156,
+        "returncode": 0
+      },
+      {
+        "pid": 4021528,
+        "returncode": 0
+      },
+      {
+        "pid": 4021732,
+        "returncode": 0
+      },
+      {
+        "pid": 4021902,
+        "returncode": 0
+      },
+      {
+        "pid": 4022194,
+        "returncode": 0
+      },
+      {
+        "pid": 4022478,
+        "returncode": 0
+      },
+      {
+        "pid": 4023254,
+        "returncode": 0
+      },
+      {
+        "pid": 4024920,
+        "returncode": 0
+      },
+      {
+        "pid": 4025860,
+        "returncode": 0
+      },
+      {
+        "pid": 4025863,
+        "returncode": -15
+      }
+    ]
+  },
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "performance_claim": false,
+  "predecessor_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1",
+  "imported_terminal_manifest": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-continue-v2-20261017-r1/IMPORTED-TERMINALS.json",
+  "pending_keys": [
+    "TF_ON-risk_DEV-t4-i26-r0",
+    "TF_ON-risk_DEV-t5-i28-r0",
+    "TF_ON-risk_DEV-t6-i27-r0",
+    "TF_ON-risk_DEV-t8-i25-r0",
+    "TF_ON-risk_DEV-t0-i28-r0",
+    "TF_ON-risk_DEV-t6-i25-r0",
+    "MLP_ON-fresh_DEV-t0-i36-r0",
+    "MLP_ON-fresh_DEV-t1-i36-r0",
+    "MLP_ON-fresh_DEV-t2-i36-r0",
+    "MLP_ON-fresh_DEV-t3-i36-r0",
+    "MLP_ON-fresh_DEV-t4-i36-r0",
+    "MLP_ON-fresh_DEV-t5-i36-r0",
+    "MLP_ON-fresh_DEV-t6-i36-r0",
+    "MLP_ON-fresh_DEV-t7-i36-r0",
+    "MLP_ON-fresh_DEV-t8-i36-r0",
+    "MLP_ON-fresh_DEV-t9-i36-r0",
+    "MLP_ON-fresh_DEV-t0-i37-r0",
+    "MLP_ON-fresh_DEV-t1-i37-r0",
+    "MLP_ON-fresh_DEV-t2-i37-r0",
+    "MLP_ON-fresh_DEV-t3-i37-r0",
+    "MLP_ON-fresh_DEV-t4-i37-r0",
+    "MLP_ON-fresh_DEV-t5-i37-r0",
+    "MLP_ON-fresh_DEV-t6-i37-r0",
+    "MLP_ON-fresh_DEV-t7-i37-r0",
+    "MLP_ON-fresh_DEV-t8-i37-r0",
+    "MLP_ON-fresh_DEV-t9-i37-r0"
+  ],
+  "cumulative_budget": {
+    "original_target_forward_cap": 280000,
+    "predecessor_target_forwards_lower_known": 76533,
+    "predecessor_target_forwards_upper_debited": 80533,
+    "unclosed_attempt_debits": [
+      {
+        "key": "TF_ON-risk_DEV-t4-i26-r0",
+        "source_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1",
+        "counter_missing": true,
+        "lower_known": 0,
+        "upper_debited": 4000,
+        "quality_terminal": false,
+        "counter_parse_error": null,
+        "actual_attempt_target_forwards": "UNKNOWN; conservative original per-episode cap debited"
+      }
+    ],
+    "new_target_forward_cap": 199467,
+    "original_storage_cap_bytes": 3221225472,
+    "predecessor_storage_bytes_actual": 140536657,
+    "new_storage_cap_bytes": 3080688815,
+    "predecessor_supervisor_wall_sec": 24893.568116359413,
+    "predecessor_clock_wall_sec": 24893.85623449646,
+    "original_created_at": "2026-10-16T17:11:37.680830+00:00",
+    "prior_absolute_work_stop": "2026-10-17T00:06:37.680830+00:00",
+    "prior_absolute_cleanup_deadline": "2026-10-17T00:11:37.680830+00:00",
+    "new_absolute_work_stop": "2026-10-17T09:35:00+08:00",
+    "new_absolute_cleanup_deadline": "2026-10-17T09:40:00+08:00",
+    "report_by": "2026-10-17T09:55:00+08:00",
+    "user_deadline": "2026-10-17T10:00:00+08:00",
+    "no_budget_reset": true,
+    "meaning": "new separately authorized bounded window; original cap/failure stays unchanged; all prior cost debited",
+    "partial_attempt_actual_forward_count": "UNKNOWN where no COUNTER; bounded above, never treated as zero",
+    "master_budget_origin": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-collector-qualification-v1-20261016-r1/PREREGISTRATION.json",
+    "prior_global_cleanup_deadline": "2026-10-17T08:55:00+08:00"
+  },
+  "continuation_only": true
+}
