@@ -111,6 +111,10 @@ def main():
     require(pin['owner_job']==str(job) and matches(pin),'prior CPU runner lifetime differs')
     started = time.time()
     deadline = min(started+1800,datetime.fromisoformat(p['absolute_work_stop']).timestamp()-900)
+    for sig in (signal.SIGTERM, signal.SIGINT, signal.SIGALRM):
+        signal.signal(sig, lambda received,_frame: (_ for _ in ()).throw(
+            TimeoutError('bounded handoff control signal: '+str(received))))
+    signal.setitimer(signal.ITIMER_REAL, max(.01,deadline-started))
     write(out/'STARTED.json',dict(pid=os.getpid(),birth_ticks=proc(os.getpid())['birth_ticks'],
         started_at=datetime.now(timezone.utc).isoformat(),deadline_unix=deadline,
         prior_runner=pin,scope='complete-case-only handoff; no GPU model probe or episode truncation'))
