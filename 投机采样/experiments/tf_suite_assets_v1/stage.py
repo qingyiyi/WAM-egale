@@ -39,18 +39,29 @@ def main():
     ap.add_argument('--asset-root', type=Path, required=True)
     ap.add_argument('--shared-components', type=Path, required=True)
     ap.add_argument('--source-commit', required=True)
+    ap.add_argument('--resume-from', type=Path)
     ap.add_argument('--wall-cap', type=int, default=7200)
     args = ap.parse_args()
     job, base = args.job.resolve(), args.shared_components.resolve(strict=True)
     target = args.asset_root.resolve()
-    if job.exists() or target.exists() or not 600 <= args.wall_cap <= 7200:
+    if job.exists() or (target.exists() and not args.resume_from) or not 600 <= args.wall_cap <= 7200:
         raise ValueError('fresh job/cache and bounded two-hour lifecycle required')
+    if args.resume_from:
+        old=args.resume_from.resolve(strict=True)
+        old_plan=json.loads((old/'REGISTRATION.json').read_text())
+        if (not (old/'FAILED.json').is_file() or Path(old_plan['asset_root']).resolve()!=target
+                or old_plan['revisions']!=REVISIONS):
+            raise ValueError('resume requires closed failed predecessor and same pinned asset root')
+        try:
+            live=int(Path('/proc/'+str(old_plan['pid'])+'/stat').read_text().rpartition(') ')[2].split()[19])
+        except FileNotFoundError:live=None
+        if live==old_plan['birth_ticks']:raise ValueError('predecessor still alive; never mutate active download')
     if len(os.sched_getaffinity(0)) > 1:
         raise ValueError('download orchestrator is pinned to one CPU')
     for name in ('vae', 'text_encoder', 'tokenizer'):
         if not (base/name).is_dir():
             raise ValueError('original shared component absent: ' + name)
-    job.mkdir(parents=True); target.mkdir(parents=True)
+    job.mkdir(parents=True); target.mkdir(parents=True,exist_ok=bool(args.resume_from))
     started, birth = time.monotonic(), time.time()
     cap = 40 * 2**30
     registration = dict(goal='three pinned suite model assets, no model load', source_commit=args.source_commit,
@@ -58,6 +69,7 @@ def main():
         input_shared_components=str(base), asset_root=str(target), wall_cap_sec=args.wall_cap,
         birth_epoch=birth, deadline_epoch=birth+args.wall_cap, work_deadline_epoch=birth+args.wall_cap-120, storage_cap_bytes=cap,
         cpu=1, gpu=0, max_downloads=2, cleanup='HTTP threads joined before exit; retain partial files and receipts',
+        predecessor=str(args.resume_from.resolve()) if args.resume_from else None,
         pid=os.getpid(), birth_ticks=int(Path('/proc/self/stat').read_text().rpartition(') ')[2].split()[19]))
     write(job/'REGISTRATION.json', registration)
     rows, lock, stop = {}, threading.RLock(), threading.Event()
@@ -76,9 +88,16 @@ def main():
 
     def fetch(suite, relative, dest, expected=None):
         guard()
-        url = 'https://huggingface.co/Wjjjh/lingbot-va-libero-' + suite + '/resolve/' + REVISIONS[suite] + '/' + relative
+        method='resolve' if expected is not None else 'raw'
+        url = 'https://huggingface.co/Wjjjh/lingbot-va-libero-' + suite + '/'+method+'/' + REVISIONS[suite] + '/' + relative
         dest.parent.mkdir(parents=True, exist_ok=True)
-        part = dest.with_name(dest.name+'.partial')
+        if dest.exists():
+            if not args.resume_from or (expected is not None and dest.stat().st_size!=expected):
+                raise FileExistsError('existing file has no admitted predecessor or expected byte count')
+            return dict(source=url,file=str(dest),bytes=dest.stat().st_size,
+                status='REUSED_PREDECESSOR_COMPLETE_PUBLISHED_ASSET',predecessor=str(args.resume_from.resolve()),
+                cryptographic_identity='UNKNOWN_NOT_COMPUTED')
+        part = dest.with_name(dest.name+'.partial.'+job.name)
         received, last = 0, 0.
         with requests.get(url, stream=True, timeout=(15, 20), headers={'Accept-Encoding': 'identity'}) as r:
             if r.status_code != 200:
@@ -146,7 +165,7 @@ def main():
             failure=dict(status='FAILED_ASSET_PREPARATION', suite=suite, error_type=type(exc).__name__,
                 message=str(exc) if isinstance(exc,(ValueError,RuntimeError,TimeoutError)) else 'network_or_IO_error_see_public_source',
                 receipts=receipts, elapsed_sec=time.monotonic()-started)
-            write(folder/'FAILED.json', failure); pulse(suite, status='FAILED', error_type=type(exc).__name__)
+            write(job/(suite+'-FAILED.json'), failure); pulse(suite, status='FAILED', error_type=type(exc).__name__)
             raise
 
     def alarm(*_):
