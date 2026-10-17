@@ -328,7 +328,7 @@ class Runner:
         paths = [app / "userlib", Path(self.p["va_python"]).resolve().parents[1] / "lib",
             Path(self.p["client_python"]).resolve().parents[1] / "lib"]
         env["LD_LIBRARY_PATH"] = ":".join([str(x) for x in paths] + [os.getenv("LD_LIBRARY_PATH", "")])
-        pythonpaths = [ROOT / "third_party/LIBERO-official-20260922", ROOT / "third_party/LIBERO-official-20260922/libero",
+        pythonpaths = [ROOT / "third_party/LIBERO-official-20260922",
             WORKTREE, EXP, ROOT / "投机采样/scripts"]
         env["PYTHONPATH"] = ":".join([str(x) for x in pythonpaths] + [os.getenv("PYTHONPATH", "")])
         return env
