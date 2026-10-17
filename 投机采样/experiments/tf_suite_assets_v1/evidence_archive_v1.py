@@ -407,6 +407,7 @@ class Archive:
             and self.hard-self.work >= 900, 'original17:11 master96h lifetime and cleanup reserve required')
         self.archive = Path(p['local_archive_root']).resolve()
         self.pending = self.archive.with_name(self.archive.name+'.pending')
+        require(p['local_free_floor_bytes']==5*2**30,'local archive5GiB actual free reserve required')
         require(not self.job.exists() and not self.archive.exists() and not self.pending.exists()
             and self.archive.parent.is_dir(), 'fresh local metadata/archive/partial roots required; no resume')
         require(not self.job.is_relative_to(self.archive) and not self.job.is_relative_to(self.pending),
@@ -437,6 +438,9 @@ class Archive:
                 require(not path.is_symlink(), 'local metadata symlink is BLOCKED')
                 metadata += path.stat().st_size
         require(metadata <= META_CAP and self.bytes+metadata <= TOTAL_CAP, 'local total/metadata archive cap')
+        volume=os.statvfs(self.archive.parent)
+        require(volume.f_bavail*volume.f_frsize>=self.p['local_free_floor_bytes'],
+            'local shared disk5GiB free reserve; keep remote source if copy cannot finish')
 
     def current(self, status, **fields):
         write(self.job/'status.json', dict(status=status, at=stamp(), files_copied=self.copied,
@@ -490,6 +494,9 @@ class Archive:
         require(manifest['schema'] == 'tf-long-raw-evidence-manifest/v1'
             and manifest['file_count'] == len(manifest['files'])
             and manifest['total_bytes'] <= TOTAL_CAP-META_CAP, 'complete bounded manifest required')
+        volume=os.statvfs(self.archive.parent)
+        require(volume.f_bavail*volume.f_frsize>=manifest['total_bytes']+self.p['local_free_floor_bytes'],
+            'full local archive plus5GiB reserve must fit before copying')
         self.pending.mkdir(parents=True, exist_ok=False)
         partials = self.pending/'file-transfer.pending'
         partials.mkdir(exist_ok=False)
