@@ -1,15 +1,18 @@
-# 新增四套研究范围：准备中，不是质量结果
+# 四套研究当前状态：运行中，尚无新质量证书
 
-本分支`experiment/libero-four-suite-20261017`在原公开科学快照4f04 paused72之上追加执行源码与HW。旧4f04/b0、72/96、live77、FAILED、retention、PF2投入NO_GO和四项false不更正。不要跟随main替换固定历史。
+本分支`experiment/libero-four-suite-20261017`追加独立源码与HW；历史科学快照4f04 paused72、b0/main身份、旧FAILED/retention/PF2 NO_GO及四false均不更正。此页为10/17 18:48检查点，动态结果以原job和内部时间为准。
 
-用户新批准Object/Goal/Spatial各自同方法训练自己的TF64，并与Long汇总Target/TF/PF2全套对照。三套Wjjjh社区Target不是官方发布，也不能继承其自报成功率。Object/Goal权重已经下载；完整reset bank/回传/三pipeline控制器等待，新增训练和机器人局目前0。原Long双卡四worker继续。
+Long双卡四worker继续；18:42已闭合354/1500局（旧69只读复用），不是完整评估。Object/Goal社区Target已完整下载，本机保留Object完整副本；三套完整512-token BF16 bank现已齐。新增三套模型/训练/机器人局仍0，等待Long实际清理及Spatial资产，不把控制器启动当成模型已训练。
 
-- [实际执行索引](../.pipeline/experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)
-- [有限PLAN与固定训练链](../.pipeline/experiments/libero-four-suite-20261017/PLAN.md)
-- [轻量HW恢复入口](../.pipeline/PROGRESS.compact.md)
-- [新pipeline源码](../投机采样/experiments/tf_suite_pipeline_v1)
-- [资产/bank/资源生产源码](../投机采样/experiments/tf_suite_assets_v1)
+用户明确本机减负、现有AutoDL暂不扩容：Object/Goal固定GPU0，Spatial GPU1，共享入口8eaf130限制同卡2模型及CPU租约。Object结果放现有OS盘5GiB帽/5GiB空闲线；Goal/Spatial数据盘。37f15d1等待Long500全部终态、实际cleanup与无文件consumer后才轮换3片可重建Long远端Transformer缓存给Spatial，T5/VAE/tokenizer/本机原件保留。128d435完整归档producer已启动等待，先复制全部Long原件，再退指定远端重复bulk/COUNTER；目前复制0/删除0。原失败与唯一证据不丢。本机本次只清7个失败下载残片0.917GiB，余94.9GiB；项目总144.52GiB。
 
-每套最终500组×三臂，加60训练采集，共1560新增完整局；三套4680局。各套各臂同物理GPU，Target采集200局只读复用，初态FIT/CAL/DEV暴露明示。没有独立TEST或正式性能证书；并行计时仅探索性，replay不替代完整机器人E2E。新96h总上限不覆盖原Long48h。
+- [当前实际作业及失败说明](../.pipeline/experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)
+- [固定训练链、范围、预算](../.pipeline/experiments/libero-four-suite-20261017/PLAN.md)
+- [短HW](../.pipeline/PROGRESS.compact.md)
+- [pipeline源码](../投机采样/experiments/tf_suite_pipeline_v1)
+- [bank/资产/归档源码](../投机采样/experiments/tf_suite_assets_v1)
+- [逐文件清理证据](../投机采样/results/runtime/p0-tf-suite-abandoned-download-cleanup-cpu1-v1-20261017-r1/RESULT.json)
 
-公开包不含大Target、完整bank/原始tensor、环境、凭据或新机器的访问能力。执行版本、实际终态与当前资源须以服务器job核对；本文件仅17:22快照，不承诺已经训练/完成全套。四权限始终false。
+各新套件独立同配方TF64，1560新增完整局/套，三套4680；每套最终500case×T/C/P，Target200只读复用，FIT/CAL及训练未见子集分层，非独立TEST。无结构/seed/tau搜索。所有臂优化reset；共享并行计时只探索性，formal E2E仍UNKNOWN，旧fixture缺口保留。96h截止不重置Long原48h。
+
+公开包仅代码/HW/小型收据，不含权重、bank完整tensor、raw archive、环境或访问凭据。发布者SR不是实测。四权限均false；不得把阶段完成写成独立非劣或正式性能放行。

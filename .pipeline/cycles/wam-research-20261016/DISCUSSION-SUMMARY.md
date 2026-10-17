@@ -1,5 +1,7 @@
 # 当前讨论与授权摘要
 
+最新资源选择：用户为共享本机减负，要求新增重计算优先放现有AutoDL；本轮暂不扩容、先清理废弃内容。新namespace前瞻调整零新增数据的Object硬件安排为远端，不改旧job原件。Long完成后才核查远端可重建权重轮换，T5/原始结果/本机原件保留。见[不扩容决定](../../memory/global/requirements/decision-本轮AutoDL不扩容并先清理废弃资源.md)和[资源偏好](../../memory/global/requirements/preference-本机压力时优先远端计算与容量告知.md)。
+
 用户优先把TF draft效果和投机侧收口。最新明确要求充分利用本机及现有双卡AutoDL，分别在Spatial/Object/Goal社区权重上用同方法训练自己的draft，并完整对照Target、连续TF、同权重TF+PF2成功率、实际trace长度与E2E成本；不是仅建议或旧READ_ONLY_PLAN。Long原全量继续，90无可信Target仍BLOCKED，未记作用户取消授权。
 
 同TF64结构/同训练预算/同seed与acceptance，不移植Long权重当新套件训练完成、不增加结构搜索。训练采集、描述评估和独立TEST身份分开；并行质量与正式性能分开，正式计时仍本机无争用并受质量门限制。用户允许当前AutoDL至已批准工作完成，没有采购新卡或改变旧四false的授权。

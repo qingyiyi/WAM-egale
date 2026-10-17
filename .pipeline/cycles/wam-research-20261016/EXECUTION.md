@@ -1,5 +1,27 @@
 # 最近执行检查点
 
+## 2026-10-17 18:48 北京：归档已登记启动等待
+
+128d435独立CPU1归档producer已实际启动，本机443492/birth1350318267，`p0-long-evidence-archive-local-cpu1-v1-20261017-r1`，状态WAITING_FULL1500_AND_STRICT_OWNED_CLEANUP；复制0文件/0B。保持17:11/master96h截止，完整manifest后传输≤10800秒，总≤12GiB、单文件64MiB、metadata128MiB、本机实际空闲≥5GiB；密码仅RAM。先等Long1500及原own实际清理，再等37f空间轮换完成审计，全部原件复制、INDEX/COPY-RESULT持久化后才退远端重复bulk和精确COUNTER；其他JSON/FAILED/proof/plan/md/csv/log均保留。旧源不改，无GPU/test/SHA，无自动重试。登记在`p0-tf-suite-storage-placement-v3-20261017-r1/ARCHIVE-REGISTRATION.json`。
+
+## 2026-10-17 18:42 北京：已有磁盘分配与归档准备
+
+Object准备仍零模型/局，现独立OS盘job `/root/wam-suite-research-20261017-v3/object-chain-r1`、controller32543、source8eaf130；原R2只补替换原因并退出。5GiB套件上限及5GiB实际空闲线不变，Goal/Spatial在数据盘。同17:11起点/10/21截止；归档producer准备中，尚未复制或清除Long结果。
+
+18:42现场Long新285闭合局＋旧69＝354；三套完整bank已齐，remote新训练0。37f15d1轮换调度32254仍等待全Long及清理，尚未删模型。原本机完整权重保留；项目只读du约144.52GiB，本机余94.9GiB。491个保护源size/mtime全部一致（不计算hash）。最新真实[空间/状态快照](../../../投机采样/results/runtime/p0-tf-suite-cache-rotation-inputs-cpu1-v2-20261017-r1/ACTUAL-CAPACITY-AND-PLACEMENT-r1.json)。
+
+## 2026-10-17 18:10 北京：本机减负、暂不扩容
+
+用户最新选择已通过Maintain保存：新增重计算优先现有AutoDL，先清理、不扩盘。本机7个已关闭失败下载残片985,044,916B已清理，清单在`p0-tf-suite-abandoned-download-cleanup-cpu1-v1-20261017-r1`。原失败/完整权重/原始结果保留，本机剩约94.9GiB。
+
+新source8eaf130沿用9aa数学/训练/阶段预算。Object31851/Goal31852/Spatial31853远端控制器已启动等待；原17:11起点和10/21截止不改。GPU0前两套、GPU1 Spatial，同卡原子双槽、CPU租约、实际清理后释放。旧准备控制器零模型/局退出，原记录不改。当前仍等待Long、Object bank、Spatial资产，新增训练和机器人局0。
+
+Goal/Spatial完整bank成功（CPU2455.0秒）；Object远端v3 r3生产中，缺原bank收据和启动参数错误均保留失败，补真实原件后沿原2h系列截止。本机Object资产已完整，原3200秒传输超时和旧本机bank超时保留；只有非复用下载残片另有清理。
+
+18:05 Long新234闭合局＋原69＝303，双卡四worker继续。空间轮换要等其500case全终态及实际清理；三片远端Long Transformer缓存可由本机原件重建，仍需加载的T5与全部结果保留。轮换调度源码尚在完成，不能声称空间已释放。
+
+## 2026-10-17 17:22 北京：原始M17登记检查点
+
 2026-10-17 17:22 北京：M17新增三套同配方训练及全量三臂已登记。master起点17:11:31、10/21 16:56停新、17:11清理；4680新增完整局/18,723,000尝试/15GiB研究证据，原Long48h账本不重置。
 
 source9aa66fb为完整pipeline；asset下载f696、CPU bank2e47449、resource bridge6baf596。Object本机controller等待真实权重/完整bank；Goal/Spatial远端controller30752/30753等待bank/原Long清理。尚未启动新增模型或机器人局。Object/Goal远端asset299.3s成功；本机前下载及SFTP/SSH API准备失败保留，Object真实SSH stream约3MiB/s。远端bank r1缺Spatial组件脚手架先于T5失败，r2补必要资产引用后继续，原系列2h累计deadline不改。

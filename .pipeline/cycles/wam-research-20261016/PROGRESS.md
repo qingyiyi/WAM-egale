@@ -3,22 +3,23 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: 2026-10-17T17:22:00+08:00
+updated: 2026-10-17T18:42:29+08:00
 current: M17
 next: produce_assets_and_complete_suite_target_collection_then_fixed_TF_training
-execution_status: controllers_waiting_inputs_Long_four_workers_running
+execution_status: remote_shared_controllers_waiting_Long_bank_and_asset_rotation
 ---
 # 当前研究进度
 
 M17已批准三小套件各自同配方TF及Target/TF/PF2全套对照。四套权重独立，不拿社区发布者成功率代替实测；不把Long draft当作已适配。见[实际状态](../../experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)。
 
-|工作|实际状态|证据|
-|---|---|---|
-|M17 Object/Goal资产|两份各10,177,831,668B已在远端完整下载；Object传本机中|asset r2 RESULT；本机import r3 status|
-|M17 reset bank|本机Object CPU7；远端Goal/Spatial CPU4 affinity、Torch7线程，生产中|bank各job，不声明在线数学等价已重验|
-|M17 三条pipeline|source9aa66fb，控制器已启动等待；新模型/episode0|master与三个campaign status|
-|M16 Long|四worker/两卡继续；17:20闭合约80组三臂/240局（含旧23组69局），另有运行中局|原v2 status，旧源不动|
-|LIBERO90|没有已核实同代Target；训练未启|原可靠性检索|
+| ID | 工作 | 状态 | 实际进展 | 证据 |
+|---|---|---|---|---|
+| `M16` | Long全量三臂 | in_progress | 18:42新285闭合局＋原69＝354；另有运行中局，非全量 | 原v2 status，旧源不动 |
+| `M17` | 三套独立TF与全量三臂 | in_progress | 8eaf130远端共享资源控制器32543/31852/31853等待（Object结果改OS盘）；新模型/episode/训练0 | [实际作业](../../experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md) |
+
+Object/Goal远端权重完整，本机Object也已完整；Goal/Spatial完整bank完成（2455秒CPU），Object远端bank v3 r3完成（1220.5秒CPU）。原本机3600秒bank超时、传输3200秒超时、缺收据/启动参数失败及旧控制器替换全部保留。
+
+用户要求本机减负并暂不扩容，已在新namespace将Object迁远端，保持17:11起点和10/21截止；Long清理后才核查可重建Long远端Transformer缓存轮换Spatial。Object新增结果放远端OS盘，独立新namespace仍GPU0/原5GiB及5GiB空闲线；归档Long到本机后才退远端重复payload/COUNTER，归档128d435/PID443492已启动等待，复制0/删除0。本机本次清理7个失败下载残片985,044,916B，剩约94.9GiB；没有删除权重、原始结果或失败记录。LIBERO90仍缺可信同代Target，未启动。
 
 ## 历史质量不覆盖
 

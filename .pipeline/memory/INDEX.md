@@ -2,6 +2,11 @@
 
 这是从旧228条记录提炼的当前主题入口；原记录和原分类索引保留，按具体问题追溯。临时进度与 AutoDL 完成数看 Cycle，不作为长期记忆复制。
 
+## 当前资源偏好
+
+- [本轮AutoDL暂不扩容](global/requirements/decision-本轮AutoDL不扩容并先清理废弃资源.md)（constraint，M17）：先核依赖清理废弃项，必要时分阶段轮换可重建权重；原始结果及在用组件保留。
+- [本机减负与容量告知](global/requirements/preference-本机压力时优先远端计算与容量告知.md)（guideline）：优先现有AutoDL；容量不足先明确告知，项目清理仍核依赖。
+
 ## 必须读取：约束级
 
 - [四套LIBERO同配方TF与三臂评估](global/requirements/decision-四套LIBERO同配方TF与三臂评估.md)：用户已新批准三个小套件各自训练与T/TF/PF2完整评估，独立预算；不再只是扩展建议。

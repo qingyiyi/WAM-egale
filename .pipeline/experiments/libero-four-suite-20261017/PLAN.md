@@ -2,14 +2,16 @@
 
 当前Cycle：wam-research-20261016，M17。用户已明确批准[三个套件的独立训练与评估](../../memory/global/requirements/decision-四套LIBERO同配方TF与三臂评估.md)。这是新增执行范围，原Long M16和4f04 paused72/旧FAILED/四false保持，原tile与保护文件不动。
 
+18:30资源修订：用户要求本机减负并明确暂不扩容。新套件模型/episode/训练0时，以8eaf130独立共享资源入口替换旧准备控制器：Object/Goal全部固定AutoDL GPU0、Spatial固定GPU1。原17:11起点/96h及方法/数据/预算不变；原本机分配只保留历史身份。三套完整bank现已完成；Long清理后以37f15d1有界调度核查并轮换远端Long Transformer缓存给Spatial，T5/VAE/tokenizer/原结果不删。[新资源登记](../../../投机采样/results/runtime/p0-tf-suite-remote-placement-v2-20261017-r1/REGISTRATION.json)、[不扩容决定](../../memory/global/requirements/decision-本轮AutoDL不扩容并先清理废弃资源.md)。
+
 ## 可见执行清单
 
 - [x] 公开发布身份核查：Wjjjh三个固定revision，transformer各10,177,831,668B，配套norm_stats；非官方复现版本。
 - [x] 实际资源：10/17 16:01 AutoDL两卡各98%、四Long worker继续；数据盘空17.97GB、OS盘空32.15GB；本机A100空闲，本项目盘空约104GiB。
 - [x] Object/Goal远端有界下载完成；本机回传、Spatial空间调度仍在推进。原始配置与归一化归档，runtime使用独立模型目录及共享base组件，不改旧registry。
-- [ ] 复用原数学构建三套完整512-token BF16 prompt bank。
+- [x] 复用原数学构建三套完整512-token BF16 prompt bank；新suite在线审计仍待实际任务。
 - [x] 独立通用server/client/collector/训练/监督入口完成并冻结来源（9aa66fb），三控制器已登记等待；尚未新GPU任务；不执行smoke或独立测试。
-- [ ] 利用本机空GPU先进行完整Target采集和质量；AutoDL原Long自然完成后接续可用资源，不截断现有episode。
+- [ ] 全部新增重计算迁现有AutoDL，Long自然结束/实际清理后接续；不截断当前episode。
 - [ ] 三套各一次固定训练链、最终checkpoint冻结，完整T/C/P各500局；全成败、长度、800罚分与探索性成本汇总。
 - [ ] 质量满足登记条件后申请/使用无争用窗口，测完整chunk和完整任务E2E；不以并行墙钟或调用数伪装正式加速。
 
@@ -29,12 +31,12 @@ Target初始200完整局：init0–17 FIT180、18–19 CAL20，各任务均衡�
 
 源资产本地新增上限40GiB（3个target约28.44GiB＋下载暂存/metadata），研究原始新增上限15GiB（每套compact teacher≤1GiB，代表fixture总≤3GiB，不逐query存历史）。AutoDL利用现有OS盘先缓存至多两套新transformer，数据盘保留≥5GiB；第三套按空间和已结束缓存依赖核验顺序切换。归档可回传本项目，旧失败与不可重建tensor不删除，不自动扩容。
 
-本机先最多2独立模型worker/同A100，server/client各2CPU，总8；bank CPU≤7、训练各CPU2且错开同资源密集阶段。AutoDL现Long4worker/16CPU不加GPUworker；自然收尾后新phase同样最多每GPU2独立worker，总CPU不越20quota。模型加载峰值/其他用户负载以实际准入为准；不杀他人进程。
+本机不新启动模型或重CPU编码，只保留轻量调度与归档；新增三套改用AutoDL。AutoDL现Long4worker/16CPU不加GPUworker；自然收尾后新phase同样最多每GPU2独立worker，总CPU不越20quota。模型加载峰值/其他用户负载以实际准入为准；不杀他人进程。
 
 训练及新套件首批完整任务后给出基于实测的工期；当前仅粗估新增总体约48–72小时，受新任务长度与失败尾部影响，96小时为止损帽。正式性能需质量与独占条件，不能保证按该时间已放行。
 
 每phase登记goal/source commit/input manifest/CPU-GPU/绝对deadline/forward/storage cap/终态/清理身份/证据索引。代码与原数学审查并行，资产/bank只做真实产物生产，无smoke/独立试跑/哈希。证据不足保持UNKNOWN及四false。
 
-## 前瞻硬件分片（未看新套件结果）
+## 首次硬件分片（新数据前已由18:30远端登记替代，保留历史）
 
 Object全部case及Target/FIT在本机SXM4，Goal全部在AutoDL GPU0，Spatial全部在GPU1；各套最终0–249/250–499两个预登记shard，三臂同case同物理卡，禁止混SXM/PCIe计时。原Long先自然完成与清理，远端控制器等待中。资产/完整bank齐备后直接沿源码运行完整任务，必要审计inline，无smoke/SHA/独立测试。详见[实际索引](ACTUAL-RUN-STATUS.md)。

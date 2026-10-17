@@ -1,0 +1,50 @@
+{
+  "schema": "tf-long-evidence-archive-registration/v1",
+  "host": "region-9.autodl.pro",
+  "port": 40416,
+  "username": "root",
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "retirement_authorized": true,
+  "authorization_source": "user chooses no disk expansion; archive all originals then remove only unused remote duplicates within project",
+  "total_cap_bytes": 12884901888,
+  "per_file_cap_bytes": 67108864,
+  "metadata_cap_bytes": 134217728,
+  "local_free_floor_bytes": 5368709120,
+  "transfer_wall_cap_sec": 10800,
+  "bulk_suffixes": [
+    ".pt",
+    ".npz",
+    ".npy",
+    ".png",
+    ".jsonl"
+  ],
+  "delete_counter_json": true,
+  "rotation_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-suite-cache-rotation-cpu1-v2-20261017-r1",
+  "remote_app": "/root/autodl-tmp/wam-tf-pf2-20261017",
+  "long_current_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-fullsuite-long-v2-20261017-r2",
+  "long_prior_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-fullsuite-long-v1-20261017-r1",
+  "remote_metadata_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-long-evidence-archive-remote-cpu1-v1-20261017-r1",
+  "remote_python": "/root/miniconda3/bin/python",
+  "expected_source_commits": {
+    "current": "d5448bbc5b02465dcc8d7c6df5bb4497d40cf3d9",
+    "prior": "67d1c0d0f5c9b25ecfb512dcdc71aebf5cfc9cca"
+  },
+  "source_code_commit": "128d435a995f8f76a5a34df409256ebf42166200",
+  "authorization_origin": "2026-10-17T17:11:31.578108+08:00",
+  "absolute_work_stop": "2026-10-21T16:56:31.578108+08:00",
+  "absolute_cleanup_deadline": "2026-10-21T17:11:31.578108+08:00",
+  "local_archive_root": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-long-evidence-archive-payload-v1-20261017-r1",
+  "goal": "retain full closed Long evidence locally before freeing explicit duplicate remote data for full suite experiments",
+  "CPU": 1,
+  "GPU": 0,
+  "terminal": "complete archive+explicit source duplicate receipts or blocked/partial with all not-yet-copied source preserved",
+  "cleanup_plan": "close owned SFTP/RPC SSH channels and record actual exit; no instance shutdown claim",
+  "old_FAILED_immutable": true,
+  "protected_files_modified": false,
+  "no_SHA": true
+}
