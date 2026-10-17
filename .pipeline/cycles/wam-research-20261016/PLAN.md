@@ -2,13 +2,13 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: 2026-10-17T13:18:21.505241+08:00
+updated: 2026-10-17T15:21:18+08:00
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
 # WAM 投机与多候选系统协同研究
 
-> 当前M16：用户已批准Long及有可信Target前提下的90全量T/TF/TF+PF2，现有AutoDL双卡可用至完成。Long500组三臂源码/有限fixture准备中，尚未启动新GPU；90同代checkpoint未核实。M15旧NO_GO/全部四false保留。[新工作计划](../../experiments/libero-fullscale-20261017/PLAN.md)。
+> 当前M16：Long500组三臂已由原23组/69完整局，在完整case边界接至双卡四worker。90无可信Target，文献建议先Long，不把问句写成取消授权。fixture捕获仍UNKNOWN。M15旧NO_GO/四false保留。[实际状态](../../experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)。
 
 ## 目的与边界
 

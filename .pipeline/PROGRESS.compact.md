@@ -1,14 +1,14 @@
 # 当前研究恢复入口
 
-更新时间：2026-10-17 14:02，北京。派生短入口；原FAILED/tile/协议保留。先读[INDEX](INDEX.md)、[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再恢复当前Cycle，不展开全部旧知识。
+更新时间：2026-10-17 15:21，北京。派生短入口；原FAILED/tile/协议保留。先读[INDEX](INDEX.md)、[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再恢复当前Cycle，不展开全部旧知识。
 
-## 当前M16：全量描述评估准备
+## 当前M16：Long全量描述评估，四worker运行
 
-用户新增授权Long与LIBERO90分别Target/TF/TF+PF2全量、90另训draft、现有AutoDL双卡可用至完成。见[计划](experiments/libero-fullscale-20261017/PLAN.md)、[授权](memory/global/requirements/decision-AutoDL全量研究使用至完成.md)。新Long登记500组（10task×50init）×三臂1500完整局；init-major任务均衡，同case同GPU，T_C_P/C_P_T/P_T_C轮换。每卡单持久server，server/client各2CPU；源码/有界fixture准备中，尚未启动新GPU。新job48h含启动/等待/失败/清理，10/19 13:40:56停工作、13:55:56清理止，10GiB证据含fixture3GiB、磁盘留5GiB。旧M15起止不改，不自动重试。
+用户授权Long与可信Target前提下的90三臂、现有AutoDL双卡可用至完成。Long500组（10task×50init）×三臂1500局；同case同GPU、三顺序轮换。原v1 67d1c0d收尾23组/69完整局、72593 forward，原PARTIAL/清理EMPTY保留。新v2 d5448bb runner28232/guard28231四worker已实际READY并完整运行（每卡2独立模型/环境/KV/RNG，总16CPU）；15:21新增9局终态、1组三臂闭合。控制3469099只完成当前case自然交接、未截断/重跑。原48h及系列cap不重置：10/19 13:40:56停工、13:55:56清理，6,001,000 forward/10GiB含fixture3GiB、磁盘留5GiB。见[实际状态/原件](experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)、[授权](memory/global/requirements/decision-AutoDL全量研究使用至完成.md)。
 
-已检索官方与68个同名HF模型，尚未核实同代LingBot-VA LIBERO90 target；社区Wjjjh有Object/Goal/Spatial各10task模型、不是90；rbehnam19六权重无suite/normalizer/评测身份；FastWAM90是另一架构。独立subagent继续深挖一手来源。90采集/训练/GPU均未启动，不能把Long权重当已适配90。
+官方HF/MS26模型与68同名HF、23issue/PR等深挖，仍无已核实同代LIBERO90 Target；Wjjjh仅Object/Goal/Spatial10task，rbehnam19身份不足，FastWAM90不同架构。90采集/训练/GPU未启动。官方LIBERO原设计90预训练/10下游评测；LingBotVA、CVPR2025 CoT-VLA、FLASH常测四小套件而非90。建议先收Long，用户询问不记作取消授权；单Long不能支持跨环境/WAM普适主张。[范围依据](experiments/libero-fullscale-20261017/SCOPE-REVIEW.md)。
 
-用户同意[质量并行、保存真实state后独占计时](memory/global/requirements/decision-质量并行评估与独占重放计时分离.md)。现有actions/latents不够完整replay；只补短中长三份request前完整已知state+输入+少量oracle，总≤3GiB，不截episode或多调模型。GPU重放可测实际边界的verifier/chunk，不能替代完整任务E2E。并行时间仅探索吞吐；同卡多eval须实际显存与独立KV/RNG/scheduler支持，不能简单并发复用可变服务。
+用户同意[质量并行、独占重放计时](memory/global/requirements/decision-质量并行评估与独占重放计时分离.md)。v1 capture重复worker_index失败；v2虽修该项，真实首query又遇action-KV桶检查gap，UNKNOWN保留，尚无合格新TF fixture，不声称state已完整保存。数学/动作原路径继续，修复需新版本/自然边界。正式verifier/chunk重放与完整任务E2E分开；并行耗时仅探索资源/吞吐，不能借此签正式加速。
 
 自然模型失败不阻止新全量覆盖；raw初态/首两S不等保留FAILED并标严格pair INVALID。非法route/API/数学合同/资源硬限停新工作。官方50init含已用FIT/CAL/DEV与原保留组，不将新描述benchmark签为独立TEST。预计Long双卡25–40h，需实际完整任务吞吐更新；90工期在Target未核前UNKNOWN。
 

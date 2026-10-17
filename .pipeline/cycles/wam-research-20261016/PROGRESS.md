@@ -3,14 +3,14 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: 2026-10-17T13:18:21.505241+08:00
+updated: 2026-10-17T15:21:18+08:00
 current: M16
-next: freeze_long500_three_arm_source_and_run_dual_GPU
-execution_status: preparing_authorized_fullscale_source_and_bounded_capture
+next: supervise_four_workers_and_archive_complete_Long_cases
+execution_status: running_four_independent_workers_full_episodes
 ---
 # 现有 WAM 研究进度
 
-> 当前M16：用户已批准Long及有可信Target前提下的90全量T/TF/TF+PF2，现有AutoDL双卡可用至完成。Long500组三臂源码/有限fixture准备中，尚未启动新GPU；90同代checkpoint未核实。M15旧NO_GO/全部四false保留。[新工作计划](../../experiments/libero-fullscale-20261017/PLAN.md)。
+> 当前M16：Long500组三臂已由原23组/69完整局，在完整case边界接至双卡四worker。15:21新增9局自然终态、1组三臂闭合，尚非全量结果。90无可信Target，文献建议先Long；fixture仍UNKNOWN。M15旧NO_GO/四false保留。[实际状态](../../experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)。
 
 2026-10-17早用户明确暂停实验并要求网页版文献/开源Prompt及GitHub同步。GPU已清理，旧/新DEV共72/96完整、剩24；双根CPU报告72 raw/50严格组件/22旧TF_ON arm收据缺口，整体PARTIAL，用户暂停作为非预算completion issue保留。fresh T20、CONT19、ON20成功，MLP0完整；风险ON已完成4均失败，其中task1/29、3/26、4/26为T成功/TF失败，三对保存物理/reset/RNG/双相机exact。当前TF-on权重/配方不满足无新增风险条件，不能推荐TEST；TF64结构/API仅暂冻研究。一次新30/固定三条件500更新均已完成，不自动追加。原四权限false、FAILED/default/tile保持。当前只做CPU交接发布，见[本轮结果](../../experiments/tf-effect-closure-20261016/RESULT.md)、[暂停决定](../../memory/global/requirements/decision-暂停TF实验并先外部文献复核.md)。
 
@@ -36,7 +36,7 @@ M11有限诊断终态PARTIAL：[五报告/时间表](../../experiments/task4-dir
 
 ## M16 最新范围与并行安排
 
-用户延长现有AutoDL使用至工作完成，新job独立48h生命周期、10GiB含fixture3GiB，旧M15起止不改。Long10×50初态×三臂1500完整局，双卡各一持久worker，init-major均衡覆盖。原同代90 Target检索未核实，不能将Long或FastWAM权重冒充90。非测速质量并行、有限真实state持久化后独占replay；完整任务E2E仍独立计时。自然失败不停止新全量描述覆盖，原始隔离差异保留FAILED/严格INVALID，非法route/API/资源硬停。
+用户延长现有AutoDL使用至工作完成，新job独立48h生命周期、10GiB含fixture3GiB，旧M15起止不改。Long10×50初态×三臂1500完整局，目前每卡两个独立持久worker，总16CPU。原v1在完整case收尾后保留PARTIAL终态和69原件；新v2只读复用、不重跑，系列帽与绝对deadline不重置。原同代90 Target仍未核实；官方LIBERO将90用于预训练、10下游评测，现代常见四小套件也非90。建议先收口Long，不据问句取消原授权。现有fixture接口捕获出现KV桶检查gap，UNKNOWN保留，尚不能承诺已保存新TF完整replay。自然失败不停止全量描述覆盖，隔离FAILED/严格INVALID保留，非法route/API/资源硬停；并行计时非正式性能。
 
 ## 完整计划状态
 
@@ -57,6 +57,7 @@ M11有限诊断终态PARTIAL：[五报告/时间表](../../experiments/task4-dir
 | `M13` | TF64一次数据配方收口1→2→3 | completed_bounded_partial_quality_NO_GO | 新30/固定训练完成；DEV77/96；TF fresh20/20、risk4/8对T6/8，四false | [最终结果](../../experiments/tf-effect-closure-20261016/RESULT.md)，先核网页方案，不自动新训练/TEST |
 | `M14` | 冻结TF_ON/PF2只读审查 | completed | 源证据/选定权重/数据边界、双A100资源、六pair建议与未应用diff | [只读结果](../../experiments/tf-pf2-plan-20261017/RESULT.md)；待新具体批准，不自动开跑 |
 | `M15` | 冻结TF_ON/PF2双卡完整DEV | completed | 六对十二局完整/清理，投入NO_GO；旧四false保留 | [结果与建议](../../experiments/tf-pf2-autodl-20261017/RESULT.md)，新诊断尚未登记/启动 |
+| `M16` | Long全量三臂描述覆盖 | active | 原23组三臂只读复用；现双卡四worker实际完整任务；90 BLOCKED、fixture UNKNOWN | [实际状态](../../experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)；保留全失败与来源、完成后分层汇总 |
 
 ## 作业终态与边界
 
@@ -64,7 +65,7 @@ M11有限诊断终态PARTIAL：[五报告/时间表](../../experiments/task4-dir
 
 ## 下一步
 
-10/17–18并行收质量风险与强系统基线；只有证据触发才一次新数据/等预算训练。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文稿交老师。质量、最终独立TEST、非劣和正式性能许可四项分开，当前均false。研究计划及具体证据见[短索引](../../research/speculative-sampling/WAM-COORDINATION-20261016.md)和[夜间结果](../../research/speculative-sampling/OVERNIGHT-RESULT-20261016.md)。
+当前优先监督已批准Long500三臂、保留全部完整与部分记录，核验reset/路由/资源及fixture缺口，完成后汇总质量和探索性成本；唯一Long数据训练机会已用完，不自动追加训练/TEST/正式性能。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文证据包。四权限均false；90无可信Target，暂不启动。研究计划及具体证据见[实际状态](../../experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)。
 
 最终复核时间：2026-10-16T05:27:50+08:00。本轮完成标记仅关闭夜间有限工作，质量门不变。见[最终只读独审](../../../投机采样/results/runtime/p0-overnight-final-local-independent-review-v1-20261016-r2/REVIEW-RESULT.json)。
 

@@ -1,11 +1,11 @@
 ---
 kind: discussion-summary
 cycle: wam-research-20261016
-updated: 2026-10-17T13:18:21.505241+08:00
+updated: 2026-10-17T15:21:18+08:00
 ---
 # 研究约定摘要
 
-> 当前M16：用户已批准Long及有可信Target前提下的90全量T/TF/TF+PF2，现有AutoDL双卡可用至完成。Long500组三臂源码/有限fixture准备中，尚未启动新GPU；90同代checkpoint未核实。M15旧NO_GO/全部四false保留。[新工作计划](../../experiments/libero-fullscale-20261017/PLAN.md)。
+> 当前M16：Long500组三臂已在完整case边界接至双卡四worker，原69完整局只读复用；90无可信Target、fixture UNKNOWN。文献支持90不作为通用必测项，建议先Long；这仍是范围建议，未把询问写成取消授权。M15旧NO_GO/全部四false保留。[实际状态](../../experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)。
 
 10/17后续新增：[全量三臂与90独立训练](../../memory/global/requirements/decision-Long与LIBERO90全量三臂评估及独立draft训练.md)和[AutoDL用至完成](../../memory/global/requirements/decision-AutoDL全量研究使用至完成.md)替代新scope临时23:11上限。质量并行并保存有限真实state，正式replay与完整episode计时分开；同卡多eval必须证明显存和状态隔离，未据问句自动改变执行引擎。
 

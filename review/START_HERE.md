@@ -1,3 +1,5 @@
+> 本文保留4f04 paused72科学快照。后续新授权的Long运行与评测范围见[10/17下午检查点](LIBERO-SCOPE-AND-LONG-RUN-20261017.md)；新工作不改旧72局、失败或四项false。
+
 # 新版TF draft审阅入口：暂停72局
 
 当前snapshot_id：`wam-tf-draft-handoff-20261017-paused72`。固定本文件所在的新提交，旧科学基线`b0dfac3a02f65de33a1217246b83003615166640`只用于历史；不要随main更新。

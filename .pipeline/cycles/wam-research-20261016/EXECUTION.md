@@ -1,7 +1,7 @@
 ---
 kind: execution-log
 cycle: wam-research-20261016
-updated: 2026-10-17T00:27:00+08:00
+updated: 2026-10-17T15:21:18+08:00
 ---
 # 研究恢复检查点
 
@@ -236,3 +236,22 @@ updated: 2026-10-17T00:27:00+08:00
 - 探索ΣT_round/Σg .04068→.05251秒，共同成功policy总165.90→226.99秒；不能作正式E2E。原始1267文件约52.5MiB回传，全部失败/原始路径保留。首两S score单核1.29秒描述，无清晰风险分离，不据此拟合阈值。
 - 用户要求已存项目级约束：今后采样/质量/性能全臂默认完整512-token BF16优化reset；本轮十二次15–107ms，冷启动另列。临时249MiB资产包和20.1MB证据包双端删，原件保留。
 - [结果与五报告](../../experiments/tf-pf2-autodl-20261017/RESULT.md)；有限实验完成，研究active。未启动新增训练/teacher诊断/120/TEST/正式性能；下一步仅建议有界teacher路径诊断。
+
+## 2026-10-17T14:08:57.507087+08:00 — M16 Long全量独立作业实际启动
+
+用户批准Long/90三臂全量并延长AutoDL至完成，旧M15不改；新source67d1c0d，Long500组三臂1500局/48h/6001000forward/10GiB（fixture3GiB），直接source运行，无smoke/独立测试/SHA。双卡执行器runner19639/guard19638已真实启动，模型加载中；当前新完整局尚未确认。90可靠同代Target仍UNKNOWN，独立subagent深挖中，无90训练。质量并行与独占真实state重放分离已通过Maintain保存。保护/旧四false/旧NO_GO保持。
+
+## 2026-10-17T14:55:43.356632+08:00 — 文献范围与四worker有界接续
+
+原v1直接全任务稳定运行，14:54至少16组三臂完整/48局，含自然失败及raw隔离FAILED均保留。v1 optional capture构造日志重复字段TypeError，未采fixture、质量模型/动作返回未受干预，原gap留存。
+
+v2新源码d5448bb独立冻结，四worker/两GPU/16CPU，原48h绝对起止/系列6001000forward/10GiB不重置。transition27323与control27324已实际启动；只在两worker当前case最后臂时暂停CPU runner，让client/server整局自然终态并drain后接续；新worker尚未确认启动，不宣称收益。只读复用完整三臂组、不复跑partial。
+
+可靠同代LIBERO90深挖终态无已核实Target（官方MS26/26、HF68同名、23issue/PR等）；90训练未启。评测范围原文：LingBotVA、CoT-VLA CVPR2025、FLASH均四suite，Seer的LIBERO只Long但另CALVIN/真机。建议90不作为必做、先Long；作为reference入HW，没有把用户问句改成取消授权决定。491保护路径stat/mtime全一致，无SHA。
+
+## 2026-10-17T15:21:18+08:00 — 四worker实际就绪，范围核查补充
+
+- 原v1自然收尾23组/69局、72593 forward；监督终态PARTIAL及原FAILED保留，owned组EMPTY。第一次控制480.5秒无共同窗口、NO_CHANGE；独立r2控制实际383.465秒，以原入口完成已开始case剩余臂，未截断或重跑。
+- 新v2 d5448bb runner28232/guard28231，四server实际READY并完整任务；15:21新增9自然终态、1组三臂闭合，累计各worker尝试2440/2321/2134/2134。两卡各2独立模型/环境/KV/RNG，总16CPU；48h绝对起止与系列forward/存储帽未重置。
+- v1 optional capture重复字段失败；v2该项修复后真实query又遇action-KV桶检查gap，UNKNOWN保留、未获得合格新TF replay，质量数学/动作路径继续。新修复须独立版本和自然边界，不改运行中冻结源。
+- 浏览服务恢复重新核原文：LIBERO官方README将90用于预训练、10下游评测；四小suite不等于90+10。LingBot-VA来源定位更正为§4.3.2/Table2。建议先Long、90非通用必测项；单Long的跨环境/模型外推限制与四false保留。详见[实际状态](../../experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)和[范围依据](../../experiments/libero-fullscale-20261017/SCOPE-REVIEW.md)。

@@ -5,12 +5,12 @@
 - [x] 核对常用论文范围：常见四套各10任务×50次；LIBERO-90与100局不是同一概念。
 - [x] 核对现有Target：Long官方模型、50局新reset基线和所有步数/计时原件保留；不是90/100任务基线。
 - [x] 核对AutoDL资产/双GPU：13:29只读观察两卡空、原环境/Long模型/reset bank在，约17.1GiB可用；未启动新GPU。
-- [ ] 独立实现Long三臂完整入口与预算守卫，静态审查后直接完整episode，无smoke/独立测试/SHA。
+- [x] 独立实现Long三臂完整入口与预算守卫，静态审查后直接完整episode，无smoke/独立测试/SHA；后续在完整case边界接至四worker。
 - [ ] Long 500组（task0–9、init0–49）×T/C/P共1500完整episode：按init外层/task内层均衡推进，两卡同case同卡、三顺序轮换。
 - [ ] 核实90同代官方/社区Target；找到可信权重才登记90采集、独立TF64训练与同权重PF2对照，找不到报告具体BLOCKED。
 - [ ] 全量成功/实际命令/800罚分/配对长度/ΣT_round÷Σg/policy/task/cold与warm成本、资源及清理，联合汇报。
 
-Long拟定执行上限：每局1200秒/4000 target尝试；全1500局最多6,001,000尝试（含非episode1000），新增原始证据10GiB（含fixture≤3GiB）；每卡单持久server2CPU/client2CPU。不自动重试，不以更快失败作加速。所有初态、两相机、实际RNG与S/T路由inline审计。已见FIT/DEV与尚未使用初态分层，不签旧独立TEST或非劣证书。
+Long执行上限：每局1200秒/4000 target尝试；全1500局最多6,001,000尝试（含非episode1000），新增原始证据10GiB（含fixture≤3GiB）。初段每卡单worker，当前每卡两个独立持久worker、各server2CPU/client2CPU，总16CPU；并发时段计时分层。不自动重试，不以更快失败作加速。所有初态、两相机、实际RNG与S/T路由inline审计。已见FIT/DEV与尚未使用初态分层，不签旧独立TEST或非劣证书。
 
 用户已明确AutoDL用至工作完成，见[后续授权](../../memory/global/requirements/decision-AutoDL全量研究使用至完成.md)，不再将旧M15的23:11用于新job。Long新job生命周期上限48小时（两GPU并行，含启动/等待/失败/清理），工作截止比最终deadline提前15分钟；开case必须预留三个完整episode及清理。达到新cap报告PARTIAL，不自动重置或重试，不改旧账本。
 
@@ -21,3 +21,9 @@ Long拟定执行上限：每局1200秒/4000 target尝试；全1500局最多6,001
 下一步为独立源码冻结→登记实际job/source/清理身份→使用两卡推进Long；90文献与checkpoint核查并行。原tile/保护state/cycle/rules、旧FAILED及所有旧阈值保持。
 
 实际Long登记：[plan.json](../../../投机采样/results/runtime/p0-tf-fullsuite-long-v1-20261017-r1/plan.json)，新起点2026-10-17 13:55:56、工作停10/19 13:40:56、清理止13:55:56。该48h上限不是旧M15重置。旧12局51.65MB原始episode外推1500约6.46GB，故加入≤3GiB fixture后将总cap从8改10GiB，仍保留磁盘5GiB底线。
+
+2026-10-17T14:08:57.507087+08:00：源码`67d1c0d0f5c9b25ecfb512dcdc71aebf5cfc9cca`冻结，直接完整任务入口已在原现有AutoDL启动：runner19639、guard19638。模型实际加载中，尚无新终态质量结果，不把入口rc0当实验完成。
+
+文献范围已核：[研究结果](../../../投机采样/results/runtime/p0-libero-eval-scope-literature-cpu1-v1-20261017-r1/RESULT.md)。建议90不作为必做，先Long主线；这不是用户已取消90的决定。官方/社区可靠90独立深挖终态未找到，90采集/训练维持BLOCKED。
+
+15:21实际接续：第一次控制等待共同最后臂窗口超时、NO_CHANGE保留；r2控制3469099按当前完整case自然收尾，原23组三臂/69局只读复用。v2 d5448bb runner28232/guard28231四worker实际READY并运行，新9局终态、1组三臂闭合。原48h/6M/10GiB系列帽不重置，无episode重试。v2 capture重复字段虽修，真实KV桶检查另FAILED/UNKNOWN，不据此承诺已保存fixture。原始版本/清理/数据源/下一步见[实际状态](ACTUAL-RUN-STATUS.md)。

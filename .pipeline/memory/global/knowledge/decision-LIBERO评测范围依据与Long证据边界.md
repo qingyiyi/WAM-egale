@@ -4,11 +4,12 @@ name: LIBERO评测范围依据与Long证据边界
 level: reference
 scope: cycle:wam-research-20261016
 status: active
-updated: '2026-10-17T14:46:00+08:00'
+updated: '2026-10-17T15:21:18+08:00'
 supersedes: []
 sources:
   - '用户询问是否只做Long10、不做90以减少工作；这仍是调研问题，不是强制取消旧授权'
-  - 'LingBot-VA原文2601.21998v1 §4.1/Table2'
+  - 'LIBERO官方README：90用于预训练、10用于下游终身学习评测'
+  - 'LingBot-VA原文2601.21998v1 §4.3.2/Table2'
   - 'CoT-VLA CVPR2025官方论文页面和作者项目页实验表说明'
   - 'FLASH原文2605.13778v1 §4.1/4.2（预印本）'
   - 'Seer作者官方代码和实验导航'
@@ -17,6 +18,8 @@ sources:
 # LIBERO90并非这些论文的通用必测项
 
 此记录固定本轮已核实的证据口径（level reference），不将研究建议变成用户已决定的实验范围。
+
+LIBERO官方原始设计把100拆为90预训练和10下游评测。90可被用于其他研究，但不是这些VLA论文的通用必测项。现代常见四套各10任务也不等于LIBERO100。
 
 已核原文：LingBot-VA主表和FLASH使用Spatial/Object/Goal/Long（或LIBERO-10）四套各10task；CoT-VLA CVPR2025作者项目页同为四套，每套500初态、三轮统计。它们不是LIBERO90，也不是只抽10条episode。LingBot-VA原文每套每seed500局、三seed，当前Long每臂500局只相当于一个固定evaluation seed的完整套件覆盖。
 
