@@ -1,0 +1,303 @@
+"""One bounded, birth-pinned orchestration handoff after four admitted complete cases; unchanged v2 pending arms finish first.
+
+Pause only the CPU runner when its four clients are already in their registered
+registered arm. Clients and servers continue complete natural episodes.
+Drain their existing FINISH protocol, then close idle owned servers. No new
+model call, environment command, retry, or old scientific receipt is created.
+"""
+from __future__ import annotations
+import argparse
+from datetime import datetime, timezone
+import json
+import os
+from pathlib import Path
+import signal
+import time
+import traceback
+import shutil
+import threading
+
+
+def read(path):
+    return json.loads(Path(path).read_text())
+
+
+def write(path, row):
+    with Path(path).open('x') as f:
+        json.dump(row, f, ensure_ascii=False, indent=2)
+        f.write('\n')
+
+
+def proc(pid):
+    try:
+        base = Path('/proc')/str(pid)
+        a = (base/'stat').read_text().rpartition(') ')[2].split()
+        return dict(pid=pid, state=a[0], parent=int(a[1]), pgid=int(a[2]),
+            birth_ticks=int(a[19]), uid=base.stat().st_uid)
+    except (OSError, ValueError, IndexError):
+        return None
+
+
+def matches(pin):
+    p = proc(pin['pid'])
+    return p is not None and p['birth_ticks'] == pin['birth_ticks'] and p['pgid'] == pin['pgid'] == pin['pid'] and p['uid'] == pin.get('uid', os.getuid())
+
+
+def arg(argv, flag):
+    return argv[argv.index(flag)+1]
+
+
+def clients(job, parent):
+    active = {}
+    for f in job.glob('OWNED-*.json'):
+        pin = read(f)
+        if pin.get('owner_job') != str(job) or not pin.get('role','').startswith('client-case'):
+            continue
+        if not matches(pin) or proc(pin['pid'])['state'] in ('Z','X'):
+            continue
+        argv = pin['argv']
+        worker = int(arg(argv,'--worker-index'))
+        if worker in active:
+            return {}
+        active[worker] = dict(pin=pin, case_id=int(arg(argv,'--case-id')), arm=arg(argv,'--arm'))
+    # Do not suspend between Popen and the immutable lifetime receipt.
+    known = {v['pin']['pid'] for v in active.values()}
+    for f in Path('/proc').iterdir():
+        if not f.name.isdigit():
+            continue
+        p = proc(int(f.name))
+        if p is None or p['parent'] != parent or p['state'] in ('Z','X') or p['pid'] in known:
+            continue
+        try:
+            argv = (f/'cmdline').read_bytes()
+        except OSError:
+            continue
+        if b'client_entry.py' in argv:
+            return {}
+    return active
+
+
+def terminal(job, c, a):
+    return job/'episodes'/('case-%04d'%c)/a/'EPISODE-TERMINAL.json'
+
+
+def eligible(job, p, active):
+    if set(active) != {0,1,2,3}: return False
+    for worker,row in active.items():
+        if row['case_id'] in p['prior_completed_case_ids'] or (job/('CASE-%04d-RESULT.json'%row['case_id'])).exists():return False
+        spec=p['cases'][row['case_id']];order=spec['within_case_order'].split('_')
+        if spec['execution_worker_index']!=worker or row['arm'] not in order:return False
+        for arm in order[:order.index(row['arm'])]:
+            f=terminal(job,row['case_id'],arm)
+            if not f.is_file() or read(f).get('complete_episode') is not True:return False
+        live=read(job/('server-worker%d'%worker)/'LIVE-COUNTER.json')['episode']
+        if not isinstance(live,dict) or live.get('case_id')!=row['case_id'] or live.get('arm')!=row['arm']:return False
+    return True
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--prior-job',required=True,type=Path)
+    ap.add_argument('--control-dir',required=True,type=Path)
+    a = ap.parse_args()
+    job, out = a.prior_job.resolve(strict=True), a.control_dir.resolve()
+    out.mkdir(parents=True,exist_ok=False)
+    p = read(job/'plan.json')
+    require_entry=lambda ok,msg:None if ok else (_ for _ in ()).throw(RuntimeError(msg))
+    require_entry(p['source_code_commit']=='d5448bbc5b02465dcc8d7c6df5bb4497d40cf3d9' and p['max_GPU_workers']==4,'actual frozen four-worker evaluator required')
+    registration=read(out.parent/'REGISTRATION.json')
+    require_entry(registration['control_wall_cap_sec']==6000 and registration['no_new_cases'] is True and registration['no_new_model_worker'] is True,'bounded user stage-pause registration required')
+    require_entry(registration['permissions']==p['frozen_permissions'] and registration['metadata_cap_bytes']==16*2**20,'original permissions and finite control storage required')
+    launched = read(job/'LAUNCH-RESULT.json')
+    pin = launched['runner']
+    require = lambda ok,msg: None if ok else (_ for _ in ()).throw(RuntimeError(msg))
+    require(pin['owner_job']==str(job) and matches(pin),'prior CPU runner lifetime differs')
+    started = time.time()
+    deadline = min(started+5400,datetime.fromisoformat(p['absolute_work_stop']).timestamp()-900)
+    for sig in (signal.SIGTERM, signal.SIGINT, signal.SIGALRM):
+        signal.signal(sig, lambda received,_frame: (_ for _ in ()).throw(
+            TimeoutError('bounded handoff control signal: '+str(received))))
+    signal.setitimer(signal.ITIMER_REAL, max(.01,deadline-started))
+    write(out/'STARTED.json',dict(pid=os.getpid(),birth_ticks=proc(os.getpid())['birth_ticks'],
+        started_at=datetime.now(timezone.utc).isoformat(),deadline_unix=deadline,
+        prior_runner=pin,scope='complete four admitted cases with unchanged v2 pending arms; no new case or episode retry'))
+    paused, handed, selected = False, False, None
+    ready_limit=time.time()+30
+    while not (out/'RESCUE-GUARD-STARTED.json').is_file():
+        require(time.time()<ready_limit,'independent rescue guard did not start')
+        time.sleep(.1)
+    budget_lock=threading.Lock();last_storage=[0.0];abort=threading.Event()
+    def budget():
+        require(not abort.is_set(),'sibling control failure; preserve partial')
+        require(time.time()<deadline,'bounded control lifecycle')
+        require(time.time()<datetime.fromisoformat(p['absolute_work_stop']).timestamp(),'original work stop')
+        require(not (job/'STOP_REQUESTED').exists(),'original stop requested')
+        total_attempts=0
+        for i in range(4):
+            w=job/('server-worker%d'%i)
+            require(not (w/'FAILED.json').exists() and not (job/('WORKER-%d-STOP.json'%i)).exists(),'original hard server failure')
+            live=read(w/'LIVE-COUNTER.json');n=live['target_forward_attempts']
+            require(type(n) is int and 0<=n<=p['worker_forward_caps'][str(i)],'original worker forward cap');total_attempts+=n
+        require(total_attempts+p['prior_target_forward_debit']<=p['job_forward_attempt_cap'],'original series forward cap')
+        if time.monotonic()-last_storage[0]>=10:
+            with budget_lock:
+                if time.monotonic()-last_storage[0]>=10:
+                    total=0
+                    roots=[job,Path(p['prior_job']),out]
+                    for folder in roots:
+                        if folder.exists():
+                            for f in folder.rglob('*'):
+                                if f.is_file():
+                                    try:total+=f.stat().st_size
+                                    except FileNotFoundError:pass
+                    require(total<=p['new_evidence_cap_bytes'],'series10GiB cap including prior preparation')
+                    require(shutil.disk_usage(job).free>=p['remote_data_disk_floor_bytes'],'original disk free floor')
+                    last_storage[0]=time.monotonic()
+    try:
+        while time.time()+4500 < deadline:
+            budget()
+            require(matches(pin),'prior runner exited; no takeover or retry')
+            require(not (job/'HARD-STOP.json').exists(),'prior hard failure; handoff cancelled')
+            candidate = clients(job,pin['pid'])
+            if not eligible(job,p,candidate):
+                time.sleep(.3)
+                continue
+            os.kill(pin['pid'],signal.SIGSTOP)
+            paused=True
+            # Observe the stopped runner before trusting the admission barrier.
+            until=time.time()+2
+            while proc(pin['pid'])['state'] not in ('T','t') and time.time()<until:
+                time.sleep(.01)
+            actual=clients(job,pin['pid'])
+            same = all(k in actual and actual[k]['pin']['pid']==v['pin']['pid'] for k,v in candidate.items())
+            if not same or not eligible(job,p,actual):
+                os.kill(pin['pid'],signal.SIGCONT);paused=False
+                time.sleep(.3)
+                continue
+            selected=actual
+            write(out/'RUNNER-PAUSED-ADMITTED-CASES.json',dict(at_unix=time.time(),clients=selected,
+                no_client_or_server_paused=True,whole_episodes_continue=True))
+            break
+        if selected is None:
+            write(out/'RESULT.json',dict(status='NO_COMMON_LAST_ARM_WINDOW_NO_CHANGE',wall_sec=time.time()-started))
+            return 2
+        while True:
+            budget()
+            require(time.time()<deadline,'bounded handoff deadline')
+            done=[]
+            for worker,row in selected.items():
+                f=terminal(job,row['case_id'],row['arm'])
+                if f.is_file():
+                    require(read(f).get('complete_episode') is True,'actual partial client; no qualification')
+                    q=proc(row['pin']['pid'])
+                    if q is None or q['state'] in ('Z','X'):
+                        done.append(worker)
+            if len(done)==4:
+                break
+            time.sleep(.2)
+        for worker,row in selected.items():
+            out_ep=terminal(job,row['case_id'],row['arm']).parent
+            f=out_ep/'FINISH_REQUESTED'
+            if not f.exists():
+                f.write_text('actual complete last-arm client exited; controlled full-case handoff\n')
+        while True:
+            budget()
+            require(time.time()<deadline,'finish drain deadline')
+            if all((terminal(job,row['case_id'],row['arm']).parent/'FINISH_READY.json').is_file() for row in selected.values()):
+                break
+            time.sleep(.2)
+        # Continue only the previously registered missing arms of these four
+        # admitted cases, using unchanged v2 source, model servers and manifest.
+        import sys
+        from concurrent.futures import ThreadPoolExecutor
+        sys.path.insert(0,str(Path(__file__).resolve().parent.parent))
+        from tf_fullsuite_eval_v2.runner import Runner
+        previous_affinity=os.sched_getaffinity(0)
+        os.sched_setaffinity(0,set(range(16)))
+        try:original_runner=Runner(job,p)
+        finally:os.sched_setaffinity(0,previous_affinity)
+        require(original_runner.affinity=={int(k):v for k,v in read(job/'RUN-STARTED.json')['CPU_affinity'].items()},'frozen actual client CPU layout differs')
+        v1=Path(__file__).resolve().parent.parent/'tf_fullsuite_eval_v2'
+        def finish_pending(worker,row):
+            order=p['cases'][row['case_id']]['within_case_order'].split('_')
+            for arm in order[order.index(row['arm'])+1:]:
+                budget()
+                require(time.time()+1320<deadline,'whole pending episode plus drain reserve')
+                e=terminal(job,row['case_id'],arm).parent;e.mkdir(parents=True,exist_ok=False)
+                child=original_runner.spawn([p['client_python'],'-B',v1/'client_entry.py','--job',job,
+                    '--case-id',row['case_id'],'--arm',arm,'--out',e,'--port',19781+worker,
+                    '--worker-index',worker,'--master-port',29781+worker],e/'client.log',
+                    original_runner.environment(worker),original_runner.affinity[worker]['client'],
+                    'client-case%d-%s'%(row['case_id'],arm))
+                write(out/('OWNED-MANUAL-%d.json'%child['pin']['pid']),dict(child['pin'],controller_owner_job=str(out.parent),created_by_control_pid=os.getpid()))
+                limit=time.monotonic()+1200
+                while not original_runner.wait_reaped(child):
+                    budget()
+                    require(time.monotonic()<limit,'original complete pending client1200s cap')
+                    require(time.time()<deadline,'orchestration cap')
+                    time.sleep(.2)
+                require(child['proc'].returncode==0 and read(e/'EPISODE-TERMINAL.json').get('complete_episode') is True,
+                    'pending arm is partial; no retry')
+                (e/'FINISH_REQUESTED').write_text('actual authorized pending arm naturally finished; handoff drain\n')
+                limit=time.time()+120
+                while not (e/'FINISH_READY.json').exists():
+                    budget()
+                    require(time.time()<limit,'original FINISH drain120s cap');time.sleep(.2)
+                ready=read(e/'FINISH_READY.json')
+                require(ready.get('full_episode_terminal') is True and ready.get('async_drained') is True,'pending arm drain missing')
+        try:
+            def guarded_pending(worker,row):
+                try:return finish_pending(worker,row)
+                except BaseException:abort.set();raise
+            with ThreadPoolExecutor(max_workers=4) as pool:
+                fs=[pool.submit(guarded_pending,w,row) for w,row in selected.items()]
+                try:
+                    for f in fs:f.result()
+                except BaseException:
+                    abort.set();raise
+        finally:
+            manual_cleanup=original_runner.cleanup()
+            write(out/'MANUAL-PENDING-OWNED-CLEANUP.json',manual_cleanup)
+        require(manual_cleanup['all_owned_work_exited'] is True and manual_cleanup['all_owned_groups_empty'] is True,'manual owned client group cleanup did not close')
+        for worker,row in selected.items():
+            c=row['case_id']
+            for arm in ('T','C','P'):
+                f=terminal(job,c,arm)
+                require(f.exists() and read(f).get('complete_episode') is True,'full three-arm case missing')
+                e=f.parent
+                counter,audit,finish=[read(e/n) for n in ('COUNTER.json','AUDIT.json','FINISH_READY.json')]
+                require(counter['case_id']==audit['case_id']==finish['case_id']==c and counter['arm']==audit['arm']==finish['arm']==arm and finish['full_episode_terminal'] is True and finish['async_drained'] is True,'original closed episode counter/audit/drain identity differs')
+            ready=read(terminal(job,c,row['arm']).parent/'FINISH_READY.json')
+            require(ready.get('full_episode_terminal') is True and ready.get('async_drained') is True,'complete native drain missing')
+        write(out/'ALL_CURRENT_CASES_NATURALLY_COMPLETE.json',dict(cases=[v['case_id'] for v in selected.values()],
+            at_unix=time.time(),all_twelve_terminal=True,no_episode_truncated=True))
+        # All four native servers are idle. Signal through their original safe exit
+        # protocol rather than signalling a busy model process.
+        for worker in range(4):
+            f=job/('server-worker%d'%worker)/'SHUTDOWN_REQUESTED'
+            if not f.exists():f.write_text('current admitted cases drained; user stage pause for server migration\n')
+        stop=job/'STOP_REQUESTED'
+        if not stop.exists():stop.write_text('USER_STAGE_PAUSE_FOR_SERVER_MIGRATION_AFTER_COMPLETE_CASES; not algorithm failure\n')
+        handed=True
+        os.kill(pin['pid'],signal.SIGCONT);paused=False
+        write(out/'RESULT.json',dict(status='FOUR_COMPLETE_CASE_STAGE_PAUSE_REQUESTED',cases=[v['case_id'] for v in selected.values()],
+            wall_sec=time.time()-started,no_episode_truncated=True,prior_runner_resumed_for_original_cleanup=True,
+            old_receipts_modified=False,prior_final_status='PENDING_ORIGINAL_RUNNER_CLOSURE'))
+        return 0
+    except BaseException as exc:
+        if paused and not (job/'STOP_REQUESTED').exists():
+            (job/'STOP_REQUESTED').write_text('stage control infrastructure failure; preserve PARTIAL, no retry\n')
+        write(out/'FAILED.json',dict(status='HANDOFF_FAILED_PRESERVE_PRIOR',error=repr(exc),
+            traceback=traceback.format_exc(),wall_sec=time.time()-started,handed=handed))
+        raise
+    finally:
+        if paused and matches(pin):
+            os.kill(pin['pid'],signal.SIGCONT)
+        signal.setitimer(signal.ITIMER_REAL,0)
+        write(out/'CONTROL-FINALLY.json',dict(at_unix=time.time(),prior_runner_observed=proc(pin['pid']),
+            original_runner_left_SIGSTOP=False if not matches(pin) else proc(pin['pid'])['state'] not in ('T','t'),
+            handed=handed,selected_cases=None if selected is None else [v['case_id'] for v in selected.values()]))
+
+
+if __name__=='__main__':
+    raise SystemExit(main())
