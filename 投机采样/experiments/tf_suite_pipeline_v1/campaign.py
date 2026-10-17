@@ -166,8 +166,11 @@ class Campaign:
         e['PYTHONPATH']=str(OWN.parent)+':'+e.get('PYTHONPATH','')
         return e
 
-    def child(self,argv,step,affinity,timeout):
-        self.guard();previous=os.sched_getaffinity(0);log=self.job/(step+'.log')
+    def child(self,argv,step,affinity,timeout,*,cleanup_report=False):
+        if cleanup_report:
+            require(time.time()+timeout<self.hard,'bounded CPU report must fit cleanup reserve')
+        else:self.guard()
+        previous=os.sched_getaffinity(0);log=self.job/(step+'.log')
         with log.open('xb') as stream:
             try:
                 os.sched_setaffinity(0,set(affinity))
@@ -296,6 +299,14 @@ class Campaign:
             error=dict(type=type(exc).__name__,message=str(exc),traceback=traceback.format_exc())
             self.stop_gpu_jobs('campaign hard failure: '+type(exc).__name__)
         finally:
+            report_observation='NOT_STARTED'
+            if self.info is not None and time.time()+300<self.hard:
+                try:
+                    rec=self.child([self.p['va_python'],'-B',OWN/'report.py','--campaign',self.job,
+                        '--out',self.job/'reports/final'],'CPU-final-report',self.p['training_CPU'],300,cleanup_report=True)
+                    while not self.reap(rec):time.sleep(1)
+                    report_observation='CPU_REPORT_COMPLETED_NOT_QUALITY_CERTIFICATE'
+                except BaseException as exc:report_observation=dict(error=repr(exc))
             for r in self.children:
                 if r['proc'].poll() is None and matches(r['pin']):
                     os.killpg(r['pin']['pgid'],signal.SIGTERM)
@@ -309,6 +320,7 @@ class Campaign:
             write(self.job/'CAMPAIGN-RESULT.json',dict(schema='tf-suite-campaign-terminal/v1',status=status,
                 suite=self.suite,completed_steps=self.complete,uncompleted_steps=[s for s in STEPS if s not in self.complete],
                 error=error,started_at=stamp(self.started),finished_at=stamp(),controller_processes=proof,
+                CPU_report=report_observation,
                 GPU_phase_cleanup=[dict(job=str(j),guard=read(j/'GUARD-FINAL.json') if (j/'GUARD-FINAL.json').is_file() else 'UNKNOWN') for j in self.active.values()],
                 independent_TEST=False,formal_performance=False,permissions=PERMISSIONS,
                 instance_shutdown='NOT_REQUESTED_NOT_EXECUTED'))
