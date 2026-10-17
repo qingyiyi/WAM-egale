@@ -40,12 +40,14 @@ def main():
     ap.add_argument('--shared-components', type=Path, required=True)
     ap.add_argument('--source-commit', required=True)
     ap.add_argument('--resume-from', type=Path)
+    ap.add_argument('--suites', nargs='+', choices=tuple(REVISIONS), default=list(REVISIONS))
     ap.add_argument('--wall-cap', type=int, default=7200)
     args = ap.parse_args()
     job, base = args.job.resolve(), args.shared_components.resolve(strict=True)
     target = args.asset_root.resolve()
     if job.exists() or (target.exists() and not args.resume_from) or not 600 <= args.wall_cap <= 7200:
         raise ValueError('fresh job/cache and bounded two-hour lifecycle required')
+    if len(set(args.suites)) != len(args.suites):raise ValueError('duplicate suite assets')
     if args.resume_from:
         old=args.resume_from.resolve(strict=True)
         old_plan=json.loads((old/'REGISTRATION.json').read_text())
@@ -66,7 +68,7 @@ def main():
     cap = 40 * 2**30
     registration = dict(goal='three pinned suite model assets, no model load', source_commit=args.source_commit,
         scientific_parent='4f04b35e44cbc00483dc6245ad57abec718385c9', revisions=REVISIONS,
-        input_shared_components=str(base), asset_root=str(target), wall_cap_sec=args.wall_cap,
+        input_shared_components=str(base), asset_root=str(target), suites=args.suites, wall_cap_sec=args.wall_cap,
         birth_epoch=birth, deadline_epoch=birth+args.wall_cap, work_deadline_epoch=birth+args.wall_cap-120, storage_cap_bytes=cap,
         cpu=1, gpu=0, max_downloads=2, cleanup='HTTP threads joined before exit; retain partial files and receipts',
         predecessor=str(args.resume_from.resolve()) if args.resume_from else None,
@@ -175,13 +177,13 @@ def main():
     completed=[]
     try:
         with ThreadPoolExecutor(max_workers=2) as pool:
-            futures=[pool.submit(suite_assets, s) for s in ('object','goal','spatial')]
+            futures=[pool.submit(suite_assets, s) for s in args.suites]
             for f in as_completed(futures):
                 completed.append(f.result())
         total=sum(p.stat().st_size for p in target.rglob('*') if p.is_file() and not p.is_symlink())
         if total > cap:
             raise RuntimeError('registered asset storage cap')
-        result=dict(status='COMPLETE_THREE_SUITE_ASSETS', wall_sec=time.monotonic()-started,
+        result=dict(status='COMPLETE_REGISTERED_SUITE_ASSETS', wall_sec=time.monotonic()-started,
             asset_bytes=total, suites=completed, CPU=1, GPU=0, model_loads=0, tests=0, digests=0)
         write(job/'RESULT.json',result); write(job/'status.json',result)
         print(json.dumps(dict(status=result['status'],bytes=total,wall_sec=result['wall_sec'])),flush=True)
