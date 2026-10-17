@@ -1,39 +1,31 @@
 # 最近执行检查点
 
-## 2026-10-17 19:51 北京：空闲本机分担Object，完整链已启动
+## 2026-10-17 21:31 北京：旧AutoDL完成阶段收尾，正在完整备份
 
-用户新授权已用Maintain记录。nvidia-smi无可见compute进程/显存0MiB，利用率约25%不签独占；CPU0–15忙，故仅本机一个model、nice10、server8/9/client10/11、control7，内存24GiB/显存22GiB阶段准入。source652e83cf96a9af0585801a093589becc877cad9b，独立`p0-tf-suite-object-local-chain-v4-20261017-r1`，controller518248/birth1350697010/UID1003已实际启动完整T_POOL。尚未声称READY或episode完成。
+用户明确要求阶段结果后暂停旧机，准备换新服务器。Maintain已保存对应Cycle约束；研究范围、原预算和四false不改。[当前换机计划](../../experiments/autodl-stage-migration-20261017/PLAN.md)。
 
-CPU1导入已完成原512 BF16 bank128.9秒，只改checkpoint_path元数据，T5/teacher调用0，子进程exit0/SSH关闭；`p0-tf-suite-object-bank-import-local-cpu1-v1-20261017-r1/RESULT.json`。远端零工作Object32543/birth6696082227经原状态/UID/PGID核对退役，原FAILED_OR_PARTIAL_NO_RETRY保留，新receipt记录是资源替换。Goal/Spatial/Long、轮换与归档不动。
+fb519d2独立控制64460/birth6697066812，先暂停Goal/Spatial排队（PAUSED_PARTIAL、0局、租约已释放）、停止轮换（0删除）、关闭旧全1500归档等待器443492（原BLOCKED/PARTIAL保留，远端RPC实际exit0）。只冻结旧CPU dispatcher，客户端/模型自然运行；固定已进入的四case181/182/192/193，以原d5448bb客户端补完同case未运行臂后收尾。旧科学源码及CASE/FAILED不改。
 
-[v4登记](../../../投机采样/results/runtime/p0-tf-suite-local-placement-v4-20261017-r1/AMENDMENT.json)保持M17原17:11起点、10/21停新/清理、1560局/6241000尝试/5GiB；最终两250case shard顺序，同case全部臂固定本机SXM4，禁止混PCIe计时。旧4false/FAILED/tile/保护不变。CPU忙可能放慢装载，900秒原setup帽不改。
+阶段已实际暂停：189完整三臂组/567局，311未开始组，partial case0、无截断；原Long supervisor仍PARTIAL_OR_FAILED_LONG500_COVERAGE，guard和实际owned组已清理。不是完成500组，更不是新质量证书。实例尚未关机。
 
-## 2026-10-17 18:48 北京：归档已登记启动等待
+d098fd2 CPU1流式备份已启动：本机604568/birth1351289843，`p0-autodl-migration-backup-local-cpu1-v1-20261017-r1`。预计37349个文件/1,970,600,995B，含所有remote runtime原件、选定TF/normalizer、全部bank、失败及小配置；无远端临时tar、无SHA、无删除。原Target大权重不复制，保留本机原件和固定重建来源。9000秒总生命周期、copy≤5400秒、payload≤4GiB、单文件64MiB/manifest32MiB、磁盘余≥5GiB。当前COPYING，完成且CLEANUP后才确认旧机可释放；新机SSH信息未提供，未启动迁移或新作业。
 
-128d435独立CPU1归档producer已实际启动，本机443492/birth1350318267，`p0-long-evidence-archive-local-cpu1-v1-20261017-r1`，状态WAITING_FULL1500_AND_STRICT_OWNED_CLEANUP；复制0文件/0B。保持17:11/master96h截止，完整manifest后传输≤10800秒，总≤12GiB、单文件64MiB、metadata128MiB、本机实际空闲≥5GiB；密码仅RAM。先等Long1500及原own实际清理，再等37f空间轮换完成审计，全部原件复制、INDEX/COPY-RESULT持久化后才退远端重复bulk和精确COUNTER；其他JSON/FAILED/proof/plan/md/csv/log均保留。旧源不改，无GPU/test/SHA，无自动重试。登记在`p0-tf-suite-storage-placement-v3-20261017-r1/ARCHIVE-REGISTRATION.json`。
+[暂停前完整执行记录](history/EXECUTION-before-stage-migration-20261017.md)逐字保留；旧文相对证据路径按原Cycle目录解释。原预算：Long10/19 13:40停新/13:55清理；M17 10/21 16:56/17:11，不因暂停换机重置。
 
-## 2026-10-17 18:42 北京：已有磁盘分配与归档准备
+## 2026-10-17 21:59 北京：最新授权接续；备份改大块流
 
-Object准备仍零模型/局，现独立OS盘job `/root/wam-suite-research-20261017-v3/object-chain-r1`、controller32543、source8eaf130；原R2只补替换原因并退出。5GiB套件上限及5GiB实际空闲线不变，Goal/Spatial在数据盘。同17:11起点/10/21截止；归档producer准备中，尚未复制或清除Long结果。
+用户最新允许新机信息提供前推进已有授权工作，Maintain已保存约束决定。原567局暂停终态不动，备份后拟独立namespace接续311未开始组，按10组三臂/30局屏障暂停；四false/数学/优化reset/原48h总限不变。2b1f039独立wrapper复用d544原server/client/Runner.run_case，旧166＋更早23组以多代源映射保留，不用二代report遗漏23组。仅本机静态源码审查，无smoke/独立测试/SHA；尚未启动新GPU。
 
-18:42现场Long新285闭合局＋旧69＝354；三套完整bank已齐，remote新训练0。37f15d1轮换调度32254仍等待全Long及清理，尚未删模型。原本机完整权重保留；项目只读du约144.52GiB，本机余94.9GiB。491个保护源size/mtime全部一致（不计算hash）。最新真实[空间/状态快照](../../../投机采样/results/runtime/p0-tf-suite-cache-rotation-inputs-cpu1-v2-20261017-r1/ACTUAL-CAPACITY-AND-PLACEMENT-r1.json)。
+备份v1 604568实际SIGINT退出130，原FAILED/CLEANUP保留，完整复制12751文件/574337066B（部分文件副本另计），SSH闭合、源删除0。v2源9f8f251，635195/birth1351410862，从单tar大块回传并现场核对全部entry/字节数；原deadline1792252790.1893034不重置，旧部分副本累计存储帽内保留。当前仍COPYING，不能据此宣称备份完成或旧机可释放。
 
-## 2026-10-17 18:10 北京：本机减负、暂不扩容
+## 2026-10-17 22:04 北京：原件备份与阶段统计完成，新接续已启动
 
-用户最新选择已通过Maintain保存：新增重计算优先现有AutoDL，先清理、不扩盘。本机7个已关闭失败下载残片985,044,916B已清理，清单在`p0-tf-suite-abandoned-download-cleanup-cpu1-v1-20261017-r1`。原失败/完整权重/原始结果保留，本机剩约94.9GiB。
+9f8f251备份v2实际exit0/CLEAN，650.704秒完成37349文件、源1970600995B、tar2053969920B；所有条目/字节数与源前后stat核对，未做SHA，旧源删除0。原v1失败和594560318B部分副本保留，仍在累计4GiB预算内。selected TF/normalizer/所有bank和失败原件均归档。原deadline未重置。
 
-新source8eaf130沿用9aa数学/训练/阶段预算。Object31851/Goal31852/Spatial31853远端控制器已启动等待；原17:11起点和10/21截止不改。GPU0前两套、GPU1 Spatial，同卡原子双槽、CPU租约、实际清理后释放。旧准备控制器零模型/局退出，原记录不改。当前仍等待Long、Object bank、Spatial资产，新增训练和机器人局0。
+7ca036a本机CPU1阶段统计已完成/CLEAN：T183/189、C185/189、P181/189，所有自然失败纳入。C/P相对T最大共同成功长度比1.7004/1.5465，组件FAILED分别15/27保留；不是质量通过或独立TEST，不升级四false。共享探索ΣT_round/Σg：T0.135247、C0.054411、P0.080197秒，不冒充正式E2E。统计原件p0-long-stage189-descriptive-local-cpu1-v1-20261017-r1。
 
-Goal/Spatial完整bank成功（CPU2455.0秒）；Object远端v3 r3生产中，缺原bank收据和启动参数错误均保留失败，补真实原件后沿原2h系列截止。本机Object资产已完整，原3200秒传输超时和旧本机bank超时保留；只有非复用下载残片另有清理。
+用户最新允许新机未接入前继续。2b1f039已在独立p0-tf-long-shard-resume-v1-20261017-r1启动，supervisor69459/birth6697299895、runner69462/birth6697300590、guard69461/birth6697300570。当前4模型装载中、0新局，非READY或已完成。原d544数学server/client/Runner.run_case原样复用并核对源码bytes，无smoke/独立测试/SHA。只明确311未开始case，保留原189源映射；10组三臂/30局屏障处读STOP_AFTER_SHARD。所有旧attempt累计debit591787；原6001000/10GiB及10/19 13:40/13:55不变。首分片185/186/189/190/191/194/195/196/197/198。
 
-18:05 Long新234闭合局＋原69＝303，双卡四worker继续。空间轮换要等其500case全终态及实际清理；三片远端Long Transformer缓存可由本机原件重建，仍需加载的T5与全部结果保留。轮换调度源码尚在完成，不能声称空间已释放。
+新结果未在旧567归档内，迁移前需增量备份和真实清理；不可直接关旧机。Goal/Spatial仍暂停，本机Object原超时不自动重试。新机SSH尚未收到。登记与实际部署收据：p0-autodl-migration-stage-plan-v1-20261017-r1、p0-tf-long-shard-resume-deploy-local-cpu1-v1-20261017-r1。
 
-## 2026-10-17 17:22 北京：原始M17登记检查点
-
-2026-10-17 17:22 北京：M17新增三套同配方训练及全量三臂已登记。master起点17:11:31、10/21 16:56停新、17:11清理；4680新增完整局/18,723,000尝试/15GiB研究证据，原Long48h账本不重置。
-
-source9aa66fb为完整pipeline；asset下载f696、CPU bank2e47449、resource bridge6baf596。Object本机controller等待真实权重/完整bank；Goal/Spatial远端controller30752/30753等待bank/原Long清理。尚未启动新增模型或机器人局。Object/Goal远端asset299.3s成功；本机前下载及SFTP/SSH API准备失败保留，Object真实SSH stream约3MiB/s。远端bank r1缺Spatial组件脚手架先于T5失败，r2补必要资产引用后继续，原系列2h累计deadline不改。
-
-Long runner28232/guard28231、双卡4worker继续；17:20新增namespace171闭合局＋旧69＝240，非全量。外部本机用户hlj/lhw GPU进程17GiB级占用；新质量按显存准入，不做正式计时或影响他人。
-
-[详细作业索引](../../experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)；[全部此前执行记录](history/EXECUTION-through-M16-20261017.md)。旧四false/FAILED/NO_GO/tile/保护不动。
+22:08实际只读核验：四worker全部READY，首SHARD-000已在完整episode运行（case186/C、196/P、197/T、185/P）；两卡GPU利用率98%/97%、显存约29GiB/卡，无新FAILED。实际证据p0-tf-long-shard-resume-observe-local-cpu1-v1-20261017-r2/READINESS-SUMMARY.json。尚未把运行中的分片写成完成。

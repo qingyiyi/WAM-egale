@@ -1,3 +1,5 @@
+> 当前新授权进度另见[189组三臂与接续检查点](LONG-STAGE189-AND-RESUME-20261017.md)。下文及RESULTS.json仍保留4f04 paused72历史身份，不能当作当前资源状态。
+
 > 本文保留4f04 paused72科学快照。后续新授权的Long运行与评测范围见[10/17下午检查点](LIBERO-SCOPE-AND-LONG-RUN-20261017.md)；新工作不改旧72局、失败或四项false。
 
 # 新版TF draft审阅入口：暂停72局

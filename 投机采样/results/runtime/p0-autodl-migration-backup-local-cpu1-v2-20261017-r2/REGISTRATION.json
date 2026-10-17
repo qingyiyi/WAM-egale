@@ -1,0 +1,42 @@
+{
+  "schema": "all-stopped-runtime-single-tar-migration/v2",
+  "goal": "Preserve all runtime originals plus selected Long TF/banks/configuration before old server release",
+  "source_code_commit": "9f8f2515f687c654ad1c515acd8e0ff658a1e131",
+  "known_hosts": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-pf2-readonly-plan-v1-20261017-r1/REMOTE-HOST-KEYS",
+  "remote_stage": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-autodl-migration-stage-pause-v1-20261017-r1",
+  "remote_Long": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-fullsuite-long-v2-20261017-r2",
+  "remote_metadata": "/root/wam-migration-archive-control-20261017-v2",
+  "lifecycle_wall_cap_sec": 9000,
+  "copy_wall_cap_sec": 5400,
+  "source_cap_bytes": 4294967296,
+  "storage_cap_bytes": 4362076160,
+  "per_file_cap_bytes": 67108864,
+  "manifest_cap_bytes": 33554432,
+  "entry_cap": 100000,
+  "local_free_floor_bytes": 5368709120,
+  "original_master_work_stop_epoch": 1792388456.997452,
+  "local_CPU": [
+    7
+  ],
+  "remote_CPU": [
+    16
+  ],
+  "GPU": 0,
+  "no_source_deletion": true,
+  "no_remote_temporary_tar": true,
+  "no_SHA": true,
+  "no_smoke": true,
+  "no_independent_tests": true,
+  "input_manifest": "all stopped APP runtime regular files; optional configs and community target small metadata; preserve every failure",
+  "exclusion": "reconstructible large Target model/cache weights; symlink targets are references only; local original weights retained",
+  "terminal": "complete manifest plus all exact entry byte counts and stable source stat receipts, or explicit partial retaining source",
+  "cleanup": "close own SSH stream; remote producer records failure on broken stream; no instance shutdown operation",
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "deadline_epoch": 1792252790.1893034,
+  "previous_local_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-autodl-migration-backup-local-cpu1-v1-20261017-r1"
+}

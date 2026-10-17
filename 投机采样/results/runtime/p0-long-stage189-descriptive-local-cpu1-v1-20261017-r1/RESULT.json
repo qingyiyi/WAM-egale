@@ -1,0 +1,344 @@
+{
+  "status": "COMPLETE_DESCRIPTIVE_FROZEN_STAGE_REPORT",
+  "complete_cases": 189,
+  "complete_episodes": 567,
+  "unstarted_cases": 311,
+  "partial_cases": 0,
+  "arms": {
+    "T": {
+      "episodes": 189,
+      "success": 183,
+      "failure": 6,
+      "success_rate": 0.9682539682539683,
+      "actual_steps": {
+        "n": 189,
+        "sum": 53806,
+        "mean": 284.6878306878307,
+        "p50": 255.0,
+        "p90": 382.40000000000003,
+        "max": 796,
+        "method": "linear: (N-1)*q"
+      },
+      "failure800_penalty": {
+        "n": 189,
+        "sum": 53830,
+        "mean": 284.81481481481484,
+        "p50": 255.0,
+        "p90": 382.40000000000003,
+        "max": 800,
+        "method": "linear: (N-1)*q"
+      },
+      "policy_chunks": 3494,
+      "S_chunks": 0,
+      "T_chunks": 3494,
+      "target_forward_attempts": 258190,
+      "component_audit_failed": 0,
+      "client_episode_wall_sec": {
+        "n": 189,
+        "sum": 37874.86721071601,
+        "mean": 200.3961228080212,
+        "p50": 180.85515782237053,
+        "p90": 277.90541127175095,
+        "max": 607.7506897523999,
+        "method": "linear: (N-1)*q"
+      },
+      "exploratory_C_update": 0.13524738777916157,
+      "exploratory_C_chunk": 9.688794110200629,
+      "sum_T_round_over_sum_g": 0.13524738773483505,
+      "timer_scope": "shared PCIe concurrent instrumented quality evaluation; not formal speedup; failure costs retained"
+    },
+    "C": {
+      "episodes": 189,
+      "success": 185,
+      "failure": 4,
+      "success_rate": 0.9788359788359788,
+      "actual_steps": {
+        "n": 189,
+        "sum": 51913,
+        "mean": 274.67195767195767,
+        "p50": 255.0,
+        "p90": 378.0,
+        "max": 796,
+        "method": "linear: (N-1)*q"
+      },
+      "failure800_penalty": {
+        "n": 189,
+        "sum": 51929,
+        "mean": 274.7566137566138,
+        "p50": 255.0,
+        "p90": 378.0,
+        "max": 800,
+        "method": "linear: (N-1)*q"
+      },
+      "policy_chunks": 3388,
+      "S_chunks": 3388,
+      "T_chunks": 0,
+      "target_forward_attempts": 147829,
+      "component_audit_failed": 15,
+      "client_episode_wall_sec": {
+        "n": 189,
+        "sum": 23198.941222667694,
+        "mean": 122.74572075485553,
+        "p50": 115.32335728406906,
+        "p90": 168.19631453901536,
+        "max": 368.06186843663454,
+        "method": "linear: (N-1)*q"
+      },
+      "exploratory_C_update": 0.05441075853079806,
+      "exploratory_C_chunk": 5.646494492490412,
+      "sum_T_round_over_sum_g": 0.054410758547191795,
+      "timer_scope": "shared PCIe concurrent instrumented quality evaluation; not formal speedup; failure costs retained"
+    },
+    "P": {
+      "episodes": 189,
+      "success": 181,
+      "failure": 8,
+      "success_rate": 0.9576719576719577,
+      "actual_steps": {
+        "n": 189,
+        "sum": 53685,
+        "mean": 284.04761904761904,
+        "p50": 254.0,
+        "p90": 385.40000000000003,
+        "max": 796,
+        "method": "linear: (N-1)*q"
+      },
+      "failure800_penalty": {
+        "n": 189,
+        "sum": 53717,
+        "mean": 284.21693121693124,
+        "p50": 254.0,
+        "p90": 385.40000000000003,
+        "max": 800,
+        "method": "linear: (N-1)*q"
+      },
+      "policy_chunks": 3489,
+      "S_chunks": 2385,
+      "T_chunks": 1104,
+      "target_forward_attempts": 185768,
+      "component_audit_failed": 27,
+      "client_episode_wall_sec": {
+        "n": 189,
+        "sum": 28286.74311876297,
+        "mean": 149.66530750668238,
+        "p50": 137.30364081263542,
+        "p90": 207.03380410224202,
+        "max": 463.5811939239502,
+        "method": "linear: (N-1)*q"
+      },
+      "exploratory_C_update": 0.08019734854744366,
+      "exploratory_C_chunk": 6.916668497098572,
+      "sum_T_round_over_sum_g": 0.08019734857403402,
+      "timer_scope": "shared PCIe concurrent instrumented quality evaluation; not formal speedup; failure costs retained"
+    }
+  },
+  "comparisons": {
+    "T_C": {
+      "pairs": 189,
+      "first_success_second_fail": 3,
+      "first_fail_second_success": 5,
+      "both_success": 180,
+      "both_fail": 1,
+      "length_ratio_second_over_first": {
+        "n": 180,
+        "sum": 179.1013174235413,
+        "mean": 0.9950073190196739,
+        "p50": 0.9955230159048115,
+        "p90": 1.0694572172738672,
+        "max": 1.7004048582995952,
+        "method": "linear: (N-1)*q"
+      },
+      "all_case_penalty_difference_second_minus_first": -1901,
+      "strict_pair_qualification": "NOT_REQUALIFIED; existing physics/RNG/camera/component FAILED remain; matched case IDs are descriptive only"
+    },
+    "T_P": {
+      "pairs": 189,
+      "first_success_second_fail": 6,
+      "first_fail_second_success": 4,
+      "both_success": 177,
+      "both_fail": 2,
+      "length_ratio_second_over_first": {
+        "n": 177,
+        "sum": 174.5422597870094,
+        "mean": 0.9861144620734995,
+        "p50": 0.9955555555555555,
+        "p90": 1.0452391012099098,
+        "max": 1.5465116279069768,
+        "method": "linear: (N-1)*q"
+      },
+      "all_case_penalty_difference_second_minus_first": -113,
+      "strict_pair_qualification": "NOT_REQUALIFIED; existing physics/RNG/camera/component FAILED remain; matched case IDs are descriptive only"
+    },
+    "C_P": {
+      "pairs": 189,
+      "first_success_second_fail": 7,
+      "first_fail_second_success": 3,
+      "both_success": 178,
+      "both_fail": 1,
+      "length_ratio_second_over_first": {
+        "n": 178,
+        "sum": 177.93591357384645,
+        "mean": 0.9996399638980138,
+        "p50": 1.0,
+        "p90": 1.0434518129770993,
+        "max": 1.528735632183908,
+        "method": "linear: (N-1)*q"
+      },
+      "all_case_penalty_difference_second_minus_first": 1788,
+      "strict_pair_qualification": "NOT_REQUALIFIED; existing physics/RNG/camera/component FAILED remain; matched case IDs are descriptive only"
+    }
+  },
+  "task_breakdown": {
+    "0": {
+      "T": {
+        "episodes": 19,
+        "success": 18
+      },
+      "C": {
+        "episodes": 19,
+        "success": 19
+      },
+      "P": {
+        "episodes": 19,
+        "success": 19
+      }
+    },
+    "1": {
+      "T": {
+        "episodes": 19,
+        "success": 19
+      },
+      "C": {
+        "episodes": 19,
+        "success": 19
+      },
+      "P": {
+        "episodes": 19,
+        "success": 18
+      }
+    },
+    "2": {
+      "T": {
+        "episodes": 20,
+        "success": 19
+      },
+      "C": {
+        "episodes": 20,
+        "success": 20
+      },
+      "P": {
+        "episodes": 20,
+        "success": 20
+      }
+    },
+    "3": {
+      "T": {
+        "episodes": 20,
+        "success": 19
+      },
+      "C": {
+        "episodes": 20,
+        "success": 19
+      },
+      "P": {
+        "episodes": 20,
+        "success": 17
+      }
+    },
+    "4": {
+      "T": {
+        "episodes": 19,
+        "success": 19
+      },
+      "C": {
+        "episodes": 19,
+        "success": 19
+      },
+      "P": {
+        "episodes": 19,
+        "success": 19
+      }
+    },
+    "5": {
+      "T": {
+        "episodes": 18,
+        "success": 18
+      },
+      "C": {
+        "episodes": 18,
+        "success": 18
+      },
+      "P": {
+        "episodes": 18,
+        "success": 17
+      }
+    },
+    "6": {
+      "T": {
+        "episodes": 18,
+        "success": 16
+      },
+      "C": {
+        "episodes": 18,
+        "success": 18
+      },
+      "P": {
+        "episodes": 18,
+        "success": 17
+      }
+    },
+    "7": {
+      "T": {
+        "episodes": 19,
+        "success": 19
+      },
+      "C": {
+        "episodes": 19,
+        "success": 18
+      },
+      "P": {
+        "episodes": 19,
+        "success": 18
+      }
+    },
+    "8": {
+      "T": {
+        "episodes": 19,
+        "success": 18
+      },
+      "C": {
+        "episodes": 19,
+        "success": 19
+      },
+      "P": {
+        "episodes": 19,
+        "success": 18
+      }
+    },
+    "9": {
+      "T": {
+        "episodes": 18,
+        "success": 18
+      },
+      "C": {
+        "episodes": 18,
+        "success": 16
+      },
+      "P": {
+        "episodes": 18,
+        "success": 18
+      }
+    }
+  },
+  "independent_test": false,
+  "source_backup": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-autodl-migration-backup-local-cpu1-v2-20261017-r2/all-runtime-originals.tar",
+  "no_new_robot_execution": true,
+  "no_source_modified": true,
+  "previous_failures_preserved": true,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  }
+}

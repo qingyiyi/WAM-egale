@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [新机接入前继续推进](global/requirements/decision-新服务器接入前继续推进已授权研究.md)（constraint，当前Cycle）：先备份/分析，可新namespace小批次接续未开始完整组；原件、原预算和可暂停边界保留。
+- [旧AutoDL阶段收尾后暂停换机](global/requirements/decision-旧AutoDL阶段收尾暂停并准备换机.md)（constraint，当前Cycle）：收尾已进入完整配对，阻止后续自动开工，备份与清理核验后再释放旧机；研究范围和原账本不变。
 - [空闲本机可分担](global/requirements/decision-本机GPU空闲时分担完整研究任务.md)（constraint，当前Cycle）：先核资源，尚未执行完整分片可放本机，同case对照同卡，原预算和计时边界不变。
 - [本轮AutoDL暂不扩容](global/requirements/decision-本轮AutoDL不扩容并先清理废弃资源.md)（constraint，M17）：先核依赖清理废弃项，必要时分阶段轮换可重建权重；原始结果及在用组件保留。
 - [本机减负与容量告知](global/requirements/preference-本机压力时优先远端计算与容量告知.md)（guideline）：优先现有AutoDL；容量不足先明确告知，项目清理仍核依赖。

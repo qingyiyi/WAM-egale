@@ -1,6 +1,6 @@
 # 当前讨论与授权摘要
 
-最新资源选择：用户明确允许本机空闲GPU分担已批准任务。Object尚零新增数据，登记v4将完整套件分配本机SXM4，单模型/server2/client2、nice10；其远端零工作排队控制器经身份核对后退役，避免重复。Goal/Spatial及Long仍现有AutoDL。本机CPU忙，不扩到双模型；配对臂同物理卡，计时按硬件分层。见[本机空闲授权](../../memory/global/requirements/decision-本机GPU空闲时分担完整研究任务.md)。原17:11起点/10月21截止不重置；[暂不扩容](../../memory/global/requirements/decision-本轮AutoDL不扩容并先清理废弃资源.md)和安全清理不变。旧远端安排保留历史身份。
+最新资源选择：旧AutoDL已完成阶段暂停（189组三臂/567局、0partial），用户随后明确“还没给你新服务器的时候你可以先跑着能做的事情”。先保证该阶段完整备份，再可用新namespace、小批完整30局边界接续311个未开始组；不重启已终态job、不重跑旧组、不重置预算。见[最新接续决定](../../memory/global/requirements/decision-新服务器接入前继续推进已授权研究.md)与[原换机决定](../../memory/global/requirements/decision-旧AutoDL阶段收尾暂停并准备换机.md)。新机仅已提供当前账号公钥，连接信息未收到，未迁移。Object本机首局超时已清理，不自动重试；Goal/Spatial暂停历史保留。
 
 用户优先把TF draft效果和投机侧收口。最新明确要求充分利用本机及现有双卡AutoDL，分别在Spatial/Object/Goal社区权重上用同方法训练自己的draft，并完整对照Target、连续TF、同权重TF+PF2成功率、实际trace长度与E2E成本；不是仅建议或旧READ_ONLY_PLAN。Long原全量继续，90无可信Target仍BLOCKED，未记作用户取消授权。
 

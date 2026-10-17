@@ -3,10 +3,10 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: 2026-10-17T19:52:20+08:00
-current: M17
-next: produce_assets_and_complete_suite_target_collection_then_fixed_TF_training
-execution_status: local_Object_T_POOL_starting_remote_Goal_Spatial_waiting_Long
+updated: 2026-10-17T22:08:59+08:00
+current: M18
+next: observe_new_shard_resume_then_migrate_at_complete30_boundary_when_new_SSH_arrives
+execution_status: original567_backup_complete_four_remote_workers_READY_running_whole_episodes
 ---
 # 当前研究进度
 
@@ -14,12 +14,15 @@ M17已批准三小套件各自同配方TF及Target/TF/PF2全套对照。四套�
 
 | ID | 工作 | 状态 | 实际进展 | 证据 |
 |---|---|---|---|---|
-| `M16` | Long全量三臂 | in_progress | 18:42新285闭合局＋原69＝354；另有运行中局，非全量 | 原v2 status，旧源不动 |
-| `M17` | 三套独立TF与全量三臂 | in_progress | 652e83c本机Object控制器518248启动完整T_POOL；远端Object零局退役，Goal/Spatial等待；尚未有新闭合局/训练 | [实际作业](../../experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md) |
+| `M16` | Long全量三臂 | in_progress | 旧阶段189组/567局完整归档；311未开始组正由新namespace分片接续，4模型READY、首30局分片完整任务运行中；原PARTIAL保留 | 原v2 status，旧源不动 |
+| `M17` | 三套独立TF与全量三臂 | in_progress | Object本机首局超时/PARTIAL，0完整局已清理；Goal/Spatial按换机请求暂停，训练0 | [实际作业](../../experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md) |
+| `M18` | 阶段备份与换机准备 | in_progress | 全部37349文件/1.84GiB原件已备份核对/CLEAN；新机未接入，新作业按30局边界可暂停 | [换机计划](../../experiments/autodl-stage-migration-20261017/PLAN.md) |
 
 Object/Goal远端权重完整，本机Object也已完整；Goal/Spatial完整bank完成（2455秒CPU），Object远端bank v3 r3完成（1220.5秒CPU）。原本机3600秒bank超时、传输3200秒超时、缺收据/启动参数失败及旧控制器替换全部保留。
 
-最新授权允许本机空闲GPU分担，Object在零新增数据时改为本机SXM4单模型/nice10/server2-client2；CPU1导入完整bank128.9秒，未重做T5/teacher。远端Object32543已按PID/出生/UID退役，原FAILED_OR_PARTIAL终态保留；新本机控制器518248/birth1350697010启动T_POOL200，尚无新闭合局或训练。Goal/Spatial远端不变。17:11起点和10/21截止、5GiB/套及四false不改，硬件分层计时。Long完成后才轮换可重建缓存；归档443492仍等待、复制0/删除0。本机本次清理7个失败下载残片985,044,916B，剩约94.9GiB；没有删除权重、原始结果或失败记录。LIBERO90仍缺可信同代Target，未启动。
+最新授权允许本机空闲GPU分担，Object在零新增数据时改为本机SXM4单模型/nice10/server2-client2；CPU1导入完整bank128.9秒，未重做T5/teacher。远端Object32543已按PID/出生/UID退役，原FAILED_OR_PARTIAL终态保留；新本机Object装载749.6秒成功，首局1200秒超时，20:24终态FAILED_OR_PARTIAL_NO_RETRY、0完整局；guard/owned组CLEAN，无自动重试。Goal/Spatial已停止排队、租约释放；缓存轮换0删除终止。17:11起点和10/21截止、5GiB/套及四false不改，硬件分层计时。原全1500归档443492因换机请求退出，RPC实际exit0、复制/删除0；原604568逐文件方式过慢，实际SIGINT退出/SSH闭合；635195单tar在650.7秒完成/CLEAN，37349文件、源1970600995B；旧源0删除。2b1f039新接续69459/runner69462/guard69461四模型READY，首30局分片运行中，沿原10/19截止；新结果迁移前另备份，当前不可关旧机。本机本次清理7个失败下载残片985,044,916B，剩约94.9GiB；没有删除权重、原始结果或失败记录。LIBERO90仍缺可信同代Target，未启动。
+
+阶段189组描述结果（不是验收）：Target183/189、TF连续185/189、PF2 181/189；平均失败800罚分284.81/274.76/284.22。相对Target共同成功最大长度比TF1.7004/PF2 1.5465；原组件审计FAILED仍保留（C15/P27）。含FIT/CAL暴露，不签独立TEST或正式速度，四false不改。见[阶段汇总](../../experiments/autodl-stage-migration-20261017/STAGE189-RESULT.md)。
 
 ## 历史质量不覆盖
 

@@ -1,34 +1,28 @@
 # M17实际执行索引
 
-核对：2026-10-17 19:51 北京。Object本机完整Target采集控制器已启动，尚无新闭合episode/训练；Goal/Spatial仍等待。旧M16/4f04、FAILED、NO_GO、四false不改。
+核对：2026-10-17 22:05 北京。旧AutoDL按换机请求实际完成阶段暂停；用户随后允许新机接入前推进可做工作。旧567局全原件已备份完成，新namespace四模型全部READY，首完整任务分片在跑，尚未签完整分片终态。新机SSH未提供；新结果须增量备份后才能关旧机。
 
-|工作|实际终态或状态|证据|
+|工作|实际状态与边界|证据|
 |---|---|---|
-|Object/Goal资产|远端完整，各10,177,831,668B；本机Object完整副本已装配；非官方community Target|asset r2；local asset admission r1；固定revision见PLAN|
-|完整reset bank|Goal/Spatial CPU2455.0秒成功；Object远端v3 r3 CPU1220.5秒成功；全部512 BF16，尚未在新suite在线reset重新审计|[真实远端快照](../../../投机采样/results/runtime/p0-tf-suite-cache-rotation-inputs-cpu1-v2-20261017-r1/ACTUAL-CAPACITY-AND-PLACEMENT-r1.json)|
-|Object本机v4|652e83c/controller518248；启动T_POOL200，单模型/nice10，尚未确认READY；其远端32543零工作退役，原终态保留|[v4资源登记](../../../投机采样/results/runtime/p0-tf-suite-local-placement-v4-20261017-r1/AMENDMENT.json)|
-|Goal/Spatial远端pipeline|8eaf130、31852/31853；原共享租约，继续等待Long清理/Spatial资产|[原登记](../../../投机采样/results/runtime/p0-tf-suite-remote-placement-v2-20261017-r1/ACTUAL-20261017-1830.json)|
-|Object bank本机复用|CPU1实际128.9秒；原11个512 BF16 tensor保留，仅绑定本地路径，T5/teacher0；子进程exit0、SSH关闭|[完整准备收据](../../../投机采样/results/runtime/p0-tf-suite-object-bank-import-local-cpu1-v1-20261017-r1/RESULT.json)|
-|空间轮换调度|37f15d1、PID32254；等待Long500全终态＋owned/guard实际清理＋文件无消费者，尚未删权重|同一快照；`p0-tf-suite-cache-rotation-cpu1-v2-20261017-r1/status.json`|
-|Long M16|双卡四worker继续；新285闭合局＋原69＝354/1500，另有组内运行局；不是完整质量结果|同一现场快照；[原索引](../libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)|
-|本机清理|7个已停失败下载残片，985,044,916B（约0.917GiB）；完整权重、失败记录与原始结果保留|[逐文件清理结果](../../../投机采样/results/runtime/p0-tf-suite-abandoned-download-cleanup-cpu1-v1-20261017-r1/RESULT.json)|
+|Long M16|旧189完整组/567局、311未开始、partial0；原supervisor PARTIAL保留。新2b1f039独立p0-tf-long-shard-resume-v1-20261017-r1已启动，10组三臂/30局屏障；4模型READY、完整任务运行中，不重复旧组|[阶段汇总](../autodl-stage-migration-20261017/STAGE189-RESULT.md)、原v2 job、resume实际收据|
+|Long阶段描述|Target183/189、TF185/189、PF2 181/189；原组件FAILED/初态缺口保留，最大长度比超旧门；包含训练暴露，四false不变|[逐局汇总](../autodl-stage-migration-20261017/STAGE189-RESULT.md)|
+|Object/Goal资产|远端各10177831668B完整；本机Object完整；非官方community Target|固定来源见PLAN；原asset r2与local admission|
+|完整reset bank|Goal/Spatial CPU2455秒、Object远端v3 r3 CPU1220.5秒完成；本机复用Object bank128.9秒、原512 BF16，无T5/teacher重做；新suite在线完整任务等价仍未签证|原bank与导入RESULT|
+|Object本机v4|READY/setup749.6秒；首task0/init0触发1200秒cap，0完整局；20:24 FAILED_OR_PARTIAL_NO_RETRY、guard CLEAN/owned组空；不记自然算法失败，不自动重试|[v4资源登记](../../../投机采样/results/runtime/p0-tf-suite-local-placement-v4-20261017-r1/AMENDMENT.json)|
+|Goal/Spatial原远端pipeline|8eaf130、31852/31853均PAUSED_PARTIAL/0完整局、训练0，租约实际释放；旧job不重启|p0-autodl-migration-stage-pause-v1-20261017-r1/PENDING-WORK-HELD.json|
+|缓存轮换|37f15d1已停止，BLOCKED、deleted_cache_files=[]，无asset child；未删权重、未下载Spatial|原rotation STOP/FINAL-OWNED-CLEANUP|
+|旧全1500归档等待器|443492实际结束，原BLOCKED/PARTIAL保留；远端RPC32756实际exit0，复制0/删除0|旧archive RESULT/CLEANUP|
+|阶段全原件备份|9f8f251、635195实际650.7秒完成/CLEAN；37349文件/1970600995B，tar2053969920B；含TF/normalizer/bank/全部失败，旧源0删除、无SHA。v1回传慢SIGINT130及部分副本保留|p0-autodl-migration-backup-local-cpu1-v2-20261017-r2/RESULT.json|
+|项目空间清理|本轮只清7个已停止失败下载残片985044916B；完整权重、失败记录和唯一结果保留|原abandoned-download-cleanup RESULT|
 
-Object当前为本机`p0-tf-suite-object-local-chain-v4-20261017-r1`。原远端OS盘`/root/wam-suite-research-20261017-v3/object-chain-r1`仅零工作准备，PID/出生核对退役，原FAILED_OR_PARTIAL_NO_RETRY及更早R2终态保留，不再排队启动模型。Goal/Spatial仍数据盘原job。Long完整归档producer128d435已在本机CPU1启动等待（PID443492）：全部原件完整回传本机后，才退远端重复payload和明确登记的COUNTER副本，其他JSON/FAILED不动；需先等Long及轮换审计完成，当前归档状态WAITING、复制0/删除0。所有原件在本机保留，登记定位映射，不能宣称凭size校验证明独立密码学身份。
+## 执行与下一步
 
-## 本轮资源修订与原记录
+最新接续source2b1f039、supervisor69459/runner69462/guard69461，旧attempt累计debit591787；原M16起点10/17 13:55、10/19 13:40停新/13:55清理、6001000attempt/10GiB不变。共享GPU质量耗时仅探索性；同case三臂仍同卡，原d544数学与优化reset不改。收到新机SSH后在完整30局屏障收尾、增量保存新原件、清理后迁移，不因换机重置账本。
 
-19:51最新用户允许本机空闲GPU分担，Object在零新增episode时前瞻分配本机SXM4、单模型/nice10/server2-client2，两个最终shard顺序。Goal仍AutoDL GPU0，Spatial GPU1；Long不动。原18:30全远端/18:42 OS盘安排保留历史身份。每套500case的所有臂固定同物理卡；最终两shard共享同卡最多2模型槽位，全局flock＋PID出生身份＋实际清理释放，CPU0–15放server/client，16–19共享训练/控制，物理CPU池不超20。
+三小套件研究授权仍有效，原M17起点10/17 17:11:31、10/21 16:56停新/17:11清理，4680新增完整局/18723000尝试/15GiB不改。[固定训练与完整预算](PLAN.md)。各套独立TF64与对应Target监督，不能把Long draft迁名；无结构/seed/tau搜索。每局原horizon800、1200秒/4000forward帽，所有等待、失败、准备、清理计预算。当前Goal/Spatial暂停0训练、Object超时0完整局，不声称新套件已验证。
 
-原9aa准备控制器Object本机r1/r2、Goal/Spatial远端r1分别记录替换原因并退出，没有新增模型或episode，不覆盖其FAILED/PARTIAL。新namespace保持原17:11:31起点、10/21 16:56停新/17:11清理。源8eaf只改变资源调度和独立report_v2选择，原模型/数据/数学/阈值/树/bonus/训练固定预算不变。
+本机CPU16核被root gem5/QEMU竞争占满，Object加载与首局均慢；实际人类提交者UNKNOWN，不杀他人/改服务。新服务器资源未知，收到后登记明确未开始工作。LIBERO90无可信同代Target，仍BLOCKED未启动。正式E2E仍须原质量门＋独占本机；并行墙钟或fixture replay不能替代。
 
-原本机bank CPU7被3590秒外层timeout终止、exit124，无完整新bank；加EXTERNAL-TERMINAL，原状态不追改。Object远端v3 r1缺历史bank收据，r2启动参数错误均在编码前失败；补真实原收据/纠正启动后独立r3沿r1原2h截止完成。原stream import r3总3200秒TimeoutError，只有Object完整，Goal残片后来经独立获准清理；不能称完整导入两套。旧bridge已因资源安排替换退出，未执行其Object缓存删除/Spatial下载。
+10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文证据包。旧4f04 paused72、所有FAILED/NO_GO/retention/22缺证、原tile与保护state/cycle/rules不改。四权限false，不自动120/独立TEST/正式性能。
 
-当前本机余约94.9GiB；远端数据盘约15.9GiB、OS盘10.98GiB。没有立即可删的大块废弃远端数据。Long完整结束后，只在完整本机原件/固定来源与3分片stat、全部进程/FD/maps核实后回收可重建远端Long Transformer缓存，预计9.48GiB；保留config/index/T5/VAE/tokenizer与Long全部原始结果。实际释放量由UNLINK/statfs收据记录，未知时不删。随后fresh Spatial下载保留10GiB空闲线并派生原scaffold绑定。若不能安全释放或空间仍不够，BLOCKED，不自动扩盘或降低保留线。
-
-## 固定方法、预算和下一步
-
-[完整PLAN](PLAN.md)。各套独立TF64/seed20260923、Target200=FIT180/CAL20；PARENT2000采30，再CHILD2500/CONT3000，CONT采新30，ON从同CHILD+500。无结构/seed/阈值搜索。最终500case×T/C/P，Target200只读复用，另训练采集60局，1560新增/套、4680总局。FIT/CAL及init26–49训练未见子集明示，非独立TEST。
-
-原96h与18,723,000尝试/15GiB研究证据帽不重置；原Long仍10/19 13:40停新/13:55清理。每局horizon800、1200秒、4000尝试，等待/准备/失败/清理计账，无自动重试。全成败、实际命令（如796）与800罚分分列。并行C_update/ΣT_round÷Σg/policy/episode只作探索性成本，formal E2E仍UNKNOWN；旧fixture缺口不借compact表冒充修复。
-
-NEXT：监督本机Object实际模型装载→T_POOL200→固定训练链；并行监督远端Long，清理后Goal直接T_POOL、轮换Spatial后接入同流程。当前完整新增工作粗估48–72小时，首批新suite任务后按实测修订，96h为止损帽。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文证据包；不自动120/TEST/正式性能。
+[20:32完整原索引](history/ACTUAL-20261017-2032.md)逐字保留，旧文相对链接按原父目录解释；历史资源安排和准备失败不改写。
