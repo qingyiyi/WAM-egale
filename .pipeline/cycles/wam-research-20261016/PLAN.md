@@ -2,15 +2,17 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: 2026-10-16T22:23:00+08:00
+updated: 2026-10-17T13:18:21.505241+08:00
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
 # WAM 投机与多候选系统协同研究
 
-> 10/17早当前实验已按用户要求暂停并清理GPU。DEV72/96、TF-on新增风险失败，见本轮RESULT；先做网页版文献/开源交接和GitHub发布，不依据历史计划继续启动。
+> 当前：M15六对十二局完整，PF2投入NO_GO；C3/6、P5/6，救回2但风险仍1败/控制长度超限。GPU/SSH清理，reset全项目默认优化；四false/旧NO-GO不变。见[本轮结果](../../experiments/tf-pf2-autodl-20261017/RESULT.md)。
 
 ## 目的与边界
+
+历史M14优先PF2 READ_ONLY_PLAN，D1/D2/训练不叠加；其只读NONE已由M15本轮12h批准替代。当前执行范围见顶部和独立PLAN，不能继承已过10:00的旧账本。AutoDL无smoke/独立测试/SHA继续有效。
 
 用户已返回完整执行方案并授权研究继续。原夜间AutoDL09:00授权已经结束，晨间归还用户后不再SSH。当前50完整DEV已结束但TF retention HOLD，最新事实superseded_by [今天结果](../../research/speculative-sampling/DRAFT-FREEZE-RESULT-20261016.md)。主线及有限工作包统一见[执行索引](../../research/speculative-sampling/WAM-COORDINATION-20261016.md)，本Cycle仅保存恢复状态，不复制长计划。
 
@@ -25,11 +27,14 @@ execution: EXECUTION.md
 | `M5` | Q02 质量风险与数据隔离 | 五假设审计及有限反事实准备 | 缺原始字段明确未知；不解盲TEST |
 | `M6` | S03 原型选择与收缩 | 有profile支持的一条主路线 | 相对已有最佳路径；逐级正确性门 |
 | `M7` | 夜间归档与晨报 | 终态、资源清理、关键路径 | 原FAILED保留；不把子图结果写成机器人收益 |
-| `M8/M9` | 晨间补训与80完整DEV | 已完成描述证据，保留原PARTIAL | 不替代严格证书 |
+| `M8` | 晨间固定补训 | 已完成固定CONT训练 | 不替代质量证书 |
+| `M9` | 晨间80完整DEV | 已完成描述证据，保留原PARTIAL | 不替代严格证书 |
 | `M10` | 同预算MLP及前瞻50完整DEV | 已完成，风险新增失败，TF未retained | 3184PT全raw独审、来源/预算/58pins清理真核 |
 | `M11` | 前瞻风险日志诊断 | 1对完整、1个Target重复、1个TF资源中断；当前权重NO-GO | PARTIAL原失败保留；下一步同query/全KV数值复验 |
 | `M12` | 同query教师路径定位 | 两真实记录chunk及时间编码反事实完成，11.72分钟内清理 | B2/B14差异从FP32时间投影出现，单独规范时间未恢复最终方向；不冒称整局根因 |
-| `M13` | TF64唯一一次数据配方收口 | 按用户授权1→2→3：诊断、FIT20/CAL10、等预算训练、96完整DEV | [独立实验与运行接续](../../experiments/tf-effect-closure-20261016/RUNBOOK.md)；新质量结果未获，旧四权限false |
+| `M13` | TF64唯一一次数据配方收口 | 按用户授权1→2→3：诊断、FIT20/CAL10、等预算训练、96完整DEV | [独立实验与运行接续](../../experiments/tf-effect-closure-20261016/RUNBOOK.md)；77/96有界结束、TF风险未过，旧四权限false |
+| `M14` | 冻结TF_ON/PF2只读方案 | D0源证据、双卡资源、建议diff、六pair与累计预算；未执行 | [独立审查结果](../../experiments/tf-pf2-plan-20261017/RESULT.md)，四false/旧FAILED保留 |
+| `M15` | 冻结TF_ON/PF2双卡完整DEV | 用户批准源码/部署与12h窗口，固定六pair/49k/3GiB | [执行登记](../../experiments/tf-pf2-autodl-20261017/PLAN.md)，无smoke/SHA/独立测试，旧四false保留 |
 
 ## 验证与未决
 

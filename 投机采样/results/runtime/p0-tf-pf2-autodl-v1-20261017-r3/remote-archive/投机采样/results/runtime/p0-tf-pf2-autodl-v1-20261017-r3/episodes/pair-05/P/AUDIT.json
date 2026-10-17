@@ -1,0 +1,129 @@
+{
+  "schema": "tf-pf2-episode-audit/v1",
+  "status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+  "pair_id": 5,
+  "arm": "P",
+  "first2S": {
+    "status": "PASS_EXACT",
+    "compared_policy_chunks": 2,
+    "reference_policy_chunks": 2,
+    "records": [
+      {
+        "status": "PASS_EXACT_ACTIVE_INPUTS",
+        "label": "reset",
+        "first_arm": "C",
+        "raw_all_fields_equal": true,
+        "active_input_comparison": {
+          "equal": true,
+          "mismatches": [],
+          "mismatch_count": 0,
+          "displayed_mismatches": 0,
+          "truncated": false,
+          "compared_leaves": 1303,
+          "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+        },
+        "raw_all_field_comparison": {
+          "equal": true,
+          "mismatches": [],
+          "mismatch_count": 0,
+          "displayed_mismatches": 0,
+          "truncated": false,
+          "compared_leaves": 1309,
+          "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+        },
+        "excluded_fields": [
+          "lazy_scheduler_state.video.sigmas",
+          "lazy_scheduler_state.video.timesteps",
+          "lazy_scheduler_state.video.training",
+          "lazy_scheduler_state.action.sigmas",
+          "lazy_scheduler_state.action.timesteps",
+          "lazy_scheduler_state.action.training"
+        ],
+        "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+      },
+      {
+        "status": "PASS_EXACT_ACTIVE_INPUTS",
+        "label": "S0_before",
+        "first_arm": "C",
+        "raw_all_fields_equal": true,
+        "active_input_comparison": {
+          "equal": true,
+          "mismatches": [],
+          "mismatch_count": 0,
+          "displayed_mismatches": 0,
+          "truncated": false,
+          "compared_leaves": 1303,
+          "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+        },
+        "raw_all_field_comparison": {
+          "equal": true,
+          "mismatches": [],
+          "mismatch_count": 0,
+          "displayed_mismatches": 0,
+          "truncated": false,
+          "compared_leaves": 1309,
+          "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+        },
+        "excluded_fields": [
+          "lazy_scheduler_state.video.sigmas",
+          "lazy_scheduler_state.video.timesteps",
+          "lazy_scheduler_state.video.training",
+          "lazy_scheduler_state.action.sigmas",
+          "lazy_scheduler_state.action.timesteps",
+          "lazy_scheduler_state.action.training"
+        ],
+        "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+      },
+      {
+        "status": "PASS_EXACT",
+        "label": "S0",
+        "first_arm": "C",
+        "raw_all_fields_equal": true,
+        "comparison": {
+          "equal": true,
+          "mismatches": [],
+          "mismatch_count": 0,
+          "displayed_mismatches": 0,
+          "truncated": false,
+          "compared_leaves": 3287,
+          "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+        }
+      },
+      {
+        "status": "PASS_EXACT",
+        "label": "S1",
+        "first_arm": "C",
+        "raw_all_fields_equal": true,
+        "comparison": {
+          "equal": true,
+          "mismatches": [],
+          "mismatch_count": 0,
+          "displayed_mismatches": 0,
+          "truncated": false,
+          "compared_leaves": 3293,
+          "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+        }
+      }
+    ],
+    "first_infer_lazy_scheduler_exclusion_explicit": true,
+    "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+  },
+  "numerical_isolation": {
+    "status": "PASS_OBSERVED_ROUTE_STATE_AND_ROLE_CONTRACTS",
+    "original_ObservedAPI_unchanged": true,
+    "raw_S_g_unchanged": true,
+    "manual_vs_scheduler12chunk_gate": "NOT_EXECUTED_USER_NO_INDEPENDENT_TESTS",
+    "old_adapter_CAL_not_inherited": true,
+    "remote_SHA_executed": false
+  },
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false
+}

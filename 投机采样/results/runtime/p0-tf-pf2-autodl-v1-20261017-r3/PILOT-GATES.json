@@ -1,0 +1,34 @@
+{
+  "schema": "tf-pf2-fixed-pilot-investment-gates/v1",
+  "recorded_at": "2026-10-17T03:57:20.700290+00:00",
+  "source": "用户返回的PF2六对完整DEV方案第8节，照录投入筛查边界，不修改旧质量门",
+  "before_new_episode_start": true,
+  "all_six_pairs_complete_and_identity_route_audit": true,
+  "P_success_required_risk": 3,
+  "P_success_required_control": 3,
+  "lost_success_max": 0,
+  "new_current_C_failure_P_success_in_risk_min": 1,
+  "P_penalized_sum_not_above_C": [
+    "risk",
+    "control",
+    "all"
+  ],
+  "both_success_length_ratio_limits": {
+    "p50": 1.1,
+    "p90": 1.2,
+    "max": 1.3,
+    "quantile": "linear index=(n-1)*q"
+  },
+  "P_over_C_cost_investment_limits": {
+    "C_update": 1.25,
+    "common_success_total_policy_cost": 1.25
+  },
+  "cost_unavailable_or_incomparable": "UNKNOWN_not_pass",
+  "no_global_permission_change": true,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  }
+}

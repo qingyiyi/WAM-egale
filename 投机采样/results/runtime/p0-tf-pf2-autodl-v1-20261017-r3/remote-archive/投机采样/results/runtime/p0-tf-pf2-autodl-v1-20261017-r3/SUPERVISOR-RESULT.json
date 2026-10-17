@@ -1,0 +1,3671 @@
+{
+  "schema": "tf-pf2-dual-supervisor/v1",
+  "status": "COMPLETE_RECORDED_SIX_PAIR_PANEL",
+  "failure": null,
+  "hard_reason": null,
+  "soft_stop_reasons": [],
+  "pair_results": [
+    {
+      "pair_id": 1,
+      "worker": 0,
+      "episodes": [
+        {
+          "pair_id": 1,
+          "arm": "C",
+          "success": false,
+          "env_steps": 796,
+          "failure800_penalty": 800,
+          "target_forward_attempts": 2193,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        },
+        {
+          "pair_id": 1,
+          "arm": "P",
+          "success": true,
+          "env_steps": 264,
+          "failure800_penalty": 264,
+          "target_forward_attempts": 895,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        }
+      ],
+      "status": "COMPLETE_RECORDED_PAIR",
+      "at": "2026-10-17T04:48:55.382058+00:00",
+      "observation": {
+        "pair_id": 1,
+        "task": 1,
+        "init": 29,
+        "stratum": "risk",
+        "within_pair_order": "C_P",
+        "complete_pair": true,
+        "C_success": false,
+        "P_success": true,
+        "rescued": true,
+        "lost": false,
+        "C_steps": 796,
+        "P_steps": 264,
+        "both_success_step_ratio": "UNKNOWN",
+        "raw_initial_comparison": {
+          "sim_controller_arrays_exact": true,
+          "raw_Python_NumPy_RNG_exact": true,
+          "model_XML_exact": true,
+          "raw_init_state_exact": true,
+          "camera_pixels": {
+            "observation.images.agentview_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            },
+            "observation.images.eye_in_hand_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            }
+          },
+          "saved_physics_RNG_pixels_exact": true,
+          "unsaved_simulator_internals": "UNKNOWN"
+        },
+        "first2S_comparison": {
+          "statuses_by_arm": {
+            "C": "REFERENCE_STORED",
+            "P": "PASS_EXACT"
+          },
+          "reference_and_comparison_observed": true,
+          "raw_details_by_arm": {
+            "C": {
+              "status": "REFERENCE_STORED",
+              "compared_policy_chunks": 0,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "reset",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0_before",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S1",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            },
+            "P": {
+              "status": "PASS_EXACT",
+              "compared_policy_chunks": 2,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "reset",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": false,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": false,
+                    "mismatches": [
+                      {
+                        "path": "$/lazy_scheduler_state/video/sigmas",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          20
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/video/timesteps",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          20
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/video/training",
+                        "reason": "scalar value differs"
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/sigmas",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          50
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/timesteps",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          50
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/training",
+                        "reason": "scalar value differs"
+                      }
+                    ],
+                    "mismatch_count": 6,
+                    "displayed_mismatches": 6,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "S0_before",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": false,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": false,
+                    "mismatches": [
+                      {
+                        "path": "$/lazy_scheduler_state/video/sigmas",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          20
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/video/timesteps",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          20
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/video/training",
+                        "reason": "scalar value differs"
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/sigmas",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          50
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/timesteps",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          50
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/training",
+                        "reason": "scalar value differs"
+                      }
+                    ],
+                    "mismatch_count": 6,
+                    "displayed_mismatches": 6,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S0",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3287,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S1",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3293,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            }
+          },
+          "reset_S0_before_lazy_scheduler_exception_must_be_read_separately": true,
+          "not_a_blanket_all_initial_fields_exact_claim": true
+        },
+        "evidence_gaps": []
+      },
+      "pair_qualified": "UNKNOWN_NOT_A_QUALITY_CERTIFICATE",
+      "permissions": {
+        "engineering_quality_screen": false,
+        "independent_test_complete": false,
+        "noninferiority_established": false,
+        "formal_performance_permission": false
+      },
+      "finished_at": "2026-10-17T04:55:03.486223+00:00"
+    },
+    {
+      "pair_id": 2,
+      "worker": 1,
+      "episodes": [
+        {
+          "pair_id": 2,
+          "arm": "P",
+          "success": true,
+          "env_steps": 405,
+          "failure800_penalty": 405,
+          "target_forward_attempts": 1381,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        },
+        {
+          "pair_id": 2,
+          "arm": "C",
+          "success": true,
+          "env_steps": 260,
+          "failure800_penalty": 260,
+          "target_forward_attempts": 742,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        }
+      ],
+      "status": "COMPLETE_RECORDED_PAIR",
+      "at": "2026-10-17T04:48:55.382442+00:00",
+      "observation": {
+        "pair_id": 2,
+        "task": 1,
+        "init": 36,
+        "stratum": "control",
+        "within_pair_order": "P_C",
+        "complete_pair": true,
+        "C_success": true,
+        "P_success": true,
+        "rescued": false,
+        "lost": false,
+        "C_steps": 260,
+        "P_steps": 405,
+        "both_success_step_ratio": 1.5576923076923077,
+        "raw_initial_comparison": {
+          "sim_controller_arrays_exact": true,
+          "raw_Python_NumPy_RNG_exact": true,
+          "model_XML_exact": true,
+          "raw_init_state_exact": true,
+          "camera_pixels": {
+            "observation.images.agentview_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            },
+            "observation.images.eye_in_hand_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            }
+          },
+          "saved_physics_RNG_pixels_exact": true,
+          "unsaved_simulator_internals": "UNKNOWN"
+        },
+        "first2S_comparison": {
+          "statuses_by_arm": {
+            "C": "PASS_EXACT",
+            "P": "REFERENCE_STORED"
+          },
+          "reference_and_comparison_observed": true,
+          "raw_details_by_arm": {
+            "C": {
+              "status": "PASS_EXACT",
+              "compared_policy_chunks": 2,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "reset",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": false,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": false,
+                    "mismatches": [
+                      {
+                        "path": "$/lazy_scheduler_state/video/sigmas",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          20
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/video/timesteps",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          20
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/video/training",
+                        "reason": "scalar value differs"
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/sigmas",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          50
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/timesteps",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          50
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/training",
+                        "reason": "scalar value differs"
+                      }
+                    ],
+                    "mismatch_count": 6,
+                    "displayed_mismatches": 6,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "S0_before",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": false,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": false,
+                    "mismatches": [
+                      {
+                        "path": "$/lazy_scheduler_state/video/sigmas",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          20
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/video/timesteps",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          20
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/video/training",
+                        "reason": "scalar value differs"
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/sigmas",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          50
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/timesteps",
+                        "reason": "tensor dtype/shape differs",
+                        "reference_dtype": "torch.float32",
+                        "actual_dtype": "torch.float32",
+                        "reference_shape": [
+                          1000
+                        ],
+                        "actual_shape": [
+                          50
+                        ]
+                      },
+                      {
+                        "path": "$/lazy_scheduler_state/action/training",
+                        "reason": "scalar value differs"
+                      }
+                    ],
+                    "mismatch_count": 6,
+                    "displayed_mismatches": 6,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S0",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3287,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S1",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3293,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            },
+            "P": {
+              "status": "REFERENCE_STORED",
+              "compared_policy_chunks": 0,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "reset",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0_before",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S1",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            }
+          },
+          "reset_S0_before_lazy_scheduler_exception_must_be_read_separately": true,
+          "not_a_blanket_all_initial_fields_exact_claim": true
+        },
+        "evidence_gaps": []
+      },
+      "pair_qualified": "UNKNOWN_NOT_A_QUALITY_CERTIFICATE",
+      "permissions": {
+        "engineering_quality_screen": false,
+        "independent_test_complete": false,
+        "noninferiority_established": false,
+        "formal_performance_permission": false
+      },
+      "finished_at": "2026-10-17T04:53:21.229374+00:00"
+    },
+    {
+      "pair_id": 3,
+      "worker": 0,
+      "episodes": [
+        {
+          "pair_id": 3,
+          "arm": "P",
+          "success": true,
+          "env_steps": 241,
+          "failure800_penalty": 241,
+          "target_forward_attempts": 847,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        },
+        {
+          "pair_id": 3,
+          "arm": "C",
+          "success": false,
+          "env_steps": 796,
+          "failure800_penalty": 800,
+          "target_forward_attempts": 2205,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        }
+      ],
+      "status": "COMPLETE_RECORDED_PAIR",
+      "at": "2026-10-17T04:55:03.640769+00:00",
+      "observation": {
+        "pair_id": 3,
+        "task": 3,
+        "init": 26,
+        "stratum": "risk",
+        "within_pair_order": "P_C",
+        "complete_pair": true,
+        "C_success": false,
+        "P_success": true,
+        "rescued": true,
+        "lost": false,
+        "C_steps": 796,
+        "P_steps": 241,
+        "both_success_step_ratio": "UNKNOWN",
+        "raw_initial_comparison": {
+          "sim_controller_arrays_exact": true,
+          "raw_Python_NumPy_RNG_exact": true,
+          "model_XML_exact": true,
+          "raw_init_state_exact": true,
+          "camera_pixels": {
+            "observation.images.agentview_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            },
+            "observation.images.eye_in_hand_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            }
+          },
+          "saved_physics_RNG_pixels_exact": true,
+          "unsaved_simulator_internals": "UNKNOWN"
+        },
+        "first2S_comparison": {
+          "statuses_by_arm": {
+            "C": "PASS_EXACT",
+            "P": "REFERENCE_STORED"
+          },
+          "reference_and_comparison_observed": true,
+          "raw_details_by_arm": {
+            "C": {
+              "status": "PASS_EXACT",
+              "compared_policy_chunks": 2,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "reset",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "S0_before",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S0",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3287,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S1",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3293,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            },
+            "P": {
+              "status": "REFERENCE_STORED",
+              "compared_policy_chunks": 0,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "reset",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0_before",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S1",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            }
+          },
+          "reset_S0_before_lazy_scheduler_exception_must_be_read_separately": true,
+          "not_a_blanket_all_initial_fields_exact_claim": true
+        },
+        "evidence_gaps": []
+      },
+      "pair_qualified": "UNKNOWN_NOT_A_QUALITY_CERTIFICATE",
+      "permissions": {
+        "engineering_quality_screen": false,
+        "independent_test_complete": false,
+        "noninferiority_established": false,
+        "formal_performance_permission": false
+      },
+      "finished_at": "2026-10-17T05:00:26.884635+00:00"
+    },
+    {
+      "pair_id": 4,
+      "worker": 1,
+      "episodes": [
+        {
+          "pair_id": 4,
+          "arm": "C",
+          "success": true,
+          "env_steps": 228,
+          "failure800_penalty": 228,
+          "target_forward_attempts": 652,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        },
+        {
+          "pair_id": 4,
+          "arm": "P",
+          "success": true,
+          "env_steps": 225,
+          "failure800_penalty": 225,
+          "target_forward_attempts": 806,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        }
+      ],
+      "status": "COMPLETE_RECORDED_PAIR",
+      "at": "2026-10-17T04:55:03.641126+00:00",
+      "observation": {
+        "pair_id": 4,
+        "task": 3,
+        "init": 36,
+        "stratum": "control",
+        "within_pair_order": "C_P",
+        "complete_pair": true,
+        "C_success": true,
+        "P_success": true,
+        "rescued": false,
+        "lost": false,
+        "C_steps": 228,
+        "P_steps": 225,
+        "both_success_step_ratio": 0.9868421052631579,
+        "raw_initial_comparison": {
+          "sim_controller_arrays_exact": true,
+          "raw_Python_NumPy_RNG_exact": true,
+          "model_XML_exact": true,
+          "raw_init_state_exact": true,
+          "camera_pixels": {
+            "observation.images.agentview_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            },
+            "observation.images.eye_in_hand_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            }
+          },
+          "saved_physics_RNG_pixels_exact": true,
+          "unsaved_simulator_internals": "UNKNOWN"
+        },
+        "first2S_comparison": {
+          "statuses_by_arm": {
+            "C": "REFERENCE_STORED",
+            "P": "PASS_EXACT"
+          },
+          "reference_and_comparison_observed": true,
+          "raw_details_by_arm": {
+            "C": {
+              "status": "REFERENCE_STORED",
+              "compared_policy_chunks": 0,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "reset",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0_before",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S1",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            },
+            "P": {
+              "status": "PASS_EXACT",
+              "compared_policy_chunks": 2,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "reset",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "S0_before",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S0",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3254,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S1",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3293,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            }
+          },
+          "reset_S0_before_lazy_scheduler_exception_must_be_read_separately": true,
+          "not_a_blanket_all_initial_fields_exact_claim": true
+        },
+        "evidence_gaps": []
+      },
+      "pair_qualified": "UNKNOWN_NOT_A_QUALITY_CERTIFICATE",
+      "permissions": {
+        "engineering_quality_screen": false,
+        "independent_test_complete": false,
+        "noninferiority_established": false,
+        "formal_performance_permission": false
+      },
+      "finished_at": "2026-10-17T04:57:42.520345+00:00"
+    },
+    {
+      "pair_id": 5,
+      "worker": 0,
+      "episodes": [
+        {
+          "pair_id": 5,
+          "arm": "C",
+          "success": false,
+          "env_steps": 796,
+          "failure800_penalty": 800,
+          "target_forward_attempts": 2195,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        },
+        {
+          "pair_id": 5,
+          "arm": "P",
+          "success": false,
+          "env_steps": 796,
+          "failure800_penalty": 800,
+          "target_forward_attempts": 2676,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        }
+      ],
+      "status": "COMPLETE_RECORDED_PAIR",
+      "at": "2026-10-17T05:00:26.940960+00:00",
+      "observation": {
+        "pair_id": 5,
+        "task": 4,
+        "init": 26,
+        "stratum": "risk",
+        "within_pair_order": "C_P",
+        "complete_pair": true,
+        "C_success": false,
+        "P_success": false,
+        "rescued": false,
+        "lost": false,
+        "C_steps": 796,
+        "P_steps": 796,
+        "both_success_step_ratio": "UNKNOWN",
+        "raw_initial_comparison": {
+          "sim_controller_arrays_exact": true,
+          "raw_Python_NumPy_RNG_exact": true,
+          "model_XML_exact": true,
+          "raw_init_state_exact": true,
+          "camera_pixels": {
+            "observation.images.agentview_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            },
+            "observation.images.eye_in_hand_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            }
+          },
+          "saved_physics_RNG_pixels_exact": true,
+          "unsaved_simulator_internals": "UNKNOWN"
+        },
+        "first2S_comparison": {
+          "statuses_by_arm": {
+            "C": "REFERENCE_STORED",
+            "P": "PASS_EXACT"
+          },
+          "reference_and_comparison_observed": true,
+          "raw_details_by_arm": {
+            "C": {
+              "status": "REFERENCE_STORED",
+              "compared_policy_chunks": 0,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "reset",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0_before",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S1",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            },
+            "P": {
+              "status": "PASS_EXACT",
+              "compared_policy_chunks": 2,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "reset",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "S0_before",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S0",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3287,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S1",
+                  "first_arm": "C",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3293,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            }
+          },
+          "reset_S0_before_lazy_scheduler_exception_must_be_read_separately": true,
+          "not_a_blanket_all_initial_fields_exact_claim": true
+        },
+        "evidence_gaps": []
+      },
+      "pair_qualified": "UNKNOWN_NOT_A_QUALITY_CERTIFICATE",
+      "permissions": {
+        "engineering_quality_screen": false,
+        "independent_test_complete": false,
+        "noninferiority_established": false,
+        "formal_performance_permission": false
+      },
+      "finished_at": "2026-10-17T05:09:16.720338+00:00"
+    },
+    {
+      "pair_id": 6,
+      "worker": 1,
+      "episodes": [
+        {
+          "pair_id": 6,
+          "arm": "P",
+          "success": true,
+          "env_steps": 235,
+          "failure800_penalty": 235,
+          "target_forward_attempts": 806,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        },
+        {
+          "pair_id": 6,
+          "arm": "C",
+          "success": true,
+          "env_steps": 234,
+          "failure800_penalty": 234,
+          "target_forward_attempts": 656,
+          "finish_status": "PASS",
+          "audit_status": "PASS_COMPLETE_EPISODE_COMPONENTS",
+          "complete_episode": true
+        }
+      ],
+      "status": "COMPLETE_RECORDED_PAIR",
+      "at": "2026-10-17T05:00:26.941381+00:00",
+      "observation": {
+        "pair_id": 6,
+        "task": 4,
+        "init": 36,
+        "stratum": "control",
+        "within_pair_order": "P_C",
+        "complete_pair": true,
+        "C_success": true,
+        "P_success": true,
+        "rescued": false,
+        "lost": false,
+        "C_steps": 234,
+        "P_steps": 235,
+        "both_success_step_ratio": 1.0042735042735043,
+        "raw_initial_comparison": {
+          "sim_controller_arrays_exact": true,
+          "raw_Python_NumPy_RNG_exact": true,
+          "model_XML_exact": true,
+          "raw_init_state_exact": true,
+          "camera_pixels": {
+            "observation.images.agentview_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            },
+            "observation.images.eye_in_hand_rgb": {
+              "exact": true,
+              "changed_channels": 0,
+              "changed_pixels": 0,
+              "max_abs": 0
+            }
+          },
+          "saved_physics_RNG_pixels_exact": true,
+          "unsaved_simulator_internals": "UNKNOWN"
+        },
+        "first2S_comparison": {
+          "statuses_by_arm": {
+            "C": "PASS_EXACT",
+            "P": "REFERENCE_STORED"
+          },
+          "reference_and_comparison_observed": true,
+          "raw_details_by_arm": {
+            "C": {
+              "status": "PASS_EXACT",
+              "compared_policy_chunks": 2,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "reset",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT_ACTIVE_INPUTS",
+                  "label": "S0_before",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "active_input_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1303,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "raw_all_field_comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 1309,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  },
+                  "excluded_fields": [
+                    "lazy_scheduler_state.video.sigmas",
+                    "lazy_scheduler_state.video.timesteps",
+                    "lazy_scheduler_state.video.training",
+                    "lazy_scheduler_state.action.sigmas",
+                    "lazy_scheduler_state.action.timesteps",
+                    "lazy_scheduler_state.action.training"
+                  ],
+                  "reason": "native _infer unconditionally replaces20/50 timetables before first consumption"
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S0",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3254,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                },
+                {
+                  "status": "PASS_EXACT",
+                  "label": "S1",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": true,
+                  "comparison": {
+                    "equal": true,
+                    "mismatches": [],
+                    "mismatch_count": 0,
+                    "displayed_mismatches": 0,
+                    "truncated": false,
+                    "compared_leaves": 3293,
+                    "method": "typed raw tensor/array/scalar bytes; no hashes or numerical tolerance"
+                  }
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            },
+            "P": {
+              "status": "REFERENCE_STORED",
+              "compared_policy_chunks": 0,
+              "reference_policy_chunks": 2,
+              "records": [
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "reset",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0_before",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S0",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                },
+                {
+                  "status": "REFERENCE_STORED",
+                  "label": "S1",
+                  "first_arm": "P",
+                  "raw_all_fields_equal": "NOT_COMPARED_YET"
+                }
+              ],
+              "first_infer_lazy_scheduler_exclusion_explicit": true,
+              "post_first_S_and_all_second_S_fields_compared_without_exclusion": true
+            }
+          },
+          "reset_S0_before_lazy_scheduler_exception_must_be_read_separately": true,
+          "not_a_blanket_all_initial_fields_exact_claim": true
+        },
+        "evidence_gaps": []
+      },
+      "pair_qualified": "UNKNOWN_NOT_A_QUALITY_CERTIFICATE",
+      "permissions": {
+        "engineering_quality_screen": false,
+        "independent_test_complete": false,
+        "noninferiority_established": false,
+        "formal_performance_permission": false
+      },
+      "finished_at": "2026-10-17T05:03:15.564783+00:00"
+    }
+  ],
+  "complete_pairs": [
+    2,
+    1,
+    4,
+    3,
+    6,
+    5
+  ],
+  "complete_episodes": 12,
+  "raw_episode_terminals": [
+    {
+      "pair_id": 1,
+      "arm": "C",
+      "complete_episode": true,
+      "success": false,
+      "env_steps": 796,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-01/C/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 1,
+      "arm": "P",
+      "complete_episode": true,
+      "success": true,
+      "env_steps": 264,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-01/P/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 2,
+      "arm": "C",
+      "complete_episode": true,
+      "success": true,
+      "env_steps": 260,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-02/C/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 2,
+      "arm": "P",
+      "complete_episode": true,
+      "success": true,
+      "env_steps": 405,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-02/P/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 3,
+      "arm": "C",
+      "complete_episode": true,
+      "success": false,
+      "env_steps": 796,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-03/C/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 3,
+      "arm": "P",
+      "complete_episode": true,
+      "success": true,
+      "env_steps": 241,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-03/P/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 4,
+      "arm": "C",
+      "complete_episode": true,
+      "success": true,
+      "env_steps": 228,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-04/C/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 4,
+      "arm": "P",
+      "complete_episode": true,
+      "success": true,
+      "env_steps": 225,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-04/P/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 5,
+      "arm": "C",
+      "complete_episode": true,
+      "success": false,
+      "env_steps": 796,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-05/C/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 5,
+      "arm": "P",
+      "complete_episode": true,
+      "success": false,
+      "env_steps": 796,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-05/P/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 6,
+      "arm": "C",
+      "complete_episode": true,
+      "success": true,
+      "env_steps": 234,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-06/C/EPISODE-TERMINAL.json"
+    },
+    {
+      "pair_id": 6,
+      "arm": "P",
+      "complete_episode": true,
+      "success": true,
+      "env_steps": 235,
+      "status": "COMPLETE_RECORDED_FULL_EPISODE",
+      "source": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-06/P/EPISODE-TERMINAL.json"
+    }
+  ],
+  "closed_episode_receipts_count": 12,
+  "all_own_children_reaped": true,
+  "all_owned_groups_empty": true,
+  "cleanup": {
+    "status": "OWNED_GROUPS_EMPTY",
+    "all_roots_reaped": true,
+    "signals": [],
+    "exits": [
+      {
+        "pid": 13715,
+        "role": "resource-query-gpu-resource-000001-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:48:31.522608+00:00"
+      },
+      {
+        "pid": 13716,
+        "role": "resource-query-gpu-resource-000001-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:48:31.578423+00:00"
+      },
+      {
+        "pid": 13870,
+        "role": "resource-query-gpu-resource-000002-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:49:31.787461+00:00"
+      },
+      {
+        "pid": 13871,
+        "role": "resource-query-gpu-resource-000002-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:49:31.844421+00:00"
+      },
+      {
+        "pid": 13986,
+        "role": "resource-query-gpu-resource-000003-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:50:32.040716+00:00"
+      },
+      {
+        "pid": 13987,
+        "role": "resource-query-gpu-resource-000003-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:50:32.097343+00:00"
+      },
+      {
+        "pid": 14096,
+        "role": "resource-query-gpu-resource-000004-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:51:32.062437+00:00"
+      },
+      {
+        "pid": 14097,
+        "role": "resource-query-gpu-resource-000004-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:51:32.118489+00:00"
+      },
+      {
+        "pid": 13795,
+        "role": "client-2-P",
+        "returncode": 0,
+        "at": "2026-10-17T04:51:43.214737+00:00"
+      },
+      {
+        "pid": 14214,
+        "role": "resource-query-gpu-resource-000005-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:52:32.128698+00:00"
+      },
+      {
+        "pid": 14215,
+        "role": "resource-query-gpu-resource-000005-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:52:32.185056+00:00"
+      },
+      {
+        "pid": 14121,
+        "role": "client-2-C",
+        "returncode": 0,
+        "at": "2026-10-17T04:53:20.354582+00:00"
+      },
+      {
+        "pid": 13794,
+        "role": "client-1-C",
+        "returncode": 0,
+        "at": "2026-10-17T04:53:24.699733+00:00"
+      },
+      {
+        "pid": 14391,
+        "role": "resource-query-gpu-resource-000006-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:53:32.251917+00:00"
+      },
+      {
+        "pid": 14392,
+        "role": "resource-query-gpu-resource-000006-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:53:32.308026+00:00"
+      },
+      {
+        "pid": 14505,
+        "role": "resource-query-gpu-resource-000007-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:54:32.406823+00:00"
+      },
+      {
+        "pid": 14506,
+        "role": "resource-query-gpu-resource-000007-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:54:32.465237+00:00"
+      },
+      {
+        "pid": 14377,
+        "role": "client-1-P",
+        "returncode": 0,
+        "at": "2026-10-17T04:55:03.176103+00:00"
+      },
+      {
+        "pid": 14628,
+        "role": "resource-query-gpu-resource-000008-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:55:32.486752+00:00"
+      },
+      {
+        "pid": 14629,
+        "role": "resource-query-gpu-resource-000008-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:55:32.543762+00:00"
+      },
+      {
+        "pid": 14567,
+        "role": "client-4-C",
+        "returncode": 0,
+        "at": "2026-10-17T04:56:17.681997+00:00"
+      },
+      {
+        "pid": 14568,
+        "role": "client-3-P",
+        "returncode": 0,
+        "at": "2026-10-17T04:56:31.896292+00:00"
+      },
+      {
+        "pid": 14747,
+        "role": "resource-query-gpu-resource-000009-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:56:32.534735+00:00"
+      },
+      {
+        "pid": 14749,
+        "role": "resource-query-gpu-resource-000009-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:56:32.590452+00:00"
+      },
+      {
+        "pid": 14865,
+        "role": "resource-query-gpu-resource-000010-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:57:32.790003+00:00"
+      },
+      {
+        "pid": 14866,
+        "role": "resource-query-gpu-resource-000010-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:57:32.846344+00:00"
+      },
+      {
+        "pid": 14716,
+        "role": "client-4-P",
+        "returncode": 0,
+        "at": "2026-10-17T04:57:42.247810+00:00"
+      },
+      {
+        "pid": 14977,
+        "role": "resource-query-gpu-resource-000011-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:58:32.970911+00:00"
+      },
+      {
+        "pid": 14978,
+        "role": "resource-query-gpu-resource-000011-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:58:33.028104+00:00"
+      },
+      {
+        "pid": 15089,
+        "role": "resource-query-gpu-resource-000012-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T04:59:33.085266+00:00"
+      },
+      {
+        "pid": 15090,
+        "role": "resource-query-gpu-resource-000012-compute",
+        "returncode": 0,
+        "at": "2026-10-17T04:59:33.142127+00:00"
+      },
+      {
+        "pid": 14745,
+        "role": "client-3-C",
+        "returncode": 0,
+        "at": "2026-10-17T05:00:26.135874+00:00"
+      },
+      {
+        "pid": 15210,
+        "role": "resource-query-gpu-resource-000013-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T05:00:33.094762+00:00"
+      },
+      {
+        "pid": 15211,
+        "role": "resource-query-gpu-resource-000013-compute",
+        "returncode": 0,
+        "at": "2026-10-17T05:00:33.150431+00:00"
+      },
+      {
+        "pid": 15324,
+        "role": "resource-query-gpu-resource-000014-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T05:01:33.170553+00:00"
+      },
+      {
+        "pid": 15325,
+        "role": "resource-query-gpu-resource-000014-compute",
+        "returncode": 0,
+        "at": "2026-10-17T05:01:33.226445+00:00"
+      },
+      {
+        "pid": 15193,
+        "role": "client-6-P",
+        "returncode": 0,
+        "at": "2026-10-17T05:01:55.215097+00:00"
+      },
+      {
+        "pid": 15443,
+        "role": "resource-query-gpu-resource-000015-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T05:02:33.190534+00:00"
+      },
+      {
+        "pid": 15444,
+        "role": "resource-query-gpu-resource-000015-compute",
+        "returncode": 0,
+        "at": "2026-10-17T05:02:33.248117+00:00"
+      },
+      {
+        "pid": 15370,
+        "role": "client-6-C",
+        "returncode": 0,
+        "at": "2026-10-17T05:03:15.240472+00:00"
+      },
+      {
+        "pid": 15557,
+        "role": "resource-query-gpu-resource-000016-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T05:03:33.319137+00:00"
+      },
+      {
+        "pid": 15558,
+        "role": "resource-query-gpu-resource-000016-compute",
+        "returncode": 0,
+        "at": "2026-10-17T05:03:33.375020+00:00"
+      },
+      {
+        "pid": 15194,
+        "role": "client-5-C",
+        "returncode": 0,
+        "at": "2026-10-17T05:04:22.686447+00:00"
+      },
+      {
+        "pid": 15675,
+        "role": "resource-query-gpu-resource-000017-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T05:04:33.504395+00:00"
+      },
+      {
+        "pid": 15676,
+        "role": "resource-query-gpu-resource-000017-compute",
+        "returncode": 0,
+        "at": "2026-10-17T05:04:33.560353+00:00"
+      },
+      {
+        "pid": 15789,
+        "role": "resource-query-gpu-resource-000018-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T05:05:33.726045+00:00"
+      },
+      {
+        "pid": 15790,
+        "role": "resource-query-gpu-resource-000018-compute",
+        "returncode": 0,
+        "at": "2026-10-17T05:05:33.782208+00:00"
+      },
+      {
+        "pid": 15903,
+        "role": "resource-query-gpu-resource-000019-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T05:06:33.785954+00:00"
+      },
+      {
+        "pid": 15904,
+        "role": "resource-query-gpu-resource-000019-compute",
+        "returncode": 0,
+        "at": "2026-10-17T05:06:33.842383+00:00"
+      },
+      {
+        "pid": 16016,
+        "role": "resource-query-gpu-resource-000020-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T05:07:34.044819+00:00"
+      },
+      {
+        "pid": 16017,
+        "role": "resource-query-gpu-resource-000020-compute",
+        "returncode": 0,
+        "at": "2026-10-17T05:07:34.100739+00:00"
+      },
+      {
+        "pid": 16129,
+        "role": "resource-query-gpu-resource-000021-gpu",
+        "returncode": 0,
+        "at": "2026-10-17T05:08:34.217887+00:00"
+      },
+      {
+        "pid": 16130,
+        "role": "resource-query-gpu-resource-000021-compute",
+        "returncode": 0,
+        "at": "2026-10-17T05:08:34.275873+00:00"
+      },
+      {
+        "pid": 15650,
+        "role": "client-5-P",
+        "returncode": 0,
+        "at": "2026-10-17T05:09:10.569924+00:00"
+      },
+      {
+        "pid": 13717,
+        "role": "server-0",
+        "returncode": 0,
+        "at": "2026-10-17T05:09:23.341080+00:00"
+      },
+      {
+        "pid": 13718,
+        "role": "server-1",
+        "returncode": 0,
+        "at": "2026-10-17T05:09:23.541725+00:00"
+      },
+      {
+        "pid": 16226,
+        "role": "cpu-report",
+        "returncode": 0,
+        "at": "2026-10-17T05:09:24.962044+00:00"
+      }
+    ],
+    "refused": [],
+    "at": "2026-10-17T05:09:24.968267+00:00",
+    "all_owned_groups_empty": true,
+    "no_live_owned_group_members_observed": true,
+    "all_owned_work_exited": true,
+    "FORENSIC_group_members": {
+      "groups": [
+        {
+          "original_root_pin": {
+            "pid": 13715,
+            "birth_ticks": 6693981272,
+            "pgid": 13715,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000001-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:48:31.468458+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 13716,
+            "birth_ticks": 6693981278,
+            "pgid": 13716,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000001-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:48:31.524445+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 13717,
+            "birth_ticks": 6693981284,
+            "pgid": 13717,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "server-0",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/server_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--worker-index",
+              "0",
+              "--port",
+              "19671",
+              "--master-port",
+              "29671",
+              "--forward-cap",
+              "24500"
+            ],
+            "CPU_affinity": [
+              0,
+              1
+            ],
+            "registered_at": "2026-10-17T04:48:31.580920+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 13718,
+            "birth_ticks": 6693981284,
+            "pgid": 13718,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "server-1",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/server_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--worker-index",
+              "1",
+              "--port",
+              "19672",
+              "--master-port",
+              "29672",
+              "--forward-cap",
+              "24500"
+            ],
+            "CPU_affinity": [
+              4,
+              5
+            ],
+            "registered_at": "2026-10-17T04:48:31.586841+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 13794,
+            "birth_ticks": 6693983664,
+            "pgid": 13794,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-1-C",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "1",
+              "--arm",
+              "C",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-01/C",
+              "--port",
+              "19671",
+              "--worker-index",
+              "0",
+              "--master-port",
+              "29671"
+            ],
+            "CPU_affinity": [
+              2,
+              3
+            ],
+            "registered_at": "2026-10-17T04:48:55.389426+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 13795,
+            "birth_ticks": 6693983665,
+            "pgid": 13795,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-2-P",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "2",
+              "--arm",
+              "P",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-02/P",
+              "--port",
+              "19672",
+              "--worker-index",
+              "1",
+              "--master-port",
+              "29672"
+            ],
+            "CPU_affinity": [
+              6,
+              7
+            ],
+            "registered_at": "2026-10-17T04:48:55.397460+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 13870,
+            "birth_ticks": 6693987294,
+            "pgid": 13870,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000002-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:49:31.681631+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 13871,
+            "birth_ticks": 6693987304,
+            "pgid": 13871,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000002-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:49:31.789554+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 13986,
+            "birth_ticks": 6693993319,
+            "pgid": 13986,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000003-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:50:31.932944+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 13987,
+            "birth_ticks": 6693993330,
+            "pgid": 13987,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000003-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:50:32.042681+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14096,
+            "birth_ticks": 6693999326,
+            "pgid": 14096,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000004-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:51:32.004616+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14097,
+            "birth_ticks": 6693999332,
+            "pgid": 14097,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000004-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:51:32.064520+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14121,
+            "birth_ticks": 6694000490,
+            "pgid": 14121,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-2-C",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "2",
+              "--arm",
+              "C",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-02/C",
+              "--port",
+              "19672",
+              "--worker-index",
+              "1",
+              "--master-port",
+              "29672"
+            ],
+            "CPU_affinity": [
+              6,
+              7
+            ],
+            "registered_at": "2026-10-17T04:51:43.640409+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14214,
+            "birth_ticks": 6694005328,
+            "pgid": 14214,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000005-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:52:32.023719+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14215,
+            "birth_ticks": 6694005339,
+            "pgid": 14215,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000005-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:52:32.130449+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14377,
+            "birth_ticks": 6694010665,
+            "pgid": 14377,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-1-P",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "1",
+              "--arm",
+              "P",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-01/P",
+              "--port",
+              "19671",
+              "--worker-index",
+              "0",
+              "--master-port",
+              "29671"
+            ],
+            "CPU_affinity": [
+              2,
+              3
+            ],
+            "registered_at": "2026-10-17T04:53:25.400260+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14391,
+            "birth_ticks": 6694011345,
+            "pgid": 14391,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000006-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:53:32.196756+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14392,
+            "birth_ticks": 6694011351,
+            "pgid": 14392,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000006-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:53:32.253588+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14505,
+            "birth_ticks": 6694017350,
+            "pgid": 14505,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000007-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:54:32.249478+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14506,
+            "birth_ticks": 6694017366,
+            "pgid": 14506,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000007-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:54:32.410536+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14567,
+            "birth_ticks": 6694020490,
+            "pgid": 14567,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-4-C",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "4",
+              "--arm",
+              "C",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-04/C",
+              "--port",
+              "19672",
+              "--worker-index",
+              "1",
+              "--master-port",
+              "29672"
+            ],
+            "CPU_affinity": [
+              6,
+              7
+            ],
+            "registered_at": "2026-10-17T04:55:03.647964+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14568,
+            "birth_ticks": 6694020491,
+            "pgid": 14568,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-3-P",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "3",
+              "--arm",
+              "P",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-03/P",
+              "--port",
+              "19671",
+              "--worker-index",
+              "0",
+              "--master-port",
+              "29671"
+            ],
+            "CPU_affinity": [
+              2,
+              3
+            ],
+            "registered_at": "2026-10-17T04:55:03.657217+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14628,
+            "birth_ticks": 6694023364,
+            "pgid": 14628,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000008-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:55:32.380474+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14629,
+            "birth_ticks": 6694023374,
+            "pgid": 14629,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000008-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:55:32.488886+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14716,
+            "birth_ticks": 6694027915,
+            "pgid": 14716,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-4-P",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "4",
+              "--arm",
+              "P",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-04/P",
+              "--port",
+              "19672",
+              "--worker-index",
+              "1",
+              "--master-port",
+              "29672"
+            ],
+            "CPU_affinity": [
+              6,
+              7
+            ],
+            "registered_at": "2026-10-17T04:56:17.899805+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14745,
+            "birth_ticks": 6694029337,
+            "pgid": 14745,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-3-C",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "3",
+              "--arm",
+              "C",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-03/C",
+              "--port",
+              "19671",
+              "--worker-index",
+              "0",
+              "--master-port",
+              "29671"
+            ],
+            "CPU_affinity": [
+              2,
+              3
+            ],
+            "registered_at": "2026-10-17T04:56:32.117967+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14747,
+            "birth_ticks": 6694029374,
+            "pgid": 14747,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000009-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:56:32.480429+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14749,
+            "birth_ticks": 6694029379,
+            "pgid": 14749,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000009-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:56:32.536603+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14865,
+            "birth_ticks": 6694035393,
+            "pgid": 14865,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000010-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:57:32.682954+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14866,
+            "birth_ticks": 6694035405,
+            "pgid": 14866,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000010-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:57:32.791981+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14977,
+            "birth_ticks": 6694041412,
+            "pgid": 14977,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000011-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:58:32.865289+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 14978,
+            "birth_ticks": 6694041423,
+            "pgid": 14978,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000011-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:58:32.972940+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15089,
+            "birth_ticks": 6694047423,
+            "pgid": 15089,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000012-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:59:32.980374+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15090,
+            "birth_ticks": 6694047434,
+            "pgid": 15090,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000012-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T04:59:33.086936+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15193,
+            "birth_ticks": 6694052820,
+            "pgid": 15193,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-6-P",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "6",
+              "--arm",
+              "P",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-06/P",
+              "--port",
+              "19672",
+              "--worker-index",
+              "1",
+              "--master-port",
+              "29672"
+            ],
+            "CPU_affinity": [
+              6,
+              7
+            ],
+            "registered_at": "2026-10-17T05:00:26.947609+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15194,
+            "birth_ticks": 6694052821,
+            "pgid": 15194,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-5-C",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "5",
+              "--arm",
+              "C",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-05/C",
+              "--port",
+              "19671",
+              "--worker-index",
+              "0",
+              "--master-port",
+              "29671"
+            ],
+            "CPU_affinity": [
+              2,
+              3
+            ],
+            "registered_at": "2026-10-17T05:00:26.956058+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15210,
+            "birth_ticks": 6694053430,
+            "pgid": 15210,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000013-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:00:33.041389+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15211,
+            "birth_ticks": 6694053435,
+            "pgid": 15211,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000013-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:00:33.096544+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15324,
+            "birth_ticks": 6694059437,
+            "pgid": 15324,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000014-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:01:33.113437+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15325,
+            "birth_ticks": 6694059443,
+            "pgid": 15325,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000014-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:01:33.172449+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15370,
+            "birth_ticks": 6694061668,
+            "pgid": 15370,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-6-C",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "6",
+              "--arm",
+              "C",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-06/C",
+              "--port",
+              "19672",
+              "--worker-index",
+              "1",
+              "--master-port",
+              "29672"
+            ],
+            "CPU_affinity": [
+              6,
+              7
+            ],
+            "registered_at": "2026-10-17T05:01:55.429306+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15443,
+            "birth_ticks": 6694065439,
+            "pgid": 15443,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000015-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:02:33.134656+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15444,
+            "birth_ticks": 6694065445,
+            "pgid": 15444,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000015-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:02:33.192616+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15557,
+            "birth_ticks": 6694071447,
+            "pgid": 15557,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000016-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:03:33.212711+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15558,
+            "birth_ticks": 6694071458,
+            "pgid": 15558,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000016-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:03:33.321013+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15650,
+            "birth_ticks": 6694076459,
+            "pgid": 15650,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "client-5-P",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+              "--pair-id",
+              "5",
+              "--arm",
+              "P",
+              "--out",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3/episodes/pair-05/P",
+              "--port",
+              "19671",
+              "--worker-index",
+              "0",
+              "--master-port",
+              "29671"
+            ],
+            "CPU_affinity": [
+              2,
+              3
+            ],
+            "registered_at": "2026-10-17T05:04:23.337731+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15675,
+            "birth_ticks": 6694077470,
+            "pgid": 15675,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000017-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:04:33.449509+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15676,
+            "birth_ticks": 6694077476,
+            "pgid": 15676,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000017-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:04:33.505865+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15789,
+            "birth_ticks": 6694083487,
+            "pgid": 15789,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000018-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:05:33.620514+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15790,
+            "birth_ticks": 6694083498,
+            "pgid": 15790,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000018-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:05:33.728102+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15903,
+            "birth_ticks": 6694089498,
+            "pgid": 15903,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000019-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:06:33.726009+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 15904,
+            "birth_ticks": 6694089504,
+            "pgid": 15904,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000019-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:06:33.787988+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 16016,
+            "birth_ticks": 6694095519,
+            "pgid": 16016,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000020-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:07:33.938964+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 16017,
+            "birth_ticks": 6694095530,
+            "pgid": 16017,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000020-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:07:34.046580+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 16129,
+            "birth_ticks": 6694101531,
+            "pgid": 16129,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000021-gpu",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-gpu=uuid,index,utilization.gpu,memory.used,memory.total",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:08:34.060275+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 16130,
+            "birth_ticks": 6694101548,
+            "pgid": 16130,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "resource-query-gpu-resource-000021-compute",
+            "argv": [
+              "/usr/bin/nvidia-smi",
+              "--query-compute-apps=gpu_uuid,pid,process_name,used_gpu_memory",
+              "--format=csv,noheader,nounits"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:08:34.220470+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        },
+        {
+          "original_root_pin": {
+            "pid": 16226,
+            "birth_ticks": 6694106481,
+            "pgid": 16226,
+            "uid": 0,
+            "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+            "role": "cpu-report",
+            "argv": [
+              "/rjs/cxz/miniconda3/envs/va/bin/python",
+              "-B",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/report.py",
+              "--job",
+              "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3"
+            ],
+            "CPU_affinity": [
+              0
+            ],
+            "registered_at": "2026-10-17T05:09:23.555703+00:00"
+          },
+          "members": [],
+          "original_root_proof_currently_matches": false,
+          "live_members": [],
+          "classification": "EMPTY",
+          "no_post_root_exit_group_signal_without_birth_proof": true
+        }
+      ],
+      "scan_errors": [],
+      "scan_complete": true,
+      "observed_at": "2026-10-17T05:09:24.968211+00:00"
+    },
+    "foreign_processes_signalled": false,
+    "permissions": {
+      "engineering_quality_screen": false,
+      "independent_test_complete": false,
+      "noninferiority_established": false,
+      "formal_performance_permission": false
+    },
+    "instance_shutdown": "NOT_REQUESTED_NOT_EXECUTED"
+  },
+  "report": {
+    "status": "REPORT_PROCESS_EXITED",
+    "returncode": 0,
+    "result_present": true,
+    "GPU": false,
+    "no_retry": true
+  },
+  "elapsed_wall_sec": 1253.5296982750297,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "wall_sec_since_original_authorization": 7063.750916004181,
+  "GPU_UUID": "UNKNOWN",
+  "external_GPU_process_load": "UNKNOWN_PARENT_METADATA_NOT_ATTACHED",
+  "exclusive_GPU_window_verified": false,
+  "no_quality_certificate": true,
+  "performance_claim": false,
+  "instance_shutdown": "NOT_REQUESTED_NOT_EXECUTED"
+}

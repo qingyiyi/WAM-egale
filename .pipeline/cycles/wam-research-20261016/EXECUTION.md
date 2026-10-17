@@ -54,7 +54,7 @@ updated: 2026-10-17T00:27:00+08:00
 
 - M2：旧100实际completed_episodes=100，终态FAILED，错误为paired initial state differs task2/init25/initial_obs_hashes。QUALITY不存在，all_roots_reaped=true。
 - 两个接续watcher按原门停止，新TF/新bank链未启动；未修改远端文件或重启GPU。
-- 通过既有archive.py --inspect只读取回[终态证据](../../../review/OMISSIONS-20261017.md)。此处记录观察，不把100局完整误当原配对PASS，也不证明数据无用。
+- 通过既有archive.py --inspect只读取回[终态证据](../../maintenance/hw-upgrade-20261016/AUTODL-READONLY-TERMINAL.json)。此处记录观察，不把100局完整误当原配对PASS，也不证明数据无用。
 - 下一步：CPU检查物理/RNG与相机差异、独立失败归档；需要新的协议/namespace才能改变后续资格，不改原FAILED。
 
 ## 2026-10-16T00:06:11+08:00 - 只迁移恢复入口
@@ -104,14 +104,14 @@ updated: 2026-10-17T00:27:00+08:00
 
 ## 2026-10-16T15:55:55.344198+08:00 - GitHub研究评审快照发布
 
-用户指定qingyiyi/WAM-egale并授权HW同步。隔离clone发布commit `b0dfac3a02f65de33a1217246b83003615166640`，942新增文本/源码，171冻结Python原字节；公开四入口HTTP200/内容一致。22端口失败保留、443严格hostkey成功，无强推/凭据/权重/原始轨迹上传；0GPU/AutoDL。完整prompt与阅读包已上线，原TF保留HOLD、四权限及M11未登记不变。详情见[同步记录](../../../review/OMISSIONS-20261017.md)。
+用户指定qingyiyi/WAM-egale并授权HW同步。隔离clone发布commit `b0dfac3a02f65de33a1217246b83003615166640`，942新增文本/源码，171冻结Python原字节；公开四入口HTTP200/内容一致。22端口失败保留、443严格hostkey成功，无强推/凭据/权重/原始轨迹上传；0GPU/AutoDL。完整prompt与阅读包已上线，原TF保留HOLD、四权限及M11未登记不变。详情见[同步记录](../../research/speculative-sampling/GITHUB-REVIEW-EXPORT-20261016.md)。
 
 ## 2026-10-16T18:59:29+08:00 - M11有限诊断终态PARTIAL，资源已清理
 
 - r1两Target完整249步成功/命令逐位一致；TF在20237真实GPU CAL后因新增观察绑定globals缺torch失败，原FAILED保留。独立r2仅修inspect.unwrap绑定并复用该CAL，完成一局TF796步失败，第二TF累计工作截止中止；不计算法失败。原定2对实际只有1对完整。
 - 完整r0实际初态/双相机/RNG/reset和796条命令映射通过；50chunk/2500合法提交、depth0/1/2=134/32/738。首teacher差异索引1、depth0、state同，首draft索引3；完整KV根因重放未做，训练不触发。
 - 首次birth累计3298.856秒（54.98分钟），两GPU作业生命周期记账上界2903.054秒；非CUDA活跃时间。12观察身份+2guard真核无匹配存活，224709965B；491保护记录不变、默认配置对固定快照逐字节一致，四权限false、120未运行。AutoDL不连接。
-- 五份报告/时间表：[HW实验](../../../review/OMISSIONS-20261017.md)。系统CPU派生矩阵24/54有历史证据、30格未测，无本轮新系统GPU计时。当前关闭有限Attempt，研究仍active；下一步同真实根query数值复验/必要补缺完整诊断另登记。
+- 五份报告/时间表：[HW实验](../../experiments/task4-direction-20261016/EXPERIMENT.md)。系统CPU派生矩阵24/54有历史证据、30格未测，无本轮新系统GPU计时。当前关闭有限Attempt，研究仍active；下一步同真实根query数值复验/必要补缺完整诊断另登记。
 
 ## 2026-10-16T19:28:21.985397+08:00 - M12 draft优先的数值诊断启动
 
@@ -170,3 +170,69 @@ updated: 2026-10-17T00:27:00+08:00
 - 双根CPU报告49.693秒终态PARTIAL_OR_GAPPED_FIXED_DEV96_NO_SELECTION：raw72、审计完整50、旧TF_ON arm缺口22、剩24；用户暂停非budget completion的issue保留，不改冻结report来接纳/改PASS。风险4局TF全失败，其中1/29、3/26、4/26 T成功且实际初态/RNG/双相机exact。当前权重NO-GO、总体严格证书未建立，四权限false。
 - 新只读总览见本实验RESULT；全轮已准入GPU作业墙钟10.4647h（不是CUDA active），旧/新未闭合各4000扣账、保守DEV上界88900，原280k/3GiB不重置。r1派生资源账本漏下一client setup，独立r2纠正并保留r1，生产原件不改。
 - 用户授权GitHub新审阅分支review/tf-draft-handoff-20261017，父提交b0dfac3a不改main；发布尚在准备，尚未声称已上传。Maintain保存当前Cycle暂停，旧10:00继续安排被暂停状态替代。
+
+
+## 2026-10-17早 - 暂停交接已发布
+
+新branch review/tf-draft-handoff-20261017@4f04b35e44cbc00483dc6245ad57abec718385c9 已推送并ls-remote核对，旧main仍b0dfac3a。373增量/202原件源码校验，公开五份HTTP200且byte exact，web实际打开入口/Prompt。当前GPU compute/graphics XML列表为空、全部实验/监测进程已终态，无AutoDL连接。新Prompt要求3–5篇原文/官方源码证据、一条有限主线，网页建议不自动执行。最终链接见GITHUB-TF-DRAFT-HANDOFF-20261017.md。
+
+## 2026-10-17T09:17:08.632521+08:00 — 明确恢复原缺项与项目内清理
+
+- v3已登记并实际启动：`投机采样/results/runtime/p0-tf-effect-dev96-user-resume-v3-20261017-r1`，root4054455/clock4054483；仅pending24，原科学生产调用逆AST证明通过，旧两个attempt终态/失败/审计缺口不改。09:50/09:55/10:00边界。
+- 原已知80900 forward＋两次未知各4000扣账＝88900；新191100上限，存储继承原3GiB剩余。质量四false、全局默认/阈值/模型/seed不改，无TEST或正式性能。
+- 项目单核低优先级du：147371634688 bytes（137.25GiB），投机89922846720、models51361222656；尚未删除。仅项目内可重建/无引用/未打开精确清单清理，原tile源码/HW及不可重建失败证据保护。
+
+## 2026-10-17 09:22 — 项目内清理完成
+
+- 精确删除两旧截断下载残片，allocated回收2,556,436,480B（2.38GiB）；canonical完整模型不变。登记/头部extent/loader引用/FD可见性/删除stat证据见[清理结果](../../experiments/project-storage-cleanup-20261017/RESULT.md)。
+- 491保护路径metadata全一致；无独立模型hash，无GPU清理作业，无跨项目改动。旧raw obs/PT/完整KV属于质量和系统原证据，未确证可重建者保留。总容量在单核低优先级复扫，不把全盘变化当净释放。
+
+## 2026-10-17T09:54:40.760153+08:00 — 原缺项v3预算终态与清理交付
+
+- 新作业2022.484s、5完整（TF风险4成功＋MLP fresh1成功）；总77/96，MLP1/36资源中断不计模型失败，19缺项。TF fresh20/20、risk4/8对T6/8，三条新增风险反例保留，当前权重NO-GO。
+- TF及MLP各完整27042 GPU接口核验PASS，CPU三来源描述31.98s完成；旧22缺证、暂停non-budget issue和全部FAILED保留，严格证书仍不放行。
+- clock/root/全部观察自有生命周期退出，09:51/09:53 nvidia-smi无进程/0MiB；491保护及原生产源码/7权重metadata重验通过。
+- 新r3资源账本：累计系列11.0265 GPU作业墙钟h，CUDA active未知；DEV已知85039、保守97039/280000，三无COUNTER各扣4000。
+- 项目精确删两旧下载残片2.38GiB，du137.25→134.87GiB；canonical/raw/FAILED/tile/HW保留。双卡仅资源评估，无AutoDL连接或新租卡。
+- [最终结果](../../experiments/tf-effect-closure-20261016/RESULT.md)链接五报告与全部原证据；旧公开4f04b35 paused72快照保留，网页版继续调研，不冒称77已上传。下一步核网页方案再定一条有限修正，无自动新增训练/TEST。
+
+## 2026-10-17T11:01:56.362064+08:00 — M14 PF2只读来源与双卡核查
+
+- 固定4f04 clean，未随main；D0实际AST链/小checkpoint/normalizer/字段审查完成，teacher重新query条件缺失，不追加训练。固定72与live77单列，旧22缺证/FAILED/四false保留。
+- 新机2×A100-PCIe40G/20核quota/144GiB/空50GiB，基本torch2.5.1、依赖资产未部署。只读SSH与包元数据，无远端SHA、测试、安装、模型导入或CUDA作业；前两次解释器探测失败如实保留。
+- 旧PF真实入口已追，O3覆盖/Runtime/内部SHA不能原搬，形成未应用设计diff与独立S/T审计接线清单。AutoDL按用户最新不做smoke/独立测试/SHA；必要审计跟随获准完整任务，未测门UNKNOWN。
+- 固定六pair身份/eval20260922已核，提出双卡完整pair三波/全局停止/5累计GPU生命周期h方案，准备子帽与空机差异显式申请。当前GPU与部署授权NONE，不补旧19局/训练/TEST/正式性能。
+- 证据与具体批准问题见[本轮RESULT](../../experiments/tf-pf2-plan-20261017/RESULT.md)。实例仍可能计费，SSH退出不等于关机。
+
+## 2026-10-17T11:26:47.645224+08:00 — M15明确批准执行与12h资源窗口
+
+- 用户同意具体源码/部署/六pair请求，随后将AutoDL改为12h可用；从11:11:41计，23:11:41清理硬截止、22:56:41停新工作。累计5GPUh帽被替代，不扩12局/49k/3GiB，旧FAILED/四false保留。
+- 已登记新namespace p0-tf-pf2-autodl-v1-20261017-r1；独立源码实施中，真实新episode0。准备复用本机va/libero-va约10GiB，单份target约22.7GiB，避免重装版本漂移；未启动model测试。
+- 用户将等价reset优化设为项目后续实验默认，所有对照同bank，冷启动/首次构建另列；Maintain已保存。
+
+## 2026-10-17 11:50 — 实际部署调整，未启动新机器人局
+
+- 原未压缩SSH迁移实际约210MiB/413s后主动停止；原FAILED/时钟保留。当前四路gzip流已启动，固定发布权重大文件改原ModelScope revision直下，下载中；未运行model/fixture/smoke/SHA。
+- 远端glibc2.35已读；用用户目录generic EGL dispatcher，保留原NVIDIA vendor。准备帽仍13:11:41，12h总截止不变。
+- 自有guard修正准备超时的60秒TERM→KILL升级；原guard身份/替换收据保留。独立源码待最终commit，真实六pair任务尚未启动。短入口更新现行权限，历史只读/失败不覆盖。
+
+## 2026-10-17 12:03 — 独立源码冻结及资产推进
+
+- c91c649f15ad4037690e88395b8fa0cb9ff680ea为4f04的独立本地派生提交，18源文件已上传；仅本地AST/差异检查，不调用远端SHA或独立测试，原4f04工作树clean。
+- 七份权重按原.msc绑定6842abe发布revision下载，24,359,646,412B、456.15s；有大小与来源收据，远端密码学文件身份UNKNOWN。原环境三流完成、CUDA流仍传输。
+- 默认完整reset bank保持，全臂同条件；源审计及新PILOT-GATES照录用户投入门，未动旧四false/NO-GO。尚无新模型worker/完整episode。
+
+## 2026-10-17 12:41 — 实际部署完成与完整任务执行器启动
+
+- 最终源码f4c0031（科学父4f04），未运行c91源候选保留；静态补查legacy准入间接digest，独立raw-source guard在GPU前替换，旧数学/ObservedAPI/源未动。
+- 原环境4压缩流全部实际rc0；后续新连接DNS失败保留，249MiB剩余source/资产/优化bank包经既有连接上传并解包rc0。缺公开导出的本地registry已按原输入补齐，无模型/独立测试/SHA。
+- 12:40:39 runner12445已启动，两server实际模型就绪中；GPU0/1各server2/client2 CPU，持久服务按三波六pair执行。原13:11准备帽前部署完成，22:56停新/23:11清理不变。新自然完整局仍0；四false/旧NO-GO保留。
+
+
+## 2026-10-17 13:18 — M15完整终态、独立审计与reset默认
+
+- 实际执行9acc37c；r1配置导入失败/r2两个零步client失败均原样保留，原11:11:41起点未重置。r3六pair十二局自然完整，1253.530秒，13:09:25自有组EMPTY/guard CLEAN；SSH退出，后续85身份无存活，双卡各1MiB/0%、计算进程空。实例未关机。
+- C3/6、P5/6，真实救回1/29与3/26，4/26两臂失败；控制1/36从260到405。共同成功长度1.0043/1.4470/1.5577，风险全成功/对照罚分/P90/max失败。独立CPU投入复算0.027秒，NO_GO；成本门UNKNOWN，四false/旧NO_GO不变。
+- 探索ΣT_round/Σg .04068→.05251秒，共同成功policy总165.90→226.99秒；不能作正式E2E。原始1267文件约52.5MiB回传，全部失败/原始路径保留。首两S score单核1.29秒描述，无清晰风险分离，不据此拟合阈值。
+- 用户要求已存项目级约束：今后采样/质量/性能全臂默认完整512-token BF16优化reset；本轮十二次15–107ms，冷启动另列。临时249MiB资产包和20.1MB证据包双端删，原件保留。
+- [结果与五报告](../../experiments/tf-pf2-autodl-20261017/RESULT.md)；有限实验完成，研究active。未启动新增训练/teacher诊断/120/TEST/正式性能；下一步仅建议有界teacher路径诊断。

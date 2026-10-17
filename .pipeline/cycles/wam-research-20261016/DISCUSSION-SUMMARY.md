@@ -1,9 +1,15 @@
 ---
 kind: discussion-summary
 cycle: wam-research-20261016
-updated: 2026-10-16T00:06:11+08:00
+updated: 2026-10-17T13:18:21.505241+08:00
 ---
 # 研究约定摘要
+
+> 当前：M15六对十二局完整，PF2投入NO_GO；C3/6、P5/6，救回2但风险仍1败/控制长度超限。GPU/SSH清理，reset全项目默认优化；四false/旧NO-GO不变。见[本轮结果](../../experiments/tf-pf2-autodl-20261017/RESULT.md)。
+
+10/17用户已批准前次具体执行请求，并允许AutoDL12h无限资源使用，替代只读NONE与5累计GPUh帽；固定六pair/12局/49kforward/3GiB不扩。另明确今后实验默认等价优化reset。见[12h批准](../../memory/global/requirements/decision-PF2源码执行与AutoDL十二小时窗口.md)与[reset默认](../../memory/global/requirements/decision-实验默认启用等价reset优化.md)。
+
+10/17新网页方案先READ_ONLY_PLAN；后一个连续/PF2提案替代默认D1/D2/追加训练，预算不叠加。新双卡SSH仅完成资源/包元数据读取，执行授权NONE。用户要求AutoDL不做smoke、测试脚本或SHA，包含loader/fingerprint内部调用；必要审计随获准的完整任务。见[范围决定](../../memory/global/requirements/decision-PF2优先只读方案与新双卡核查.md)与[远端直接源码要求](../../memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)。
 
 10/17早用户已明确暂停实验，优先交付网页版draft结构/训练/开源文献Prompt，并同步GitHub。已在完整task5终态后停止，72/96、24缺项；GPU已清理。见[当前暂停决定](../../memory/global/requirements/decision-暂停TF实验并先外部文献复核.md)。旧10:00只是历史上限，不能作为自动恢复依据；只做必要CPU交接/发布，新网页方案仍须本地核验和新登记。
 

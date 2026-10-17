@@ -1,0 +1,228 @@
+{
+  "status": "OWNED_GROUPS_EMPTY",
+  "all_roots_reaped": true,
+  "signals": [
+    {
+      "pid": 13153,
+      "birth_ticks": 6693956620,
+      "pgid": 13153,
+      "signal": "SIGTERM",
+      "at": "2026-10-17T04:45:01.135185+00:00",
+      "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2"
+    },
+    {
+      "pid": 13154,
+      "birth_ticks": 6693956620,
+      "pgid": 13154,
+      "signal": "SIGTERM",
+      "at": "2026-10-17T04:45:01.135814+00:00",
+      "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2"
+    }
+  ],
+  "exits": [
+    {
+      "pid": 13151,
+      "role": "resource-query-gpu-resource-000001-gpu",
+      "returncode": 0,
+      "at": "2026-10-17T04:44:24.882588+00:00"
+    },
+    {
+      "pid": 13152,
+      "role": "resource-query-gpu-resource-000001-compute",
+      "returncode": 0,
+      "at": "2026-10-17T04:44:24.938435+00:00"
+    },
+    {
+      "pid": 13297,
+      "role": "client-2-P",
+      "returncode": 2,
+      "at": "2026-10-17T04:45:01.112145+00:00"
+    },
+    {
+      "pid": 13295,
+      "role": "client-1-C",
+      "returncode": 2,
+      "at": "2026-10-17T04:45:01.112595+00:00"
+    },
+    {
+      "pid": 13153,
+      "role": "server-0",
+      "returncode": -15,
+      "at": "2026-10-17T04:45:01.637062+00:00"
+    },
+    {
+      "pid": 13154,
+      "role": "server-1",
+      "returncode": -15,
+      "at": "2026-10-17T04:45:01.637212+00:00"
+    }
+  ],
+  "refused": [],
+  "at": "2026-10-17T04:45:01.841793+00:00",
+  "all_owned_groups_empty": true,
+  "no_live_owned_group_members_observed": true,
+  "all_owned_work_exited": true,
+  "FORENSIC_group_members": {
+    "groups": [
+      {
+        "original_root_pin": {
+          "pid": 13153,
+          "birth_ticks": 6693956620,
+          "pgid": 13153,
+          "uid": 0,
+          "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2",
+          "role": "server-0",
+          "argv": [
+            "/rjs/cxz/miniconda3/envs/va/bin/python",
+            "-B",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/server_entry.py",
+            "--job",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2",
+            "--worker-index",
+            "0",
+            "--port",
+            "19671",
+            "--master-port",
+            "29671",
+            "--forward-cap",
+            "24500"
+          ],
+          "CPU_affinity": [
+            0,
+            1
+          ],
+          "registered_at": "2026-10-17T04:44:24.940772+00:00"
+        },
+        "members": [],
+        "original_root_proof_currently_matches": false,
+        "live_members": [],
+        "classification": "EMPTY",
+        "no_post_root_exit_group_signal_without_birth_proof": true
+      },
+      {
+        "original_root_pin": {
+          "pid": 13154,
+          "birth_ticks": 6693956620,
+          "pgid": 13154,
+          "uid": 0,
+          "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2",
+          "role": "server-1",
+          "argv": [
+            "/rjs/cxz/miniconda3/envs/va/bin/python",
+            "-B",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/server_entry.py",
+            "--job",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2",
+            "--worker-index",
+            "1",
+            "--port",
+            "19672",
+            "--master-port",
+            "29672",
+            "--forward-cap",
+            "24500"
+          ],
+          "CPU_affinity": [
+            4,
+            5
+          ],
+          "registered_at": "2026-10-17T04:44:24.946806+00:00"
+        },
+        "members": [],
+        "original_root_proof_currently_matches": false,
+        "live_members": [],
+        "classification": "EMPTY",
+        "no_post_root_exit_group_signal_without_birth_proof": true
+      },
+      {
+        "original_root_pin": {
+          "pid": 13295,
+          "birth_ticks": 6693960059,
+          "pgid": 13295,
+          "uid": 0,
+          "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2",
+          "role": "client-1-C",
+          "argv": [
+            "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+            "-B",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+            "--job",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2",
+            "--pair-id",
+            "1",
+            "--arm",
+            "C",
+            "--out",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2/episodes/pair-01/C",
+            "--port",
+            "19671",
+            "--worker-index",
+            "0",
+            "--master-port",
+            "29671"
+          ],
+          "CPU_affinity": [
+            2,
+            3
+          ],
+          "registered_at": "2026-10-17T04:44:59.334870+00:00"
+        },
+        "members": [],
+        "original_root_proof_currently_matches": false,
+        "live_members": [],
+        "classification": "EMPTY",
+        "no_post_root_exit_group_signal_without_birth_proof": true
+      },
+      {
+        "original_root_pin": {
+          "pid": 13297,
+          "birth_ticks": 6693960060,
+          "pgid": 13297,
+          "uid": 0,
+          "owner_job": "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2",
+          "role": "client-2-P",
+          "argv": [
+            "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+            "-B",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/experiments/tf_pf2_quality_v1/client_entry.py",
+            "--job",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2",
+            "--pair-id",
+            "2",
+            "--arm",
+            "P",
+            "--out",
+            "/root/autodl-tmp/wam-tf-pf2-20261017/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2/episodes/pair-02/P",
+            "--port",
+            "19672",
+            "--worker-index",
+            "1",
+            "--master-port",
+            "29672"
+          ],
+          "CPU_affinity": [
+            6,
+            7
+          ],
+          "registered_at": "2026-10-17T04:44:59.346023+00:00"
+        },
+        "members": [],
+        "original_root_proof_currently_matches": false,
+        "live_members": [],
+        "classification": "EMPTY",
+        "no_post_root_exit_group_signal_without_birth_proof": true
+      }
+    ],
+    "scan_errors": [],
+    "scan_complete": true,
+    "observed_at": "2026-10-17T04:45:01.841754+00:00"
+  },
+  "foreign_processes_signalled": false,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "instance_shutdown": "NOT_REQUESTED_NOT_EXECUTED"
+}

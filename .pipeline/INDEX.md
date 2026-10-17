@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-16T15:21:49.997299+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-17T13:18:21.505241+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -12,16 +12,18 @@
 
 | 路线 | 当前结论 | 证据入口 |
 |---|---|---|
-| 投机采样 | TF64固定研究结构；一次新数据/训练完成，72/96后用户暂停；TF-on风险未过、四false，先文献/源码交接 | [当前研究恢复](cycles/wam-research-20261016/PROGRESS.md)、[今天50完整结果](research/speculative-sampling/DRAFT-FREEZE-RESULT-20261016.md) |
+| 投机采样 | TF64研究接口；PF2六对完整C3/6/P5/6，长度/风险门失败，投入NO_GO；reset默认优化 | [最新结果](experiments/tf-pf2-autodl-20261017/RESULT.md)、[77描述结果](experiments/tf-effect-closure-20261016/RESULT.md) |
 | tile / SDPA | 固定 PyTorch2.9 基线有限验收完成；没有新 MegaTransformer/verifier/E2E 收益 | [原最终报告](research/tile-sdpa/PYTORCH29_FINAL_20261012.md) |
 
 算子原代码与 HW 保留；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 
 ## 动态事实与历史
 
-- [M12数值诊断](experiments/draft-teacher-path-20261016/RESULT.md)完成并清理，下一步只优先TF效果；MLP仅对照、算子后置。原50完整已清理、TF retention HOLD；[M11新诊断](../review/OMISSIONS-20261017.md)终态PARTIAL：1对完整风险复现，第二TF预算中断，自有worker/guard已清理。无120/waiter；AutoDL归还不再SSH，关机未知。
+- 当前[PF2执行与12h批准](memory/global/requirements/decision-PF2源码执行与AutoDL十二小时窗口.md)已替代历史只读NONE/5GPUh帽；固定4f04 paused72与live77分列。本轮12完整已清理，SSH退出；实例未关机，不能据余额扩实验。AutoDL[无smoke/独立测试/SHA](memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)，所有实验[默认优化reset](memory/global/requirements/decision-实验默认启用等价reset优化.md)。
+
+- 历史旧链（非当前AutoDL）：[M12数值诊断](experiments/draft-teacher-path-20261016/RESULT.md)完成并清理，下一步只优先TF效果；MLP仅对照、算子后置。原50完整已清理、TF retention HOLD；[M11新诊断](experiments/task4-direction-20261016/EXPERIMENT.md)终态PARTIAL：1对完整风险复现，第二TF预算中断，自有worker/guard已清理。无120/waiter；AutoDL归还不再SSH，关机未知。
 - [旧100状态](../投机采样/results/runtime/p0-autodl-old100-archive-watch-v1-20261015-r2/status.json)和[旧接续状态](../投机采样/results/runtime/p0-autodl-research-quality-dispatch-v1-20261015-r2/status.json)仅为历史证据，不能用作当前运行或自动启动依据。
-- [Cycle 索引](cycles/INDEX.md)保存当前工作位置；[迁移与回退](../review/OMISSIONS-20261017.md)保存本轮维护证据。
+- [Cycle 索引](cycles/INDEX.md)保存当前工作位置；[迁移与回退](maintenance/hw-upgrade-20261016/README.md)保存本轮维护证据。
 - 原 PROGRESS、state/rules、知识228条及六份索引均保留，用于历史追溯。旧 M01–M04 completed 不代表整个研究完成。不要从旧历史“下一步”自动启动任务。
 
 ## 工具版本

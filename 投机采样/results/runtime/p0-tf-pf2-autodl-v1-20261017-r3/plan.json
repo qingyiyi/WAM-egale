@@ -1,0 +1,317 @@
+{
+  "schema": "tf-pf2-dual-autodl-campaign/v1",
+  "status": "REGISTERED_IMPLEMENTATION_AND_DEPLOYMENT",
+  "created_at": "2026-10-17T11:11:41.228785+08:00",
+  "authorization_origin": "2026-10-17T11:11:41.228785+08:00",
+  "authorization_sources": [
+    "user:同意 (approval of source implementation, migration, six-pair dual-GPU experiment and2h readiness)",
+    "user:你可以在12小时内无限使用autodl (supersedes5 aggregate GPUh resource cap only)"
+  ],
+  "absolute_cleanup_deadline": "2026-10-17T23:11:41.228785+08:00",
+  "absolute_work_stop": "2026-10-17T22:56:41.228785+08:00",
+  "prepare_wall_cap_sec": 7200,
+  "prepare_cap_scope": "from actual start of remote environment/source/asset preparation; included in12h absolute window; no silent retry/reset",
+  "GPU_hours_cap": "superseded by12h wall window for both supplied GPUs",
+  "max_allocated_GPU_hours_within_window": 24,
+  "CPU_analysis_max": 4,
+  "server_threads_per_worker": 2,
+  "client_threads_per_worker": 2,
+  "max_GPU_workers": 2,
+  "GPU": "user supplied dual NVIDIA A100-PCIE-40GB AutoDL only",
+  "goal": "one frozen TF_ON continuous versusPF2 complete paired DEV panel, quality,length,failure penalty and exploratory cost",
+  "scientific_commit": "4f04b35e44cbc00483dc6245ad57abec718385c9",
+  "snapshot_id": "wam-tf-draft-handoff-20261017-paused72",
+  "historical_baseline": "b0dfac3a02f65de33a1217246b83003615166640",
+  "input_manifest": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-pf2-readonly-plan-v1-20261017-r1/SOURCE-AND-CHECKPOINT-MANIFEST.json",
+  "selected": {
+    "path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-onpolicy-train-cpu1-v2-20261017-r1/TF_ON-seed20260923/checkpoint.pt",
+    "bytes": 223204,
+    "mtime_ns": 1792170242300356431,
+    "expected_sha256": "be2606d19f51085e8066116845e0c41bf5fb61ea80864008d425af33e78cb302",
+    "actual_sha256_observed": "be2606d19f51085e8066116845e0c41bf5fb61ea80864008d425af33e78cb302",
+    "hash_observation_at": "2026-10-17T10:46:57+08:00",
+    "schema": "tf-effect-draft-3000/v1",
+    "architecture": "transformer64",
+    "parameter_count": 53070,
+    "metadata": {
+      "seed": 20260923,
+      "initial_total_updates": 2500,
+      "continuation_updates": 500,
+      "total_updates": 3000,
+      "batch": 512,
+      "target_half": 256,
+      "same_query_half": 256,
+      "learning_rate": 3e-05,
+      "weight_decay": 0.01,
+      "normalization_refit": false,
+      "optimizer_state_reset": true,
+      "new_manifest_sha256": "bdcd4171d708cc23e5d34fada5eba5437c35da2bace971c0674c4fa1e5c54a22",
+      "permissions": {
+        "engineering_quality_screen": false,
+        "independent_test_complete": false,
+        "noninferiority_established": false,
+        "formal_performance_permission": false
+      },
+      "robot_quality_validated": false,
+      "deployed": false,
+      "condition": "TF_ON",
+      "parent_checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/transformer64-seed20260923/checkpoint.pt",
+      "parent_checkpoint_sha256": "9cb92a4862579edc9cfb99210b0535e620daba56dd5abcc094a7d735dbadab07",
+      "same_query_source": "current_TF_CONT3000_reached_FIT20",
+      "data_manifest_sha256": "d22fe8e874ba55f8584d1eafe1dc6e8855b33cd7e0659b60f400e03d4f8ca37c",
+      "plan": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-onpolicy-train-cpu1-v2-20261017-r1/PLAN.json",
+      "plan_sha256": "942b78db4c7d7ad2221b055c4773e712941e17cd706389faff9032a0d085e7fa"
+    },
+    "parent_checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-target-trace-draft-finetune-v1-20261015-r1/transformer64-seed20260923/checkpoint.pt",
+    "parent_checkpoint_sha256_expected_not_rehashed_here": "9cb92a4862579edc9cfb99210b0535e620daba56dd5abcc094a7d735dbadab07",
+    "new_data_generator": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-usable-train-v1-20261016-r1/TF_CONT-seed20260923/checkpoint.pt",
+    "new_data_generator_sha256_registered": "3657388fdce0763093d1b704c88a03b6836954160d43dddb9f75337a054d64ac",
+    "generator_is_new_TF_ON": false,
+    "checkpoint": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-onpolicy-train-cpu1-v2-20261017-r1/TF_ON-seed20260923/checkpoint.pt"
+  },
+  "normalizer": {
+    "canonical_named_tensor_sha256": "65e6e1fb2809c0c323102534c4d43605c320af42e67be29131b4f494bd1fa9ee",
+    "algorithm": "Sort normalization keys lexicographically. For each CPU contiguous tensor, descriptor=UTF8 JSON{name,dtype,shape} with sort_keys=True,separators=(comma,colon). Chunk=uint64LE(len(descriptor))+descriptor+uint64LE(len(rawbytes))+rawbytes from tensor.view(uint8).numpy().tobytes(). Individual SHA256(chunk); aggregate SHA256(concatenated chunks). This host sys.byteorder=little; all values are original float32, no numerical conversion.",
+    "tensors": {
+      "feature_mean": {
+        "shape": [
+          227
+        ],
+        "dtype": "torch.float32",
+        "tensor_sha256": "f77443845a215df6378da6d362647c5729faddd32fc00a5774a3e57ca5ab1607",
+        "finite": true,
+        "min": -0.15509380400180817,
+        "max": 0.18158140778541565
+      },
+      "feature_std": {
+        "shape": [
+          227
+        ],
+        "dtype": "torch.float32",
+        "tensor_sha256": "53fee443878100994c0b35fdba1f028996cd409a2325956f6d39f257be30eeaa",
+        "finite": true,
+        "min": 0.11817380040884018,
+        "max": 1.5381364822387695
+      },
+      "residual_mean": {
+        "shape": [
+          112
+        ],
+        "dtype": "torch.float32",
+        "tensor_sha256": "195ebc4a8a0903016d610e0130a83cd97449090f421b61de8144defb1203288e",
+        "finite": true,
+        "min": -0.009411472827196121,
+        "max": 0.002644334454089403
+      },
+      "residual_std": {
+        "shape": [
+          112
+        ],
+        "dtype": "torch.float32",
+        "tensor_sha256": "178e95d13bccd4b63591ea66f88ab612f1f6609243462fa3bedf8e74a5e54e5f",
+        "finite": true,
+        "min": 0.05346565693616867,
+        "max": 0.19804559648036957
+      }
+    },
+    "parent2500_canonical_named_tensor_sha256": "65e6e1fb2809c0c323102534c4d43605c320af42e67be29131b4f494bd1fa9ee",
+    "exact_parent_tensor_comparison": {
+      "feature_mean": true,
+      "feature_std": true,
+      "residual_mean": true,
+      "residual_std": true
+    },
+    "refit_performed_in_D0": false,
+    "original_normalization_fit_scope": "FIT174-only population std(clamp_min1e-5), according to target_trace_draft_train_v1/train.py:49-53,160-172; historical raw rows were not re-audited now"
+  },
+  "pairs": [
+    {
+      "pair_id": 1,
+      "task": 1,
+      "init": 29,
+      "stratum": "risk",
+      "within_pair_order": "C_P",
+      "fixed_DEV_membership": {
+        "T": true,
+        "TF_ON": true
+      },
+      "proposed_wave": 1,
+      "proposed_GPU_index": 0,
+      "new_run_required": true,
+      "execution_authorized": true,
+      "proposal_execution_authorized_in_fixed_manifest": false
+    },
+    {
+      "pair_id": 2,
+      "task": 1,
+      "init": 36,
+      "stratum": "control",
+      "within_pair_order": "P_C",
+      "fixed_DEV_membership": {
+        "T": true,
+        "TF_ON": true
+      },
+      "proposed_wave": 1,
+      "proposed_GPU_index": 1,
+      "new_run_required": true,
+      "execution_authorized": true,
+      "proposal_execution_authorized_in_fixed_manifest": false
+    },
+    {
+      "pair_id": 3,
+      "task": 3,
+      "init": 26,
+      "stratum": "risk",
+      "within_pair_order": "P_C",
+      "fixed_DEV_membership": {
+        "T": true,
+        "TF_ON": true
+      },
+      "proposed_wave": 2,
+      "proposed_GPU_index": 0,
+      "new_run_required": true,
+      "execution_authorized": true,
+      "proposal_execution_authorized_in_fixed_manifest": false
+    },
+    {
+      "pair_id": 4,
+      "task": 3,
+      "init": 36,
+      "stratum": "control",
+      "within_pair_order": "C_P",
+      "fixed_DEV_membership": {
+        "T": true,
+        "TF_ON": true
+      },
+      "proposed_wave": 2,
+      "proposed_GPU_index": 1,
+      "new_run_required": true,
+      "execution_authorized": true,
+      "proposal_execution_authorized_in_fixed_manifest": false
+    },
+    {
+      "pair_id": 5,
+      "task": 4,
+      "init": 26,
+      "stratum": "risk",
+      "within_pair_order": "C_P",
+      "fixed_DEV_membership": {
+        "T": true,
+        "TF_ON": true
+      },
+      "proposed_wave": 3,
+      "proposed_GPU_index": 0,
+      "new_run_required": true,
+      "execution_authorized": true,
+      "proposal_execution_authorized_in_fixed_manifest": false
+    },
+    {
+      "pair_id": 6,
+      "task": 4,
+      "init": 36,
+      "stratum": "control",
+      "within_pair_order": "P_C",
+      "fixed_DEV_membership": {
+        "T": true,
+        "TF_ON": true
+      },
+      "proposed_wave": 3,
+      "proposed_GPU_index": 1,
+      "new_run_required": true,
+      "execution_authorized": true,
+      "proposal_execution_authorized_in_fixed_manifest": false
+    }
+  ],
+  "evaluation_seed": 20260922,
+  "threshold": 0.007839680526450805,
+  "mode": "verifier_k2_b2_bonus",
+  "selector": "prefix_then_cost",
+  "horizon": 800,
+  "per_episode_wall_sec": 1200,
+  "per_episode_forward_attempt_cap": 4000,
+  "job_forward_attempt_cap": 49000,
+  "non_episode_forward_attempt_cap": 1000,
+  "max_complete_episodes": 12,
+  "new_evidence_cap_bytes": 3221225472,
+  "deployment_assets_cap_bytes": 46170898432,
+  "remote_data_disk_floor_bytes": 5368709120,
+  "no_smoke": true,
+  "no_independent_tests": true,
+  "no_remote_SHA_including_hidden_loader_or_fingerprint": true,
+  "no_training_or_new_FIT": true,
+  "no_TEST_or_120_or_formal_benchmark": true,
+  "no_second_environment": true,
+  "frozen_permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "preserve_old_FAILED_22_gaps_and_NO_GO": true,
+  "code_namespace": "/rjs/cxz/论文探索/投机采样/experiments/tf_pf2_quality_v1",
+  "remote_root": "/root/autodl-tmp/wam-tf-pf2-20261017",
+  "parallel_plan": "waves[(1,2),(3,4),(5,6)]; samepair sameGPU; finish in-flight pairs then global barrier; lost_success blocks next wave",
+  "per_episode_admission": "reserve whole1200sec + cleanup; pair admission reserve both episodes",
+  "stop_policy": "identity/routing/numerical isolation fail -> stop newpairs; Csuccess/Pfailure -> finish pair archive and no nextwave; no auto retries",
+  "cleanup": "only birth-pinned owned process groups; independent absolute watchdog; cleanup record separately from instance shutdown",
+  "credential_storage": false,
+  "terminal_status": "PENDING",
+  "evidence_path": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r1",
+  "HW_namespace": "/rjs/cxz/论文探索/.pipeline/experiments/tf-pf2-autodl-20261017",
+  "job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r3",
+  "deployment_reference": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r1/deployment-reference.pt",
+  "bank": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-reset-text-bank-v1-20261015-cpu7-r2/bank.pt",
+  "target_checkpoint_path": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+  "target_checkpoint_id": "robbyant/lingbot-va-posttrain-libero-long",
+  "registry": "/rjs/cxz/论文探索/投机采样/configs/libero_checkpoint_registry.json",
+  "target_weight_stats": {
+    "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/text_encoder/model-00001-of-00003.safetensors": {
+      "bytes": 4935812536,
+      "mtime_ns": 1789580076519299180
+    },
+    "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/text_encoder/model-00002-of-00003.safetensors": {
+      "bytes": 4983103192,
+      "mtime_ns": 1789581265157383818
+    },
+    "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/text_encoder/model-00003-of-00003.safetensors": {
+      "bytes": 1442935480,
+      "mtime_ns": 1789577852507838936
+    },
+    "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer/diffusion_pytorch_model-00001-of-00003.safetensors": {
+      "bytes": 4821987820,
+      "mtime_ns": 1790085073013925387
+    },
+    "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer/diffusion_pytorch_model-00002-of-00003.safetensors": {
+      "bytes": 4821655760,
+      "mtime_ns": 1790085081285652440
+    },
+    "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer/diffusion_pytorch_model-00003-of-00003.safetensors": {
+      "bytes": 535373816,
+      "mtime_ns": 1790080522296088008
+    },
+    "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/vae/diffusion_pytorch_model.safetensors": {
+      "bytes": 2818777808,
+      "mtime_ns": 1789582414542881898
+    }
+  },
+  "va_python": "/rjs/cxz/miniconda3/envs/va/bin/python",
+  "client_python": "/rjs/cxz/miniconda3/envs/libero-va/bin/python",
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "source_code_commit": "9acc37cee9ae9b62b8311f1f8dbb01bffa37a86a",
+  "reference_plan_historical_evidence_only": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-effect-dev96-v1-20261017-r1/plan.json",
+  "LIBERO_CONFIG_PATH": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r1/libero-config",
+  "source_freeze_receipt": "SOURCE-FREEZE.json",
+  "target_source_reference": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r1/target-model-source-reference.bytes",
+  "prior_failed_bootstrap_job": "/rjs/cxz/论文探索/投机采样/results/runtime/p0-tf-pf2-autodl-v1-20261017-r2",
+  "prior_complete_or_partial_robot_episodes": 0,
+  "prior_target_forward_attempts": 0,
+  "authorization_and_cleanup_clock_not_reset": true,
+  "manual_bootstrap_source_correction_only": true,
+  "prior_client_setup_failures": 2,
+  "prior_initialized_robot_episodes": 0
+}
