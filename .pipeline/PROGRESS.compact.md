@@ -1,45 +1,41 @@
 # 当前研究恢复入口
 
-更新时间：2026-10-17 15:21，北京。派生短入口；原FAILED/tile/协议保留。先读[INDEX](INDEX.md)、[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再恢复当前Cycle，不展开全部旧知识。
+更新时间：2026-10-17 17:22，北京。派生短状态；先读[INDEX](INDEX.md)、[上下文](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再读当前Cycle四文件；原始FAILED/tile/协议不改。
 
-## 当前M16：Long全量描述评估，四worker运行
+## 当前M17：三套独立TF训练与完整三臂
 
-用户授权Long与可信Target前提下的90三臂、现有AutoDL双卡可用至完成。Long500组（10task×50init）×三臂1500局；同case同GPU、三顺序轮换。原v1 67d1c0d收尾23组/69完整局、72593 forward，原PARTIAL/清理EMPTY保留。新v2 d5448bb runner28232/guard28231四worker已实际READY并完整运行（每卡2独立模型/环境/KV/RNG，总16CPU）；15:21新增9局终态、1组三臂闭合。控制3469099只完成当前case自然交接、未截断/重跑。原48h及系列cap不重置：10/19 13:40:56停工、13:55:56清理，6,001,000 forward/10GiB含fixture3GiB、磁盘留5GiB。见[实际状态/原件](experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)、[授权](memory/global/requirements/decision-AutoDL全量研究使用至完成.md)。
+用户明确批准Spatial/Object/Goal分别用对应社区Target、同一TF64训练方法，比较Target/连续TF/同权重TF+PF2的成功率、trace长度和E2E成本。M16 Long继续；90尚无可信同代Target，未启动，不将本次当取消90。三个Wjjjh Target非官方，发布者SR不继承。[完整PLAN](experiments/libero-four-suite-20261017/PLAN.md)、[实际作业](experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)。
 
-官方HF/MS26模型与68同名HF、23issue/PR等深挖，仍无已核实同代LIBERO90 Target；Wjjjh仅Object/Goal/Spatial10task，rbehnam19身份不足，FastWAM90不同架构。90采集/训练/GPU未启动。官方LIBERO原设计90预训练/10下游评测；LingBotVA、CVPR2025 CoT-VLA、FLASH常测四小套件而非90。建议先收Long，用户询问不记作取消授权；单Long不能支持跨环境/WAM普适主张。[范围依据](experiments/libero-fullscale-20261017/SCOPE-REVIEW.md)。
+Object/Goal远端各10,177,831,668B权重已完整；Object正在真实SSH回传。完整512-token BF16 bank：本机Object CPU7，远端Goal/Spatial CPU4 affinity/Torch7线程生产；原准备失败保留，不重置deadline。pipeline源码9aa66fb冻结，三controller已登记等待资产/原Long清理，新套件模型/episode/训练尚0，不能把controller说成GPU任务已起。
 
-用户同意[质量并行、独占重放计时](memory/global/requirements/decision-质量并行评估与独占重放计时分离.md)。v1 capture重复worker_index失败；v2虽修该项，真实首query又遇action-KV桶检查gap，UNKNOWN保留，尚无合格新TF fixture，不声称state已完整保存。数学/动作原路径继续，修复需新版本/自然边界。正式verifier/chunk重放与完整任务E2E分开；并行耗时仅探索资源/吞吐，不能借此签正式加速。
+固定训练：Target200=FIT180(init0–17)/CAL20(18–19)；PARENT2000采30(init20/21 FIT、22 CAL)，target/该FIT 50:50训CHILD2500与CONT3000；CONT采30(init23/24 FIT、25 CAL)，ON从同CHILD+500，不是CONT续到3500。仅final/seed20260923、不搜结构/seed/tau。所有自然失败保留，只实际reached teacher标签训练，反事实另列；没有完整条件则不能新latent重新query教师。
 
-自然模型失败不阻止新全量覆盖；raw初态/首两S不等保留FAILED并标严格pair INVALID。非法route/API/数学合同/资源硬限停新工作。官方50init含已用FIT/CAL/DEV与原保留组，不将新描述benchmark签为独立TEST。预计Long双卡25–40h，需实际完整任务吞吐更新；90工期在Target未核前UNKNOWN。
+每套最终500case×T/C/P=1500局，Target前200只读复用；另训练采集60局，总1560/套、4680新局。Object全套固定本机SXM4；Goal/Spatial全套分别固定AutoDL GPU0/1；最终case0–249、250–499两shard，可显存许可独立双worker。完整50init含FIT/CAL/DEV，训练未见26–49子集另报，四权限不变，不签独立TEST。
 
-四权限恒false：engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission。旧TF_ON/PF2 NO_GO、retention、22清理缺证/FAILED及全局A_off保持；未启动120、独立TEST、新TF正式45chunk或正式E2E。
+M17 master10/17 17:11:31起，10/21 16:56停新/17:11清理；18,723,000尝试、研究证据15GiB、资产本地40GiB。每局1200秒/4000尝试/horizon800，整局预留不足不启动，失败/等待/准备/清理计账，无自动重试。现有AutoDL可用至已批准工作完成，不采购新卡；source/local/remote控制器与终态以job记录为准。粗估新增48–72h，实际首批任务后更新，96h是止损帽。
 
-## M15已结束：六对十二完整DEV，投入NO_GO
+## M16 Long仍运行，原账本独立
 
-[原结果/五报告](experiments/tf-pf2-autodl-20261017/RESULT.md)。C3/6、P5/6，rescued2/lost0；风险0/3→2/3，对照3/3→3/3。1/29与3/26救回，4/26两败；控制1/36为260→405。共同成功长度P50/P90/max=1.0043/1.4470/1.5577；风险全成功、控制罚分、P90/max门失败。全体实际C3110/P2166，800罚分3122/2170；风险罚分2400/1305、对照722/865。实际796不补造800命令。
+原v1 23组三臂69完整局/72593forward只读接续；v2 d5448bb runner28232/guard28231四worker、每卡2模型/环境/KV/RNG、总16CPU。17:20新171闭合局＋原69＝240，另有运行中局，未全量。原48h不重置：10/19 13:40:56停工、13:55清理，6,001,000forward/10GiB含fixture3GiB/free5GiB。[原索引](experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)。
 
-探索ΣT_round/Σg .04068/.05251秒（P/C1.2909），共同成功policy165.90/226.99秒。容器GPU PID未全映射，成本可比UNKNOWN、不是Target或正式E2E。六对保存的物理/controller/RNG/双相机组件一致，首两S现场有效KV/RNG比较；reset/S0仅排除native覆盖六lazy scheduler字段，不是全部隐藏状态/离线全KV证书。首两S score/depth不能清晰区分风险，不能拟合阈值。
+自然失败不提前停止完整描述覆盖；初态/首两S差异保留FAILED/严格pair INVALID，API/数学/资源硬停。v1 capture重复字段、v2有效KV桶缺口保留UNKNOWN，尚无合格新TF全状态replay。不能将compact训练表或保存latent/动作称全KV/视觉条件fixture。并行质量的时间仅探索性成本，正式replay只支持其边界、不能代替完整机器人E2E。全部实际命令步数与800失败罚分分列，更快失败不是加速。
 
-实际源码9acc37cee9ae9b62b8311f1f8dbb01bffa37a86a，父科学4f04。r1导入失败/r2两client零步失败保留；r3 runner20.89分钟，从原授权到终态1.962h，server累计.728764 GPUh非CUDAactive。1267原件52.5MiB已回传，owned组EMPTY/guard CLEAN、85身份无存活、双卡空。实例未关机，新使用为M16授权。249MiB临时资产包/20.1MB证据包双端删，原件保留。
+## 永久保留的旧质量与模型身份
 
-原M15起点11:11:41、22:56停新/23:11清理为历史；12局/49k/3GiB不扩。计16054forward，r2缺COUNTER保守8000、非episode留1000，保守25054/49000；全局active/非episode真实计数UNKNOWN。新M16单独账本，不借旧余额。
+四权限始终false：engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission。旧TF_ON/PF2 NO_GO、retention、22清理缺证、所有FAILED和全局A_off不变；无120、独立TEST、新TF正式45chunk或正式E2E。
 
-## 固定快照、模型与前次证据
+固定4f04b35 paused72永久72/96、MLP0/PAUSED_BY_USER_PARTIAL_NOT_QUALIFIED；本机live77另列，main/b0不替代。旧ON fresh20/20不覆盖risk4/8对T6/8；三条T成功/TF败(1,29)/(3,26)/(4,26)保存匹配组件，根因未定。[原77结果](experiments/tf-effect-closure-20261016/RESULT.md)。唯一Long新训练机会已用；新增三套由用户另批准，不借此继续Long tuning。
 
-公开4f04b35e44cbc00483dc6245ad57abec718385c9 / wam-tf-draft-handoff-20261017-paused72永久72/96、MLP0、PAUSED_BY_USER_PARTIAL_NOT_QUALIFIED；live77/96另列，main/b0dfac3a不替代。新M15结果分支689a9d1，实际math9acc。见[77结果](experiments/tf-effect-closure-20261016/RESULT.md)：fresh T20、CONT19、ON20成功/各20；MLP1/1非计划完成，risk T6/8、ON4/8。三条T成功/TF败1/29、3/26、4/26，保存组件匹配、根因未定。旧22缺证、原暂停non-budget issue/FAILED不改，余19不自动补。
+M15六pair完整C3/6、P5/6，救回2/lost0，4/26两败；控制1/36 260→405。共同成功长度P50/P90/max=1.0043/1.4470/1.5577，投入NO_GO。探索ΣT_round/Σg .04068/.05251秒、共同成功policy165.90/226.99秒，成本门UNKNOWN，非正式E2E。旧全部源/收据/清理原件保留，[五报告](experiments/tf-pf2-autodl-20261017/RESULT.md)。
 
-TF64 53070参数：16token×17feat(state7/previous7/σ,nextσ,t÷1000)，1层pre-norm D64/H4/FF256 GELU/drop0、学习位置、双7维残差头，无图像/prompt cross-attn；MLP96 52928仅baseline。根previous为已算target，递归previous父draft；内部FP32，生产BF16方向、FP32分数。
+TF64=53070参数，16token×17feature(state7/previous7/σ/nextσ/t÷1000)，1层pre-norm D64/H4/FF256、GELU/drop0、学习位置、双7维残差头，无图像/prompt cross-attn。MLP96=52928仅baseline。主loss回归decoded raw velocity，std用于decode/gap；27042行GPU CAL是adapter接口，不证明B2/B14 teacher一致。τ=.007839680526450805、absΔσ×L2、prefix_then_cost/K2B2/bonus；生产BF16方向/FP32打分。PF2=SST完整policy请求计数，reset清零/cache不计，全拒绝S仍计；T canonical50 scheduler更新/51 action调用含terminal，不是bonus或物理恢复。7候选×CFG2=B14，每attention仍Q16，private KV不默认共享。
 
-TF_ON seed20260923，child2500起点固定500更新/b512/lr3e-5/AdamW/wd.01，norm不变。新30由旧TF_CONT3000采9383.734s/23685forward；FIT11416/CAL6805 reached，11170反事实另留。旧target FIT159691/CAL20237，旧mixed14997=3906 A_off+11091历史TF。唯一Long训练机会已用完，90另授权但需可信teacher。真实AST主loss回归decoded raw velocity；std仅decode/gap，不是主MSE归一化或Δσ加权。27042行GPU CAL仅adapter、teacher0，不证明B2/B14一致。FIT无完整视觉/KV条件，227维表不能补造新latent teacher标签。
+## 研究与资源边界
 
-τ=.007839680526450805，absΔσ×L2，prefix_then_cost/K2B2/bonus冻结。PF2=S S T，成功policy返回计数/reset清零/cache不计，拒绝S仍计S；T canonical CFG2 action50更新/51调用含terminal，不是bonus或物理回滚。7状态×CFG2=B14，每attention仍Q16、私有KV不默认共享。
+系统主线：投机改变小action工作负载→候选可调度→超过最强B14→质量约束有效成本；H1/H2有证据，H3有限pilot、H4未立。D3072/H24×128/FF14336，Linear M32/96/224已落库，attentionQ16；G1→G2 L2−32.81%、DRAM−1.31%、occupancy降，不能写HBM减半。原tile不动，不恢复撤回融合，旧倍数不乘。
 
-## 全项目运行边界与后续
+AutoDL[无smoke/独立测试/SHA](memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)包含隐式loader，沿源码完整任务inline审计。全部臂[默认优化reset](memory/global/requirements/decision-实验默认启用等价reset优化.md)，原512-token BF16，冷启动/首次bank另列。M15 reset15–107ms不冒充新套件结果。本机他人hlj/lhw GPU在用，按显存准入，不杀别人/改系统或时钟。新96h不覆盖旧job deadline；实例关机与进程退出分列。
 
-[AutoDL不smoke/测试脚本/SHA](memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)包括隐式loader/fingerprint；必要审计inline真实完整任务。所有后续采样/质量/性能全臂[默认完整512-token BF16 reset bank](memory/global/requirements/decision-实验默认启用等价reset优化.md)，不能静默fallback；M15 reset15–107ms，首次构建/冷启动另列。
+HW固定v15/legacy，不升级/旧全量sync；保护state/cycle/rules/结构规则/原tile记录不动。Cycle旧四文已逐字归档，当前入口语义压缩，[当前Cycle](cycles/wam-research-20261016/PROGRESS.md)引用历史和原始结果，不以截前80行当摘要。磁盘清理和文档精简分开；旧2.38GiB清理不当本轮回收量。
 
-系统主线投机重组→可调度候选→超过最佳B14→质量约束有效成本。H1真实shape/H2批处理有证据，H3有限pilot，H4未立。30层D3072/H24×128/FF14336，Linear M32/96/224已合并，attentionQ16；G1→G2 L2−32.81%、DRAM−1.31%、occupancy降，不能写HBM减半。原tile只读，不恢复撤回融合；旧倍数不相乘。
-
-旧系列GPU作业墙钟11.0265h、保守97039forward留历史。两旧下载残片回收2.38GiB（du137.25→134.87GiB）；canonical/原始失败/KV保留。HW固定v15/legacy，不升级/全量sync；保护state/cycle/rules、结构规则/491原tile记录不动。完整质量和正式性能仍分门，旧质量未通过不自动放行。
-
-10/18作者profile仅记录；10/22 go/no-go；10/23冻结候选/API/claim；10/28主表；11/01 18:00中文证据包交老师。中文稿用户整理飞书、不建本地论文初稿；证据不足收缩claim。CVPR2027官方时间临近再核，未确认独立abstract规则。
+10/18作者profile只记录；10/22 go/no-go；10/23冻结candidate/API/claim；10/28主表；11/01 18:00中文证据包。中文稿逐段会话交飞书，不建本地论文正文。CVPR注册/正文/abstract规则执行时按官方核验，不沿旧年份假设。

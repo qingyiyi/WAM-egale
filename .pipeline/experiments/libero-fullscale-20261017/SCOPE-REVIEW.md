@@ -1,3 +1,5 @@
+> 17:22现行范围更新：用户已明确批准三小套件各自训练与完整三臂，见[新PLAN](../libero-four-suite-20261017/PLAN.md)。下文为15:53及此前文献建议，不再作为尚未批准的当前状态。Long原job和90阻塞不变。
+
 # 评测范围核查
 
 建议本轮先完整收口Long，不把LIBERO90作为必做依赖。不是“只跑Long就保证可投CVPR”；如果主张跨套件/跨WAM普适性还需要相应证据。其他套件由主线结果和预算触发，不自动扩展。
@@ -7,3 +9,5 @@ LIBERO[官方README](https://github.com/Lifelong-Robot-Learning/LIBERO)将90用�
 [原文范围与建议](../../../投机采样/results/runtime/p0-libero-eval-scope-literature-cpu1-v1-20261017-r1/RESULT.md)；[可靠90权重检索](../../../投机采样/results/runtime/p0-libero90-checkpoint-reliability-deepsearch-cpu1-v1-20261017-r1/RELIABILITY-RESULT.md)。Long10每任务50初态三臂=1500局；90另13500局，不做90减少计划90%episode数，墙钟比例未知。
 
 这是研究建议和证据口径，不把用户的询问写成已取消90。当前90无可信Target，训练/采集自然BLOCKED。当前四false及旧NO_GO不变。
+
+三小套件进一步核验：[Spatial/Object/Goal公开资产](../../../投机采样/results/runtime/p0-libero-three-suite-availability-cpu1-v1-20261017-r1/RESULT.md)。官方未列三套；Wjjjh社区三套提供确切公开权重和独立归一化，发布者SR未由本项目复现。建议先Long，再考虑Object的一次扩展，质量/资源支持才补Goal/Spatial。三套合计另4500完整局，还需各套teacher/draft数据与部署核验；用户当前仅询问，未自动启动下载/训练/补测，当前Long冻结数学路径与四权限不变。

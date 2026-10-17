@@ -1,30 +1,11 @@
----
-kind: discussion-summary
-cycle: wam-research-20261016
-updated: 2026-10-17T15:21:18+08:00
----
-# 研究约定摘要
+# 当前讨论与授权摘要
 
-> 当前M16：Long500组三臂已在完整case边界接至双卡四worker，原69完整局只读复用；90无可信Target、fixture UNKNOWN。文献支持90不作为通用必测项，建议先Long；这仍是范围建议，未把询问写成取消授权。M15旧NO_GO/全部四false保留。[实际状态](../../experiments/libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)。
+用户优先把TF draft效果和投机侧收口。最新明确要求充分利用本机及现有双卡AutoDL，分别在Spatial/Object/Goal社区权重上用同方法训练自己的draft，并完整对照Target、连续TF、同权重TF+PF2成功率、实际trace长度与E2E成本；不是仅建议或旧READ_ONLY_PLAN。Long原全量继续，90无可信Target仍BLOCKED，未记作用户取消授权。
 
-10/17后续新增：[全量三臂与90独立训练](../../memory/global/requirements/decision-Long与LIBERO90全量三臂评估及独立draft训练.md)和[AutoDL用至完成](../../memory/global/requirements/decision-AutoDL全量研究使用至完成.md)替代新scope临时23:11上限。质量并行并保存有限真实state，正式replay与完整episode计时分开；同卡多eval必须证明显存和状态隔离，未据问句自动改变执行引擎。
+同TF64结构/同训练预算/同seed与acceptance，不移植Long权重当新套件训练完成、不增加结构搜索。训练采集、描述评估和独立TEST身份分开；并行质量与正式性能分开，正式计时仍本机无争用并受质量门限制。用户允许当前AutoDL至已批准工作完成，没有采购新卡或改变旧四false的授权。
 
-10/17用户已批准前次具体执行请求，并允许AutoDL12h无限资源使用，替代只读NONE与5累计GPUh帽；固定六pair/12局/49kforward/3GiB不扩。另明确今后实验默认等价优化reset。见[12h批准](../../memory/global/requirements/decision-PF2源码执行与AutoDL十二小时窗口.md)与[reset默认](../../memory/global/requirements/decision-实验默认启用等价reset优化.md)。
+全臂默认完整512-token BF16 reset bank；AutoDL不smoke、独立测试或SHA。新工作独立namespace/预算/清理，旧FAILED/retention/22缺证/PF2 NO_GO、保护state/cycle/rules与原tile不能改。PF2是SST policy调度，不是bonus或环境状态恢复。
 
-10/17新网页方案先READ_ONLY_PLAN；后一个连续/PF2提案替代默认D1/D2/追加训练，预算不叠加。新双卡SSH仅完成资源/包元数据读取，执行授权NONE。用户要求AutoDL不做smoke、测试脚本或SHA，包含loader/fingerprint内部调用；必要审计随获准的完整任务。见[范围决定](../../memory/global/requirements/decision-PF2优先只读方案与新双卡核查.md)与[远端直接源码要求](../../memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)。
+时间仍10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00中文证据包；中文方法由会话交用户飞书，不创建本地论文稿。
 
-10/17早用户已明确暂停实验，优先交付网页版draft结构/训练/开源文献Prompt，并同步GitHub。已在完整task5终态后停止，72/96、24缺项；GPU已清理。见[当前暂停决定](../../memory/global/requirements/decision-暂停TF实验并先外部文献复核.md)。旧10:00只是历史上限，不能作为自动恢复依据；只做必要CPU交接/发布，新网页方案仍须本地核验和新登记。
-
-2026-10-17 01:35 用户将本轮夜间授权明确改为北京时间10/17 10:00，替代09:00；[Maintain决定](../../memory/global/requirements/decision-本轮TF验证截止与晨报时间.md)限定当前实验。旧登记不改，固定96清单/权重/质量门不变；现有DEV仍按原08:11硬帽，若需余量只做独立前瞻预算接续，未声称已延长活跃执行器。
-
-2026-10-16夜间追加：完成当前1→2→3后，统一评估AutoDL单机双卡对采样/成功率收口与投机单独E2E测量的帮助，给出资源与工期；现在不单独回答。此要求不是新租卡或旧实例重连授权；正式性能仍按本机独占及原质量放行要求。原始资源观察已存当前实验master的FUTURE-DUAL-GPU-OBSERVATION.json，双卡实测吞吐UNKNOWN。
-
-2026-10-16晚用户进一步明确：TF64确定为主draft，全力改善TF效果，MLP只作等容量baseline/ablation，不重开架构选择、不将MLP诊断置于TF改进之前；见[结构与投入决定](../../memory/global/requirements/decision-TF64固定为主模型与训练收口.md)。旧准入门和一次训练边界保留。
-
-2026-10-16晚用户明确“我想优先把draft model搞定”：本阶段优先draft结构、训练方法与闭环可用性，暂缓新增纯算子性能工作；保留因果主线和原质量门，见[长期决定](../../memory/global/requirements/decision-当前阶段优先完成draft收口.md)。不把诊断假说写成用户决定。
-
-用户目标是保成功与实际环境步数的WAM投机加速，并进一步研究verifier系统优化，面向CVPR2027。用户偏好Transformer，但现有TF只是研究候选；性能、质量和证据条件分开。
-
-保留原tile代码/HW，不自动恢复撤回融合。中文稿在会话逐段讨论，由用户整理飞书，不新增本地论文稿。网页端完整方案已接收。核心是投机改变工作负载后，自研调度是否超越现有B14批处理收益。先真实shape/profile，再有限原型；普通batching不重新命名创新。用户授权夜间继续，AutoDL仅到10/16 09:00，累计4h链预算保留。
-
-原始证据与授权范围见[当前完整报告](../../research/speculative-sampling/RESUMED-EXPERIMENTS-AND-CLEANUP-RESULT-20261015.md)、[统计协议](../../research/speculative-sampling/STATISTICAL-QUALITY-PROTOCOL-20261015.md)和现有用户会话。此摘要不复制会话原文或凭据，也不是新实验授权。
+[本次约束决定](../../memory/global/requirements/decision-四套LIBERO同配方TF与三臂评估.md)；[此前讨论原件](history/DISCUSSION-SUMMARY-through-M16-20261017.md)。先前暂停/旧deadline保留历史身份，不提升为当前执行状态。

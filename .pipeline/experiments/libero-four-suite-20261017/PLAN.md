@@ -6,9 +6,9 @@
 
 - [x] 公开发布身份核查：Wjjjh三个固定revision，transformer各10,177,831,668B，配套norm_stats；非官方复现版本。
 - [x] 实际资源：10/17 16:01 AutoDL两卡各98%、四Long worker继续；数据盘空17.97GB、OS盘空32.15GB；本机A100空闲，本项目盘空约104GiB。
-- [ ] 有界下载/原始配置与归一化归档，runtime使用独立模型目录及共享base组件，不改旧registry。
+- [x] Object/Goal远端有界下载完成；本机回传、Spatial空间调度仍在推进。原始配置与归一化归档，runtime使用独立模型目录及共享base组件，不改旧registry。
 - [ ] 复用原数学构建三套完整512-token BF16 prompt bank。
-- [ ] 独立通用server/client/collector/训练/监督入口完成并冻结来源；不执行smoke或独立测试。
+- [x] 独立通用server/client/collector/训练/监督入口完成并冻结来源（9aa66fb），三控制器已登记等待；尚未新GPU任务；不执行smoke或独立测试。
 - [ ] 利用本机空GPU先进行完整Target采集和质量；AutoDL原Long自然完成后接续可用资源，不截断现有episode。
 - [ ] 三套各一次固定训练链、最终checkpoint冻结，完整T/C/P各500局；全成败、长度、800罚分与探索性成本汇总。
 - [ ] 质量满足登记条件后申请/使用无争用窗口，测完整chunk和完整任务E2E；不以并行墙钟或调用数伪装正式加速。
@@ -25,7 +25,7 @@ Target初始200完整局：init0–17 FIT180、18–19 CAL20，各任务均衡�
 
 新增三套各1500评估＋60训练采集＝1560完整episode，合计4680；每局原horizon800、1200秒、最多4000 target尝试，无自动重试。每套总6,241,000尝试（含非episode1000），三套18,723,000。每个实际phase开局前预留整局及清理余量，阶段/系列账本均不重置。
 
-新执行窗口建议上限96小时，在实际job登记时落绝对起止，清理预留15分钟；10/22质量go/no-go之前收口，超限PARTIAL。该上限不是精确预计耗时。原Long仍遵守自己的10/19 13:55:56清理deadline，不借新授权续旧job。
+新执行窗口已登记：10/17 17:11:31起96h，10/21 16:56:31停新、17:11:31清理，预留15分钟；10/22质量go/no-go之前收口，超限PARTIAL。该上限不是精确预计耗时。原Long仍遵守自己的10/19 13:55:56清理deadline，不借新授权续旧job。
 
 源资产本地新增上限40GiB（3个target约28.44GiB＋下载暂存/metadata），研究原始新增上限15GiB（每套compact teacher≤1GiB，代表fixture总≤3GiB，不逐query存历史）。AutoDL利用现有OS盘先缓存至多两套新transformer，数据盘保留≥5GiB；第三套按空间和已结束缓存依赖核验顺序切换。归档可回传本项目，旧失败与不可重建tensor不删除，不自动扩容。
 
@@ -34,3 +34,7 @@ Target初始200完整局：init0–17 FIT180、18–19 CAL20，各任务均衡�
 训练及新套件首批完整任务后给出基于实测的工期；当前仅粗估新增总体约48–72小时，受新任务长度与失败尾部影响，96小时为止损帽。正式性能需质量与独占条件，不能保证按该时间已放行。
 
 每phase登记goal/source commit/input manifest/CPU-GPU/绝对deadline/forward/storage cap/终态/清理身份/证据索引。代码与原数学审查并行，资产/bank只做真实产物生产，无smoke/独立试跑/哈希。证据不足保持UNKNOWN及四false。
+
+## 前瞻硬件分片（未看新套件结果）
+
+Object全部case及Target/FIT在本机SXM4，Goal全部在AutoDL GPU0，Spatial全部在GPU1；各套最终0–249/250–499两个预登记shard，三臂同case同物理卡，禁止混SXM/PCIe计时。原Long先自然完成与清理，远端控制器等待中。资产/完整bank齐备后直接沿源码运行完整任务，必要审计inline，无smoke/SHA/独立测试。详见[实际索引](ACTUAL-RUN-STATUS.md)。
