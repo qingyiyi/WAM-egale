@@ -8,7 +8,7 @@ execution: EXECUTION.md
 ---
 # WAM 投机与多候选系统协同研究
 
-> 当前：M15六对十二局完整，PF2投入NO_GO；C3/6、P5/6，救回2但风险仍1败/控制长度超限。GPU/SSH清理，reset全项目默认优化；四false/旧NO-GO不变。见[本轮结果](../../experiments/tf-pf2-autodl-20261017/RESULT.md)。
+> 当前M16：用户已批准Long及有可信Target前提下的90全量T/TF/TF+PF2，现有AutoDL双卡可用至完成。Long500组三臂源码/有限fixture准备中，尚未启动新GPU；90同代checkpoint未核实。M15旧NO_GO/全部四false保留。[新工作计划](../../experiments/libero-fullscale-20261017/PLAN.md)。
 
 ## 目的与边界
 
@@ -35,6 +35,8 @@ execution: EXECUTION.md
 | `M13` | TF64唯一一次数据配方收口 | 按用户授权1→2→3：诊断、FIT20/CAL10、等预算训练、96完整DEV | [独立实验与运行接续](../../experiments/tf-effect-closure-20261016/RUNBOOK.md)；77/96有界结束、TF风险未过，旧四权限false |
 | `M14` | 冻结TF_ON/PF2只读方案 | D0源证据、双卡资源、建议diff、六pair与累计预算；未执行 | [独立审查结果](../../experiments/tf-pf2-plan-20261017/RESULT.md)，四false/旧FAILED保留 |
 | `M15` | 冻结TF_ON/PF2双卡完整DEV | 用户批准源码/部署与12h窗口，固定六pair/49k/3GiB | [执行登记](../../experiments/tf-pf2-autodl-20261017/PLAN.md)，无smoke/SHA/独立测试，旧四false保留 |
+
+| `M16` | Long／90全量三臂 | Long500组三臂，90先核实Target再独立draft | [新namespace与有界预算](../../experiments/libero-fullscale-20261017/PLAN.md)，质量并行/重放计时分离，旧四false不变 |
 
 ## 验证与未决
 

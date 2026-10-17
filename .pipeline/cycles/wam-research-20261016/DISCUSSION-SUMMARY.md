@@ -5,7 +5,9 @@ updated: 2026-10-17T13:18:21.505241+08:00
 ---
 # 研究约定摘要
 
-> 当前：M15六对十二局完整，PF2投入NO_GO；C3/6、P5/6，救回2但风险仍1败/控制长度超限。GPU/SSH清理，reset全项目默认优化；四false/旧NO-GO不变。见[本轮结果](../../experiments/tf-pf2-autodl-20261017/RESULT.md)。
+> 当前M16：用户已批准Long及有可信Target前提下的90全量T/TF/TF+PF2，现有AutoDL双卡可用至完成。Long500组三臂源码/有限fixture准备中，尚未启动新GPU；90同代checkpoint未核实。M15旧NO_GO/全部四false保留。[新工作计划](../../experiments/libero-fullscale-20261017/PLAN.md)。
+
+10/17后续新增：[全量三臂与90独立训练](../../memory/global/requirements/decision-Long与LIBERO90全量三臂评估及独立draft训练.md)和[AutoDL用至完成](../../memory/global/requirements/decision-AutoDL全量研究使用至完成.md)替代新scope临时23:11上限。质量并行并保存有限真实state，正式replay与完整episode计时分开；同卡多eval必须证明显存和状态隔离，未据问句自动改变执行引擎。
 
 10/17用户已批准前次具体执行请求，并允许AutoDL12h无限资源使用，替代只读NONE与5累计GPUh帽；固定六pair/12局/49kforward/3GiB不扩。另明确今后实验默认等价优化reset。见[12h批准](../../memory/global/requirements/decision-PF2源码执行与AutoDL十二小时窗口.md)与[reset默认](../../memory/global/requirements/decision-实验默认启用等价reset优化.md)。
 

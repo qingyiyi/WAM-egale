@@ -12,14 +12,14 @@
 
 | 路线 | 当前结论 | 证据入口 |
 |---|---|---|
-| 投机采样 | TF64研究接口；PF2六对完整C3/6/P5/6，长度/风险门失败，投入NO_GO；reset默认优化 | [最新结果](experiments/tf-pf2-autodl-20261017/RESULT.md)、[77描述结果](experiments/tf-effect-closure-20261016/RESULT.md) |
+| 投机采样 | M16新Long500组三臂与有限fixture准备；90同代Target未核实。旧PF2/连续NO_GO和四false不变 | [当前计划](experiments/libero-fullscale-20261017/PLAN.md)、[原PF2结果](experiments/tf-pf2-autodl-20261017/RESULT.md) |
 | tile / SDPA | 固定 PyTorch2.9 基线有限验收完成；没有新 MegaTransformer/verifier/E2E 收益 | [原最终报告](research/tile-sdpa/PYTORCH29_FINAL_20261012.md) |
 
 算子原代码与 HW 保留；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 
 ## 动态事实与历史
 
-- 当前[PF2执行与12h批准](memory/global/requirements/decision-PF2源码执行与AutoDL十二小时窗口.md)已替代历史只读NONE/5GPUh帽；固定4f04 paused72与live77分列。本轮12完整已清理，SSH退出；实例未关机，不能据余额扩实验。AutoDL[无smoke/独立测试/SHA](memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)，所有实验[默认优化reset](memory/global/requirements/decision-实验默认启用等价reset优化.md)。
+- 当前[PF2执行与12h批准](memory/global/requirements/decision-PF2源码执行与AutoDL十二小时窗口.md)已替代历史只读NONE/5GPUh帽；固定4f04 paused72与live77分列。M15十二局已清理；后续用户另已批准[全量与双卡至完成](memory/global/requirements/decision-AutoDL全量研究使用至完成.md)，不是借旧余额扩任务。AutoDL[无smoke/独立测试/SHA](memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)，所有实验[默认优化reset](memory/global/requirements/decision-实验默认启用等价reset优化.md)。
 
 - 历史旧链（非当前AutoDL）：[M12数值诊断](experiments/draft-teacher-path-20261016/RESULT.md)完成并清理，下一步只优先TF效果；MLP仅对照、算子后置。原50完整已清理、TF retention HOLD；[M11新诊断](experiments/task4-direction-20261016/EXPERIMENT.md)终态PARTIAL：1对完整风险复现，第二TF预算中断，自有worker/guard已清理。无120/waiter；AutoDL归还不再SSH，关机未知。
 - [旧100状态](../投机采样/results/runtime/p0-autodl-old100-archive-watch-v1-20261015-r2/status.json)和[旧接续状态](../投机采样/results/runtime/p0-autodl-research-quality-dispatch-v1-20261015-r2/status.json)仅为历史证据，不能用作当前运行或自动启动依据。

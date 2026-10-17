@@ -4,13 +4,13 @@ cycle: wam-research-20261016
 plan: PLAN.md
 status: active
 updated: 2026-10-17T13:18:21.505241+08:00
-current: M15
-next: review_new_bounded_teacher_path_diagnostic_not_started
-execution_status: completed_bounded_NO_GO_GPU_and_SSH_cleaned
+current: M16
+next: freeze_long500_three_arm_source_and_run_dual_GPU
+execution_status: preparing_authorized_fullscale_source_and_bounded_capture
 ---
 # 现有 WAM 研究进度
 
-> 当前：M15六对十二局完整，PF2投入NO_GO；C3/6、P5/6，救回2但风险仍1败/控制长度超限。GPU/SSH清理，reset全项目默认优化；四false/旧NO-GO不变。见[本轮结果](../../experiments/tf-pf2-autodl-20261017/RESULT.md)。
+> 当前M16：用户已批准Long及有可信Target前提下的90全量T/TF/TF+PF2，现有AutoDL双卡可用至完成。Long500组三臂源码/有限fixture准备中，尚未启动新GPU；90同代checkpoint未核实。M15旧NO_GO/全部四false保留。[新工作计划](../../experiments/libero-fullscale-20261017/PLAN.md)。
 
 2026-10-17早用户明确暂停实验并要求网页版文献/开源Prompt及GitHub同步。GPU已清理，旧/新DEV共72/96完整、剩24；双根CPU报告72 raw/50严格组件/22旧TF_ON arm收据缺口，整体PARTIAL，用户暂停作为非预算completion issue保留。fresh T20、CONT19、ON20成功，MLP0完整；风险ON已完成4均失败，其中task1/29、3/26、4/26为T成功/TF失败，三对保存物理/reset/RNG/双相机exact。当前TF-on权重/配方不满足无新增风险条件，不能推荐TEST；TF64结构/API仅暂冻研究。一次新30/固定三条件500更新均已完成，不自动追加。原四权限false、FAILED/default/tile保持。当前只做CPU交接发布，见[本轮结果](../../experiments/tf-effect-closure-20261016/RESULT.md)、[暂停决定](../../memory/global/requirements/decision-暂停TF实验并先外部文献复核.md)。
 
@@ -33,6 +33,10 @@ M11有限诊断终态PARTIAL：[五报告/时间表](../../experiments/task4-dir
 夜间有限工作已执行完，完整报告和短入口已更新，最终独立报告复核PASS。研究整体尚未完成。新AutoDL104/104完成并清理：T48/50、TF44/50，差−8pp；共同成功43局长度比P50/P90/max为.996/1.054/1.4。实际初始相机47/50严格一致；物理/控制器/RNG50/50一致。当前TF质量门false，正式45chunk仍受阻，旧A_off默认与原FAILED保持。
 
 真实M32→224已落到库GEMM；同七query批处理经济性成立。路线B数值/状态重放六完整policy/cache chunk、300提交通过；共同文本缓存下静态30层新B14相对原B14短/中/长下降3.86%/6.45%/18.40%，仅一个进程固定输入pilot，尚无缓存生命周期、完整chunk性能或闭环收益。原tile未动，普通缓存不作为新创新。
+
+## M16 最新范围与并行安排
+
+用户延长现有AutoDL使用至工作完成，新job独立48h生命周期、10GiB含fixture3GiB，旧M15起止不改。Long10×50初态×三臂1500完整局，双卡各一持久worker，init-major均衡覆盖。原同代90 Target检索未核实，不能将Long或FastWAM权重冒充90。非测速质量并行、有限真实state持久化后独占replay；完整任务E2E仍独立计时。自然失败不停止新全量描述覆盖，原始隔离差异保留FAILED/严格INVALID，非法route/API/资源硬停。
 
 ## 完整计划状态
 
