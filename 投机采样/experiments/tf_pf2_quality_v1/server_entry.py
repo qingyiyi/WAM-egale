@@ -30,13 +30,13 @@ from tf_pf2_quality_v1.protocol import WORKTREE, PERMISSIONS, episode_dir, pair,
 def prefix_modules():
     """Bind only production helpers; do not import any legacy runner/protocol."""
     prefix, base = EXP/'prefix_acceptance_v1', EXP/'single_worker_chc_gpu_v4'
-    for directory in (EXP, WORKTREE, prefix, base):
+    for directory in (EXP, WORKTREE, base, prefix):
         value = str(directory)
         if value in sys.path:
             sys.path.remove(value)
         sys.path.insert(0, value)
     modules = {}
-    for name in ('selection', 'measured_online', 'buffers'):
+    for name in ('selection', 'measured_online', 'buffers', 'prefix_kernel', 'experiment'):
         found = importlib.util.find_spec(name)
         require(found is not None and Path(found.origin).resolve() == prefix/(name+'.py'),
             'original prefix helper namespace collision: ' + name)
@@ -125,6 +125,7 @@ def main():
     from tf_pf2_quality_v1.controller import Controller
     from tf_pf2_quality_v1.evidence import ExecutionEvidence, atomic_current
     from tf_pf2_quality_v1.deployment import load_predictor, load_text_bank
+    from tf_pf2_quality_v1.shared_prefix_no_digest import install_o3
     from tf_pf2_quality_v1.state import capture_rng, restore_rng, capture_full_state, compare_raw
 
     original_run = source.run_async_server_mode
@@ -142,7 +143,8 @@ def main():
         s._p0_action_draft_b2_checkpoint = predictor.checkpoint_path
         proxy = modules['selection'].install(s, p['selector'])
         modules['buffers'].prepare(s._infer_action_verifier_k2_b2, s._load_p0_shadow_api())
-        online = modules['measured_online'].control(s, 'O3', allow_cuda=True)
+        online = install_o3(s, original=modules['measured_online'],
+            source_reference=p['target_source_reference'])
         bank, bank_receipt, restore_bank = load_text_bank(p, s)
         original_t5 = s._get_t5_prompt_embeds
 
@@ -336,6 +338,7 @@ def main():
         restore_rng(s, target_initial_rng)
         require(compare_raw(capture_rng(s), target_initial_rng)['equal'], 'setup target RNG restoration failed')
         write(worker/'DEPLOYMENT.json', dict(predictor=deployment, text_bank=bank_receipt,
+            shared_prefix_source_admission=online.no_digest_admission_provenance,
             no_independent_CAL_or_tests_executed=True, remote_SHA_executed=False))
         threading.Thread(target=monitor, daemon=True).start()
         evidence.pulse()
