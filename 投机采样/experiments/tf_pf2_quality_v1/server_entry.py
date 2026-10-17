@@ -30,7 +30,7 @@ from tf_pf2_quality_v1.protocol import WORKTREE, PERMISSIONS, episode_dir, pair,
 def prefix_modules():
     """Bind only production helpers; do not import any legacy runner/protocol."""
     prefix, base = EXP/'prefix_acceptance_v1', EXP/'single_worker_chc_gpu_v4'
-    for directory in (EXP, WORKTREE, base, prefix):
+    for directory in (EXP, WORKTREE, WORKTREE/'wan_va', base, prefix):
         value = str(directory)
         if value in sys.path:
             sys.path.remove(value)
