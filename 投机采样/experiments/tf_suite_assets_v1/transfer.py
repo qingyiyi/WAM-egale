@@ -38,8 +38,9 @@ def main():
     try:
         secret=getpass.getpass('AutoDL SSH password: ')
         c.connect('region-9.autodl.pro',port=40416,username='root',password=secret,timeout=30,auth_timeout=30,
-            look_for_keys=False,allow_agent=False,transport_factory=lambda sock,**kw:paramiko.Transport(sock,default_window_size=128*2**20,default_max_packet_size=2**20,**kw))
+            look_for_keys=False,allow_agent=False)
         secret=None;c.get_transport().set_keepalive(10)
+        c.get_transport().default_window_size=128*2**20
         for entry in source['assets']:
             s=entry['suite'];dest=a.asset_root.resolve()/s/'publisher/transformer/diffusion_pytorch_model.safetensors'
             if dest.exists():raise FileExistsError('final asset already exists')
