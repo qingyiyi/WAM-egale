@@ -1,0 +1,29 @@
+{
+  "goal": "添加B14原始只读覆盖参数负例后CPU契约验证",
+  "registered_at": "2026-10-19T00:59:39.406047+08:00",
+  "review_commit": "ca5f37e0482c2e38e3738e3d8e71e3b185990a23",
+  "input_manifest": [
+    "固定原WanAttention/WanTransformerBlock AST",
+    "新独立B0",
+    "显式SYNTHETIC_ONLY分支控制"
+  ],
+  "CPU_max": 2,
+  "GPU_count": 0,
+  "wall_clock_cap_seconds": 300,
+  "new_storage_cap_bytes": 10485760,
+  "terminal_status": "REGISTERED_NOT_STARTED",
+  "cleanup_plan": "CPU进程自然退出；不创建CUDA context；退出后核验PID身份",
+  "evidence_path": ".pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-contract-r3",
+  "source_manifest": {
+    "投机采样/experiments/block_sequential_baseline_v1/__init__.py": "a91028aa76701af2fa8782a52c10c476a77e22a7266840c475fee48ef17db405",
+    "投机采样/experiments/block_sequential_baseline_v1/audit_sources.py": "e87305dae227d16f9bb0903f627e2d35f67d228e551d9ee5854e3142050a15c2",
+    "投机采样/experiments/block_sequential_baseline_v1/block_baseline.py": "ffe0a49620c1514bd6b920187669b171322d482fc60146c3b2c9b74f2a3cb704",
+    "投机采样/experiments/block_sequential_baseline_v1/cpu_job.py": "1f9d9f0fe85d10c93b343f380b121249daca62b15f08cc25b15fe798267e6168",
+    "投机采样/experiments/block_sequential_baseline_v1/fixtures.py": "f47d851f0938ad15a2e03d7451d5464f1c82984dbe47ccb7961cd3204ab87706",
+    "投机采样/experiments/block_sequential_baseline_v1/metrics.py": "e982810de45b57677e870e82e8c985b29d09d92cb52ad8ffbc8a49ea684e729c",
+    "投机采样/experiments/block_sequential_baseline_v1/reference.py": "6ed69cf04c5e4b10ab3401ffba64f0c623f4a25e774e45e6dbfab5d89e1c868b",
+    "投机采样/experiments/block_sequential_baseline_v1/runtime.py": "a07774c6931eb460d4afe438e2b98b0942eefa1ef9dd78dd75965dad188995d0",
+    "投机采样/experiments/block_sequential_baseline_v1/test_contract.py": "3a3ee50435955d25ae54ead71e6e6648fb00b6f56ac4ed8f0bfb01da23aaa3d0",
+    "投机采样/experiments/block_sequential_baseline_v1/validate_block.py": "3ed69d9f9e79445d8d92a5668ef93c1dd3fb9b11631c864e1232f241a4acfcce"
+  }
+}

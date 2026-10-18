@@ -1,0 +1,749 @@
+{
+  "recorded_at": "2026-10-19T02:13:22+08:00",
+  "GPU_lifecycle_seconds": 0,
+  "CUDA_active_seconds": 0,
+  "recorded_CPU_worker_lifecycle_subtotal_seconds": 787.348402865231,
+  "total_CPU_lifecycle": "UNKNOWN_EXACT: first manual attempt and short interactive reads not fully timed",
+  "CPU_threads_max": 2,
+  "CPU_worker_wall_cap_seconds": 28800,
+  "current_new_storage_bytes": 1848464,
+  "new_storage_cap_bytes": 1073741824,
+  "unclosed_registered_CPU_attempts": [],
+  "attempts": [
+    {
+      "attempt": "cpu-benchmark-prepare-r1",
+      "started_at": "2026-10-19T01:10:48.712183+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.benchmark_block",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-benchmark-prepare-r1/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:10:52.404008+08:00",
+      "lifecycle_wall_seconds": 3.691923411563039,
+      "owned_process": {
+        "pid": 2389732,
+        "starttime_ticks": 1361255714,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-contract-final",
+      "started_at": "2026-10-19T01:25:20.636969+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.test_contract"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-contract-final/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:25:29.224578+08:00",
+      "lifecycle_wall_seconds": 8.58777785487473,
+      "owned_process": {
+        "pid": 2419083,
+        "starttime_ticks": 1361342907,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-contract-r1",
+      "terminal_status": "FAILED_EXIT_NONZERO",
+      "exit_code": 1,
+      "evidence": "exec session 22123",
+      "tests_run": 14,
+      "errors": 4,
+      "unit_test_wall_seconds": 3.683,
+      "reason": "WanAttention没有attn_mode属性；真正属性在WanTransformerBlock上",
+      "owned_pid_birth": "NOT_CAPTURED_NOT_BACKFILLED",
+      "cleanup": "进程自然退出；未发任何清理信号",
+      "GPU_count": 0
+    },
+    {
+      "attempt": "cpu-contract-r2",
+      "started_at": "2026-10-19T00:55:49.591809+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.test_contract"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-contract-r2/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T00:55:56.797612+08:00",
+      "lifecycle_wall_seconds": 7.205932021141052,
+      "owned_process": {
+        "pid": 2361867,
+        "starttime_ticks": 1361165802,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-contract-r3",
+      "started_at": "2026-10-19T00:59:39.532272+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.test_contract"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-contract-r3/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T00:59:46.750139+08:00",
+      "lifecycle_wall_seconds": 7.217988282442093,
+      "owned_process": {
+        "pid": 2367122,
+        "starttime_ticks": 1361188796,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-contract-r4",
+      "started_at": "2026-10-19T01:10:48.713374+08:00",
+      "terminal_status": "FAILED_EXIT_NONZERO",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.test_contract"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-contract-r4/REGISTRATION.json",
+      "exit_code": 1,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:10:54.780760+08:00",
+      "lifecycle_wall_seconds": 6.067476764321327,
+      "owned_process": {
+        "pid": 2389734,
+        "starttime_ticks": 1361255715,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-contract-r5",
+      "started_at": "2026-10-19T01:13:38.130122+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.test_contract"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-contract-r5/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:13:43.678952+08:00",
+      "lifecycle_wall_seconds": 5.54900436475873,
+      "owned_process": {
+        "pid": 2395896,
+        "starttime_ticks": 1361272656,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-gpu-driver-contract-final",
+      "started_at": "2026-10-19T01:53:17.481898+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.test_contract"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-gpu-driver-contract-final/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:53:23.422639+08:00",
+      "lifecycle_wall_seconds": 5.940865274518728,
+      "owned_process": {
+        "pid": 2460904,
+        "starttime_ticks": 1361510591,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-gpu-driver-contract-r1",
+      "started_at": "2026-10-19T01:51:01.952405+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.test_contract"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-gpu-driver-contract-r1/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:51:07.298643+08:00",
+      "lifecycle_wall_seconds": 5.346340548247099,
+      "owned_process": {
+        "pid": 2458004,
+        "starttime_ticks": 1361497038,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-publication-evidence-final",
+      "started_at": "2026-10-19T02:11:57.378544+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.prepare_reports",
+        "--root",
+        "/rjs/cxz/论文探索"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-publication-evidence-final/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T02:11:57.545202+08:00",
+      "lifecycle_wall_seconds": 0.16675256378948689,
+      "owned_process": {
+        "pid": 2491512,
+        "starttime_ticks": 1361622581,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-publish-verification",
+      "started_at": "2026-10-19T02:00:00.216324+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.test_contract"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-publish-verification/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T02:00:05.709766+08:00",
+      "lifecycle_wall_seconds": 5.493552876636386,
+      "owned_process": {
+        "pid": 2468837,
+        "starttime_ticks": 1361550865,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-real-block-final",
+      "started_at": "2026-10-19T01:25:20.636905+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.validate_block",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--checkpoint",
+        "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+        "--fixtures",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-real-block-final",
+        "--legal-write-controls"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-real-block-final/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:28:12.329201+08:00",
+      "lifecycle_wall_seconds": 171.69257101602852,
+      "owned_process": {
+        "pid": 2419084,
+        "starttime_ticks": 1361342907,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-real-block-r1",
+      "started_at": "2026-10-19T00:56:41.448421+08:00",
+      "terminal_status": "FAILED_EXIT_NONZERO",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.validate_block",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--checkpoint",
+        "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+        "--fixtures",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-real-block-r1",
+        "--legal-write-controls"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-real-block-r1/REGISTRATION.json",
+      "exit_code": 1,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T00:56:48.619355+08:00",
+      "lifecycle_wall_seconds": 7.1710598692297935,
+      "owned_process": {
+        "pid": 2363018,
+        "starttime_ticks": 1361170988,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-real-block-r2",
+      "started_at": "2026-10-19T01:00:05.546037+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.validate_block",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--checkpoint",
+        "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+        "--fixtures",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-real-block-r2",
+        "--legal-write-controls"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-real-block-r2/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:02:55.436304+08:00",
+      "lifecycle_wall_seconds": 169.8904868364334,
+      "owned_process": {
+        "pid": 2367546,
+        "starttime_ticks": 1361191398,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-real-block-r3",
+      "started_at": "2026-10-19T01:15:44.854950+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.validate_block",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--checkpoint",
+        "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+        "--fixtures",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-real-block-r3",
+        "--legal-write-controls"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-real-block-r3/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:18:32.273576+08:00",
+      "lifecycle_wall_seconds": 167.41888247989118,
+      "owned_process": {
+        "pid": 2400662,
+        "starttime_ticks": 1361285329,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-report-packet-final",
+      "started_at": "2026-10-19T01:58:18.885310+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.prepare_reports",
+        "--root",
+        "/rjs/cxz/论文探索"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-report-packet-final/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:58:19.052298+08:00",
+      "lifecycle_wall_seconds": 0.16707643680274487,
+      "owned_process": {
+        "pid": 2467483,
+        "starttime_ticks": 1361540732,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-report-packet-r1",
+      "started_at": "2026-10-19T01:37:08.232012+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.prepare_reports",
+        "--root",
+        "/rjs/cxz/论文探索"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-report-packet-r1/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:37:08.399363+08:00",
+      "lifecycle_wall_seconds": 0.1674335040152073,
+      "owned_process": {
+        "pid": 2441398,
+        "starttime_ticks": 1361413666,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-report-packet-release",
+      "started_at": "2026-10-19T02:01:28.395594+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.prepare_reports",
+        "--root",
+        "/rjs/cxz/论文探索"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-report-packet-release/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T02:01:28.564741+08:00",
+      "lifecycle_wall_seconds": 0.16922945901751518,
+      "owned_process": {
+        "pid": 2470139,
+        "starttime_ticks": 1361559683,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-result-noise-audit-r1",
+      "started_at": "2026-10-19T01:10:48.712330+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.audit_results",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-result-noise-audit-r1/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:10:48.880915+08:00",
+      "lifecycle_wall_seconds": 0.16866133734583855,
+      "owned_process": {
+        "pid": 2389733,
+        "starttime_ticks": 1361255714,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-source-audit-final",
+      "started_at": "2026-10-19T01:36:31.193685+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.audit_sources",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--local-root",
+        "/rjs/cxz/论文探索",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-source-audit-final/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:36:31.663844+08:00",
+      "lifecycle_wall_seconds": 0.47024410776793957,
+      "owned_process": {
+        "pid": 2440215,
+        "starttime_ticks": 1361409962,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-source-audit-r1",
+      "started_at": "2026-10-19T00:58:46.641959+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.audit_sources",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--local-root",
+        "/rjs/cxz/论文探索",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-source-audit-r1/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T00:58:47.109734+08:00",
+      "lifecycle_wall_seconds": 0.4678547866642475,
+      "owned_process": {
+        "pid": 2366241,
+        "starttime_ticks": 1361183507,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-stage-layout-final",
+      "started_at": "2026-10-19T01:31:32.970561+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.inspect_block",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--checkpoint",
+        "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+        "--fixtures",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-stage-layout-final"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-stage-layout-final/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:32:54.393266+08:00",
+      "lifecycle_wall_seconds": 81.42291539721191,
+      "owned_process": {
+        "pid": 2431301,
+        "starttime_ticks": 1361380140,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-stage-layout-r1",
+      "started_at": "2026-10-19T01:09:32.010328+08:00",
+      "terminal_status": "FAILED_EXIT_NONZERO",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.inspect_block",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--checkpoint",
+        "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+        "--fixtures",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-stage-layout-r1"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-stage-layout-r1/REGISTRATION.json",
+      "exit_code": 1,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:10:30.461361+08:00",
+      "lifecycle_wall_seconds": 58.45118044130504,
+      "owned_process": {
+        "pid": 2386094,
+        "starttime_ticks": 1361248044,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    },
+    {
+      "attempt": "cpu-stage-layout-r2",
+      "started_at": "2026-10-19T01:12:16.985760+08:00",
+      "terminal_status": "COMPLETE_EXIT0",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "experiments.block_sequential_baseline_v1.inspect_block",
+        "--repository",
+        "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+        "--checkpoint",
+        "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+        "--fixtures",
+        "/rjs/cxz/论文探索/投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-stage-layout-r2",
+        "--case",
+        "long-B14"
+      ],
+      "GPU_count": 0,
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "original_registration": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-baseline-20261019/attempts/cpu-stage-layout-r2/REGISTRATION.json",
+      "exit_code": 0,
+      "exit_method": "NATURAL",
+      "finished_at": "2026-10-19T01:13:31.408642+08:00",
+      "lifecycle_wall_seconds": 74.42319323122501,
+      "owned_process": {
+        "pid": 2392910,
+        "starttime_ticks": 1361264542,
+        "uid": 1003
+      },
+      "owned_process_exited": true
+    }
+  ],
+  "no_simulator": true,
+  "no_training": true,
+  "no_new_robot_episodes": true,
+  "old_M22_budget_unchanged": true,
+  "old_remote_M17_chain_untouched": true,
+  "weight_model_tensor_hash": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "live_owned_CPU_attempts": [],
+  "post_cleanup_verified": true,
+  "evidence_gaps_file": "EVIDENCE-GAPS.json"
+}

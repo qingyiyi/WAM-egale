@@ -1,3 +1,5 @@
+> **2026-10-19当前入口**：先读[CPU完整block基线与新导航](CURRENT-PROGRESS-20261019.md)。科学base固定ca5f37e；新B0仅CPU通过、GPU未运行。下文与RESULTS.json均为历史，不以旧暂停身份覆盖当前运行队列。
+
 > **当前整体状态（2026-10-18晚）**：先读[当前入口](CURRENT-PROGRESS-20261018.md)、[整体报告](../.pipeline/cycles/wam-research-20261016/STATUS-20261018.md)和[新版Prompt](PROJECT-REVIEW-PROMPT-20261018.md)。下文paused72及RESULTS.json保留历史身份，不能代替当前资源/覆盖。四项权限仍false。
 
 > **2026-10-18算子最新审查**：请先读[算子状态](OPERATOR-STATUS-20261018.md)与[算子Prompt](OPERATOR_REVIEW_PROMPT-20261018.md)。以下paused72及RESULTS.json保留历史身份。

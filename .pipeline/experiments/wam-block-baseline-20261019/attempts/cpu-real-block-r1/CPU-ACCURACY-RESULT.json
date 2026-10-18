@@ -1,0 +1,31 @@
+{
+  "schema": "wam-sequential-block-cpu/v1",
+  "review_commit": "ca5f37e0482c2e38e3738e3d8e71e3b185990a23",
+  "started_at": "2026-10-19T00:56:43.897355+08:00",
+  "status": "PARTIAL_CPU_REPLAY_FAILED",
+  "collection_complete": false,
+  "rows": [],
+  "scope": "six normalized real action block0 inputs on CPU; not original CUDA layout",
+  "gpu_validation": "NOT_RUN_NO_GPU_AUTHORIZATION",
+  "performance_status": "NOT_TIMED",
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "resource": {
+    "affinity": [
+      4,
+      5
+    ],
+    "torch_num_threads": 2,
+    "cuda_context": false
+  },
+  "failure": {
+    "type": "ValueError",
+    "message": "Only B2 permits registered legal-write controls",
+    "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/投机采样/experiments/block_sequential_baseline_v1/validate_block.py\", line 127, in main\n    row = run_one(block, sequential, fixture, update_cache)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/block_sequential_baseline_v1/validate_block.py\", line 31, in run_one\n    args, kwargs = fixture.arguments(update_cache=update_cache)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/experiments/block_sequential_baseline_v1/fixtures.py\", line 105, in arguments\n    raise ValueError(\"Only B2 permits registered legal-write controls\")\nValueError: Only B2 permits registered legal-write controls\n"
+  },
+  "finished_at": "2026-10-19T00:56:47.749479+08:00",
+  "lifecycle_wall_seconds": 3.8522121720016003,
+  "cuda_initialized": false
+}

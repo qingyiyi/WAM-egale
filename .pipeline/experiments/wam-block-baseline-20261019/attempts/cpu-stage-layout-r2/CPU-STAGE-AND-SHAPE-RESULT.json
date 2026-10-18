@@ -1,0 +1,1577 @@
+{
+  "status": "COMPLETE_CPU_STAGE_AND_STATIC_REPLAY_PASS_GPU_PENDING",
+  "review_commit": "ca5f37e0482c2e38e3738e3d8e71e3b185990a23",
+  "started_at": "2026-10-19T01:12:19.816488+08:00",
+  "rows": [
+    {
+      "case_id": "long-B14-action-layer0-first",
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "instrumentation_self_check": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "stages": {
+        "first_observed_boundary": null,
+        "comparisons": {
+          "self.norm_fp32": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.float32",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.modulated_input": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.q_projection": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.k_projection": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.v_projection": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.q_norm": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.k_norm": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.q_rope": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.sdpa": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.out_projection": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "self.residual": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.normalized_input": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.q_projection": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.k_projection": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 22020096,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.v_projection": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 22020096,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.q_norm": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.k_norm": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              512,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 22020096,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.sdpa": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.out_projection": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "cross.residual": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "ffn.norm_fp32": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.float32",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "ffn.modulated_input": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "ffn.expansion": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              14336
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 3211264,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "ffn.activation": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              14336
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 3211264,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "ffn.contraction": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "block.output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "reference_only": [],
+        "candidate_only": [
+          "self.k_rope"
+        ],
+        "claim": "first observed common boundary only; not proof of an unobserved internal root cause"
+      },
+      "state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "linear_module_geometry": [
+        {
+          "module": "attn1.to_q",
+          "input": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              3072,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 224,
+          "N": 3072,
+          "K": 3072,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              3072,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        },
+        {
+          "module": "attn1.to_k",
+          "input": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              3072,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 224,
+          "N": 3072,
+          "K": 3072,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              3072,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        },
+        {
+          "module": "attn1.to_v",
+          "input": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              3072,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 224,
+          "N": 3072,
+          "K": 3072,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              3072,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        },
+        {
+          "module": "attn1.to_out.0",
+          "input": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              3072,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 224,
+          "N": 3072,
+          "K": 3072,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              3072,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        },
+        {
+          "module": "attn2.to_q",
+          "input": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              3072,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 224,
+          "N": 3072,
+          "K": 3072,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              3072,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        },
+        {
+          "module": "attn2.to_k",
+          "input": {
+            "shape": [
+              14,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              3072,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 7168,
+          "N": 3072,
+          "K": 3072,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              3072,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        },
+        {
+          "module": "attn2.to_v",
+          "input": {
+            "shape": [
+              14,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              3072,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 7168,
+          "N": 3072,
+          "K": 3072,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              3072,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        },
+        {
+          "module": "attn2.to_out.0",
+          "input": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              3072,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 224,
+          "N": 3072,
+          "K": 3072,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              3072,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        },
+        {
+          "module": "ffn.net.0.proj",
+          "input": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              16,
+              14336
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              229376,
+              14336,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              14336,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 224,
+          "N": 14336,
+          "K": 3072,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              3072,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        },
+        {
+          "module": "ffn.net.2",
+          "input": {
+            "shape": [
+              14,
+              16,
+              14336
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              229376,
+              14336,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "output": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              49152,
+              3072,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "weight": {
+            "shape": [
+              3072,
+              14336
+            ],
+            "dtype": "torch.bfloat16",
+            "stride": [
+              14336,
+              1
+            ],
+            "storage_offset": 0,
+            "contiguous": true,
+            "device": "cpu"
+          },
+          "bias": true,
+          "logical_M": 224,
+          "N": 3072,
+          "K": 14336,
+          "flatten_view": {
+            "possible": true,
+            "stride": [
+              14336,
+              1
+            ],
+            "same_storage": true
+          },
+          "actual_CUDA_GEMM": "UNKNOWN_CPU_ONLY",
+          "weights_shared_across_rows": true
+        }
+      ],
+      "ATen_CPU_matrix_dispatch": [],
+      "cached_controls": {
+        "R0": {
+          "uncached_output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "static_replay_scope": "STATIC_IMMUTABLE_BLOCK_REPLAY_ONLY",
+          "original_M": 7168,
+          "CPU_preparation_resource_seconds": 8.676539976149797,
+          "GPU_performance": "NOT_RUN"
+        },
+        "B0": {
+          "uncached_output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "static_replay_scope": "STATIC_IMMUTABLE_BLOCK_REPLAY_ONLY",
+          "original_M": 7168,
+          "CPU_preparation_resource_seconds": 9.032925063744187,
+          "GPU_performance": "NOT_RUN"
+        }
+      },
+      "pass_all": true
+    }
+  ],
+  "scope": "CPU normalized fixture contract; no CUDA performance/quality conclusion",
+  "installed_dependencies": {
+    "GELU": {
+      "path": "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/diffusers/models/activations.py",
+      "source": "class GELU(nn.Module):\n    r\"\"\"\n    GELU activation function with tanh approximation support with `approximate=\"tanh\"`.\n\n    Parameters:\n        dim_in (`int`): The number of channels in the input.\n        dim_out (`int`): The number of channels in the output.\n        approximate (`str`, *optional*, defaults to `\"none\"`): If `\"tanh\"`, use tanh approximation.\n        bias (`bool`, defaults to True): Whether to use a bias in the linear layer.\n    \"\"\"\n\n    def __init__(self, dim_in: int, dim_out: int, approximate: str = \"none\", bias: bool = True):\n        super().__init__()\n        self.proj = nn.Linear(dim_in, dim_out, bias=bias)\n        self.approximate = approximate\n\n    def gelu(self, gate: torch.Tensor) -> torch.Tensor:\n        if gate.device.type == \"mps\" and is_torch_version(\"<\", \"2.0.0\"):\n            # fp16 gelu not supported on mps before torch 2.0\n            return F.gelu(gate.to(dtype=torch.float32), approximate=self.approximate).to(dtype=gate.dtype)\n        return F.gelu(gate, approximate=self.approximate)\n\n    def forward(self, hidden_states):\n        hidden_states = self.proj(hidden_states)\n        hidden_states = self.gelu(hidden_states)\n        return hidden_states\n"
+    },
+    "FeedForward": {
+      "path": "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/diffusers/models/attention.py",
+      "source": "class FeedForward(nn.Module):\n    r\"\"\"\n    A feed-forward layer.\n\n    Parameters:\n        dim (`int`): The number of channels in the input.\n        dim_out (`int`, *optional*): The number of channels in the output. If not given, defaults to `dim`.\n        mult (`int`, *optional*, defaults to 4): The multiplier to use for the hidden dimension.\n        dropout (`float`, *optional*, defaults to 0.0): The dropout probability to use.\n        activation_fn (`str`, *optional*, defaults to `\"geglu\"`): Activation function to be used in feed-forward.\n        final_dropout (`bool` *optional*, defaults to False): Apply a final dropout.\n        bias (`bool`, defaults to True): Whether to use a bias in the linear layer.\n    \"\"\"\n\n    def __init__(\n        self,\n        dim: int,\n        dim_out: Optional[int] = None,\n        mult: int = 4,\n        dropout: float = 0.0,\n        activation_fn: str = \"geglu\",\n        final_dropout: bool = False,\n        inner_dim=None,\n        bias: bool = True,\n    ):\n        super().__init__()\n        if inner_dim is None:\n            inner_dim = int(dim * mult)\n        dim_out = dim_out if dim_out is not None else dim\n\n        if activation_fn == \"gelu\":\n            act_fn = GELU(dim, inner_dim, bias=bias)\n        if activation_fn == \"gelu-approximate\":\n            act_fn = GELU(dim, inner_dim, approximate=\"tanh\", bias=bias)\n        elif activation_fn == \"geglu\":\n            act_fn = GEGLU(dim, inner_dim, bias=bias)\n        elif activation_fn == \"geglu-approximate\":\n            act_fn = ApproximateGELU(dim, inner_dim, bias=bias)\n        elif activation_fn == \"swiglu\":\n            act_fn = SwiGLU(dim, inner_dim, bias=bias)\n        elif activation_fn == \"linear-silu\":\n            act_fn = LinearActivation(dim, inner_dim, bias=bias, activation=\"silu\")\n\n        self.net = nn.ModuleList([])\n        # project in\n        self.net.append(act_fn)\n        # project dropout\n        self.net.append(nn.Dropout(dropout))\n        # project out\n        self.net.append(nn.Linear(inner_dim, dim_out, bias=bias))\n        # FF as used in Vision Transformer, MLP-Mixer, etc. have a final dropout\n        if final_dropout:\n            self.net.append(nn.Dropout(dropout))\n\n    def forward(self, hidden_states: torch.Tensor, *args, **kwargs) -> torch.Tensor:\n        if len(args) > 0 or kwargs.get(\"scale\", None) is not None:\n            deprecation_message = \"The `scale` argument is deprecated and will be ignored. Please remove it, as passing it will raise an error in the future. `scale` should directly be passed while calling the underlying pipeline component i.e., via `cross_attention_kwargs`.\"\n            deprecate(\"scale\", \"1.0.0\", deprecation_message)\n        for module in self.net:\n            hidden_states = module(hidden_states)\n        return hidden_states\n"
+    },
+    "FP32LayerNorm": {
+      "path": "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/diffusers/models/normalization.py",
+      "source": "class FP32LayerNorm(nn.LayerNorm):\n    def forward(self, inputs: torch.Tensor) -> torch.Tensor:\n        origin_dtype = inputs.dtype\n        return F.layer_norm(\n            inputs.float(),\n            self.normalized_shape,\n            self.weight.float() if self.weight is not None else None,\n            self.bias.float() if self.bias is not None else None,\n            self.eps,\n        ).to(origin_dtype)\n"
+    }
+  },
+  "backend_observations": {
+    "torch_version": "2.9.0+cu126",
+    "torch_git": "0fabc3ba44823f257e70ce397d989c8de5e362c1",
+    "cuda_build": "12.6",
+    "deterministic_algorithms": false,
+    "float32_matmul_precision": "highest",
+    "allow_tf32": false,
+    "allow_bf16_reduced_precision_reduction": true,
+    "allow_fp16_reduced_precision_reduction": true,
+    "flash_sdp_enabled": true,
+    "math_sdp_enabled": true,
+    "mem_efficient_sdp_enabled": true,
+    "autocast_cpu": false,
+    "autocast_cuda": false,
+    "observations_only_no_flags_changed": true
+  },
+  "finished_at": "2026-10-19T01:13:30.100113+08:00",
+  "lifecycle_wall_seconds": 70.2839067876339,
+  "cuda_initialized": false
+}

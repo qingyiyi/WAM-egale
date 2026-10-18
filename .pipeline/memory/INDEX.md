@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [完整block顺序基线优先并同步HW](global/requirements/decision-算子先建立完整block顺序基线并同步HW.md)（constraint，本轮算子）：固定ca5f37e，CPU准备R0/R1/B0，GPU另需授权；10/19 09:00晨报，实际执行/PENDING分列。
+
 - [GitHub只保留main进度镜像](global/requirements/decision-GitHub仅保留main作为当前进度公开镜像.md)（constraint，公开发布）：本地核对后的当前内容直接推main；旧commit保留，不再自动创建review/experiment发布分支。
 
 - [暂不迁移开发、模拟器由用户终止](global/requirements/decision-暂不迁移开发工作且本机模拟器由用户终止.md)（constraint，本次M23）：取消因CPU拥塞进一步迁移；只报PID，不代kill；已运行远端评测继续。

@@ -4,14 +4,15 @@
 
 ## 当前入口
 
-- [整体进度与下一步](.pipeline/cycles/wam-research-20261016/STATUS-20261018.md)
+- [整体进度与下一步](.pipeline/cycles/wam-research-20261016/STATUS-20261019.md)
 - [给网页版的完整Prompt](review/PROJECT-REVIEW-PROMPT-20261018.md)
-- [当前审查导航](review/CURRENT-PROGRESS-20261018.md)
+- [当前审查导航](review/CURRENT-PROGRESS-20261019.md)
+- [新完整block顺序基线：CPU结果、GPU待验](.pipeline/experiments/wam-block-baseline-20261019/RESULT.md)
 - [Long首轮500组三臂结果](.pipeline/experiments/long-morning-20261018/FINAL-SUMMARY.md)
 - [新算子数值对齐](.pipeline/experiments/operator-torch-alignment-20261018/RESULT.md)与[性能报告](.pipeline/experiments/operator-torch-alignment-20261018/performance/RESULT.md)
 - [HW短入口](.pipeline/PROGRESS.compact.md)
 
-Long首轮1500局已完整；Goal/Spatial继续、Object按既定队列等槽。TF64结构/API继续作为研究载体，权重/训练配方未取得原质量证书。新算子有限真实输入逐位对齐，完整block性能慢点仍保留。运行进度以报告标注时刻为准，仓库不是实时监控。
+Long首轮1500局已完整；Goal/Spatial继续、Object按既定队列等槽。TF64结构/API继续作为研究载体，权重/训练配方未取得原质量证书。旧SDPA替换有有限GPU数值证据；新显式顺序B0已通过六真实fixture/合法写CPU与22契约测试，GPU精度/性能未运行。旧完整block性能慢点与计时波动仍保留。运行进度以报告标注时刻为准，仓库不是实时监控。
 
 engineering_quality_screen=false；independent_test_complete=false；noninferiority_established=false；formal_performance_permission=false。main合并和算子数值通过不改变这些门。
 

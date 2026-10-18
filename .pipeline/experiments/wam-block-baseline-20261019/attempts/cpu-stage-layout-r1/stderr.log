@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/rjs/cxz/论文探索/投机采样/experiments/block_sequential_baseline_v1/inspect_block.py", line 144, in <module>
+    main()
+  File "/rjs/cxz/论文探索/投机采样/experiments/block_sequential_baseline_v1/inspect_block.py", line 87, in main
+    stages=first_observed_divergence(reference_tensors, candidate_tensors),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/投机采样/experiments/block_sequential_baseline_v1/debug_taps.py", line 70, in first_observed_divergence
+    rows = {name: compare(reference[name], candidate[name]) for name in common}
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/投机采样/experiments/block_sequential_baseline_v1/metrics.py", line 35, in compare
+    row["abs_p50_p90_max"] = torch.quantile(delta, torch.tensor([0.5, 0.9, 1.], dtype=torch.float64)).tolist() if delta.numel() else [0., 0., 0.]
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: quantile() input tensor is too large

@@ -1,0 +1,100 @@
+{
+  "schema": "wam-block-benchmark-plan/v1",
+  "review_commit": "ca5f37e0482c2e38e3738e3d8e71e3b185990a23",
+  "status": "PREPARED_NOT_RUN_NO_GPU_AUTHORIZATION",
+  "fixtures": [
+    {
+      "length": "short",
+      "batch": 14,
+      "layer": 0,
+      "kind": "action",
+      "role": "first"
+    },
+    {
+      "length": "middle",
+      "batch": 14,
+      "layer": 0,
+      "kind": "action",
+      "role": "first"
+    },
+    {
+      "length": "long",
+      "batch": 14,
+      "layer": 0,
+      "kind": "action",
+      "role": "first"
+    },
+    {
+      "length": "short",
+      "batch": 2,
+      "layer": 0,
+      "kind": "action",
+      "role": "first"
+    },
+    {
+      "length": "middle",
+      "batch": 2,
+      "layer": 0,
+      "kind": "action",
+      "role": "first"
+    },
+    {
+      "length": "long",
+      "batch": 2,
+      "layer": 0,
+      "kind": "action",
+      "role": "first"
+    }
+  ],
+  "engines": [
+    "R0_TORCH",
+    "R1_ALIGNED_ATTENTION",
+    "B0_TORCH",
+    "B0_ALIGNED_ATTENTION",
+    "R_STRONG_GUARDED_B14"
+  ],
+  "cache": [
+    "uncached",
+    "static_original_shape_context_projections"
+  ],
+  "order": [
+    [
+      "A",
+      "B",
+      "B",
+      "A"
+    ],
+    [
+      "B",
+      "A",
+      "A",
+      "B"
+    ],
+    [
+      "A",
+      "B",
+      "B",
+      "A"
+    ]
+  ],
+  "independent_sample": "one interleaved execution round; not each replay or tensor element",
+  "minimum_independent_rounds": 3,
+  "warmup_calls_per_arm": 5,
+  "A_A_noise_first": true,
+  "profile_in_timing": false,
+  "scopes": [
+    "prepared_eager_block_stream_elapsed",
+    "integration_with_state_restore_wall"
+  ],
+  "full_block_Graph": "NOT_IMPLEMENTED_UNMODIFIED_CACHE_BRANCHES_NOT_CAPTURABLE",
+  "strongest_combination": "requires new joint numeric/state gate; no certificate inheritance",
+  "AA_gate": {
+    "max_abs_paired_ratio_deviation": 0.025,
+    "engineering_only": true
+  },
+  "B0_screen": {
+    "core_paired_geomean_ratio_max": 1.05,
+    "reproducible_stratum_ratio_max": 1.1
+  },
+  "formal_robot_performance_permission": false
+}

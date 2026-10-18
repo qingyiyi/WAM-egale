@@ -1,0 +1,400 @@
+{
+  "commit": "ca5f37e0482c2e38e3738e3d8e71e3b185990a23",
+  "path": "投机采样/wam-p0-worktree/wan_va/modules/model.py",
+  "sha256": "f579ee02b490dbffcf78add6452742dbdbef43286600c0eeae3dede3f053cb5b",
+  "extraction": "unchanged AST nodes; explicit torch-only import environment",
+  "symbols": {
+    "custom_sdpa": {
+      "line": 37,
+      "end_line": 40
+    },
+    "WanAttention": {
+      "line": 289,
+      "end_line": 691
+    },
+    "WanTransformerBlock": {
+      "line": 694,
+      "end_line": 794
+    }
+  },
+  "layer": 0,
+  "checkpoint": "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+  "config": {
+    "_class_name": "WanTransformer3DModel",
+    "_diffusers_version": "0.35.0.dev0",
+    "added_kv_proj_dim": null,
+    "attention_head_dim": 128,
+    "cross_attn_norm": true,
+    "eps": 1e-06,
+    "ffn_dim": 14336,
+    "freq_dim": 256,
+    "image_dim": null,
+    "in_channels": 48,
+    "num_attention_heads": 24,
+    "num_layers": 30,
+    "out_channels": 48,
+    "patch_size": [
+      1,
+      2,
+      2
+    ],
+    "pos_embed_seq_len": null,
+    "qk_norm": "rms_norm_across_heads",
+    "rope_max_seq_len": 1024,
+    "text_dim": 4096,
+    "attn_mode": "flex"
+  },
+  "model_weight_hash": "NOT_COMPUTED_USER_BOUNDARY",
+  "parameters": {
+    "scale_shift_table": {
+      "checkpoint_key": "blocks.0.scale_shift_table",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        1,
+        6,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        18432,
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.to_q.weight": {
+      "checkpoint_key": "blocks.0.attn1.to_q.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.to_q.bias": {
+      "checkpoint_key": "blocks.0.attn1.to_q.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.to_k.weight": {
+      "checkpoint_key": "blocks.0.attn1.to_k.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.to_k.bias": {
+      "checkpoint_key": "blocks.0.attn1.to_k.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.to_v.weight": {
+      "checkpoint_key": "blocks.0.attn1.to_v.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.to_v.bias": {
+      "checkpoint_key": "blocks.0.attn1.to_v.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.to_out.0.weight": {
+      "checkpoint_key": "blocks.0.attn1.to_out.0.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.to_out.0.bias": {
+      "checkpoint_key": "blocks.0.attn1.to_out.0.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.norm_q.weight": {
+      "checkpoint_key": "blocks.0.attn1.norm_q.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn1.norm_k.weight": {
+      "checkpoint_key": "blocks.0.attn1.norm_k.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.to_q.weight": {
+      "checkpoint_key": "blocks.0.attn2.to_q.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.to_q.bias": {
+      "checkpoint_key": "blocks.0.attn2.to_q.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.to_k.weight": {
+      "checkpoint_key": "blocks.0.attn2.to_k.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.to_k.bias": {
+      "checkpoint_key": "blocks.0.attn2.to_k.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.to_v.weight": {
+      "checkpoint_key": "blocks.0.attn2.to_v.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.to_v.bias": {
+      "checkpoint_key": "blocks.0.attn2.to_v.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.to_out.0.weight": {
+      "checkpoint_key": "blocks.0.attn2.to_out.0.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.to_out.0.bias": {
+      "checkpoint_key": "blocks.0.attn2.to_out.0.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.norm_q.weight": {
+      "checkpoint_key": "blocks.0.attn2.norm_q.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "attn2.norm_k.weight": {
+      "checkpoint_key": "blocks.0.attn2.norm_k.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "norm2.weight": {
+      "checkpoint_key": "blocks.0.norm2.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "norm2.bias": {
+      "checkpoint_key": "blocks.0.norm2.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "ffn.net.0.proj.weight": {
+      "checkpoint_key": "blocks.0.ffn.net.0.proj.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        14336,
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        3072,
+        1
+      ],
+      "requires_grad": false
+    },
+    "ffn.net.0.proj.bias": {
+      "checkpoint_key": "blocks.0.ffn.net.0.proj.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        14336
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    },
+    "ffn.net.2.weight": {
+      "checkpoint_key": "blocks.0.ffn.net.2.weight",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072,
+        14336
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        14336,
+        1
+      ],
+      "requires_grad": false
+    },
+    "ffn.net.2.bias": {
+      "checkpoint_key": "blocks.0.ffn.net.2.bias",
+      "shard": "diffusion_pytorch_model-00001-of-00003.safetensors",
+      "shape": [
+        3072
+      ],
+      "dtype": "torch.bfloat16",
+      "stride": [
+        1
+      ],
+      "requires_grad": false
+    }
+  },
+  "parameter_count": 163656704,
+  "parameter_bytes": 327313408
+}

@@ -1,0 +1,1695 @@
+{
+  "schema": "wam-sequential-block-cpu/v1",
+  "review_commit": "ca5f37e0482c2e38e3738e3d8e71e3b185990a23",
+  "started_at": "2026-10-19T01:25:23.191700+08:00",
+  "status": "COMPLETE_CPU_LOGICAL_CONTRACT_PASS_GPU_PENDING",
+  "collection_complete": true,
+  "rows": [
+    {
+      "case_id": "short-B14-action-layer0-first",
+      "update_cache": 0,
+      "input_role": "REAL_CAPTURED_QUERY",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 272
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 272
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 272
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 279510,
+        "different_elements": 274321,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.5,
+        "rel_l2": 0.0056175145333168496,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.5
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "middle-B14-action-layer0-first",
+      "update_cache": 0,
+      "input_role": "REAL_CAPTURED_QUERY",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 1136
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 1136
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 1136
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 250974,
+        "different_elements": 246839,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.5,
+        "rel_l2": 0.003661288717378892,
+        "abs_p50_p90_max": [
+          0.0,
+          0.00048828125,
+          1.5
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "long-B14-action-layer0-first",
+      "update_cache": 0,
+      "input_role": "REAL_CAPTURED_QUERY",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 2144
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 2144
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 2144
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 276623,
+        "different_elements": 271713,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.5,
+        "rel_l2": 0.004307504653774643,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.5
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "short-B2-action-layer0-first",
+      "update_cache": 0,
+      "input_role": "REAL_CAPTURED_QUERY",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 272
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 272
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 272
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 32606,
+        "different_elements": 32184,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.0,
+        "rel_l2": 0.0024822364786632584,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.0
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "short-B2-action-layer0-first",
+      "update_cache": 1,
+      "input_role": "DERIVED_LEGAL_WRITE_STATE_CONTROL_NOT_ROBOT",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 288
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 288
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 288
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 32606,
+        "different_elements": 32184,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.0,
+        "rel_l2": 0.0024822364786632584,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.0
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "short-B2-action-layer0-first",
+      "update_cache": 2,
+      "input_role": "DERIVED_LEGAL_WRITE_STATE_CONTROL_NOT_ROBOT",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 288
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 288
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 288
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 32606,
+        "different_elements": 32184,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.0,
+        "rel_l2": 0.0024822364786632584,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.0
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "middle-B2-action-layer0-first",
+      "update_cache": 0,
+      "input_role": "REAL_CAPTURED_QUERY",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 1136
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 1136
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 1136
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 31343,
+        "different_elements": 30954,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.0,
+        "rel_l2": 0.003599266970093664,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.0
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "middle-B2-action-layer0-first",
+      "update_cache": 1,
+      "input_role": "DERIVED_LEGAL_WRITE_STATE_CONTROL_NOT_ROBOT",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 1152
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 1152
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 1152
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 31343,
+        "different_elements": 30954,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.0,
+        "rel_l2": 0.003599266970093664,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.0
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "middle-B2-action-layer0-first",
+      "update_cache": 2,
+      "input_role": "DERIVED_LEGAL_WRITE_STATE_CONTROL_NOT_ROBOT",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 1152
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 1152
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 1152
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 31343,
+        "different_elements": 30954,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.0,
+        "rel_l2": 0.003599266970093664,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.0
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "long-B2-action-layer0-first",
+      "update_cache": 0,
+      "input_role": "REAL_CAPTURED_QUERY",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 2144
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 2144
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": true,
+          "valid_tokens_after": 2144
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 31019,
+        "different_elements": 30635,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.0,
+        "rel_l2": 0.003405657581727738,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.0
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "long-B2-action-layer0-first",
+      "update_cache": 1,
+      "input_role": "DERIVED_LEGAL_WRITE_STATE_CONTROL_NOT_ROBOT",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 2160
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 2160
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 2160
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 31019,
+        "different_elements": 30635,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.0,
+        "rel_l2": 0.003405657581727738,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.0
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    },
+    {
+      "case_id": "long-B2-action-layer0-first",
+      "update_cache": 2,
+      "input_role": "DERIVED_LEGAL_WRITE_STATE_CONTROL_NOT_ROBOT",
+      "status": "CPU_LOGICAL_CONTRACT_PASS",
+      "reference_self_reproduction": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "complete_block": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "reference_post_state": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "contracts": {
+        "R0_A": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 2160
+        },
+        "R0_B": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 2160
+        },
+        "B0": {
+          "inputs_unchanged": true,
+          "rng_unchanged": true,
+          "history_kv_unchanged": true,
+          "history_metadata_unchanged": true,
+          "readonly_metadata_unchanged": null,
+          "valid_tokens_after": 2160
+        }
+      },
+      "weight_references_and_versions_unchanged": true,
+      "historical_gpu_gold_cpu_comparison": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": false,
+        "tolerance_pass": false,
+        "different_bytes": 31019,
+        "different_elements": 30635,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 1.0,
+        "rel_l2": 0.003405657581727738,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0009765625,
+          1.0
+        ],
+        "quantile_status": "EXACT_TORCH_TYPE7"
+      },
+      "historical_gpu_gold_interpretation": "diagnostic only; CPU/GPU are different numeric environments",
+      "first_divergence": null
+    }
+  ],
+  "scope": "six normalized real action block0 inputs on CPU; not original CUDA layout",
+  "gpu_validation": "NOT_RUN_NO_GPU_AUTHORIZATION",
+  "performance_status": "NOT_TIMED",
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "resource": {
+    "affinity": [
+      4,
+      5
+    ],
+    "torch_num_threads": 2,
+    "cuda_context": false
+  },
+  "finished_at": "2026-10-19T01:28:11.180198+08:00",
+  "lifecycle_wall_seconds": 167.9887893013656,
+  "cuda_initialized": false
+}
