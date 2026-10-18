@@ -1,5 +1,7 @@
 # 当前整体审查入口
 
+仓库现统一main作为本地进度镜像。先记录本次所读commit；旧阶段可按固定commit追溯。
+
 请固定当前文件所在commit，先读[整体进度](../.pipeline/cycles/wam-research-20261016/STATUS-20261018.md)，再使用[新版整体Prompt](PROJECT-REVIEW-PROMPT-20261018.md)。
 
 这次更新包含：Long首轮500组/1500局、连续TF与PF2的描述性质量/成本、远端Goal/Spatial/Object运行快照、算子有限逐位对齐与完整性能慢点、CPU模拟器退出以及用户取消进一步开发迁移。

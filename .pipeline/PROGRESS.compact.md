@@ -1,6 +1,6 @@
 # 当前研究恢复入口
 
-更新时间：2026-10-18T22:57:34+08:00 北京。先读[INDEX](INDEX.md)、[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再聚焦[当前Cycle四文](cycles/wam-research-20261016/PROGRESS.md)。原保护源、旧失败和原tile保留，当前不全量展开旧索引。
+更新时间：2026-10-18T23:33:52+08:00 北京。先读[INDEX](INDEX.md)、[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再聚焦[当前Cycle四文](cycles/wam-research-20261016/PROGRESS.md)。原保护源、旧失败和原tile保留，当前不全量展开旧索引。
 
 ## 最新交付：M23新机Codex安装
 
@@ -16,7 +16,7 @@
 
 M22数值阶段用GPU生命周期615.057秒、714模型forwards、两核CPU、新增源/编译/证据约40.71MiB≤512MiB；r1/r2均真实退出，CUDA active UNKNOWN。[最终结果](experiments/operator-torch-alignment-20261018/RESULT.md)：108attention/54block、六完整30层、三短中长完整policy配对全部逐位/有效状态通过，CPU27保存输出复核一致。没有机器人episode。用户新空闲窗口已完成性能：self/cross中位比1.00144/1.00193，block .98465（9/54慢>5%），六full30中位.99393、最大1.06654；CPU15同源检查全等。M22累计1094.781/1200秒，全部自有退出，约406.87MiB≤512MiB；空载NVML24–25%及少样本限制保留，不签普遍稳定对齐。见[新性能](experiments/operator-torch-alignment-20261018/performance/RESULT.md)，四false不改。
 
-[GitHub网页审查包](https://github.com/qingyiyi/WAM-egale/tree/54f0e34231983282ef17e1546f5ac521c1286700)已上传新旧数值/性能、完整HW和审查prompt；安装与凭据不进入公开包。旧冻结提交与失败保留。
+GitHub现仅[main进度镜像](https://github.com/qingyiyi/WAM-egale/tree/main)：本地当前代码/HW直接发布，旧commit/失败保留，不再自动建发布分支。最近整体审查快照ca5f37e已由main包含；[收拢记录](maintenance/github-main-20261018/RESULT.md)。
 
 ## M21完成的证据与负结果
 

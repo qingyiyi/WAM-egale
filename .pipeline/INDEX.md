@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-18T22:57:34+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-18T23:33:52+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -30,6 +30,10 @@
 - [旧100状态](../投机采样/results/runtime/p0-autodl-old100-archive-watch-v1-20261015-r2/status.json)和[旧接续状态](../投机采样/results/runtime/p0-autodl-research-quality-dispatch-v1-20261015-r2/status.json)仅为历史证据，不能用作当前运行或自动启动依据。
 - [Cycle 索引](cycles/INDEX.md)保存当前工作位置；[迁移与回退](maintenance/hw-upgrade-20261016/README.md)保存本轮维护证据。
 - 原 PROGRESS、state/rules、知识228条及六份索引均保留，用于历史追溯。旧 M01–M04 completed 不代表整个研究完成。不要从旧历史“下一步”自动启动任务。
+
+## GitHub发布
+
+仅维护[main当前进度镜像](https://github.com/qingyiyi/WAM-egale/tree/main)，直接发布本地核对后的代码/HW；旧固定commit仍保留。[收拢结果](maintenance/github-main-20261018/RESULT.md)。
 
 ## 工具版本
 

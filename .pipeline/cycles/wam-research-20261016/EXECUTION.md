@@ -1,5 +1,9 @@
 # 最近执行检查点
 
+## 2026-10-18 23:33：GitHub统一main
+
+已核旧tips均为ca5f37e祖先，main快进并推送后删除其余5个远端/本地分支；两旧worktree仅detach同commit保留全部文件。按用户要求改为main进度镜像；无force-push/新实验，科学记录与四false不变。[收据](../../maintenance/github-main-20261018/RESULT.md)。
+
 最新整体状态见[STATUS](STATUS-20261018.md)与远端派生快照；旧22:14数字仅为当时记录。
 
 最新用户取消进一步开发迁移，自行结束遗留模拟器。只读核对root的Aurora gem5/QEMU，主PID3658238，PGID3658199，共40gem5+2QEMU；未发送信号。临时身份见M23 LOCAL-SIMULATOR-IDENTIFICATION.json，不改原评测。

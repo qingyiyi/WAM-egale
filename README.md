@@ -1,19 +1,22 @@
-# WAM-egale：TF draft文献与源码交接
+# WAM-egale：当前研究进度镜像
 
-本分支为2026-10-17早最新暂停快照：`wam-tf-draft-handoff-20261017-paused72`。固定本文件所在的新commit阅读；原`b0dfac3a`历史快照与main保留。
+本仓库用于让网页版阅读服务器上的当前代码、HW和研究证据，统一维护 **main**。历史阶段保留在提交历史中，旧固定commit仍有效。进行一次审查时，请记录所读commit，避免审查过程中混用不同版本。
 
-**新30采集/固定三条件训练已完成；DEV仅72/96，TF-on出现三条T成功/TF失败风险反例，当前权重/配方未验收。GPU已暂停清理，四权限仍false，不自动恢复或启动TEST。**
+## 当前入口
 
-- [从这里开始](review/START_HERE.md)
-- [给网页版的完整调研Prompt](review/TF_DRAFT_RESEARCH_PROMPT.md)
-- [最新结果JSON](review/RESULTS.json)
-- [本轮结果与五报告](.pipeline/experiments/tf-effect-closure-20261016/RESULT.md)
-- [单文件阅读包](review/REVIEW_PACK.md)
+- [整体进度与下一步](.pipeline/cycles/wam-research-20261016/STATUS-20261018.md)
+- [给网页版的完整Prompt](review/PROJECT-REVIEW-PROMPT-20261018.md)
+- [当前审查导航](review/CURRENT-PROGRESS-20261018.md)
+- [Long首轮500组三臂结果](.pipeline/experiments/long-morning-20261018/FINAL-SUMMARY.md)
+- [新算子数值对齐](.pipeline/experiments/operator-torch-alignment-20261018/RESULT.md)与[性能报告](.pipeline/experiments/operator-torch-alignment-20261018/performance/RESULT.md)
 - [HW短入口](.pipeline/PROGRESS.compact.md)
-- [逐文件来源与变化](review/SOURCE_MANIFEST.json)、[遗漏原件](review/OMISSIONS-20261017.md)
 
-这是研究代码/文本证据快照，不是完整可运行环境或已通过质量的机器人策略。没有模型权重、原始轨迹/相机/KV、编译产物、profiler二进制或连接凭据。HW指Hypo-Workflow研究记录；旧计划、旧运行状态和公开源码本身不是执行授权。
+Long首轮1500局已完整；Goal/Spatial继续、Object按既定队列等槽。TF64结构/API继续作为研究载体，权重/训练配方未取得原质量证书。新算子有限真实输入逐位对齐，完整block性能慢点仍保留。运行进度以报告标注时刻为准，仓库不是实时监控。
 
-TF64结构/API暂冻作研究载体，MLP只作公平ablation。请先核原文/官方开源的条件输入、teacher目标与训练分布，再规划一次有限诊断；不要因为局部误差更小就声称闭环成功率保持。
+engineering_quality_screen=false；independent_test_complete=false；noninferiority_established=false；formal_performance_permission=false。main合并和算子数值通过不改变这些门。
 
-第三方许可保留，见NOTICE及原LICENSE。
+## 历史与公开范围
+
+[旧START_HERE](review/START_HERE.md)、[RESULTS.json](review/RESULTS.json)和paused72等保留历史身份，不能当成当前覆盖或资源状态。旧FAILED、负结果、阈值、retention及科学基线commit均未改写。
+
+不上传模型权重、原始相机/完整KV/大tensor、编译产物或凭据。公开源码和报告不等于完整可运行环境或新增执行授权。第三方来源与许可见NOTICE、LICENSE及各实现的来源文件。
