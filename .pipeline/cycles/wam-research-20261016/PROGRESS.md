@@ -3,10 +3,10 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-18T20:43:58+08:00'
+updated: '2026-10-18T21:24:15+08:00'
 current: M22
-next: isolate_compiler_math_difference_then_validate_full30_and_publish_operator_review
-execution_status: operator_evidence_complete_no_owned_local_GPU_jobs_remote_M17_pending
+next: wait_uncontended_window_then_retest_new_binary_kernel_block_full30_policy_performance
+execution_status: v2_numeric_complete_owned_GPU_exited_formal_timing_waiting_foreign_context
 ---
 # 当前研究进度
 
@@ -20,7 +20,7 @@ execution_status: operator_evidence_complete_no_owned_local_GPU_jobs_remote_M17_
 | `M19` | COMPLETE_LIMITED_SCOPE | [原数据复核](../../experiments/operator-parity-evidence-20261018/REPORT.md)：576检查、60性能门、420轮，原有限证书不外推 |
 | `M20` | COMPLETE_RESOURCE_RELOCATION_QUEUED | Object16/30完整后CLEAN，controller/server/旧handoff退出；余14/ON/final500迁新机，本机不自动接续质量任务 |
 | `M21` | COMPLETE_WITH_STANDALONE_FULL30_FAILURE | [当前结果](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)：54性能点、414数值比较、24完整model执行、27保存输入I/O比较；全部自有进程已退出 |
-| `M22` | RUNNING_SOURCE_DIAGNOSIS | 当前主任务；独立版本定位编译/数值差异、整模型替换验证、HW/GitHub和网页prompt；旧M21负结果保留 |
+| `M22` | NUMERIC_COMPLETE_PERFORMANCE_PENDING | 去fast_math后108attention/54block/六full30/三完整policy逐位/状态通过；当前lhw context阻塞正式复测；[结果](../../experiments/operator-torch-alignment-20261018/RESULT.md) |
 
 ## 本轮算子实测
 

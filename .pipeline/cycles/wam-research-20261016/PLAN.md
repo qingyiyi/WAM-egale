@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-18T20:43:58+08:00'
+updated: '2026-10-18T21:24:15+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -18,7 +18,7 @@ Long首轮已交；四套既定评测继续。最新用户要求本机优先算�
 | `M19` | 原算子既有数据CPU复核 | COMPLETE_LIMITED_SCOPE；576检查/60性能门/420轮、180源/二进制逐字相同；[报告](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
 | `M20` | 本机评测迁新机，留本机供算子 | COMPLETE_RESOURCE_RELOCATION_QUEUED；Object16/30自然暂停CLEAN，余14/ON/全500已迁队列；匹配Target200迁移成本另列 |
 | `M21` | 原始/B14三档KV性能与完整I/O | COMPLETE_WITH_STANDALONE_FULL30_FAILURE；54性能点、414数值比较、6×4完整query、9保存输入；[统一报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md) |
-| `M22` | 独立Torch对齐修正与GitHub审查包 | RUNNING_SOURCE_DIAGNOSIS；新版本不改旧tile，先复现编译/数值差异，再完整30层验证；[登记](../../experiments/operator-torch-alignment-20261018/PLAN.md) |
+| `M22` | 独立Torch对齐修正与GitHub审查包 | NUMERIC_COMPLETE_PERFORMANCE_PENDING；108attention/54block/六full30/三完整policy配对逐位/状态通过；无新正式性能，[结果](../../experiments/operator-torch-alignment-20261018/RESULT.md) |
 
 ## 可见计划
 
@@ -28,7 +28,8 @@ Long首轮已交；四套既定评测继续。最新用户要求本机优先算�
 - [x] 遵用户不足20分钟窗口，独立性能短协议于20:14结束；其后仅共享精度，未混计时间。
 - [x] 全54输出/有效KV、完整30层六query及九保存输入验证；失败保留，自有全部退出。
 - [ ] M17原队列继续，结果齐后讨论；不恢复本机400局或新增Long训练。
-- [ ] M22定位standalone累计偏差，独立修正并验证真实整模型；同步HW/GitHub与网页prompt；正式性能等无争用窗口。
+- [x] M22独立去fast_math修正，真实完整模型/三完整policy配对精度与状态核验；HW/GitHub和网页prompt已交。
+- [ ] M22新二进制性能对照：待无争用窗口，旧时间不可借用；当前lhw GPU任务未结束，不启动正式计时。
 - [ ] T25/T17对T50完整DEV另登记；后两轮seed/预算未冻结，不自动运行。
 
 ## 预算与边界

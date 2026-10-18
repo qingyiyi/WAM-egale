@@ -63,7 +63,7 @@ def run(s,source):
     def check():
         if time.monotonic()-START>PLAN['worker_active_cap_seconds'] or (JOB/'STOP_REQUESTED').exists():
             raise TimeoutError('bounded operator matrix stop')
-        assert result['target_forwards']<=512
+        assert result['target_forwards']<=1024
 
     def dev(x):
         if isinstance(x,torch.Tensor):return x.to(s.device)
@@ -201,7 +201,6 @@ def run(s,source):
                 result['full_query_oracles'].append(dict(length=label,query=query['index'],**parity))
                 assert parity['finite'] and parity['byte_equal'],'frozen B14 query oracle not reproduced; no performance claim'
             control['active']=None
-        source.save_async.__globals__['executor'].shutdown(wait=True)
         for h in handles:h.remove()
         for (layer,part),original in original_ops.items():
             getattr(model.blocks[layer],'attn1' if part=='self' else 'attn2').attn_op=original
@@ -333,6 +332,78 @@ def run(s,source):
         finally:
             for lid,b in enumerate(model.blocks):
                 b.attn1.forward=all_methods[lid];b.attn1.attn_op,b.attn2.attn_op=all_ops[lid]
+        # Full canonical policy replay, both engines from identical frozen state/RNG.
+        # No robot/simulator episode; no performance timer used.
+        def host(x):
+            if isinstance(x,torch.Tensor):return x.detach().cpu().clone()
+            if isinstance(x,np.ndarray):return x.copy()
+            if isinstance(x,dict):return {k:host(v) for k,v in x.items()}
+            if isinstance(x,(list,tuple)):return type(x)(host(v) for v in x)
+            if x is None or isinstance(x,(str,int,float,bool)):return x
+            raise TypeError('unsupported actual replay state: '+str(type(x)))
+        def eqtree(a,b):
+            if isinstance(a,torch.Tensor):return isinstance(b,torch.Tensor) and bytes_equal(a,b)
+            if isinstance(a,np.ndarray):return isinstance(b,np.ndarray) and a.shape==b.shape and a.dtype==b.dtype and a.tobytes()==b.tobytes()
+            if isinstance(a,dict):return isinstance(b,dict) and a.keys()==b.keys() and all(eqtree(v,b[k]) for k,v in a.items())
+            if isinstance(a,(tuple,list)):return type(a)==type(b) and len(a)==len(b) and all(eqtree(x,y) for x,y in zip(a,b))
+            return type(a)==type(b) and a==b
+        def full_state():
+            return dict(fields={k:host(getattr(s,k)) for k in ns['FIELDS']},
+                caches=[host(capture_cache(b.attn1.attn_caches['pos'])) for b in model.blocks],
+                streaming=host(s.streaming_vae.feat_cache),scheduler=host(vars(s.scheduler)),
+                action_scheduler=host(vars(s.action_scheduler)),rng=host(rng_state()))
+        result['complete_policy_replays']=[]
+        def count_full(module,args):result['target_forwards']+=1;check()
+        counter=model.register_forward_pre_hook(count_full)
+        try:
+            for label in ('short','middle','long'):
+                if label=='middle':
+                    restore_state(short['state']);artifacts={(x['frame'],x['kind']):x for x in p['middle_prefix_artifacts']}
+                    s.exp_save_root=str(JOB/'policy-middle-prefix');Path(s.exp_save_root).mkdir()
+                    for frame in (4,8,12,16,20,24):
+                        saved={kind:torch.load(artifacts[frame,kind]['path'],map_location='cpu',weights_only=False)
+                            for kind in ('latents','actions','obs_data')}
+                        s.infer(dict(p0_counterfactual_prime_video_cache=True,frame_st_id=frame,video_terminal_state=saved['latents']))
+                        s.infer(dict(compute_kv_cache=True,obs=saved['obs_data'],state=s.postprocess_action(saved['actions'])))
+                    ns['seed'](20260922,True)
+                    context=copy.deepcopy(short['request']['p0_trace_context']);context['fixed_fixture']='T-init3-chunk7'
+                    request=dict(obs=saved['obs_data'][-1],p0_trace_context=context)
+                    # Snapshot all known mutable state without hashing or closing executor.
+                    state=full_state()
+                    snapshot=dict(schema='fixed-original-cache/v1',fields=state['fields'],
+                        caches=[dict(pool_shape=c['shape'],pool_dtype=str(c['k'].dtype),slots=c['slots'],
+                            k_valid=c['k'],v_valid=c['v'],id=c['id'],mask=c['mask'],is_pred=c['is_pred']) for c in state['caches']],
+                        streaming=state['streaming'],scheduler=state['scheduler'],action_scheduler=state['action_scheduler'],
+                        rng=dict(zip(('python','numpy','cpu','cuda'),state['rng'])))
+                else:
+                    payload=short if label=='short' else torch.load(p['long']['path'],map_location='cpu',weights_only=False,mmap=True)
+                    snapshot=payload['state'];request=copy.deepcopy(payload['request'])
+                refs={};outputs={};counts={}
+                for engine in ('torch','aligned'):
+                    check();restore_state(snapshot);before=full_state();request_ref=host(request)
+                    s.exp_save_root=str(JOB/('policy-'+label+'-'+engine));Path(s.exp_save_root).mkdir()
+                    n0=result['target_forwards'];bindings=install_aligned(model) if engine=='aligned' else None
+                    try:out=s.infer(request)
+                    finally:
+                        if bindings is not None:restore_aligned(bindings)
+                    outputs[engine]=host(out);refs[engine]=full_state();counts[engine]=result['target_forwards']-n0
+                    if engine=='torch':initial=before
+                    else:assert eqtree(initial,before),'policy initial-state/RNG pairing failed'
+                    assert eqtree(request_ref,host(request)),'canonical infer mutated request'
+                    torch.save(outputs[engine],JOB/(label+'-'+engine+'-full-policy-return.pt'))
+                fields={k:eqtree(refs['torch'][k],refs['aligned'][k]) for k in refs['torch']}
+                row=dict(length=label,output_byte_equal=eqtree(outputs['torch'],outputs['aligned']),
+                    post_state_fields_equal=fields,target_forward_counts=counts,
+                    initial_state_RNG_exact=True,request_unchanged=True,
+                    scope='one complete canonical video20/action50 frozen policy call, no robot episode, no performance')
+                row['strict_pass']=row['output_byte_equal'] and all(fields.values()) and counts['torch']==counts['aligned']
+                result['complete_policy_replays'].append(row);write('RESULT.json',result)
+                print('FULL_POLICY_REPLAY',label,row['strict_pass'],flush=True)
+                del refs,outputs
+                gc.collect();torch.cuda.empty_cache()
+        finally:
+            counter.remove()
+            source.save_async.__globals__['executor'].shutdown(wait=True)
         result.update(status='COMPLETE_54_POINT_AND_FULL30_QUERY_VALIDATION',
             elapsed_seconds=time.monotonic()-START,all_valid_KV_and_metadata_preserved=True,
             peak_allocated_bytes=torch.cuda.max_memory_allocated())

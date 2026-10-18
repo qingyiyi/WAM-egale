@@ -1,0 +1,68 @@
+{
+  "status": "FINITE_REAL_INPUT_NUMERIC_ALIGNMENT_PASS_PERFORMANCE_NOT_RETESTED",
+  "change": "remove --use_fast_math; fixed source/vendor unchanged except namespace",
+  "attention": {
+    "passed": 108,
+    "total": 108,
+    "criterion": "byte_equal"
+  },
+  "block": {
+    "passed": 54,
+    "total": 54,
+    "criterion": "byte_equal"
+  },
+  "full30_B14": {
+    "passed": 6,
+    "total": 6,
+    "criterion": "raw/CFG/active-CFG/input/all30validKV/RNG strict pass"
+  },
+  "complete_canonical_policy_pairs": {
+    "passed": 3,
+    "total": 3,
+    "lengths": [
+      "short",
+      "middle",
+      "long"
+    ],
+    "actual_model_forwards_per_arm": [
+      {
+        "torch": 72,
+        "aligned": 72
+      },
+      {
+        "torch": 72,
+        "aligned": 72
+      },
+      {
+        "torch": 72,
+        "aligned": 72
+      }
+    ],
+    "criterion": "same initial full declared state/RNG; byte-identical returned actions and post-fields/caches/VAE/schedulers/RNG",
+    "scope": "frozen canonical video20/action50 calls; not robot episodes"
+  },
+  "CPU_saved_output_audit": {
+    "passed": 27,
+    "total": 27,
+    "CUDA_initialized": false
+  },
+  "model_target_forwards": 714,
+  "GPU_lifecycle_seconds": 615.0571955312043,
+  "GPU_lifecycle_cap_seconds": 1200,
+  "unused_lifecycle_seconds": 584.9428044687957,
+  "CUDA_active_seconds": "UNKNOWN",
+  "new_evidence_and_build_bytes": 42689675,
+  "storage_cap_bytes": 536870912,
+  "old_sources_modified": false,
+  "production_default_changed": false,
+  "independent_native_extension": true,
+  "Torch_SDPA_fallback": false,
+  "original_FAILED_preserved": true,
+  "formal_performance_status": "NOT_RUN_V2_FOREIGN_GPU_PROCESS; old M21 timing belongs to old binary",
+  "whole_model_all_inputs_or_closed_loop_equivalence": "NOT_ESTABLISHED",
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "resource_warning": "source main emitted NCCL destroy_process_group warning; actual process returncode0 and owned lifetimes exited; no absence assumed from warning alone"
+}

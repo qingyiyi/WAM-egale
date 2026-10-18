@@ -56,7 +56,7 @@ def main():
     assert job.parent==RUNTIME and not (job/'LAUNCH-STARTED.json').exists()
     plan=json.loads((job/'REGISTRATION.json').read_text());started=time.monotonic()
     gpu_deadline=started+plan['GPU_lifecycle_cap_seconds']
-    active_cap=min(600,int(plan['GPU_lifecycle_cap_seconds'])-90)
+    active_cap=min(780,int(plan['GPU_lifecycle_cap_seconds'])-90)
     write(job/'LAUNCH-STARTED.json',dict(at=datetime.now(timezone.utc).isoformat(),**pin(os.getpid())))
     locks=[];active=None;records=[];status='PARTIAL';error=None
     def stop(*_):raise InterruptedError('owned operator launcher stopped')

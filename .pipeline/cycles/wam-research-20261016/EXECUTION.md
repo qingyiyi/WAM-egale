@@ -1,5 +1,21 @@
 # 最近执行检查点
 
+## 2026-10-18T21:24:15+08:00：M22数值对齐完成，性能仍待新窗口
+
+独立去--use_fast_math的v2：108/108 attention、54/54真实block、六full30 B14 raw/CFG/全部有效KV/RNG、三短中长完整canonical policy配对返回/声明状态全部逐位一致。三组各两臂每臂72实际forward（video/action同canonical工作），总714 full target forwards。CPU独立重读24完整query输出与三对policy返回共27检查全一致，无CUDA初始化。原tile/旧失败不变，有限fixture通过不改四false。
+
+r1/r2真实终态return0并按PID出生时间核实退出，累计615.057/1200秒，新增源/编译/证据约40.71MiB≤512MiB，CUDA active未知。source main NCCL未显式destroy warning保留，已核实实际context释放。收尾lhw PID2015053约1090MiB，故新性能不启动，旧二进制时间不借用；准备worker/复测方案，等待自然独占窗口。
+
+[结果](../../experiments/operator-torch-alignment-20261018/RESULT.md)、[机器表](../../experiments/operator-torch-alignment-20261018/RESULT.json)、[自有清理](../../experiments/operator-torch-alignment-20261018/OWNED-CLEANUP.json)。
+
+
+## 2026-10-18晚：M22新授权与独立修正
+
+用户授权实际对齐Torch并同步GitHub。旧tile原件不改；独立v2只移除--use_fast_math，179个vendor文件及去命名空间后的CUDA源逐字一致。CPU无GPU可见编译完成（nvcc12.4/wheel12.6差异保留）。九真实保存输入新v2全部逐位/输入布局/RNG通过，旧版本同输入仅3/9逐位；生命周期22.950秒。完整54点/六30层query/三完整policy配对重放作业已独立登记并启动，尚无终态。M22新累计GPU帽1200秒，不借M21余额。
+
+已将M21全部正负结果、HW与新源码/方案推送review/operator-torch-parity-20261018分支，固定20562e3ad46896409579fbb0ffeb8ad049c8b54a；网页版prompt已交用户。该公开提交在新GPU验证前冻结，不能声称已包含后续结果。
+
+
 ## 2026-10-18T20:43:58+08:00：算子性能与完整I/O证据齐，真实负结果保留
 
 新性能r6于20:14:26真实结束，54固定点/684单元/18360Event，5分2秒。原r5长重复按用户不足20分钟窗口收尾31点PARTIAL；新单进程3轮不冒充原双进程完成。九输入370763331B已存。实际加载80.317秒、重建/保存106.117秒、性能/资源核查78.943秒。

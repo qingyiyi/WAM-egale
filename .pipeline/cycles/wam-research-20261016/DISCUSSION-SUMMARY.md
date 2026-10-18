@@ -6,7 +6,9 @@
 
 等待他人GPU任务自然结束，持续低频监控、空闲即接续，既有授权不重复询问。用户确认窗口后开始；剩余独占不足20分钟时又明确性能优先、输入输出后验，因此独立r6短协议按时结束，原r5保持PARTIAL。随后用户明确授权共享GPU继续精度及完整I/O并统一汇报；这一授权不追溯延长旧独占，不把共享用时混入计时。上述决定已通过Maintain限定当前Cycle/M21保存。
 
-本轮结果明确分范围：单attention/block容差通过≠逐位；standalone完整30层六query全非逐位、三例容差失败；shared/guarded有限六query逐位及输入/KV/RNG通过≠任意输入/闭环证书。性能block波动与NVML计数异常保留，不宣称稳定对齐。原tile代码/HW与撤回融合不动。
+M22后续受控修正：只移除fast_math，六完整query和三完整policy冻结配对均逐位/状态通过，108attention与54block也逐位；旧M21失败仍是旧二进制真实结果。新二进制性能未复测，当前他人context不能当正式独占；没有机器人成功率新证书。
+
+本轮M21结果明确分范围：单attention/block容差通过≠逐位；standalone完整30层六query全非逐位、三例容差失败；shared/guarded有限六query逐位及输入/KV/RNG通过≠任意输入/闭环证书。性能block波动与NVML计数异常保留，不宣称稳定对齐。原tile代码/HW与撤回融合不动。
 
 四套评测保持原配方，结果齐后再讨论调整；不因提问自动新训练Long、120/TEST或扩大环境。TF64/TF_ON、normalizer、tau、K2B2/bonus/prefix_then_cost不变。PF2为SST完整policy chunk，canonical T50更新/51 action调用含终端，不是bonus或状态恢复。全部评测默认512-token BF16优化reset，冷启动另列。
 

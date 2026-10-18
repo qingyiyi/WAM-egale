@@ -9,7 +9,7 @@
 ## 先读证据与代码
 
 1. `.pipeline/experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md`、`SUMMARY-COMBINED.json`、`PRECISION-GROUPED.csv`、`FULL30-IO.csv`、`PERFORMANCE-ONLY.csv`、`PERFORMANCE-COVERAGE-CAUTIONS.json`。
-2. `.pipeline/experiments/operator-torch-alignment-20261018/PLAN.md`、`SOURCE-COMPARISON.json`、`BUILD-ONLY-CHANGE.patch`。本提交仅登记新修正，不保证已有新验证结果；如有后续RESULT请明确其真实状态。
+2. `.pipeline/experiments/operator-torch-alignment-20261018/PLAN.md`、`SOURCE-COMPARISON.json`、`BUILD-ONLY-CHANGE.patch`。并阅读`RESULT.md`、`RESULT.json`、`ATTENTION.csv`、`BLOCK.csv`、`FULL30.csv`、`POLICY.csv`、`CPU-SAVED-OUTPUT-AUDIT.json`，以本提交真实终态为准。
 3. `.pipeline/cycles/wam-research-20261016/PROGRESS.md`与`DISCUSSION-SUMMARY.md`。`review/RESULTS.json`保留旧paused72科学身份，不是本次最新算子结果。
 4. 旧独立实现：`wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/operator_lab/wam_transformer_tile/{setup.py,wam_transformer_tile/__init__.py,csrc/standalone_flash_sdpa.cu,csrc/vendor/flash_attn/softmax.h,csrc/vendor/flash_attn/flash_fwd_launch_template.h,csrc/vendor/flash_attn/UPSTREAM.json}`。
 5. 新独立版本：`投机采样/experiments/operator_torch_alignment_v2/{setup.py,csrc/standalone_flash_sdpa.cu,integration.py,saved_input_validate.py,worker_full.py}`。
@@ -32,14 +32,14 @@ BF16、H24、head_dim128。原始B2 video Q128/K272、1136、2144；原始B2 act
 
 shared-prefix/guarded仅替self、cross仍Torch，在6个完整B14 query上raw/CFG输出、输入字节/全部有效KV/RNG逐位通过。G1只有kernel证据，不能借用其完整模型证书。这些有限正结果不证明任意输入，也不覆盖接受路径/scheduler/完整chunk/机器人任务。
 
-当前正在验证的**单因素假设**：旧standalone含`--use_fast_math`，通过的shared编译没有它；新v2仅移除该数学编译选项，其他变化是扩展名/命名空间隔离。源码和vendor逐字比较未改变内核数学。此提交中若未出现新RESULT，它仍是HYPOTHESIS，不能替我们宣布根因或修复完成。
+本次已执行的**单因素修正**：旧standalone含`--use_fast_math`，通过的shared编译没有它；新v2仅移除该数学编译选项，其他变化是扩展名/命名空间隔离。源码和vendor逐字比较未改变内核数学。新结果：108attention/54block、六完整30层及三短中长完整canonical policy配对均逐位/有效状态通过；CPU27保存输出检查相符。旧同九输入仅3/9逐位，新9/9。支持该编译因素在这些真实输入上的因果影响；尚未定位FTZ/除法等具体微观指令，不能推成任意输入或闭环证书。**新二进制性能仍未复测**，不能借旧时间。
 
 旧新性能54点/684单元，单进程3轮；standalone self/cross Graph-core相对Torch比例中位数约.9812/.9817，但完整block14/54较慢，比例范围.2465–3.0713，有未定位波动。NVML空context非零计数未解，现有延迟属于探索性；不能把最好点或单attention均值作为完整模型稳定对齐。
 
 ## 请给出的具体答案
 
 A. 沿实际调用链解释：Torch参考究竟进入什么后端/dispatch/split/tile，独立实现哪里相同、哪里不同。逐条引用仓库路径和行号，区分OBSERVED/HYPOTHESIS/UNKNOWN。
-B. 审查移除fast_math是否为合理单因素实验；参考固定Torch源码与官方CUDA文档，检查FTZ、除法/平方根、FMA/UNFUSE_FMA、scale、softmax、split/combine及编译版本。不要仅凭选项名断言根因，也不要把未查到的全局Torch编译选项当成不存在。
+B. 审查移除fast_math的受控证据是否充分、剩余边界是什么；参考固定Torch源码与官方CUDA文档，检查FTZ、除法/平方根、FMA/UNFUSE_FMA、scale、softmax、split/combine及编译版本。不要仅凭选项名断言根因，也不要把未查到的全局Torch编译选项当成不存在。
 C. 若局部一致而完整30层仍不一致，给出有优先级的最小定位流程：self-only/cross-only、逐层首次分叉、输入布局/stride、权重与GEMM、CFG后处理、有效KV/RNG。每项给观察信号、反证、预算与停止条件；不要建议无边界重编Torch或大规模架构搜索。
 D. 给出可执行的替换验收矩阵：B2 video/action与B14 action，短/中/长；kernel→完整block→30层→完整policy chunk。明确逐位、数值容差、任务等价三种标准及各自允许主张。为什么BF16小误差可能在后段放大，需要哪些实测才能证明？
 E. 审查性能计时，区分prepared kernel/Graph-core、含layout/pack的block、30层、policy/E2E；建议公平的同输入交错顺序、进程重复和误差条。给出如何在无争用窗口辨别~1–3%差异与异常长尾，而不排除慢点。
