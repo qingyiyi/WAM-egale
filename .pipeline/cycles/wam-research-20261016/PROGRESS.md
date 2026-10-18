@@ -10,7 +10,7 @@ execution_status: v2_numeric_complete_owned_GPU_exited_formal_timing_waiting_for
 ---
 # 当前研究进度
 
-当前本机算子证据已齐并释放全部自有GPU作业；standalone完整30层存在真实数值失败，不把采集完成写成全面验收通过。原始与verifier三档性能/精度/输入输出见[统一报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)。
+当前主任务M22已完成独立算子的有限严格数值对齐：去除fast_math后108attention/54block、六完整30层和三短中长完整policy配对均逐位/有效状态通过。[新结果](../../experiments/operator-torch-alignment-20261018/RESULT.md)。新二进制性能尚待无争用复测，自有GPU已退出。旧M21完整30层失败属于旧二进制，原样保留在[旧统一报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)，不把新通过追溯改写旧失败。
 
 | ID | 状态 | 当前证据与next |
 |---|---|---|
@@ -22,7 +22,7 @@ execution_status: v2_numeric_complete_owned_GPU_exited_formal_timing_waiting_for
 | `M21` | COMPLETE_WITH_STANDALONE_FULL30_FAILURE | [当前结果](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)：54性能点、414数值比较、24完整model执行、27保存输入I/O比较；全部自有进程已退出 |
 | `M22` | NUMERIC_COMPLETE_PERFORMANCE_PENDING | 去fast_math后108attention/54block/六full30/三完整policy逐位/状态通过；当前lhw context阻塞正式复测；[结果](../../experiments/operator-torch-alignment-20261018/RESULT.md) |
 
-## 本轮算子实测
+## M21旧二进制实测（保留负结果）
 
 - B2 video/action、B14 action，短/中/长，first/last，层0/8/29。action实际K288/1152/2160，video K272/1136/2144。B14为七个独立Q16、CFG2，不是Q112序列。
 - 54点standalone单attention/block满足旧.02绝对加.02相对容差，但多数不逐位；block B2最大绝对误差.25，不能隐去相对项语义。
@@ -42,4 +42,4 @@ C36、P66原首两S严格配对FAILED，50init有训练/DEV暴露，不能签独
 
 engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission四项false。TF_ON/PF2旧NO_GO、retention、4f04 paused72/96、MLP0、本机live77、全局A_off不改。无新45chunk/TEST、融合、训练或第二环境。
 
-用户要本机研究算子，评测尽量在BAAI；原tile代码/HW不动。原M16/M17预算截止见PLAN，不因迁移或补缺重置。接下来先讨论standalone误差定位与异常block复测，M17原队列继续。新GPU作业需有明确范围/窗口/预算，不借未用余额自动扩任务。
+用户要本机研究算子，评测尽量在BAAI；原tile代码/HW不动。原M16/M17预算截止见PLAN，不因迁移或补缺重置。M22已完成单因素数值修正；下一步等无争用窗口复测新二进制性能，M17原队列继续。新GPU作业需有明确范围/窗口/预算，不借未用余额自动扩任务。
