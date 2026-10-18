@@ -17,4 +17,4 @@ operator_torch_alignment_v2复用固定Torch2.9.0/FlashAttention/CUTLASS，179�
 
 旧M21 standalone六full30中三容差失败、全部非逐位仍是旧版本真实结果；不改旧FAILED或旧证书。新版本实际以独立install/restore替换30层self/cross共60个op，无Torch SDPA fallback，旧源码与默认不改。server_entry另提供可选入口，本轮未另跑RPC机器人任务。
 
-新二进制性能未复测，不能继承旧fast_math的.9812/.9817比例；lhw GPU context阻塞正式计时。有限真实输入不保证任意输入/编译器/GPU或TF完整闭环，四项项目质量false不变。GPU生命周期615.057/1200秒、两job实际退出、714 full target forwards，无新机器人episode/训练/SHA。全KV只做现场逐位比较，没有复制完整KV用于离线重验。
+后续新二进制54性能点/六full30已在用户确认空闲窗口补测：self/cross Graph-core新/Torch中位1.00144/1.00193，block .98465（9/54慢>5%），full30 .99393（两例慢>5%）。少样本与空载NVML计数异常保留，不签全部形状稳定不退化；不能借旧二进制比例。详见performance/RESULT.md。有限真实输入不保证任意输入/编译器/GPU或TF完整闭环，四项项目质量false不变。M22 GPU生命周期1094.781/1200秒、所有GPU job实际退出、1002 full target forwards，无新机器人episode/训练/SHA。全KV只做现场逐位比较，没有复制完整KV用于离线重验。

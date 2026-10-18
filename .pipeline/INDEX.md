@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-18T21:16:21+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-18T22:00:07+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -13,7 +13,7 @@
 | 路线 | 当前结论 | 证据入口 |
 |---|---|---|
 | 投机采样 | Long首轮500组/1500局：T483/C484/P473；Goal/Spatial原全量继续；Object16条后迁新机等自然空槽，本机不自动接评测；旧NO_GO/四false不变 | [资源迁移](experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md)、[当前Cycle](cycles/wam-research-20261016/PROGRESS.md) |
-| tile / SDPA | M22主任务实际Torch对齐：独立去fast_math后108attention/54block/六完整模型/三完整policy配对逐位与状态过；新二进制性能待无争用复测；旧M21完整30层失败保留、性能探索性 | [统一结果](experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)、[原有限基线复核](experiments/operator-parity-evidence-20261018/REPORT.md) |
+| tile / SDPA | M22主任务实际Torch对齐：独立去fast_math后108attention/54block/六完整模型/三完整policy配对逐位与状态过；新54点/六full30性能已补：attention约1.002，block/模型有慢点，资源异常保留；旧M21完整30层失败保留、性能探索性 | [统一结果](experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)、[原有限基线复核](experiments/operator-parity-evidence-20261018/REPORT.md) |
 
 算子原代码与 HW 保留；用户最新允许独立修正版本并复用固定上游源码，见[M22](experiments/operator-torch-alignment-20261018/PLAN.md)；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 

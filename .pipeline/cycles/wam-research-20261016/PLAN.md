@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-18T21:24:15+08:00'
+updated: '2026-10-18T22:00:07+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -13,12 +13,12 @@ Long首轮已交；四套既定评测继续。最新用户要求本机优先算�
 | ID | 工作 | 当前状态与验收 |
 |---|---|---|
 | `M16` | Long500组三臂首轮 | COMPLETE_DESCRIPTIVE_NOT_QUALIFIED；T483/C484/P473，各500；原配对FAILED/曝光/四false保留；[最终](../../experiments/long-morning-20261018/FINAL-SUMMARY.md) |
-| `M17` | Object/Goal/Spatial固定训练与各500组三臂 | RUNNING_REMOTE；Goal/Spatial原链；Object16局后迁新机队列。此轮不刷新远端计数；[资源](../../experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md) |
+| `M17` | Object/Goal/Spatial固定链 | RUNNING_REMOTE；22:14 Goal208/500共同组、690/1500局，Spatial202/500、683/1500；Object余14等槽，5分钟CPU巡检已启动；[快照](../../experiments/libero-four-suite-20261017/PROGRESS-20261018-2214.md) |
 | `M18` | 迁移原件/环境并释放旧AutoDL | COMPLETE_VERIFIED；四套资产及原件落新机，旧实例不再SSH，是否关机UNKNOWN |
 | `M19` | 原算子既有数据CPU复核 | COMPLETE_LIMITED_SCOPE；576检查/60性能门/420轮、180源/二进制逐字相同；[报告](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
 | `M20` | 本机评测迁新机，留本机供算子 | COMPLETE_RESOURCE_RELOCATION_QUEUED；Object16/30自然暂停CLEAN，余14/ON/全500已迁队列；匹配Target200迁移成本另列 |
 | `M21` | 原始/B14三档KV性能与完整I/O | COMPLETE_WITH_STANDALONE_FULL30_FAILURE；54性能点、414数值比较、6×4完整query、9保存输入；[统一报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md) |
-| `M22` | 独立Torch对齐修正与GitHub审查包 | NUMERIC_COMPLETE_PERFORMANCE_PENDING；108attention/54block/六full30/三完整policy配对逐位/状态通过；无新正式性能，[结果](../../experiments/operator-torch-alignment-20261018/RESULT.md) |
+| `M22` | 独立Torch对齐、真实性能与GitHub | COMPLETE_LIMITED_ALIGNMENT_WITH_LATENCY_TAILS；严格数值通过，54性能点+六full30已测，attention约1.002，block尾部保留；[新性能](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
 
 ## 可见计划
 
@@ -29,7 +29,8 @@ Long首轮已交；四套既定评测继续。最新用户要求本机优先算�
 - [x] 全54输出/有效KV、完整30层六query及九保存输入验证；失败保留，自有全部退出。
 - [ ] M17原队列继续，结果齐后讨论；不恢复本机400局或新增Long训练。
 - [x] M22独立去fast_math修正，真实完整模型/三完整policy配对精度与状态核验；HW/GitHub和网页prompt已交。
-- [ ] M22新二进制性能对照：待无争用窗口，旧时间不可借用；当前lhw GPU任务未结束，不启动正式计时。
+- [x] 用户确认新空闲窗口，M22新二进制54点/六full30实测完成，全部慢点及资源异常保留。
+- [ ] 如继续算子工作，先定位block和完整模型慢点/计时波动；不再盲改数值，原本轮剩余预算不自动扩展。
 - [ ] T25/T17对T50完整DEV另登记；后两轮seed/预算未冻结，不自动运行。
 
 ## 预算与边界

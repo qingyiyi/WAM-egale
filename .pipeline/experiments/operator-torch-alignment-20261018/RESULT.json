@@ -1,5 +1,5 @@
 {
-  "status": "FINITE_REAL_INPUT_NUMERIC_ALIGNMENT_PASS_PERFORMANCE_NOT_RETESTED",
+  "status": "FINITE_NUMERIC_ALIGNMENT_PASS_PERFORMANCE_MEASURED_WITH_CAVEATS",
   "change": "remove --use_fast_math; fixed source/vendor unchanged except namespace",
   "attention": {
     "passed": 108,
@@ -46,23 +46,35 @@
     "total": 27,
     "CUDA_initialized": false
   },
-  "model_target_forwards": 714,
-  "GPU_lifecycle_seconds": 615.0571955312043,
+  "model_target_forwards": 1002,
+  "GPU_lifecycle_seconds": 1094.7812702241636,
   "GPU_lifecycle_cap_seconds": 1200,
-  "unused_lifecycle_seconds": 584.9428044687957,
+  "unused_lifecycle_seconds": 105.21872977583644,
   "CUDA_active_seconds": "UNKNOWN",
-  "new_evidence_and_build_bytes": 42689675,
+  "new_evidence_and_build_bytes": 426638233,
   "storage_cap_bytes": 536870912,
   "old_sources_modified": false,
   "production_default_changed": false,
   "independent_native_extension": true,
   "Torch_SDPA_fallback": false,
   "original_FAILED_preserved": true,
-  "formal_performance_status": "NOT_RUN_V2_FOREIGN_GPU_PROCESS; old M21 timing belongs to old binary",
+  "formal_performance_status": "NEW_BINARY_MEASURED_RESOURCE_COUNTER_UNRESOLVED_AND_BLOCK_TAILS",
   "whole_model_all_inputs_or_closed_loop_equivalence": "NOT_ESTABLISHED",
   "engineering_quality_screen": false,
   "independent_test_complete": false,
   "noninferiority_established": false,
   "formal_performance_permission": false,
-  "resource_warning": "source main emitted NCCL destroy_process_group warning; actual process returncode0 and owned lifetimes exited; no absence assumed from warning alone"
+  "resource_warning": "source main emitted NCCL destroy_process_group warning; actual process returncode0 and owned lifetimes exited; no absence assumed from warning alone",
+  "numeric_phase_status_original": "FINITE_REAL_INPUT_NUMERIC_ALIGNMENT_PASS_PERFORMANCE_NOT_RETESTED",
+  "performance_update": {
+    "at": "2026-10-18T22:00:07+08:00",
+    "path": "performance/RESULT.json",
+    "operator_block_points": 54,
+    "full30_queries": 6,
+    "CPU_input_identity_checks": 15,
+    "all_15_equal": true,
+    "previous_numeric_phase_preserved": "RESULT-NUMERIC-PHASE-FROZEN-20261018.json"
+  },
+  "numeric_phase_GPU_lifecycle_seconds_original": 615.0571955312043,
+  "numeric_phase_model_target_forwards": 714
 }

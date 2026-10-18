@@ -1,0 +1,134 @@
+{
+  "status": "COMPLETE_BOUNDED_V2_PERFORMANCE_WITH_BLOCK_TAILS_AND_RESOURCE_CAVEAT",
+  "performance_points": 54,
+  "performance_cells": 684,
+  "event_samples": 18360,
+  "wall_samples": 18360,
+  "independent_processes_operator_block": 1,
+  "rounds": 3,
+  "operator_block": {
+    "self": {
+      "points": 54,
+      "median_ratio": 1.0014412215966937,
+      "min_ratio": 0.9630252214287937,
+      "max_ratio": 1.0459730679401933,
+      "slower": 31,
+      "slower_over5pct": 0
+    },
+    "cross": {
+      "points": 54,
+      "median_ratio": 1.0019333942347992,
+      "min_ratio": 0.9963504432704718,
+      "max_ratio": 1.0393939295055858,
+      "slower": 33,
+      "slower_over5pct": 0
+    },
+    "block": {
+      "points": 54,
+      "median_ratio": 0.9846545996175833,
+      "min_ratio": 0.41013540674367344,
+      "max_ratio": 1.3436664839860804,
+      "slower": 21,
+      "slower_over5pct": 9
+    }
+  },
+  "full30": {
+    "queries": 6,
+    "independent_processes": 1,
+    "event_samples": 36,
+    "rounds": 3,
+    "samples_per_engine_round": 1,
+    "median_ratio": 0.9939344167353934,
+    "min_ratio": 0.7392667971562015,
+    "max_ratio": 1.0665371538591202,
+    "slower_over5pct": 2,
+    "ratio_of_sum_query_medians": 0.9692565404420752,
+    "rows": [
+      {
+        "length": "short",
+        "query": 0,
+        "torch_ms": 310.7819519042969,
+        "aligned_ms": 229.7507781982422,
+        "aligned_over_torch": 0.7392667971562015,
+        "torch_wall_ms": 310.8301870524883,
+        "aligned_wall_ms": 229.83950935304165,
+        "strict_warmup_outputs_equal": true,
+        "all_valid_KV_preserved": true
+      },
+      {
+        "length": "short",
+        "query": 18,
+        "torch_ms": 232.70005798339844,
+        "aligned_ms": 214.8730926513672,
+        "aligned_over_torch": 0.9233907997852623,
+        "torch_wall_ms": 232.78761468827724,
+        "aligned_wall_ms": 214.93470668792725,
+        "strict_warmup_outputs_equal": true,
+        "all_valid_KV_preserved": true
+      },
+      {
+        "length": "middle",
+        "query": 0,
+        "torch_ms": 245.23980712890625,
+        "aligned_ms": 245.7323455810547,
+        "aligned_over_torch": 1.0020083952026986,
+        "torch_wall_ms": 245.29158137738705,
+        "aligned_wall_ms": 245.78968435525894,
+        "strict_warmup_outputs_equal": true,
+        "all_valid_KV_preserved": true
+      },
+      {
+        "length": "middle",
+        "query": 20,
+        "torch_ms": 276.7974548339844,
+        "aligned_ms": 291.69049072265625,
+        "aligned_over_torch": 1.053804815140386,
+        "torch_wall_ms": 276.93575620651245,
+        "aligned_wall_ms": 291.7450163513422,
+        "strict_warmup_outputs_equal": true,
+        "all_valid_KV_preserved": true
+      },
+      {
+        "length": "long",
+        "query": 0,
+        "torch_ms": 448.63079833984375,
+        "aligned_ms": 478.4814147949219,
+        "aligned_over_torch": 1.0665371538591202,
+        "torch_wall_ms": 448.6819412559271,
+        "aligned_wall_ms": 483.7125428020954,
+        "strict_warmup_outputs_equal": true,
+        "all_valid_KV_preserved": true
+      },
+      {
+        "length": "long",
+        "query": 20,
+        "torch_ms": 425.9082336425781,
+        "aligned_ms": 419.8860778808594,
+        "aligned_over_torch": 0.9858604382680882,
+        "torch_wall_ms": 426.0505475103855,
+        "aligned_wall_ms": 419.9548680335283,
+        "strict_warmup_outputs_equal": true,
+        "all_valid_KV_preserved": true
+      }
+    ]
+  },
+  "scope": "kernel/core + actual block + whole30-layer frozen B14 verifier, no robot task/chunk timing",
+  "resource_qualification": "User-confirmed window, no foreign visible contexts at boundaries, idle NVML25% anomaly unresolved; limited exploratory timing not universal stable-performance certificate",
+  "precision_source": "/rjs/cxz/论文探索/.pipeline/experiments/operator-torch-alignment-20261018/RESULT.json",
+  "old_failures_preserved": true,
+  "total_M22_lifecycle_seconds": 1094.7812702241636,
+  "total_M22_lifecycle_cap_seconds": 1200,
+  "remaining_lifecycle_seconds": 105.21872977583644,
+  "CUDA_active_seconds": "UNKNOWN",
+  "current_window_model_forwards": 288,
+  "total_M22_model_forwards": 1002,
+  "new_bytes": 426638233,
+  "storage_cap_bytes": 536870912,
+  "all_owned_processes_exited": true,
+  "formal_performance_permission": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "remaining_gap": "block9/54 and full30 2/6 exceed5pct, high variability; no stable all-shape no-regression claim; complete policy timing not measured",
+  "r4_failure": "0 GPU child admission lower-bound rounding; preserved,0.140034379s charged, corrected separate r5 supervisor"
+}

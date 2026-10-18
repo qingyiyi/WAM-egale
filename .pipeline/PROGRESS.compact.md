@@ -1,6 +1,6 @@
 # 当前研究恢复入口
 
-更新时间：2026-10-18T21:24:15+08:00 北京。先读[INDEX](INDEX.md)、[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再聚焦[当前Cycle四文](cycles/wam-research-20261016/PROGRESS.md)。原保护源、旧失败和原tile保留，当前不全量展开旧索引。
+更新时间：2026-10-18T22:00:07+08:00 北京。先读[INDEX](INDEX.md)、[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再聚焦[当前Cycle四文](cycles/wam-research-20261016/PROGRESS.md)。原保护源、旧失败和原tile保留，当前不全量展开旧索引。
 
 ## 当前主任务：M22真实Torch算子对齐
 
@@ -8,7 +8,7 @@
 
 [登记与可见计划](experiments/operator-torch-alignment-20261018/PLAN.md)；[九真实输入结果](experiments/operator-torch-alignment-20261018/NINE-INPUT-RESULT.json)：B2 video/action、B14 action各三KV，9/9输出逐位、输入布局/字节/RNG通过；旧同输入仅3/9逐位。新完整54点、六full30及三组完整canonical policy配对冻结重放**全部完成且有限逐位/状态通过**；原失败仍是旧版本的真实结果。
 
-M22累计GPU生命周期615.057/1200秒，714模型forwards、两核CPU、新增源/编译/证据约40.71MiB≤512MiB；r1/r2均真实退出，CUDA active UNKNOWN。[最终结果](experiments/operator-torch-alignment-20261018/RESULT.md)：108attention/54block、六完整30层、三短中长完整policy配对全部逐位/有效状态通过，CPU27保存输出复核一致。没有机器人episode。当前lhw GPU context，**新二进制性能未复测**；旧时间不借用、四false不改。
+M22数值阶段用GPU生命周期615.057秒、714模型forwards、两核CPU、新增源/编译/证据约40.71MiB≤512MiB；r1/r2均真实退出，CUDA active UNKNOWN。[最终结果](experiments/operator-torch-alignment-20261018/RESULT.md)：108attention/54block、六完整30层、三短中长完整policy配对全部逐位/有效状态通过，CPU27保存输出复核一致。没有机器人episode。用户新空闲窗口已完成性能：self/cross中位比1.00144/1.00193，block .98465（9/54慢>5%），六full30中位.99393、最大1.06654；CPU15同源检查全等。M22累计1094.781/1200秒，全部自有退出，约406.87MiB≤512MiB；空载NVML24–25%及少样本限制保留，不签普遍稳定对齐。见[新性能](experiments/operator-torch-alignment-20261018/performance/RESULT.md)，四false不改。
 
 [GitHub网页审查包](https://github.com/qingyiyi/WAM-egale/tree/20562e3ad46896409579fbb0ffeb8ad049c8b54a)已上传旧M21正负结果、HW与M22初始方案/源码，prompt已交用户；此提交冻结于新GPU验证前，不含后续新结果。用户授权后续同步新终态。
 
@@ -26,7 +26,7 @@ M22累计GPU生命周期615.057/1200秒，714模型forwards、两核CPU、新增
 
 C36/P66首两S严格配对FAILED，50init有训练/DEV暴露；不是独立TEST/非劣结论。新机273组并行暖episode探索性T/C约1.4974、T/P约1.2330，不是独占/cold E2E。三轮是偏好，后两轮seed/预算未冻，不声称已完成。
 
-M17 Goal/Spatial原全量链继续；Object本机16/30完整后自然暂停CLEAN，余14/ON/final500迁远端队列。本轮算子工作**没有刷新远端最新计数**；最近资源核验19:08 Object等自然槽位，不能把17:25旧32/38当当前。四套资产/原件/匹配环境已落BAAI，所有工作限~/cxz。旧AutoDL已清理、不再SSH，实例关机UNKNOWN。本机不自动恢复质量评测。[迁移](experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md)。
+M17 Goal/Spatial原全量链继续；Object本机16/30完整后自然暂停CLEAN，余14/ON/final500迁远端队列。22:14已刷新远端：Goal208/500共同组、690/1500完整局；Spatial202/500、683/1500；两卡约96/99%、四model。Object controller存活仍等槽、CURRENT余14；[当前快照](experiments/libero-four-suite-20261017/PROGRESS-20261018-2214.md)。每5分钟CPU只读巡检已启动至完成或原截止，不用旧数冒充实时。四套资产/原件/匹配环境已落BAAI，所有工作限~/cxz。旧AutoDL已清理、不再SSH，实例关机UNKNOWN。本机不自动恢复质量评测。[迁移](experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md)。
 
 M16原10/17 13:55:56起、10/19 13:40停新/13:55清理，6001000尝试/10GiB；实际1593717。M17原10/17 17:11:31起、10/21 16:56停新/17:11清理，18723000尝试/15GiB；Object迁移匹配Target200另记800000，不重置起点、不增独立样本。详见Cycle PLAN。
 

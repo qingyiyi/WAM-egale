@@ -3,24 +3,24 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-18T21:24:15+08:00'
+updated: '2026-10-18T22:00:07+08:00'
 current: M22
-next: wait_uncontended_window_then_retest_new_binary_kernel_block_full30_policy_performance
-execution_status: v2_numeric_complete_owned_GPU_exited_formal_timing_waiting_foreign_context
+next: review_measured_alignment_and_profile_block_tails_before_new_system_changes
+execution_status: bounded_v2_performance_complete_all_owned_exited_latency_tails_and_resource_caveat_retained
 ---
 # 当前研究进度
 
-当前主任务M22已完成独立算子的有限严格数值对齐：去除fast_math后108attention/54block、六完整30层和三短中长完整policy配对均逐位/有效状态通过。[新结果](../../experiments/operator-torch-alignment-20261018/RESULT.md)。新二进制性能尚待无争用复测，自有GPU已退出。旧M21完整30层失败属于旧二进制，原样保留在[旧统一报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)，不把新通过追溯改写旧失败。
+当前主任务M22已完成独立算子的有限严格数值对齐：去除fast_math后108attention/54block、六完整30层和三短中长完整policy配对均逐位/有效状态通过。[新结果](../../experiments/operator-torch-alignment-20261018/RESULT.md)。新二进制54点和六完整30层性能已在用户确认窗口补测，数值保持有限严格一致；block/模型存在慢点及资源计数异常，见[新性能](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md)，自有GPU已退出。旧M21完整30层失败属于旧二进制，原样保留在[旧统一报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)，不把新通过追溯改写旧失败。
 
 | ID | 状态 | 当前证据与next |
 |---|---|---|
 | `M16` | COMPLETE_DESCRIPTIVE_NOT_QUALIFIED | Long T483/500、C484/500、P473/500；[完整汇总](../../experiments/long-morning-20261018/FINAL-SUMMARY.md)，旧质量NO_GO/四false保留 |
-| `M17` | RUNNING_REMOTE | Goal/Spatial原全量链；Object迁移队列；本轮算子任务不刷新其最新计数，不能用17:25旧32/38组冒充当前 |
+| `M17` | RUNNING_REMOTE_MONITORED | 22:14 Goal208共同组/690局、Spatial202/683；Object余14仍排队，controller/worker存活；5分钟CPU巡检；[快照](../../experiments/libero-four-suite-20261017/PROGRESS-20261018-2214.md) |
 | `M18` | COMPLETE_VERIFIED | 原件/匹配环境/四套资产落BAAI；旧机清理核验、是否关机UNKNOWN，不再SSH |
 | `M19` | COMPLETE_LIMITED_SCOPE | [原数据复核](../../experiments/operator-parity-evidence-20261018/REPORT.md)：576检查、60性能门、420轮，原有限证书不外推 |
 | `M20` | COMPLETE_RESOURCE_RELOCATION_QUEUED | Object16/30完整后CLEAN，controller/server/旧handoff退出；余14/ON/final500迁新机，本机不自动接续质量任务 |
 | `M21` | COMPLETE_WITH_STANDALONE_FULL30_FAILURE | [当前结果](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)：54性能点、414数值比较、24完整model执行、27保存输入I/O比较；全部自有进程已退出 |
-| `M22` | NUMERIC_COMPLETE_PERFORMANCE_PENDING | 去fast_math后108attention/54block/六full30/三完整policy逐位/状态通过；当前lhw context阻塞正式复测；[结果](../../experiments/operator-torch-alignment-20261018/RESULT.md) |
+| `M22` | COMPLETE_LIMITED_ALIGNMENT_WITH_LATENCY_TAILS | 数值有限逐位通过；新54性能点+六full30完成，attention中位比约1.002、block9/54及full30两例慢>5%；全部自有退出，[结果](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
 
 ## M21旧二进制实测（保留负结果）
 

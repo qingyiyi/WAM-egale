@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [任务未结束时定期核验服务器](global/requirements/requirement-任务完成前定期核验服务器运行与进度.md)（constraint，active-server-jobs）：低开销巡检进程身份、日志推进、终态和原截止；当前约每5分钟，替代只近ETA才检查的安排，不自动重试任务。
+
 - [当前优先整模型Torch算子对齐并同步GitHub](global/requirements/decision-当前优先整模型算子Torch对齐并同步GitHub.md)（constraint，当前Cycle/M22）：独立实现修复、允许复用固定上游源码；整模型输出/状态与性能验证；同步源码/HW和网页审查prompt。旧基线和质量门保留。
 
 - [有限窗口先性能、精度后验](global/requirements/decision-有限独占窗口优先性能采集后验精度.md)（constraint，本轮M21）：剩余独占不足20分钟，独立缩短性能采集协议并预留清理；旧协议PARTIAL与待验状态保留。
