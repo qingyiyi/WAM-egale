@@ -4,6 +4,10 @@
 
 ## 当前资源偏好
 
+- [暂不迁移开发、模拟器由用户终止](global/requirements/decision-暂不迁移开发工作且本机模拟器由用户终止.md)（constraint，本次M23）：取消因CPU拥塞进一步迁移；只报PID，不代kill；已运行远端评测继续。
+
+- [BAAI的Codex启动入口](global/knowledge/decision-BAAI的Codex安装与启动入口.md)（reference，限定新机）：`~/cxz/bin/codex`，配置/缓存均限~/cxz；版本和登录状态动态核对，不代表会话或最新源码已迁移。
+
 - [任务未结束时定期核验服务器](global/requirements/requirement-任务完成前定期核验服务器运行与进度.md)（constraint，active-server-jobs）：低开销巡检进程身份、日志推进、终态和原截止；当前约每5分钟，替代只近ETA才检查的安排，不自动重试任务。
 
 - [当前优先整模型Torch算子对齐并同步GitHub](global/requirements/decision-当前优先整模型算子Torch对齐并同步GitHub.md)（constraint，当前Cycle/M22）：独立实现修复、允许复用固定上游源码；整模型输出/状态与性能验证；同步源码/HW和网页审查prompt。旧基线和质量门保留。

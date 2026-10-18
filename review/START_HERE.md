@@ -1,3 +1,5 @@
+> **当前整体状态（2026-10-18晚）**：先读[当前入口](CURRENT-PROGRESS-20261018.md)、[整体报告](../.pipeline/cycles/wam-research-20261016/STATUS-20261018.md)和[新版Prompt](PROJECT-REVIEW-PROMPT-20261018.md)。下文paused72及RESULTS.json保留历史身份，不能代替当前资源/覆盖。四项权限仍false。
+
 > **2026-10-18算子最新审查**：请先读[算子状态](OPERATOR-STATUS-20261018.md)与[算子Prompt](OPERATOR_REVIEW_PROMPT-20261018.md)。以下paused72及RESULTS.json保留历史身份。
 
 > 当前新授权进度另见[189组三臂与接续检查点](LONG-STAGE189-AND-RESUME-20261017.md)。下文及RESULTS.json仍保留4f04 paused72历史身份，不能当作当前资源状态。

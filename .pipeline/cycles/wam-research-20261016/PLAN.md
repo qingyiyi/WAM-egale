@@ -2,23 +2,25 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-18T22:00:07+08:00'
+updated: '2026-10-18T22:57:34+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
 # WAM投机质量与系统协同
 
-Long首轮已交；四套既定评测继续。最新用户要求本机优先算子研究、质量评测迁新机；已授权短中长原始/B14补测。M21旧性能/共享精度证据含standalone完整30层失败，保留。M22按新授权独立去fast_math修正已通过有限完整模型/policy逐位与状态核验，新二进制性能待无争用窗口。旧科学门与默认不变。
+Long首轮已交；四套既定评测继续。最新用户要求本机优先算子研究、质量评测迁新机；已授权短中长原始/B14补测。M21旧性能/共享精度证据含standalone完整30层失败，保留。M22按新授权独立去fast_math修正已通过有限完整模型/policy逐位与状态核验，新二进制有限性能已测，慢点与资源限制保留。旧科学门与默认不变。
 
 | ID | 工作 | 当前状态与验收 |
 |---|---|---|
 | `M16` | Long500组三臂首轮 | COMPLETE_DESCRIPTIVE_NOT_QUALIFIED；T483/C484/P473，各500；原配对FAILED/曝光/四false保留；[最终](../../experiments/long-morning-20261018/FINAL-SUMMARY.md) |
-| `M17` | Object/Goal/Spatial固定链 | RUNNING_REMOTE；22:14 Goal208/500共同组、690/1500局，Spatial202/500、683/1500；Object余14等槽，5分钟CPU巡检已启动；[快照](../../experiments/libero-four-suite-20261017/PROGRESS-20261018-2214.md) |
+| `M17` | Object/Goal/Spatial固定链 | RUNNING_REMOTE；22:53 Goal235/500共同组、753/1500局，Spatial219/500、724/1500；Object余14等槽；[整体状态](STATUS-20261018.md) |
 | `M18` | 迁移原件/环境并释放旧AutoDL | COMPLETE_VERIFIED；四套资产及原件落新机，旧实例不再SSH，是否关机UNKNOWN |
 | `M19` | 原算子既有数据CPU复核 | COMPLETE_LIMITED_SCOPE；576检查/60性能门/420轮、180源/二进制逐字相同；[报告](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
 | `M20` | 本机评测迁新机，留本机供算子 | COMPLETE_RESOURCE_RELOCATION_QUEUED；Object16/30自然暂停CLEAN，余14/ON/全500已迁队列；匹配Target200迁移成本另列 |
 | `M21` | 原始/B14三档KV性能与完整I/O | COMPLETE_WITH_STANDALONE_FULL30_FAILURE；54性能点、414数值比较、6×4完整query、9保存输入；[统一报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md) |
 | `M22` | 独立Torch对齐、真实性能与GitHub | COMPLETE_LIMITED_ALIGNMENT_WITH_LATENCY_TAILS；严格数值通过，54性能点+六full30已测，attention约1.002，block尾部保留；[新性能](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
+
+| `M23` | 新机资源比较与Codex安装 | COMPLETE_INSTALLED_LOGIN_PENDING；0.162.1入口`~/cxz/bin/codex`，GPU0；用户取消进一步开发迁移，模拟器自行结束；[报告](../../experiments/remote-codex-setup-20261018/RESULT.md) |
 
 ## 可见计划
 
@@ -27,6 +29,7 @@ Long首轮已交；四套既定评测继续。最新用户要求本机优先算�
 - [x] 新算子矩阵三种输入/三KV/first-last/三层，保存全部时间和误差。
 - [x] 遵用户不足20分钟窗口，独立性能短协议于20:14结束；其后仅共享精度，未混计时间。
 - [x] 全54输出/有效KV、完整30层六query及九保存输入验证；失败保留，自有全部退出。
+- [x] M23两机只读核验、限~/cxz安装Codex、真实版本/登录状态与清理交付。
 - [ ] M17原队列继续，结果齐后讨论；不恢复本机400局或新增Long训练。
 - [x] M22独立去fast_math修正，真实完整模型/三完整policy配对精度与状态核验；HW/GitHub和网页prompt已交。
 - [x] 用户确认新空闲窗口，M22新二进制54点/六full30实测完成，全部慢点及资源异常保留。

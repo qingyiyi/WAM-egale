@@ -1,16 +1,20 @@
 # 最近执行检查点
 
-## 2026-10-18晚：M22数值与新性能已齐、GPU释放
+最新整体状态见[STATUS](STATUS-20261018.md)与远端派生快照；旧22:14数字仅为当时记录。
 
-去除fast_math且原kernel数学/vendor不改的新v2，108attention/54block、六完整30层与三短中长完整canonical policy配对逐位及声明有效状态/RNG通过；CPU27保存输出独立复核一致。旧M21 standalone完整六query非逐位、三容差失败保留，不能由新通过追溯更正。原tile/保护源/默认/四false不变。
+最新用户取消进一步开发迁移，自行结束遗留模拟器。只读核对root的Aurora gem5/QEMU，主PID3658238，PGID3658199，共40gem5+2QEMU；未发送信号。临时身份见M23 LOCAL-SIMULATOR-IDENTIFICATION.json，不改原评测。
 
-用户再次确认GPU空闲后，新54点/684单元/18360Event及等量wall采齐；self/cross Graph-core新/Torch中位1.00144/1.00193，block .98465，9/54慢>5%、最大1.34367。真实安装60op、六full30三轮交错各一forward，中位.99393、范围.73927–1.06654，两例慢>5%。没有完整policy或机器人E2E计时，不宣称普遍稳定无退化/新Mega收益。
+## 2026-10-18 22:39：M23新机Codex安装完成、登录待用户
 
-CPU15同源检查（九保存输入、六完整原始输出）全等，无CUDA；r5 warmup原始/新输出逐位及全部有效KV通过。r1/r2正确性22.950/592.107秒；r3性能319.481秒；r4准入整数下界冲突，0GPU/0forward失败保留并计.140秒；修正supervisor后独立r5完整160.103秒。M22总1094.781/1200秒、新增约406.87MiB≤512MiB、1002 full target forwards，CUDA active未知，自有PID+出生核实退出。不再用剩余105秒扩作业。
+两机只读资源核验：本机16逻辑CPU近满，PSI some约94.9%；新机45核聚合配额、180GiB，CPU使用约4.74核、PSI约1.2%，双A100-SXM4-40GB与本机单卡同型号/400W但驱动不同。支持CPU工作迁移建议，未实测工作负载倍数。新机两卡原评测继续。
 
-用户确认窗口，边界无他人context，但0MiB下NVML24–25%异常未解；单进程少重复，资源/统计限制与全部慢轮保留。后续优先定位block慢点/host/clock/allocator等假设，未证明根因，不盲改内核。
+在~/cxz内复用本机完整原生包安装Codex0.162.1，入口~/cxz/bin/codex；配置/缓存/临时范围固定。版本/帮助通过，login status未登录，未迁凭据/会话或最新算子。约431.51MiB，传输安装123秒，GPU0；[报告](../../experiments/remote-codex-setup-20261018/RESULT.md)。不将询问迁移写成全部工作已迁移，旧门和预算不变。
 
-[新性能](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md)；[数值](../../experiments/operator-torch-alignment-20261018/RESULT.md)；[自有清理](../../experiments/operator-torch-alignment-20261018/OWNED-CLEANUP-PERFORMANCE.json)。
+## 2026-10-18晚：M22数值与性能齐、GPU释放
+
+新v2只去fast_math，108attention/54block/六full30/三完整policy有限逐位与有效状态通过；CPU27输出/15同源核对一致，原M21失败保留。新54点/684单元/18360 Event及等量wall：self/cross中位1.00144/1.00193，block .98465但9/54慢>5%；六full30中位.99393，2/6慢>5%。没有机器人E2E或所有输入证书。空context非零利用率及少样本保留。
+
+r1/r2/r3/r4/r5全部原件保留，r4准入下界错误在GPU前失败、计.140秒。总1094.781/1200秒、1002 full target forwards、新增406.87MiB，自有PID已退出。完整数值/计时/清理见[新性能](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md)；不借105秒扩任务。CPU模拟器后来退出不追溯解释本次慢点。
 
 ## M16/M17和迁移
 
