@@ -1,5 +1,9 @@
 # 最近执行检查点
 
+## 2026-10-19 00:23：自动接续实测
+
+远端三源与本地一致，Object controller存活、30秒轮询自然空槽。Goal/Spatial两卡各两worker均未结束、99/100%忙，故无漏提槽；任一分片清理后可接剩14→ON→匹配T/全500。5分钟只读巡检继续，无新GPU或改队列。[核验](../../experiments/libero-four-suite-20261017/QUEUE-HANDOFF-20261019.md)。
+
 ## 2026-10-18 23:33：GitHub统一main
 
 已核旧tips均为ca5f37e祖先，main快进并推送后删除其余5个远端/本地分支；两旧worktree仅detach同commit保留全部文件。按用户要求改为main进度镜像；无force-push/新实验，科学记录与四false不变。[收据](../../maintenance/github-main-20261018/RESULT.md)。
@@ -22,7 +26,7 @@ r1/r2/r3/r4/r5全部原件保留，r4准入下界错误在GPU前失败、计.140
 
 ## M16/M17和迁移
 
-Long首轮三臂各500完整，原配对FAILED/50init曝光/旧NO_GO与四false保留。Object本机16/30后自然释放，余14/ON/final500迁远端等自然槽位；原匹配Target200迁移增量独立记账。Goal/Spatial原授权全量继续，22:14核验Goal208共同组/690局、Spatial202/683，四model仍满载；Object余14等槽。已启动每5分钟CPU只读巡检，详见M17快照；旧19:08与17:25数不当实时。BAAI只限~/cxz，AutoDL不再SSH。原M16/M17起点/绝对截止在PLAN，不重置。
+Long首轮已齐但旧审计/四false保留；Object余14/ON/final迁新机，匹配T200增量单列。M17原起点/截止见PLAN。完整旧快照和迁移过程见history/EXECUTION-before-queue-audit-20261019.md，不当实时。
 
 ## 历史
 

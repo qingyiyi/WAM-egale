@@ -3,10 +3,10 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-18T22:57:34+08:00'
+updated: '2026-10-19T00:23:36+08:00'
 current: M17
 next: monitor_remote_fullscale_and_analyze_operator_latency_tails_without_new_GPU_jobs
-execution_status: remote_codex_installed_auth_pending_no_GPU_work
+execution_status: remote_fixed_chains_running_and_object_automatic_queue_verified
 ---
 # 当前研究进度
 
@@ -17,7 +17,7 @@ execution_status: remote_codex_installed_auth_pending_no_GPU_work
 | ID | 状态 | 当前证据与next |
 |---|---|---|
 | `M16` | COMPLETE_DESCRIPTIVE_NOT_QUALIFIED | Long T483/500、C484/500、P473/500；[完整汇总](../../experiments/long-morning-20261018/FINAL-SUMMARY.md)，旧质量NO_GO/四false保留 |
-| `M17` | RUNNING_REMOTE_MONITORED | 22:53 Goal235共同组/753局、Spatial219/724；Object余14排队；[整体状态](STATUS-20261018.md) |
+| `M17` | RUNNING_REMOTE_AUTO_QUEUE | 10/19 00:18 Goal276共同组/857局、Spatial276/862；Object30秒自动等槽，巡检正常；[核验](../../experiments/libero-four-suite-20261017/QUEUE-HANDOFF-20261019.md) |
 | `M18` | COMPLETE_VERIFIED | 原件/匹配环境/四套资产落BAAI；旧机清理核验、是否关机UNKNOWN，不再SSH |
 | `M19` | COMPLETE_LIMITED_SCOPE | [原数据复核](../../experiments/operator-parity-evidence-20261018/REPORT.md)：576检查、60性能门、420轮，原有限证书不外推 |
 | `M20` | COMPLETE_RESOURCE_RELOCATION_QUEUED | Object16/30完整后CLEAN，controller/server/旧handoff退出；余14/ON/final500迁新机，本机不自动接续质量任务 |

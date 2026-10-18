@@ -1,6 +1,6 @@
 # 当前研究恢复入口
 
-更新时间：2026-10-18T23:33:52+08:00 北京。先读[INDEX](INDEX.md)、[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再聚焦[当前Cycle四文](cycles/wam-research-20261016/PROGRESS.md)。原保护源、旧失败和原tile保留，当前不全量展开旧索引。
+更新时间：2026-10-19T00:23:36+08:00 北京。先读[INDEX](INDEX.md)、[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)，再聚焦[当前Cycle四文](cycles/wam-research-20261016/PROGRESS.md)。原保护源、旧失败和原tile保留，当前不全量展开旧索引。
 
 ## 最新交付：M23新机Codex安装
 
@@ -32,7 +32,7 @@ GitHub现仅[main进度镜像](https://github.com/qingyiyi/WAM-egale/tree/main)�
 
 C36/P66首两S严格配对FAILED，50init有训练/DEV暴露；不是独立TEST/非劣结论。新机273组并行暖episode探索性T/C约1.4974、T/P约1.2330，不是独占/cold E2E。三轮是偏好，后两轮seed/预算未冻，不声称已完成。
 
-M17原全量继续，截至22:53：Goal235/500共同组、753/1500局，Spatial219/500、724/1500；四模型占满新机两卡。Object16/30后本机自然暂停，余14/ON/final500已迁新机等槽，尚无新Object GPU worker。每5分钟CPU巡检继续；[整体整理](cycles/wam-research-20261016/STATUS-20261018.md)。本机遗留gem5/QEMU已退出，最新决定是不再迁移开发；旧AutoDL不再SSH、关机UNKNOWN。
+M17截至10/19 00:18：Goal276/500共同组、857/1500局，Spatial276/500、862/1500。GPU0两Goal、GPU1两Spatial，99–100%；Object余14/ON/匹配T及全500已自动排队、30秒轮询任一自然空槽，5分钟CPU巡检正常。无新人工提交必要；[实测接续](experiments/libero-four-suite-20261017/QUEUE-HANDOFF-20261019.md)。本机模拟器已退出，开发不再迁移；原截止/四false不改。
 
 M16原10/17 13:55:56起、10/19 13:40停新/13:55清理，6001000尝试/10GiB；实际1593717。M17原10/17 17:11:31起、10/21 16:56停新/17:11清理，18723000尝试/15GiB；Object迁移匹配Target200另记800000，不重置起点、不增独立样本。详见Cycle PLAN。
 

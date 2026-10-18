@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-18T22:57:34+08:00'
+updated: '2026-10-19T00:23:36+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -13,7 +13,7 @@ Long首轮已交；四套既定评测继续。最新用户要求本机优先算�
 | ID | 工作 | 当前状态与验收 |
 |---|---|---|
 | `M16` | Long500组三臂首轮 | COMPLETE_DESCRIPTIVE_NOT_QUALIFIED；T483/C484/P473，各500；原配对FAILED/曝光/四false保留；[最终](../../experiments/long-morning-20261018/FINAL-SUMMARY.md) |
-| `M17` | Object/Goal/Spatial固定链 | RUNNING_REMOTE；22:53 Goal235/500共同组、753/1500局，Spatial219/500、724/1500；Object余14等槽；[整体状态](STATUS-20261018.md) |
+| `M17` | Object/Goal/Spatial固定链 | RUNNING_REMOTE_AUTO_QUEUE；10/19 00:18 Goal276组/857局、Spatial276/862；Object余14自动等槽；[核验](../../experiments/libero-four-suite-20261017/QUEUE-HANDOFF-20261019.md) |
 | `M18` | 迁移原件/环境并释放旧AutoDL | COMPLETE_VERIFIED；四套资产及原件落新机，旧实例不再SSH，是否关机UNKNOWN |
 | `M19` | 原算子既有数据CPU复核 | COMPLETE_LIMITED_SCOPE；576检查/60性能门/420轮、180源/二进制逐字相同；[报告](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
 | `M20` | 本机评测迁新机，留本机供算子 | COMPLETE_RESOURCE_RELOCATION_QUEUED；Object16/30自然暂停CLEAN，余14/ON/全500已迁队列；匹配Target200迁移成本另列 |
