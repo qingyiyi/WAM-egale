@@ -1,5 +1,9 @@
 # 最近执行检查点
 
+## 2026-10-19T02:20:56+08:00：main发布确认
+
+代码/CPU结果/派生HW已push main `d162762029358e2f2e18014de3520713c5edd98e`，远端ref已核对；[发布收据](../../experiments/wam-block-baseline-20261019/PUBLICATION.md)。无模型/tensor/二进制/凭据、无tile/保护源写入；GPU仍0。
+
 ## 2026-10-19T02:06:00+08:00：M24 CPU终态
 
 B0最终六真实fixture+六合法写控制、36次CPU执行通过；两fixture各28观察边界和静态投影控制、22项CPU契约通过。新GPU worker/矩阵已准备，未启动，54性能单元均PENDING。全部登记CPU自然退出，4个实现/报告器失败保留，首轮出生缺证不补造。源核对21+结果16、数值核心仍匹配最终登记；[结果](../../experiments/wam-block-baseline-20261019/RESULT.md)。远端10/19 02:03 Goal336/500共同组、1010/1500局；Spatial340/500、1023/1500；Object=WAITING_NATURALLY_FREED_REMOTE_SLOT_CURRENT14；旧链未改。

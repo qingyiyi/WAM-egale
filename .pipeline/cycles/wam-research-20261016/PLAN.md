@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-19T02:06:00+08:00'
+updated: '2026-10-19T02:20:56+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -26,7 +26,7 @@ execution: EXECUTION.md
 
 - [x] M16/M18/M19/M20原交付；M21负结果、M22有限数值和计时、M23安装及main镜像保留。
 - [x] M24固定源码与已有fixture核查，独立B0、CPU契约/真实完整block与合法写验证。
-- [ ] M24收口最终CPU版本、契约/coverage/待运行计时/资源来源包，HW和main同步，9点前交结果。
+- [x] M24收口最终CPU版本、契约/coverage/待运行计时/资源来源包，HW和main已同步，CPU交付提前于9点完成。
 - [ ] M17原队列继续、5分钟低开销巡检；不恢复本机模拟器/质量任务，不自动重试。
 - [ ] 获新明确GPU授权后才做B0最小数值/状态、A/A与配对计时；不借M22余量、不先开发scheduler。
 - [ ] T25/T17对T50、后两轮Long的seed/预算另登记，未自动运行。

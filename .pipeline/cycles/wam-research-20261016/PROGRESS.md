@@ -3,9 +3,9 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-19T02:06:00+08:00'
+updated: '2026-10-19T02:20:56+08:00'
 current: M24
-next: publish_CPU_packet_main_then_new_authorized_GPU_window_keep_remote_queue_running
+next: new_authorized_GPU_block_window_then_AA_and_profile_keep_remote_queue_running
 execution_status: CPU_B0_and_22_contract_tests_complete_GPU_pending_remote_chains_running
 ---
 # 当前研究进度
