@@ -1,0 +1,42 @@
+[
+  {
+    "part": "self",
+    "mode": "graph_core",
+    "engine": "standalone",
+    "n": 54,
+    "slower_than_torch": 0,
+    "ratio_min": 0.9412751139554082,
+    "ratio_median": 0.9812247823772285,
+    "ratio_max": 1.0
+  },
+  {
+    "part": "cross",
+    "mode": "graph_core",
+    "engine": "standalone",
+    "n": 54,
+    "slower_than_torch": 1,
+    "ratio_min": 0.9629630120989019,
+    "ratio_median": 0.9817073549462404,
+    "ratio_max": 1.0051546283490906
+  },
+  {
+    "part": "block",
+    "mode": "eager",
+    "engine": "standalone",
+    "n": 54,
+    "slower_than_torch": 14,
+    "ratio_min": 0.2464677236025056,
+    "ratio_median": 0.9664819483797208,
+    "ratio_max": 3.071324276969615
+  },
+  {
+    "part": "B14 block",
+    "mode": "eager",
+    "engine": "guarded_over_shared",
+    "n": 18,
+    "slower_than_shared": 7,
+    "ratio_min": 0.7828096203816766,
+    "ratio_median": 0.9960308669761272,
+    "ratio_max": 1.4470396298991974
+  }
+]

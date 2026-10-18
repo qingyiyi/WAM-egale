@@ -3,39 +3,43 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: 2026-10-17T22:08:59+08:00
-current: M18
-next: observe_new_shard_resume_then_migrate_at_complete30_boundary_when_new_SSH_arrives
-execution_status: original567_backup_complete_four_remote_workers_READY_running_whole_episodes
+updated: '2026-10-18T20:43:58+08:00'
+current: M22
+next: isolate_compiler_math_difference_then_validate_full30_and_publish_operator_review
+execution_status: operator_evidence_complete_no_owned_local_GPU_jobs_remote_M17_pending
 ---
 # 当前研究进度
 
-M17已批准三小套件各自同配方TF及Target/TF/PF2全套对照。四套权重独立，不拿社区发布者成功率代替实测；不把Long draft当作已适配。见[实际状态](../../experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)。
+当前本机算子证据已齐并释放全部自有GPU作业；standalone完整30层存在真实数值失败，不把采集完成写成全面验收通过。原始与verifier三档性能/精度/输入输出见[统一报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)。
 
-| ID | 工作 | 状态 | 实际进展 | 证据 |
-|---|---|---|---|---|
-| `M16` | Long全量三臂 | in_progress | 旧阶段189组/567局完整归档；311未开始组正由新namespace分片接续，4模型READY、首30局分片完整任务运行中；原PARTIAL保留 | 原v2 status，旧源不动 |
-| `M17` | 三套独立TF与全量三臂 | in_progress | Object本机首局超时/PARTIAL，0完整局已清理；Goal/Spatial按换机请求暂停，训练0 | [实际作业](../../experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md) |
-| `M18` | 阶段备份与换机准备 | in_progress | 全部37349文件/1.84GiB原件已备份核对/CLEAN；新机未接入，新作业按30局边界可暂停 | [换机计划](../../experiments/autodl-stage-migration-20261017/PLAN.md) |
+| ID | 状态 | 当前证据与next |
+|---|---|---|
+| `M16` | COMPLETE_DESCRIPTIVE_NOT_QUALIFIED | Long T483/500、C484/500、P473/500；[完整汇总](../../experiments/long-morning-20261018/FINAL-SUMMARY.md)，旧质量NO_GO/四false保留 |
+| `M17` | RUNNING_REMOTE | Goal/Spatial原全量链；Object迁移队列；本轮算子任务不刷新其最新计数，不能用17:25旧32/38组冒充当前 |
+| `M18` | COMPLETE_VERIFIED | 原件/匹配环境/四套资产落BAAI；旧机清理核验、是否关机UNKNOWN，不再SSH |
+| `M19` | COMPLETE_LIMITED_SCOPE | [原数据复核](../../experiments/operator-parity-evidence-20261018/REPORT.md)：576检查、60性能门、420轮，原有限证书不外推 |
+| `M20` | COMPLETE_RESOURCE_RELOCATION_QUEUED | Object16/30完整后CLEAN，controller/server/旧handoff退出；余14/ON/final500迁新机，本机不自动接续质量任务 |
+| `M21` | COMPLETE_WITH_STANDALONE_FULL30_FAILURE | [当前结果](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)：54性能点、414数值比较、24完整model执行、27保存输入I/O比较；全部自有进程已退出 |
+| `M22` | RUNNING_SOURCE_DIAGNOSIS | 当前主任务；独立版本定位编译/数值差异、整模型替换验证、HW/GitHub和网页prompt；旧M21负结果保留 |
 
-Object/Goal远端权重完整，本机Object也已完整；Goal/Spatial完整bank完成（2455秒CPU），Object远端bank v3 r3完成（1220.5秒CPU）。原本机3600秒bank超时、传输3200秒超时、缺收据/启动参数失败及旧控制器替换全部保留。
+## 本轮算子实测
 
-最新授权允许本机空闲GPU分担，Object在零新增数据时改为本机SXM4单模型/nice10/server2-client2；CPU1导入完整bank128.9秒，未重做T5/teacher。远端Object32543已按PID/出生/UID退役，原FAILED_OR_PARTIAL终态保留；新本机Object装载749.6秒成功，首局1200秒超时，20:24终态FAILED_OR_PARTIAL_NO_RETRY、0完整局；guard/owned组CLEAN，无自动重试。Goal/Spatial已停止排队、租约释放；缓存轮换0删除终止。17:11起点和10/21截止、5GiB/套及四false不改，硬件分层计时。原全1500归档443492因换机请求退出，RPC实际exit0、复制/删除0；原604568逐文件方式过慢，实际SIGINT退出/SSH闭合；635195单tar在650.7秒完成/CLEAN，37349文件、源1970600995B；旧源0删除。2b1f039新接续69459/runner69462/guard69461四模型READY，首30局分片运行中，沿原10/19截止；新结果迁移前另备份，当前不可关旧机。本机本次清理7个失败下载残片985,044,916B，剩约94.9GiB；没有删除权重、原始结果或失败记录。LIBERO90仍缺可信同代Target，未启动。
+- B2 video/action、B14 action，短/中/长，first/last，层0/8/29。action实际K288/1152/2160，video K272/1136/2144。B14为七个独立Q16、CFG2，不是Q112序列。
+- 54点standalone单attention/block满足旧.02绝对加.02相对容差，但多数不逐位；block B2最大绝对误差.25，不能隐去相对项语义。
+- 完整30层B14六query：standalone同时替self/cross，0/6逐位、3/6容差通过；有效action CFG最大绝对误差.1875、最大rel_L2 .03512。未做self-only/cross-only定位，根因未确定。
+- shared-prefix与guarded仅替self、cross仍Torch：六query原始/CFG输出、输入字节/全部有效KV/RNG逐位通过。G1只测kernel，不借用其完整query证书。
+- 九保存输入27次直接重放：输入字节/布局/device/RNG未改，24份完整输出CPU独立核对一致。只覆盖这些输入，不覆盖所有输入或机器人闭环。
+- 新性能单进程3轮，684单元、18360 Event及等量wall样本。standalone self/cross Graph-core比值中位数.9812/.9817；block14/54更慢，范围.2465–3.0713。guarded/shared block中位数.9960、7/18更慢；不能用最好点宣称新系统收益。NVML空context非零计数未解，性能仍探索性。
+- r6性能20:14:26结束、5分2秒；随后共享仅精度验证不计性能。原生命周期累计1649.274/1800秒，CUDA active UNKNOWN；新增约397MiB≤512MiB，自有退出见[收尾](../../experiments/operator-kv-matrix-20261018/RESOURCE-AND-STOP-REPORT.md)。
 
-阶段189组描述结果（不是验收）：Target183/189、TF连续185/189、PF2 181/189；平均失败800罚分284.81/274.76/284.22。相对Target共同成功最大长度比TF1.7004/PF2 1.5465；原组件审计FAILED仍保留（C15/P27）。含FIT/CAL暴露，不签独立TEST或正式速度，四false不改。见[阶段汇总](../../experiments/autodl-stage-migration-20261017/STAGE189-RESULT.md)。
+## Long500首轮边界
 
-## 历史质量不覆盖
+T/C/P成功483/484/473，SR96.6%/96.8%/94.6%；800罚分均值285.858/282.588/293.270，实际命令142861/141230/146527。T→C丢11救12，T→P丢19救9。双方成功长度type7 P50/P90/max：C/T=1/1.073561/2.329167，P/T=1/1.054054/3.223577；>1.30为6/472、7/464。
 
-固定4f04 paused72永久72/96、MLP0、PAUSED_BY_USER_PARTIAL_NOT_QUALIFIED；本机live77另列。旧TF_ON fresh20/20不覆盖风险4/8对Target6/8，三条新增风险(1,29)/(3,26)/(4,26)保留。旧22清理缺证、所有FAILED和暂停/预算中断保持。
+C36、P66原首两S严格配对FAILED，50init有训练/DEV暴露，不能签独立TEST。新机273组暖episode探索性全尝试T/C约1.4974、T/P约1.2330，非独占/cold E2E。所有自然任务失败保留，原PARTIAL补齐不重复计样本。
 
-M15 PF2六对完整：C3/6、P5/6，救回2、无lost；risk4/26仍败，控制1/36 260→405，共同成功P50/P90/max=1.0043/1.4470/1.5577，投入NO_GO。旧四权限false；新大面板只补描述证据，不能追改原门。
+## 当前权限与下一步
 
-结构TF64及API暂冻不等于权重通过。唯一Long训练机会已用，新增三套是用户新批准的对应teacher独立训练，不无限调参。accept tau/selector/树/bonus固定，PF2=SST，T是canonical50 scheduler更新/51 action调用，非bonus/物理回滚。
+engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission四项false。TF_ON/PF2旧NO_GO、retention、4f04 paused72/96、MLP0、本机live77、全局A_off不改。无新45chunk/TEST、融合、训练或第二环境。
 
-## 性能与资源边界
-
-并行质量计时仅探索性；正式完整任务E2E需质量与独占。旧capture重复字段/有效KV桶缺口均保留UNKNOWN，尚无可宣称合格的新TF全状态replay。系统H1/H2有机制证据，H3有限pilot，H4未成立；原tile不变。
-
-AutoDL无smoke/独立测试/SHA，包括隐式loader；所有臂完整512-token BF16优化reset。只清理本项目确认可重建/无引用内容，原失败与唯一权重保留，不杀他人。各job有绝对deadline和PID出生证明；脚本退出不等于关机。
-
-原M01–M16完整进度见[历史原件](history/PROGRESS-through-M16-20261017.md)，原结果链接仍在；当前短状态只更新这里，不追加整篇旧总结。
+用户要本机研究算子，评测尽量在BAAI；原tile代码/HW不动。原M16/M17预算截止见PLAN，不因迁移或补缺重置。接下来先讨论standalone误差定位与异常block复测，M17原队列继续。新GPU作业需有明确范围/窗口/预算，不借未用余额自动扩任务。

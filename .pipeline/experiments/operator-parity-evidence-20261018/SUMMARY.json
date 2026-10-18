@@ -1,0 +1,85 @@
+{
+  "status": "COMPLETE_EXISTING_DATA_AUDIT",
+  "started_at": "2026-10-18T18:24:36+08:00",
+  "finished_at": "2026-10-18T18:24:38+08:00",
+  "cpu_process_seconds": 0.588711911,
+  "analysis_wall_seconds": 1.5633100755512714,
+  "gpu_jobs_started": 0,
+  "gpu_hours": 0,
+  "new_tensor_replay": false,
+  "independent_tensor_error_recompute": false,
+  "new_hashes_computed": false,
+  "source_reports": [
+    "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/release-r1.json",
+    "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/release-r2.json"
+  ],
+  "original_acceptance_summary": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/final-acceptance-summary.json",
+  "original_resource_audit": "/rjs/cxz/论文探索/wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/outputs/tile-pytorch29-baseline-20261011-203651/host-api-align-20261012/final-resource-and-boundary-audit.json",
+  "independent_processes": 2,
+  "distinct_real_fixtures": 6,
+  "rounds_per_process": 7,
+  "correctness_checks": 576,
+  "correctness_categories": {
+    "api_contract": {
+      "checks": 240,
+      "passed": 240,
+      "torch_equal_count": 0,
+      "max_abs": null,
+      "max_rel_l2": null
+    },
+    "block_stage": {
+      "checks": 144,
+      "passed": 144,
+      "torch_equal_count": 42,
+      "max_abs": 0.125,
+      "max_rel_l2": 0.00041826494270935655
+    },
+    "fixture_oracle": {
+      "checks": 168,
+      "passed": 168,
+      "torch_equal_count": 168,
+      "max_abs": 0.0,
+      "max_rel_l2": 0.0
+    },
+    "standalone_attention": {
+      "checks": 24,
+      "passed": 24,
+      "torch_equal_count": 0,
+      "max_abs": 0.00390625,
+      "max_rel_l2": 5.8426783652976155e-05
+    }
+  },
+  "attention_performance_gates": 48,
+  "full_block_performance_gates": 12,
+  "event_samples": 36960,
+  "synchronized_wall_samples": 36960,
+  "performance_cells": 60,
+  "round_cells": 420,
+  "round_cells_cuda_slower": 16,
+  "block_round_cells_cuda_slower": 12,
+  "numerical_metrics_identical_across_processes": true,
+  "archived_implementation_files_compared": 180,
+  "archived_implementation_all_equal": true,
+  "original_resource": {
+    "strict_original_resource_gate_passed_both": true,
+    "first_admission_before_absolute_deadline": true,
+    "two_ten_second_idle_confirmations": true,
+    "initial_nonidle_snapshots_retained": 1,
+    "no_queries_during_timed_children": true,
+    "cooperative_existing_lock": true,
+    "foreign_post_compute_graphics_PID": false,
+    "owned_controller_and_GPU_children_exited": true,
+    "physical_exclusivity_not_proven": true,
+    "user_confirmed_idle": true,
+    "clock_changes": false,
+    "original_protected_shared_speculative_input_guards_retained": true,
+    "only_expected_original_guard_deletions": [
+      "wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/operator_lab/wam_transformer_tile/collect_real_k2160.py",
+      "wam_tutorial_a100/worktrees/c0-oplab-online-norm-20260922/operator_lab/wam_transformer_tile/test_real_k2160_capture.py"
+    ]
+  },
+  "issues": [],
+  "historical_failures_retained": true,
+  "current_robot_quality_and_formal_permission_changed": false,
+  "note": "数值为旧GPU运行保存的统计，CPU仅复核聚合；性能所有原始值参与重算，不删轮、不重设门。"
+}

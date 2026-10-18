@@ -1,0 +1,25 @@
+﻿subject,status,detail
+真实fixture,OBSERVED,6份真实输入，两次进程使用相同六份；不是576份独立输入
+硬件与精度,OBSERVED,A100-SXM4-40GB/SM80，BF16，B2/H24/D128，contiguous BSHD
+self attention形状,OBSERVED,Q128/K128、Q16/K144、Q128/K2160、Q16/K2160
+cross attention形状,OBSERVED,Q128或16、K512
+原容差,OBSERVED,atol=rtol=.02；未独立重算未保存的元素级误差
+真实block0与12阶段,OBSERVED,逐stage比较；完整block包含原PyTorch norm/linear/FFN与attention替换
+API契约,OBSERVED,CPU/FP32/维度/KV形状/布局/空输入/NaN scale/autograd拒绝；自定义scale和非默认stream
+数值重复,OBSERVED,两进程记录的max_abs/rel_l2/torch.equal一致；不是额外独立输入
+逐元素严格逐位,NOT_ESTABLISHED,多数输出torch.equal为false；其语义也不是原始字节比较
+中等KV1152/任意尾块,NOT_COVERED,最终六fixture未覆盖；不能由K2160结果外推
+B14与1/3/7候选,NOT_COVERED_BY_THIS_ACCEPTANCE,现有报告是B2 dense；后续原型必须独立核对
+共享prefix/候选私有KV,NOT_COVERED_BY_THIS_ACCEPTANCE,没有这份基线证书可继承
+更新cache分支,NOT_COVERED,fixture要求update_cache=0；只精确验证记录的self K/V
+30层累计与CFG方向,NOT_COVERED,单block0不是全模型链
+投机接受分数/翻转/路径,NOT_COVERED,原allclose不能替代接受阈值与状态契约
+完整scheduler/chunk/decoded action/RNG,NOT_COVERED,没有此实现完整替换的对应证据
+LIBERO成功率/trace/task E2E,NOT_COVERED,不将投机方法既有任务结果签给此算子
+FSDP整模型,NOT_COVERED,参照是Torch SDPA FlashAttention，并非FSDP运行时
+资源空闲,OBSERVED_LIMITED,原资源gate两次通过，无计时中管理API/profiler；物理宿主独占未证明
+任意调用/任意轮均更快,FALSE,逐轮存在回退，原gate是median-of-round-medians
+所有形状稳定加速/统计置信界,NOT_ESTABLISHED,两进程不足；长video完整block margin约0.1%
+其他硬件/版本/FP16/训练梯度,NOT_COVERED_OR_UNSUPPORTED,本地固定SM80、BF16、推理契约
+元素级误差分位数/ULP/更紧allclose,UNKNOWN,原JSON没有完整输出张量或所需统计；不能离线补造
+后续G1/G2/guard/cache原型,SEPARATE_EVIDENCE,本包只审旧已验收实现，不能继承其通过结论

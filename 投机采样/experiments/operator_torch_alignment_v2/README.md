@@ -1,0 +1,9 @@
+# 独立Torch2.9数值对齐版本v2
+
+来源：原wam_transformer_tile的固定PyTorch/FlashAttention/CUTLASS实现，完整来源与许可证在csrc/vendor。旧目录不变。
+
+本轮唯一数学编译变化：移除--use_fast_math；命名空间/扩展名隔离。未调用Torch SDPA作为自有实现，不改变split/tile/阈值。是否解决整模型误差以实测结果为准。
+
+编译：CUDA_VISIBLE_DEVICES='' CUDA_HOME=/usr/local/cuda-12.4 TORCH_CUDA_ARCH_LIST=8.0 MAX_JOBS=1 /rjs/cxz/miniconda3/envs/va/bin/python setup.py build_ext --inplace
+
+CPU编译CUDA不可见。固定Torch2.9.0+cu126；本地nvcc12.4与wheel12.6仍不同，不宣称二进制相同。这里只支持SM80 BF16 D128 inference契约。

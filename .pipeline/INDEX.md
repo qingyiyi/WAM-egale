@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-17T22:05:47+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-18T20:44:00+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -12,12 +12,15 @@
 
 | 路线 | 当前结论 | 证据入口 |
 |---|---|---|
-| 投机采样 | M18旧567局原件备份完成；新namespace按30局分片接续311未开始组，4模型READY、完整任务运行；新机未接入，三套TF暂挂。旧NO_GO/四false不变 | [当前状态](experiments/libero-four-suite-20261017/ACTUAL-RUN-STATUS.md)、[评测范围](experiments/libero-fullscale-20261017/SCOPE-REVIEW.md) |
-| tile / SDPA | 固定 PyTorch2.9 基线有限验收完成；没有新 MegaTransformer/verifier/E2E 收益 | [原最终报告](research/tile-sdpa/PYTORCH29_FINAL_20261012.md) |
+| 投机采样 | Long首轮500组/1500局：T483/C484/P473；Goal/Spatial原全量继续；Object16条后迁新机等自然空槽，本机不自动接评测；旧NO_GO/四false不变 | [资源迁移](experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md)、[当前Cycle](cycles/wam-research-20261016/PROGRESS.md) |
+| tile / SDPA | 新54点性能与精度/I/O已齐；standalone单block容差过，但完整30层3/6未过原容差；shared/guarded六query逐位/有效状态通过；性能仍探索性；本轮自有GPU均退出 | [统一结果](experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)、[原有限基线复核](experiments/operator-parity-evidence-20261018/REPORT.md) |
 
 算子原代码与 HW 保留；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 
 ## 动态事实与历史
+
+- [10/18晨报实际安排](experiments/long-morning-20261018/PLAN.md)：09:15统计/09:20回本机，未全500则PARTIAL；[成功率口径](experiments/libero-fullscale-20261017/SUCCESS-RATE-METHOD-20261018.md)。[最终500组汇总](experiments/long-morning-20261018/FINAL-SUMMARY.md)已交付；三轮均值为后续偏好，后两轮尚未登记。
+
 
 - 当前[PF2执行与12h批准](memory/global/requirements/decision-PF2源码执行与AutoDL十二小时窗口.md)已替代历史只读NONE/5GPUh帽；固定4f04 paused72与live77分列。M15十二局已清理；后续用户另已批准[全量与双卡至完成](memory/global/requirements/decision-AutoDL全量研究使用至完成.md)，不是借旧余额扩任务。AutoDL[无smoke/独立测试/SHA](memory/global/requirements/requirement-AutoDL直接源码运行且不做smoke或SHA.md)，所有实验[默认优化reset](memory/global/requirements/decision-实验默认启用等价reset优化.md)。
 
