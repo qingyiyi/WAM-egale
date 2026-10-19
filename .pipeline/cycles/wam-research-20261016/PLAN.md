@@ -28,7 +28,7 @@ execution: EXECUTION.md
 - [x] 一个FFN子图有限验证：完整device FFN失败，保留；收缩FFN1+原BF16 GELU通过六block×两进程，FFN2仍Torch。
 - [x] 完整中间量/输出/有效KV/metadata/输入/RNG/参数字节门，全部原值、失败和17个owned作业归档。
 - [x] 1093 block host/capture/replay intents，617原语调用，751.141秒生命周期；本机GPU自有进程退出，不自动花余额。
-- [x] 本轮报告、源码导航和HW已整理；main发布与最终源码回传在本次会话收尾。
+- [x] 本轮报告、源码导航和HW已整理并发布main；源码讲解随本次回传。
 - [ ] 后续先明确完整block可调度边界与FFN2契约方案；P_seq/P_sched未启动，不把约3%通用融合包装成新调度创新。
 
 ## 仍有效预算/期限
