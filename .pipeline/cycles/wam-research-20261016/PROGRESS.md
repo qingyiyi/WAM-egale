@@ -1,46 +1,54 @@
 ---
 kind: progress
 cycle: wam-research-20261016
-updated: '2026-10-19T22:56:41.237773+08:00'
+updated: '2026-10-20T00:26:37.588785+08:00'
 plan: PLAN.md
-current: M34
-execution_status: whole_layer_executor_pending
+current: M35
+execution_status: engineering_timing_and_operator_CPU_parallel
 next: M34
 ---
 # 当前研究进度
 
-当前计划：[PLAN.md](PLAN.md)。
+## M17 — 四套既定评估：计算完整、审计未放行
 
-## M33 — 最新交付；M34整层实现待完成
+四套共6000完整episode，每套T/C/P各500：Long483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499。[逐局CPU核对及长度/罚分](../../experiments/libero-four-suite-performance-20261019/RESULT.md)。6000不是独立TEST；首两S严格配对FAILED、训练/DEV曝光、组件审计和长尾保留。原算法失败不删除，actual796与800罚分分列。既定GPU计算已清理。
 
-[M33实际profile](../../experiments/single-block-persistent-profile-20261019/RESULT.md)完成。B14长KV静态/阶段内persistent均34 kernel，增量207.072us由self/cross attention与FFN1合计207.2425us解释。108 CTA上限低于理论2 CTA/SM容量；隔离216 CTA反事实使B14短中长相对静态退化从4.154%/4.781%/5.459%降到0.726%/0.474%/0.179%，没有新增加速。不锁时钟，跨case绝对时间非单调，不能作正式性能。
+## M31 — 独立静态tile子图：completed
 
-九真实block×四模式两次profile（153调用）、有效三B14反事实112调用，输出/有效KV/RNG通过。NCU权限失败，实测occupancy/L2/DRAM UNKNOWN；两个扩展身份/符号实施失败保留，第三attempt隔离后完成。五GPU job生命周期81.856秒、293 block尝试含失败、0full30/0episode；22:53两GPU无进程，全部owned退出，新证据42.91MiB。baseline及依赖88项不变。
+[原证据](../../experiments/transformer-tile-subgraph-20261019/RESULT.md)：9block/72状态及独立进程54状态有限通过；不继承给新算术。baseline及依赖冻结，优化只在optimized。
 
-用户要求的是**整个单层统一persistent kernel，内部warp组调度全部tile**。当前M32只有attention/FFN1阶段内常驻循环，QKV/Wo/FFN2仍host cuBLASLt，不满足整层目标。[完整DAG与缺口](../../experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)已登记，整层实现仍待完成。下一M34补设备原语、ready/生命周期与统一执行器，不扩30层，不以新wrapper或多kernel包装宣称完成。
+## M32 — 阶段内persistent：completed
 
-M32原证据：9block/90有效KV/48原语；两进程378样本，新增persistent对静态B14慢4.42%–6.26%、B2慢2.56%–2.80%；A/A最大10.07%保留。原源码/DSO与此轮216诊断副本分列，[M32结果](../../experiments/persistent-tile-remote-20261019/RESULT.md)不改写。
+[原结果](../../experiments/persistent-tile-remote-20261019/RESULT.md)：9真实block/90有效KV/48原语通过；两进程378样本，新增persistent比静态B14慢4.42%–6.26%，B2 action慢2.56%–2.80%，A/A最大10.07%。只在attention/FFN1阶段内循环，QKV/Wo/FFN2仍host cuBLASLt，不满足整层单kernel。原五GPU作业77.927秒/731block，0full30/episode、owned退出。
 
-## 既有证据与质量线
+## M33 — 退化profile：completed
 
-M31独立静态子图9block/72状态及独立进程54状态是旧证据；M28六actual30/动态block性能是旧版本，不继承到新M32。M21/M25/M26 FFN2/NCU/M27与旧守卫失败保留。完整历史见[归档](history/M32-before-summary-20261019/PROGRESS.md)。
+[实测归因](../../experiments/single-block-persistent-profile-20261019/RESULT.md)：B14长KV两模式均34 kernel；退化207.072us由self/cross/FFN1三项207.2425us解释。216 CTA反事实使短中长退化4.154/4.781/5.459%降至0.726/0.474/0.179%，仍无加速。NCU权限失败，实测occupancy/L2/DRAM UNKNOWN；两次扩展身份实施失败保留。5 GPU jobs81.856秒/293尝试，0full30/episode，22:53清理。baseline88项不变。
 
-真实D3072/H24/d128/FFN14336；action Q16、Linear M32/224，每attention实例Q16；self-K288/1152/2160，video本批272/1136/2144，cross512。M29文献近邻主张门与M30真实DAG仍有效。
+## M34 — 整层单persistent kernel、warp分工：in_progress
 
-Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各臂500；[成功率表](../../experiments/libero-four-suite-morning-20261019/COMPLETED-SUITES-SUCCESS-20261019.md)。描述性覆盖，不解除首两S严格配对FAILED、训练/DEV曝光、组件审计与长尾。
+最新用户要求现在直接实现，明早交实际速度/精度/问题。整层[source](../../../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[Python入口](../../../算子研究/wam_ops/optimized/whole_layer.py)、[说明](../../../算子研究/wam_ops/optimized/WHOLE_LAYER.md)已创建，独立DSO已CPU编译成功。self/cross、全部投影、FFN、Norm/RoPE/调制/残差/KV管理都在cooperative kernel；8 warp中调度/两加载/四计算/写回分工，阶段grid barrier保证DAG，未声称跨阶段细流水。
 
-Object 1500/1500，完成数T500/C500/P500；来源2026-10-19T13:06:38Z。全部500共同case齐；成功数T497/C498/P499（99.4%/99.6%/99.8%）。原controller已退出，既定评估计算完成；审计和资源终态仍按原证据，不把完成覆盖写成质量放行。 GPU0本轮算子已退出。
+编译1参数遗漏、编译2私有工具链link.stub缺失均保留；后续向量加载与真实4D RoPE接口修正版本已编译。CUDA源码df8b386...。本机自然空闲先验证：[实际9输入](../../experiments/single-layer-warp-specialized-20261019/LOCAL-CORRECTNESS.md)，本机2条、远端9条trace各1整层kernel，tile/输入/RNG/参数门通过；9输出逐位FAIL、relative L2 0.00131–0.00560，只读9KV通过、写序列18中9KV数值失败，metadata均过。首本机误用默认Python依赖失败0block，已退出，原记录保留。原cuBLASLt API重建得到B2 FFN2 splitK7、B14 Q/FFN2 splitK2，inplace；不是已结束调用直接拦截，不能单凭配置定根因。
 
-TF64/TF_ON/normalizer/tau/K2B2/bonus/prefix_then_cost与BF16/FP32冻结。PF2=SST完整policy，T50更新/51调用含末尾；reset/cache不计周期。所有臂同用512-token BF16 reset bank，cold另列；actual796与800罚分分列。
+实际函数172 registers/thread、59616B shared、LOCAL0、理论1 CTA/SM/108 CTA；不是实测achieved occupancy。未通过原数值门，生产不接入，四false不变。首批远端3作业已关闭：450 block/270计时样本，新kernel比native慢5.12–11.28倍，全部owned退出。另登记83调用/15min阶段计时与至多一个ldm40诊断，CPU已编译profile，等Object计时关闭；不改主源码/DSO，最晚08:30清理。[登记](../../experiments/single-layer-warp-specialized-20261019/PLAN.md)。
 
-## 下一步与边界
+## M35 — 四套新独占工程计时：in_progress
 
-下一M34补齐设备GEMM及全层ready执行器；当前没有运行中的本轮GPU任务。只做一层，最终模型E2E后续本机。
+[新登记](../../experiments/libero-four-suite-performance-20261019/ISOLATED-MEASUREMENT-PLAN.md)：每套10task/init49×三臂×3独立server进程重复，最多360完整局。GPU0 Goal→Object；GPU1 Spatial→Long；每卡单target worker、server/client各2核。新重复只作计时，不增加独立质量N。Goal/Spatial各90计时局齐；Long已自动READY执行，Object仅原未启动repeats2/3接续。Object repeat1误用Goal/Spatial迁移入口被白名单拒绝，0局/0teacher/原guard CLEAN；失败保留不重跑，原360预计最多330，面板PARTIAL。新continuation不改原截止/预算，未改投机源码或旧白名单。；队列实时数以远端原终态为准。[部分新计时表](../../experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)。
 
-engineering_quality_screen=false；independent_test_complete=false；noninferiority_established=false；formal_performance_permission=false。旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据/default A_off不改。
+新预算6h/卡、1452000尝试、3GiB；05:34停止新工作、05:44清理（10/20北京，以原REGISTRATION秒为准），不延期。三小套复用冻结入口；Long用独立10case资源schema，不伪造原500PASS。争用标污染、完整episode边界停，不杀他人、不自动重试。旧受阻45chunk未启动，四false不变；这是用户新授权的工程计时而非旧质量证书放行。CPU编译不与GPU计时混跑同卡。
 
-M17原10/21 16:56:31停新、17:11:31清理，18723000尝试/15GiB、每卡最多2worker；matched Target前200组同GPU1，不为填卡重复Target或破坏配对。BAAI仅~/cxz；AutoDL不再SSH、关机UNKNOWN。本机计时自然空闲、精度可共享；不杀他人/改服务/时钟。
+## M36 — RoboTwin迁移只读调研：completed
 
-投机源码/配置/运行依赖、原tile与state/rules保护，不建缺失cycle.yaml、不升级/旧sync覆盖HW。仅baseline/optimized两份主实现；baseline及依赖冻结，优化只在optimized。无自动新训练/120/独立TEST/新TF正式45chunk/第二环境/大融合。中文正文会话交飞书。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文包。
+[结果](../../experiments/robotwin-migration-survey-20261019/RESULT.md)：官方LingBot-VA RoboTwin权重存在，50唯一任务；单条件100有效scene/task，50×100×三臂=15000局。旧官方client先专家筛seed，不是LIBERO50固定init。动作16有效通道/30padding、Q32，不能直接用当前7通道/Q16 draft。固定代码/配置/权重metadata身份，未下载模型或装环境、未启第二环境。
 
-用户最新澄清：要单层统一persistent执行器内的tile调度。M32只是局部原型；M33实际profile已登记，统一整层尚未实现。
+## 当前接口与保护
+
+D3072/H24/d128/FFN14336；action Q16/Linear M32/224，每attention实例Q16；self K288/1152/2160，video272/1136/2144，cross512。候选private KV独立。TF64/TF_ON、normalizer/tau/K2B2/bonus/prefix_then_cost/BF16-FP32冻结；PF2=SST完整policy，T50更新/51action调用含末尾。双方同用512-token BF16 reset bank，cold另列。
+
+engineering_quality_screen=false；independent_test_complete=false；noninferiority_established=false；formal_performance_permission=false。旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据/default A_off不改。M21/M25/M26/M27旧失败与负结果保留，原tile/投机代码与运行依赖不动。
+
+BAAI所有写入限~/cxz；AutoDL已归还、不再SSH。最新允许性能统一远端，替代最终E2E必须本机。仅一层、baseline/optimized两主实现；baseline含共享依赖冻结，88项CPU核对未变。state/cycle/rules保护，不旧sync/升级HW、不建缺失cycle.yaml。无自动新训练/120/独立TEST/第二环境/30层大融合；只main公开核对源码/HW/小证据，模型/PT/KV/DSO/凭据不传。
+
+M17原预算另存：10/21 16:56:31停新、17:11:31清理、18723000尝试/15GiB，不能借M35重置。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文包。完整前状态见[归档](history/M34-start-20261020/PROGRESS.md)。

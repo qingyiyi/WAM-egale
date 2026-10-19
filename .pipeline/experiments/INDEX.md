@@ -1,5 +1,9 @@
 # 当前研究实验
 
+- [M34整层单kernel](single-layer-warp-specialized-20261019/PLAN.md)：源码已编译、本机结构通过但原逐位FAIL；远端计时待空卡，原数值门不变。
+- [M35新独占工程计时](libero-four-suite-performance-20261019/ISOLATED-RESULT.md)：360上限、四套三臂三进程重复；新重复不作独立质量N。
+- [M36 RoboTwin只读调研](robotwin-migration-survey-20261019/RESULT.md)：官方权重/50任务/seed与迁移接口；0新环境实验。
+
 - [M33单层退化归因](single-block-persistent-profile-20261019/RESULT.md)：profile与216 CTA反事实完成；NCU计数UNKNOWN，整层统一kernel尚未实现。
 
 - [M32单层persistent](persistent-tile-remote-20261019/RESULT.md)：有限精度/状态通过，两进程新增性能收益未成立；本轮30层取消。

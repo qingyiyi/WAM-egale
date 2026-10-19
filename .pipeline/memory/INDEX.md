@@ -4,7 +4,9 @@
 
 ## 当前资源偏好
 
-- [整层统一persistent执行器](global/requirements/requirement-单层Transformer统一persistent内核调度全部tile.md)（constraint，当前算子）：全部单层阶段的tile在统一常驻执行器内调度；M32局部CTA循环尚未完成该目标。
+- [允许远端统一测性能](global/requirements/decision-允许远端统一测量LIBERO与算子性能.md)（constraint，当前性能）：解除最终E2E必须回本机的地点限制；四套三臂完整质量/长度/成本，正式计时无争用。
+
+- [整层统一persistent执行器](global/requirements/requirement-单层Transformer统一persistent内核调度全部tile.md)（constraint，当前算子）：全部单层tile在一个kernel中，由职责明确的常驻warp分工执行；M32局部CTA循环尚未完成该目标。
 
 - [单层persistent有限验证与负结果](global/knowledge/knowledge-单层persistent有限验证与性能负结果.md)（reference，M32）：9block/90状态/48原语通过，B14比静态慢4.42%–6.26%；后续只优化单层。
 

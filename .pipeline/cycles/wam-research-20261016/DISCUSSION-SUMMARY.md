@@ -5,7 +5,9 @@ updated: '2026-10-19T21:08:07.097619+08:00'
 ---
 # 当前讨论与授权
 
-用户最新要求只实现一层完整Transformer block，在这一层内做tile和persistent；取消本轮30层迁移/验证，不以完整30层作为完成门。实现与有限验证放BAAI ~/cxz，未来最终E2E在本机。baseline连同共享依赖冻结，优化只在独立optimized。
+最新用户允许性能统一远端，并允许现在并行CPU实现整层单persistent kernel和warp职责分工；GPU验证等待对应卡四套计时阶段结束，明早汇报，最后汇总RoboTwin任务/权重/init/迁移调研。GPU工程测量已按独立新登记启动，不恢复旧受阻45chunk，不把旧四false改true。RoboTwin没有新增实验授权。
+
+用户最新要求只实现一层完整Transformer block，在这一层内做tile和persistent；取消本轮30层迁移/验证，不以完整30层作为完成门。实现与有限验证放BAAI ~/cxz，最新用户允许未来性能统一远端。baseline连同共享依赖冻结，优化只在独立optimized。
 
 [M33实际profile](../../experiments/single-block-persistent-profile-20261019/RESULT.md)完成。B14长KV静态/阶段内persistent均34 kernel，增量207.072us由self/cross attention与FFN1合计207.2425us解释。108 CTA上限低于理论2 CTA/SM容量；隔离216 CTA反事实使B14短中长相对静态退化从4.154%/4.781%/5.459%降到0.726%/0.474%/0.179%，没有新增加速。不锁时钟，跨case绝对时间非单调，不能作正式性能。
 

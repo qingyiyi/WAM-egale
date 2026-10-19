@@ -1,8 +1,8 @@
 # 当前入口
 
-先读[10/19当前源码与结果](CURRENT-20261019.md)。M33 profile已收口，当前实现仍只是阶段内persistent；用户要求整层统一kernel尚未完成。下一M34设备原语与ready DAG，baseline/投机侧不改，四质量字段false。
+先读[10/20当前源码与结果](CURRENT-20261020.md)。整层单kernel结构已经实测，原精度与性能门失败；四套原6000局计算齐，新的同卡计时与有限算子诊断按登记推进。baseline/投机代码不改，四质量字段false。
 
-以下正文与review/RESULTS.json为4f04 paused72历史快照，不能覆盖后续新授权运行或当前算子结果；旧FAILED/retention亦不能由新进度改写。
+以下正文和review/RESULTS.json保留4f04 paused72历史，不作为当前进度；旧FAILED、retention和固定科学身份不改。
 
 ---
 

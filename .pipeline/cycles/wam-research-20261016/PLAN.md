@@ -15,7 +15,11 @@ steps:
   - id: M33
     status: completed
   - id: M34
-    status: planned
+    status: in_progress
+  - id: M35
+    status: in_progress
+  - id: M36
+    status: completed
 ---
 # 当前计划
 
@@ -25,7 +29,9 @@ steps:
 | `M31` | 静态tile子图 | 完成 | 原结果保留 |
 | `M32` | 阶段内persistent | 完成 | 有限精度通过，性能负结果 |
 | `M33` | 单层退化profile | 完成 | NCU失败、网格反事实已收口 |
-| `M34` | 整层统一persistent kernel | 待实现 | 设备原语→ready DAG→统一kernel→状态与性能门 |
+| `M34` | 整层统一persistent kernel与warp职责分工 | CPU实现中；GPU待空卡 | 设备原语→warp角色与ready DAG→单kernel→状态与性能门 |
+| `M35` | 四套LIBERO质量/长度/独占工程计时 | 运行中 | 原6000局CPU核对完成，新360计时局上限 |
+| `M36` | RoboTwin迁移调研 | 完成只读核查 | 任务/权重/初态/兼容性；不启动第二环境 |
 
 ## M17 — 既定四套LIBERO评估
 
@@ -60,7 +66,7 @@ attention/FFN1阶段内实现常驻CTA固定步长tile循环；完整self/cross/
 
 用户要求的是**整个单层统一persistent kernel，内部warp组调度全部tile**。当前M32只有attention/FFN1阶段内常驻循环，QKV/Wo/FFN2仍host cuBLASLt，不满足整层目标。[完整DAG与缺口](../../experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)已登记，整层实现仍待完成。下一M34补设备原语、ready/生命周期与统一执行器，不扩30层，不以新wrapper或多kernel包装宣称完成。
 
-## M34 — 单层统一persistent kernel（未实现）
+## M34 — 单层统一persistent kernel（源码已编译，GPU未验）
 
 按上述缺口分设备原语、整层ready执行器、完整精度/状态、强baseline性能四步推进。仅optimized；不修改baseline或投机侧。实际GPU作业另登记有界预算，不沿用M33余额。
 
@@ -71,3 +77,13 @@ M17原10/21 16:56:31停新、17:11:31清理，18723000尝试/15GiB、每卡最�
 投机源码/配置/运行依赖、原tile与state/rules保护，不建缺失cycle.yaml、不升级/旧sync覆盖HW。仅baseline/optimized两份主实现；baseline及依赖冻结，优化只在optimized。无自动新训练/120/独立TEST/新TF正式45chunk/第二环境/大融合。中文正文会话交飞书。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文包。
 
 完整旧方案见[本轮前归档](history/M32-before-summary-20261019/PLAN.md)，旧FAILED/数据/数值不改写。
+
+## M35 — 新授权远端工程计时
+
+[四套6000完整局](../../experiments/libero-four-suite-performance-20261019/RESULT.md)已纯CPU核对。用户允许后续性能统一远端，替代最终E2E必须本机；旧质量四false及旧受阻45chunk入口不改写。新[独占工程测量登记](../../experiments/libero-four-suite-performance-20261019/ISOLATED-MEASUREMENT-PLAN.md)：四套各10task/init49、三独立进程重复，360完整episode上限；每卡一个模型worker、两卡并行不同套，6h/卡、1452000尝试、3GiB，总时钟按现场REGISTRATION不延期。原6000质量局不重跑；新重复不增加独立质量N。
+
+GPU0 Goal→Object，GPU1 Spatial→Long。前三套复用原冻结launcher/runner；Long是独立资源/子集schema，完整episode数学/ObservedAPI不改，原500预期supervisor若标PARTIAL保留，新schema仅评估登记10case，不伪造Long500补PASS。所有失败/污染/长尾与出生时间清理保留，阶段partial不自动重试。
+
+## M34/M36 — 用户指定后继
+
+最新用户允许现在CPU编码/编译，与速度评估并行；对应卡计时关闭后验证单层一个persistent kernel与warp职责分工；M33“先全组协作、warp专职可后置”的最终交付解释已被新约束替代。再汇总RoboTwin任务、权重、init/seed数量与迁移要求；当前只调研，不下载权重、安装模拟器或启动新环境。

@@ -10,7 +10,7 @@
 
 [当前整体整理](cycles/wam-research-20261016/STATUS-20261019.md)：Long/Goal/Spatial首轮、B0有限GPU逐位、Object修复与原门缺口；旧paused72仅历史。
 
-当前算子：[M33退化profile](experiments/single-block-persistent-profile-20261019/RESULT.md)完成；新要求为单层统一persistent kernel内部调度全部tile，尚未实现。[M34设备原语与ready缺口](experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)。M32局部原型与负结果保留，baseline/投机侧不改；无本轮GPU作业在运行。
+当前算子：[M33退化profile](experiments/single-block-persistent-profile-20261019/RESULT.md)完成；新要求为单层统一persistent kernel内部调度全部tile，尚未实现。[M34设备原语与ready缺口](experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)。M32局部原型与负结果保留，baseline/投机侧不改；M35两卡工程计时运行，M34首批闭合并排有界诊断。
 
 ## 两条研究路线
 

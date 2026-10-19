@@ -1,0 +1,25 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "rows": [],
+  "timing": [],
+  "resources": [
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 0, 40442, 24",
+      "pids": ""
+    }
+  ],
+  "complete_block_attempts": 0,
+  "primitive_diagnostic_calls": 0,
+  "full30_calls": 0,
+  "robot_episodes": 0,
+  "production_admitted": false,
+  "original_bitwise_gate_unchanged": true,
+  "numerical_route": "NEW_WMMA_AND_ONLINE_ATTENTION_REQUIRES_SEPARATE_ADMISSION",
+  "timing_scope": "MATCHED_UNCACHED_SINGLE_BLOCK_EAGER_RESEARCH_ONLY",
+  "strong_cached_Graph_comparison": "NOT_YET_MEASURED",
+  "formal_performance_permission": false,
+  "error": "ModuleNotFoundError(\"No module named 'easydict'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/.pipeline/experiments/single-layer-warp-specialized-20261019/validate_whole_layer.py\", line 82, in main\n    block = load_block(device='cuda')\n  File \"/rjs/cxz/论文探索/算子研究/tools/block_loader.py\", line 16, in load_block\n    from wan_va.modules.model import WanTransformerBlock\n  File \"/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/__init__.py\", line 2, in <module>\n    from . import configs, distributed, modules\n  File \"/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/__init__.py\", line 2, in <module>\n    from .va_franka_cfg import va_franka_cfg\n  File \"/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/configs/va_franka_cfg.py\", line 3, in <module>\n    from easydict import EasyDict\nModuleNotFoundError: No module named 'easydict'\n",
+  "lifecycle_seconds": 0.005731435492634773,
+  "finished_at": "2026-10-19T16:38:03.025935+00:00"
+}

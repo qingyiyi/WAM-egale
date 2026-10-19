@@ -1,3 +1,5 @@
+当前新增[整层单kernel研究入口](wam_ops/optimized/WHOLE_LAYER.md)：结构已由9真实输入trace确认，原数值门FAIL且比冻结native更慢，禁止默认替换。baseline及依赖冻结，优化仍只在optimized；[实测结果](../.pipeline/experiments/single-layer-warp-specialized-20261019/RESULT.md)。
+
 # WAM完整block算子研究
 
 当前目录约束：[冻结baseline，仅在optimized推进tile优化](../.pipeline/memory/global/requirements/decision-冻结baseline并仅在optimized实现tile优化.md)。M31已经建立独立optimized参数/执行器及`wam_optimized_block_cuda`构建产物，不继承或链接baseline。旧attention/FFN源码与动态库仍为baseline冻结依赖，不修改或覆盖。实际实现与三种开关见[子图说明](wam_ops/optimized/SUBGRAPHS.md)。
