@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-19T12:07:24.496573+08:00'
+updated: '2026-10-19T12:45:00.444350+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -29,7 +29,7 @@ execution: EXECUTION.md
 - [x] 三轮交错计时及全部原始值已采；三个attempt均有资源冲突，原FAILED/PARTIAL不改。
 - [x] 用户空闲继续的新[有界接续](../../experiments/operator-stable-timing-20261019/RESULT.md)完成：432full30/444block、131.338 GPU生命周期秒；108检查逐位通过，自有退出。正式无争用/严格2.5%仍未成立。
 - [x] 统一代码讲解、结果/HW与main同步；当前科学边界显式保留。远端既定Object每5分钟巡检，原规则不自动重试。
-- [ ] 下一步先讨论完整block分解与第一个优化子图；baseline固定，只在optimized开发，不先大融合。原正式性能缺口保留；T25/T17及Long后两轮仍待登记。
+- [ ] [网页方案评估与下一步](../../experiments/operator-stable-timing-20261019/NEXT-PLAN.md)：先强基线/profile与D0，再P_seq/P_sched；建议尚未批准执行，baseline固定。
 
 ## 范围与预算
 

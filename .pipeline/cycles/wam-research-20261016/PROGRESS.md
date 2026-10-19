@@ -3,9 +3,9 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-19T12:07:24.496573+08:00'
+updated: '2026-10-19T12:45:00.444350+08:00'
 current: M25
-next: operator_block_profile_discussion_with_remote_automatic_queue
+next: proposed_strong_baseline_profile_and_device_primitive_readiness
 execution_status: finite_operator_timing_complete_remote_four_workers_active
 ---
 # 当前研究进度
@@ -29,7 +29,7 @@ execution_status: finite_operator_timing_complete_remote_four_workers_active
 
 原M25三attempt130检查过、150full30/168block，但资源冲突FAILED/PARTIAL保留。用户新要求空闲继续后，另登记有限接续：两进程108检查逐位过、432full30/444block、131.338 GPU生命周期秒、自有退出；102次采样无外来PID。完整模型baseline/原版0.9539–1.0058、optimized0.9535–1.0218；±2.5%非全点通过，零显存时NVML24–25%原因UNKNOWN，不签正式无争用。B14真实full30，B2 root CFG派生边界不改。[新结果](../../experiments/operator-stable-timing-20261019/RESULT.md)，下一步讨论block分解与单子图，baseline固定。
 
-M24旧六真实action block0（B2/B14×短中长K）18次GPU数值/有效KV/输入/RNG及历史gold逐位过；294block约15秒退出，六点中位耗时比0.9677–1.0033、单轮0.8587–1.0973。原B0两cache66次精度/旧AA2.512635%超2.5%失败保留，旧watch/fixed3 audit不再跑。原CUDA stride/alias/RNG缺失、video/完整模型未由M24新增证明；新M25独立验证不能回写旧门。
+M24六fixture/18次逐位、294block及0.9677–1.0033历史耗时保留；原66 GPU检查/旧AA2.512635%超2.5%失败不改，新M25不回写旧门。原CUDA布局/别名/RNG未保存、video block缺fixture的边界继续存在。
 
 Long T483/C484/P473，800罚分均值285.858/282.588/293.270；共同成功C/T长度max2.329167、P/T3.223577。Goal T463/C464/P467，罚分158.806/157.166/156.466；Spatial T472/C466/P464，罚分145.998/152.964/155.304，各臂500。严格首两S失败：Long C36/P66，Goal C165/P334，Spatial C155/P312；训练/DEV曝光/独立性缺口不改，正式E2E UNKNOWN。
 
