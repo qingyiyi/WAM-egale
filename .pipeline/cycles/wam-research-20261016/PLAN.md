@@ -19,22 +19,23 @@ execution: EXECUTION.md
 | `M22` | 旧独立CUDA attention对齐 | `completed` | 108attention/54block/六full30/三policy有限逐位过；性能尾部/异常保留 | [证据](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
 | `M23` | 新机Codex安装 | `completed` | 0.162.1已装，登录待用户；开发不迁移 | [证据](../../experiments/remote-codex-setup-20261018/RESULT.md) |
 | `M24` | 直接Torch复制block | `completed` | 六fixture/18次逐位与状态过；294block，六点中位比0.9677–1.0033，单轮波动保留；原66/旧AA失败不改 | [证据](../../experiments/direct-torch-block-copy-20261019/RESULT.md) |
-| `M25` | 算子两份实现整理＋整模型/性能 | `in_progress` | 独立baseline/optimized，CPU绑定/native过；16旧目录已删、308源留Git；投机1875源不变；GPU等待空闲 | [证据](../../experiments/operator-consolidation-20261019/PLAN.md) |
+| `M25` | 算子两份实现整理＋整模型/性能 | `in_progress` | 独立baseline/optimized，代码与有限实际30层精度完成；150 full30用满，自有退出；稳定计时仍PENDING | [证据](../../experiments/operator-consolidation-20261019/PLAN.md) |
 
 ## 当前可见计划
 
 - [x] M25迁入独立`算子研究/wam_ops/baseline`和`optimized`，清晰命名；删除无外部投机调用的16旧算子目录，源码308份存Git。
 - [x] CPU核对block forward与原版AST一致、参数/cache原位安装/还原、新CUDA扩展导入；投机1875源码/配置逐字保护。
-- [ ] 资源中断后continuation-1接续（原轮保留、预算不增），GPU空闲后两独立进程：真实block及实际30层，三臂逐位/有效状态/RNG，普通cache写1/2；B2 full30派生来源明示。
-- [ ] 同一输入的三轮交错性能、全部原始值与进程间波动；若被争用/超时则保留部分，不冒充正式结果。
-- [ ] 统一代码讲解、结果/HW/main同步。远端既定Object每5分钟巡检，原规则不自动重试。
+- [x] 完成两独立进程的六block/六实际30层、三臂数值/有效状态/RNG、write1/2；派生B2来源明示。
+- [x] 三轮交错计时及全部原始值已采；三个attempt均有资源冲突，原FAILED/PARTIAL不改。
+- [ ] 稳定无争用计时仍待；本阶段forward帽已用满，不从未用GPU秒数追加调用。
+- [x] 统一代码讲解、结果/HW与main同步；当前科学边界显式保留。远端既定Object每5分钟巡检，原规则不自动重试。
 - [ ] 完整模型复现/性能收口后，再按profile选一个子图；不先开发新scheduler。T25/T17及Long后两轮仍待独立登记。
 
 ## 范围与预算
 
 M16原10/17 13:55:56起，10/19 13:40:56停新/13:55:56清理，6001000尝试/10GiB；实际1593717，Long已完。M17原10/17 17:11:31起，10/21 16:56:31停新/17:11:31清理，18723000尝试/15GiB；Object新授权14/56000，原无效14的5876已扣，remaining6106124，起点不重置。新匹配T200沿M17总截止，旧T_POOL过期截止未恢复。
 
-M24今晨新GPU原08:48:46起/10:48:46清理，412/5000 block，worker均退出；旧CPU预算和M22 1094.781/1200秒不挪用。M25源自用户新任务，10:14:26起/13:14:26清理，单A100/CPU≤2，GPU累计生命周期≤1200秒，full30≤150、block≤500、存储≤1GiB；等待在全任务3小时内计账，两个独立进程，GPU争用时不开计时。详细实际数见各Experiment。
+M24今晨新GPU原08:48:46起/10:48:46清理，412/5000 block，worker均退出；旧CPU预算和M22 1094.781/1200秒不挪用。M25源自用户新任务，10:14:26起/13:14:26清理，单A100/CPU≤2，GPU累计生命周期≤1200秒，full30≤150、block≤500、存储≤1GiB；等待在全任务3小时内计账，两个独立进程，GPU争用时不开计时。实际累计150 full30/168 block、GPU生命周期137.306秒，worker均自然非零退出（资源中断），调用帽已用满。详细实际数见各Experiment。
 
 engineering_quality_screen=false、independent_test_complete=false、noninferiority_established=false、formal_performance_permission=false。旧NO_GO/retention/FAILED/paused72/96与MLP0/22缺收据/default A_off不改。TF64/TF_ON、tau、K2B2/bonus/prefix_then_cost、BF16/FP32语义不变。PF2=SST完整policy，T50更新/51action调用含末尾。所有臂用512-token BF16优化reset，cold另列；actual796和失败罚分800分列。
 

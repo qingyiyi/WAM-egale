@@ -1,13 +1,13 @@
 # WAM研究短入口
 
-更新时间：2026-10-19T10:49:12.778068+08:00。当前Cycle `wam-research-20261016`，当前M25；先按INDEX/CONTEXT-POLICY及约束记忆恢复，再读Cycle四文。
+更新时间：2026-10-19T11:16:29.161970+08:00。当前Cycle `wam-research-20261016`，当前M25；先按INDEX/CONTEXT-POLICY及约束记忆恢复，再读Cycle四文。
 
-算子当前入口：[算子研究](../算子研究/README.md)，仅baseline/optimized两份实现、共用安装与验证/计时工具。16旧算子目录已删，308源留Git a0ed2d8；1875投机源/配置不改，原tile/shared-prefix依赖保留。CPU检查过，新GPU30层和性能等待空闲。[M25](experiments/operator-consolidation-20261019/PLAN.md)。
+算子当前入口：[算子研究](../算子研究/README.md)，仅baseline/optimized两份实现、共用安装与验证/计时工具。16旧算子目录已删，308源留Git a0ed2d8；1875投机源/配置不改，原tile/shared-prefix依赖保留。CPU与两进程六点实际30层逐位过；计时资源冲突，150 full30用满、自有退出，稳定性能PENDING。[M25](experiments/operator-consolidation-20261019/PLAN.md)。
 
 ## 当前工作
 
 - 本机：昨夜完整顺序B0 CPU六真实fixture+六合法写控制、36完整执行、两fixture各28阶段及22契约通过。今晨获新GPU授权，六真实action block0（B2/B14×KV288/1152/2160）×cache开关共66 GPU严格数值/有效状态/输入/当前RNG与旧GPU gold通过。B0是显式Python阶段+Torch原基元，不是全自有CUDA或persistent scheduler。
-- 性能：旧M24原AA失败保留、412/5000调用且自有进程已退出，旧多引擎watch/fixed3 AA不再启动。M25新任务10:14:26起/13:14:26清理，GPU生命周期≤1200秒、full30≤150/block≤500/CPU≤2/≤1GiB；两独立进程等待无争用窗口。B2 full30派生root CFG来源明示，原B2 block另覆盖。
+- 性能：M25实际150 full30/168 block、GPU生命周期137.306秒；130项数值/状态检查过，两进程完整覆盖。计时全部保存，三attempt均查到外来GPU进程，原FAILED/PARTIAL保留，稳定性能PENDING。达到forward帽、自有worker均退出，无继续GPU自动启动；原10:14:26起/13:14:26截止不改。B2 full30派生root CFG来源明示，原B2 block另覆盖；原M24/AA旧记录不回写。
 - BAAI：Goal/Spatial各500组三臂全齐，1500完整局/套。Target/TF/TF+PF2成功分别Goal463/464/467、Spatial472/466/464。800罚分均值分别158.806/157.166/156.466、145.998/152.964/155.304。已回收逐局报告并CPU独立核对唯一行、成败、步数、罚分/胜负；不是独立TEST或质量PASS。
 - Object：旧16条有效；迁移续采新14虽有完整机器人终态，但编号重启冲突导致监督无效，原PACK_CURRENT拒绝入训保留。用户今晨明确批准只补这14局/最多56000次，在独立v3namespace隔离compact子目录。固定14补采/准入/ON已完成（FIT6164/CAL3080），原匹配Target200和全500双卡运行；09:21为T20018局、首FINAL5局，每卡一worker。更多并发槽的GPU PID/容器PID身份未统一，保留原准入与UNKNOWN。原无效14消耗5876已扣。v2过期模板启动失败0GPU/0episode保留；旧T_POOL截止不延长，新baseline沿原M17有效总截止。[两机晨间结果](experiments/libero-four-suite-morning-20261019/RESULT.md)。
 - 远端每5分钟CPU只读巡检已切health-v2、真实出生身份匹配；新机无需Codex才能自动排队，后台是已登记Python controller/guard。旧watch正常交接，不杀他人。

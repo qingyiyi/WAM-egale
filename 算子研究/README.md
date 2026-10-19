@@ -56,3 +56,5 @@ MAX_JOBS=2 TORCH_CUDA_ARCH_LIST=8.0 python build.py build_ext --inplace
 旧16个算子实现目录已移出工作区，308份源码可由登记的Git提交恢复，不在当前目录保留压缩副本。原tile仍被投机shared-prefix构建脚本引用，因此与投机依赖一同原位只读保留；原始实验结果保留。
 
 当前结果以HW实际终态为准；文件整理或有限通过不改变投机质量/独立TEST/正式性能权限。
+
+本轮有限验证已完成：两个进程覆盖六点block/实际30层及write1/2，所有输出/有效状态逐位通过。完整计时数据已保存，但三次资源检查发现外来GPU进程，稳定性能仍PENDING；登记的150次full30调用用满，自有GPU worker均退出。[最终结果与全部原始表](../.pipeline/experiments/operator-consolidation-20261019/RESULT.md)。

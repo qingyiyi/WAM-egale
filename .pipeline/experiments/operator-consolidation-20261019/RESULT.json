@@ -1,33 +1,90 @@
 {
-  "status": "CODE_CONSOLIDATION_AND_FINITE_ACTUAL30_PARITY_COMPLETE_FINAL_TIMING_WAITING",
-  "at": "2026-10-19T11:03:23.013557+08:00",
+  "status": "CODE_AND_FINITE_FULL30_PARITY_COMPLETE_PERFORMANCE_RESOURCE_PENDING_BUDGET_STOPPED",
+  "at": "2026-10-19T11:14:53.440262+08:00",
   "active_implementations": [
     "算子研究/wam_ops/baseline",
     "算子研究/wam_ops/optimized"
   ],
-  "old_operator_directories_removed": 16,
-  "source_archive_commit": "a0ed2d8e49403cdca8d87afd40b21dd19595710c",
-  "speculative_code_changed": false,
+  "old_operator_dirs_removed": 16,
+  "legacy_source_commit": "a0ed2d8e49403cdca8d87afd40b21dd19595710c",
   "speculative_source_files_checked": 1875,
-  "full_matrix_numeric_passed": true,
-  "numeric_rows_in_full_matrix": 54,
-  "max_output_abs": 0.0,
-  "full30_cases": [
-    "short-B2",
-    "short-B14",
-    "middle-B2",
-    "middle-B14",
-    "long-B2",
-    "long-B14"
+  "speculative_source_changed": [],
+  "numerical_checks": 130,
+  "numerical_all_passed": true,
+  "max_output_abs_error": 0.0,
+  "unique_core_block_inputs": 6,
+  "unique_core_full30_inputs": 6,
+  "derived_full30_B2": true,
+  "legal_write_control_modes": [
+    1,
+    2
   ],
-  "historical_B14_full30_gold_passed": true,
-  "last_baseline_timing_job": "continuation-2",
-  "prior_attempts_preserved": true,
-  "full_model_forwards_spent": 96,
-  "block_forwards_spent": 108,
-  "GPU_lifecycle_seconds_spent": 87.5847507994622,
+  "actual30_scope": "unsharded actual model; B14 historical gold; derived-root B2 self-reference",
+  "original_cuda_stride_alias_RNG": "NOT_PERSISTED",
+  "performance_status": "PENDING_STABLE_UNCONTENDED_WINDOW_ALL_RAW_DATA_RETAINED",
+  "attempts": [
+    {
+      "status": "FAILED_OR_PARTIAL",
+      "reason": "RuntimeError('其他GPU进程进入，停止正式计时')",
+      "full_model_forwards": 24,
+      "block_forwards": 30,
+      "numeric_rows": 22,
+      "timing_points": 4
+    },
+    {
+      "status": "FAILED_OR_PARTIAL",
+      "reason": "RuntimeError('其他GPU进程进入，停止正式计时')",
+      "full_model_forwards": 72,
+      "block_forwards": 78,
+      "numeric_rows": 54,
+      "timing_points": 12
+    },
+    {
+      "status": "FAILED_OR_PARTIAL",
+      "reason": "RuntimeError('其他GPU进程进入，停止正式计时')",
+      "full_model_forwards": 54,
+      "block_forwards": 60,
+      "numeric_rows": 54,
+      "timing_points": 12
+    }
+  ],
+  "full_model_forward_total": 150,
+  "block_forward_total": 168,
+  "GPU_lifecycle_seconds": 137.3056072667241,
+  "registered_wall_started_at": "2026-10-19T10:14:26.517244+08:00",
+  "original_deadline": "2026-10-19T13:14:26.517244+08:00",
+  "stopped_new_GPU_jobs": true,
+  "owned_workers": [
+    {
+      "pid": 3364346,
+      "birth_ticks": 1364704621,
+      "uid": 1003,
+      "exit_code": 1,
+      "natural_exit": true,
+      "process_exists_now": false
+    },
+    {
+      "pid": 3392219,
+      "birth_ticks": 1364764922,
+      "uid": 1003,
+      "exit_code": 1,
+      "natural_exit": true,
+      "process_exists_now": false
+    },
+    {
+      "pid": 3432596,
+      "birth_ticks": 1364859409,
+      "uid": 1003,
+      "exit_code": 1,
+      "natural_exit": true,
+      "process_exists_now": false
+    }
+  ],
+  "all_owned_GPU_workers_exited": true,
+  "new_robot_episodes": 0,
   "engineering_quality_screen": false,
   "independent_test_complete": false,
   "noninferiority_established": false,
-  "formal_performance_permission": false
+  "formal_performance_permission": false,
+  "finite_numeric_matrix_complete_in_two_processes": true
 }

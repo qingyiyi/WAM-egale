@@ -5,8 +5,8 @@ plan: PLAN.md
 status: active
 updated: '2026-10-19T10:47:48.521957+08:00'
 current: M25
-next: finish_two_implementation_full30_and_timing_then_publish
-execution_status: consolidation_complete_GPU_waiting_remote_Object_running
+next: stable_uncontended_operator_timing_pending_new_bounded_job
+execution_status: operator_code_and_full30_parity_complete_timing_resource_pending_GPU_budget_stopped
 ---
 # 当前研究进度
 
@@ -21,11 +21,13 @@ execution_status: consolidation_complete_GPU_waiting_remote_Object_running
 | `M22` | 旧独立CUDA attention对齐 | `completed` | 108attention/54block/六full30/三policy有限逐位过；性能尾部/异常保留 | [证据](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
 | `M23` | 新机Codex安装 | `completed` | 0.162.1已装，登录待用户；开发不迁移 | [证据](../../experiments/remote-codex-setup-20261018/RESULT.md) |
 | `M24` | 直接Torch复制block | `completed` | 六fixture/18次逐位与状态过；294block，六点中位比0.9677–1.0033，单轮波动保留；原66/旧AA失败不改 | [证据](../../experiments/direct-torch-block-copy-20261019/RESULT.md) |
-| `M25` | 算子两份实现整理＋整模型/性能 | `in_progress` | 独立baseline/optimized，CPU绑定/native过；16旧目录已删、308源留Git；投机1875源不变；六点block/实际full30逐位过；资源检查中断，最后基线计时等待 | [证据](../../experiments/operator-consolidation-20261019/PLAN.md) |
+| `M25` | 算子两份实现整理＋整模型/性能 | `in_progress` | 独立baseline/optimized，CPU绑定/native过；16旧目录已删、308源留Git；投机1875源不变；六点block/实际full30两进程逐位过；计时有资源冲突，150次full30已用满、自有退出 | [证据](../../experiments/operator-consolidation-20261019/PLAN.md) |
 
 ## 当前结果与缺口
 
-新算子入口为`算子研究`，仅baseline/optimized两份主实现；共用安装与验证/计时工具。baseline保留完整block计算顺序，optimized目前只换已对齐独立CUDA SDPA，未实现新的MegaTransformer调度。16旧算子目录已删，源码在Git a0ed2d8e49403cdca8d87afd40b21dd19595710c；原tile/shared-prefix是投机依赖保留。1875投机源/配置清理前后无改动。完整六点block/实际30层、GPU合法write1/2共54项逐位/有效状态检查通过；早先短KV22项单独保留。累计96 full30/108 block、87.585秒，两次资源中断，完整计时仅探索性。剩余54 full30在continuation-2作最后基线计时，用户明确等待自然空闲；原13:14:26截止/150 full30帽不改。[本项实际结果](../../experiments/operator-consolidation-20261019/RESULT.md)。
+新算子入口为`算子研究`，仅baseline/optimized两份主实现，公用安装和验证/计时工具。baseline原数学顺序，optimized目前只换独立CUDA SDPA，未实现新MegaTransformer调度。16旧目录已删、308源留Git a0ed2d8；原tile/shared-prefix依赖保留，1875投机源/配置逐字未改。
+
+三个attempt共130项数值/有效KV/输入/RNG检查过、max_abs=0；其中两进程完成六block/六实际full30点、write1/2和安装还原。B14历史gold过，B2 full30明确为根CFG派生诊断，非原始顺序B2。全部计时已保存，但三次结束/阶段资源检查均遇外来GPU进程，原FAILED/PARTIAL保留；波动0.6197–1.2380，不签稳定性能。累计150 full30/168 block、GPU生命周期137.306秒，用满forward帽，自有worker退出、无继续GPU自动启动；原13:14截止不重置。[最终实际结果](../../experiments/operator-consolidation-20261019/RESULT.md)。
 
 M24旧六真实action block0（B2/B14×短中长K）18次GPU数值/有效KV/输入/RNG及历史gold逐位过；294block约15秒退出，六点中位耗时比0.9677–1.0033、单轮0.8587–1.0973。原B0两cache66次精度/旧AA2.512635%超2.5%失败保留，旧watch/fixed3 audit不再跑。原CUDA stride/alias/RNG缺失、video/完整模型未由M24新增证明；新M25独立验证不能回写旧门。
 

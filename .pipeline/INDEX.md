@@ -19,7 +19,7 @@
 
 算子原代码与 HW 保留；用户最新允许独立修正版本并复用固定上游源码，见[M22](experiments/operator-torch-alignment-20261018/PLAN.md)；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 
-当前算子源码已收拢到独立[算子研究](../算子研究/README.md)，仅baseline/optimized两份主实现；16旧算子目录已删、源码留Git，投机1875源/配置未改。原tile/shared-prefix作为投机构建依赖保留。CPU检查通过，30层/性能GPU作业等待空闲，见[M25](experiments/operator-consolidation-20261019/PLAN.md)。旧M24有限结果与旧失败保留。
+当前算子源码已收拢到独立[算子研究](../算子研究/README.md)，仅baseline/optimized两份主实现；16旧算子目录已删、源码留Git，投机1875源/配置未改。原tile/shared-prefix作为投机构建依赖保留。CPU及有限实际30层逐位检查通过；计时已有数据但资源检查失败，稳定性能PENDING，调用帽用满且自有退出，见[M25](experiments/operator-consolidation-20261019/PLAN.md)。旧M24有限结果与旧失败保留。
 
 ## 动态事实与历史
 

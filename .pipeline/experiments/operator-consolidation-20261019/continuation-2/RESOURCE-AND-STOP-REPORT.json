@@ -1,0 +1,42 @@
+{
+  "status": "PARTIAL_OR_FAILED",
+  "jobs": [
+    {
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-B",
+        "-m",
+        "tools.replay",
+        "--registration",
+        "/rjs/cxz/论文探索/.pipeline/experiments/operator-consolidation-20261019/continuation-2/REGISTRATION.json",
+        "--output",
+        "/rjs/cxz/论文探索/.pipeline/experiments/operator-consolidation-20261019/continuation-2/process-1",
+        "--timing-engines",
+        "original",
+        "baseline"
+      ],
+      "started_at": "2026-10-19T11:11:25.659255+08:00",
+      "owned": {
+        "pid": 3432596,
+        "birth_ticks": 1364859409,
+        "uid": 1003
+      },
+      "exit_code": 1,
+      "natural_exit": true,
+      "lifecycle_seconds": 49.72085646726191,
+      "finished_at": "2026-10-19T11:12:15.380245+08:00",
+      "exited": true
+    }
+  ],
+  "GPU_lifecycle_seconds": 137.3056072667241,
+  "full_model_forwards": 150,
+  "block_forwards": 168,
+  "prior_consumed": {
+    "GPU_lifecycle_seconds": 87.5847507994622,
+    "full_model_forwards": 96,
+    "block_forwards": 108
+  },
+  "error": "RuntimeError('首个不完整worker后不自动续跑第二进程')",
+  "finished_at": "2026-10-19T11:12:15.390257+08:00",
+  "owned_children_exited": true
+}
