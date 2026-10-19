@@ -33,6 +33,7 @@ def main():
                 P90_at_most_1p20=q['p90'] <= 1.20,
                 max_at_most_1p30=q['max'] <= 1.30,
                 strict_first_two_S_and_component_certificate='FAILED; old audit retained',
+                no_new_registered_risk_failure='UNKNOWN: descriptive full-suite panel does not replace original risk-pair audit; historical failures retained',
                 independent_TEST='NOT_ESTABLISHED',
                 noninferiority='NOT_ESTABLISHED',
                 overall_original_quality_gate=False,
@@ -51,7 +52,7 @@ def main():
                         f'{g["P50_at_most_1p10"]}|{g["P90_at_most_1p20"]}|'
                         f'{g["max_at_most_1p30"]}|False|')
     text += [
-        '', 'UNKNOWN：这不是独立TEST。数据暴露、选择与首两S严格配对/组件FAILED保留；当前不能据名义配对计数签出独立成功率差区间或3百分点非劣结论。没有全套匹配MLP臂，也没有把历史小DEV的MLP数拼入本表。重复init49的计时轮次不增加独立质量N。', '',
+        '', 'UNKNOWN：这不是独立TEST。数据暴露、选择与首两S严格配对/组件FAILED保留；当前不能据名义配对计数签出独立成功率差区间或3百分点非劣结论。没有全套匹配MLP臂，也没有把历史小DEV的MLP数拼入本表。“无新增登记风险失败”未由这个描述性面板重新签证，历史风险失败不能被其新成功覆盖。重复init49的计时轮次不增加独立质量N。', '',
         'OBSERVED：PF2不是普遍改善。Long比Target少10次成功，Spatial少8次；Goal/Object观察成功数更高，但仍有长度长尾和旧审计限制。连续TF的Long/Goal/Object观察成功数不低于Target，Spatial低6次。不同套的训练身份保留原manifest，不把它们当同一权重跨套泛化。', '',
         'RECOMMENDATION：当前保留TF64为系统研究结构，权重/接受/调度的质量证书未收口。不要默认打开PF2，不因这些开发结果新增训练或扩大TEST。后续若获准，只针对完整日志里的少数慢成功长尾和首两S数值/状态隔离定位风险，先固定数据隔离与协议，再决定是否值得质量修订。', '',
         '`engineering_quality_screen=false`、`independent_test_complete=false`、`noninferiority_established=false`、`formal_performance_permission=false`。旧FAILED/retention/NO_GO/paused72/default A_off不改。',

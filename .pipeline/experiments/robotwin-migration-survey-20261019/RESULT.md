@@ -22,6 +22,7 @@
 | compact latent元素 | 112 | 16×2×16=512，按源码维度推导 |
 | video/action更新 | 20/50 | 25/50 |
 | action SNR shift | 0.05 | 1.0 |
+| guidance | 当前冻结CFG2协议 | video guidance5、action guidance1；原server按use_cfg走两路 |
 | 归一化 | 当前LIBERO normalizer | RoboTwin quantiles/q01/q99 |
 | Transformer主体 | D3072/H24/d128/F14336/30层 | HF小配置相同；action输入输出30维 |
 

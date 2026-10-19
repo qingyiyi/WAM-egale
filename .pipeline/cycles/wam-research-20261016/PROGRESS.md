@@ -1,6 +1,6 @@
 # 当前研究进度
 
-更新：2026-10-20T02:38:04.799258+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
+更新：2026-10-20T03:23:44.700467+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
 
 ## M17 — 四套既定评估：计算完成，审计未放行
 
@@ -26,9 +26,9 @@
 
 累计600/600block、0full30/episode，01:44:39北京清理。编译/依赖/CPU核对失败保留；本机88及远端86已部署保护项不变，远端未迁入state/rules的原88检查false不改。[资源/止损](../../experiments/single-layer-warp-specialized-20261019/RESOURCE-AND-STOP-REPORT.md)。不扩扫参、不集成、不降低门。
 
-## M35 — 新同卡工程计时：运行中
+## M35 — 新同卡工程计时：已收口，原面板PARTIAL
 
-[实际快照](../../experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)：301/360完整局，固定10task/init49×三臂×3独立server重复；计时重复不增加独立质量N。Goal/Spatial各90，Object60；Object1误送旧Goal/Spatial白名单在0episode/0teacher失败，保留不重试，只接续原未启动2/3，最大330/360。Long按原单worker队列接续，实际终态以表为准。
+[实际快照](../../experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)：330/360完整局，固定10task/init49×三臂×3独立server重复；计时重复不增加独立质量N。Goal/Spatial各90，Object60；Object1误送旧Goal/Spatial白名单在0episode/0teacher失败，保留不重试，只接续原未启动2/3，最大330/360。Long三phase已全部终态并清理；四套本轮没有继续排队的GPU作业。
 
 GPU0 Goal→Object，GPU1 Spatial→Long；同case对照同卡，每卡单worker、server/client2线程。05:34:31停新、05:44:31清理（10/20），1452000尝试/3GiB/12 GPU生命周期小时帽不延期。首两S组件FAILED仍列出，计时只作未准入候选成本观察；不开放旧45chunk。warm含reset/policy/cache/env，不含env.close/落盘；冷setup另列。[边界](../../experiments/libero-four-suite-performance-20261019/TIME-BOUNDARY.md)。
 
@@ -38,7 +38,7 @@ GPU0 Goal→Object，GPU1 Spatial→Long；同case对照同卡，每卡单worker
 
 ## 下一步及保护
 
-先完成M35终态/清理并同步main；M34本轮已止损。若继续新算子研究，先讨论匹配设备GEMM/attention契约的可行原语和强cached B14，另登记有界作业；不能把普通cache收益叫协同创新。[claim矩阵](../../experiments/single-layer-warp-specialized-20261019/CLAIM-EVIDENCE-MATRIX.md)、[日期](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。
+本轮已登记测量和有界样机均已终态；下一步交联合报告并讨论缺口，不自动追加GPU作业。若继续新算子研究，先讨论匹配设备GEMM/attention契约的可行原语和强cached B14，另登记有界作业；不能把普通cache收益叫协同创新。[claim矩阵](../../experiments/single-layer-warp-specialized-20261019/CLAIM-EVIDENCE-MATRIX.md)、[日期](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。
 
 四权限false；旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据、default A_off不改。baseline及依赖/投机源/原tile与HW/state/cycle/rules保护；仅optimized新实现，不重置/旧sync/升级，不建缺失cycle.yaml。远端只~/cxz，AutoDL不再SSH/关机UNKNOWN；不杀他人、不改服务/时钟。
 

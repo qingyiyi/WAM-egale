@@ -33,7 +33,7 @@ OBSERVED：6000完整episode，四套各10任务×50初态×T/C/P。表中成功
 |object/C|True|UNKNOWN|True|True|False|False|
 |object/P|True|UNKNOWN|True|True|False|False|
 
-UNKNOWN：这不是独立TEST。数据暴露、选择与首两S严格配对/组件FAILED保留；当前不能据名义配对计数签出独立成功率差区间或3百分点非劣结论。没有全套匹配MLP臂，也没有把历史小DEV的MLP数拼入本表。重复init49的计时轮次不增加独立质量N。
+UNKNOWN：这不是独立TEST。数据暴露、选择与首两S严格配对/组件FAILED保留；当前不能据名义配对计数签出独立成功率差区间或3百分点非劣结论。没有全套匹配MLP臂，也没有把历史小DEV的MLP数拼入本表。“无新增登记风险失败”未由这个描述性面板重新签证，历史风险失败不能被其新成功覆盖。重复init49的计时轮次不增加独立质量N。
 
 OBSERVED：PF2不是普遍改善。Long比Target少10次成功，Spatial少8次；Goal/Object观察成功数更高，但仍有长度长尾和旧审计限制。连续TF的Long/Goal/Object观察成功数不低于Target，Spatial低6次。不同套的训练身份保留原manifest，不把它们当同一权重跨套泛化。
 

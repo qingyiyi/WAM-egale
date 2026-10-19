@@ -1,15 +1,15 @@
 # 首两S配对失败：既有完整episode审计的CPU定位
 
-快照2026-10-19T18:12:38.267829+00:00，284完整episode审计中58条标记首两S失败；该数字随当前计时队列补齐更新，不是新的独立质量样本。0新GPU调用，未修改原FAILED。
+快照2026-10-19T19:19:38.214990+00:00，330完整episode审计中61条标记首两S失败；该数字随当前计时队列补齐更新，不是新的独立质量样本。0新GPU调用，未修改原FAILED。
 
 OBSERVED：原审计从reset、S0_before、S0、S1按实际观察序列比较，只读取原布局全部有效KV，排除无效分配；初次调用前仅显式排除必被原infer重建的lazy timetable。失败并不是因为无效KV垃圾字节或计时字段被混入数学状态。原源身份见PAIRING-DIFFERENCES.json。
 
 |最早失败记录|该记录首个显示差异路径|条数|
 |---|---|---:|
-|S0|`$/input/obs/observation.images.eye_in_hand_rgb`|27|
+|S0|`$/input/obs/observation.images.eye_in_hand_rgb`|29|
 |S0|`$/phase_counters`|1|
 |S1|`$/before/KV/0/k`|21|
-|S1|`$/input/obs/observation.images.eye_in_hand_rgb`|9|
+|S1|`$/input/obs/observation.images.eye_in_hand_rgb`|10|
 
 OBSERVED：本次最早失败记录类别为S0, S1，均早于第一次周期T；C/P的差异不能只归因于PF2刷新。差异路径类别按上表原样列出；它们支持“前两S尚未严格隔离”的原判定，不解释或删除任何任务失败。
 

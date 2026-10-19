@@ -42,6 +42,16 @@ def main():
         no_automatic_retry=True, no_instance_shutdown=True,
         old_quality_permissions=timing['old_quality_permissions'],
     )
+    final_observation = None
+    if (B/'FINAL-RESOURCE-OBSERVATION.json').exists():
+        final_observation = json.loads((B/'FINAL-RESOURCE-OBSERVATION.json').read_text())
+        resource['final_resource_observation'] = dict(
+            at_UTC=final_observation['at_UTC'],
+            matching_active_owned=len(final_observation['matching_active_owned_identities']),
+            remote_compute_contexts=len(final_observation['compute_contexts']),
+            all_phase_guards_clean=final_observation['all_12_registered_phase_guards_clean'],
+            local_M34_active=sum(r['matching_active_identity'] for r in final_observation['local_M34_PID_observations']),
+            storage_bytes=final_observation['storage_bytes'])
     (B / 'RESOURCE-AND-STOP-REPORT.json').write_text(json.dumps(resource, ensure_ascii=False, indent=2) + '\n')
     stop = [
         '# 资源与止损', '', f'更新时间{now}；终态/进度：{status}。', '',
@@ -52,6 +62,12 @@ def main():
         f'M34已关闭：{terminal["complete_block_calls"]}完整block调用（含参考/校验/计时）、0full30/episode；原数值/速度NO-GO，全部算子owned退出。详细生命周期、编译/依赖/CPU核对失败见[算子止损](../single-layer-warp-specialized-20261019/RESOURCE-AND-STOP-REPORT.md)。', '',
         '停止方向：本轮不再布局/register/grid扫参，不接新kernel到生产，不增加环境、训练、独立TEST或旧45chunk，不把PF2默认打开。新任务/样机需按后继问题重新登记，不能重置旧预算。旧FAILED/四false/retention/default A_off保留。',
     ]
+    if final_observation:
+        obs = resource['final_resource_observation']
+        stop += ['', f'最后只读资源核对{obs["at_UTC"]}：匹配出生身份的本轮远端active PID {obs["matching_active_owned"]}，'
+                 f'远端CUDA compute context {obs["remote_compute_contexts"]}，本机M34 active {obs["local_M34_active"]}；'
+                 f'12个既定phase guard CLEAN={obs["all_phase_guards_clean"]}。旧未知exit/收据没有补造，未发signal。'
+                 '原始PID身份观察、两卡使用率和空间见[FINAL-RESOURCE-OBSERVATION.json](FINAL-RESOURCE-OBSERVATION.json)。']
     (B / 'STOP-REPORT.md').write_text('\n'.join(stop) + '\n')
     (B / 'RESOURCE-AND-STOP-REPORT.md').write_text(
         '# 本轮资源索引\n\n实际预算、失败/未重试、生命周期与硬截止见[STOP-REPORT.md](STOP-REPORT.md)，'
@@ -63,7 +79,7 @@ def main():
 
 OBSERVED：原四套6000完整终态齐，各臂500；成功、全部失败/长度/罚分见[QUALITY-RESULT](QUALITY-RESULT.md)。八组合max长度比均超旧1.30工程门。M34单层单kernel与warp角色已实测，原精度/速度NO-GO，600调用后收口。新计时{timing['complete_rows']}/360，状态{status}；重复仅10case/init49，不增加质量N，Object少一轮。所有臂启用原等价reset bank。
 
-UNKNOWN：独立TEST/非劣未建立、匹配500局MLP未运行；首两S/组件失败保留。新whole kernel未准入，未测30层/chunk/episode；不存在新系统E2E速度。NCU硬件计数与全量CUDA active UNKNOWN。RoboTwin实际迁移时间/VRAM/吞吐未知；仅查官方源码/权重metadata。
+UNKNOWN：独立TEST/非劣未建立、匹配500局MLP未运行；Target25/17与常速度加验证等必要质量—成本对照尚缺。首两S/组件失败保留。新whole kernel未准入，未测30层/chunk/episode；不存在新系统E2E速度。NCU硬件计数与全量CUDA active UNKNOWN。RoboTwin实际迁移时间/VRAM/吞吐未知；仅查官方源码/权重metadata。
 
 HYPOTHESIS：同步单缓冲、较小GEMM tile、寄存器与粗阶段屏障共同限制新原型；不能从共享padding反事实指定bank conflict唯一根因。PF2改善某些case不等于恢复物理状态，且本面板已有第一次T之前的输入/状态差异。
 
@@ -87,6 +103,8 @@ RECOMMENDATION：保留可用冻结baseline；先处理Q/FFN2/attention的同输
 M35核心指标为ΣT_round/Σg；完整policy/chunk、全体暖episode及双方成功补充分别列[计时表](ISOLATED-RESULT.md)，[成本分解](COST-LEDGER.md)。这些作业未安装新whole kernel，其收益属于原投机实现。原观测器仍有首两S/组件FAILED；暖计时含审计/RPC/环境，不是无审计生产cold E2E。没有用target calls或接受率代替成本。
 
 H1有限支持；H2仍缺同一冻结7-query逐B2/集中B14；H3新调度无正收益；H4在质量约束下的闭环收益未建立。A0S0/A0S1/A1S0/A1S1及1/3/7形状交互未完整执行，不计算缺失R，不声称协同。
+
+算法侧还缺少步数Target25/17和匹配MLP等质量—成本强对照；目前不能宣称投机优于直接少步数。这些是论文缺口，不是当前GPU队列中已启动的工作。
 '''
     (B / 'SYSTEM-RESULT.md').write_text(system)
     claim = '''# 联合claim—证据
@@ -124,22 +142,29 @@ H1有限支持；H2仍缺同一冻结7-query逐B2/集中B14；H3新调度无正�
     report += [
         '', '6000完整局不等于独立TEST；最大成功长度比八组合均>1.30，全部失败/800罚分保留，TF/PF2没有通过原工程质量门。PF2在Long/Spatial整体成功数更低，不推荐默认开启。首两S审计还发现第一次周期T之前的相机或before-KV差异，不能把其后差异全归于PF2。[质量门](QUALITY-RESULT.md)、[首两S路径](PAIRING-DIFFERENCES.md)。', '',
         f'新工程计时状态{status}，{timing["complete_rows"]}/360；Object首轮0episode实施失败不重跑，最大330。独立server重复只用于计时，Goal/Spatial/Long各臂最多30，Object各臂20；不是新独立质量样本。', '',
-        '|套件|T/C/P计时完整N|TF/PF2有效更新速度比|TF/PF2完整policy/chunk|TF/PF2双方成功暖episode|',
-        '|---|---|---|---|---|',
+        '|套件|T/C/P计时完整N；成功数|TF/PF2有效更新速度比|TF/PF2完整policy/chunk|TF/PF2全体暖episode|TF/PF2双方成功暖episode|',
+        '|---|---|---|---|---|---|',
     ]
     for name, s in timing['suites'].items():
         def pair(key):
             values = [s['pair_metrics'][a].get(key) for a in ('C', 'P')]
             return '/'.join(f'{v:.3f}×' if v is not None else 'UNKNOWN' for v in values)
-        report.append('|'+name+'|'+'/'.join(str(s['arms'][a]['N']) for a in ('T', 'C', 'P'))+'|'+
+        report.append('|'+name+'|'+'/'.join(str(s['arms'][a]['N']) for a in ('T', 'C', 'P'))+'；'+
+            '/'.join(str(s['arms'][a]['success']) for a in ('T', 'C', 'P'))+'|'+
             pair('valid_update_speedup')+'|'+pair('policy_cost_per_chunk_speedup')+'|'+
+            pair('episode_sec_all_pair_speedup')+'|'+
             pair('episode_sec_both_success_speedup')+'|')
     report += [
         '', '全体完整attempt的暖episode速度比、双方成功N、原始逐局、三/两重复的均值与SD另列[完整计时表](ISOLATED-RESULT.md)，没有删除失败或成功长尾。有效更新=Σ原action round时间/Σ合法scheduler g；不是每条树的接受率。warm包含reset/RPC/cache/环境/审计、排除env.close和落盘，冷setup单列；不是无审计生产cold E2E。新whole kernel没有装入这些作业。[账本](COST-LEDGER.md)、[边界](TIME-BOUNDARY.md)。', '',
         'RoboTwin：官方LingBot-VA权重确实存在；50唯一任务，官方适配每任务100个通过expert过滤的有效seed，一条件三臂全量15000局。其Q32/有效16动作通道、静态pool9792和三相机不同，需要新draft/normalizer/接口及质量验证；当前不适合直接复用LIBERO TF64。[官方权重](https://huggingface.co/robbyant/lingbot-va-posttrain-robotwin)、[完整迁移核查](../robotwin-migration-survey-20261019/RESULT.md)。没有启动新环境。', '',
-        '下一步：先处理小M Q、FFN2与attention的同输入设备数学契约；随后只验证一条SM80兼容的tile异步流水路线，双方同用成熟cache/shared-prefix/Graph。不继续小布局搜索，不扩30层或环境，不重训来掩盖系统问题。10/22做go/no-go；10/23冻结，10/28主表，11/01 18:00中文证据包。缺口不闭合则收缩主张。[时间安排](DATES-AND-PLAN-20261020.md)。', '',
+        '下一步：先处理小M Q、FFN2与attention的同输入设备数学契约；随后只验证一条SM80兼容的tile异步流水路线，双方同用成熟cache/shared-prefix/Graph。不继续小布局搜索，不扩30层或环境，不重训来掩盖系统问题。论文还缺少步数Target25/17、匹配MLP等强对照，不能宣称投机优于直接少步数；当前未启动这些作业。10/22做go/no-go；10/23冻结，10/28主表，11/01 18:00中文证据包。缺口不闭合则收缩主张。[时间安排](DATES-AND-PLAN-20261020.md)。', '',
         'engineering_quality_screen=false；independent_test_complete=false；noninferiority_established=false；formal_performance_permission=false。baseline及依赖、投机源码和原tile/HW/保护文件不改。数据/权重不重复迁入，owned退出与资源硬限见[止损](STOP-REPORT.md)；原四文与短入口已归档后语义重建。GitHub实际提交号以发布收据为准。',
     ]
+    if final_observation:
+        obs = resource['final_resource_observation']
+        report += ['', f'终态资源核对：远端匹配身份的active owned PID {obs["matching_active_owned"]}、'
+                   f'CUDA compute context {obs["remote_compute_contexts"]}；本机M34 active {obs["local_M34_active"]}。'
+                   '12个phase guard均CLEAN；没有留新GPU任务排队。所有失败及原预算保留，不关闭服务器实例。']
     (B / 'OVERNIGHT-20261020.md').write_text('\n'.join(report) + '\n')
     print(json.dumps(dict(status=status, timing_rows=timing['complete_rows'],
                           T_C_P_N=rep_counts, known_target_attempts=attempts)))

@@ -28,6 +28,25 @@ def main():
     source = B.parents[2] / '算子研究/wam_ops/optimized/csrc/whole_layer.cu'
     source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
     assert source_hash == first['source_CUDA_SHA256']
+    runs = {n: json.loads((B / 'remote-evidence' / n / 'RESULT.json').read_text())
+            for n in ('validate-1', 'timing-1', 'timing-2')}
+    indexed = {n: {r['case']: r for r in d['rows']} for n, d in runs.items()}
+    reused = []
+    for case, reference in indexed['validate-1'].items():
+        values = [rows[case] for rows in indexed.values()]
+        reused.append(dict(case=case, saved_path=reference['source'],
+            same_saved_path=len({r['source'] for r in values}) == 1,
+            all_original_vs_native_bitwise=all(r['original_vs_native']['bitwise_pass'] for r in values),
+            same_whole_output_error_statistics=all(r['original_vs_whole'] == reference['original_vs_whole']
+                                                   for r in values)))
+    reuse = dict(status='CPU_PROVENANCE_REUSE_CHECK_NOT_NEW_TENSOR_REPLAY', rows=reused,
+        same_source_SHA_across_three_jobs=all(r['source_sha256'] == runs['validate-1']['source_sha256']
+                                              for r in runs.values()),
+        same_validation_wrapper_SHA_across_three_jobs=len({r['validation_source_sha256'] for r in runs.values()}) == 1,
+        original_GPU_storage_aliases='UNKNOWN after serialized fixture; no universal alias proof',
+        separate_cross_process_raw_tensor_comparison=False, new_GPU_calls=0,
+        model_file_hashes_executed=False)
+    (B / 'INPUT-REUSE-RESULT.json').write_text(json.dumps(reuse, indent=2) + '\n')
     result = dict(
         at=datetime.now().astimezone().isoformat(),
         status='CLOSED_BOUNDED_PROTOTYPE_NUMERICAL_AND_PERFORMANCE_NO_GO',

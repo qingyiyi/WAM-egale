@@ -32,6 +32,8 @@ def main():
     text = [
         '# 原精度失败定位：复用已保存对照，0新GPU调用', '',
         'OBSERVED：主算术源df8b386…，9个真实block签名来自既有捕获；共享输入/条件的多个历史长度不是独立统计样本。这里读取validate-1原JSON，没有重新运行teacher、完整模型或机器人。', '',
+        '参考边界：本轮intermediates字段比较冻结native的debug中间量与新whole；原Torch/历史gold另做最终输出逐位核验，Q和FFN2同输入控制直接调用原Torch Linear。没有在本轮给原Torch每个内部节点重新加hook，不能将该表误称为新采集的全部原Torch中间tensor。', '',
+        '计时/精度输入核对：三远端进程的9个保存路径、CUDA/Python入口SHA及验证器SHA一致；各自原Torch/native逐位通过，新whole输出的完整误差统计也一致。见INPUT-REUSE-RESULT.json。这是已有不可变fixture的来源复用核对，没有跨进程重比原tensor，也不恢复序列化之前未知的GPU storage alias，不做整套模型hash。', '',
         '|输入|首个已保存DAG差异|同输入Q不同元素|同输入FFN2不同元素|cross K/V位相等|',
         '|---|---|---:|---:|---|',
     ]

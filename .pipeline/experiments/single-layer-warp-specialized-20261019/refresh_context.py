@@ -18,6 +18,8 @@ def main():
     closed = long_queue.get('status') == 'COMPLETE_ISOLATED_LONG_ENGINEERING_MEASUREMENT'
     count = timing['complete_rows']
     phase = '已收口，原面板PARTIAL' if closed else '运行中'
+    long_note = 'Long三phase已全部终态并清理；四套本轮没有继续排队的GPU作业。' if closed else 'Long按原单worker队列自动接续，实际终态以表为准。'
+    next_note = '本轮已登记测量和有界样机均已终态；下一步交联合报告并讨论缺口，不自动追加GPU作业。' if closed else '先完成M35终态/清理并同步main；M34本轮已止损。'
     progress = f'''# 当前研究进度
 
 更新：{now}。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
@@ -48,7 +50,7 @@ def main():
 
 ## M35 — 新同卡工程计时：{phase}
 
-[实际快照](../../experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)：{count}/360完整局，固定10task/init49×三臂×3独立server重复；计时重复不增加独立质量N。Goal/Spatial各90，Object60；Object1误送旧Goal/Spatial白名单在0episode/0teacher失败，保留不重试，只接续原未启动2/3，最大330/360。Long按原单worker队列接续，实际终态以表为准。
+[实际快照](../../experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)：{count}/360完整局，固定10task/init49×三臂×3独立server重复；计时重复不增加独立质量N。Goal/Spatial各90，Object60；Object1误送旧Goal/Spatial白名单在0episode/0teacher失败，保留不重试，只接续原未启动2/3，最大330/360。{long_note}
 
 GPU0 Goal→Object，GPU1 Spatial→Long；同case对照同卡，每卡单worker、server/client2线程。05:34:31停新、05:44:31清理（10/20），1452000尝试/3GiB/12 GPU生命周期小时帽不延期。首两S组件FAILED仍列出，计时只作未准入候选成本观察；不开放旧45chunk。warm含reset/policy/cache/env，不含env.close/落盘；冷setup另列。[边界](../../experiments/libero-four-suite-performance-20261019/TIME-BOUNDARY.md)。
 
@@ -58,7 +60,7 @@ GPU0 Goal→Object，GPU1 Spatial→Long；同case对照同卡，每卡单worker
 
 ## 下一步及保护
 
-先完成M35终态/清理并同步main；M34本轮已止损。若继续新算子研究，先讨论匹配设备GEMM/attention契约的可行原语和强cached B14，另登记有界作业；不能把普通cache收益叫协同创新。[claim矩阵](../../experiments/single-layer-warp-specialized-20261019/CLAIM-EVIDENCE-MATRIX.md)、[日期](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。
+{next_note}若继续新算子研究，先讨论匹配设备GEMM/attention契约的可行原语和强cached B14，另登记有界作业；不能把普通cache收益叫协同创新。[claim矩阵](../../experiments/single-layer-warp-specialized-20261019/CLAIM-EVIDENCE-MATRIX.md)、[日期](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。
 
 四权限false；旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据、default A_off不改。baseline及依赖/投机源/原tile与HW/state/cycle/rules保护；仅optimized新实现，不重置/旧sync/升级，不建缺失cycle.yaml。远端只~/cxz，AutoDL不再SSH/关机UNKNOWN；不杀他人、不改服务/时钟。
 
@@ -91,7 +93,7 @@ steps:
 
 M17计算齐但质量审计未放行；M31–M33按原结果完成。M34单层单kernel原型/有限诊断交付完成，原精度与速度NO-GO；completed不代表科学验收通过。M35为{phase}，原360最多330，失败不重跑；M36只读调研完成。逐项证据见[完整PROGRESS](PROGRESS.md)，之前计划保留[归档](history/M34-complete-20261020/PLAN.md)。
 
-下一步：核验Long三计时phase终态与owned清理→更新四套工程成本/边界和负结果→同步main→联合汇报。M34累计600调用后关闭，不借旧余额自动开新实现/训练/TEST。04:00前后能否齐套以实际进度为准，原05:34停新/05:44清理不延期。
+下一步：{next_note}实际工程成本/边界、缺项与负结果统一汇报，main只公开核对源码/HW/小证据。M34累计600调用后关闭，不借旧余额自动开新实现/训练/TEST。原05:34停新/05:44清理不延期。
 
 新算子研究需先解决Q/FFN2/attention设备数值契约与强cached B14关系；当前不追加GPU网格搜索。10/22若关键证据不足就收缩主张。保护文件、质量四false、范围与资源限制按PROGRESS和约束记忆，不覆盖state/cycle/rules。
 '''
@@ -133,9 +135,9 @@ M34已完成整层单kernel/warp分工原型与有界诊断，**原精度和速�
 
 [阶段诊断](experiments/single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)三B14 GEMM74.66%；唯一ldm40副本局部延迟下降6.5%–19.0%，仅匹配失败v1，原门不变。[精度定位](experiments/single-layer-warp-specialized-20261019/PRECISION-CUTS.md)：同输入Q/FFN2及video attention边界有差异，cross K/V通过；不把splitK指定为唯一根因。累计600/600block、0full30/episode，01:44:39北京清理，owned退出。原编译/依赖/CPU核对失败及远端未迁入state/rules的88项检查false保留；本机88、远端86已部署项最终不变。[资源/止损](experiments/single-layer-warp-specialized-20261019/RESOURCE-AND-STOP-REPORT.md)。
 
-## 正在运行与硬截止
+## {'资源终态与硬截止' if closed else '正在运行与硬截止'}
 
-M35新同卡工程计时{phase}，当前{count}/360完整局，固定10task/init49×三臂×3独立server进程重复。Goal/Spatial各90，Object60；Object1误入旧Goal/Spatial白名单，0局0teacher，保留不重试，仅接续原未启动2/3，最大330。Long实际队列和逐arm数见[新计时结果](experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)。计时重复不增加独立质量N。
+M35新同卡工程计时{phase}，当前{count}/360完整局，固定10task/init49×三臂×3独立server进程重复。Goal/Spatial各90，Object60；Object1误入旧Goal/Spatial白名单，0局0teacher，保留不重试，仅接续原未启动2/3，最大330。{long_note}逐arm数见[新计时结果](experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)。计时重复不增加独立质量N。
 
 GPU0 Goal→Object、GPU1 Spatial→Long，每卡单worker/server与client各2线程，同case同卡；05:34:31停新、05:44:31清理（10/20），12 GPU生命周期h/1452000尝试/3GiB，不延期。计时仍有首两S组件FAILED，只作未准入算法工程成本观察，不是旧正式入口放行。核心ΣT_round/Σg；暖episode含reset/policy/cache/env，不含env.close/落盘，冷setup另列，client_total不叫纯E2E。[计时边界](experiments/libero-four-suite-performance-20261019/TIME-BOUNDARY.md)。
 
@@ -149,7 +151,7 @@ M31静态子图、M32阶段内persistent、M33退化profile旧结果保留；M32
 
 ## 下一步与范围
 
-先收口Long计时/清理→联合报告→main同步。M34本轮停止GPU扫参；若继续，先论证设备GEMM/attention原契约与成熟tile流水原语，另登记预算。shape×engine的1/3/7完整矩阵和算法/系统交互缺口不能补写为完成；普通batch/cache不算MegaTransformer创新。
+{next_note}M34本轮停止GPU扫参；若继续，先论证设备GEMM/attention原契约与成熟tile流水原语，另登记预算。shape×engine的1/3/7完整矩阵和算法/系统交互缺口不能补写为完成；普通batch/cache不算MegaTransformer创新。
 
 M36[RoboTwin调研完成](experiments/robotwin-migration-survey-20261019/RESULT.md)：官方LingBot-VA权重/50唯一任务，100有效seed/task，三臂15000局/condition。Q32/16有效动作通道/pool静态9792需新draft/cache接口，不继承LIBERO阈值；0第二环境实验。CUDA仍私有12.4/Torch2.9 cu126，远端driver535不升级CUDA13/系统。
 
@@ -170,6 +172,7 @@ M17原10/21 16:56:31停新、17:11:31清理、18723000尝试/15GiB不重置。�
         (CYCLE / name).write_text(text)
     (PIPE / 'PROGRESS.compact.md').write_text(compact)
     index = (PIPE / 'INDEX.md').read_text()
+    index = index.replace('[当前整体整理]', '[10/19历史阶段整理]')
     start = index.index('当前算子：')
     end = index.index('\n## 两条研究路线', start)
     index = index[:start] + ('当前算子：[M34整层单kernel实际结果](experiments/single-layer-warp-specialized-20261019/RESULT.md)和'

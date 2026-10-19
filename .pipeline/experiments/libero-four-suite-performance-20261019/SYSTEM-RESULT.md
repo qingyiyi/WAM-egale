@@ -1,6 +1,6 @@
 # 系统证据结果
 
-状态：M34有界原型与诊断完成、原数学/性能NO-GO；M35 RUNNING_PARTIAL_TIMING_PANEL，301/360。完整原数据分别在[M34](../single-layer-warp-specialized-20261019/RESULT.md)、[M35](ISOLATED-RESULT.md)。
+状态：M34有界原型与诊断完成、原数学/性能NO-GO；M35 CLOSED_PARTIAL_PRE_REGISTERED_PANEL，330/360。完整原数据分别在[M34](../single-layer-warp-specialized-20261019/RESULT.md)、[M35](ISOLATED-RESULT.md)。
 
 |诊断候选状态数|CFG/Q/线性M|本轮whole与Torch/native|缓存/强baseline状态|
 |---|---|---|---|
@@ -15,3 +15,5 @@
 M35核心指标为ΣT_round/Σg；完整policy/chunk、全体暖episode及双方成功补充分别列[计时表](ISOLATED-RESULT.md)，[成本分解](COST-LEDGER.md)。这些作业未安装新whole kernel，其收益属于原投机实现。原观测器仍有首两S/组件FAILED；暖计时含审计/RPC/环境，不是无审计生产cold E2E。没有用target calls或接受率代替成本。
 
 H1有限支持；H2仍缺同一冻结7-query逐B2/集中B14；H3新调度无正收益；H4在质量约束下的闭环收益未建立。A0S0/A0S1/A1S0/A1S1及1/3/7形状交互未完整执行，不计算缺失R，不声称协同。
+
+算法侧还缺少步数Target25/17和匹配MLP等质量—成本强对照；目前不能宣称投机优于直接少步数。这些是论文缺口，不是当前GPU队列中已启动的工作。

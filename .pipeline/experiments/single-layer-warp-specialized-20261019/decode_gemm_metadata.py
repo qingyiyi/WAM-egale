@@ -52,6 +52,7 @@ def main():
         '与MegaMoE的差别：已借鉴任务领取和warp职责，但没有SM100的TMA/UMMA/TMEM或动态寄存器能力，也没有其ready驱动跨阶段生产者消费者流水。当前是29个粗阶段的cooperative执行器，中间量写global；让所有算子同处一个launch没有消除这些数据依赖与中间流量。', '',
         '唯一默认后继建议：先分别解决同输入Q、FFN2及attention的设备数值边界，再将一个已经通过的成熟SM80 tile原语接回整层。随后只选一处有价值的load/compute双缓冲或ready子图，明确generation、发布/获取、消费者释放与无死锁条件。CUDA12.4.1官方支持Ampere异步global→shared和arrive/wait barrier；不需要升级到CUDA13，也不把其他线程的wait当成producer复制完成。', '',
         '强baseline必须双方都使用已有cached/shared-prefix/Graph；当前昂贵cross K/V在成熟缓存命中时本来消失，不能通过新增普通缓存宣称调度创新。先守住原算术/状态，再判断tile流水是否超过强B14。当前没有新的GPU作业、没有生产集成，不扩30层或环境，不开启register/tile网格搜索。',
+        '', '接口覆盖只指本轮9个捕获签名；底层C++对B和Q分别检查会接受部分未测组合，例如B14/Q128，这不构成该组合的准入。参数形状与cache绑定依赖冻结NativeBlock调用器，当前不是通用输入验证器。RoboTwin Q32不在入口范围，其他sigma/层号/alias或错误输入也没有由9点证明。保持研究入口隔离，不在本轮已闭合预算后偷改主代码并借用旧结果。',
     ]
     (B / 'IMPLEMENTATION-ISSUES.md').write_text('\n'.join(text) + '\n')
     print('decoded 8 descriptors; zero new GPU calls')

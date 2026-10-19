@@ -1,4 +1,5 @@
 """Non-overlapping accounting and named mixed residuals from existing timers."""
+from collections import Counter
 import csv
 import json
 from pathlib import Path
@@ -8,6 +9,39 @@ B = Path(__file__).resolve().parent
 
 def main():
     d = json.loads((B / 'ISOLATED-RESULT.json').read_text())
+    snapshot = json.loads((B / 'ISOLATED-SNAPSHOT.json').read_text())
+    grouped = {}
+    episode_coverage = []
+    for episode in snapshot['rows']:
+        if not episode['complete']:
+            continue
+        observed_g = 0
+        for policy in episode.get('policy_timing') or []:
+            group = grouped.setdefault((episode['suite'], episode['arm'], policy['role']),
+                                       dict(hist=Counter(), seconds=0.0, chunks=0))
+            group['chunks'] += 1
+            for r in policy['timing'].get('rounds', []):
+                group['hist'][r['g']] += 1
+                group['seconds'] += r['cuda_seconds']
+                observed_g += r['g']
+        episode_coverage.append(observed_g == episode['timing']['sum_g'])
+    round_rows = []
+    for (suite, arm, role), g in sorted(grouped.items()):
+        n = sum(g['hist'].values())
+        committed = sum(k*v for k, v in g['hist'].items())
+        round_rows.append(dict(suite=suite, arm=arm, scheduled_role=role,
+            policy_chunks=g['chunks'], rounds=n, sum_g=committed,
+            mean_g=committed/n, sum_round_seconds=g['seconds'],
+            mean_round_seconds=g['seconds']/n, seconds_per_g=g['seconds']/committed,
+            g1_rounds=g['hist'][1], g2_rounds=g['hist'][2], g3_rounds=g['hist'][3],
+            other_g_histogram=json.dumps({str(k):v for k,v in g['hist'].items() if k not in (1,2,3)})))
+    (B/'ROUND-STATISTICS.json').write_text(json.dumps(dict(
+        at_UTC=snapshot['at_UTC'], rows=round_rows,
+        complete_episodes=len(episode_coverage),
+        all_per_episode_g_matches_original_counter=all(episode_coverage),
+        independent_samples=False, new_GPU_calls=0), indent=2)+'\n')
+    with (B/'ROUND-STATISTICS.csv').open('w') as f:
+        w=csv.DictWriter(f,fieldnames=list(round_rows[0]));w.writeheader();w.writerows(round_rows)
     rows = []
     for name, suite in d['suites'].items():
         for arm, a in suite['arms'].items():
@@ -57,6 +91,14 @@ def main():
         '全体暖episode均值包含失败，双方成功速度只作补充见ISOLATED-RESULT.md；此表没有剔除超长成功或失败以改善速度。原6000完整质量另见RESULT.md，不用此固定init计时面板的成功数外推500局。', '',
         '所有臂使用原等价512-token BF16 reset bank。冷setup是phase共享成本，未按臂编造cold E2E；没有重新测无审计生产版，也没有将新whole-layer kernel接入这些TF/PF2作业。',
     ]
+    text += ['', '## 实际推进与单轮成本', '',
+        '|套件/臂/路由|action轮数|Σg|平均g/轮|平均轮毫秒|毫秒/g|',
+        '|---|---:|---:|---:|---:|---:|']
+    for r in round_rows:
+        text.append(f'|{r["suite"]}/{r["arm"]}/{r["scheduled_role"]}|{r["rounds"]}|{r["sum_g"]}|'
+                    f'{r["mean_g"]:.4f}|{r["mean_round_seconds"]*1000:.3f}|{r["seconds_per_g"]*1000:.3f}|')
+    text += ['', '每个完整episode内重加所有原round.g，与原COUNTER.sum_g逐项核对：'+str(all(episode_coverage))+ '。g1/g2/g3直方图见ROUND-STATISTICS.csv；T均按实际单步推进，P的S/T分别统计，不把T记成draft接受100%。',
+        '', '这是实际合法scheduler更新数；不是候选数、环境步或任务样本数。当前主树验证7候选，S轮通常只推进1–3步；S轮比单Target轮昂贵时，仍可能因一次推进多步降低ΣT_round/Σg。包含anchor/fallback/bonus/terminal的原计时边界保留，不能用g−1反推出未保存的accepted depth，不能将轮数当独立episode。']
     (B / 'COST-LEDGER.md').write_text('\n'.join(text) + '\n')
     print('cost rows', len(rows))
 
