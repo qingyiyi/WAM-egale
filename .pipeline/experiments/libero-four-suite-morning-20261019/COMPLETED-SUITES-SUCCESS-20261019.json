@@ -1,0 +1,78 @@
+{
+  "observed_at": "2026-10-19T17:46:44.271084+08:00",
+  "scope": "first round complete descriptive coverage; no independent-test or quality admission",
+  "arm_meaning": {
+    "T": "Target",
+    "C": "TF continuous speculation",
+    "P": "same suite TF with PF2"
+  },
+  "suites": {
+    "Long": {
+      "success": {
+        "T": 483,
+        "C": 484,
+        "P": 473
+      },
+      "arm_complete": {
+        "T": 500,
+        "C": 500,
+        "P": 500
+      },
+      "source": ".pipeline/experiments/long-morning-20261018/FINAL-SUMMARY.md"
+    },
+    "Goal": {
+      "success": {
+        "T": 463,
+        "C": 464,
+        "P": 467
+      },
+      "arm_complete": {
+        "T": 500,
+        "C": 500,
+        "P": 500
+      },
+      "status": "COMPLETE_DESCRIPTIVE_SUITE_COVERAGE",
+      "component_failures": {
+        "T": 0,
+        "C": 165,
+        "P": 334
+      },
+      "source": "投机采样/results/runtime/p0-remote-server-health-cpu1-v2-20261019-r1/LATEST.json",
+      "source_field": "suites.goal",
+      "source_at_UTC": "2026-10-19T09:46:38Z"
+    },
+    "Spatial": {
+      "success": {
+        "T": 472,
+        "C": 466,
+        "P": 464
+      },
+      "arm_complete": {
+        "T": 500,
+        "C": 500,
+        "P": 500
+      },
+      "status": "COMPLETE_DESCRIPTIVE_SUITE_COVERAGE",
+      "component_failures": {
+        "T": 0,
+        "C": 155,
+        "P": 312
+      },
+      "source": "投机采样/results/runtime/p0-remote-server-health-cpu1-v2-20261019-r1/LATEST.json",
+      "source_field": "suites.spatial",
+      "source_at_UTC": "2026-10-19T09:46:38Z"
+    }
+  },
+  "quality_permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "caveats": [
+    "first-two-S strict pairing audit FAILED retained",
+    "training/DEV exposure retained",
+    "component audit failures retained; success terminal does not imply all component gates passed",
+    "no significance or noninferiority conclusion from point estimates"
+  ]
+}

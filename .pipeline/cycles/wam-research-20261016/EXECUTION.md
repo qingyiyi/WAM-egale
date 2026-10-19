@@ -1,26 +1,20 @@
 ---
 kind: execution
 cycle: wam-research-20261016
-updated: '2026-10-19T16:09:23.647800+08:00'
+updated: '2026-10-19T17:50:34.115962+08:00'
 ---
 # 最近执行检查点
 
-## 2026-10-19T16:09:23.647800+08:00：完整native已过有限精度，计时等自然空闲
+## 2026-10-19T17:50:34.115962+08:00：M30结构交接与MegaMoE思想设计
 
-M28独立C++/CUDA顺序链全部接入baseline/optimized；Torch只读oracle。固定Norm/Flash源码和cuBLASLt descriptor复现，首六action中间量/原语与状态过。Q128缺字段的原attempt失败保留，用3次既有完整canonical policy捕获真实输入并与旧五关键量逐位一致：234个model forward，无机器人episode。
+读取当前Cycle、约束记忆、M26 profile/负结果、M28完整native/性能边界及原整合记录。CPU读取既有9逻辑fixture的小metadata和safetensors header，导出27参数/9形状/21DAG节点；不加载完整模型、不新采tensor、不创建GPU上下文。source-derived DAG不是实际kernel trace，生产CUDA原stride/alias仍UNKNOWN。
 
-首次full-model装入因FP32调制表/Norm权重主动拒绝，0full30；补支持原dtype后六query/18调用、24block有限门过。独立profile定位scalar pack/slot扫描；16字节复制+CUB compaction后六中间量/六30层/24写读状态重过。所有有效KV/metadata/input/RNG严格，不降低allclose。原模型grad flags只读别名兼容另在新namespace验证。
+固定官方DeepGEMM commit下载10份源码/许可证，只读核验TaskInfo、ready、warmup、常驻任务循环与warp角色；BF16实现用SM100，SM80只参考思想。按用户最新要求形成FFN行块ready的最小子图设计，完整FFN2设备数值门未过，不称已实现persistent。
 
-首scalar9点和最终vector部分计时均原样保留；当前外来PID使双进程矩阵未齐。GPU作业各有PID+birth/上限/自然退出或失败，等待仍计M28生命周期，不动他人。代码/报告落[M28](../../experiments/block-native-baseline-20261019/PLAN.md)。M25 NVML/严格性能、M26 CUTLASS FFN2/NCU偏差、M27资源PARTIAL全部保留。
+两次CPU工具错误保留：首次压缩字段dict误用sum；首次保护核对把省略文件的公开镜像当参考。最终1875投机源、92算子数学文件、state/rules均与本机旧manifest一致，缺失cycle.yaml未创建。M30 GPU0；自有CPU命令自然退出，不动原远端/外部进程。
 
-1875投机源与保护文件复核不变；baseline本轮新授权可改。Object只读巡检2026-10-19T08:06:44Z：T469/C268/P269，2活动，controller identity match=True；原M17预算不重置。
+通过Maintain保存tile/persistent为当前目标及MegaMoE思想偏好，限定本轮算子，替代旧仅路线B阶段优先级；具体子图/收益仍为研究建议。更新轻量入口与协作源码/shape文档，公开只走main。
 
-完整此前执行见[归档](history/M28-before-final-native-result-20261019/EXECUTION.md)。
+远端原watch核对：Object 1166/1500；T500/C333/P333为完成数，非成功数，来源2026-10-19T09:46:38Z；原同卡队列继续。Long/Goal/Spatial成功率冻结汇总已交付，但首两S严格配对/曝光/组件问题与四false保留。
 
-## 2026-10-19T16:53:10.217466+08:00：M28完整native有限交付与M29文献核验收口
-
-最终两次独立GPU进程各9点/1368个独立block意图自然退出；504原值、每轮逐位有效状态、无外来PID证据齐。新增原模型grad flags最终实际30层18调用逐位通过，保留839原标志；GPU子作业共23、1088.541秒，全部owned退出。CPU汇总错误只修正list计数字段，未新增GPU重跑。精度/状态/动态eager性能PASS限声明输入，不改历史门或生产权限。
-
-M29只用CPU核验13个主要/近邻原文，直接重合与潜在增量分开；正式会议/预印本分列，未复现外部实现。远端checkpoint 2026-10-19T08:51:38Z：Object 1075/1500，GPU0已完成分片，剩余匹配T200的C/P固定GPU1后继。未改投机代码/队列/预算。1875源与保护文件最终复核不变。结果、源码、资源、论文原文均有短索引；下一动作仅main镜像发布。
-
-此前全文保留在[收口前归档](history/M28-before-close-20261019/EXECUTION.md)。
+此前M28终态、M29原文核验及全部检查点见[收口前归档](history/M30-before-handoff-20261019/EXECUTION.md)，不重复运行已完成任务。

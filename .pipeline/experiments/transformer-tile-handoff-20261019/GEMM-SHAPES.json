@@ -1,0 +1,609 @@
+{
+  "at": "2026-10-19T17:46:44.154640+08:00",
+  "scope": "derived from audited logical shapes; actual library kernel tiles must be profiled separately",
+  "rows": [
+    {
+      "case": "short-B2-action",
+      "B": 2,
+      "Q": 16,
+      "M": 32,
+      "self_effective_K": 288,
+      "history_visible_slots": 272,
+      "gemm_layout": "X[M,K] @ W[N,K].T, weight stored [N,K]",
+      "gemm_shapes": [
+        {
+          "ops": [
+            "self_q",
+            "self_k",
+            "self_v",
+            "self_o",
+            "cross_q",
+            "cross_o"
+          ],
+          "calls": 6,
+          "M": 32,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "cross_k",
+            "cross_v"
+          ],
+          "calls_uncached": 2,
+          "calls_if_admitted_cache_hit": 0,
+          "M": 1024,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn1"
+          ],
+          "calls": 1,
+          "M": 32,
+          "N": 14336,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn2"
+          ],
+          "calls": 1,
+          "M": 32,
+          "N": 3072,
+          "K": 14336
+        }
+      ],
+      "attention_per_batch_head": {
+        "self_QK": [
+          16,
+          128,
+          288
+        ],
+        "cross_QK": [
+          16,
+          128,
+          512
+        ]
+      },
+      "source_fixture": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-short-B2-action-layer0-first.pt"
+    },
+    {
+      "case": "short-B14-action",
+      "B": 14,
+      "Q": 16,
+      "M": 224,
+      "self_effective_K": 288,
+      "history_visible_slots": 272,
+      "gemm_layout": "X[M,K] @ W[N,K].T, weight stored [N,K]",
+      "gemm_shapes": [
+        {
+          "ops": [
+            "self_q",
+            "self_k",
+            "self_v",
+            "self_o",
+            "cross_q",
+            "cross_o"
+          ],
+          "calls": 6,
+          "M": 224,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "cross_k",
+            "cross_v"
+          ],
+          "calls_uncached": 2,
+          "calls_if_admitted_cache_hit": 0,
+          "M": 7168,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn1"
+          ],
+          "calls": 1,
+          "M": 224,
+          "N": 14336,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn2"
+          ],
+          "calls": 1,
+          "M": 224,
+          "N": 3072,
+          "K": 14336
+        }
+      ],
+      "attention_per_batch_head": {
+        "self_QK": [
+          16,
+          128,
+          288
+        ],
+        "cross_QK": [
+          16,
+          128,
+          512
+        ]
+      },
+      "source_fixture": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-short-B14-action-layer0-first.pt"
+    },
+    {
+      "case": "short-B2-video",
+      "B": 2,
+      "Q": 128,
+      "M": 256,
+      "self_effective_K": 272,
+      "history_visible_slots": 144,
+      "gemm_layout": "X[M,K] @ W[N,K].T, weight stored [N,K]",
+      "gemm_shapes": [
+        {
+          "ops": [
+            "self_q",
+            "self_k",
+            "self_v",
+            "self_o",
+            "cross_q",
+            "cross_o"
+          ],
+          "calls": 6,
+          "M": 256,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "cross_k",
+            "cross_v"
+          ],
+          "calls_uncached": 2,
+          "calls_if_admitted_cache_hit": 0,
+          "M": 1024,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn1"
+          ],
+          "calls": 1,
+          "M": 256,
+          "N": 14336,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn2"
+          ],
+          "calls": 1,
+          "M": 256,
+          "N": 3072,
+          "K": 14336
+        }
+      ],
+      "attention_per_batch_head": {
+        "self_QK": [
+          128,
+          128,
+          272
+        ],
+        "cross_QK": [
+          128,
+          128,
+          512
+        ]
+      },
+      "source_fixture": ".pipeline/experiments/block-native-baseline-20261019/native-video-capture-attempt1/results/input-short-B2-video-layer0-first.pt"
+    },
+    {
+      "case": "middle-B2-action",
+      "B": 2,
+      "Q": 16,
+      "M": 32,
+      "self_effective_K": 1152,
+      "history_visible_slots": 1136,
+      "gemm_layout": "X[M,K] @ W[N,K].T, weight stored [N,K]",
+      "gemm_shapes": [
+        {
+          "ops": [
+            "self_q",
+            "self_k",
+            "self_v",
+            "self_o",
+            "cross_q",
+            "cross_o"
+          ],
+          "calls": 6,
+          "M": 32,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "cross_k",
+            "cross_v"
+          ],
+          "calls_uncached": 2,
+          "calls_if_admitted_cache_hit": 0,
+          "M": 1024,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn1"
+          ],
+          "calls": 1,
+          "M": 32,
+          "N": 14336,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn2"
+          ],
+          "calls": 1,
+          "M": 32,
+          "N": 3072,
+          "K": 14336
+        }
+      ],
+      "attention_per_batch_head": {
+        "self_QK": [
+          16,
+          128,
+          1152
+        ],
+        "cross_QK": [
+          16,
+          128,
+          512
+        ]
+      },
+      "source_fixture": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-middle-B2-action-layer0-first.pt"
+    },
+    {
+      "case": "middle-B14-action",
+      "B": 14,
+      "Q": 16,
+      "M": 224,
+      "self_effective_K": 1152,
+      "history_visible_slots": 1136,
+      "gemm_layout": "X[M,K] @ W[N,K].T, weight stored [N,K]",
+      "gemm_shapes": [
+        {
+          "ops": [
+            "self_q",
+            "self_k",
+            "self_v",
+            "self_o",
+            "cross_q",
+            "cross_o"
+          ],
+          "calls": 6,
+          "M": 224,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "cross_k",
+            "cross_v"
+          ],
+          "calls_uncached": 2,
+          "calls_if_admitted_cache_hit": 0,
+          "M": 7168,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn1"
+          ],
+          "calls": 1,
+          "M": 224,
+          "N": 14336,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn2"
+          ],
+          "calls": 1,
+          "M": 224,
+          "N": 3072,
+          "K": 14336
+        }
+      ],
+      "attention_per_batch_head": {
+        "self_QK": [
+          16,
+          128,
+          1152
+        ],
+        "cross_QK": [
+          16,
+          128,
+          512
+        ]
+      },
+      "source_fixture": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-middle-B14-action-layer0-first.pt"
+    },
+    {
+      "case": "middle-B2-video",
+      "B": 2,
+      "Q": 128,
+      "M": 256,
+      "self_effective_K": 1136,
+      "history_visible_slots": 1008,
+      "gemm_layout": "X[M,K] @ W[N,K].T, weight stored [N,K]",
+      "gemm_shapes": [
+        {
+          "ops": [
+            "self_q",
+            "self_k",
+            "self_v",
+            "self_o",
+            "cross_q",
+            "cross_o"
+          ],
+          "calls": 6,
+          "M": 256,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "cross_k",
+            "cross_v"
+          ],
+          "calls_uncached": 2,
+          "calls_if_admitted_cache_hit": 0,
+          "M": 1024,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn1"
+          ],
+          "calls": 1,
+          "M": 256,
+          "N": 14336,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn2"
+          ],
+          "calls": 1,
+          "M": 256,
+          "N": 3072,
+          "K": 14336
+        }
+      ],
+      "attention_per_batch_head": {
+        "self_QK": [
+          128,
+          128,
+          1136
+        ],
+        "cross_QK": [
+          128,
+          128,
+          512
+        ]
+      },
+      "source_fixture": ".pipeline/experiments/block-native-baseline-20261019/native-video-capture-attempt1/results/input-middle-B2-video-layer0-first.pt"
+    },
+    {
+      "case": "long-B2-action",
+      "B": 2,
+      "Q": 16,
+      "M": 32,
+      "self_effective_K": 2160,
+      "history_visible_slots": 2144,
+      "gemm_layout": "X[M,K] @ W[N,K].T, weight stored [N,K]",
+      "gemm_shapes": [
+        {
+          "ops": [
+            "self_q",
+            "self_k",
+            "self_v",
+            "self_o",
+            "cross_q",
+            "cross_o"
+          ],
+          "calls": 6,
+          "M": 32,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "cross_k",
+            "cross_v"
+          ],
+          "calls_uncached": 2,
+          "calls_if_admitted_cache_hit": 0,
+          "M": 1024,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn1"
+          ],
+          "calls": 1,
+          "M": 32,
+          "N": 14336,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn2"
+          ],
+          "calls": 1,
+          "M": 32,
+          "N": 3072,
+          "K": 14336
+        }
+      ],
+      "attention_per_batch_head": {
+        "self_QK": [
+          16,
+          128,
+          2160
+        ],
+        "cross_QK": [
+          16,
+          128,
+          512
+        ]
+      },
+      "source_fixture": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-long-B2-action-layer0-first.pt"
+    },
+    {
+      "case": "long-B14-action",
+      "B": 14,
+      "Q": 16,
+      "M": 224,
+      "self_effective_K": 2160,
+      "history_visible_slots": 2144,
+      "gemm_layout": "X[M,K] @ W[N,K].T, weight stored [N,K]",
+      "gemm_shapes": [
+        {
+          "ops": [
+            "self_q",
+            "self_k",
+            "self_v",
+            "self_o",
+            "cross_q",
+            "cross_o"
+          ],
+          "calls": 6,
+          "M": 224,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "cross_k",
+            "cross_v"
+          ],
+          "calls_uncached": 2,
+          "calls_if_admitted_cache_hit": 0,
+          "M": 7168,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn1"
+          ],
+          "calls": 1,
+          "M": 224,
+          "N": 14336,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn2"
+          ],
+          "calls": 1,
+          "M": 224,
+          "N": 3072,
+          "K": 14336
+        }
+      ],
+      "attention_per_batch_head": {
+        "self_QK": [
+          16,
+          128,
+          2160
+        ],
+        "cross_QK": [
+          16,
+          128,
+          512
+        ]
+      },
+      "source_fixture": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-long-B14-action-layer0-first.pt"
+    },
+    {
+      "case": "long-B2-video",
+      "B": 2,
+      "Q": 128,
+      "M": 256,
+      "self_effective_K": 2144,
+      "history_visible_slots": 2016,
+      "gemm_layout": "X[M,K] @ W[N,K].T, weight stored [N,K]",
+      "gemm_shapes": [
+        {
+          "ops": [
+            "self_q",
+            "self_k",
+            "self_v",
+            "self_o",
+            "cross_q",
+            "cross_o"
+          ],
+          "calls": 6,
+          "M": 256,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "cross_k",
+            "cross_v"
+          ],
+          "calls_uncached": 2,
+          "calls_if_admitted_cache_hit": 0,
+          "M": 1024,
+          "N": 3072,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn1"
+          ],
+          "calls": 1,
+          "M": 256,
+          "N": 14336,
+          "K": 3072
+        },
+        {
+          "ops": [
+            "ffn2"
+          ],
+          "calls": 1,
+          "M": 256,
+          "N": 3072,
+          "K": 14336
+        }
+      ],
+      "attention_per_batch_head": {
+        "self_QK": [
+          128,
+          128,
+          2144
+        ],
+        "cross_QK": [
+          128,
+          128,
+          512
+        ]
+      },
+      "source_fixture": ".pipeline/experiments/block-native-baseline-20261019/native-video-capture-attempt1/results/input-long-B2-video-layer0-first.pt"
+    }
+  ]
+}

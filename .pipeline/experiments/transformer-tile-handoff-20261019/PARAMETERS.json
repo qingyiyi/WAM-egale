@@ -1,0 +1,259 @@
+{
+  "config": {
+    "_class_name": "WanTransformer3DModel",
+    "_diffusers_version": "0.35.0.dev0",
+    "added_kv_proj_dim": null,
+    "attention_head_dim": 128,
+    "cross_attn_norm": true,
+    "eps": 1e-06,
+    "ffn_dim": 14336,
+    "freq_dim": 256,
+    "image_dim": null,
+    "in_channels": 48,
+    "num_attention_heads": 24,
+    "num_layers": 30,
+    "out_channels": 48,
+    "patch_size": [
+      1,
+      2,
+      2
+    ],
+    "pos_embed_seq_len": null,
+    "qk_norm": "rms_norm_across_heads",
+    "rope_max_seq_len": 1024,
+    "text_dim": 4096,
+    "attn_mode": "flex"
+  },
+  "parameters": [
+    {
+      "name": "blocks.0.attn1.norm_k.weight",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn1.norm_q.weight",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn1.to_k.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn1.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn1.to_out.0.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn1.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn1.to_q.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn1.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn1.to_v.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn1.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.norm_k.weight",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.norm_q.weight",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.to_k.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.to_out.0.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.to_q.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.to_v.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.attn2.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.ffn.net.0.proj.bias",
+      "shape": [
+        14336
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.ffn.net.0.proj.weight",
+      "shape": [
+        14336,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.ffn.net.2.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.ffn.net.2.weight",
+      "shape": [
+        3072,
+        14336
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.bfloat16"
+    },
+    {
+      "name": "blocks.0.norm2.bias",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.float32"
+    },
+    {
+      "name": "blocks.0.norm2.weight",
+      "shape": [
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.float32"
+    },
+    {
+      "name": "blocks.0.scale_shift_table",
+      "shape": [
+        1,
+        6,
+        3072
+      ],
+      "checkpoint_dtype": "BF16",
+      "runtime_dtype": "torch.float32"
+    }
+  ],
+  "scope": "safetensors header metadata only, no tensor payload/hash",
+  "header_files_read": 1
+}

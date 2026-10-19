@@ -1,6 +1,10 @@
 # 当前短入口
 
-更新：2026-10-19T16:55:47.063224+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
+更新：2026-10-19T17:51:29.763317+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
+
+## 当前：M30 tile/persistent设计交接
+
+[M30结构交接](experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[综合HW的具体设计](experiments/transformer-tile-handoff-20261019/DESIGN.md)、[工作大纲](experiments/transformer-tile-handoff-20261019/WORK-OUTLINE.md)。CPU核验9签名/27参数/21节点，GPU0。用户确认借鉴MegaMoE思想，研究tile和常驻warp调度；官方源码固定，只读未安装。建议先显式tile坐标FFN1常驻worker，FFN2严格门通过后行块ready子图，再视证据细化K块/warp。新实现/收益尚无。生产CUDA原stride未恢复、旧device FFN2失败保留。
 
 ## 已完成：M28完整native block
 
@@ -14,13 +18,13 @@
 
 ## 远端既定评估
 
-Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各臂500完整。Object北京时间16:51:38完整1075/1500：T491/C291/P293为完成数，不是成功数。GPU1两个活动分片；GPU0已完原分片，前200组C/P按同卡matched Target约束等待GPU1槽位并自动后继。[动态核对与ETA](experiments/speculative-denoising-novelty-20261019/REMOTE-STATUS.md)。原CPU约5分钟只读巡检继续，SSH失败不冒充实时。
+Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各臂500完整；[成功率表](experiments/libero-four-suite-morning-20261019/COMPLETED-SUITES-SUCCESS-20261019.md)。Object北京时间17:46:38完整1166/1500：T500/C333/P333为完成数，不是成功数。GPU1已自动进入前200组C/P后继，仍与matched Target同卡；GPU0既定分片已完成。[动态核对与ETA](experiments/speculative-denoising-novelty-20261019/REMOTE-STATUS.md)。原CPU约5分钟只读巡检继续，SSH失败不冒充实时。
 
 ## 文献与下一步
 
 [M29原文/主张门](experiments/speculative-denoising-novelty-20261019/RESULT.md)：ICML2025投机扩散、ICLR2026 FlowCast、TS-DP/FLASH已有Transformer draft/蒸馏/机器人batch verify/PF等直接先例。新近Speculative Forcing用于视频世界生成，WAMJET已优化LingBot-VA。当前复现/普通batching/缓存/FFN融合不足以构成系统创新。
 
-默认下一步：固定完整native baseline，先对齐最强B14 shared-prefix/O3/缓存Graph，再只选一个profile支持的候选感知子图机制；记录sum(T_round)/sum(g)、完整chunk与质量。新机制仍是假设，不自动启动新训练、架构搜索或大型fusion。当前源码/HW只发布main进度镜像，历史固定科学commit保留身份。
+默认下一步：M31尚未启动；固定完整native baseline、对齐最强B14 shared-prefix/O3/缓存Graph，再有界实现一个tile/persistent worker子图；记录sum(T_round)/sum(g)、完整chunk与质量。新机制仍是假设，不自动启动新训练、架构搜索或大型fusion。当前源码/HW只发布main进度镜像，历史固定科学commit保留身份。
 
 ## 科学和资源边界
 
@@ -28,7 +32,7 @@ engineering_quality_screen=false；independent_test_complete=false；noninferior
 
 PF2=SST完整policy，T50更新/51action调用含末尾，非bonus或状态恢复；reset/cache不计周期。所有实验同用512-token BF16等价reset，cold另列；actual796/800罚分分列。首两S严格配对失败、训练/DEV曝光和长尾保留，不将描述性SR当独立TEST或非劣。
 
-投机源码/配置/运行依赖与原tile只读；用户本轮明确允许改算子baseline并归档旧源。state/rules保护、不建缺失cycle.yaml；不升级/旧sync覆盖HW。BAAI写入仅~/cxz；AutoDL不再SSH，实例关机UNKNOWN。不杀他人/改服务/GPU时钟；本机计时自然空闲、精度可共享。
+投机源码/配置/运行依赖与原tile只读；用户此前允许M28改造baseline且已归档旧源；当前从该完成版继续optimized。state/rules保护、不建缺失cycle.yaml；不升级/旧sync覆盖HW。BAAI写入仅~/cxz；AutoDL不再SSH，实例关机UNKNOWN。不杀他人/改服务/GPU时钟；本机计时自然空闲、精度可共享。
 
 M17原10/21 16:56:31停新、17:11:31清理，18723000尝试/15GiB，最多每卡2worker；M28已终态，不重置原截止。无自动120/独立TEST/新TF正式45chunk/第二环境。中文论文仍会话交飞书，不新建论文初稿。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文证据包。
 

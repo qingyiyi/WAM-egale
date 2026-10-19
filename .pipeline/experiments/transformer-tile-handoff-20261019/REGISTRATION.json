@@ -1,0 +1,32 @@
+{
+  "goal": "完整WAM block结构/真实输入输出/参数与GEMM形状/DAG及tile-persistent协作交付；接续用户已批准系统研究的CPU首步",
+  "started_at": "2026-10-19T17:23:28.879867+08:00",
+  "CPU_allowed": [
+    4,
+    5
+  ],
+  "CPU_threads_cap": 2,
+  "GPU_budget_seconds": 0,
+  "wall_cap_seconds": 3600,
+  "new_storage_cap_bytes": 33554432,
+  "reference_operator_commit": "99f7c2f3e845920fd83b22fedd19e72089f3a886",
+  "modification_scope": "only new CPU audit/docs/HW; no math/kernel/speculative source changes",
+  "planned_outputs": [
+    "SHAPES.json",
+    "PARAMETERS.json",
+    "BLOCK-DAG.json",
+    "HANDOFF.md",
+    "WORK-OUTLINE.md"
+  ],
+  "termination": "complete verified shape/DAG handoff or explicitly report missing fields; no new GPU job in CPU package",
+  "cleanup": "CPU worker natural exit, no GPU context; no signals to remote/external tasks",
+  "status": "COMPLETE_CPU_HANDOFF_NOT_GPU_PROTOTYPE",
+  "quality_permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "terminal_evidence": "RESOURCE-AND-STOP.json",
+  "completed_at": "2026-10-19T17:52:33.056802+08:00"
+}

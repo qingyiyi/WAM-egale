@@ -1,0 +1,2482 @@
+{
+  "at": "2026-10-19T17:27:03.334418+08:00",
+  "rows": [
+    {
+      "case": "short-B2-action",
+      "input_path": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-short-B2-action-layer0-first.pt",
+      "file_bytes": 15380668,
+      "mtime_ns": 1792331308087051330,
+      "schema": "real-attention-replay-compact/v1",
+      "identity": [
+        "short",
+        2,
+        "action",
+        "first",
+        0
+      ],
+      "block_argument_names": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "temb",
+        "rotary_emb"
+      ],
+      "block_args": [
+        {
+          "shape": [
+            2,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            2,
+            512,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            2,
+            16,
+            6,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              6,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              294912,
+              18432,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            2,
+            16,
+            1,
+            64
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              1,
+              64
+            ],
+            "dtype": "torch.complex64",
+            "serialized_stride": [
+              1024,
+              64,
+              64,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.complex64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      ],
+      "block_kwargs": {
+        "update_cache": 0,
+        "cache_name": "pos",
+        "candidate_cache_rows": null
+      },
+      "cache_pool_shape": [
+        2,
+        2160,
+        24,
+        128
+      ],
+      "cache_metadata": {
+        "id": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.int64",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.int64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "mask": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "is_pred": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "pre_call_visible_slots": 272,
+      "saved_history_slot_count": 272,
+      "fields": {
+        "self_q": {
+          "shape": [
+            2,
+            16,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "self_k": {
+          "shape": [
+            2,
+            288,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              288,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              884736,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "self_v": {
+          "shape": [
+            2,
+            288,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              288,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              884736,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "block_gold": {
+          "shape": [
+            2,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      }
+    },
+    {
+      "case": "short-B14-action",
+      "input_path": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-short-B14-action-layer0-first.pt",
+      "file_bytes": 29537648,
+      "mtime_ns": 1792331308847033051,
+      "schema": "real-attention-replay-compact/v1",
+      "identity": [
+        "short",
+        14,
+        "action",
+        "first",
+        0
+      ],
+      "block_argument_names": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "temb",
+        "rotary_emb"
+      ],
+      "block_args": [
+        {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            14,
+            512,
+            3072
+          ],
+          "encoding": "two_CFG_groups_repeated7",
+          "stored_root": {
+            "shape": [
+              2,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            14,
+            16,
+            6,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              6,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              294912,
+              18432,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            14,
+            16,
+            1,
+            64
+          ],
+          "encoding": "two_CFG_groups_repeated7",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              1,
+              64
+            ],
+            "dtype": "torch.complex64",
+            "serialized_stride": [
+              1024,
+              64,
+              64,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.complex64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      ],
+      "block_kwargs": {
+        "update_cache": 0,
+        "cache_name": "pos",
+        "candidate_cache_rows": {
+          "shape": [
+            14
+          ],
+          "encoding": "two_CFG_groups_repeated7",
+          "stored_root": {
+            "shape": [
+              2
+            ],
+            "dtype": "torch.int64",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.int64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "cache_pool_shape": [
+        2,
+        2160,
+        24,
+        128
+      ],
+      "cache_metadata": {
+        "id": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.int64",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.int64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "mask": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "is_pred": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "pre_call_visible_slots": 272,
+      "saved_history_slot_count": 272,
+      "fields": {
+        "self_q": {
+          "shape": [
+            14,
+            16,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "block_gold": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "history_k": {
+          "shape": [
+            2,
+            272,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              272,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              835584,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "history_v": {
+          "shape": [
+            2,
+            272,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              272,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              835584,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "candidate_cache_rows_values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "short-B2-video",
+      "input_path": ".pipeline/experiments/block-native-baseline-20261019/native-video-capture-attempt1/results/input-short-B2-video-layer0-first.pt",
+      "file_bytes": 28863228,
+      "mtime_ns": 1792395370537436714,
+      "schema": "real-attention-replay-compact/v1",
+      "identity": [
+        "short",
+        2,
+        "video",
+        "first",
+        0
+      ],
+      "block_argument_names": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "temb",
+        "rotary_emb"
+      ],
+      "block_args": [
+        {
+          "shape": [
+            2,
+            128,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            393216,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        },
+        {
+          "shape": [
+            2,
+            512,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            1572864,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        },
+        {
+          "shape": [
+            2,
+            128,
+            6,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            2359296,
+            18432,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        },
+        {
+          "shape": [
+            2,
+            128,
+            1,
+            64
+          ],
+          "dtype": "torch.complex64",
+          "serialized_stride": [
+            8192,
+            64,
+            64,
+            1
+          ],
+          "device": "cpu"
+        }
+      ],
+      "block_kwargs": {
+        "update_cache": 0,
+        "cache_name": "pos",
+        "candidate_cache_rows": null
+      },
+      "cache_pool_shape": [
+        2,
+        2160,
+        24,
+        128
+      ],
+      "cache_metadata": {
+        "id": {
+          "shape": [
+            2160
+          ],
+          "dtype": "torch.int64",
+          "serialized_stride": [
+            1
+          ],
+          "device": "cpu"
+        },
+        "mask": {
+          "shape": [
+            2160
+          ],
+          "dtype": "torch.bool",
+          "serialized_stride": [
+            1
+          ],
+          "device": "cpu"
+        },
+        "is_pred": {
+          "shape": [
+            2160
+          ],
+          "dtype": "torch.bool",
+          "serialized_stride": [
+            1
+          ],
+          "device": "cpu"
+        }
+      },
+      "pre_call_visible_slots": 144,
+      "saved_history_slot_count": 144,
+      "fields": {
+        "self_q": {
+          "shape": [
+            2,
+            128,
+            24,
+            128
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            393216,
+            3072,
+            128,
+            1
+          ],
+          "device": "cpu"
+        },
+        "self_k": {
+          "shape": [
+            2,
+            272,
+            24,
+            128
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            835584,
+            3072,
+            128,
+            1
+          ],
+          "device": "cpu"
+        },
+        "self_v": {
+          "shape": [
+            2,
+            272,
+            24,
+            128
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            835584,
+            3072,
+            128,
+            1
+          ],
+          "device": "cpu"
+        },
+        "block_gold": {
+          "shape": [
+            2,
+            128,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            393216,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "case": "middle-B2-action",
+      "input_path": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-middle-B2-action-layer0-first.pt",
+      "file_bytes": 36621244,
+      "mtime_ns": 1792331309423019197,
+      "schema": "real-attention-replay-compact/v1",
+      "identity": [
+        "middle",
+        2,
+        "action",
+        "first",
+        0
+      ],
+      "block_argument_names": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "temb",
+        "rotary_emb"
+      ],
+      "block_args": [
+        {
+          "shape": [
+            2,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            2,
+            512,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            2,
+            16,
+            6,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              6,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              294912,
+              18432,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            2,
+            16,
+            1,
+            64
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              1,
+              64
+            ],
+            "dtype": "torch.complex64",
+            "serialized_stride": [
+              1024,
+              64,
+              64,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.complex64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      ],
+      "block_kwargs": {
+        "update_cache": 0,
+        "cache_name": "pos",
+        "candidate_cache_rows": null
+      },
+      "cache_pool_shape": [
+        2,
+        2160,
+        24,
+        128
+      ],
+      "cache_metadata": {
+        "id": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.int64",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.int64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "mask": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "is_pred": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "pre_call_visible_slots": 1136,
+      "saved_history_slot_count": 1136,
+      "fields": {
+        "self_q": {
+          "shape": [
+            2,
+            16,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "self_k": {
+          "shape": [
+            2,
+            1152,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              1152,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              3538944,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "self_v": {
+          "shape": [
+            2,
+            1152,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              1152,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              3538944,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "block_gold": {
+          "shape": [
+            2,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      }
+    },
+    {
+      "case": "middle-B14-action",
+      "input_path": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-middle-B14-action-layer0-first.pt",
+      "file_bytes": 50778224,
+      "mtime_ns": 1792331310498993320,
+      "schema": "real-attention-replay-compact/v1",
+      "identity": [
+        "middle",
+        14,
+        "action",
+        "first",
+        0
+      ],
+      "block_argument_names": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "temb",
+        "rotary_emb"
+      ],
+      "block_args": [
+        {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            14,
+            512,
+            3072
+          ],
+          "encoding": "two_CFG_groups_repeated7",
+          "stored_root": {
+            "shape": [
+              2,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            14,
+            16,
+            6,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              6,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              294912,
+              18432,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            14,
+            16,
+            1,
+            64
+          ],
+          "encoding": "two_CFG_groups_repeated7",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              1,
+              64
+            ],
+            "dtype": "torch.complex64",
+            "serialized_stride": [
+              1024,
+              64,
+              64,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.complex64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      ],
+      "block_kwargs": {
+        "update_cache": 0,
+        "cache_name": "pos",
+        "candidate_cache_rows": {
+          "shape": [
+            14
+          ],
+          "encoding": "two_CFG_groups_repeated7",
+          "stored_root": {
+            "shape": [
+              2
+            ],
+            "dtype": "torch.int64",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.int64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "cache_pool_shape": [
+        2,
+        2160,
+        24,
+        128
+      ],
+      "cache_metadata": {
+        "id": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.int64",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.int64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "mask": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "is_pred": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "pre_call_visible_slots": 1136,
+      "saved_history_slot_count": 1136,
+      "fields": {
+        "self_q": {
+          "shape": [
+            14,
+            16,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "block_gold": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "history_k": {
+          "shape": [
+            2,
+            1136,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              1136,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              3489792,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "history_v": {
+          "shape": [
+            2,
+            1136,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              1136,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              3489792,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "candidate_cache_rows_values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "middle-B2-video",
+      "input_path": ".pipeline/experiments/block-native-baseline-20261019/native-video-capture-attempt1/results/input-middle-B2-video-layer0-first.pt",
+      "file_bytes": 50103804,
+      "mtime_ns": 1792395382517394561,
+      "schema": "real-attention-replay-compact/v1",
+      "identity": [
+        "middle",
+        2,
+        "video",
+        "first",
+        0
+      ],
+      "block_argument_names": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "temb",
+        "rotary_emb"
+      ],
+      "block_args": [
+        {
+          "shape": [
+            2,
+            128,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            393216,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        },
+        {
+          "shape": [
+            2,
+            512,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            1572864,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        },
+        {
+          "shape": [
+            2,
+            128,
+            6,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            2359296,
+            18432,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        },
+        {
+          "shape": [
+            2,
+            128,
+            1,
+            64
+          ],
+          "dtype": "torch.complex64",
+          "serialized_stride": [
+            8192,
+            64,
+            64,
+            1
+          ],
+          "device": "cpu"
+        }
+      ],
+      "block_kwargs": {
+        "update_cache": 0,
+        "cache_name": "pos",
+        "candidate_cache_rows": null
+      },
+      "cache_pool_shape": [
+        2,
+        2160,
+        24,
+        128
+      ],
+      "cache_metadata": {
+        "id": {
+          "shape": [
+            2160
+          ],
+          "dtype": "torch.int64",
+          "serialized_stride": [
+            1
+          ],
+          "device": "cpu"
+        },
+        "mask": {
+          "shape": [
+            2160
+          ],
+          "dtype": "torch.bool",
+          "serialized_stride": [
+            1
+          ],
+          "device": "cpu"
+        },
+        "is_pred": {
+          "shape": [
+            2160
+          ],
+          "dtype": "torch.bool",
+          "serialized_stride": [
+            1
+          ],
+          "device": "cpu"
+        }
+      },
+      "pre_call_visible_slots": 1008,
+      "saved_history_slot_count": 1008,
+      "fields": {
+        "self_q": {
+          "shape": [
+            2,
+            128,
+            24,
+            128
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            393216,
+            3072,
+            128,
+            1
+          ],
+          "device": "cpu"
+        },
+        "self_k": {
+          "shape": [
+            2,
+            1136,
+            24,
+            128
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            3489792,
+            3072,
+            128,
+            1
+          ],
+          "device": "cpu"
+        },
+        "self_v": {
+          "shape": [
+            2,
+            1136,
+            24,
+            128
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            3489792,
+            3072,
+            128,
+            1
+          ],
+          "device": "cpu"
+        },
+        "block_gold": {
+          "shape": [
+            2,
+            128,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            393216,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        }
+      }
+    },
+    {
+      "case": "long-B2-action",
+      "input_path": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-long-B2-action-layer0-first.pt",
+      "file_bytes": 61401916,
+      "mtime_ns": 1792331312058955805,
+      "schema": "real-attention-replay-compact/v1",
+      "identity": [
+        "long",
+        2,
+        "action",
+        "first",
+        0
+      ],
+      "block_argument_names": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "temb",
+        "rotary_emb"
+      ],
+      "block_args": [
+        {
+          "shape": [
+            2,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            2,
+            512,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            2,
+            16,
+            6,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              6,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              294912,
+              18432,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            2,
+            16,
+            1,
+            64
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              1,
+              64
+            ],
+            "dtype": "torch.complex64",
+            "serialized_stride": [
+              1024,
+              64,
+              64,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.complex64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      ],
+      "block_kwargs": {
+        "update_cache": 0,
+        "cache_name": "pos",
+        "candidate_cache_rows": null
+      },
+      "cache_pool_shape": [
+        2,
+        2160,
+        24,
+        128
+      ],
+      "cache_metadata": {
+        "id": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.int64",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.int64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "mask": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "is_pred": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "pre_call_visible_slots": 2144,
+      "saved_history_slot_count": 2144,
+      "fields": {
+        "self_q": {
+          "shape": [
+            2,
+            16,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "self_k": {
+          "shape": [
+            2,
+            2160,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              2160,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              6635520,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "self_v": {
+          "shape": [
+            2,
+            2160,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              2160,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              6635520,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "block_gold": {
+          "shape": [
+            2,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      }
+    },
+    {
+      "case": "long-B14-action",
+      "input_path": "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-long-B14-action-layer0-first.pt",
+      "file_bytes": 75558896,
+      "mtime_ns": 1792331313166929163,
+      "schema": "real-attention-replay-compact/v1",
+      "identity": [
+        "long",
+        14,
+        "action",
+        "first",
+        0
+      ],
+      "block_argument_names": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "temb",
+        "rotary_emb"
+      ],
+      "block_args": [
+        {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            14,
+            512,
+            3072
+          ],
+          "encoding": "two_CFG_groups_repeated7",
+          "stored_root": {
+            "shape": [
+              2,
+              512,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              1572864,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            14,
+            16,
+            6,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              6,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              294912,
+              18432,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        {
+          "shape": [
+            14,
+            16,
+            1,
+            64
+          ],
+          "encoding": "two_CFG_groups_repeated7",
+          "stored_root": {
+            "shape": [
+              2,
+              16,
+              1,
+              64
+            ],
+            "dtype": "torch.complex64",
+            "serialized_stride": [
+              1024,
+              64,
+              64,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.complex64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      ],
+      "block_kwargs": {
+        "update_cache": 0,
+        "cache_name": "pos",
+        "candidate_cache_rows": {
+          "shape": [
+            14
+          ],
+          "encoding": "two_CFG_groups_repeated7",
+          "stored_root": {
+            "shape": [
+              2
+            ],
+            "dtype": "torch.int64",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.int64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "cache_pool_shape": [
+        2,
+        2160,
+        24,
+        128
+      ],
+      "cache_metadata": {
+        "id": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.int64",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.int64",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "mask": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "is_pred": {
+          "shape": [
+            2160
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2160
+            ],
+            "dtype": "torch.bool",
+            "serialized_stride": [
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bool",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "pre_call_visible_slots": 2144,
+      "saved_history_slot_count": 2144,
+      "fields": {
+        "self_q": {
+          "shape": [
+            14,
+            16,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "block_gold": {
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              49152,
+              3072,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "history_k": {
+          "shape": [
+            2,
+            2144,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              2144,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              6586368,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        },
+        "history_v": {
+          "shape": [
+            2,
+            2144,
+            24,
+            128
+          ],
+          "encoding": "tensor",
+          "stored_root": {
+            "shape": [
+              2,
+              2144,
+              24,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "serialized_stride": [
+              6586368,
+              3072,
+              128,
+              1
+            ],
+            "device": "cpu"
+          },
+          "dtype": "torch.bfloat16",
+          "stride_scope": "decoded contiguous logical fixture, not original production CUDA stride"
+        }
+      },
+      "candidate_cache_rows_values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": "long-B2-video",
+      "input_path": ".pipeline/experiments/block-native-baseline-20261019/native-video-capture-attempt1/results/input-long-B2-video-layer0-first.pt",
+      "file_bytes": 74884476,
+      "mtime_ns": 1792395396945341107,
+      "schema": "real-attention-replay-compact/v1",
+      "identity": [
+        "long",
+        2,
+        "video",
+        "first",
+        0
+      ],
+      "block_argument_names": [
+        "hidden_states",
+        "encoder_hidden_states",
+        "temb",
+        "rotary_emb"
+      ],
+      "block_args": [
+        {
+          "shape": [
+            2,
+            128,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            393216,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        },
+        {
+          "shape": [
+            2,
+            512,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            1572864,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        },
+        {
+          "shape": [
+            2,
+            128,
+            6,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            2359296,
+            18432,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        },
+        {
+          "shape": [
+            2,
+            128,
+            1,
+            64
+          ],
+          "dtype": "torch.complex64",
+          "serialized_stride": [
+            8192,
+            64,
+            64,
+            1
+          ],
+          "device": "cpu"
+        }
+      ],
+      "block_kwargs": {
+        "update_cache": 0,
+        "cache_name": "pos",
+        "candidate_cache_rows": null
+      },
+      "cache_pool_shape": [
+        2,
+        2160,
+        24,
+        128
+      ],
+      "cache_metadata": {
+        "id": {
+          "shape": [
+            2160
+          ],
+          "dtype": "torch.int64",
+          "serialized_stride": [
+            1
+          ],
+          "device": "cpu"
+        },
+        "mask": {
+          "shape": [
+            2160
+          ],
+          "dtype": "torch.bool",
+          "serialized_stride": [
+            1
+          ],
+          "device": "cpu"
+        },
+        "is_pred": {
+          "shape": [
+            2160
+          ],
+          "dtype": "torch.bool",
+          "serialized_stride": [
+            1
+          ],
+          "device": "cpu"
+        }
+      },
+      "pre_call_visible_slots": 2016,
+      "saved_history_slot_count": 2016,
+      "fields": {
+        "self_q": {
+          "shape": [
+            2,
+            128,
+            24,
+            128
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            393216,
+            3072,
+            128,
+            1
+          ],
+          "device": "cpu"
+        },
+        "self_k": {
+          "shape": [
+            2,
+            2144,
+            24,
+            128
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            6586368,
+            3072,
+            128,
+            1
+          ],
+          "device": "cpu"
+        },
+        "self_v": {
+          "shape": [
+            2,
+            2144,
+            24,
+            128
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            6586368,
+            3072,
+            128,
+            1
+          ],
+          "device": "cpu"
+        },
+        "block_gold": {
+          "shape": [
+            2,
+            128,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "serialized_stride": [
+            393216,
+            3072,
+            1
+          ],
+          "device": "cpu"
+        }
+      }
+    }
+  ],
+  "scope": "existing serialized logical CPU fixtures; not original CUDA storage-offset/alias reconstruction",
+  "GPU_context_created": false,
+  "new_episodes": 0,
+  "new_tensors_saved": false,
+  "CPU_wall_seconds": 0.6971702370792627
+}

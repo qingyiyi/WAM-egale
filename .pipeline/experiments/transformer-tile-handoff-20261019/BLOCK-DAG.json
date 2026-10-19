@@ -1,0 +1,256 @@
+{
+  "at": "2026-10-19T17:46:44.154640+08:00",
+  "scope": "source-derived logical DAG, not measured kernel trace",
+  "reference_operator_commit": "99f7c2f3e845920fd83b22fedd19e72089f3a886",
+  "source_path_for_block_cu": "算子研究/wam_ops/baseline/csrc/block.cu",
+  "source_path_for_ffn_cu": "算子研究/wam_ops/optimized/csrc/ffn.cu",
+  "sources": [
+    {
+      "path": "算子研究/wam_ops/baseline/block.py",
+      "bytes": 2474,
+      "sha256": "6090e6918c73cb7798ccb603bfef4a727993521c43008558879f09876ffe895a"
+    },
+    {
+      "path": "算子研究/wam_ops/baseline/native.py",
+      "bytes": 2797,
+      "sha256": "e6cca019f3e6ce4fa76e975af16a323e56c3448ce2966fba67e28942ea721c8f"
+    },
+    {
+      "path": "算子研究/wam_ops/baseline/csrc/block.cu",
+      "bytes": 18323,
+      "sha256": "87bb64e60e0f316b8bff9f9a87c2455a56e133b16634ecc03c01ae8f17756df8"
+    },
+    {
+      "path": "算子研究/wam_ops/baseline/csrc/gemm.h",
+      "bytes": 4221,
+      "sha256": "aecfaa249acf44ae38e43c615f39048e3f35060f79208937b85cd81c1b71fd0f"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/csrc/ffn.cu",
+      "bytes": 8202,
+      "sha256": "1abac756f7124cfe2c1d0296270d8adde09f6f8287cb950f86cefdc2e9e33969"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/block.py",
+      "bytes": 254,
+      "sha256": "20254a8cded33ffa6a30286435f5ea1ce2a05db5e14a7a9803a6fbee99ed92c2"
+    },
+    {
+      "path": "投机采样/wam-p0-worktree/wan_va/modules/model.py",
+      "bytes": 50603,
+      "sha256": "f579ee02b490dbffcf78add6452742dbdbef43286600c0eeae3dede3f053cb5b"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "mod",
+      "op": "FP32 table + temb",
+      "deps": [
+        "temb",
+        "table"
+      ],
+      "source": "block.cu:59-78",
+      "scope": "per row/channel, six modulation groups"
+    },
+    {
+      "id": "ln1",
+      "op": "FP32 LayerNorm1",
+      "deps": [
+        "X"
+      ],
+      "reduction": "full D=3072 row",
+      "source": "block.cu:279"
+    },
+    {
+      "id": "mod1",
+      "op": "FP32 scale/shift -> BF16",
+      "deps": [
+        "ln1",
+        "mod"
+      ],
+      "source": "block.cu:280"
+    },
+    {
+      "id": "sqkv",
+      "op": "three Linear + bias -> BF16",
+      "deps": [
+        "mod1",
+        "self_weights"
+      ],
+      "reduction": "GEMM full K3072",
+      "source": "block.cu:281-283"
+    },
+    {
+      "id": "qk_norm",
+      "op": "Q/K RMSNorm -> BF16",
+      "deps": [
+        "sqkv"
+      ],
+      "reduction": "full D3072 before 24x128 head reshape",
+      "source": "block.cu:281-282"
+    },
+    {
+      "id": "rope",
+      "op": "double arithmetic with complex64 frequencies -> BF16",
+      "deps": [
+        "qk_norm",
+        "rotary"
+      ],
+      "source": "block.cu:284"
+    },
+    {
+      "id": "self_attn",
+      "op": "Flash attention over legal history + private current KV",
+      "deps": [
+        "rope",
+        "sqkv",
+        "valid_KV",
+        "row_map"
+      ],
+      "visibility": "same CFG history; private KV remains per candidate",
+      "source": "block.cu:286"
+    },
+    {
+      "id": "self_out",
+      "op": "Linear + bias -> BF16",
+      "deps": [
+        "self_attn",
+        "self_out_weights"
+      ],
+      "source": "block.cu:287"
+    },
+    {
+      "id": "res1",
+      "op": "FP32 gate*BF16 branch + residual -> BF16",
+      "deps": [
+        "X",
+        "self_out",
+        "mod"
+      ],
+      "source": "block.cu:288"
+    },
+    {
+      "id": "ln2",
+      "op": "FP32 affine LayerNorm2 -> BF16",
+      "deps": [
+        "res1",
+        "norm2_weights"
+      ],
+      "reduction": "full D3072",
+      "source": "block.cu:289"
+    },
+    {
+      "id": "cross_q",
+      "op": "Linear + Q RMSNorm",
+      "deps": [
+        "ln2",
+        "cross_q_weights"
+      ],
+      "reduction": "GEMM K3072 then full D3072 norm",
+      "source": "block.cu:290"
+    },
+    {
+      "id": "cross_kv",
+      "op": "text K/V projection, K RMSNorm",
+      "deps": [
+        "context",
+        "cross_kv_weights"
+      ],
+      "cache_note": "uncached native path; strongest baseline may reuse already-admitted projections",
+      "source": "block.cu:291-292"
+    },
+    {
+      "id": "cross_attn",
+      "op": "Flash attention, context length512",
+      "deps": [
+        "cross_q",
+        "cross_kv"
+      ],
+      "source": "block.cu:293"
+    },
+    {
+      "id": "cross_out",
+      "op": "Linear + bias -> BF16",
+      "deps": [
+        "cross_attn",
+        "cross_out_weights"
+      ],
+      "source": "block.cu:294"
+    },
+    {
+      "id": "res2",
+      "op": "FP32 residual sum -> BF16",
+      "deps": [
+        "res1",
+        "cross_out"
+      ],
+      "source": "block.cu:295"
+    },
+    {
+      "id": "ln3",
+      "op": "FP32 LayerNorm3",
+      "deps": [
+        "res2"
+      ],
+      "reduction": "full D3072",
+      "source": "block.cu:296"
+    },
+    {
+      "id": "mod3",
+      "op": "FP32 scale/shift -> BF16",
+      "deps": [
+        "ln3",
+        "mod"
+      ],
+      "source": "block.cu:297"
+    },
+    {
+      "id": "ffn1",
+      "op": "Linear 3072->14336 + bias -> BF16",
+      "deps": [
+        "mod3",
+        "ffn1_weights"
+      ],
+      "reduction": "full K3072 for each output tile",
+      "source": "block.cu:299-304"
+    },
+    {
+      "id": "gelu",
+      "op": "FP32 tanh GELU on rounded BF16 input -> BF16",
+      "deps": [
+        "ffn1"
+      ],
+      "source": "block.cu:299-307; ffn.cu:22-36"
+    },
+    {
+      "id": "ffn2",
+      "op": "Linear 14336->3072 + bias -> BF16",
+      "deps": [
+        "gelu",
+        "ffn2_weights"
+      ],
+      "reduction": "full K14336, exact arithmetic order a separate admission gate",
+      "source": "block.cu:308"
+    },
+    {
+      "id": "Y",
+      "op": "FP32 gate*BF16 branch + residual -> BF16",
+      "deps": [
+        "res2",
+        "ffn2",
+        "mod"
+      ],
+      "source": "block.cu:309"
+    }
+  ],
+  "existing_fused_node": [
+    "ffn1",
+    "gelu"
+  ],
+  "proposed_scheduler_not_implemented": {
+    "first_dependency_granularity": "all FFN1 columns ready for one m_tile, then FFN2 for that m_tile",
+    "later_optional_granularity": "K-slice readiness only after exact accumulation semantics are proven",
+    "private_KV_cross_candidate_attention_allowed": false,
+    "GPU_execution_in_this_package": false
+  }
+}

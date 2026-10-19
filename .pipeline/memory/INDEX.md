@@ -4,6 +4,9 @@
 
 ## 当前资源偏好
 
+- [tile与persistent warp为当前算子主线](global/requirements/decision-算子tile化与persistent-warp调度为主线.md)（constraint，本轮算子）：设备tile、常驻worker与依赖调度，替代旧仅路线B阶段优先级；不预设收益或扩大质量权限。
+- [MegaMoE作为思想参考](global/requirements/preference-MegaMoE作为tile调度思想参考.md)（guideline，本轮设计）：结合HW与SM80借鉴任务/warp/就绪机制，不要求复刻官方实现；具体策略仍需验证。
+
 - [完整native block有限对齐](global/knowledge/knowledge-完整native-block有限对齐.md)（reference，M28）：完整顺序原生链、六actual30有限逐位与两进程动态block齐；最强B14/Graph及闭环尚未验。
 - [投机去噪近邻与创新边界](global/knowledge/knowledge-投机去噪近邻与创新边界.md)（reference，2026-10-19）：直接先例已核验；潜在新增调度仍需强baseline与有效提交成本证据。
 - [完整block基线与优化版均为原生算子](global/requirements/decision-完整block基线与优化版均改为原生算子.md)（constraint，当前算子）：最新范围扩展；归档旧baseline后可改造，先完整顺序原生链，再对齐精度/性能；投机与原tile不改。
