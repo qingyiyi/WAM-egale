@@ -1,9 +1,0 @@
-2026-10-16 北京时间。条件性、静态 B14 完整30层 Graph 增量 pilot；原生产/negative 不改。
-
-仅 guarded_v2 实际 probe+actual 六query全 PASS、540 attention/12 target、完整 cleanup、无失败/STOP 后才能生成正式 PLAN 或启动 GPU。之前只准备源码/做 CPU 接口读取，不伪造 gate。
-固定 full-matrix-r4 三档 first/last 六query。三arm：native_shared_BM128、research_G1_BM64、guarded_v2。G1仍研究 kernel；guarded只有既定几何公式，不重编/调参/profile。
-先对全部六query×三arm做实际 eager 数值准入18forward，必须与各自冻结原同shape输出逐位且有限；所有18个通过才构图或计时。随后每query每arm独立Graph，两次warm、一次capture、首次真正replay后比较，再六轮三arm轮换交错，每次实际replay都逐位有限。
-完整198 Python forward intents =18准入 +36warm +18capture +18首replay +108测量replay；capture仅记录不执行，因此180 device-forward-equivalent。硬帽300 intents，0policy chunk/episode。数值/参数输入字节/全有效KV/slots/RNG均不变；任何失败停止整个pilot，无自动重跑。
-每query六轮顺序固定ABC/BCA/CAB/CBA/ACB/BAC。三arm都用相同驻留GPU输入、静态metadata admission、同原model算术；每arm独立Graph和输出，不共用pool。RoPE GPU基频在全部Graph使用完成后恢复，不在capture/replay期间释放。
-计时仅完整30层静态Graph replay，含实际各armkernel与输出、不计input更新/构图；warm/准入/逐位检查在计时外，逐样本同时记录CUDA与wall。比较原native vs G1分离BM几何控制，G1 vs guarded分离受限分组，但不称所有差异仅某单一机制。
-GPU600秒含60清理，CPU7，输出128MiB，显存22GiB初始/0.5GiB运行；独占计时、两项目锁、pinned own cleanup，foreign出现即中止自有作业。仍非生产、完整chunk或正式TF速度；不构成机器人质量准入。

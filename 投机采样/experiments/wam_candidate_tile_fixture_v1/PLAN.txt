@@ -1,7 +1,0 @@
-2026-10-16 北京时间：有限真实完整 fixture 数值门，独立 namespace。
-
-固定来源 full-matrix-r4 的 short/middle/long first/last 六 query 和每档一次保存的30层 history；不采样、不训练、不使用合成数据。
-完整模型仅返回原 native.shared 注意力输出。每层计算 G2 对照，共180次；G1仅层0/8/29，共18次；原 native oracle180次，合计378 attention calls。候选比较硬帽256、attention硬帽512、完整target forward硬帽12（预期6）。
-第一次数值不逐位或非有限结果后，不再执行候选；当前完整query仍以原native完成并证明frozen输出、全部有效KV、参数/输入及RNG不变，然后停止后续query。记录数值负结果，不降门、不集成。
-只有6 query×30层全完成，198候选对照全部有限且逐位、6完整query原输出逐位且有效状态不变，才标记有限fixture数值门通过。仍不代表接受路径/机器人/性能通过。
-预算600 GPU秒，540秒活动+60秒清理、CPU7、输出128MiB、0episode/0新chunk。允许共享GPU做数值，初始空闲显存22GiB/运行0.5GiB；两项目GPU锁、原真实world1模型、固定原源/权重stat、独立pinned清理。编写和CPU prepare不启动GPU；只root审后执行一次，无自动重跑。
