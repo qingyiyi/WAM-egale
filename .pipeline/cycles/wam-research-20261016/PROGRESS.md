@@ -3,14 +3,14 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-19T09:39:02.089869+08:00'
+updated: '2026-10-19T09:55:55.629844+08:00'
 current: M24
-next: wait_clean_local_timing_window_and_supervise_approved_Object_recovery
-execution_status: finite_GPU_B0_accuracy_complete_AA_failed_remote_Object_recovery_running
+next: register_full_model_direct_copy_validation_and_supervise_Object
+execution_status: direct_Torch_block_copy_finite_reproduction_complete_full_model_pending_Object_running
 ---
 # 当前研究进度
 
-本机完整block GPU精度已66次通过，性能因A/A和NVML异常待定；BAAI Goal/Spatial各1500局完成，Object14/数据准入/ON已完成，匹配T200与全500双卡运行。宏观completed不表示质量门通过。
+本机先交付直接Torch复制基线：三个完整定义源码一致，六真实fixture/18次数值和有效状态逐位通过，六点中位耗时接近原版；旧B0精度66通过/旧A/A性能待定保留；BAAI Goal/Spatial各1500局完成，Object14/数据准入/ON已完成，匹配T200与全500双卡运行。宏观completed不表示质量门通过。
 
 | ID | 工作 | 状态 | 证据/科学边界 | next |
 |---|---|---|---|---|
@@ -22,13 +22,13 @@ execution_status: finite_GPU_B0_accuracy_complete_AA_failed_remote_Object_recove
 | `M21` | 原始/B14短中长矩阵 | `completed` | WITH_STANDALONE_FULL30_FAILURE；旧失败/PARTIAL保留 | [旧报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md) |
 | `M22` | Torch对齐与有限性能 | `completed` | 108attention/54block/六full30/三policy严格数值过；旧计时有尾部与资源异常 | [结果](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
 | `M23` | 新机Codex安装 | `completed` | 0.162.1已装、登录待用户；不再迁移开发，用户kill模拟器后已退出 | [安装结果](../../experiments/remote-codex-setup-20261018/RESULT.md) |
-| `M24` | 完整block显式顺序B0 | `in_progress` | CPU最终复核/22契约过；今晨六真实fixture×cache的66次GPU逐位/有效状态过；A/A超2.5%停止，性能PENDING | [GPU接续](../../experiments/wam-block-gpu-followup-20261019/RESULT.md) |
+| `M24` | 完整block直接Torch复现基线 | `in_progress` | 三个定义逐字复制，六fixture/18次数值与有效状态通过；六点中位耗时比0.9677–1.0033，单轮波动保留；旧66/旧A/A不改 | [复制结果；完整模型待验](../../experiments/direct-torch-block-copy-20261019/RESULT.md) |
 
 ## 结果与边界
 
 Goal T463/C464/P467，各500；Spatial T472/C466/P464，各500。800罚分均值Goal158.806/157.166/156.466、Spatial145.998/152.964/155.304。两套均有FAILED_FIRST_TWO_S_PAIRING，训练曝光/独立性与正式E2E未获解决；不把1500完整终态写成质量PASS。Long原结果和长尾见原汇总，不重算旧门。
 
-B0是新Python阶段组织、Torch原基元；GPU六保存真实action block0、两种cache、66次逐位/全部有效KV/元数据/输入/当前RNG与旧GPU gold通过。原CUDA stride/alias/RNG未持久化，视频完整block/B0完整30层/policy未由本轮证明。A/A最大2.512635%>2.5%，停止且不放宽；本机0显存/无进程却NVML24–25%，根因UNKNOWN，不能签性能。CPU监控同一10:48:46截止。
+用户明确先直接复现，已逐字复制完整block/attention/cache助手并提供可撤销模型入口。六真实action block0（B2/B14×短中长KV）18次逐位/有效KV/输入/当前RNG及历史gold通过；294完整block调用，worker约15秒自然退出。六点中位耗时比0.9677–1.0033，单轮比0.8587–1.0973，计时波动不写成加速。完整30层/机器人/原CUDA stride与alias仍未新增证明。旧B0两cache的66次精度、旧A/A2.512635%超2.5%的失败和NVML异常记录不改；旧多引擎watch已停止，fixed3 AA未运行，未为PASS重试。总412/5000，原10:48:46截止不变。
 
 Object旧16有效，新14完整机器人终态但监督文件冲突无效；旧失败保留，用户今晨明确批准仅补14。v3首尾/物理卡/训练角色不变，T200先作为独立baseline并行，未用来重训ON。自动链/5分钟巡检见新health-v2，不声称待运行阶段已启动。
 

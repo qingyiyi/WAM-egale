@@ -19,6 +19,8 @@
 
 算子原代码与 HW 保留；用户最新允许独立修正版本并复用固定上游源码，见[M22](experiments/operator-torch-alignment-20261018/PLAN.md)；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 
+最新算子基线按用户要求先[直接复制Torch完整block](experiments/direct-torch-block-copy-20261019/RESULT.md)：六真实B2/B14短中长fixture逐位/有效状态通过，中位耗时接近原版，单轮波动保留；完整模型待另登记，旧B0/A-A失败不改。
+
 ## 动态事实与历史
 
 - [10/18晨报实际安排](experiments/long-morning-20261018/PLAN.md)：09:15统计/09:20回本机，未全500则PARTIAL；[成功率口径](experiments/libero-fullscale-20261017/SUCCESS-RATE-METHOD-20261018.md)。[最终500组汇总](experiments/long-morning-20261018/FINAL-SUMMARY.md)已交付；三轮均值为后续偏好，后两轮尚未登记。

@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [先直接复制Torch调用链完成复现](global/requirements/decision-算子先直接复制Torch调用链完成复现.md)（constraint，当前算子基线）：先可替换的精度/性能基线，允许抄原实现；自有device基元/调度另议，计时噪声与实现正确性分列。
+
 - [Object固定14局补采并接续](global/requirements/decision-Object只补采输出冲突的14局并接续原任务.md)（constraint，本次M17修复）：旧16/失败保留、新输出隔离；14局/56000次上限，原截止不重置。
 
 - [本机空闲GPU接续完整block验证](global/requirements/decision-本机GPU空闲后接续完整block验证.md)（constraint，本次M24 GPU阶段）：最新授权空闲即接续，单A100≤120分钟、CPU≤2；旧CPU账本保留，汇总两台机器实际状态。

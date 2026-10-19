@@ -1,6 +1,6 @@
 # 当前讨论与授权摘要
 
-最新用户要求监控本机GPU、空闲即接续，并汇总两机昨夜进度；已通过Maintain保存，本轮M24新GPU阶段≤120分钟/≤5000 block/≤1GiB/CPU≤2，不借原CPU或M22余额。原附件CPU-only仅属已完成旧阶段，不能继续以它拒绝已授权工作。B0六真实GPU输入×cache严格通过，A/A超门停止，资源异常未澄清，不启动大scheduler/完整模型或机器人任务。
+最新用户要求监控本机GPU、空闲即接续，并汇总两机昨夜进度；已通过Maintain保存，本轮M24新GPU阶段≤120分钟/≤5000 block/≤1GiB/CPU≤2，不借原CPU或M22余额。原附件CPU-only仅属已完成旧阶段，不能继续以它拒绝已授权工作。原B0六真实GPU输入×cache严格通过，旧A/A超门停止/失败保留。用户最新质疑只要复现为何复杂，明确允许直接复制Torch：现已先交付完整block/attention/cache助手逐字复制，可撤销替换，六fixture/18次数值/状态过、六点中位耗时接近；先复现，再完整模型验证，最后另议自有device基元/调度。新294次、总412次block，旧多引擎watch/fixed3 AA不再自动启动；未新增完整模型/机器人任务。
 
 用户随后明确批准Object输出冲突的固定14局补采，最多56000新增forward；旧16有效和旧14无效/终态保留。隔离输出子目录，不放宽collector断言/改变FIT-CAL。新v3继续原训练/全500三臂，匹配Target200是既定baseline，可独立双卡并行。原M17起点和10/21截止不重置；旧T_POOL过期截止不恢复，新baseline沿原M17总截止。新health-v2跟踪新Objectnamespace，每5分钟；旧watch原终态和成本保留。
 

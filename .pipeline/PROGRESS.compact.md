@@ -1,11 +1,13 @@
 # WAM研究短入口
 
-更新时间：2026-10-19T09:39:02.089869+08:00。当前Cycle `wam-research-20261016`，当前M24；先按INDEX/CONTEXT-POLICY及约束记忆恢复，再读Cycle四文，不默认展开历史。
+更新时间：2026-10-19T09:57:17.065819+08:00。当前Cycle `wam-research-20261016`，当前M24；先按INDEX/CONTEXT-POLICY及约束记忆恢复，再读Cycle四文，不默认展开历史。
+
+直接Torch复现：按用户最新要求逐字复制完整block/attention/cache，六真实B2/B14短中长fixture的18次数值/有效状态逐位过；六点中位耗时比0.9677–1.0033，单轮波动保留。294次完整block、约15秒自然退出；总412/5000，旧66/旧A/A失败不改，旧多引擎watch停止，完整模型待另登记。[结果](experiments/direct-torch-block-copy-20261019/RESULT.md)。
 
 ## 当前工作
 
 - 本机：昨夜完整顺序B0 CPU六真实fixture+六合法写控制、36完整执行、两fixture各28阶段及22契约通过。今晨获新GPU授权，六真实action block0（B2/B14×KV288/1152/2160）×cache开关共66 GPU严格数值/有效状态/输入/当前RNG与旧GPU gold通过。B0是显式Python阶段+Torch原基元，不是全自有CUDA或persistent scheduler。
-- 性能：今晨A/A最大2.512635%超2.5%即停；本机0MiB/无进程却NVML24–25%，根因UNKNOWN。两worker118block已自然退出。CPU监控每60秒待两次≤5%/0MiB/无进程后最多再启一轮，A/A门不改，原08:48:46起/10:48:46清理、单A100/CPU≤2/≤5000block/≤1GiB。计时仍PENDING，不签全形状对齐。[结果](experiments/wam-block-gpu-followup-20261019/RESULT.md)。
+- 性能：旧A/A最大2.512635%超2.5%失败保留，原NVML空载异常根因UNKNOWN。用户最新要求先直接复制，旧多引擎watch已退出、fixed3 AA未跑。新复制六点中位耗时接近原版，单轮0.8587–1.0973波动保留；不签全形状稳定证书。GPU阶段412/5000调用，worker均自然退出，原08:48:46起/10:48:46清理、CPU≤2/≤1GiB不变。
 - BAAI：Goal/Spatial各500组三臂全齐，1500完整局/套。Target/TF/TF+PF2成功分别Goal463/464/467、Spatial472/466/464。800罚分均值分别158.806/157.166/156.466、145.998/152.964/155.304。已回收逐局报告并CPU独立核对唯一行、成败、步数、罚分/胜负；不是独立TEST或质量PASS。
 - Object：旧16条有效；迁移续采新14虽有完整机器人终态，但编号重启冲突导致监督无效，原PACK_CURRENT拒绝入训保留。用户今晨明确批准只补这14局/最多56000次，在独立v3namespace隔离compact子目录。固定14补采/准入/ON已完成（FIT6164/CAL3080），原匹配Target200和全500双卡运行；09:21为T20018局、首FINAL5局，每卡一worker。更多并发槽的GPU PID/容器PID身份未统一，保留原准入与UNKNOWN。原无效14消耗5876已扣。v2过期模板启动失败0GPU/0episode保留；旧T_POOL截止不延长，新baseline沿原M17有效总截止。[两机晨间结果](experiments/libero-four-suite-morning-20261019/RESULT.md)。
 - 远端每5分钟CPU只读巡检已切health-v2、真实出生身份匹配；新机无需Codex才能自动排队，后台是已登记Python controller/guard。旧watch正常交接，不杀他人。
