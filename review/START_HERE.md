@@ -1,6 +1,6 @@
 # 当前入口
 
-请先读[2026-10-19当前结果与源码](CURRENT-20261019.md)。M32已实现单层attention/FFN1 persistent tile，9真实block/90状态/48原语有限逐位通过；新增persistent比静态更慢，尚无加速主张。用户只要求一层，30层退出本轮。baseline及依赖冻结，四质量字段false；main仅当前进度镜像。
+先读[10/19当前源码与结果](CURRENT-20261019.md)。M33 profile已收口，当前实现仍只是阶段内persistent；用户要求整层统一kernel尚未完成。下一M34设备原语与ready DAG，baseline/投机侧不改，四质量字段false。
 
 以下正文与review/RESULTS.json为4f04 paused72历史快照，不能覆盖后续新授权运行或当前算子结果；旧FAILED/retention亦不能由新进度改写。
 

@@ -1,0 +1,416 @@
+--- M32/csrc/attention_tile.cuh
++++ M33-diagnostic/csrc/attention_tile.cuh
+@@ -2,7 +2,7 @@
+ // The vendor math, traversal and split/combine order are unchanged.
+ #pragma once
+ 
+-namespace wam_tiles {
++namespace m33_grid216_tiles {
+ struct AttentionTile {
+     int batch, head, query_block, kv_split, kv_splits;
+ };
+@@ -33,4 +33,4 @@
+         false, false, false, EvenMN, true, false, true, false>(
+             p, task.batch, task.head, task.query_block, task.kv_split, task.kv_splits);
+ }
+-} // namespace wam_tiles
++} // namespace m33_grid216_tiles
+--- M32/csrc/attention_tiles.cu
++++ M33-diagnostic/csrc/attention_tiles.cu
+@@ -6,7 +6,7 @@
+ // Only this translation unit is compiled. No ATen SDPA, pytorch_flash entry
+ // point, or installed FlashAttention extension is invoked. The wrapper is
+ // specialized to the real C0 inference contract, not the full PyTorch API.
+-#define FLASH_NAMESPACE wam_tile_flash
++#define FLASH_NAMESPACE m33_grid216_flash
+ #define UNFUSE_FMA
+ #define FLASHATTENTION_DISABLE_DROPOUT
+ #define FLASHATTENTION_DISABLE_ALIBI
+@@ -29,8 +29,8 @@
+ #include <mutex>
+ #include <optional>
+ 
+-namespace wam_optimized_sdpa {
+-using Params = wam_tile_flash::Flash_fwd_params;
++namespace m33_grid216_optimized_sdpa {
++using Params = m33_grid216_flash::Flash_fwd_params;
+ using Standard = Flash_fwd_kernel_traits<
+     128, 128, 64, 4, false, false, cutlass::bfloat16_t>;
+ using SplitKV = Flash_fwd_kernel_traits<
+@@ -42,14 +42,14 @@
+ template<bool EvenMN>
+ __global__ void standard_tiles(KERNEL_PARAM_MODIFIER const Params params) {
+     const int qblocks=(params.seqlen_q+127)/128;
+-    auto task=wam_tiles::standard_task(blockIdx.x,params.b,params.h,qblocks);
+-    wam_tiles::attention_tile<Standard,EvenMN>(params,task);
++    auto task=m33_grid216_tiles::standard_task(blockIdx.x,params.b,params.h,qblocks);
++    m33_grid216_tiles::attention_tile<Standard,EvenMN>(params,task);
+ }
+ template<bool EvenMN>
+ __global__ void split_tiles(KERNEL_PARAM_MODIFIER const Params params) {
+     const int qblocks=(params.seqlen_q+63)/64;
+-    auto task=wam_tiles::split_task(blockIdx.x,params.h,qblocks,params.num_splits);
+-    wam_tiles::attention_split_tile<SplitKV,EvenMN>(params,task);
++    auto task=m33_grid216_tiles::split_task(blockIdx.x,params.h,qblocks,params.num_splits);
++    m33_grid216_tiles::attention_split_tile<SplitKV,EvenMN>(params,task);
+ }
+ 
+ // A bounded grid keeps each CTA alive for multiple independent output tiles.
+@@ -57,21 +57,21 @@
+ __global__ void persistent_attention(KERNEL_PARAM_MODIFIER const Params params,
+                                      int count, int* audit) {
+     const int qblocks=(params.seqlen_q+(Split?63:127))/(Split?64:128);
+-    wam_tiles::PersistentTasks tasks{count};
++    m33_grid216_tiles::PersistentTasks tasks{count};
+     int done=0;
+     for(int id=tasks.first(); id<count; id=tasks.next(id)) {
+         if constexpr(Split) {
+-            auto tile=wam_tiles::split_task(id,params.h,qblocks,params.num_splits);
+-            wam_tiles::attention_split_tile<SplitKV,EvenMN>(params,tile);
++            auto tile=m33_grid216_tiles::split_task(id,params.h,qblocks,params.num_splits);
++            m33_grid216_tiles::attention_split_tile<SplitKV,EvenMN>(params,tile);
+         } else {
+-            auto tile=wam_tiles::standard_task(id,params.b,params.h,qblocks);
+-            wam_tiles::attention_tile<Standard,EvenMN>(params,tile);
++            auto tile=m33_grid216_tiles::standard_task(id,params.b,params.h,qblocks);
++            m33_grid216_tiles::attention_tile<Standard,EvenMN>(params,tile);
+         }
+-        wam_tiles::finish_tile();
+-        wam_tiles::record_tile(audit,id);
++        m33_grid216_tiles::finish_tile();
++        m33_grid216_tiles::record_tile(audit,id);
+         ++done;
+     }
+-    wam_tiles::record_worker(audit,count,done);
++    m33_grid216_tiles::record_worker(audit,count,done);
+ }
+ 
+ // PyTorch 2.9.0 flash_api.cpp's occupancy-based split heuristic, specialized
+@@ -130,7 +130,7 @@
+         kernel<<<count,Standard::kNThreads,Standard::kSmemSize,stream>>>(params);
+         C10_CUDA_KERNEL_LAUNCH_CHECK(); return;
+     }
+-    constexpr auto kernel = &wam_tile_flash::flash_fwd_kernel<
++    constexpr auto kernel = &m33_grid216_flash::flash_fwd_kernel<
+         Standard, false, false, false, false, EvenMN, true, false, false>;
+     configure_smem<kernel, Standard::kSmemSize>(device);
+     const dim3 grid((params.seqlen_q + 127) / 128, params.b, params.h);
+@@ -154,7 +154,7 @@
+         kernel<<<count,SplitKV::kNThreads,SplitKV::kSmemSize,stream>>>(params);
+         C10_CUDA_KERNEL_LAUNCH_CHECK(); return;
+     }
+-    constexpr auto kernel = &wam_tile_flash::flash_fwd_splitkv_kernel<
++    constexpr auto kernel = &m33_grid216_flash::flash_fwd_splitkv_kernel<
+         SplitKV, false, false, false, EvenMN, true, false, true, false>;
+     configure_smem<kernel, SplitKV::kSmemSize>(device);
+     const dim3 grid((params.seqlen_q + 63) / 64,
+@@ -166,7 +166,7 @@
+ template <int LogSplits>
+ void launch_combine(const Params& params, cudaStream_t stream) {
+     const dim3 grid((params.b * params.h * params.seqlen_q + 3) / 4);
+-    wam_tile_flash::flash_fwd_splitkv_combine_kernel<SplitKV, 4, LogSplits, true>
++    m33_grid216_flash::flash_fwd_splitkv_combine_kernel<SplitKV, 4, LogSplits, true>
+         <<<grid, SplitKV::kNThreads, 0, stream>>>(params);
+     C10_CUDA_KERNEL_LAUNCH_CHECK();
+ }
+@@ -230,7 +230,7 @@
+     p.num_splits = choose_splits(b, h, sq, sk, props->multiProcessorCount);
+     const int qblocks=(sq+(p.num_splits>1?63:127))/(p.num_splits>1?64:128);
+     const int count=b*h*qblocks*p.num_splits;
+-    const int workers=std::min(count,worker_limit?std::min(worker_limit,props->multiProcessorCount):props->multiProcessorCount);
++    const int workers=std::min(count,worker_limit?std::min(worker_limit,2*props->multiProcessorCount):2*props->multiProcessorCount);
+     at::Tensor audit;
+     if(audit_out) {
+         TORCH_CHECK(mode==2,"audit is only for the persistent path");
+@@ -272,4 +272,14 @@
+     auto out=run(q,k,v,std::nullopt,2,&audit,worker_limit,&meta);
+     return {out,audit,meta};
+ }
+-} // namespace wam_optimized_sdpa
++} // namespace m33_grid216_optimized_sdpa
++
++std::vector<int64_t> m33_attention_resources() {
++ using namespace m33_grid216_optimized_sdpa;
++ cudaFuncAttributes a{},b{};int n1=0,n2=0;
++ C10_CUDA_CHECK(cudaFuncGetAttributes(&a,standard_tiles<false>));
++ C10_CUDA_CHECK(cudaFuncGetAttributes(&b,persistent_attention<false,false>));
++ C10_CUDA_CHECK(cudaOccupancyMaxActiveBlocksPerMultiprocessor(&n1,standard_tiles<false>,128,Standard::kSmemSize));
++ C10_CUDA_CHECK(cudaOccupancyMaxActiveBlocksPerMultiprocessor(&n2,persistent_attention<false,false>,128,Standard::kSmemSize));
++ return {a.numRegs,b.numRegs,int64_t(Standard::kSmemSize),n1,n2};
++}
+--- M32/csrc/block.cu
++++ M33-diagnostic/csrc/block.cu
+@@ -13,14 +13,14 @@
+ #include "norm.cuh"
+ #include "gemm.h"
+ 
+-namespace wam_optimized_sdpa {
++namespace m33_grid216_optimized_sdpa {
+ at::Tensor sdpa(const at::Tensor&,const at::Tensor&,const at::Tensor&,std::optional<double>, int);
+ std::vector<at::Tensor> audit_sdpa(const at::Tensor&,const at::Tensor&,const at::Tensor&,int);
+ }
+ // Existing own CUTLASS primitive; keeps the BF16 GEMM rounding before GELU.
+ void optimized_ffn1_gelu_out(const at::Tensor&,const at::Tensor&,const at::Tensor&,at::Tensor,bool);
+ std::vector<at::Tensor> audit_ffn1(const at::Tensor&,const at::Tensor&,const at::Tensor&,int);
+-namespace wam_optimized_block {
++namespace m33_grid216_optimized_block {
+ using BF = at::BFloat16;
+ using at::Tensor;
+ inline cudaStream_t stream() { return at::cuda::getCurrentCUDAStream(); }
+@@ -49,12 +49,12 @@
+     const dim3 threads(32,4);const int smem=24;
+     if(x.scalar_type()==at::kFloat) {
+         TORCH_CHECK(!rms,"FP32 RMS not in current contract");
+-        wam_optimized_norm::vectorized_layer_norm_kernel<float,float,false><<<m,threads,smem,stream()>>>(
++        m33_grid216_optimized_norm::vectorized_layer_norm_kernel<float,float,false><<<m,threads,smem,stream()>>>(
+             d,float(eps),x.data_ptr<float>(),gamma.defined()?gamma.data_ptr<float>():nullptr,
+             beta.defined()?beta.data_ptr<float>():nullptr,mean.data_ptr<float>(),rstd.data_ptr<float>(),y.data_ptr<float>());
+     } else {
+         TORCH_CHECK(rms && gamma.defined(),"BF16 branch is affine RMSNorm");
+-        wam_optimized_norm::vectorized_layer_norm_kernel<BF,float,true><<<m,threads,smem,stream()>>>(
++        m33_grid216_optimized_norm::vectorized_layer_norm_kernel<BF,float,true><<<m,threads,smem,stream()>>>(
+             d,float(eps),x.data_ptr<BF>(),gamma.data_ptr<BF>(),nullptr,nullptr,rstd.data_ptr<float>(),y.data_ptr<BF>());
+     }
+     C10_CUDA_KERNEL_LAUNCH_CHECK();return y;
+@@ -232,7 +232,7 @@
+     const std::vector<Tensor>& cache,const Tensor& rows,int update,int mode) {
+     if(cache.empty()) {
+         TORCH_CHECK(!rows.defined(),"candidate path requires history");
+-        return wam_optimized_sdpa::sdpa(q,k,v,std::nullopt,mode);
++        return m33_grid216_optimized_sdpa::sdpa(q,k,v,std::nullopt,mode);
+     }
+     const int b=q.size(0),tokens=q.size(1),size=cache[0].size(1),d=3072;
+     const bool candidate=rows.defined();
+@@ -254,7 +254,7 @@
+     pack_kernel<<<grid(pk.numel()/8),256,0,stream()>>>(cache[0].data_ptr<BF>(),k.data_ptr<BF>(),pk.data_ptr<BF>(),slots.data_ptr<int64_t>(),candidate?rows.data_ptr<int64_t>():nullptr,b,total,n,tokens,size,d,candidate);
+     pack_kernel<<<grid(pv.numel()/8),256,0,stream()>>>(cache[1].data_ptr<BF>(),v.data_ptr<BF>(),pv.data_ptr<BF>(),slots.data_ptr<int64_t>(),candidate?rows.data_ptr<int64_t>():nullptr,b,total,n,tokens,size,d,candidate);
+     C10_CUDA_KERNEL_LAUNCH_CHECK();
+-    auto out=wam_optimized_sdpa::sdpa(q,pk,pv,std::nullopt,mode);
++    auto out=m33_grid216_optimized_sdpa::sdpa(q,pk,pv,std::nullopt,mode);
+     if(!candidate&&update==0) {
+         restore_kernel<<<1,256,0,stream()>>>(cache[3].data_ptr<bool>(),free.data_ptr<int64_t>(),tokens);
+         C10_CUDA_KERNEL_LAUNCH_CHECK();
+@@ -290,7 +290,7 @@
+     auto cq=norm(linear(n2,w[13],w[14]),w[21],{},eps[5],true);
+     auto ck=norm(linear(context,w[15],w[16]),w[22],{},eps[6],true);
+     auto cv=linear(context,w[17],w[18]);save("cross_q",cq);save("cross_k",ck);save("cross_v",cv);
+-    auto ca=wam_optimized_sdpa::sdpa(cq.view({b,q,24,128}),ck.view({b,context.size(1),24,128}),cv.view({b,context.size(1),24,128}),std::nullopt,mode);save("cross_attention",ca);
++    auto ca=m33_grid216_optimized_sdpa::sdpa(cq.view({b,q,24,128}),ck.view({b,context.size(1),24,128}),cv.view({b,context.size(1),24,128}),std::nullopt,mode);save("cross_attention",ca);
+     auto co=linear(ca.view({b,q,3072}),w[19],w[20]);save("cross_out",co);
+     auto h3=residual(h2,co,{},-1);save("residual2",h3);
+     return h3;
+@@ -307,7 +307,7 @@
+         optimized_ffn1_gelu_out(f0.view({b*q,3072}),w[23],w[24],act,mode==2);
+     } else {
+         auto f1=linear(f0,w[23],w[24]);save("ffn1",f1);
+-        act=wam_optimized_block::gelu(f1);
++        act=m33_grid216_optimized_block::gelu(f1);
+     }
+     save("gelu",act);
+     auto f2=linear(act,w[25],w[26]);save("ffn2",f2);
+@@ -340,25 +340,29 @@
+ }
+ } // namespace wam_block
+ 
++std::vector<int64_t> m33_attention_resources();
++std::vector<int64_t> m33_ffn_resources();
+ PYBIND11_MODULE(TORCH_EXTENSION_NAME,m) {
+-    m.def("sdpa", &wam_optimized_sdpa::sdpa,py::arg("q"),py::arg("k"),py::arg("v"),
++    m.def("m33_attention_resources",&m33_attention_resources);
++    m.def("m33_ffn_resources",&m33_ffn_resources);
++    m.def("sdpa", &m33_grid216_optimized_sdpa::sdpa,py::arg("q"),py::arg("k"),py::arg("v"),
+           py::arg("scale")=py::none(),py::arg("mode")=0);
+-    m.attr("independent_module")="wam_optimized_block_cuda";
++    m.attr("independent_module")="m33_grid216_optimized_block_cuda";
+     m.attr("persistent_scheduler")="stage_local_static_stride_CTA";
+-    m.def("forward",&wam_optimized_block::forward,py::arg("weights"),py::arg("x"),
++    m.def("forward",&m33_grid216_optimized_block::forward,py::arg("weights"),py::arg("x"),
+         py::arg("context"),py::arg("temb"),py::arg("freq"),py::arg("cache"),
+         py::arg("candidate_rows"),py::arg("update"),py::arg("eps"),
+         py::arg("debug")=false,py::arg("fused_ffn1")=false,py::arg("mode")=0);
+-    m.def("audit_sdpa",&wam_optimized_sdpa::audit_sdpa,py::arg("q"),py::arg("k"),py::arg("v"),py::arg("workers")=0);
++    m.def("audit_sdpa",&m33_grid216_optimized_sdpa::audit_sdpa,py::arg("q"),py::arg("k"),py::arg("v"),py::arg("workers")=0);
+     m.def("audit_ffn1",&audit_ffn1,py::arg("x"),py::arg("w"),py::arg("b"),py::arg("workers")=0);
+-    m.def("linear",&wam_optimized_block::linear);
++    m.def("linear",&m33_grid216_optimized_block::linear);
+     m.def("norm",[](const at::Tensor& x,const std::optional<at::Tensor>& g,
+         const std::optional<at::Tensor>& b,double eps,bool rms) {
+-        return wam_optimized_block::norm(x,g.value_or(at::Tensor{}),b.value_or(at::Tensor{}),eps,rms);
++        return m33_grid216_optimized_block::norm(x,g.value_or(at::Tensor{}),b.value_or(at::Tensor{}),eps,rms);
+     });
+-    m.def("gelu",&wam_optimized_block::gelu);
+-    m.def("fp32",&wam_optimized_block::fp32);
+-    m.def("bf16",&wam_optimized_block::bf16);
++    m.def("gelu",&m33_grid216_optimized_block::gelu);
++    m.def("fp32",&m33_grid216_optimized_block::fp32);
++    m.def("bf16",&m33_grid216_optimized_block::bf16);
+     m.attr("production_admitted")=false;
+     m.attr("torch_math_operators")=false;
+     m.attr("external_GEMM")="cuBLASLt; pinned Torch descriptor/heuristic/workspace contract";
+--- M32/csrc/ffn_tile.cuh
++++ M33-diagnostic/csrc/ffn_tile.cuh
+@@ -3,7 +3,7 @@
+ // Only non-split-K execution; explicit coordinates replace implicit blockIdx.
+ #pragma once
+ 
+-namespace wam_tiles {
++namespace m33_grid216_tiles {
+ struct GemmTile { int row, column; };
+ 
+ template<class Kernel>
+@@ -38,4 +38,4 @@
+     Epilogue epilogue(storage.epilogue, thread, warp, lane);
+     epilogue(output_op, d, accumulator, c);
+ }
+-} // namespace wam_tiles
++} // namespace m33_grid216_tiles
+--- M32/csrc/ffn_tiles.cu
++++ M33-diagnostic/csrc/ffn_tiles.cu
+@@ -12,7 +12,7 @@
+ #include "ffn_tile.cuh"
+ #include "persistent.cuh"
+ 
+-namespace wam_optimized_ffn {
++namespace m33_grid216_optimized_ffn {
+ 
+ using BF16 = cutlass::bfloat16_t;
+ using Row = cutlass::layout::RowMajor;
+@@ -52,25 +52,25 @@
+ template<class K>
+ __global__ void linear_tile(typename K::Params params) {
+     extern __shared__ __align__(16) unsigned char storage[];
+-    const auto tile=wam_tiles::GemmTile{int(blockIdx.x),int(blockIdx.y)};
+-    wam_tiles::ffn_tile<K>(params, *reinterpret_cast<typename K::SharedStorage*>(storage),tile);
++    const auto tile=m33_grid216_tiles::GemmTile{int(blockIdx.x),int(blockIdx.y)};
++    m33_grid216_tiles::ffn_tile<K>(params, *reinterpret_cast<typename K::SharedStorage*>(storage),tile);
+ }
+ 
+ template<class K>
+ __global__ void persistent_linear(typename K::Params params,int count,int* audit) {
+     extern __shared__ __align__(16) unsigned char storage[];
+-    wam_tiles::PersistentTasks tasks{count};
++    m33_grid216_tiles::PersistentTasks tasks{count};
+     int done=0;
+     for(int id=tasks.first(); id<count; id=tasks.next(id)) {
+         // Match the original x-major tile order. GEMM reduction order is fixed.
+         const int rows=params.grid_tiled_shape.m();
+-        wam_tiles::ffn_tile<K>(params,*reinterpret_cast<typename K::SharedStorage*>(storage),
++        m33_grid216_tiles::ffn_tile<K>(params,*reinterpret_cast<typename K::SharedStorage*>(storage),
+                              {id%rows,id/rows});
+-        wam_tiles::finish_tile();
+-        wam_tiles::record_tile(audit,id);
++        m33_grid216_tiles::finish_tile();
++        m33_grid216_tiles::record_tile(audit,id);
+         ++done;
+     }
+-    wam_tiles::record_worker(audit,count,done);
++    m33_grid216_tiles::record_worker(audit,count,done);
+ }
+ 
+ void tensor_contract(const torch::Tensor& x) {
+@@ -111,7 +111,7 @@
+     if(persistent) {
+         TORCH_CHECK(worker_limit>=0,"worker limit must be nonnegative");
+         int count=tiled.m()*tiled.n();
+-        int workers=std::min(count,worker_limit?std::min(worker_limit,props->multiProcessorCount):props->multiProcessorCount);
++        int workers=std::min(count,worker_limit?std::min(worker_limit,2*props->multiProcessorCount):2*props->multiProcessorCount);
+         at::Tensor audit;
+         if(audit_out) {
+             audit=at::zeros({count+workers},x.options().dtype(at::kInt));*audit_out=audit;
+@@ -174,16 +174,26 @@
+ }
+ 
+ 
+-} // namespace wam_optimized_ffn
++} // namespace m33_grid216_optimized_ffn
+ void optimized_ffn1_gelu_out(const at::Tensor& x,const at::Tensor& weight,
+                             const at::Tensor& bias,at::Tensor out,bool persistent) {
+-    wam_optimized_ffn::launch_linear<wam_optimized_ffn::FusedGemm>(x,weight,bias,out,persistent);
++    m33_grid216_optimized_ffn::launch_linear<m33_grid216_optimized_ffn::FusedGemm>(x,weight,bias,out,persistent);
+ }
+ 
+ std::vector<at::Tensor> audit_ffn1(const at::Tensor& x,const at::Tensor& w,const at::Tensor& b,int workers) {
+     auto out=at::empty({x.size(0),w.size(0)},x.options());
+     TORCH_CHECK(x.size(1)==3072 && w.size(0)==14336,"FFN1 audit only");
+     at::Tensor audit,meta;
+-    wam_optimized_ffn::launch_linear<wam_optimized_ffn::FusedGemm>(x,w,b,out,true,&audit,workers,&meta);
++    m33_grid216_optimized_ffn::launch_linear<m33_grid216_optimized_ffn::FusedGemm>(x,w,b,out,true,&audit,workers,&meta);
+     return {out,audit,meta};
+ }
++
++std::vector<int64_t> m33_ffn_resources() {
++ using namespace m33_grid216_optimized_ffn;using K0=FusedGemm::GemmKernel;
++ cudaFuncAttributes a{},b{};int n1=0,n2=0;
++ C10_CUDA_CHECK(cudaFuncGetAttributes(&a,linear_tile<K0>));
++ C10_CUDA_CHECK(cudaFuncGetAttributes(&b,persistent_linear<K0>));
++ C10_CUDA_CHECK(cudaOccupancyMaxActiveBlocksPerMultiprocessor(&n1,linear_tile<K0>,128,sizeof(typename K0::SharedStorage)));
++ C10_CUDA_CHECK(cudaOccupancyMaxActiveBlocksPerMultiprocessor(&n2,persistent_linear<K0>,128,sizeof(typename K0::SharedStorage)));
++ return {a.numRegs,b.numRegs,sizeof(typename K0::SharedStorage),n1,n2};
++}
+--- M32/csrc/gemm.h
++++ M33-diagnostic/csrc/gemm.h
+@@ -5,7 +5,7 @@
+ #include <ATen/cuda/CUDAContext.h>
+ #include <cublasLt.h>
+ 
+-namespace wam_optimized_block {
++namespace m33_grid216_optimized_block {
+ inline void blas_check(cublasStatus_t s) {
+     TORCH_CHECK(s == CUBLAS_STATUS_SUCCESS, "cuBLASLt status ", int(s));
+ }
+@@ -76,4 +76,4 @@
+         at::cuda::getCurrentCUDAStream()));
+     return out;
+ }
+-} // namespace wam_optimized_block
++} // namespace m33_grid216_optimized_block
+--- M32/csrc/norm.cuh
++++ M33-diagnostic/csrc/norm.cuh
+@@ -4,7 +4,7 @@
+ #include <ATen/AccumulateType.h>
+ #include <ATen/cuda/DeviceUtils.cuh>
+ #include <c10/cuda/CUDAMathCompat.h>
+-namespace wam_optimized_norm {
++namespace m33_grid216_optimized_norm {
+ using at::acc_type;
+ constexpr int vec_size = 4;
+ template<typename scalar_t, int vec_size>
+@@ -232,4 +232,4 @@
+   }
+ 
+ 
+-} // namespace wam_optimized_norm
++} // namespace m33_grid216_optimized_norm
+--- M32/csrc/persistent.cuh
++++ M33-diagnostic/csrc/persistent.cuh
+@@ -1,7 +1,7 @@
+ // SM80 stage-local persistent CTA scheduling. No global barriers or spin waits.
+ #pragma once
+ 
+-namespace wam_tiles {
++namespace m33_grid216_tiles {
+ // Each CTA owns one residue class modulo gridDim.x: no atomics are needed to
+ // claim work and every task is visited exactly once. All warps compute together.
+ struct PersistentTasks {
+@@ -24,4 +24,4 @@
+ __device__ __forceinline__ void record_worker(int* audit, int count, int done) {
+     if (audit && threadIdx.x == 0) audit[count + blockIdx.x] = done;
+ }
+-} // namespace wam_tiles
++} // namespace m33_grid216_tiles
+--- M32/build_subgraph.py
++++ M33-diagnostic/build_subgraph.py
+@@ -7,11 +7,11 @@
+ 
+ os.environ.setdefault('TORCH_CUDA_ARCH_LIST', '8.0')
+ root = Path(__file__).resolve().parent
+-cutlass = root.parents[2] / '.pipeline/cache/cutlass-v3.5.1/include'
++cutlass = Path('/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/cache/cutlass-v3.5.1/include')
+ setup(
+     name='wam_isolated_subgraphs', packages=[],
+     ext_modules=[CUDAExtension(
+-        name='wam_optimized_block_cuda',
++        name='m33_grid216_cuda',
+         sources=[str(root / 'csrc' / name) for name in
+                  ('block.cu', 'attention_tiles.cu', 'ffn_tiles.cu')],
+         include_dirs=[str(root / 'csrc/vendor/flash_attn'), str(cutlass)],

@@ -1,16 +1,16 @@
 # 当前短入口
 
-更新：2026-10-19T21:08:07.097619+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
+更新：2026-10-19T22:56:41.237773+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
 
-## 当前：M32只实现一层完整Transformer block
+## 当前：M33 profile已收口；整层统一kernel仍待实现
 
-[实现/有限验证](experiments/persistent-tile-remote-20261019/RESULT.md)、[两进程九点性能](experiments/persistent-tile-remote-20261019/PERFORMANCE.md)、[源码与使用](../算子研究/wam_ops/optimized/SUBGRAPHS.md)。用户明确不要30层大算子；本轮full30为0，取消迁移/验证，不作为交付门。最终模型E2E后续本机。
+[M33实际profile](experiments/single-block-persistent-profile-20261019/RESULT.md)完成。B14长KV静态/阶段内persistent均34 kernel，增量207.072us由self/cross attention与FFN1合计207.2425us解释。108 CTA上限低于理论2 CTA/SM容量；隔离216 CTA反事实使B14短中长相对静态退化从4.154%/4.781%/5.459%降到0.726%/0.474%/0.179%，没有新增加速。不锁时钟，跨case绝对时间非单调，不能作正式性能。
 
-远端独立optimized已编译并执行阶段内部persistent CTA：attention/FFN1按固定步长多tile循环；self/cross/FFN与norm/RoPE/调制/残差完整保留。QKV/Wo/FFN2仍cuBLASLt，无跨阶段ready或warp专职分工。baseline及依赖88项不变；未加载baseline/旧DSO。新源码本机DSO仍待重编，新ABI会拒绝旧产物。
+九真实block×四模式两次profile（153调用）、有效三B14反事实112调用，输出/有效KV/RNG通过。NCU权限失败，实测occupancy/L2/DRAM UNKNOWN；两个扩展身份/符号实施失败保留，第三attempt隔离后完成。五GPU job生命周期81.856秒、293 block尝试含失败、0full30/0episode；22:53两GPU无进程，全部owned退出，新证据42.91MiB。baseline及依赖88项不变。
 
-9真实block、90连续有效KV、48原语逐tile覆盖/输出/RNG/参数/API门逐位通过；tile/persistent的24中间量（action融合23）与独立顺序实现对照。两进程378计时原始样本：persistent+FFN1对静态+FFN1，B14慢4.42%–6.26%，B2 action慢2.56%–2.80%。没有新增加速；A/A最大10.07%保留，GPU1/host共享及三样本限制明确。不是最强B14/Graph、完整chunk或E2E。
+用户要求的是**整个单层统一persistent kernel，内部warp组调度全部tile**。当前M32只有attention/FFN1阶段内常驻循环，QKV/Wo/FFN2仍host cuBLASLt，不满足整层目标。[完整DAG与缺口](experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)已登记，整层实现仍待完成。下一M34补设备原语、ready/生命周期与统一执行器，不扩30层，不以新wrapper或多kernel包装宣称完成。
 
-五GPU作业77.927秒、731block/48原语/0episode，owned全部退出。首计时0block因宿主/容器PID误判失败，修正守卫后新attempt2/3完成；传输超时/错误全保留。远端约636.5MiB隔离材料；时间主要花在传输，CUDA active为UNKNOWN。M32预算收口不挪用。
+M32九真实block/90有效KV/48原语有限逐位与两进程378样本原结果保留；B14慢4.42%–6.26%、A/A最大10.07%，不能用本轮诊断覆盖。
 
 ## 历史与机制边界
 
@@ -30,7 +30,7 @@ TF64/TF_ON、normalizer、tau、K2B2/bonus/prefix_then_cost及BF16/FP32冻结。
 
 ## 下一步
 
-M33仅单层内部收益定位：先profile常驻循环的寄存器/驻留/尾部成本，再选一个可复用公共历史或中间量的tile分组/相邻子图；静态路径作当前对照。没有启动M33 GPU，也没有30层融合或新机器人评估。主要系统主张最终仍需强B14及sum(T_round)/sum(g)，不能由调用下降替代。
+M34：整层统一persistent kernel是用户明确目标。设备原语→整层ready/warp组执行→完整输出/KV/RNG→强baseline性能。当前没有运行中的M33 GPU。下一作业需有界登记，M33余额不转授；不扩30层。
 
 CUDA13.x：本机driver595.71.05，远端535.161.08；远端不满足普通CUDA13最低580条件。未升级驱动或系统，本轮独立CUDA12.4/cu126，未来另核验。
 

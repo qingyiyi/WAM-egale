@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/root/cxz/ops/single-block-profile-20261019/profile_grid.py", line 95, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/root/cxz/ops/single-block-profile-20261019/profile_grid.py", line 62, in main
+    for _ in range(2):restore();out=checked_forward();check(out)
+                                    ^^^^^^^^^^^^^^^^^
+  File "/root/cxz/ops/single-block-profile-20261019/profile_grid.py", line 56, in checked_forward
+    return block(*arguments,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/block.py", line 78, in forward
+    return native(hidden_states, encoder_hidden_states, temb, rotary_emb,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/native.py", line 62, in __call__
+    outputs = extension().forward(self.weights, hidden_states, encoder_hidden_states,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: invalid argument
+Search for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

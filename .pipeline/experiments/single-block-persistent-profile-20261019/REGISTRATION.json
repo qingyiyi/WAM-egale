@@ -1,0 +1,26 @@
+{
+  "experiment": "single-block-persistent-profile-20261019",
+  "goal": "单层静态与persistent性能退化profile，并明确整层统一persistent执行器的设备tile/依赖缺口",
+  "user_authorization": "用户要求profiler性能退化；澄清整个单层作为统一算子、内部tile由常驻warp或协作warp组调度",
+  "started_at": "2026-10-19T22:25:32.200411+08:00",
+  "absolute_work_stop": "2026-10-19T23:20:32.200411+08:00",
+  "absolute_cleanup_deadline": "2026-10-19T23:25:32.200411+08:00",
+  "GPU_lifecycle_seconds_cap": 900,
+  "full_block_forward_cap": 512,
+  "full30_forward_cap": 0,
+  "block_per_process_cap": 400,
+  "CPU_allowed": [
+    4,
+    5
+  ],
+  "CPU_threads_cap": 2,
+  "new_evidence_storage_cap_bytes": 268435456,
+  "physical_gpu_uuid": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "remote_root": "/root/cxz/ops/single-block-profile-20261019",
+  "source_workspace": "/root/cxz/ops/persistent-tile-20261019/workspace",
+  "input_manifest": "../persistent-tile-remote-20261019/BLOCK-INPUT-MANIFEST.json",
+  "baseline": "M32 same-input tiled_ffn vs persistent_ffn; attention-only modes for attribution",
+  "formal_performance_permission": false,
+  "status": "PREPARING",
+  "cleanup_plan": "bounded supervisor PID+birth identity; no foreign process signals; profiler clock-control none; cache-control none explicitly"
+}

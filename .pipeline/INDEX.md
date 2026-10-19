@@ -10,13 +10,13 @@
 
 [当前整体整理](cycles/wam-research-20261016/STATUS-20261019.md)：Long/Goal/Spatial首轮、B0有限GPU逐位、Object修复与原门缺口；旧paused72仅历史。
 
-当前算子：[M32一层完整block的tile/persistent结果](experiments/persistent-tile-remote-20261019/RESULT.md)。9真实block/90状态/48原语有限逐位；新增persistent比静态更慢，尚无加速主张。当前只做一层，baseline及依赖冻结；[M30真实DAG](experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)作设计来源。最新质量完成数见当前Cycle，不以旧快照代替实时。
+当前算子：[M33退化profile](experiments/single-block-persistent-profile-20261019/RESULT.md)完成；新要求为单层统一persistent kernel内部调度全部tile，尚未实现。[M34设备原语与ready缺口](experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)。M32局部原型与负结果保留，baseline/投机侧不改；无本轮GPU作业在运行。
 
 ## 两条研究路线
 
 | 路线 | 当前结论 | 证据入口 |
 |---|---|---|
-| 投机采样 | Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各500；Object14/准入/ON已完成、匹配Target200与全500双卡接续，本机只接算子；旧NO_GO/四false不变 | [资源迁移](experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md)、[当前Cycle](cycles/wam-research-20261016/PROGRESS.md) |
+| 投机采样 | Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各500；Object497/498/499，各500，四套既定计算完成，审计未放行；旧NO_GO/四false不变 | [资源迁移](experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md)、[当前Cycle](cycles/wam-research-20261016/PROGRESS.md) |
 | 单层Transformer算子 | M32完整单层tile/persistent有限精度通过；新增persistent比静态更慢，当前只研究一层 | [M32结果](experiments/persistent-tile-remote-20261019/RESULT.md)、[源码入口](../算子研究/README.md) |
 
 算子原代码与 HW 保留；用户最新允许独立修正版本并复用固定上游源码，见[M22](experiments/operator-torch-alignment-20261018/PLAN.md)；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。

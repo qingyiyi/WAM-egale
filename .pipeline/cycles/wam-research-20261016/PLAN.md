@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-19T21:08:07.097619+08:00'
+updated: '2026-10-19T22:56:41.237773+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
@@ -13,9 +13,19 @@ steps:
   - id: M32
     status: completed
   - id: M33
-    status: proposed
+    status: completed
+  - id: M34
+    status: planned
 ---
 # 当前计划
+
+| ID | 工作 | 状态 | 结果或下一步 |
+|---|---|---|---|
+| `M17` | 四套既定评估 | 计算完成、审计未放行 | 保留四false与原预算 |
+| `M31` | 静态tile子图 | 完成 | 原结果保留 |
+| `M32` | 阶段内persistent | 完成 | 有限精度通过，性能负结果 |
+| `M33` | 单层退化profile | 完成 | NCU失败、网格反事实已收口 |
+| `M34` | 整层统一persistent kernel | 待实现 | 设备原语→ready DAG→统一kernel→状态与性能门 |
 
 ## M17 — 既定四套LIBERO评估
 
@@ -42,9 +52,17 @@ attention/FFN1阶段内实现常驻CTA固定步长tile循环；完整self/cross/
 - [x] 九输入/90状态/48原语门；两进程单层探索计时。
 - [x] 记录负结果/资源/失败与owned退出；HW及main公开小证据。
 
-## M33 — 单层内部的收益定位（建议，未启动新GPU作业）
+## M33 — 单层退化profile（完成）
 
-只在这一层中先profile常驻循环的寄存器、驻留和尾部开销，再选一个有公共历史或中间量复用价值的tile分组/相邻子图。静态实现作为当前对照。QKV/Wo/FFN2设备化和ready边界逐项推进，不假设常驻必快，不启动30层大融合。新实验先登记预算，不挪用M32余额。
+[M33实际profile](../../experiments/single-block-persistent-profile-20261019/RESULT.md)完成。B14长KV静态/阶段内persistent均34 kernel，增量207.072us由self/cross attention与FFN1合计207.2425us解释。108 CTA上限低于理论2 CTA/SM容量；隔离216 CTA反事实使B14短中长相对静态退化从4.154%/4.781%/5.459%降到0.726%/0.474%/0.179%，没有新增加速。不锁时钟，跨case绝对时间非单调，不能作正式性能。
+
+九真实block×四模式两次profile（153调用）、有效三B14反事实112调用，输出/有效KV/RNG通过。NCU权限失败，实测occupancy/L2/DRAM UNKNOWN；两个扩展身份/符号实施失败保留，第三attempt隔离后完成。五GPU job生命周期81.856秒、293 block尝试含失败、0full30/0episode；22:53两GPU无进程，全部owned退出，新证据42.91MiB。baseline及依赖88项不变。
+
+用户要求的是**整个单层统一persistent kernel，内部warp组调度全部tile**。当前M32只有attention/FFN1阶段内常驻循环，QKV/Wo/FFN2仍host cuBLASLt，不满足整层目标。[完整DAG与缺口](../../experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)已登记，整层实现仍待完成。下一M34补设备原语、ready/生命周期与统一执行器，不扩30层，不以新wrapper或多kernel包装宣称完成。
+
+## M34 — 单层统一persistent kernel（未实现）
+
+按上述缺口分设备原语、整层ready执行器、完整精度/状态、强baseline性能四步推进。仅optimized；不修改baseline或投机侧。实际GPU作业另登记有界预算，不沿用M33余额。
 
 engineering_quality_screen=false；independent_test_complete=false；noninferiority_established=false；formal_performance_permission=false。旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据/default A_off不改。
 

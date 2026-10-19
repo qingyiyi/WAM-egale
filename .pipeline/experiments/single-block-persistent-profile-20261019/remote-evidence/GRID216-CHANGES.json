@@ -1,0 +1,12 @@
+[
+  {
+    "file": "attention_tiles.cu",
+    "before": "int workers=std::min(count,worker_limit?std::min(worker_limit,props->multiProcessorCount):props->multiProcessorCount);",
+    "after": "int workers=std::min(count,worker_limit?std::min(worker_limit,2*props->multiProcessorCount):2*props->multiProcessorCount);"
+  },
+  {
+    "file": "ffn_tiles.cu",
+    "before": "int workers=std::min(count,worker_limit?std::min(worker_limit,props->multiProcessorCount):props->multiProcessorCount);",
+    "after": "int workers=std::min(count,worker_limit?std::min(worker_limit,2*props->multiProcessorCount):2*props->multiProcessorCount);"
+  }
+]

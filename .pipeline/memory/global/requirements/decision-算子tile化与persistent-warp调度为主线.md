@@ -14,6 +14,8 @@ sources:
 
 # 当前算子研究目标
 
+范围修正（2026-10-19用户后续澄清）：本轮只做单层，整层统一persistent kernel内部调度全部tile，见[最新约束](requirement-单层Transformer统一persistent内核调度全部tile.md)。下文原30层推进文字仅保留历史，不再是本轮执行或完成门。
+
 用户随后明确授权先实现tile化与persistent kernel，并要求完成后汇报；新M32工作先按真实primitive/完整block/30层门逐级实现与验证。
 
 当前算子方向要研究可设备执行的tile原语，以及persistent kernel内的常驻worker/warp分工与依赖调度。普通host缓存、CUDA Graph、现成batching或只减少几个Python调用不能单独替代这一目标。

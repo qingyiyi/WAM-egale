@@ -1,5 +1,7 @@
 # 当前研究实验
 
+- [M33单层退化归因](single-block-persistent-profile-20261019/RESULT.md)：profile与216 CTA反事实完成；NCU计数UNKNOWN，整层统一kernel尚未实现。
+
 - [M32单层persistent](persistent-tile-remote-20261019/RESULT.md)：有限精度/状态通过，两进程新增性能收益未成立；本轮30层取消。
 
 - [M31隔离optimized与tile子图](transformer-tile-subgraph-20261019/PLAN.md)：明确授权，baseline/共享依赖冻结；实现与必要验证，不含persistent队列。

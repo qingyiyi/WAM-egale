@@ -1,0 +1,3604 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "rows": [
+    {
+      "case": "short-B14-action",
+      "input_path": "/root/cxz/ops/persistent-tile-20261019/workspace/投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-short-B14-action-layer0-first.pt",
+      "profiles": [
+        {
+          "engine": "static",
+          "repetition": 0,
+          "kernels": [
+            {
+              "name": "void wam_optimized_block::table_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float const*, float*, long, int, int, int)",
+              "duration_us": 42.847,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 10,
+                "registers per thread": 28,
+                "shared memory": 0,
+                "blocks per SM": 149.333328,
+                "warps per SM": 1194.666626,
+                "grid": [
+                  16128,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 7.296,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 20,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 10.08,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 44,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "wam_optimized_block::modulation_kernel(float const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 8.831,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 54,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 44.287,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 76,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.704,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 100,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.951,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 122,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.544,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 146,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.951,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 168,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::rope_kernel(c10::BFloat16 const*, c10::complex<float> const*, c10::BFloat16*, long, int, int, int)",
+              "duration_us": 7.68,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 178,
+                "registers per thread": 26,
+                "shared memory": 0,
+                "blocks per SM": 12.444445,
+                "warps per SM": 99.555557,
+                "grid": [
+                  1344,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "wam_optimized_block::rope_kernel(c10::BFloat16 const*, c10::complex<float> const*, c10::BFloat16*, long, int, int, int)",
+              "duration_us": 7.616,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 188,
+                "registers per thread": 26,
+                "shared memory": 0,
+                "blocks per SM": 12.444445,
+                "warps per SM": 99.555557,
+                "grid": [
+                  1344,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "wam_optimized_block::layout_kernel(bool*, long*, bool*, long*, long*, long*, int, int, int, bool, long const*, int, int)",
+              "duration_us": 4.928,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 212,
+                "registers per thread": 246,
+                "shared memory": 34480,
+                "blocks per SM": 0.009259,
+                "warps per SM": 0.037037,
+                "grid": [
+                  1,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::pack_kernel(c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16*, long const*, long const*, int, int, int, int, int, int, bool)",
+              "duration_us": 29.792,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 233,
+                "registers per thread": 34,
+                "shared memory": 0,
+                "blocks per SM": 56.0,
+                "warps per SM": 448.0,
+                "grid": [
+                  6048,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 75
+              }
+            },
+            {
+              "name": "wam_optimized_block::pack_kernel(c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16*, long const*, long const*, int, int, int, int, int, int, bool)",
+              "duration_us": 30.912,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 235,
+                "registers per thread": 34,
+                "shared memory": 0,
+                "blocks per SM": 56.0,
+                "warps per SM": 448.0,
+                "grid": [
+                  6048,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 75
+              }
+            },
+            {
+              "name": "void wam_optimized_sdpa::standard_tiles<false>(wam_tile_flash::Flash_fwd_params)",
+              "duration_us": 74.687,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 254,
+                "registers per thread": 255,
+                "shared memory": 65536,
+                "blocks per SM": 3.111111,
+                "warps per SM": 12.444445,
+                "grid": [
+                  336,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 42.303,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 278,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 11.2,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 288,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 5.76,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 298,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 12.832,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 322,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<float, c10::BFloat16>(float const*, c10::BFloat16*, long)",
+              "duration_us": 5.6,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 332,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 42.079,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 354,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 9.024,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 378,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 713.398,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 399,
+                "registers per thread": 238,
+                "shared memory": 147456,
+                "blocks per SM": 6.222222,
+                "warps per SM": 49.777779,
+                "grid": [
+                  24,
+                  28,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 73.471,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 423,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 66.370369,
+                "warps per SM": 265.481476,
+                "grid": [
+                  7168,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 713.622,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 444,
+                "registers per thread": 238,
+                "shared memory": 147456,
+                "blocks per SM": 6.222222,
+                "warps per SM": 49.777779,
+                "grid": [
+                  24,
+                  28,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_sdpa::standard_tiles<false>(wam_tile_flash::Flash_fwd_params)",
+              "duration_us": 111.615,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 463,
+                "registers per thread": 255,
+                "shared memory": 65536,
+                "blocks per SM": 3.111111,
+                "warps per SM": 12.444445,
+                "grid": [
+                  336,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.952,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 487,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 7.391,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 497,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 5.919,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 507,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 9.951,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 531,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "wam_optimized_block::modulation_kernel(float const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 9.023,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 541,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "_ZN17wam_optimized_ffn11linear_tileIN7cutlass4gemm6kernel4GemmINS2_11threadblock13MmaMultistageINS2_9GemmShapeILi64ELi128ELi64EEENS1_9transform11threadblock28PredicatedTileAccessIteratorINS1_11MatrixShapeILi64ELi64EEENS1_10bfloat16_tENS1_6layout8RowMajorELi1ENS9_29PitchLinearWarpRakedThreadMapINS1_16PitchLinearShapeILi64ELi64EEELi128ENSI_ILi8ELi4EEELi8EEENS1_5ArrayISE_Li8ELb0EEELb0ENSF_9NoPermuteEEENSA_25RegularTileAccessIteratorISD_SE_NSF_37RowMajorTensorOpMultiplicandCrosswiseILi16ELi64EEELi0ESL_Li16EEELNS1_4arch14CacheOperation4KindE1ENSB_INSC_ILi64ELi128EEESE_NSF_11ColumnMajorELi0ENSH_INSI_ILi64ELi128EEELi128ESK_Li8EEESN_Lb0ESO_EENSQ_ISX_SE_NSF_40ColumnMajorTensorOpMultiplicandCrosswiseILi16ELi64EEELi1ES10_Li16EEELSW_1EfSG_NS5_9MmaPolicyINS2_4warp11MmaTensorOpINS7_ILi32ELi64ELi64EEESE_SS_SE_S13_fSG_NS16_17MmaTensorOpPolicyINSU_3MmaINS7_ILi16ELi8ELi16EEELi32ESE_SG_SE_SY_fSG_NSU_13OpMultiplyAddEEENSC_ILi1ELi1EEEEELi1ELb0EbEENSC_ILi0ELi0EEES1H_Li1EEELi3ELNS2_23SharedMemoryClearOptionE0EbEENS1_8epilogue11threadblock8EpilogueIS8_S1G_Li1ENS1M_22PredicatedTileIteratorINS1M_26OutputTileOptimalThreadMapINS1M_15OutputTileShapeILi128ELi8ELi2ELi1ELi1EEENS1Q_ILi1ELi4ELi1ELi1ELi4EEELi128ELi8ELi16EEESE_Lb0ESO_Lb0EEENS1L_4warp24FragmentIteratorTensorOpIS18_S1B_fNSM_IfLi4ELb1EEESG_EENS1V_20TileIteratorTensorOpIS18_S1B_fSG_EENS1M_18SharedLoadIteratorINS1T_18CompactedThreadMapEfLi32EEENS_11RoundedGeluENSC_ILi0ELi8EEELi1ELi1EEENS5_30GemmIdentityThreadblockSwizzleILi1EEELb0EEEEEvNT_6ParamsE",
+              "duration_us": 184.414,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 554,
+                "registers per thread": 154,
+                "shared memory": 73728,
+                "blocks per SM": 4.148148,
+                "warps per SM": 16.592592,
+                "grid": [
+                  4,
+                  112,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 127.71,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 577,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 10.944,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 587,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            }
+          ],
+          "kernel_sum_us": 2508.314,
+          "trace_file": "short-static-0.trace.json",
+          "output_valid_KV_pass": true
+        },
+        {
+          "engine": "static",
+          "repetition": 1,
+          "kernels": [
+            {
+              "name": "void wam_optimized_block::table_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float const*, float*, long, int, int, int)",
+              "duration_us": 41.919,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1333,
+                "registers per thread": 28,
+                "shared memory": 0,
+                "blocks per SM": 149.333328,
+                "warps per SM": 1194.666626,
+                "grid": [
+                  16128,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 7.392,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1343,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 10.304,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1367,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "wam_optimized_block::modulation_kernel(float const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 8.927,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1377,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 43.711,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1399,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.832,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1423,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.919,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1445,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.609,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1469,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.984,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1491,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::rope_kernel(c10::BFloat16 const*, c10::complex<float> const*, c10::BFloat16*, long, int, int, int)",
+              "duration_us": 7.776,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1501,
+                "registers per thread": 26,
+                "shared memory": 0,
+                "blocks per SM": 12.444445,
+                "warps per SM": 99.555557,
+                "grid": [
+                  1344,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "wam_optimized_block::rope_kernel(c10::BFloat16 const*, c10::complex<float> const*, c10::BFloat16*, long, int, int, int)",
+              "duration_us": 7.488,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1511,
+                "registers per thread": 26,
+                "shared memory": 0,
+                "blocks per SM": 12.444445,
+                "warps per SM": 99.555557,
+                "grid": [
+                  1344,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "wam_optimized_block::layout_kernel(bool*, long*, bool*, long*, long*, long*, int, int, int, bool, long const*, int, int)",
+              "duration_us": 4.896,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1535,
+                "registers per thread": 246,
+                "shared memory": 34480,
+                "blocks per SM": 0.009259,
+                "warps per SM": 0.037037,
+                "grid": [
+                  1,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::pack_kernel(c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16*, long const*, long const*, int, int, int, int, int, int, bool)",
+              "duration_us": 29.823,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1556,
+                "registers per thread": 34,
+                "shared memory": 0,
+                "blocks per SM": 56.0,
+                "warps per SM": 448.0,
+                "grid": [
+                  6048,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 75
+              }
+            },
+            {
+              "name": "wam_optimized_block::pack_kernel(c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16*, long const*, long const*, int, int, int, int, int, int, bool)",
+              "duration_us": 31.007,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1558,
+                "registers per thread": 34,
+                "shared memory": 0,
+                "blocks per SM": 56.0,
+                "warps per SM": 448.0,
+                "grid": [
+                  6048,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 75
+              }
+            },
+            {
+              "name": "void wam_optimized_sdpa::standard_tiles<false>(wam_tile_flash::Flash_fwd_params)",
+              "duration_us": 75.999,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1577,
+                "registers per thread": 255,
+                "shared memory": 65536,
+                "blocks per SM": 3.111111,
+                "warps per SM": 12.444445,
+                "grid": [
+                  336,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 42.048,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1601,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 10.752,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1611,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 5.569,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1621,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 12.672,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1645,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<float, c10::BFloat16>(float const*, c10::BFloat16*, long)",
+              "duration_us": 5.664,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1655,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 42.591,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1677,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.544,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1701,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 713.687,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1722,
+                "registers per thread": 238,
+                "shared memory": 147456,
+                "blocks per SM": 6.222222,
+                "warps per SM": 49.777779,
+                "grid": [
+                  24,
+                  28,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 72.767,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1746,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 66.370369,
+                "warps per SM": 265.481476,
+                "grid": [
+                  7168,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 713.687,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1767,
+                "registers per thread": 238,
+                "shared memory": 147456,
+                "blocks per SM": 6.222222,
+                "warps per SM": 49.777779,
+                "grid": [
+                  24,
+                  28,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_sdpa::standard_tiles<false>(wam_tile_flash::Flash_fwd_params)",
+              "duration_us": 110.559,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1786,
+                "registers per thread": 255,
+                "shared memory": 65536,
+                "blocks per SM": 3.111111,
+                "warps per SM": 12.444445,
+                "grid": [
+                  336,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.503,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1810,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 7.616,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1820,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 5.664,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1830,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 9.824,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1854,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "wam_optimized_block::modulation_kernel(float const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 9.12,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1864,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "_ZN17wam_optimized_ffn11linear_tileIN7cutlass4gemm6kernel4GemmINS2_11threadblock13MmaMultistageINS2_9GemmShapeILi64ELi128ELi64EEENS1_9transform11threadblock28PredicatedTileAccessIteratorINS1_11MatrixShapeILi64ELi64EEENS1_10bfloat16_tENS1_6layout8RowMajorELi1ENS9_29PitchLinearWarpRakedThreadMapINS1_16PitchLinearShapeILi64ELi64EEELi128ENSI_ILi8ELi4EEELi8EEENS1_5ArrayISE_Li8ELb0EEELb0ENSF_9NoPermuteEEENSA_25RegularTileAccessIteratorISD_SE_NSF_37RowMajorTensorOpMultiplicandCrosswiseILi16ELi64EEELi0ESL_Li16EEELNS1_4arch14CacheOperation4KindE1ENSB_INSC_ILi64ELi128EEESE_NSF_11ColumnMajorELi0ENSH_INSI_ILi64ELi128EEELi128ESK_Li8EEESN_Lb0ESO_EENSQ_ISX_SE_NSF_40ColumnMajorTensorOpMultiplicandCrosswiseILi16ELi64EEELi1ES10_Li16EEELSW_1EfSG_NS5_9MmaPolicyINS2_4warp11MmaTensorOpINS7_ILi32ELi64ELi64EEESE_SS_SE_S13_fSG_NS16_17MmaTensorOpPolicyINSU_3MmaINS7_ILi16ELi8ELi16EEELi32ESE_SG_SE_SY_fSG_NSU_13OpMultiplyAddEEENSC_ILi1ELi1EEEEELi1ELb0EbEENSC_ILi0ELi0EEES1H_Li1EEELi3ELNS2_23SharedMemoryClearOptionE0EbEENS1_8epilogue11threadblock8EpilogueIS8_S1G_Li1ENS1M_22PredicatedTileIteratorINS1M_26OutputTileOptimalThreadMapINS1M_15OutputTileShapeILi128ELi8ELi2ELi1ELi1EEENS1Q_ILi1ELi4ELi1ELi1ELi4EEELi128ELi8ELi16EEESE_Lb0ESO_Lb0EEENS1L_4warp24FragmentIteratorTensorOpIS18_S1B_fNSM_IfLi4ELb1EEESG_EENS1V_20TileIteratorTensorOpIS18_S1B_fSG_EENS1M_18SharedLoadIteratorINS1T_18CompactedThreadMapEfLi32EEENS_11RoundedGeluENSC_ILi0ELi8EEELi1ELi1EEENS5_30GemmIdentityThreadblockSwizzleILi1EEELb0EEEEEvNT_6ParamsE",
+              "duration_us": 184.542,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1877,
+                "registers per thread": 154,
+                "shared memory": 73728,
+                "blocks per SM": 4.148148,
+                "warps per SM": 16.592592,
+                "grid": [
+                  4,
+                  112,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 128.671,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1900,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 10.976,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 1910,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            }
+          ],
+          "kernel_sum_us": 2507.042,
+          "trace_file": "short-static-1.trace.json",
+          "output_valid_KV_pass": true
+        },
+        {
+          "engine": "P108",
+          "repetition": 0,
+          "kernels": [
+            {
+              "name": "void wam_optimized_block::table_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float const*, float*, long, int, int, int)",
+              "duration_us": 42.464,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5273,
+                "registers per thread": 28,
+                "shared memory": 0,
+                "blocks per SM": 149.333328,
+                "warps per SM": 1194.666626,
+                "grid": [
+                  16128,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 7.456,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5283,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 10.048,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5307,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "wam_optimized_block::modulation_kernel(float const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 8.8,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5317,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 43.967,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5339,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.767,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5363,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.888,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5385,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.64,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5409,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 42.016,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5431,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::rope_kernel(c10::BFloat16 const*, c10::complex<float> const*, c10::BFloat16*, long, int, int, int)",
+              "duration_us": 7.808,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5441,
+                "registers per thread": 26,
+                "shared memory": 0,
+                "blocks per SM": 12.444445,
+                "warps per SM": 99.555557,
+                "grid": [
+                  1344,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "wam_optimized_block::rope_kernel(c10::BFloat16 const*, c10::complex<float> const*, c10::BFloat16*, long, int, int, int)",
+              "duration_us": 7.584,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5451,
+                "registers per thread": 26,
+                "shared memory": 0,
+                "blocks per SM": 12.444445,
+                "warps per SM": 99.555557,
+                "grid": [
+                  1344,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "wam_optimized_block::layout_kernel(bool*, long*, bool*, long*, long*, long*, int, int, int, bool, long const*, int, int)",
+              "duration_us": 4.959,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5475,
+                "registers per thread": 246,
+                "shared memory": 34480,
+                "blocks per SM": 0.009259,
+                "warps per SM": 0.037037,
+                "grid": [
+                  1,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::pack_kernel(c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16*, long const*, long const*, int, int, int, int, int, int, bool)",
+              "duration_us": 29.888,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5496,
+                "registers per thread": 34,
+                "shared memory": 0,
+                "blocks per SM": 56.0,
+                "warps per SM": 448.0,
+                "grid": [
+                  6048,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 75
+              }
+            },
+            {
+              "name": "wam_optimized_block::pack_kernel(c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16*, long const*, long const*, int, int, int, int, int, int, bool)",
+              "duration_us": 31.455,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5498,
+                "registers per thread": 34,
+                "shared memory": 0,
+                "blocks per SM": 56.0,
+                "warps per SM": 448.0,
+                "grid": [
+                  6048,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 75
+              }
+            },
+            {
+              "name": "void wam_optimized_sdpa::persistent_attention<false, false>(wam_tile_flash::Flash_fwd_params, int, int*)",
+              "duration_us": 100.128,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5517,
+                "registers per thread": 255,
+                "shared memory": 65536,
+                "blocks per SM": 1.0,
+                "warps per SM": 4.0,
+                "grid": [
+                  108,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.759,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5541,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 10.848,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5551,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 5.984,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5561,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 12.864,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5585,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<float, c10::BFloat16>(float const*, c10::BFloat16*, long)",
+              "duration_us": 5.664,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5595,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.759,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5617,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 9.152,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5641,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 713.85,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5662,
+                "registers per thread": 238,
+                "shared memory": 147456,
+                "blocks per SM": 6.222222,
+                "warps per SM": 49.777779,
+                "grid": [
+                  24,
+                  28,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 72.831,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5686,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 66.370369,
+                "warps per SM": 265.481476,
+                "grid": [
+                  7168,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 713.594,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5707,
+                "registers per thread": 238,
+                "shared memory": 147456,
+                "blocks per SM": 6.222222,
+                "warps per SM": 49.777779,
+                "grid": [
+                  24,
+                  28,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_sdpa::persistent_attention<false, false>(wam_tile_flash::Flash_fwd_params, int, int*)",
+              "duration_us": 146.815,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5726,
+                "registers per thread": 255,
+                "shared memory": 65536,
+                "blocks per SM": 1.0,
+                "warps per SM": 4.0,
+                "grid": [
+                  108,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.92,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5750,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 7.808,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5760,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 5.856,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5770,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 9.984,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5794,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "wam_optimized_block::modulation_kernel(float const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 9.088,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5804,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "_ZN17wam_optimized_ffn17persistent_linearIN7cutlass4gemm6kernel4GemmINS2_11threadblock13MmaMultistageINS2_9GemmShapeILi64ELi128ELi64EEENS1_9transform11threadblock28PredicatedTileAccessIteratorINS1_11MatrixShapeILi64ELi64EEENS1_10bfloat16_tENS1_6layout8RowMajorELi1ENS9_29PitchLinearWarpRakedThreadMapINS1_16PitchLinearShapeILi64ELi64EEELi128ENSI_ILi8ELi4EEELi8EEENS1_5ArrayISE_Li8ELb0EEELb0ENSF_9NoPermuteEEENSA_25RegularTileAccessIteratorISD_SE_NSF_37RowMajorTensorOpMultiplicandCrosswiseILi16ELi64EEELi0ESL_Li16EEELNS1_4arch14CacheOperation4KindE1ENSB_INSC_ILi64ELi128EEESE_NSF_11ColumnMajorELi0ENSH_INSI_ILi64ELi128EEELi128ESK_Li8EEESN_Lb0ESO_EENSQ_ISX_SE_NSF_40ColumnMajorTensorOpMultiplicandCrosswiseILi16ELi64EEELi1ES10_Li16EEELSW_1EfSG_NS5_9MmaPolicyINS2_4warp11MmaTensorOpINS7_ILi32ELi64ELi64EEESE_SS_SE_S13_fSG_NS16_17MmaTensorOpPolicyINSU_3MmaINS7_ILi16ELi8ELi16EEELi32ESE_SG_SE_SY_fSG_NSU_13OpMultiplyAddEEENSC_ILi1ELi1EEEEELi1ELb0EbEENSC_ILi0ELi0EEES1H_Li1EEELi3ELNS2_23SharedMemoryClearOptionE0EbEENS1_8epilogue11threadblock8EpilogueIS8_S1G_Li1ENS1M_22PredicatedTileIteratorINS1M_26OutputTileOptimalThreadMapINS1M_15OutputTileShapeILi128ELi8ELi2ELi1ELi1EEENS1Q_ILi1ELi4ELi1ELi1ELi4EEELi128ELi8ELi16EEESE_Lb0ESO_Lb0EEENS1L_4warp24FragmentIteratorTensorOpIS18_S1B_fNSM_IfLi4ELb1EEESG_EENS1V_20TileIteratorTensorOpIS18_S1B_fSG_EENS1M_18SharedLoadIteratorINS1T_18CompactedThreadMapEfLi32EEENS_11RoundedGeluENSC_ILi0ELi8EEELi1ELi1EEENS5_30GemmIdentityThreadblockSwizzleILi1EEELb0EEEEEvNT_6ParamsEiPi",
+              "duration_us": 235.966,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5817,
+                "registers per thread": 168,
+                "shared memory": 73728,
+                "blocks per SM": 1.0,
+                "warps per SM": 4.0,
+                "grid": [
+                  108,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 127.839,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5840,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 10.816,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 5850,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            }
+          ],
+          "kernel_sum_us": 2620.265,
+          "trace_file": "short-P108-0.trace.json",
+          "output_valid_KV_pass": true
+        },
+        {
+          "engine": "P108",
+          "repetition": 1,
+          "kernels": [
+            {
+              "name": "void wam_optimized_block::table_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float const*, float*, long, int, int, int)",
+              "duration_us": 42.207,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6594,
+                "registers per thread": 28,
+                "shared memory": 0,
+                "blocks per SM": 149.333328,
+                "warps per SM": 1194.666626,
+                "grid": [
+                  16128,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 7.648,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6604,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 10.048,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6628,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "wam_optimized_block::modulation_kernel(float const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 8.864,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6638,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 43.84,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6660,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.703,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6684,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.567,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6706,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.672,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6730,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.792,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6752,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::rope_kernel(c10::BFloat16 const*, c10::complex<float> const*, c10::BFloat16*, long, int, int, int)",
+              "duration_us": 7.839,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6762,
+                "registers per thread": 26,
+                "shared memory": 0,
+                "blocks per SM": 12.444445,
+                "warps per SM": 99.555557,
+                "grid": [
+                  1344,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "wam_optimized_block::rope_kernel(c10::BFloat16 const*, c10::complex<float> const*, c10::BFloat16*, long, int, int, int)",
+              "duration_us": 7.424,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6772,
+                "registers per thread": 26,
+                "shared memory": 0,
+                "blocks per SM": 12.444445,
+                "warps per SM": 99.555557,
+                "grid": [
+                  1344,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "wam_optimized_block::layout_kernel(bool*, long*, bool*, long*, long*, long*, int, int, int, bool, long const*, int, int)",
+              "duration_us": 4.992,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6796,
+                "registers per thread": 246,
+                "shared memory": 34480,
+                "blocks per SM": 0.009259,
+                "warps per SM": 0.037037,
+                "grid": [
+                  1,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::pack_kernel(c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16*, long const*, long const*, int, int, int, int, int, int, bool)",
+              "duration_us": 29.983,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6817,
+                "registers per thread": 34,
+                "shared memory": 0,
+                "blocks per SM": 56.0,
+                "warps per SM": 448.0,
+                "grid": [
+                  6048,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 75
+              }
+            },
+            {
+              "name": "wam_optimized_block::pack_kernel(c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16*, long const*, long const*, int, int, int, int, int, int, bool)",
+              "duration_us": 31.36,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6819,
+                "registers per thread": 34,
+                "shared memory": 0,
+                "blocks per SM": 56.0,
+                "warps per SM": 448.0,
+                "grid": [
+                  6048,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 75
+              }
+            },
+            {
+              "name": "void wam_optimized_sdpa::persistent_attention<false, false>(wam_tile_flash::Flash_fwd_params, int, int*)",
+              "duration_us": 100.895,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6838,
+                "registers per thread": 255,
+                "shared memory": 65536,
+                "blocks per SM": 1.0,
+                "warps per SM": 4.0,
+                "grid": [
+                  108,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 42.047,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6862,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 10.623,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6872,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 5.728,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6882,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 13.12,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6906,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<float, c10::BFloat16>(float const*, c10::BFloat16*, long)",
+              "duration_us": 5.664,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6916,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 42.015,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6938,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 8.704,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6962,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 713.881,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 6983,
+                "registers per thread": 238,
+                "shared memory": 147456,
+                "blocks per SM": 6.222222,
+                "warps per SM": 49.777779,
+                "grid": [
+                  24,
+                  28,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<c10::BFloat16, float, true>(int, float, c10::BFloat16 const*, c10::BFloat16 const*, c10::BFloat16 const*, float*, float*, c10::BFloat16*)",
+              "duration_us": 73.056,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7007,
+                "registers per thread": 22,
+                "shared memory": 24,
+                "blocks per SM": 66.370369,
+                "warps per SM": 265.481476,
+                "grid": [
+                  7168,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 713.912,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7028,
+                "registers per thread": 238,
+                "shared memory": 147456,
+                "blocks per SM": 6.222222,
+                "warps per SM": 49.777779,
+                "grid": [
+                  24,
+                  28,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "void wam_optimized_sdpa::persistent_attention<false, false>(wam_tile_flash::Flash_fwd_params, int, int*)",
+              "duration_us": 147.007,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7047,
+                "registers per thread": 255,
+                "shared memory": 65536,
+                "blocks per SM": 1.0,
+                "warps per SM": 4.0,
+                "grid": [
+                  108,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 41.887,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7071,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 7.648,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7081,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_block::cast_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float*, long)",
+              "duration_us": 5.76,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7091,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "void wam_optimized_norm::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)",
+              "duration_us": 9.728,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7115,
+                "registers per thread": 38,
+                "shared memory": 24,
+                "blocks per SM": 2.074074,
+                "warps per SM": 8.296296,
+                "grid": [
+                  224,
+                  1,
+                  1
+                ],
+                "block": [
+                  32,
+                  4,
+                  1
+                ],
+                "est. achieved occupancy %": 13
+              }
+            },
+            {
+              "name": "wam_optimized_block::modulation_kernel(float const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 9.088,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7125,
+                "registers per thread": 16,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            },
+            {
+              "name": "_ZN17wam_optimized_ffn17persistent_linearIN7cutlass4gemm6kernel4GemmINS2_11threadblock13MmaMultistageINS2_9GemmShapeILi64ELi128ELi64EEENS1_9transform11threadblock28PredicatedTileAccessIteratorINS1_11MatrixShapeILi64ELi64EEENS1_10bfloat16_tENS1_6layout8RowMajorELi1ENS9_29PitchLinearWarpRakedThreadMapINS1_16PitchLinearShapeILi64ELi64EEELi128ENSI_ILi8ELi4EEELi8EEENS1_5ArrayISE_Li8ELb0EEELb0ENSF_9NoPermuteEEENSA_25RegularTileAccessIteratorISD_SE_NSF_37RowMajorTensorOpMultiplicandCrosswiseILi16ELi64EEELi0ESL_Li16EEELNS1_4arch14CacheOperation4KindE1ENSB_INSC_ILi64ELi128EEESE_NSF_11ColumnMajorELi0ENSH_INSI_ILi64ELi128EEELi128ESK_Li8EEESN_Lb0ESO_EENSQ_ISX_SE_NSF_40ColumnMajorTensorOpMultiplicandCrosswiseILi16ELi64EEELi1ES10_Li16EEELSW_1EfSG_NS5_9MmaPolicyINS2_4warp11MmaTensorOpINS7_ILi32ELi64ELi64EEESE_SS_SE_S13_fSG_NS16_17MmaTensorOpPolicyINSU_3MmaINS7_ILi16ELi8ELi16EEELi32ESE_SG_SE_SY_fSG_NSU_13OpMultiplyAddEEENSC_ILi1ELi1EEEEELi1ELb0EbEENSC_ILi0ELi0EEES1H_Li1EEELi3ELNS2_23SharedMemoryClearOptionE0EbEENS1_8epilogue11threadblock8EpilogueIS8_S1G_Li1ENS1M_22PredicatedTileIteratorINS1M_26OutputTileOptimalThreadMapINS1M_15OutputTileShapeILi128ELi8ELi2ELi1ELi1EEENS1Q_ILi1ELi4ELi1ELi1ELi4EEELi128ELi8ELi16EEESE_Lb0ESO_Lb0EEENS1L_4warp24FragmentIteratorTensorOpIS18_S1B_fNSM_IfLi4ELb1EEESG_EENS1V_20TileIteratorTensorOpIS18_S1B_fSG_EENS1M_18SharedLoadIteratorINS1T_18CompactedThreadMapEfLi32EEENS_11RoundedGeluENSC_ILi0ELi8EEELi1ELi1EEENS5_30GemmIdentityThreadblockSwizzleILi1EEELb0EEEEEvNT_6ParamsEiPi",
+              "duration_us": 236.093,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7138,
+                "registers per thread": 168,
+                "shared memory": 73728,
+                "blocks per SM": 1.0,
+                "warps per SM": 4.0,
+                "grid": [
+                  108,
+                  1,
+                  1
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+              "duration_us": 128.031,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7161,
+                "registers per thread": 246,
+                "shared memory": 98304,
+                "blocks per SM": 0.888889,
+                "warps per SM": 3.555556,
+                "grid": [
+                  24,
+                  2,
+                  2
+                ],
+                "block": [
+                  128,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 0
+              }
+            },
+            {
+              "name": "wam_optimized_block::residual_kernel(c10::BFloat16 const*, c10::BFloat16 const*, float const*, c10::BFloat16*, long, int, int)",
+              "duration_us": 10.975,
+              "args": {
+                "queued": 0,
+                "device": 0,
+                "context": 1,
+                "stream": 7,
+                "correlation": 7171,
+                "registers per thread": 20,
+                "shared memory": 0,
+                "blocks per SM": 24.888889,
+                "warps per SM": 199.111115,
+                "grid": [
+                  2688,
+                  1,
+                  1
+                ],
+                "block": [
+                  256,
+                  1,
+                  1
+                ],
+                "est. achieved occupancy %": 100
+              }
+            }
+          ],
+          "kernel_sum_us": 2620.801,
+          "trace_file": "short-P108-1.trace.json",
+          "output_valid_KV_pass": true
+        }
+      ],
+      "raw_timing": []
+    }
+  ],
+  "block_forward_intents": 10,
+  "resources": [
+    {
+      "gpu": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 0, 40339, 0",
+      "pids": ""
+    },
+    {
+      "gpu": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 739, 39600, 10",
+      "pids": "859300"
+    }
+  ],
+  "kind": "ONE_GRID_COUNTERFACTUAL_NOT_WHOLE_LAYER_PERSISTENT",
+  "profile_time_not_formal": true,
+  "context_pids": [
+    "859300"
+  ],
+  "variant_library": "/root/cxz/ops/single-block-profile-20261019/grid216/m33_grid216_cuda.cpython-312-x86_64-linux-gnu.so",
+  "error": "AcceleratorError(\"CUDA error: invalid argument\\nSearch for `cudaErrorInvalidValue' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\\n\")",
+  "native_binding_restored": true,
+  "lifecycle_seconds": 9.246504462324083
+}

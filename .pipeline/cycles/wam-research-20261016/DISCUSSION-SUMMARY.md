@@ -7,7 +7,11 @@ updated: '2026-10-19T21:08:07.097619+08:00'
 
 用户最新要求只实现一层完整Transformer block，在这一层内做tile和persistent；取消本轮30层迁移/验证，不以完整30层作为完成门。实现与有限验证放BAAI ~/cxz，未来最终E2E在本机。baseline连同共享依赖冻结，优化只在独立optimized。
 
-M32已实现阶段内部常驻CTA循环并通过有限精度/状态门；探索计时反而慢，B14相对同开FFN1静态路径慢4.42%–6.26%。没有整层单kernel、跨阶段ready/warp专职分工或MegaTransformer加速结论。后续坚持真实self/cross/FFN依赖，只讨论有复用价值的单层tile调度；M33新GPU作业未启动。
+[M33实际profile](../../experiments/single-block-persistent-profile-20261019/RESULT.md)完成。B14长KV静态/阶段内persistent均34 kernel，增量207.072us由self/cross attention与FFN1合计207.2425us解释。108 CTA上限低于理论2 CTA/SM容量；隔离216 CTA反事实使B14短中长相对静态退化从4.154%/4.781%/5.459%降到0.726%/0.474%/0.179%，没有新增加速。不锁时钟，跨case绝对时间非单调，不能作正式性能。
+
+九真实block×四模式两次profile（153调用）、有效三B14反事实112调用，输出/有效KV/RNG通过。NCU权限失败，实测occupancy/L2/DRAM UNKNOWN；两个扩展身份/符号实施失败保留，第三attempt隔离后完成。五GPU job生命周期81.856秒、293 block尝试含失败、0full30/0episode；22:53两GPU无进程，全部owned退出，新证据42.91MiB。baseline及依赖88项不变。
+
+用户要求的是**整个单层统一persistent kernel，内部warp组调度全部tile**。当前M32只有attention/FFN1阶段内常驻循环，QKV/Wo/FFN2仍host cuBLASLt，不满足整层目标。[完整DAG与缺口](../../experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)已登记，整层实现仍待完成。下一M34补设备原语、ready/生命周期与统一执行器，不扩30层，不以新wrapper或多kernel包装宣称完成。
 
 用户问CUDA13.x是否可用，不等于批准驱动升级。本机595.71.05，远端535.161.08；常规CUDA13要求driver≥580，本轮保持独立CUDA12.4工具链/cu126 wheel。
 
