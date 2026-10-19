@@ -11,7 +11,7 @@ FIXTURES = ROOT / '投机采样/results/runtime/p0-operator-torch-alignment-v2-2
 CHECKPOINT = ROOT / 'models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer'
 
 
-def load_block():
+def load_block(device='cuda'):
     sys.path.insert(0, str(ROOT / '投机采样/wam-p0-worktree'))
     from wan_va.modules.model import WanTransformerBlock
     config = json.loads((CHECKPOINT / 'config.json').read_text())
@@ -28,4 +28,9 @@ def load_block():
             ffn_dim=config['ffn_dim'], num_heads=config['num_attention_heads'],
             cross_attn_norm=config['cross_attn_norm'], eps=config['eps'], attn_mode='torch')
     block.load_state_dict(state, strict=True, assign=True)
-    return block.to('cuda').eval().requires_grad_(False)
+    # Match the model's actual from_pretrained keep-in-FP32 policy. Weight
+    # values come from the same checkpoint; do not downcast the original model.
+    for name,parameter in block.named_parameters():
+        if name=='scale_shift_table' or name.startswith('norm2.'):
+            parameter.data=parameter.data.float()
+    return block.to(device).eval().requires_grad_(False)

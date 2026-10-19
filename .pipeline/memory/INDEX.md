@@ -4,6 +4,12 @@
 
 ## 当前资源偏好
 
+- [完整native block有限对齐](global/knowledge/knowledge-完整native-block有限对齐.md)（reference，M28）：完整顺序原生链、六actual30有限逐位与两进程动态block齐；最强B14/Graph及闭环尚未验。
+- [投机去噪近邻与创新边界](global/knowledge/knowledge-投机去噪近邻与创新边界.md)（reference，2026-10-19）：直接先例已核验；潜在新增调度仍需强baseline与有效提交成本证据。
+- [完整block基线与优化版均为原生算子](global/requirements/decision-完整block基线与优化版均改为原生算子.md)（constraint，当前算子）：最新范围扩展；归档旧baseline后可改造，先完整顺序原生链，再对齐精度/性能；投机与原tile不改。
+
+- [优先定位短KV与B14算子性能回归](global/requirements/feedback-优先定位短KV与B14算子性能回归.md)（constraint，本轮算子）：逐点对照固定Torch调用链定位慢点，保留原始计时；不预设根因。
+
 - [算子先完成强基线profile与设备原语](global/requirements/decision-算子先完成强基线profile与设备原语验证.md)（constraint，当前1/2）：用户已同意执行并要求结果和源码讲解；后续scheduler另阶段。
 
 - [远端并行评估自动接续、本机聚焦算子](global/requirements/preference-远端并行评估自动接续并聚焦本机算子.md)（guideline，当前剩余评估）：核资源与状态隔离后最多每卡两个worker，确认实际自动派发；原预算与科学边界不变。

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/rjs/cxz/论文探索/算子研究/tools/verify_native_states.py", line 84, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/rjs/cxz/论文探索/算子研究/tools/verify_native_states.py", line 44, in main
+    fixture=BlockFixture(path,device_tree(raw));arguments,kwargs=fixture.arguments()
+                                                                 ^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/算子研究/tools/fixtures.py", line 98, in arguments
+    kwargs = dict(self.data["block_kwargs"])
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'block_kwargs'

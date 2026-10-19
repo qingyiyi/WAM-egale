@@ -1,0 +1,460 @@
+running build_ext
+W1019 15:12:07.808000 3701328 site-packages/torch/utils/cpp_extension.py:521] The detected CUDA version (12.4) has a minor version mismatch with the version that was used to compile PyTorch (12.6). Most likely this shouldn't be a problem.
+W1019 15:12:07.809000 3701328 site-packages/torch/utils/cpp_extension.py:531] There are no /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-c++ version bounds defined for CUDA version 12.4
+building 'wam_block_cuda' extension
+[1/1] /usr/local/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o'.d -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/usr/local/cuda-12.4/include -I/rjs/cxz/miniconda3/envs/va/include/python3.12 -c -c '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.cu' -o '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_block_cuda -gencode=arch=compute_80,code=sm_80 -ccbin /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-cc -std=c++17
+FAILED: /rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o 
+/usr/local/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o'.d -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/usr/local/cuda-12.4/include -I/rjs/cxz/miniconda3/envs/va/include/python3.12 -c -c '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.cu' -o '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_block_cuda -gencode=arch=compute_80,code=sm_80 -ccbin /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-cc -std=c++17
+nvcc warning : incompatible redefinition for option 'compiler-bindir', the last value of this option was used
+/usr/local/cuda-12.4/include/cub/thread/thread_reduce.cuh(70): error: expected a "," or ">"
+            typename AccumT = detail::accumulator_t<ReductionOp, PrefixT, T>>
+                                                                           ^
+
+/usr/local/cuda-12.4/include/cub/thread/thread_reduce.cuh(70): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::detail" has no member "accumulator_t"
+            typename AccumT = detail::accumulator_t<ReductionOp, PrefixT, T>>
+                                      ^
+
+/usr/local/cuda-12.4/include/cub/thread/thread_reduce.cuh(70): error: expected a "," or ">"
+            typename AccumT = detail::accumulator_t<ReductionOp, PrefixT, T>>
+                                                   ^
+
+/usr/local/cuda-12.4/include/cub/thread/thread_reduce.cuh(73): error: expected a declaration
+  {
+  ^
+
+/usr/local/cuda-12.4/include/cub/thread/thread_reduce.cuh(73): error: expected a ";"
+  {
+  ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(1118): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+          T thread_prefix = internal::ThreadReduce(input, scan_op);
+                                      ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(1202): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+          T thread_prefix = internal::ThreadReduce(input, scan_op);
+                                      ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(1333): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+          T thread_prefix = internal::ThreadReduce(input, scan_op);
+                                      ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(1456): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+          T thread_partial = internal::ThreadReduce(input, scan_op);
+                                       ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(1505): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+          T thread_partial = internal::ThreadReduce(input, scan_op);
+                                       ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(1793): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+              T thread_prefix = internal::ThreadReduce(input, scan_op);
+                                          ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(1875): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+              T thread_prefix = internal::ThreadReduce(input, scan_op);
+                                          ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(2008): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+              T thread_prefix = internal::ThreadReduce(input, scan_op);
+                                          ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(2333): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+              T thread_prefix = internal::ThreadReduce(input, scan_op);
+                                          ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(2420): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+              T thread_prefix = internal::ThreadReduce(input, scan_op);
+                                          ^
+
+/usr/local/cuda-12.4/include/cub/block/block_scan.cuh(2558): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+              T thread_prefix = internal::ThreadReduce(input, scan_op);
+                                          ^
+
+/usr/local/cuda-12.4/include/cub/block/radix_rank_sort_operations.cuh(238): error: invoke_result_t is not a template
+    is_tuple_of_references_to_fundamental_types_t<invoke_result_t<DecomposerT, KeyT &>>;
+                                                  ^
+
+/usr/local/cuda-12.4/include/cub/block/block_radix_rank.cuh(359): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+          return internal::ThreadReduce<RAKING_SEGMENT>(raking_ptr, Sum());
+                           ^
+
+/usr/local/cuda-12.4/include/cub/block/block_radix_rank.cuh(1088): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+                      bins[u] = internal::ThreadReduce(warp_histograms[bin], Sum());
+                                          ^
+
+/usr/local/cuda-12.4/include/cub/util_math.cuh(88): error: namespace "at_cuda_detail::cub" has no member "min"
+    return (cub::min)(nominal_4b_items_per_thread,
+                 ^
+
+/usr/local/cuda-12.4/include/cub/util_math.cuh(89): error: namespace "at_cuda_detail::cub" has no member "max"
+                      (cub::max)(1,
+                            ^
+
+/usr/local/cuda-12.4/include/cub/util_math.cuh(98): error: namespace "at_cuda_detail::cub" has no member "min"
+    return (cub::min)(nominal_4b_items_per_thread,
+                 ^
+
+/usr/local/cuda-12.4/include/cub/util_math.cuh(99): error: namespace "at_cuda_detail::cub" has no member "max"
+                      (cub::max)(1,
+                            ^
+
+/usr/local/cuda-12.4/include/cub/util_math.cuh(110): error: namespace "at_cuda_detail::cub" has no member "min"
+             : (cub::min)(nominal_8b_items_per_thread,
+                     ^
+
+/usr/local/cuda-12.4/include/cub/util_math.cuh(111): error: namespace "at_cuda_detail::cub" has no member "max"
+                          (cub::max)(1,
+                                ^
+
+/usr/local/cuda-12.4/include/cub/block/block_merge_sort.cuh(67): error: namespace "at_cuda_detail::cub" has no member "min"
+    OffsetT keys1_end = (cub::min)(diag, keys1_count);
+                              ^
+
+/usr/local/cuda-12.4/include/cub/block/block_merge_sort.cuh(449): error: namespace "at_cuda_detail::cub" has no member "min"
+          (cub::min)(valid_items,
+                ^
+
+/usr/local/cuda-12.4/include/cub/block/block_merge_sort.cuh(452): error: namespace "at_cuda_detail::cub" has no member "min"
+        int keys1_beg = (cub::min)(valid_items, start);
+                              ^
+
+/usr/local/cuda-12.4/include/cub/block/block_merge_sort.cuh(453): error: namespace "at_cuda_detail::cub" has no member "min"
+        int keys1_end = (cub::min)(valid_items, keys1_beg + size);
+                              ^
+
+/usr/local/cuda-12.4/include/cub/block/block_merge_sort.cuh(455): error: namespace "at_cuda_detail::cub" has no member "min"
+        int keys2_end = (cub::min)(valid_items, keys2_beg + size);
+                              ^
+
+/usr/local/cuda-12.4/include/cub/block/specializations/block_reduce_raking_commutative_only.cuh(176): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+                  partial = internal::ThreadReduce<SEGMENT_LENGTH>(raking_segment, cub::Sum(), partial);
+                                      ^
+
+/usr/local/cuda-12.4/include/cub/block/specializations/block_reduce_raking_commutative_only.cuh(220): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+                  partial = internal::ThreadReduce<SEGMENT_LENGTH>(raking_segment, reduction_op, partial);
+                                      ^
+
+/usr/local/cuda-12.4/include/cub/block/block_reduce.cuh(448): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+          T partial = internal::ThreadReduce(inputs, reduction_op);
+                                ^
+
+/usr/local/cuda-12.4/include/cub/block/block_reduce.cuh(605): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::internal" has no member "ThreadReduce"
+          T partial = internal::ThreadReduce(inputs, cub::Sum());
+                                ^
+
+/usr/local/cuda-12.4/include/cub/util_temporary_storage.cuh(108): error: namespace "at_cuda_detail::cub" has no member "Debug"
+                ::Debug((cudaError_t) (cudaErrorInvalidValue), "/usr/local/cuda-12.4/include/cub/util_temporary_storage.cuh", 108);
+                  ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(89): error: namespace "at_cuda_detail::cub" has no member "Debug"
+         ::Debug((cudaError_t) (cudaGetDevice(&device)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 89)) return -1;
+           ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(108): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (cudaSetDevice(new_device)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 108);
+               ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(114): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (cudaSetDevice(old_device)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 114);
+               ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(125): error: namespace "at_cuda_detail::cub" has no member "Debug"
+         ::Debug((cudaError_t) (cudaGetDeviceCount(&count)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 125))
+           ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(309): error: namespace "at_cuda_detail::cub" has no member "Debug"
+     ::Debug((cudaError_t) (cudaFuncGetAttributes(&empty_kernel_attrs, reinterpret_cast<void*>(empty_kernel))), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 314); ptx_version = empty_kernel_attrs.ptxVersion * 10; }
+       ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(371): error: namespace "at_cuda_detail::cub" has no member "Debug"
+          ::Debug((cudaError_t) (payload.error), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 371))
+            ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(387): error: namespace "at_cuda_detail::cub" has no member "Debug"
+   ::Debug((cudaError_t) (payload.error), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 397)) { ptx_version = payload.attribute; } result = payload.error; }
+     ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(420): error: namespace "at_cuda_detail::cub" has no member "Debug"
+                 ::Debug((cudaError_t) (cudaDeviceGetAttribute(&major, cudaDevAttrComputeCapabilityMajor, device)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 420);
+                   ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(426): error: namespace "at_cuda_detail::cub" has no member "Debug"
+                 ::Debug((cudaError_t) (cudaDeviceGetAttribute(&minor, cudaDevAttrComputeCapabilityMinor, device)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 426);
+                   ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(450): error: namespace "at_cuda_detail::cub" has no member "Debug"
+   ::Debug((cudaError_t) (payload.error), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 459)) { sm_version = payload.attribute; }; result = payload.error; }
+     ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(480): error: namespace "at_cuda_detail::cub" has no member "Debug"
+   ::Debug((cudaError_t) (cudaStreamSynchronize(stream)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 481); }
+     ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(552): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (cudaGetDevice(&device)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 552);
+               ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(559): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (cudaDeviceGetAttribute(&uva, cudaDevAttrUnifiedAddressing, device)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 559);
+               ^
+
+/usr/local/cuda-12.4/include/cub/util_device.cuh(619): error: namespace "at_cuda_detail::cub" has no member "Debug"
+            ::Debug((cudaError_t) (cudaOccupancyMaxActiveBlocksPerMultiprocessor( &max_sm_occupancy, kernel_ptr, block_threads, dynamic_smem_bytes)), "/usr/local/cuda-12.4/include/cub/util_device.cuh", 619)
+              ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/util.h(109): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "SyncStream"
+    return cub::SyncStream(stream(policy));
+                ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(531): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "CacheModifiedInputIterator"
+          cub::CacheModifiedInputIterator<PtxPlan::LOAD_MODIFIER,
+               ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(531): error: too few arguments for class template "thrust::THRUST_200301_800_NS::detail::conditional"
+          cub::CacheModifiedInputIterator<PtxPlan::LOAD_MODIFIER,
+                                         ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(531): error: expected an identifier
+          cub::CacheModifiedInputIterator<PtxPlan::LOAD_MODIFIER,
+                                         ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(533): error: expected a ";"
+                                          size_type>,
+                                                   ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(573): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "BlockLoad"
+      using type = cub::BlockLoad<T,
+                        ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(573): error: expected a ";"
+      using type = cub::BlockLoad<T,
+                                 ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(590): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "BlockStore"
+      using type = cub::BlockStore<T,
+                        ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(590): error: expected a ";"
+      using type = cub::BlockStore<T,
+                                  ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(631): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "PtxVersion"
+      if (cub::PtxVersion(ptx_version) != cudaSuccess)
+               ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(634): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "CurrentDevice"
+        const int current_device = cub::CurrentDevice();
+                                        ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(684): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "SyncStream"
+      return cub::SyncStream(stream);
+                  ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(689): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "CTA_SYNC"
+      cub::CTA_SYNC();
+           ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(705): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "UnitWord"
+      typedef typename cub::UnitWord<T>::DeviceWord DeviceWord;
+                            ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(705): error: expected an identifier
+      typedef typename cub::UnitWord<T>::DeviceWord DeviceWord;
+                                    ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(709): error: identifier "DeviceWord" is undefined
+        WORDS = sizeof(T) / sizeof(DeviceWord)
+                                   ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(712): error: "DeviceWord" is not a type name
+      DeviceWord storage[WORDS];
+      ^
+
+/usr/local/cuda-12.4/include/thrust/system/cuda/detail/core/util.h(797): error: namespace "thrust::THRUST_200301_800_NS::cub" has no member "AliasTemporaries"
+      return cub::AliasTemporaries(storage_ptr,
+                  ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh(84): error: namespace "at_cuda_detail::cub::CUB_200301_800_NS::detail" has no member "invoke_result_t"
+    using OutputT = detail::invoke_result_t<DifferenceOpT, InputT, InputT>;
+                            ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh(84): error: expected a ";"
+    using OutputT = detail::invoke_result_t<DifferenceOpT, InputT, InputT>;
+                                           ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh(225): error: namespace "at_cuda_detail::cub" has no member "Debug"
+               ::Debug((cudaError_t) (AliasTemporaries(d_temp_storage, temp_storage_bytes, allocations, allocation_sizes)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh", 225)
+                 ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh(282): error: namespace "at_cuda_detail::cub" has no member "Debug"
+                 ::Debug((cudaError_t) (detail::DebugSyncStream(stream)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh", 282);
+                   ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh(290): error: namespace "at_cuda_detail::cub" has no member "Debug"
+                 ::Debug((cudaError_t) (cudaPeekAtLastError()), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh", 290);
+                   ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh(324): error: namespace "at_cuda_detail::cub" has no member "Debug"
+               ::Debug((cudaError_t) (detail::DebugSyncStream(stream)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh", 324);
+                 ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh(332): error: namespace "at_cuda_detail::cub" has no member "Debug"
+               ::Debug((cudaError_t) (cudaPeekAtLastError()), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh", 332);
+                 ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh(358): error: namespace "at_cuda_detail::cub" has no member "Debug"
+               ::Debug((cudaError_t) (PtxVersion(ptx_version)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh", 358);
+                 ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh(374): error: namespace "at_cuda_detail::cub" has no member "Debug"
+               ::Debug((cudaError_t) (MaxPolicyT::Invoke(ptx_version, dispatch)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_adjacent_difference.cuh", 374);
+                 ^
+
+/usr/local/cuda-12.4/include/cub/agent/single_pass_scan_operators.cuh(746): error: namespace "at_cuda_detail::cub" has no member "Debug"
+                     ::Debug((cudaError_t) (AliasTemporaries(d_temp_storage, temp_storage_bytes, allocations, allocation_sizes)), "/usr/local/cuda-12.4/include/cub/agent/single_pass_scan_operators.cuh", 746)
+                       ^
+
+/usr/local/cuda-12.4/include/cub/agent/single_pass_scan_operators.cuh(790): error: namespace "at_cuda_detail::cub" has no member "Debug"
+                ::Debug((cudaError_t) (AliasTemporaries(__null, temp_storage_bytes, allocations, allocation_sizes)), "/usr/local/cuda-12.4/include/cub/agent/single_pass_scan_operators.cuh", 790);
+                  ^
+
+/usr/local/cuda-12.4/include/cub/block/block_run_length_decode.cuh(286): error: namespace "at_cuda_detail::cub" has no member "min"
+        mid = (cub::min)(mid, num_items - 1);
+                    ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(190): error: namespace "at_cuda_detail::cub" has no member "min"
+          (cub::min)(buffer_sizes[buffer_id] - tile_offset_within_buffer, TILE_SIZE),
+                ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(485): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (BLevBufferOffsetTileState::AllocationSize(static_cast<int32_t>(num_tiles), buffer_offset_scan_storage)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 485)
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(492): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (BLevBlockOffsetTileState::AllocationSize(static_cast<int32_t>(num_tiles), blev_block_scan_storage)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 492)
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(520): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (temporary_storage_layout.map_to_buffer(d_temp_storage, temp_storage_bytes)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 520);
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(567): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (cudaGetDevice(&device_ordinal)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 567);
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(576): error: namespace "at_cuda_detail::cub" has no member "Debug"
+       ::Debug((cudaError_t) (cudaDeviceGetAttribute(&sm_count, cudaDevAttrMultiProcessorCount, device_ordinal)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 576);
+         ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(584): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (MaxSmOccupancy(batch_memcpy_blev_occupancy, multi_block_memcpy_kernel, BLEV_BLOCK_THREADS)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 584)
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(596): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (buffer_scan_tile_state.Init(static_cast<int32_t>(num_tiles), blev_buffer_scan_alloc.get(), buffer_offset_scan_storage)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 596)
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(606): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (block_scan_tile_state.Init(static_cast<int32_t>(num_tiles), blev_block_scan_alloc.get(), blev_block_scan_storage)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 606)
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(631): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (error), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 631);
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(638): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (detail::DebugSyncStream(stream)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 638);
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(674): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (error), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 674);
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(681): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (detail::DebugSyncStream(stream)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 681);
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(708): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (error), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 708);
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(715): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (detail::DebugSyncStream(stream)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 715);
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(740): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (PtxVersion(ptx_version)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 740);
+               ^
+
+/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh(756): error: namespace "at_cuda_detail::cub" has no member "Debug"
+             ::Debug((cudaError_t) (MaxPolicyT::Invoke(ptx_version, dispatch)), "/usr/local/cuda-12.4/include/cub/device/dispatch/dispatch_batch_memcpy.cuh", 756);
+               ^
+
+/usr/local/cuda-12.4/include/cub/grid/grid_queue.cuh(139): error: namespace "at_cuda_detail::cub" has no member "Debug"
+         ::Debug((cudaError_t) (cudaMemcpyAsync(d_counters, counters, sizeof(OffsetT) * 2, cudaMemcpyHostToDevice, stream)), "/usr/local/cuda-12.4/include/cub/grid/grid_queue.cuh", 149); }
+           ^
+
+/usr/local/cuda-12.4/include/cub/grid/grid_queue.cuh(161): error: namespace "at_cuda_detail::cub" has no member "Debug"
+         ::Debug((cudaError_t) (cudaMemsetAsync(d_counters + DRAIN, 0, sizeof(OffsetT), stream)), "/usr/local/cuda-12.4/include/cub/grid/grid_queue.cuh", 167); }
+           ^
+
+/usr/local/cuda-12.4/include/cub/grid/grid_queue.cuh(180): error: namespace "at_cuda_detail::cub" has no member "Debug"
+         ::Debug((cudaError_t) (cudaMemsetAsync(d_counters + FILL, 0, sizeof(OffsetT), stream)), "/usr/local/cuda-12.4/include/cub/grid/grid_queue.cuh", 186); }
+           ^
+
+/usr/local/cuda-12.4/include/cub/grid/grid_queue.cuh(200): error: namespace "at_cuda_detail::cub" has no member "Debug"
+         ::Debug((cudaError_t) (cudaMemcpyAsync(&fill_size, d_counters + FILL, sizeof(OffsetT), cudaMemcpyDeviceToHost, stream)), "/usr/local/cuda-12.4/include/cub/grid/grid_queue.cuh", 206); }
+           ^
+
+Error limit reached.
+100 errors detected in the compilation of "/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.cu".
+Compilation terminated.
+ninja: build stopped: subcommand failed.
+Traceback (most recent call last):
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2597, in _run_ninja_build
+    subprocess.run(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v', '-j', '2']' returned non-zero exit status 1.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build.py", line 12, in <module>
+    setup(name='wam_native_block', packages=[], ext_modules=[CUDAExtension(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/__init__.py", line 117, in setup
+    return distutils.core.setup(**attrs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 186, in setup
+    return run_commands(dist)
+           ^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 202, in run_commands
+    dist.run_commands()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1001, in run_commands
+    self.run_command(cmd)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 97, in run
+    _build_ext.run(self)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 367, in run
+    self.build_extensions()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1082, in build_extensions
+    build_ext.build_extensions(self)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 483, in build_extensions
+    self._build_extensions_serial()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 509, in _build_extensions_serial
+    self.build_extension(ext)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 262, in build_extension
+    _build_ext.build_extension(self, ext)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 564, in build_extension
+    objects = self.compiler.compile(
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 866, in unix_wrap_ninja_compile
+    _write_ninja_file_and_compile_objects(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2223, in _write_ninja_file_and_compile_objects
+    _run_ninja_build(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2614, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error compiling objects for extension

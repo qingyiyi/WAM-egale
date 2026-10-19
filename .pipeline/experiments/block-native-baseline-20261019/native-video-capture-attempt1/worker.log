@@ -1,0 +1,278 @@
+2026-10-19 15:35:46,509 - root - INFO - Checkpoint-aligned LIBERO evaluation: suite=libero_10 checkpoint=/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922 id=robbyant/lingbot-va-posttrain-libero-long
+2026-10-19 15:35:46,517 - root - INFO - Deterministic A/B seed: 20260922
+2026-10-19 15:35:46,538 - root - INFO - Cache experiment mode=original validate=False chunk_timing=False
+The config attributes {'clip_output': False} were passed to AutoencoderKLWan, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:00,  3.94it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:00<00:00,  2.89it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00,  4.03it/s]
+2026-10-19 15:35:52,131 - root - INFO - Transformer attention backend: torch
+The config attributes {'added_kv_proj_dim': None, 'image_dim': None, 'qk_norm': 'rms_norm_across_heads'} were passed to WanTransformer3DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:00<00:00, 14.88it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 13.02it/s]
+Some weights of the model checkpoint at /rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer were not used when initializing WanTransformer3DModel: 
+ ['patch_embedding.weight, patch_embedding.bias']
+2026-10-19 15:36:07,624 - root - INFO - Single-GPU inference: FSDP disabled by environment
+/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py:4876: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  warnings.warn(  # warn only once
+[rank0]:[W1019 15:36:07.092767407 ProcessGroupNCCL.cpp:5068] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+2026-10-19 15:36:08,297 - root - INFO - Component devices: transformer=cuda:0 vae=cuda:0 text_encoder=cpu; enable_offload=True (WAM_VAE_DEVICE overrides only VAE)
+2026-10-19 15:36:08,297 - root - INFO - ******************************USE Server mode******************************
+2026-10-19 15:36:08,304 - root - INFO - ******************* Reset server ******************
+2026-10-19 15:36:08,305 - root - INFO - Reset.
+2026-10-19 15:36:09,180 - root - INFO - ################# Infer One Chunk #################
+  0%|          | 0/21 [00:00<?, ?it/s]2026-10-19 15:36:09,186 - root - INFO - FRAME START ID: 4
+  5%|▍         | 1/21 [00:01<00:29,  1.45s/it]2026-10-19 15:36:10,639 - root - INFO - FRAME START ID: 4
+ 10%|▉         | 2/21 [00:01<00:12,  1.52it/s]2026-10-19 15:36:10,740 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:10,825 - root - INFO - FRAME START ID: 4
+ 19%|█▉        | 4/21 [00:01<00:05,  3.33it/s]2026-10-19 15:36:10,916 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:10,998 - root - INFO - FRAME START ID: 4
+ 29%|██▊       | 6/21 [00:01<00:02,  5.00it/s]2026-10-19 15:36:11,091 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:11,181 - root - INFO - FRAME START ID: 4
+ 38%|███▊      | 8/21 [00:02<00:02,  6.39it/s]2026-10-19 15:36:11,276 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:11,358 - root - INFO - FRAME START ID: 4
+ 48%|████▊     | 10/21 [00:02<00:01,  7.57it/s]2026-10-19 15:36:11,455 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:11,545 - root - INFO - FRAME START ID: 4
+ 57%|█████▋    | 12/21 [00:02<00:01,  8.35it/s]2026-10-19 15:36:11,648 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:11,731 - root - INFO - FRAME START ID: 4
+ 67%|██████▋   | 14/21 [00:02<00:00,  9.16it/s]2026-10-19 15:36:11,823 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:11,913 - root - INFO - FRAME START ID: 4
+ 76%|███████▌  | 16/21 [00:02<00:00,  9.66it/s]2026-10-19 15:36:12,006 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:12,104 - root - INFO - FRAME START ID: 4
+ 86%|████████▌ | 18/21 [00:03<00:00,  9.90it/s]2026-10-19 15:36:12,196 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:12,289 - root - INFO - FRAME START ID: 4
+ 95%|█████████▌| 20/21 [00:03<00:00, 10.29it/s]2026-10-19 15:36:12,374 - root - INFO - FRAME START ID: 4
+100%|██████████| 21/21 [00:03<00:00,  6.43it/s]
+  0%|          | 0/51 [00:00<?, ?it/s]2026-10-19 15:36:12,455 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:12,553 - root - INFO - FRAME START ID: 4
+  4%|▍         | 2/51 [00:00<00:04, 10.54it/s]2026-10-19 15:36:12,645 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:12,734 - root - INFO - FRAME START ID: 4
+  8%|▊         | 4/51 [00:00<00:04, 10.46it/s]2026-10-19 15:36:12,837 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:12,921 - root - INFO - FRAME START ID: 4
+ 12%|█▏        | 6/51 [00:00<00:04, 10.21it/s]2026-10-19 15:36:13,039 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:13,151 - root - INFO - FRAME START ID: 4
+ 16%|█▌        | 8/51 [00:00<00:04, 10.19it/s]2026-10-19 15:36:13,235 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:13,327 - root - INFO - FRAME START ID: 4
+ 20%|█▉        | 10/51 [00:00<00:03, 10.59it/s]2026-10-19 15:36:13,411 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:13,502 - root - INFO - FRAME START ID: 4
+ 24%|██▎       | 12/51 [00:01<00:03, 10.70it/s]2026-10-19 15:36:13,595 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:13,678 - root - INFO - FRAME START ID: 4
+ 27%|██▋       | 14/51 [00:01<00:03, 11.07it/s]2026-10-19 15:36:13,762 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:13,853 - root - INFO - FRAME START ID: 4
+ 31%|███▏      | 16/51 [00:01<00:03, 11.03it/s]2026-10-19 15:36:13,945 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:14,036 - root - INFO - FRAME START ID: 4
+ 35%|███▌      | 18/51 [00:01<00:02, 11.01it/s]2026-10-19 15:36:14,127 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:14,218 - root - INFO - FRAME START ID: 4
+ 39%|███▉      | 20/51 [00:01<00:02, 11.03it/s]2026-10-19 15:36:14,308 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:14,391 - root - INFO - FRAME START ID: 4
+ 43%|████▎     | 22/51 [00:02<00:02, 11.17it/s]2026-10-19 15:36:14,482 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:14,571 - root - INFO - FRAME START ID: 4
+ 47%|████▋     | 24/51 [00:02<00:02, 11.02it/s]2026-10-19 15:36:14,669 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:14,758 - root - INFO - FRAME START ID: 4
+ 51%|█████     | 26/51 [00:02<00:02, 10.93it/s]2026-10-19 15:36:14,855 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:14,949 - root - INFO - FRAME START ID: 4
+ 55%|█████▍    | 28/51 [00:02<00:02, 10.79it/s]2026-10-19 15:36:15,046 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:15,148 - root - INFO - FRAME START ID: 4
+ 59%|█████▉    | 30/51 [00:02<00:01, 10.65it/s]2026-10-19 15:36:15,240 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:15,340 - root - INFO - FRAME START ID: 4
+ 63%|██████▎   | 32/51 [00:02<00:01, 10.63it/s]2026-10-19 15:36:15,429 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:15,517 - root - INFO - FRAME START ID: 4
+ 67%|██████▋   | 34/51 [00:03<00:01, 10.71it/s]2026-10-19 15:36:15,612 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:15,702 - root - INFO - FRAME START ID: 4
+ 71%|███████   | 36/51 [00:03<00:01, 10.70it/s]2026-10-19 15:36:15,800 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:15,898 - root - INFO - FRAME START ID: 4
+ 75%|███████▍  | 38/51 [00:03<00:01, 10.66it/s]2026-10-19 15:36:15,989 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:16,084 - root - INFO - FRAME START ID: 4
+ 78%|███████▊  | 40/51 [00:03<00:01, 10.63it/s]2026-10-19 15:36:16,178 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:16,271 - root - INFO - FRAME START ID: 4
+ 82%|████████▏ | 42/51 [00:03<00:00, 10.57it/s]2026-10-19 15:36:16,370 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:16,482 - root - INFO - FRAME START ID: 4
+ 86%|████████▋ | 44/51 [00:04<00:00, 10.21it/s]2026-10-19 15:36:16,581 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:16,666 - root - INFO - FRAME START ID: 4
+ 90%|█████████ | 46/51 [00:04<00:00, 10.53it/s]2026-10-19 15:36:16,757 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:16,847 - root - INFO - FRAME START ID: 4
+ 94%|█████████▍| 48/51 [00:04<00:00, 10.82it/s]2026-10-19 15:36:16,930 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:17,022 - root - INFO - FRAME START ID: 4
+ 98%|█████████▊| 50/51 [00:04<00:00, 10.86it/s]2026-10-19 15:36:17,113 - root - INFO - FRAME START ID: 4
+100%|██████████| 51/51 [00:04<00:00, 10.76it/s]
+COMPLETE_CAPTURE_POLICY short
+2026-10-19 15:36:17,914 - root - INFO - ################# Counterfactual replay: p0_counterfactual_prime_video_cache #################
+2026-10-19 15:36:17,915 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:18,038 - root - INFO - ################# Compute KV Cache #################
+2026-10-19 15:36:19,025 - root - INFO - get KV cache obs: torch.Size([1, 48, 4, 8, 16]) torch.Size([1, 30, 4, 4, 1])
+2026-10-19 15:36:19,026 - root - INFO - FRAME START ID: 4
+2026-10-19 15:36:19,218 - root - INFO - ################# Counterfactual replay: p0_counterfactual_prime_video_cache #################
+2026-10-19 15:36:19,218 - root - INFO - FRAME START ID: 8
+2026-10-19 15:36:19,311 - root - INFO - ################# Compute KV Cache #################
+2026-10-19 15:36:19,551 - root - INFO - get KV cache obs: torch.Size([1, 48, 4, 8, 16]) torch.Size([1, 30, 4, 4, 1])
+2026-10-19 15:36:19,551 - root - INFO - FRAME START ID: 8
+2026-10-19 15:36:19,758 - root - INFO - ################# Counterfactual replay: p0_counterfactual_prime_video_cache #################
+2026-10-19 15:36:19,758 - root - INFO - FRAME START ID: 12
+2026-10-19 15:36:19,849 - root - INFO - ################# Compute KV Cache #################
+2026-10-19 15:36:20,105 - root - INFO - get KV cache obs: torch.Size([1, 48, 4, 8, 16]) torch.Size([1, 30, 4, 4, 1])
+2026-10-19 15:36:20,105 - root - INFO - FRAME START ID: 12
+2026-10-19 15:36:20,309 - root - INFO - ################# Counterfactual replay: p0_counterfactual_prime_video_cache #################
+2026-10-19 15:36:20,309 - root - INFO - FRAME START ID: 16
+2026-10-19 15:36:20,403 - root - INFO - ################# Compute KV Cache #################
+2026-10-19 15:36:20,634 - root - INFO - get KV cache obs: torch.Size([1, 48, 4, 8, 16]) torch.Size([1, 30, 4, 4, 1])
+2026-10-19 15:36:20,635 - root - INFO - FRAME START ID: 16
+2026-10-19 15:36:20,841 - root - INFO - ################# Counterfactual replay: p0_counterfactual_prime_video_cache #################
+2026-10-19 15:36:20,842 - root - INFO - FRAME START ID: 20
+2026-10-19 15:36:20,934 - root - INFO - ################# Compute KV Cache #################
+2026-10-19 15:36:21,195 - root - INFO - get KV cache obs: torch.Size([1, 48, 4, 8, 16]) torch.Size([1, 30, 4, 4, 1])
+2026-10-19 15:36:21,195 - root - INFO - FRAME START ID: 20
+2026-10-19 15:36:21,384 - root - INFO - ################# Counterfactual replay: p0_counterfactual_prime_video_cache #################
+2026-10-19 15:36:21,385 - root - INFO - FRAME START ID: 24
+2026-10-19 15:36:21,480 - root - INFO - ################# Compute KV Cache #################
+2026-10-19 15:36:21,720 - root - INFO - get KV cache obs: torch.Size([1, 48, 4, 8, 16]) torch.Size([1, 30, 4, 4, 1])
+2026-10-19 15:36:21,721 - root - INFO - FRAME START ID: 24
+2026-10-19 15:36:21,915 - root - INFO - ################# Infer One Chunk #################
+  0%|          | 0/21 [00:00<?, ?it/s]2026-10-19 15:36:21,916 - root - INFO - FRAME START ID: 28
+  5%|▍         | 1/21 [00:00<00:13,  1.44it/s]2026-10-19 15:36:22,612 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:22,711 - root - INFO - FRAME START ID: 28
+ 14%|█▍        | 3/21 [00:00<00:04,  3.95it/s]2026-10-19 15:36:22,808 - root - INFO - FRAME START ID: 28
+ 19%|█▉        | 4/21 [00:00<00:03,  4.95it/s]2026-10-19 15:36:22,914 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:23,004 - root - INFO - FRAME START ID: 28
+ 29%|██▊       | 6/21 [00:01<00:02,  6.78it/s]2026-10-19 15:36:23,098 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:23,185 - root - INFO - FRAME START ID: 28
+ 38%|███▊      | 8/21 [00:01<00:01,  8.14it/s]2026-10-19 15:36:23,275 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:23,362 - root - INFO - FRAME START ID: 28
+ 48%|████▊     | 10/21 [00:01<00:01,  9.04it/s]2026-10-19 15:36:23,454 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:23,540 - root - INFO - FRAME START ID: 28
+ 57%|█████▋    | 12/21 [00:01<00:00,  9.73it/s]2026-10-19 15:36:23,631 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:23,717 - root - INFO - FRAME START ID: 28
+ 67%|██████▋   | 14/21 [00:01<00:00, 10.18it/s]2026-10-19 15:36:23,809 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:23,901 - root - INFO - FRAME START ID: 28
+ 76%|███████▌  | 16/21 [00:02<00:00, 10.48it/s]2026-10-19 15:36:23,987 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:24,077 - root - INFO - FRAME START ID: 28
+ 86%|████████▌ | 18/21 [00:02<00:00, 10.75it/s]2026-10-19 15:36:24,163 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:24,253 - root - INFO - FRAME START ID: 28
+ 95%|█████████▌| 20/21 [00:02<00:00, 10.83it/s]2026-10-19 15:36:24,345 - root - INFO - FRAME START ID: 28
+100%|██████████| 21/21 [00:02<00:00,  8.36it/s]
+  0%|          | 0/51 [00:00<?, ?it/s]2026-10-19 15:36:24,429 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:24,520 - root - INFO - FRAME START ID: 28
+  4%|▍         | 2/51 [00:00<00:04, 11.30it/s]2026-10-19 15:36:24,606 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:24,699 - root - INFO - FRAME START ID: 28
+  8%|▊         | 4/51 [00:00<00:04, 11.06it/s]2026-10-19 15:36:24,789 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:24,884 - root - INFO - FRAME START ID: 28
+ 12%|█▏        | 6/51 [00:00<00:04, 10.46it/s]2026-10-19 15:36:24,993 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:25,104 - root - INFO - FRAME START ID: 28
+ 16%|█▌        | 8/51 [00:00<00:04,  9.65it/s]2026-10-19 15:36:25,225 - root - INFO - FRAME START ID: 28
+ 18%|█▊        | 9/51 [00:00<00:04,  9.39it/s]2026-10-19 15:36:25,341 - root - INFO - FRAME START ID: 28
+ 20%|█▉        | 10/51 [00:01<00:04,  9.38it/s]2026-10-19 15:36:25,449 - root - INFO - FRAME START ID: 28
+ 22%|██▏       | 11/51 [00:01<00:04,  9.19it/s]2026-10-19 15:36:25,564 - root - INFO - FRAME START ID: 28
+ 24%|██▎       | 12/51 [00:01<00:04,  8.93it/s]2026-10-19 15:36:25,685 - root - INFO - FRAME START ID: 28
+ 25%|██▌       | 13/51 [00:01<00:04,  8.36it/s]2026-10-19 15:36:25,824 - root - INFO - FRAME START ID: 28
+ 27%|██▋       | 14/51 [00:01<00:04,  8.17it/s]2026-10-19 15:36:25,954 - root - INFO - FRAME START ID: 28
+ 29%|██▉       | 15/51 [00:01<00:04,  8.34it/s]2026-10-19 15:36:26,067 - root - INFO - FRAME START ID: 28
+ 31%|███▏      | 16/51 [00:01<00:04,  8.19it/s]2026-10-19 15:36:26,195 - root - INFO - FRAME START ID: 28
+ 33%|███▎      | 17/51 [00:01<00:04,  8.20it/s]2026-10-19 15:36:26,316 - root - INFO - FRAME START ID: 28
+ 35%|███▌      | 18/51 [00:02<00:04,  8.14it/s]2026-10-19 15:36:26,441 - root - INFO - FRAME START ID: 28
+ 37%|███▋      | 19/51 [00:02<00:03,  8.37it/s]2026-10-19 15:36:26,553 - root - INFO - FRAME START ID: 28
+ 39%|███▉      | 20/51 [00:02<00:03,  8.16it/s]2026-10-19 15:36:26,683 - root - INFO - FRAME START ID: 28
+ 41%|████      | 21/51 [00:02<00:03,  7.96it/s]2026-10-19 15:36:26,816 - root - INFO - FRAME START ID: 28
+ 43%|████▎     | 22/51 [00:02<00:03,  7.50it/s]2026-10-19 15:36:26,967 - root - INFO - FRAME START ID: 28
+ 45%|████▌     | 23/51 [00:02<00:04,  6.88it/s]2026-10-19 15:36:27,141 - root - INFO - FRAME START ID: 28
+ 47%|████▋     | 24/51 [00:02<00:03,  7.20it/s]2026-10-19 15:36:27,265 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:27,360 - root - INFO - FRAME START ID: 28
+ 51%|█████     | 26/51 [00:03<00:03,  8.28it/s]2026-10-19 15:36:27,464 - root - INFO - FRAME START ID: 28
+ 53%|█████▎    | 27/51 [00:03<00:02,  8.47it/s]2026-10-19 15:36:27,574 - root - INFO - FRAME START ID: 28
+ 55%|█████▍    | 28/51 [00:03<00:02,  8.21it/s]2026-10-19 15:36:27,706 - root - INFO - FRAME START ID: 28
+ 57%|█████▋    | 29/51 [00:03<00:02,  8.09it/s]2026-10-19 15:36:27,834 - root - INFO - FRAME START ID: 28
+ 59%|█████▉    | 30/51 [00:03<00:02,  8.10it/s]2026-10-19 15:36:27,958 - root - INFO - FRAME START ID: 28
+ 61%|██████    | 31/51 [00:03<00:02,  8.51it/s]2026-10-19 15:36:28,060 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:28,155 - root - INFO - FRAME START ID: 28
+ 65%|██████▍   | 33/51 [00:03<00:02,  8.20it/s]2026-10-19 15:36:28,315 - root - INFO - FRAME START ID: 28
+ 67%|██████▋   | 34/51 [00:04<00:02,  7.55it/s]2026-10-19 15:36:28,481 - root - INFO - FRAME START ID: 28
+ 69%|██████▊   | 35/51 [00:04<00:02,  6.96it/s]2026-10-19 15:36:28,657 - root - INFO - FRAME START ID: 28
+ 71%|███████   | 36/51 [00:04<00:02,  6.73it/s]2026-10-19 15:36:28,819 - root - INFO - FRAME START ID: 28
+ 73%|███████▎  | 37/51 [00:04<00:02,  6.54it/s]2026-10-19 15:36:28,983 - root - INFO - FRAME START ID: 28
+ 75%|███████▍  | 38/51 [00:04<00:01,  6.74it/s]2026-10-19 15:36:29,120 - root - INFO - FRAME START ID: 28
+ 76%|███████▋  | 39/51 [00:04<00:01,  6.61it/s]2026-10-19 15:36:29,278 - root - INFO - FRAME START ID: 28
+ 78%|███████▊  | 40/51 [00:04<00:01,  7.27it/s]2026-10-19 15:36:29,382 - root - INFO - FRAME START ID: 28
+ 80%|████████  | 41/51 [00:05<00:01,  7.27it/s]2026-10-19 15:36:29,520 - root - INFO - FRAME START ID: 28
+ 82%|████████▏ | 42/51 [00:05<00:01,  7.19it/s]2026-10-19 15:36:29,662 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:29,761 - root - INFO - FRAME START ID: 28
+ 86%|████████▋ | 44/51 [00:05<00:00,  8.07it/s]2026-10-19 15:36:29,875 - root - INFO - FRAME START ID: 28
+ 88%|████████▊ | 45/51 [00:05<00:00,  7.83it/s]2026-10-19 15:36:30,015 - root - INFO - FRAME START ID: 28
+ 90%|█████████ | 46/51 [00:05<00:00,  7.88it/s]2026-10-19 15:36:30,138 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:30,231 - root - INFO - FRAME START ID: 28
+ 94%|█████████▍| 48/51 [00:05<00:00,  8.35it/s]2026-10-19 15:36:30,359 - root - INFO - FRAME START ID: 28
+ 96%|█████████▌| 49/51 [00:06<00:00,  8.08it/s]2026-10-19 15:36:30,496 - root - INFO - FRAME START ID: 28
+2026-10-19 15:36:30,593 - root - INFO - FRAME START ID: 28
+100%|██████████| 51/51 [00:06<00:00,  8.98it/s]100%|██████████| 51/51 [00:06<00:00,  8.16it/s]
+COMPLETE_CAPTURE_POLICY middle
+2026-10-19 15:36:35,409 - root - INFO - ################# Infer One Chunk #################
+  0%|          | 0/21 [00:00<?, ?it/s]2026-10-19 15:36:35,412 - root - INFO - FRAME START ID: 56
+  5%|▍         | 1/21 [00:01<00:32,  1.64s/it]2026-10-19 15:36:37,057 - root - INFO - FRAME START ID: 56
+ 10%|▉         | 2/21 [00:01<00:14,  1.35it/s]2026-10-19 15:36:37,164 - root - INFO - FRAME START ID: 56
+ 14%|█▍        | 3/21 [00:01<00:08,  2.12it/s]2026-10-19 15:36:37,316 - root - INFO - FRAME START ID: 56
+ 19%|█▉        | 4/21 [00:02<00:05,  2.93it/s]2026-10-19 15:36:37,459 - root - INFO - FRAME START ID: 56
+ 24%|██▍       | 5/21 [00:02<00:04,  3.84it/s]2026-10-19 15:36:37,576 - root - INFO - FRAME START ID: 56
+ 29%|██▊       | 6/21 [00:02<00:03,  4.83it/s]2026-10-19 15:36:37,679 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:37,775 - root - INFO - FRAME START ID: 56
+ 38%|███▊      | 8/21 [00:02<00:02,  6.47it/s]2026-10-19 15:36:37,880 - root - INFO - FRAME START ID: 56
+ 43%|████▎     | 9/21 [00:02<00:01,  7.10it/s]2026-10-19 15:36:37,982 - root - INFO - FRAME START ID: 56
+ 48%|████▊     | 10/21 [00:02<00:01,  7.61it/s]2026-10-19 15:36:38,088 - root - INFO - FRAME START ID: 56
+ 52%|█████▏    | 11/21 [00:02<00:01,  8.01it/s]2026-10-19 15:36:38,196 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:38,293 - root - INFO - FRAME START ID: 56
+ 62%|██████▏   | 13/21 [00:02<00:00,  9.01it/s]2026-10-19 15:36:38,383 - root - INFO - FRAME START ID: 56
+ 67%|██████▋   | 14/21 [00:03<00:00,  9.11it/s]2026-10-19 15:36:38,489 - root - INFO - FRAME START ID: 56
+ 71%|███████▏  | 15/21 [00:03<00:00,  9.28it/s]2026-10-19 15:36:38,591 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:38,682 - root - INFO - FRAME START ID: 56
+ 81%|████████  | 17/21 [00:03<00:00,  9.54it/s]2026-10-19 15:36:38,792 - root - INFO - FRAME START ID: 56
+ 86%|████████▌ | 18/21 [00:03<00:00,  9.44it/s]2026-10-19 15:36:38,902 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:39,000 - root - INFO - FRAME START ID: 56
+ 95%|█████████▌| 20/21 [00:03<00:00,  9.47it/s]2026-10-19 15:36:39,113 - root - INFO - FRAME START ID: 56
+100%|██████████| 21/21 [00:03<00:00,  5.54it/s]
+  0%|          | 0/51 [00:00<?, ?it/s]2026-10-19 15:36:39,207 - root - INFO - FRAME START ID: 56
+  2%|▏         | 1/51 [00:00<00:05,  9.63it/s]2026-10-19 15:36:39,310 - root - INFO - FRAME START ID: 56
+  4%|▍         | 2/51 [00:00<00:05,  9.45it/s]2026-10-19 15:36:39,418 - root - INFO - FRAME START ID: 56
+  6%|▌         | 3/51 [00:00<00:05,  9.49it/s]2026-10-19 15:36:39,523 - root - INFO - FRAME START ID: 56
+  8%|▊         | 4/51 [00:00<00:04,  9.63it/s]2026-10-19 15:36:39,624 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:39,714 - root - INFO - FRAME START ID: 56
+ 12%|█▏        | 6/51 [00:00<00:04, 10.03it/s]2026-10-19 15:36:39,816 - root - INFO - FRAME START ID: 56
+ 14%|█▎        | 7/51 [00:00<00:04,  9.86it/s]2026-10-19 15:36:39,922 - root - INFO - FRAME START ID: 56
+ 16%|█▌        | 8/51 [00:00<00:04,  9.66it/s]2026-10-19 15:36:40,031 - root - INFO - FRAME START ID: 56
+ 18%|█▊        | 9/51 [00:00<00:04,  9.63it/s]2026-10-19 15:36:40,135 - root - INFO - FRAME START ID: 56
+ 20%|█▉        | 10/51 [00:01<00:04,  9.55it/s]2026-10-19 15:36:40,242 - root - INFO - FRAME START ID: 56
+ 22%|██▏       | 11/51 [00:01<00:04,  9.08it/s]2026-10-19 15:36:40,365 - root - INFO - FRAME START ID: 56
+ 24%|██▎       | 12/51 [00:01<00:04,  8.91it/s]2026-10-19 15:36:40,483 - root - INFO - FRAME START ID: 56
+ 25%|██▌       | 13/51 [00:01<00:04,  9.20it/s]2026-10-19 15:36:40,583 - root - INFO - FRAME START ID: 56
+ 27%|██▋       | 14/51 [00:01<00:03,  9.32it/s]2026-10-19 15:36:40,687 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:40,785 - root - INFO - FRAME START ID: 56
+ 31%|███▏      | 16/51 [00:01<00:03,  9.48it/s]2026-10-19 15:36:40,894 - root - INFO - FRAME START ID: 56
+ 33%|███▎      | 17/51 [00:01<00:03,  9.51it/s]2026-10-19 15:36:40,998 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:41,091 - root - INFO - FRAME START ID: 56
+ 37%|███▋      | 19/51 [00:01<00:03,  9.90it/s]2026-10-19 15:36:41,189 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:41,287 - root - INFO - FRAME START ID: 56
+ 41%|████      | 21/51 [00:02<00:02, 10.09it/s]2026-10-19 15:36:41,380 - root - INFO - FRAME START ID: 56
+ 43%|████▎     | 22/51 [00:02<00:02, 10.00it/s]2026-10-19 15:36:41,484 - root - INFO - FRAME START ID: 56
+ 45%|████▌     | 23/51 [00:02<00:02,  9.60it/s]2026-10-19 15:36:41,602 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:41,700 - root - INFO - FRAME START ID: 56
+ 49%|████▉     | 25/51 [00:02<00:02,  9.84it/s]2026-10-19 15:36:41,797 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:41,889 - root - INFO - FRAME START ID: 56
+ 53%|█████▎    | 27/51 [00:02<00:02, 10.15it/s]2026-10-19 15:36:41,984 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:42,078 - root - INFO - FRAME START ID: 56
+ 57%|█████▋    | 29/51 [00:02<00:02, 10.26it/s]2026-10-19 15:36:42,174 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:42,266 - root - INFO - FRAME START ID: 56
+ 61%|██████    | 31/51 [00:03<00:01, 10.39it/s]2026-10-19 15:36:42,362 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:42,470 - root - INFO - FRAME START ID: 56
+ 65%|██████▍   | 33/51 [00:03<00:01, 10.16it/s]2026-10-19 15:36:42,568 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:42,665 - root - INFO - FRAME START ID: 56
+ 69%|██████▊   | 35/51 [00:03<00:01, 10.00it/s]2026-10-19 15:36:42,775 - root - INFO - FRAME START ID: 56
+ 71%|███████   | 36/51 [00:03<00:01,  9.86it/s]2026-10-19 15:36:42,883 - root - INFO - FRAME START ID: 56
+ 73%|███████▎  | 37/51 [00:03<00:01,  9.41it/s]2026-10-19 15:36:43,007 - root - INFO - FRAME START ID: 56
+ 75%|███████▍  | 38/51 [00:03<00:01,  9.39it/s]2026-10-19 15:36:43,115 - root - INFO - FRAME START ID: 56
+ 76%|███████▋  | 39/51 [00:04<00:01,  9.49it/s]2026-10-19 15:36:43,217 - root - INFO - FRAME START ID: 56
+ 78%|███████▊  | 40/51 [00:04<00:01,  9.15it/s]2026-10-19 15:36:43,337 - root - INFO - FRAME START ID: 56
+ 80%|████████  | 41/51 [00:04<00:01,  8.82it/s]2026-10-19 15:36:43,461 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:43,559 - root - INFO - FRAME START ID: 56
+ 84%|████████▍ | 43/51 [00:04<00:00,  9.38it/s]2026-10-19 15:36:43,657 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:43,756 - root - INFO - FRAME START ID: 56
+ 88%|████████▊ | 45/51 [00:04<00:00,  9.63it/s]2026-10-19 15:36:43,856 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:43,948 - root - INFO - FRAME START ID: 56
+ 92%|█████████▏| 47/51 [00:04<00:00, 10.00it/s]2026-10-19 15:36:44,042 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:44,132 - root - INFO - FRAME START ID: 56
+ 96%|█████████▌| 49/51 [00:05<00:00, 10.33it/s]2026-10-19 15:36:44,223 - root - INFO - FRAME START ID: 56
+2026-10-19 15:36:44,319 - root - INFO - FRAME START ID: 56
+100%|██████████| 51/51 [00:05<00:00, 10.54it/s]100%|██████████| 51/51 [00:05<00:00,  9.81it/s]
+COMPLETE_CAPTURE_POLICY long
+2026-10-19 15:36:45,715 - root - INFO - Finish all process!!!!!!!!!!!!
+[rank0]:[W1019 15:36:46.963600437 ProcessGroupNCCL.cpp:1524] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

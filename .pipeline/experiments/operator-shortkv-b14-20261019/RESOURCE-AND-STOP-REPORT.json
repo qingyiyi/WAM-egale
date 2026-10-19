@@ -1,0 +1,114 @@
+{
+  "status": "ALL_THREE_OWNED_JOBS_TERMINAL_NO_RESTART",
+  "at": "2026-10-19T14:47:29.101311+08:00",
+  "jobs": [
+    {
+      "attempt": "diagnostic-b14-first-attempt2",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-m",
+        "tools.diagnose_attention",
+        "--registration",
+        ".pipeline/experiments/operator-shortkv-b14-20261019/REGISTRATION.json",
+        "--output",
+        ".pipeline/experiments/operator-shortkv-b14-20261019/diagnostic-b14-first-attempt2/data",
+        "--wait-idle-seconds",
+        "300",
+        "--profile"
+      ],
+      "started_at": "2026-10-19T14:35:27.871203+08:00",
+      "consumed_prior_lifecycle_seconds": 177.2310971673578,
+      "cap_seconds": 900,
+      "status": "NATURAL_EXIT",
+      "owned": {
+        "pid": 3638656,
+        "birth_ticks": 1366083630,
+        "uid": 1003
+      },
+      "exit_code": 1,
+      "lifecycle_seconds": 183.77509620040655,
+      "finished_at": "2026-10-19T14:38:31.646462+08:00",
+      "owned_exited": true,
+      "owned_identity_still_live": false
+    },
+    {
+      "attempt": "diagnostic-long-first-attempt3",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-m",
+        "tools.diagnose_attention",
+        "--registration",
+        ".pipeline/experiments/operator-shortkv-b14-20261019/REGISTRATION.json",
+        "--output",
+        ".pipeline/experiments/operator-shortkv-b14-20261019/diagnostic-long-first-attempt3/data",
+        "--wait-idle-seconds",
+        "300",
+        "--length-order",
+        "long",
+        "short",
+        "middle"
+      ],
+      "started_at": "2026-10-19T14:40:33.092654+08:00",
+      "consumed_prior_lifecycle_seconds": 361.00619336776435,
+      "cap_seconds": 800,
+      "status": "NATURAL_EXIT",
+      "owned": {
+        "pid": 3656439,
+        "birth_ticks": 1366114152,
+        "uid": 1003
+      },
+      "exit_code": 1,
+      "lifecycle_seconds": 304.6783620417118,
+      "finished_at": "2026-10-19T14:45:37.771132+08:00",
+      "owned_exited": true,
+      "owned_identity_still_live": false
+    },
+    {
+      "attempt": "diagnostic-process1",
+      "command": [
+        "/rjs/cxz/miniconda3/envs/va/bin/python",
+        "-m",
+        "tools.diagnose_attention",
+        "--registration",
+        ".pipeline/experiments/operator-shortkv-b14-20261019/REGISTRATION.json",
+        "--output",
+        ".pipeline/experiments/operator-shortkv-b14-20261019/diagnostic-process1/data",
+        "--wait-idle-seconds",
+        "600",
+        "--profile"
+      ],
+      "started_at": "2026-10-19T14:14:21.650393+08:00",
+      "consumed_prior_lifecycle_seconds": 0,
+      "cap_seconds": 1200,
+      "status": "NATURAL_EXIT",
+      "owned": {
+        "pid": 3614277,
+        "birth_ticks": 1365957008,
+        "uid": 1003
+      },
+      "exit_code": 1,
+      "lifecycle_seconds": 177.2310971673578,
+      "finished_at": "2026-10-19T14:17:18.881605+08:00",
+      "owned_exited": true,
+      "owned_identity_still_live": false
+    }
+  ],
+  "owned_lifecycle_seconds": 665.6845554094762,
+  "GPU_lifecycle_seconds_cap": 1800,
+  "GPU_stage_wall_seconds": 31.144581243395805,
+  "CUDA_active_seconds": "UNKNOWN_NOT_INDEPENDENTLY_MEASURED",
+  "attention_forward_intents": 6180,
+  "complete_block_forward_intents": 918,
+  "full30": 0,
+  "robot_episodes": 0,
+  "completed_timing_rows": 20,
+  "terminal_causes": [
+    "attempt1/2: foreign GPU entered; keep PARTIAL",
+    "attempt3: bounded idle wait expired without CUDA context; no new measurements"
+  ],
+  "remaining_budget_not_automatically_reused": true,
+  "new_evidence_bytes": 3956723,
+  "new_storage_cap_bytes": 536870912,
+  "all_owned_exited": true,
+  "mathematical_kernel_changes": 0
+}

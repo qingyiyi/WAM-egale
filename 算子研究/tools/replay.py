@@ -64,6 +64,9 @@ def main():
     parser.add_argument("--registration", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--timing-engines", nargs="+", choices=ENGINES, default=list(ENGINES))
+    parser.add_argument("--correctness-only", action="store_true")
+    parser.add_argument("--allow-shared-correctness", action="store_true")
+    parser.add_argument("--keep-original-grad-flags", action="store_true")
     args = parser.parse_args()
     registration = json.loads(args.registration.read_text())
     rounds = registration.get("timing_rounds", 3)
@@ -75,7 +78,10 @@ def main():
         raise TimeoutError("没有完整作业与清理余量")
     before = resource()
     fields = [field.strip() for field in before["gpu"].split(",")]
-    if before["pids"] or fields[0] != registration["physical_gpu_uuid"] or float(fields[2]) < 30000:
+    sharing = args.correctness_only and args.allow_shared_correctness
+    if args.allow_shared_correctness and not (sharing and registration.get('shared_correctness_authorized')):
+        raise PermissionError('shared mode requires correctness-only plus registration')
+    if (before["pids"] and not sharing) or fields[0] != registration["physical_gpu_uuid"] or float(fields[2]) < 28672:
         raise RuntimeError("GPU_BUSY_OR_IDENTITY_MISMATCH_NO_CONTEXT_CREATED")
     args.output.mkdir(parents=True, exist_ok=False)
     os.sched_setaffinity(0, {4, 5})
@@ -87,6 +93,7 @@ def main():
                   engineering_quality_screen=False, independent_test_complete=False,
                   noninferiority_established=False, formal_performance_permission=False,
                   model_dtype="same from_pretrained(torch_dtype=BF16) loading as canonical server",
+                  sharing='CORRECTNESS_ONLY_NO_PERFORMANCE' if sharing else 'natural_idle',
                   B2_full_model_source="DERIVED_REAL_VERIFIER_ROOT_CFG_ROWS_0_7_NOT_CANONICAL_SEQUENTIAL_TRACE",
                   timing_protocol=f"{rounds} cyclic interleaved rounds; {warmups} extra warmups/engine; separate processes")
 
@@ -103,7 +110,7 @@ def main():
     def check_resource():
         observation = resource()
         result["resources"].append(observation)
-        if set(observation["pids"].splitlines()) - {str(os.getpid())}:
+        if not sharing and set(observation["pids"].splitlines()) - {str(os.getpid())}:
             raise RuntimeError("其他GPU进程进入，停止正式计时")
 
     def evaluate(scope, case, operation, installation, restore, state, inputs, historical=None, timing=True):
@@ -143,7 +150,7 @@ def main():
                 oracle, oracle_state = output.clone(), state()
             contract(output, engine, oracle, oracle_state)
 
-        if not timing:
+        if not timing or args.correctness_only:
             return
         event_start, event_end = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
         raw = []
@@ -188,12 +195,16 @@ def main():
         from wan_va.modules.model import WanTransformer3DModel
         checkpoint = ROOT / "models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer"
         model = WanTransformer3DModel.from_pretrained(checkpoint, torch_dtype=torch.bfloat16,
-                    attn_mode="torch", local_files_only=True).to("cuda").eval().requires_grad_(False)
+                    attn_mode="torch", local_files_only=True).to("cuda").eval()
+        if not args.keep_original_grad_flags:
+            model.requires_grad_(False)
         if len(model.blocks) != 30:
             raise RuntimeError("不是实际30层模型")
         result["parameters"] = sum(parameter.numel() for parameter in model.parameters())
         original_classes = [type(block) for block in model.blocks]
         parameter_addresses = {name: (id(value), value.data_ptr()) for name, value in model.named_parameters()}
+        grad_flags = {name: value.requires_grad for name,value in model.named_parameters()}
+        result['original_parameter_grad_true_count']=sum(grad_flags.values())
         block_fixtures = ROOT / "投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1"
         full_fixtures = ROOT / "投机采样/results/runtime/p0-wam-shape-audit-v1-20261016-r1/full-matrix-r4"
         for length in ("short", "middle", "long"):
@@ -254,6 +265,8 @@ def main():
                     raise RuntimeError("模型类未还原")
                 if parameter_addresses != {name: (id(value), value.data_ptr()) for name, value in model.named_parameters()}:
                     raise RuntimeError("模型参数对象/地址改变")
+                if grad_flags!={name:value.requires_grad for name,value in model.named_parameters()}:
+                    raise RuntimeError('original grad flags changed')
                 result.setdefault("restoration", []).append(dict(
                     case=f"{length}-B{batch}", classes_restored=True, parameter_addresses_unchanged=True))
                 save()
@@ -261,7 +274,8 @@ def main():
                 block.attn1.attn_caches = {}
             del history, caches, frozen
         check_resource()
-        result.update(status="COMPLETE_BLOCK_AND_ACTUAL30_FINITE_PARITY_AND_TIMING",
+        result.update(status=("COMPLETE_BLOCK_AND_ACTUAL30_FINITE_PARITY_NO_TIMING" if args.correctness_only
+                              else "COMPLETE_BLOCK_AND_ACTUAL30_FINITE_PARITY_AND_TIMING"),
                       all_parameters_and_classes_restored=True, peak_allocated_bytes=torch.cuda.max_memory_allocated())
     except BaseException as error:
         result.update(status="FAILED_OR_PARTIAL", error=repr(error))

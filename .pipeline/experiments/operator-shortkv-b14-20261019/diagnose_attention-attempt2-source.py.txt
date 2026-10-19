@@ -1,0 +1,253 @@
+"""真实输入的Torch A/A、独立CUDA核心与完整block性能定位。
+
+不采机器人数据，不改变baseline；Graph和eager、profile分别记录。
+"""
+import argparse
+from contextlib import nullcontext
+from datetime import datetime
+import gc
+import json
+import os
+from pathlib import Path
+import statistics
+import time
+import traceback
+
+import torch
+
+from .block_loader import FIXTURES, load_block
+from .fixtures import BlockFixture, tensors, visible_snapshot
+from .metrics import byte_equal, compare, state_equal
+from .profile_block import profile
+from .replay import device_tree, resource, write
+from wam_ops.baseline.attention import torch_sdpa
+from wam_ops.install import install_block
+from wam_ops.optimized.attention import cuda_sdpa
+from wam_ops.optimized.prepared import PreparedBlock
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--registration', type=Path, required=True)
+    p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--profile', action='store_true')
+    p.add_argument('--wait-idle-seconds', type=int, default=0)
+    args = p.parse_args()
+    reg = json.loads(args.registration.read_text())
+    requested = time.monotonic()
+    args.output.mkdir(parents=True, exist_ok=False)
+    os.sched_setaffinity(0, {4, 5})
+    torch.set_num_threads(2)
+    torch.set_num_interop_threads(1)
+    # 在CPU上预读block，避免自然空闲窗口被Python导入/权重读取耗掉。
+    block = load_block(device='cpu')
+    if torch.cuda.is_initialized():
+        raise RuntimeError('CPU preload must not create a CUDA context')
+    before = resource()
+    observations = [before]
+    idle_deadline = min(requested + args.wait_idle_seconds,
+        requested + datetime.fromisoformat(reg['absolute_work_stop']).timestamp() - time.time() - 540)
+    while before['pids'] and time.monotonic() < idle_deadline:
+        write(args.output / 'WAITING.json', dict(status='WAITING_FOREIGN_GPU_NO_CONTEXT',
+            observations=observations, lifecycle_seconds=time.monotonic() - requested))
+        time.sleep(min(10, max(0, idle_deadline - time.monotonic())))
+        before = resource()
+        observations.append(before)
+    if before['pids'] or before['gpu'].split(',')[0].strip() != reg['physical_gpu_uuid']:
+        write(args.output / 'RESULT.json', dict(status='WAIT_TIMEOUT_OR_IDENTITY_NO_CONTEXT',
+            observations=observations, lifecycle_seconds=time.monotonic() - requested,
+            attention_forward_intents=0, block_forward_intents=0))
+        raise RuntimeError('GPU_BUSY_NO_CONTEXT_CREATED')
+    started = time.monotonic()
+    deadline = min(started + 480, started + datetime.fromisoformat(
+        reg['absolute_work_stop']).timestamp() - time.time())
+    result = dict(status='RUNNING', rows=[], resources=observations,
+        idle_wait_seconds=time.monotonic() - requested,
+        attention_forward_intents=0, block_forward_intents=0,
+        scope='same six serialized logical block0 inputs; Torch A/A control',
+        formal_performance_permission=False,
+        profiler_excluded_from_timing=True, compiled_core='existing unchanged binary')
+
+    def save():
+        write(args.output / 'RESULT.json', result)
+
+    def check():
+        if time.monotonic() >= deadline:
+            raise TimeoutError('worker lifecycle reserve')
+        obs = resource()
+        result['resources'].append(obs)
+        if set(obs['pids'].splitlines()) - {str(os.getpid())}:
+            raise RuntimeError('FOREIGN_GPU_PID_STOP')
+        if sum(f.stat().st_size for f in args.output.rglob('*') if f.is_file()) > reg['new_storage_cap_bytes'] * .8:
+            raise RuntimeError('storage reserve')
+
+    def count(scope, operation, n=1):
+        key = scope + '_forward_intents'
+        cap = 12000 if scope == 'attention' else 1800
+        if time.monotonic() >= deadline or result[key] + n > cap:
+            raise TimeoutError('worker forward/lifecycle cap')
+        result[key] += n
+        return operation()
+
+    def benchmark(scope, label, operations, contexts, validate, graph_calls=1, graph=True):
+        """先门检；各臂轮转交错。A与B调用完全相同的Torch函数。"""
+        row = dict(scope=scope, case=label, numeric={}, samples=[], graphs={})
+        result['rows'].append(row)
+        names = tuple(operations)
+        graph_objects, outputs = {}, {}
+        for name in names:
+            with contexts[name]():
+                for _ in range(3):
+                    output = count(scope, operations[name])
+                row['numeric'][name] = validate(output)
+                if not row['numeric'][name]['passed']:
+                    raise RuntimeError(label + '/' + name + ': numerical/state gate')
+                if graph:
+                    stream = torch.cuda.Stream()
+                    stream.wait_stream(torch.cuda.current_stream())
+                    with torch.cuda.stream(stream):
+                        count(scope, operations[name])
+                        count(scope, operations[name])
+                    torch.cuda.current_stream().wait_stream(stream)
+                    torch.cuda.synchronize()
+                    g = torch.cuda.CUDAGraph()
+                    with torch.cuda.graph(g):
+                        for _ in range(graph_calls):
+                            output = count(scope, operations[name])
+                    graph_objects[name], outputs[name] = g, output
+                    count(scope, g.replay, graph_calls)
+                    torch.cuda.synchronize()
+                    row['graphs'][name] = validate(output)
+                    if not row['graphs'][name]['passed']:
+                        raise RuntimeError(label + '/' + name + ': graph gate')
+        save()
+        for mode in (('eager', 'graph') if graph else ('eager',)):
+            for repeat in range(18):
+                order = names[repeat % len(names):] + names[:repeat % len(names)]
+                for name in order:
+                    with contexts[name]():
+                        torch.cuda.synchronize()
+                        begin, end = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
+                        wall = time.perf_counter()
+                        begin.record()
+                        if mode == 'graph':
+                            count(scope, graph_objects[name].replay, graph_calls)
+                            output = outputs[name]
+                        else:
+                            output = count(scope, operations[name])
+                        end.record()
+                        end.synchronize()
+                        calls = graph_calls if mode == 'graph' else 1
+                        row['samples'].append(dict(mode=mode, repeat=repeat, arm=name,
+                            calls=calls, event_ms=begin.elapsed_time(end) / calls,
+                            wall_ms=1000 * (time.perf_counter() - wall) / calls))
+            check()
+        row['median_ms'] = {mode: {name: statistics.median(
+            r['event_ms'] for r in row['samples'] if r['arm'] == name and r['mode'] == mode)
+            for name in names} for mode in {r['mode'] for r in row['samples']}}
+        row['post'] = validate(output)
+        if not row['post']['passed']:
+            raise RuntimeError(label + ': post-state gate')
+        save()
+        del graph_objects, outputs
+        gc.collect()
+        return row
+
+    try:
+        torch.cuda.set_device(0)
+        block = block.to('cuda')
+        with torch.inference_mode():
+            for length in ('short', 'middle', 'long'):
+                for batch in (14, 2):
+                    check()
+                    fixture = BlockFixture.load(FIXTURES, length, batch)
+                    fixture = BlockFixture(fixture.path, device_tree(fixture.data))
+                    arguments, kwargs = fixture.arguments()
+                    cache = fixture.install_cache(block)
+                    original_state = visible_snapshot(cache)
+                    original_ops = (block.attn1.attn_op, block.attn2.attn_op)
+                    captured = {}
+                    def capture(name, operation):
+                        def call(q, k, v):
+                            captured[name] = tuple(x.detach().clone() for x in (q, k, v))
+                            return operation(q, k, v)
+                        return call
+                    block.attn1.attn_op = capture('self', original_ops[0])
+                    block.attn2.attn_op = capture('cross', original_ops[1])
+                    try:
+                        gold = count('block', lambda: block(*arguments, **kwargs)).clone()
+                    finally:
+                        block.attn1.attn_op, block.attn2.attn_op = original_ops
+                    state_gold = visible_snapshot(cache)
+                    if not byte_equal(gold, fixture.data['block_gold']):
+                        raise RuntimeError('original historical gold gate')
+                    immutable = {k: v.clone() for k, v in tensors((arguments, kwargs))}
+                    rng_cpu, rng_gpu = torch.random.get_rng_state(), torch.cuda.get_rng_state()
+
+                    def validate_block(output):
+                        numeric = compare(gold, output)
+                        state = state_equal(state_gold, visible_snapshot(cache))
+                        inputs = all(byte_equal(immutable[k], v) for k, v in tensors((arguments, kwargs)))
+                        rng = byte_equal(rng_cpu, torch.random.get_rng_state()) and byte_equal(rng_gpu, torch.cuda.get_rng_state())
+                        return dict(output=numeric, state=state, inputs_unchanged=inputs, RNG_unchanged=rng,
+                            passed=numeric['bitwise_pass'] and state['pass_all'] and inputs and rng)
+
+                    names = ('torch_A', 'torch_B', 'standalone')
+                    for kind, qkv in captured.items():
+                        oracle = count('attention', lambda: torch_sdpa(*qkv)).clone()
+                        copies = [v.clone() for v in qkv]
+                        def validate_core(output):
+                            numeric = compare(oracle, output)
+                            inputs = all(byte_equal(a, b) for a, b in zip(copies, qkv))
+                            return dict(output=numeric, inputs_unchanged=inputs, passed=numeric['bitwise_pass'] and inputs)
+                        operations = {name: (lambda op=(cuda_sdpa if name == 'standalone' else torch_sdpa): op(*qkv)) for name in names}
+                        row = benchmark('attention', fixture.case_id + '-' + kind, operations,
+                            {name: nullcontext for name in names}, validate_core, graph_calls=8)
+                        row['QKV'] = [dict(shape=list(v.shape), stride=list(v.stride()),
+                            dtype=str(v.dtype), contiguous=v.is_contiguous()) for v in qkv]
+                        if args.profile and length == 'short':
+                            row['profiles'] = {name: profile(block, lambda name=name: count('attention', operations[name]),
+                                args.output / (fixture.case_id + '-' + kind + '-' + name + '.trace.json'))
+                                for name in ('torch_A', 'standalone')}
+                        save()
+                    operations = {name: lambda: block(*arguments, **kwargs) for name in names}
+                    contexts = {name: ((lambda: install_block(block, 'optimized')) if name == 'standalone' else nullcontext)
+                                for name in names}
+                    row = benchmark('block', fixture.case_id + '-uncached', operations, contexts, validate_block, graph=False)
+                    if args.profile and length == 'short':
+                        row['profiles'] = {}
+                        for name in ('torch_A', 'standalone'):
+                            with contexts[name]():
+                                row['profiles'][name] = profile(block, lambda: count('block', operations[name]),
+                                    args.output / (fixture.case_id + '-uncached-' + name + '.trace.json'))
+                        save()
+                    # 静态条件和合法历史与原门相同；双方同一cached/engine/Graph。
+                    for field in ('id', 'mask', 'is_pred'):
+                        cache[field].copy_(original_state[field])
+                    prepared = PreparedBlock(block, arguments, kwargs, cache)
+                    prepared.fill()
+                    engine = 'dense' if batch == 2 else ('native' if length == 'middle' else 'guarded')
+                    from contextlib import contextmanager
+                    @contextmanager
+                    def prepared_context(name):
+                        with contexts[name]():
+                            with prepared.activate(engine, cached=True):
+                                yield
+                    benchmark('block', fixture.case_id + '-cached-' + engine,
+                        operations, {name: lambda name=name: prepared_context(name) for name in names}, validate_block)
+                    save()
+                    del fixture, captured, immutable, prepared
+                    block.attn1.attn_caches = {}
+                    gc.collect()
+        result['status'] = 'COMPLETE_FINITE_REAL_INPUT_DIAGNOSIS'
+    except BaseException as exc:
+        result.update(status='FAILED_OR_PARTIAL', error=repr(exc), traceback=traceback.format_exc())
+        raise
+    finally:
+        result['worker_lifecycle_seconds'] = time.monotonic() - started
+        result['finished_at'] = datetime.now().astimezone().isoformat()
+        save()
+
+
+if __name__ == '__main__':
+    main()

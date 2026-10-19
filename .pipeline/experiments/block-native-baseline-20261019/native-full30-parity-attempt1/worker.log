@@ -1,0 +1,33 @@
+The config attributes {'added_kv_proj_dim': None, 'image_dim': None, 'qk_norm': 'rms_norm_across_heads'} were passed to WanTransformer3DModel, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 13.44it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 13.41it/s]
+Some weights of the model checkpoint at /rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922/transformer were not used when initializing WanTransformer3DModel: 
+ ['patch_embedding.bias, patch_embedding.weight']
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/rjs/cxz/论文探索/算子研究/tools/replay.py", line 283, in <module>
+    main()
+  File "/rjs/cxz/论文探索/算子研究/tools/replay.py", line 221, in main
+    evaluate("block", f"{length}-B{batch}", lambda: block(*arguments, **kwargs),
+  File "/rjs/cxz/论文探索/算子研究/tools/replay.py", line 146, in evaluate
+    output = call()
+             ^^^^^^
+  File "/rjs/cxz/论文探索/算子研究/tools/replay.py", line 124, in call
+    return operation()
+           ^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/算子研究/tools/replay.py", line 221, in <lambda>
+    evaluate("block", f"{length}-B{batch}", lambda: block(*arguments, **kwargs),
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/算子研究/wam_ops/baseline/block.py", line 78, in forward
+    return native(hidden_states, encoder_hidden_states, temb, rotary_emb,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/算子研究/wam_ops/baseline/native.py", line 52, in __call__
+    outputs = extension().forward(self.weights, hidden_states, encoder_hidden_states,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: frozen contiguous BF16 parameters

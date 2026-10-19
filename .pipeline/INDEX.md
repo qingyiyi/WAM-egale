@@ -19,7 +19,7 @@
 
 算子原代码与 HW 保留；用户最新允许独立修正版本并复用固定上游源码，见[M22](experiments/operator-torch-alignment-20261018/PLAN.md)；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 
-当前算子源码为独立[算子研究](../算子研究/README.md)，仅baseline/optimized；投机1875文件不改，原tile依赖只读。M26六真实block的30eager/24Graph强基线过，真实GEMM M32→224；完整device FFN2失败保留。收缩FFN1+GELU在六点两进程逐位与状态过，B14完整block延迟降2.45–3.23%，不称为新调度/闭环结论；17作业751.141生命周期秒、自有GPU退出。[本轮全结果与源码](experiments/operator-profile-device-20261019/RESULT.md)。原M25严格性能/空卡NVML缺口保留。Object13:31为668/1500、3活动，后继自动排队；原M17预算/截止不重置。
+当前算子源码为独立[算子研究](../算子研究/README.md)，仅baseline/optimized；M28两份均完整native block，六actual30/24状态/原grad flags有限逐位过，两进程九点动态性能齐、owned退出。[结果与源码](experiments/block-native-baseline-20261019/RESULT.md)。最强B14/Graph、完整chunk/E2E尚未验证；M25/M26/M27旧门和失败保留。投机1875文件/原tile不改。[M29相关工作与创新边界](experiments/speculative-denoising-novelty-20261019/RESULT.md)确认多项直接先例，候选感知调度仍待实证。远端Object后继自动、同卡约束与最新完成数见[资源核对](experiments/speculative-denoising-novelty-20261019/REMOTE-STATUS.md)，原M17预算不重置。
 
 ## 动态事实与历史
 
@@ -40,3 +40,5 @@
 ## 工具版本
 
 账号默认已按用户明确授权切换到固定v15.0.0-alpha.2，旧安装保留；其他项目记录不自动迁移。`hw-codex --hw-legacy`提供旧技能兼容，完整回退见维护报告。新会话生效，自动Hook未信任时按本入口手动恢复，不依赖Hook。
+
+最新算子核查：[M27](experiments/operator-shortkv-b14-20261019/RESULT.md)区分默认复现/Torch与FFN融合收益；后者B14约3%是耗时下降。源码完整路径/实现与测量范围见[代码导航](../算子研究/README.md)。新增作业PARTIAL/等待到期已清理，不改原门。

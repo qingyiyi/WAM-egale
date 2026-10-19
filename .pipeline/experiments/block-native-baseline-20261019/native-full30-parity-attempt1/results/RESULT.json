@@ -1,0 +1,105 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "started_at": "2026-10-19T15:38:16.548293+08:00",
+  "numeric": [
+    {
+      "scope": "block",
+      "case": "short-B2",
+      "engine": "original",
+      "output": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "state": [
+        {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        }
+      ],
+      "inputs_unchanged": true,
+      "RNG_unchanged": true,
+      "historical_GPU_gold": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      }
+    }
+  ],
+  "timing": [],
+  "resources": [
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 0, 40442, 25",
+      "pids": ""
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 10185, 30257, 0",
+      "pids": "3737382"
+    }
+  ],
+  "full_model_forwards": 0,
+  "block_forwards": 2,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "model_dtype": "same from_pretrained(torch_dtype=BF16) loading as canonical server",
+  "sharing": "CORRECTNESS_ONLY_NO_PERFORMANCE",
+  "B2_full_model_source": "DERIVED_REAL_VERIFIER_ROOT_CFG_ROWS_0_7_NOT_CANONICAL_SEQUENTIAL_TRACE",
+  "timing_protocol": "3 cyclic interleaved rounds; 0 extra warmups/engine; separate processes",
+  "parameters": 5088872670,
+  "error": "RuntimeError('frozen contiguous BF16 parameters')",
+  "finished_at": "2026-10-19T15:38:40.594087+08:00",
+  "worker_lifecycle_seconds": 24.045892415568233
+}

@@ -1,0 +1,34 @@
+{
+  "block_forward_AST_identical": true,
+  "Torch_head128_standard_tile": [
+    128,
+    128,
+    64,
+    4
+  ],
+  "extension_standard_tile": [
+    128,
+    128,
+    64,
+    4
+  ],
+  "Torch_head128_split_tile": [
+    128,
+    64,
+    128,
+    4
+  ],
+  "extension_split_tile": [
+    128,
+    64,
+    128,
+    4
+  ],
+  "Torch_and_extension_split_heuristic": "same threshold capacity and ceil eligibility per pinned sources; runtime compare pending",
+  "B14_num_splits_derived": 1,
+  "B14_per_instance_Q": 16,
+  "extension_no_hidden_QKV_copy": true,
+  "output_like_same_contiguous_contract": true,
+  "build_difference": "Torch wheel CUDA12.6 vs extension nvcc12.4; SASS identity not established",
+  "GPU_started": false
+}

@@ -1,0 +1,91 @@
+{
+  "experiment": "block-native-baseline-20261019",
+  "goal": "baseline/optimized均有完整独立CUDA block入口；对齐原Torch数学与状态",
+  "user_authorization": "2026-10-19用户明确要求整个block自有算子，baseline也是，对齐性能和精度",
+  "started_at": "2026-10-19T14:54:05.977640+08:00",
+  "absolute_work_stop": "2026-10-19T22:39:05.977640+08:00",
+  "absolute_cleanup_deadline": "2026-10-19T22:54:05.977640+08:00",
+  "GPU_lifecycle_seconds_cap": 3600,
+  "CPU_allowed": [
+    4,
+    5
+  ],
+  "CPU_threads_cap": 2,
+  "full_block_forward_cap": 12000,
+  "primitive_forward_cap": 20000,
+  "full30_forward_cap": 360,
+  "new_storage_cap_bytes": 1073741824,
+  "physical_gpu_uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+  "scope": "完整block顺序原生实现；原Torch只读参考，现存六真实fixture先验；后续完整30层逐级门",
+  "reuse_primitives": "自有固定Torch Flash CUDA、复制固定Torch norm/pointwise、成熟cuBLAS GEMM；如复用Torch低层BLAS调度明确依赖，不称独立GEMM",
+  "prohibited": [
+    "ATen high-level linear/layer_norm/SDPA做包装冒充完整实现",
+    "修改投机/原tile/保护state/rules",
+    "降低逐位门、追溯修改旧FAILED",
+    "未准入直接替换生产"
+  ],
+  "cleanup_plan": "tools.bounded监管PID+出生身份；GPU自然空闲后执行，foreign进入保留PARTIAL并停止",
+  "status": "FINITE_NATIVE_BLOCK_PARITY_AND_TWO_PROCESS_DYNAMIC_TIMING_COMPLETE",
+  "baseline_replacement_authorized": true,
+  "quality_permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "shared_correctness_authorized": true,
+  "shared_correctness_source": "用户此前明确允许非性能实验共享GPU，并允许精度与完整输入输出验证共享GPU；本轮只做native数值/状态，不计性能",
+  "performance_resource_rule": "仍待自然空闲；不能将共享精度wall当性能",
+  "budget_amendment_before_full_model_jobs": {
+    "at": "2026-10-19T15:25:29.858799+08:00",
+    "previous_full30_cap": 180,
+    "previous_block_cap": 6000,
+    "full_model_jobs_started_before_amendment": 0,
+    "reason": "原视频文件缺完整输入；使用已存在完整canonical policy恢复捕获3份真实Q128完整block，约228模型调用；再做原生安装30层门，仍在原3600秒与1GiB内，不重置截止"
+  },
+  "policy_replay_capture_cap": 3,
+  "policy_capture_scope": "完整原target video20/action50冻结policy，无机器人episode，无性能结论",
+  "optimized_native_preregistered": {
+    "at": "2026-10-19T15:31:34.094615+08:00",
+    "baseline": "full native sequential; raw cuBLASLt both FFN",
+    "optimized": "same native block; Q16 uses existing own ffn1_gelu_out BF16-rounded fusion; Q128 uses same raw native FFN as baseline",
+    "no_ATen_high_level_math": true,
+    "all_old_failures_preserved": true
+  },
+  "timing_protocol_preregistered": {
+    "at": "2026-10-19T15:35:33.421311+08:00",
+    "cases": "six real action B2/B14 x KVshort/middle/long plus three real video B2 after capture",
+    "engines": [
+      "original_A",
+      "baseline",
+      "original_B",
+      "optimized"
+    ],
+    "rounds": 7,
+    "calls_per_sample": 5,
+    "warmups_per_engine": 2,
+    "two_processes": true,
+    "counterpart": "same complete dynamic original KV block, no prepared/Graph substitution",
+    "no_contention": true,
+    "median_and_all_raw": true,
+    "AA_reported": true,
+    "strict_precision_unchanged": true
+  },
+  "bounded_profile_trigger": {
+    "at": "2026-10-19T15:49:53.492104+08:00",
+    "observed": "scalar native middle/long B14 baseline latency ratio1.032/1.029 in first completed dynamic matrix; A/A variability retained",
+    "scope": "middle-B14,long-B14,long-B2; original/baseline/optimized; each1warm3profile calls",
+    "budget": "<=300s within original3600s/1GiB; no new forward cap or clock changes",
+    "purpose": "locate remaining complete-block gap before changing copy primitives"
+  },
+  "copy_alignment_trigger": {
+    "at": "2026-10-19T15:52:03.399550+08:00",
+    "evidence": "native-kernel-profile1/RESULT.json; pack per profiled block middle-B14~1566us,long-B14~3023us; candidate layout~315us. Same GEMM/attention durations closely match reference.",
+    "implementation": "uint4 16-byte exact copy for pack/private; CUB BlockScan physical-order compaction in read-only candidate layout only; B2 eviction unchanged",
+    "numerical_rule": "bitwise byte copies, no arithmetic/dtype/acceptance/cache visibility change",
+    "stop": "remain original3600s/1GiB/deadline; strict gates and two-process timing before claim"
+  },
+  "finished_at": "2026-10-19T16:50:21.877501+08:00",
+  "evidence": "RESULT.md",
+  "owned_gpu_cleanup": "ALL_23_OWNED_GPU_WORKERS_EXITED"
+}

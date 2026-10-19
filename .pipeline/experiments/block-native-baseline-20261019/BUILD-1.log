@@ -1,0 +1,66 @@
+running build_ext
+W1019 15:02:45.086000 3692246 site-packages/torch/utils/cpp_extension.py:521] The detected CUDA version (12.4) has a minor version mismatch with the version that was used to compile PyTorch (12.6). Most likely this shouldn't be a problem.
+W1019 15:02:45.087000 3692246 site-packages/torch/utils/cpp_extension.py:531] There are no /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-c++ version bounds defined for CUDA version 12.4
+building 'wam_block_cuda' extension
+creating /rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc
+[1/1] /usr/local/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o'.d -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/usr/local/cuda-12.4/include -I/rjs/cxz/miniconda3/envs/va/include/python3.12 -c -c '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.cu' -o '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_block_cuda -gencode=arch=compute_80,code=sm_80 -ccbin /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-cc -std=c++17
+FAILED: /rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o 
+/usr/local/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o'.d -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/usr/local/cuda-12.4/include -I/rjs/cxz/miniconda3/envs/va/include/python3.12 -c -c '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.cu' -o '/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build/temp.linux-x86_64-cpython-312/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_block_cuda -gencode=arch=compute_80,code=sm_80 -ccbin /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-cc -std=c++17
+nvcc warning : incompatible redefinition for option 'compiler-bindir', the last value of this option was used
+/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.cu(216): error: more than one instance of function "wam_block::gelu" matches the argument list:
+            function "at::gelu(const at::Tensor &, c10::string_view)" (declared at line 41 of /rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include/ATen/ops/gelu.h)
+            function "wam_block::gelu(const at::Tensor &)" (declared at line 117)
+            argument types are: (at::Tensor)
+      auto act=gelu(f1);save("gelu",act);
+               ^
+
+1 error detected in the compilation of "/rjs/cxz/论文探索/算子研究/wam_ops/baseline/csrc/block.cu".
+ninja: build stopped: subcommand failed.
+Traceback (most recent call last):
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2597, in _run_ninja_build
+    subprocess.run(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v', '-j', '2']' returned non-zero exit status 1.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/rjs/cxz/论文探索/算子研究/wam_ops/baseline/build.py", line 12, in <module>
+    setup(name='wam_native_block', packages=[], ext_modules=[CUDAExtension(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/__init__.py", line 117, in setup
+    return distutils.core.setup(**attrs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 186, in setup
+    return run_commands(dist)
+           ^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 202, in run_commands
+    dist.run_commands()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1001, in run_commands
+    self.run_command(cmd)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 97, in run
+    _build_ext.run(self)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 367, in run
+    self.build_extensions()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1082, in build_extensions
+    build_ext.build_extensions(self)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 483, in build_extensions
+    self._build_extensions_serial()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 509, in _build_extensions_serial
+    self.build_extension(ext)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 262, in build_extension
+    _build_ext.build_extension(self, ext)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 564, in build_extension
+    objects = self.compiler.compile(
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 866, in unix_wrap_ninja_compile
+    _write_ninja_file_and_compile_objects(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2223, in _write_ninja_file_and_compile_objects
+    _run_ninja_build(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2614, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error compiling objects for extension

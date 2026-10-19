@@ -1,0 +1,153 @@
+[
+  {
+    "path": "算子研究/wam_ops/baseline/block.py",
+    "sha256": "c10ce6e338a149c60c8edf1a6e3970f4e8fafe3771a729176e3610559cfabb15",
+    "bytes": 4109,
+    "symbols": [
+      {
+        "name": "forward",
+        "line": 59,
+        "end": 112
+      }
+    ]
+  },
+  {
+    "path": "算子研究/wam_ops/baseline/attention.py",
+    "sha256": "2a435710dde54d8ea655b18a979eb6872eeb1efb1065759af02c0604693b3567",
+    "bytes": 8594,
+    "symbols": [
+      {
+        "name": "torch_sdpa",
+        "line": 7,
+        "end": 10
+      },
+      {
+        "name": "allocate_slots",
+        "line": 86,
+        "end": 105
+      },
+      {
+        "name": "forward",
+        "line": 134,
+        "end": 212
+      }
+    ]
+  },
+  {
+    "path": "算子研究/wam_ops/optimized/block.py",
+    "sha256": "32dc92b65ab90a0db03585e2c192442aa8024d1193e5f22b0e4bdd560b26727d",
+    "bytes": 454,
+    "symbols": []
+  },
+  {
+    "path": "算子研究/wam_ops/optimized/attention.py",
+    "sha256": "e7948b6ad006939859b0b4c39ac510ca69828e5df1837e723c7a557e309408d7",
+    "bytes": 864,
+    "symbols": [
+      {
+        "name": "cuda_sdpa",
+        "line": 23,
+        "end": 24
+      }
+    ]
+  },
+  {
+    "path": "算子研究/wam_ops/optimized/csrc/attention.cu",
+    "sha256": "44441db658b0a8d4fab693fb757fc09d465ba6fb78c1f098cc3be0f046f5dde1",
+    "bytes": 9610,
+    "symbols": []
+  },
+  {
+    "path": "算子研究/wam_ops/optimized/prepared.py",
+    "sha256": "5aa9ded16a79d89a62b5d267b822e57e2d9e9c3a630b7e3d112956c155894e93",
+    "bytes": 6418,
+    "symbols": [
+      {
+        "name": "PreparedBlock",
+        "line": 38,
+        "end": 127
+      },
+      {
+        "name": "fill",
+        "line": 63,
+        "end": 67
+      },
+      {
+        "name": "forward",
+        "line": 76,
+        "end": 106
+      },
+      {
+        "name": "activate",
+        "line": 109,
+        "end": 127
+      }
+    ]
+  },
+  {
+    "path": "算子研究/tools/diagnose_attention.py",
+    "sha256": "a2fdef98fcb5f78d50d87bdbe3707a4c2ca744f2604d1716afd8769785a78191",
+    "bytes": 12461,
+    "symbols": [
+      {
+        "name": "benchmark",
+        "line": 73,
+        "end": 135
+      }
+    ]
+  },
+  {
+    "path": ".pipeline/experiments/operator-torch-alignment-20261018/upstream-reference/flash_api.cpp",
+    "sha256": "2d4ee351573bba383d7fd1380cc518d4eddf575b131146e0a0eeb5baee8099fc",
+    "bytes": 71959,
+    "symbols": []
+  },
+  {
+    "path": "算子研究/wam_ops/optimized/csrc/vendor/flash_attn/flash_fwd_launch_template.h",
+    "sha256": "62a3854739485046b5385809d10eaf4f7d19747f7a63564707196587a57b09ee",
+    "bytes": 21782,
+    "symbols": []
+  },
+  {
+    "path": "投机采样/wam-p0-worktree/wan_va/modules/model.py",
+    "sha256": "f579ee02b490dbffcf78add6452742dbdbef43286600c0eeae3dede3f053cb5b",
+    "bytes": 50603,
+    "symbols": [
+      {
+        "name": "forward",
+        "line": 57,
+        "end": 91
+      },
+      {
+        "name": "forward",
+        "line": 226,
+        "end": 240
+      },
+      {
+        "name": "forward",
+        "line": 278,
+        "end": 286
+      },
+      {
+        "name": "allocate_slots",
+        "line": 547,
+        "end": 566
+      },
+      {
+        "name": "forward",
+        "line": 595,
+        "end": 691
+      },
+      {
+        "name": "forward",
+        "line": 741,
+        "end": 794
+      },
+      {
+        "name": "forward",
+        "line": 1028,
+        "end": 1116
+      }
+    ]
+  }
+]

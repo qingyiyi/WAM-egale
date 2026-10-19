@@ -5,9 +5,10 @@ from contextlib import contextmanager, ExitStack
 @contextmanager
 def install_block(block, implementation="baseline"):
     from .baseline.block import TransformerBlock as BaselineBlock
-    from .baseline.attention import Attention as BaselineAttention, torch_sdpa
+    from .baseline.attention import Attention as BaselineAttention
+    from .optimized.attention import cuda_sdpa
     if implementation == "baseline":
-        block_type, attention_type, operation = BaselineBlock, BaselineAttention, torch_sdpa
+        block_type, attention_type, operation = BaselineBlock, BaselineAttention, cuda_sdpa
     elif implementation == "optimized":
         from .optimized.block import TransformerBlock, Attention
         from .optimized.attention import cuda_sdpa
@@ -23,17 +24,25 @@ def install_block(block, implementation="baseline"):
         raise ValueError("仅支持original KV协议")
     classes = tuple(type(module) for module in modules)
     operations = tuple(attention.attn_op for attention in modules[1:])
+    previous_native = block.__dict__.get('_native_block')
     try:
         for module, kind in zip(modules, (block_type, attention_type, attention_type)):
             module.__class__ = kind
         for attention in modules[1:]:
             attention.attn_op = operation
+        from .baseline.native import NativeBlock
+        object.__setattr__(block, '_native_block', NativeBlock(
+            block, fused_ffn1=block.native_fused_ffn1))
         yield block
     finally:
         for module, kind in zip(modules, classes):
             module.__class__ = kind
         for attention, operation in zip(modules[1:], operations):
             attention.attn_op = operation
+        if previous_native is None:
+            block.__dict__.pop('_native_block', None)
+        else:
+            object.__setattr__(block, '_native_block', previous_native)
 
 
 @contextmanager

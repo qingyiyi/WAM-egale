@@ -1,14 +1,7 @@
-"""当前优化候选：原block数学顺序＋已对齐的独立CUDA SDPA。"""
-from ..baseline.block import TransformerBlock as TorchBlock
-from ..baseline.attention import Attention as TorchAttention
-from .attention import cuda_sdpa
+"""完整native block；Q16启用保持BF16舍入的FFN1＋GELU原语。"""
+from ..baseline.block import TransformerBlock as NativeBaseline
+from ..baseline.attention import Attention
 
 
-class Attention(TorchAttention):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.attn_op = cuda_sdpa
-
-
-class TransformerBlock(TorchBlock):
-    attention_cls = Attention
+class TransformerBlock(NativeBaseline):
+    native_fused_ffn1 = True
