@@ -1,0 +1,9 @@
+# 验证工具修正，保留原记录
+
+首attempt的9个完整block与72个KV状态都逐位通过，但profiler的FFN符号未demangle，检查器误判执行路径；原NUMERIC_OR_STATE_REJECTED保留，DISPATCH-AUDIT-CORRECTION.json仅依据原始kernel名字补充判断。
+
+后续复核发现复用的BlockFixture.case_id将video也写作action，实际input_path及文件内容是video，三个video输入未被替换。新验证器显式核对保存identity并标注kind；原日志不改。独立进程9输入/54状态通过且未导入/加载baseline，身份以原input_path为准。
+
+最终追加完整同一矩阵，用于检查修正后的身份、非法配置安装还原，以及连续KV状态后的输入/RNG/参数地址/grad flags/类还原。仅新增这些缺失检查，不改数值门、数学源码、输入或原失败。
+
+CPU构建首次收据finalizer因进程已结束、前序条件写入跳过而报FileNotFoundError；编译本身exit0。已依据现场观察PID/birth与exec exit保存真实收据，不补造旧实验记录。

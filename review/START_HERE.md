@@ -1,6 +1,6 @@
 # 当前入口
 
-请先读[2026-10-19当前结果与源码](CURRENT-20261019.md)。M30已补真实shape/DAG与MegaMoE思想设计，并按用户反馈修订为覆盖self/cross-attention的完整Transformer子图；未实现新persistent；本次完整native block的有限逐位与两进程动态计时已完成；最强B14/Graph与闭环仍未验，四质量权限仍false。main只作进度镜像，固定科学commit保留身份。
+请先读[2026-10-19当前结果与源码](CURRENT-20261019.md)。M31已完成独立optimized与静态attention/FFN1 tile子图，9真实block/72状态有限逐位通过；新30层/性能待验、persistent未实现，四质量权限false。baseline及依赖冻结。main仅当前进度镜像，历史科学commit保留。
 
 以下正文与review/RESULTS.json为4f04 paused72历史快照，不能覆盖后续新授权运行或当前算子结果；旧FAILED/retention亦不能由新进度改写。
 

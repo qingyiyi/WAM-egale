@@ -1,10 +1,12 @@
 # 当前短入口
 
-更新：2026-10-19T19:02:46.233016+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
+更新：2026-10-19T19:27:26.713126+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
 
-## 当前：M30 tile/persistent设计交接
+## 当前：M31独立optimized与静态tile子图
 
-[M30结构交接](experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[综合HW的具体设计](experiments/transformer-tile-handoff-20261019/DESIGN.md)、[工作大纲](experiments/transformer-tile-handoff-20261019/WORK-OUTLINE.md)。CPU核验9签名/27参数/21节点，GPU0。用户确认借鉴MegaMoE思想，研究tile和常驻warp调度；官方源码固定，只读未安装。按用户后续反馈，整体改为[self/cross/FFN三段DAG与attention输出tile任务](experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)，首版保留Flash在线归约，再接相邻边界；旧FFN-first仅局部建议，FFN2门不阻塞attention研究。新实现/收益尚无。生产CUDA原stride未恢复、旧device FFN2失败保留。
+[实现与结果](experiments/transformer-tile-subgraph-20261019/RESULT.md)、[源码说明](../算子研究/wam_ops/optimized/SUBGRAPHS.md)。baseline及依赖88项冻结不变；optimized独立Python/C++/DSO，默认sequential等价，tiled和FFN1融合独立开关。self/cross/FFN实际子图，同stream阶段执行；attention显式输出tile、FFN1显式MMA tile已实现，QKV/Wo/FFN2仍cuBLASLt，persistent/ready未实现。
+
+9真实block/72KV状态/输入RNG参数/API门有限逐位通过；独立进程9输入/54状态、不加载baseline/旧DSO。首次kernel名识别误判与video标签/收据错误保留，最终新attempt补齐。3GPU作业81.007秒/483block，owned退出。新full30显存不足未测，无新性能/闭环证据；M28旧full30不能继承。M30原DAG/MegaMoE设计仍作来源。
 
 ## 已完成：M28完整native block
 
@@ -18,13 +20,13 @@
 
 ## 远端既定评估
 
-Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各臂500完整；[成功率表](experiments/libero-four-suite-morning-20261019/COMPLETED-SUITES-SUCCESS-20261019.md)。Object北京时间17:46:38完整1166/1500：T500/C333/P333为完成数，不是成功数。GPU1已自动进入前200组C/P后继，仍与matched Target同卡；GPU0既定分片已完成。[动态核对与ETA](experiments/speculative-denoising-novelty-20261019/REMOTE-STATUS.md)。原CPU约5分钟只读巡检继续，SSH失败不冒充实时。
+Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各臂500完整；[成功率表](experiments/libero-four-suite-morning-20261019/COMPLETED-SUITES-SUCCESS-20261019.md)。Object 1340/1500，完成数T500/C420/P420，来源2026-10-19T11:26:39Z；controller身份匹配=True，原同卡队列继续。GPU1已自动进入前200组C/P后继，仍与matched Target同卡；GPU0既定分片已完成。[动态核对与ETA](experiments/speculative-denoising-novelty-20261019/REMOTE-STATUS.md)。原CPU约5分钟只读巡检继续，SSH失败不冒充实时。
 
 ## 文献与下一步
 
 [M29原文/主张门](experiments/speculative-denoising-novelty-20261019/RESULT.md)：ICML2025投机扩散、ICLR2026 FlowCast、TS-DP/FLASH已有Transformer draft/蒸馏/机器人batch verify/PF等直接先例。新近Speculative Forcing用于视频世界生成，WAMJET已优化LingBot-VA。当前复现/普通batching/缓存/FFN融合不足以构成系统创新。
 
-默认下一步：M31尚未启动；用户明确冻结baseline，先在optimized隔离可变源码/构建产物并建立等价路径；当前仍有继承/共享库依赖。固定完整native baseline、对齐最强B14 shared-prefix/O3/缓存Graph，再有界实现一个tile/persistent worker子图；记录sum(T_round)/sum(g)、完整chunk与质量。新机制仍是假设，不自动启动新训练、架构搜索或大型fusion。当前源码/HW只发布main进度镜像，历史固定科学commit保留身份。
+默认下一步M32尚未启动：资源允许时补新full30门，对齐最强B14 shared-prefix/O3/缓存Graph，再有界实现persistent worker/ready；记录sum(T_round)/sum(g)、完整chunk与质量。新机制仍是假设，不自动启动新训练、架构搜索或大型fusion。当前源码/HW只发布main进度镜像，历史固定科学commit保留身份。
 
 ## 科学和资源边界
 

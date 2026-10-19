@@ -10,7 +10,7 @@
 
 [当前整体整理](cycles/wam-research-20261016/STATUS-20261019.md)：Long/Goal/Spatial首轮、B0有限GPU逐位、Object修复与原门缺口；旧paused72仅历史。
 
-当前算子设计：[M30交接](experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[当前Transformer attention子图设计](experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)。用户要求借鉴MegaMoE思想，当前CPU交付完成，新kernel未实现；后续只在optimized推进。三套已完成[成功率表](experiments/libero-four-suite-morning-20261019/COMPLETED-SUITES-SUCCESS-20261019.md)，不等于质量放行。
+当前算子设计：[M30交接](experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[当前Transformer attention子图设计](experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)。用户要求借鉴MegaMoE思想；[M31独立optimized与静态tile子图](experiments/transformer-tile-subgraph-20261019/RESULT.md)已完成有限block门，persistent尚未实现；baseline及依赖冻结，后续只在optimized推进。三套已完成[成功率表](experiments/libero-four-suite-morning-20261019/COMPLETED-SUITES-SUCCESS-20261019.md)，不等于质量放行。
 
 ## 两条研究路线
 

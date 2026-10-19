@@ -3,15 +3,15 @@ from contextlib import contextmanager, ExitStack
 
 
 @contextmanager
-def install_block(block, implementation="baseline"):
-    from .baseline.block import TransformerBlock as BaselineBlock
-    from .baseline.attention import Attention as BaselineAttention
-    from .optimized.attention import cuda_sdpa
+def install_block(block, implementation="baseline", *, execution_mode=None, fused_ffn1=None):
     if implementation == "baseline":
+        from .baseline.block import TransformerBlock as BaselineBlock
+        from .baseline.attention import Attention as BaselineAttention
+        from .optimized.attention import cuda_sdpa
         block_type, attention_type, operation = BaselineBlock, BaselineAttention, cuda_sdpa
     elif implementation == "optimized":
         from .optimized.block import TransformerBlock, Attention
-        from .optimized.attention import cuda_sdpa
+        from .optimized.ops import cuda_sdpa
         block_type, attention_type, operation = TransformerBlock, Attention, cuda_sdpa
     else:
         raise ValueError("implementation必须是baseline或optimized")
@@ -30,9 +30,17 @@ def install_block(block, implementation="baseline"):
             module.__class__ = kind
         for attention in modules[1:]:
             attention.attn_op = operation
-        from .baseline.native import NativeBlock
-        object.__setattr__(block, '_native_block', NativeBlock(
-            block, fused_ffn1=block.native_fused_ffn1))
+        if implementation == "baseline":
+            from .baseline.native import NativeBlock
+            if execution_mode is not None or fused_ffn1 is not None:
+                raise ValueError("baseline is frozen; optimization flags are invalid")
+            native = NativeBlock(block, fused_ffn1=block.native_fused_ffn1)
+        else:
+            from .optimized.native import NativeBlock
+            native = NativeBlock(block,
+                fused_ffn1=block.native_fused_ffn1 if fused_ffn1 is None else fused_ffn1,
+                mode=execution_mode or block.execution_mode)
+        object.__setattr__(block, '_native_block', native)
         yield block
     finally:
         for module, kind in zip(modules, classes):
@@ -46,8 +54,8 @@ def install_block(block, implementation="baseline"):
 
 
 @contextmanager
-def install_model(model, implementation="baseline"):
+def install_model(model, implementation="baseline", **options):
     with ExitStack() as stack:
         for block in model.blocks:
-            stack.enter_context(install_block(block, implementation))
+            stack.enter_context(install_block(block, implementation, **options))
         yield model

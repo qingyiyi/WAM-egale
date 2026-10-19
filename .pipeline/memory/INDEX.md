@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [optimized独立执行与静态tile子图](global/knowledge/knowledge-optimized独立执行与静态tile子图有限验证.md)（reference，M31）：9block/72状态有限逐位与独立进程隔离；full30/性能待验，persistent未实现。
+
 - [冻结baseline，仅在optimized推进tile优化](global/requirements/decision-冻结baseline并仅在optimized实现tile优化.md)（constraint，算子代码）：优化从等价路径开始；连同共享依赖冻结，先隔离会变化的源码/构建产物。
 
 - [Transformer子图应覆盖self/cross-attention](global/requirements/feedback-Transformer子图设计应覆盖self与cross-attention.md)（guideline，本轮算子设计）：依据完整真实DAG组织tile；FFN局部实验不代表整体，具体实现仍需验证。

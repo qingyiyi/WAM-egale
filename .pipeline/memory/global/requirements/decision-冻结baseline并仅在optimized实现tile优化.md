@@ -4,7 +4,7 @@ name: 冻结baseline并仅在optimized实现tile优化
 level: constraint
 scope: project:operator_code
 status: active
-updated: '2026-10-19T19:02:46.233016+08:00'
+updated: '2026-10-19T19:10:25.866447+08:00'
 supersedes:
   - decision-完整block基线与优化版均改为原生算子.md中建立M28基线时允许修改baseline的阶段安排
 sources:
@@ -20,3 +20,5 @@ sources:
 当前已有Q16 FFN1＋GELU融合属于先前局部优化，不能当成新tile/persistent结果。优化版应保留等价基线路径及独立优化开关以便归因，旧结果不改写。每次改动在同输入、状态、计时边界下比较，数值与资源规则继续有效。
 
 这条决定结束M28建立完整原生baseline时的可修改阶段；不否定当时授权与完成结果，也不新增GPU作业或扩大质量权限。
+
+用户随后明确同意先完成执行路径隔离和Transformer tile子图；M31进入实际实现与必要验证阶段。persistent动态调度是后继阶段，本次授权不扩展生产/质量权限。

@@ -1,6 +1,11 @@
 # 当前研究实验
 
+- [M31隔离optimized与tile子图](transformer-tile-subgraph-20261019/PLAN.md)：明确授权，baseline/共享依赖冻结；实现与必要验证，不含persistent队列。
+
 仅按当前任务读取；旧 runtime 与失败记录仍是原始证据。
+
+- [算子短中长真实输入矩阵](operator-kv-matrix-20261018/PLAN.md)：用户新准本机补B2/B14性能精度，当前CPU等待独占，无GPU已测新结果。
+- [原算子完整既有证据](operator-parity-evidence-20261018/REPORT.md)：576检查/60性能单元/420逐轮完整CPU复核，旧有限通过不外推整模型。
 
 - [四套研究与三套同配方TF](libero-four-suite-20261017/PLAN.md)：M17已批准，控制器已登记等待资产；Long原job继续，旧四false不动。
 - [Long全量原job](libero-fullscale-20261017/ACTUAL-RUN-STATUS.md)：M16双卡四worker运行，旧69局只读接续、48h预算不重置。

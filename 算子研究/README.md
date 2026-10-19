@@ -1,8 +1,8 @@
 # WAM完整block算子研究
 
-当前目录约束：[冻结baseline，仅在optimized推进tile优化](../.pipeline/memory/global/requirements/decision-冻结baseline并仅在optimized实现tile优化.md)。现有optimized继承完整baseline并启用Q16 FFN1＋GELU，baseline构建仍链接optimized内attention/FFN库；尚不是两套独立二进制。下一步先在optimized隔离会变化的执行入口和构建产物，保留等价基线路径，再逐项加tile/常驻调度；不得重建共享库而连带改变baseline。
+当前目录约束：[冻结baseline，仅在optimized推进tile优化](../.pipeline/memory/global/requirements/decision-冻结baseline并仅在optimized实现tile优化.md)。M31已经建立独立optimized参数/执行器及`wam_optimized_block_cuda`构建产物，不继承或链接baseline。旧attention/FFN源码与动态库仍为baseline冻结依赖，不修改或覆盖。实际实现与三种开关见[子图说明](wam_ops/optimized/SUBGRAPHS.md)。
 
-当前设计修订：[self-attention、cross-attention与FFN的完整tile子图](../.pipeline/experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)。先按Transformer依赖组织执行器；旧FFN-first建议仅作局部参考，尚无新的persistent实现。
+当前设计修订：[self-attention、cross-attention与FFN的完整tile子图](../.pipeline/experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)。当前已形成同stream顺序执行的self/cross/FFN子图及显式attention/FFN1 tile入口；旧FFN-first建议仅作局部参考，尚无persistent调度。
 
 最新协作交接：[真实结构/9签名/27参数与完整源码路径](../.pipeline/experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[综合HW的tile/persistent设计](../.pipeline/experiments/transformer-tile-handoff-20261019/DESIGN.md)、[工作依赖与止损](../.pipeline/experiments/transformer-tile-handoff-20261019/WORK-OUTLINE.md)、[MegaMoE固定源码映射](../.pipeline/experiments/transformer-tile-handoff-20261019/MEGAMOE-NOTES.md)。M30仅CPU审查，尚未实现新的persistent kernel；后续优化限定optimized。
 
@@ -17,9 +17,13 @@
 | `wam_ops/baseline/csrc/block.cu` | 完整顺序block、Norm/RoPE/调制/残差、KV写入/驱逐/打包/恢复 |
 | `wam_ops/baseline/csrc/norm.cuh` | 固定Torch的LayerNorm/RMSNorm CUDA原语，保留许可证 |
 | `wam_ops/baseline/csrc/gemm.h` | 直接cuBLASLt；复现原Torch descriptor/bias/workspace/heuristic |
-| `wam_ops/optimized/block.py` | 复用native baseline，仅Q16启用FFN1＋GELU |
-| `wam_ops/optimized/csrc/attention.cu` | 独立Flash CUDA，不转调Torch SDPA |
-| `wam_ops/optimized/csrc/ffn.cu` | FFN1＋GELU CUTLASS原语，保留两次BF16舍入 |
+| `wam_ops/optimized/block.py` | 独立参数/API容器，默认等价顺序路径 |
+| `wam_ops/optimized/native.py` | 独立动态库绑定，sequential/tiled及FFN1开关 |
+| `wam_ops/optimized/csrc/block.cu` | 实际self/cross/FFN三段子图，保留原算术边界 |
+| `wam_ops/optimized/csrc/attention_tile.cuh` | 显式query tile坐标的Flash设备函数 |
+| `wam_ops/optimized/csrc/ffn_tile.cuh` | 显式行/列tile坐标的FFN1 MMA与epilogue |
+| `wam_ops/optimized/csrc/attention.cu` | 冻结baseline依赖；新子图使用attention_tiles.cu |
+| `wam_ops/optimized/csrc/ffn.cu` | 冻结旧FFN原语；新子图使用ffn_tiles.cu |
 | `wam_ops/install.py` | 实例安装/还原，参数与cache原位共享 |
 
 顺序：FP32调制表→norm1/调制→QKV→RMSNorm/RoPE→合法历史/私有KV→self attention/投影→门控残差→norm2→cross QKV/attention/投影→残差→norm3/调制→FFN1/GELU/FFN2→门控残差。
@@ -37,15 +41,14 @@ with torch.inference_mode(), install_model(model, 'baseline'):  # 或 'optimized
     output = model(input_dict, **kwargs)
 ```
 
-在项目va环境先构建attention、FFN底层组件，再构建完整block：
+当前工作区baseline及旧依赖已构建并冻结，后续只构建独立优化库：
 
 ```bash
 cd /rjs/cxz/论文探索/算子研究/wam_ops/optimized
-WAM_BUILD_TARGET=attention MAX_JOBS=2 TORCH_CUDA_ARCH_LIST=8.0 python build.py build_ext --inplace
-WAM_BUILD_TARGET=ffn MAX_JOBS=2 TORCH_CUDA_ARCH_LIST=8.0 python build.py build_ext --inplace
-cd /rjs/cxz/论文探索/算子研究/wam_ops/baseline
-MAX_JOBS=2 TORCH_CUDA_ARCH_LIST=8.0 python build.py build_ext --inplace
+MAX_JOBS=2 TORCH_CUDA_ARCH_LIST=8.0 python build_subgraph.py build_ext --build-temp build_subgraph/temp --build-lib build_subgraph/lib --inplace
 ```
+
+通过`install_model(model, 'optimized', execution_mode='tiled', fused_ffn1=True)`启用tile路径；默认`sequential`且FFN1融合关闭。两项开关分别验证，Q128不启用FFN1融合。旧`build.py`供冻结版本追溯，不作为当前优化构建入口。
 
 绑定Torch commit `0fabc3ba44823f257e70ce397d989c8de5e362c1`；本地CUDA12.4、wheel CUDA12.6差异明确保留，不启fast-math。CUTLASS固定v3.5.1沿用项目缓存，可用`python -m tools.fetch_cutlass`恢复；vendor是依赖，不是第三份WAM实现。
 
@@ -60,3 +63,7 @@ MAX_JOBS=2 TORCH_CUDA_ARCH_LIST=8.0 python build.py build_ext --inplace
 M25–M27旧工具/结果属于旧attention替换、prepared/Graph和FFN原语路径，不套用到当前native；旧源码已归档。旧CUTLASS FFN2逐位失败保留，当前FFN2采用原Torch配置cuBLASLt。所有旧FAILED/资源中断/性能门不改。
 
 [当前M28完整结果](../.pipeline/experiments/block-native-baseline-20261019/RESULT.md)、[完整路径与源码讲解](../.pipeline/experiments/block-native-baseline-20261019/CODE-GUIDE.md)、[九点双进程动态block性能](../.pipeline/experiments/block-native-baseline-20261019/PERFORMANCE-TABLE.md)。六actual30 action query、原参数grad flags、全部声明有效状态有限逐位通过；未比较最强B14/Graph或测量新chunk/E2E。四项投机质量/TEST/非劣/正式性能权限仍false；研究替换不是生产放行。
+
+M31实现与实际验证见[结果](../.pipeline/experiments/transformer-tile-subgraph-20261019/RESULT.md)。静态tile子图不是persistent调度；QKV/Wo/FFN2仍用cuBLASLt，新30层与性能不得继承M28结论。
+
+新子图验证入口是`python -m tools.verify_subgraphs`（必须提供登记与新输出目录）。旧`verify_native`的`--optimized`仍指M28共用执行链，不作为M31验证入口。

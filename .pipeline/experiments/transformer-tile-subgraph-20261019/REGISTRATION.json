@@ -1,0 +1,30 @@
+{
+  "experiment": "transformer-tile-subgraph-20261019",
+  "goal": "隔离optimized执行/构建，形成self/cross/FFN可执行tile子图，baseline及依赖不变",
+  "user_authorization": "用户明确同意先完成隔离执行路径和实现Transformer tile子图",
+  "started_at": "2026-10-19T19:10:25.866447+08:00",
+  "absolute_work_stop": "2026-10-19T22:05:25.866447+08:00",
+  "absolute_cleanup_deadline": "2026-10-19T22:10:25.866447+08:00",
+  "GPU_lifecycle_seconds_cap": 1800,
+  "CPU_allowed": [
+    4,
+    5
+  ],
+  "CPU_threads_cap": 2,
+  "full_block_forward_cap": 600,
+  "primitive_forward_cap": 300,
+  "full_model_per_process_cap": 30,
+  "block_per_process_cap": 250,
+  "full30_forward_cap": 30,
+  "new_storage_cap_bytes": 536870912,
+  "physical_gpu_uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+  "shared_correctness_authorized": true,
+  "formal_performance_permission": false,
+  "status": "ISOLATED_STATIC_TILE_SUBGRAPHS_FINITE_BLOCK_VERIFIED",
+  "cleanup_plan": "bounded.py每作业PID/出生身份与退出收据；CPU编译timeout；不改他人任务",
+  "evidence_path": "/rjs/cxz/论文探索/.pipeline/experiments/transformer-tile-subgraph-20261019",
+  "baseline_source_commit": "99f7c2f3e845920fd83b22fedd19e72089f3a886",
+  "input_manifest": "既有M28六action和三video完整block；引用原件，不新采机器人数据",
+  "scope": "静态stage/CTA task，persistent动态队列不是本轮交付；FFN2保持原cuBLASLt数值边界",
+  "finished_at": "2026-10-19T19:25:24.554076+08:00"
+}
