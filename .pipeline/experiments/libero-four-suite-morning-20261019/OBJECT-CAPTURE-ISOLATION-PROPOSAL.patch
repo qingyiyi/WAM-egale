@@ -1,0 +1,25 @@
+--- object_remote_resumption_v1/entry.py
++++ PROPOSED_NEW_NAMESPACE/entry.py
+@@ -13,6 +13,22 @@
+ if role == 'server':
+     from baai_resume_v1.path_binding import install
+     install()
++    # New attempt only: preserve every imported shard and old failed receipt.
++    from tf_suite_pipeline_v1 import collector as collection_module
++    NativeCollector = collection_module.Collector
++    class IsolatedAttemptCollector(NativeCollector):
++        def __init__(self, server, proxy, output_dir, metadata):
++            base = Path(output_dir).resolve()
++            job = Path(metadata["job"]).resolve()
++            if not job.is_relative_to((Path.home() / "cxz").resolve()):
++                raise ValueError("BAAI new attempt must stay under ~/cxz")
++            isolated = base / ("new-capture-" + job.name)
++            # Never overwrite or inherit an old capture's sticky error state.
++            isolated.mkdir(parents=True, exist_ok=False)
++            super().__init__(server, proxy, isolated, metadata)
++            if self.output != isolated or not self.output.is_relative_to(base):
++                raise ValueError("Only filename namespace may change")
++    collection_module.Collector = IsolatedAttemptCollector
+     from tf_suite_pipeline_v1 import server_entry
+     original = server_entry.run_rows
+     def remaining_rows(plan):

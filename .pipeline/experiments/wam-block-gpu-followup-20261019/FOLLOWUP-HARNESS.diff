@@ -1,0 +1,147 @@
+--- M24/gpu_matrix.py
++++ gpu_followup.py
+@@ -1,4 +1,4 @@
+-"""Future GPU block matrix, default denied; not executed during CPU preparation.
++"""Authorized follow-up: finite GPU accuracy; timing remains gated on resource telemetry.
+ 
+ Only one real block is loaded. Each arm owns mutable cache/module instances;
+ all arms share the exact same immutable Parameter objects and logical inputs.
+@@ -65,7 +65,7 @@
+ def execute(args):
+     start = time.monotonic()
+     # Must precede all native imports, CUDA probes and output-directory writes.
+-    auth = require_gpu_authorization(args.authorization, "performance")
++    auth = require_gpu_authorization(args.authorization, "accuracy")
+     if "accuracy" not in auth.get("allowed_phases", []):
+         raise PermissionError("Block performance requires an explicitly authorized numerical gate too")
+     expected_cases = [f"{length}-B{batch}-action-layer0-first" for length, batch in CORE_CASES]
+@@ -96,8 +96,11 @@
+     if (len(fields) == 5 and (fields[0] != auth.get("expected_gpu_uuid")
+                               or "A100-SXM4" not in fields[1])):
+         raise PermissionError("This timing authorization must bind the exact local A100-SXM4 UUID")
+-    if len(fields) != 5 or float(fields[3]) > 5:
+-        raise RuntimeError("PERF_RESOURCE_UNKNOWN: idle utilization anomaly; no CUDA context created")
++    if len(fields) != 5:
++        raise RuntimeError("RESOURCE_UNKNOWN: malformed NVML snapshot; no CUDA context created")
++    timing_eligible = (float(fields[3]) <= 5 and "performance" in auth["allowed_phases"])
++    if not timing_eligible and auth.get("allow_accuracy_with_nvml_anomaly") is not True:
++        raise RuntimeError("PERF_RESOURCE_UNKNOWN: preserve original <=5pct timing gate")
+     if float(fields[2]) < 8000:
+         raise RuntimeError("Insufficient free GPU memory for the bounded block matrix")
+     os.sched_setaffinity(0, {4, 5})
+@@ -114,7 +117,10 @@
+     _json(args.output / "OWNED-PROCESS.json", dict(pid=pid, starttime_ticks=birth, uid=os.getuid()))
+     _json(args.output / "REGISTRATION.json", dict(auth, started_at=datetime.now().astimezone().isoformat(),
+                                                    resource_preflight=before_gpu, scope="normalized real block0 replay only"))
+-    result = dict(status="RUNNING_AUTHORIZED_BLOCK_MATRIX", rows=[], numeric=[], block_attempted=0,
++    result = dict(status="RUNNING_AUTHORIZED_BLOCK_MATRIX", resource_preflight=before_gpu,
++                  performance_resource_gate_passed=timing_eligible,
++                  performance_status="ELIGIBLE_PENDING_AA" if timing_eligible else "NOT_RUN_NVML_IDLE_UTILIZATION_ANOMALY",
++                  rows=[], numeric=[], block_attempted=0,
+                   block_returned=0, new_robot_episodes=0, full_target_model_forwards=0,
+                   raw_samples_are_not_independent=True,
+                   engineering_quality_screen=False, independent_test_complete=False,
+@@ -215,16 +221,17 @@
+                         arm_map = {"A": a, "B": b}
+                         return measure_pair(torch, functions[a], functions[b], lambda arm: restore(arm_map[arm]),
+                                             rounds=3, repeats=3, warmup=5, guard=guard)
+-                    AA = measure("R0", "R0_TWIN")
+-                    result["rows"].append(dict(case=fixture.case_id, cache=cache_mode, engine="A_A", measurement=AA))
+-                    if any(abs(value - 1) > 0.025 for value in AA["summary"]["paired_ratios"]):
+-                        raise RuntimeError("PERF_PENDING_AA_NOISE: stop matrix, preserve all raw samples")
+-                    for name in names[2:]:
+-                        measured = measure("R0", name)
+-                        result["rows"].append(dict(case=fixture.case_id, cache=cache_mode, engine=name,
+-                                                   scope="prepared block stream elapsed and fixture integration with restore",
+-                                                   measurement=measured))
+-                        _json(args.output / "RESULT.json", result)
++                    if timing_eligible:
++                        AA = measure("R0", "R0_TWIN")
++                        result["rows"].append(dict(case=fixture.case_id, cache=cache_mode, engine="A_A", measurement=AA))
++                        if any(abs(value - 1) > 0.025 for value in AA["summary"]["paired_ratios"]):
++                            raise RuntimeError("PERF_PENDING_AA_NOISE: stop matrix, preserve all raw samples")
++                        for name in names[2:]:
++                            measured = measure("R0", name)
++                            result["rows"].append(dict(case=fixture.case_id, cache=cache_mode, engine=name,
++                                                       scope="prepared block stream elapsed and fixture integration with restore",
++                                                       measurement=measured))
++                            _json(args.output / "RESULT.json", result)
+                     post_state = {name: state_equal(oracle_state, visible_snapshot(caches[name]))
+                                   for name in names}
+                     inputs_ok = all(byte_equal(saved_inputs[key], value) for key, value in tensors([inputs, kwargs]))
+@@ -240,19 +247,23 @@
+                 caches.clear()
+             _json(args.output / "RESULT.json", result)
+             resource_between_windows(f"after-{length}-B{batch}")
+-        b0 = [row for row in result["rows"] if row["engine"] == "B0_TORCH"]
+-        ratios = [row["measurement"]["summary"]["ratio_geomean"] for row in b0]
+-        result["B0_engineering_screen"] = dict(
+-            scope="block only; neither robot noninferiority nor universal performance equality",
+-            matched_point_count=len(ratios), paired_geomean=math.exp(sum(map(math.log, ratios)) / len(ratios)),
+-            reproducible_over_10pct=[row["case"] for row in b0 if all(value > 1.10 for value in row["measurement"]["summary"]["paired_ratios"])])
+-        screen = result["B0_engineering_screen"]
+-        screen["unresolved_point_variation"] = [row["case"] for row in b0 if
+-            any(value > 1.10 for value in row["measurement"]["summary"]["paired_ratios"])
+-            and not all(value > 1.10 for value in row["measurement"]["summary"]["paired_ratios"])]
+-        screen["bounded_screen_passed"] = (len(ratios) == 12 and screen["paired_geomean"] <= 1.05
+-            and not screen["reproducible_over_10pct"] and not screen["unresolved_point_variation"])
+-        result["status"] = "COMPLETE_FINITE_BLOCK_MATRIX_NOT_ROBOT_QUALITY"
++        if timing_eligible:
++            b0 = [row for row in result["rows"] if row["engine"] == "B0_TORCH"]
++            ratios = [row["measurement"]["summary"]["ratio_geomean"] for row in b0]
++            result["B0_engineering_screen"] = dict(
++                scope="block only; neither robot noninferiority nor universal performance equality",
++                matched_point_count=len(ratios), paired_geomean=math.exp(sum(map(math.log, ratios)) / len(ratios)),
++                reproducible_over_10pct=[row["case"] for row in b0 if all(value > 1.10 for value in row["measurement"]["summary"]["paired_ratios"])])
++            screen = result["B0_engineering_screen"]
++            screen["unresolved_point_variation"] = [row["case"] for row in b0 if
++                any(value > 1.10 for value in row["measurement"]["summary"]["paired_ratios"])
++                and not all(value > 1.10 for value in row["measurement"]["summary"]["paired_ratios"])]
++            screen["bounded_screen_passed"] = (len(ratios) == 12 and screen["paired_geomean"] <= 1.05
++                and not screen["reproducible_over_10pct"] and not screen["unresolved_point_variation"])
++            result["status"] = "COMPLETE_FINITE_BLOCK_MATRIX_NOT_ROBOT_QUALITY"
++        else:
++            result["B0_engineering_screen"] = dict(bounded_screen_passed=False, status="PENDING_RESOURCE_CLEAN_TIMING")
++            result["status"] = "COMPLETE_FINITE_GPU_ACCURACY_PERFORMANCE_PENDING"
+     except Exception as error:
+         result.update(status="PARTIAL_OR_FAILED_BLOCK_MATRIX", reason=dict(type=type(error).__name__, message=str(error)))
+         raise
+@@ -275,3 +286,15 @@
+             for row in result["rows"]:
+                 for sample in row["measurement"]["raw_samples"]:
+                     writer.writerow(dict(case=row["case"], cache=row["cache"], engine=row["engine"], **sample))
++
++
++def main():
++    import argparse
++    parser = argparse.ArgumentParser(description=__doc__)
++    for option in ("authorization", "repository", "checkpoint", "fixtures", "output"):
++        parser.add_argument("--" + option, type=Path, required=True)
++    execute(parser.parse_args())
++
++
++if __name__ == "__main__":
++    main()
+
+--- M24/gpu_job.py
++++ job_followup.py
+@@ -26,7 +26,7 @@
+     parser.add_argument("--checkpoint", type=Path, required=True)
+     parser.add_argument("--fixtures", type=Path, required=True)
+     args = parser.parse_args()
+-    auth = require_gpu_authorization(args.authorization, "performance")
++    auth = require_gpu_authorization(args.authorization, "accuracy")
+     if not 0 < auth.get("storage_cap_bytes", 0) <= 2**30:
+         raise PermissionError("An explicit storage cap no larger than 1 GiB is required")
+     os.sched_setaffinity(0, {4, 5})
+@@ -37,8 +37,8 @@
+               (deadline - datetime.now().astimezone()).total_seconds())
+     if cap < 300:
+         raise PermissionError("No full initialization/cleanup reserve remains")
+-    command = [sys.executable, "-B", "-m", "experiments.block_sequential_baseline_v1.benchmark_block",
+-               "--execute", "--authorization", str(args.authorization.resolve()),
++    command = [sys.executable, "-B", "-m", "experiments.block_sequential_baseline_v1.gpu_followup",
++               "--authorization", str(args.authorization.resolve()),
+                "--repository", str(args.repository.resolve()), "--checkpoint", str(args.checkpoint.resolve()),
+                "--fixtures", str(args.fixtures.resolve()), "--output", str((args.attempt / "matrix").resolve())]
+     env = dict(os.environ, OMP_NUM_THREADS="2", MKL_NUM_THREADS="2", OPENBLAS_NUM_THREADS="2",

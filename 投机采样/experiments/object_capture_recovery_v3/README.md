@@ -1,0 +1,7 @@
+# Object固定14局输出隔离补采
+
+用户已批准row16–29共14完整局/最多56000新增target attempts；原截止/旧失败/原16有效数据不变。Collector唯一改变是新job专用子目录；保留所有原数据准入与模型数学。Matched Target200是既定未开始baseline，与补采在双GPU独立worker并行，绝不用于ON训练；补采通过后接续原ON500 updates及Object500组三臂，首200沿Matched Target物理GPU配对。
+
+代码继承object_remote_resumption_v1，所有修改均独立目录。无smoke/新hash作业/测试/架构搜索。prepare.py仅CPU复制少量迁移元数据与绑定旧只读数据/原预算；新attempt有独立PID与清理证据。guard保留原截止/存储并计入旧capture根，新增全链累计forward限制。运行终态以实际receipt为准，不以源码准备冒充已经启动。
+
+新Matched Target200从旧T_POOL仅取task/init/模型与条件配置；其新计划沿用M17原10/17起点和10/21绝对截止。旧T_POOL的10/18截止作为模板来源保留，既不恢复旧采集也不修改它。v2启动前被过期模板截止拦截，零GPU/零episode，失败保留。

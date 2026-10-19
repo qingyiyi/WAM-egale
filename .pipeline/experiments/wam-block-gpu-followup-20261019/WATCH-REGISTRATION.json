@@ -1,0 +1,28 @@
+{
+  "schema": "local-CPU-idle-watch/v1",
+  "started_at": "2026-10-19T08:54:36.698518+08:00",
+  "cleanup_deadline": "2026-10-19T10:48:46.314266+08:00",
+  "expected_gpu_uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+  "command": [
+    "/rjs/cxz/miniconda3/envs/va/bin/python",
+    "-B",
+    "-m",
+    "experiments.block_sequential_baseline_v1.job_followup",
+    "--authorization",
+    "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-gpu-followup-20261019/CLEAN-WINDOW-AUTHORIZATION.json",
+    "--attempt",
+    "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-gpu-followup-20261019/attempt-03-if-clean-window",
+    "--repository",
+    "/rjs/cxz/论文探索/review_exports/WAM-egale-libero-fullscale-20261017",
+    "--checkpoint",
+    "/rjs/cxz/论文探索/models/lingbot-va-posttrain-libero-long-modelscope-20260922",
+    "--fixtures",
+    "/rjs/cxz/论文探索/投机采样/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1"
+  ],
+  "cpu_threads": 1,
+  "maximum_GPU_launches": 1,
+  "reason": "Only after new resource evidence; no retry until AA passes",
+  "source_path": "/rjs/cxz/论文探索/投机采样/experiments/block_sequential_baseline_v1/watch_idle.py",
+  "source_sha256": "b4bcb3f94924859b7139597ab524475ac5ae02bc086a0822c34b2ccccaca1e12",
+  "old_failed_AA_preserved": true
+}

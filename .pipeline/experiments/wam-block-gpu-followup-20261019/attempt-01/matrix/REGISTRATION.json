@@ -1,0 +1,42 @@
+{
+  "schema": "wam-block-gpu-authorization/v2",
+  "allow_new_gpu_jobs": true,
+  "review_commit": "ca5f37e0482c2e38e3738e3d8e71e3b185990a23",
+  "allowed_phases": [
+    "accuracy",
+    "performance"
+  ],
+  "started_at": "2026-10-19T08:48:59.909922+08:00",
+  "cleanup_deadline": "2026-10-19T10:48:46.314266+08:00",
+  "gpu_lifecycle_seconds_cap": 7200,
+  "block_attempt_cap": 5000,
+  "storage_cap_bytes": 1073741824,
+  "cpu_threads": 2,
+  "gpu_index": 0,
+  "expected_gpu_uuid": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+  "exclusive_window": true,
+  "allow_accuracy_with_nvml_anomaly": true,
+  "implementation_manifest": "/rjs/cxz/论文探索/.pipeline/experiments/wam-block-gpu-followup-20261019/IMPLEMENTATION-MANIFEST.json",
+  "implementation_patch_sha256": "426e4a2a11e5d923604abbdba50307901e4a91157d26c5fac15c84790f0f2663",
+  "user_authorization_evidence": "2026-10-19 当前用户：你监控本机gpu，有空的时候就上去跑，另外给我汇总昨晚的进度如何，两台机器都要；接续上一轮≤120分钟完整block具体建议",
+  "input_manifest": [
+    "short-B14-action-layer0-first",
+    "middle-B14-action-layer0-first",
+    "long-B14-action-layer0-first",
+    "short-B2-action-layer0-first",
+    "middle-B2-action-layer0-first",
+    "long-B2-action-layer0-first"
+  ],
+  "budget_origin": "NEW_GPU_FOLLOWUP_ONLY_NOT_OLD_CPU_OR_M22",
+  "maximum_implementation_corrections": 2,
+  "preflight": {
+    "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, NVIDIA A100-SXM4-40GB, 0 MiB, 40442 MiB, 24 %, 31.78 W\n",
+    "process_pids": ""
+  },
+  "formal_performance_permission": false,
+  "resource_preflight": {
+    "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, NVIDIA A100-SXM4-40GB, 40442, 25, 1095",
+    "process_pids": ""
+  },
+  "scope": "normalized real block0 replay only"
+}

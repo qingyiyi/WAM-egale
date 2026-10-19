@@ -3,35 +3,35 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-19T02:20:56+08:00'
+updated: '2026-10-19T09:09:48.963521+08:00'
 current: M24
-next: new_authorized_GPU_block_window_then_AA_and_profile_keep_remote_queue_running
-execution_status: CPU_B0_and_22_contract_tests_complete_GPU_pending_remote_chains_running
+next: wait_clean_local_timing_window_and_supervise_approved_Object_recovery
+execution_status: finite_GPU_B0_accuracy_complete_AA_failed_remote_Object_recovery_running
 ---
 # 当前研究进度
 
-M24已建立B0_HYBRID_SEQUENTIAL；六个保存的真实action block0输入、六个B2合法写控制CPU逐位/有效状态/RNG通过；两fixture各28观察阶段/静态投影控制通过。最终源同集合复核已完成、22项CPU契约通过；GPU精度/性能未运行。见[本轮检查点](../../experiments/wam-block-baseline-20261019/CHECKPOINT.md)。
+本机完整block GPU精度已66次通过，性能因A/A和NVML异常待定；BAAI Goal/Spatial各1500局完成，Object14补采与匹配T200双卡真实运行。宏观completed不表示质量门通过。
 
-| ID | 状态 | 当前证据与next |
-|---|---|---|
-| `M16` | COMPLETE_DESCRIPTIVE_NOT_QUALIFIED | Long各500，T483/C484/P473；[汇总](../../experiments/long-morning-20261018/FINAL-SUMMARY.md)，原科学门未通过 |
-| `M17` | RUNNING_REMOTE_AUTO_QUEUE | 10/19 02:03 Goal336/500共同组、1010/1500局；Spatial340/500、1023/1500；两卡各两worker，Object30秒自动等槽；[核验](../../experiments/libero-four-suite-20261017/QUEUE-HANDOFF-20261019.md) |
-| `M18` | COMPLETE_VERIFIED | 原件/环境/四套权重落BAAI，旧AutoDL关机UNKNOWN、不再SSH |
-| `M19` | COMPLETE_LIMITED_SCOPE | [576检查/60门/420轮复核](../../experiments/operator-parity-evidence-20261018/REPORT.md)，原证据不外推 |
-| `M20` | COMPLETE_RESOURCE_RELOCATION_QUEUED | Object16/30自然CLEAN，余14/训练/全500已排队；本机不自动接质量 |
-| `M21` | COMPLETE_WITH_STANDALONE_FULL30_FAILURE | [旧报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)，旧standalone完整六query非逐位/三例容差失败保留 |
-| `M22` | COMPLETE_LIMITED_ALIGNMENT_WITH_LATENCY_TAILS | 去fast_math后108attention/54block/六full30/三冻结policy严格数值通过；54新计时点中block9/54、full30两例>5%慢；[结果](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
-| `M23` | COMPLETE_INSTALLED_LOGIN_PENDING | 0.162.1已装、登录待用户；开发不再迁移，模拟器由用户kill后已退出；[结果](../../experiments/remote-codex-setup-20261018/RESULT.md) |
-| `M24` | COMPLETE_CPU_BASELINE_GPU_PENDING | 固定ca5f37e；B0是新Python阶段组织、Torch原基元；22契约通过、GPU入口已准备但未运行；[CPU计划/来源](../../experiments/wam-block-baseline-20261019/PLAN.md) |
+| ID | 工作 | 状态 | 证据/科学边界 | next |
+|---|---|---|---|---|
+| `M16` | Long500组三臂首轮 | `completed` | 描述性完成，T483/C484/P473；配对FAILED/曝光/四false保留 | [完整结果](../../experiments/long-morning-20261018/FINAL-SUMMARY.md) |
+| `M17` | Object/Goal/Spatial固定链 | `in_progress` | Goal/Spatial各1500局完成；Object固定14补采与匹配Target200已双卡接续，后续ON和全500自动排队 | [晨间结果/修复](../../experiments/libero-four-suite-morning-20261019/RESULT.md) |
+| `M18` | 迁移原件/环境、释放旧机 | `completed` | 四套资产落BAAI；AutoDL不再SSH、关机UNKNOWN | [迁移](../../experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md) |
+| `M19` | 原算子数据CPU复核 | `completed` | 有限证据，不外推 | [576检查/60门/420轮](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
+| `M20` | 本机评测迁新机 | `completed` | 原Object16有效，原新14完整但监督无效，今晨获准固定14补采；本机不自动接质量 | [资源接续](../../experiments/libero-four-suite-morning-20261019/OBJECT-RECOVERY-PLAN.md) |
+| `M21` | 原始/B14短中长矩阵 | `completed` | WITH_STANDALONE_FULL30_FAILURE；旧失败/PARTIAL保留 | [旧报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md) |
+| `M22` | Torch对齐与有限性能 | `completed` | 108attention/54block/六full30/三policy严格数值过；旧计时有尾部与资源异常 | [结果](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
+| `M23` | 新机Codex安装 | `completed` | 0.162.1已装、登录待用户；不再迁移开发，用户kill模拟器后已退出 | [安装结果](../../experiments/remote-codex-setup-20261018/RESULT.md) |
+| `M24` | 完整block显式顺序B0 | `in_progress` | CPU最终复核/22契约过；今晨六真实fixture×cache的66次GPU逐位/有效状态过；A/A超2.5%停止，性能PENDING | [GPU接续](../../experiments/wam-block-gpu-followup-20261019/RESULT.md) |
 
-## 已知边界
+## 结果与边界
 
-M24没有新GPU、模型GPU加载、simulator/episode/训练。保存时已contiguous，原CUDA stride/alias/RNG未持久化；CPU原版与旧GPU gold不逐位，不拿CPU通过替GPU证明。旧54个Torch block的三轮max/min有45点>1.05、36点>1.10，最大7.387；仅证实波动，根因UNKNOWN，下一轮先A/A。
+Goal T463/C464/P467，各500；Spatial T472/C466/P464，各500。800罚分均值Goal158.806/157.166/156.466、Spatial145.998/152.964/155.304。两套均有FAILED_FIRST_TWO_S_PAIRING，训练曝光/独立性与正式E2E未获解决；不把1500完整终态写成质量PASS。Long原结果和长尾见原汇总，不重算旧门。
 
-M22实际替换仍仅SDPA，投影/norm/FFN等Torch；完整模型/冻结policy通过不等于全设备自有化或机器人质量通过。M21旧失败不追溯修改；G1仅kernel证据、shared/guarded旧六query有限状态逐位，不外推。
+B0是新Python阶段组织、Torch原基元；GPU六保存真实action block0、两种cache、66次逐位/全部有效KV/元数据/输入/当前RNG与旧GPU gold通过。原CUDA stride/alias/RNG未持久化，视频完整block/B0完整30层/policy未由本轮证明。A/A最大2.512635%>2.5%，停止且不放宽；本机0显存/无进程却NVML24–25%，根因UNKNOWN，不能签性能。CPU监控同一10:48:46截止。
 
-Long SR96.6/96.8/94.6%，800罚分均值285.858/282.588/293.270；共同成功长度C/T P50/P90/max=1/1.073561/2.329167、P/T=1/1.054054/3.223577，>1.30为6/472、7/464。T→C丢11救12，T→P丢19救9；全部自然失败保留。C36/P66首两S严格配对FAILED，50init训练/DEV曝光，不是独立TEST。273组暖episode探索性T/C约1.4974、T/P约1.2330，非独占/cold E2E。
+Object旧16有效，新14完整机器人终态但监督文件冲突无效；旧失败保留，用户今晨明确批准仅补14。v3首尾/物理卡/训练角色不变，T200先作为独立baseline并行，未用来重训ON。自动链/5分钟巡检见新health-v2，不声称待运行阶段已启动。
 
-engineering_quality_screen=false、independent_test_complete=false、noninferiority_established=false、formal_performance_permission=false。TF_ON/PF2旧NO_GO、retention、paused72/MLP0、默认A_off均不改。无新120/TEST/正式45chunk/撤回融合/架构搜索/第二环境；后续GPU需新范围、窗口、预算。原预算截止见PLAN，不借余量/迁移重置。
+engineering_quality_screen=false、independent_test_complete=false、noninferiority_established=false、formal_performance_permission=false。旧NO_GO/retention/paused72/default不改。原tile与保护源不动，不自动恢复120/独立TEST/新TF45chunk/撤回融合/架构搜索。详细预算/原截止见PLAN和各Experiment。
 
-完整先前四文见[本次history](history/M24-before-semantic-update-20261019/PROGRESS.md)，当前只保留语义导航。
+此前四文完整保留：[本次history](history/M24-before-GPU-followup-20261019/PROGRESS.md)。
