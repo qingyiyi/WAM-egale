@@ -3,35 +3,38 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-19T09:55:55.629844+08:00'
-current: M24
-next: register_full_model_direct_copy_validation_and_supervise_Object
-execution_status: direct_Torch_block_copy_finite_reproduction_complete_full_model_pending_Object_running
+updated: '2026-10-19T10:47:48.521957+08:00'
+current: M25
+next: finish_two_implementation_full30_and_timing_then_publish
+execution_status: consolidation_complete_GPU_waiting_remote_Object_running
 ---
 # 当前研究进度
 
-本机先交付直接Torch复制基线：三个完整定义源码一致，六真实fixture/18次数值和有效状态逐位通过，六点中位耗时接近原版；旧B0精度66通过/旧A/A性能待定保留；BAAI Goal/Spatial各1500局完成，Object14/数据准入/ON已完成，匹配T200与全500双卡运行。宏观completed不表示质量门通过。
-
 | ID | 工作 | 状态 | 证据/科学边界 | next |
 |---|---|---|---|---|
-| `M16` | Long500组三臂首轮 | `completed` | 描述性完成，T483/C484/P473；配对FAILED/曝光/四false保留 | [完整结果](../../experiments/long-morning-20261018/FINAL-SUMMARY.md) |
-| `M17` | Object/Goal/Spatial固定链 | `in_progress` | Goal/Spatial各1500局完成；Object14补采/数据准入/ON已完成，匹配T200与全500已接续，每卡一worker | [晨间结果/修复](../../experiments/libero-four-suite-morning-20261019/RESULT.md) |
-| `M18` | 迁移原件/环境、释放旧机 | `completed` | 四套资产落BAAI；AutoDL不再SSH、关机UNKNOWN | [迁移](../../experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md) |
-| `M19` | 原算子数据CPU复核 | `completed` | 有限证据，不外推 | [576检查/60门/420轮](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
-| `M20` | 本机评测迁新机 | `completed` | 原Object16有效，原新14完整但监督无效，今晨获准固定14补采；本机不自动接质量 | [资源接续](../../experiments/libero-four-suite-morning-20261019/OBJECT-RECOVERY-PLAN.md) |
-| `M21` | 原始/B14短中长矩阵 | `completed` | WITH_STANDALONE_FULL30_FAILURE；旧失败/PARTIAL保留 | [旧报告](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md) |
-| `M22` | Torch对齐与有限性能 | `completed` | 108attention/54block/六full30/三policy严格数值过；旧计时有尾部与资源异常 | [结果](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
-| `M23` | 新机Codex安装 | `completed` | 0.162.1已装、登录待用户；不再迁移开发，用户kill模拟器后已退出 | [安装结果](../../experiments/remote-codex-setup-20261018/RESULT.md) |
-| `M24` | 完整block直接Torch复现基线 | `in_progress` | 三个定义逐字复制，六fixture/18次数值与有效状态通过；六点中位耗时比0.9677–1.0033，单轮波动保留；旧66/旧A/A不改 | [复制结果；完整模型待验](../../experiments/direct-torch-block-copy-20261019/RESULT.md) |
+| `M16` | Long500组三臂首轮 | `completed` | T483/C484/P473；严格首两S失败/曝光/四false保留 | [证据](../../experiments/long-morning-20261018/FINAL-SUMMARY.md) |
+| `M17` | Object/Goal/Spatial既定评估 | `in_progress` | Goal/Spatial各1500局完成；Object14补采/准入/ON完成，匹配T200及全500双卡运行 | [证据](../../experiments/libero-four-suite-morning-20261019/RESULT.md) |
+| `M18` | 迁移与旧机释放 | `completed` | 四套资产落BAAI；AutoDL不再SSH，关机UNKNOWN | [证据](../../experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md) |
+| `M19` | 原算子数据CPU复核 | `completed` | 有限576检查/60门/420轮，不外推 | [证据](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
+| `M20` | 本机评估迁往BAAI | `completed` | 保留原无效监督/PARTIAL；获准14补采已完成，本机只接算子 | [证据](../../experiments/libero-four-suite-morning-20261019/OBJECT-RECOVERY-PLAN.md) |
+| `M21` | 原始/B14短中长旧矩阵 | `completed` | WITH_STANDALONE_FULL30_FAILURE；旧失败保留 | [证据](../../experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md) |
+| `M22` | 旧独立CUDA attention对齐 | `completed` | 108attention/54block/六full30/三policy有限逐位过；性能尾部/异常保留 | [证据](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
+| `M23` | 新机Codex安装 | `completed` | 0.162.1已装，登录待用户；开发不迁移 | [证据](../../experiments/remote-codex-setup-20261018/RESULT.md) |
+| `M24` | 直接Torch复制block | `completed` | 六fixture/18次逐位与状态过；294block，六点中位比0.9677–1.0033，单轮波动保留；原66/旧AA失败不改 | [证据](../../experiments/direct-torch-block-copy-20261019/RESULT.md) |
+| `M25` | 算子两份实现整理＋整模型/性能 | `in_progress` | 独立baseline/optimized，CPU绑定/native过；16旧目录已删、308源留Git；投机1875源不变；六点block/实际full30逐位过；资源检查中断，最后基线计时等待 | [证据](../../experiments/operator-consolidation-20261019/PLAN.md) |
 
-## 结果与边界
+## 当前结果与缺口
 
-Goal T463/C464/P467，各500；Spatial T472/C466/P464，各500。800罚分均值Goal158.806/157.166/156.466、Spatial145.998/152.964/155.304。两套均有FAILED_FIRST_TWO_S_PAIRING，训练曝光/独立性与正式E2E未获解决；不把1500完整终态写成质量PASS。Long原结果和长尾见原汇总，不重算旧门。
+新算子入口为`算子研究`，仅baseline/optimized两份主实现；共用安装与验证/计时工具。baseline保留完整block计算顺序，optimized目前只换已对齐独立CUDA SDPA，未实现新的MegaTransformer调度。16旧算子目录已删，源码在Git a0ed2d8e49403cdca8d87afd40b21dd19595710c；原tile/shared-prefix是投机依赖保留。1875投机源/配置清理前后无改动。完整六点block/实际30层、GPU合法write1/2共54项逐位/有效状态检查通过；早先短KV22项单独保留。累计96 full30/108 block、87.585秒，两次资源中断，完整计时仅探索性。剩余54 full30在continuation-2作最后基线计时，用户明确等待自然空闲；原13:14:26截止/150 full30帽不改。[本项实际结果](../../experiments/operator-consolidation-20261019/RESULT.md)。
 
-用户明确先直接复现，已逐字复制完整block/attention/cache助手并提供可撤销模型入口。六真实action block0（B2/B14×短中长KV）18次逐位/有效KV/输入/当前RNG及历史gold通过；294完整block调用，worker约15秒自然退出。六点中位耗时比0.9677–1.0033，单轮比0.8587–1.0973，计时波动不写成加速。完整30层/机器人/原CUDA stride与alias仍未新增证明。旧B0两cache的66次精度、旧A/A2.512635%超2.5%的失败和NVML异常记录不改；旧多引擎watch已停止，fixed3 AA未运行，未为PASS重试。总412/5000，原10:48:46截止不变。
+M24旧六真实action block0（B2/B14×短中长K）18次GPU数值/有效KV/输入/RNG及历史gold逐位过；294block约15秒退出，六点中位耗时比0.9677–1.0033、单轮0.8587–1.0973。原B0两cache66次精度/旧AA2.512635%超2.5%失败保留，旧watch/fixed3 audit不再跑。原CUDA stride/alias/RNG缺失、video/完整模型未由M24新增证明；新M25独立验证不能回写旧门。
 
-Object旧16有效，新14完整机器人终态但监督文件冲突无效；旧失败保留，用户今晨明确批准仅补14。v3首尾/物理卡/训练角色不变，T200先作为独立baseline并行，未用来重训ON。自动链/5分钟巡检见新health-v2，不声称待运行阶段已启动。
+Long T483/C484/P473，800罚分均值285.858/282.588/293.270；共同成功C/T长度max2.329167、P/T3.223577。Goal T463/C464/P467，罚分158.806/157.166/156.466；Spatial T472/C466/P464，罚分145.998/152.964/155.304，各臂500。严格首两S失败：Long C36/P66，Goal C165/P334，Spatial C155/P312；训练/DEV曝光/独立性缺口不改，正式E2E UNKNOWN。
 
-engineering_quality_screen=false、independent_test_complete=false、noninferiority_established=false、formal_performance_permission=false。旧NO_GO/retention/paused72/default不改。原tile与保护源不动，不自动恢复120/独立TEST/新TF45chunk/撤回融合/架构搜索。详细预算/原截止见PLAN和各Experiment。
+Object旧16有效、旧14监督冲突无效保留；新14完整补采/准入/ON3000完成，匹配T200与全500双卡接续；新health-v2跟踪。额外GPU并发因NVML/容器PID对应未证明继续拦截，不伪称自有。以最新实际巡检为准，不把旧状态当实时。
 
-此前四文完整保留：[本次history](history/M24-before-GPU-followup-20261019/PROGRESS.md)。
+engineering_quality_screen=false、independent_test_complete=false、noninferiority_established=false、formal_performance_permission=false。旧NO_GO/retention/FAILED/paused72/96与MLP0/22缺收据/default A_off不改。TF64/TF_ON、tau、K2B2/bonus/prefix_then_cost、BF16/FP32语义不变。PF2=SST完整policy，T50更新/51action调用含末尾。所有臂用512-token BF16优化reset，cold另列；actual796和失败罚分800分列。
+
+投机代码/配置/服务/运行依赖不改。原tile是shared-prefix构建依赖，原位只读保留；保护state/cycle/rules与原tile HW不动。不自动新训练、120/独立TEST、被阻塞的新TF正式45chunk、架构搜索/第二环境/撤回融合。BAAI所有写入永远限~/cxz，不杀他人/改系统/时钟，AutoDL不再SSH。GitHub仅main当前镜像；中文论文会话交飞书，不建初稿。
+
+预算见PLAN和登记原件。历史四文完整见[本次归档](history/M25-before-operator-consolidation-20261019/PROGRESS.md)。

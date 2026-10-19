@@ -54,10 +54,6 @@ def tensors(value, prefix="input"):
             yield from tensors(item, f"{prefix}.{index}")
 
 
-def tensor_description(tensor):
-    return dict(shape=list(tensor.shape), dtype=str(tensor.dtype),
-                stride=list(tensor.stride()), storage_offset=tensor.storage_offset(),
-                contiguous=tensor.is_contiguous(), device=str(tensor.device))
 
 
 def visible_snapshot(cache):
@@ -144,21 +140,3 @@ class BlockFixture:
         if block.attn2.attn_caches is not None:
             raise ValueError("Saved baseline requires original uncached cross-attention")
         return cache
-
-    def manifest(self):
-        return dict(case_id=self.case_id, path=str(self.path.resolve()),
-                    bytes=self.path.stat().st_size, identity=list(self.data["identity"]),
-                    source=self.data["source"],
-                    layout_contract="SERIALIZED_LOGICAL_CPU_NORMALIZED",
-                    original_cuda_strides="UNKNOWN_NOT_PERSISTED",
-                    original_alias_topology="UNKNOWN_NOT_PERSISTED",
-                    rng_snapshot="UNKNOWN_NOT_PERSISTED_IN_COMPACT_FIXTURE",
-                    original_capture_validation=self.data["input_output_validation"],
-                    pool_shape=self.data["pool_shape"],
-                    history_tokens=self.data["history_slots"].numel(),
-                    original_shapes=self.data["original_shapes"],
-                    arguments={name: tensor_description(tensor) for name, tensor in
-                               tensors([self.data["block_args"], self.data["block_kwargs"]])},
-                    candidate_mapping=(None if self.data["identity"][1] == 2 else
-                                       self.data["candidate_cache_rows"].tolist()),
-                    weight_identity=self.data["block_weights_source"])

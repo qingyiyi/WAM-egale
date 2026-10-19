@@ -63,6 +63,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--registration", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--timing-engines", nargs="+", choices=ENGINES, default=list(ENGINES))
     args = parser.parse_args()
     registration = json.loads(args.registration.read_text())
     if registration.get("user_authorization") is None:
@@ -143,8 +144,10 @@ def main():
             return
         event_start, event_end = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
         raw = []
+        timed_engines = tuple(args.timing_engines)
         for round_index in range(3):
-            order = ENGINES[round_index:] + ENGINES[:round_index]
+            offset = round_index % len(timed_engines)
+            order = timed_engines[offset:] + timed_engines[:offset]
             for engine in order:
                 restore()
                 with installation(engine):
@@ -161,10 +164,10 @@ def main():
                     raise RuntimeError("计时返回值逐位不一致")
         contract(output, "post_timing", oracle, oracle_state)
         medians = {engine: statistics.median(row["event_ms"] for row in raw if row["engine"] == engine)
-                   for engine in ENGINES}
+                   for engine in timed_engines}
         result["timing"].append(dict(scope=scope, case=case, raw=raw, median_ms=medians,
-            baseline_over_original=medians["baseline"] / medians["original"],
-            optimized_over_original=medians["optimized"] / medians["original"]))
+            baseline_over_original=(medians["baseline"] / medians["original"] if "baseline" in medians else None),
+            optimized_over_original=(medians["optimized"] / medians["original"] if "optimized" in medians else None)))
         save()
 
     try:
@@ -240,6 +243,9 @@ def main():
                     raise RuntimeError("模型类未还原")
                 if parameter_addresses != {name: (id(value), value.data_ptr()) for name, value in model.named_parameters()}:
                     raise RuntimeError("模型参数对象/地址改变")
+                result.setdefault("restoration", []).append(dict(
+                    case=f"{length}-B{batch}", classes_restored=True, parameter_addresses_unchanged=True))
+                save()
             for block in model.blocks:
                 block.attn1.attn_caches = {}
             del history, caches, frozen

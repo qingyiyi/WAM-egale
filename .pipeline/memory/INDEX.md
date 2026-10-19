@@ -4,6 +4,10 @@
 
 ## 当前资源偏好
 
+- [算子等待GPU自然空闲](global/requirements/preference-算子测试等待本机GPU自然空闲.md)（constraint，本轮算子）：用户再次选择自然空闲，不反复协调窗口；原预算/截止不重置。
+
+- [算子仅baseline/optimized，投机侧不改](global/requirements/decision-算子代码只维护baseline与optimized且不改投机侧.md)（constraint，算子代码）：独立目录收拢、删除无依赖旧实现；先完成30层与性能基线，再讲解。
+
 - [算子交付明确源码与验证范围](global/requirements/requirement-算子交付明确源码入口与验证范围.md)（constraint，当前算子交付）：定位实现/替换/验证入口，按源码讲解，并列已有证据、缺口与下一优先项。
 
 - [先直接复制Torch调用链完成复现](global/requirements/decision-算子先直接复制Torch调用链完成复现.md)（constraint，当前算子基线）：先可替换的精度/性能基线，允许抄原实现；自有device基元/调度另议，计时噪声与实现正确性分列。

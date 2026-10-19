@@ -30,11 +30,13 @@ def main():
     deadline = datetime.fromisoformat(reg["absolute_cleanup_deadline"]).timestamp()
     os.sched_setaffinity(0, {4, 5})
     write(out / "SUPERVISOR-OWNED.json", identity(os.getpid()))
-    result = dict(status="WAITING_IDLE_GPU", jobs=[], GPU_lifecycle_seconds=0,
-                  full_model_forwards=0, block_forwards=0)
+    prior = reg.get("prior_consumed", {})
+    result = dict(status="WAITING_IDLE_GPU", jobs=[], GPU_lifecycle_seconds=prior.get("GPU_lifecycle_seconds", 0),
+                  full_model_forwards=prior.get("full_model_forwards", 0),
+                  block_forwards=prior.get("block_forwards", 0), prior_consumed=prior)
     child = owned = None
     try:
-        for index in (1, 2):
+        for index in range(1, reg.get("process_count", 2) + 1):
             clean = 0
             while time.time() < deadline - 300:
                 observation = resource()
@@ -53,9 +55,16 @@ def main():
             remaining = reg["GPU_lifecycle_seconds_cap"] - result["GPU_lifecycle_seconds"]
             if remaining < 300:
                 raise TimeoutError("累计GPU生命周期余量不足")
+            engines = reg.get("timing_engines_by_process", [["original", "baseline", "optimized"]] * 2)[index - 1]
+            expected_model = 6 * (3 + 3 * len(engines))
+            if result["full_model_forwards"] + expected_model > reg["full_model_forward_cap"]:
+                raise RuntimeError("没有下一完整worker的forward预算")
+            if result["block_forwards"] + expected_model + 6 > reg["block_forward_cap"]:
+                raise RuntimeError("没有下一完整worker的block预算")
             directory = out / f"process-{index}"
             command = [sys.executable, "-B", "-m", "tools.replay", "--registration", str(args.registration.resolve()),
                        "--output", str(directory)]
+            command += ["--timing-engines", *engines]
             started = time.monotonic()
             receipt = dict(command=command, started_at=datetime.now().astimezone().isoformat())
             with (out / f"process-{index}.log").open("x") as log:
@@ -91,7 +100,7 @@ def main():
                 raise RuntimeError("首个不完整worker后不自动续跑第二进程")
             if result["full_model_forwards"] > reg["full_model_forward_cap"] or result["block_forwards"] > reg["block_forward_cap"]:
                 raise RuntimeError("累计调用上限")
-        result["status"] = "COMPLETE_TWO_INDEPENDENT_PROCESSES"
+        result["status"] = "COMPLETE_REGISTERED_PROCESSES"
     except BaseException as error:
         result.update(status="PARTIAL_OR_FAILED", error=repr(error))
     finally:

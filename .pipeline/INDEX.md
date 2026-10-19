@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-19T09:10:16.485294+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-19T10:49:12.778068+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -19,7 +19,7 @@
 
 算子原代码与 HW 保留；用户最新允许独立修正版本并复用固定上游源码，见[M22](experiments/operator-torch-alignment-20261018/PLAN.md)；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 
-最新算子基线按用户要求先[直接复制Torch完整block](experiments/direct-torch-block-copy-20261019/RESULT.md)：六真实B2/B14短中长fixture逐位/有效状态通过，中位耗时接近原版，单轮波动保留；完整模型待另登记，旧B0/A-A失败不改。
+当前算子源码已收拢到独立[算子研究](../算子研究/README.md)，仅baseline/optimized两份主实现；16旧算子目录已删、源码留Git，投机1875源/配置未改。原tile/shared-prefix作为投机构建依赖保留。CPU检查通过，30层/性能GPU作业等待空闲，见[M25](experiments/operator-consolidation-20261019/PLAN.md)。旧M24有限结果与旧失败保留。
 
 ## 动态事实与历史
 
