@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [冻结baseline，仅在optimized推进tile优化](global/requirements/decision-冻结baseline并仅在optimized实现tile优化.md)（constraint，算子代码）：优化从等价路径开始；连同共享依赖冻结，先隔离会变化的源码/构建产物。
+
 - [Transformer子图应覆盖self/cross-attention](global/requirements/feedback-Transformer子图设计应覆盖self与cross-attention.md)（guideline，本轮算子设计）：依据完整真实DAG组织tile；FFN局部实验不代表整体，具体实现仍需验证。
 
 - [tile与persistent warp为当前算子主线](global/requirements/decision-算子tile化与persistent-warp调度为主线.md)（constraint，本轮算子）：设备tile、常驻worker与依赖调度，替代旧仅路线B阶段优先级；不预设收益或扩大质量权限。

@@ -1,10 +1,10 @@
 ---
 kind: progress
 cycle: wam-research-20261016
-updated: '2026-10-19T18:37:38.352270+08:00'
+updated: '2026-10-19T19:02:46.233016+08:00'
 current: M30
 execution_status: complete_CPU_handoff_no_GPU_prototype
-next: full_transformer_DAG_and_attention_tile_worker
+next: M31
 ---
 # 当前研究进度
 
@@ -40,7 +40,7 @@ TF64/TF_ON、normalizer、tau、K2B2/bonus/prefix_then_cost及BF16/FP32冻结。
 
 ## 下一步与保护
 
-下一步M31尚未启动：先完整Transformer DAG和self/cross输出tile入口，再attention相邻边界/常驻调度；FFN2数值缺口单独保留；主要机制指标ΣT_round/Σg，g不能由7候选或环境步代替。只在通过分级正确性/质量后进入对应正式性能。
+下一步M31尚未启动：先在optimized隔离会变化的源码/构建产物并建立等价路径，冻结baseline及其共享依赖；再完整Transformer DAG和self/cross输出tile入口，再attention相邻边界/常驻调度；FFN2数值缺口单独保留；主要机制指标ΣT_round/Σg，g不能由7候选或环境步代替。只在通过分级正确性/质量后进入对应正式性能。
 
 M17原10/21 16:56:31停新、17:11:31清理，18723000尝试/15GiB、每卡最多2worker；matched Target前200组同GPU1。BAAI仅~/cxz，AutoDL不再SSH、关机UNKNOWN。本机计时自然空闲，精度可共享；不杀他人/改服务/时钟。
 

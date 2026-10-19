@@ -1,9 +1,11 @@
 ---
 kind: discussion-summary
 cycle: wam-research-20261016
-updated: '2026-10-19T18:37:38.352270+08:00'
+updated: '2026-10-19T19:02:46.233016+08:00'
 ---
 # 当前讨论与授权
+
+用户明确baseline不再改动，optimized以等价基线为起点实施tile化Transformer；已通过Maintain保存为算子约束，替代M28建基线时的修改权限。当前optimized继承baseline，仅Q16启FFN1＋GELU，baseline仍链接optimized下共享库；后续先隔离可变入口/二进制，不能间接改基线。本次仅文档，无实现或GPU作业。
 
 用户明确研究tile化算子、persistent kernel基础上的tile调度，并建议参考MegaMoE；最新补充只需完成其思想，不要求复刻官方实现，要求综合HW提出设计。已用Maintain保存为当前算子目标/偏好；具体tile大小、队列、FFN路线和收益不是用户已确认事实。
 

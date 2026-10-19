@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-19T18:37:38.352270+08:00'
+updated: '2026-10-19T19:02:46.233016+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -15,7 +15,7 @@ execution: EXECUTION.md
 | M28 | 两份完整native block | completed | 六actual30有限逐位、双进程九点动态性能；非强B14/Graph或E2E |
 | M29 | 相关工作与创新边界 | completed | 多项投机直接先例，新增调度仍待证 |
 | M30 | 结构/shape/DAG/MegaMoE思想交接 | completed | CPU-only，9签名/27参数/21节点；无新persistent kernel |
-| M31 | 一个有界tile常驻worker原型 | planned | 尚未登记GPU作业；按完整Transformer DAG，先self/cross attention输出tile及相邻边界 |
+| M31 | 一个有界tile常驻worker原型 | planned | 尚未登记GPU作业；先在optimized隔离源码/构建并建立等价路径，再self/cross attention输出tile及相邻边界 |
 
 当前设计修订：[self/cross-attention子图](../../experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)，替代旧FFN-first整体推进建议；无新GPU作业。
 
@@ -25,6 +25,8 @@ execution: EXECUTION.md
 - [x] 核验既有强baseline/profile/旧负结果，固定MegaMoE官方源码只读。
 - [x] 真实输入/参数/GEMM形状与归约DAG，综合HW给出tile/persistent设计。
 - [x] Maintain保存用户方向、协作交付与MegaMoE思想偏好，不把具体策略写成已确认结论。
+- [x] 用户确认冻结baseline、仅在optimized开发；已记录现有继承/共享库依赖。
+- [ ] optimized隔离变化入口/构建产物并提供等价路径，保持baseline及所依赖原件不变。
 - [ ] 下一包按完整Transformer DAG登记self/cross attention tile入口和相邻边界；FFN局部门不代表整体，FFN2缺口单独保留。
 - [ ] 子图→完整block→30层verifier→完整chunk正确性→质量放行后的正式性能。
 

@@ -1,6 +1,6 @@
 # 当前短入口
 
-更新：2026-10-19T18:37:38.352270+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
+更新：2026-10-19T19:02:46.233016+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
 
 ## 当前：M30 tile/persistent设计交接
 
@@ -24,7 +24,7 @@ Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各臂500完整；[
 
 [M29原文/主张门](experiments/speculative-denoising-novelty-20261019/RESULT.md)：ICML2025投机扩散、ICLR2026 FlowCast、TS-DP/FLASH已有Transformer draft/蒸馏/机器人batch verify/PF等直接先例。新近Speculative Forcing用于视频世界生成，WAMJET已优化LingBot-VA。当前复现/普通batching/缓存/FFN融合不足以构成系统创新。
 
-默认下一步：M31尚未启动；固定完整native baseline、对齐最强B14 shared-prefix/O3/缓存Graph，再有界实现一个tile/persistent worker子图；记录sum(T_round)/sum(g)、完整chunk与质量。新机制仍是假设，不自动启动新训练、架构搜索或大型fusion。当前源码/HW只发布main进度镜像，历史固定科学commit保留身份。
+默认下一步：M31尚未启动；用户明确冻结baseline，先在optimized隔离可变源码/构建产物并建立等价路径；当前仍有继承/共享库依赖。固定完整native baseline、对齐最强B14 shared-prefix/O3/缓存Graph，再有界实现一个tile/persistent worker子图；记录sum(T_round)/sum(g)、完整chunk与质量。新机制仍是假设，不自动启动新训练、架构搜索或大型fusion。当前源码/HW只发布main进度镜像，历史固定科学commit保留身份。
 
 ## 科学和资源边界
 

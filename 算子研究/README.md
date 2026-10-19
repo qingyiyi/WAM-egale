@@ -1,5 +1,7 @@
 # WAM完整block算子研究
 
+当前目录约束：[冻结baseline，仅在optimized推进tile优化](../.pipeline/memory/global/requirements/decision-冻结baseline并仅在optimized实现tile优化.md)。现有optimized继承完整baseline并启用Q16 FFN1＋GELU，baseline构建仍链接optimized内attention/FFN库；尚不是两套独立二进制。下一步先在optimized隔离会变化的执行入口和构建产物，保留等价基线路径，再逐项加tile/常驻调度；不得重建共享库而连带改变baseline。
+
 当前设计修订：[self-attention、cross-attention与FFN的完整tile子图](../.pipeline/experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)。先按Transformer依赖组织执行器；旧FFN-first建议仅作局部参考，尚无新的persistent实现。
 
 最新协作交接：[真实结构/9签名/27参数与完整源码路径](../.pipeline/experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[综合HW的tile/persistent设计](../.pipeline/experiments/transformer-tile-handoff-20261019/DESIGN.md)、[工作依赖与止损](../.pipeline/experiments/transformer-tile-handoff-20261019/WORK-OUTLINE.md)、[MegaMoE固定源码映射](../.pipeline/experiments/transformer-tile-handoff-20261019/MEGAMOE-NOTES.md)。M30仅CPU审查，尚未实现新的persistent kernel；后续优化限定optimized。

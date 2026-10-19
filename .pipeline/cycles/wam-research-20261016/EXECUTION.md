@@ -1,7 +1,7 @@
 ---
 kind: execution
 cycle: wam-research-20261016
-updated: '2026-10-19T18:37:38.352270+08:00'
+updated: '2026-10-19T19:02:46.233016+08:00'
 ---
 # 最近执行检查点
 
@@ -22,3 +22,7 @@ updated: '2026-10-19T18:37:38.352270+08:00'
 ## 2026-10-19T18:37:38.352270+08:00：Transformer attention子图设计修正
 
 用户质疑FFN-first作为整体拆法并询问baseline路径/对齐范围。重新读完整native forward、固定Flash入口、G1/G2候选核和M26 profile。B14 self/cross模块合计47.83/56.88/54.55%，包含projection等，不是纯attention核占比。修订完整DAG及任务边界：Flash输出query tile内保持在线归约；RMSNorm完整D、Wo全部head就绪、private KV隔离。首版从attention可调度入口及相邻边界验证，FFN2旧失败单独保留。当前92算子源与M28已测manifest相同，本次只改文档/记忆；无GPU实验、无新性能/质量结论。
+
+## 2026-10-19T19:02:46.233016+08:00：冻结baseline与optimized开发边界
+
+沿实际Python继承、native binding及build.py核对：optimized当前复用完整baseline，Q16开启既有FFN1＋GELU；baseline链接optimized内attention/FFN动态库。用户要求baseline不动、optimized从等价路径优化，已用Maintain记录；下一包先隔离会变化的源码/构建，再attention子图。当前只修改文档和导航，没有改数学源码、编译、GPU任务或既有结果。
