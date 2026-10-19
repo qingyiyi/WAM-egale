@@ -20,7 +20,7 @@ GEMM每CTA处理64×64输出tile，K按32推进；4个计算warp分别负责32×
 
 同一阶段的tile可由任意常驻CTA领取。阶段边界用cooperative grid barrier保证完整归约/依赖ready；norm的计算warp组使用显式128线程named barrier，不让旧CTA barrier只被部分warp调用。CTA数由实际寄存器/共享内存的occupancy上限确定，禁止超额cooperative驻留导致死锁。
 
-这是**整层范围的阶段DAG执行器**，不是细粒度跨阶段流水。当前中间量仍写入global workspace；没有宣称权重/KV只从HBM读一次，没有SM90动态寄存器分配，也没有多个候选共用private KV。粗屏障和高资源常驻可能更慢，待实际profile判断。
+这是**整层范围的阶段DAG执行器**，不是细粒度跨阶段流水。当前中间量仍写入global workspace；没有宣称权重/KV只从HBM读一次，没有SM90动态寄存器分配，也没有多个候选共用private KV。实际函数172寄存器/线程、59616B共享内存，理论1 CTA/SM；这不是实测achieved occupancy。
 
 ## 数值与接口
 
@@ -28,4 +28,6 @@ GEMM每CTA处理64×64输出tile，K按32推进；4个计算warp分别负责32×
 
 新WMMA归约及在线attention与原cuBLASLt/Flash的实现顺序不同。代数一致不能推定逐位一致，也不能继承M32精度或闭环证书。原逐位/状态门不降低；若失败，只能报告实际误差并保留未准入研究实现。单kernel结构、tile恰好一次、有效KV/RNG/输出与速度分别检查。
 
-验证与资源证据：[M34登记](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/PLAN.md)。CPU已编译；本机9真实输入完成，结构成立但9输出原逐位门失败，不集成。详情见[M34本机结果](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/LOCAL-CORRECTNESS.md)，远端9 trace也确认单kernel、两独立进程计时相对native慢5.12–11.28倍；[完整数据](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/RESULT.md)已收口。进一步有界诊断不改主源码/DSO。只有profiler实际观察一次整层kernel才计结构门通过；源码中单launch语句不是运行证据。
+验证与资源证据：[M34登记](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/PLAN.md)。本机及远端9真实输入完成，结构成立但9输出原逐位门失败，不集成。详情见[M34本机结果](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/LOCAL-CORRECTNESS.md)，远端9 trace也确认单kernel、两独立进程计时相对native慢5.12–11.28倍；[完整数据](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/RESULT.md)保留。
+
+[有限阶段诊断](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)已完成：B14合计74.66%时间为GEMM；唯一ldm40布局挑战者比带计时v1下降6.5%–19.0%，一进程两次交错样本，仍未解决原精度或相对native的速度问题。诊断保持v1位相等不等于匹配Torch。主源码/DSO没有替换，累计600完整block调用后收口，所有算子owned进程已退出。只有profiler实际观察一次整层kernel才计结构门通过；源码中单launch语句不是运行证据。

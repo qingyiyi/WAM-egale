@@ -8,10 +8,10 @@
 - [x] K1（实现与诊断完成，原逐位门FAIL）：补全部投影与FFN2设备原语；先用真实输入和原cuBLASLt比中间量。优先读取实际heuristic/资源/归约信息，不重复M26已失败四公式，不任意降低逐位门或无限调参。
 - [x] K2（设备任务已实现，状态门分项记录）：Norm/调制/RoPE/残差/KV metadata与copy转成显式设备任务，保留FP32/BF16/FP64边界、合法private KV和错误传播。
 - [x] K3（本机两trace确认整层单launch）：一个全层persistent kernel；明确warp角色、ready DAG、shared/global workspace与代际。所有计算在内完成，host只绑定和预分配；不在kernel中调用host cuBLASLt。
-- [ ] K4：真实B2/B14 action及B2 video×三KV，原中间量/最终输出/全部有效KV/输入/参数/API/RNG；调度计数每tile恰好一次，检查producer先行与终止，无死锁；trace确认整层计算launch为1。
-- [ ] K5：与冻结顺序baseline和适用最强cached/shared-prefix/Graph比较。报告全部case与重复；若只有结构完成而原精度门未过，明确UNADMITTED/PARTIAL，不替换生产，也不称完成所有验收。
+- [x] K4（执行完成，原输出/写KV数值门FAIL）：真实B2/B14 action及B2 video×三KV，9条trace各1整层kernel；tile恰好一次、输入/RNG/参数与metadata通过，最终hidden及部分写KV数值失败。未集成。
+- [x] K5（有界成本诊断完成，强baseline比较未晋级）：两进程270计时样本对Torch/native，新kernel比native慢5.12–11.28倍。原数值门FAIL，停止向更强cached/shared-prefix/Graph推进；这不是已经完成强baseline验收。
 
-## 第一版角色方案（待编译/验证，非既成结果）
+## 第一版角色方案（已实现，数值和速度未准入）
 
 每个常驻CTA先考虑8 warp：metadata调度1，activation加载1，weight/KV加载1，MMA/softmax/归约计算4，epilogue写回1。计算原语可由4个计算warp协作；各warp角色明确，不把单warp当成完整CTA原语调用者。具体数量是设计变量，用户没有指定8；SM80资源不可行则先交测量结论，再决定一种有依据的收缩，不做网格扫参。
 
@@ -35,6 +35,8 @@ kernel完整性、精度与性能分开验收。K1若不能保持当前精度契
 
 [9输入有限重放](LOCAL-CORRECTNESS.md)：结构/全tile/输入/RNG通过；9输出逐位FAIL，9只读KV通过，18写序列9通过/9数值失败，metadata均通过。保留默认Python依赖启动失败（0block）。同输入Linear控制与原cuBLASLt API metadata见结果。远端验证和探索性时间待空卡，未集成。
 
-## 后续有限诊断
+## 后续有限诊断（已完成并收口）
 
 两独立进程确认新kernel相对native慢5.12–11.28倍。新增83 block调用/15分钟GPU子预算：先测29阶段PTX globaltimer，不访问NCU计数；只有三B14 GEMM合计≥50%且9输入逐位匹配未准入v1，才编译一次共享ldm32→40挑战者。不变主源码/DSO，不扫grid/register/padding，不降低旧数值门。见DIAGNOSTIC-REGISTRATION.json。
+
+实际83/83，M34累计600完整block。B14 GEMM合计74.66%，唯一挑战者触发并完成，保持v1的9输入位相等，探索性延迟下降6.5%–19.0%；原精度仍FAILED，没有生产接入。GPU0于01:44:39北京清理，所有owned root真实reap、context为空。原始失败、编译失败和UNKNOWN保留，停止新增GPU诊断；详见DIAGNOSTIC-RESULT.md。

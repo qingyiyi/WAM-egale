@@ -1,16 +1,16 @@
 # 当前研究实验
 
-- [M34整层单kernel](single-layer-warp-specialized-20261019/PLAN.md)：源码已编译、本机结构通过但原逐位FAIL；远端计时待空卡，原数值门不变。
-- [M35新独占工程计时](libero-four-suite-performance-20261019/ISOLATED-RESULT.md)：360上限、四套三臂三进程重复；新重复不作独立质量N。
+- [M34整层单kernel](single-layer-warp-specialized-20261019/RESULT.md)：9签名各1计算kernel，原数值FAIL，耗时为native的5.12–11.28倍；[唯一布局诊断](single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)后600调用收口，未准入。
+- [M35四套工程计时](libero-four-suite-performance-20261019/ISOLATED-RESULT.md)：360原上限，Object首轮CPU白名单失败、0局不重试，最多330；新重复不作独立质量N。[6000完整质量与原门](libero-four-suite-performance-20261019/QUALITY-RESULT.md)。
 - [M36 RoboTwin只读调研](robotwin-migration-survey-20261019/RESULT.md)：官方权重/50任务/seed与迁移接口；0新环境实验。
 
-- [M33单层退化归因](single-block-persistent-profile-20261019/RESULT.md)：profile与216 CTA反事实完成；NCU计数UNKNOWN，整层统一kernel尚未实现。
+- [M33单层退化归因](single-block-persistent-profile-20261019/RESULT.md)：profile与216 CTA反事实完成、无新增正收益；NCU计数UNKNOWN。该版本没有整层单kernel，后续M34另列。
 
 - [M32单层persistent](persistent-tile-remote-20261019/RESULT.md)：有限精度/状态通过，两进程新增性能收益未成立；本轮30层取消。
 
 - [M31隔离optimized与tile子图](transformer-tile-subgraph-20261019/PLAN.md)：明确授权，baseline/共享依赖冻结；实现与必要验证，不含persistent队列。
 
-仅按当前任务读取；旧 runtime 与失败记录仍是原始证据。
+仅按当前任务读取；旧 runtime 与失败记录仍是原始证据。以下均为历史入口，描述原登记阶段，不表示当前仍在运行或可以自动重启。
 
 - [算子短中长真实输入矩阵](operator-kv-matrix-20261018/PLAN.md)：用户新准本机补B2/B14性能精度，当前CPU等待独占，无GPU已测新结果。
 - [原算子完整既有证据](operator-parity-evidence-20261018/REPORT.md)：576检查/60性能单元/420逐轮完整CPU复核，旧有限通过不外推整模型。

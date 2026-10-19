@@ -20,7 +20,17 @@ def main():
         terminal=job/('BENCHMARK-PHASE-RESULT.json' if islong else 'SUPERVISOR-RESULT.json')
         if terminal.exists():
             d=read(terminal);phase['terminal']=d['status'];phase['cleanup']=d.get('cleanup')
-        if (job/'GUARD-FINAL.json').exists():phase['guard']=read(job/'GUARD-FINAL.json').get('status')
+        supervisor=job/'SUPERVISOR-RESULT.json'
+        if supervisor.exists():
+            original=read(supervisor)
+            phase['runner_elapsed_wall_sec']=original.get('elapsed_wall_sec')
+            phase['original_supervisor_status']=original.get('status')
+            phase['original_exclusive_GPU_window_verified']=original.get('exclusive_GPU_window_verified')
+        if (job/'RUN-STARTED.json').exists():
+            phase['run_started_at']=read(job/'RUN-STARTED.json').get('at')
+        if (job/'GUARD-FINAL.json').exists():
+            g=read(job/'GUARD-FINAL.json');phase['guard']=g.get('status')
+            phase['guard_terminal_scalars']={k:v for k,v in g.items() if not isinstance(v,(dict,list))}
         if (job/'MIGRATED-ENTRY-FAILED.json').exists():
             phase['CPU_admission_failure']=read(job/'MIGRATED-ENTRY-FAILED.json')
         setup=job/('server-worker1' if islong else 'server-worker0')/'MODEL-SETUP-OBSERVATION.json'

@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-19T18:37:38.352270+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-20T02:38:04.799258+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -10,7 +10,7 @@
 
 [当前整体整理](cycles/wam-research-20261016/STATUS-20261019.md)：Long/Goal/Spatial首轮、B0有限GPU逐位、Object修复与原门缺口；旧paused72仅历史。
 
-当前算子：[M33退化profile](experiments/single-block-persistent-profile-20261019/RESULT.md)完成；新要求为单层统一persistent kernel内部调度全部tile，尚未实现。[M34设备原语与ready缺口](experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)。M32局部原型与负结果保留，baseline/投机侧不改；M35两卡工程计时运行，M34首批闭合并排有界诊断。
+当前算子：[M34整层单kernel实际结果](experiments/single-layer-warp-specialized-20261019/RESULT.md)和[有界阶段诊断](experiments/single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)已完成，结构成立、原精度/速度NO-GO、600调用后清理；不是已准入实现。M35同卡工程计时终态见[当前结果](experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)，Object首轮实施失败不重跑，原面板最多330/360。旧四false/FAILED保留。
 
 ## 两条研究路线
 

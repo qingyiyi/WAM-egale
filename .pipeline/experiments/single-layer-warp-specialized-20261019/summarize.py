@@ -16,7 +16,7 @@ def main():
     for ref in runs['validate-1']['rows']:
         case=ref['case'];r=dict(case=case,numeric_pass=ref['original_contract_passed'],
             max_abs=ref['original_vs_whole']['max_abs'],relative_L2=ref['original_vs_whole']['rel_l2'],
-            first_DAG_difference=ref['first_different_intermediate'],
+            first_saved_DAG_difference=ref['first_different_intermediate'],
             single_kernel_trace=ref['kernel_trace']['one_whole_layer_kernel'],
             readonly_valid_KV=ref['state']['pass_all'],tile_exact_once=ref['tile_exact_once'])
         for mode in ('Torch','native','whole'):
@@ -67,7 +67,7 @@ def main():
         '', '相同输入Q/FFN2 Linear控制证实GEMM已有数值差异。公共cuBLASLt API重建读到：B2 FFN2 splitK7/inplace，B14 Q与FFN2 splitK2/inplace；新WMMA是单段FP32累加。配置与舍入契约不同，不能仅由metadata指定唯一根因；旧M26四公式失败不改、不重复无限扫参。',
         '', '实际函数172 registers/thread、59616B shared、LOCAL0，occupancy API理论1 CTA/SM、108 CTA。这是资源上限而非实测achieved occupancy。首版较小64×64×32 GEMM tile、同步加载、粗屏障和global workspace都有额外成本；精确阶段占比等待独立设备内计时，未将推断写成观察。',
         '', f'远端三GPU job共{summary["GPU_job_lifecycle_seconds"]:.3f}秒、{summary["remote_block_attempts"]}完整block尝试、{summary["remote_linear_diagnostic_calls"]}Linear控制；全部root真实reap并释放context。总CUDA active秒UNKNOWN。首次本机错误Python依赖失败0block和前两编译失败均保留。',
-        '', '下一步：补一次已登记的阶段profile，仅在GEMM占比≥50%且9输入保持v1位相等时测试一个ldm40布局挑战者。当前主源码/DSO冻结，不改baseline/投机侧，不集成，不扩30层，不以放宽精度门换PASS。']
+        '', '上述是首批v1的固定结果；后续有限profile/唯一布局诊断已收口，见DIAGNOSTIC-RESULT.md。精度边界见PRECISION-CUTS.md：first_saved_DAG_difference仅指已保存观测点，不补造主路径缺失的pre-norm投影。主源码/DSO冻结，不改baseline/投机侧，不集成，不扩30层，不以放宽精度门换PASS。']
     (B/'RESULT.md').write_text('\n'.join(text)+'\n')
     print(summary['status'],summary['remote_block_attempts'],len(samples),summary['source_guard'])
 

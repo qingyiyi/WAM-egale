@@ -25,7 +25,7 @@
 | 归一化 | 当前LIBERO normalizer | RoboTwin quantiles/q01/q99 |
 | Transformer主体 | D3072/H24/d128/F14336/30层 | HF小配置相同；action输入输出30维 |
 
-配置与维度来源：[va_robotwin_cfg.py](https://github.com/robbyant/lingbot-va/blob/7c6ffa9bfc4b83582cafc860fab4c82cc7deeeeb/wan_va/configs/va_robotwin_cfg.py)、[server 398–414行](https://github.com/robbyant/lingbot-va/blob/7c6ffa9bfc4b83582cafc860fab4c82cc7deeeeb/wan_va/wan_va_server.py#L398)、[模型action展开](https://github.com/robbyant/lingbot-va/blob/7c6ffa9bfc4b83582cafc860fab4c82cc7deeeeb/wan_va/modules/model.py#L830)。512是静态接口推导，未运行张量捕获。client还做初始EEF pose叠加、四元数归一化，再`take_action(..., action_type='ee')`；不能沿用LIBERO的命令映射。
+配置与维度来源：[va_robotwin_cfg.py](https://github.com/robbyant/lingbot-va/blob/7c6ffa9bfc4b83582cafc860fab4c82cc7deeeeb/wan_va/configs/va_robotwin_cfg.py)、[server 398–414行](https://github.com/robbyant/lingbot-va/blob/7c6ffa9bfc4b83582cafc860fab4c82cc7deeeeb/wan_va/wan_va_server.py#L398)、[模型action展开](https://github.com/robbyant/lingbot-va/blob/7c6ffa9bfc4b83582cafc860fab4c82cc7deeeeb/wan_va/modules/model.py#L830)。512仅指16有效通道的紧凑表示，是静态接口推导，未运行张量捕获。原server实际上按`[1,30,2,16,1]`分配action噪声，即960元素；`_prepare_latent_input`每次teacher查询前清零inactive通道。不能把服务器原分配说成512，也不能直接改为只抽512个随机数而声称RNG等价。见[噪声分配456–462行](https://github.com/robbyant/lingbot-va/blob/7c6ffa9bfc4b83582cafc860fab4c82cc7deeeeb/wan_va/wan_va_server.py#L456)与原mask调用。client还做初始EEF pose叠加、四元数归一化，再`take_action(..., action_type='ee')`；不能沿用LIBERO的命令映射。
 
 当前TF64的7维state＋7维previous velocity＋3标量、16个位置，不能直接加载为RoboTwin draft。若沿同思路，应重新登记32-token/16-channel接口与权重、RoboTwin数据、normalizer、FIT/CAL及接受阈值；不能默认沿用LIBERO tau。算子主体维度可借鉴，但本轮整层kernel只登记Q16/Q128，也不能自动声称已支持Q32。
 

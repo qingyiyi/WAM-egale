@@ -26,4 +26,4 @@
 
 远端三GPU job共66.555秒、450完整block尝试、54Linear控制；全部root真实reap并释放context。总CUDA active秒UNKNOWN。首次本机错误Python依赖失败0block和前两编译失败均保留。
 
-下一步：补一次已登记的阶段profile，仅在GEMM占比≥50%且9输入保持v1位相等时测试一个ldm40布局挑战者。当前主源码/DSO冻结，不改baseline/投机侧，不集成，不扩30层，不以放宽精度门换PASS。
+上述是首批v1的固定结果；后续有限profile/唯一布局诊断已收口，见DIAGNOSTIC-RESULT.md。精度边界见PRECISION-CUTS.md：first_saved_DAG_difference仅指已保存观测点，不补造主路径缺失的pre-norm投影。主源码/DSO冻结，不改baseline/投机侧，不集成，不扩30层，不以放宽精度门换PASS。

@@ -1,28 +1,13 @@
----
-kind: discussion-summary
-cycle: wam-research-20261016
-updated: '2026-10-19T21:08:07.097619+08:00'
----
 # 当前讨论与授权
 
-最新用户允许性能统一远端，并允许现在并行CPU实现整层单persistent kernel和warp职责分工；GPU验证等待对应卡四套计时阶段结束，明早汇报，最后汇总RoboTwin任务/权重/init/迁移调研。GPU工程测量已按独立新登记启动，不恢复旧受阻45chunk，不把旧四false改true。RoboTwin没有新增实验授权。
+最新用户要求现在直接实现：整个单层Transformer在一个persistent kernel内，把全部算子切tile交给职责不同的warp，借鉴MegaMoE；明早汇报实测速度、精度与问题。只一层，不做30层大融合。baseline及共享依赖冻结，仅optimized新入口；投机代码/配置与原tile不改。
 
-用户最新要求只实现一层完整Transformer block，在这一层内做tile和persistent；取消本轮30层迁移/验证，不以完整30层作为完成门。实现与有限验证放BAAI ~/cxz，最新用户允许未来性能统一远端。baseline连同共享依赖冻结，优化只在独立optimized。
+用户允许四套LIBERO速度统一远端测，替代旧“最终E2E必须本机”的地点条款；每卡计时单worker且无观察到争用，M34 GPU验证等对应计时卡清理，CPU实现可并行。本机可用自然空闲窗口先核对精度；不杀他人。AutoDL已归还不再连接，BAAI所有写入限~/cxz。
 
-[M33实际profile](../../experiments/single-block-persistent-profile-20261019/RESULT.md)完成。B14长KV静态/阶段内persistent均34 kernel，增量207.072us由self/cross attention与FFN1合计207.2425us解释。108 CTA上限低于理论2 CTA/SM容量；隔离216 CTA反事实使B14短中长相对静态退化从4.154%/4.781%/5.459%降到0.726%/0.474%/0.179%，没有新增加速。不锁时钟，跨case绝对时间非单调，不能作正式性能。
+当前M34结构实测成立但精度/性能NO-GO，已按600调用有界诊断收口；没有授权放宽原门。M35原360面板因Object1实施失败最多330，原失败保留、不自动重跑或延长截止；原未启动2/3可以按既定预算接续。RoboTwin仅调研，没有新增实验/安装/权重下载权限。
 
-九真实block×四模式两次profile（153调用）、有效三B14反事实112调用，输出/有效KV/RNG通过。NCU权限失败，实测occupancy/L2/DRAM UNKNOWN；两个扩展身份/符号实施失败保留，第三attempt隔离后完成。五GPU job生命周期81.856秒、293 block尝试含失败、0full30/0episode；22:53两GPU无进程，全部owned退出，新证据42.91MiB。baseline及依赖88项不变。
+四质量权限保持false，旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据/default A_off保留。不能用成功子集、调用减少、match-v1、单kernel结构或普通batch/cache宣称质量与协同加速。新训练/120/独立TEST/受阻45chunk不自动启动。
 
-用户要求的是**整个单层统一persistent kernel，内部warp组调度全部tile**。当前M32只有attention/FFN1阶段内常驻循环，QKV/Wo/FFN2仍host cuBLASLt，不满足整层目标。[完整DAG与缺口](../../experiments/single-block-persistent-profile-20261019/WHOLE-LAYER-EXECUTOR-GAPS.md)已登记，整层实现仍待完成。下一M34补设备原语、ready/生命周期与统一执行器，不扩30层，不以新wrapper或多kernel包装宣称完成。
+只main公开核对源码/HW/小证据，模型/PT/KV/图像/DSO/工具链/连接配置/凭据不公开。中文正文逐段交用户飞书，不建本地初稿。10/22 go/no-go、10/23冻结、10/28表、11/01 18:00老师中文证据包；官方投稿日期见日期报告，作者profile仍UNKNOWN。
 
-用户问CUDA13.x是否可用，不等于批准驱动升级。本机595.71.05，远端535.161.08；常规CUDA13要求driver≥580，本轮保持独立CUDA12.4工具链/cu126 wheel。
-
-Object 1500/1500，完成数T500/C500/P500；来源2026-10-19T13:06:38Z。全部500共同case齐；成功数T497/C498/P499（99.4%/99.6%/99.8%）。原controller已退出，既定评估计算完成；审计和资源终态仍按原证据，不把完成覆盖写成质量放行。 GPU0本轮算子已退出。
-
-engineering_quality_screen=false；independent_test_complete=false；noninferiority_established=false；formal_performance_permission=false。旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据/default A_off不改。
-
-M17原10/21 16:56:31停新、17:11:31清理，18723000尝试/15GiB、每卡最多2worker；matched Target前200组同GPU1，不为填卡重复Target或破坏配对。BAAI仅~/cxz；AutoDL不再SSH、关机UNKNOWN。本机计时自然空闲、精度可共享；不杀他人/改服务/时钟。
-
-投机源码/配置/运行依赖、原tile与state/rules保护，不建缺失cycle.yaml、不升级/旧sync覆盖HW。仅baseline/optimized两份主实现；baseline及依赖冻结，优化只在optimized。无自动新训练/120/独立TEST/新TF正式45chunk/第二环境/大融合。中文正文会话交飞书。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文包。
-
-只main公开核对源码/HW/小结果，无权重/fixture/binary/凭据。历史授权见[归档](history/M32-before-summary-20261019/DISCUSSION-SUMMARY.md)。
+旧讨论原文保留[归档](history/M34-complete-20261020/DISCUSSION-SUMMARY.md)；保护state/cycle/rules、不升级或旧sync。当前进度以PROGRESS与实际终态为准。
