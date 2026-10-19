@@ -26,8 +26,18 @@ T为Target，C为连续TF，P为同权重TF+PF2。
 
 并行质量运行中的C_update及ΣT_round/Σg原样保留于RESULT.json，只是探索性成本。正式E2E加速UNKNOWN，不能用target调用减少替代；所有臂使用既定512-token BF16优化reset，冷启动另列。
 
-Object旧30局有完整终态，但新14条compact编号冲突、collector准入失败，仅前16条有效；用户已明确批准补14。新v3 namespace的固定14补采与原匹配Target200已双卡实际运行（首2局/臂终态、首补采10shard无collector错误），其后ON3000与Object500组等待依赖自动接续。旧失败不改，原M17截止不重置；见OBJECT-RECOVERY-PLAN.md与RECOVERY-CAPTURE-LIVE.json。
+Object旧30局有完整终态，但新14条compact编号冲突、collector准入失败，仅前16条有效；用户已明确批准补14。新v3固定14补采全部完整，PACK_CURRENT准入通过（FIT6164/CAL3080）；固定ON3000训练已结束并启动全量评估，Matched Target200继续。09:21每卡一worker，其余分片因额外并发PID身份准入未通过仍排队。旧失败不改，原M17截止不重置；见OBJECT-RECOVERY-PLAN.md与RECOVERY-CAPTURE-LIVE.json。
 
 本机昨夜CPU顺序B0通过；今晨GPU六真实fixture×两种缓存的66执行通过。A/A最大2.513%超过2.5%门限，计时停止，GPU0显存0且NVML24–25%异常；低开销监控等待状态改变。见../wam-block-gpu-followup-20261019/RESULT.md。
 
 原始返回报告保留于raw/（约18MiB，不默认在GitHub重复发布）；RETURN-MANIFEST.json登记源路径/大小/时间。本文统计由summarize.py纯CPU独立核对1500唯一行/套、成败/步数/罚分与配对胜负，未重算原始velocity、严格初态或RNG。
+
+# Object最新接续证据
+
+## 09:19–09:21接续实证
+
+固定14局已全部补齐，CURRENT_DATA原30局并集终态完成且guard=CLEAN。PACK_CURRENT原准入通过：FIT6164行、CAL3080行，all_episodes_terminal/all_rows_reached=true，counterfactual_columns_used=false、extra_teacher_forwards=0。ON3000已按固定500updates训练成功返回，控制器已进入RUNNING_OR_QUEUED_ALL_REMOTE_OBJECT500；FINAL_200_274已出现真实完整评估终态，不只是创建目录。
+
+09:21巡检Matched Target为18/200，FINAL_200_274为5/225局（三臂合计，尚非5个共同完成组）；当前每卡一个模型worker，其他分片仍在队列。GPU工具报告PID与容器READY/OWNED的PID不相等，额外槽的observed.issubset(allowed)未通过；尚无可靠映射，不把未知PID标成自有、不放松原准入。PID-namespace只是待核机制假设，不能据此宣称发现他人进程。现有完整episode继续，不重启/截断。
+
+按已有两套质量运行单局约60–73秒、当前两worker及阶段依赖，Object剩余墙钟仅能粗估半天至一天；尾部失败/更多并发会改变估算。原10/21绝对截止不变，到期不足则如实PARTIAL。所有并行计时仅探索性，四项false未改变。最新源指针：RECOVERY-PACK-TRAIN-SUMMARY.json、REMOTE-LATEST-AT-REPORT.json、REMOTE-WATCH-AT-REPORT.json、REMOTE-SLOT-ADMISSION-CHECK.json、PID-NAMESPACE-SOURCE-CHECK.txt。

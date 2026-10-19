@@ -3,19 +3,19 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-19T09:09:48.963521+08:00'
+updated: '2026-10-19T09:39:02.089869+08:00'
 current: M24
 next: wait_clean_local_timing_window_and_supervise_approved_Object_recovery
 execution_status: finite_GPU_B0_accuracy_complete_AA_failed_remote_Object_recovery_running
 ---
 # 当前研究进度
 
-本机完整block GPU精度已66次通过，性能因A/A和NVML异常待定；BAAI Goal/Spatial各1500局完成，Object14补采与匹配T200双卡真实运行。宏观completed不表示质量门通过。
+本机完整block GPU精度已66次通过，性能因A/A和NVML异常待定；BAAI Goal/Spatial各1500局完成，Object14/数据准入/ON已完成，匹配T200与全500双卡运行。宏观completed不表示质量门通过。
 
 | ID | 工作 | 状态 | 证据/科学边界 | next |
 |---|---|---|---|---|
 | `M16` | Long500组三臂首轮 | `completed` | 描述性完成，T483/C484/P473；配对FAILED/曝光/四false保留 | [完整结果](../../experiments/long-morning-20261018/FINAL-SUMMARY.md) |
-| `M17` | Object/Goal/Spatial固定链 | `in_progress` | Goal/Spatial各1500局完成；Object固定14补采与匹配Target200已双卡接续，后续ON和全500自动排队 | [晨间结果/修复](../../experiments/libero-four-suite-morning-20261019/RESULT.md) |
+| `M17` | Object/Goal/Spatial固定链 | `in_progress` | Goal/Spatial各1500局完成；Object14补采/数据准入/ON已完成，匹配T200与全500已接续，每卡一worker | [晨间结果/修复](../../experiments/libero-four-suite-morning-20261019/RESULT.md) |
 | `M18` | 迁移原件/环境、释放旧机 | `completed` | 四套资产落BAAI；AutoDL不再SSH、关机UNKNOWN | [迁移](../../experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md) |
 | `M19` | 原算子数据CPU复核 | `completed` | 有限证据，不外推 | [576检查/60门/420轮](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
 | `M20` | 本机评测迁新机 | `completed` | 原Object16有效，原新14完整但监督无效，今晨获准固定14补采；本机不自动接质量 | [资源接续](../../experiments/libero-four-suite-morning-20261019/OBJECT-RECOVERY-PLAN.md) |

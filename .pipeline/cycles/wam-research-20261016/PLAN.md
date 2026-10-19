@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-19T09:09:48.963521+08:00'
+updated: '2026-10-19T09:39:02.089869+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -13,7 +13,7 @@ execution: EXECUTION.md
 | ID | 工作 | 当前验收与证据 |
 |---|---|---|
 | `M16` | Long500组三臂首轮 | 描述性完成，T483/C484/P473；配对FAILED/曝光/四false保留；[完整结果](../../experiments/long-morning-20261018/FINAL-SUMMARY.md) |
-| `M17` | Object/Goal/Spatial固定链 | Goal/Spatial各1500局完成；Object固定14补采与匹配Target200已双卡接续，后续ON和全500自动排队；[晨间结果/修复](../../experiments/libero-four-suite-morning-20261019/RESULT.md) |
+| `M17` | Object/Goal/Spatial固定链 | Goal/Spatial各1500局完成；Object14补采/数据准入/ON已完成，匹配T200与全500已接续，每卡一worker；[晨间结果/修复](../../experiments/libero-four-suite-morning-20261019/RESULT.md) |
 | `M18` | 迁移原件/环境、释放旧机 | 四套资产落BAAI；AutoDL不再SSH、关机UNKNOWN；[迁移](../../experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md) |
 | `M19` | 原算子数据CPU复核 | 有限证据，不外推；[576检查/60门/420轮](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
 | `M20` | 本机评测迁新机 | 原Object16有效，原新14完整但监督无效，今晨获准固定14补采；本机不自动接质量；[资源接续](../../experiments/libero-four-suite-morning-20261019/OBJECT-RECOVERY-PLAN.md) |
@@ -28,7 +28,7 @@ execution: EXECUTION.md
 - [x] 今晨新GPU授权单独登记，66次真实block精度/全部有效KV/输入/RNG和旧GPU gold通过。
 - [x] Goal/Spatial各500组三臂回收核对；Object新14capture无效定位、隔离补丁与明确补采授权、新namespace双卡真实接续。
 - [ ] 本机低开销等待资源变化，原计时资源≤5%及A/A≤2.5%都满足才做完整配对矩阵；最多一次新清洁窗口尝试。
-- [ ] Object14数据准入后自动ON3000、原500组三臂；每5分钟核验新controller/worker/终态，不自动重试。
+- [ ] Object14数据准入/ON已完成，监督原500组三臂；每5分钟核验新controller/worker/终态，不自动重试。
 - [ ] T25/T17对T50、Long后两轮seed/预算另登记，不自动启动；不先开发persistent scheduler。
 
 ## 原预算与当前范围

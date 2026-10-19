@@ -55,6 +55,9 @@ def main():
             csv_rows.append({k: r[k] for k in ("suite", "case_id", "task", "init", "arm", "success",
                 "actual_command_steps", "failure800_penalty", "policy_chunks", "strict_components_pass",
                 "component_status", "exposure")})
+    recovery = out / "RECOVERY-RESULT.json"
+    if recovery.exists():
+        result["object_recovery"] = json.loads(recovery.read_text())
     (out / "RESULT.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     with (out / "EPISODES-SUMMARY.csv").open("w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(csv_rows[0]), lineterminator="\n")
@@ -74,10 +77,13 @@ def main():
             lines.append(f"|{suite}|{d['reference']}→{d['candidate']}|{d['rescued']}/{d['lost_success']}|{q['p50']:.4f}/{q['p90']:.4f}/{q['max']:.4f}|{d['common_success_ratio_over_1p30']}/{q['n']}|")
     lines += ["", "分位数使用线性Type7。全体800罚分/实际步数/自然失败全部保留，成功子集长度仅为补充。两套C/P均有FAILED_FIRST_TWO_S_PAIRING，不签严格配对/独立TEST/非劣；四项false保持。", "",
               "并行质量运行中的C_update及ΣT_round/Σg原样保留于RESULT.json，只是探索性成本。正式E2E加速UNKNOWN，不能用target调用减少替代；所有臂使用既定512-token BF16优化reset，冷启动另列。", "",
-              "Object旧30局有完整终态，但新14条compact编号冲突、collector准入失败，仅前16条有效；用户已明确批准补14。新v3 namespace的固定14补采与原匹配Target200已双卡实际运行（首2局/臂终态、首补采10shard无collector错误），其后ON3000与Object500组等待依赖自动接续。旧失败不改，原M17截止不重置；见OBJECT-RECOVERY-PLAN.md与RECOVERY-CAPTURE-LIVE.json。", "",
+              "Object旧30局有完整终态，但新14条compact编号冲突、collector准入失败，仅前16条有效；用户已明确批准补14。新v3固定14补采全部完整，PACK_CURRENT准入通过（FIT6164/CAL3080）；固定ON3000训练已结束并启动全量评估，Matched Target200继续。09:21每卡一worker，其余分片因额外并发PID身份准入未通过仍排队。旧失败不改，原M17截止不重置；见OBJECT-RECOVERY-PLAN.md与RECOVERY-CAPTURE-LIVE.json。", "",
               "本机昨夜CPU顺序B0通过；今晨GPU六真实fixture×两种缓存的66执行通过。A/A最大2.513%超过2.5%门限，计时停止，GPU0显存0且NVML24–25%异常；低开销监控等待状态改变。见../wam-block-gpu-followup-20261019/RESULT.md。", "",
               "原始返回报告保留于raw/（约18MiB，不默认在GitHub重复发布）；RETURN-MANIFEST.json登记源路径/大小/时间。本文统计由summarize.py纯CPU独立核对1500唯一行/套、成败/步数/罚分与配对胜负，未重算原始velocity、严格初态或RNG。"]
-    (out / "RESULT.md").write_text("\n".join(lines) + "\n")
+    recovery_status = out / "RECOVERY-STATUS.md"
+    if recovery_status.exists():
+        lines += ["", recovery_status.read_text()]
+    (out / "RESULT.md").write_text("\n".join(lines).rstrip() + "\n")
     print("PASS: unique complete rows, counts, penalties, paired wins; four scientific gates remain false")
 
 

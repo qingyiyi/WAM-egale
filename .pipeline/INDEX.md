@@ -14,7 +14,7 @@
 
 | 路线 | 当前结论 | 证据入口 |
 |---|---|---|
-| 投机采样 | Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各500；Object14补采/匹配Target200双卡接续，本机只接算子；旧NO_GO/四false不变 | [资源迁移](experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md)、[当前Cycle](cycles/wam-research-20261016/PROGRESS.md) |
+| 投机采样 | Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各500；Object14/准入/ON已完成、匹配Target200与全500双卡接续，本机只接算子；旧NO_GO/四false不变 | [资源迁移](experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md)、[当前Cycle](cycles/wam-research-20261016/PROGRESS.md) |
 | tile / SDPA | M22主任务实际Torch对齐：独立去fast_math后108attention/54block/六完整模型/三完整policy配对逐位与状态过；新54点/六full30性能已补：attention约1.002，block/模型有慢点，资源异常保留；旧M21完整30层失败保留、性能探索性 | [统一结果](experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)、[原有限基线复核](experiments/operator-parity-evidence-20261018/REPORT.md) |
 
 算子原代码与 HW 保留；用户最新允许独立修正版本并复用固定上游源码，见[M22](experiments/operator-torch-alignment-20261018/PLAN.md)；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。

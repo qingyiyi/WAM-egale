@@ -13,6 +13,15 @@
 
 用户明确批准“允许补采14局并接续原任务”，已保存长期决定。实际实现采用object_capture_recovery_v3，原v1/v2/旧失败全部保留。v2首次启动在GPU创建/episode之前被过期T_POOL模板截止拦截；只修正NEW_MATCHED_TARGET200计划沿原M17总截止，旧训练T_POOL截止不改、不恢复。v3已在远端两张A100各启动独立完整worker，CURRENT14与既定MATCHED_TARGET200并行；数据准入后ON3000和全500由controller自动接续。
 
-09:08实测两臂各2局完整，首补采counter_invalid=false、errors=0、10个shard完整，命令/模型正常运行；这是有限运行证据，不能代替全14数据审计。原新14无效消耗5876次已经扣除，新root剩余尝试上限6106124（6056000+56000−5876），原10/17起点及10/21 16:56:31停新、17:11:31清理保持。Controller PID553438出生697042563匹配，CPU只读health-v2约5分钟监督。
+09:08实测两臂各2局完整，首补采collector_invalid=false、errors=0、10个shard完整，命令/模型正常运行；这是有限运行证据，不能代替全14数据审计。原新14无效消耗5876次已经扣除，新root剩余尝试上限6106124（6056000+56000−5876），原10/17起点及10/21 16:56:31停新、17:11:31清理保持。Controller PID553438出生697042563匹配，CPU只读health-v2约5分钟监督。
 
 新增namespace源码/元数据小文件实际字节比较一致，无模型hash、smoke或单独新测试。旧16仅复制少量路径绑定元数据，tensor原件不变；新数据写原共享容量根下的新job子目录。Matched Target200不用于ON训练，前200完整评估使用其物理GPU；所有评测原512-token BF16 reset bank一致。
+
+
+## 09:19–09:21接续实证
+
+固定14局已全部补齐，CURRENT_DATA原30局并集终态完成且guard=CLEAN。PACK_CURRENT原准入通过：FIT6164行、CAL3080行，all_episodes_terminal/all_rows_reached=true，counterfactual_columns_used=false、extra_teacher_forwards=0。ON3000已按固定500updates训练成功返回，控制器已进入RUNNING_OR_QUEUED_ALL_REMOTE_OBJECT500；FINAL_200_274已出现真实完整评估终态，不只是创建目录。
+
+09:21巡检Matched Target为18/200，FINAL_200_274为5/225局（三臂合计，尚非5个共同完成组）；当前每卡一个模型worker，其他分片仍在队列。GPU工具报告PID与容器READY/OWNED的PID不相等，额外槽的observed.issubset(allowed)未通过；尚无可靠映射，不把未知PID标成自有、不放松原准入。PID-namespace只是待核机制假设，不能据此宣称发现他人进程。现有完整episode继续，不重启/截断。
+
+按已有两套质量运行单局约60–73秒、当前两worker及阶段依赖，Object剩余墙钟仅能粗估半天至一天；尾部失败/更多并发会改变估算。原10/21绝对截止不变，到期不足则如实PARTIAL。所有并行计时仅探索性，四项false未改变。最新源指针：RECOVERY-PACK-TRAIN-SUMMARY.json、REMOTE-LATEST-AT-REPORT.json、REMOTE-WATCH-AT-REPORT.json、REMOTE-SLOT-ADMISSION-CHECK.json、PID-NAMESPACE-SOURCE-CHECK.txt。
