@@ -24,6 +24,8 @@ execution: EXECUTION.md
 
 ## 可见计划
 
+- [x] 当前[算子源码导读与六项工作清单](../../../投机采样/docs/OPERATOR-CODE-AND-NEXT-STEPS-20261019.md)：整模型复现优先，profile后选择单子图；本次未启动新GPU任务。
+
 - [x] 昨夜固定ca5f37e源码核验、B0顺序实现、真实完整block/合法写CPU、阶段控制与22项契约；源/结果已发布main。
 - [x] 今晨新GPU授权单独登记，66次真实block精度/全部有效KV/输入/RNG和旧GPU gold通过。
 - [x] Goal/Spatial各500组三臂回收核对；Object新14capture无效定位、隔离补丁与明确补采授权、新namespace双卡真实接续。

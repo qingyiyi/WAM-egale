@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [算子交付明确源码与验证范围](global/requirements/requirement-算子交付明确源码入口与验证范围.md)（constraint，当前算子交付）：定位实现/替换/验证入口，按源码讲解，并列已有证据、缺口与下一优先项。
+
 - [先直接复制Torch调用链完成复现](global/requirements/decision-算子先直接复制Torch调用链完成复现.md)（constraint，当前算子基线）：先可替换的精度/性能基线，允许抄原实现；自有device基元/调度另议，计时噪声与实现正确性分列。
 
 - [Object固定14局补采并接续](global/requirements/decision-Object只补采输出冲突的14局并接续原任务.md)（constraint，本次M17修复）：旧16/失败保留、新输出隔离；14局/56000次上限，原截止不重置。

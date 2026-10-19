@@ -14,3 +14,5 @@ with copied_model_blocks(model):
 替换完整block/attention类，退出时还原。绑定发生在forward以外，不增加数学包装调用；参数和cache不搬移。模型构建、scheduler、server都不在该模块中。本轮六fixture的验证不自动证明完整30层/机器人闭环或所有cache写路径。
 
 数值与性能证据：[本轮登记](../../../.pipeline/experiments/direct-torch-block-copy-20261019/PLAN.md)。精度已通过的旧B0结果仍保留，新复制版未实测前不借用旧证书。
+
+[结合源码的导读与后续工作](../../docs/OPERATOR-CODE-AND-NEXT-STEPS-20261019.md)。
