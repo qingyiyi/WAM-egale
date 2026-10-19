@@ -1,16 +1,20 @@
+---
+kind: discussion-summary
+cycle: wam-research-20261016
+updated: '2026-10-19T13:37:18.769422+08:00'
+---
 # 当前讨论与授权
 
-最新用户要求算子只保留baseline与当前优化两份，代码命名和结构简洁；先做上一清单1（整模型复现）和2（性能基线），完成后一起讲解。随后明确投机侧代码禁止改动。因此新开发位于独立`算子研究`；只删确认无投机依赖的旧算子代码，原tile/shared-prefix等投机依赖只读保留。实际评估不因算子整理迁移/改入口。当前优化是原数学block加独立CUDA SDPA，不重新命名为新融合/调度创新。
+用户同意先做本轮1/2再汇报并结合源码讲解。M26已完成强基线/profile和一个FFN子图的有限原语验证：完整device FFN2不合格，保留失败；收缩FFN1+GELU采用原BF16中间舍入、FFN2继续Torch，六个真实完整block两个进程逐位与状态过。B14仅2.45–3.23%通用block延迟下降，不扩为候选DAG或MegaTransformer创新。下一步先讨论FFN2原语契约和完整block可调度边界，未启动persistent/P_seq/P_sched。
 
-M25原10:14–13:14账本150full30/168block已终止，三次资源冲突不改。用户再次明确空闲继续，新独立有限接续两进程432full30/444block、131.338 GPU秒；108检查逐位过，自有退出。完整模型最大中位回归baseline0.58%/optimized2.18%，严格±2.5%非全点通过、NVML空卡24–25%未知，正式性能仍不签。B2 full30派生root CFG边界不改；代码整理与有限复现完成后，主要讨论block profile和一个子图优化，不先大融合。
+用户要求只维护baseline/optimized两份活动实现，代码简明，投机侧禁止改动。新设备/静态入口均在算子研究/optimized，共享tools可完善；默认install_model未自动切新FFN，旧16目录308源留Git历史。原tile/shared-prefix仍是投机依赖，原位只读。代码整理和文档不改变当前质量/数值标准。
 
-用户已批准Object仅补固定14局/56000 forward，旧16有效/旧14失败和5876实际消耗保留，原M17起点/10月21截止不改。新14准入/ON已完成，匹配Target200只作baseline、未用于ON训练；全500继续，新health-v2每5分钟巡检。用户最新要求两卡各并行eval，已经用唯一CUDA上下文集合及新增delta核实归属，独立运维dispatcher交接后四worker实际出完整局；原投机/评估源码不改，不自动重试。原M17预算/截止不重置，确认固定后继分片自动排队后交互聚焦本机算子；每5分钟CPU巡检继续。BAAI写入永远仅~/cxz。AutoDL不再SSH，关机UNKNOWN。用户不再迁移开发，本机供算子；新机Codex安装不等于会话迁移。
+本机按自然空闲单GPU/CPU≤2，用户不再要求反复协调。M26全部本机GPU作业已终态、自有退出；未用预算不自动接续。NCU初轮默认时钟控制漏关闭已记偏差，实际改频未知，未来命令强制none，不把counter当正式性能。原空卡NVML异常仍UNKNOWN。
 
-TF64/TF_ON、normalizer、tau、K2B2、bonus/prefix_then_cost、BF16模型/FP32打分不变。PF2=SST完整policy，T50更新/51次action含末尾，非bonus或状态恢复；reset/cache不计policy周期。四套同等512-token BF16优化reset；cold另列，actual796/800罚分分列。Long首轮500已完成；三轮为偏好，后两轮seed/预算未冻结。T25/T17对照需另登记，video20同网格。
+远端用户要求两卡各并行、后继自动后聚焦本机算子。已完成运维交接，固定分片最多每卡2worker；匹配T200同卡限制使当前3活动，后继自动排队，不重跑已完Target充占用。M17原起点和10/21截止不变，CPU只读watch每5分钟；BAAI一切写入仅~/cxz。AutoDL不再SSH，关机未知。新机Codex已装不等于会话迁移。
 
-engineering_quality_screen=false、independent_test_complete=false、noninferiority_established=false、formal_performance_permission=false。旧NO_GO/retention/FAILED/paused72/96、MLP0/22缺收据与default A_off保持。
+engineering_quality_screen=false、independent_test_complete=false、noninferiority_established=false、formal_performance_permission=false。旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据/default A_off不改。TF64/TF_ON、normalizer、tau、K2B2/bonus/prefix_then_cost、BF16/FP32语义冻结。PF2=SST完整policy，T50更新/51action调用含末尾；reset/cache不计周期。各臂同用512-token BF16优化reset，cold另列；actual796与800罚分分列。
 
-投机代码/配置/服务/运行依赖不改。原tile是shared-prefix构建依赖，原位只读保留；保护state/cycle/rules与原tile HW不动。不自动新训练、120/独立TEST、被阻塞的新TF正式45chunk、架构搜索/第二环境/撤回融合。BAAI所有写入永远限~/cxz，不杀他人/改系统/时钟，AutoDL不再SSH。GitHub仅main当前镜像；中文论文会话交飞书，不建初稿。
+投机源码/配置/运行依赖和baseline不改；本轮1875投机文件复核不变。原tile/shared-prefix依赖原位只读，保护state/cycle/rules不覆盖，不建缺失cycle.yaml。不自动新训练、120/独立TEST、新TF正式45chunk或第二环境。BAAI写入永远仅~/cxz，不杀他人/改服务/手动时钟。AutoDL不再SSH，关机UNKNOWN。GitHub仅main镜像；中文论文会话交飞书，不建初稿。
 
-
-GitHub仅main当前镜像，固定科学commit保持身份；中文论文交飞书。10/22质量/系统go-no-go、10/23冻结、10/28主表、11/01 18:00中文证据包。旧授权/暂停/已终止预算不能自动恢复。更早完整讨论见[history](history/M25-before-operator-consolidation-20261019/DISCUSSION-SUMMARY.md)。
+10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文证据包。完整早前讨论见[本次历史](history/M26-before-result-20261019/DISCUSSION-SUMMARY.md)。

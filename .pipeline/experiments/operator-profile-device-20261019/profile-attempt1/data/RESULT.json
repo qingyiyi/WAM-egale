@@ -1,0 +1,259 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "started_at": "2026-10-19T12:58:27.697020+08:00",
+  "rows": [
+    {
+      "case": "short-B2-action-layer0-first",
+      "total_KV": 288,
+      "query_tokens_per_candidate": 16,
+      "candidate_count": 1,
+      "guarded_group": 2,
+      "historical_gold": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "cold_fill_wall_ms": 0.5344245582818985,
+      "cold_fill_bytes": 12582912,
+      "arms": [
+        {
+          "engine": "original",
+          "cached": false,
+          "eager_admission": {
+            "output": {
+              "shape_match": true,
+              "dtype_match": true,
+              "finite_pass": true,
+              "shape": [
+                2,
+                16,
+                3072
+              ],
+              "dtype": "torch.bfloat16",
+              "bitwise_pass": true,
+              "tolerance_pass": true,
+              "different_bytes": 0,
+              "different_elements": 0,
+              "elements": 98304,
+              "tolerance_atol": 0.0,
+              "tolerance_rtol": 0.0,
+              "max_abs": 0.0,
+              "rel_l2": 0.0,
+              "abs_p50_p90_max": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "quantile_status": "EXACT_ALL_ZERO"
+            },
+            "cache_state": {
+              "pass_all": true,
+              "fields": {
+                "slots": true,
+                "id": true,
+                "mask": true,
+                "is_pred": true,
+                "k": true,
+                "v": true
+              },
+              "valid_KV_finite_pass": true,
+              "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+            },
+            "inputs_unchanged": true,
+            "RNG_unchanged": true,
+            "passed": true
+          },
+          "status": "ADMITTED",
+          "samples": [
+            {
+              "execution": "eager",
+              "repeat": 0,
+              "cuda_ms": 2.814176082611084,
+              "wall_ms": 3.03865410387516
+            },
+            {
+              "execution": "eager",
+              "repeat": 1,
+              "cuda_ms": 7.213727951049805,
+              "wall_ms": 7.281651720404625
+            },
+            {
+              "execution": "eager",
+              "repeat": 2,
+              "cuda_ms": 2.5634241104125977,
+              "wall_ms": 2.6103872805833817
+            },
+            {
+              "execution": "eager",
+              "repeat": 3,
+              "cuda_ms": 2.514240026473999,
+              "wall_ms": 2.564292401075363
+            },
+            {
+              "execution": "eager",
+              "repeat": 4,
+              "cuda_ms": 2.499039888381958,
+              "wall_ms": 2.544177696108818
+            },
+            {
+              "execution": "eager",
+              "repeat": 5,
+              "cuda_ms": 2.412384033203125,
+              "wall_ms": 2.458132803440094
+            },
+            {
+              "execution": "eager",
+              "repeat": 6,
+              "cuda_ms": 2.4796159267425537,
+              "wall_ms": 2.5263000279664993
+            }
+          ],
+          "median_ms": {
+            "eager": 2.514240026473999
+          },
+          "post_state": {
+            "output": {
+              "shape_match": true,
+              "dtype_match": true,
+              "finite_pass": true,
+              "shape": [
+                2,
+                16,
+                3072
+              ],
+              "dtype": "torch.bfloat16",
+              "bitwise_pass": true,
+              "tolerance_pass": true,
+              "different_bytes": 0,
+              "different_elements": 0,
+              "elements": 98304,
+              "tolerance_atol": 0.0,
+              "tolerance_rtol": 0.0,
+              "max_abs": 0.0,
+              "rel_l2": 0.0,
+              "abs_p50_p90_max": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "quantile_status": "EXACT_ALL_ZERO"
+            },
+            "cache_state": {
+              "pass_all": true,
+              "fields": {
+                "slots": true,
+                "id": true,
+                "mask": true,
+                "is_pred": true,
+                "k": true,
+                "v": true
+              },
+              "valid_KV_finite_pass": true,
+              "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+            },
+            "inputs_unchanged": true,
+            "RNG_unchanged": true,
+            "passed": true
+          }
+        },
+        {
+          "engine": "dense",
+          "cached": false,
+          "eager_admission": {
+            "output": {
+              "shape_match": true,
+              "dtype_match": true,
+              "finite_pass": true,
+              "shape": [
+                2,
+                16,
+                3072
+              ],
+              "dtype": "torch.bfloat16",
+              "bitwise_pass": true,
+              "tolerance_pass": true,
+              "different_bytes": 0,
+              "different_elements": 0,
+              "elements": 98304,
+              "tolerance_atol": 0.0,
+              "tolerance_rtol": 0.0,
+              "max_abs": 0.0,
+              "rel_l2": 0.0,
+              "abs_p50_p90_max": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "quantile_status": "EXACT_ALL_ZERO"
+            },
+            "cache_state": {
+              "pass_all": true,
+              "fields": {
+                "slots": true,
+                "id": true,
+                "mask": true,
+                "is_pred": true,
+                "k": true,
+                "v": true
+              },
+              "valid_KV_finite_pass": true,
+              "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+            },
+            "inputs_unchanged": true,
+            "RNG_unchanged": true,
+            "passed": true
+          }
+        }
+      ],
+      "admission_and_graph_build_excluded_from_replay": true
+    }
+  ],
+  "block_forwards": 13,
+  "resources": [
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 0, 40442, 25",
+      "pids": ""
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 739, 39703, 9",
+      "pids": "3548600"
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 967, 39475, 0",
+      "pids": "3548600"
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 987, 39455, 4",
+      "pids": "3548600"
+    }
+  ],
+  "scope": "six saved logical complete block0 inputs; static admission/replay",
+  "formal_performance_permission": false,
+  "unexplained_idle_NVML_utilization": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 0, 40442, 25",
+  "block_parameters": 163656704,
+  "error": "AcceleratorError(\"CUDA error: operation failed due to a previous error during capture\\nSearch for `cudaErrorStreamCaptureInvalidated' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\\n\")",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/算子研究/tools/profile_block.py\", line 193, in main\n    graph_output = counted(operation)\n                   ^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/算子研究/tools/profile_block.py\", line 115, in counted\n    return operation()\n           ^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/算子研究/tools/profile_block.py\", line 139, in <lambda>\n    operation = lambda: block(*arguments, **kwargs)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1775, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1786, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/modules/model.py\", line 764, in forward\n    attn_output = self.attn1(norm_hidden_states,\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1775, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1786, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/算子研究/wam_ops/optimized/prepared.py\", line 87, in forward\n    c['id'][slots], c['is_pred'][slots] = self.next_id, False\n                    ~~~~~~~~~~~~^^^^^^^\ntorch.AcceleratorError: CUDA error: operation not permitted when stream is capturing\nSearch for `cudaErrorStreamCaptureUnsupported' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/rjs/cxz/论文探索/算子研究/tools/profile_block.py\", line 192, in main\n    with torch.cuda.graph(graph):\n         ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/cuda/graphs.py\", line 265, in __exit__\n    self.cuda_graph.capture_end()\n  File \"/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/cuda/graphs.py\", line 128, in capture_end\n    super().capture_end()\ntorch.AcceleratorError: CUDA error: operation failed due to a previous error during capture\nSearch for `cudaErrorStreamCaptureInvalidated' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n",
+  "finished_at": "2026-10-19T12:58:37.186867+08:00",
+  "lifecycle_seconds": 9.489971496164799
+}

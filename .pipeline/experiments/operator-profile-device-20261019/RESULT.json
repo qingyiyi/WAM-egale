@@ -1,0 +1,147 @@
+{
+  "status": "COMPLETE_BOUNDED_STEPS_WITH_PARTIAL_DEVICE_SUPPORT",
+  "steps": {
+    "strong_legal_static_baseline_and_profile": "COMPLETE",
+    "device_primitives": "FFN1_GELU_PASSED_SIX_REAL_BLOCKS_TWO_PROCESSES; FULL_DEVICE_FFN_REJECTED"
+  },
+  "scientific_reference": "ca5f37e0482c2e38e3738e3d8e71e3b185990a23",
+  "rows": [
+    {
+      "case": "short-B2-action-layer0-first",
+      "batch": 2,
+      "KV": 288,
+      "baseline": "dense",
+      "process1_ms": {
+        "strong_baseline": 0.7056639790534973,
+        "FFN1_GELU": 0.6954240202903748
+      },
+      "process2_ms": {
+        "strong_baseline": 0.7058240175247192,
+        "FFN1_GELU": 0.6950719952583313
+      },
+      "latency_reduction_pct": [
+        1.4511097444505183,
+        1.5233290451201476
+      ],
+      "strict_component_and_block_gate": true,
+      "strong_profile_FFN_fraction": 0.2993761557375384
+    },
+    {
+      "case": "short-B14-action-layer0-first",
+      "batch": 14,
+      "KV": 288,
+      "baseline": "guarded",
+      "process1_ms": {
+        "strong_baseline": 1.1811840534210205,
+        "FFN1_GELU": 1.1446720361709595
+      },
+      "process2_ms": {
+        "strong_baseline": 1.1831040382385254,
+        "FFN1_GELU": 1.1448639631271362
+      },
+      "latency_reduction_pct": [
+        3.091136994637933,
+        3.23218194473609
+      ],
+      "strict_component_and_block_gate": true,
+      "strong_profile_FFN_fraction": 0.2986023686493164
+    },
+    {
+      "case": "middle-B2-action-layer0-first",
+      "batch": 2,
+      "KV": 1152,
+      "baseline": "dense",
+      "process1_ms": {
+        "strong_baseline": 0.8297920227050781,
+        "FFN1_GELU": 0.8206719756126404
+      },
+      "process2_ms": {
+        "strong_baseline": 0.8356800079345703,
+        "FFN1_GELU": 0.825984001159668
+      },
+      "latency_reduction_pct": [
+        1.0990762556028044,
+        1.1602535280060833
+      ],
+      "strict_component_and_block_gate": true,
+      "strong_profile_FFN_fraction": 0.2573751227220881
+    },
+    {
+      "case": "middle-B14-action-layer0-first",
+      "batch": 14,
+      "KV": 1152,
+      "baseline": "native",
+      "process1_ms": {
+        "strong_baseline": 1.4281920194625854,
+        "FFN1_GELU": 1.3922560214996338
+      },
+      "process2_ms": {
+        "strong_baseline": 1.428096055984497,
+        "FFN1_GELU": 1.3930879831314087
+      },
+      "latency_reduction_pct": [
+        2.5161881226919314,
+        2.451380823186622
+      ],
+      "strict_component_and_block_gate": true,
+      "strong_profile_FFN_fraction": 0.24683814353581834
+    },
+    {
+      "case": "long-B2-action-layer0-first",
+      "batch": 2,
+      "KV": 2160,
+      "baseline": "dense",
+      "process1_ms": {
+        "strong_baseline": 0.9676799774169922,
+        "FFN1_GELU": 0.9584000110626221
+      },
+      "process2_ms": {
+        "strong_baseline": 0.9128320217132568,
+        "FFN1_GELU": 0.906112015247345
+      },
+      "latency_reduction_pct": [
+        0.9589912544373358,
+        0.7361712019369526
+      ],
+      "strict_component_and_block_gate": true,
+      "strong_profile_FFN_fraction": 0.21917359942389483
+    },
+    {
+      "case": "long-B14-action-layer0-first",
+      "batch": 14,
+      "KV": 2160,
+      "baseline": "guarded",
+      "process1_ms": {
+        "strong_baseline": 1.3555519580841064,
+        "FFN1_GELU": 1.3200000524520874
+      },
+      "process2_ms": {
+        "strong_baseline": 1.2578239440917969,
+        "FFN1_GELU": 1.2243200540542603
+      },
+      "latency_reduction_pct": [
+        2.622688523298433,
+        2.6636390724560366
+      ],
+      "strict_component_and_block_gate": true,
+      "strong_profile_FFN_fraction": 0.2600769285634977
+    }
+  ],
+  "baseline_eager_configurations": 30,
+  "baseline_graph_configurations": 24,
+  "no_baseline_or_speculative_source_changes": true,
+  "FFN1_device_and_original_GELU_independent_passes": 6,
+  "full_device_FFN2_failed_cases": 6,
+  "main_scope": "saved logical complete block0 inputs; no original GPU-layout/alias reconstruction, no new full30/policy/episode performance",
+  "accepted_scheduler_updates_g": "NA_BLOCK_REPLAY_NOT_A_SPECULATIVE_ROUND",
+  "effective_submission_cost": "UNKNOWN_NOT_MEASURED",
+  "formal_performance_permission": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "prototype_scope": "one FFN subgraph shrunk to first Linear+GELU; second Linear remains canonical Torch",
+  "claim": "small generic block optimization only; no new persistent/candidate-aware scheduler or MegaTransformer synergy claim",
+  "metadata": "metadata-post-optin/data/RESULT.json: pre-opt-in occupancy API0 invalid; post-opt-in plain kernel theoretical active CTAs2, fused achieved occupancy UNKNOWN",
+  "resources": "RESOURCE-AND-STOP-REPORT.json",
+  "NCU_configuration_deviation": "NCU-CONFIGURATION-DEVIATION.json"
+}

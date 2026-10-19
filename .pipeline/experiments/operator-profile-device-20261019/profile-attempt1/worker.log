@@ -1,0 +1,55 @@
+Traceback (most recent call last):
+  File "/rjs/cxz/论文探索/算子研究/tools/profile_block.py", line 193, in main
+    graph_output = counted(operation)
+                   ^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/算子研究/tools/profile_block.py", line 115, in counted
+    return operation()
+           ^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/算子研究/tools/profile_block.py", line 139, in <lambda>
+    operation = lambda: block(*arguments, **kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/投机采样/wam-p0-worktree/wan_va/modules/model.py", line 764, in forward
+    attn_output = self.attn1(norm_hidden_states,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/算子研究/wam_ops/optimized/prepared.py", line 87, in forward
+    c['id'][slots], c['is_pred'][slots] = self.next_id, False
+                    ~~~~~~~~~~~~^^^^^^^
+torch.AcceleratorError: CUDA error: operation not permitted when stream is capturing
+Search for `cudaErrorStreamCaptureUnsupported' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/rjs/cxz/论文探索/算子研究/tools/profile_block.py", line 268, in <module>
+    main()
+  File "/rjs/cxz/论文探索/算子研究/tools/profile_block.py", line 192, in main
+    with torch.cuda.graph(graph):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/cuda/graphs.py", line 265, in __exit__
+    self.cuda_graph.capture_end()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/cuda/graphs.py", line 128, in capture_end
+    super().capture_end()
+torch.AcceleratorError: CUDA error: operation failed due to a previous error during capture
+Search for `cudaErrorStreamCaptureInvalidated' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

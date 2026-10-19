@@ -1,13 +1,18 @@
+---
+kind: execution
+cycle: wam-research-20261016
+updated: '2026-10-19T13:37:18.769422+08:00'
+---
 # 最近执行检查点
 
-## 2026-10-19T12:07:24.496573+08:00：本机有限复测完成，远端四worker自动接续
+## 2026-10-19T13:37:18.769422+08:00：强基线与有限FFN原语收口
 
-新授权计时接续独立登记。两个进程自然exit0，六真实block/六实际30层、write1/2及输出/有效KV/输入/当前RNG/安装还原共108检查逐位过；432full30/444block，GPU生命周期131.338秒，自有GPU进程退出。102次资源采样未见外来PID。完整模型baseline/原版0.9539–1.0058，optimized0.9535–1.0218；严格±2.5%非全点过，空卡NVML24–25%异常未解释，正式无争用仍UNKNOWN。B2 full30为root CFG派生非顺序轨迹；1875投机源/配置复核无变化。原三轮失败和预算保留。[全表](../../experiments/operator-stable-timing-20261019/RESULT.md)。
+M26按本轮同意执行，独立算子目录；六真实block0，30eager/24Graph配置过，实际Linear M32→224、Q仍16。强cache trace FFN占21.9–29.9%。完整device FFN的FFN2六点失败；四个固定分块公式未复现，未改容差/阈值。FFN1+GELU收缩组件在两个独立进程六点严格过，完整block B2延迟降0.74–1.52%、B14 2.45–3.23%；保留Torch FFN2，无persistent/新30层或机器人作业。
 
-用户新要求远端两卡各并行并确认自动提交后聚焦本机算子。经PID出生/实际GPU UUID/设备FD/teacher返回/NVML唯一上下文及集合delta核对，在旧CPU dispatcher休眠检查点交接运维；现有model/client/guard均未暂停。四worker独立评估、端口/CPU/输出隔离，约28.5GiB/卡。匹配Target200完整；12:05去重435/1500、77组三臂齐，剩余固定0_99/100_199自动排队。原M17预算/截止不改；旧CPU交接信号和非自然退出另存收据。[证据](../../experiments/remote-eval-parallel-20261019/RESULT.md)。
+17个受监督作业全部终态，751.141秒GPU生命周期（含setup/失败/NCU application重放），1093 block host/capture/replay intents、617原语；两工具失败原件保留，无timeout。GPU显存0/无可见compute PID，自有退出。理论CTA初始0是未SMEM opt-in的无效查询；真实输入执行后重读plain=2，fused achieved occupancy未知。
 
-四项false、原FAILED/retention/default A_off保持。下一步讨论block分解与单子图，只改optimized。更早四文见[本次归档](history/M25-before-stable-timing-20261019/EXECUTION.md)。
+NCU命令漏显式clock-control none，本地help默认boost，实际改频UNKNOWN；原结果带配置偏差保留，后续bounded强制none/明确cache。NCU不进性能表，空卡利用率24%异常不改。baseline与1875投机源/配置复核不变，原模型字节与ca5f37e一致、block forward AST同原。所有四false不变。
 
-## 2026-10-19T12:45:00.444350+08:00：网页方案评估
+[原始门/计时/失败/资源索引](../../experiments/operator-profile-device-20261019/RESULT.md)。Object13:31 T356/C156/P156，3worker活动、后继自动，无terminal；原预算不重置。下一步发布main和讲解；后续DAG/FFN2方案另收口。
 
-已重读网页原方案及固定ca5f37e入口，形成[待执行计划](../../experiments/operator-stable-timing-20261019/NEXT-PLAN.md)。本轮仅CPU审查，未启动新GPU；建议不记作已采纳长期决定。
+更早完整执行记录见[本次历史](history/M26-before-result-20261019/EXECUTION.md)。

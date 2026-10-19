@@ -1,14 +1,10 @@
-> 当前main进度请先看 [10月19日导航](CURRENT-20261019.md)；以下固定快照身份和旧结果保留。
+# 当前入口
 
-> **2026-10-19当前入口**：先读[CPU完整block基线与新导航](CURRENT-PROGRESS-20261019.md)。科学base固定ca5f37e；新B0仅CPU通过、GPU未运行。下文与RESULTS.json均为历史，不以旧暂停身份覆盖当前运行队列。
+请先读[2026-10-19当前结果与源码](CURRENT-20261019.md)。本次强基线/profile和FFN1+GELU有限验证已完成；完整device FFN2失败，四质量权限仍false。main只作进度镜像，固定科学commit保留身份。
 
-> **当前整体状态（2026-10-18晚）**：先读[当前入口](CURRENT-PROGRESS-20261018.md)、[整体报告](../.pipeline/cycles/wam-research-20261016/STATUS-20261018.md)和[新版Prompt](PROJECT-REVIEW-PROMPT-20261018.md)。下文paused72及RESULTS.json保留历史身份，不能代替当前资源/覆盖。四项权限仍false。
+以下正文与review/RESULTS.json为4f04 paused72历史快照，不能覆盖后续新授权运行或当前算子结果；旧FAILED/retention亦不能由新进度改写。
 
-> **2026-10-18算子最新审查**：请先读[算子状态](OPERATOR-STATUS-20261018.md)与[算子Prompt](OPERATOR_REVIEW_PROMPT-20261018.md)。以下paused72及RESULTS.json保留历史身份。
-
-> 当前新授权进度另见[189组三臂与接续检查点](LONG-STAGE189-AND-RESUME-20261017.md)。下文及RESULTS.json仍保留4f04 paused72历史身份，不能当作当前资源状态。
-
-> 本文保留4f04 paused72科学快照。后续新授权的Long运行与评测范围见[10/17下午检查点](LIBERO-SCOPE-AND-LONG-RUN-20261017.md)；新工作不改旧72局、失败或四项false。
+---
 
 # 新版TF draft审阅入口：暂停72局
 

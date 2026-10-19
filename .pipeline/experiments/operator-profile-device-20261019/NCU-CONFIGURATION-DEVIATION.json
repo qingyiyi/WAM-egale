@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-19T13:21:56.003703+08:00",
+  "status": "CONFIGURATION_DEVIATION_RETAINED",
+  "observed": "Installed NCU --help says default --clock-control=boost. The eight initial NCU commands omitted explicit none.",
+  "actual_frequency_change": "UNKNOWN_not_independently_logged; no manual clock/reset command issued",
+  "impact": "All NCU metrics kept as instrumented diagnostics; no NCU latency enters performance table. Natural-cache application runs still used NCU default clock policy.",
+  "correction": "bounded.py now rejects NCU unless --clock-control none and explicit --cache-control are present; no more counters planned for this M26.",
+  "separate_timing": "CUDA Event Graph timing was in standalone non-NCU workers. Formal non-contention/frequency certificate remains UNKNOWN.",
+  "protected": "no system services or explicit GPU clock commands changed"
+}

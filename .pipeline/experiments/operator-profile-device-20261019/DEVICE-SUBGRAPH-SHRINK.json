@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-19T13:29:30.813736+08:00",
+  "stage": "ONE_FFN_SUBGRAPH_SHRUNK_NOT_EXPANDED",
+  "reason": "whole device FFN2 failed six true inputs; four fixed split/reduction emulations failed to match. No supported fix to guess.",
+  "preserved_failure": "device-attempt2/data/RESULT.json; both reduction diagnostic directories",
+  "selected_component": "FFN1 Linear -> original BF16 round -> original GELU(tanh) -> BF16, inside same CUDA epilogue",
+  "second_layer": "canonical unchanged Torch FFN2",
+  "attempted_cuda_configs": 2,
+  "numerical_correction_sweep": false,
+  "scope": "partial device primitive only; no complete device FFN, persistent scheduler, full30 new-engine, policy or task claim"
+}

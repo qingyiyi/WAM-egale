@@ -1,0 +1,47 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "rows": [],
+  "primitive_calls": 3,
+  "original_ffn_calls": 1,
+  "started_at": "2026-10-19T13:10:42.563258+08:00",
+  "resources": [
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 0, 40442, 24",
+      "pids": ""
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 909, 39533, 7",
+      "pids": "3556170"
+    }
+  ],
+  "production_admitted": false,
+  "formal_performance_permission": false,
+  "strict_gate": "all finite bytes equal for each original BF16 intermediate and output",
+  "scope": "real block0 FFN subgraph only; no persistent scheduler, no closed-loop quality",
+  "kernel_metadata": {
+    "CTA_MNK": [
+      64,
+      128,
+      64
+    ],
+    "warp_MNK": [
+      32,
+      64,
+      64
+    ],
+    "threads": 128,
+    "registers_per_thread": 154,
+    "shared_memory_bytes": 73728,
+    "theoretical_active_CTAs_per_SM": 0,
+    "achieved_occupancy": "UNKNOWN_NOT_NCU_MEASURED",
+    "production_admitted": false
+  },
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_bf16_reduced_precision_reduction": true
+  },
+  "error": "RuntimeError('quantile() q tensor must be on the same device as the input tensor')",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/论文探索/算子研究/tools/device_ffn.py\", line 89, in main\n    gelu=compare(golda, activated), linear2=compare(gold2, output))\n                                            ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/rjs/cxz/论文探索/算子研究/tools/metrics.py\", line 45, in compare\n    row[\"abs_p50_p90_max\"] = torch.quantile(delta, torch.tensor([0.5, 0.9, 1.], dtype=torch.float64)).tolist() if delta.numel() else [0., 0., 0.]\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: quantile() q tensor must be on the same device as the input tensor\n",
+  "finished_at": "2026-10-19T13:10:50.870976+08:00",
+  "lifecycle_seconds": 8.307846004143357
+}

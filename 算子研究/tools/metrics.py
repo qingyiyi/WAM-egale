@@ -42,7 +42,7 @@ def compare(reference, candidate):
             row["abs_p50_p90_max"] = None
             row["quantile_status"] = "UNKNOWN_TORCH_QUANTILE_ELEMENT_LIMIT_NO_SAMPLING"
         else:
-            row["abs_p50_p90_max"] = torch.quantile(delta, torch.tensor([0.5, 0.9, 1.], dtype=torch.float64)).tolist() if delta.numel() else [0., 0., 0.]
+            row["abs_p50_p90_max"] = torch.quantile(delta, torch.tensor([0.5, 0.9, 1.], dtype=torch.float64, device=delta.device)).tolist() if delta.numel() else [0., 0., 0.]
             row["quantile_status"] = "EXACT_TORCH_TYPE7"
     return row
 

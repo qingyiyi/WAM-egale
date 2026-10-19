@@ -1,0 +1,2868 @@
+{
+  "status": "COMPLETE_BOUNDED_FFN1_GELU_AND_BLOCK_MATRIX",
+  "rows": [
+    {
+      "case": "short-B2-action-layer0-first",
+      "original_historical": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "FFN1_GELU_output": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          14336
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 458752,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "admissions": {
+        "strong_baseline": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "strong_baseline_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        }
+      },
+      "strong_baseline_engine": "dense",
+      "status": "SIX_FIXTURE_LOCAL_GATE_PASSED",
+      "raw_timing": [
+        {
+          "repeat": 0,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7238720059394836,
+          "wall_ms": 0.7975827902555466
+        },
+        {
+          "repeat": 0,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6980800032615662,
+          "wall_ms": 0.7542800158262253
+        },
+        {
+          "repeat": 1,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6967359781265259,
+          "wall_ms": 0.7528830319643021
+        },
+        {
+          "repeat": 1,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7065600156784058,
+          "wall_ms": 0.7542800158262253
+        },
+        {
+          "repeat": 2,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.707360029220581,
+          "wall_ms": 0.75511634349823
+        },
+        {
+          "repeat": 2,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6945279836654663,
+          "wall_ms": 0.7428284734487534
+        },
+        {
+          "repeat": 3,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6987199783325195,
+          "wall_ms": 0.7556788623332977
+        },
+        {
+          "repeat": 3,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7048640251159668,
+          "wall_ms": 0.7453411817550659
+        },
+        {
+          "repeat": 4,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7081279754638672,
+          "wall_ms": 0.7570739835500717
+        },
+        {
+          "repeat": 4,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6972799897193909,
+          "wall_ms": 0.7470156997442245
+        },
+        {
+          "repeat": 5,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6938560009002686,
+          "wall_ms": 0.7364004850387573
+        },
+        {
+          "repeat": 5,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7048640251159668,
+          "wall_ms": 0.7517654448747635
+        },
+        {
+          "repeat": 6,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7047680020332336,
+          "wall_ms": 0.7495321333408356
+        },
+        {
+          "repeat": 6,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6941120028495789,
+          "wall_ms": 0.735284760594368
+        },
+        {
+          "repeat": 7,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.692192018032074,
+          "wall_ms": 0.7372405380010605
+        },
+        {
+          "repeat": 7,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7053120136260986,
+          "wall_ms": 0.7492508739233017
+        },
+        {
+          "repeat": 8,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7069119811058044,
+          "wall_ms": 0.7506478577852249
+        },
+        {
+          "repeat": 8,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6950719952583313,
+          "wall_ms": 0.7380787283182144
+        },
+        {
+          "repeat": 9,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6921600103378296,
+          "wall_ms": 0.7336083799600601
+        },
+        {
+          "repeat": 9,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7153599858283997,
+          "wall_ms": 0.7626600563526154
+        },
+        {
+          "repeat": 10,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7063360214233398,
+          "wall_ms": 0.7509291172027588
+        },
+        {
+          "repeat": 10,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6955839991569519,
+          "wall_ms": 0.7372405380010605
+        },
+        {
+          "repeat": 11,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6938560009002686,
+          "wall_ms": 0.7576346397399902
+        },
+        {
+          "repeat": 11,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7049279808998108,
+          "wall_ms": 0.7486939430236816
+        },
+        {
+          "repeat": 12,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7051839828491211,
+          "wall_ms": 0.7481351494789124
+        },
+        {
+          "repeat": 12,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6944640278816223,
+          "wall_ms": 0.7419884204864502
+        },
+        {
+          "repeat": 13,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6959999799728394,
+          "wall_ms": 0.7456205785274506
+        },
+        {
+          "repeat": 13,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7058240175247192,
+          "wall_ms": 0.7498115301132202
+        },
+        {
+          "repeat": 14,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.7041919827461243,
+          "wall_ms": 0.745898112654686
+        },
+        {
+          "repeat": 14,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.6956800222396851,
+          "wall_ms": 0.7389169186353683
+        }
+      ],
+      "median_ms": {
+        "strong_baseline": 0.7058240175247192,
+        "FFN1_GELU": 0.6950719952583313
+      },
+      "parameters_unchanged": true,
+      "post_state": {
+        "output": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            2,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 98304,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "state": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true,
+        "passed": true
+      },
+      "candidate_over_strong_baseline": 0.9847667095487985
+    },
+    {
+      "case": "short-B14-action-layer0-first",
+      "original_historical": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "FFN1_GELU_output": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          14336
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 3211264,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "admissions": {
+        "strong_baseline": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "strong_baseline_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        }
+      },
+      "strong_baseline_engine": "guarded",
+      "status": "SIX_FIXTURE_LOCAL_GATE_PASSED",
+      "raw_timing": [
+        {
+          "repeat": 0,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2042560577392578,
+          "wall_ms": 1.2772474437952042
+        },
+        {
+          "repeat": 0,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.156607985496521,
+          "wall_ms": 1.2110397219657898
+        },
+        {
+          "repeat": 1,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1446720361709595,
+          "wall_ms": 1.1937208473682404
+        },
+        {
+          "repeat": 1,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1831040382385254,
+          "wall_ms": 1.2339483946561813
+        },
+        {
+          "repeat": 2,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1829760074615479,
+          "wall_ms": 1.2305974960327148
+        },
+        {
+          "repeat": 2,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1496959924697876,
+          "wall_ms": 1.1979080736637115
+        },
+        {
+          "repeat": 3,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1439039707183838,
+          "wall_ms": 1.1881310492753983
+        },
+        {
+          "repeat": 3,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1966079473495483,
+          "wall_ms": 1.2535005807876587
+        },
+        {
+          "repeat": 4,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1845120191574097,
+          "wall_ms": 1.2317132204771042
+        },
+        {
+          "repeat": 4,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1504319906234741,
+          "wall_ms": 1.199306920170784
+        },
+        {
+          "repeat": 5,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.144544005393982,
+          "wall_ms": 1.1895280331373215
+        },
+        {
+          "repeat": 5,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1845760345458984,
+          "wall_ms": 1.2336671352386475
+        },
+        {
+          "repeat": 6,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1836479902267456,
+          "wall_ms": 1.2398138642311096
+        },
+        {
+          "repeat": 6,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.146880030632019,
+          "wall_ms": 1.1942777782678604
+        },
+        {
+          "repeat": 7,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1433919668197632,
+          "wall_ms": 1.1995863169431686
+        },
+        {
+          "repeat": 7,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1828800439834595,
+          "wall_ms": 1.225566491484642
+        },
+        {
+          "repeat": 8,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1787519454956055,
+          "wall_ms": 1.225566491484642
+        },
+        {
+          "repeat": 8,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1448639631271362,
+          "wall_ms": 1.1976305395364761
+        },
+        {
+          "repeat": 9,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1431360244750977,
+          "wall_ms": 1.1895280331373215
+        },
+        {
+          "repeat": 9,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1822400093078613,
+          "wall_ms": 1.2325514107942581
+        },
+        {
+          "repeat": 10,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1795200109481812,
+          "wall_ms": 1.225566491484642
+        },
+        {
+          "repeat": 10,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1465599536895752,
+          "wall_ms": 1.1937208473682404
+        },
+        {
+          "repeat": 11,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1444159746170044,
+          "wall_ms": 1.1962316930294037
+        },
+        {
+          "repeat": 11,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1851840019226074,
+          "wall_ms": 1.2459605932235718
+        },
+        {
+          "repeat": 12,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.18886399269104,
+          "wall_ms": 1.2342259287834167
+        },
+        {
+          "repeat": 12,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.1493439674377441,
+          "wall_ms": 1.194557175040245
+        },
+        {
+          "repeat": 13,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.146623969078064,
+          "wall_ms": 1.2001432478427887
+        },
+        {
+          "repeat": 13,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1820800304412842,
+          "wall_ms": 1.226961612701416
+        },
+        {
+          "repeat": 14,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.1801600456237793,
+          "wall_ms": 1.2275204062461853
+        },
+        {
+          "repeat": 14,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.143712043762207,
+          "wall_ms": 1.1942777782678604
+        }
+      ],
+      "median_ms": {
+        "strong_baseline": 1.1831040382385254,
+        "FFN1_GELU": 1.1448639631271362
+      },
+      "parameters_unchanged": true,
+      "post_state": {
+        "output": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "state": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true,
+        "passed": true
+      },
+      "candidate_over_strong_baseline": 0.9676781805526391
+    },
+    {
+      "case": "middle-B2-action-layer0-first",
+      "original_historical": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "FFN1_GELU_output": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          14336
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 458752,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "admissions": {
+        "strong_baseline": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "strong_baseline_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        }
+      },
+      "strong_baseline_engine": "dense",
+      "status": "SIX_FIXTURE_LOCAL_GATE_PASSED",
+      "raw_timing": [
+        {
+          "repeat": 0,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.864575982093811,
+          "wall_ms": 0.9467620402574539
+        },
+        {
+          "repeat": 0,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8332160115242004,
+          "wall_ms": 0.896478071808815
+        },
+        {
+          "repeat": 1,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8242560029029846,
+          "wall_ms": 0.8735675364732742
+        },
+        {
+          "repeat": 1,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8448320031166077,
+          "wall_ms": 0.9015053510665894
+        },
+        {
+          "repeat": 2,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8362560272216797,
+          "wall_ms": 0.8906088769435883
+        },
+        {
+          "repeat": 2,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.825984001159668,
+          "wall_ms": 0.8794348686933517
+        },
+        {
+          "repeat": 3,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8204799890518188,
+          "wall_ms": 0.8816681802272797
+        },
+        {
+          "repeat": 3,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8361920118331909,
+          "wall_ms": 0.8939597755670547
+        },
+        {
+          "repeat": 4,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8322880268096924,
+          "wall_ms": 0.883905217051506
+        },
+        {
+          "repeat": 4,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8260800242424011,
+          "wall_ms": 0.8758027106523514
+        },
+        {
+          "repeat": 5,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.821727991104126,
+          "wall_ms": 0.8797142654657364
+        },
+        {
+          "repeat": 5,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8355519771575928,
+          "wall_ms": 0.886695459485054
+        },
+        {
+          "repeat": 6,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8337600231170654,
+          "wall_ms": 0.882226973772049
+        },
+        {
+          "repeat": 6,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8237119913101196,
+          "wall_ms": 0.8744057267904282
+        },
+        {
+          "repeat": 7,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8249279856681824,
+          "wall_ms": 0.8894931524991989
+        },
+        {
+          "repeat": 7,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8356800079345703,
+          "wall_ms": 0.8853040635585785
+        },
+        {
+          "repeat": 8,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.832863986492157,
+          "wall_ms": 0.8855797350406647
+        },
+        {
+          "repeat": 8,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.827072024345398,
+          "wall_ms": 0.9154733270406723
+        },
+        {
+          "repeat": 9,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8384640216827393,
+          "wall_ms": 0.9143557399511337
+        },
+        {
+          "repeat": 9,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8373119831085205,
+          "wall_ms": 0.8894912898540497
+        },
+        {
+          "repeat": 10,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8339200019836426,
+          "wall_ms": 0.8920058608055115
+        },
+        {
+          "repeat": 10,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8253120183944702,
+          "wall_ms": 0.8774790912866592
+        },
+        {
+          "repeat": 11,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.823743999004364,
+          "wall_ms": 0.871613621711731
+        },
+        {
+          "repeat": 11,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.834559977054596,
+          "wall_ms": 0.8875355124473572
+        },
+        {
+          "repeat": 12,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8325440287590027,
+          "wall_ms": 0.8928459137678146
+        },
+        {
+          "repeat": 12,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8297280073165894,
+          "wall_ms": 0.8799917995929718
+        },
+        {
+          "repeat": 13,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8297600150108337,
+          "wall_ms": 0.8827876299619675
+        },
+        {
+          "repeat": 13,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.8356800079345703,
+          "wall_ms": 0.8861366659402847
+        },
+        {
+          "repeat": 14,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.83651202917099,
+          "wall_ms": 0.8894912898540497
+        },
+        {
+          "repeat": 14,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.8279359936714172,
+          "wall_ms": 0.8833464235067368
+        }
+      ],
+      "median_ms": {
+        "strong_baseline": 0.8356800079345703,
+        "FFN1_GELU": 0.825984001159668
+      },
+      "parameters_unchanged": true,
+      "post_state": {
+        "output": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            2,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 98304,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "state": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true,
+        "passed": true
+      },
+      "candidate_over_strong_baseline": 0.9883974647199392
+    },
+    {
+      "case": "middle-B14-action-layer0-first",
+      "original_historical": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "FFN1_GELU_output": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          14336
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 3211264,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "admissions": {
+        "strong_baseline": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "strong_baseline_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        }
+      },
+      "strong_baseline_engine": "native",
+      "status": "SIX_FIXTURE_LOCAL_GATE_PASSED",
+      "raw_timing": [
+        {
+          "repeat": 0,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.447775959968567,
+          "wall_ms": 1.5202946960926056
+        },
+        {
+          "repeat": 0,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3988159894943237,
+          "wall_ms": 1.5082787722349167
+        },
+        {
+          "repeat": 1,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3914239406585693,
+          "wall_ms": 1.4398377388715744
+        },
+        {
+          "repeat": 1,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4283519983291626,
+          "wall_ms": 1.4934763312339783
+        },
+        {
+          "repeat": 2,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4298559427261353,
+          "wall_ms": 1.4814622700214386
+        },
+        {
+          "repeat": 2,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3947199583053589,
+          "wall_ms": 1.445705071091652
+        },
+        {
+          "repeat": 3,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3912320137023926,
+          "wall_ms": 1.43536739051342
+        },
+        {
+          "repeat": 3,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4288959503173828,
+          "wall_ms": 1.475876197218895
+        },
+        {
+          "repeat": 4,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4248319864273071,
+          "wall_ms": 1.4705657958984375
+        },
+        {
+          "repeat": 4,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3930879831314087,
+          "wall_ms": 1.4429111033678055
+        },
+        {
+          "repeat": 5,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3879679441452026,
+          "wall_ms": 1.428663730621338
+        },
+        {
+          "repeat": 5,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4273279905319214,
+          "wall_ms": 1.4700088649988174
+        },
+        {
+          "repeat": 6,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4267200231552124,
+          "wall_ms": 1.485651358962059
+        },
+        {
+          "repeat": 6,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3944640159606934,
+          "wall_ms": 1.4426298439502716
+        },
+        {
+          "repeat": 7,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3932479619979858,
+          "wall_ms": 1.4356467872858047
+        },
+        {
+          "repeat": 7,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4255039691925049,
+          "wall_ms": 1.4739185571670532
+        },
+        {
+          "repeat": 8,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.428096055984497,
+          "wall_ms": 1.4725234359502792
+        },
+        {
+          "repeat": 8,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3927040100097656,
+          "wall_ms": 1.4389995485544205
+        },
+        {
+          "repeat": 9,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.388319969177246,
+          "wall_ms": 1.4373231679201126
+        },
+        {
+          "repeat": 9,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4275840520858765,
+          "wall_ms": 1.4764349907636642
+        },
+        {
+          "repeat": 10,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.424448013305664,
+          "wall_ms": 1.4728028327226639
+        },
+        {
+          "repeat": 10,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.4555519819259644,
+          "wall_ms": 1.4971066266298294
+        },
+        {
+          "repeat": 11,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.389888048171997,
+          "wall_ms": 1.4317352324724197
+        },
+        {
+          "repeat": 11,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4292160272598267,
+          "wall_ms": 1.4786701649427414
+        },
+        {
+          "repeat": 12,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4287680387496948,
+          "wall_ms": 1.4764368534088135
+        },
+        {
+          "repeat": 12,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3961600065231323,
+          "wall_ms": 1.4451444149017334
+        },
+        {
+          "repeat": 13,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.390463948249817,
+          "wall_ms": 1.4334116131067276
+        },
+        {
+          "repeat": 13,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.4296000003814697,
+          "wall_ms": 1.4778319746255875
+        },
+        {
+          "repeat": 14,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.424064040184021,
+          "wall_ms": 1.471683382987976
+        },
+        {
+          "repeat": 14,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.3958079814910889,
+          "wall_ms": 1.4434698969125748
+        }
+      ],
+      "median_ms": {
+        "strong_baseline": 1.428096055984497,
+        "FFN1_GELU": 1.3930879831314087
+      },
+      "parameters_unchanged": true,
+      "post_state": {
+        "output": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "state": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true,
+        "passed": true
+      },
+      "candidate_over_strong_baseline": 0.9754861917681338
+    },
+    {
+      "case": "long-B2-action-layer0-first",
+      "original_historical": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "FFN1_GELU_output": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          14336
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 458752,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "admissions": {
+        "strong_baseline": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "strong_baseline_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              2,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 98304,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        }
+      },
+      "strong_baseline_engine": "dense",
+      "status": "SIX_FIXTURE_LOCAL_GATE_PASSED",
+      "raw_timing": [
+        {
+          "repeat": 0,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9384959936141968,
+          "wall_ms": 1.008499413728714
+        },
+        {
+          "repeat": 0,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.911903977394104,
+          "wall_ms": 0.9643621742725372
+        },
+        {
+          "repeat": 1,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.9058560132980347,
+          "wall_ms": 0.9607281535863876
+        },
+        {
+          "repeat": 1,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9148799777030945,
+          "wall_ms": 0.9626876562833786
+        },
+        {
+          "repeat": 2,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.91184002161026,
+          "wall_ms": 0.9548645466566086
+        },
+        {
+          "repeat": 2,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.9079679846763611,
+          "wall_ms": 0.9548626840114594
+        },
+        {
+          "repeat": 3,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.906112015247345,
+          "wall_ms": 0.9515080600976944
+        },
+        {
+          "repeat": 3,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9120960235595703,
+          "wall_ms": 0.9663160890340805
+        },
+        {
+          "repeat": 4,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.914143979549408,
+          "wall_ms": 0.9733010083436966
+        },
+        {
+          "repeat": 4,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.907039999961853,
+          "wall_ms": 0.9548645466566086
+        },
+        {
+          "repeat": 5,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.906112015247345,
+          "wall_ms": 0.95374695956707
+        },
+        {
+          "repeat": 5,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9128320217132568,
+          "wall_ms": 0.9610075503587723
+        },
+        {
+          "repeat": 6,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9123839735984802,
+          "wall_ms": 1.0244250297546387
+        },
+        {
+          "repeat": 6,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.906719982624054,
+          "wall_ms": 0.9565390646457672
+        },
+        {
+          "repeat": 7,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.9014400243759155,
+          "wall_ms": 0.9422916918992996
+        },
+        {
+          "repeat": 7,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9135680198669434,
+          "wall_ms": 0.9635239839553833
+        },
+        {
+          "repeat": 8,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9125760197639465,
+          "wall_ms": 0.9895041584968567
+        },
+        {
+          "repeat": 8,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.9074879884719849,
+          "wall_ms": 0.9584948420524597
+        },
+        {
+          "repeat": 9,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.905023992061615,
+          "wall_ms": 0.9570978581905365
+        },
+        {
+          "repeat": 9,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9130240082740784,
+          "wall_ms": 0.9570978581905365
+        },
+        {
+          "repeat": 10,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9117119908332825,
+          "wall_ms": 0.9562596678733826
+        },
+        {
+          "repeat": 10,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.9166399836540222,
+          "wall_ms": 0.9576566517353058
+        },
+        {
+          "repeat": 11,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.9021440148353577,
+          "wall_ms": 0.942569226026535
+        },
+        {
+          "repeat": 11,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9130240082740784,
+          "wall_ms": 0.9604506194591522
+        },
+        {
+          "repeat": 12,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9124159812927246,
+          "wall_ms": 0.9565409272909164
+        },
+        {
+          "repeat": 12,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.9093120098114014,
+          "wall_ms": 0.9534675627946854
+        },
+        {
+          "repeat": 13,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.9035840034484863,
+          "wall_ms": 0.9760931134223938
+        },
+        {
+          "repeat": 13,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9145600199699402,
+          "wall_ms": 0.9573772549629211
+        },
+        {
+          "repeat": 14,
+          "arm": "strong_baseline",
+          "cuda_ms": 0.9118720293045044,
+          "wall_ms": 0.9515080600976944
+        },
+        {
+          "repeat": 14,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 0.9049599766731262,
+          "wall_ms": 0.9551402181386948
+        }
+      ],
+      "median_ms": {
+        "strong_baseline": 0.9128320217132568,
+        "FFN1_GELU": 0.906112015247345
+      },
+      "parameters_unchanged": true,
+      "post_state": {
+        "output": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            2,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 98304,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "state": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true,
+        "passed": true
+      },
+      "candidate_over_strong_baseline": 0.9926382879806305
+    },
+    {
+      "case": "long-B14-action-layer0-first",
+      "original_historical": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "FFN1_GELU_output": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          14336
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 3211264,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "admissions": {
+        "strong_baseline": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "strong_baseline_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        },
+        "FFN1_GELU_graph": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              14,
+              16,
+              3072
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          },
+          "state": {
+            "pass_all": true,
+            "fields": {
+              "slots": true,
+              "id": true,
+              "mask": true,
+              "is_pred": true,
+              "k": true,
+              "v": true
+            },
+            "valid_KV_finite_pass": true,
+            "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+          },
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "passed": true
+        }
+      },
+      "strong_baseline_engine": "guarded",
+      "status": "SIX_FIXTURE_LOCAL_GATE_PASSED",
+      "raw_timing": [
+        {
+          "repeat": 0,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2788480520248413,
+          "wall_ms": 1.3616159558296204
+        },
+        {
+          "repeat": 0,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.230239987373352,
+          "wall_ms": 1.281440258026123
+        },
+        {
+          "repeat": 1,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2241920232772827,
+          "wall_ms": 1.2733358889818192
+        },
+        {
+          "repeat": 1,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2596800327301025,
+          "wall_ms": 1.3104919344186783
+        },
+        {
+          "repeat": 2,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.258687973022461,
+          "wall_ms": 1.3141240924596786
+        },
+        {
+          "repeat": 2,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.224287986755371,
+          "wall_ms": 1.2724976986646652
+        },
+        {
+          "repeat": 3,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2235840559005737,
+          "wall_ms": 1.2671928852796555
+        },
+        {
+          "repeat": 3,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2578239440917969,
+          "wall_ms": 1.303788274526596
+        },
+        {
+          "repeat": 4,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2566399574279785,
+          "wall_ms": 1.308254897594452
+        },
+        {
+          "repeat": 4,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2257280349731445,
+          "wall_ms": 1.2688655406236649
+        },
+        {
+          "repeat": 5,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2274240255355835,
+          "wall_ms": 1.2724976986646652
+        },
+        {
+          "repeat": 5,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2634880542755127,
+          "wall_ms": 1.3093743473291397
+        },
+        {
+          "repeat": 6,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2589759826660156,
+          "wall_ms": 1.3071410357952118
+        },
+        {
+          "repeat": 6,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2280000448226929,
+          "wall_ms": 1.2755729258060455
+        },
+        {
+          "repeat": 7,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.222048044204712,
+          "wall_ms": 1.2694261968135834
+        },
+        {
+          "repeat": 7,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2603199481964111,
+          "wall_ms": 1.3093743473291397
+        },
+        {
+          "repeat": 8,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2539520263671875,
+          "wall_ms": 1.3180356472730637
+        },
+        {
+          "repeat": 8,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2295360565185547,
+          "wall_ms": 1.2856274843215942
+        },
+        {
+          "repeat": 9,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2253119945526123,
+          "wall_ms": 1.278923824429512
+        },
+        {
+          "repeat": 9,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2607040405273438,
+          "wall_ms": 1.3104919344186783
+        },
+        {
+          "repeat": 10,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2568960189819336,
+          "wall_ms": 1.3060253113508224
+        },
+        {
+          "repeat": 10,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2260160446166992,
+          "wall_ms": 1.2747347354888916
+        },
+        {
+          "repeat": 11,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2223039865493774,
+          "wall_ms": 1.2646764516830444
+        },
+        {
+          "repeat": 11,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.257248044013977,
+          "wall_ms": 1.3032276183366776
+        },
+        {
+          "repeat": 12,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2558399438858032,
+          "wall_ms": 1.3018306344747543
+        },
+        {
+          "repeat": 12,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2243200540542603,
+          "wall_ms": 1.2755729258060455
+        },
+        {
+          "repeat": 13,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2228480577468872,
+          "wall_ms": 1.2660734355449677
+        },
+        {
+          "repeat": 13,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2326079607009888,
+          "wall_ms": 1.2747365981340408
+        },
+        {
+          "repeat": 14,
+          "arm": "strong_baseline",
+          "cuda_ms": 1.2298239469528198,
+          "wall_ms": 1.272778958082199
+        },
+        {
+          "repeat": 14,
+          "arm": "FFN1_GELU",
+          "cuda_ms": 1.2035200595855713,
+          "wall_ms": 1.2490320950746536
+        }
+      ],
+      "median_ms": {
+        "strong_baseline": 1.2578239440917969,
+        "FFN1_GELU": 1.2243200540542603
+      },
+      "parameters_unchanged": true,
+      "post_state": {
+        "output": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            14,
+            16,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "state": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true,
+        "passed": true
+      },
+      "candidate_over_strong_baseline": 0.9733636092754396
+    }
+  ],
+  "full_block_forwards": 246,
+  "primitive_calls": 126,
+  "started_at": "2026-10-19T13:26:45.356285+08:00",
+  "resources": [
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 0, 40442, 25",
+      "pids": ""
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 741, 39701, 7",
+      "pids": "3564554"
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 983, 39459, 0",
+      "pids": "3564554"
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 1073, 39369, 0",
+      "pids": "3564554"
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 1117, 39325, 0",
+      "pids": "3564554"
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 1219, 39223, 0",
+      "pids": "3564554"
+    },
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 1235, 39207, 22",
+      "pids": "3564554"
+    }
+  ],
+  "scope": "FFN1 Linear+BF16 rounding+GELU fused; FFN2 remains canonical Torch; six block0 fixtures",
+  "persistent_scheduler": false,
+  "production_admitted": false,
+  "formal_performance_permission": false,
+  "kernel_metadata": {
+    "CTA_MNK": [
+      64,
+      128,
+      64
+    ],
+    "warp_MNK": [
+      32,
+      64,
+      64
+    ],
+    "threads": 128,
+    "registers_per_thread": 154,
+    "shared_memory_bytes": 73728,
+    "theoretical_active_CTAs_per_SM": 0,
+    "achieved_occupancy": "UNKNOWN_NOT_NCU_MEASURED",
+    "production_admitted": false,
+    "fused_registers_per_thread": 154,
+    "fused_shared_memory_bytes": 73728
+  },
+  "all_six_strict_gate_passed": true,
+  "peak_allocated_bytes": 1597814272,
+  "lifecycle_seconds": 12.10978957824409,
+  "finished_at": "2026-10-19T13:26:57.466086+08:00"
+}

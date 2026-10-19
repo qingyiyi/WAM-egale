@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [算子先完成强基线profile与设备原语](global/requirements/decision-算子先完成强基线profile与设备原语验证.md)（constraint，当前1/2）：用户已同意执行并要求结果和源码讲解；后续scheduler另阶段。
+
 - [远端并行评估自动接续、本机聚焦算子](global/requirements/preference-远端并行评估自动接续并聚焦本机算子.md)（guideline，当前剩余评估）：核资源与状态隔离后最多每卡两个worker，确认实际自动派发；原预算与科学边界不变。
 
 - [算子等待GPU自然空闲](global/requirements/preference-算子测试等待本机GPU自然空闲.md)（constraint，本轮算子）：用户再次选择自然空闲，不反复协调窗口；原预算/截止不重置。

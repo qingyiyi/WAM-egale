@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-19T10:49:12.778068+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-19T13:39:55.989789+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -19,7 +19,7 @@
 
 算子原代码与 HW 保留；用户最新允许独立修正版本并复用固定上游源码，见[M22](experiments/operator-torch-alignment-20261018/PLAN.md)；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 
-当前算子源码已收拢到独立[算子研究](../算子研究/README.md)，仅baseline/optimized两份主实现；16旧算子目录已删、源码留Git，投机1875源/配置未改。原tile/shared-prefix作为投机构建依赖保留。新接续两进程108项逐位过、完整模型中位回归≤2.18%，自有退出；空卡NVML/严格2.5%缺口保留，见[本次结果](experiments/operator-stable-timing-20261019/RESULT.md)。Object现已两卡各2worker、固定后继分片自动排队，见[并发证据](experiments/remote-eval-parallel-20261019/RESULT.md)。旧M24有限结果与旧失败保留。
+当前算子源码为独立[算子研究](../算子研究/README.md)，仅baseline/optimized；投机1875文件不改，原tile依赖只读。M26六真实block的30eager/24Graph强基线过，真实GEMM M32→224；完整device FFN2失败保留。收缩FFN1+GELU在六点两进程逐位与状态过，B14完整block延迟降2.45–3.23%，不称为新调度/闭环结论；17作业751.141生命周期秒、自有GPU退出。[本轮全结果与源码](experiments/operator-profile-device-20261019/RESULT.md)。原M25严格性能/空卡NVML缺口保留。Object13:31为668/1500、3活动，后继自动排队；原M17预算/截止不重置。
 
 ## 动态事实与历史
 

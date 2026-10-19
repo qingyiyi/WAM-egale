@@ -1,0 +1,8 @@
+/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/backends/cuda/__init__.py:131: UserWarning: Please use the new API settings to control TF32 behavior, such as torch.backends.cudnn.conv.fp32_precision = 'tf32' or torch.backends.cuda.matmul.fp32_precision = 'ieee'. Old settings, e.g, torch.backends.cuda.matmul.allow_tf32 = True, torch.backends.cudnn.allow_tf32 = True, allowTF32CuDNN() and allowTF32CuBLAS() will be deprecated after Pytorch 2.9. Please see https://pytorch.org/docs/main/notes/cuda.html#tensorfloat-32-tf32-on-ampere-and-later-devices (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:80.)
+  return torch._C._get_cublas_allow_tf32()
+{"case": "short-B2", "admitted": false, "different": {"linear1": 0, "gelu": 0, "linear2": 39161}, "median": {"torch": 0.2242559939622879, "device": 0.24268800020217896}}
+{"case": "short-B14", "admitted": false, "different": {"linear1": 0, "gelu": 0, "linear2": 125318}, "median": {"torch": 0.3624959886074066, "device": 0.3491840064525604}}
+{"case": "middle-B2", "admitted": false, "different": {"linear1": 0, "gelu": 0, "linear2": 39123}, "median": {"torch": 0.2242559939622879, "device": 0.24371199309825897}}
+{"case": "middle-B14", "admitted": false, "different": {"linear1": 0, "gelu": 0, "linear2": 120892}, "median": {"torch": 0.36454400420188904, "device": 0.35020801424980164}}
+{"case": "long-B2", "admitted": false, "different": {"linear1": 0, "gelu": 0, "linear2": 39247}, "median": {"torch": 0.2242559939622879, "device": 0.24473600089550018}}
+{"case": "long-B14", "admitted": false, "different": {"linear1": 0, "gelu": 0, "linear2": 123847}, "median": {"torch": 0.3635199964046478, "device": 0.35020801424980164}}

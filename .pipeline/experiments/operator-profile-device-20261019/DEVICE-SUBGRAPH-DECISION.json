@@ -1,0 +1,16 @@
+{
+  "status": "FROZEN_FOR_ONE_DEVICE_PROTOTYPE",
+  "selected_subgraph": "FFN1 -> BF16 GELU(tanh) -> FFN2",
+  "reason": "All six strongest-static-baseline traces show FFN 21.9-29.9% of traced kernel sum; meaningful contiguous dense subgraph; graph/cache/prefix benefits already included",
+  "evidence": "PROFILE-DERIVED.json",
+  "candidate_configs": 1,
+  "prototype": "CUTLASS SM80 CTA64x128x64 warp32x64x64 stages3, no splitK",
+  "independent_numerical_gates": [
+    "linear1 BF16",
+    "GELU BF16 on original linear1",
+    "linear2 BF16 on original GELU",
+    "whole device FFN chain"
+  ],
+  "persistent_scheduler": false,
+  "automatic_production_integration": false
+}

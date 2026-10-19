@@ -1,0 +1,43 @@
+{
+  "command": [
+    "/usr/local/cuda-12.4/bin/ncu",
+    "--profile-from-start",
+    "off",
+    "--replay-mode",
+    "application",
+    "--cache-control",
+    "none",
+    "--metrics",
+    "lts__t_sectors.sum,dram__bytes.sum,sm__warps_active.avg.pct_of_peak_sustained_active,sm__throughput.avg.pct_of_peak_sustained_elapsed",
+    "--csv",
+    "--log-file",
+    "/rjs/cxz/论文探索/.pipeline/experiments/operator-profile-device-20261019/counter-app-short-B2/COUNTERS.csv",
+    "/rjs/cxz/miniconda3/envs/va/bin/python",
+    "-B",
+    "-m",
+    "tools.counter_block",
+    "--registration",
+    "/rjs/cxz/论文探索/.pipeline/experiments/operator-profile-device-20261019/REGISTRATION.json",
+    "--profile-result",
+    "/rjs/cxz/论文探索/.pipeline/experiments/operator-profile-device-20261019/profile-attempt2/data/RESULT.json",
+    "--length",
+    "short",
+    "--batch",
+    "2",
+    "--output",
+    "/rjs/cxz/论文探索/.pipeline/experiments/operator-profile-device-20261019/counter-app-short-B2/RESULT.json"
+  ],
+  "started_at": "2026-10-19T13:14:46.642589+08:00",
+  "consumed_prior_lifecycle_seconds": 381.5109291020781,
+  "cap_seconds": 180,
+  "status": "NATURAL_EXIT",
+  "owned": {
+    "pid": 3557809,
+    "birth_ticks": 1365599507,
+    "uid": 1003
+  },
+  "exit_code": 0,
+  "lifecycle_seconds": 147.66544932499528,
+  "finished_at": "2026-10-19T13:17:14.308189+08:00",
+  "owned_exited": true
+}

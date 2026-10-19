@@ -1,0 +1,115 @@
+{
+  "status": "COMPLETE_REAL_INPUT_POST_OPTIN_METADATA_CHECK",
+  "rows": [],
+  "primitive_calls": 2,
+  "original_ffn_calls": 0,
+  "started_at": "2026-10-19T13:29:35.778884+08:00",
+  "resources": [
+    {
+      "gpu": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 0, 40442, 25",
+      "pids": ""
+    }
+  ],
+  "production_admitted": false,
+  "formal_performance_permission": false,
+  "strict_gate": "all finite bytes equal for each original BF16 intermediate and output",
+  "scope": "real block0 FFN subgraph only; no persistent scheduler, no closed-loop quality",
+  "kernel_metadata": {
+    "CTA_MNK": [
+      64,
+      128,
+      64
+    ],
+    "warp_MNK": [
+      32,
+      64,
+      64
+    ],
+    "threads": 128,
+    "registers_per_thread": 154,
+    "shared_memory_bytes": 73728,
+    "theoretical_active_CTAs_per_SM": 0,
+    "achieved_occupancy": "UNKNOWN_NOT_NCU_MEASURED",
+    "production_admitted": false,
+    "fused_registers_per_thread": 154,
+    "fused_shared_memory_bytes": 73728
+  },
+  "torch_flags": {
+    "allow_tf32": false,
+    "allow_bf16_reduced_precision_reduction": true
+  },
+  "no_timing": true,
+  "linear1": {
+    "shape_match": true,
+    "dtype_match": true,
+    "finite_pass": true,
+    "shape": [
+      32,
+      14336
+    ],
+    "dtype": "torch.bfloat16",
+    "bitwise_pass": true,
+    "tolerance_pass": true,
+    "different_bytes": 0,
+    "different_elements": 0,
+    "elements": 458752,
+    "tolerance_atol": 0.0,
+    "tolerance_rtol": 0.0,
+    "max_abs": 0.0,
+    "rel_l2": 0.0,
+    "abs_p50_p90_max": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "quantile_status": "EXACT_ALL_ZERO"
+  },
+  "fused_ffn1": {
+    "shape_match": true,
+    "dtype_match": true,
+    "finite_pass": true,
+    "shape": [
+      32,
+      14336
+    ],
+    "dtype": "torch.bfloat16",
+    "bitwise_pass": true,
+    "tolerance_pass": true,
+    "different_bytes": 0,
+    "different_elements": 0,
+    "elements": 458752,
+    "tolerance_atol": 0.0,
+    "tolerance_rtol": 0.0,
+    "max_abs": 0.0,
+    "rel_l2": 0.0,
+    "abs_p50_p90_max": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "quantile_status": "EXACT_ALL_ZERO"
+  },
+  "post_optin_metadata": {
+    "CTA_MNK": [
+      64,
+      128,
+      64
+    ],
+    "warp_MNK": [
+      32,
+      64,
+      64
+    ],
+    "threads": 128,
+    "registers_per_thread": 154,
+    "shared_memory_bytes": 73728,
+    "theoretical_active_CTAs_per_SM": 2,
+    "achieved_occupancy": "UNKNOWN_NOT_NCU_MEASURED",
+    "production_admitted": false,
+    "fused_registers_per_thread": 154,
+    "fused_shared_memory_bytes": 73728
+  },
+  "note": "initial active-CTA query0 preceded dynamic-SMEM opt-in and is invalid as physical occupancy; post-opt-in query is authoritative only for this kernel configuration",
+  "finished_at": "2026-10-19T13:29:43.957285+08:00",
+  "lifecycle_seconds": 8.178566852584481
+}
