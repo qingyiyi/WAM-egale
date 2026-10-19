@@ -1,6 +1,6 @@
 # 当前入口
 
-请先读[2026-10-19当前结果与源码](CURRENT-20261019.md)。M30已补真实shape/DAG与MegaMoE思想设计，未实现新persistent；本次完整native block的有限逐位与两进程动态计时已完成；最强B14/Graph与闭环仍未验，四质量权限仍false。main只作进度镜像，固定科学commit保留身份。
+请先读[2026-10-19当前结果与源码](CURRENT-20261019.md)。M30已补真实shape/DAG与MegaMoE思想设计，并按用户反馈修订为覆盖self/cross-attention的完整Transformer子图；未实现新persistent；本次完整native block的有限逐位与两进程动态计时已完成；最强B14/Graph与闭环仍未验，四质量权限仍false。main只作进度镜像，固定科学commit保留身份。
 
 以下正文与review/RESULTS.json为4f04 paused72历史快照，不能覆盖后续新授权运行或当前算子结果；旧FAILED/retention亦不能由新进度改写。
 

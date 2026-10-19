@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [Transformer子图应覆盖self/cross-attention](global/requirements/feedback-Transformer子图设计应覆盖self与cross-attention.md)（guideline，本轮算子设计）：依据完整真实DAG组织tile；FFN局部实验不代表整体，具体实现仍需验证。
+
 - [tile与persistent warp为当前算子主线](global/requirements/decision-算子tile化与persistent-warp调度为主线.md)（constraint，本轮算子）：设备tile、常驻worker与依赖调度，替代旧仅路线B阶段优先级；不预设收益或扩大质量权限。
 - [MegaMoE作为思想参考](global/requirements/preference-MegaMoE作为tile调度思想参考.md)（guideline，本轮设计）：结合HW与SM80借鉴任务/warp/就绪机制，不要求复刻官方实现；具体策略仍需验证。
 

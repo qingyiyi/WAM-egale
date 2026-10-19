@@ -1,10 +1,10 @@
 # 当前短入口
 
-更新：2026-10-19T17:51:29.763317+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
+更新：2026-10-19T18:37:38.352270+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先约束记忆，再读当前四文；旧大索引/原trace按需。
 
 ## 当前：M30 tile/persistent设计交接
 
-[M30结构交接](experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[综合HW的具体设计](experiments/transformer-tile-handoff-20261019/DESIGN.md)、[工作大纲](experiments/transformer-tile-handoff-20261019/WORK-OUTLINE.md)。CPU核验9签名/27参数/21节点，GPU0。用户确认借鉴MegaMoE思想，研究tile和常驻warp调度；官方源码固定，只读未安装。建议先显式tile坐标FFN1常驻worker，FFN2严格门通过后行块ready子图，再视证据细化K块/warp。新实现/收益尚无。生产CUDA原stride未恢复、旧device FFN2失败保留。
+[M30结构交接](experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[综合HW的具体设计](experiments/transformer-tile-handoff-20261019/DESIGN.md)、[工作大纲](experiments/transformer-tile-handoff-20261019/WORK-OUTLINE.md)。CPU核验9签名/27参数/21节点，GPU0。用户确认借鉴MegaMoE思想，研究tile和常驻warp调度；官方源码固定，只读未安装。按用户后续反馈，整体改为[self/cross/FFN三段DAG与attention输出tile任务](experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)，首版保留Flash在线归约，再接相邻边界；旧FFN-first仅局部建议，FFN2门不阻塞attention研究。新实现/收益尚无。生产CUDA原stride未恢复、旧device FFN2失败保留。
 
 ## 已完成：M28完整native block
 

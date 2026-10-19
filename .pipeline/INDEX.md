@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-19T17:51:29.763317+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-19T18:37:38.352270+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -10,7 +10,7 @@
 
 [当前整体整理](cycles/wam-research-20261016/STATUS-20261019.md)：Long/Goal/Spatial首轮、B0有限GPU逐位、Object修复与原门缺口；旧paused72仅历史。
 
-当前算子设计：[M30交接](experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[综合HW的tile/persistent方案](experiments/transformer-tile-handoff-20261019/DESIGN.md)。用户要求借鉴MegaMoE思想，当前CPU交付完成，新kernel未实现；后续只在optimized推进。三套已完成[成功率表](experiments/libero-four-suite-morning-20261019/COMPLETED-SUITES-SUCCESS-20261019.md)，不等于质量放行。
+当前算子设计：[M30交接](experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[当前Transformer attention子图设计](experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)。用户要求借鉴MegaMoE思想，当前CPU交付完成，新kernel未实现；后续只在optimized推进。三套已完成[成功率表](experiments/libero-four-suite-morning-20261019/COMPLETED-SUITES-SUCCESS-20261019.md)，不等于质量放行。
 
 ## 两条研究路线
 

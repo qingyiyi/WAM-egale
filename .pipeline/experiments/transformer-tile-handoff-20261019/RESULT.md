@@ -10,6 +10,8 @@
 - 机器可读GEMM账本9行，源码推导DAG21节点；7个小源码身份保存，不把逻辑DAG称为runtime kernel trace。
 - 固定官方MegaMoE/DeepGEMM commit，下载10份源码/许可证只读，未安装/执行。实际有BF16实现，但该路径为SM100，不是现成A100实现。
 
+用户反馈后的整体路线以[self/cross-attention子图修订](ATTENTION-SUBGRAPH-DESIGN.md)为准；下面保留M30当时的FFN-first建议与原终态，未续用旧GPU预算。
+
 ## 设计建议与未知
 
 建议先做显式tile坐标的FFN1+GELU常驻worker；FFN2严格设备原语门通过后，接入行块ready的FFN1/GELU→FFN2→残差子图，再逐项研究K块流水和warp专门化。具体tile/策略与增量仍为假设；当前M28动态路径也未与最强B14/cached/Graph统一。

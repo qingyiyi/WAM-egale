@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-19T18:37:38.352270+08:00",
+  "scope": "user-requested CPU design revision and current-baseline evidence check, no GPU job",
+  "operator_source_reference": ".pipeline/experiments/block-native-baseline-20261019/SOURCE-DELIVERED.json",
+  "operator_files_checked": 92,
+  "operator_changed": [],
+  "new_GPU_experiments": 0,
+  "profile_source": ".pipeline/experiments/operator-profile-device-20261019/PROFILE-DERIVED.json",
+  "profile_field": "rows[*].strong_cached.stage_fraction",
+  "module_scope": "includes projection/norm/RoPE/cache/attention; not pure QK-PV percentage; profiled eager, not formal graph timing",
+  "profile_rows": [
+    {
+      "case": "short-B14-action-layer0-first",
+      "self_module_percent": 24.352064046009442,
+      "cross_module_percent": 23.479852305366084,
+      "combined_percent": 47.831916351375526,
+      "FFN_percent": 29.86023686493164
+    },
+    {
+      "case": "middle-B14-action-layer0-first",
+      "self_module_percent": 37.32739940404654,
+      "cross_module_percent": 19.55082119929525,
+      "combined_percent": 56.87822060334178,
+      "FFN_percent": 24.683814353581834
+    },
+    {
+      "case": "long-B14-action-layer0-first",
+      "self_module_percent": 33.986586399777046,
+      "cross_module_percent": 20.55813283155498,
+      "combined_percent": 54.54471923133203,
+      "FFN_percent": 26.007692856349767
+    }
+  ],
+  "prior_M30_GPU_budget_reopened": false,
+  "new_math_implementation": false
+}

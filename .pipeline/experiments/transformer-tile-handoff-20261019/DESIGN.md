@@ -1,5 +1,7 @@
 # WAM借鉴MegaMoE思想的tile与常驻调度设计
 
+> 后续设计修订：用户指出整体设计须依据self/cross-attention与FFN，而不能以本页FFN-first局部路线代表Transformer。当前推进顺序和attention契约见[完整Transformer子图设计](ATTENTION-SUBGRAPH-DESIGN.md)。本页保留为此前建议，原实验结果不变。
+
 2026-10-19。本文是综合HW后提出的实施设计，不是新kernel或收益报告。用户确认借鉴MegaMoE的思想，不要求复刻其官方实现。当前完整native baseline冻结，后续仅在optimized中逐步验证。
 
 ## 1. 从已有证据确定切入点

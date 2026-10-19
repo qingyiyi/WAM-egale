@@ -1,5 +1,7 @@
 # WAM完整block算子研究
 
+当前设计修订：[self-attention、cross-attention与FFN的完整tile子图](../.pipeline/experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)。先按Transformer依赖组织执行器；旧FFN-first建议仅作局部参考，尚无新的persistent实现。
+
 最新协作交接：[真实结构/9签名/27参数与完整源码路径](../.pipeline/experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[综合HW的tile/persistent设计](../.pipeline/experiments/transformer-tile-handoff-20261019/DESIGN.md)、[工作依赖与止损](../.pipeline/experiments/transformer-tile-handoff-20261019/WORK-OUTLINE.md)、[MegaMoE固定源码映射](../.pipeline/experiments/transformer-tile-handoff-20261019/MEGAMOE-NOTES.md)。M30仅CPU审查，尚未实现新的persistent kernel；后续优化限定optimized。
 
 只维护`wam_ops/baseline`与`wam_ops/optimized`两份实现。M28按用户新要求把完整forward接到独立C++/CUDA；投机源码、配置、原tile和生产默认不变，原Torch模型是只读oracle。目标仅冻结推理，须在no_grad/inference_mode下调用，不提供autograd。

@@ -1,5 +1,7 @@
 # 算子tile化与persistent warp：实际工作大纲
 
+> 当前路线修订见[Transformer三段子图设计](ATTENTION-SUBGRAPH-DESIGN.md)：先完整DAG与self/cross输出tile设备接口，再attention相邻边界和FFN。下方FFN-first表为旧建议；FFN2门不阻塞attention研究，不能据旧表自动启动作业。
+
 2026-10-19。当前交付是CPU形状/源码/DAG审查，不是新的GPU实验。用户已明确目标为tile原语及persistent kernel内的warp调度，并建议参考MegaMoE；以下具体子图与预算是可审阅实施建议，不预设性能或论文创新成立。
 
 ## 已有可用基础

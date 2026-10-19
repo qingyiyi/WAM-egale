@@ -1,7 +1,7 @@
 ---
 kind: discussion-summary
 cycle: wam-research-20261016
-updated: '2026-10-19T17:50:34.115962+08:00'
+updated: '2026-10-19T18:37:38.352270+08:00'
 ---
 # 当前讨论与授权
 
@@ -11,7 +11,7 @@ updated: '2026-10-19T17:50:34.115962+08:00'
 
 此前用户要求完整block两份均为自有算子：M28已交付完整顺序原生链，cuBLASLt与Torch运行时依赖公开，有限精度/性能范围明确；从该交付继续优化optimized，baseline留作对照。旧attention-only/直接Torch复制阶段已被取代，旧FAILED保持。
 
-当前建议FFN1+GELU显式tile常驻worker起步，FFN2严格设备门通过后行块DAG，后续才K块/warp专门化。这是综合证据的建议，不扩展生产权限或原资源账本。原tile/投机源/保护state/rules不改；只baseline/optimized两份活跃实现。
+用户进一步指出FFN-first整体拆法偏离Transformer本身，要求把self/cross-attention也纳入tile子图。已保存为设计范围反馈；当前建议按完整DAG定义任务，attention以输出query tile为首版任务单元，内部保留QK/在线softmax/PV，逐步接相邻投影/归约就绪。具体方案未运行，不扩展生产权限或原资源账本。原tile/投机源/保护state/rules不改；只baseline/optimized两份活跃实现。
 
 用户要求远端完成三套先报成功率，已交付每臂500局：Long483/484/473、Goal463/464/467、Spatial472/466/464。连续TF接近Target但非全面占优，PF2不一致更好。描述性覆盖不解除严格配对失败、曝光/组件审计缺口，不推断非劣。
 

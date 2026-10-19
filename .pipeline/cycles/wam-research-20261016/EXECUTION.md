@@ -1,7 +1,7 @@
 ---
 kind: execution
 cycle: wam-research-20261016
-updated: '2026-10-19T17:50:34.115962+08:00'
+updated: '2026-10-19T18:37:38.352270+08:00'
 ---
 # 最近执行检查点
 
@@ -18,3 +18,7 @@ updated: '2026-10-19T17:50:34.115962+08:00'
 远端原watch核对：Object 1166/1500；T500/C333/P333为完成数，非成功数，来源2026-10-19T09:46:38Z；原同卡队列继续。Long/Goal/Spatial成功率冻结汇总已交付，但首两S严格配对/曝光/组件问题与四false保留。
 
 此前M28终态、M29原文核验及全部检查点见[收口前归档](history/M30-before-handoff-20261019/EXECUTION.md)，不重复运行已完成任务。
+
+## 2026-10-19T18:37:38.352270+08:00：Transformer attention子图设计修正
+
+用户质疑FFN-first作为整体拆法并询问baseline路径/对齐范围。重新读完整native forward、固定Flash入口、G1/G2候选核和M26 profile。B14 self/cross模块合计47.83/56.88/54.55%，包含projection等，不是纯attention核占比。修订完整DAG及任务边界：Flash输出query tile内保持在线归约；RMSNorm完整D、Wo全部head就绪、private KV隔离。首版从attention可调度入口及相邻边界验证，FFN2旧失败单独保留。当前92算子源与M28已测manifest相同，本次只改文档/记忆；无GPU实验、无新性能/质量结论。

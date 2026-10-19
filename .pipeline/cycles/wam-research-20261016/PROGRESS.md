@@ -1,10 +1,10 @@
 ---
 kind: progress
 cycle: wam-research-20261016
-updated: '2026-10-19T17:50:34.115962+08:00'
+updated: '2026-10-19T18:37:38.352270+08:00'
 current: M30
 execution_status: complete_CPU_handoff_no_GPU_prototype
-next: register_one_bounded_tile_worker_and_FFN2_gate
+next: full_transformer_DAG_and_attention_tile_worker
 ---
 # 当前研究进度
 
@@ -16,7 +16,7 @@ next: register_one_bounded_tile_worker_and_FFN2_gate
 
 MegaMoE/DeepGEMM固定1fc9c66975ee322d628b3288534ca0e9ce12a64d，10份源码/许可证只读；观察任务描述、ready、warmup与warp分工。官方BF16路径为SM100，本项目仅借鉴思想、按SM80实现，不移植专有原语。
 
-建议首版显式tile坐标的FFN1+GELU常驻worker；FFN2设备严格门通过后，按一个m_tile全部activation就绪释放FFN2，保留完整K归约，再视证据细化K块/warp分工。具体设计仍为假设。CPU-only，无新kernel、GPU作业、机器人任务或性能数字。首metadata字段工具错误与首次公开镜像保护核对方法错误均保留，最终边界核对1875投机/92算子数学文件与state/rules未变。
+用户随后指出整体应按Transformer self/cross-attention拆分；[新设计](../../experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)覆盖三段DAG、Flash输出tile、全D norm/全部head就绪及候选私有KV边界。旧FFN-first仅局部建议，FFN2门不阻塞attention研究。CPU-only，无新kernel、GPU作业、机器人任务或性能数字。首metadata字段工具错误与首次公开镜像保护核对方法错误均保留，最终边界核对1875投机/92算子数学文件与state/rules未变。
 
 ## 已完成的系统证据
 
@@ -40,7 +40,7 @@ TF64/TF_ON、normalizer、tau、K2B2/bonus/prefix_then_cost及BF16/FP32冻结。
 
 ## 下一步与保护
 
-下一步M31尚未启动：先统一强B14边界，再有界tile worker/FFN2门；主要机制指标ΣT_round/Σg，g不能由7候选或环境步代替。只在通过分级正确性/质量后进入对应正式性能。
+下一步M31尚未启动：先完整Transformer DAG和self/cross输出tile入口，再attention相邻边界/常驻调度；FFN2数值缺口单独保留；主要机制指标ΣT_round/Σg，g不能由7候选或环境步代替。只在通过分级正确性/质量后进入对应正式性能。
 
 M17原10/21 16:56:31停新、17:11:31清理，18723000尝试/15GiB、每卡最多2worker；matched Target前200组同GPU1。BAAI仅~/cxz，AutoDL不再SSH、关机UNKNOWN。本机计时自然空闲，精度可共享；不杀他人/改服务/时钟。
 
