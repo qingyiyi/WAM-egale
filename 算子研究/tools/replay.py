@@ -66,6 +66,8 @@ def main():
     parser.add_argument("--timing-engines", nargs="+", choices=ENGINES, default=list(ENGINES))
     args = parser.parse_args()
     registration = json.loads(args.registration.read_text())
+    rounds = registration.get("timing_rounds", 3)
+    warmups = registration.get("warmup_calls_per_engine", 0)
     if registration.get("user_authorization") is None:
         raise PermissionError("缺少当前任务授权登记")
     deadline = datetime.fromisoformat(registration["absolute_cleanup_deadline"]).timestamp()
@@ -86,7 +88,7 @@ def main():
                   noninferiority_established=False, formal_performance_permission=False,
                   model_dtype="same from_pretrained(torch_dtype=BF16) loading as canonical server",
                   B2_full_model_source="DERIVED_REAL_VERIFIER_ROOT_CFG_ROWS_0_7_NOT_CANONICAL_SEQUENTIAL_TRACE",
-                  timing_protocol="3 cyclic interleaved rounds; one sample/engine/round/process; separate processes")
+                  timing_protocol=f"{rounds} cyclic interleaved rounds; {warmups} extra warmups/engine; separate processes")
 
     def save():
         write(args.output / "RESULT.json", result)
@@ -94,7 +96,8 @@ def main():
     def guard():
         if time.time() > deadline - 90 or time.monotonic() - started > 510:
             raise TimeoutError("worker清理余量")
-        if result["full_model_forwards"] >= 75 or result["block_forwards"] >= 250:
+        if (result["full_model_forwards"] >= registration.get("full_model_per_process_cap", 75)
+                or result["block_forwards"] >= registration.get("block_per_process_cap", 250)):
             raise RuntimeError("worker调用预算")
 
     def check_resource():
@@ -145,7 +148,15 @@ def main():
         event_start, event_end = torch.cuda.Event(enable_timing=True), torch.cuda.Event(enable_timing=True)
         raw = []
         timed_engines = tuple(args.timing_engines)
-        for round_index in range(3):
+        for engine in timed_engines:
+            for _ in range(warmups):
+                restore()
+                with installation(engine):
+                    output = call()
+                torch.cuda.synchronize()
+                if not byte_equal(oracle, output):
+                    raise RuntimeError("预热返回值逐位不一致")
+        for round_index in range(rounds):
             offset = round_index % len(timed_engines)
             order = timed_engines[offset:] + timed_engines[:offset]
             for engine in order:

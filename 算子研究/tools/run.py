@@ -56,7 +56,8 @@ def main():
             if remaining < 300:
                 raise TimeoutError("累计GPU生命周期余量不足")
             engines = reg.get("timing_engines_by_process", [["original", "baseline", "optimized"]] * 2)[index - 1]
-            expected_model = 6 * (3 + 3 * len(engines))
+            expected_model = 6 * (3 + (reg.get("timing_rounds", 3)
+                + reg.get("warmup_calls_per_engine", 0)) * len(engines))
             if result["full_model_forwards"] + expected_model > reg["full_model_forward_cap"]:
                 raise RuntimeError("没有下一完整worker的forward预算")
             if result["block_forwards"] + expected_model + 6 > reg["block_forward_cap"]:
@@ -74,7 +75,19 @@ def main():
                 receipt["owned"] = owned
                 write(out / f"process-{index}-OWNED.json", receipt)
                 try:
-                    code = child.wait(timeout=min(600, remaining - 30, deadline - time.time() - 30))
+                    child_deadline = time.monotonic() + min(600, remaining - 30, deadline - time.time() - 30)
+                    receipt["resource_samples"] = []
+                    while child.poll() is None:
+                        if time.monotonic() >= child_deadline:
+                            raise subprocess.TimeoutExpired(command, 600)
+                        try:
+                            child.wait(timeout=1)
+                        except subprocess.TimeoutExpired:
+                            observation = resource()
+                            receipt["resource_samples"].append(dict(at=datetime.now().astimezone().isoformat(), **observation))
+                            if set(observation["pids"].splitlines()) - {str(child.pid)}:
+                                receipt["foreign_GPU_process_detected"] = True
+                    code = child.returncode
                 except subprocess.TimeoutExpired:
                     receipt["timeout"] = True
                     if identity(child.pid) == owned:
@@ -98,6 +111,8 @@ def main():
             write(out / "RESOURCE-AND-STOP-REPORT.json", result)
             if code:
                 raise RuntimeError("首个不完整worker后不自动续跑第二进程")
+            if receipt.get("foreign_GPU_process_detected"):
+                raise RuntimeError("监督采样发现GPU争用，不启动第二进程")
             if result["full_model_forwards"] > reg["full_model_forward_cap"] or result["block_forwards"] > reg["block_forward_cap"]:
                 raise RuntimeError("累计调用上限")
         result["status"] = "COMPLETE_REGISTERED_PROCESSES"

@@ -1,15 +1,15 @@
 # WAM研究短入口
 
-更新时间：2026-10-19T11:16:29.161970+08:00。当前Cycle `wam-research-20261016`，当前M25；先按INDEX/CONTEXT-POLICY及约束记忆恢复，再读Cycle四文。
+更新时间：2026-10-19T12:07:24.496573+08:00。当前Cycle `wam-research-20261016`，当前M25；先按INDEX/CONTEXT-POLICY及约束记忆恢复，再读Cycle四文。
 
-算子当前入口：[算子研究](../算子研究/README.md)，仅baseline/optimized两份实现、共用安装与验证/计时工具。16旧算子目录已删，308源留Git a0ed2d8；1875投机源/配置不改，原tile/shared-prefix依赖保留。CPU与两进程六点实际30层逐位过；计时资源冲突，150 full30用满、自有退出，稳定性能PENDING。[M25](experiments/operator-consolidation-20261019/PLAN.md)。
+算子当前入口：[算子研究](../算子研究/README.md)，仅baseline/optimized两份实现、共用安装与验证/计时工具。16旧算子目录已删，308源留Git a0ed2d8；1875投机源/配置不改，原tile/shared-prefix依赖保留。旧M25三轮资源冲突保留；用户新接续两进程108项逐位过、432full30/444block，自有退出，完整模型中位回归≤2.18%；NVML/严格2.5%缺口保留。[新结果](experiments/operator-stable-timing-20261019/RESULT.md)。
 
 ## 当前工作
 
 - 本机：昨夜完整顺序B0 CPU六真实fixture+六合法写控制、36完整执行、两fixture各28阶段及22契约通过。今晨获新GPU授权，六真实action block0（B2/B14×KV288/1152/2160）×cache开关共66 GPU严格数值/有效状态/输入/当前RNG与旧GPU gold通过。B0是显式Python阶段+Torch原基元，不是全自有CUDA或persistent scheduler。
-- 性能：M25实际150 full30/168 block、GPU生命周期137.306秒；130项数值/状态检查过，两进程完整覆盖。计时全部保存，三attempt均查到外来GPU进程，原FAILED/PARTIAL保留，稳定性能PENDING。达到forward帽、自有worker均退出，无继续GPU自动启动；原10:14:26起/13:14:26截止不改。B2 full30派生root CFG来源明示，原B2 block另覆盖；原M24/AA旧记录不回写。
+- 性能：新接续两进程108数值/状态项逐位过，432full30/444block、131.338 GPU生命周期秒；102采样无外来PID。完整模型baseline/原版0.9539–1.0058、optimized0.9535–1.0218。严格±2.5%非全点过，零显存NVML24–25%原因UNKNOWN，不签正式无争用。原M25三次失败、150/168及旧AA保留。B2 full30为root CFG派生，非保存顺序轨迹。下一步讨论block分解与单子图优化。
 - BAAI：Goal/Spatial各500组三臂全齐，1500完整局/套。Target/TF/TF+PF2成功分别Goal463/464/467、Spatial472/466/464。800罚分均值分别158.806/157.166/156.466、145.998/152.964/155.304。已回收逐局报告并CPU独立核对唯一行、成败、步数、罚分/胜负；不是独立TEST或质量PASS。
-- Object：旧16条有效；迁移续采新14虽有完整机器人终态，但编号重启冲突导致监督无效，原PACK_CURRENT拒绝入训保留。用户今晨明确批准只补这14局/最多56000次，在独立v3namespace隔离compact子目录。固定14补采/准入/ON已完成（FIT6164/CAL3080），原匹配Target200和全500双卡运行；09:21为T20018局、首FINAL5局，每卡一worker。更多并发槽的GPU PID/容器PID身份未统一，保留原准入与UNKNOWN。原无效14消耗5876已扣。v2过期模板启动失败0GPU/0episode保留；旧T_POOL截止不延长，新baseline沿原M17有效总截止。[两机晨间结果](experiments/libero-four-suite-morning-20261019/RESULT.md)。
+- Object：旧16有效/旧14监督编号冲突失败保留；获准新14补采/准入/ON完成，匹配Target200也已完整。用户新要求两卡各并行；唯一CUDA上下文与集合delta核实后只交接运维CPU dispatcher，四worker实际完整出局，投机算法/评估源码不改。12:05去重435/1500（T278/C78/P79），77组三臂齐；0_99/100_199自动排队、每卡最多2worker。原M17预算/截止不变。[并发证据](experiments/remote-eval-parallel-20261019/RESULT.md)。
 - 远端每5分钟CPU只读巡检已切health-v2、真实出生身份匹配；新机无需Codex才能自动排队，后台是已登记Python controller/guard。旧watch正常交接，不杀他人。
 
 ## 稳定证据与限制

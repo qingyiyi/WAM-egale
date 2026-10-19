@@ -1,9 +1,9 @@
 # 最近执行检查点
 
-## 2026-10-19T11:16:29.161970+08:00：代码整理、实际30层精度完成；计时资源不足
+## 2026-10-19T12:07:24.496573+08:00：本机有限复测完成，远端四worker自动接续
 
-新入口`算子研究`仅baseline/optimized；16旧算子目录删除，308源先存Git a0ed2d8；1875投机源/配置前后逐字未改，原tile/shared-prefix依赖只读保留。CPU/native/forward AST过。三attempt共130项检查通过、max_abs=0，两进程完整覆盖六block、六实际30层、write1/2与模型安装还原；B14历史gold过，B2 full30派生来源明示。
+新授权计时接续独立登记。两个进程自然exit0，六真实block/六实际30层、write1/2及输出/有效KV/输入/当前RNG/安装还原共108检查逐位过；432full30/444block，GPU生命周期131.338秒，自有GPU进程退出。102次资源采样未见外来PID。完整模型baseline/原版0.9539–1.0058，optimized0.9535–1.0218；严格±2.5%非全点过，空卡NVML24–25%异常未解释，正式无争用仍UNKNOWN。B2 full30为root CFG派生非顺序轨迹；1875投机源/配置复核无变化。原三轮失败和预算保留。[全表](../../experiments/operator-stable-timing-20261019/RESULT.md)。
 
-所有三轮计时数据保留，三个attempt阶段/最终资源检查都发现外来GPU进程，原FAILED/PARTIAL/自然exit1保留，未伪造PASS。150 full30/168 block、GPU生命周期137.306秒；达到原150调用帽，自有worker退出，无新GPU自动启动，原13:14:26截止不改。稳定性能仍PENDING，[最终结果/原始全表](../../experiments/operator-consolidation-20261019/RESULT.md)。源码已在main提供，最后报告同步以publication收据为准。
+用户新要求远端两卡各并行并确认自动提交后聚焦本机算子。经PID出生/实际GPU UUID/设备FD/teacher返回/NVML唯一上下文及集合delta核对，在旧CPU dispatcher休眠检查点交接运维；现有model/client/guard均未暂停。两卡各两个独立worker已完整出局，端口19900/19901/19910/19911、master及CPU/输出隔离，显存约28.5GiB/卡。匹配Target200完整；12:05去重435/1500、77组三臂齐，剩余固定0_99/100_199自动排队。原M17预算/10月21截止不变，旧CPU交接真实SIGSTOP/SIGKILL另留收据、无自然exit0伪造。[证据](../../experiments/remote-eval-parallel-20261019/RESULT.md)。
 
-用户明确继续等自然空闲，不再反复协调窗口；Maintain已保存。M25准备期GPU前的脚本错误、首轮短KV部分和接续计划全部保留在Experiment。更早完整记录见[本次history](history/M25-before-operator-consolidation-20261019/EXECUTION.md)。
+四项false、原FAILED/retention/default A_off保持。下一步讨论block分解与单子图，只改optimized。更早四文见[本次归档](history/M25-before-stable-timing-20261019/EXECUTION.md)。

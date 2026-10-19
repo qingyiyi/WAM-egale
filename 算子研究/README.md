@@ -58,3 +58,5 @@ MAX_JOBS=2 TORCH_CUDA_ARCH_LIST=8.0 python build.py build_ext --inplace
 当前结果以HW实际终态为准；文件整理或有限通过不改变投机质量/独立TEST/正式性能权限。
 
 本轮有限验证已完成：两个进程覆盖六点block/实际30层及write1/2，所有输出/有效状态逐位通过。完整计时数据已保存，但三次资源检查发现外来GPU进程，稳定性能仍PENDING；登记的150次full30调用用满，自有GPU worker均退出。[最终结果与全部原始表](../.pipeline/experiments/operator-consolidation-20261019/RESULT.md)。
+
+用户再次要求空闲继续后，新有界接续两进程完成108项逐位检查，完整模型baseline/原版中位耗时0.9539–1.0058、optimized0.9535–1.0218；432full30/444block后自有退出。102次采样无外来PID，但NVML空卡利用率异常和严格±2.5%全点门仍未解决，不签正式性能。[新全部结果](../.pipeline/experiments/operator-stable-timing-20261019/RESULT.md)。

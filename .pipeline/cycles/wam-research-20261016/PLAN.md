@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-19T10:47:48.521957+08:00'
+updated: '2026-10-19T12:07:24.496573+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -11,7 +11,7 @@ execution: EXECUTION.md
 | ID | 工作 | 状态 | 证据/科学边界 | next |
 |---|---|---|---|---|
 | `M16` | Long500组三臂首轮 | `completed` | T483/C484/P473；严格首两S失败/曝光/四false保留 | [证据](../../experiments/long-morning-20261018/FINAL-SUMMARY.md) |
-| `M17` | Object/Goal/Spatial既定评估 | `in_progress` | Goal/Spatial各1500局完成；Object14补采/准入/ON完成，匹配T200及全500双卡运行 | [证据](../../experiments/libero-four-suite-morning-20261019/RESULT.md) |
+| `M17` | Object/Goal/Spatial既定评估 | `in_progress` | Goal/Spatial全齐；Object匹配T200已完，四worker/两卡各2已实际完整出局，剩余分片自动接续 | [并发证据](../../experiments/remote-eval-parallel-20261019/RESULT.md) |
 | `M18` | 迁移与旧机释放 | `completed` | 四套资产落BAAI；AutoDL不再SSH，关机UNKNOWN | [证据](../../experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md) |
 | `M19` | 原算子数据CPU复核 | `completed` | 有限576检查/60门/420轮，不外推 | [证据](../../experiments/operator-parity-evidence-20261018/REPORT.md) |
 | `M20` | 本机评估迁往BAAI | `completed` | 保留原无效监督/PARTIAL；获准14补采已完成，本机只接算子 | [证据](../../experiments/libero-four-suite-morning-20261019/OBJECT-RECOVERY-PLAN.md) |
@@ -19,7 +19,7 @@ execution: EXECUTION.md
 | `M22` | 旧独立CUDA attention对齐 | `completed` | 108attention/54block/六full30/三policy有限逐位过；性能尾部/异常保留 | [证据](../../experiments/operator-torch-alignment-20261018/performance/RESULT.md) |
 | `M23` | 新机Codex安装 | `completed` | 0.162.1已装，登录待用户；开发不迁移 | [证据](../../experiments/remote-codex-setup-20261018/RESULT.md) |
 | `M24` | 直接Torch复制block | `completed` | 六fixture/18次逐位与状态过；294block，六点中位比0.9677–1.0033，单轮波动保留；原66/旧AA失败不改 | [证据](../../experiments/direct-torch-block-copy-20261019/RESULT.md) |
-| `M25` | 算子两份实现整理＋整模型/性能 | `in_progress` | 独立baseline/optimized，代码与有限实际30层精度完成；150 full30用满，自有退出；稳定计时仍PENDING | [证据](../../experiments/operator-consolidation-20261019/PLAN.md) |
+| `M25` | 算子两份实现整理＋整模型/性能 | `in_progress` | 新接续两进程108项逐位过，432full30/444block；无外来PID，完整模型中位回归≤2.18%；NVML异常/严格2.5%仍未全过 | [结果](../../experiments/operator-stable-timing-20261019/RESULT.md) |
 
 ## 当前可见计划
 
@@ -27,9 +27,9 @@ execution: EXECUTION.md
 - [x] CPU核对block forward与原版AST一致、参数/cache原位安装/还原、新CUDA扩展导入；投机1875源码/配置逐字保护。
 - [x] 完成两独立进程的六block/六实际30层、三臂数值/有效状态/RNG、write1/2；派生B2来源明示。
 - [x] 三轮交错计时及全部原始值已采；三个attempt均有资源冲突，原FAILED/PARTIAL不改。
-- [ ] 稳定无争用计时仍待；本阶段forward帽已用满，不从未用GPU秒数追加调用。
+- [x] 用户空闲继续的新[有界接续](../../experiments/operator-stable-timing-20261019/RESULT.md)完成：432full30/444block、131.338 GPU生命周期秒；108检查逐位通过，自有退出。正式无争用/严格2.5%仍未成立。
 - [x] 统一代码讲解、结果/HW与main同步；当前科学边界显式保留。远端既定Object每5分钟巡检，原规则不自动重试。
-- [ ] 完整模型复现/性能收口后，再按profile选一个子图；不先开发新scheduler。T25/T17及Long后两轮仍待独立登记。
+- [ ] 下一步先讨论完整block分解与第一个优化子图；baseline固定，只在optimized开发，不先大融合。原正式性能缺口保留；T25/T17及Long后两轮仍待登记。
 
 ## 范围与预算
 
@@ -43,3 +43,5 @@ engineering_quality_screen=false、independent_test_complete=false、noninferior
 
 
 10/22 go/no-go，10/23冻结，10/28主表，11/01 18:00中文证据包。源码与工作清单见[算子README](../../../算子研究/README.md)。本次重建前四文完整保存于[history](history/M25-before-operator-consolidation-20261019/PLAN.md)。
+
+用户新要求两卡各并行eval，运维交接后四worker实际产出完整局，余下固定分片自动接续；原M17预算/截止不重置、投机源码不改。见[运维接续](../../experiments/remote-eval-parallel-20261019/RESULT.md)。
