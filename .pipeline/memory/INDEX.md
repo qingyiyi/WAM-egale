@@ -4,6 +4,14 @@
 
 ## 当前资源偏好
 
+- [单层persistent有限验证与负结果](global/knowledge/knowledge-单层persistent有限验证与性能负结果.md)（reference，M32）：9block/90状态/48原语通过，B14比静态慢4.42%–6.26%；后续只优化单层。
+
+- [单层persistent有限验证与负结果](global/knowledge/knowledge-单层persistent有限验证与性能负结果.md)（reference，M32）：9block/90状态/48原语通过，B14比静态慢4.42%–6.26%；后续只优化单层。
+
+- [本轮仅单层完整block](global/requirements/decision-当前算子仅实现单层完整Transformer-block.md)（constraint，M32）：tile/persistent以一层为边界，停止本轮30层迁移与重放；最终E2E后续本机。
+
+- [算子远端实现、本机最终E2E](global/requirements/decision-算子远端实现验证与本机最终E2E.md)（constraint，本轮算子）：先实现tile/persistent，远端隔离验证，最终E2E本机独占；baseline冻结。
+
 - [optimized独立执行与静态tile子图](global/knowledge/knowledge-optimized独立执行与静态tile子图有限验证.md)（reference，M31）：9block/72状态有限逐位与独立进程隔离；full30/性能待验，persistent未实现。
 
 - [冻结baseline，仅在optimized推进tile优化](global/requirements/decision-冻结baseline并仅在optimized实现tile优化.md)（constraint，算子代码）：优化从等价路径开始；连同共享依赖冻结，先隔离会变化的源码/构建产物。

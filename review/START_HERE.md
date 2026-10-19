@@ -1,6 +1,6 @@
 # 当前入口
 
-请先读[2026-10-19当前结果与源码](CURRENT-20261019.md)。M31已完成独立optimized与静态attention/FFN1 tile子图，9真实block/72状态有限逐位通过；新30层/性能待验、persistent未实现，四质量权限false。baseline及依赖冻结。main仅当前进度镜像，历史科学commit保留。
+请先读[2026-10-19当前结果与源码](CURRENT-20261019.md)。M32已实现单层attention/FFN1 persistent tile，9真实block/90状态/48原语有限逐位通过；新增persistent比静态更慢，尚无加速主张。用户只要求一层，30层退出本轮。baseline及依赖冻结，四质量字段false；main仅当前进度镜像。
 
 以下正文与review/RESULTS.json为4f04 paused72历史快照，不能覆盖后续新授权运行或当前算子结果；旧FAILED/retention亦不能由新进度改写。
 

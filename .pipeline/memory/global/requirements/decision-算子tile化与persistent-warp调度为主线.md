@@ -14,6 +14,8 @@ sources:
 
 # 当前算子研究目标
 
+用户随后明确授权先实现tile化与persistent kernel，并要求完成后汇报；新M32工作先按真实primitive/完整block/30层门逐级实现与验证。
+
 当前算子方向要研究可设备执行的tile原语，以及persistent kernel内的常驻worker/warp分工与依赖调度。普通host缓存、CUDA Graph、现成batching或只减少几个Python调用不能单独替代这一目标。
 
 候选感知调度须说明相对现有最佳B14路径新增了什么；共享权重/历史与私有状态的边界保持，实际效益仍需验证。不能把用户指定方向记成已获收益或论文结论。

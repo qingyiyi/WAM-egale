@@ -20,6 +20,7 @@
 #include "vendor/flash_attn/flash_fwd_launch_template.h"
 
 #include "attention_tile.cuh"
+#include "persistent.cuh"
 #include <algorithm>
 #include <array>
 #include <atomic>
@@ -49,6 +50,28 @@ __global__ void split_tiles(KERNEL_PARAM_MODIFIER const Params params) {
     const int qblocks=(params.seqlen_q+63)/64;
     auto task=wam_tiles::split_task(blockIdx.x,params.h,qblocks,params.num_splits);
     wam_tiles::attention_split_tile<SplitKV,EvenMN>(params,task);
+}
+
+// A bounded grid keeps each CTA alive for multiple independent output tiles.
+template<bool Split, bool EvenMN>
+__global__ void persistent_attention(KERNEL_PARAM_MODIFIER const Params params,
+                                     int count, int* audit) {
+    const int qblocks=(params.seqlen_q+(Split?63:127))/(Split?64:128);
+    wam_tiles::PersistentTasks tasks{count};
+    int done=0;
+    for(int id=tasks.first(); id<count; id=tasks.next(id)) {
+        if constexpr(Split) {
+            auto tile=wam_tiles::split_task(id,params.h,qblocks,params.num_splits);
+            wam_tiles::attention_split_tile<SplitKV,EvenMN>(params,tile);
+        } else {
+            auto tile=wam_tiles::standard_task(id,params.b,params.h,qblocks);
+            wam_tiles::attention_tile<Standard,EvenMN>(params,tile);
+        }
+        wam_tiles::finish_tile();
+        wam_tiles::record_tile(audit,id);
+        ++done;
+    }
+    wam_tiles::record_worker(audit,count,done);
 }
 
 // PyTorch 2.9.0 flash_api.cpp's occupancy-based split heuristic, specialized
@@ -92,8 +115,15 @@ void configure_smem(int device) {
 }
 
 template <bool EvenMN>
-void launch_standard(const Params& params, cudaStream_t stream, int device, bool tiled) {
-    if(tiled) {
+void launch_standard(const Params& params, cudaStream_t stream, int device, int mode, int workers, int* audit) {
+    if(mode==2) {
+        constexpr auto kernel=&persistent_attention<false,EvenMN>;
+        configure_smem<kernel,Standard::kSmemSize>(device);
+        int count=((params.seqlen_q+127)/128)*params.b*params.h;
+        kernel<<<workers,Standard::kNThreads,Standard::kSmemSize,stream>>>(params,count,audit);
+        C10_CUDA_KERNEL_LAUNCH_CHECK(); return;
+    }
+    if(mode==1) {
         constexpr auto kernel=&standard_tiles<EvenMN>;
         configure_smem<kernel,Standard::kSmemSize>(device);
         int count=((params.seqlen_q+127)/128)*params.b*params.h;
@@ -109,8 +139,15 @@ void launch_standard(const Params& params, cudaStream_t stream, int device, bool
 }
 
 template <bool EvenMN>
-void launch_split(const Params& params, cudaStream_t stream, int device, bool tiled) {
-    if(tiled) {
+void launch_split(const Params& params, cudaStream_t stream, int device, int mode, int workers, int* audit) {
+    if(mode==2) {
+        constexpr auto kernel=&persistent_attention<true,EvenMN>;
+        configure_smem<kernel,SplitKV::kSmemSize>(device);
+        int count=((params.seqlen_q+63)/64)*params.num_splits*params.b*params.h;
+        kernel<<<workers,SplitKV::kNThreads,SplitKV::kSmemSize,stream>>>(params,count,audit);
+        C10_CUDA_KERNEL_LAUNCH_CHECK(); return;
+    }
+    if(mode==1) {
         constexpr auto kernel=&split_tiles<EvenMN>;
         configure_smem<kernel,SplitKV::kSmemSize>(device);
         int count=((params.seqlen_q+63)/64)*params.num_splits*params.b*params.h;
@@ -155,12 +192,15 @@ void check_inputs(const at::Tensor& q, const at::Tensor& k,
                 "this SDPA extension is inference-only");
 }
 
-at::Tensor sdpa(const at::Tensor& q, const at::Tensor& k,
-                const at::Tensor& v, std::optional<double> scale_arg, bool tiled) {
+at::Tensor run(const at::Tensor& q, const at::Tensor& k,
+                const at::Tensor& v, std::optional<double> scale_arg, int mode,
+                at::Tensor* audit_out=nullptr, int worker_limit=0, at::Tensor* meta_out=nullptr) {
     // The unchanged input contract below requires D128. Resolve the optional
     // default in the native entry, as PyTorch does, without Python shape/pow.
     const double scale = scale_arg.value_or(1.0 / std::sqrt(128.0));
     check_inputs(q, k, v, scale);
+    TORCH_CHECK(mode>=0 && mode<=2,"execution mode must be 0/1/2");
+    TORCH_CHECK(worker_limit>=0,"worker limit must be nonnegative");
     c10::cuda::CUDAGuard guard(q.device());
     const auto* props = at::cuda::getCurrentDeviceProperties();
     TORCH_CHECK(props->major == 8 && props->minor == 0, "this build supports SM80 (A100) only");
@@ -188,6 +228,18 @@ at::Tensor sdpa(const at::Tensor& q, const at::Tensor& k,
     p.unpadded_lse = false; p.seqlenq_ngroups_swapped = false;
     p.is_bf16 = true; p.is_causal = false; p.is_seqlens_k_cumulative = true;
     p.num_splits = choose_splits(b, h, sq, sk, props->multiProcessorCount);
+    const int qblocks=(sq+(p.num_splits>1?63:127))/(p.num_splits>1?64:128);
+    const int count=b*h*qblocks*p.num_splits;
+    const int workers=std::min(count,worker_limit?std::min(worker_limit,props->multiProcessorCount):props->multiProcessorCount);
+    at::Tensor audit;
+    if(audit_out) {
+        TORCH_CHECK(mode==2,"audit is only for the persistent path");
+        audit=at::zeros({count+workers},q.options().dtype(at::kInt));
+        *audit_out=audit;
+        if(meta_out) *meta_out=at::tensor({int64_t(count),int64_t(workers),int64_t(p.num_splits),
+            int64_t(p.num_splits>1?SplitKV::kSmemSize:Standard::kSmemSize)},at::TensorOptions().dtype(at::kLong));
+    }
+    int* audit_ptr=audit.defined()?audit.data_ptr<int>():nullptr;
     at::Tensor partial_lse, partial_out;
     const auto stream = at::cuda::getCurrentCUDAStream();
     if (p.num_splits > 1) {
@@ -195,8 +247,8 @@ at::Tensor sdpa(const at::Tensor& q, const at::Tensor& k,
         partial_out = at::empty({p.num_splits, b, h, sq, 128}, q.options().dtype(at::kFloat));
         p.softmax_lseaccum_ptr = partial_lse.data_ptr();
         p.oaccum_ptr = partial_out.data_ptr();
-        if (sq % 64 == 0 && sk % 128 == 0) launch_split<true>(p, stream, q.get_device(), tiled);
-        else launch_split<false>(p, stream, q.get_device(), tiled);
+        if (sq % 64 == 0 && sk % 128 == 0) launch_split<true>(p, stream, q.get_device(), mode, workers, audit_ptr);
+        else launch_split<false>(p, stream, q.get_device(), mode, workers, audit_ptr);
         if (p.num_splits <= 2) launch_combine<1>(p, stream);
         else if (p.num_splits <= 4) launch_combine<2>(p, stream);
         else if (p.num_splits <= 8) launch_combine<3>(p, stream);
@@ -205,9 +257,19 @@ at::Tensor sdpa(const at::Tensor& q, const at::Tensor& k,
         else if (p.num_splits <= 64) launch_combine<6>(p, stream);
         else launch_combine<7>(p, stream);
     } else {
-        if (sq % 128 == 0 && sk % 64 == 0) launch_standard<true>(p, stream, q.get_device(), tiled);
-        else launch_standard<false>(p, stream, q.get_device(), tiled);
+        if (sq % 128 == 0 && sk % 64 == 0) launch_standard<true>(p, stream, q.get_device(), mode, workers, audit_ptr);
+        else launch_standard<false>(p, stream, q.get_device(), mode, workers, audit_ptr);
     }
     return out;
+}
+at::Tensor sdpa(const at::Tensor& q,const at::Tensor& k,const at::Tensor& v,
+                std::optional<double> scale,int mode) {
+    return run(q,k,v,scale,mode);
+}
+std::vector<at::Tensor> audit_sdpa(const at::Tensor& q,const at::Tensor& k,const at::Tensor& v,
+                                  int worker_limit) {
+    at::Tensor audit,meta;
+    auto out=run(q,k,v,std::nullopt,2,&audit,worker_limit,&meta);
+    return {out,audit,meta};
 }
 } // namespace wam_optimized_sdpa

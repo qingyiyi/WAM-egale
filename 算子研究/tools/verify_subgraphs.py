@@ -14,7 +14,8 @@ import torch
 from .block_loader import FIXTURES, load_block
 from .fixtures import BlockFixture, decode, tensors, visible_snapshot
 from .metrics import byte_equal, compare, state_equal
-from .replay import device_tree, resource, write
+from .replay import device_tree, write
+from .resources import resource_for_gpu
 from wam_ops.install import install_block
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -29,9 +30,11 @@ def main():
     p.add_argument('--registration', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--standalone', action='store_true', help='Only optimized; assert baseline was never imported/loaded')
+    p.add_argument('--include-persistent', action='store_true')
     p.add_argument('--audit-dispatch', action='store_true', help='Record kernel names, never performance, for two real action cases')
     args = p.parse_args()
     reg = json.loads(args.registration.read_text())
+    resource = lambda: resource_for_gpu(reg['physical_gpu_uuid'])
     if not reg.get('shared_correctness_authorized'):
         raise PermissionError('shared correctness requires registration')
     args.output.mkdir(exist_ok=False)
@@ -85,6 +88,9 @@ def main():
             assert type(block) is original_class and '_native_block' not in block.__dict__
         result['invalid_options_rejected_and_restored'] = rejected
         variants = VARIANTS[1:] if args.standalone else VARIANTS
+        if args.include_persistent:
+            variants = variants + (('persistent', {'execution_mode': 'persistent'}),
+                ('persistent_ffn', {'execution_mode': 'persistent', 'fused_ffn1': True}))
         result['status'] = 'RUNNING'
         with torch.inference_mode():
             for kind, batch in [('action', 2), ('action', 14), ('video', 2)]:
@@ -122,16 +128,18 @@ def main():
                                 base_debug = {k: v.clone() for k, v in debug.items()}
                             elif base_debug is not None:
                                 checks['intermediates'] = {k: compare(base_debug[k], v.reshape_as(base_debug[k]))
-                                    for k, v in debug.items() if k in base_debug}
+                                    for k, v in debug.items() if k in base_debug and k != 'execution_flags'}
                             if name != 'baseline':
                                 checks['execution_flags'] = debug['execution_flags'].tolist()
                                 checks['flags_match'] = checks['execution_flags'] == [
-                                    int(options.get('execution_mode') == 'tiled'), int(options.get('fused_ffn1', False))]
+                                    {'sequential': 0, 'tiled': 1, 'persistent': 2}[options['execution_mode']], int(options.get('fused_ffn1', False))]
                             checks['passed'] = (checks['output']['bitwise_pass'] and
                                 checks['public_forward']['bitwise_pass'] and checks['state']['pass_all'] and
                                 checks.get('flags_match', True) and
                                 all(v['bitwise_pass'] for v in checks['intermediates'].values()))
                             row['variants'][name] = checks
+                            if base_debug is None and name == 'sequential':
+                                base_debug = {k: v.clone() for k, v in debug.items()}
                         assert type(block) is original_class and '_native_block' not in block.__dict__
                         del debug, public
                     row['immutable'] = (all(byte_equal(inputs[k], v) for k, v in tensors((arguments, kwargs)))

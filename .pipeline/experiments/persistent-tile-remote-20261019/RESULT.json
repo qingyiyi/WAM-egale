@@ -1,0 +1,175 @@
+{
+  "status": "SINGLE_BLOCK_IMPLEMENTED_FINITE_CORRECTNESS_PASS_NO_PERSISTENT_SPEEDUP",
+  "at": "2026-10-19T21:00:52.434997+08:00",
+  "block_cases": 9,
+  "state_checks": 90,
+  "primitive_checks": 48,
+  "all_block_cases_pass": true,
+  "all_states_pass": true,
+  "all_tile_cases_pass": true,
+  "timing_complete_processes": 2,
+  "timed_samples": 378,
+  "total_block_forwards": 731,
+  "full30_forwards": 0,
+  "robot_episodes": 0,
+  "GPU_job_lifecycle_seconds": 77.9269397687167,
+  "CUDA_active_seconds": "UNKNOWN:not independently measured",
+  "jobs": [
+    {
+      "job": "block-state-1",
+      "command": [
+        "/root/cxz/envs/va/bin/python",
+        "-B",
+        "-m",
+        "tools.verify_subgraphs",
+        "--registration",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/REGISTRATION.json",
+        "--output",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/block-state-1/results",
+        "--standalone",
+        "--include-persistent"
+      ],
+      "started_at": "2026-10-19T20:52:15.344647+08:00",
+      "consumed_prior_lifecycle_seconds": 0,
+      "cap_seconds": 480,
+      "status": "NATURAL_EXIT",
+      "owned": {
+        "pid": 601077,
+        "birth_ticks": 701279391,
+        "uid": 0
+      },
+      "exit_code": 0,
+      "lifecycle_seconds": 16.837085128761828,
+      "finished_at": "2026-10-19T20:52:32.181761+08:00",
+      "owned_exited": true
+    },
+    {
+      "job": "block-timing-1",
+      "command": [
+        "/root/cxz/envs/va/bin/python",
+        "-B",
+        "-m",
+        "tools.time_persistent",
+        "--registration",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/REGISTRATION.json",
+        "--output",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/block-timing-1/results"
+      ],
+      "started_at": "2026-10-19T20:54:30.726208+08:00",
+      "consumed_prior_lifecycle_seconds": 31.721787214279175,
+      "cap_seconds": 480,
+      "status": "NATURAL_EXIT",
+      "owned": {
+        "pid": 601357,
+        "birth_ticks": 701292929,
+        "uid": 0
+      },
+      "exit_code": 1,
+      "lifecycle_seconds": 12.780704733915627,
+      "finished_at": "2026-10-19T20:54:43.506941+08:00",
+      "owned_exited": true
+    },
+    {
+      "job": "block-timing-2",
+      "command": [
+        "/root/cxz/envs/va/bin/python",
+        "-B",
+        "-m",
+        "tools.time_persistent",
+        "--registration",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/REGISTRATION.json",
+        "--output",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/block-timing-2/results"
+      ],
+      "started_at": "2026-10-19T20:57:15.601217+08:00",
+      "consumed_prior_lifecycle_seconds": 44.5024919481948,
+      "cap_seconds": 480,
+      "status": "NATURAL_EXIT",
+      "owned": {
+        "pid": 601731,
+        "birth_ticks": 701309416,
+        "uid": 0
+      },
+      "exit_code": 0,
+      "lifecycle_seconds": 16.787346782162786,
+      "finished_at": "2026-10-19T20:57:32.388591+08:00",
+      "owned_exited": true
+    },
+    {
+      "job": "block-timing-3",
+      "command": [
+        "/root/cxz/envs/va/bin/python",
+        "-B",
+        "-m",
+        "tools.time_persistent",
+        "--registration",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/REGISTRATION.json",
+        "--output",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/block-timing-3/results"
+      ],
+      "started_at": "2026-10-19T20:57:32.589014+08:00",
+      "consumed_prior_lifecycle_seconds": 61.28983873035759,
+      "cap_seconds": 480,
+      "status": "NATURAL_EXIT",
+      "owned": {
+        "pid": 601827,
+        "birth_ticks": 701311115,
+        "uid": 0
+      },
+      "exit_code": 0,
+      "lifecycle_seconds": 16.637101038359106,
+      "finished_at": "2026-10-19T20:57:49.226143+08:00",
+      "owned_exited": true
+    },
+    {
+      "job": "tile-coverage-1",
+      "command": [
+        "/root/cxz/envs/va/bin/python",
+        "-B",
+        "-m",
+        "tools.audit_persistent",
+        "--registration",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/REGISTRATION.json",
+        "--output",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/persistent-tile-remote-20261019/tile-coverage-1/results"
+      ],
+      "started_at": "2026-10-19T20:52:32.388274+08:00",
+      "consumed_prior_lifecycle_seconds": 16.837085128761828,
+      "cap_seconds": 480,
+      "status": "NATURAL_EXIT",
+      "owned": {
+        "pid": 601156,
+        "birth_ticks": 701281095,
+        "uid": 0
+      },
+      "exit_code": 0,
+      "lifecycle_seconds": 14.884702085517347,
+      "finished_at": "2026-10-19T20:52:47.273005+08:00",
+      "owned_exited": true
+    }
+  ],
+  "all_owned_exited": true,
+  "baseline88_unchanged": true,
+  "four_quality_fields": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "implementation": "stage-local static-stride persistent CTA; no cross-stage queue or warp specialization",
+  "formal_performance": false,
+  "persistent_speedup_observed": false,
+  "AA_max_abs_pct": 10.072814676694586,
+  "B2_action_persistent_latency_increase_pct_range": [
+    2.5640964410088563,
+    2.798507016955143
+  ],
+  "B14_action_persistent_latency_increase_pct_range": [
+    4.41988645692859,
+    6.256103838367433
+  ],
+  "B2_video_persistent_latency_increase_pct_range": [
+    0.2764361141739169,
+    1.079137920818174
+  ]
+}

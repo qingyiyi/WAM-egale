@@ -1,18 +1,24 @@
 ---
 kind: execution
 cycle: wam-research-20261016
-updated: '2026-10-19T19:27:26.713126+08:00'
+updated: '2026-10-19T21:08:07.097619+08:00'
 ---
 # 最近执行检查点
 
-## 2026-10-19T19:27:26.713126+08:00：M31隔离与静态tile子图
+## 2026-10-19T21:08:07.097619+08:00：M32单层persistent
 
-依用户明确同意的前两项执行，注册新有界作业，不重启旧M30预算。优化版独立参数容器/native/C++与新DSO；共享install仅分派optimized，旧baseline依赖冻结。显式Flash输出tile与FFN1 MMA设备函数、三段实际子图编译成功；QKV/Wo/FFN2仍cuBLASLt。无新persistent/Graph机制。
+[M32结果](../../experiments/persistent-tile-remote-20261019/RESULT.md)、[两进程九点计时](../../experiments/persistent-tile-remote-20261019/PERFORMANCE.md)。用户最新限定一层完整Transformer block，已取消本轮30层迁移/执行；最终模型E2E后续本机。远端~/cxz隔离CUDA12.4/Torch2.9 cu126编译；baseline与依赖88项不变。
 
-最终9block/72状态/输入RNG参数与API门逐位，seq/tiled24中间量；独立进程9block/54状态且未导入baseline/旧DSO。profiler只核对kernel名。首attempt符号未demangle误判、旧video标签、CPU收据缺文件错误保留；修正验证工具后独立新attempt，数学源码未为通过而更改。
+attention/FFN1阶段内实现常驻CTA固定步长tile循环；完整self/cross/FFN与norm/RoPE/调制/残差仍在同一层。QKV/Wo/FFN2仍cuBLASLt，尚无跨阶段ready、warp专职分工或新shared-prefix复用。默认sequential，静态/persistent及FFN1独立开关。本机旧M31 DSO需重编新ABI，远端新DSO已验证。
 
-88冻结项不变。3 GPU作业81.007秒/483block，全部owned退出；无新30层（显存不足）、性能或机器人episode。资源、原件、源码身份见[M31结果](../../experiments/transformer-tile-subgraph-20261019/RESULT.md)。用户长期要求及实际授权经Maintain记录。
+9真实block（B2/B14 action及B2 Q128 video×三KV）输出逐位；90有效KV连续状态、输入/RNG/参数/API门通过。tile/persistent相对独立顺序路径24中间量，action融合23；48原语检查确认每tile恰好一次与常驻CTA实际多tile执行。无baseline模块/旧DSO加载，原Torch为远端oracle。
 
-Object 1340/1500，完成数T500/C420/P420，来源2026-10-19T11:26:39Z；controller身份匹配=True，原同卡队列继续。
+两进程378个原始计时样本：persistent+FFN1相对静态+FFN1，B14慢4.42%–6.26%，B2 action慢2.56%–2.80%；未取得新增persistent收益。A/A最大10.07%保留，GPU1/host共享负载及三样本中位限制明确；不是最强B14/Graph或E2E。
 
-前M30与基线冻结检查点见[完整归档](history/M31-before-summary-20261019/EXECUTION.md)，不重放已完成动作。
+五GPU作业77.927秒/731block/48原语/0full30/0episode，全部owned退出。首计时在0block因NVML宿主/容器PID误判退出，修正资源工具后新attempt2/3；传输失败、原收据均保留。CUDA active时间UNKNOWN。原3h墙钟/30min GPU预算收口，不转授下一轮。
+
+Object 1500/1500，完成数T500/C500/P500；来源2026-10-19T13:06:38Z。全部500共同case齐；成功数T497/C498/P499（99.4%/99.6%/99.8%）。原controller已退出，既定评估计算完成；审计和资源终态仍按原证据，不把完成覆盖写成质量放行。 GPU0本轮算子已退出。
+
+最新用户修正优先于旧full30计划，已经写入约束记忆。未改保护state/rules或投机源码；无模型大文件hash/系统升级。所有原始证据见M32结果链接。
+
+前完整执行见[归档](history/M32-before-summary-20261019/EXECUTION.md)。

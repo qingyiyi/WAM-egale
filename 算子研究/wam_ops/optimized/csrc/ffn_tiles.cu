@@ -10,6 +10,7 @@
 #include <cutlass/epilogue/thread/linear_combination.h>
 #include <cmath>
 #include "ffn_tile.cuh"
+#include "persistent.cuh"
 
 namespace wam_optimized_ffn {
 
@@ -55,6 +56,23 @@ __global__ void linear_tile(typename K::Params params) {
     wam_tiles::ffn_tile<K>(params, *reinterpret_cast<typename K::SharedStorage*>(storage),tile);
 }
 
+template<class K>
+__global__ void persistent_linear(typename K::Params params,int count,int* audit) {
+    extern __shared__ __align__(16) unsigned char storage[];
+    wam_tiles::PersistentTasks tasks{count};
+    int done=0;
+    for(int id=tasks.first(); id<count; id=tasks.next(id)) {
+        // Match the original x-major tile order. GEMM reduction order is fixed.
+        const int rows=params.grid_tiled_shape.m();
+        wam_tiles::ffn_tile<K>(params,*reinterpret_cast<typename K::SharedStorage*>(storage),
+                             {id%rows,id/rows});
+        wam_tiles::finish_tile();
+        wam_tiles::record_tile(audit,id);
+        ++done;
+    }
+    wam_tiles::record_worker(audit,count,done);
+}
+
 void tensor_contract(const torch::Tensor& x) {
     TORCH_CHECK(x.is_cuda() && x.scalar_type() == at::kBFloat16 && x.is_contiguous(),
         "requires contiguous CUDA BF16 tensors");
@@ -62,7 +80,8 @@ void tensor_contract(const torch::Tensor& x) {
 
 template<class G>
 void launch_linear(const torch::Tensor& x, const torch::Tensor& weight,
-                const torch::Tensor& bias, torch::Tensor out) {
+                const torch::Tensor& bias, torch::Tensor out, bool persistent=false,
+                at::Tensor* audit_out=nullptr, int worker_limit=0, at::Tensor* meta_out=nullptr) {
     using K0 = typename G::GemmKernel;
     for (const auto& t : {x, weight, bias, out}) tensor_contract(t);
     TORCH_CHECK(x.dim() == 2 && weight.dim() == 2 && bias.dim() == 1 && out.dim() == 2,
@@ -89,6 +108,20 @@ void launch_linear(const torch::Tensor& x, const torch::Tensor& weight,
     typename K0::Params params(args.problem_size, tiled, args.ref_A.non_const_ref(),
         args.ref_B.non_const_ref(), args.ref_C.non_const_ref(), args.ref_D, args.epilogue);
     const int smem = sizeof(typename K0::SharedStorage);
+    if(persistent) {
+        TORCH_CHECK(worker_limit>=0,"worker limit must be nonnegative");
+        int count=tiled.m()*tiled.n();
+        int workers=std::min(count,worker_limit?std::min(worker_limit,props->multiProcessorCount):props->multiProcessorCount);
+        at::Tensor audit;
+        if(audit_out) {
+            audit=at::zeros({count+workers},x.options().dtype(at::kInt));*audit_out=audit;
+            if(meta_out) *meta_out=at::tensor({int64_t(count),int64_t(workers),int64_t(1),int64_t(smem)},at::TensorOptions().dtype(at::kLong));
+        }
+        C10_CUDA_CHECK(cudaFuncSetAttribute(persistent_linear<K0>,cudaFuncAttributeMaxDynamicSharedMemorySize,smem));
+        persistent_linear<K0><<<workers,K0::kThreadCount,smem,at::cuda::getCurrentCUDAStream()>>>(
+            params,count,audit.defined()?audit.data_ptr<int>():nullptr);
+        C10_CUDA_KERNEL_LAUNCH_CHECK(); return;
+    }
     C10_CUDA_CHECK(cudaFuncSetAttribute(linear_tile<K0>, cudaFuncAttributeMaxDynamicSharedMemorySize, smem));
     linear_tile<K0><<<swizzle.get_grid_shape(tiled), K0::kThreadCount, smem,
         at::cuda::getCurrentCUDAStream()>>>(params);
@@ -143,6 +176,14 @@ void ffn_out(const torch::Tensor& x, const torch::Tensor& w1, const torch::Tenso
 
 } // namespace wam_optimized_ffn
 void optimized_ffn1_gelu_out(const at::Tensor& x,const at::Tensor& weight,
-                            const at::Tensor& bias,at::Tensor out) {
-    wam_optimized_ffn::ffn1_gelu_out(x,weight,bias,out);
+                            const at::Tensor& bias,at::Tensor out,bool persistent) {
+    wam_optimized_ffn::launch_linear<wam_optimized_ffn::FusedGemm>(x,weight,bias,out,persistent);
+}
+
+std::vector<at::Tensor> audit_ffn1(const at::Tensor& x,const at::Tensor& w,const at::Tensor& b,int workers) {
+    auto out=at::empty({x.size(0),w.size(0)},x.options());
+    TORCH_CHECK(x.size(1)==3072 && w.size(0)==14336,"FFN1 audit only");
+    at::Tensor audit,meta;
+    wam_optimized_ffn::launch_linear<wam_optimized_ffn::FusedGemm>(x,w,b,out,true,&audit,workers,&meta);
+    return {out,audit,meta};
 }

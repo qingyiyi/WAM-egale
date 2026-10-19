@@ -1,5 +1,7 @@
 # 当前研究实验
 
+- [M32单层persistent](persistent-tile-remote-20261019/RESULT.md)：有限精度/状态通过，两进程新增性能收益未成立；本轮30层取消。
+
 - [M31隔离optimized与tile子图](transformer-tile-subgraph-20261019/PLAN.md)：明确授权，baseline/共享依赖冻结；实现与必要验证，不含persistent队列。
 
 仅按当前任务读取；旧 runtime 与失败记录仍是原始证据。

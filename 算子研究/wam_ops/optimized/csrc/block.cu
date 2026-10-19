@@ -14,10 +14,12 @@
 #include "gemm.h"
 
 namespace wam_optimized_sdpa {
-at::Tensor sdpa(const at::Tensor&,const at::Tensor&,const at::Tensor&,std::optional<double>, bool);
+at::Tensor sdpa(const at::Tensor&,const at::Tensor&,const at::Tensor&,std::optional<double>, int);
+std::vector<at::Tensor> audit_sdpa(const at::Tensor&,const at::Tensor&,const at::Tensor&,int);
 }
 // Existing own CUTLASS primitive; keeps the BF16 GEMM rounding before GELU.
-void optimized_ffn1_gelu_out(const at::Tensor&,const at::Tensor&,const at::Tensor&,at::Tensor);
+void optimized_ffn1_gelu_out(const at::Tensor&,const at::Tensor&,const at::Tensor&,at::Tensor,bool);
+std::vector<at::Tensor> audit_ffn1(const at::Tensor&,const at::Tensor&,const at::Tensor&,int);
 namespace wam_optimized_block {
 using BF = at::BFloat16;
 using at::Tensor;
@@ -227,10 +229,10 @@ __global__ void restore_kernel(bool* mask,const int64_t* free,int q) {
     if(threadIdx.x<q) mask[free[threadIdx.x]]=false;
 }
 Tensor self_attention(const Tensor& q,const Tensor& k,const Tensor& v,
-    const std::vector<Tensor>& cache,const Tensor& rows,int update,bool tiled) {
+    const std::vector<Tensor>& cache,const Tensor& rows,int update,int mode) {
     if(cache.empty()) {
         TORCH_CHECK(!rows.defined(),"candidate path requires history");
-        return wam_optimized_sdpa::sdpa(q,k,v,std::nullopt,tiled);
+        return wam_optimized_sdpa::sdpa(q,k,v,std::nullopt,mode);
     }
     const int b=q.size(0),tokens=q.size(1),size=cache[0].size(1),d=3072;
     const bool candidate=rows.defined();
@@ -252,7 +254,7 @@ Tensor self_attention(const Tensor& q,const Tensor& k,const Tensor& v,
     pack_kernel<<<grid(pk.numel()/8),256,0,stream()>>>(cache[0].data_ptr<BF>(),k.data_ptr<BF>(),pk.data_ptr<BF>(),slots.data_ptr<int64_t>(),candidate?rows.data_ptr<int64_t>():nullptr,b,total,n,tokens,size,d,candidate);
     pack_kernel<<<grid(pv.numel()/8),256,0,stream()>>>(cache[1].data_ptr<BF>(),v.data_ptr<BF>(),pv.data_ptr<BF>(),slots.data_ptr<int64_t>(),candidate?rows.data_ptr<int64_t>():nullptr,b,total,n,tokens,size,d,candidate);
     C10_CUDA_KERNEL_LAUNCH_CHECK();
-    auto out=wam_optimized_sdpa::sdpa(q,pk,pv,std::nullopt,tiled);
+    auto out=wam_optimized_sdpa::sdpa(q,pk,pv,std::nullopt,mode);
     if(!candidate&&update==0) {
         restore_kernel<<<1,256,0,stream()>>>(cache[3].data_ptr<bool>(),free.data_ptr<int64_t>(),tokens);
         C10_CUDA_KERNEL_LAUNCH_CHECK();
@@ -267,7 +269,7 @@ using Saver = std::function<void(const char*, const Tensor&)>;
 Tensor self_subgraph(const std::vector<Tensor>& w, const Tensor& x, const Tensor& mod,
     const std::optional<Tensor>& freq, const std::vector<Tensor>& cache,
     const std::optional<Tensor>& candidate_rows, int update,
-    const std::vector<double>& eps, bool tiled, const Saver& save) {
+    const std::vector<double>& eps, int mode, const Saver& save) {
     const int b=x.size(0),q=x.size(1);
     auto n1=norm(fp32(x),{}, {},eps[0],false);save("norm1",n1);
     auto h1=modulate(n1,mod,0);save("modulated1",h1);
@@ -276,25 +278,25 @@ Tensor self_subgraph(const std::vector<Tensor>& w, const Tensor& x, const Tensor
     auto sv=linear(h1,w[7],w[8]);save("self_q_norm",sq);save("self_k_norm",sk);save("self_v",sv);
     if(freq.has_value()) {sq=rope(sq,*freq,b,q);sk=rope(sk,*freq,b,q);}
     save("self_q_rope",sq);save("self_k_rope",sk);
-    auto sa=self_attention(sq.view({b,q,24,128}),sk.view({b,q,24,128}),sv.view({b,q,24,128}),cache,candidate_rows.value_or(Tensor{}),update,tiled);save("self_attention",sa);
+    auto sa=self_attention(sq.view({b,q,24,128}),sk.view({b,q,24,128}),sv.view({b,q,24,128}),cache,candidate_rows.value_or(Tensor{}),update,mode);save("self_attention",sa);
     auto so=linear(sa.view({b,q,3072}),w[9],w[10]);save("self_out",so);
     auto h2=residual(x,so,mod,2);save("residual1",h2);
     return h2;
 }
 Tensor cross_subgraph(const std::vector<Tensor>& w,const Tensor& h2,const Tensor& context,
-    const std::vector<double>& eps,bool tiled,const Saver& save) {
+    const std::vector<double>& eps,int mode,const Saver& save) {
     const int b=h2.size(0),q=h2.size(1);
     auto n2=w[1].numel()?bf16(norm(fp32(h2),fp32(w[1]),fp32(w[2]),eps[1],false)):h2;save("norm2",n2);
     auto cq=norm(linear(n2,w[13],w[14]),w[21],{},eps[5],true);
     auto ck=norm(linear(context,w[15],w[16]),w[22],{},eps[6],true);
     auto cv=linear(context,w[17],w[18]);save("cross_q",cq);save("cross_k",ck);save("cross_v",cv);
-    auto ca=wam_optimized_sdpa::sdpa(cq.view({b,q,24,128}),ck.view({b,context.size(1),24,128}),cv.view({b,context.size(1),24,128}),std::nullopt,tiled);save("cross_attention",ca);
+    auto ca=wam_optimized_sdpa::sdpa(cq.view({b,q,24,128}),ck.view({b,context.size(1),24,128}),cv.view({b,context.size(1),24,128}),std::nullopt,mode);save("cross_attention",ca);
     auto co=linear(ca.view({b,q,3072}),w[19],w[20]);save("cross_out",co);
     auto h3=residual(h2,co,{},-1);save("residual2",h3);
     return h3;
 }
 Tensor ffn_subgraph(const std::vector<Tensor>& w,const Tensor& h3,const Tensor& mod,
-    const std::vector<double>& eps,bool fused_ffn1,const Saver& save) {
+    const std::vector<double>& eps,bool fused_ffn1,int mode,const Saver& save) {
     const int b=h3.size(0),q=h3.size(1);
     auto n3=norm(fp32(h3),{}, {},eps[2],false);save("norm3",n3);
     auto f0=modulate(n3,mod,3);save("modulated3",f0);
@@ -302,7 +304,7 @@ Tensor ffn_subgraph(const std::vector<Tensor>& w,const Tensor& h3,const Tensor& 
     if(fused_ffn1 && q==16) {
         // Only the previously verified action shape is admitted to this path.
         act=at::empty({b*q,w[23].size(0)},f0.options());
-        optimized_ffn1_gelu_out(f0.view({b*q,3072}),w[23],w[24],act);
+        optimized_ffn1_gelu_out(f0.view({b*q,3072}),w[23],w[24],act,mode==2);
     } else {
         auto f1=linear(f0,w[23],w[24]);save("ffn1",f1);
         act=wam_optimized_block::gelu(f1);
@@ -314,7 +316,8 @@ Tensor ffn_subgraph(const std::vector<Tensor>& w,const Tensor& h3,const Tensor& 
 
 std::map<std::string,Tensor> forward(const std::vector<Tensor>& w,const Tensor& x,
     const Tensor& context,const Tensor& temb,const std::optional<Tensor>& freq,const std::vector<Tensor>& cache,
-    const std::optional<Tensor>& candidate_rows,int update,const std::vector<double>& eps,bool debug,bool fused_ffn1,bool tiled) {
+    const std::optional<Tensor>& candidate_rows,int update,const std::vector<double>& eps,bool debug,bool fused_ffn1,int mode) {
+    TORCH_CHECK(mode>=0&&mode<=2,"execution mode must be 0/1/2");
     TORCH_CHECK(w.size()==27&&eps.size()==7,"native parameter schema");
     TORCH_CHECK(x.is_cuda()&&x.scalar_type()==at::kBFloat16&&x.is_contiguous()
         && x.dim()==3&&x.size(2)==3072&&(x.size(1)==16||x.size(1)==128)
@@ -329,23 +332,25 @@ std::map<std::string,Tensor> forward(const std::vector<Tensor>& w,const Tensor& 
     const int b=x.size(0),q=x.size(1);std::map<std::string,Tensor> record;
     auto save=[&](const char* name,const Tensor& v){if(debug) record[name]=v;};
     auto mod=table(temb,w[0],q);save("modulation",mod);
-    if(debug) record["execution_flags"]=at::tensor({int64_t(tiled),int64_t(fused_ffn1)},at::TensorOptions().dtype(at::kLong));
-    auto h2=self_subgraph(w,x,mod,freq,cache,candidate_rows,update,eps,tiled,save);
-    auto h3=cross_subgraph(w,h2,context,eps,tiled,save);
-    record["output"]=ffn_subgraph(w,h3,mod,eps,fused_ffn1,save);return record;
+    if(debug) record["execution_flags"]=at::tensor({int64_t(mode),int64_t(fused_ffn1)},at::TensorOptions().dtype(at::kLong));
+    auto h2=self_subgraph(w,x,mod,freq,cache,candidate_rows,update,eps,mode,save);
+    auto h3=cross_subgraph(w,h2,context,eps,mode,save);
+    record["output"]=ffn_subgraph(w,h3,mod,eps,fused_ffn1,mode,save);return record;
 
 }
 } // namespace wam_block
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME,m) {
     m.def("sdpa", &wam_optimized_sdpa::sdpa,py::arg("q"),py::arg("k"),py::arg("v"),
-          py::arg("scale")=py::none(),py::arg("tiled")=false);
+          py::arg("scale")=py::none(),py::arg("mode")=0);
     m.attr("independent_module")="wam_optimized_block_cuda";
-    m.attr("persistent_scheduler")=false;
+    m.attr("persistent_scheduler")="stage_local_static_stride_CTA";
     m.def("forward",&wam_optimized_block::forward,py::arg("weights"),py::arg("x"),
         py::arg("context"),py::arg("temb"),py::arg("freq"),py::arg("cache"),
         py::arg("candidate_rows"),py::arg("update"),py::arg("eps"),
-        py::arg("debug")=false,py::arg("fused_ffn1")=false,py::arg("tiled")=false);
+        py::arg("debug")=false,py::arg("fused_ffn1")=false,py::arg("mode")=0);
+    m.def("audit_sdpa",&wam_optimized_sdpa::audit_sdpa,py::arg("q"),py::arg("k"),py::arg("v"),py::arg("workers")=0);
+    m.def("audit_ffn1",&audit_ffn1,py::arg("x"),py::arg("w"),py::arg("b"),py::arg("workers")=0);
     m.def("linear",&wam_optimized_block::linear);
     m.def("norm",[](const at::Tensor& x,const std::optional<at::Tensor>& g,
         const std::optional<at::Tensor>& b,double eps,bool rms) {

@@ -19,14 +19,16 @@ def extension():
     spec = importlib.util.spec_from_file_location('wam_optimized_block_cuda', files[0])
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
+    if getattr(module, 'persistent_scheduler', None) != 'stage_local_static_stride_CTA':
+        raise RuntimeError('Rebuild optimized/build_subgraph.py: this source requires the persistent ABI')
     return module
 
 
 class NativeBlock:
     """Bind the original parameter tensors; forward contains no Torch math ops."""
     def __init__(self, block, fused_ffn1=False, mode="sequential"):
-        if mode not in ("sequential", "tiled"):
-            raise ValueError("mode must be sequential or tiled")
+        if mode not in ("sequential", "tiled", "persistent"):
+            raise ValueError("mode must be sequential, tiled or persistent")
         self.mode = mode
         self.block = weakref.ref(block)
         self.fused_ffn1 = fused_ffn1
@@ -59,5 +61,5 @@ class NativeBlock:
                   [cache[k] for k in ('k', 'v', 'id', 'mask', 'is_pred')])
         outputs = extension().forward(self.weights, hidden_states, encoder_hidden_states,
             temb, rotary_emb, values, candidate_cache_rows, update_cache, self.eps, debug,
-            self.fused_ffn1, self.mode == "tiled")
+            self.fused_ffn1, {"sequential": 0, "tiled": 1, "persistent": 2}[self.mode])
         return outputs if debug else outputs['output']

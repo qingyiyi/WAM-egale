@@ -10,14 +10,14 @@
 
 [当前整体整理](cycles/wam-research-20261016/STATUS-20261019.md)：Long/Goal/Spatial首轮、B0有限GPU逐位、Object修复与原门缺口；旧paused72仅历史。
 
-当前算子设计：[M30交接](experiments/transformer-tile-handoff-20261019/HANDOFF.md)、[当前Transformer attention子图设计](experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)。用户要求借鉴MegaMoE思想；[M31独立optimized与静态tile子图](experiments/transformer-tile-subgraph-20261019/RESULT.md)已完成有限block门，persistent尚未实现；baseline及依赖冻结，后续只在optimized推进。三套已完成[成功率表](experiments/libero-four-suite-morning-20261019/COMPLETED-SUITES-SUCCESS-20261019.md)，不等于质量放行。
+当前算子：[M32一层完整block的tile/persistent结果](experiments/persistent-tile-remote-20261019/RESULT.md)。9真实block/90状态/48原语有限逐位；新增persistent比静态更慢，尚无加速主张。当前只做一层，baseline及依赖冻结；[M30真实DAG](experiments/transformer-tile-handoff-20261019/ATTENTION-SUBGRAPH-DESIGN.md)作设计来源。最新质量完成数见当前Cycle，不以旧快照代替实时。
 
 ## 两条研究路线
 
 | 路线 | 当前结论 | 证据入口 |
 |---|---|---|
 | 投机采样 | Long T483/C484/P473、Goal463/464/467、Spatial472/466/464，各500；Object14/准入/ON已完成、匹配Target200与全500双卡接续，本机只接算子；旧NO_GO/四false不变 | [资源迁移](experiments/libero-four-suite-20261017/RESOURCE-RELOCATION-20261018.md)、[当前Cycle](cycles/wam-research-20261016/PROGRESS.md) |
-| tile / SDPA | M22主任务实际Torch对齐：独立去fast_math后108attention/54block/六完整模型/三完整policy配对逐位与状态过；新54点/六full30性能已补：attention约1.002，block/模型有慢点，资源异常保留；旧M21完整30层失败保留、性能探索性 | [统一结果](experiments/operator-kv-matrix-20261018/COMBINED-RESULT.md)、[原有限基线复核](experiments/operator-parity-evidence-20261018/REPORT.md) |
+| 单层Transformer算子 | M32完整单层tile/persistent有限精度通过；新增persistent比静态更慢，当前只研究一层 | [M32结果](experiments/persistent-tile-remote-20261019/RESULT.md)、[源码入口](../算子研究/README.md) |
 
 算子原代码与 HW 保留；用户最新允许独立修正版本并复用固定上游源码，见[M22](experiments/operator-torch-alignment-20261018/PLAN.md)；不恢复已撤回融合。网页规划已返回；当前主线、已结束作业及下一待登记诊断见[协同执行索引](research/speculative-sampling/WAM-COORDINATION-20261016.md)。
 
@@ -43,4 +43,4 @@
 
 账号默认已按用户明确授权切换到固定v15.0.0-alpha.2，旧安装保留；其他项目记录不自动迁移。`hw-codex --hw-legacy`提供旧技能兼容，完整回退见维护报告。新会话生效，自动Hook未信任时按本入口手动恢复，不依赖Hook。
 
-最新算子核查：[M27](experiments/operator-shortkv-b14-20261019/RESULT.md)区分默认复现/Torch与FFN融合收益；后者B14约3%是耗时下降。源码完整路径/实现与测量范围见[代码导航](../算子研究/README.md)。新增作业PARTIAL/等待到期已清理，不改原门。
+历史算子核查：[M27](experiments/operator-shortkv-b14-20261019/RESULT.md)区分默认复现/Torch与FFN融合收益；后者B14约3%是耗时下降。源码完整路径/实现与测量范围见[代码导航](../算子研究/README.md)。新增作业PARTIAL/等待到期已清理，不改原门。

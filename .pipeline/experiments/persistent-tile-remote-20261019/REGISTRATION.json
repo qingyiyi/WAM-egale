@@ -1,0 +1,33 @@
+{
+  "experiment": "persistent-tile-remote-20261019",
+  "goal": "远端GPU0实现单层Transformer attention/FFN1 persistent tile并验证完整block；30层退出本轮范围",
+  "user_authorization": "用户同意远端实现，先tile化和persistent kernel，完成后汇报；最终E2E性能本机测",
+  "started_at": "2026-10-19T19:52:29.667745+08:00",
+  "absolute_work_stop": "2026-10-19T22:47:29.667745+08:00",
+  "absolute_cleanup_deadline": "2026-10-19T22:52:29.667745+08:00",
+  "GPU_lifecycle_seconds_cap": 1800,
+  "CPU_allowed": [
+    4,
+    5
+  ],
+  "CPU_threads_cap": 2,
+  "full_block_forward_cap": 900,
+  "full30_forward_cap": 0,
+  "full_model_per_process_cap": 0,
+  "block_per_process_cap": 600,
+  "new_evidence_storage_cap_bytes": 536870912,
+  "transfer_and_build_cap_bytes": 5368709120,
+  "physical_gpu_uuid": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "shared_correctness_authorized": true,
+  "formal_performance_permission": false,
+  "remote_root": "/root/cxz/ops/persistent-tile-20261019",
+  "status": "COMPLETE_SINGLE_BLOCK_FINITE_PARITY_NO_PERSISTENT_SPEEDUP",
+  "cleanup_plan": "CPU构建timeout；GPU bounded.py验证PID与出生身份，仅清理本作业进程；GPU1 Object保持",
+  "input_manifest": "BLOCK-INPUT-MANIFEST.json: nine real single-block inputs only; full30 canceled by user scope amendment",
+  "scope_amended_at": "2026-10-19T20:32:42.585935+08:00",
+  "scope": "one_complete_transformer_block_only",
+  "GPU_lifecycle_seconds_used": 77.9269397687167,
+  "full_block_forwards_used": 731,
+  "full30_forwards_used": 0,
+  "owned_cleanup_complete": true
+}
