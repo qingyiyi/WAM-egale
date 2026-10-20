@@ -1,0 +1,43 @@
+{
+  "goal": "Original Target six complete FIT episodes, one per fixed task, with teacher supervision",
+  "sources": {
+    "lingbot_va": "7c6ffa9bfc4b83582cafc860fab4c82cc7deeeeb",
+    "RoboTwin": "2eeec322d95799f537cbfe5f291a8220d965ccb8",
+    "Target_HF": "8c9dea8abbc5c91cc9e18bc3264b8915083bbe70"
+  },
+  "input": "/root/cxz/robotwin/runs/prefilter-4/STATUS.json",
+  "continuation_of": "target-first6-2; user-authorized first-case retry, other five unattempted",
+  "retry_authorization": {
+    "allowed": true,
+    "case": "place_object_basket-valid00",
+    "source": "User explicitly approved: 允许补跑，保留原 PARTIAL",
+    "recorded_at": "2026-10-20T16:18:00+08:00",
+    "scope": "One corrected retry of pre-action video export failure, remaining five unattempted cases unchanged",
+    "preserve_original_partial": true,
+    "reset_budget": false,
+    "reset_deadline": false
+  },
+  "case_selection": "valid_index=0 for each task; fixed before seeing policy results",
+  "wall_clock_cap_seconds": 7200,
+  "absolute_deadline": 1792489602.3024037,
+  "per_episode_cap_seconds": 1800,
+  "per_episode_teacher_attempts": 8000,
+  "episodes_cap": 6,
+  "storage_cap_bytes": 2147483648,
+  "GPU": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+  "server_cpus": [
+    20,
+    21
+  ],
+  "client_cpus": [
+    16,
+    17
+  ],
+  "original_T0": "2026-10-20T04:20:28.312190+00:00",
+  "original_preparation_deadline": "2026-10-20T10:20:28.312190+00:00",
+  "evaluation_seed": 0,
+  "reset": "original GPU BF16 full512 bank, then T5 CPU offload",
+  "source_changes": "independent observer wrappers; original source not overwritten",
+  "cleanup_reserve_seconds": 900,
+  "cleanup": "PID+birth checked; no automatic retry; do not start next chain after first6"
+}

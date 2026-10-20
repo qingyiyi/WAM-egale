@@ -1,26 +1,13 @@
 # 最近执行 checkpoint
 
-更新时间：2026-10-20T15:01:42+08:00。
+更新时间：2026-10-20T16:24:50+08:00。
 
-## 2026-10-20T15:01:42+08:00：RoboTwin原渲染恢复与MegaMoE差距审查
+1. 保存用户修复后接续RoboTwin有限迁移的决定，不重置原预算/截止；算子填尾波仅作为待验证建议。
+2. GPU1启动固定专家清单。前三任务各19＋lift_pot3条后因官方抓取None断言停止，790.555秒、原FAILED保留。源码核对其属于官方专家可解性筛选的异常分支，接续从下一seed10012开始，不重跑旧seed、不换任务；后续control-7完成114/114并清理。
+3. 写独立原Target观察server、冻结初态client及有界guard。完整动作循环AST保持，首case初始物理/观察逐位核对通过并进入真实动作；保留50更新/末尾调用、CFG后真实teacher标签、完整命令与任务终态。按该模型构建完整512 bank，冷成本和等价限制另列。
+4. first6-1依赖失败终止，0GPU/模型。first6-2构建108条完整BF16 bank，但首case因可选视频目录仍存在而调用缺失ffmpeg，在0teacher/0动作处PARTIAL；70.743秒和原件保留、owned清理。用户明确允许补跑，独立wrapper移除可选视频目录，first6-3沿原17:46:42北京deadline启动；首局完整成功，8policy/240命令、184.197秒；16:24第二局运行。已闭合GPU累计2266.544秒，运行另计，后继训练/DEV未完整实现。
+5. 完成[填尾波分析](../../experiments/single-layer-async-gemm-20261020/TAIL-FILL-SCHEDULING-REVIEW.md)，未改算子或开启新测量。B14 action投影96tile，cross K/V各2688；独立任务可填空，但cached基线必须公平，不能凭此保证追回4–5倍退化。
 
-1. 用户恢复环境排查，不改驱动，并要求合并算子审查；通过Maintain保存新决定。
-2. 原A100/GPU1同场景做535配套库→595 compat→535配套库三次独立进程：成功/非法访存/成功。两次成功均完整专家及四路相机观察，非模型质量样本。仅客户端库路径修复，驱动保持535。
-3. 新增119.345秒，原账本累计614.666秒；失败/清理/源快照归档，最终无owned残留或compute context。原174局未自动启动。
-4. 对照固定MegaMoE与当前源码，完成[差距与下一步](../../experiments/single-layer-async-gemm-20261020/MEGAMOE-GAP-REVIEW.md)：优先B14专用化和强baseline/profile，再K片段数据流水。未改算子或运行新性能样本。
+[实际首批计划](../../experiments/robotwin-pilot-20261020/RESUME-FIRST6-PLAN.md)、[专家异常依据](../../experiments/robotwin-pilot-20261020/EXPERT-SELECTION-CONTINUATION.md)、[现场原件](../../experiments/robotwin-pilot-20261020/resume-evidence/resource-snapshot.json)。
 
-## 2026-10-20T14:40:00+08:00：用户暂缓RoboTwin，说明B14边界
-
-1. 用户确认暂无可接续的官方原渲染环境，选择暂缓RoboTwin、优先收口算子结果；通过Maintain保存决定，不改变原失败、预算和权限。
-2. 用户明确原始action保留原算子。只读复核B14短/中/长KV单层耗时分别为native的5.022/4.515/3.956倍，非完整verifier或E2E。
-3. 核对两次原日志均为svulkan2的OIDN非法访存；首场景前置受阻，0policy/teacher，根因尚未独立锁定为驱动。本次只读核验和文档维护，无GPU启动或远端重试。
-
-## 2026-10-20T14:20:35+08:00：有界验证收口与环境阻塞
-
-1. 用户明确同意两卡详细计划，登记M40独立迁移和原M39有界后继；保护项/旧预算不重置。
-2. O1九点数值修复完成；O2计时仍慢native。两个同名扩展初测INVALID，PID命名空间与清理竞态失败保留。
-3. O3完整行组ready实现并数值通过，实测更慢；bounded CAS修正空转后仍无净收益。O4依据参数副本/stack证据修正只读描述符，最终两路径有限数值通过，默认仍慢2.68–5.02倍，ready慢1.2%–6.0%。[最终结果](../../experiments/single-layer-async-gemm-20261020/FINAL-LAYER-RESULT.md)/[资源](../../experiments/single-layer-async-gemm-20261020/FOLLOWUP-STOP-REPORT.md)。
-4. RoboTwin固定源码/权重/资产/私有规划依赖准备完毕，真实原渲染连续两版本OIDN非法访存；共495.321秒，0policy/teacher。停止后继并归档，不改系统、物理或视觉配置来绕过。[阻塞](../../experiments/robotwin-pilot-20261020/ENVIRONMENT-STOP-RESULT.md)。
-5. 最终核对43owned根进程无仍匹配身份、两卡0MiB无compute进程。现无自动队列；等待兼容环境不是占卡运行。
-
-完整中间执行文字保留[本轮归档](history/ordered-followup-20261020/EXECUTION.md)。计算终态、有限精度与科学权限分别记录，不以脚本exit0或单kernel通过覆盖原FAILED/四false。
+[此前完整checkpoint](history/robotwin-resume-20261020/EXECUTION.md)和[更早执行](history/ordered-followup-20261020/EXECUTION.md)保留，不覆盖旧FAILED或四项false。

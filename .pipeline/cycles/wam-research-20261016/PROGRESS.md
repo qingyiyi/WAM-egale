@@ -3,13 +3,13 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-20T15:01:42+08:00'
+updated: '2026-10-20T16:24:50+08:00'
 current: M40
 next: null
 ---
 # 当前研究进度
 
-更新：2026-10-20T15:01:42+08:00。用户已恢复RoboTwin排查且不改系统驱动；原场景恢复，算子MegaMoE审查完成。本次所有自有GPU诊断已结束，模型评估尚未启动。
+更新：2026-10-20T16:24:50+08:00。固定专家初态114/114齐；首局Target已完整成功，8policy/240命令、184.197秒；GPU1继续第二局stack_blocks_two。首局旧视频入口PARTIAL保留，用户已批准补跑。算子本次仅审查。
 
 |ID|工作|状态|终态说明|证据|
 |---|---|---|---|---|
@@ -23,7 +23,7 @@ next: null
 |`M37`|设备契约/成本|completed|旧四原语FAIL；任务成本归因|[结果](../../experiments/device-contract-20261020/RESULT.md)|
 |`M38`|原慢点测量|completed|GEMM主导、旧版本慢5.09–11.14倍|[结果](../../experiments/whole-layer-bottleneck-20261020/RESULT.md)|
 |`M39`|单层数值/原语/ready|completed|本次有限精度PASS、速度NO-GO，完整矩阵缺|[最终](../../experiments/single-layer-async-gemm-20261020/FINAL-LAYER-RESULT.md)|
-|`M40`|RoboTwin有限迁移|in_progress|原渲染恢复，Target首6局待执行，0policy/teacher|[修复](../../experiments/robotwin-pilot-20261020/DRIVER-INTEROP-REPAIR-RESULT.md)|
+|`M40`|RoboTwin有限迁移|in_progress|114/114初态；首局Target成功8policy/240命令；GPU1第二局运行，旧PARTIAL保留|[接续](../../experiments/robotwin-pilot-20261020/RESUME-FIRST6-PLAN.md)|
 
 ## 本次实际结果
 
@@ -35,7 +35,7 @@ M40旧两版OIDN失败保留。本次同脚本/同原场景对照实际加载库
 
 [当前MegaMoE差距](../../experiments/single-layer-async-gemm-20261020/MEGAMOE-GAP-REVIEW.md)：单kernel/warp分工/双缓冲/行组ready已有；K片段ready、有界中间槽及更独立的角色流水未完成。宽GEMM有32KiB仅小M用的partial_y预留，是B14专用化机会，尚未改码或测收益。旧M38阶段比例不冒充当前版本profile。
 
-14:12北京现场两卡0MiB/0%、无compute进程，自有guard/worker无残留。不是保证后续无人占用；AutoDL未连接。
+M40 control-6专家None抓取断言790.555秒及旧FAILED保留，按官方规则从下一seed接续后，control-7已完成114/114固定初态并清理。first6-2构建108条完整512-token BF16 bank、首case初态逐位通过，但可选视频目录未彻底关闭，调用不存在ffmpeg，在0teacher/0动作处PARTIAL；70.743秒和原件保留。用户明确允许补跑，独立wrapper只移除该导出目录，first6-3首局已完整成功，8policy/240实际命令、184.197秒，初始物理/观察逐位通过；16:24 GPU1第二局stack_blocks_two正在运行。原首六局17:46:42北京deadline不变。[入口修复与补跑](../../experiments/robotwin-pilot-20261020/FIRST-CASE-RETRY.md)。text bank张量逐位检查通过，完整任务缓存等价仍未实测。后继TF采集/训练/DEV未完整实现。
 
 ## 原LIBERO事实与边界
 
@@ -45,11 +45,11 @@ M35计时重复不增加独立质量N；Object1入口0episode实施失败不自�
 
 ## 下一步、授权与日期
 
-用户最新恢复环境排查且不改驱动；修复结果已完成。后继按原登记先做Target首6条完整任务，再判断采集训练；没有新GPU队列，不自动扩大174局。算子后继建议见MegaMoE审查，当前只是审查结果，未启动新优化测量。
+用户最新[接续迁移](../../memory/global/requirements/decision-修复后接续RoboTwin有限迁移.md)。已实现专家清单→首6条Target有界运行器；后继TF适配/训练/DEV未完整实现，不声称自动排队。已闭合GPU账本2266.544秒，运行中另计。当前[填尾波方案](../../experiments/single-layer-async-gemm-20261020/TAIL-FILL-SCHEDULING-REVIEW.md)为审查建议，未启动新算子测量。
 
 原始action路径按用户要求保留原算子。仅看B14，默认自有单层短/中/长KV为12.9445/10.8687/11.2424ms，native为2.5778/2.4073/2.8418ms，即耗时5.022/4.515/3.956倍；是uncached eager单层工程结果，不是最强cached/Graph或E2E。进一步研究应先解决原语效率再扩大调度；完整1/3/7×cache强baseline矩阵仍缺，B6未准入，本次问答未新增GPU任务。
 
-[新执行授权](../../memory/global/requirements/decision-执行RoboTwin迁移与算子有限收口.md)替代此前仅规划。GPU0原8h、GPU1原24h/准备10月20日18:20北京截止不重置；当前没有待自动启动任务。所有旧FAILED、retention、四项false/default A_off保留。baseline、原tile/HW、既有投机代码/配置和state/cycle/rules不改，只main发布源码/HW/小证据。
+[原执行授权](../../memory/global/requirements/decision-执行RoboTwin迁移与算子有限收口.md)与本次接续决定合用。GPU0原8h、GPU1原24h/准备10月20日18:20北京截止不重置。旧FAILED、retention、四项false/default A_off保留。baseline、原tile/HW、既有投机源/配置和state/cycle/rules不改，只main发布源码/HW/小证据。
 
 10/22质量/系统go-no-go、10/23冻结引擎/claim、10/28主表、11/01 18:00老师中文证据包。CVPR官方日期/作者profile见[日期报告](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)，不保证投稿或录用。中文正文由用户飞书整理。
 

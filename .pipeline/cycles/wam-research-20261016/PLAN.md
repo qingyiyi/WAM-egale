@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-20T15:01:42+08:00'
+updated: '2026-10-20T16:24:50+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
@@ -45,10 +45,10 @@ steps:
 | `M37` | completed | 原设备数值挑战者NO-GO与Long/Object成本归因 |
 | `M38` | completed | 原整层瓶颈测量收口 |
 | `M39` | completed | 新授权O1–O4有界后继收口：有限数值通过、速度NO-GO；完整3状态/cache矩阵未完成 |
-| `M40` | in_progress | 客户端compat库冲突修复；原专家/相机两次通过，Target首6局待执行，无GPU队列 |
+| `M40` | in_progress | 固定专家初态114/114；首局Target完整成功，GPU1第二局运行；原PARTIAL和截止不变 |
 
 [两卡详细计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)随后获得[执行同意](../../memory/global/requirements/decision-执行RoboTwin迁移与算子有限收口.md)。原8h/24h与各stage帽不重置。本次M39完成1380/1500 block后停止；M40首场景失败后停止，余量不是无界续跑授权。
 
-用户现已[恢复RoboTwin环境排查并要求保持系统驱动](../../memory/global/requirements/decision-优先修复RoboTwin环境且保持系统驱动.md)。[原场景修复结果](../../experiments/robotwin-pilot-20261020/DRIVER-INTEROP-REPAIR-RESULT.md)：A100上535配套库两次完整专家/观察成功，595兼容路径重现OIDN非法访存，客户端启动环境已修复。原174局未自动启动，下一步首6条Target完整任务。
+用户现已[要求接续RoboTwin迁移](../../memory/global/requirements/decision-修复后接续RoboTwin有限迁移.md)。[实际首批计划](../../experiments/robotwin-pilot-20261020/RESUME-FIRST6-PLAN.md)：固定完整初态→原Target首6局。专家None抓取异常按官方可解性筛选规则接续，旧FAILED及原deadline保留，不重跑旧seed；[依据](../../experiments/robotwin-pilot-20261020/EXPERT-SELECTION-CONTINUATION.md)。[视频入口失败及用户批准补跑](../../experiments/robotwin-pilot-20261020/FIRST-CASE-RETRY.md)保留原PARTIAL；first6-3沿原deadline。后继投机采集/训练/DEV未完整实现，不声称174局已排队。
 
-算子[对照MegaMoE审查](../../experiments/single-layer-async-gemm-20261020/MEGAMOE-GAP-REVIEW.md)完成：优先B14强基线/当前profile、B14资源专用化和基本tile效率，再K片段ready与attention子图；本次未新增算子GPU作业。原始action保留原算子。旧计划与完整进度保留[本轮历史](history/ordered-followup-20261020/PLAN.md)。
+算子[MegaMoE审查](../../experiments/single-layer-async-gemm-20261020/MEGAMOE-GAP-REVIEW.md)及[跨阶段填尾波分析](../../experiments/single-layer-async-gemm-20261020/TAIL-FILL-SCHEDULING-REVIEW.md)：主链优先、ready独立分支后备，不等整轮同步；须同时解决原语效率并对强cached基线。只是设计讨论，未改算子/启动测量。原始action保留原算子。[接续前checkpoint](history/robotwin-resume-20261020/PLAN.md)保留。

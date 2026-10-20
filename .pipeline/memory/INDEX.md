@@ -4,6 +4,10 @@
 
 ## 当前资源偏好
 
+- [允许补跑RoboTwin首局视频入口失败](global/requirements/decision-允许补跑RoboTwin首局视频入口失败.md)（constraint，仅首case）：用户明确允许修复后补跑0teacher/0动作的place_object_basket/valid00，原PARTIAL、预算与deadline保留。
+
+- [修复后接续RoboTwin有限迁移](global/requirements/decision-修复后接续RoboTwin有限迁移.md)（constraint，当前Cycle）：用户恢复原六任务有界迁移链，先固定初态/原Target；原预算、截止与全部失败保留。
+
 - [优先修复RoboTwin环境且保持系统驱动](global/requirements/decision-优先修复RoboTwin环境且保持系统驱动.md)（constraint，当前Cycle）：用户恢复环境排查，核查A100/RTX适用性；不改驱动、不自动采购，和MegaMoE算子审查合并汇报。
 
 - [暂缓RoboTwin，优先收口算子结果](global/requirements/decision-暂缓RoboTwin并优先收口算子结果.md)（constraint，当前Cycle）：用户暂无兼容环境，原迁移链暂缓，不自动重启；旧授权/预算/失败保留。

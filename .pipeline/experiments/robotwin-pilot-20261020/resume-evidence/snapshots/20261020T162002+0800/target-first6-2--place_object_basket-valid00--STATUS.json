@@ -1,0 +1,36 @@
+{
+  "status": "PARTIAL_OR_INVALID",
+  "start": 1792483603.7651303,
+  "case": {
+    "task": "place_object_basket",
+    "valid_index": 0,
+    "seed": 10000,
+    "instruction": "Pick up the toycar with black wheels and drop it in the basket made of woven wood, then move the basket made of woven wood.",
+    "role": {
+      "stage": "TARGET",
+      "split": "FIT"
+    },
+    "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-00/INITIAL.pt",
+    "task_step_limit": 700
+  },
+  "policy_chunks": 0,
+  "environment_commands": 0,
+  "requests": [],
+  "render_device": {
+    "alias": "pci:0000:4e:00.0",
+    "pci": "0000:4e:00.0",
+    "name": "NVIDIA A100-SXM4-40GB",
+    "can_render": true,
+    "is_cuda": true,
+    "cuda_id": 0
+  },
+  "initial_checks": {
+    "physical_exact": true,
+    "initial_observation_exact": true
+  },
+  "task_step_limit": 700,
+  "error": "FileNotFoundError(2, 'No such file or directory')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/robotwin/runs/target_client.py\", line 149, in <module>\n    module.main(dict(task_name=case[\"task\"], task_config=\"demo_clean\",\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/evaluation/robotwin/eval_polict_client_openpi.py\", line 402, in main\n    st_seed, suc_num = eval_policy(task_name,\n  File \"/root/cxz/robotwin/runs/target_client.py\", line 129, in policy\n    return original_policy(*args, **kwargs)\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/evaluation/robotwin/eval_polict_client_openpi.py\", line 511, in eval_policy\n    ffmpeg = subprocess.Popen(\n  File \"/root/cxz/envs/libero-va/lib/python3.10/subprocess.py\", line 971, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"/root/cxz/envs/libero-va/lib/python3.10/subprocess.py\", line 1863, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'\n",
+  "end": 1792483638.160934,
+  "lifecycle_seconds": 34.395803689956665
+}

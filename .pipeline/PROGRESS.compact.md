@@ -1,6 +1,6 @@
 # 当前短入口
 
-更新：2026-10-20T15:01:42+08:00。先读INDEX/CONTEXT-POLICY/约束记忆，再按当前Cycle读取四文；不展开全旧索引、trace、大JSON。[当前Cycle](cycles/wam-research-20261016/PROGRESS.md)。
+更新：2026-10-20T16:24:50+08:00。先读INDEX/CONTEXT-POLICY/约束记忆，再按当前Cycle读取四文；不展开全旧索引、trace、大JSON。[当前Cycle](cycles/wam-research-20261016/PROGRESS.md)。
 
 ## 已观察结果
 
@@ -10,7 +10,7 @@
 
 [本轮止损](experiments/single-layer-async-gemm-20261020/FOLLOWUP-STOP-REPORT.md)：O1/O2/O3/O4分别261/300、390/400、432/500、297/300，共1380/1500block；43owned根进程回收，GPU worker生命周期324.748秒，CPU编译/总墙钟另列，CUDA active未知。同名DSO两次初测INVALID、PID/清理竞态及全部数值失败保留。旧M39 registration240/PLAN900资源FAILED、旧M34/M39数值FAIL不重写。
 
-[M40 RoboTwin原渲染恢复](experiments/robotwin-pilot-20261020/DRIVER-INTEROP-REPAIR-RESULT.md)：用户恢复排查且不改驱动。固定原场景同脚本，系统535配套libcuda两次完整专家/四路RGB成功，原595 compat路径在相机观察重现OIDN非法访存。已仅修复客户端LD_LIBRARY_PATH，A100/535、rt/32spp/path8/oidn保持。新增119.345秒，原账本累计614.666秒，全部owned已清理；旧两次失败保留。0模型policy/teacher/新训练/CAL/DEV，不是成功率0%。当前无需因该故障换4090，全任务稳定性待首6条Target验证。
+[M40 RoboTwin原渲染恢复](experiments/robotwin-pilot-20261020/DRIVER-INTEROP-REPAIR-RESULT.md)：用户恢复排查且不改驱动。固定原场景同脚本，系统535配套libcuda两次完整专家/四路RGB成功，原595 compat路径在相机观察重现OIDN非法访存。已仅修复客户端LD_LIBRARY_PATH，A100/535、rt/32spp/path8/oidn保持。新增119.345秒，原账本累计614.666秒，全部owned已清理；旧两次失败保留。上述修复对照0模型policy/teacher，不是成功率0%；后继运行看下方现场。当前无需因该故障换4090，全任务稳定性待首6条Target验证。
 
 [当前MegaMoE差距审查](experiments/single-layer-async-gemm-20261020/MEGAMOE-GAP-REVIEW.md)：已有常驻结构、warp分工、双缓冲和行组ready；仍缺K片段ready与有界中间槽。B14宽GEMM多预留32KiB仅M32使用的partial_y，专用化收益待测；旧M38百分比不是当前profile。
 
@@ -20,15 +20,15 @@ M35新同卡工程计时330/360，固定10task/init49×三臂×3独立进程重�
 
 ## 当前资源、下一步与授权
 
-14:12北京现场两卡0MiB/0%、无compute进程，未见owned guard/worker；未来他人状态须动态核对。[现场](experiments/single-layer-async-gemm-20261020/FOLLOWUP-FINAL-RESOURCE.json)。当前无自动提交GPU队列，本机本轮未启动GPU任务。AutoDL归还不再SSH，实例关机未知。
+16:24北京现场GPU1原Target第二局运行；首局已完整成功，8policy/240命令、184.197秒，初始物理/观察逐位通过；GPU0仅11MiB无compute worker。[现场](experiments/robotwin-pilot-20261020/resume-evidence/resource-snapshot.json)。114/114固定专家初态已齐。[首case旧视频入口PARTIAL](experiments/robotwin-pilot-20261020/FIRST-CASE-RETRY.md)在0teacher/0动作退出，用户明确允许补跑；first6-3沿原17:46:42北京deadline接续，旧失败与耗时保留。AutoDL归还不再SSH。
 
-用户曾批准[两卡计划](cycles/wam-research-20261016/ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)，替代旧仅规划。GPU0总8h与每stage帽、GPU1总24h/CPU准备10月20日18:20:28北京截止不重置。M39有界后继收口；M40原渲染已修复。用户最新[恢复环境排查且保持驱动](memory/global/requirements/decision-优先修复RoboTwin环境且保持系统驱动.md)，本次已完成有界诊断；未自动启动原174局或购卡/改系统。
+用户最新[接续RoboTwin迁移](memory/global/requirements/decision-修复后接续RoboTwin有限迁移.md)，沿[原两卡计划](cycles/wam-research-20261016/ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)。原GPU0 8h/GPU1 24h、准备10/20 18:20北京及各帽不重置；M39收口，M40初态→原Target首6局有界接续。新专家None抓取异常属官方可解性筛选分支，旧FAILED保留，从下一seed继续；已闭合GPU累计2266.544秒，运行中另计。
 
-原始action按用户要求保留原算子，先单独核算B14；默认短/中/长KV耗时为native的5.022/4.515/3.956倍。下一研究建议为大GEMM/Norm与资源效率，暂不扩大ready队列；完整1/3/7×cache强baseline矩阵仍缺，B6不准入，本次未新增GPU作业。不能从block重放虚构g或机器人E2E。RoboTwin模型单局/174局耗时UNKNOWN，新TF接口草稿未训练、tau未校准；后继首6条Target仍待执行。
+原始action保留原算子；B14默认短/中/长耗时为native的5.022/4.515/3.956倍。[填尾波审查](experiments/single-layer-async-gemm-20261020/TAIL-FILL-SCHEDULING-REVIEW.md)：空闲CTA取ready任务而非等整轮，关键路径优先；cross K/V可提前但cached时不能重算造收益。当前仅设计分析，无新算子修改/GPU。RoboTwin[首批入口](experiments/robotwin-pilot-20261020/RESUME-FIRST6-PLAN.md)只自动接续原Target六局；TF verifier/采集训练/DEV未完整实现，174局耗时UNKNOWN。
 
 ## 冻结接口与科学门
 
-TF64/各套选定权重、normalizer、tau=.007839680526450805、absΔσ×L2、BF16方向/FP32打分、K2B2/bonus/prefix_then_cost等旧身份保持。PF2=SST完整policy请求，T50更新/51 action调用含末尾；reset/cache不计，不是bonus/物理回滚。所有既有可运行LIBERO对照臂同用512-token BF16 reset bank，冷启动另列；RoboTwin尚0policy，不能声称已完成新bank等价验证。actual796与失败罚分800分列。
+TF64/各套选定权重、normalizer、tau=.007839680526450805、absΔσ×L2、BF16方向/FP32打分、K2B2/bonus/prefix_then_cost等旧身份保持。PF2=SST完整policy请求，T50更新/51 action调用含末尾；reset/cache不计，不是bonus/物理回滚。所有既有可运行LIBERO对照臂同用512-token BF16 reset bank，冷启动另列；RoboTwin已有108条完整bank张量逐位检查，完整任务等价未实测。actual796与失败罚分800分列。
 
 D3072/H24/d128/FFN14336，actionQ16；M32→224有实际aten::addmm证据，attention实例仍Q16。action KV288/1152/2160，video272/1136/2144，cross512；private KV不共享。RoboTwin Q32/16有效动作通道/pool9792需独立接口，不能直接接本算子。
 
