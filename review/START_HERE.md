@@ -2,7 +2,7 @@
 
 最新已执行结果：[CURRENT-EXECUTION-20261020.md](CURRENT-EXECUTION-20261020.md)/[状态JSON](CURRENT-EXECUTION-20261020.json)。固定本文件所在commit审查，不由后续main覆盖身份。
 
-当前完整单层九真实签名×两路径有限逐位通过，性能仍NO-GO；RoboTwin原渲染阻塞，0policy/teacher；两卡owned任务清理，无自动队列。四质量权限仍false，旧FAILED/retention和固定paused72身份不改。[HW短入口](../.pipeline/PROGRESS.compact.md)。
+当前完整单层已嵌入固定CUTLASS设备mainloop，九签名有限逐位通过，但B14仍慢Torch约2.54–3.02倍。RoboTwin原Target首六局5成功1完整失败，TF迁移尚未完成。两卡owned任务已清理，无自动队列。四质量权限仍false，旧FAILED/retention和固定paused72身份不改。[HW短入口](../.pipeline/PROGRESS.compact.md)。
 
 下方及旧RESULTS.json是固定paused72历史；此前“整层仍9失败/只读规划”的最新描述已被上方新后继接续，原始负结果未修改。
 

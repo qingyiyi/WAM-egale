@@ -112,6 +112,6 @@ __device__ void gemm_tile_impl(GemmStorage<TN,TK>& s,const B* a,const B* w,const
 // retains its original tile and observed sliced reduction.
 __device__ void gemm_tile(Shared& shared,const B* a,const B* w,const B* bias,
                          B* out,int m,int n,int k,int task,bool bf16_splits=false){
-    if(m>=128)gemm_tile_impl<128,64>(shared.tile.gemm_wide,a,w,bias,out,m,n,k,task,bf16_splits);
+    if(m>=128)cutlass_gemm_tile(shared.tile.cutlass_gemm,a,w,bias,out,m,n,k,task,bf16_splits);
     else gemm_tile_impl<64,32>(shared.tile.gemm,a,w,bias,out,m,n,k,task,bf16_splits);
 }

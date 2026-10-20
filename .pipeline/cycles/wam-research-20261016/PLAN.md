@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-20T16:24:50+08:00'
+updated: '2026-10-20T17:26:40+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
@@ -31,24 +31,19 @@ steps:
 ---
 # 当前有界计划
 
-计算终态不等于科学准入，四权限仍false。先按[短进度](PROGRESS.md)与实际终态恢复，不由历史计划自动启动。
-
-| ID | 状态 | 交付/剩余 |
+| ID | 状态 | 结果/剩余 |
 |---|---|---|
-| `M17` | in_progress | 原6000局计算齐，质量审计缺口保留，无新GPU队列 |
-| `M31` | completed | 静态子图有限结果保留 |
-| `M32` | completed | 阶段内persistent负结果保留 |
-| `M33` | completed | 退化profile/反事实收口 |
-| `M34` | completed | 原整层单kernel结构成立，旧精度/速度NO-GO |
-| `M35` | completed | 同卡计时330/360，原PARTIAL不重跑 |
-| `M36` | completed | RoboTwin只读官方资料核验完成 |
-| `M37` | completed | 原设备数值挑战者NO-GO与Long/Object成本归因 |
-| `M38` | completed | 原整层瓶颈测量收口 |
-| `M39` | completed | 新授权O1–O4有界后继收口：有限数值通过、速度NO-GO；完整3状态/cache矩阵未完成 |
-| `M40` | in_progress | 固定专家初态114/114；首局Target完整成功，GPU1第二局运行；原PARTIAL和截止不变 |
+| M17 | in_progress | 四套6000局计算齐，旧科学审计未放行，无新GPU队列 |
+| M31–M38 | completed | 原静态/persistent/基线/profile/同卡工程与负结果保留 |
+| M39 | completed | 当前profile＋固定CUTLASS设备mainloop完成；有限精度通过，仍慢2.54–3.02倍；1497/1500调用，停止本轮GPU |
+| M40 | in_progress | 固定专家114/114；原Target首六局5成功1失败并清理；TF适配/训练/DEV未实现齐，不在排队 |
 
-[两卡详细计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)随后获得[执行同意](../../memory/global/requirements/decision-执行RoboTwin迁移与算子有限收口.md)。原8h/24h与各stage帽不重置。本次M39完成1380/1500 block后停止；M40首场景失败后停止，余量不是无界续跑授权。
+本轮沿[原两卡计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)和[当前用户决定](../../memory/global/requirements/decision-继续算子优化并先核对当前瓶颈.md)，原8h/24h和绝对截止不重置。用户要求整层一个persistent kernel，明确复用成熟设备GEMM，未改为host cuBLAS多kernel。baseline/投机/原tile/保护HW保持。
 
-用户现已[要求接续RoboTwin迁移](../../memory/global/requirements/decision-修复后接续RoboTwin有限迁移.md)。[实际首批计划](../../experiments/robotwin-pilot-20261020/RESUME-FIRST6-PLAN.md)：固定完整初态→原Target首6局。专家None抓取异常按官方可解性筛选规则接续，旧FAILED及原deadline保留，不重跑旧seed；[依据](../../experiments/robotwin-pilot-20261020/EXPERT-SELECTION-CONTINUATION.md)。[视频入口失败及用户批准补跑](../../experiments/robotwin-pilot-20261020/FIRST-CASE-RETRY.md)保留原PARTIAL；first6-3沿原deadline。后继投机采集/训练/DEV未完整实现，不声称174局已排队。
+本次[追加预算与输入](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/BUDGET.md)及[终态](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/CUTLASS-RESULT.md)：profile12＋门63＋计时42，原1380后共1497；首次CPU构建失败及修复记录齐，不重置计时起点。剩余3次不拼补不完整结论。
 
-算子[MegaMoE审查](../../experiments/single-layer-async-gemm-20261020/MEGAMOE-GAP-REVIEW.md)及[跨阶段填尾波分析](../../experiments/single-layer-async-gemm-20261020/TAIL-FILL-SCHEDULING-REVIEW.md)：主链优先、ready独立分支后备，不等整轮同步；须同时解决原语效率并对强cached基线。只是设计讨论，未改算子/启动测量。原始action保留原算子。[接续前checkpoint](history/robotwin-resume-20261020/PLAN.md)保留。
+下一算子阶段：先定位新主循环的阶段、epilogue与local-memory成本，随后B14专用化减资源压力；成熟原语接近baseline后再评估跨阶段ready填尾波。新的GPU阶段需有明确预算，不把剩余3调用当无界许可。新ready未验证，默认关闭。完整1/3/7×cache强baseline矩阵仍缺。
+
+RoboTwin[六局结果](../../experiments/robotwin-pilot-20261020/FIRST6-TARGET-RESULT.md)不等于TF迁移完成；沿原预算/准备截止推进需先完成Q32/CFG/cache/监督接口。当前按用户优先级收口算子，不为占卡擅加实验。
+
+10/22 go/no-go、10/23冻结实现/claim、10/28主表、11/01 18:00老师中文证据包。四项质量权限仍false。旧计划/记录见[本次前checkpoint](history/device-gemm-followup-start-20261020/PLAN.md)，不覆盖FAILED。

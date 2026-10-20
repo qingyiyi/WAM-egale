@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [继续算子优化并先核对当前瓶颈](global/requirements/decision-继续算子优化并先核对当前瓶颈.md)（constraint，M39）：用户同意接续，区分当前实测与旧profile；明确复用成熟设备端GEMM源码并保留整层单kernel。
+
 - [允许补跑RoboTwin首局视频入口失败](global/requirements/decision-允许补跑RoboTwin首局视频入口失败.md)（constraint，仅首case）：用户明确允许修复后补跑0teacher/0动作的place_object_basket/valid00，原PARTIAL、预算与deadline保留。
 
 - [修复后接续RoboTwin有限迁移](global/requirements/decision-修复后接续RoboTwin有限迁移.md)（constraint，当前Cycle）：用户恢复原六任务有界迁移链，先固定初态/原Target；原预算、截止与全部失败保留。

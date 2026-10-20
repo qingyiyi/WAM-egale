@@ -1,0 +1,479 @@
+[
+  {
+    "case": "short",
+    "profile_ms": 11.78624,
+    "gemm_ms": 8.967168,
+    "cross_kv_ms": 6.373376,
+    "ffn_gemm_ms": 1.4336,
+    "attention_ms": 0.507904,
+    "resources": [
+      108,
+      1,
+      121376,
+      255,
+      1704,
+      256
+    ],
+    "top": [
+      [
+        "cross_V_proj",
+        3.206144
+      ],
+      [
+        "cross_K_proj",
+        3.167232
+      ],
+      [
+        "FFN1",
+        0.786432
+      ],
+      [
+        "cross_K_RMS",
+        0.656384
+      ],
+      [
+        "FFN2",
+        0.647168
+      ],
+      [
+        "table",
+        0.467968
+      ],
+      [
+        "GELU",
+        0.366592
+      ]
+    ],
+    "gemm_fraction": 0.7608166811468288,
+    "primitive": [
+      {
+        "label": "Q_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07372800260782242,
+        "current_stage_ms": 0.208896,
+        "bitwise": true
+      },
+      {
+        "label": "K_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07475200295448303,
+        "current_stage_ms": 0.196608,
+        "bitwise": true
+      },
+      {
+        "label": "V_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07168000191450119,
+        "current_stage_ms": 0.19456,
+        "bitwise": true
+      },
+      {
+        "label": "self_output_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07065600156784058,
+        "current_stage_ms": 0.197632,
+        "bitwise": true
+      },
+      {
+        "label": "cross_Q_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07065600156784058,
+        "current_stage_ms": 0.188416,
+        "bitwise": true
+      },
+      {
+        "label": "cross_K_proj",
+        "shape": [
+          7168,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.7393280267715454,
+        "current_stage_ms": 3.167232,
+        "bitwise": true
+      },
+      {
+        "label": "cross_V_proj",
+        "shape": [
+          7168,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.7413759827613831,
+        "current_stage_ms": 3.206144,
+        "bitwise": true
+      },
+      {
+        "label": "cross_output_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07680000364780426,
+        "current_stage_ms": 0.17408,
+        "bitwise": true
+      },
+      {
+        "label": "FFN1",
+        "shape": [
+          224,
+          14336,
+          3072
+        ],
+        "torch_event_ms": 0.23244799673557281,
+        "current_stage_ms": 0.786432,
+        "bitwise": true
+      },
+      {
+        "label": "FFN2",
+        "shape": [
+          224,
+          3072,
+          14336
+        ],
+        "torch_event_ms": 0.158720001578331,
+        "current_stage_ms": 0.647168,
+        "bitwise": true
+      }
+    ]
+  },
+  {
+    "case": "middle",
+    "profile_ms": 12.13776,
+    "gemm_ms": 8.937792,
+    "cross_kv_ms": 6.3600639999999995,
+    "ffn_gemm_ms": 1.425056,
+    "attention_ms": 0.888416,
+    "resources": [
+      108,
+      1,
+      121376,
+      255,
+      1704,
+      256
+    ],
+    "top": [
+      [
+        "cross_V_proj",
+        3.194368
+      ],
+      [
+        "cross_K_proj",
+        3.165696
+      ],
+      [
+        "FFN1",
+        0.78432
+      ],
+      [
+        "cross_K_RMS",
+        0.654496
+      ],
+      [
+        "FFN2",
+        0.640736
+      ],
+      [
+        "self_attention",
+        0.6032
+      ],
+      [
+        "table",
+        0.465536
+      ]
+    ],
+    "gemm_fraction": 0.7363625578360422,
+    "primitive": [
+      {
+        "label": "Q_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07100799679756165,
+        "current_stage_ms": 0.207808,
+        "bitwise": true
+      },
+      {
+        "label": "K_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07094399631023407,
+        "current_stage_ms": 0.194368,
+        "bitwise": true
+      },
+      {
+        "label": "V_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.06995200365781784,
+        "current_stage_ms": 0.193376,
+        "bitwise": true
+      },
+      {
+        "label": "self_output_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07017599791288376,
+        "current_stage_ms": 0.195936,
+        "bitwise": true
+      },
+      {
+        "label": "cross_Q_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.06956800073385239,
+        "current_stage_ms": 0.188256,
+        "bitwise": true
+      },
+      {
+        "label": "cross_K_proj",
+        "shape": [
+          7168,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.5990080237388611,
+        "current_stage_ms": 3.165696,
+        "bitwise": true
+      },
+      {
+        "label": "cross_V_proj",
+        "shape": [
+          7168,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.5951679944992065,
+        "current_stage_ms": 3.194368,
+        "bitwise": true
+      },
+      {
+        "label": "cross_output_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.0703359991312027,
+        "current_stage_ms": 0.172928,
+        "bitwise": true
+      },
+      {
+        "label": "FFN1",
+        "shape": [
+          224,
+          14336,
+          3072
+        ],
+        "torch_event_ms": 0.20095999538898468,
+        "current_stage_ms": 0.78432,
+        "bitwise": true
+      },
+      {
+        "label": "FFN2",
+        "shape": [
+          224,
+          3072,
+          14336
+        ],
+        "torch_event_ms": 0.14112000167369843,
+        "current_stage_ms": 0.640736,
+        "bitwise": true
+      }
+    ]
+  },
+  {
+    "case": "long",
+    "profile_ms": 10.058816,
+    "gemm_ms": 7.11184,
+    "cross_kv_ms": 5.037152,
+    "ffn_gemm_ms": 1.157088,
+    "attention_ms": 1.095072,
+    "resources": [
+      108,
+      1,
+      121376,
+      255,
+      1704,
+      256
+    ],
+    "top": [
+      [
+        "cross_V_proj",
+        2.540832
+      ],
+      [
+        "cross_K_proj",
+        2.49632
+      ],
+      [
+        "self_attention",
+        0.860288
+      ],
+      [
+        "FFN1",
+        0.642976
+      ],
+      [
+        "cross_K_RMS",
+        0.51488
+      ],
+      [
+        "FFN2",
+        0.514112
+      ],
+      [
+        "table",
+        0.378816
+      ]
+    ],
+    "gemm_fraction": 0.7070255584752718,
+    "primitive": [
+      {
+        "label": "Q_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07014399766921997,
+        "current_stage_ms": 0.165856,
+        "bitwise": true
+      },
+      {
+        "label": "K_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.06966400146484375,
+        "current_stage_ms": 0.154688,
+        "bitwise": true
+      },
+      {
+        "label": "V_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07311999797821045,
+        "current_stage_ms": 0.15392,
+        "bitwise": true
+      },
+      {
+        "label": "self_output_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.06943999975919724,
+        "current_stage_ms": 0.155104,
+        "bitwise": true
+      },
+      {
+        "label": "cross_Q_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.0697920024394989,
+        "current_stage_ms": 0.15008,
+        "bitwise": true
+      },
+      {
+        "label": "cross_K_proj",
+        "shape": [
+          7168,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.5873280167579651,
+        "current_stage_ms": 2.49632,
+        "bitwise": true
+      },
+      {
+        "label": "cross_V_proj",
+        "shape": [
+          7168,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.5877439975738525,
+        "current_stage_ms": 2.540832,
+        "bitwise": true
+      },
+      {
+        "label": "cross_output_proj",
+        "shape": [
+          224,
+          3072,
+          3072
+        ],
+        "torch_event_ms": 0.07734400033950806,
+        "current_stage_ms": 0.137952,
+        "bitwise": true
+      },
+      {
+        "label": "FFN1",
+        "shape": [
+          224,
+          14336,
+          3072
+        ],
+        "torch_event_ms": 0.19811199605464935,
+        "current_stage_ms": 0.642976,
+        "bitwise": true
+      },
+      {
+        "label": "FFN2",
+        "shape": [
+          224,
+          3072,
+          14336
+        ],
+        "torch_event_ms": 0.14156800508499146,
+        "current_stage_ms": 0.514112,
+        "bitwise": true
+      }
+    ]
+  }
+]

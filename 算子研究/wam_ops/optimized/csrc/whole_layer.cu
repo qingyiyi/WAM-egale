@@ -13,6 +13,8 @@
 #include <map>
 #include <optional>
 #include "norm.cuh"  // pinned Torch Welford arithmetic, read-only helper
+#include <cutlass/gemm/device/gemm.h>
+#include "cutlass_gemm_mainloop.cuh"
 #define FLASH_NAMESPACE wam_whole_fa2
 #include "fa2_device_generated.cuh"
 
@@ -46,13 +48,14 @@ struct Params {
 };
 template<int TN,int TK>struct GemmStorage {B x[2][64*(TK+8)],w[2][TN*(TK+8)];float y[64*TN],partial_y[64*TN];};
 using GemmShared=GemmStorage<64,32>;
+#include "cutlass_gemm.cuh"
 struct NormShared {alignas(16) B input[D];float x[D],y[D],reduce[6];};
 struct AttnShared {
     B q[16*128],k[64*128],v[64*128],p[16*64];
     float score[16*64],o[16*128],pv[16*128];
     float m[16],l[16],alpha[16];
 };
-union alignas(32) TileShared {GemmShared gemm;GemmStorage<128,64> gemm_wide;NormShared norm;AttnShared attn;float point[512];char fa2_workspace[FA_SMEM];};
+union alignas(32) TileShared {GemmShared gemm;CutlassGemmStorage cutlass_gemm;NormShared norm;AttnShared attn;float point[512];char fa2_workspace[FA_SMEM];};
 struct Shared {TileShared tile;int task;wam_whole_fa2::WholeParams fa2;};
 __device__ inline int warp(){return threadIdx.x/32;}
 __device__ inline int lane(){return threadIdx.x%32;}

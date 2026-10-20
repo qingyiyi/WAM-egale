@@ -1,18 +1,15 @@
 # 当前讨论与授权
 
-用户最新明确[修复后接续原RoboTwin迁移](../../memory/global/requirements/decision-修复后接续RoboTwin有限迁移.md)，替代暂缓/仅修复的优先级。114个固定专家初态已齐，GPU1原Target首6局有界接续；后续训练/DEV未完整实现。原预算、失败、驱动保护保持。用户另[明确批准首case视频入口失败后补跑](../../memory/global/requirements/decision-允许补跑RoboTwin首局视频入口失败.md)，只覆盖该case，原PARTIAL及绝对deadline不变。
+用户明确希望找到快速GEMM源码直接用于现有整层kernel，避免额外kernel启动。[决定](../../memory/global/requirements/decision-继续算子优化并先核对当前瓶颈.md)已保存。这延续整个**单层**persistent/tile/warp职责目标，不是改用host cuBLAS多kernel或30层融合。直接在optimized迭代，baseline连同依赖冻结，不另开带读代码版本/研究ID。
 
+本次已接入固定CUTLASS SM80设备主循环并完成有限门/计时。可描述9签名有限逐位和一次compute launch，不能说已达Torch速度；B14仍慢2.54–3.02倍。当前仍255register/thread，warp1/2在大M路径空闲，原语内部流水不等于最终MegaMoE式独立角色流水。后续先定位新瓶颈再做ready填尾波，强cached baseline不能变弱。
 
-M39有限数值通过、速度NO-GO。M40专家None抓取异常按固定官方筛选规则跳过，不是模型失败；旧FAILED保留。未启动的模型/训练不写运行中，动态事实看PROGRESS及现场。
+原始action用原算子。B14是14个Q16逻辑实例，不是Q112序列；不共享private KV。baseline、旧投机源/配置、原tile/HW、state/cycle/rules不改。新ready未重验，默认False。当前总1497/1500block，无后续GPU作业；旧FAILED和预算起点保留。
 
-用户要求整个**单层**Transformer在一个persistent kernel内，tile由职责明确的warp协作，借鉴MegaMoE；不是30层融合。baseline及依赖冻结，直接在optimized迭代，不为带读另建代码版本/研究ID。当前有完整单kernel和FFN行组就绪交接，其他阶段仍有barrier，FA2计算warp仍自行load/MMA/softmax/store。当前ready更慢，默认False；不能把结构实现当作性能创新通过。
+RoboTwin用户授权修复后接续原有限迁移及首case视频入口补跑仍在原范围。六FIT身份Target已5成功1完整失败并清理，旧0teacher/0动作PARTIAL保留。TF采集/训练/DEV未实现齐，不声称自动排队。原A100/535配置、rt/32spp/path8/oidn保持；bank只有张量核验，完整任务等价未知。
 
-用户提出用后续无前置依赖任务填补小于108CTA尾波：合理待验证设计，非既成性能结论。空闲CTA逐tile取ready工作、主链优先，cross K/V可提前，cached时不能重算制造工作；warp分工须形成真实流水并移除不兼容grid barrier。本次未新增算子GPU/改代码。
+BAAI所有写入限~/cxz；AutoDL已归还不连接；不改系统驱动/服务/时钟或杀他人。原GPU0≤8h、GPU1≤24h、准备10/20 18:20北京及各stage上限不重置。新GPU阶段需明确有界预算，不能从旧余额自动无界接续。
 
-BAAI所有写入仅~/cxz，允许性能统一远端；不改系统驱动/服务/时钟，不杀他人。AutoDL归还不再连接。原GPU0≤8h、GPU1≤24h、CPU准备10/20 18:20北京及stage/call/存储帽保留。客户端535配套库/原rt保持。
+TF/normalizer/tau/selector/default A_off、旧FAILED/retention/paused72/MLP0/22缺收据和四项质量false保留。LIBERO既定6000局不是独立TEST；单层精度不转借为闭环质量/正式性能许可。PF2不是bonus或物理回滚。中文稿用户飞书整理，不新增论文初稿。
 
-TF64/各套权重与tau/selector等旧身份不改；PF2=SST完整policy请求，不是bonus或物理状态恢复。所有可运行的LIBERO臂同等使用完整512-token BF16 reset bank，冷启动另列；RoboTwin已有108条完整bank及张量拷贝逐位检查，完整任务cached/uncached等价仍未实测。原始FAILED/retention/NO_GO/paused72、MLP0、22缺收据/default A_off与四质量false保留。完整6000局和计时重复不混成独立TEST。新算子有限精度不能继承为机器人质量或正式性能许可。
-
-只main公开核对源码、HW和小证据，不公开模型/PT/KV/相机/DSO/工具链/私有SASS/连接配置/凭据。论文中文逐段交用户飞书，不建本地初稿。10/22 go-no-go、10/23冻结、10/28表、11/01 18:00老师证据包；官方日期/profile UNKNOWN项见日期报告。
-
-旧讨论与授权演变完整保留[本轮历史](history/ordered-followup-20261020/DISCUSSION-SUMMARY.md)。不要从旧“未授权/下一步”段落自动推导当前权限，也不修改保护state/cycle/rules或升级/全量sync。
+只main发布源码/HW/小证据；模型/PT/KV/图像/DSO/工具链/私有SASS/凭据不公开。10/22 go-no-go，10/23冻结，10/28主表，11/01 18:00老师证据包，不保证录用。[此前讨论](history/device-gemm-followup-start-20261020/DISCUSSION-SUMMARY.md)保留。

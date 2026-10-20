@@ -17,7 +17,7 @@ __device__ void ffn_gelu_tile(Shared& s,const B* input,B* output,
                              int m,int n,int task,int tn){
     const int cols=(n+tn-1)/tn,rm=(task/cols)*64,cn=(task%cols)*tn;
     // Both GEMM layouts expose their FP32 output scratch at the same typed view.
-    float* scratch=tn==128?s.tile.gemm_wide.y:s.tile.gemm.y;
+    float* scratch=tn==128?s.tile.cutlass_gemm.result:s.tile.gemm.y;
     if(compute())for(int i=ct();i<64*tn;i+=128){
         int r=rm+i/tn,c=cn+i%tn;
         if(r<m&&c<n){
