@@ -31,3 +31,7 @@ GEMM每CTA处理64×64输出tile，K按32推进；4个计算warp分别负责32×
 验证与资源证据：[M34登记](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/PLAN.md)。本机及远端9真实输入完成，结构成立但9输出原逐位门失败，不集成。详情见[M34本机结果](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/LOCAL-CORRECTNESS.md)，远端9 trace也确认单kernel、两独立进程计时相对native慢5.12–11.28倍；[完整数据](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/RESULT.md)保留。
 
 [有限阶段诊断](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)已完成：B14合计74.66%时间为GEMM；唯一ldm40布局挑战者比带计时v1下降6.5%–19.0%，一进程两次交错样本，仍未解决原精度或相对native的速度问题。诊断保持v1位相等不等于匹配Torch。主源码/DSO没有替换，累计600完整block调用后收口，所有算子owned进程已退出。只有profiler实际观察一次整层kernel才计结构门通过；源码中单launch语句不是运行证据。
+
+## M37：独立设备契约候选，没有替换整层实现
+
+[contract_linear.cu](csrc/contract_linear.cu)与[build_contract.py](build_contract.py)仅用于真实B2/B14的Q/FFN2同输入诊断，使用固定CUTLASS的multistage/serial split-K原语；不是第三套block主实现。公共宏几何四项匹配，但原Torch逐位四项均FAIL，重复/输入/RNG保持。见[M37结果](../../../.pipeline/experiments/device-contract-20261020/RESULT.md)。原whole_layer.cu和DSO冻结，未将该原语或异步流水接入整层，无新性能/质量PASS。

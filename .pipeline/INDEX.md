@@ -10,6 +10,8 @@
 
 [10/19历史阶段整理](cycles/wam-research-20261016/STATUS-20261019.md)：Long/Goal/Spatial首轮、B0有限GPU逐位、Object修复与原门缺口；旧paused72仅历史。
 
+最新[M37数值契约](experiments/device-contract-20261020/RESULT.md)：唯一几何匹配候选四项原逐位FAIL，已清理、不集成；[Long/Object倍数归因](experiments/device-contract-20261020/TASK-COST-DIAGNOSIS.md)保留共同成功与全部尝试口径。
+
 当前算子：[M34整层单kernel实际结果](experiments/single-layer-warp-specialized-20261019/RESULT.md)和[有界阶段诊断](experiments/single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)已完成，结构成立、原精度/速度NO-GO、600调用后清理；不是已准入实现。M35同卡工程计时终态见[当前结果](experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)，Object首轮实施失败不重跑，原面板最多330/360。旧四false/FAILED保留。
 
 ## 两条研究路线

@@ -1,3 +1,12 @@
+---
+kind: progress
+cycle: wam-research-20261016
+plan: PLAN.md
+status: active
+updated: '2026-10-20T09:33:50.273752+08:00'
+current: M37
+next: M17
+---
 # 当前研究进度
 
 更新：2026-10-20T03:23:44.700467+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
@@ -36,9 +45,15 @@ GPU0 Goal→Object，GPU1 Spatial→Long；同case对照同卡，每卡单worker
 
 [官方核查](../../experiments/robotwin-migration-survey-20261019/RESULT.md)：有LingBot-VA官方权重，50唯一任务，原适配100有效seed/task（先expert过滤），T/C/P全套15000局/condition。Q32/有效16动作通道、pool静态9792，当前TF64/API/阈值不能直接继承。没有装环境、下权重或启动实验。
 
+## M37 — 数值契约与成本归因：completed，数值NO-GO
+
+[成本归因](../../experiments/device-contract-20261020/TASK-COST-DIAGNOSIS.md)：Long全尝试1.107×、共同成功1.344×；同一task4/init49三次TF失败拉长任务，不能外推总体SR。Object共同成功/全体均1.216×，action1.575×、chunk1.341×，再受多3.4%chunk与推理外开销影响；优化reset不是主要瓶颈。共同成功只是条件指标，仍保留全attempt/SR/含失败成本。
+
+[设备候选结果](../../experiments/device-contract-20261020/RESULT.md)：远端4项公共tile/stage/split宏配置通过，唯一CUTLASS候选Q/FFN2四项原逐位仍FAIL。重复/输入/参数/RNG均通过；不是根因证明。4参考block/12原语/8heuristic，0机器人局；首次0block DSO路径实施失败保留，独立修正未重置截止。生命周期185.698秒，owned活动0；本机88/远端86保护项不变。数值门未过，停止异步整层接入与扩扫；没有新GPU队列。[资源止损](../../experiments/device-contract-20261020/RESOURCE-AND-STOP-REPORT.md)。
+
 ## 下一步及保护
 
-本轮已登记测量和有界样机均已终态；下一步交联合报告并讨论缺口，不自动追加GPU作业。若继续新算子研究，先讨论匹配设备GEMM/attention契约的可行原语和强cached B14，另登记有界作业；不能把普通cache收益叫协同创新。[claim矩阵](../../experiments/single-layer-warp-specialized-20261019/CLAIM-EVIDENCE-MATRIX.md)、[日期](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。
+M34/M35/M37有界作业已终态；M37数值门失败，后继整层异步集成未触发，不重复旧网格搜索；不能把普通cache收益叫协同创新。[claim矩阵](../../experiments/single-layer-warp-specialized-20261019/CLAIM-EVIDENCE-MATRIX.md)、[日期](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。
 
 四权限false；旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据、default A_off不改。baseline及依赖/投机源/原tile与HW/state/cycle/rules保护；仅optimized新实现，不重置/旧sync/升级，不建缺失cycle.yaml。远端只~/cxz，AutoDL不再SSH/关机UNKNOWN；不杀他人、不改服务/时钟。
 

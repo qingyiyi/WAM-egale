@@ -1,5 +1,8 @@
 # 当前入口
 
+<!-- m37-entry -->
+最新M37四原语数值NO-GO和Long/Object成本解释见[CURRENT](CURRENT-20261020.md)顶部；M34/四套旧记录仍保留。
+
 先读[10/20当前源码与结果](CURRENT-20261020.md)。整层单kernel结构已经实测，原精度与性能门失败，600调用后算子诊断已收口；四套原6000局计算齐，新同卡计时按原登记核验终态。baseline/投机代码不改，四质量字段false。[下一轮网页审查问题](OPERATOR-NEXT-REVIEW-20261020.md)只作只读建议。
 
 以下正文和review/RESULTS.json保留4f04 paused72历史，不作为当前进度；旧FAILED、retention和固定科学身份不改。

@@ -1,0 +1,649 @@
+{
+  "source": ".pipeline/experiments/libero-four-suite-performance-20261019/ISOLATED-EPISODES.csv",
+  "source_sha256": "11463e94888ebb8989f81c1e3b588d7a47f3942693a258feb7bcb4da4c353a11",
+  "estimator": "ratio of total times; same suite/repetition/case matched pairs",
+  "suites": {
+    "long": {
+      "arms": {
+        "T": {
+          "episode_sec": 2371.470872280188,
+          "steps": 7862.0,
+          "policy_chunks": 515.0,
+          "policy_server_seconds": 2038.5185901056975,
+          "action_seconds": 1428.0301123046875,
+          "policy_RPC_seconds": 2040.2596767907962,
+          "cache_RPC_seconds": 130.79803201649338,
+          "reset_RPC_seconds": 0.4769356558099389,
+          "commits": 25750.0,
+          "N": 30,
+          "successes": 30,
+          "non_RPC_residual": 199.93622781708837,
+          "policy_RPC_minus_native": 1.7410866850987077,
+          "policy_per_chunk": 3.9582885244770827,
+          "action_per_update": 0.05545748008950242,
+          "mixed_nonaction_per_chunk": 1.1854145200019612,
+          "seconds_per_success_including_failed_attempts": 79.04902907600626
+        },
+        "C": {
+          "episode_sec": 2142.5665062358603,
+          "steps": 9363.0,
+          "policy_chunks": 602.0,
+          "policy_server_seconds": 1748.8486531358212,
+          "action_seconds": 1027.4771104736328,
+          "policy_RPC_seconds": 1760.3070367025211,
+          "cache_RPC_seconds": 155.67303074337542,
+          "reset_RPC_seconds": 1.0994278201833367,
+          "commits": 30100.0,
+          "N": 30,
+          "successes": 27,
+          "non_RPC_residual": 225.48701096978039,
+          "policy_RPC_minus_native": 11.458383566699922,
+          "policy_per_chunk": 2.9050642078668125,
+          "action_per_update": 0.03413545217520375,
+          "mixed_nonaction_per_chunk": 1.1982915991066252,
+          "seconds_per_success_including_failed_attempts": 79.35431504577261
+        },
+        "P": {
+          "episode_sec": 2349.2274865964428,
+          "steps": 9285.0,
+          "policy_chunks": 601.0,
+          "policy_server_seconds": 1952.4499683827162,
+          "action_seconds": 1234.3854661865234,
+          "policy_RPC_seconds": 1966.943173234351,
+          "cache_RPC_seconds": 155.14359728060663,
+          "reset_RPC_seconds": 1.1874914793297648,
+          "commits": 30050.0,
+          "N": 30,
+          "successes": 27,
+          "non_RPC_residual": 225.9532246021554,
+          "policy_RPC_minus_native": 14.4932048516348,
+          "policy_per_chunk": 3.2486688325835544,
+          "action_per_update": 0.0410777193406497,
+          "mixed_nonaction_per_chunk": 1.1947828655510695,
+          "seconds_per_success_including_failed_attempts": 87.00842542949788
+        }
+      },
+      "common_success": {
+        "T": {
+          "episode_sec": 2145.9213662901893,
+          "steps": 7145.0,
+          "policy_chunks": 467.0,
+          "policy_server_seconds": 1849.3296838048846,
+          "action_seconds": 1295.5417583007813,
+          "policy_RPC_seconds": 1850.912146289833,
+          "cache_RPC_seconds": 118.64421588554978,
+          "reset_RPC_seconds": 0.4290503319352865,
+          "commits": 23350.0,
+          "N": 27,
+          "successes": 27,
+          "non_RPC_residual": 175.93595378287137,
+          "policy_RPC_minus_native": 1.582462484948337,
+          "policy_per_chunk": 3.960020736198896,
+          "action_per_update": 0.055483587079262583,
+          "mixed_nonaction_per_chunk": 1.185841382235767,
+          "seconds_per_success_including_failed_attempts": 79.47856912185887
+        },
+        "C": {
+          "episode_sec": 1596.9956290284172,
+          "steps": 6975.0,
+          "policy_chunks": 452.0,
+          "policy_server_seconds": 1298.7547648213804,
+          "action_seconds": 762.0777178955078,
+          "policy_RPC_seconds": 1307.9383744001389,
+          "cache_RPC_seconds": 115.17552939243615,
+          "reset_RPC_seconds": 0.9621850335970521,
+          "commits": 22600.0,
+          "N": 27,
+          "successes": 27,
+          "non_RPC_residual": 172.91954020224512,
+          "policy_RPC_minus_native": 9.183609578758478,
+          "policy_per_chunk": 2.873351249604824,
+          "action_per_update": 0.03372025300422601,
+          "mixed_nonaction_per_chunk": 1.1873385993935233,
+          "seconds_per_success_including_failed_attempts": 59.14798626031175
+        }
+      },
+      "effects": {
+        "all_attempt_warm_speedup": 1.1068365277708345,
+        "common_success_warm_speedup": 1.3437240073072263,
+        "common_success_N": 27,
+        "per_policy_chunk_speedup": 1.3625476895685042,
+        "per_valid_update_speedup": 1.624630012365477,
+        "C_to_T_chunk_ratio": 1.1689320388349516,
+        "C_to_T_actual_steps_ratio": 1.1909183413889595,
+        "T_action_fraction_of_native_policy": 0.7005234679908628,
+        "per_success_cost_speedup_including_failures": 0.996152874993751
+      },
+      "discordant": [
+        {
+          "repetition": "1",
+          "task": "4",
+          "init": "49",
+          "T": {
+            "success": "True",
+            "steps": "239",
+            "episode_sec": "75.92818533163518",
+            "policy_chunks": "16"
+          },
+          "C": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "182.2564647877589",
+            "policy_chunks": "50"
+          }
+        },
+        {
+          "repetition": "2",
+          "task": "4",
+          "init": "49",
+          "T": {
+            "success": "True",
+            "steps": "239",
+            "episode_sec": "74.99934550374746",
+            "policy_chunks": "16"
+          },
+          "C": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "182.05384933575988",
+            "policy_chunks": "50"
+          }
+        },
+        {
+          "repetition": "3",
+          "task": "4",
+          "init": "49",
+          "T": {
+            "success": "True",
+            "steps": "239",
+            "episode_sec": "74.62197515461594",
+            "policy_chunks": "16"
+          },
+          "C": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "181.26056308392435",
+            "policy_chunks": "50"
+          }
+        }
+      ]
+    },
+    "object": {
+      "arms": {
+        "T": {
+          "episode_sec": 817.3191114244983,
+          "steps": 2634.0,
+          "policy_chunks": 178.0,
+          "policy_server_seconds": 680.0128736682236,
+          "action_seconds": 475.49671044921877,
+          "policy_RPC_seconds": 680.596047940664,
+          "cache_RPC_seconds": 42.48212151788175,
+          "reset_RPC_seconds": 0.30889898259192705,
+          "commits": 8900.0,
+          "N": 20,
+          "successes": 20,
+          "non_RPC_residual": 93.93204298336059,
+          "policy_RPC_minus_native": 0.5831742724403739,
+          "policy_per_chunk": 3.820297043079908,
+          "action_per_update": 0.0534265966796875,
+          "mixed_nonaction_per_chunk": 1.148967209095533,
+          "seconds_per_success_including_failed_attempts": 40.865955571224916
+        },
+        "C": {
+          "episode_sec": 672.0426004882902,
+          "steps": 2746.0,
+          "policy_chunks": 184.0,
+          "policy_server_seconds": 524.1169396154583,
+          "action_seconds": 312.12502770996093,
+          "policy_RPC_seconds": 530.8370597092435,
+          "cache_RPC_seconds": 44.22869634628296,
+          "reset_RPC_seconds": 0.7118876772001386,
+          "commits": 9200.0,
+          "N": 20,
+          "successes": 20,
+          "non_RPC_residual": 96.26495675556362,
+          "policy_RPC_minus_native": 6.720120093785226,
+          "policy_per_chunk": 2.848461628344882,
+          "action_per_update": 0.03392663344673488,
+          "mixed_nonaction_per_chunk": 1.1521299560081375,
+          "seconds_per_success_including_failed_attempts": 33.60213002441451
+        },
+        "P": {
+          "episode_sec": 743.4942734353244,
+          "steps": 2800.0,
+          "policy_chunks": 188.0,
+          "policy_server_seconds": 590.627767031081,
+          "action_seconds": 374.46253430175784,
+          "policy_RPC_seconds": 599.7181029971689,
+          "cache_RPC_seconds": 45.22563041187823,
+          "reset_RPC_seconds": 0.773942363448441,
+          "commits": 9400.0,
+          "N": 20,
+          "successes": 20,
+          "non_RPC_residual": 97.77659766282886,
+          "policy_RPC_minus_native": 9.090335966087878,
+          "policy_per_chunk": 3.141637058675963,
+          "action_per_update": 0.03983643981933594,
+          "mixed_nonaction_per_chunk": 1.1498150677091659,
+          "seconds_per_success_including_failed_attempts": 37.17471367176622
+        }
+      },
+      "common_success": {
+        "T": {
+          "episode_sec": 817.3191114244983,
+          "steps": 2634.0,
+          "policy_chunks": 178.0,
+          "policy_server_seconds": 680.0128736682236,
+          "action_seconds": 475.49671044921877,
+          "policy_RPC_seconds": 680.596047940664,
+          "cache_RPC_seconds": 42.48212151788175,
+          "reset_RPC_seconds": 0.30889898259192705,
+          "commits": 8900.0,
+          "N": 20,
+          "successes": 20,
+          "non_RPC_residual": 93.93204298336059,
+          "policy_RPC_minus_native": 0.5831742724403739,
+          "policy_per_chunk": 3.820297043079908,
+          "action_per_update": 0.0534265966796875,
+          "mixed_nonaction_per_chunk": 1.148967209095533,
+          "seconds_per_success_including_failed_attempts": 40.865955571224916
+        },
+        "C": {
+          "episode_sec": 672.0426004882902,
+          "steps": 2746.0,
+          "policy_chunks": 184.0,
+          "policy_server_seconds": 524.1169396154583,
+          "action_seconds": 312.12502770996093,
+          "policy_RPC_seconds": 530.8370597092435,
+          "cache_RPC_seconds": 44.22869634628296,
+          "reset_RPC_seconds": 0.7118876772001386,
+          "commits": 9200.0,
+          "N": 20,
+          "successes": 20,
+          "non_RPC_residual": 96.26495675556362,
+          "policy_RPC_minus_native": 6.720120093785226,
+          "policy_per_chunk": 2.848461628344882,
+          "action_per_update": 0.03392663344673488,
+          "mixed_nonaction_per_chunk": 1.1521299560081375,
+          "seconds_per_success_including_failed_attempts": 33.60213002441451
+        }
+      },
+      "effects": {
+        "all_attempt_warm_speedup": 1.2161715802400823,
+        "common_success_warm_speedup": 1.2161715802400823,
+        "common_success_N": 20,
+        "per_policy_chunk_speedup": 1.3411790438264453,
+        "per_valid_update_speedup": 1.5747685889190195,
+        "C_to_T_chunk_ratio": 1.0337078651685394,
+        "C_to_T_actual_steps_ratio": 1.0425208807896735,
+        "T_action_fraction_of_native_policy": 0.6992466302648445,
+        "per_success_cost_speedup_including_failures": 1.2161715802400825
+      },
+      "discordant": []
+    },
+    "goal": {
+      "arms": {
+        "T": {
+          "episode_sec": 1285.8597833337262,
+          "steps": 4075.0,
+          "policy_chunks": 276.0,
+          "policy_server_seconds": 1071.4277240689844,
+          "action_seconds": 748.8960375976562,
+          "policy_RPC_seconds": 1072.3249923642725,
+          "cache_RPC_seconds": 66.8910968285054,
+          "reset_RPC_seconds": 0.4670314518734813,
+          "commits": 13800.0,
+          "N": 30,
+          "successes": 29,
+          "non_RPC_residual": 146.17666268907487,
+          "policy_RPC_minus_native": 0.8972682952880859,
+          "policy_per_chunk": 3.88198450749632,
+          "action_per_update": 0.05426782881142436,
+          "mixed_nonaction_per_chunk": 1.1685930669251021,
+          "seconds_per_success_including_failed_attempts": 44.33999252874918
+        },
+        "C": {
+          "episode_sec": 844.2102069379762,
+          "steps": 3278.0,
+          "policy_chunks": 227.0,
+          "policy_server_seconds": 648.8450800403953,
+          "action_seconds": 386.1316501464844,
+          "policy_RPC_seconds": 656.7322151781991,
+          "cache_RPC_seconds": 53.967755598947406,
+          "reset_RPC_seconds": 1.055881573818624,
+          "commits": 11350.0,
+          "N": 30,
+          "successes": 30,
+          "non_RPC_residual": 132.45435458701104,
+          "policy_RPC_minus_native": 7.887135137803853,
+          "policy_per_chunk": 2.8583483702220054,
+          "action_per_update": 0.03402040970453607,
+          "mixed_nonaction_per_chunk": 1.157327884995202,
+          "seconds_per_success_including_failed_attempts": 28.140340231265874
+        },
+        "P": {
+          "episode_sec": 1044.2223507808521,
+          "steps": 3836.0,
+          "policy_chunks": 260.0,
+          "policy_server_seconds": 830.1657079281285,
+          "action_seconds": 527.0533481445312,
+          "policy_RPC_seconds": 839.4362056767568,
+          "cache_RPC_seconds": 62.96308851521462,
+          "reset_RPC_seconds": 1.155906481668353,
+          "commits": 13000.0,
+          "N": 30,
+          "successes": 29,
+          "non_RPC_residual": 140.66715010721236,
+          "policy_RPC_minus_native": 9.270497748628259,
+          "policy_per_chunk": 3.192945030492802,
+          "action_per_update": 0.04054256524188702,
+          "mixed_nonaction_per_chunk": 1.165816768398451,
+          "seconds_per_success_including_failed_attempts": 36.00766726830525
+        }
+      },
+      "common_success": {
+        "T": {
+          "episode_sec": 1051.5735264979303,
+          "steps": 3279.0,
+          "policy_chunks": 226.0,
+          "policy_server_seconds": 867.1236518863589,
+          "action_seconds": 605.9773293457031,
+          "policy_RPC_seconds": 867.8547921469435,
+          "cache_RPC_seconds": 53.546175407245755,
+          "reset_RPC_seconds": 0.45077758841216564,
+          "commits": 11300.0,
+          "N": 29,
+          "successes": 29,
+          "non_RPC_residual": 129.72178135532886,
+          "policy_RPC_minus_native": 0.7311402605846524,
+          "policy_per_chunk": 3.8368303180812338,
+          "action_per_update": 0.053626312331478146,
+          "mixed_nonaction_per_chunk": 1.1555147015073264,
+          "seconds_per_success_including_failed_attempts": 36.26115608613553
+        },
+        "C": {
+          "episode_sec": 796.9930230975151,
+          "steps": 3079.0,
+          "policy_chunks": 214.0,
+          "policy_server_seconds": 611.2362430104986,
+          "action_seconds": 363.67367333984373,
+          "policy_RPC_seconds": 618.9172065733001,
+          "cache_RPC_seconds": 50.726923680864275,
+          "reset_RPC_seconds": 1.029776300303638,
+          "commits": 10700.0,
+          "N": 29,
+          "successes": 29,
+          "non_RPC_residual": 126.31911654304713,
+          "policy_RPC_minus_native": 7.68096356280148,
+          "policy_per_chunk": 2.856244126217283,
+          "action_per_update": 0.033988193770078855,
+          "mixed_nonaction_per_chunk": 1.1568344377133404,
+          "seconds_per_success_including_failed_attempts": 27.48251803784535
+        }
+      },
+      "effects": {
+        "all_attempt_warm_speedup": 1.523151192399878,
+        "common_success_warm_speedup": 1.3194262634959935,
+        "common_success_N": 29,
+        "per_policy_chunk_speedup": 1.3581215459733518,
+        "per_valid_update_speedup": 1.5951550637612877,
+        "C_to_T_chunk_ratio": 0.822463768115942,
+        "C_to_T_actual_steps_ratio": 0.8044171779141104,
+        "T_action_fraction_of_native_policy": 0.6989701878849629,
+        "per_success_cost_speedup_including_failures": 1.5756736473102186
+      },
+      "discordant": [
+        {
+          "repetition": "3",
+          "task": "3",
+          "init": "49",
+          "T": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "234.28625683579594",
+            "policy_chunks": "50"
+          },
+          "C": {
+            "success": "True",
+            "steps": "199",
+            "episode_sec": "47.217183840461075",
+            "policy_chunks": "13"
+          }
+        }
+      ]
+    },
+    "spatial": {
+      "arms": {
+        "T": {
+          "episode_sec": 1936.0185918640345,
+          "steps": 6089.0,
+          "policy_chunks": 404.0,
+          "policy_server_seconds": 1599.7032404150814,
+          "action_seconds": 1119.8129631347656,
+          "policy_RPC_seconds": 1601.0337224528193,
+          "cache_RPC_seconds": 102.04541709460318,
+          "reset_RPC_seconds": 0.45710350573062897,
+          "commits": 20200.0,
+          "N": 30,
+          "successes": 26,
+          "non_RPC_residual": 232.48234881088138,
+          "policy_RPC_minus_native": 1.3304820377379656,
+          "policy_per_chunk": 3.959661486175944,
+          "action_per_update": 0.05543628530370127,
+          "mixed_nonaction_per_chunk": 1.1878472209908806,
+          "seconds_per_success_including_failed_attempts": 74.4622535332321
+        },
+        "C": {
+          "episode_sec": 1362.0705537376925,
+          "steps": 5297.0,
+          "policy_chunks": 351.0,
+          "policy_server_seconds": 1046.6511790826917,
+          "action_seconds": 629.8791025390625,
+          "policy_RPC_seconds": 1055.9563864180818,
+          "cache_RPC_seconds": 87.91622418351471,
+          "reset_RPC_seconds": 1.1089086849242449,
+          "commits": 17550.0,
+          "N": 30,
+          "successes": 27,
+          "non_RPC_residual": 217.08903445117176,
+          "policy_RPC_minus_native": 9.30520733539015,
+          "policy_per_chunk": 2.98191219111878,
+          "action_per_update": 0.035890547153222936,
+          "mixed_nonaction_per_chunk": 1.187384833457633,
+          "seconds_per_success_including_failed_attempts": 50.447057545840465
+        },
+        "P": {
+          "episode_sec": 1466.026912649162,
+          "steps": 5259.0,
+          "policy_chunks": 352.0,
+          "policy_server_seconds": 1149.4691377310082,
+          "action_seconds": 732.9571813964844,
+          "policy_RPC_seconds": 1160.4656038964167,
+          "cache_RPC_seconds": 87.94917578622699,
+          "reset_RPC_seconds": 1.1658878745511174,
+          "commits": 17600.0,
+          "N": 30,
+          "successes": 27,
+          "non_RPC_residual": 216.44624509196728,
+          "policy_RPC_minus_native": 10.996466165408492,
+          "policy_per_chunk": 3.2655373230994553,
+          "action_per_update": 0.041645294397527524,
+          "mixed_nonaction_per_chunk": 1.183272603223079,
+          "seconds_per_success_including_failed_attempts": 54.297293061080076
+        }
+      },
+      "common_success": {
+        "T": {
+          "episode_sec": 820.3756244527176,
+          "steps": 2420.0,
+          "policy_chunks": 171.0,
+          "policy_server_seconds": 652.0853513320908,
+          "action_seconds": 455.8538828125,
+          "policy_RPC_seconds": 652.6435285853222,
+          "cache_RPC_seconds": 40.19882654584944,
+          "reset_RPC_seconds": 0.3507368294522166,
+          "commits": 8550.0,
+          "N": 23,
+          "successes": 23,
+          "non_RPC_residual": 127.18253249209374,
+          "policy_RPC_minus_native": 0.5581772532314062,
+          "policy_per_chunk": 3.8133646276730455,
+          "action_per_update": 0.05331624360380117,
+          "mixed_nonaction_per_chunk": 1.1475524474829872,
+          "seconds_per_success_including_failed_attempts": 35.66850541098772
+        },
+        "C": {
+          "episode_sec": 654.6871851403266,
+          "steps": 2417.0,
+          "policy_chunks": 168.0,
+          "policy_server_seconds": 480.64392743911594,
+          "action_seconds": 286.6705882568359,
+          "policy_RPC_seconds": 487.11632871162146,
+          "cache_RPC_seconds": 39.57261637598276,
+          "reset_RPC_seconds": 0.8509860476478934,
+          "commits": 8400.0,
+          "N": 23,
+          "successes": 23,
+          "non_RPC_residual": 127.1472540050745,
+          "policy_RPC_minus_native": 6.472401272505522,
+          "policy_per_chunk": 2.860975758566166,
+          "action_per_update": 0.03412745098295666,
+          "mixed_nonaction_per_chunk": 1.1546032094183336,
+          "seconds_per_success_including_failed_attempts": 28.464660223492462
+        }
+      },
+      "effects": {
+        "all_attempt_warm_speedup": 1.4213790809524196,
+        "common_success_warm_speedup": 1.2530803154133483,
+        "common_success_N": 23,
+        "per_policy_chunk_speedup": 1.327893389338981,
+        "per_valid_update_speedup": 1.544592927687455,
+        "C_to_T_chunk_ratio": 0.8688118811881188,
+        "C_to_T_actual_steps_ratio": 0.8699293808507144,
+        "T_action_fraction_of_native_policy": 0.7000129366770572,
+        "per_success_cost_speedup_including_failures": 1.4760475071428971
+      },
+      "discordant": [
+        {
+          "repetition": "1",
+          "task": "2",
+          "init": "49",
+          "T": {
+            "success": "True",
+            "steps": "158",
+            "episode_sec": "51.63388415798545",
+            "policy_chunks": "11"
+          },
+          "C": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "190.76371712889522",
+            "policy_chunks": "50"
+          }
+        },
+        {
+          "repetition": "1",
+          "task": "4",
+          "init": "49",
+          "T": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "241.19992222171277",
+            "policy_chunks": "50"
+          },
+          "C": {
+            "success": "True",
+            "steps": "126",
+            "episode_sec": "34.62668044120073",
+            "policy_chunks": "9"
+          }
+        },
+        {
+          "repetition": "1",
+          "task": "9",
+          "init": "49",
+          "T": {
+            "success": "True",
+            "steps": "118",
+            "episode_sec": "38.66727108322084",
+            "policy_chunks": "8"
+          },
+          "C": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "193.47285152506083",
+            "policy_chunks": "50"
+          }
+        },
+        {
+          "repetition": "2",
+          "task": "4",
+          "init": "49",
+          "T": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "241.51460564602166",
+            "policy_chunks": "50"
+          },
+          "C": {
+            "success": "True",
+            "steps": "134",
+            "episode_sec": "34.7550931237638",
+            "policy_chunks": "9"
+          }
+        },
+        {
+          "repetition": "2",
+          "task": "9",
+          "init": "49",
+          "T": {
+            "success": "True",
+            "steps": "209",
+            "episode_sec": "66.9672730108723",
+            "policy_chunks": "14"
+          },
+          "C": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "195.71657043136656",
+            "policy_chunks": "50"
+          }
+        },
+        {
+          "repetition": "3",
+          "task": "2",
+          "init": "49",
+          "T": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "236.8904726812616",
+            "policy_chunks": "50"
+          },
+          "C": {
+            "success": "True",
+            "steps": "108",
+            "episode_sec": "26.87313810456544",
+            "policy_chunks": "7"
+          }
+        },
+        {
+          "repetition": "3",
+          "task": "4",
+          "init": "49",
+          "T": {
+            "success": "False",
+            "steps": "796",
+            "episode_sec": "238.7695386102423",
+            "policy_chunks": "50"
+          },
+          "C": {
+            "success": "True",
+            "steps": "124",
+            "episode_sec": "31.175317842513323",
+            "policy_chunks": "8"
+          }
+        }
+      ]
+    }
+  }
+}

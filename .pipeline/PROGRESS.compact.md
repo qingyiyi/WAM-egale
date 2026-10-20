@@ -39,3 +39,5 @@ engineering_quality_screen=false；independent_test_complete=false；noninferior
 baseline及依赖冻结，仅optimized变化；投机源/配置/运行依赖、原tile/HW、state/cycle/rules保护，不建缺失cycle.yaml、不升级/旧sync。BAAI仅~/cxz；AutoDL不再SSH/关机UNKNOWN。用户允许性能统一远端，替代旧地点限制；不杀他人/改服务/时钟。无自动新训练/120/独立TEST/旧45chunk/第二环境/30层大融合。
 
 M17原10/21 16:56:31停新、17:11:31清理、18723000尝试/15GiB不重置。只main公开审查源码/HW/小证据，无权重/PT/KV/DSO/凭据。10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文包；正文由用户飞书整理。官方注册/正文/补充北京11/11、11/17、11/24各19:59，未单列abstract截止，作者profile UNKNOWN。[日期与三情形](experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。旧方案见Cycle history，不由历史“下一步”重启任务。
+
+M37（2026-10-20T09:33:50.273752+08:00）已完成：Long全尝试1.107×/共同成功1.344×，同一失败case三重复拉长；Object1.216×受不变非action开销与多3.4%chunk影响。成本完整保留。远端唯一几何匹配CUTLASS Q/FFN2四项原逐位FAIL；4block/12原语/8heuristic，185.698秒，owned退出；异步整层集成未触发。见experiments/device-contract-20261020/RESULT.md和TASK-COST-DIAGNOSIS.md。旧四false/FAILED与M34/M35终态不变，无GPU排队。
