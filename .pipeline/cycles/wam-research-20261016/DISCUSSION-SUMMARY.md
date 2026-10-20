@@ -1,6 +1,8 @@
 # 当前讨论与授权
 
-最新用户要求现在直接实现：整个单层Transformer在一个persistent kernel内，把全部算子切tile交给职责不同的warp，借鉴MegaMoE；明早汇报实测速度、精度与问题。只一层，不做30层大融合。baseline及共享依赖冻结，仅修改optimized；投机代码/配置与原tile不改。
+最新用户要求先规划：远端一张GPU迁移投机侧到RoboTwin测试，同时规划算子下一步。[详细计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)已交付，建议GPU1迁移、GPU0算子，尚未执行新作业；具体预算不是执行授权。[范围记忆](../../memory/global/requirements/decision-单卡规划RoboTwin迁移并行推进算子.md)替代仅泛泛调研的建议，原安装/训练边界保留。
+
+此前已明确算子目标：整个单层Transformer在一个persistent kernel内，把全部算子切tile交给职责不同的warp，借鉴MegaMoE。只一层，不做30层大融合。baseline及共享依赖冻结，仅修改optimized；投机代码/配置与原tile不改。
 
 用户允许四套LIBERO速度统一远端测，替代旧“最终E2E必须本机”的地点条款；每卡计时单worker且无观察到争用，M34 GPU验证等对应计时卡清理，CPU实现可并行。本机可用自然空闲窗口先核对精度；不杀他人。AutoDL已归还不再连接，BAAI所有写入限~/cxz。
 

@@ -97,6 +97,8 @@
 
 ## 必须读取：约束级
 
+- [单卡规划RoboTwin与算子并行](global/requirements/decision-单卡规划RoboTwin迁移并行推进算子.md)（constraint，当前Cycle规划）：用户要求远端一张GPU迁移方案及算子下一步；具体GPU编号/预算是建议，本轮不等于启动第二环境。
+
 - [少步数Target强对照与投机理由](global/requirements/requirement-投机须与少步数Target比较质量成本.md)：论文加入直接减少action步数的质量—成本对照；推荐25/17对原50，不预设投机获胜，新增执行另登记。
 
 - [新BAAI服务器仅在~/cxz内工作](global/rules/requirement-新BAAI服务器仅在用户主目录cxz内工作.md)：该主机所有项目文件、环境、缓存与临时文件都限此目录；迁移与原授权接续已批准，仍不准越界写入。

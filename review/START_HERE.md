@@ -1,5 +1,8 @@
 # 当前入口
 
+<!-- robotwin-operator-plan-20261020 -->
+新增[单卡RoboTwin与算子并行计划](../.pipeline/cycles/wam-research-20261016/ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)：仅规划、未启动，建议GPU1迁移/GPU0算子；阶段、预算、止损及来源见该文。历史质量门不变。
+
 <!-- fa2-current-entry -->
 最新[内部FA2、整层误差与RoboTwin评估](CURRENT-20261020.md)在顶部。attention局部通过，完整block和四项质量权限未放行。
 

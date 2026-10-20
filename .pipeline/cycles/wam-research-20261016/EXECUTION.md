@@ -1,5 +1,9 @@
 # 当前Execution checkpoint
 
+## 2026-10-20：单卡RoboTwin迁移与算子下一步规划
+
+完成只读资源/源码/官方资料核查及[唯一详细计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)。12:03北京两卡空闲；现有va环境无SAPIEN/mplib发行包，系统Vulkan兼容性未知。计划区分84采集、90三臂DEV及算子数值→原语→就绪流水；预算与时间为建议。已保存用户规划范围记忆，未执行GPU/安装/下载/训练，不重置旧账本或更改四false。
+
 ## 2026-10-20T11:30:55.620554+08:00：自有整层内部FA2交付与误差定位
 
 [内部FA2结果](../../experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：直接修改optimized，在整层单kernel内接入固定FA2 self/cross、split-KV/combine。9真实签名、18同输入attention全部逐位PASS；9重复/输入/RNG/参数、18相对旧async的有效KV转移和18单kernel trace通过。完整hidden仍9/9逐位FAIL，相对L2 0.133%–0.563%，最大0.5–1.5；同输入Q/FFN2独立误差和video短/中Norm2的12/8元素差异已定位，长video首次差异仅FFN2。

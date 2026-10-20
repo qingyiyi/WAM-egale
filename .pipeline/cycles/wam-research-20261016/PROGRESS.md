@@ -3,11 +3,13 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-20T11:30:55.620554+08:00'
+updated: '2026-10-20T12:09:06+08:00'
 current: M39
 next: null
 ---
 # 当前研究进度
+
+2026-10-20 12:03北京资源核查：两张远端A100均空、无compute进程。本轮完成[单卡RoboTwin与算子并行计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)，未安装/下载/启动。新建议与原执行终态分开；预算/里程碑见该唯一计划，不复制为新实验结果。
 
 更新：2026-10-20T11:30:55.620554+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
 

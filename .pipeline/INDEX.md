@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-20T11:30:55.620554+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-20T12:09:06+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -17,6 +17,8 @@
 当前算子：[M34整层单kernel实际结果](experiments/single-layer-warp-specialized-20261019/RESULT.md)和[有界阶段诊断](experiments/single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)已完成，结构成立、原精度/速度NO-GO、600调用后清理；不是已准入实现。M35同卡工程计时终态见[当前结果](experiments/libero-four-suite-performance-20261019/ISOLATED-RESULT.md)，Object首轮实施失败不重跑，原面板最多330/360。旧四false/FAILED保留。
 
 ## 两条研究路线
+
+用户最新要求的[单卡RoboTwin迁移＋算子并行计划](cycles/wam-research-20261016/ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)已完成，仅规划、未启动。资源、训练谱系、有限DEV与算子止损统一在该计划，不复制成实验结果。
 
 | 路线 | 当前结论 | 证据入口 |
 |---|---|---|

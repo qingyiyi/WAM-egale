@@ -1,6 +1,6 @@
 # 当前短入口
 
-更新：2026-10-20T11:30:55.620554+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先[约束记忆](memory/INDEX.md)，再读当前四文；原长记录/trace按需，不展开全部旧索引。
+更新：2026-10-20T12:09:06+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先[约束记忆](memory/INDEX.md)，再读当前四文；原长记录/trace按需，不展开全部旧索引。
 
 ## 已观察结果
 
@@ -27,6 +27,8 @@ D3072/H24/d128/FFN14336，action Q16、GEMM M32→224已有实际aten::addmm证�
 M31静态子图、M32阶段内persistent、M33退化profile旧结果保留；M32新增persistent更慢，M33调216 CTA仍无正收益，NCU权限失败/硬件计数UNKNOWN，不借旧有限精度给新算术签证。[主张矩阵](experiments/single-layer-warp-specialized-20261019/CLAIM-EVIDENCE-MATRIX.md)：H1有限支持；H2同冻结7-query对照缺；H3无新增调度正收益；H4质量约束闭环证据未完成。
 
 ## 下一步与范围
+
+最新用户要求的[两卡并行计划](cycles/wam-research-20261016/ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)已完成：建议GPU1跑RoboTwin 6任务迁移（84采集＋90三臂DEV，≤24GPU生命周期h），GPU0做数值/原语/就绪流水（初始≤8h）。12:03北京两卡空；本轮只规划，未安装/下载/启动，未增加正式性能或质量权限。
 
 先[内部FA2](memory/global/requirements/decision-先在自有整层算子内接入FA2.md)已完成有限核验；后续直接在optimized处理FFN2/Q/Norm2数值与短Q资源压力，再考虑跨阶段ready调度。沿现有记录，不另建实验登记；后继未启动。原[M38慢点](experiments/whole-layer-bottleneck-20261020/RESULT.md)与M39双缓冲保留。
 

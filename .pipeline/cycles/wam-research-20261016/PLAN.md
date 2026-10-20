@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-20T11:30:55.620554+08:00'
+updated: '2026-10-20T12:09:06+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
@@ -45,3 +45,5 @@ steps:
 | `M39` | completed | [内部FA2](../../experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：18同输入attention通过、整层9逐位FAIL；216计时/387block、owned清理。旧M39资源FAILED保留 |
 
 当前直接迭代四项已完成：内部FA2实现/有限核验、误差定位、RoboTwin只读复核、资源清理与证据更新。下一建议优先FFN2/Q/Norm2数值，尚未启动该后继作业；不自动扩大机器人/训练/TEST或第二环境。
+
+2026-10-20新增[两卡并行规划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)，状态PLAN_READY_NOT_STARTED：建议GPU1负责6任务RoboTwin迁移（84采集＋90三臂DEV，GPU≤24h），GPU0负责数值→原语效率→tile就绪流水（初始GPU≤8h）。这是方案和估时，不是已启动/已获新预算；未新增实验ID，原门不变。
