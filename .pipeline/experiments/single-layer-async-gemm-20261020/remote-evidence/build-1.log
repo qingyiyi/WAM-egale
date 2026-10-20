@@ -1,0 +1,118 @@
+W1020 10:31:33.705000 639723 site-packages/torch/utils/cpp_extension.py:117] No CUDA runtime is found, using CUDA_HOME='/root/cxz/ops/persistent-tile-20261019/cuda-12.4'
+/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/extension.py:150: UserWarning: Unknown Extension options: 'dlink', 'dlink_libraries'
+  warnings.warn(msg)
+running build_ext
+W1020 10:31:33.743000 639723 site-packages/torch/utils/cpp_extension.py:521] The detected CUDA version (12.4) has a minor version mismatch with the version that was used to compile PyTorch (12.6). Most likely this shouldn't be a problem.
+W1020 10:31:33.744000 639723 site-packages/torch/utils/cpp_extension.py:531] There are no g++ version bounds defined for CUDA version 12.4
+building 'wam_whole_pipeline_sync' extension
+creating /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated
+[1/2] /root/cxz/ops/persistent-tile-20261019/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/sync.o.d '-I/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc' -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/cxz/ops/persistent-tile-20261019/cuda-12.4/include -I/root/cxz/envs/va/include/python3.12 -c -c /root/cxz/ops/single-layer-async-gemm-20261020/generated/sync.cu -o /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/sync.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_pipeline_sync -gencode=arch=compute_80,code=sm_80 -std=c++17
+ptxas info    : 19 bytes gmem
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v114attention_tileERKNS_6ParamsERNS_6SharedEbi
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v17self_kvERKNS_6ParamsEbiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v19norm_tileERNS_6SharedEPK13__nv_bfloat16PvPKvPKffbbi
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v19gemm_tileERNS_6SharedEPK13__nv_bfloat16S4_S4_PS2_iiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v14doneERKNS_6ParamsEi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v15claimERKNS_6ParamsERNS_6SharedEii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v15beginERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEii
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v19attentionERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v112insert_cacheERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi
+    72 bytes stack frame, 72 bytes spill stores, 72 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v16linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16iPS9_iii
+    32 bytes stack frame, 28 bytes spill stores, 28 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v14normERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16Pviiifbb
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v15pointERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiNS_5PointEiiiil
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v16layoutERKNS_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN26wam_whole_pipeline_sync_v111whole_layerENS_6ParamsE' for 'sm_80'
+ptxas info    : Function properties for _ZN26wam_whole_pipeline_sync_v111whole_layerENS_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 174 registers, 992 bytes cmem[0]
+[2/2] /root/cxz/ops/persistent-tile-20261019/cuda-12.4/bin/nvcc /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/sync.o -o /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/dlink.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -dlink -L/root/cxz/envs/va/lib/python3.12/site-packages/torch/lib -L/root/cxz/ops/persistent-tile-20261019/cuda-12.4/lib64 -lcudadevrt -dlto -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_pipeline_sync -gencode=arch=compute_80,code=sm_80
+nvlink info    : requested LTO but '/root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/sync.o' not built for LTO so doing partial LTO
+nvlink warning : Ignoring -dlto option because no LTO objects found
+g++ -pthread -B /rjs/cxz/miniconda3/envs/va/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /rjs/cxz/miniconda3/envs/va/include -fPIC -O2 -isystem /rjs/cxz/miniconda3/envs/va/include -shared -Wl,-rpath,/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath-link,/rjs/cxz/miniconda3/envs/va/lib -L/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath,/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath-link,/rjs/cxz/miniconda3/envs/va/lib -L/rjs/cxz/miniconda3/envs/va/lib /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/sync.o /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/dlink.o -L/root/cxz/envs/va/lib/python3.12/site-packages/torch/lib -L/root/cxz/ops/persistent-tile-20261019/cuda-12.4/lib64 -lc10 -ltorch -ltorch_cpu -ltorch_python -lcudart -lc10_cuda -ltorch_cuda -o /root/cxz/ops/single-layer-async-gemm-20261020/wam_whole_pipeline_sync.cpython-312-x86_64-linux-gnu.so
+building 'wam_whole_pipeline_async' extension
+[1/2] /root/cxz/ops/persistent-tile-20261019/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/async.o.d '-I/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc' -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/cxz/ops/persistent-tile-20261019/cuda-12.4/include -I/root/cxz/envs/va/include/python3.12 -c -c /root/cxz/ops/single-layer-async-gemm-20261020/generated/async.cu -o /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/async.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_pipeline_async -gencode=arch=compute_80,code=sm_80 -std=c++17
+ptxas info    : 19 bytes gmem
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v114attention_tileERKNS_6ParamsERNS_6SharedEbi
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v17self_kvERKNS_6ParamsEbiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v19norm_tileERNS_6SharedEPK13__nv_bfloat16PvPKvPKffbbi
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v19gemm_tileERNS_6SharedEPK13__nv_bfloat16S4_S4_PS2_iiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v14doneERKNS_6ParamsEi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v15claimERKNS_6ParamsERNS_6SharedEii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v15beginERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEii
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v19attentionERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v112insert_cacheERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi
+    72 bytes stack frame, 72 bytes spill stores, 72 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v16linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16iPS9_iii
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v14normERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16Pviiifbb
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v15pointERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiNS_5PointEiiiil
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v16layoutERKNS_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN27wam_whole_pipeline_async_v111whole_layerENS_6ParamsE' for 'sm_80'
+ptxas info    : Function properties for _ZN27wam_whole_pipeline_async_v111whole_layerENS_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 172 registers, 992 bytes cmem[0]
+[2/2] /root/cxz/ops/persistent-tile-20261019/cuda-12.4/bin/nvcc /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/async.o -o /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/dlink.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -dlink -L/root/cxz/envs/va/lib/python3.12/site-packages/torch/lib -L/root/cxz/ops/persistent-tile-20261019/cuda-12.4/lib64 -lcudadevrt -dlto -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_pipeline_async -gencode=arch=compute_80,code=sm_80
+nvlink info    : requested LTO but '/root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/async.o' not built for LTO so doing partial LTO
+nvlink warning : Ignoring -dlto option because no LTO objects found
+g++ -pthread -B /rjs/cxz/miniconda3/envs/va/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /rjs/cxz/miniconda3/envs/va/include -fPIC -O2 -isystem /rjs/cxz/miniconda3/envs/va/include -shared -Wl,-rpath,/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath-link,/rjs/cxz/miniconda3/envs/va/lib -L/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath,/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath-link,/rjs/cxz/miniconda3/envs/va/lib -L/rjs/cxz/miniconda3/envs/va/lib /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/async.o /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/dlink.o -L/root/cxz/envs/va/lib/python3.12/site-packages/torch/lib -L/root/cxz/ops/persistent-tile-20261019/cuda-12.4/lib64 -lc10 -ltorch -ltorch_cpu -ltorch_python -lcudart -lc10_cuda -ltorch_cuda -o /root/cxz/ops/single-layer-async-gemm-20261020/wam_whole_pipeline_async.cpython-312-x86_64-linux-gnu.so
+building 'wam_whole_pipeline_profile' extension
+[1/2] /root/cxz/ops/persistent-tile-20261019/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/profile.o.d '-I/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc' -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/cxz/ops/persistent-tile-20261019/cuda-12.4/include -I/root/cxz/envs/va/include/python3.12 -c -c /root/cxz/ops/single-layer-async-gemm-20261020/generated/profile.cu -o /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/profile.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_pipeline_profile -gencode=arch=compute_80,code=sm_80 -std=c++17
+ptxas info    : 19 bytes gmem
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v114attention_tileERKNS_6ParamsERNS_6SharedEbi
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v17self_kvERKNS_6ParamsEbiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v19norm_tileERNS_6SharedEPK13__nv_bfloat16PvPKvPKffbbi
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v19gemm_tileERNS_6SharedEPK13__nv_bfloat16S4_S4_PS2_iiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v14doneERKNS_6ParamsEi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v15claimERKNS_6ParamsERNS_6SharedEii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v15beginERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEii
+    40 bytes stack frame, 36 bytes spill stores, 36 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v19attentionERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v112insert_cacheERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi
+    80 bytes stack frame, 76 bytes spill stores, 76 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v16linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16iPS9_iii
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v14normERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16Pviiifbb
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v15pointERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiNS_5PointEiiiil
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v16layoutERKNS_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compiling entry function '_ZN29wam_whole_pipeline_profile_v111whole_layerENS_6ParamsE' for 'sm_80'
+ptxas info    : Function properties for _ZN29wam_whole_pipeline_profile_v111whole_layerENS_6ParamsE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 180 registers, 1000 bytes cmem[0]
+[2/2] /root/cxz/ops/persistent-tile-20261019/cuda-12.4/bin/nvcc /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/profile.o -o /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/dlink.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -dlink -L/root/cxz/envs/va/lib/python3.12/site-packages/torch/lib -L/root/cxz/ops/persistent-tile-20261019/cuda-12.4/lib64 -lcudadevrt -dlto -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_pipeline_profile -gencode=arch=compute_80,code=sm_80
+nvlink info    : requested LTO but '/root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/profile.o' not built for LTO so doing partial LTO
+nvlink warning : Ignoring -dlto option because no LTO objects found
+g++ -pthread -B /rjs/cxz/miniconda3/envs/va/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /rjs/cxz/miniconda3/envs/va/include -fPIC -O2 -isystem /rjs/cxz/miniconda3/envs/va/include -shared -Wl,-rpath,/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath-link,/rjs/cxz/miniconda3/envs/va/lib -L/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath,/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath-link,/rjs/cxz/miniconda3/envs/va/lib -L/rjs/cxz/miniconda3/envs/va/lib /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/profile.o /root/cxz/ops/single-layer-async-gemm-20261020/build/root/cxz/ops/single-layer-async-gemm-20261020/generated/dlink.o -L/root/cxz/envs/va/lib/python3.12/site-packages/torch/lib -L/root/cxz/ops/persistent-tile-20261019/cuda-12.4/lib64 -lc10 -ltorch -ltorch_cpu -ltorch_python -lcudart -lc10_cuda -ltorch_cuda -o /root/cxz/ops/single-layer-async-gemm-20261020/wam_whole_pipeline_profile.cpython-312-x86_64-linux-gnu.so

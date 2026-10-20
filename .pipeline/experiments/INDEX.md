@@ -1,5 +1,7 @@
 # 当前研究实验
 
+- [M39单层双缓冲](single-layer-async-gemm-20261020/RESULT.md)：9点/18状态、两进程432样本，相对旧原型下降17.9%–36.3%，原Torch门仍FAIL；资源字段240/900不一致保留，已清理。后续沿已有记录直接改optimized，不另建登记。
+
 - [M34整层单kernel](single-layer-warp-specialized-20261019/RESULT.md)：9签名各1计算kernel，原数值FAIL，耗时为native的5.12–11.28倍；[唯一布局诊断](single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)后600调用收口，未准入。
 - [M35四套工程计时](libero-four-suite-performance-20261019/ISOLATED-RESULT.md)：360原上限，Object首轮CPU白名单失败、0局不重试，最多330；新重复不作独立质量N。[6000完整质量与原门](libero-four-suite-performance-20261019/QUALITY-RESULT.md)。
 - [M36 RoboTwin只读调研](robotwin-migration-survey-20261019/RESULT.md)：官方权重/50任务/seed与迁移接口；0新环境实验。
@@ -27,3 +29,5 @@
 - [M37设备数值契约与成本归因](device-contract-20261020/PLAN.md)：最新继续授权；旧M34/M35已关闭。
 
 - [M38整层算子退化profile](whole-layer-bottleneck-20261020/RESULT.md)：有界完成；GEMM/attention慢点及静态队列反事实，原未准入实现保持。
+
+- [M39单层GEMM异步流水](single-layer-async-gemm-20261020/PLAN.md)：一条路线与同步LD40对照，新预算。

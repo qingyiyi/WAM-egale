@@ -1,0 +1,1335 @@
+{
+  "status": "COMPLETE_ASYNC_GEMM_RESEARCH_UNADMITTED",
+  "rows": [
+    {
+      "case": "short-B2-action",
+      "native": 1.4796800017356873,
+      "whole": 7.567359924316406,
+      "sync": 6.671871900558472,
+      "async": 4.932096004486084,
+      "whole_to_async": 1.5343091289044997,
+      "async_latency_reduction": 0.3482408589239103,
+      "sync_to_async": 1.3527457483572787,
+      "async_over_native": 3.3332179922014626,
+      "by_process": [
+        {
+          "process": 1,
+          "native": 1.4807040095329285,
+          "whole": 7.565312147140503,
+          "sync": 6.672384023666382,
+          "async": 4.92902398109436,
+          "whole_to_async_speedup": 1.5348499370580915,
+          "sync_to_async_speedup": 1.3536927491647046
+        },
+        {
+          "process": 2,
+          "native": 1.4791679978370667,
+          "whole": 7.567359924316406,
+          "sync": 6.671871900558472,
+          "async": 4.93670392036438,
+          "whole_to_async_speedup": 1.532877005870317,
+          "sync_to_async_speedup": 1.3514830964515325
+        }
+      ],
+      "paired": {
+        "whole": {
+          "values": [
+            1.5265989840082803,
+            1.5320872050594316,
+            1.5301777001183692,
+            1.5224439166992705,
+            1.5413282874251868,
+            1.5392136785652635,
+            1.34365274820775,
+            1.5372451531401714,
+            1.5295218616848458,
+            1.532151597889015,
+            1.534246595202123,
+            1.5366915325034767
+          ],
+          "median": 1.5321194014742234,
+          "min": 1.34365274820775,
+          "max": 1.5413282874251868
+        },
+        "sync": {
+          "values": [
+            1.4765058421162516,
+            1.3545170691211545,
+            1.3455973833647463,
+            1.3618038317576944,
+            1.3554029119003363,
+            1.3519866503328408,
+            1.1912438274714234,
+            1.3566375533073676,
+            1.3563409709531904,
+            1.338004917851382,
+            1.3588625841051185,
+            1.3497097966776457
+          ],
+          "median": 1.3549599905107454,
+          "min": 1.1912438274714234,
+          "max": 1.4765058421162516
+        },
+        "native": {
+          "values": [
+            0.2999378813077534,
+            0.3011422530887898,
+            0.2970235600738667,
+            0.29987533012163803,
+            0.30855714903992143,
+            0.2989390439984524,
+            0.26415095546720396,
+            0.3000416343452246,
+            0.30083160235119266,
+            0.3066776565414132,
+            0.3026152081616179,
+            0.29747097846113807
+          ],
+          "median": 0.29998975782648896,
+          "min": 0.26415095546720396,
+          "max": 0.30855714903992143
+        }
+      },
+      "profile_kernel_ms": {
+        "old_profile": 6.774784,
+        "profile": 4.295338666666667
+      },
+      "profile_GEMM_ms": {
+        "old_profile": 5.435733333333333,
+        "profile": 2.940928
+      },
+      "profile_GEMM_speedup": 1.84830547818013,
+      "native_bitwise": true,
+      "Torch_bitwise": false,
+      "matches_failed_whole": true,
+      "cache_transitions_pass": true,
+      "resources": {
+        "sync": [
+          108,
+          1,
+          59616,
+          174,
+          0,
+          256
+        ],
+        "async": [
+          108,
+          1,
+          59616,
+          172,
+          0,
+          256
+        ],
+        "profile": [
+          108,
+          1,
+          59616,
+          180,
+          0,
+          256
+        ]
+      }
+    },
+    {
+      "case": "middle-B2-action",
+      "native": 1.6289439797401428,
+      "whole": 8.636591911315918,
+      "sync": 7.740128040313721,
+      "async": 5.998767852783203,
+      "whole_to_async": 1.4397276446210305,
+      "async_latency_reduction": 0.3054241864868664,
+      "sync_to_async": 1.2902863105000124,
+      "async_over_native": 3.68261151236162,
+      "by_process": [
+        {
+          "process": 1,
+          "native": 1.631231963634491,
+          "whole": 8.63921594619751,
+          "sync": 7.736624002456665,
+          "async": 5.994495868682861,
+          "whole_to_async_speedup": 1.4411914088274713,
+          "sync_to_async_speedup": 1.2906212919213491
+        },
+        {
+          "process": 2,
+          "native": 1.6283040046691895,
+          "whole": 8.63049602508545,
+          "sync": 7.742143869400024,
+          "async": 6.004895925521851,
+          "whole_to_async_speedup": 1.4372432315445038,
+          "sync_to_async_speedup": 1.2893052544831907
+        }
+      ],
+      "paired": {
+        "whole": {
+          "values": [
+            1.4385350014302458,
+            1.432752939829695,
+            1.4388834392595113,
+            1.4282640946486673,
+            1.4465223697321261,
+            1.4462359629132446,
+            1.4351384129787683,
+            1.4443156787487206,
+            1.4378287237710767,
+            1.439074502252981,
+            1.4465082035662336,
+            1.4384537540049904
+          ],
+          "median": 1.4387092203448786,
+          "min": 1.4282640946486673,
+          "max": 1.4465223697321261
+        },
+        "sync": {
+          "values": [
+            1.295109754530645,
+            1.2833556026442359,
+            1.2801691005696532,
+            1.2910055355102714,
+            1.28902387544586,
+            1.2902369703838332,
+            1.2825612381769644,
+            1.2990173776108542,
+            1.2869106815508953,
+            1.2810478926144837,
+            1.2933989975381879,
+            1.2897406006719314
+          ],
+          "median": 1.2893822380588957,
+          "min": 1.2801691005696532,
+          "max": 1.2990173776108542
+        },
+        "native": {
+          "values": [
+            0.27333132623645756,
+            0.2700441388520325,
+            0.273265250303225,
+            0.2707969779467231,
+            0.27209936585696276,
+            0.2725603125959122,
+            0.2708146920049877,
+            0.2723545213993418,
+            0.2702407639963879,
+            0.27220924314044237,
+            0.2712552519044369,
+            0.27176305593937844
+          ],
+          "median": 0.2719312108981706,
+          "min": 0.2700441388520325,
+          "max": 0.27333132623645756
+        }
+      },
+      "profile_kernel_ms": {
+        "old_profile": 7.7568,
+        "profile": 5.270869333333333
+      },
+      "profile_GEMM_ms": {
+        "old_profile": 5.405696,
+        "profile": 2.9293226666666663
+      },
+      "profile_GEMM_speedup": 1.8453740386856212,
+      "native_bitwise": true,
+      "Torch_bitwise": false,
+      "matches_failed_whole": true,
+      "cache_transitions_pass": true,
+      "resources": {
+        "sync": [
+          108,
+          1,
+          59616,
+          174,
+          0,
+          256
+        ],
+        "async": [
+          108,
+          1,
+          59616,
+          172,
+          0,
+          256
+        ],
+        "profile": [
+          108,
+          1,
+          59616,
+          180,
+          0,
+          256
+        ]
+      }
+    },
+    {
+      "case": "long-B2-action",
+      "native": 1.7580959796905518,
+      "whole": 9.737232208251953,
+      "sync": 8.8712158203125,
+      "async": 7.150239944458008,
+      "whole_to_async": 1.3618049581397706,
+      "async_latency_reduction": 0.2656804529732343,
+      "sync_to_async": 1.2406878495299143,
+      "async_over_native": 4.067036172687537,
+      "by_process": [
+        {
+          "process": 1,
+          "native": 1.7580959796905518,
+          "whole": 9.743584156036377,
+          "sync": 8.88479995727539,
+          "async": 7.143503904342651,
+          "whole_to_async_speedup": 1.3639782782386518,
+          "sync_to_async_speedup": 1.2437593758259413
+        },
+        {
+          "process": 2,
+          "native": 1.7576799988746643,
+          "whole": 9.737232208251953,
+          "sync": 8.861055850982666,
+          "async": 7.175296068191528,
+          "whole_to_async_speedup": 1.3570495371497804,
+          "sync_to_async_speedup": 1.2349394041402977
+        }
+      ],
+      "paired": {
+        "whole": {
+          "values": [
+            1.3596461130214623,
+            1.3672014112586168,
+            1.351047937088588,
+            1.368527465516049,
+            1.361363943401758,
+            1.3669347924337578,
+            1.3621707592713808,
+            1.3533205044110246,
+            1.3695592432628318,
+            1.352005938321709,
+            1.3699203128255983,
+            1.3621034939300585
+          ],
+          "median": 1.3621371266007196,
+          "min": 1.351047937088588,
+          "max": 1.3699203128255983
+        },
+        "sync": {
+          "values": [
+            1.2462000953781134,
+            1.2429568342507324,
+            1.2393026366892503,
+            1.2476896723789048,
+            1.2337151599435543,
+            1.245525075974604,
+            1.2288217768089968,
+            1.2301275875033075,
+            1.254446347891642,
+            1.2318339865619647,
+            1.2515965337915833,
+            1.23506350913198
+          ],
+          "median": 1.2411297354699915,
+          "min": 1.2288217768089968,
+          "max": 1.254446347891642
+        },
+        "native": {
+          "values": [
+            0.24781275516716003,
+            0.24660169048003022,
+            0.2447916673582319,
+            0.24670829753919446,
+            0.2448763020997652,
+            0.24583415405952255,
+            0.2437439230539474,
+            0.26924513997188526,
+            0.24705682476127147,
+            0.244645313076293,
+            0.24739623713967226,
+            0.24573208852054376
+          ],
+          "median": 0.2462179222697764,
+          "min": 0.2437439230539474,
+          "max": 0.26924513997188526
+        }
+      },
+      "profile_kernel_ms": {
+        "old_profile": 8.907434666666665,
+        "profile": 6.457002666666667
+      },
+      "profile_GEMM_ms": {
+        "old_profile": 5.403648,
+        "profile": 2.947072
+      },
+      "profile_GEMM_speedup": 1.8335649756775538,
+      "native_bitwise": true,
+      "Torch_bitwise": false,
+      "matches_failed_whole": true,
+      "cache_transitions_pass": true,
+      "resources": {
+        "sync": [
+          108,
+          1,
+          59616,
+          174,
+          0,
+          256
+        ],
+        "async": [
+          108,
+          1,
+          59616,
+          172,
+          0,
+          256
+        ],
+        "profile": [
+          108,
+          1,
+          59616,
+          180,
+          0,
+          256
+        ]
+      }
+    },
+    {
+      "case": "short-B14-action",
+      "native": 2.4563039541244507,
+      "whole": 27.277952194213867,
+      "sync": 26.17086410522461,
+      "async": 17.370512008666992,
+      "whole_to_async": 1.5703597096391615,
+      "async_latency_reduction": 0.36320322416462103,
+      "sync_to_async": 1.5066259470168004,
+      "async_over_native": 7.071808836809331,
+      "by_process": [
+        {
+          "process": 1,
+          "native": 2.6913920640945435,
+          "whole": 29.993247985839844,
+          "sync": 26.310511589050293,
+          "async": 18.733983993530273,
+          "whole_to_async_speedup": 1.601007452349587,
+          "sync_to_async_speedup": 1.4044269279901462
+        },
+        {
+          "process": 2,
+          "native": 2.2279199361801147,
+          "whole": 24.594399452209473,
+          "sync": 21.957183837890625,
+          "async": 15.439599990844727,
+          "whole_to_async_speedup": 1.5929427878179032,
+          "sync_to_async_speedup": 1.422134242526403
+        }
+      ],
+      "paired": {
+        "whole": {
+          "values": [
+            1.5951331947203995,
+            1.5980240345726058,
+            1.610529570452085,
+            1.6112576427965049,
+            1.5932649954580063,
+            1.6008819888315766,
+            1.5232513079319085,
+            1.6014162664704867,
+            1.5879986543837634,
+            1.594518646707409,
+            1.6111406298848785,
+            1.5897917687326528
+          ],
+          "median": 1.5965786146465026,
+          "min": 1.5232513079319085,
+          "max": 1.6112576427965049
+        },
+        "sync": {
+          "values": [
+            1.438796674709869,
+            1.3978908415449125,
+            1.4072904237795885,
+            1.414047725843497,
+            1.3997849977444867,
+            1.4081815489240728,
+            1.6489305879341418,
+            1.4205903260663248,
+            1.4184186300752615,
+            1.4289097101916284,
+            1.43031716432997,
+            1.419096191838118
+          ],
+          "median": 1.4187574109566898,
+          "min": 1.3978908415449125,
+          "max": 1.6489305879341418
+        },
+        "native": {
+          "values": [
+            0.14297214417706475,
+            0.1435760551484067,
+            0.14454996766830444,
+            0.1444382755879874,
+            0.1444269605071438,
+            0.14352745917110682,
+            0.13792406353400197,
+            0.14487845553015086,
+            0.14390817800422212,
+            0.14441571361685573,
+            0.1453474528311628,
+            0.1442634679911403
+          ],
+          "median": 0.144339590803998,
+          "min": 0.13792406353400197,
+          "max": 0.1453474528311628
+        }
+      },
+      "profile_kernel_ms": {
+        "old_profile": 26.352981333333332,
+        "profile": 15.548757333333334
+      },
+      "profile_GEMM_ms": {
+        "old_profile": 22.24913066666667,
+        "profile": 11.411456
+      },
+      "profile_GEMM_speedup": 1.949718832256521,
+      "native_bitwise": true,
+      "Torch_bitwise": false,
+      "matches_failed_whole": true,
+      "cache_transitions_pass": true,
+      "resources": {
+        "sync": [
+          108,
+          1,
+          59616,
+          174,
+          0,
+          256
+        ],
+        "async": [
+          108,
+          1,
+          59616,
+          172,
+          0,
+          256
+        ],
+        "profile": [
+          108,
+          1,
+          59616,
+          180,
+          0,
+          256
+        ]
+      }
+    },
+    {
+      "case": "middle-B14-action",
+      "native": 2.69923198223114,
+      "whole": 29.250304222106934,
+      "sync": 26.58836841583252,
+      "async": 19.36907196044922,
+      "whole_to_async": 1.5101551732491236,
+      "async_latency_reduction": 0.3378163928356557,
+      "sync_to_async": 1.372722888846961,
+      "async_over_native": 7.175771511287098,
+      "by_process": [
+        {
+          "process": 1,
+          "native": 2.7021119594573975,
+          "whole": 29.427648544311523,
+          "sync": 26.6845760345459,
+          "async": 19.486623764038086,
+          "whole_to_async_speedup": 1.5101460828026694,
+          "sync_to_async_speedup": 1.3693791370771675
+        },
+        {
+          "process": 2,
+          "native": 2.675584077835083,
+          "whole": 29.06294345855713,
+          "sync": 26.425663948059082,
+          "async": 19.252992630004883,
+          "whole_to_async_speedup": 1.5095286232678393,
+          "sync_to_async_speedup": 1.372548385380667
+        }
+      ],
+      "paired": {
+        "whole": {
+          "values": [
+            1.5049209840553357,
+            1.514145842986517,
+            1.5058023217490022,
+            1.4999369384481154,
+            1.5136155097545823,
+            1.7047066710411458,
+            1.5114797794638006,
+            1.5116099193789143,
+            1.5046234639185299,
+            1.5092434508618826,
+            1.517527789548525,
+            1.5196618888162694
+          ],
+          "median": 1.5115448494213575,
+          "min": 1.4999369384481154,
+          "max": 1.7047066710411458
+        },
+        "sync": {
+          "values": [
+            1.3753096246855612,
+            1.3706541130819294,
+            1.3639628422504608,
+            1.3659867774921746,
+            1.36411737736962,
+            1.3817935206384213,
+            1.3762973148508935,
+            1.3728859830490623,
+            1.3689497876000059,
+            1.3701910359446603,
+            1.3782714648599004,
+            1.368953599970551
+          ],
+          "median": 1.3704225745132947,
+          "min": 1.3639628422504608,
+          "max": 1.3817935206384213
+        },
+        "native": {
+          "values": [
+            0.13899350805014357,
+            0.13835245388408285,
+            0.13842180881581034,
+            0.1385361792085233,
+            0.13879759682811352,
+            0.1400484252467455,
+            0.1393517853136177,
+            0.13883187918161005,
+            0.13874440392288148,
+            0.13917554277884525,
+            0.13926970669332056,
+            0.13855542718817568
+          ],
+          "median": 0.13881473800486177,
+          "min": 0.13835245388408285,
+          "max": 0.1400484252467455
+        }
+      },
+      "profile_kernel_ms": {
+        "old_profile": 29.365589333333332,
+        "profile": 18.433024
+      },
+      "profile_GEMM_ms": {
+        "old_profile": 22.33685333333333,
+        "profile": 11.45344
+      },
+      "profile_GEMM_speedup": 1.9502309640888091,
+      "native_bitwise": true,
+      "Torch_bitwise": false,
+      "matches_failed_whole": true,
+      "cache_transitions_pass": true,
+      "resources": {
+        "sync": [
+          108,
+          1,
+          59616,
+          174,
+          0,
+          256
+        ],
+        "async": [
+          108,
+          1,
+          59616,
+          172,
+          0,
+          256
+        ],
+        "profile": [
+          108,
+          1,
+          59616,
+          180,
+          0,
+          256
+        ]
+      }
+    },
+    {
+      "case": "long-B14-action",
+      "native": 3.070016026496887,
+      "whole": 32.535104751586914,
+      "sync": 29.88145637512207,
+      "async": 22.90944004058838,
+      "whole_to_async": 1.4201615008461517,
+      "async_latency_reduction": 0.29585473243417293,
+      "sync_to_async": 1.304329408408999,
+      "async_over_native": 7.462319363436589,
+      "by_process": [
+        {
+          "process": 1,
+          "native": 3.111135959625244,
+          "whole": 32.601728439331055,
+          "sync": 29.902432441711426,
+          "async": 22.954432487487793,
+          "whole_to_async_speedup": 1.4202803078273398,
+          "sync_to_async_speedup": 1.3026866361436253
+        },
+        {
+          "process": 2,
+          "native": 2.9673759937286377,
+          "whole": 30.625136375427246,
+          "sync": 28.033743858337402,
+          "async": 21.512816429138184,
+          "whole_to_async_speedup": 1.423576335358248,
+          "sync_to_async_speedup": 1.3031182574666005
+        }
+      ],
+      "paired": {
+        "whole": {
+          "values": [
+            1.492436102645428,
+            1.4229715291752596,
+            1.4176354725252838,
+            1.4175987111128363,
+            1.2319684212031679,
+            1.430983459461534,
+            1.4211592062425513,
+            1.4352210509476868,
+            1.4224301143963214,
+            1.4259527588235896,
+            1.4307590984289305,
+            1.42603123649145
+          ],
+          "median": 1.4244621439994245,
+          "min": 1.2319684212031679,
+          "max": 1.492436102645428
+        },
+        "sync": {
+          "values": [
+            1.3093256560357849,
+            1.3035021133047675,
+            1.3057744309863326,
+            1.2935329535814162,
+            1.2999221288450742,
+            1.2804549070100597,
+            1.2976615272916445,
+            1.3103291757580577,
+            1.2949244468584984,
+            1.3125358959088798,
+            1.2738267739427178,
+            1.283533693181515
+          ],
+          "median": 1.2987918280683592,
+          "min": 1.2738267739427178,
+          "max": 1.3125358959088798
+        },
+        "native": {
+          "values": [
+            0.13461710915297032,
+            0.1337995991900559,
+            0.13746038009132064,
+            0.13334613992428185,
+            0.1318542968043063,
+            0.13041058022531238,
+            0.1362233830769856,
+            0.13703213872863365,
+            0.13590184183349555,
+            0.14039894959227772,
+            0.13079286314400818,
+            0.1302688123033981
+          ],
+          "median": 0.1342083541715131,
+          "min": 0.1302688123033981,
+          "max": 0.14039894959227772
+        }
+      },
+      "profile_kernel_ms": {
+        "old_profile": 33.89064533333334,
+        "profile": 23.028394666666667
+      },
+      "profile_GEMM_ms": {
+        "old_profile": 22.43072,
+        "profile": 11.528192000000002
+      },
+      "profile_GEMM_speedup": 1.9457274826789834,
+      "native_bitwise": true,
+      "Torch_bitwise": false,
+      "matches_failed_whole": true,
+      "cache_transitions_pass": true,
+      "resources": {
+        "sync": [
+          108,
+          1,
+          59616,
+          174,
+          0,
+          256
+        ],
+        "async": [
+          108,
+          1,
+          59616,
+          172,
+          0,
+          256
+        ],
+        "profile": [
+          108,
+          1,
+          59616,
+          180,
+          0,
+          256
+        ]
+      }
+    },
+    {
+      "case": "short-B2-video",
+      "native": 1.9294399619102478,
+      "whole": 13.575631618499756,
+      "sync": 12.167456150054932,
+      "async": 9.78111982345581,
+      "whole_to_async": 1.3879424711620894,
+      "async_latency_reduction": 0.27950904250179387,
+      "sync_to_async": 1.2439737340581922,
+      "async_over_native": 5.0694087489366515,
+      "by_process": [
+        {
+          "process": 1,
+          "native": 1.9350720047950745,
+          "whole": 13.586671829223633,
+          "sync": 12.186752319335938,
+          "async": 9.785120010375977,
+          "whole_to_async_speedup": 1.38850334127906,
+          "sync_to_async_speedup": 1.2454371848698136
+        },
+        {
+          "process": 2,
+          "native": 1.9187840223312378,
+          "whole": 13.513855934143066,
+          "sync": 12.097008228302002,
+          "async": 9.76958417892456,
+          "whole_to_async_speedup": 1.383258047286786,
+          "sync_to_async_speedup": 1.238231638803858
+        }
+      ],
+      "paired": {
+        "whole": {
+          "values": [
+            1.3919491872919025,
+            1.373517461038558,
+            1.3806610429516124,
+            1.385663120295444,
+            1.3877696371050643,
+            1.3917147972158688,
+            1.375777539272124,
+            1.3973048198318316,
+            1.3806590155599459,
+            1.3922758007879326,
+            1.3920531751881091,
+            1.366444186982474
+          ],
+          "median": 1.386716378700254,
+          "min": 1.366444186982474,
+          "max": 1.3973048198318316
+        },
+        "sync": {
+          "values": [
+            1.2514913902381304,
+            1.227558133262803,
+            1.2369829420943916,
+            1.2447270922695395,
+            1.242225626147082,
+            1.2478199118778452,
+            1.2404106742121181,
+            1.2485998221655026,
+            1.2332519117756355,
+            1.2394641798614028,
+            1.2450095387316167,
+            1.2254005854627783
+          ],
+          "median": 1.2413181501796,
+          "min": 1.2254005854627783,
+          "max": 1.2514913902381304
+        },
+        "native": {
+          "values": [
+            0.19849374320985919,
+            0.1968833041745908,
+            0.19673030843342434,
+            0.19698222199009996,
+            0.19741589640491658,
+            0.19729389144291398,
+            0.1956659796077666,
+            0.19736633827562491,
+            0.19607412486963224,
+            0.19869176779673867,
+            0.19651710812011453,
+            0.19411714950357217
+          ],
+          "median": 0.19693276308234536,
+          "min": 0.19411714950357217,
+          "max": 0.19869176779673867
+        }
+      },
+      "profile_kernel_ms": {
+        "old_profile": 12.573013333333334,
+        "profile": 9.078442666666666
+      },
+      "profile_GEMM_ms": {
+        "old_profile": 8.384170666666668,
+        "profile": 4.840106666666667
+      },
+      "profile_GEMM_speedup": 1.732228490832158,
+      "native_bitwise": true,
+      "Torch_bitwise": false,
+      "matches_failed_whole": true,
+      "cache_transitions_pass": true,
+      "resources": {
+        "sync": [
+          108,
+          1,
+          59616,
+          174,
+          0,
+          256
+        ],
+        "async": [
+          108,
+          1,
+          59616,
+          172,
+          0,
+          256
+        ],
+        "profile": [
+          108,
+          1,
+          59616,
+          180,
+          0,
+          256
+        ]
+      }
+    },
+    {
+      "case": "middle-B2-video",
+      "native": 2.0455520153045654,
+      "whole": 17.001296043395996,
+      "sync": 15.580351829528809,
+      "async": 13.226943969726562,
+      "whole_to_async": 1.2853532972021398,
+      "async_latency_reduction": 0.22200378512528451,
+      "sync_to_async": 1.1779252913740812,
+      "async_over_native": 6.466197813971101,
+      "by_process": [
+        {
+          "process": 1,
+          "native": 2.043968081474304,
+          "whole": 17.038111686706543,
+          "sync": 15.592400074005127,
+          "async": 13.33296012878418,
+          "whole_to_async_speedup": 1.277894145196115,
+          "sync_to_async_speedup": 1.16946273921146
+        },
+        {
+          "process": 2,
+          "native": 2.047327995300293,
+          "whole": 16.975215911865234,
+          "sync": 15.580351829528809,
+          "async": 13.209199905395508,
+          "whole_to_async_speedup": 1.2851055350393659,
+          "sync_to_async_speedup": 1.1795076114462288
+        }
+      ],
+      "paired": {
+        "whole": {
+          "values": [
+            1.283337838345831,
+            1.2612968347008557,
+            1.2982445902545319,
+            1.2765421378041262,
+            1.2751232036940352,
+            1.2689786433192953,
+            1.2873934057921492,
+            1.277068627455911,
+            1.3000915824404125,
+            1.2850841880567232,
+            1.2861790767804302,
+            1.2864556483436551
+          ],
+          "median": 1.284211013201277,
+          "min": 1.2612968347008557,
+          "max": 1.3000915824404125
+        },
+        "sync": {
+          "values": [
+            1.166651045312072,
+            1.161936462151986,
+            1.1775193557149273,
+            1.1815355312801883,
+            1.161098364388836,
+            1.1633845600224653,
+            1.179097825607694,
+            1.170566061431552,
+            1.1814544366343631,
+            1.1783754808033224,
+            1.1925012681030807,
+            1.1775372589616917
+          ],
+          "median": 1.1775283073383096,
+          "min": 1.161098364388836,
+          "max": 1.1925012681030807
+        },
+        "native": {
+          "values": [
+            0.15224510728791685,
+            0.15178571934738752,
+            0.15381875665391634,
+            0.15481804224211765,
+            0.15354608923169238,
+            0.1521549804230072,
+            0.15525169579767203,
+            0.15408370790968898,
+            0.15578267737533782,
+            0.15390406058022676,
+            0.1554764937581249,
+            0.1551691151542261
+          ],
+          "median": 0.15399388424495786,
+          "min": 0.15178571934738752,
+          "max": 0.15578267737533782
+        }
+      },
+      "profile_kernel_ms": {
+        "old_profile": 16.1024,
+        "profile": 12.484608
+      },
+      "profile_GEMM_ms": {
+        "old_profile": 8.457557333333334,
+        "profile": 4.814506666666666
+      },
+      "profile_GEMM_speedup": 1.75668202764977,
+      "native_bitwise": true,
+      "Torch_bitwise": false,
+      "matches_failed_whole": true,
+      "cache_transitions_pass": true,
+      "resources": {
+        "sync": [
+          108,
+          1,
+          59616,
+          174,
+          0,
+          256
+        ],
+        "async": [
+          108,
+          1,
+          59616,
+          172,
+          0,
+          256
+        ],
+        "profile": [
+          108,
+          1,
+          59616,
+          180,
+          0,
+          256
+        ]
+      }
+    },
+    {
+      "case": "long-B2-video",
+      "native": 2.181696057319641,
+      "whole": 20.81372833251953,
+      "sync": 19.4289608001709,
+      "async": 17.09777545928955,
+      "whole_to_async": 1.217335458760574,
+      "async_latency_reduction": 0.17853374531770683,
+      "sync_to_async": 1.1363443651738196,
+      "async_over_native": 7.836919080421911,
+      "by_process": [
+        {
+          "process": 1,
+          "native": 2.190335988998413,
+          "whole": 20.832863807678223,
+          "sync": 19.460912704467773,
+          "async": 17.116735458374023,
+          "whole_to_async_speedup": 1.2171049706494212,
+          "sync_to_async_speedup": 1.1369523558855323
+        },
+        {
+          "process": 2,
+          "native": 2.09116792678833,
+          "whole": 20.31223964691162,
+          "sync": 18.888272285461426,
+          "async": 16.54695987701416,
+          "whole_to_async_speedup": 1.2275511512618047,
+          "sync_to_async_speedup": 1.1414950193781304
+        }
+      ],
+      "paired": {
+        "whole": {
+          "values": [
+            1.2174019687435103,
+            1.2137805041364222,
+            1.2148622568587513,
+            1.228693155648015,
+            1.2172689934505536,
+            1.2182793914233863,
+            1.2195872234333454,
+            1.2145550515407368,
+            1.2363397218829317,
+            1.2248659573507954,
+            1.261738609853381,
+            1.2026608692315273
+          ],
+          "median": 1.2178406800834483,
+          "min": 1.2026608692315273,
+          "max": 1.261738609853381
+        },
+        "sync": {
+          "values": [
+            1.155594367551386,
+            1.117494080696561,
+            1.1439934232182452,
+            1.1298592488462373,
+            1.1375755115605035,
+            1.1359695504362144,
+            1.1721846451685396,
+            1.1190415325605698,
+            1.1410736535880874,
+            1.1392313522400879,
+            1.147089818188326,
+            1.1196141807205484
+          ],
+          "median": 1.1384034319002958,
+          "min": 1.117494080696561,
+          "max": 1.1721846451685396
+        },
+        "native": {
+          "values": [
+            0.1272864539550573,
+            0.12592085505587847,
+            0.12794142219563587,
+            0.12730638753059625,
+            0.1282206231174384,
+            0.127987767583757,
+            0.12627308962587808,
+            0.12523604863301774,
+            0.12712442331226217,
+            0.12624649536337137,
+            0.126265676082756,
+            0.12513237518086096
+          ],
+          "median": 0.12669875646907014,
+          "min": 0.12513237518086096,
+          "max": 0.1282206231174384
+        }
+      },
+      "profile_kernel_ms": {
+        "old_profile": 20.00349866666667,
+        "profile": 16.361472
+      },
+      "profile_GEMM_ms": {
+        "old_profile": 8.438442666666669,
+        "profile": 4.801194666666667
+      },
+      "profile_GEMM_speedup": 1.7575714488838334,
+      "native_bitwise": true,
+      "Torch_bitwise": false,
+      "matches_failed_whole": true,
+      "cache_transitions_pass": true,
+      "resources": {
+        "sync": [
+          108,
+          1,
+          59616,
+          174,
+          0,
+          256
+        ],
+        "async": [
+          108,
+          1,
+          59616,
+          172,
+          0,
+          256
+        ],
+        "profile": [
+          108,
+          1,
+          59616,
+          180,
+          0,
+          256
+        ]
+      }
+    }
+  ],
+  "resource": {
+    "status": "COMPLETE_ASYNC_GEMM_RESEARCH_UNADMITTED",
+    "parent": {
+      "pid": 639721,
+      "birth_ticks": 706195083,
+      "pgid": 639721,
+      "uid": 0
+    },
+    "jobs": [
+      {
+        "name": "build-1",
+        "returncode": 0,
+        "timed_out": false,
+        "owned": {
+          "pid": 639723,
+          "birth_ticks": 706195094,
+          "pgid": 639723,
+          "uid": 0
+        },
+        "root_reaped": true,
+        "lifecycle_seconds": 168.28844369854778,
+        "remaining_NVML": []
+      },
+      {
+        "name": "gate-1",
+        "returncode": 0,
+        "timed_out": false,
+        "owned": {
+          "pid": 640043,
+          "birth_ticks": 706211934,
+          "pgid": 640043,
+          "uid": 0
+        },
+        "root_reaped": true,
+        "lifecycle_seconds": 13.83537768945098,
+        "remaining_NVML": []
+      },
+      {
+        "name": "timing-1",
+        "returncode": 0,
+        "timed_out": false,
+        "owned": {
+          "pid": 640118,
+          "birth_ticks": 706213323,
+          "pgid": 640118,
+          "uid": 0
+        },
+        "root_reaped": true,
+        "lifecycle_seconds": 32.42563645169139,
+        "remaining_NVML": []
+      },
+      {
+        "name": "timing-2",
+        "returncode": 0,
+        "timed_out": false,
+        "owned": {
+          "pid": 640600,
+          "birth_ticks": 706216575,
+          "pgid": 640600,
+          "uid": 0
+        },
+        "root_reaped": true,
+        "lifecycle_seconds": 32.925597835332155,
+        "remaining_NVML": []
+      },
+      {
+        "name": "stages-1",
+        "returncode": 0,
+        "timed_out": false,
+        "owned": {
+          "pid": 641130,
+          "birth_ticks": 706219879,
+          "pgid": 641130,
+          "uid": 0
+        },
+        "root_reaped": true,
+        "lifecycle_seconds": 16.84217329043895,
+        "remaining_NVML": []
+      }
+    ],
+    "full_block_calls": 675,
+    "at_UTC": "2026-10-20T02:35:57.144637+00:00",
+    "lifecycle_seconds": 264.8378866063431,
+    "remaining_NVML": [],
+    "foreign_processes_signalled": false,
+    "frozen_unchanged": {
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.cu": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/whole_layer.py": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/投机采样/wam-p0-worktree/wan_va/modules/model.py": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/baseline/__init__.py": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/baseline/attention.py": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/baseline/block.py": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/baseline/build.py": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/baseline/native.py": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/baseline/csrc/block.cu": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/baseline/csrc/gemm.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/baseline/csrc/norm.cuh": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/alibi.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/block_info.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/dropout.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/flash.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/flash_fwd_kernel.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/flash_fwd_launch_template.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/hardware_info.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/kernel_traits.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/mask.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/namespace_config.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/philox.cuh": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/philox_unpack.cuh": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/rotary.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/softmax.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/static_switch.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn/utils.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/array.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/array_subbyte.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/bfloat16.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/complex.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/coord.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/core_io.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/cutlass.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/exmy_base.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/fast_math.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/float8.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/float_subbyte.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/floating_point_nvrtc.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/functional.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/gemm_coord.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/half.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/integer_subbyte.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/matrix.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/matrix_coord.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/matrix_shape.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/numeric_conversion.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/numeric_size.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/numeric_types.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/pitch_linear_coord.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/quaternion.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/real.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/subbyte_reference.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/tensor_coord.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/tensor_ref.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/tensor_view.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/tfloat32.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/trace.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/uint128.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/arch/config.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/conv/conv2d_problem_size.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/conv/conv3d_problem_size.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/conv/convolution.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/gemm/gemm_enumerated_types.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/layout/layout.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/layout/matrix.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/layout/pitch_linear.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/layout/tensor.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/layout/tensor_op_multiplicand_sm70.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/layout/tensor_op_multiplicand_sm75.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/layout/vector.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/platform/platform.h": true,
+      "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include/cutlass/transform/thread/unary_op.h": true
+    },
+    "storage_bytes": 11200579
+  },
+  "blocks": 675,
+  "timing_samples": 432,
+  "gate_cases": 9,
+  "legal_cache_transitions": 18,
+  "finite_Torch_admitted": false,
+  "production_admitted": false,
+  "formal_performance_permission": false
+}

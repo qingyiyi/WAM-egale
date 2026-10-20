@@ -1,6 +1,6 @@
 # 当前讨论与授权
 
-最新用户要求现在直接实现：整个单层Transformer在一个persistent kernel内，把全部算子切tile交给职责不同的warp，借鉴MegaMoE；明早汇报实测速度、精度与问题。只一层，不做30层大融合。baseline及共享依赖冻结，仅optimized新入口；投机代码/配置与原tile不改。
+最新用户要求现在直接实现：整个单层Transformer在一个persistent kernel内，把全部算子切tile交给职责不同的warp，借鉴MegaMoE；明早汇报实测速度、精度与问题。只一层，不做30层大融合。baseline及共享依赖冻结，仅修改optimized；投机代码/配置与原tile不改。
 
 用户允许四套LIBERO速度统一远端测，替代旧“最终E2E必须本机”的地点条款；每卡计时单worker且无观察到争用，M34 GPU验证等对应计时卡清理，CPU实现可并行。本机可用自然空闲窗口先核对精度；不杀他人。AutoDL已归还不再连接，BAAI所有写入限~/cxz。
 
@@ -14,6 +14,8 @@
 
 ## 当前优先级
 
-用户最新要求将主要精力放在“当前实现为什么慢”，M38已实际执行，不等待数值修复。该授权只改变研究顺序，不放宽原门。M37四原语FAIL保留，不继续盲扫或自动接入失败CUTLASS候选。
+用户先要求profile整层慢点，再明确继续实现；M38/M39已收口，GEMM双缓冲带来相对旧原型有限提速，仍未匹配Torch数值/速度。资源登记字段不一致作为失败保留，不能以脚本exit0替代全部审计通过。
 
-M38结果支持先改善GEMM与attention内部流水，任务队列不是已证实的首要改动点。M39仅为下一步建议/待登记工作，无GPU队列；不把profile副本匹配失败v1写成匹配Torch。[新长期决定](../../memory/global/requirements/decision-当前优先解释并profile整层算子退化.md)。
+最新指令：不考虑另一agent带读版本，直接改optimized，不再另起实验登记；这是对原“独立入口保护带读”的替代。Maintain记录在[直接在optimized迭代](../../memory/global/requirements/decision-直接在optimized迭代且不另建登记.md)。baseline/投机与既有准入门继续保护，已有本轮记录继续保留最小必要证据。
+
+用户询问更大tile，当前GEMM64×64×32、attention Q16/KV64。建议优先K32→64，再按形状评估N128；B2 M32不能盲目扩大M，B14不能变成跨候选互相注意。尚未运行这些候选，不把提议记为实测收益或已启动工作。

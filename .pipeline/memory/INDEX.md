@@ -4,6 +4,10 @@
 
 ## 当前资源偏好
 
+- [直接在optimized迭代、不另建登记](global/requirements/decision-直接在optimized迭代且不另建登记.md)（constraint，当前算子）：解除为另一agent带读冻结源码/另建版本的安排，沿现有记录保留验证证据。
+
+- [依据profile继续单层tile流水优化](global/requirements/decision-依据profile继续单层tile流水优化.md)（constraint，本轮M39）：用户已授权继续实现；其中独立带读版本/另行登记安排已被上方最新决定替代，原准入门不变。
+
 - [当前优先解释并profile整层算子退化](global/requirements/decision-当前优先解释并profile整层算子退化.md)（constraint，当前算子）：先测慢点，不等待数值修复；准入门不变。
 
 - [继续数值契约与异步tile](global/requirements/decision-继续数值契约修复后验证单层异步tile流水.md)（constraint，当前算子）：新有界阶段承接M34负结果；不借旧预算、不放宽质量门。
@@ -41,7 +45,7 @@
 
 - [算子仅baseline/optimized，投机侧不改](global/requirements/decision-算子代码只维护baseline与optimized且不改投机侧.md)（constraint，算子代码）：独立目录收拢、删除无依赖旧实现；先完成30层与性能基线，再讲解。
 
-- [算子交付明确源码与验证范围](global/requirements/requirement-算子交付明确源码入口与验证范围.md)（constraint，当前算子交付）：定位实现/替换/验证入口，按源码讲解，并列已有证据、缺口与下一优先项。
+- [算子交付明确源码与验证范围](global/requirements/requirement-算子交付明确源码入口与验证范围.md)（constraint，当前算子交付与带读）：提供完整路径与准确行号；中文每次一节，以具体tile解释线程、数据流、同步和限制，先答追问再推进；本次教学只读，不触发新实验。
 
 - [先直接复制Torch调用链完成复现](global/requirements/decision-算子先直接复制Torch调用链完成复现.md)（constraint，当前算子基线）：先可替换的精度/性能基线，允许抄原实现；自有device基元/调度另议，计时噪声与实现正确性分列。
 

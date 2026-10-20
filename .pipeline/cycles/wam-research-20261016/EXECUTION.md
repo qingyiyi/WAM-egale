@@ -1,11 +1,11 @@
 # 当前Execution checkpoint
 
-## 2026-10-20T09:57:08.243204+08:00：M38有界profile完成
+## 2026-10-20T10:47:10.246535+08:00：M39双缓冲实现与有限验证完成
 
-用户最新优先解释当前整层算子慢点，M38新登记2700秒/240block/600原语/512MiB。实际86.490秒含57.551秒CPU构建、28.716秒GPU worker；222block/300原语、六真实签名/144完整计时/18trace。六原Torch/native逐位通过、whole均失败，profile/static六输出/状态匹配失败v1。
+只改optimized新增GEMM数据通路，SM80 cp.async双buffer、固定64×64×32、同步LD40对照，原attention与stage barrier保持。[结果](../../experiments/single-layer-async-gemm-20261020/RESULT.md)记录两进程432样本/9签名/18写转移/18单kernel trace。对旧whole耗时下降17.9%–36.3%；仍比native慢3.33–7.84倍，原Torch9逐位FAIL；有限匹配失败whole不等于准入。
 
-whole比native慢5.09–11.14倍；插桩GEMM61%–84%，同输入库GEMM差约一个量级；静态领取中位数慢3.1%–12.8%，并非去队列即解决。实际compute kernel与memory/annotation按Chrome类别纠正分开，原始数据不改。阶段与完整计时分离，NCU硬件计数UNKNOWN。
+264.838秒生命周期，675block，五子进程exit0和父进程PID/birth复核均已退出，两卡空。归档发现PLAN/runner900与机器registration240不一致，记资源审计FAILED，不修改原字段；CPU可选反汇编工具缺失失败保留。见[资源报告](../../experiments/single-layer-async-gemm-20261020/RESOURCE-AND-STOP-REPORT.md)。没有后续GPU队列，四false保持。
 
-[结果](../../experiments/whole-layer-bottleneck-20261020/RESULT.md)、[清理](../../experiments/whole-layer-bottleneck-20261020/RESOURCE-AND-STOP-REPORT.md)。parent/build/worker PID与birth核对均退出、两卡0MiB；无其他排队作业。baseline/主whole/投机源与全部旧FAIL/四false保持。下一建议M39，未启动。
+用户最新要求直接在optimized迭代、不为另一agent带读保留额外版本、不另建登记，已用Maintain存约束记忆；不新建M40。基线、投机与原tile不动。关于更大tile：当前GEMM64×64×32、attention16×64，下一建议先评估K64；这是建议，尚未执行。
 
-之前M37与本轮起点原文见[归档](history/M38-start-20261020/EXECUTION.md)。
+本轮起点及旧M38原文见[归档](history/M39-start-20261020/EXECUTION.md)。

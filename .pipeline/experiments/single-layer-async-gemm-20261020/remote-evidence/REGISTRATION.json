@@ -1,0 +1,37 @@
+{
+  "goal": "one SM80 double-buffer GEMM route with synchronous LD40 control and full-layer replay",
+  "user_authorization": "user explicitly requested continued tile Transformer optimization after M38",
+  "T0": "2026-10-20T02:31:32.306794+00:00",
+  "work_stop": "2026-10-20T03:26:32.306794+00:00",
+  "cleanup_deadline": "2026-10-20T03:31:32.306794+00:00",
+  "GPU_uuid": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU": [
+    4,
+    5
+  ],
+  "lifecycle_cap_seconds": 3600,
+  "full_block_cap": 240,
+  "primitive_cap": 600,
+  "storage_cap_bytes": 536870912,
+  "robot_episodes": 0,
+  "full30": 0,
+  "training": 0,
+  "no_automatic_retry": true,
+  "input_manifest": "nine existing action B2/B14 Q16 and video B2 Q128 block0, short/middle/long; 18 legal cache transitions per path",
+  "source_manifest": {
+    "frozen_whole_sha256": "df8b386f302b9904ac4ef8ab08d171ef6d9e6f8143451831c3318f5e0835ef0e",
+    "files": {
+      "run_remote.py": "6baa64f598a2d3b584a0caec71678522498c5de419eef9107c15089fc8239bf8",
+      "profile_instrument.py": "8691aa6bdd02460678690cf9e2f7902d272ad488645165eff92f78e0f813503d",
+      "worker.py": "d18ea09b99a808bbf451ab9a73b007a3b9aa5b986389036a441ab39c54dc84c6",
+      "csrc/gemm_pipeline.cuh": "1667bab7af24203594abdd5587f666cc7e24e6aac1f759ff2a4bab0969106adc",
+      "pipeline_codegen.py": "3f55ec1f49d52335bb6b058d6b065c237a90f5f7a5c05270100c06c10440c107",
+      "build_pipeline.py": "fc52ae270ba43e2b9a211f7e656a4072c6fe297c18453a093f0517116bda20bc",
+      "whole_layer_pipeline.py": "47b1d35c3db55ce88397292a58b2dc07e4436b5e42cd405022aa65d28faa32fd"
+    }
+  },
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false
+}

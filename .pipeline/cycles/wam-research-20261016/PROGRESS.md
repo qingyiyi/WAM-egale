@@ -3,13 +3,13 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-20T09:57:08.243204+08:00'
-current: M38
-next: M39
+updated: '2026-10-20T10:47:10.246535+08:00'
+current: M39
+next: null
 ---
 # 当前研究进度
 
-更新：2026-10-20T09:57:08.243204+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
+更新：2026-10-20T10:47:10.246535+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
 
 ## M17 — 四套既定评估：计算完成，审计未放行
 
@@ -57,13 +57,17 @@ GPU0 Goal→Object，GPU1 Spatial→Long；同case对照同卡，每卡单worker
 
 原实现1kernel，native39/35计算kernel；memory/注释单列。高寄存器/低理论occupancy不是单因，成熟GEMM同样一CTA驻留却快得多；同步单buffer和attention串行softmax有源码依据，硬件stall/流量UNKNOWN。[代码讲解](../../experiments/whole-layer-bottleneck-20261020/IMPLEMENTATION-GUIDE.md)。86.490秒生命周期、owned三个进程退出，两卡空，主源码/保护项不变，无新机器人任务。
 
-## M39 — GEMM/attention设备tile数据通路：pending
+## M39 — 单层GEMM异步tile流水：completed，原数值NO-GO
 
-建议先做真实M/N/K的SM80加载/计算流水与数值门，再考虑更复杂跨阶段ready调度。只一层、仅optimized；下一个具体作业尚未登记/启动，M38余额不延续。不是恢复数值扫参或已证明MegaTransformer收益。
+[结果](../../experiments/single-layer-async-gemm-20261020/RESULT.md)：9真实签名、18合法KV转移相对失败whole有限一致；原Torch/native9通过、新async9逐位FAIL。两个独立进程432完整block计时，新双缓冲比本轮旧whole耗时下降17.9%–36.3%，但仍为native的3.33–7.84倍；同LD40同步对照加速1.14–1.51×。全部18新trace各1kernel，未测chunk/E2E。
+
+插桩GEMM阶段快1.73–1.95×；B14短cross K/V仍52.4%，长self-attention约35%–49%。172 registers、59616B shared、理论1 CTA/SM不变，硬件stall/流量UNKNOWN。675block、264.838秒生命周期、10.68MiB，六owned进程确认退出、两卡空。[资源审计FAILED](../../experiments/single-layer-async-gemm-20261020/RESOURCE-AND-STOP-REPORT.md)：PLAN/runner900但registration240，实际超机器登记435次；原登记不改，不能写预算全通过。可选CPU反汇编因cuobjdump缺失失败也保留。
+
+用户随后明确：直接修改optimized，不因另一agent带读保留独立版本，也不再另建登记。沿现有记录继续；下一候选K32→64及attention数据通路尚未实现/测量，不能称有收益。
 
 ## 下一步及保护
 
-M34/M35/M37有界作业已终态；M37数值门失败，后继整层异步集成未触发，不重复旧网格搜索；不能把普通cache收益叫协同创新。[claim矩阵](../../experiments/single-layer-warp-specialized-20261019/CLAIM-EVIDENCE-MATRIX.md)、[日期](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。
+M34–M39已终态；M37失败CUTLASS未集成，M39是保持旧WMMA数学的双缓冲，不等于M37数值修复；不能把普通cache收益叫协同创新。[claim矩阵](../../experiments/single-layer-warp-specialized-20261019/CLAIM-EVIDENCE-MATRIX.md)、[日期](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。
 
 四权限false；旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据、default A_off不改。baseline及依赖/投机源/原tile与HW/state/cycle/rules保护；仅optimized新实现，不重置/旧sync/升级，不建缺失cycle.yaml。远端只~/cxz，AutoDL不再SSH/关机UNKNOWN；不杀他人、不改服务/时钟。
 

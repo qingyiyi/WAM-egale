@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-20T09:57:08.243204+08:00'
+updated: '2026-10-20T10:47:10.246535+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
@@ -25,7 +25,7 @@ steps:
   - id: M38
     status: completed
   - id: M39
-    status: pending
+    status: completed
 ---
 # 当前有界计划
 
@@ -44,6 +44,6 @@ M37按用户最新继续授权完成有界验证；M34/M35原终态保留。
 | `M36` | completed | RoboTwin只读调研完成 |
 | `M37` | completed | [成本归因](../../experiments/device-contract-20261020/TASK-COST-DIAGNOSIS.md)完成；[唯一设备候选](../../experiments/device-contract-20261020/RESULT.md)四项数值NO-GO，4参考block/12原语/8heuristic，owned退出。异步整层集成未触发 |
 | `M38` | completed | [整层慢点实测](../../experiments/whole-layer-bottleneck-20261020/RESULT.md)：6签名222block/300原语，5.09–11.14倍慢；GEMM主导、静态领取无益，清理完成 |
-| `M39` | pending | 依据M38收敛GEMM/attention设备tile流水与数值边界；下一个作业另登记，不自动复用预算 |
+| `M39` | completed | [双缓冲结果](../../experiments/single-layer-async-gemm-20261020/RESULT.md)：9点/18状态、432样本，相对旧原型下降17.9%–36.3%，原Torch门仍FAIL；资源登记240/900不一致FAILED，已清理 |
 
-用户最新优先M38，先解释并量化当前慢点，不等待数值修复。所有旧终态与门不变；不做新机器人/训练/TEST或30层。
+用户最新要求直接在optimized继续，不为带读另建代码版本/实验登记。M39计算已收口，后续在现有记录保留必要证据；更大tile尚未执行。所有旧终态与门不变，不做新机器人/训练/TEST或30层。

@@ -1,5 +1,9 @@
 # 当前入口
 
+<!-- m39-entry -->
+最新[M39双缓冲/资源审计](CURRENT-20261020.md)在顶部；原Torch数值NO-GO与四false不改，GPU已清理。
+
+
 <!-- m38-entry -->
 最新整层退化profile和代码讲解在[CURRENT](CURRENT-20261020.md)顶部；原门和旧结果保持。
 
