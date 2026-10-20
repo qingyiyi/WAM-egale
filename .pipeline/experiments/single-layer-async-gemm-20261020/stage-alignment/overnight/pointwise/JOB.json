@@ -1,0 +1,64 @@
+{
+  "goal": "All eight warps pointwise; no math or tile-size change",
+  "deadline": "2026-10-21T01:30:00+08:00",
+  "full_block_cap": 510,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "before-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/pointwise/build_before.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/pointwise",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/pointwise/before-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "active-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/pointwise/active-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/pointwise/gate.py"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/pointwise/timing.py",
+        "1"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/pointwise/timing.py",
+        "2"
+      ],
+      500,
+      true
+    ]
+  ]
+}

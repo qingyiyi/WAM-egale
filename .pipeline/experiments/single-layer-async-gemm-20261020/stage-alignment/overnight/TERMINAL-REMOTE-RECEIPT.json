@@ -1,0 +1,1492 @@
+{
+  "at": "2026-10-21T02:28:58.122327+08:00",
+  "owned_alive": [],
+  "missing_child_identities": [],
+  "gpu_processes": "",
+  "source": {
+    "whole_layer.py": "c416f048f44c0287e4f3b6e1313d5ac1eb563fc719bef6779cd10cbfe2b94509",
+    "build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763",
+    "fa2_codegen.py": "66358f73ef7480b0b68ef04274959461575dab239365045f917b8e5b2aee2fc6",
+    "norm_codegen.py": "9db1b01967a039032e43890f16ecdf9cdb902bdc47f7450d55f338334b52e858",
+    "cutlass_gemm_codegen.py": "b6c7b0fa799d7b8cb1ea341560196d4bfd3fb75bafc2ee4c1e58f70f31db8b6d",
+    "csrc/whole_layer.cu": "fc717e3585a0f856361e78d28f8ec513db7f1f9f002aa65db2385fe05c0e04a4",
+    "csrc/cutlass_gemm.cuh": "cf30211ece6846416e966a2c59acab58a6cd11569ce6bed5e38338aeaee97fec",
+    "csrc/gemm_pipeline.cuh": "bdc8a6d1c534d9ad122e44bbb63401f5b8e52a764bed14bac800c4ee9e90345c",
+    "csrc/fa2_stage.cuh": "3738249195f4bfd6860a2ff9b284c9820d7379f70ae30f9b0010a25ca4752a04"
+  },
+  "storage_bytes": 453404285,
+  "jobs": [
+    {
+      "attempt": "pointwise",
+      "name": "before-build",
+      "owned": {
+        "pid": 703089,
+        "birth_ticks": 711006641,
+        "pgid": 703089
+      },
+      "start": 1792511607.848105,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792511723.3802276,
+      "lifecycle_seconds": 115.53212285041809,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "pointwise",
+      "name": "active-build",
+      "owned": {
+        "pid": 703389,
+        "birth_ticks": 711018195,
+        "pgid": 703389
+      },
+      "start": 1792511723.3856423,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792511838.7508094,
+      "lifecycle_seconds": 115.36516737937927,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "pointwise",
+      "name": "gate",
+      "owned": {
+        "pid": 703529,
+        "birth_ticks": 711029736,
+        "pgid": 703529
+      },
+      "start": 1792511838.7977529,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792511850.6755855,
+      "lifecycle_seconds": 11.877832889556885,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "pointwise",
+      "name": "timing1",
+      "owned": {
+        "pid": 703542,
+        "birth_ticks": 711030930,
+        "pgid": 703542
+      },
+      "start": 1792511850.744422,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792511863.1241732,
+      "lifecycle_seconds": 12.379751205444336,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "pointwise",
+      "name": "timing2",
+      "owned": {
+        "pid": 703566,
+        "birth_ticks": 711032176,
+        "pgid": 703566
+      },
+      "start": 1792511863.195289,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792511875.43724,
+      "lifecycle_seconds": 12.241950988769531,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "layout",
+      "name": "before-build",
+      "owned": {
+        "pid": 703980,
+        "birth_ticks": 711045226,
+        "pgid": 703980
+      },
+      "start": 1792511993.69692,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792512109.0656686,
+      "lifecycle_seconds": 115.3687493801117,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "layout",
+      "name": "active-build",
+      "owned": {
+        "pid": 704326,
+        "birth_ticks": 711056764,
+        "pgid": 704326
+      },
+      "start": 1792512109.0760493,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792512224.642443,
+      "lifecycle_seconds": 115.56639432907104,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "layout",
+      "name": "gate",
+      "owned": {
+        "pid": 704589,
+        "birth_ticks": 711068323,
+        "pgid": 704589
+      },
+      "start": 1792512224.6722674,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792512236.55099,
+      "lifecycle_seconds": 11.878722667694092,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "layout",
+      "name": "timing1",
+      "owned": {
+        "pid": 704603,
+        "birth_ticks": 711069516,
+        "pgid": 704603
+      },
+      "start": 1792512236.5982397,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792512248.9771988,
+      "lifecycle_seconds": 12.37895917892456,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "layout",
+      "name": "timing2",
+      "owned": {
+        "pid": 704623,
+        "birth_ticks": 711070760,
+        "pgid": 704623
+      },
+      "start": 1792512249.044846,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792512261.323856,
+      "lifecycle_seconds": 12.27901005744934,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "norm_io",
+      "name": "before-build",
+      "owned": {
+        "pid": 704815,
+        "birth_ticks": 711082241,
+        "pgid": 704815
+      },
+      "start": 1792512363.8489075,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792512479.5250616,
+      "lifecycle_seconds": 115.67615461349487,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "norm_io",
+      "name": "active-build",
+      "owned": {
+        "pid": 705180,
+        "birth_ticks": 711093809,
+        "pgid": 705180
+      },
+      "start": 1792512479.5267334,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792512595.1948626,
+      "lifecycle_seconds": 115.66812920570374,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "norm_io",
+      "name": "gate",
+      "owned": {
+        "pid": 705283,
+        "birth_ticks": 711105378,
+        "pgid": 705283
+      },
+      "start": 1792512595.2245367,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792512607.20477,
+      "lifecycle_seconds": 11.980233669281006,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "norm_io",
+      "name": "timing1",
+      "owned": {
+        "pid": 705297,
+        "birth_ticks": 711106583,
+        "pgid": 705297
+      },
+      "start": 1792512607.2717793,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792512619.501345,
+      "lifecycle_seconds": 12.229566097259521,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "norm_io",
+      "name": "timing2",
+      "owned": {
+        "pid": 705354,
+        "birth_ticks": 711107813,
+        "pgid": 705354
+      },
+      "start": 1792512619.5712416,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792512631.7501101,
+      "lifecycle_seconds": 12.178868532180786,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_post",
+      "name": "prepare",
+      "owned": {
+        "pid": 705691,
+        "birth_ticks": 711123554,
+        "pgid": 705691
+      },
+      "start": 1792512776.9806993,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792512777.012271,
+      "lifecycle_seconds": 0.03157162666320801,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_post",
+      "name": "build",
+      "owned": {
+        "pid": 705692,
+        "birth_ticks": 711123557,
+        "pgid": 705692
+      },
+      "start": 1792512777.013825,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792512794.7496789,
+      "lifecycle_seconds": 17.735854864120483,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_post_r2",
+      "name": "prepare",
+      "owned": {
+        "pid": 706095,
+        "birth_ticks": 711156764,
+        "pgid": 706095
+      },
+      "start": 1792513109.0770838,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792513109.1104236,
+      "lifecycle_seconds": 0.0333399772644043,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_post_r2",
+      "name": "build",
+      "owned": {
+        "pid": 706096,
+        "birth_ticks": 711156767,
+        "pgid": 706096
+      },
+      "start": 1792513109.1125932,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792513245.8086565,
+      "lifecycle_seconds": 136.69606375694275,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_post_r2",
+      "name": "stage1",
+      "owned": {
+        "pid": 706301,
+        "birth_ticks": 711170444,
+        "pgid": 706301
+      },
+      "start": 1792513245.8784063,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792513247.4448733,
+      "lifecycle_seconds": 1.56646728515625,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_post_r3",
+      "name": "stage1",
+      "owned": {
+        "pid": 706676,
+        "birth_ticks": 711188306,
+        "pgid": 706676
+      },
+      "start": 1792513424.5027866,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792513437.835478,
+      "lifecycle_seconds": 13.332691669464111,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_post_r3",
+      "name": "stage2",
+      "owned": {
+        "pid": 706698,
+        "birth_ticks": 711189645,
+        "pgid": 706698
+      },
+      "start": 1792513437.8873947,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792513450.3688416,
+      "lifecycle_seconds": 12.481447219848633,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ready_context",
+      "name": "before-build",
+      "owned": {
+        "pid": 707123,
+        "birth_ticks": 711200529,
+        "pgid": 707123
+      },
+      "start": 1792513546.7308636,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792513564.5754201,
+      "lifecycle_seconds": 17.844557523727417,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ready_context_r2",
+      "name": "before-build",
+      "owned": {
+        "pid": 707930,
+        "birth_ticks": 711232008,
+        "pgid": 707930
+      },
+      "start": 1792513861.5203598,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792513977.5981808,
+      "lifecycle_seconds": 116.07782196998596,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ready_context_r2",
+      "name": "active-build",
+      "owned": {
+        "pid": 708248,
+        "birth_ticks": 711243616,
+        "pgid": 708248
+      },
+      "start": 1792513977.599836,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792514095.5260093,
+      "lifecycle_seconds": 117.92617344856262,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ready_context_r2",
+      "name": "gate",
+      "owned": {
+        "pid": 708436,
+        "birth_ticks": 711255412,
+        "pgid": 708436
+      },
+      "start": 1792514095.5563083,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792514107.4881806,
+      "lifecycle_seconds": 11.931872367858887,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ready_context_r2",
+      "name": "timing1",
+      "owned": {
+        "pid": 708450,
+        "birth_ticks": 711256612,
+        "pgid": 708450
+      },
+      "start": 1792514107.5604982,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792514119.6408284,
+      "lifecycle_seconds": 12.080330610275269,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ready_context_r2",
+      "name": "timing2",
+      "owned": {
+        "pid": 708470,
+        "birth_ticks": 711257827,
+        "pgid": 708470
+      },
+      "start": 1792514119.7089057,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792514131.741437,
+      "lifecycle_seconds": 12.032531261444092,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "rms_pair",
+      "name": "before-build",
+      "owned": {
+        "pid": 708979,
+        "birth_ticks": 711309548,
+        "pgid": 708979
+      },
+      "start": 1792514636.9221876,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792514752.9969282,
+      "lifecycle_seconds": 116.07474088668823,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "rms_pair",
+      "name": "active-build",
+      "owned": {
+        "pid": 709187,
+        "birth_ticks": 711321156,
+        "pgid": 709187
+      },
+      "start": 1792514752.998577,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792514870.4651732,
+      "lifecycle_seconds": 117.46659636497498,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "rms_pair",
+      "name": "gate",
+      "owned": {
+        "pid": 709491,
+        "birth_ticks": 711332910,
+        "pgid": 709491
+      },
+      "start": 1792514870.5415955,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792514882.4712915,
+      "lifecycle_seconds": 11.929696559906006,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "rms_pair",
+      "name": "timing1",
+      "owned": {
+        "pid": 709567,
+        "birth_ticks": 711334110,
+        "pgid": 709567
+      },
+      "start": 1792514882.5435367,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792514894.5734918,
+      "lifecycle_seconds": 12.029955387115479,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "rms_pair",
+      "name": "timing2",
+      "owned": {
+        "pid": 709587,
+        "birth_ticks": 711335316,
+        "pgid": 709587
+      },
+      "start": 1792514894.602127,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792514906.4854624,
+      "lifecycle_seconds": 11.88333535194397,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_tile128",
+      "name": "before-build",
+      "owned": {
+        "pid": 710104,
+        "birth_ticks": 711360912,
+        "pgid": 710104
+      },
+      "start": 1792515150.558165,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792515267.9959457,
+      "lifecycle_seconds": 117.43778109550476,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_tile128",
+      "name": "active-build",
+      "owned": {
+        "pid": 710350,
+        "birth_ticks": 711372657,
+        "pgid": 710350
+      },
+      "start": 1792515268.0091362,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792515385.7841635,
+      "lifecycle_seconds": 117.77502799034119,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_tile128",
+      "name": "gate",
+      "owned": {
+        "pid": 710731,
+        "birth_ticks": 711384442,
+        "pgid": 710731
+      },
+      "start": 1792515385.8598225,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792515397.6887655,
+      "lifecycle_seconds": 11.828943014144897,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_tile128",
+      "name": "timing1",
+      "owned": {
+        "pid": 710745,
+        "birth_ticks": 711385632,
+        "pgid": 710745
+      },
+      "start": 1792515397.7602875,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792515409.743119,
+      "lifecycle_seconds": 11.982831954956055,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_tile128",
+      "name": "timing2",
+      "owned": {
+        "pid": 710802,
+        "birth_ticks": 711386837,
+        "pgid": 710802
+      },
+      "start": 1792515409.8133178,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792515421.8925755,
+      "lifecycle_seconds": 12.079257726669312,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "cross_direct_load",
+      "name": "before-build",
+      "owned": {
+        "pid": 711169,
+        "birth_ticks": 711407294,
+        "pgid": 711169
+      },
+      "start": 1792515614.382032,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792515732.6571016,
+      "lifecycle_seconds": 118.27506995201111,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "cross_direct_load",
+      "name": "active-build",
+      "owned": {
+        "pid": 711425,
+        "birth_ticks": 711419122,
+        "pgid": 711425
+      },
+      "start": 1792515732.6627407,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792515855.3952856,
+      "lifecycle_seconds": 122.73254561424255,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "cross_direct_load",
+      "name": "gate",
+      "owned": {
+        "pid": 711664,
+        "birth_ticks": 711431398,
+        "pgid": 711664
+      },
+      "start": 1792515855.4248934,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792515868.1038587,
+      "lifecycle_seconds": 12.678965330123901,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "cross_direct_load",
+      "name": "timing1",
+      "owned": {
+        "pid": 711757,
+        "birth_ticks": 711432670,
+        "pgid": 711757
+      },
+      "start": 1792515868.1387923,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792515880.1674225,
+      "lifecycle_seconds": 12.028630495071411,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "cross_direct_load",
+      "name": "timing2",
+      "owned": {
+        "pid": 711790,
+        "birth_ticks": 711433879,
+        "pgid": 711790
+      },
+      "start": 1792515880.2315207,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792515892.3203275,
+      "lifecycle_seconds": 12.088807106018066,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "table_index",
+      "name": "before-build",
+      "owned": {
+        "pid": 712085,
+        "birth_ticks": 711444138,
+        "pgid": 712085
+      },
+      "start": 1792515982.8193085,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792516105.699548,
+      "lifecycle_seconds": 122.8802399635315,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "table_index",
+      "name": "active-build",
+      "owned": {
+        "pid": 712445,
+        "birth_ticks": 711456426,
+        "pgid": 712445
+      },
+      "start": 1792516105.7010658,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792516228.7222002,
+      "lifecycle_seconds": 123.02113509178162,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "table_index",
+      "name": "gate",
+      "owned": {
+        "pid": 712770,
+        "birth_ticks": 711468731,
+        "pgid": 712770
+      },
+      "start": 1792516228.7529757,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792516240.682643,
+      "lifecycle_seconds": 11.929667472839355,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "table_index",
+      "name": "timing1",
+      "owned": {
+        "pid": 712784,
+        "birth_ticks": 711469932,
+        "pgid": 712784
+      },
+      "start": 1792516240.7587974,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792516252.5872722,
+      "lifecycle_seconds": 11.828474998474121,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "table_index",
+      "name": "timing2",
+      "owned": {
+        "pid": 712841,
+        "birth_ticks": 711471120,
+        "pgid": 712841
+      },
+      "start": 1792516252.637291,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792516264.4661143,
+      "lifecycle_seconds": 11.828823566436768,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "attention_m64",
+      "name": "before-build",
+      "owned": {
+        "pid": 713162,
+        "birth_ticks": 711484085,
+        "pgid": 713162
+      },
+      "start": 1792516382.2873719,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792516505.1772273,
+      "lifecycle_seconds": 122.88985633850098,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "attention_m64",
+      "name": "active-build",
+      "owned": {
+        "pid": 713305,
+        "birth_ticks": 711496374,
+        "pgid": 713305
+      },
+      "start": 1792516505.1791499,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792516634.2151752,
+      "lifecycle_seconds": 129.0360255241394,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "attention_m64",
+      "name": "gate",
+      "owned": {
+        "pid": 713633,
+        "birth_ticks": 711509281,
+        "pgid": 713633
+      },
+      "start": 1792516634.2532554,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792516646.2830377,
+      "lifecycle_seconds": 12.02978253364563,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "attention_m64",
+      "name": "timing1",
+      "owned": {
+        "pid": 713647,
+        "birth_ticks": 711510491,
+        "pgid": 713647
+      },
+      "start": 1792516646.349098,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792516658.429728,
+      "lifecycle_seconds": 12.08063006401062,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "attention_m64",
+      "name": "timing2",
+      "owned": {
+        "pid": 713667,
+        "birth_ticks": 711511706,
+        "pgid": 713667
+      },
+      "start": 1792516658.496588,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792516670.5450823,
+      "lifecycle_seconds": 12.048494815826416,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_n256",
+      "name": "before-build",
+      "owned": {
+        "pid": 713907,
+        "birth_ticks": 711527859,
+        "pgid": 713907
+      },
+      "start": 1792516820.0317657,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792516949.024276,
+      "lifecycle_seconds": 128.99251055717468,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_n256",
+      "name": "active-build",
+      "owned": {
+        "pid": 714053,
+        "birth_ticks": 711540759,
+        "pgid": 714053
+      },
+      "start": 1792516949.0260653,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792517078.2079751,
+      "lifecycle_seconds": 129.18191027641296,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_n256",
+      "name": "gate",
+      "owned": {
+        "pid": 714236,
+        "birth_ticks": 711553682,
+        "pgid": 714236
+      },
+      "start": 1792517078.2643857,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792517090.2439072,
+      "lifecycle_seconds": 11.97952151298523,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_n256",
+      "name": "timing1",
+      "owned": {
+        "pid": 714250,
+        "birth_ticks": 711554887,
+        "pgid": 714250
+      },
+      "start": 1792517090.3133636,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792517102.5546284,
+      "lifecycle_seconds": 12.241265058517456,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "ffn1_n256",
+      "name": "timing2",
+      "owned": {
+        "pid": 714271,
+        "birth_ticks": 711556118,
+        "pgid": 714271
+      },
+      "start": 1792517102.6228757,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792517114.9112005,
+      "lifecycle_seconds": 12.288325071334839,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_final",
+      "name": "selected-build",
+      "owned": {
+        "pid": 714820,
+        "birth_ticks": 711590142,
+        "pgid": 714820
+      },
+      "start": 1792517442.863519,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792517571.6079643,
+      "lifecycle_seconds": 128.74444580078125,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_final",
+      "name": "prepare",
+      "owned": {
+        "pid": 715086,
+        "birth_ticks": 711603017,
+        "pgid": 715086
+      },
+      "start": 1792517571.6096232,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792517571.641139,
+      "lifecycle_seconds": 0.031516075134277344,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_final",
+      "name": "build",
+      "owned": {
+        "pid": 715087,
+        "birth_ticks": 711603020,
+        "pgid": 715087
+      },
+      "start": 1792517571.6424901,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792517721.758559,
+      "lifecycle_seconds": 150.1160695552826,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_final",
+      "name": "stage1",
+      "owned": {
+        "pid": 715423,
+        "birth_ticks": 711618037,
+        "pgid": 715423
+      },
+      "start": 1792517721.806301,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792517734.3876486,
+      "lifecycle_seconds": 12.581347703933716,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_final",
+      "name": "stage2",
+      "owned": {
+        "pid": 715485,
+        "birth_ticks": 711619298,
+        "pgid": 715485
+      },
+      "start": 1792517734.4169405,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792517746.8469083,
+      "lifecycle_seconds": 12.429968118667603,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "point8192",
+      "name": "active-build",
+      "owned": {
+        "pid": 716377,
+        "birth_ticks": 711661795,
+        "pgid": 716377
+      },
+      "start": 1792518159.3913858,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792518288.138779,
+      "lifecycle_seconds": 128.74739384651184,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "point8192",
+      "name": "gate",
+      "owned": {
+        "pid": 716571,
+        "birth_ticks": 711674676,
+        "pgid": 716571
+      },
+      "start": 1792518288.1966944,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792518300.0314407,
+      "lifecycle_seconds": 11.834746360778809,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "point8192",
+      "name": "timing1",
+      "owned": {
+        "pid": 716585,
+        "birth_ticks": 711675866,
+        "pgid": 716585
+      },
+      "start": 1792518300.1001475,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792518312.230056,
+      "lifecycle_seconds": 12.129908800125122,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "point8192",
+      "name": "timing2",
+      "owned": {
+        "pid": 716608,
+        "birth_ticks": 711677086,
+        "pgid": 716608
+      },
+      "start": 1792518312.3031287,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792518324.332088,
+      "lifecycle_seconds": 12.028959512710571,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "gemm_inline",
+      "name": "active-build",
+      "owned": {
+        "pid": 716868,
+        "birth_ticks": 711689198,
+        "pgid": 716868
+      },
+      "start": 1792518433.425086,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792518561.1046026,
+      "lifecycle_seconds": 127.67951679229736,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "gemm_inline",
+      "name": "gate",
+      "owned": {
+        "pid": 717061,
+        "birth_ticks": 711701974,
+        "pgid": 717061
+      },
+      "start": 1792518561.1786337,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792518573.1074288,
+      "lifecycle_seconds": 11.928795099258423,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "gemm_inline",
+      "name": "timing1",
+      "owned": {
+        "pid": 717075,
+        "birth_ticks": 711703172,
+        "pgid": 717075
+      },
+      "start": 1792518573.1617506,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792518585.3920197,
+      "lifecycle_seconds": 12.23026967048645,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "gemm_inline",
+      "name": "timing2",
+      "owned": {
+        "pid": 717098,
+        "birth_ticks": 711704398,
+        "pgid": 717098
+      },
+      "start": 1792518585.4203298,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792518597.4492567,
+      "lifecycle_seconds": 12.028926849365234,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "rms_vector",
+      "name": "active-build",
+      "owned": {
+        "pid": 717410,
+        "birth_ticks": 711719580,
+        "pgid": 717410
+      },
+      "start": 1792518737.2359986,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792518865.5657194,
+      "lifecycle_seconds": 128.32972145080566,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "rms_vector",
+      "name": "gate",
+      "owned": {
+        "pid": 717718,
+        "birth_ticks": 711732416,
+        "pgid": 717718
+      },
+      "start": 1792518865.603482,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792518877.4824507,
+      "lifecycle_seconds": 11.878969192504883,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "rms_vector",
+      "name": "timing1",
+      "owned": {
+        "pid": 717732,
+        "birth_ticks": 711733612,
+        "pgid": 717732
+      },
+      "start": 1792518877.5602472,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792518889.6902115,
+      "lifecycle_seconds": 12.129964351654053,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "rms_vector",
+      "name": "timing2",
+      "owned": {
+        "pid": 717804,
+        "birth_ticks": 711734832,
+        "pgid": 717804
+      },
+      "start": 1792518889.757439,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792518901.8866475,
+      "lifecycle_seconds": 12.12920880317688,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "compact_b14",
+      "name": "before-build",
+      "owned": {
+        "pid": 718200,
+        "birth_ticks": 711752920,
+        "pgid": 718200
+      },
+      "start": 1792519070.6425302,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792519198.8270977,
+      "lifecycle_seconds": 128.1845681667328,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "compact_b14",
+      "name": "active-build",
+      "owned": {
+        "pid": 718477,
+        "birth_ticks": 711765739,
+        "pgid": 718477
+      },
+      "start": 1792519198.828785,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792519343.5503957,
+      "lifecycle_seconds": 144.72161078453064,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "compact_b14_r2",
+      "name": "active-build",
+      "owned": {
+        "pid": 719259,
+        "birth_ticks": 711795874,
+        "pgid": 719259
+      },
+      "start": 1792519500.182107,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792519595.834277,
+      "lifecycle_seconds": 95.652170419693,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "compact_b14_r2",
+      "name": "gate",
+      "owned": {
+        "pid": 719400,
+        "birth_ticks": 711805446,
+        "pgid": 719400
+      },
+      "start": 1792519595.9018526,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792519607.8815129,
+      "lifecycle_seconds": 11.979660511016846,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "compact_b14_r2",
+      "name": "timing1",
+      "owned": {
+        "pid": 719413,
+        "birth_ticks": 711806652,
+        "pgid": 719413
+      },
+      "start": 1792519607.955984,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792519619.3347213,
+      "lifecycle_seconds": 11.378737688064575,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "compact_b14_r3",
+      "name": "timing1",
+      "owned": {
+        "pid": 719784,
+        "birth_ticks": 711815132,
+        "pgid": 719784
+      },
+      "start": 1792519692.7629905,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792519704.198644,
+      "lifecycle_seconds": 11.435653686523438,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "compact_b14_r4",
+      "name": "timing1",
+      "owned": {
+        "pid": 720023,
+        "birth_ticks": 711827388,
+        "pgid": 720023
+      },
+      "start": 1792519815.3244956,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792519826.5020247,
+      "lifecycle_seconds": 11.177529335021973,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "compact_b14_r5",
+      "name": "timing1",
+      "owned": {
+        "pid": 720244,
+        "birth_ticks": 711835745,
+        "pgid": 720244
+      },
+      "start": 1792519898.890668,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792519910.9753203,
+      "lifecycle_seconds": 12.084652662277222,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "compact_b14_r5",
+      "name": "timing2",
+      "owned": {
+        "pid": 720267,
+        "birth_ticks": 711836960,
+        "pgid": 720267
+      },
+      "start": 1792519911.0430756,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792519923.2262988,
+      "lifecycle_seconds": 12.183223485946655,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_compact",
+      "name": "prepare",
+      "owned": {
+        "pid": 720467,
+        "birth_ticks": 711847362,
+        "pgid": 720467
+      },
+      "start": 1792520015.0557983,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792520015.0904148,
+      "lifecycle_seconds": 0.034616708755493164,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_compact",
+      "name": "build",
+      "owned": {
+        "pid": 720468,
+        "birth_ticks": 711847365,
+        "pgid": 720468
+      },
+      "start": 1792520015.092159,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792520119.940528,
+      "lifecycle_seconds": 104.84836935997009,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_compact",
+      "name": "stage1",
+      "owned": {
+        "pid": 720650,
+        "birth_ticks": 711857855,
+        "pgid": 720650
+      },
+      "start": 1792520119.990358,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792520121.556252,
+      "lifecycle_seconds": 1.5658941268920898,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_compact_r2",
+      "name": "stage1",
+      "owned": {
+        "pid": 721029,
+        "birth_ticks": 711892220,
+        "pgid": 721029
+      },
+      "start": 1792520463.642647,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792520476.223799,
+      "lifecycle_seconds": 12.581152200698853,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_selected",
+      "name": "active_build",
+      "owned": {
+        "pid": 721268,
+        "birth_ticks": 711902508,
+        "pgid": 721268
+      },
+      "start": 1792520566.5181313,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792520694.7140093,
+      "lifecycle_seconds": 128.1958782672882,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_selected",
+      "name": "prepare",
+      "owned": {
+        "pid": 721571,
+        "birth_ticks": 711915328,
+        "pgid": 721571
+      },
+      "start": 1792520694.715661,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792520694.7471592,
+      "lifecycle_seconds": 0.03149819374084473,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_selected",
+      "name": "build",
+      "owned": {
+        "pid": 721572,
+        "birth_ticks": 711915331,
+        "pgid": 721572
+      },
+      "start": 1792520694.7484117,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792520845.1265733,
+      "lifecycle_seconds": 150.37816214561462,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "stage_selected",
+      "name": "stage1",
+      "owned": {
+        "pid": 721911,
+        "birth_ticks": 711930372,
+        "pgid": 721911
+      },
+      "start": 1792520845.1594355,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792520857.7898657,
+      "lifecycle_seconds": 12.630430698394775,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ]
+}

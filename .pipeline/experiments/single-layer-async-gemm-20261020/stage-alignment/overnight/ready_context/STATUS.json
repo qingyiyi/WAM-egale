@@ -1,0 +1,26 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792513546.7290373,
+  "deadline": 1792526400.0,
+  "jobs": [
+    {
+      "name": "before-build",
+      "owned": {
+        "pid": 707123,
+        "birth_ticks": 711200529,
+        "pgid": 707123
+      },
+      "start": 1792513546.7308636,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792513564.5754201,
+      "lifecycle_seconds": 17.844557523727417,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('before-build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/ready_context/guard.py\", line 41, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: before-build failed\n",
+  "end": 1792513564.5791063,
+  "lifecycle_seconds": 17.850069284439087
+}

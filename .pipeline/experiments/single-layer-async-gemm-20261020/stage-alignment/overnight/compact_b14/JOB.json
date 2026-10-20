@@ -1,0 +1,67 @@
+{
+  "goal": "B14-only 128-thread resource geometry with two-stage CUTLASS and no unused split-attention workspace; preserve sequential stage boundaries, math and non-B14 generic path",
+  "deadline": "2026-10-21T05:00:00+08:00",
+  "full_block_cap": 402,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "before-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14/build_before.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14/before-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "active-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14/active-build/obj"
+      ],
+      1200,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14/gate.py"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14/timing.py",
+        "1"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14/timing.py",
+        "2"
+      ],
+      500,
+      true
+    ]
+  ],
+  "predecessor": "stage_final resources constrain current layer to one CTA/SM; RMS vector accepted; no cross-stage scheduling",
+  "source": "same optimized source compiled generic and compact B14; wrapper selects compact only for actual14x16 candidate inputs",
+  "before_binary": "fresh build of selected RMS-vector sequential source"
+}

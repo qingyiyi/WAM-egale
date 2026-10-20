@@ -1,0 +1,53 @@
+{
+  "goal": "Post-point/layout/Norm same-input stage matrix A/B/C",
+  "deadline": "2026-10-21T03:30:00+08:00",
+  "full_block_cap": 36,
+  "stage_cap": 4524,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "prepare",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_post_r2/prepare_simple_stages.py"
+      ],
+      60,
+      false
+    ],
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_post_r2/build_simple_stages.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_post",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_post_r2/simple-stage-build/obj"
+      ],
+      1200,
+      false
+    ],
+    [
+      "stage1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_post_r2/simple_stage_worker.py",
+        "1"
+      ],
+      600,
+      true
+    ],
+    [
+      "stage2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_post_r2/simple_stage_worker.py",
+        "2"
+      ],
+      600,
+      true
+    ]
+  ],
+  "predecessor": "stage_post CPU build failed: externally generated layout call had old signature; original failure retained"
+}

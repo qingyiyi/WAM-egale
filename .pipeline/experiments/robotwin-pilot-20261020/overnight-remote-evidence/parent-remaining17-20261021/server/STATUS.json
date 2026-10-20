@@ -1,0 +1,444 @@
+{
+  "status": "SERVING",
+  "start": 1792515838.862607,
+  "teacher_attempted": 12852,
+  "teacher_returned": 12852,
+  "policy_chunks": 259,
+  "generator": {
+    "condition": "PARENT2000",
+    "seed": 20260923,
+    "updates": 2000,
+    "batch": 512,
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "normalization": "Target FIT36 only",
+    "selection": "fixed final update",
+    "parameters": 56416,
+    "target_revision": "8c9dea8abbc5c91cc9e18bc3264b8915083bbe70",
+    "representation": "16config_channels x 32positions",
+    "source_data": "/root/cxz/robotwin/runs/tf-migration-20261021/target48.pt",
+    "source_role": "Target visited, not on-policy TF",
+    "quality_passed": false
+  },
+  "bank": "full512 BF16 reused",
+  "tau": 0.007879490032792091,
+  "active_case": "open_microwave-valid10",
+  "active_route": "cache",
+  "active_chunk": 48,
+  "last_returned_policy": {
+    "case": "open_microwave-valid10",
+    "chunk": 47,
+    "counts": {
+      "video_B2_update0_attempted": 25,
+      "video_B2_update0_returned": 25,
+      "video_B2_update1_attempted": 1,
+      "video_B2_update1_returned": 1,
+      "action_B2_update0_attempted": 3,
+      "action_B2_update0_returned": 3,
+      "action_B14_update0_attempted": 18,
+      "action_B14_update0_returned": 18,
+      "action_B2_update1_attempted": 1,
+      "action_B2_update1_returned": 1
+    },
+    "audit": {
+      "counters": {
+        "target_forward_count": 3,
+        "tree_scheduler_transition_count": 129,
+        "committed_scheduler_update_count": 50,
+        "ordinary_target_scheduler_update_count": 7,
+        "draft_forward_count": 54,
+        "tree_count": 18,
+        "logical_candidate_rows": 126,
+        "verifier_target_row_count": 126,
+        "verifier_cfg_rows": 252,
+        "verifier_forward_count": 18,
+        "accepted_depth_2": 14,
+        "bonus_target_tree_count": 14,
+        "committed_draft_scheduler_update_count": 29,
+        "bonus_target_scheduler_update_count": 14,
+        "accepted_depth_1": 1,
+        "accepted_depth_0": 3,
+        "terminal_target_forward_count": 1
+      },
+      "phases_host_unsynchronized": {
+        "action_target_forward": 0.3972690487280488,
+        "action_tree_scheduler": 0.010956655256450176,
+        "action_draft_model": 0.039572189562022686,
+        "action_tree_build": 0.10573323350399733,
+        "action_candidate_pack_scatter": 0.0009823748841881752,
+        "verifier_prepare_input": 0.01038779504597187,
+        "verifier_target_forward": 2.7207885328680277,
+        "verifier_score_postprocess": 0.00048073660582304,
+        "action_error_score": 0.04504757188260555,
+        "action_selector": 0.0003708861768245697,
+        "action_route_execute": 0.0063537126407027245,
+        "action_terminal_target_forward": 0.0951004633679986
+      },
+      "trees": [
+        {
+          "step": 1,
+          "depth": 2,
+          "first": [
+            0.006665550637990236,
+            0.005433237180113792
+          ],
+          "second": [
+            [
+              0.00763801671564579,
+              0.006318199448287487
+            ],
+            [
+              0.006648099049925804,
+              0.006710474845021963
+            ]
+          ],
+          "parent": 1,
+          "child": 0
+        },
+        {
+          "step": 4,
+          "depth": 2,
+          "first": [
+            0.0021648977417498827,
+            0.0035402376670390368
+          ],
+          "second": [
+            [
+              0.002892791060730815,
+              0.004489499144256115
+            ],
+            [
+              0.0045499736443161964,
+              0.007272831629961729
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 7,
+          "depth": 2,
+          "first": [
+            0.0023859639186412096,
+            0.004147442989051342
+          ],
+          "second": [
+            [
+              0.002895722398534417,
+              0.004093102645128965
+            ],
+            [
+              0.004191238898783922,
+              0.006745065562427044
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 10,
+          "depth": 2,
+          "first": [
+            0.0020133883226662874,
+            0.003415667451918125
+          ],
+          "second": [
+            [
+              0.0032019373029470444,
+              0.003632290055975318
+            ],
+            [
+              0.003686122829094529,
+              0.0058534229174256325
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 13,
+          "depth": 2,
+          "first": [
+            0.002207136247307062,
+            0.0035662571899592876
+          ],
+          "second": [
+            [
+              0.00275299116037786,
+              0.003912465181201696
+            ],
+            [
+              0.004027358256280422,
+              0.006454900838434696
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 16,
+          "depth": 2,
+          "first": [
+            0.0023977025412023067,
+            0.004115159623324871
+          ],
+          "second": [
+            [
+              0.003140127519145608,
+              0.004640099126845598
+            ],
+            [
+              0.004701998084783554,
+              0.0070997579023242
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 19,
+          "depth": 2,
+          "first": [
+            0.0026617953553795815,
+            0.004225407261401415
+          ],
+          "second": [
+            [
+              0.0032309081871062517,
+              0.004160656128078699
+            ],
+            [
+              0.004161158576607704,
+              0.00632909731939435
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 22,
+          "depth": 2,
+          "first": [
+            0.002849788870662451,
+            0.0033773009199649096
+          ],
+          "second": [
+            [
+              0.003819224424660206,
+              0.003877827664837241
+            ],
+            [
+              0.0038618240505456924,
+              0.00551907392218709
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 25,
+          "depth": 2,
+          "first": [
+            0.0026382552459836006,
+            0.003764405380934477
+          ],
+          "second": [
+            [
+              0.003438131185248494,
+              0.004122767131775618
+            ],
+            [
+              0.004293503239750862,
+              0.006208186037838459
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 28,
+          "depth": 2,
+          "first": [
+            0.002807175274938345,
+            0.003582986071705818
+          ],
+          "second": [
+            [
+              0.0038310494273900986,
+              0.00443284073844552
+            ],
+            [
+              0.004363867454230785,
+              0.00607608025893569
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 31,
+          "depth": 2,
+          "first": [
+            0.0036986321210861206,
+            0.003856576280668378
+          ],
+          "second": [
+            [
+              0.004005091730505228,
+              0.004587993491441011
+            ],
+            [
+              0.004692709539085627,
+              0.0064612701535224915
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 34,
+          "depth": 2,
+          "first": [
+            0.0029515991918742657,
+            0.004203150048851967
+          ],
+          "second": [
+            [
+              0.004614504519850016,
+              0.0052404021844267845
+            ],
+            [
+              0.005314070265740156,
+              0.007009837310761213
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 37,
+          "depth": 2,
+          "first": [
+            0.003355291672050953,
+            0.004503792151808739
+          ],
+          "second": [
+            [
+              0.005285201594233513,
+              0.006313223857432604
+            ],
+            [
+              0.0063727786764502525,
+              0.008381037972867489
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 40,
+          "depth": 2,
+          "first": [
+            0.004175405018031597,
+            0.0053403787314891815
+          ],
+          "second": [
+            [
+              0.007319755386561155,
+              0.008298313245177269
+            ],
+            [
+              0.008179444819688797,
+              0.010282970033586025
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 43,
+          "depth": 1,
+          "first": [
+            0.005762393120676279,
+            0.007392681669443846
+          ],
+          "second": [
+            [
+              0.010243699885904789,
+              0.011783533729612827
+            ],
+            [
+              0.011734133586287498,
+              0.015203135088086128
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 45,
+          "depth": 0,
+          "first": [
+            0.007976784370839596,
+            0.01042303629219532
+          ],
+          "second": [
+            [
+              0.015978803858160973,
+              0.01850431226193905
+            ],
+            [
+              0.0183724332600832,
+              0.02388259582221508
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 46,
+          "depth": 0,
+          "first": [
+            0.010088233277201653,
+            0.013930127024650574
+          ],
+          "second": [
+            [
+              0.02184855379164219,
+              0.024677595123648643
+            ],
+            [
+              0.024680616334080696,
+              0.03126472234725952
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        },
+        {
+          "step": 47,
+          "depth": 0,
+          "first": [
+            0.013634840026497841,
+            0.01595667377114296
+          ],
+          "second": [
+            [
+              0.03142466023564339,
+              0.031748216599226
+            ],
+            [
+              0.031715355813503265,
+              0.03753390535712242
+            ]
+          ],
+          "parent": 0,
+          "child": 0
+        }
+      ],
+      "shader": "shared",
+      "shared_calls": 136920,
+      "chunk": 259
+    }
+  }
+}

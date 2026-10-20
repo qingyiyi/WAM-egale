@@ -1,0 +1,53 @@
+{
+  "goal": "Inline the GEMM device dispatch to expose stage-constant n/k/split branches and remove shared call boundary; no new scheduling or arithmetic",
+  "deadline": "2026-10-21T05:00:00+08:00",
+  "full_block_cap": 402,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "active-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/gemm_inline/active-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/gemm_inline/gate.py"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/gemm_inline/timing.py",
+        "1"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/gemm_inline/timing.py",
+        "2"
+      ],
+      500,
+      true
+    ]
+  ],
+  "predecessor": "stage_final standalone cross KV 1.07x vs embedded ~1.4x native; cuobjdump includes out-of-line gemm_tile and whole stack; causal explanation still hypothesis",
+  "source": "optimized/csrc/gemm_pipeline.cuh: only __forceinline__ on gemm_tile",
+  "before_binary": "ffn1_n256 pre-trial selected source; original point2048"
+}

@@ -106,7 +106,20 @@ __device__ void attention(const Params &p, Shared &s, cg::grid_group &g, int st,
                                                             memory);
             } else {
                 int b = (t / qb) % p.b, h = t / (qb * p.b), q = t % qb;
-                if (p.q % 128 == 0 && f.seqlen_k % 64 == 0)
+                // B14实际Q16：只缩小本实例query tile，不跨候选拼接query。
+                if (p.candidate && p.b == 14 && p.q == 16 && cross)
+                    wam_whole_fa2::whole_standard_direct<FaCandidate, false, false, false, false,
+                                                         false, true, false, false>(f, b, h, q, memory);
+                else if (p.candidate && p.b == 14 && p.q == 16)
+                    wam_whole_fa2::whole_standard<FaCandidate, false, false, false, false,
+                                                  false, true, false, false>(f, b, h, q, memory);
+                else if (cross && p.q % 128 == 0 && f.seqlen_k % 64 == 0)
+                    wam_whole_fa2::whole_standard_direct<FaStandard, false, false, false, false,
+                                                         true, true, false, false>(f, b, h, q, memory);
+                else if (cross)
+                    wam_whole_fa2::whole_standard_direct<FaStandard, false, false, false, false,
+                                                         false, true, false, false>(f, b, h, q, memory);
+                else if (p.q % 128 == 0 && f.seqlen_k % 64 == 0)
                     wam_whole_fa2::whole_standard<FaStandard, false, false, false, false, true,
                                                   true, false, false>(f, b, h, q, memory);
                 else

@@ -1,0 +1,58 @@
+{
+  "goal": "Final selected RMS-vector sequential implementation stage alignment; no new scheduling",
+  "deadline": "2026-10-21T05:00:00+08:00",
+  "full_block_cap": 18,
+  "stage_cap": 2262,
+  "storage_cap": 524288000,
+  "steps": [
+    [
+      "active_build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_selected/active-obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "prepare",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_selected/prepare_simple_stages.py"
+      ],
+      60,
+      false
+    ],
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_selected/build_simple_stages.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_selected",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_selected/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "stage1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_selected/simple_stage_worker.py",
+        "1"
+      ],
+      600,
+      true
+    ]
+  ],
+  "selected_source": "rms_vector; identical snapshot compact_b14/before",
+  "cleanup": "guard records owned child PID/birth, reaps and checks absence",
+  "notes": "Clock64 is elapsed cycles on same SM, not active compute; diagnostic cost not formal whole timing"
+}

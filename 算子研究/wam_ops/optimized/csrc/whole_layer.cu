@@ -25,6 +25,7 @@ using at::Tensor;
 constexpr int D = 3072, H = 24, HD = 128, F = 14336, THREADS = 256;
 constexpr int MAX_STAGES = 32; // 29个顺序阶段，30/31用于attention split合并。
 using FaStandard = Flash_fwd_kernel_traits<128, 128, 64, 4, false, false, cutlass::bfloat16_t>;
+using FaCandidate = Flash_fwd_kernel_traits<128, 64, 64, 4, false, false, cutlass::bfloat16_t>;
 using FaSplit = Flash_fwd_kernel_traits<128, 64, 128, 4, false, false, cutlass::bfloat16_t>;
 constexpr int FA_SMEM =
     FaStandard::kSmemSize > FaSplit::kSmemSize ? FaStandard::kSmemSize : FaSplit::kSmemSize;
@@ -95,6 +96,7 @@ union alignas(32) TileShared {
     GemmShared gemm;
     CutlassGemmStorage cutlass_gemm;
     NormShared norm;
+    NormShared norm_pair[2]; // 两行各占4个warp；仍小于FA2已有的共享内存上限。
     char fa2_workspace[FA_SMEM];
 };
 struct Shared {
@@ -154,7 +156,7 @@ __device__ void finish_tile() {
 __device__ void linear(const Params &p, Shared &s, cg::grid_group &g, int st, const B *a, int wi,
                        B *out, int m, int n, int k) {
     const int tn = m >= 128 ? 128 : 64;
-    const int tm = gemm_tile_rows(m);
+    const int tm = gemm_tile_rows(m, n);
     int ntiles = ((m + tm - 1) / tm) * ((n + tn - 1) / tn);
     begin_stage(p, g, st);
     for (int t; (t = claim_tile(p, s, st)) < ntiles;) {
@@ -166,13 +168,13 @@ __device__ void linear(const Params &p, Shared &s, cg::grid_group &g, int st, co
 
 #include "norm_device_generated.cuh"
 
-// Norm的tile是一整行3072维：warp1搬入，warp3–6按原Torch顺序做128线程归约，
-// warp7写回。shared中的FP32转换/归约顺序不能随意改，否则BF16输出可能翻转。
+// Norm tile为完整3072维行。8个warp搬入/写回，warp3–6仍按原Torch顺序归约。
+// 仅扩大搬运参与度；FP32转换、Welford树与BF16舍入顺序保持原样。
 __device__ void norm_tile(Shared &sh, const B *x, void *y, const void *gamma, const float *beta,
                           float eps, bool rms, bool output_float, int row) {
     auto &s = sh.tile.norm;
-    if (warp() == 1) {
-        for (int i = lane(); i < D / 8; i += 32)
+    {
+        for (int i = threadIdx.x; i < D / 8; i += THREADS)
             copy16_async(s.input + i * 8, x + row * D + i * 8, true);
         asm volatile("cp.async.commit_group;" ::: "memory");
         asm volatile("cp.async.wait_group 0;" ::: "memory");
@@ -234,13 +236,13 @@ __device__ void norm_tile(Shared &sh, const B *x, void *y, const void *gamma, co
             }
     }
     __syncthreads();
-    if (warp() == 7) {
+    {
         if (output_float) {
-            for (int i = lane(); i < D / 4; i += 32)
+            for (int i = threadIdx.x; i < D / 4; i += THREADS)
                 reinterpret_cast<float4 *>((float *)y + row * D)[i] =
                     reinterpret_cast<const float4 *>(s.y)[i];
         } else {
-            for (int i = lane(); i < D / 8; i += 32) {
+            for (int i = threadIdx.x; i < D / 8; i += THREADS) {
                 uint32_t packed[4];
 #pragma unroll
                 for (int j = 0; j < 4; ++j) {
@@ -255,9 +257,83 @@ __device__ void norm_tile(Shared &sh, const B *x, void *y, const void *gamma, co
     }
     __syncthreads();
 }
+// Cross-K有数千行。旧实现每CTA只用4个warp归约一行；这里8个warp
+// 分成两个独立的128线程组，各算一行。没有跨阶段调度，也不改变行内归约树。
+__device__ inline void rms_pair_sync(int group) {
+    if (group == 0)
+        asm volatile("bar.sync 1, 128;" ::: "memory");
+    else
+        asm volatile("bar.sync 2, 128;" ::: "memory");
+}
+__device__ void rms_pair_tile(Shared &sh, const B *x, B *y, const B *gamma,
+                              float eps, int first_row, int rows) {
+    using namespace wam_optimized_norm;
+    const int group = threadIdx.x / 128, tid = threadIdx.x % 128;
+    const int row = first_row + group, cw = tid / 32, cl = tid % 32;
+    auto &s = sh.tile.norm_pair[group];
+    if (row < rows) {
+        // 与原版一样按每线程4元素向量读取；BF16转FP32后按原顺序归约。
+        // 不再先搬到shared，再展开成另一份FP32 shared tensor。
+        using Vec = aligned_vector<B, 4>;
+        const auto *input = reinterpret_cast<const Vec *>(x + row * D);
+        WelfordDataLN wd;
+        for (int v = tid; v < D / 4; v += 128) {
+            Vec values = input[v];
+#pragma unroll
+            for (int j = 0; j < 4; ++j)
+                wd = cuWelfordOnlineSum<float, true>(value(values.val[j]), wd);
+        }
+        for (int offset = 16; offset; offset >>= 1) {
+            WelfordDataLN b{__shfl_down_sync(0xffffffff, wd.mean, offset),
+                            __shfl_down_sync(0xffffffff, wd.sigma2, offset),
+                            __shfl_down_sync(0xffffffff, wd.count, offset)};
+            wd = cuWelfordCombine<true>(wd, b);
+        }
+        for (int offset = 2; offset; offset >>= 1) {
+            if (cl == 0 && cw >= offset && cw < 2 * offset) {
+                int j = cw - offset;
+                s.reduce[2 * j] = wd.mean;
+                s.reduce[2 * j + 1] = wd.sigma2;
+                s.reduce[4 + j] = wd.count;
+            }
+            rms_pair_sync(group);
+            if (cl == 0 && cw < offset) {
+                WelfordDataLN b{s.reduce[2 * cw], s.reduce[2 * cw + 1], s.reduce[4 + cw]};
+                wd = cuWelfordCombine<true>(wd, b);
+            }
+            rms_pair_sync(group);
+        }
+        if (tid == 0)
+            s.reduce[1] = wd.sigma2 / float(D);
+        rms_pair_sync(group);
+        float rstd = c10::cuda::compat::rsqrt(s.reduce[1] + eps);
+        for (int v = tid; v < D / 4; v += 128) {
+            Vec values = input[v], output;
+            Vec weights;
+            if (gamma) weights = reinterpret_cast<const Vec *>(gamma)[v];
+#pragma unroll
+            for (int j = 0; j < 4; ++j) {
+                float z = rstd * value(values.val[j]);
+                if (gamma) z = value(weights.val[j]) * z;
+                output.val[j] = bf(z);
+            }
+            reinterpret_cast<Vec *>(y + row * D)[v] = output;
+        }
+    }
+    __syncthreads(); // 两行都写完后，整个CTA才复用共享空间。
+}
 __device__ void norm(const Params &p, Shared &s, cg::grid_group &g, int st, const B *x, void *y,
                      int rows, int gi, int bi, float eps, bool rms, bool out_float) {
     begin_stage(p, g, st);
+    if (p.candidate && rows >= 1024 && rms && !out_float && bi < 0) {
+        for (int t; (t = claim_tile(p, s, st)) < (rows + 1) / 2;) {
+            rms_pair_tile(s, x, (B *)y, gi >= 0 ? (const B *)p.w[gi] : nullptr,
+                          eps, 2 * t, rows);
+            finish_tile();
+        }
+        g.sync();
+        return;
+    }
     for (int t; (t = claim_tile(p, s, st)) < rows;) {
         norm_tile(s, x, y, gi >= 0 ? p.w[gi] : nullptr, bi >= 0 ? (const float *)p.w[bi] : nullptr,
                   eps, rms, out_float, t);
@@ -266,12 +342,47 @@ __device__ void norm(const Params &p, Shared &s, cg::grid_group &g, int st, cons
     g.sync();
 }
 
-__device__ void layout(const Params &p) {
-    if (blockIdx.x != 0 || threadIdx.x != 0)
+__device__ void layout(const Params &p, Shared &s) {
+    if (blockIdx.x != 0)
         return;
-    p.info[0] = 0;
-    p.info[1] = 0;
+    if (threadIdx.x == 0) {
+        p.info[0] = 0;
+        p.info[1] = 0;
+    }
     if (!p.cache)
+        return;
+    if (p.candidate) {
+        // B14只读取公共历史。按物理slot顺序压紧mask，不排序、不淘汰、
+        // 不把候选private suffix写入历史。8个warp各处理32个相邻slot。
+        // workspace复用现有union；没有增加persistent CTA的shared占用。
+        int *counts = reinterpret_cast<int *>(s.tile.norm.input);
+        if (threadIdx.x == 0)
+            s.task = 0;
+        __syncthreads();
+        for (int base = 0; base < p.pool; base += THREADS) {
+            int i = base + threadIdx.x;
+            bool valid = i < p.pool && p.mask[i];
+            unsigned bits = __ballot_sync(0xffffffff, valid);
+            if (lane() == 0)
+                counts[warp()] = __popc(bits);
+            __syncthreads();
+            int before = 0;
+            for (int w = 0; w < warp(); ++w)
+                before += counts[w];
+            if (valid)
+                p.slots[s.task + before + __popc(bits & ((1u << lane()) - 1))] = i;
+            __syncthreads();
+            if (threadIdx.x == 0)
+                for (int w = 0; w < 8; ++w)
+                    s.task += counts[w];
+            __syncthreads();
+        }
+        if (threadIdx.x == 0)
+            p.info[0] = s.task;
+        return;
+    }
+    // B2原始路径有真实cache写入和稳定淘汰，暂时保留已对齐的实现。
+    if (threadIdx.x != 0)
         return;
     if (!p.candidate) {
         int free = 0;
@@ -316,19 +427,23 @@ __device__ void layout(const Params &p) {
 
 __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Point op, int dst,
                       int a, int b, int param, int64_t count) {
-    // 一个任务覆盖2048元素；目前4个compute warp各自处理步长128的元素。
+    // 一个任务覆盖2048元素；逐元素没有跨线程归约，8个warp共同搬运/计算。
+    // 不改变每个元素的FP32算式或BF16舍入；GEMM/Norm的warp分工不变。
     constexpr int tile_elements = 2048;
     int tiles = (count + tile_elements - 1) / tile_elements;
     begin_stage(p, g, st);
     for (int task; (task = claim_tile(p, s, st)) < tiles;) {
-        if (compute())
-            for (int j = ct(); j < tile_elements; j += 128) {
+        for (int j = threadIdx.x; j < tile_elements; j += THREADS) {
                 int64_t i = int64_t(task) * tile_elements + j;
                 float z = 0.f;
                 if (i < count) {
                     if (op == TABLE) {
-                        int row = i / (6 * D), cell = i % (6 * D), batch = row / p.q, t = row % p.q;
-                        int64_t j = (int64_t(batch) * p.l + (p.l == 1 ? 0 : t)) * 6 * D + cell;
+                        int cell = i % (6 * D);
+                        int64_t j = i; // 实际逐token temb无需再做batch/token广播地址运算。
+                        if (p.l != p.q) {
+                            int row = i / (6 * D), batch = row / p.q, t = row % p.q;
+                            j = (int64_t(batch) * p.l + (p.l == 1 ? 0 : t)) * 6 * D + cell;
+                        }
                         float te = p.temb_float ? ((const float *)p.temb)[j]
                                                 : value(((const B *)p.temb)[j]);
                         z = __fadd_rn(((const float *)p.w[0])[cell], te);
@@ -406,7 +521,7 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     Shared &s = *reinterpret_cast<Shared *>(memory);
     auto g = cg::this_grid();
     // 缓存只整理本次可见slot；B14不会把候选的private KV写入公共历史。
-    layout(p);
+    layout(p, s);
     g.sync();
     int st = 0, m = p.b * p.q, mc = p.b * p.c;
     // 1. 按token生成6组调制量，得到self-attention的输入。

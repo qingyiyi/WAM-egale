@@ -1,10 +1,12 @@
 # 长期记忆索引
 
+- [两线夜间接续至上午收口](global/requirements/decision-两线夜间接续至十月二十一日上午收口.md)（constraint，M39/M40）：10/21 09:30–10:00汇报；先原语性能再调度，迁移按既定数据链；旧截止/预算保留。
+
 - [算子累计预算十小时](global/requirements/decision-算子累计预算十小时.md)（constraint，M39）：旧使用计入，RoboTwin预算与截止不变。
 
 - [实验算子简洁、检查外置](global/requirements/preference-实验算子代码简洁并将检查移到外部.md)（guideline，M39）：先验证简易版，无稳定退化则仅维护简易版；核心保留必要计算逻辑，外部核验不删除。
 
-- [先逐阶段对齐再异步](global/requirements/feedback-先逐阶段对齐原版性能再做异步调度.md)（guideline，M39）：先同输入/同边界对照原版、自有阶段独立、自有阶段嵌入整层，分清原语与整层资源/调度成本，再优化与ready调度。
+- [先逐阶段对齐再异步](global/requirements/feedback-先逐阶段对齐原版性能再做异步调度.md)（constraint，M39）：先对齐再调度，无法对齐须给可追溯原因；先同输入/同边界对照原版、自有阶段独立、自有阶段嵌入整层，分清原语与整层资源/调度成本，再优化与ready调度。
 
 
 这是从旧228条记录提炼的当前主题入口；原记录和原分类索引保留，按具体问题追溯。临时进度与 AutoDL 完成数看 Cycle，不作为长期记忆复制。

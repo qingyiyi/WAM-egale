@@ -1,0 +1,2262 @@
+{
+  "cap_seconds": 86400,
+  "consumed_seconds": 20228.599769353867,
+  "jobs": [
+    {
+      "namespace": "/root/cxz/robotwin/runs/prefilter-control-4",
+      "status": "STOPPED_FAILED_OR_PARTIAL",
+      "start": 1792474145.0284991,
+      "GPU_lifecycle_seconds": 450.31777358055115,
+      "children": [
+        {
+          "pid": 653188,
+          "birth_ticks": 707260362,
+          "pgid": 653188
+        },
+        {
+          "pid": 653214,
+          "birth_ticks": 707261011,
+          "pgid": 653188
+        }
+      ],
+      "root_owned": {
+        "pid": 653188,
+        "birth_ticks": 707260362,
+        "pgid": 653188
+      },
+      "GPU_start": 1792474145.0621552,
+      "returncode": -15,
+      "root_reaped": true,
+      "cleanup_signalled": [],
+      "worker_terminal": "STOPPED_INFRA_OIDN_ILLEGAL_MEMORY_ACCESS"
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/prefilter-control-5",
+      "status": "STOPPED_FAILED_OR_PARTIAL",
+      "start": 1792475141.3952742,
+      "GPU_lifecycle_seconds": 45.00287580490112,
+      "children": [
+        {
+          "pid": 654565,
+          "birth_ticks": 707360003,
+          "pgid": 654565
+        },
+        {
+          "pid": 654589,
+          "birth_ticks": 707360620,
+          "pgid": 654565
+        }
+      ],
+      "root_owned": {
+        "pid": 654565,
+        "birth_ticks": 707360003,
+        "pgid": 654565
+      },
+      "GPU_start": 1792475141.4706368,
+      "explicit_infrastructure_stop": true,
+      "timeout": true,
+      "returncode": -15,
+      "root_reaped": true,
+      "cleanup_signalled": [],
+      "worker_terminal": "STOPPED_INFRA_OIDN_ILLEGAL_MEMORY_ACCESS"
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/driver-interop-base-1",
+      "status": "COMPLETE",
+      "start": 1792479063.3221812,
+      "mode": "base",
+      "policy_episodes": 0,
+      "teacher_forwards": 0,
+      "GPU": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+      "worker_cap_seconds": 600,
+      "cleanup_reserve_seconds": 60,
+      "repair_total_cap_seconds": 1800,
+      "storage_cap_bytes": 268435456,
+      "fixed_case": {
+        "task": "place_object_basket",
+        "seed": 10000
+      },
+      "library_path": "/root/cxz/robotwin/deps/system-driver535-links:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufft/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvtx/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/curand/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvshmem/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cudnn/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nccl/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparse/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cublas/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufile/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusolver/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparselt/lib:/root/cxz/robotwin/deps/vulkan-loader/usr/lib/x86_64-linux-gnu:/root/cxz/deps/glvnd-ubuntu24-1.7.0/usr/lib/x86_64-linux-gnu:/usr/local/lib/python3.12/dist-packages/torch/lib:/usr/local/lib/python3.12/dist-packages/torch_tensorrt/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/root/cxz/envs/libero-va/lib",
+      "goal": "original complete expert and observation; no policy",
+      "owned": {
+        "pid": 658335,
+        "birth_ticks": 707752196,
+        "pgid": 658335
+      },
+      "returncode": 0,
+      "root_reaped": true,
+      "owned_processes": [
+        {
+          "pid": 658335,
+          "birth_ticks": 707752196,
+          "pgid": 658335
+        },
+        {
+          "pid": 658360,
+          "birth_ticks": 707752812,
+          "pgid": 658335
+        }
+      ],
+      "remaining_owned": [],
+      "scene": {
+        "status": "COMPLETE_ORIGINAL_EXPERT_AND_OBSERVATION",
+        "start": 1792479063.4407978,
+        "phase": "ORIGINAL_OBSERVATION_SAVED",
+        "task": "place_object_basket",
+        "seed": 10000,
+        "policy_episodes": 0,
+        "teacher_forwards": 0,
+        "expert_complete": true,
+        "torch_version": "2.9.0+cu126",
+        "torch_cuda": "12.6",
+        "cuda_name": "NVIDIA A100-SXM4-40GB",
+        "loaded_libraries": [
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_core.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_device_cuda.so.2.3.3",
+          "/usr/lib/x86_64-linux-gnu/libcuda.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.535.161.08"
+        ],
+        "render_device": {
+          "alias": "pci:0000:4e:00.0",
+          "pci": "0000:4e:00.0",
+          "name": "NVIDIA A100-SXM4-40GB",
+          "can_render": true,
+          "is_cuda": true,
+          "cuda_id": 0
+        },
+        "plan_success": true,
+        "expert_success": true,
+        "observation": {
+          "observation": {
+            "left_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "right_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "head_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "front_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            }
+          },
+          "pointcloud": "list",
+          "joint_action": {
+            "left_arm": "list",
+            "left_gripper": "float64",
+            "right_arm": "list",
+            "right_gripper": "float64",
+            "vector": {
+              "shape": [
+                14
+              ],
+              "dtype": "float64"
+            }
+          },
+          "endpose": {
+            "left_endpose": "list",
+            "left_gripper": "float64",
+            "right_endpose": "list",
+            "right_gripper": "float64"
+          }
+        },
+        "end": 1792479103.2739787,
+        "lifecycle_seconds": 39.833181619644165
+      },
+      "end": 1792479105.530171,
+      "lifecycle_seconds": 42.20799016952515
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/driver-interop-inherited-1",
+      "status": "FAILED_OR_PARTIAL",
+      "start": 1792479166.3110125,
+      "mode": "inherited",
+      "policy_episodes": 0,
+      "teacher_forwards": 0,
+      "GPU": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+      "worker_cap_seconds": 600,
+      "cleanup_reserve_seconds": 60,
+      "repair_total_cap_seconds": 1800,
+      "storage_cap_bytes": 268435456,
+      "fixed_case": {
+        "task": "place_object_basket",
+        "seed": 10000
+      },
+      "library_path": "/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufft/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvtx/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/curand/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvshmem/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cudnn/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nccl/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparse/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cublas/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufile/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusolver/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparselt/lib:/root/cxz/robotwin/deps/vulkan-loader/usr/lib/x86_64-linux-gnu:/root/cxz/deps/glvnd-ubuntu24-1.7.0/usr/lib/x86_64-linux-gnu:/usr/local/cuda/compat/lib.real:/usr/local/lib/python3.12/dist-packages/torch/lib:/usr/local/lib/python3.12/dist-packages/torch_tensorrt/lib:/usr/local/cuda/compat/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/root/cxz/envs/libero-va/lib",
+      "goal": "original complete expert and observation; no policy",
+      "owned": {
+        "pid": 658597,
+        "birth_ticks": 707762495,
+        "pgid": 658597
+      },
+      "stop_reason": "OIDN_ILLEGAL_MEMORY_ACCESS",
+      "cleanup_signal": "SIGTERM",
+      "returncode": -15,
+      "root_reaped": true,
+      "owned_processes": [
+        {
+          "pid": 658597,
+          "birth_ticks": 707762495,
+          "pgid": 658597
+        }
+      ],
+      "remaining_owned": [],
+      "scene": {
+        "status": "RUNNING",
+        "start": 1792479166.4337075,
+        "phase": "RESET_SAME_SCENE_FOR_OBSERVATION",
+        "task": "place_object_basket",
+        "seed": 10000,
+        "policy_episodes": 0,
+        "teacher_forwards": 0,
+        "expert_complete": true,
+        "torch_version": "2.9.0+cu126",
+        "torch_cuda": "12.6",
+        "cuda_name": "NVIDIA A100-SXM4-40GB",
+        "loaded_libraries": [
+          "/root/cxz/robotwin/deps/vulkan-loader/usr/lib/x86_64-linux-gnu/libvulkan.so.1.3.275",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_core.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_device_cuda.so.2.3.3",
+          "/usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-glsi.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-glvkspirv.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-rtcore.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-tls.so.535.161.08",
+          "/usr/local/cuda-13.2/compat/lib.real/libcuda.so.595.45.04"
+        ],
+        "render_device": {
+          "alias": "pci:0000:4e:00.0",
+          "pci": "0000:4e:00.0",
+          "name": "NVIDIA A100-SXM4-40GB",
+          "can_render": true,
+          "is_cuda": true,
+          "cuda_id": 0
+        },
+        "plan_success": true,
+        "expert_success": true
+      },
+      "end": 1792479205.276611,
+      "lifecycle_seconds": 38.965598821640015
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/driver-interop-base-2",
+      "status": "COMPLETE",
+      "start": 1792479307.0333285,
+      "mode": "base",
+      "policy_episodes": 0,
+      "teacher_forwards": 0,
+      "GPU": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+      "worker_cap_seconds": 600,
+      "cleanup_reserve_seconds": 60,
+      "repair_total_cap_seconds": 1800,
+      "storage_cap_bytes": 268435456,
+      "fixed_case": {
+        "task": "place_object_basket",
+        "seed": 10000
+      },
+      "library_path": "/root/cxz/robotwin/deps/system-driver535-links:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufft/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvtx/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/curand/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvshmem/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cudnn/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nccl/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparse/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cublas/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufile/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusolver/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparselt/lib:/root/cxz/robotwin/deps/vulkan-loader/usr/lib/x86_64-linux-gnu:/root/cxz/deps/glvnd-ubuntu24-1.7.0/usr/lib/x86_64-linux-gnu:/usr/local/lib/python3.12/dist-packages/torch/lib:/usr/local/lib/python3.12/dist-packages/torch_tensorrt/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/root/cxz/envs/libero-va/lib",
+      "goal": "original complete expert and observation; no policy",
+      "owned": {
+        "pid": 658927,
+        "birth_ticks": 707776565,
+        "pgid": 658927
+      },
+      "returncode": 0,
+      "root_reaped": true,
+      "owned_processes": [
+        {
+          "pid": 658927,
+          "birth_ticks": 707776565,
+          "pgid": 658927
+        }
+      ],
+      "remaining_owned": [],
+      "scene": {
+        "status": "COMPLETE_ORIGINAL_EXPERT_AND_OBSERVATION",
+        "start": 1792479307.1295764,
+        "phase": "ORIGINAL_OBSERVATION_SAVED",
+        "task": "place_object_basket",
+        "seed": 10000,
+        "policy_episodes": 0,
+        "teacher_forwards": 0,
+        "expert_complete": true,
+        "torch_version": "2.9.0+cu126",
+        "torch_cuda": "12.6",
+        "cuda_name": "NVIDIA A100-SXM4-40GB",
+        "loaded_libraries": [
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_core.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_device_cuda.so.2.3.3",
+          "/usr/lib/x86_64-linux-gnu/libcuda.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.535.161.08"
+        ],
+        "render_device": {
+          "alias": "pci:0000:4e:00.0",
+          "pci": "0000:4e:00.0",
+          "name": "NVIDIA A100-SXM4-40GB",
+          "can_render": true,
+          "is_cuda": true,
+          "cuda_id": 0
+        },
+        "plan_success": true,
+        "expert_success": true,
+        "observation": {
+          "observation": {
+            "left_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "right_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "head_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "front_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            }
+          },
+          "pointcloud": "list",
+          "joint_action": {
+            "left_arm": "list",
+            "left_gripper": "float64",
+            "right_arm": "list",
+            "right_gripper": "float64",
+            "vector": {
+              "shape": [
+                14
+              ],
+              "dtype": "float64"
+            }
+          },
+          "endpose": {
+            "left_endpose": "list",
+            "left_gripper": "float64",
+            "right_endpose": "list",
+            "right_gripper": "float64"
+          }
+        },
+        "end": 1792479343.9857519,
+        "lifecycle_seconds": 36.856175899505615
+      },
+      "end": 1792479345.2050908,
+      "lifecycle_seconds": 38.171762466430664
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/prefilter-control-6",
+      "status": "FAILED_OR_PARTIAL",
+      "start": 1792481764.8617938,
+      "policy_episodes": 0,
+      "teacher_forwards": 0,
+      "owned": [
+        {
+          "pid": 660436,
+          "pgid": 660436,
+          "birth_ticks": 708022345
+        }
+      ],
+      "GPU_lifecycle_seconds": 790.5549397468567,
+      "root_owned": {
+        "pid": 660436,
+        "pgid": 660436,
+        "birth_ticks": 708022345
+      },
+      "GPU_start": 1792481764.8931544,
+      "returncode": 0,
+      "root_reaped": true,
+      "worker_terminal": "FAILED_OR_PARTIAL_EXPERT_PREPARATION",
+      "expert_attempts": 85,
+      "valid_cases": 60,
+      "end": 1792482555.4475474,
+      "lifecycle_seconds": 790.5857539176941,
+      "remaining_owned": []
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/prefilter-control-7",
+      "status": "COMPLETE_EXPERT_MANIFEST",
+      "start": 1792482777.0525258,
+      "policy_episodes": 0,
+      "teacher_forwards": 0,
+      "owned": [
+        {
+          "pid": 666713,
+          "pgid": 666713,
+          "birth_ticks": 708123567
+        }
+      ],
+      "GPU_lifecycle_seconds": 790.5805065631866,
+      "root_owned": {
+        "pid": 666713,
+        "pgid": 666713,
+        "birth_ticks": 708123567
+      },
+      "GPU_start": 1792482777.1061668,
+      "returncode": 0,
+      "root_reaped": true,
+      "worker_terminal": "COMPLETE_FIXED_SCENES_NO_POLICY_QUALITY_RESULT",
+      "expert_attempts": 163,
+      "valid_cases": 114,
+      "end": 1792483567.686665,
+      "lifecycle_seconds": 790.6341395378113,
+      "remaining_owned": []
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/target-first6-2",
+      "status": "FAILED_OR_PARTIAL",
+      "start": 1792482777.055454,
+      "deadline": 1792489602.3024037,
+      "GPU_lifecycle_seconds": 70.74300384521484,
+      "episodes": [
+        {
+          "case": "place_object_basket-valid00",
+          "client_returncode": 0,
+          "status": "PARTIAL_OR_INVALID",
+          "success": null,
+          "environment_commands": 0,
+          "policy_chunks": 0,
+          "lifecycle_seconds": 34.395803689956665
+        }
+      ],
+      "owned": [
+        {
+          "pid": 673444,
+          "birth_ticks": 708203074,
+          "pgid": 673444
+        },
+        {
+          "pid": 673514,
+          "birth_ticks": 708206075,
+          "pgid": 673514
+        },
+        {
+          "pid": 673537,
+          "birth_ticks": 708206645,
+          "pgid": 673514
+        }
+      ],
+      "next_stage_implemented": false,
+      "GPU_start": 1792483572.182643,
+      "CPU_wait_seconds": 795.1271889209747,
+      "server_stage": "READY",
+      "active_case": "place_object_basket-valid00",
+      "storage_bytes": 453032187,
+      "error": "RuntimeError('Complete episode infrastructure/identity failure; no automatic retry')",
+      "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/robotwin/runs/target_first6_guard.py\", line 220, in <module>\n    raise RuntimeError(\"Complete episode infrastructure/identity failure; no automatic retry\")\nRuntimeError: Complete episode infrastructure/identity failure; no automatic retry\n",
+      "end": 1792483642.9256134,
+      "lifecycle_seconds": 865.8701593875885,
+      "remaining_owned": [],
+      "returncodes": [
+        -15,
+        0
+      ]
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/target-first6-3",
+      "status": "COMPLETE_FIRST6_TARGET_ONLY",
+      "start": 1792484294.384784,
+      "deadline": 1792489602.3024037,
+      "GPU_lifecycle_seconds": 1742.1945261955261,
+      "episodes": [
+        {
+          "case": "place_object_basket-valid00",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 240,
+          "policy_chunks": 8,
+          "lifecycle_seconds": 184.1965630054474
+        },
+        {
+          "case": "stack_blocks_two-valid00",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 200.2128930091858
+        },
+        {
+          "case": "handover_block-valid00",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 184.28399205207825
+        },
+        {
+          "case": "lift_pot-valid00",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 105.31574010848999
+        },
+        {
+          "case": "press_stapler-valid00",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 91.9513647556305
+        },
+        {
+          "case": "open_microwave-valid00",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 1520,
+          "policy_chunks": 48,
+          "lifecycle_seconds": 914.9004368782043
+        }
+      ],
+      "owned": [
+        {
+          "pid": 674174,
+          "birth_ticks": 708275298,
+          "pgid": 674174
+        },
+        {
+          "pid": 674244,
+          "birth_ticks": 708278299,
+          "pgid": 674244
+        },
+        {
+          "pid": 674655,
+          "birth_ticks": 708297307,
+          "pgid": 674655
+        },
+        {
+          "pid": 674987,
+          "birth_ticks": 708317819,
+          "pgid": 674987
+        },
+        {
+          "pid": 675237,
+          "birth_ticks": 708336832,
+          "pgid": 675237
+        },
+        {
+          "pid": 675462,
+          "birth_ticks": 708347841,
+          "pgid": 675462
+        },
+        {
+          "pid": 675631,
+          "birth_ticks": 708357349,
+          "pgid": 675631
+        }
+      ],
+      "next_stage_implemented": false,
+      "GPU_start": 1792484294.4205587,
+      "CPU_wait_seconds": 0.03577470779418945,
+      "server_stage": "READY",
+      "active_case": "open_microwave-valid00",
+      "storage_bytes": 539105953,
+      "end": 1792486036.6150138,
+      "lifecycle_seconds": 1742.2302298545837,
+      "remaining_owned": [],
+      "returncodes": [
+        -15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/target-remaining42-20261020",
+      "status": "COMPLETE_REMAINING42_TARGET_COLLECTION",
+      "start": 1792503422.0858757,
+      "deadline": 1792525022.0858757,
+      "GPU_lifecycle_seconds": 11359.704304933548,
+      "episodes": [
+        {
+          "case": "place_object_basket-valid01",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-01/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 240,
+          "policy_chunks": 8,
+          "lifecycle_seconds": 177.67075109481812
+        },
+        {
+          "case": "stack_blocks_two-valid01",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-01/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 195.39071106910706
+        },
+        {
+          "case": "handover_block-valid01",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-01/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 184.67996621131897
+        },
+        {
+          "case": "lift_pot-valid01",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/lift_pot/valid-01/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 105.36759400367737
+        },
+        {
+          "case": "press_stapler-valid01",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-01/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 176,
+          "policy_chunks": 6,
+          "lifecycle_seconds": 125.9423680305481
+        },
+        {
+          "case": "open_microwave-valid01",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-01/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 1520,
+          "policy_chunks": 48,
+          "lifecycle_seconds": 922.8951778411865
+        },
+        {
+          "case": "place_object_basket-valid02",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-02/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 240,
+          "policy_chunks": 8,
+          "lifecycle_seconds": 182.5502791404724
+        },
+        {
+          "case": "stack_blocks_two-valid02",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-02/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 200.39275407791138
+        },
+        {
+          "case": "handover_block-valid02",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-02/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 197.65834283828735
+        },
+        {
+          "case": "lift_pot-valid02",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/lift_pot/valid-02/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 107.8414978981018
+        },
+        {
+          "case": "press_stapler-valid02",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-02/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 240,
+          "policy_chunks": 8,
+          "lifecycle_seconds": 161.12533736228943
+        },
+        {
+          "case": "open_microwave-valid02",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-02/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 1520,
+          "policy_chunks": 48,
+          "lifecycle_seconds": 927.5204126834869
+        },
+        {
+          "case": "place_object_basket-valid03",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-03/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 720,
+          "policy_chunks": 23,
+          "lifecycle_seconds": 503.4609477519989
+        },
+        {
+          "case": "stack_blocks_two-valid03",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-03/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 195.6585705280304
+        },
+        {
+          "case": "handover_block-valid03",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-03/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 198.43149065971375
+        },
+        {
+          "case": "lift_pot-valid03",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/lift_pot/valid-03/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 109.1853654384613
+        },
+        {
+          "case": "press_stapler-valid03",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-03/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 89.99948120117188
+        },
+        {
+          "case": "open_microwave-valid03",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-03/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 1520,
+          "policy_chunks": 48,
+          "lifecycle_seconds": 949.3625211715698
+        },
+        {
+          "case": "place_object_basket-valid04",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-04/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 240,
+          "policy_chunks": 8,
+          "lifecycle_seconds": 181.59371137619019
+        },
+        {
+          "case": "stack_blocks_two-valid04",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-04/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 197.49617528915405
+        },
+        {
+          "case": "handover_block-valid04",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-04/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 187.5166051387787
+        },
+        {
+          "case": "lift_pot-valid04",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/lift_pot/valid-04/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 107.72532033920288
+        },
+        {
+          "case": "press_stapler-valid04",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-04/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 90.81398558616638
+        },
+        {
+          "case": "open_microwave-valid04",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-04/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 848,
+          "policy_chunks": 27,
+          "lifecycle_seconds": 529.0144243240356
+        },
+        {
+          "case": "place_object_basket-valid05",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-05/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 240,
+          "policy_chunks": 8,
+          "lifecycle_seconds": 182.90803360939026
+        },
+        {
+          "case": "stack_blocks_two-valid05",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-05/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 203.50695133209229
+        },
+        {
+          "case": "handover_block-valid05",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-05/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 188.42279696464539
+        },
+        {
+          "case": "lift_pot-valid05",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/lift_pot/valid-05/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 105.65836954116821
+        },
+        {
+          "case": "press_stapler-valid05",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-05/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 91.11968755722046
+        },
+        {
+          "case": "open_microwave-valid05",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-05/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 400,
+          "policy_chunks": 13,
+          "lifecycle_seconds": 258.9861524105072
+        },
+        {
+          "case": "place_object_basket-valid06",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-06/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 240,
+          "policy_chunks": 8,
+          "lifecycle_seconds": 179.0917525291443
+        },
+        {
+          "case": "stack_blocks_two-valid06",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-06/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 201.61396980285645
+        },
+        {
+          "case": "handover_block-valid06",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-06/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 190.85168075561523
+        },
+        {
+          "case": "lift_pot-valid06",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/lift_pot/valid-06/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 105.84576559066772
+        },
+        {
+          "case": "press_stapler-valid06",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-06/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 202.97819876670837
+        },
+        {
+          "case": "open_microwave-valid06",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-06/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 528,
+          "policy_chunks": 17,
+          "lifecycle_seconds": 336.18170046806335
+        },
+        {
+          "case": "place_object_basket-valid07",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-07/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 720,
+          "policy_chunks": 23,
+          "lifecycle_seconds": 502.53011894226074
+        },
+        {
+          "case": "stack_blocks_two-valid07",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-07/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 198.32494354248047
+        },
+        {
+          "case": "handover_block-valid07",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-07/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 203.8576784133911
+        },
+        {
+          "case": "lift_pot-valid07",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/lift_pot/valid-07/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 108.00020456314087
+        },
+        {
+          "case": "press_stapler-valid07",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-07/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 92.38091897964478
+        },
+        {
+          "case": "open_microwave-valid07",
+          "role": {
+            "stage": "TARGET",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-07/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 1520,
+          "policy_chunks": 48,
+          "lifecycle_seconds": 921.6773357391357
+        }
+      ],
+      "owned": [
+        {
+          "pid": 692456,
+          "birth_ticks": 710188070,
+          "pgid": 692456
+        },
+        {
+          "pid": 692482,
+          "birth_ticks": 710190070,
+          "pgid": 692482
+        },
+        {
+          "pid": 692790,
+          "birth_ticks": 710208580,
+          "pgid": 692790
+        },
+        {
+          "pid": 693062,
+          "birth_ticks": 710228592,
+          "pgid": 693062
+        },
+        {
+          "pid": 693329,
+          "birth_ticks": 710247606,
+          "pgid": 693329
+        },
+        {
+          "pid": 693553,
+          "birth_ticks": 710258615,
+          "pgid": 693553
+        },
+        {
+          "pid": 693739,
+          "birth_ticks": 710271627,
+          "pgid": 693739
+        },
+        {
+          "pid": 694659,
+          "birth_ticks": 710364225,
+          "pgid": 694659
+        },
+        {
+          "pid": 694683,
+          "birth_ticks": 710364807,
+          "pgid": 694659
+        },
+        {
+          "pid": 694914,
+          "birth_ticks": 710383249,
+          "pgid": 694914
+        },
+        {
+          "pid": 694938,
+          "birth_ticks": 710383827,
+          "pgid": 694914
+        },
+        {
+          "pid": 695134,
+          "birth_ticks": 710403776,
+          "pgid": 695134
+        },
+        {
+          "pid": 695355,
+          "birth_ticks": 710424306,
+          "pgid": 695355
+        },
+        {
+          "pid": 695582,
+          "birth_ticks": 710435824,
+          "pgid": 695582
+        },
+        {
+          "pid": 695784,
+          "birth_ticks": 710452351,
+          "pgid": 695784
+        },
+        {
+          "pid": 696582,
+          "birth_ticks": 710545520,
+          "pgid": 696582
+        },
+        {
+          "pid": 697196,
+          "birth_ticks": 710596622,
+          "pgid": 697196
+        },
+        {
+          "pid": 697450,
+          "birth_ticks": 710616665,
+          "pgid": 697450
+        },
+        {
+          "pid": 697670,
+          "birth_ticks": 710637210,
+          "pgid": 697670
+        },
+        {
+          "pid": 697742,
+          "birth_ticks": 710637796,
+          "pgid": 697670
+        },
+        {
+          "pid": 697945,
+          "birth_ticks": 710648737,
+          "pgid": 697945
+        },
+        {
+          "pid": 698259,
+          "birth_ticks": 710658260,
+          "pgid": 698259
+        },
+        {
+          "pid": 698283,
+          "birth_ticks": 710658847,
+          "pgid": 698259
+        },
+        {
+          "pid": 699781,
+          "birth_ticks": 710753511,
+          "pgid": 699781
+        },
+        {
+          "pid": 700034,
+          "birth_ticks": 710772063,
+          "pgid": 700034
+        },
+        {
+          "pid": 700289,
+          "birth_ticks": 710792122,
+          "pgid": 700289
+        },
+        {
+          "pid": 700502,
+          "birth_ticks": 710811181,
+          "pgid": 700502
+        },
+        {
+          "pid": 700526,
+          "birth_ticks": 710811773,
+          "pgid": 700502
+        },
+        {
+          "pid": 700766,
+          "birth_ticks": 710822718,
+          "pgid": 700766
+        },
+        {
+          "pid": 700973,
+          "birth_ticks": 710832249,
+          "pgid": 700973
+        },
+        {
+          "pid": 700997,
+          "birth_ticks": 710832842,
+          "pgid": 700973
+        },
+        {
+          "pid": 701394,
+          "birth_ticks": 710885926,
+          "pgid": 701394
+        },
+        {
+          "pid": 701611,
+          "birth_ticks": 710904991,
+          "pgid": 701611
+        },
+        {
+          "pid": 701635,
+          "birth_ticks": 710905577,
+          "pgid": 701611
+        },
+        {
+          "pid": 701834,
+          "birth_ticks": 710926067,
+          "pgid": 701834
+        },
+        {
+          "pid": 701858,
+          "birth_ticks": 710926655,
+          "pgid": 701834
+        },
+        {
+          "pid": 702088,
+          "birth_ticks": 710945638,
+          "pgid": 702088
+        },
+        {
+          "pid": 702312,
+          "birth_ticks": 710956681,
+          "pgid": 702312
+        },
+        {
+          "pid": 702481,
+          "birth_ticks": 710966218,
+          "pgid": 702481
+        },
+        {
+          "pid": 702505,
+          "birth_ticks": 710966798,
+          "pgid": 702481
+        },
+        {
+          "pid": 702761,
+          "birth_ticks": 710992824,
+          "pgid": 702761
+        },
+        {
+          "pid": 703172,
+          "birth_ticks": 711011402,
+          "pgid": 703172
+        },
+        {
+          "pid": 703560,
+          "birth_ticks": 711031991,
+          "pgid": 703560
+        },
+        {
+          "pid": 703588,
+          "birth_ticks": 711032571,
+          "pgid": 703560
+        },
+        {
+          "pid": 704033,
+          "birth_ticks": 711051575,
+          "pgid": 704033
+        },
+        {
+          "pid": 704378,
+          "birth_ticks": 711062625,
+          "pgid": 704378
+        },
+        {
+          "pid": 704843,
+          "birth_ticks": 711083721,
+          "pgid": 704843
+        },
+        {
+          "pid": 705464,
+          "birth_ticks": 711117881,
+          "pgid": 705464
+        },
+        {
+          "pid": 705487,
+          "birth_ticks": 711118476,
+          "pgid": 705464
+        },
+        {
+          "pid": 706242,
+          "birth_ticks": 711168627,
+          "pgid": 706242
+        },
+        {
+          "pid": 706685,
+          "birth_ticks": 711189234,
+          "pgid": 706685
+        },
+        {
+          "pid": 706716,
+          "birth_ticks": 711189809,
+          "pgid": 706685
+        },
+        {
+          "pid": 707303,
+          "birth_ticks": 711210345,
+          "pgid": 707303
+        },
+        {
+          "pid": 707567,
+          "birth_ticks": 711221908,
+          "pgid": 707567
+        },
+        {
+          "pid": 707810,
+          "birth_ticks": 711231461,
+          "pgid": 707810
+        }
+      ],
+      "next_stage_implemented": false,
+      "GPU_start": 1792503422.1382048,
+      "CPU_wait_seconds": 0.052329063415527344,
+      "server_stage": "READY",
+      "active_case": "open_microwave-valid07",
+      "storage_bytes": 565000611,
+      "teacher_attempted": 42581,
+      "teacher_returned": 42581,
+      "policy_chunks": 539,
+      "end": 1792514781.8415065,
+      "lifecycle_seconds": 11359.755630970001,
+      "remaining_owned": [],
+      "returncodes": [
+        -15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/tf-migration-20261021",
+      "name": "train_parent",
+      "owned": {
+        "pid": 709334,
+        "birth_ticks": 711328132,
+        "pgid": 709334
+      },
+      "start": 1792514822.7607522,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792514842.3020344,
+      "lifecycle_seconds": 19.541282176971436,
+      "root_reaped": true,
+      "identity_alive": false,
+      "GPU_lifecycle_seconds": 19.541282176971436
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/tf-migration-20261021/interface-gate",
+      "status": "FAILED_OR_BLOCKED_INTERFACE",
+      "start": 1792513480.7738168,
+      "GPU_lifecycle_seconds": 39.118149757385254,
+      "GPU_start": 1792514860.8695486,
+      "owned": {
+        "pid": 709465,
+        "birth_ticks": 711331943,
+        "pgid": 709465
+      },
+      "returncode": 1,
+      "root_reaped": true,
+      "identity_alive": false,
+      "result": "FAILED_OR_PARTIAL_INTERFACE",
+      "teacher_attempted": 154,
+      "error": "AssertionError()",
+      "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/robotwin/runs/tf-migration-20261021/interface_guard.py\", line 41, in <module>\n    assert rc==0 and result['status']=='PASS_FINITE_EIGHT_COMPLETE_POLICY_CALLS_NOT_ROBOT_QUALITY'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "end": 1792514899.987697,
+      "wall_seconds": 1419.2138805389404
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/tf-migration-20261021/interface-gate-r2",
+      "status": "COMPLETE_INTERFACE_GATE",
+      "start": 1792515150.5570607,
+      "GPU_lifecycle_seconds": 76.46283030509949,
+      "GPU_start": 1792515150.611995,
+      "owned": {
+        "pid": 710106,
+        "birth_ticks": 711360917,
+        "pgid": 710106
+      },
+      "returncode": 0,
+      "root_reaped": true,
+      "identity_alive": false,
+      "result": "PASS_FINITE_EIGHT_COMPLETE_POLICY_CALLS_NOT_ROBOT_QUALITY",
+      "teacher_attempted": 500,
+      "end": 1792515227.074823,
+      "wall_seconds": 76.51776313781738
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/parent18-20261021-r2",
+      "status": "FAILED_OR_PARTIAL",
+      "start": 1792515314.391303,
+      "deadline": 1792526114.391303,
+      "GPU_lifecycle_seconds": 65.7957661151886,
+      "episodes": [
+        {
+          "case": "place_object_basket-valid08",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-08/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "PARTIAL_OR_INVALID",
+          "success": null,
+          "environment_commands": 0,
+          "policy_chunks": 0,
+          "lifecycle_seconds": 35.532538414001465
+        }
+      ],
+      "owned": [
+        {
+          "pid": 710482,
+          "birth_ticks": 711377299,
+          "pgid": 710482
+        },
+        {
+          "pid": 710511,
+          "birth_ticks": 711379799,
+          "pgid": 710511
+        }
+      ],
+      "next_stage_implemented": false,
+      "waiting_seconds": 0.00013256072998046875,
+      "GPU_start": 1792515314.4255106,
+      "CPU_wait_seconds": 0.03420758247375488,
+      "server_stage": "READY",
+      "active_case": "place_object_basket-valid08",
+      "storage_bytes": 1854426,
+      "teacher_attempted": 25,
+      "teacher_returned": 25,
+      "error": "RuntimeError('Complete episode infrastructure/identity failure; no automatic retry')",
+      "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/robotwin/runs/tf-migration-20261021/parent_collection_guard_r2.py\", line 205, in <module>\n    raise RuntimeError(\"Complete episode infrastructure/identity failure; no automatic retry\")\nRuntimeError: Complete episode infrastructure/identity failure; no automatic retry\n",
+      "policy_chunks": 0,
+      "end": 1792515380.2212439,
+      "lifecycle_seconds": 65.82994103431702,
+      "remaining_owned": [],
+      "returncodes": [
+        -15,
+        0
+      ]
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/tf-migration-20261021/interface-gate-r3",
+      "status": "COMPLETE_INTERFACE_GATE",
+      "start": 1792515670.6197908,
+      "GPU_lifecycle_seconds": 76.506844997406,
+      "GPU_start": 1792515670.6936767,
+      "owned": {
+        "pid": 711317,
+        "birth_ticks": 711412925,
+        "pgid": 711317
+      },
+      "returncode": 0,
+      "root_reaped": true,
+      "identity_alive": false,
+      "result": "PASS_FINITE_EIGHT_COMPLETE_POLICY_CALLS_NOT_ROBOT_QUALITY",
+      "teacher_attempted": 496,
+      "end": 1792515747.2005177,
+      "wall_seconds": 76.58072924613953
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/parent-remaining17-20261021",
+      "status": "COMPLETE_PARENT_REMAINING17_VISITED_COLLECTION",
+      "start": 1792515837.5964684,
+      "deadline": 1792526114.391303,
+      "GPU_lifecycle_seconds": 4582.731613874435,
+      "episodes": [
+        {
+          "case": "stack_blocks_two-valid08",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-08/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 154.97578716278076
+        },
+        {
+          "case": "handover_block-valid08",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-08/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 164.60424494743347
+        },
+        {
+          "case": "lift_pot-valid08",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/lift_pot/valid-08/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 92.8819489479065
+        },
+        {
+          "case": "press_stapler-valid08",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-08/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 400,
+          "policy_chunks": 13,
+          "lifecycle_seconds": 222.94955492019653
+        },
+        {
+          "case": "open_microwave-valid08",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-08/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 1520,
+          "policy_chunks": 48,
+          "lifecycle_seconds": 777.7553548812866
+        },
+        {
+          "case": "place_object_basket-valid09",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-09/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 240,
+          "policy_chunks": 8,
+          "lifecycle_seconds": 153.85179018974304
+        },
+        {
+          "case": "stack_blocks_two-valid09",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-09/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 168.3706498146057
+        },
+        {
+          "case": "handover_block-valid09",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-09/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 163.51274299621582
+        },
+        {
+          "case": "lift_pot-valid09",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/lift_pot/valid-09/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 98.10030770301819
+        },
+        {
+          "case": "press_stapler-valid09",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-09/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 79.64166831970215
+        },
+        {
+          "case": "open_microwave-valid09",
+          "role": {
+            "stage": "PARENT",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-09/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 1520,
+          "policy_chunks": 48,
+          "lifecycle_seconds": 774.7797935009003
+        },
+        {
+          "case": "place_object_basket-valid10",
+          "role": {
+            "stage": "PARENT",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-10/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 176.52414512634277
+        },
+        {
+          "case": "stack_blocks_two-valid10",
+          "role": {
+            "stage": "PARENT",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/stack_blocks_two/valid-10/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 304,
+          "policy_chunks": 10,
+          "lifecycle_seconds": 170.3261215686798
+        },
+        {
+          "case": "handover_block-valid10",
+          "role": {
+            "stage": "PARENT",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-3/handover_block/valid-10/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "lifecycle_seconds": 165.12606763839722
+        },
+        {
+          "case": "lift_pot-valid10",
+          "role": {
+            "stage": "PARENT",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/lift_pot/valid-10/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "environment_commands": 112,
+          "policy_chunks": 4,
+          "lifecycle_seconds": 93.62812900543213
+        },
+        {
+          "case": "press_stapler-valid10",
+          "role": {
+            "stage": "PARENT",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/press_stapler/valid-10/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 400,
+          "policy_chunks": 13,
+          "lifecycle_seconds": 225.93383955955505
+        },
+        {
+          "case": "open_microwave-valid10",
+          "role": {
+            "stage": "PARENT",
+            "split": "CAL"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-10/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 1520,
+          "policy_chunks": 48,
+          "lifecycle_seconds": 770.7473051548004
+        }
+      ],
+      "owned": [
+        {
+          "pid": 711621,
+          "birth_ticks": 711429621,
+          "pgid": 711621
+        },
+        {
+          "pid": 711730,
+          "birth_ticks": 711432121,
+          "pgid": 711730
+        },
+        {
+          "pid": 712176,
+          "birth_ticks": 711448129,
+          "pgid": 712176
+        },
+        {
+          "pid": 712200,
+          "birth_ticks": 711448708,
+          "pgid": 712176
+        },
+        {
+          "pid": 712560,
+          "birth_ticks": 711465140,
+          "pgid": 712560
+        },
+        {
+          "pid": 712873,
+          "birth_ticks": 711475147,
+          "pgid": 712873
+        },
+        {
+          "pid": 712897,
+          "birth_ticks": 711475724,
+          "pgid": 712873
+        },
+        {
+          "pid": 713335,
+          "birth_ticks": 711498166,
+          "pgid": 713335
+        },
+        {
+          "pid": 713358,
+          "birth_ticks": 711498741,
+          "pgid": 713335
+        },
+        {
+          "pid": 714459,
+          "birth_ticks": 711576741,
+          "pgid": 714459
+        },
+        {
+          "pid": 714856,
+          "birth_ticks": 711592759,
+          "pgid": 714856
+        },
+        {
+          "pid": 715193,
+          "birth_ticks": 711610282,
+          "pgid": 715193
+        },
+        {
+          "pid": 715531,
+          "birth_ticks": 711627305,
+          "pgid": 715531
+        },
+        {
+          "pid": 715753,
+          "birth_ticks": 711637819,
+          "pgid": 715753
+        },
+        {
+          "pid": 715992,
+          "birth_ticks": 711646332,
+          "pgid": 715992
+        },
+        {
+          "pid": 717457,
+          "birth_ticks": 711724461,
+          "pgid": 717457
+        },
+        {
+          "pid": 717953,
+          "birth_ticks": 711742494,
+          "pgid": 717953
+        },
+        {
+          "pid": 718305,
+          "birth_ticks": 711760027,
+          "pgid": 718305
+        },
+        {
+          "pid": 718329,
+          "birth_ticks": 711760614,
+          "pgid": 718305
+        },
+        {
+          "pid": 718672,
+          "birth_ticks": 711777061,
+          "pgid": 718672
+        },
+        {
+          "pid": 718971,
+          "birth_ticks": 711787082,
+          "pgid": 718971
+        },
+        {
+          "pid": 718995,
+          "birth_ticks": 711787670,
+          "pgid": 718971
+        },
+        {
+          "pid": 719486,
+          "birth_ticks": 711810133,
+          "pgid": 719486
+        }
+      ],
+      "next_stage_implemented": false,
+      "waiting_seconds": 7.82012939453125e-05,
+      "GPU_start": 1792515837.6495616,
+      "CPU_wait_seconds": 0.05309319496154785,
+      "server_stage": "READY",
+      "active_case": "open_microwave-valid10",
+      "storage_bytes": 72351902,
+      "teacher_attempted": 12852,
+      "teacher_returned": 12852,
+      "policy_chunks": 259,
+      "end": 1792520420.3809514,
+      "lifecycle_seconds": 4582.784482955933,
+      "remaining_owned": [],
+      "returncodes": [
+        -15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "policy_episodes": 0,
+  "teacher_forwards": 0
+}

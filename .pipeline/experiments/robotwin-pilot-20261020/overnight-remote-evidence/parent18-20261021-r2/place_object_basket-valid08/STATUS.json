@@ -1,0 +1,42 @@
+{
+  "status": "PARTIAL_OR_INVALID",
+  "start": 1792515341.019217,
+  "case": {
+    "task": "place_object_basket",
+    "valid_index": 8,
+    "seed": 10013,
+    "instruction": "Pick the toycar with white roof and teal body, drop the toycar with white roof and teal body in the rectangular basket with smooth surface, slide the rectangular basket with smooth surface lightly.",
+    "role": {
+      "stage": "PARENT",
+      "split": "FIT"
+    },
+    "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-08/INITIAL.pt",
+    "task_step_limit": 700
+  },
+  "policy_chunks": 0,
+  "environment_commands": 0,
+  "requests": [
+    {
+      "route": "reset",
+      "elapsed": 0.024564027786254883
+    }
+  ],
+  "render_device": {
+    "alias": "pci:0000:4e:00.0",
+    "pci": "0000:4e:00.0",
+    "name": "NVIDIA A100-SXM4-40GB",
+    "can_render": true,
+    "is_cuda": true,
+    "cuda_id": 0
+  },
+  "initial_checks": {
+    "physical_exact": true,
+    "initial_observation_exact": true
+  },
+  "task_step_limit": 700,
+  "active_request": "policy",
+  "error": "RuntimeError('Error in inference server:\\nTraceback (most recent call last):\\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/wan_va/utils/Simple_Remote_Infer/deploy/websocket_policy_server.py\", line 63, in _handler\\n    action = self._policy.infer(obs)\\n             ^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/wan_va/utils/sever_utils.py\", line 19, in infer\\n    return distributed_infer(self.model, obs, self.local_rank)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/wan_va/utils/sever_utils.py\", line 37, in distributed_infer\\n    result = model.infer(obs)\\n             ^^^^^^^^^^^^^^^^\\n  File \"/root/cxz/robotwin/runs/tf-migration-20261021/collection_server.py\", line 48, in infer\\n    assert current[\\'counts\\'].get(\\'action_B2_update1_returned\\')==1\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nAssertionError\\n')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/robotwin/runs/tf-migration-20261021/collection_client.py\", line 150, in <module>\n    module.main(dict(task_name=case[\"task\"], task_config=\"demo_clean\",\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/evaluation/robotwin/eval_polict_client_openpi.py\", line 402, in main\n    st_seed, suc_num = eval_policy(task_name,\n  File \"/root/cxz/robotwin/runs/tf-migration-20261021/collection_client.py\", line 130, in policy\n    return original_policy(*args, **kwargs)\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/evaluation/robotwin/eval_polict_client_openpi.py\", line 563, in eval_policy\n    ret = model.infer(dict(obs=first_obs, prompt=prompt, save_visualization=save_visualization, video_guidance_scale=video_guidance_scale, action_guidance_scale=action_guidance_scale)) #(TASK_ENV, model, observation)\n  File \"/root/cxz/robotwin/runs/tf-migration-20261021/collection_client.py\", line 143, in infer\n    result = super().infer(request)\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/evaluation/robotwin/websocket_client_policy.py\", line 68, in infer\n    raise RuntimeError(f\"Error in inference server:\\n{response}\")\nRuntimeError: Error in inference server:\nTraceback (most recent call last):\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/wan_va/utils/Simple_Remote_Infer/deploy/websocket_policy_server.py\", line 63, in _handler\n    action = self._policy.infer(obs)\n             ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/wan_va/utils/sever_utils.py\", line 19, in infer\n    return distributed_infer(self.model, obs, self.local_rank)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/wan_va/utils/sever_utils.py\", line 37, in distributed_infer\n    result = model.infer(obs)\n             ^^^^^^^^^^^^^^^^\n  File \"/root/cxz/robotwin/runs/tf-migration-20261021/collection_server.py\", line 48, in infer\n    assert current['counts'].get('action_B2_update1_returned')==1\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n\n",
+  "end": 1792515376.5517554,
+  "lifecycle_seconds": 35.532538414001465
+}

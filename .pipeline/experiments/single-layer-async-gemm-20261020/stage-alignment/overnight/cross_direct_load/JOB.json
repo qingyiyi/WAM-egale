@@ -1,0 +1,66 @@
+{
+  "goal": "Align contiguous cross-attention primitive: retain pinned FA2 native KV loader when no shared prefix; single full-layer kernel and stage order unchanged",
+  "deadline": "2026-10-21T05:00:00+08:00",
+  "full_block_cap": 402,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "before-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/cross_direct_load/build_before.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/cross_direct_load",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/cross_direct_load/before-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "active-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/cross_direct_load/active-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/cross_direct_load/gate.py"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/cross_direct_load/timing.py",
+        "1"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/cross_direct_load/timing.py",
+        "2"
+      ],
+      500,
+      true
+    ]
+  ],
+  "predecessor": "ffn1_tile128 finite gate passed; requires completed timing before launch",
+  "source": "optimized/csrc/whole_layer.cu; exact Welford per-row ordering unchanged"
+}

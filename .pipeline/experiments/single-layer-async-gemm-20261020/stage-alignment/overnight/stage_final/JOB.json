@@ -1,0 +1,66 @@
+{
+  "goal": "Current accepted simple stages A/B/C on same real B14 short/middle/long input, no scheduling",
+  "deadline": "2026-10-21T05:00:00+08:00",
+  "full_block_cap": 36,
+  "stage_cap": 4524,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "selected-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_final/selected-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "prepare",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_final/prepare_simple_stages.py"
+      ],
+      60,
+      false
+    ],
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_final/build_simple_stages.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_final",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_final/simple-stage-build/obj"
+      ],
+      1200,
+      false
+    ],
+    [
+      "stage1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_final/simple_stage_worker.py",
+        "1"
+      ],
+      600,
+      true
+    ],
+    [
+      "stage2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_final/simple_stage_worker.py",
+        "2"
+      ],
+      600,
+      true
+    ]
+  ],
+  "selected_source": "ffn1_n256/before (attention_m64 exact and faster); N256 rejected"
+}

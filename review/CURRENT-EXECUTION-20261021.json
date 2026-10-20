@@ -1,0 +1,138 @@
+{
+  "updated": "2026-10-21T02:29:04.119658+08:00",
+  "status": "FINITE_PRECISION_PASS_PERFORMANCE_NOT_ALIGNED",
+  "selected": "rms_vector sequential, source restored from compact_b14/before",
+  "no_new_ready_scheduling": true,
+  "full_layer_timings": [
+    {
+      "process": 1,
+      "case": "short",
+      "native": 2.6306560039520264,
+      "before": 3.932159900665283,
+      "simple": 3.865600109100342,
+      "ratio": 1.4694434024414682
+    },
+    {
+      "process": 1,
+      "case": "middle",
+      "native": 2.406399965286255,
+      "before": 3.605583906173706,
+      "simple": 3.562719941139221,
+      "ratio": 1.480518613918537
+    },
+    {
+      "process": 1,
+      "case": "long",
+      "native": 2.840224027633667,
+      "before": 3.859552025794983,
+      "simple": 3.811247944831848,
+      "ratio": 1.3418828612640072
+    },
+    {
+      "process": 2,
+      "case": "short",
+      "native": 2.1263359785079956,
+      "before": 3.3735679388046265,
+      "simple": 3.326464056968689,
+      "ratio": 1.5644113115664804
+    },
+    {
+      "process": 2,
+      "case": "middle",
+      "native": 2.3986239433288574,
+      "before": 3.60863995552063,
+      "simple": 3.5606720447540283,
+      "ratio": 1.484464480002004
+    },
+    {
+      "process": 2,
+      "case": "long",
+      "native": 2.839087963104248,
+      "before": 3.8564480543136597,
+      "simple": 3.8150559663772583,
+      "ratio": 1.3437611007324657
+    }
+  ],
+  "source_manifest": [
+    {
+      "path": "算子研究/wam_ops/optimized/whole_layer.py",
+      "bytes": 1593,
+      "sha256": "c416f048f44c0287e4f3b6e1313d5ac1eb563fc719bef6779cd10cbfe2b94509"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/build_whole_layer.py",
+      "bytes": 1490,
+      "sha256": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/fa2_codegen.py",
+      "bytes": 5406,
+      "sha256": "66358f73ef7480b0b68ef04274959461575dab239365045f917b8e5b2aee2fc6"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/norm_codegen.py",
+      "bytes": 2083,
+      "sha256": "9db1b01967a039032e43890f16ecdf9cdb902bdc47f7450d55f338334b52e858"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/cutlass_gemm_codegen.py",
+      "bytes": 934,
+      "sha256": "b6c7b0fa799d7b8cb1ea341560196d4bfd3fb75bafc2ee4c1e58f70f31db8b6d"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/csrc/whole_layer.cu",
+      "bytes": 30102,
+      "sha256": "fc717e3585a0f856361e78d28f8ec513db7f1f9f002aa65db2385fe05c0e04a4"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh",
+      "bytes": 5240,
+      "sha256": "cf30211ece6846416e966a2c59acab58a6cd11569ce6bed5e38338aeaee97fec"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/csrc/gemm_pipeline.cuh",
+      "bytes": 7540,
+      "sha256": "bdc8a6d1c534d9ad122e44bbb63401f5b8e52a764bed14bac800c4ee9e90345c"
+    },
+    {
+      "path": "算子研究/wam_ops/optimized/csrc/fa2_stage.cuh",
+      "bytes": 7730,
+      "sha256": "3738249195f4bfd6860a2ff9b284c9820d7379f70ae30f9b0010a25ca4752a04"
+    }
+  ],
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "resource_summary": {
+    "updated": "2026-10-21T02:34:36.439687+08:00",
+    "GPU_worker_lifecycle_seconds": 619.983642578125,
+    "CPU_prepare_build_lifecycle_seconds": 3980.981078147888,
+    "full_block_calls": 5970,
+    "full_block_cap": 6100,
+    "stage_calls": 13572,
+    "stage_cap": 14000,
+    "M39_cumulative_GPU_worker_seconds": 1285.8494594378967,
+    "M39_cap_seconds": 36000,
+    "overnight_GPU_cap_seconds": 10800,
+    "CUDA_active_seconds": "UNKNOWN",
+    "storage_bytes": 453404285,
+    "source_local_remote_equal": true,
+    "owned_children_alive": [],
+    "GPU_compute_processes": "",
+    "note": "GPU生命周期含模型加载、GPU校验、失败和进程退出；无GPU的编译单列，不混称CUDA active。"
+  },
+  "robotwin": {
+    "target_collection_complete": 48,
+    "target_collection_success": 41,
+    "parent_collection_complete": 17,
+    "parent_collection_expected": 18,
+    "parent_collection_success": 13,
+    "missing": [
+      "place_object_basket-valid08"
+    ],
+    "training_pack_complete": false,
+    "current18_started": false,
+    "DEV90_started": false
+  }
+}

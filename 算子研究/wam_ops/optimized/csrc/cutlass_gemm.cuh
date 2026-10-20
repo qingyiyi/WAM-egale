@@ -30,11 +30,14 @@ template <int TM> struct CutlassTile {
 };
 union CutlassGemmStorage {
     typename CutlassTile<64>::Storage action;
+    typename CutlassTile<128>::Storage ffn1;
     typename CutlassTile<WAM_CONTEXT_TILE_M>::Storage context;
     float result[WAM_CONTEXT_TILE_M * 128];
 };
 
-__device__ __forceinline__ int gemm_tile_rows(int m) {
+__device__ __forceinline__ int gemm_tile_rows(int m, int n = 0) {
+    // B14 FFN1的M224可用两个128行tile，减少重复读权重；K归约次序不变。
+    if (m == 224 && n == 14336) return 128;
     return m >= 1024 ? WAM_CONTEXT_TILE_M : 64;
 }
 

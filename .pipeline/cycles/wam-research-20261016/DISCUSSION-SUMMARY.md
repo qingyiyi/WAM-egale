@@ -1,7 +1,15 @@
 # 当前讨论与授权
 
-用户最新明确：GPU累计预算10小时；先测简易版，与复杂版同速则只维护简易版，并删除复杂活动代码；补充注释、逐阶段对原版，再看能否接近原版耗时。已按Maintain更新[简易实现偏好](../../memory/global/requirements/preference-实验算子代码简洁并将检查移到外部.md)与[预算决定](../../memory/global/requirements/decision-算子累计预算十小时.md)。
+用户要求先对齐再调度；无法对齐必须给合理、可追溯理由。当前九签名有限逐位通过，
+完整层仍慢1.34–1.56倍；原语及统一资源配置均有证据，动态spill/纯barrier占比UNKNOWN。
+当前顺序版已恢复；新增ready暂停。只维护optimized简易单层，baseline/原tile/LIBERO投机不改。
 
-有限精度通过，简易无稳定退化，活动复杂路径已归档。整体仍比原版慢约71%–93%；当前只完成测量/解释，尚未实现完全对齐。依据A/B/C结果先pointwise/layout，随后cross-K RMS、FFN1/cross-attention，最后ready跨阶段调度。原BF16/归约/合法KV条件不放宽，检查放到外部。
+夜间授权至10/21 09:30–10:00，M39累计10GPU小时、本夜3小时，M40累计24小时/174局。
+最新有限作业已终态并清理，不能把剩余预算解释为无限搜索或第二环境新方向。
 
-RoboTwin固定采集继续：截至2026-10-20T23:14:45+08:00：新增19/42完整终态、15成功、4自然失败，当前`stack_blocks_two-valid04`；原首六5成功1失败保留。原截止03:37:02和24h帽不变，本guard不自动TF训练。四质量权限false，旧失败/retention/清理缺口保留。baseline/投机/原tile/保护HW不改；仅单层persistent；BAAI限~/cxz，不改驱动/时钟或杀他人。原[讨论](history/simple-first-start-20261020/DISCUSSION-SUMMARY.md)可追溯。
+RoboTwin Target48/PARENT2000齐、parent17/18齐。原valid08失败已修复，
+但无自动重试协议仍适用；此前补跑请求待用户答复，固定FIT不缩减、不冒称训练包完整。
+后继训练/current18/DEV90未启动。所有自然失败保留，采集成功数不是配对DEV结论。
+
+四科学权限false，旧retention/FAILED/paused72与default不变。BAAI全部写入限~/cxz；
+不改驱动/服务/时钟，不杀他人。GitHub仅main同步核验源码/HW/小证据，禁止权重或凭据外传。

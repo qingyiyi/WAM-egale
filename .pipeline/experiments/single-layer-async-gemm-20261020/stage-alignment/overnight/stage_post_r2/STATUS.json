@@ -1,0 +1,56 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792513109.0753763,
+  "deadline": 1792524600.0,
+  "jobs": [
+    {
+      "name": "prepare",
+      "owned": {
+        "pid": 706095,
+        "birth_ticks": 711156764,
+        "pgid": 706095
+      },
+      "start": 1792513109.0770838,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792513109.1104236,
+      "lifecycle_seconds": 0.0333399772644043,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "build",
+      "owned": {
+        "pid": 706096,
+        "birth_ticks": 711156767,
+        "pgid": 706096
+      },
+      "start": 1792513109.1125932,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792513245.8086565,
+      "lifecycle_seconds": 136.69606375694275,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "stage1",
+      "owned": {
+        "pid": 706301,
+        "birth_ticks": 711170444,
+        "pgid": 706301
+      },
+      "start": 1792513245.8784063,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792513247.4448733,
+      "lifecycle_seconds": 1.56646728515625,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('stage1 failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_post_r2/guard.py\", line 41, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: stage1 failed\n",
+  "end": 1792513247.454489,
+  "lifecycle_seconds": 138.37911295890808
+}

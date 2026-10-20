@@ -1,10 +1,12 @@
 # WAM 当前入口
 
-更新2026-10-20T23:19:23+08:00。先读[策略](CONTEXT-POLICY.md)、[记忆与约束](memory/INDEX.md)，再读[Cycle](cycles/wam-research-20261016/PROGRESS.md)的PLAN/PROGRESS/EXECUTION/DISCUSSION。v15不升级或全量sync。
+更新2026-10-21T02:34:36.439687+08:00。先读[策略](CONTEXT-POLICY.md)、[约束](memory/INDEX.md)，再读
+[当前Cycle](cycles/wam-research-20261016/PROGRESS.md)及PLAN/EXECUTION/DISCUSSION；v15不升级、不全量sync。
 
-- [简易版选定/源码与性能](experiments/single-layer-async-gemm-20261020/stage-alignment/RESULT.md)：有限精度通过，无稳定性能退化；当前完整层仍约1.71–1.93倍native。
-- [逐阶段矩阵](experiments/single-layer-async-gemm-20261020/stage-alignment/STAGE-RESULT.md)：先pointwise/layout，再cross-K RMS/FFN1/cross-FA2，后ready；阶段barrier仍在。
-- [RoboTwin固定42](experiments/robotwin-pilot-20261020/target-remaining42/LIVE-SNAPSHOT.json)：截至2026-10-20T23:14:45+08:00：新增19/42完整终态、15成功、4自然失败，当前`stack_blocks_two-valid04`；原首六5成功1失败保留。GPU1自动继续，03:37:02截止，非TF评测。
-- [LIBERO原质量](experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)：6000局计算齐，科学审计未放行。
+- 算子：先对齐再调度。有限逐位通过，完整单层仍慢1.34–1.56倍；
+  [最终阶段数据与理由](experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESULT.md)。
+- RoboTwin：Target48/PARENT2000齐，parent17/18齐；缺一FIT补跑待答复，后继训练未启动。
+  [结果](experiments/robotwin-pilot-20261020/OVERNIGHT-RESULT-20261021.md)。
+- 两卡最新均无GPU计算进程，原始失败保留。四权限false，保护源不改。
 
-[短状态](PROGRESS.compact.md)。四质量权限false、原失败保留；baseline/投机/原tile/保护HW不改，远端限~/cxz。当前算子GPU任务已清理。
+[短状态](PROGRESS.compact.md)。当前有限测量完成，不表示研究或闭环准入完成。

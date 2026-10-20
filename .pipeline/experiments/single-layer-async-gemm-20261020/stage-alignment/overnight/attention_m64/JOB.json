@@ -1,0 +1,66 @@
+{
+  "goal": "Align Q16 B14 FA2 primitive with M64 instead of M128 query tile; no candidate mixing or cross-stage scheduling",
+  "deadline": "2026-10-21T05:00:00+08:00",
+  "full_block_cap": 402,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "before-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/attention_m64/build_before.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/attention_m64",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/attention_m64/before-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "active-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/attention_m64/active-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/attention_m64/gate.py"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/attention_m64/timing.py",
+        "1"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/attention_m64/timing.py",
+        "2"
+      ],
+      500,
+      true
+    ]
+  ],
+  "predecessor": "table_index finite gate pass, only <1% change near noise; no large benefit claimed",
+  "source": "optimized/csrc/whole_layer.cu; exact Welford per-row ordering unchanged"
+}

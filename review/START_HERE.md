@@ -1,10 +1,12 @@
 # 当前入口
 
-最新：[简易版结果](CURRENT-EXECUTION-20261020.md)与[状态JSON](CURRENT-EXECUTION-20261020.json)。固定本文件所在commit。
+最新：[10/21先对齐结果与网页审阅请求](CURRENT-EXECUTION-20261021.md)、
+[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW](../.pipeline/PROGRESS.compact.md)。
 
-当前只维护简易完整单层persistent kernel：有限精度通过、相对复杂版无稳定退化，旧复杂活动入口移除；仍比原版慢约71%–93%。逐阶段矩阵已齐，下一步pointwise/layout→cross-K RMS/FFN1/cross-FA2→ready。当前GPU0无任务，GPU1继续固定RoboTwin Target采集。四质量权限false。
-
-[HW入口](../.pipeline/PROGRESS.compact.md)。下方paused72为历史记录，不覆盖当前后继状态。
+当前单层有限精度逐位通过，B14完整层仍慢约34%–56%，尚未速度对齐。
+较快顺序版已恢复，新增调度暂停；完整阶段矩阵、时钟辅助记录与负结果齐。
+RoboTwin parent17/18齐，缺固定FIT一局补跑待答复，后继训练未启动。两卡最新均无GPU任务。
+下方paused72只作历史；四项false和旧失败不改。
 
 ---
 

@@ -1,0 +1,67 @@
+{
+  "goal": "Avoid per-thread copy of immutable kernel Params via CUDA grid_constant; no numerical or scheduling change",
+  "deadline": "2026-10-21T05:00:00+08:00",
+  "full_block_cap": 402,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "before-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/grid_constant/build_before.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/grid_constant",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/grid_constant/before-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "active-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/grid_constant/active-build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/grid_constant/gate.py"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/grid_constant/timing.py",
+        "1"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/grid_constant/timing.py",
+        "2"
+      ],
+      500,
+      true
+    ]
+  ],
+  "predecessor": "N256 exact but slower, reverted to accepted attention_m64 and FFN1 N128",
+  "source": "optimized/csrc/whole_layer.cu; exact Welford per-row ordering unchanged",
+  "reference": "https://docs.nvidia.com/cuda/archive/12.4.1/cuda-c-programming-guide/index.html#grid-constant"
+}

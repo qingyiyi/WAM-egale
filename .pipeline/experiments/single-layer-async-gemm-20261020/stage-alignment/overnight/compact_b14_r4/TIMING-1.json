@@ -1,0 +1,53 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "process": 1,
+  "full_block_calls": 18,
+  "rows": [],
+  "samples": [],
+  "traces": [],
+  "formal_performance_permission": false,
+  "boundary": "complete uncached single block eager, preparation excluded; profiler separate",
+  "before_DSO": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14_r4/wam_simple_before_cuda.cpython-312-x86_64-linux-gnu.so",
+  "simple_DSO": "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/wam_whole_b14_cuda.cpython-312-x86_64-linux-gnu.so",
+  "generic_DSO": "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "clock_samples": [
+    "2026/10/21 02:10:25.116, 1095 MHz, 1215 MHz, 30, 61.22 W\n"
+  ],
+  "attention_resource_metadata": [
+    {
+      "case": "short",
+      "before": [
+        [
+          288,
+          1,
+          16,
+          81920
+        ],
+        [
+          512,
+          1,
+          16,
+          81920
+        ]
+      ],
+      "simple": [
+        [
+          288,
+          1,
+          16,
+          49152
+        ],
+        [
+          512,
+          1,
+          16,
+          49152
+        ]
+      ],
+      "meaning": "shared workspace bytes intentionally changed; logical length/split/Q still exact"
+    }
+  ],
+  "error": "KeyError(('logical_slots', 'attention_meta'))",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14_r4/timing.py\", line 49, in <module>\n    valid=int(values['simple']['cache_info'][0]);stages['valid_logical_slots']=compare(values['before']['logical_slots','attention_meta'][:valid],values['simple']['logical_slots','attention_meta'][:valid])\n                                                                                       ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nKeyError: ('logical_slots', 'attention_meta')\n",
+  "lifecycle_seconds": 8.920775890350342
+}

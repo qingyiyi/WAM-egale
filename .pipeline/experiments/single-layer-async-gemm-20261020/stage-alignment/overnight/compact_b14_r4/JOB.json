@@ -1,0 +1,32 @@
+{
+  "goal": "Timing of already nine-signature exact compact B14; audit logical attention metadata exactly and separately record intentionally changed workspace bytes",
+  "deadline": "2026-10-21T05:00:00+08:00",
+  "full_block_cap": 330,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14_r4/timing.py",
+        "1"
+      ],
+      500,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14_r4/timing.py",
+        "2"
+      ],
+      500,
+      true
+    ]
+  ],
+  "predecessor": "r3 audit18calls FAILED: incorrectly used whole TileShared bytes for FA-only metadata. kernel_traits.h107\u2013109 gives max(Q+2KV) BF16:81920\u219249152; actual whole Shared98848\u219266080. Preserve all failures; no output/validKV numerical relaxation.",
+  "source": "same optimized source compiled generic and compact B14; wrapper selects compact only for actual14x16 candidate inputs",
+  "before_binary": "reuse compact_b14/wam_simple_before_cuda, original selected RMS-vector source",
+  "remaining_original_deadline_unchanged": true
+}

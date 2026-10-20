@@ -1,0 +1,26 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792519692.6934178,
+  "deadline": 1792530000.0,
+  "jobs": [
+    {
+      "name": "timing1",
+      "owned": {
+        "pid": 719784,
+        "birth_ticks": 711815132,
+        "pgid": 719784
+      },
+      "start": 1792519692.7629905,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792519704.198644,
+      "lifecycle_seconds": 11.435653686523438,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('timing1 failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14_r3/guard.py\", line 41, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: timing1 failed\n",
+  "end": 1792519704.201889,
+  "lifecycle_seconds": 11.508471488952637
+}

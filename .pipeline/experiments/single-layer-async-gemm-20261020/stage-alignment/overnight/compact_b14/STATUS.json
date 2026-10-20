@@ -1,0 +1,41 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792519070.6407282,
+  "deadline": 1792530000.0,
+  "jobs": [
+    {
+      "name": "before-build",
+      "owned": {
+        "pid": 718200,
+        "birth_ticks": 711752920,
+        "pgid": 718200
+      },
+      "start": 1792519070.6425302,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792519198.8270977,
+      "lifecycle_seconds": 128.1845681667328,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "active-build",
+      "owned": {
+        "pid": 718477,
+        "birth_ticks": 711765739,
+        "pgid": 718477
+      },
+      "start": 1792519198.828785,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792519343.5503957,
+      "lifecycle_seconds": 144.72161078453064,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('active-build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/compact_b14/guard.py\", line 41, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: active-build failed\n",
+  "end": 1792519343.554109,
+  "lifecycle_seconds": 272.9133810997009
+}

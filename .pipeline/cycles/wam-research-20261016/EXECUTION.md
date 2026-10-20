@@ -1,11 +1,11 @@
-# 最近执行 checkpoint
+# 当前执行检查点
 
-2026-10-20T23:19:23+08:00；cycle wam-research-20261016；[PLAN](PLAN.md)，current M39。
+## 2026-10-21T02:34:36.439687+08:00 M39 / M40
 
-1. 用户提升算子累计预算10h；随后优先简易版、同速则仅维护简易版，已按Maintain保存。
-2. 简易版完整9签名精度/状态通过，复杂版独立重建对照；修正invalid slot比较错误后两进程无稳定性能退化。旧失败/计时保留。
-3. 30阶段×三KV的A/B/C矩阵完成；原版副本baseline冻结，29有效阶段逐位，B14 cache_insert N/A。
-4. 当前仅简易活动入口，源码中文注释、外部核验。没有改变数学精度或正式权限。662/720block、4524stage，18owned根退出，GPU0空。
-5. 截至2026-10-20T23:14:45+08:00：新增19/42完整终态、15成功、4自然失败，当前`stack_blocks_two-valid04`；原首六5成功1失败保留。GPU1自动Target采集不受本轮清理影响，截止/总帽不变。
-
-[结果](../../experiments/single-layer-async-gemm-20261020/stage-alignment/RESULT.md)、[资源](../../experiments/single-layer-async-gemm-20261020/stage-alignment/RESOURCE-AND-STOP.md)、[旧checkpoint](history/simple-first-start-20261020/EXECUTION.md)。下一步先pointwise/layout，再Norm/FFN1/cross-FA2，后ready。
+- 目的：先对齐再调度，交付可追溯差距理由；既定RoboTwin采集按原协议完成。
+- M39：RMS向量搬运入选；point8192/内联/compact B14负结果撤回。最终三KV阶段矩阵及辅助时钟齐，
+  恢复较快源码/重新构建/有限复核通过。仍慢1.34–1.56倍，未宣称速度对齐。
+- M40：其余17采集终态齐，固定18仅缺原valid08；CPU审计明确PARTIAL，不训练。
+- 清理：两卡无GPU计算进程，登记owned子进程退出。全部失败/预算保留，动态counter未知。
+- 下一步：阶段原语仍优先，暂不ready；补跑请求待答复。同步main源码/HW/小证据。
+- 旧检查点：[归档](history/alignment-rms-20261021/EXECUTION.md)。

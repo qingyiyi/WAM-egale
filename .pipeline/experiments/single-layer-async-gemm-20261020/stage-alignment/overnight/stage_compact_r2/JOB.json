@@ -1,0 +1,23 @@
+{
+  "goal": "Locate compact resource configuration regression versus native and selected generic; same real frozen input, one diagnostic process plus next generic process",
+  "deadline": "2026-10-21T05:00:00+08:00",
+  "full_block_cap": 18,
+  "stage_cap": 2262,
+  "storage_cap": 419430400,
+  "steps": [
+    [
+      "stage1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_compact_r2/simple_stage_worker.py",
+        "1"
+      ],
+      600,
+      true
+    ]
+  ],
+  "selected_source": "compact_b14_r2; trial only; selected baseline rms_vector",
+  "precondition": "compact_b14_r2 finite9 exact; r5 two-process fullblockregression2\u201310%; diagnostic only, not selected",
+  "clock_meaning": "clock64 is elapsed per-SM cycles, not active instructions; B/C same resident thread intervals divided by globaltimer; no clock settings changed",
+  "preparation": "Reuse compiled compact DSO whose build-lib was mistakenly stage_final; prior failure had 0 fullblock and 0 stage calls; old JSON/logs retained"
+}

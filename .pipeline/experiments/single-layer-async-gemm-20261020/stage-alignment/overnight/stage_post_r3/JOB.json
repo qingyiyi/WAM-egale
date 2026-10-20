@@ -1,0 +1,29 @@
+{
+  "goal": "Stage A/B/C from successful r2 compiled artifact, corrected binary path only",
+  "predecessor": "r2 path mismatch: compiled binary landed in stage_post; worker failed before any forward; both old FAILED retained",
+  "deadline": "2026-10-21T03:30:00+08:00",
+  "full_block_cap": 36,
+  "stage_cap": 4524,
+  "steps": [
+    [
+      "stage1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_post_r3/simple_stage_worker.py",
+        "1"
+      ],
+      600,
+      true
+    ],
+    [
+      "stage2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/overnight/stage_post_r3/simple_stage_worker.py",
+        "2"
+      ],
+      600,
+      true
+    ]
+  ]
+}
