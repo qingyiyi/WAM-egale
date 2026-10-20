@@ -8,6 +8,6 @@
 
 [完整分析与源码行号](../.pipeline/experiments/single-layer-async-gemm-20261020/context128-profile/RESULT.md)、[资源/owned审计](../.pipeline/experiments/single-layer-async-gemm-20261020/context128-profile/FINAL-AUDIT.json)。NCU查询ERR_NVGPUCTRPERM；动态occupancy/spill/HBM/L2 UNKNOWN，未绕过权限。最新用户反馈：先同输入/同边界对齐原版、自有阶段独立、自有阶段嵌入整层，再优化主要差距，最后context K/V真实ready填尾波；不能把普通缓存包装成新调度贡献。
 
-RoboTwin按用户最新继续指令已在GPU1运行固定剩余42条Target采集。现场2026-10-20T21:59:00+08:00：新5/42完整、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。这是Target FIT/CAL采集，不是TF评测。目标合并Target48(FIT36/CAL12)，reset复用108完整BF16 bank，完整任务cached/uncached等价未实测。21:37:02启动、次日03:37:02硬截止，6小时含清理；固定队列自动接续，本guard不自动训练。原24GPU小时帽/失败/截止记录保留。[计划](../.pipeline/experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)、[现场](../.pipeline/experiments/robotwin-pilot-20261020/target-remaining42/LIVE-SNAPSHOT.json)。
+RoboTwin按用户最新继续指令已在GPU1运行固定剩余42条Target采集。现场2026-10-20T22:07:29+08:00：新6/42完整、5成功1完整算法失败（open_microwave），当前`place_object_basket-valid02`；原首六5成功1失败保留。这是Target FIT/CAL采集，不是TF评测。目标合并Target48(FIT36/CAL12)，reset复用108完整BF16 bank，完整任务cached/uncached等价未实测。21:37:02启动、次日03:37:02硬截止，6小时含清理；固定队列自动接续，本guard不自动训练。原24GPU小时帽/失败/截止记录保留。[计划](../.pipeline/experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)、[现场](../.pipeline/experiments/robotwin-pilot-20261020/target-remaining42/LIVE-SNAPSHOT.json)。
 
 算子GPU0本轮任务已清理，约23.2秒GPU生命周期；baseline/投机源码/原tile/保护HW未改。此前[快照](history/context128-profile-pre-20261020/CURRENT-EXECUTION-20261020.md)保留。

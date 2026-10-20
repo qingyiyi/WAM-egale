@@ -6,7 +6,7 @@
 
 - [当前算子profile与源码解释](experiments/single-layer-async-gemm-20261020/context128-profile/RESULT.md)：24完整block/150原语；GEMM49–57%、Norm/pointwise及FA2嵌入待优化，NCU硬件counter UNKNOWN。现有数学源码未改。
 - [前轮普通单层速度](experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)：B14三KV约1.73–1.88倍native，有限逐位通过；不是等速或E2E。仍有阶段grid.sync。
-- [RoboTwin固定42接续](experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)：GPU1自动固定轮转，现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。Target48目标FIT36/CAL12，TF训练未启动，截止次日03:37:02。
+- [RoboTwin固定42接续](experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)：GPU1自动固定轮转，现场10/20 22:07:29北京：新增6/42完整终态、5成功1完整算法失败（open_microwave），当前`place_object_basket-valid02`；原首六5成功1失败保留。Target48目标FIT36/CAL12，TF训练未启动，截止次日03:37:02。
 - [四套LIBERO原质量](experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)：6000局计算齐，科学审计未放行，不是独立TEST。
 
 下一步：先原版/自有独立/嵌入整层逐阶段对齐，再改主要差距，最后真实ready调度。四项质量权限false，旧FAILED/retention与原始证据保留；baseline/投机代码/原tile/HW/保护文件不动。仅单层，BAAI写入限~/cxz，AutoDL已归还。只main镜像源码/HW/小证据。

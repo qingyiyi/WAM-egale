@@ -4,7 +4,7 @@
       "status": "RUNNING_TARGET_COMPLETE_EPISODE",
       "start": 1792503422.0858757,
       "deadline": 1792525022.0858757,
-      "GPU_lifecycle_seconds": 1586.3649427890778,
+      "GPU_lifecycle_seconds": 1826.6381990909576,
       "episodes": [
         {
           "case": "place_object_basket-valid01",
@@ -75,6 +75,20 @@
           "environment_commands": 176,
           "policy_chunks": 6,
           "lifecycle_seconds": 125.9423680305481
+        },
+        {
+          "case": "open_microwave-valid01",
+          "role": {
+            "stage": "TARGET",
+            "split": "FIT"
+          },
+          "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-01/INITIAL.pt",
+          "client_returncode": 0,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "environment_commands": 1520,
+          "policy_chunks": 48,
+          "lifecycle_seconds": 922.8951778411865
         }
       ],
       "owned": [
@@ -112,26 +126,36 @@
           "pid": 693739,
           "birth_ticks": 710271627,
           "pgid": 693739
+        },
+        {
+          "pid": 694659,
+          "birth_ticks": 710364225,
+          "pgid": 694659
+        },
+        {
+          "pid": 694683,
+          "birth_ticks": 710364807,
+          "pgid": 694659
         }
       ],
       "next_stage_implemented": false,
       "GPU_start": 1792503422.1382048,
       "CPU_wait_seconds": 0.052329063415527344,
       "server_stage": "READY",
-      "active_case": "open_microwave-valid01",
-      "storage_bytes": 79841324,
-      "teacher_attempted": 6004,
-      "teacher_returned": 6004
+      "active_case": "place_object_basket-valid02",
+      "storage_bytes": 91612695,
+      "teacher_attempted": 6871,
+      "teacher_returned": 6871
     },
     "server/STATUS.json": {
       "status": "SERVING",
       "start": 1792503431.7802417,
-      "teacher_attempted": 6025,
-      "teacher_returned": 6025,
-      "policy_chunks": 76,
-      "episodes_started": 6,
+      "teacher_attempted": 6871,
+      "teacher_returned": 6871,
+      "policy_chunks": 87,
+      "episodes_started": 7,
       "evaluation_seed": 0,
-      "text_bank_hits": 12,
+      "text_bank_hits": 14,
       "text_bank_misses": 0,
       "bank_prompt_count": 108,
       "bank_completed": 108,
@@ -142,344 +166,44 @@
       "original_full_episode_cached_equivalence": "NOT_YET_MEASURED",
       "target_forwards_during_setup": 0,
       "cuda_allocated": 13070477824,
-      "active_case": "open_microwave-valid01",
-      "active_route": "cache",
-      "active_chunk": 39,
-      "last_request_end": 1792505007.7487266
+      "active_case": "place_object_basket-valid02",
+      "active_route": "policy",
+      "active_chunk": 2,
+      "last_request_end": 1792505240.57115
     },
     "active_client": {
       "status": "RUNNING_COMPLETE_EPISODE",
-      "start": 1792504259.2973232,
+      "start": 1792505185.3024573,
       "case": {
-        "task": "open_microwave",
-        "valid_index": 1,
-        "seed": 10001,
-        "instruction": "Open the microwave by pulling its handle.",
+        "task": "place_object_basket",
+        "valid_index": 2,
+        "seed": 10004,
+        "instruction": "Pick the playful green toycar and position it in the medium yellow basket with slots, move the medium yellow basket with slots slightly.",
         "role": {
           "stage": "TARGET",
           "split": "FIT"
         },
-        "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-01/INITIAL.pt",
-        "task_step_limit": 1500
+        "initial": "/root/cxz/robotwin/runs/prefilter-3/place_object_basket/valid-02/INITIAL.pt",
+        "task_step_limit": 700
       },
-      "policy_chunks": 39,
-      "environment_commands": 1232,
+      "policy_chunks": 2,
+      "environment_commands": 16,
       "requests": [
         {
           "route": "reset",
-          "elapsed": 0.010918855667114258
+          "elapsed": 0.01102304458618164
         },
         {
           "route": "policy",
-          "elapsed": 7.831119537353516
+          "elapsed": 7.809723377227783
         },
         {
           "route": "cache",
-          "elapsed": 0.4861946105957031
+          "elapsed": 0.48738694190979004
         },
         {
           "route": "policy",
-          "elapsed": 7.602180480957031
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5263159275054932
-        },
-        {
-          "route": "policy",
-          "elapsed": 7.706555604934692
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5154316425323486
-        },
-        {
-          "route": "policy",
-          "elapsed": 7.788401126861572
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.4996373653411865
-        },
-        {
-          "route": "policy",
-          "elapsed": 7.866535186767578
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.4969751834869385
-        },
-        {
-          "route": "policy",
-          "elapsed": 7.940542459487915
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.4939231872558594
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.04055905342102
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.503655195236206
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.10068964958191
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.4936087131500244
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.195366859436035
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5000660419464111
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.268080472946167
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.49833226203918457
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.343561887741089
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.4979519844055176
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.44160509109497
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5008018016815186
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.51993727684021
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.49663877487182617
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.569618940353394
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5006012916564941
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.663820028305054
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.4967174530029297
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.753313302993774
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.49781370162963867
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.824620485305786
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.4982631206512451
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.879345893859863
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.49651551246643066
-        },
-        {
-          "route": "policy",
-          "elapsed": 8.968884229660034
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.4981567859649658
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.026166439056396
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.4971771240234375
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.151311874389648
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5052950382232666
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.218677997589111
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.49813342094421387
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.270317077636719
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5008392333984375
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.372711420059204
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5095205307006836
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.434827089309692
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.49908876419067383
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.520110607147217
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.504690408706665
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.581543445587158
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5051748752593994
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.680086374282837
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5150597095489502
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.759971618652344
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5102033615112305
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.820315599441528
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5066225528717041
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.932743310928345
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5151689052581787
-        },
-        {
-          "route": "policy",
-          "elapsed": 9.974771738052368
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5137042999267578
-        },
-        {
-          "route": "policy",
-          "elapsed": 10.068807601928711
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5077605247497559
-        },
-        {
-          "route": "policy",
-          "elapsed": 10.173986673355103
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5170094966888428
-        },
-        {
-          "route": "policy",
-          "elapsed": 10.21638035774231
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5182628631591797
-        },
-        {
-          "route": "policy",
-          "elapsed": 10.313382863998413
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5145783424377441
-        },
-        {
-          "route": "policy",
-          "elapsed": 10.346632242202759
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5197651386260986
-        },
-        {
-          "route": "policy",
-          "elapsed": 10.324413299560547
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5209574699401855
-        },
-        {
-          "route": "policy",
-          "elapsed": 10.350966453552246
-        },
-        {
-          "route": "cache",
-          "elapsed": 0.5143356323242188
+          "elapsed": 7.604910373687744
         }
       ],
       "render_device": {
@@ -494,10 +218,10 @@
         "physical_exact": true,
         "initial_observation_exact": true
       },
-      "task_step_limit": 1500,
+      "task_step_limit": 700,
       "active_request": "policy"
     }
   },
-  "observed_at": 1792505013.184883,
-  "GPU": "0, GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 11 MiB, 0 %\n1, GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 27487 MiB, 60 %\n"
+  "observed_at": 1792505249.4977655,
+  "GPU": "0, GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 11 MiB, 0 %\n1, GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 27023 MiB, 51 %\n"
 }

@@ -34,7 +34,7 @@ steps:
 
 - [x] 首六Target自然终态5成功1失败、114初态、108完整bank。
 - [x] 首六4150监督query/原固定42清单CPU审计，独立wrapper与有界guard准备。
-- [ ] GPU1自动完成剩余42条Target；现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。
+- [ ] GPU1自动完成剩余42条Target；现场10/20 22:07:29北京：新增6/42完整终态、5成功1完整算法失败（open_microwave），当前`place_object_basket-valid02`；原首六5成功1失败保留。
 - [ ] 合并Target48的FIT36/CAL12，审计后接固定TF适配/采集/训练/DEV；当前guard不自动训练。
 
 [登记与计划](../../experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)：6小时job生命周期，21:37:02至次日03:37:02，4GiB新增，逐局1800秒/8000teacher、开局预留整局和900秒清理；累计原24GPU小时帽。非infra重试、不截断episode、不补造旧收据。latest continue替代本轮只观察限制，旧截止/账本不改。

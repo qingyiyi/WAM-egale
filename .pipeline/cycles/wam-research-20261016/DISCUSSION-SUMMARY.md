@@ -4,7 +4,7 @@
 
 当前context128数学源码未改；24完整block和150原语profile完成。普通速度仍上一轮B14三KV约1.73–1.88倍native。阶段grid.sync仍在，8warp协作epilogue不等于完整异步；NCU计数权限被拒，动态spill/occupancy未知。最新反馈改为先逐阶段三路径对齐，再修主要差距，最后context K/V ready，保持数值门。
 
-RoboTwin最新明确接续允许固定未开始42条Target进入新namespace，不重跑旧失败，不重置原24GPU小时总账。GPU1固定队列自动接续；现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。新阶段截止次日03:37:02，6小时含清理；TF训练尚未启动，Target采集不冒充TF评测。
+RoboTwin最新明确接续允许固定未开始42条Target进入新namespace，不重跑旧失败，不重置原24GPU小时总账。GPU1固定队列自动接续；现场10/20 22:07:29北京：新增6/42完整终态、5成功1完整算法失败（open_microwave），当前`place_object_basket-valid02`；原首六5成功1失败保留。新阶段截止次日03:37:02，6小时含清理；TF训练尚未启动，Target采集不冒充TF评测。
 
 仅单层persistent kernel；baseline/投机/原tile/保护HW不动。四质量权限false，旧FAILED/retention/paused72/MLP0/22缺收据/default A_off不变。BAAI只写~/cxz，AutoDL已归还。不改驱动/服务/时钟，不杀他人。main只同步源码/HW/小证据。
 

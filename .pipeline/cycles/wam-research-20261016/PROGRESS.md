@@ -7,7 +7,7 @@
 |M17|in_progress|四套6000局计算齐，科学审计未放行|
 |M31–M38|completed|原基线、profile、子图与正负结果保留|
 |M39|in_progress|当前context128完整层开销分析完成；数学源码未改；下一步先逐阶段原版/独立/嵌入对齐，再改主要差距与ready调度|
-|M40|in_progress|现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。|
+|M40|in_progress|现场10/20 22:07:29北京：新增6/42完整终态、5成功1完整算法失败（open_microwave），当前`place_object_basket-valid02`；原首六5成功1失败保留。|
 
 ## 当前算子证据
 
@@ -21,7 +21,7 @@
 
 ## RoboTwin接续
 
-[新固定42队列](../../experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)，现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。本次最新明确继续为新阶段授权，旧截止不重写。21:37:02启动、次日03:37:02硬截止，含清理6小时帽；每局1800秒/8000teacher，开局留整局及900秒清理，4GiB新增存储，累计原24GPU小时帽。
+[新固定42队列](../../experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)，现场10/20 22:07:29北京：新增6/42完整终态、5成功1完整算法失败（open_microwave），当前`place_object_basket-valid02`；原首六5成功1失败保留。本次最新明确继续为新阶段授权，旧截止不重写。21:37:02启动、次日03:37:02硬截止，含清理6小时帽；每局1800秒/8000teacher，开局留整局及900秒清理，4GiB新增存储，累计原24GPU小时帽。
 
 首六监督4150实际query已核对；新增30FIT/12CAL，合并成Target48（FIT36/CAL12）。复用108完整512-token BF16 bank；完整episode cached/uncached等价尚未测。GPU1单worker、server/client各2CPU线程，固定轮转自动接续，不重试infra失败；自然算法失败保留。状态见[LIVE-SNAPSHOT](../../experiments/robotwin-pilot-20261020/target-remaining42/LIVE-SNAPSHOT.json)。完成后需审计并实现后续TF适配/训练/DEV，本guard不自动训练。采集结果不是TF成功率。
 

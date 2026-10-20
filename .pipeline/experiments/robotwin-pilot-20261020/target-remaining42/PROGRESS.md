@@ -1,6 +1,6 @@
 # 当前采集进度
 
-2026-10-20T21:59:48+08:00。现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。
+2026-10-20T21:59:48+08:00。现场10/20 22:07:29北京：新增6/42完整终态、5成功1完整算法失败（open_microwave），当前`place_object_basket-valid02`；原首六5成功1失败保留。
 
 队列状态与完整计数以[现场快照](LIVE-SNAPSHOT.json)和远端`/root/cxz/robotwin/runs/target-remaining42-20261020/STATUS.json`为准。GPU1单worker自动接续固定未开始case，21:37:02启动、次日03:37:02硬截止。原首六5成功1失败保留；这是Target监督采集，非TF评估或独立成功率。
 
