@@ -13,3 +13,5 @@ BAAI所有写入限~/cxz；AutoDL已归还不连接；不改系统驱动/服务/
 TF/normalizer/tau/selector/default A_off、旧FAILED/retention/paused72/MLP0/22缺收据和四项质量false保留。LIBERO既定6000局不是独立TEST；单层精度不转借为闭环质量/正式性能许可。PF2不是bonus或物理回滚。中文稿用户飞书整理，不新增论文初稿。
 
 只main发布源码/HW/小证据；模型/PT/KV/图像/DSO/工具链/私有SASS/凭据不公开。10/22 go-no-go，10/23冻结，10/28主表，11/01 18:00老师证据包，不保证录用。[此前讨论](history/device-gemm-followup-start-20261020/DISCUSSION-SUMMARY.md)保留。
+
+用户最新要求先争取B14三KV整层均≤同轮Torch两倍，再进一步调优；这是新阶段工程目标，不是已达成或新预算。完整异步DAG尚未实现，默认仍有阶段grid.sync。当前详细只读分析见[融合开销与异步现状](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/FUSION-COST-AND-ASYNC-REVIEW.md)。RoboTwin原准备/首六局截止已过，本次只核终态，未重启。

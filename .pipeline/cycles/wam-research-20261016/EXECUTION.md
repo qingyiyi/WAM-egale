@@ -9,3 +9,5 @@
 5. 更新当前HW/源码文档与终态小证据，旧结果、旧FAILED和预算不修改。
 
 [算子结果](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/CUTLASS-RESULT.md)、[资源审计](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/FINAL-AUDIT.json)、[RoboTwin](../../experiments/robotwin-pilot-20261020/FIRST6-TARGET-RESULT.md)、[前checkpoint](history/device-gemm-followup-start-20261020/EXECUTION.md)。
+
+最新只读checkpoint 2026-10-20T18:33:05+08:00：核验CUTLASS复用边界与原ptxas spill报告，确认默认仍阶段全局同步；保存用户B14≤2倍工程目标。远端两卡无compute进程，RoboTwin首六局5/6结束、owned无残留，TF链未实现齐，旧准备/首六局截止已过。未新增GPU或编译。

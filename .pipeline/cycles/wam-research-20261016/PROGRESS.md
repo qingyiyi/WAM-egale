@@ -31,7 +31,7 @@ B14短/中/长KV新整层中位7.9375/8.1437/8.6423ms，同轮native2.6537/2.943
 
 ## 下一步与权限
 
-优先当前CUTLASS版成本分解、B14专用化及高效epilogue，再做ready跨阶段调度。新测量需明确预算；原8h/24h、准备截止与保护继续有效，不自动开30层/TEST/正式性能。原始action保留原算子，baseline/投机/原tile及state/cycle/rules不动。
+用户最新阶段目标：[B14三KV整层均争取≤同轮Torch两倍](../../memory/global/requirements/decision-先将B14整层耗时压到Torch两倍以内.md)。优先当前CUTLASS版成本分解、B14专用化及高效epilogue，再做ready跨阶段调度；[源码/静态spill与异步现状](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/FUSION-COST-AND-ASYNC-REVIEW.md)。默认阶段grid.sync仍在，新spill动态成本未知。新测量需明确预算；原8h/24h、准备截止与保护继续有效，不自动开30层/TEST/正式性能。原始action保留原算子，baseline/投机/原tile及state/cycle/rules不动。
 
 engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission均false。原FAILED/retention/paused72/MLP0/22缺收据/default A_off保留。只main公开已核对源码/HW/小证据，不公开模型/PT/DSO/私有SASS/凭据。
 

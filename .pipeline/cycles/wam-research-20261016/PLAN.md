@@ -42,7 +42,7 @@ steps:
 
 本次[追加预算与输入](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/BUDGET.md)及[终态](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/CUTLASS-RESULT.md)：profile12＋门63＋计时42，原1380后共1497；首次CPU构建失败及修复记录齐，不重置计时起点。剩余3次不拼补不完整结论。
 
-下一算子阶段：先定位新主循环的阶段、epilogue与local-memory成本，随后B14专用化减资源压力；成熟原语接近baseline后再评估跨阶段ready填尾波。新的GPU阶段需有明确预算，不把剩余3调用当无界许可。新ready未验证，默认关闭。完整1/3/7×cache强baseline矩阵仍缺。
+下一算子阶段先以[用户两倍目标](../../memory/global/requirements/decision-先将B14整层耗时压到Torch两倍以内.md)排序：B14短中长完整层均争取≤同轮Torch的2倍，精度不放宽。先定位新主循环的阶段、epilogue与local-memory成本，随后B14专用化减资源压力；成熟原语接近baseline后再评估跨阶段ready填尾波。新的GPU阶段需有明确预算，不把剩余3调用当无界许可。新ready未验证，默认关闭。完整1/3/7×cache强baseline矩阵仍缺。
 
 RoboTwin[六局结果](../../experiments/robotwin-pilot-20261020/FIRST6-TARGET-RESULT.md)不等于TF迁移完成；沿原预算/准备截止推进需先完成Q32/CFG/cache/监督接口。当前按用户优先级收口算子，不为占卡擅加实验。
 
