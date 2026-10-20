@@ -2,52 +2,43 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-20T19:25:00+08:00'
+updated: '2026-10-20T21:59:48+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
   - id: M17
     status: in_progress
-  - id: M31
-    status: completed
-  - id: M32
-    status: completed
-  - id: M33
-    status: completed
-  - id: M34
-    status: completed
-  - id: M35
-    status: completed
-  - id: M36
-    status: completed
-  - id: M37
-    status: completed
-  - id: M38
-    status: completed
   - id: M39
-    status: completed
+    status: in_progress
   - id: M40
     status: in_progress
 ---
 # 当前有界计划
 
-| ID | 状态 | 结果/剩余 |
-|---|---|---|
-| M17 | in_progress | 四套6000局计算齐，旧科学审计未放行，无新GPU队列 |
-| M31–M38 | completed | 原静态/persistent/基线/profile/同卡工程与负结果保留 |
-| M39 | completed | 新372block有界较大tile完成；三KV1.73–1.88倍，有限逐位通过；后续当前profile/ready仍待新阶段 |
-| M40 | in_progress | 固定专家114/114；原Target首六局5成功1失败并清理；TF适配/训练/DEV未实现齐，不在排队 |
+## M17 — 四套LIBERO证据收口
 
-本轮沿[原两卡计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)和[当前用户决定](../../memory/global/requirements/decision-继续算子优化并先核对当前瓶颈.md)，原8h/24h和绝对截止不重置。用户要求整层一个persistent kernel，明确复用成熟设备GEMM，未改为host cuBLAS多kernel。baseline/投机/原tile/保护HW保持。
+6000局计算齐，旧科学审计未放行。保留曝光/首两S/失败/长尾，不追加未登记TEST或正式性能。
 
-本次[追加预算与输入](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/BUDGET.md)及[终态](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/CUTLASS-RESULT.md)：profile12＋门63＋计时42，原1380后共1497；首次CPU构建失败及修复记录齐，不重置计时起点。剩余3次不拼补不完整结论。
+## M39 — 当前单层开销与下一优化
 
-下一算子阶段先以[用户两倍目标](../../memory/global/requirements/decision-先将B14整层耗时压到Torch两倍以内.md)排序：B14短中长完整层均争取≤同轮Torch的2倍，精度不放宽。先定位新主循环的阶段、epilogue与local-memory成本，随后B14专用化减资源压力；成熟原语接近baseline后再评估跨阶段ready填尾波。新的GPU阶段需有明确预算，不把剩余3调用当无界许可。新ready未验证，默认关闭。完整1/3/7×cache强baseline矩阵仍缺。
+- [x] context128前轮有限门与普通完整层计时，B14三KV均小于同轮Torch两倍。
+- [x] 当前实现24完整block/150原语有界profile，阶段与native核对，源码和资源终态审计。
+- [x] 解释tile、warp、队列、同步及性能边界，给出依据当前数据的排序。
+- [ ] 先完成同输入/同边界原版、自有阶段独立、自有阶段嵌入整层三列对齐，区分原语和整层执行成本。
+- [ ] 再优化Norm/pointwise等主要差距；保留归约与舍入后逐项验证。
+- [ ] FA2嵌入开销定位/专用化，再context K/V真实ready调度；不先大范围修改所有阶段。
 
-RoboTwin[六局结果](../../experiments/robotwin-pilot-20261020/FIRST6-TARGET-RESULT.md)不等于TF迁移完成；沿原预算/准备截止推进需先完成Q32/CFG/cache/监督接口。当前按用户优先级收口算子，不为占卡擅加实验。
+[本轮结果](../../experiments/single-layer-async-gemm-20261020/context128-profile/RESULT.md)，[资源](../../experiments/single-layer-async-gemm-20261020/context128-profile/RESOURCE-AND-STOP.md)。本轮未改数学源码。原1497/1500、372/420与20:20:28截止保留；最新用户明确要求先分析，新profile登记独立24/150、900秒、22:11:12截止，已完成。后续GPU实现需独立有界登记，不把旧余额当无限授权。
 
-10/22 go/no-go、10/23冻结实现/claim、10/28主表、11/01 18:00老师中文证据包。四项质量权限仍false。旧计划/记录见[本次前checkpoint](history/device-gemm-followup-start-20261020/PLAN.md)，不覆盖FAILED。
+## M40 — RoboTwin固定迁移链
 
-当前用户明确接续实现：[较大tile有界计划](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/PLAN.md)，最多420新完整block，先两种实现的精度门再计时。旧1497/1500不改，原20:20:28截止保持。
+- [x] 首六Target自然终态5成功1失败、114初态、108完整bank。
+- [x] 首六4150监督query/原固定42清单CPU审计，独立wrapper与有界guard准备。
+- [ ] GPU1自动完成剩余42条Target；现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。
+- [ ] 合并Target48的FIT36/CAL12，审计后接固定TF适配/采集/训练/DEV；当前guard不自动训练。
 
-本轮终态：[context128结果](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)。上文旧2.54–3.02倍和1497调用为前轮历史，本轮新账本372/420不覆盖旧账本；原截止不变。下一步当前profile→ready子图，不自动放大研究范围。
+[登记与计划](../../experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)：6小时job生命周期，21:37:02至次日03:37:02，4GiB新增，逐局1800秒/8000teacher、开局预留整局和900秒清理；累计原24GPU小时帽。非infra重试、不截断episode、不补造旧收据。latest continue替代本轮只观察限制，旧截止/账本不改。
+
+M31–M38已完成及旧M39计划见[历史](history/context128-profile-start-20261020/PLAN.md)。baseline/投机/原tile/保护HW不改，BAAI写入仅~/cxz。四质量权限false；10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00证据包不变。
+
+用户最新反馈落实为[逐阶段对齐优先](../../experiments/single-layer-async-gemm-20261020/context128-profile/STAGE-ALIGNMENT-PLAN.md)，当前仅计划，未追加GPU作业。

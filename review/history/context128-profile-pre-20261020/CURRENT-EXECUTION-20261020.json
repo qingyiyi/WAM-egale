@@ -1,0 +1,89 @@
+{
+  "gate_pass": true,
+  "rows": [
+    {
+      "case": "short",
+      "KV": 288,
+      "processes": [
+        {
+          "id": 1,
+          "native_ms": 2.631168007850647,
+          "new_ms": 4.914175987243652,
+          "ratio": 1.8676785262595044,
+          "samples_per_engine": 8
+        },
+        {
+          "id": 2,
+          "native_ms": 2.6250239610671997,
+          "new_ms": 4.897791862487793,
+          "ratio": 1.8658084402767139,
+          "samples_per_engine": 8
+        }
+      ]
+    },
+    {
+      "case": "middle",
+      "KV": 1152,
+      "processes": [
+        {
+          "id": 1,
+          "native_ms": 2.8144959211349487,
+          "new_ms": 5.16814398765564,
+          "ratio": 1.8362591854713293,
+          "samples_per_engine": 8
+        },
+        {
+          "id": 2,
+          "native_ms": 2.494047999382019,
+          "new_ms": 4.6768479347229,
+          "ratio": 1.875203659224578,
+          "samples_per_engine": 8
+        }
+      ]
+    },
+    {
+      "case": "long",
+      "KV": 2160,
+      "processes": [
+        {
+          "id": 1,
+          "native_ms": 3.0284318923950195,
+          "new_ms": 5.246703863143921,
+          "ratio": 1.7324820400681333,
+          "samples_per_engine": 8
+        },
+        {
+          "id": 2,
+          "native_ms": 2.932479977607727,
+          "new_ms": 5.095088005065918,
+          "ratio": 1.7374672781985758,
+          "samples_per_engine": 8
+        }
+      ]
+    }
+  ],
+  "formal_performance_permission": false,
+  "schema": "current-execution-larger-tile-v1",
+  "scope": "single-layer operator, bounded real replay; not production admission",
+  "historical_paused72_unchanged": true,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "GPU_jobs_running": false,
+  "robotwin": {
+    "target_episodes": 6,
+    "success": 5,
+    "complete_algorithmic_failures": 1,
+    "split": "FIT diagnostic",
+    "teacher_attempted": 6557,
+    "teacher_returned": 6557,
+    "TF_training_started": false
+  },
+  "evidence": "../.pipeline/experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md",
+  "selected_variant": "context128",
+  "finite_operator_2x_screen": true,
+  "full_block_calls": 372,
+  "GPU_worker_lifecycle_seconds": 69.37944507598877,
+  "default_stage_grid_barriers": true,
+  "ready_revalidated": false
+}

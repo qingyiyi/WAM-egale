@@ -1,11 +1,13 @@
 # 最近执行 checkpoint
 
-2026-10-20 19:25 北京；[PLAN](PLAN.md)，M39本轮终态COMPLETE。
+2026-10-20T21:59:48+08:00，北京。current M39，parallel M40；[PLAN](PLAN.md)。
 
-1. 根据用户继续实现/较大tile指示，登记420新完整block、900秒GPU生命周期、3600秒墙钟，原20:20:28硬截止不变。旧1497/1500记录不改。
-2. optimized实现协作成对epilogue和point/cache2048元素任务；比较context64与128，action64保持。两个CPU编译、两套有限门和四独立计时进程完成。
-3. 每variant9签名/23中间量/18有效KV/重复/输入/RNG/tile逐位通过；每条profile一个compute kernel。context128的三KV同轮native耗时比1.866–1.868/1.836–1.875/1.732–1.737，达到本轮≤2倍，未对齐等速。
-4. 新372block、GPU生命周期69.379秒；选择128，源码默认构建配置同步。阶段grid.sync仍在，ready未重验不打开。
-5. RoboTwin六FIT Target终态仍5成功1失败，无后继队列；未新增机器人任务。
+1. 最新请求明确继续RoboTwin并先分析算子，按新有限profile和未开始42清单登记；未重置旧账本/截止。
+2. GPU0当前context128副本插桩12block、150原语，加native12完整block。输出/中间量/KV有限逐位通过；当前源码和研究二进制未变。
+3. GEMM占49–57%，cross-K RMS和pointwise开销突出，长KV attention占23%；NCU硬件counter拒绝访问，未知项保留。约23.2秒GPU生命周期，owned结束。
+4. 首六Robo监督、114固定初态及bank核对完成。GPU1 21:37:02启动剩余42完整Target自动队列，6小时帽。现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。
+5. 更新源码解释、HW和main公开小证据；本轮不新增算子数学改动或自动训练。
 
-[结果](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)、[资源与终态](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/FINAL-AUDIT.json)、[此前checkpoint](history/larger-tile-followup-start-20261020/EXECUTION.md)。
+[算子结果](../../experiments/single-layer-async-gemm-20261020/context128-profile/RESULT.md)、[终态](../../experiments/single-layer-async-gemm-20261020/context128-profile/FINAL-AUDIT.json)、[Robo现场](../../experiments/robotwin-pilot-20261020/target-remaining42/LIVE-SNAPSHOT.json)、[上轮checkpoint](history/context128-profile-start-20261020/EXECUTION.md)。
+
+6. 用户最新要求先对齐各阶段与原版性能差异：已记为guideline，下一步增加原版/自有独立/嵌入整层三路径同边界矩阵；尚未启动新测量。

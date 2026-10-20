@@ -1,41 +1,38 @@
----
-kind: progress
-cycle: wam-research-20261016
-plan: PLAN.md
-current: M39
-next: M39
----
 # 当前研究进度
 
-更新：2026-10-20T19:25:00+08:00。Cycle：wam-research-20261016；[PLAN](PLAN.md)。当前 M39 本轮完成，next M39 当前profile/ready设计；M40保持待TF迁移。无GPU后继队列。
+更新：2026-10-20T21:59:48+08:00。Cycle：wam-research-20261016；[PLAN](PLAN.md)。current M39，next M39 逐阶段三路径对齐；M40 GPU1固定42采集自动接续。
 
 |ID|状态|当前结果|
 |---|---|---|
 |M17|in_progress|四套6000局计算齐，科学审计未放行|
-|M31–M38|completed|基线、profile、原子图与正负结果保留|
-|M39|completed|本轮较大tile有限通过；B14整层三KV均≤同轮native两倍，尚未达到等速|
-|M40|in_progress|RoboTwin六FIT Target已5成功1失败；TF采集/训练/DEV未齐|
+|M31–M38|completed|原基线、profile、子图与正负结果保留|
+|M39|in_progress|当前context128完整层开销分析完成；数学源码未改；下一步先逐阶段原版/独立/嵌入对齐，再改主要差距与ready调度|
+|M40|in_progress|现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。|
 
-## 当前算子
+## 当前算子证据
 
-[较大tile结果](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)：仅optimized增加8warp协作epilogue、2048元素point/cache任务、context128×128/K64（action保持64×128）。两variant各9真实签名/每格23中间量/18有效KV转移、重复输出/KV、输入/RNG/tile逐位通过。仍整个单层一个persistent kernel。
+[本轮分析](../../experiments/single-layer-async-gemm-20261020/context128-profile/RESULT.md)：24/24完整block、150/150 Torch Linear，有限输出/中间量/有效KV逐位通过。三KV插桩阶段GEMM占57.26/53.02/48.96%；cross K/V为其中1.88–2.02ms。cross-K RMS约0.606–0.654ms，对应native单kernel0.068–0.072ms；长KV self+cross attention占23.02%。阶段含队列/等待，native只kernel时间，不能混作正式算术吞吐比。
 
-所选128版B14短/中/长的两个独立进程耗时比1.866–1.868 / 1.836–1.875 / 1.732–1.737；完整层延迟分别约4.898–4.914 / 4.677–5.168 / 5.095–5.247ms。uncached eager、准备排除，每格每引擎16普通样本；profile独立，每条1compute kernel。单层工程门，不是强cache/Graph、30层、chunk/E2E或机器人质量。中KV绝对波动原样报告，不混合中位掩盖。
+当前108CTA×256线程、255register、98848B shared、1608B localSizeBytes。context tile128×128/K64、action64×128；4compute warp做CUTLASS/FA2，8warp协作GEMM epilogue。pointwise2048元素仍仅4warp运算；Norm一CTA一行，shared转换和单warp写回。阶段grid.sync仍在，非完整跨阶段ready执行器。NCU查询ERR_NVGPUCTRPERM，动态occupancy/spill/HBM/L2 UNKNOWN，不绕过权限。
 
-资源108CTA/256线程、255register、98848B shared、1608B localSizeBytes。阶段grid.sync仍在；旧FFN ready本轮未重验、defaultFalse；动态occupancy/spill/流量UNKNOWN。大tile增加共享内存，不能说已经解决资源瓶颈。
+[上一轮普通计时](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)仍为最新速度：B14短/中/长同轮native比1.866–1.868 / 1.836–1.875 / 1.732–1.737。uncached eager、准备排除，不是强cached/Graph、30层、chunk/E2E或闭环质量。本轮插桩不替代普通计时；旧ready负结果不改。
 
-[资源](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESOURCE-AND-STOP-REPORT.md)：新372/420block、GPU worker生命周期69.379/900秒，两CPU构建约238.5秒，guard约308.3秒；不重置旧1497/1500、原FAILED与20:20:28截止。六GPU worker与两build结束；最终[审计](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/FINAL-AUDIT.json)。旧[2.54–3.02倍版](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/CUTLASS-RESULT.md)和旧ready负结果保留，不把跨轮数字作为严格新旧AB。
+[资源](../../experiments/single-layer-async-gemm-20261020/context128-profile/RESOURCE-AND-STOP.md)与[终态审计](../../experiments/single-layer-async-gemm-20261020/context128-profile/FINAL-AUDIT.json)：约23.2/900秒GPU生命周期、约25.3MiB证据，owned结束，GPU0无算子后继队列。源码/所选二进制核验保留；旧1497/1500与372/420、FAILED和原截止不改。
 
-## RoboTwin与质量
+## RoboTwin接续
 
-[现场检查](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/ROBOTWIN-LIVE-CHECK.json)：首六FIT身份Target 5成功，open_microwave完整失败；83policy/6557teacher。失败实际1520命令/罚分1500分列；初始物理和观察逐位。114专家初态、108完整BF16 bank齐，完整任务cache等价未测。所有owned闭合，无后继自动队列，TF collector/训练/DEV尚未实现齐；本轮关注终态，不按过期首六局链重启。
+[新固定42队列](../../experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)，现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。本次最新明确继续为新阶段授权，旧截止不重写。21:37:02启动、次日03:37:02硬截止，含清理6小时帽；每局1800秒/8000teacher，开局留整局及900秒清理，4GiB新增存储，累计原24GPU小时帽。
 
-[四套原LIBERO](../../experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)：Long483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499（T/C/P各500）。首两S审计FAILED、训练/DEV曝光与长尾保留，非独立TEST；旧330/360计时不签发新算子权限。
+首六监督4150实际query已核对；新增30FIT/12CAL，合并成Target48（FIT36/CAL12）。复用108完整512-token BF16 bank；完整episode cached/uncached等价尚未测。GPU1单worker、server/client各2CPU线程，固定轮转自动接续，不重试infra失败；自然算法失败保留。状态见[LIVE-SNAPSHOT](../../experiments/robotwin-pilot-20261020/target-remaining42/LIVE-SNAPSHOT.json)。完成后需审计并实现后续TF适配/训练/DEV，本guard不自动训练。采集结果不是TF成功率。
 
-## 下一步与边界
+四套原LIBERO T/C/P各500：Long483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499。首两S审计FAILED、训练/DEV曝光和长尾保留，非独立TEST。
 
-以context128为研究实现，先做当前版本阶段/寄存器spill/调度成本定位，再将独立context K/V及norm变成ready任务填尾波；consumer必须等真实依赖完成。阶段同步没有全局去除。保持原始action用原算子，不开30层或生产集成；baseline/依赖、投机代码、原tile/HW、state/cycle/rules不动。
+## 下一步与不变边界
 
-engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission均false。旧FAILED/retention/paused72/MLP0/22缺收据/default A_off保持。BAAI写入仅~/cxz，AutoDL已归还，不改驱动/服务/时钟、不杀他人。
+最新用户反馈：先逐阶段原版/自有独立/自有嵌入整层对齐，再优化Norm/pointwise、FA2等主要差距，最后context K/V ready填尾波。归约顺序、BF16舍入、合法KV不放宽；一次一个因素。普通缓存不作为MegaTransformer新贡献；最强1/3/7×cache矩阵仍缺。
 
-只main同步源码/HW/小证据，不公开模型/PT/DSO/私有SASS/凭据。10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00中文证据包。此前完整记录见[历史](history/larger-tile-followup-start-20261020/PROGRESS.md)。
+四项engineering_quality_screen/independent_test_complete/noninferiority_established/formal_performance_permission均false。旧FAILED/retention/paused72/MLP0/22缺收据/default A_off保留。原始action沿原算子；baseline/投机代码/原tile/HW/state/cycle/rules不动。BAAI只写~/cxz，AutoDL归还，不改驱动/时钟/服务或杀他人。仅main发布源码/HW/小证据。
+
+10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00中文证据包。此前[完整进度](history/context128-profile-start-20261020/PROGRESS.md)保留。
+
+最新[逐阶段对齐计划](../../experiments/single-layer-async-gemm-20261020/context128-profile/STAGE-ALIGNMENT-PLAN.md)尚未启动新GPU；当前profile预算已终态。

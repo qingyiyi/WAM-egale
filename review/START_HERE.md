@@ -1,10 +1,10 @@
 # 当前入口
 
-最新已执行结果：[CURRENT-EXECUTION-20261020.md](CURRENT-EXECUTION-20261020.md)/[状态JSON](CURRENT-EXECUTION-20261020.json)。固定本文件所在commit审查，不由后续main覆盖身份。
+最新：[CURRENT-EXECUTION-20261020.md](CURRENT-EXECUTION-20261020.md)/[状态JSON](CURRENT-EXECUTION-20261020.json)。固定本文件所在commit核对。
 
-当前完整单层已采用较大context tile128×128、协作epilogue及2048元素任务；九签名有限逐位和重复通过，B14短/中/长为同轮Torch/native的1.866–1.868 / 1.836–1.875 / 1.732–1.737倍，本轮≤2倍工程目标通过，仍未等速。RoboTwin原Target首六局5成功1完整失败，TF迁移尚未完成。两卡owned任务已清理，无自动队列。四质量权限仍false，旧FAILED/retention和固定paused72身份不改。[HW短入口](../.pipeline/PROGRESS.compact.md)。
+当前context128已完成新profile；普通单层速度仍前轮B14三KV约1.73–1.88倍native。下一步先逐阶段三路径对齐，再优化主要差距，最后真实ready调度。阶段grid.sync仍在；动态硬件counter权限不足，未知项保留。RoboTwin GPU1固定42条Target监督采集正在自动接续，目标Target48(FIT36/CAL12)，不是TF评测，训练未启动。四质量权限仍false。
 
-下方及旧RESULTS.json是固定paused72历史；此前“整层仍9失败/只读规划”的最新描述已被上方新后继接续，原始负结果未修改。
+[HW短入口](../.pipeline/PROGRESS.compact.md)。下方是固定paused72历史，当前后继以最新入口为准，原始记录不改。
 
 ---
 

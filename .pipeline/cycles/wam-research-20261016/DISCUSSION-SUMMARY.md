@@ -1,11 +1,13 @@
 # 当前讨论与授权
 
-用户要求继续实现算子、允许tile切大，并继续关注RoboTwin。[用户选择](../../memory/global/requirements/decision-继续实现并评估更大tile.md)保持约束级、M39范围。只在optimized迭代，baseline/投机/原tile不动；整个单层一个persistent kernel，不改成30层。
+用户最新要求：RoboTwin继续；算子先分析当前剩余开销、解释具体实现并推荐下一步。[确认决定](../../memory/global/requirements/decision-接续RoboTwin并先分析当前算子开销.md)。
 
-新有界两variant完成，context128通过有限精度并在B14三KV均小于同轮native两倍，作为当前研究实现。仍慢约1.73–1.88倍，不是Torch等速或机器人加速。actionM224保持64行；8warp协作epilogue和2048point任务不等于完整异步DAG。阶段grid.sync仍在；新ready未验，默认关闭。
+当前context128数学源码未改；24完整block和150原语profile完成。普通速度仍上一轮B14三KV约1.73–1.88倍native。阶段grid.sync仍在，8warp协作epilogue不等于完整异步；NCU计数权限被拒，动态spill/occupancy未知。最新反馈改为先逐阶段三路径对齐，再修主要差距，最后context K/V ready，保持数值门。
 
-新预算372/420完整block、GPU生命周期69.379/900秒，原旧1497/1500、旧资源FAILED和20:20:28截止未重置；无GPU后继队列。下一阶段先当前瓶颈，再真实依赖ready调度。
+RoboTwin最新明确接续允许固定未开始42条Target进入新namespace，不重跑旧失败，不重置原24GPU小时总账。GPU1固定队列自动接续；现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。新阶段截止次日03:37:02，6小时含清理；TF训练尚未启动，Target采集不冒充TF评测。
 
-RoboTwin原Target首六FIT 5成功1失败，旧0动作PARTIAL保留。TF collector/训练/DEV待实现，不宣称自动排队；本轮只关注，旧截止不续期。BAAI只写~/cxz；AutoDL归还；不改驱动/服务/时钟、不杀他人。
+仅单层persistent kernel；baseline/投机/原tile/保护HW不动。四质量权限false，旧FAILED/retention/paused72/MLP0/22缺收据/default A_off不变。BAAI只写~/cxz，AutoDL已归还。不改驱动/服务/时钟，不杀他人。main只同步源码/HW/小证据。
 
-四质量权限false；旧FAILED/retention/paused72/MLP0/22缺收据/default A_off保持。仅main发布源码/HW/小证据，不发布模型/PT/DSO/凭据。10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00证据包不变。此前[讨论](history/larger-tile-followup-start-20261020/DISCUSSION-SUMMARY.md)保留。
+此前[讨论](history/context128-profile-start-20261020/DISCUSSION-SUMMARY.md)保留。10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00中文证据包不变。
+
+最新[逐阶段对齐计划](../../experiments/single-layer-async-gemm-20261020/context128-profile/STAGE-ALIGNMENT-PLAN.md)尚未启动新GPU；当前profile预算已终态。

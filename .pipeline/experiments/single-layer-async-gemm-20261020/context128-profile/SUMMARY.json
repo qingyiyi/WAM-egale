@@ -1,0 +1,1244 @@
+[
+  {
+    "case": "short",
+    "instrumented_ms": 5.182464,
+    "GEMM_ms": 2.967552,
+    "crossKV_ms": 2.015232,
+    "FFN12_ms": 0.5509120000000001,
+    "attention_ms": 0.5130239999999999,
+    "norm_ms": 0.800768,
+    "crossK_RMS_ms": 0.654336,
+    "resources": [
+      108,
+      1,
+      98848,
+      255,
+      1616,
+      256
+    ],
+    "stage_ms": {
+      "TABLE": 0.254976,
+      "Norm1": 0.023552,
+      "mod1": 0.032768,
+      "selfQ": 0.057344,
+      "selfK": 0.054272,
+      "selfV": 0.072704,
+      "selfQRMS": 0.021504,
+      "selfKRMS": 0.02048,
+      "Qrope": 0.032768,
+      "Krope": 0.031744,
+      "cacheinsert": 0.003072,
+      "selfattn": 0.221184,
+      "selfout": 0.075776,
+      "selfres": 0.047104,
+      "Norm2": 0.031744,
+      "crossQ": 0.069632,
+      "crossK": 0.908288,
+      "crossV": 1.106944,
+      "crossQRMS": 0.021504,
+      "crossKRMS": 0.654336,
+      "crossattn": 0.284672,
+      "crossout": 0.07168,
+      "crossres": 0.038912,
+      "Norm3": 0.027648,
+      "mod3": 0.049152,
+      "FFN1": 0.365568,
+      "GELU": 0.180224,
+      "FFN2": 0.185344,
+      "finalres": 0.047104,
+      "unused": 0.0,
+      "selfcombine": 0.003072,
+      "crosscombine": 0.004096
+    },
+    "primitives": [
+      {
+        "label": "Q_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09244800359010696,
+          0.07475200295448303,
+          0.0727040022611618
+        ]
+      },
+      {
+        "label": "K_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.08819200098514557,
+          0.0727040022611618,
+          0.07065600156784058
+        ]
+      },
+      {
+        "label": "V_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.0859839990735054,
+          0.0727040022611618,
+          0.07065600156784058
+        ]
+      },
+      {
+        "label": "self_output_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.08790399879217148,
+          0.07168000191450119,
+          0.07168000191450119
+        ]
+      },
+      {
+        "label": "cross_Q_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.08579199761152267,
+          0.0727040022611618,
+          0.07065600156784058
+        ]
+      },
+      {
+        "label": "cross_K_proj",
+        "M": 7168,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            7168,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 22020096,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.7544000148773193,
+          0.7403519749641418,
+          0.7383040189743042
+        ]
+      },
+      {
+        "label": "cross_V_proj",
+        "M": 7168,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            7168,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 22020096,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.7533760070800781,
+          0.7423999905586243,
+          0.7403519749641418
+        ]
+      },
+      {
+        "label": "cross_output_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.08771199733018875,
+          0.07168000191450119,
+          0.07168000191450119
+        ]
+      },
+      {
+        "label": "FFN1",
+        "M": 224,
+        "N": 14336,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            14336
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 3211264,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.24745599925518036,
+          0.23347200453281403,
+          0.23654399812221527
+        ]
+      },
+      {
+        "label": "FFN2",
+        "M": 224,
+        "N": 3072,
+        "K": 14336,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.17692799866199493,
+          0.15667200088500977,
+          0.15564799308776855
+        ]
+      }
+    ]
+  },
+  {
+    "case": "middle",
+    "instrumented_ms": 5.582208,
+    "GEMM_ms": 2.959648,
+    "crossKV_ms": 2.016416,
+    "FFN12_ms": 0.547264,
+    "attention_ms": 0.913824,
+    "norm_ms": 0.7968000000000001,
+    "crossK_RMS_ms": 0.651232,
+    "resources": [
+      108,
+      1,
+      98848,
+      255,
+      1616,
+      256
+    ],
+    "stage_ms": {
+      "TABLE": 0.254848,
+      "Norm1": 0.022432,
+      "mod1": 0.033056,
+      "selfQ": 0.05712,
+      "selfK": 0.052352,
+      "selfV": 0.072864,
+      "selfQRMS": 0.021216,
+      "selfKRMS": 0.020704,
+      "Qrope": 0.032448,
+      "Krope": 0.031424,
+      "cacheinsert": 0.002368,
+      "selfattn": 0.623296,
+      "selfout": 0.073792,
+      "selfres": 0.047232,
+      "Norm2": 0.03216,
+      "crossQ": 0.068864,
+      "crossK": 0.908576,
+      "crossV": 1.10784,
+      "crossQRMS": 0.021312,
+      "crossKRMS": 0.651232,
+      "crossattn": 0.28416,
+      "crossout": 0.070976,
+      "crossres": 0.037536,
+      "Norm3": 0.027744,
+      "mod3": 0.048672,
+      "FFN1": 0.363392,
+      "GELU": 0.18112,
+      "FFN2": 0.183872,
+      "finalres": 0.04656,
+      "unused": 0.0,
+      "selfcombine": 0.003296,
+      "crosscombine": 0.003072
+    },
+    "primitives": [
+      {
+        "label": "Q_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.0982080027461052,
+          0.0809599980711937,
+          0.07964800298213959
+        ]
+      },
+      {
+        "label": "K_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09728000313043594,
+          0.07980799674987793,
+          0.07977599650621414
+        ]
+      },
+      {
+        "label": "V_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09699200093746185,
+          0.08022399991750717,
+          0.08048000186681747
+        ]
+      },
+      {
+        "label": "self_output_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09571199864149094,
+          0.0796160027384758,
+          0.07868800312280655
+        ]
+      },
+      {
+        "label": "cross_Q_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.0942080020904541,
+          0.07916799932718277,
+          0.07852800190448761
+        ]
+      },
+      {
+        "label": "cross_K_proj",
+        "M": 7168,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            7168,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 22020096,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.7594239711761475,
+          0.7456960082054138,
+          0.7472320199012756
+        ]
+      },
+      {
+        "label": "cross_V_proj",
+        "M": 7168,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            7168,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 22020096,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.7611839771270752,
+          0.7463679909706116,
+          0.7480000257492065
+        ]
+      },
+      {
+        "label": "cross_output_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09504000097513199,
+          0.07958400249481201,
+          0.07862400263547897
+        ]
+      },
+      {
+        "label": "FFN1",
+        "M": 224,
+        "N": 14336,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            14336
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 3211264,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.2553279995918274,
+          0.24063999950885773,
+          0.23929600417613983
+        ]
+      },
+      {
+        "label": "FFN2",
+        "M": 224,
+        "N": 3072,
+        "K": 14336,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.18432000279426575,
+          0.16435199975967407,
+          0.16281600296497345
+        ]
+      }
+    ]
+  },
+  {
+    "case": "long",
+    "instrumented_ms": 5.69152,
+    "GEMM_ms": 2.7866560000000002,
+    "crossKV_ms": 1.883456,
+    "FFN12_ms": 0.5273920000000001,
+    "attention_ms": 1.31008,
+    "norm_ms": 0.741888,
+    "crossK_RMS_ms": 0.605728,
+    "resources": [
+      108,
+      1,
+      98848,
+      255,
+      1616,
+      256
+    ],
+    "stage_ms": {
+      "TABLE": 0.239744,
+      "Norm1": 0.020832,
+      "mod1": 0.030752,
+      "selfQ": 0.054496,
+      "selfK": 0.049152,
+      "selfV": 0.068288,
+      "selfQRMS": 0.020096,
+      "selfKRMS": 0.019104,
+      "Qrope": 0.030496,
+      "Krope": 0.029216,
+      "cacheinsert": 0.002368,
+      "selfattn": 1.039072,
+      "selfout": 0.070144,
+      "selfres": 0.044896,
+      "Norm2": 0.029952,
+      "crossQ": 0.066144,
+      "crossK": 0.858176,
+      "crossV": 1.02528,
+      "crossQRMS": 0.019904,
+      "crossKRMS": 0.605728,
+      "crossattn": 0.264992,
+      "crossout": 0.067584,
+      "crossres": 0.036032,
+      "Norm3": 0.026272,
+      "mod3": 0.045664,
+      "FFN1": 0.354816,
+      "GELU": 0.171744,
+      "FFN2": 0.172576,
+      "finalres": 0.0448,
+      "unused": 0.0,
+      "selfcombine": 0.003072,
+      "crosscombine": 0.002944
+    },
+    "primitives": [
+      {
+        "label": "Q_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09609600156545639,
+          0.07699199765920639,
+          0.0764480009675026
+        ]
+      },
+      {
+        "label": "K_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09366399794816971,
+          0.07689599692821503,
+          0.07603199779987335
+        ]
+      },
+      {
+        "label": "V_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09382399916648865,
+          0.07583999633789062,
+          0.07612799853086472
+        ]
+      },
+      {
+        "label": "self_output_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09359999746084213,
+          0.07715199887752533,
+          0.07583999633789062
+        ]
+      },
+      {
+        "label": "cross_Q_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09283199906349182,
+          0.07638400048017502,
+          0.07545600086450577
+        ]
+      },
+      {
+        "label": "cross_K_proj",
+        "M": 7168,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            7168,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 22020096,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.7066879868507385,
+          0.6955519914627075,
+          0.6934400200843811
+        ]
+      },
+      {
+        "label": "cross_V_proj",
+        "M": 7168,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            7168,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 22020096,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.7074559926986694,
+          0.6935039758682251,
+          0.6924800276756287
+        ]
+      },
+      {
+        "label": "cross_output_proj",
+        "M": 224,
+        "N": 3072,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.09443199634552002,
+          0.07635200023651123,
+          0.0761599987745285
+        ]
+      },
+      {
+        "label": "FFN1",
+        "M": 224,
+        "N": 14336,
+        "K": 3072,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            14336
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 3211264,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.24198399484157562,
+          0.2258239984512329,
+          0.22569599747657776
+        ]
+      },
+      {
+        "label": "FFN2",
+        "M": 224,
+        "N": 3072,
+        "K": 14336,
+        "same_input": {
+          "shape_match": true,
+          "dtype_match": true,
+          "finite_pass": true,
+          "shape": [
+            224,
+            3072
+          ],
+          "dtype": "torch.bfloat16",
+          "bitwise_pass": true,
+          "tolerance_pass": true,
+          "different_bytes": 0,
+          "different_elements": 0,
+          "elements": 688128,
+          "tolerance_atol": 0.0,
+          "tolerance_rtol": 0.0,
+          "max_abs": 0.0,
+          "rel_l2": 0.0,
+          "abs_p50_p90_max": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "quantile_status": "EXACT_ALL_ZERO"
+        },
+        "stream_ms": [
+          0.175135999917984,
+          0.15593600273132324,
+          0.15465599298477173
+        ]
+      }
+    ]
+  }
+]

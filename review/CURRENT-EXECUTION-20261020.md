@@ -1,13 +1,13 @@
-# 当前后继执行结果（不改paused72科学身份）
+# 当前算子开销分析与RoboTwin接续
 
-固定本文件所在commit阅读。旧RESULTS.json/paused72、FAILED、retention与四项科学权限false原样保留。
+固定本文件所在commit阅读；旧RESULTS.json/paused72、FAILED、retention和四质量权限false原样保留。
 
-单层optimized已完成协作epilogue、point/cache任务2048元素，并比较context64/128行（action保持64）。选择context128。两个独立进程中，B14短/中/长完整层相对同轮native耗时比1.866–1.868 / 1.836–1.875 / 1.732–1.737。本轮≤2倍工程门通过，尚未Torch等速；uncached/eager，非强cached/Graph、verifier、chunk或E2E。逐进程绝对延迟波动见原始表。
+当前context128源码和研究二进制未改。完成24完整block、150独立Torch Linear的有界profile，有限输出/中间量/有效KV逐位通过。GEMM占约49–57%，cross K/V占其中1.88–2.02ms；cross-K RMS0.606–0.654ms，相同fixture native单kernel0.068–0.072ms；长KV self+cross attention约23%。阶段包含队列/barrier，native仅kernel持续时间，不是正式纯算术吞吐对比。
 
-两种实现各9真实签名/23中间量/18有效KV/重复/输入/RNG/tile有限逐位通过；12条profile各一个compute kernel。共372block，GPU worker生命周期69.379秒；原1497/1500账本不改。本轮所有owned退出、两GPU现场空，无后继自动队列。
+普通速度仍为[前轮](../.pipeline/experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)B14三KV对同轮native的1.866–1.868 / 1.836–1.875 / 1.732–1.737倍。uncached/eager、单层，非强cached/Graph或E2E。当前108CTA/8warp，context128×128/K64、action64×128；四compute warp执行CUTLASS/FA2，GEMM epilogue全8warp协作。阶段grid.sync仍在，不是完整ready DAG。
 
-[详细结果](../.pipeline/experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)、[源码说明](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)、[终态](../.pipeline/experiments/single-layer-async-gemm-20261020/larger-tile-followup/FINAL-AUDIT.json)。仍255register、98848B shared、1608B localSize；阶段grid.sync尚在，旧FFN ready本轮未重验且默认关闭。下一步当前版本profile，再做独立context K/V ready任务填尾波；不把普通原语/tile增大包装成已证MegaTransformer创新。
+[完整分析与源码行号](../.pipeline/experiments/single-layer-async-gemm-20261020/context128-profile/RESULT.md)、[资源/owned审计](../.pipeline/experiments/single-layer-async-gemm-20261020/context128-profile/FINAL-AUDIT.json)。NCU查询ERR_NVGPUCTRPERM；动态occupancy/spill/HBM/L2 UNKNOWN，未绕过权限。最新用户反馈：先同输入/同边界对齐原版、自有阶段独立、自有阶段嵌入整层，再优化主要差距，最后context K/V真实ready填尾波；不能把普通缓存包装成新调度贡献。
 
-RoboTwin首六FIT Target仍5成功1完整失败；83policy/6557teacher。actual1520/penalty1500分列，完整任务bank等价未知。TF采集/训练/DEV尚未完成，本轮只核终态，无新增机器人任务。
+RoboTwin按用户最新继续指令已在GPU1运行固定剩余42条Target采集。现场2026-10-20T21:59:00+08:00：新5/42完整、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。这是Target FIT/CAL采集，不是TF评测。目标合并Target48(FIT36/CAL12)，reset复用108完整BF16 bank，完整任务cached/uncached等价未实测。21:37:02启动、次日03:37:02硬截止，6小时含清理；固定队列自动接续，本guard不自动训练。原24GPU小时帽/失败/截止记录保留。[计划](../.pipeline/experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)、[现场](../.pipeline/experiments/robotwin-pilot-20261020/target-remaining42/LIVE-SNAPSHOT.json)。
 
-此前[执行快照](history/larger-tile-followup-pre-20261020/CURRENT-EXECUTION-20261020.md)保留，旧速度不能与本轮直接相除作严格AB。
+算子GPU0本轮任务已清理，约23.2秒GPU生命周期；baseline/投机源码/原tile/保护HW未改。此前[快照](history/context128-profile-pre-20261020/CURRENT-EXECUTION-20261020.md)保留。

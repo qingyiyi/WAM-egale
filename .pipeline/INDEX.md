@@ -1,18 +1,16 @@
 # WAM 投机与单层 Transformer 当前入口
 
-更新：2026-10-20T19:25:00+08:00。
+更新：2026-10-20T21:59:48+08:00。
 
-先读[上下文策略](CONTEXT-POLICY.md)、[记忆索引](memory/INDEX.md)及当前约束，再聚焦[Cycle进度](cycles/wam-research-20261016/PROGRESS.md)、PLAN/EXECUTION/DISCUSSION。旧长索引/原始trace按需读，v15不升级或全量sync。
+先读[上下文策略](CONTEXT-POLICY.md)、[记忆索引](memory/INDEX.md)及约束，再聚焦[Cycle进度](cycles/wam-research-20261016/PROGRESS.md)和PLAN/EXECUTION/DISCUSSION。v15不升级或全量sync。
 
-- [当前较大tile单层结果](experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)：context128、协作epilogue、2048元素任务；9签名/23中间量/18KV/重复有限逐位通过。B14三KV约为同轮native的1.866–1.868 / 1.836–1.875 / 1.732–1.737倍。单层uncached eager，不是等速或E2E。
-- [本轮资源终态](experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESOURCE-AND-STOP-REPORT.md)：372/420新block、69.379秒GPU生命周期，完成并释放，无后继队列。旧1497/1500与FAILED保留。阶段grid.sync仍在、ready默认False。
-- [RoboTwin首六局](experiments/robotwin-pilot-20261020/FIRST6-TARGET-RESULT.md)：原Target 5成功1完整失败，83policy/6557teacher；实际命令/罚分分列。114专家初态和108完整bank齐，完整任务cache等价未测。TF适配/训练/DEV未完成，不在排队。
-- [四套LIBERO原质量](experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)：Long483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499，T/C/P各500。科学审计未放行，不是独立TEST。
+- [当前算子profile与源码解释](experiments/single-layer-async-gemm-20261020/context128-profile/RESULT.md)：24完整block/150原语；GEMM49–57%、Norm/pointwise及FA2嵌入待优化，NCU硬件counter UNKNOWN。现有数学源码未改。
+- [前轮普通单层速度](experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)：B14三KV约1.73–1.88倍native，有限逐位通过；不是等速或E2E。仍有阶段grid.sync。
+- [RoboTwin固定42接续](experiments/robotwin-pilot-20261020/target-remaining42/PLAN.md)：GPU1自动固定轮转，现场10/20 21:59:00北京：新增5/42完整终态、5成功，当前`open_microwave-valid01`；原首六5成功1失败保留。Target48目标FIT36/CAL12，TF训练未启动，截止次日03:37:02。
+- [四套LIBERO原质量](experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)：6000局计算齐，科学审计未放行，不是独立TEST。
 
-下一步：先新GEMM阶段/epilogue/local-memory瓶颈和B14专用化，再跨阶段ready填尾波。普通缓存不是新系统贡献；完整1/3/7×cache强baseline矩阵缺。仅单层，不自动30层或机器人集成。当前[source guide](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)。
+下一步：先原版/自有独立/嵌入整层逐阶段对齐，再改主要差距，最后真实ready调度。四项质量权限false，旧FAILED/retention与原始证据保留；baseline/投机代码/原tile/HW/保护文件不动。仅单层，BAAI写入限~/cxz，AutoDL已归还。只main镜像源码/HW/小证据。
 
-四项quality/test/noninferiority/performance均false，旧FAILED/retention/paused72/MLP0/22缺收据/default A_off保留。原始action沿原算子。baseline/依赖、投机代码、旧tile/HW和state/cycle/rules不动。BAAI写入限~/cxz，AutoDL已归还，不改驱动/系统/时钟、不杀他人。
+10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00中文证据包；[短状态](PROGRESS.compact.md)。
 
-只[GitHub main](https://github.com/qingyiyi/WAM-egale/tree/main)镜像核对源码/HW/小证据，不发布模型/PT/DSO/凭据。旧[最终版](experiments/single-layer-async-gemm-20261020/FINAL-LAYER-RESULT.md)与[本次前历史](cycles/wam-research-20261016/history/device-gemm-followup-start-20261020/PROGRESS.md)可追溯。
-
-10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00老师中文证据包；[日期/作者缺项](experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。不保证投稿/录用。
+最新[逐阶段对齐计划](experiments/single-layer-async-gemm-20261020/context128-profile/STAGE-ALIGNMENT-PLAN.md)尚未启动新GPU；当前profile预算已终态。

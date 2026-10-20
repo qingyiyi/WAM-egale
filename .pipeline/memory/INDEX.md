@@ -1,8 +1,13 @@
 # 长期记忆索引
 
+- [先逐阶段对齐再异步](global/requirements/feedback-先逐阶段对齐原版性能再做异步调度.md)（guideline，M39）：先同输入/同边界对照原版、自有阶段独立、自有阶段嵌入整层，分清原语与整层资源/调度成本，再优化与ready调度。
+
+
 这是从旧228条记录提炼的当前主题入口；原记录和原分类索引保留，按具体问题追溯。临时进度与 AutoDL 完成数看 Cycle，不作为长期记忆复制。
 
 ## 当前资源偏好
+
+- [接续RoboTwin并先分析当前算子开销](global/requirements/decision-接续RoboTwin并先分析当前算子开销.md)（constraint，M39/M40）：恢复未开始的既定迁移阶段；当前算子先实际profile和源码讲解。
 
 - [继续实现并评估更大tile](global/requirements/decision-继续实现并评估更大tile.md)（constraint，M39）：用户明确接续实现/验证，允许更大tile；RoboTwin继续关注，不自动重启过期链。
 
