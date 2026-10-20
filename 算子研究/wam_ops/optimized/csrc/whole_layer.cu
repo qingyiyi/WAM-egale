@@ -31,8 +31,9 @@ constexpr int FA_SMEM=FaStandard::kSmemSize>FaSplit::kSmemSize?FaStandard::kSmem
 enum Buf {MOD,N1,M1,SQ0,SK0,SV,SQN,SKN,SQR,SKR,SA,SO,R1,N2,
           CQ0,CK0,CV,CQ,CK,CA,CO,R2,N3,M3,F1,ACT,F2,OUT,NB};
 enum Point {TABLE,MODULATE,RESIDUAL,ROPE,GELU,INSERT,RESTORE};
-// Warp 0: queue/metadata; 1: activation/Q; 2: weights/KV;
-// 3..6: Tensor Core/normalization/pointwise; 7: output/epilogue publication.
+// Warp 0 claims CTA tasks. Warps 3..6 compute; small-M GEMM uses warps 1/2
+// as loaders. Large-M GEMM loads within its compute group, then all eight
+// warps cooperate in the epilogue. Norm/small-M still use warp 7 to store.
 struct Params {
     const void* w[27]; void* a[NB];
     const B *x,*context; const void* temb;
@@ -85,14 +86,15 @@ __device__ void done(const Params& p,int st){
     __syncthreads();if(threadIdx.x==0&&p.audit)atomicAdd(p.stats+st*3+1,1);
 }
 
-// Four compute warps each own a 32x32 portion of a 64x64 tile.
-// Two loader warps stage A and W separately; the store warp alone adds bias
-// and performs the public BF16 rounding. K is consumed in increasing order.
+// Small-M: 64x64 output / K32 with separate loader warps. Action M>=128:
+// 64x128 / K64. Context M>=1024: compile-selected 64/128 x128 / K64.
+// Every path retains increasing-K and the recorded BF16/bias boundaries.
 #include "gemm_pipeline.cuh"
 __device__ void linear(const Params& p,Shared& s,cg::grid_group& g,int st,
                       const B* a,int wi,B* out,int m,int n,int k){
     const int tn=m>=128?128:64;
-    int ntiles=((m+63)/64)*((n+tn-1)/tn);begin(p,s,g,st,ntiles);
+    const int tm=gemm_tile_rows(m);
+    int ntiles=((m+tm-1)/tm)*((n+tn-1)/tn);begin(p,s,g,st,ntiles);
     for(int t;(t=claim(p,s,st,ntiles))<ntiles;){
         gemm_tile(s,a,(const B*)p.w[wi],(const B*)p.w[wi+1],out,m,n,k,t,p.bf16_splits);done(p,st);
     }
@@ -201,10 +203,11 @@ __device__ void layout(const Params& p){
 
 __device__ void point(const Params& p,Shared& s,cg::grid_group& g,int st,Point op,
                      int dst,int a,int b,int param,int64_t count){
-    int tiles=(count+127)/128;begin(p,s,g,st,tiles);
+    constexpr int tile_elements=2048;
+    int tiles=(count+tile_elements-1)/tile_elements;begin(p,s,g,st,tiles);
     for(int task;(task=claim(p,s,st,tiles))<tiles;){
-        if(compute()){
-            int64_t i=int64_t(task)*128+ct();float z=0.f;
+        if(compute())for(int j=ct();j<tile_elements;j+=128){
+            int64_t i=int64_t(task)*tile_elements+j;float z=0.f;
             if(i<count){
                 if(op==TABLE){int row=i/(6*D),cell=i%(6*D),batch=row/p.q,t=row%p.q;
                     int64_t j=(int64_t(batch)*p.l+(p.l==1?0:t))*6*D+cell;
@@ -218,21 +221,15 @@ __device__ void point(const Params& p,Shared& s,cg::grid_group& g,int st,Point o
                 }else if(op==ROPE){int64_t r=i/64,batch=r/(p.q*H),t=(r/H)%p.q,j=i%64;
                     auto f=p.freq[((p.fb==1?0:batch)*p.q+t)*64+j];
                     double x=double(value(bp(p,a)[2*i])),y=double(value(bp(p,a)[2*i+1]));
-                    s.tile.point[ct()]=float(x*double(f.real())-y*double(f.imag()));
-                    s.tile.point[128+ct()]=float(x*double(f.imag())+y*double(f.real()));
+                    const float real=float(x*double(f.real())-y*double(f.imag()));
+                    const float imag=float(x*double(f.imag())+y*double(f.real()));
+                    bp(p,dst)[2*i]=bf(real);bp(p,dst)[2*i+1]=bf(imag);
                 }else if(op==GELU){float x=value(bp(p,a)[i]);
                     constexpr float beta=M_SQRT2*M_2_SQRTPI*float(.5),kappa=.044715;
                     float cube=x*x*x,inner=beta*(x+kappa*cube);z=.5f*x*(1.f+c10::cuda::compat::tanh(inner));
                 }
-            }
-            if(op!=ROPE)s.tile.point[ct()]=z;
-        }
-        __syncthreads();
-        if(warp()==7)for(int j=lane();j<128;j+=32){int64_t i=int64_t(task)*128+j;
-            if(i<count){
-                if(op==TABLE)fp(p,dst)[i]=s.tile.point[j];
-                else if(op==ROPE){bp(p,dst)[2*i]=bf(s.tile.point[j]);bp(p,dst)[2*i+1]=bf(s.tile.point[128+j]);}
-                else bp(p,dst)[i]=bf(s.tile.point[j]);
+                if(op==TABLE)fp(p,dst)[i]=z;
+                else if(op!=ROPE)bp(p,dst)[i]=bf(z);
             }
         }
         done(p,st);
@@ -240,9 +237,10 @@ __device__ void point(const Params& p,Shared& s,cg::grid_group& g,int st,Point o
 }
 __device__ void insert_cache(const Params& p,Shared& s,cg::grid_group& g,int st){
     int count=(p.cache&&!p.candidate&&p.info[1]==0)?p.b*p.q*D:0;
-    int tiles=(count+127)/128;begin(p,s,g,st,tiles);
+    constexpr int tile_elements=2048;
+    int tiles=(count+tile_elements-1)/tile_elements;begin(p,s,g,st,tiles);
     for(int t;(t=claim(p,s,st,tiles))<tiles;){
-        if(warp()==1||warp()==2)for(int i=t*128+lane();i<min(count,(t+1)*128);i+=32){
+        if(warp()==1||warp()==2)for(int i=t*tile_elements+lane();i<min(count,(t+1)*tile_elements);i+=32){
             int64_t dest=((int64_t(i/(p.q*D))*p.pool+p.free[(i/D)%p.q])*D+i%D);
             if(warp()==1)p.pk[dest]=bp(p,SKR)[i];else p.pv[dest]=bp(p,SV)[i];
         }done(p,st);
@@ -392,5 +390,8 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME,m){
     m.def("forward",&wam_whole_layer_v1::forward);
     m.attr("production_admitted")=false;
     m.attr("computation_launches")=1;
+    m.attr("context_tile_rows")=WAM_CONTEXT_TILE_M;
+    m.attr("point_tile_elements")=2048;
+    m.attr("cooperative_epilogue")=true;
     m.attr("scheduling")="cooperative stage DAG; warp0 queue, warp1 activation, warp2 weight/KV, warp3-6 compute, warp7 store";
 }

@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-20T17:26:40+08:00'
+updated: '2026-10-20T19:25:00+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
@@ -35,7 +35,7 @@ steps:
 |---|---|---|
 | M17 | in_progress | 四套6000局计算齐，旧科学审计未放行，无新GPU队列 |
 | M31–M38 | completed | 原静态/persistent/基线/profile/同卡工程与负结果保留 |
-| M39 | completed | 当前profile＋固定CUTLASS设备mainloop完成；有限精度通过，仍慢2.54–3.02倍；1497/1500调用，停止本轮GPU |
+| M39 | completed | 新372block有界较大tile完成；三KV1.73–1.88倍，有限逐位通过；后续当前profile/ready仍待新阶段 |
 | M40 | in_progress | 固定专家114/114；原Target首六局5成功1失败并清理；TF适配/训练/DEV未实现齐，不在排队 |
 
 本轮沿[原两卡计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)和[当前用户决定](../../memory/global/requirements/decision-继续算子优化并先核对当前瓶颈.md)，原8h/24h和绝对截止不重置。用户要求整层一个persistent kernel，明确复用成熟设备GEMM，未改为host cuBLAS多kernel。baseline/投机/原tile/保护HW保持。
@@ -47,3 +47,7 @@ steps:
 RoboTwin[六局结果](../../experiments/robotwin-pilot-20261020/FIRST6-TARGET-RESULT.md)不等于TF迁移完成；沿原预算/准备截止推进需先完成Q32/CFG/cache/监督接口。当前按用户优先级收口算子，不为占卡擅加实验。
 
 10/22 go/no-go、10/23冻结实现/claim、10/28主表、11/01 18:00老师中文证据包。四项质量权限仍false。旧计划/记录见[本次前checkpoint](history/device-gemm-followup-start-20261020/PLAN.md)，不覆盖FAILED。
+
+当前用户明确接续实现：[较大tile有界计划](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/PLAN.md)，最多420新完整block，先两种实现的精度门再计时。旧1497/1500不改，原20:20:28截止保持。
+
+本轮终态：[context128结果](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)。上文旧2.54–3.02倍和1497调用为前轮历史，本轮新账本372/420不覆盖旧账本；原截止不变。下一步当前profile→ready子图，不自动放大研究范围。

@@ -107,11 +107,14 @@ __device__ void gemm_tile_impl(GemmStorage<TN,TK>& s,const B* a,const B* w,const
     } // serial partitions, same output tile owner
 }
 
-// Large-M profiles are dominated by projection waves. Reuse one 64-row A
+// Large-M profiles are dominated by projection waves. Reuse one 64/128-row A
 // tile across twice as many columns, with fewer K staging barriers. Tiny M32
 // retains its original tile and observed sliced reduction.
 __device__ void gemm_tile(Shared& shared,const B* a,const B* w,const B* bias,
                          B* out,int m,int n,int k,int task,bool bf16_splits=false){
-    if(m>=128)cutlass_gemm_tile(shared.tile.cutlass_gemm,a,w,bias,out,m,n,k,task,bf16_splits);
+    if(m>=1024)cutlass_gemm_tile<WAM_CONTEXT_TILE_M>(
+        shared.tile.cutlass_gemm.context,a,w,bias,out,m,n,k,task,bf16_splits);
+    else if(m>=128)cutlass_gemm_tile<64>(
+        shared.tile.cutlass_gemm.action,a,w,bias,out,m,n,k,task,bf16_splits);
     else gemm_tile_impl<64,32>(shared.tile.gemm,a,w,bias,out,m,n,k,task,bf16_splits);
 }

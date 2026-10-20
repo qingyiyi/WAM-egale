@@ -1,34 +1,52 @@
 // CUTLASS 3.5.1 SM80 device mainloop, embedded in the existing whole-layer launch.
-// No device::Gemm invocation, child kernel, host BLAS call, or new arithmetic.
+// Preserve the recorded split/bias arithmetic; no child kernel or host BLAS.
 #pragma once
+
+#ifndef WAM_CONTEXT_TILE_M
+#define WAM_CONTEXT_TILE_M 64
+#endif
+static_assert(WAM_CONTEXT_TILE_M==64 || WAM_CONTEXT_TILE_M==128);
 
 using CutlassB = cutlass::bfloat16_t;
 using CutlassRow = cutlass::layout::RowMajor;
 using CutlassCol = cutlass::layout::ColumnMajor;
-using CutlassConfig = cutlass::gemm::device::Gemm<
+template<int TM> struct CutlassTile {
+using Config = cutlass::gemm::device::Gemm<
     CutlassB, CutlassRow, CutlassB, CutlassCol, CutlassB, CutlassRow, float,
     cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80,
-    cutlass::gemm::GemmShape<64,128,64>,
-    cutlass::gemm::GemmShape<32,64,64>,
+    cutlass::gemm::GemmShape<TM,128,64>,
+    cutlass::gemm::GemmShape<TM/2,64,64>,
     cutlass::gemm::GemmShape<16,8,16>,
     cutlass::epilogue::thread::LinearCombination<CutlassB,8,float,float>,
     cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<>,3>;
-using CutlassBaseMma = typename CutlassConfig::GemmKernel::Mma;
-using CutlassMma = cutlass::gemm::threadblock::WamMmaMultistage<
-    typename CutlassBaseMma::Shape, typename CutlassBaseMma::IteratorA,
-    typename CutlassBaseMma::SmemIteratorA, CutlassBaseMma::kCacheOpA,
-    typename CutlassBaseMma::IteratorB, typename CutlassBaseMma::SmemIteratorB,
-    CutlassBaseMma::kCacheOpB, float, CutlassRow,
-    typename CutlassBaseMma::Policy, 3>;
+using Base = typename Config::GemmKernel::Mma;
+using Mma = cutlass::gemm::threadblock::WamMmaMultistage<
+    typename Base::Shape, typename Base::IteratorA,
+    typename Base::SmemIteratorA, Base::kCacheOpA,
+    typename Base::IteratorB, typename Base::SmemIteratorB,
+    Base::kCacheOpB, float, CutlassRow, typename Base::Policy, 3>;
+union Storage {
+    typename Mma::SharedStorage mainloop;
+    float result[TM*128];
+};
+};
 union CutlassGemmStorage {
-    typename CutlassMma::SharedStorage mainloop;
-    float result[64*128];
+    typename CutlassTile<64>::Storage action;
+    typename CutlassTile<WAM_CONTEXT_TILE_M>::Storage context;
+    float result[WAM_CONTEXT_TILE_M*128];
 };
 
-__device__ void cutlass_gemm_tile(CutlassGemmStorage& s,
+__device__ __forceinline__ int gemm_tile_rows(int m){
+    return m>=1024?WAM_CONTEXT_TILE_M:64;
+}
+
+template<int TM>
+__device__ __forceinline__ void cutlass_gemm_tile(
+    typename CutlassTile<TM>::Storage& s,
     const __nv_bfloat16* a,const __nv_bfloat16* w,const __nv_bfloat16* bias,
     __nv_bfloat16* out,int m,int n,int k,int task,bool bf16_splits){
-    const int rm=(task/((n+127)/128))*64,cn=(task%((n+127)/128))*128;
+    using Mma=typename CutlassTile<TM>::Mma;
+    const int rm=(task/((n+127)/128))*TM,cn=(task%((n+127)/128))*128;
     int splits=1;
     if(bf16_splits && n==3072){
         if(k==14336)splits=m==224?2:m==256?4:1;
@@ -38,32 +56,43 @@ __device__ void cutlass_gemm_tile(CutlassGemmStorage& s,
     for(int partition=0;partition<splits;++partition){
         if(physical_warp>=3 && physical_warp<7){
             const int thread=int(threadIdx.x)-96,warp=physical_warp-3;
-            typename CutlassMma::IteratorA::Params ap{CutlassRow(k)};
-            typename CutlassMma::IteratorB::Params bp{CutlassCol(k)};
-            typename CutlassMma::IteratorA ai(ap,
+            typename Mma::IteratorA::Params ap{CutlassRow(k)};
+            typename Mma::IteratorB::Params bp{CutlassCol(k)};
+            typename Mma::IteratorA ai(ap,
                 reinterpret_cast<CutlassB*>(const_cast<__nv_bfloat16*>(a))+partition*span,
                 {m,span},thread,{rm,0});
-            typename CutlassMma::IteratorB bi(bp,
+            typename Mma::IteratorB bi(bp,
                 reinterpret_cast<CutlassB*>(const_cast<__nv_bfloat16*>(w))+partition*span,
                 {span,n},thread,{0,cn});
-            CutlassMma mma(s.mainloop,thread,warp,lane);
-            typename CutlassMma::FragmentC acc;
+            Mma mma(s.mainloop,thread,warp,lane);
+            typename Mma::FragmentC acc;
             acc.clear();
             mma(span/64,acc,ai,bi,acc);
             // All compute warps finish reading the input ring before aliasing it.
             asm volatile("bar.sync 2, 128;" ::: "memory");
-            typename CutlassMma::Operator::IteratorC store({s.result,CutlassRow(128)},lane);
+            typename Mma::Operator::IteratorC store({s.result,CutlassRow(128)},lane);
             store.add_tile_offset({warp%2,warp/2});
             store.store(acc);
         }
         __syncthreads();
-        if(physical_warp==7)for(int i=lane;i<64*128;i+=32){
+        // All warps cooperate after MMA completes. Pair stores preserve each
+        // element's original FP32 add order and final BF16 rounding.
+        for(int i=2*int(threadIdx.x);i<TM*128;i+=2*int(blockDim.x)){
             const int r=rm+i/128,c=cn+i%128;
             if(r<m && c<n){
-                float z=s.result[i];
-                if(partition==splits-1)z=__fadd_rn(z,__bfloat162float(bias[c]));
-                if(partition>0)z=__fadd_rn(z,__bfloat162float(out[r*n+c]));
-                out[r*n+c]=__float2bfloat16_rn(z);
+                float2 z=*reinterpret_cast<const float2*>(s.result+i);
+                if(partition==splits-1){
+                    const float2 b=__bfloat1622float2(
+                        *reinterpret_cast<const __nv_bfloat162*>(bias+c));
+                    z.x=__fadd_rn(z.x,b.x);z.y=__fadd_rn(z.y,b.y);
+                }
+                if(partition>0){
+                    const float2 prev=__bfloat1622float2(
+                        *reinterpret_cast<const __nv_bfloat162*>(out+r*n+c));
+                    z.x=__fadd_rn(z.x,prev.x);z.y=__fadd_rn(z.y,prev.y);
+                }
+                *reinterpret_cast<__nv_bfloat162*>(out+r*n+c)=
+                    __floats2bfloat162_rn(z.x,z.y);
             }
         }
         __syncthreads();

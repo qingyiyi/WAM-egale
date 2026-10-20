@@ -1,12 +1,11 @@
 # WAM 投机与单层 Transformer 当前入口
 
-更新：2026-10-20T17:26:40+08:00。
+更新：2026-10-20T19:25:00+08:00。
 
 先读[上下文策略](CONTEXT-POLICY.md)、[记忆索引](memory/INDEX.md)及当前约束，再聚焦[Cycle进度](cycles/wam-research-20261016/PROGRESS.md)、PLAN/EXECUTION/DISCUSSION。旧长索引/原始trace按需读，v15不升级或全量sync。
 
-- [当前CUTLASS设备GEMM结果](experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/CUTLASS-RESULT.md)：整层一个kernel，9真实签名/18有效KV有限逐位通过。B14新整层7.94/8.14/8.64ms，同轮native2.65/2.94/3.39ms；仍慢2.54–3.02倍。新ready未验、默认关闭，非强cached/Graph或E2E。
-- [当前前版profile](experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/PROFILE-RESULT.md)：GEMM70.70%–76.08%，cross K/V50%–54%。只作插桩阶段归因。用户明确复用成熟设备mainloop、保持单kernel，见[决定](memory/global/requirements/decision-继续算子优化并先核对当前瓶颈.md)。
-- [资源闭合](experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/RESOURCE-AND-STOP.md)：累计1497/1500block，首CPU构建FAILED保留，本次owned根进程全回收，两GPU空。下一GPU阶段须有有界预算；原8h/24h和deadline不重置。
+- [当前较大tile单层结果](experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)：context128、协作epilogue、2048元素任务；9签名/23中间量/18KV/重复有限逐位通过。B14三KV约为同轮native的1.866–1.868 / 1.836–1.875 / 1.732–1.737倍。单层uncached eager，不是等速或E2E。
+- [本轮资源终态](experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESOURCE-AND-STOP-REPORT.md)：372/420新block、69.379秒GPU生命周期，完成并释放，无后继队列。旧1497/1500与FAILED保留。阶段grid.sync仍在、ready默认False。
 - [RoboTwin首六局](experiments/robotwin-pilot-20261020/FIRST6-TARGET-RESULT.md)：原Target 5成功1完整失败，83policy/6557teacher；实际命令/罚分分列。114专家初态和108完整bank齐，完整任务cache等价未测。TF适配/训练/DEV未完成，不在排队。
 - [四套LIBERO原质量](experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)：Long483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499，T/C/P各500。科学审计未放行，不是独立TEST。
 

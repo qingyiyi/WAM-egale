@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [继续实现并评估更大tile](global/requirements/decision-继续实现并评估更大tile.md)（constraint，M39）：用户明确接续实现/验证，允许更大tile；RoboTwin继续关注，不自动重启过期链。
+
 - [先将B14整层耗时压到Torch两倍以内](global/requirements/decision-先将B14整层耗时压到Torch两倍以内.md)（constraint，当前算子）：短/中/长KV同轮完整层均为目标；精度与公平基线不放宽，尚未达成。
 
 - [继续算子优化并先核对当前瓶颈](global/requirements/decision-继续算子优化并先核对当前瓶颈.md)（constraint，M39）：用户同意接续，区分当前实测与旧profile；明确复用成熟设备端GEMM源码并保留整层单kernel。

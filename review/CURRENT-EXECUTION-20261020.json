@@ -4,102 +4,66 @@
     {
       "case": "short",
       "KV": 288,
-      "native_ms": 2.6536959409713745,
-      "new_ms": 7.937536239624023,
-      "native_range": [
-        2.6275839805603027,
-        2.687999963760376
-      ],
-      "new_range": [
-        7.689216136932373,
-        8.338432312011719
-      ],
-      "per_process_ratios": [
-        2.9917022068140033,
-        3.0146380160604713
-      ],
-      "samples": {
-        "native": [
-          2.678783893585205,
-          2.6275839805603027,
-          2.687999963760376,
-          2.628607988357544
-        ],
-        "new": [
-          7.7066240310668945,
-          8.168448448181152,
-          7.689216136932373,
-          8.338432312011719
-        ]
-      }
+      "processes": [
+        {
+          "id": 1,
+          "native_ms": 2.631168007850647,
+          "new_ms": 4.914175987243652,
+          "ratio": 1.8676785262595044,
+          "samples_per_engine": 8
+        },
+        {
+          "id": 2,
+          "native_ms": 2.6250239610671997,
+          "new_ms": 4.897791862487793,
+          "ratio": 1.8658084402767139,
+          "samples_per_engine": 8
+        }
+      ]
     },
     {
       "case": "middle",
       "KV": 1152,
-      "native_ms": 2.9433120489120483,
-      "new_ms": 8.143712043762207,
-      "native_range": [
-        2.9386560916900635,
-        3.12556791305542
-      ],
-      "new_range": [
-        8.13974380493164,
-        8.151424407958984
-      ],
-      "per_process_ratios": [
-        2.770538498938271,
-        2.6829844770705207
-      ],
-      "samples": {
-        "native": [
-          2.939455986022949,
-          2.9386560916900635,
-          2.9471681118011475,
-          3.12556791305542
-        ],
-        "new": [
-          8.13974380493164,
-          8.145792007446289,
-          8.141632080078125,
-          8.151424407958984
-        ]
-      }
+      "processes": [
+        {
+          "id": 1,
+          "native_ms": 2.8144959211349487,
+          "new_ms": 5.16814398765564,
+          "ratio": 1.8362591854713293,
+          "samples_per_engine": 8
+        },
+        {
+          "id": 2,
+          "native_ms": 2.494047999382019,
+          "new_ms": 4.6768479347229,
+          "ratio": 1.875203659224578,
+          "samples_per_engine": 8
+        }
+      ]
     },
     {
       "case": "long",
       "KV": 2160,
-      "native_ms": 3.3850719928741455,
-      "new_ms": 8.642320156097412,
-      "native_range": [
-        3.374847888946533,
-        3.413151979446411
-      ],
-      "new_range": [
-        8.624095916748047,
-        8.654272079467773
-      ],
-      "per_process_ratios": [
-        2.540695336628251,
-        2.5578648290027437
-      ],
-      "samples": {
-        "native": [
-          3.413151979446411,
-          3.394912004470825,
-          3.374847888946533,
-          3.375231981277466
-        ],
-        "new": [
-          8.654272079467773,
-          8.6429443359375,
-          8.624095916748047,
-          8.641695976257324
-        ]
-      }
+      "processes": [
+        {
+          "id": 1,
+          "native_ms": 3.0284318923950195,
+          "new_ms": 5.246703863143921,
+          "ratio": 1.7324820400681333,
+          "samples_per_engine": 8
+        },
+        {
+          "id": 2,
+          "native_ms": 2.932479977607727,
+          "new_ms": 5.095088005065918,
+          "ratio": 1.7374672781985758,
+          "samples_per_engine": 8
+        }
+      ]
     }
   ],
   "formal_performance_permission": false,
-  "schema": "current-execution-device-gemm-v1",
+  "schema": "current-execution-larger-tile-v1",
   "scope": "single-layer operator, bounded real replay; not production admission",
   "historical_paused72_unchanged": true,
   "engineering_quality_screen": false,
@@ -115,5 +79,11 @@
     "teacher_returned": 6557,
     "TF_training_started": false
   },
-  "evidence": "../.pipeline/experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/CUTLASS-RESULT.md"
+  "evidence": "../.pipeline/experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md",
+  "selected_variant": "context128",
+  "finite_operator_2x_screen": true,
+  "full_block_calls": 372,
+  "GPU_worker_lifecycle_seconds": 69.37944507598877,
+  "default_stage_grid_barriers": true,
+  "ready_revalidated": false
 }

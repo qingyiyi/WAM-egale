@@ -1,38 +1,41 @@
+---
+kind: progress
+cycle: wam-research-20261016
+plan: PLAN.md
+current: M39
+next: M39
+---
 # 当前研究进度
 
-更新：2026-10-20T17:26:40+08:00。当前GPU0/GPU1已空，所有本次owned进程闭合；没有训练或机器人后继自动队列。
+更新：2026-10-20T19:25:00+08:00。Cycle：wam-research-20261016；[PLAN](PLAN.md)。当前 M39 本轮完成，next M39 当前profile/ready设计；M40保持待TF迁移。无GPU后继队列。
 
-| ID | 工作 | 状态 | 终态 |
-|---|---|---|---|
-| M17 | 四套6000局 | in_progress | 计算齐，科学审计未放行 |
-| M31–M38 | 原子图/基线/profile/工程比较 | completed | 正负结果保持，不能拼成E2E |
-| M39 | 单层原语与设备GEMM | completed | 当前有限精度通过，速度仍NO-GO |
-| M40 | RoboTwin有限迁移 | in_progress | 原Target首六局完整，TF适配/训练/DEV待实现 |
+|ID|状态|当前结果|
+|---|---|---|
+|M17|in_progress|四套6000局计算齐，科学审计未放行|
+|M31–M38|completed|基线、profile、原子图与正负结果保留|
+|M39|completed|本轮较大tile有限通过；B14整层三KV均≤同轮native两倍，尚未达到等速|
+|M40|in_progress|RoboTwin六FIT Target已5成功1失败；TF采集/训练/DEV未齐|
 
-## 当前算子结果
+## 当前算子
 
-[当前profile](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/PROFILE-RESULT.md)：旧已对齐最终版B14 GEMM占整层70.70%–76.08%，cross K/V占50%–54%，FFN1/2约11%–12%。12次完整block、150原语；插桩只作归因，不当正式计时或NCU流量证据。
+[较大tile结果](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESULT.md)：仅optimized增加8warp协作epilogue、2048元素point/cache任务、context128×128/K64（action保持64×128）。两variant各9真实签名/每格23中间量/18有效KV转移、重复输出/KV、输入/RNG/tile逐位通过。仍整个单层一个persistent kernel。
 
-[固定CUTLASS嵌入](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/CUTLASS-RESULT.md)：直接在optimized接入SM80设备MmaMultistage，保留整个一层一个kernel、小M路径与BF16分段/bias顺序。9真实签名整层/每格23中间量、18有效KV状态转移逐位通过，输入/RNG/tile通过。新ready没有本次重验，默认False。
+所选128版B14短/中/长的两个独立进程耗时比1.866–1.868 / 1.836–1.875 / 1.732–1.737；完整层延迟分别约4.898–4.914 / 4.677–5.168 / 5.095–5.247ms。uncached eager、准备排除，每格每引擎16普通样本；profile独立，每条1compute kernel。单层工程门，不是强cache/Graph、30层、chunk/E2E或机器人质量。中KV绝对波动原样报告，不混合中位掩盖。
 
-B14短/中/长KV新整层中位7.9375/8.1437/8.6423ms，同轮native2.6537/2.9433/3.3851ms；两个独立进程耗时比2.992–3.015/2.683–2.771/2.541–2.558倍。每格4普通样本，六profile trace各1compute kernel。uncached eager完整层，非强cache/Graph、完整verifier/chunk/E2E。前版相对native4–5倍与本轮不属同轮旧/新AB，不能直接相除声称严格增益。
+资源108CTA/256线程、255register、98848B shared、1608B localSizeBytes。阶段grid.sync仍在；旧FFN ready本轮未重验、defaultFalse；动态occupancy/spill/流量UNKNOWN。大tile增加共享内存，不能说已经解决资源瓶颈。
 
-新资源108CTA、255register、82464B shared、1536B localSizeBytes；shared较旧少32.06%，实际occupancy/spill/HBM未知。GEMM的四个compute warp自行搬运/计算，warp1/2空闲；尚未完成专职load/compute全面重叠。原[ready负结果/旧有限通过](../../experiments/single-layer-async-gemm-20261020/FINAL-LAYER-RESULT.md)保留，不转借新路径。
+[资源](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/RESOURCE-AND-STOP-REPORT.md)：新372/420block、GPU worker生命周期69.379/900秒，两CPU构建约238.5秒，guard约308.3秒；不重置旧1497/1500、原FAILED与20:20:28截止。六GPU worker与两build结束；最终[审计](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/FINAL-AUDIT.json)。旧[2.54–3.02倍版](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/CUTLASS-RESULT.md)和旧ready负结果保留，不把跨轮数字作为严格新旧AB。
 
-[资源闭合](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/RESOURCE-AND-STOP.md)：累计1497/1500完整block，当前新增8个owned根进程回收，首CPU构建失败保留。原M39 registration240/PLAN900 FAILED不改；本轮停止GPU，余3调用不扩大使用。
+## RoboTwin与质量
 
-## RoboTwin与旧质量
+[现场检查](../../experiments/single-layer-async-gemm-20261020/larger-tile-followup/ROBOTWIN-LIVE-CHECK.json)：首六FIT身份Target 5成功，open_microwave完整失败；83policy/6557teacher。失败实际1520命令/罚分1500分列；初始物理和观察逐位。114专家初态、108完整BF16 bank齐，完整任务cache等价未测。所有owned闭合，无后继自动队列，TF collector/训练/DEV尚未实现齐；本轮关注终态，不按过期首六局链重启。
 
-[首六局终态](../../experiments/robotwin-pilot-20261020/FIRST6-TARGET-RESULT.md)：5成功，open_microwave完整算法失败；共83policy、6557teacher returned。失败实际1520命令/罚分1500分列。六局初始物理与观察逐位通过；是FIT身份面板，不是标准成功率或独立TEST。原视频入口0动作PARTIAL和批准补跑保留。
+[四套原LIBERO](../../experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)：Long483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499（T/C/P各500）。首两S审计FAILED、训练/DEV曝光与长尾保留，非独立TEST；旧330/360计时不签发新算子权限。
 
-114/114固定专家初态，108条完整512-token BF16 bank；完整任务缓存等价尚未测。原A100/535 rt渲染问题已定位为兼容库误继承并修复，无系统驱动修改。原GPU账本累计4008.739秒；首六局结束，server/clients清理。server局部SERVING是旧快照，不是当前运行。后继TF collector/训练/DEV未完整实现。
+## 下一步与边界
 
-[四套LIBERO原结果](../../experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)：Long T483/C484/P473、Goal463/464/467、Spatial472/466/464、Object497/498/499，各500。原首两S审计FAILED、训练/DEV曝光和长尾保持；不是独立TEST。旧计时330/360及成功子集结果不用于签发新算子/算法质量。
+以context128为研究实现，先做当前版本阶段/寄存器spill/调度成本定位，再将独立context K/V及norm变成ready任务填尾波；consumer必须等真实依赖完成。阶段同步没有全局去除。保持原始action用原算子，不开30层或生产集成；baseline/依赖、投机代码、原tile/HW、state/cycle/rules不动。
 
-## 下一步与权限
+engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission均false。旧FAILED/retention/paused72/MLP0/22缺收据/default A_off保持。BAAI写入仅~/cxz，AutoDL已归还，不改驱动/服务/时钟、不杀他人。
 
-用户最新阶段目标：[B14三KV整层均争取≤同轮Torch两倍](../../memory/global/requirements/decision-先将B14整层耗时压到Torch两倍以内.md)。优先当前CUTLASS版成本分解、B14专用化及高效epilogue，再做ready跨阶段调度；[源码/静态spill与异步现状](../../experiments/single-layer-async-gemm-20261020/b14-bottleneck-followup/FUSION-COST-AND-ASYNC-REVIEW.md)。默认阶段grid.sync仍在，新spill动态成本未知。新测量需明确预算；原8h/24h、准备截止与保护继续有效，不自动开30层/TEST/正式性能。原始action保留原算子，baseline/投机/原tile及state/cycle/rules不动。
-
-engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission均false。原FAILED/retention/paused72/MLP0/22缺收据/default A_off保留。只main公开已核对源码/HW/小证据，不公开模型/PT/DSO/私有SASS/凭据。
-
-10/22 go/no-go、10/23冻结、10/28主表、11/01 18:00中文证据包；[日期核验](../../experiments/libero-four-suite-performance-20261019/DATES-AND-PLAN-20261020.md)。[本次之前完整进度](history/device-gemm-followup-start-20261020/PROGRESS.md)保留。
+只main同步源码/HW/小证据，不公开模型/PT/DSO/私有SASS/凭据。10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00中文证据包。此前完整记录见[历史](history/larger-tile-followup-start-20261020/PROGRESS.md)。
