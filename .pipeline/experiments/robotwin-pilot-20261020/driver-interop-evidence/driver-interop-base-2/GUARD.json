@@ -1,0 +1,214 @@
+{
+  "status": "COMPLETE",
+  "start": 1792479307.0333285,
+  "mode": "base",
+  "policy_episodes": 0,
+  "teacher_forwards": 0,
+  "GPU": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+  "worker_cap_seconds": 600,
+  "cleanup_reserve_seconds": 60,
+  "repair_total_cap_seconds": 1800,
+  "storage_cap_bytes": 268435456,
+  "fixed_case": {
+    "task": "place_object_basket",
+    "seed": 10000
+  },
+  "library_path": "/root/cxz/robotwin/deps/system-driver535-links:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufft/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvtx/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/curand/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvshmem/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cudnn/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nccl/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparse/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cublas/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufile/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusolver/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparselt/lib:/root/cxz/robotwin/deps/vulkan-loader/usr/lib/x86_64-linux-gnu:/root/cxz/deps/glvnd-ubuntu24-1.7.0/usr/lib/x86_64-linux-gnu:/usr/local/lib/python3.12/dist-packages/torch/lib:/usr/local/lib/python3.12/dist-packages/torch_tensorrt/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/root/cxz/envs/libero-va/lib",
+  "goal": "original complete expert and observation; no policy",
+  "owned": {
+    "pid": 658927,
+    "birth_ticks": 707776565,
+    "pgid": 658927
+  },
+  "returncode": 0,
+  "root_reaped": true,
+  "owned_processes": [
+    {
+      "pid": 658927,
+      "birth_ticks": 707776565,
+      "pgid": 658927
+    }
+  ],
+  "remaining_owned": [],
+  "scene": {
+    "status": "COMPLETE_ORIGINAL_EXPERT_AND_OBSERVATION",
+    "start": 1792479307.1295764,
+    "phase": "ORIGINAL_OBSERVATION_SAVED",
+    "task": "place_object_basket",
+    "seed": 10000,
+    "policy_episodes": 0,
+    "teacher_forwards": 0,
+    "expert_complete": true,
+    "torch_version": "2.9.0+cu126",
+    "torch_cuda": "12.6",
+    "cuda_name": "NVIDIA A100-SXM4-40GB",
+    "loaded_libraries": [
+      "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise.so.2.3.3",
+      "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_core.so.2.3.3",
+      "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_device_cuda.so.2.3.3",
+      "/usr/lib/x86_64-linux-gnu/libcuda.so.535.161.08",
+      "/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.535.161.08"
+    ],
+    "render_device": {
+      "alias": "pci:0000:4e:00.0",
+      "pci": "0000:4e:00.0",
+      "name": "NVIDIA A100-SXM4-40GB",
+      "can_render": true,
+      "is_cuda": true,
+      "cuda_id": 0
+    },
+    "plan_success": true,
+    "expert_success": true,
+    "observation": {
+      "observation": {
+        "left_camera": {
+          "intrinsic_cv": {
+            "shape": [
+              3,
+              3
+            ],
+            "dtype": "float32"
+          },
+          "extrinsic_cv": {
+            "shape": [
+              3,
+              4
+            ],
+            "dtype": "float32"
+          },
+          "cam2world_gl": {
+            "shape": [
+              4,
+              4
+            ],
+            "dtype": "float32"
+          },
+          "rgb": {
+            "shape": [
+              240,
+              320,
+              3
+            ],
+            "dtype": "uint8"
+          }
+        },
+        "right_camera": {
+          "intrinsic_cv": {
+            "shape": [
+              3,
+              3
+            ],
+            "dtype": "float32"
+          },
+          "extrinsic_cv": {
+            "shape": [
+              3,
+              4
+            ],
+            "dtype": "float32"
+          },
+          "cam2world_gl": {
+            "shape": [
+              4,
+              4
+            ],
+            "dtype": "float32"
+          },
+          "rgb": {
+            "shape": [
+              240,
+              320,
+              3
+            ],
+            "dtype": "uint8"
+          }
+        },
+        "head_camera": {
+          "intrinsic_cv": {
+            "shape": [
+              3,
+              3
+            ],
+            "dtype": "float32"
+          },
+          "extrinsic_cv": {
+            "shape": [
+              3,
+              4
+            ],
+            "dtype": "float32"
+          },
+          "cam2world_gl": {
+            "shape": [
+              4,
+              4
+            ],
+            "dtype": "float32"
+          },
+          "rgb": {
+            "shape": [
+              240,
+              320,
+              3
+            ],
+            "dtype": "uint8"
+          }
+        },
+        "front_camera": {
+          "intrinsic_cv": {
+            "shape": [
+              3,
+              3
+            ],
+            "dtype": "float32"
+          },
+          "extrinsic_cv": {
+            "shape": [
+              3,
+              4
+            ],
+            "dtype": "float32"
+          },
+          "cam2world_gl": {
+            "shape": [
+              4,
+              4
+            ],
+            "dtype": "float32"
+          },
+          "rgb": {
+            "shape": [
+              240,
+              320,
+              3
+            ],
+            "dtype": "uint8"
+          }
+        }
+      },
+      "pointcloud": "list",
+      "joint_action": {
+        "left_arm": "list",
+        "left_gripper": "float64",
+        "right_arm": "list",
+        "right_gripper": "float64",
+        "vector": {
+          "shape": [
+            14
+          ],
+          "dtype": "float64"
+        }
+      },
+      "endpose": {
+        "left_endpose": "list",
+        "left_gripper": "float64",
+        "right_endpose": "list",
+        "right_gripper": "float64"
+      }
+    },
+    "end": 1792479343.9857519,
+    "lifecycle_seconds": 36.856175899505615
+  },
+  "end": 1792479345.2050908,
+  "lifecycle_seconds": 38.171762466430664
+}

@@ -1,8 +1,10 @@
 # RoboTwin执行进度
 
+2026-10-20用户先暂缓，随后明确恢复环境排查且保持驱动。现已[修复原场景渲染](DRIVER-INTEROP-REPAIR-RESULT.md)：535配套库两次完整专家/四路相机通过，595 compat对照重现失败；客户端路径已修复，驱动不变，旧记录保留。本次GPU诊断均结束，原Target与采集链未自动启动。
+
 - [x] 新授权/有限预算记录
 - [x] 固定源码、官方 Target/公共组件来源、资产、私有环境及 CuRobo 构建
-- [ ] 原始渲染链受阻：OIDN 2.0.1/2.3.3 均首次场景非法访存；两次owned worker已停止，共495.321秒、0policy/0teacher；[环境止损结果](ENVIRONMENT-STOP-RESULT.md)
+- [x] 原始场景渲染恢复；旧OIDN两次失败495.321秒保留，新增对照119.345秒，原总累计614.666秒；0policy/0teacher。
 - [ ] 原Target首6局及真实估时
 - [ ] draft/verifier/reset适配
 - [ ] 84局采集与固定训练链

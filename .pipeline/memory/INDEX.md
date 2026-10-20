@@ -4,6 +4,11 @@
 
 ## 当前资源偏好
 
+- [优先修复RoboTwin环境且保持系统驱动](global/requirements/decision-优先修复RoboTwin环境且保持系统驱动.md)（constraint，当前Cycle）：用户恢复环境排查，核查A100/RTX适用性；不改驱动、不自动采购，和MegaMoE算子审查合并汇报。
+
+- [暂缓RoboTwin，优先收口算子结果](global/requirements/decision-暂缓RoboTwin并优先收口算子结果.md)（constraint，当前Cycle）：用户暂无兼容环境，原迁移链暂缓，不自动重启；旧授权/预算/失败保留。
+- [原始action保留原算子](global/requirements/decision-原始action路径保留原算子.md)（constraint，当前集成边界）：原始单状态action路径继续用原算子，当前先单独讨论B14成本；不等于新GPU或生产集成授权。
+
 - [执行RoboTwin迁移与算子有限收口](global/requirements/decision-执行RoboTwin迁移与算子有限收口.md)（constraint，当前Cycle）：用户已批准两卡计划；GPU1迁移≤24h、GPU0算子≤8h，先原Target/数值，再后继，旧门保护；替代此前仅规划。
 
 - [先在自有整层算子内接入FA2](global/requirements/decision-先在自有整层算子内接入FA2.md)（constraint，当前算子）：先self/cross设备核心与误差核验，再研究跨阶段同步；RoboTwin仅调研。

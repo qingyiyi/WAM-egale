@@ -1,0 +1,578 @@
+{
+  "cap_seconds": 86400,
+  "consumed_seconds": 614.6660008430481,
+  "jobs": [
+    {
+      "namespace": "/root/cxz/robotwin/runs/prefilter-control-4",
+      "status": "STOPPED_FAILED_OR_PARTIAL",
+      "start": 1792474145.0284991,
+      "GPU_lifecycle_seconds": 450.31777358055115,
+      "children": [
+        {
+          "pid": 653188,
+          "birth_ticks": 707260362,
+          "pgid": 653188
+        },
+        {
+          "pid": 653214,
+          "birth_ticks": 707261011,
+          "pgid": 653188
+        }
+      ],
+      "root_owned": {
+        "pid": 653188,
+        "birth_ticks": 707260362,
+        "pgid": 653188
+      },
+      "GPU_start": 1792474145.0621552,
+      "returncode": -15,
+      "root_reaped": true,
+      "cleanup_signalled": [],
+      "worker_terminal": "STOPPED_INFRA_OIDN_ILLEGAL_MEMORY_ACCESS"
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/prefilter-control-5",
+      "status": "STOPPED_FAILED_OR_PARTIAL",
+      "start": 1792475141.3952742,
+      "GPU_lifecycle_seconds": 45.00287580490112,
+      "children": [
+        {
+          "pid": 654565,
+          "birth_ticks": 707360003,
+          "pgid": 654565
+        },
+        {
+          "pid": 654589,
+          "birth_ticks": 707360620,
+          "pgid": 654565
+        }
+      ],
+      "root_owned": {
+        "pid": 654565,
+        "birth_ticks": 707360003,
+        "pgid": 654565
+      },
+      "GPU_start": 1792475141.4706368,
+      "explicit_infrastructure_stop": true,
+      "timeout": true,
+      "returncode": -15,
+      "root_reaped": true,
+      "cleanup_signalled": [],
+      "worker_terminal": "STOPPED_INFRA_OIDN_ILLEGAL_MEMORY_ACCESS"
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/driver-interop-base-1",
+      "status": "COMPLETE",
+      "start": 1792479063.3221812,
+      "mode": "base",
+      "policy_episodes": 0,
+      "teacher_forwards": 0,
+      "GPU": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+      "worker_cap_seconds": 600,
+      "cleanup_reserve_seconds": 60,
+      "repair_total_cap_seconds": 1800,
+      "storage_cap_bytes": 268435456,
+      "fixed_case": {
+        "task": "place_object_basket",
+        "seed": 10000
+      },
+      "library_path": "/root/cxz/robotwin/deps/system-driver535-links:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufft/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvtx/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/curand/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvshmem/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cudnn/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nccl/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparse/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cublas/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufile/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusolver/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparselt/lib:/root/cxz/robotwin/deps/vulkan-loader/usr/lib/x86_64-linux-gnu:/root/cxz/deps/glvnd-ubuntu24-1.7.0/usr/lib/x86_64-linux-gnu:/usr/local/lib/python3.12/dist-packages/torch/lib:/usr/local/lib/python3.12/dist-packages/torch_tensorrt/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/root/cxz/envs/libero-va/lib",
+      "goal": "original complete expert and observation; no policy",
+      "owned": {
+        "pid": 658335,
+        "birth_ticks": 707752196,
+        "pgid": 658335
+      },
+      "returncode": 0,
+      "root_reaped": true,
+      "owned_processes": [
+        {
+          "pid": 658335,
+          "birth_ticks": 707752196,
+          "pgid": 658335
+        },
+        {
+          "pid": 658360,
+          "birth_ticks": 707752812,
+          "pgid": 658335
+        }
+      ],
+      "remaining_owned": [],
+      "scene": {
+        "status": "COMPLETE_ORIGINAL_EXPERT_AND_OBSERVATION",
+        "start": 1792479063.4407978,
+        "phase": "ORIGINAL_OBSERVATION_SAVED",
+        "task": "place_object_basket",
+        "seed": 10000,
+        "policy_episodes": 0,
+        "teacher_forwards": 0,
+        "expert_complete": true,
+        "torch_version": "2.9.0+cu126",
+        "torch_cuda": "12.6",
+        "cuda_name": "NVIDIA A100-SXM4-40GB",
+        "loaded_libraries": [
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_core.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_device_cuda.so.2.3.3",
+          "/usr/lib/x86_64-linux-gnu/libcuda.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.535.161.08"
+        ],
+        "render_device": {
+          "alias": "pci:0000:4e:00.0",
+          "pci": "0000:4e:00.0",
+          "name": "NVIDIA A100-SXM4-40GB",
+          "can_render": true,
+          "is_cuda": true,
+          "cuda_id": 0
+        },
+        "plan_success": true,
+        "expert_success": true,
+        "observation": {
+          "observation": {
+            "left_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "right_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "head_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "front_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            }
+          },
+          "pointcloud": "list",
+          "joint_action": {
+            "left_arm": "list",
+            "left_gripper": "float64",
+            "right_arm": "list",
+            "right_gripper": "float64",
+            "vector": {
+              "shape": [
+                14
+              ],
+              "dtype": "float64"
+            }
+          },
+          "endpose": {
+            "left_endpose": "list",
+            "left_gripper": "float64",
+            "right_endpose": "list",
+            "right_gripper": "float64"
+          }
+        },
+        "end": 1792479103.2739787,
+        "lifecycle_seconds": 39.833181619644165
+      },
+      "end": 1792479105.530171,
+      "lifecycle_seconds": 42.20799016952515
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/driver-interop-inherited-1",
+      "status": "FAILED_OR_PARTIAL",
+      "start": 1792479166.3110125,
+      "mode": "inherited",
+      "policy_episodes": 0,
+      "teacher_forwards": 0,
+      "GPU": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+      "worker_cap_seconds": 600,
+      "cleanup_reserve_seconds": 60,
+      "repair_total_cap_seconds": 1800,
+      "storage_cap_bytes": 268435456,
+      "fixed_case": {
+        "task": "place_object_basket",
+        "seed": 10000
+      },
+      "library_path": "/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufft/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvtx/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/curand/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvshmem/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cudnn/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nccl/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparse/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cublas/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufile/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusolver/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparselt/lib:/root/cxz/robotwin/deps/vulkan-loader/usr/lib/x86_64-linux-gnu:/root/cxz/deps/glvnd-ubuntu24-1.7.0/usr/lib/x86_64-linux-gnu:/usr/local/cuda/compat/lib.real:/usr/local/lib/python3.12/dist-packages/torch/lib:/usr/local/lib/python3.12/dist-packages/torch_tensorrt/lib:/usr/local/cuda/compat/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/root/cxz/envs/libero-va/lib",
+      "goal": "original complete expert and observation; no policy",
+      "owned": {
+        "pid": 658597,
+        "birth_ticks": 707762495,
+        "pgid": 658597
+      },
+      "stop_reason": "OIDN_ILLEGAL_MEMORY_ACCESS",
+      "cleanup_signal": "SIGTERM",
+      "returncode": -15,
+      "root_reaped": true,
+      "owned_processes": [
+        {
+          "pid": 658597,
+          "birth_ticks": 707762495,
+          "pgid": 658597
+        }
+      ],
+      "remaining_owned": [],
+      "scene": {
+        "status": "RUNNING",
+        "start": 1792479166.4337075,
+        "phase": "RESET_SAME_SCENE_FOR_OBSERVATION",
+        "task": "place_object_basket",
+        "seed": 10000,
+        "policy_episodes": 0,
+        "teacher_forwards": 0,
+        "expert_complete": true,
+        "torch_version": "2.9.0+cu126",
+        "torch_cuda": "12.6",
+        "cuda_name": "NVIDIA A100-SXM4-40GB",
+        "loaded_libraries": [
+          "/root/cxz/robotwin/deps/vulkan-loader/usr/lib/x86_64-linux-gnu/libvulkan.so.1.3.275",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_core.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_device_cuda.so.2.3.3",
+          "/usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-eglcore.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-glsi.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-glvkspirv.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-rtcore.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-tls.so.535.161.08",
+          "/usr/local/cuda-13.2/compat/lib.real/libcuda.so.595.45.04"
+        ],
+        "render_device": {
+          "alias": "pci:0000:4e:00.0",
+          "pci": "0000:4e:00.0",
+          "name": "NVIDIA A100-SXM4-40GB",
+          "can_render": true,
+          "is_cuda": true,
+          "cuda_id": 0
+        },
+        "plan_success": true,
+        "expert_success": true
+      },
+      "end": 1792479205.276611,
+      "lifecycle_seconds": 38.965598821640015
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/driver-interop-base-2",
+      "status": "COMPLETE",
+      "start": 1792479307.0333285,
+      "mode": "base",
+      "policy_episodes": 0,
+      "teacher_forwards": 0,
+      "GPU": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+      "worker_cap_seconds": 600,
+      "cleanup_reserve_seconds": 60,
+      "repair_total_cap_seconds": 1800,
+      "storage_cap_bytes": 268435456,
+      "fixed_case": {
+        "task": "place_object_basket",
+        "seed": 10000
+      },
+      "library_path": "/root/cxz/robotwin/deps/system-driver535-links:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufft/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvtx/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/curand/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvshmem/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cudnn/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nccl/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparse/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cublas/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cufile/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusolver/lib:/root/cxz/envs/va/lib/python3.12/site-packages/nvidia/cusparselt/lib:/root/cxz/robotwin/deps/vulkan-loader/usr/lib/x86_64-linux-gnu:/root/cxz/deps/glvnd-ubuntu24-1.7.0/usr/lib/x86_64-linux-gnu:/usr/local/lib/python3.12/dist-packages/torch/lib:/usr/local/lib/python3.12/dist-packages/torch_tensorrt/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/root/cxz/envs/libero-va/lib",
+      "goal": "original complete expert and observation; no policy",
+      "owned": {
+        "pid": 658927,
+        "birth_ticks": 707776565,
+        "pgid": 658927
+      },
+      "returncode": 0,
+      "root_reaped": true,
+      "owned_processes": [
+        {
+          "pid": 658927,
+          "birth_ticks": 707776565,
+          "pgid": 658927
+        }
+      ],
+      "remaining_owned": [],
+      "scene": {
+        "status": "COMPLETE_ORIGINAL_EXPERT_AND_OBSERVATION",
+        "start": 1792479307.1295764,
+        "phase": "ORIGINAL_OBSERVATION_SAVED",
+        "task": "place_object_basket",
+        "seed": 10000,
+        "policy_episodes": 0,
+        "teacher_forwards": 0,
+        "expert_complete": true,
+        "torch_version": "2.9.0+cu126",
+        "torch_cuda": "12.6",
+        "cuda_name": "NVIDIA A100-SXM4-40GB",
+        "loaded_libraries": [
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_core.so.2.3.3",
+          "/root/cxz/robotwin/envs/client/lib/python3.10/site-packages/sapien/oidn_library/libOpenImageDenoise_device_cuda.so.2.3.3",
+          "/usr/lib/x86_64-linux-gnu/libcuda.so.535.161.08",
+          "/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.535.161.08"
+        ],
+        "render_device": {
+          "alias": "pci:0000:4e:00.0",
+          "pci": "0000:4e:00.0",
+          "name": "NVIDIA A100-SXM4-40GB",
+          "can_render": true,
+          "is_cuda": true,
+          "cuda_id": 0
+        },
+        "plan_success": true,
+        "expert_success": true,
+        "observation": {
+          "observation": {
+            "left_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "right_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "head_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            },
+            "front_camera": {
+              "intrinsic_cv": {
+                "shape": [
+                  3,
+                  3
+                ],
+                "dtype": "float32"
+              },
+              "extrinsic_cv": {
+                "shape": [
+                  3,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "cam2world_gl": {
+                "shape": [
+                  4,
+                  4
+                ],
+                "dtype": "float32"
+              },
+              "rgb": {
+                "shape": [
+                  240,
+                  320,
+                  3
+                ],
+                "dtype": "uint8"
+              }
+            }
+          },
+          "pointcloud": "list",
+          "joint_action": {
+            "left_arm": "list",
+            "left_gripper": "float64",
+            "right_arm": "list",
+            "right_gripper": "float64",
+            "vector": {
+              "shape": [
+                14
+              ],
+              "dtype": "float64"
+            }
+          },
+          "endpose": {
+            "left_endpose": "list",
+            "left_gripper": "float64",
+            "right_endpose": "list",
+            "right_gripper": "float64"
+          }
+        },
+        "end": 1792479343.9857519,
+        "lifecycle_seconds": 36.856175899505615
+      },
+      "end": 1792479345.2050908,
+      "lifecycle_seconds": 38.171762466430664
+    }
+  ],
+  "policy_episodes": 0,
+  "teacher_forwards": 0
+}

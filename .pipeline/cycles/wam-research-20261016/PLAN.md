@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-20T14:17:31+08:00'
+updated: '2026-10-20T15:01:42+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
@@ -27,7 +27,7 @@ steps:
   - id: M39
     status: completed
   - id: M40
-    status: blocked
+    status: in_progress
 ---
 # 当前有界计划
 
@@ -45,8 +45,10 @@ steps:
 | `M37` | completed | 原设备数值挑战者NO-GO与Long/Object成本归因 |
 | `M38` | completed | 原整层瓶颈测量收口 |
 | `M39` | completed | 新授权O1–O4有界后继收口：有限数值通过、速度NO-GO；完整3状态/cache矩阵未完成 |
-| `M40` | blocked | RoboTwin原渲染基础设施阻塞并停止；0policy/teacher，未启动训练/DEV |
+| `M40` | in_progress | 客户端compat库冲突修复；原专家/相机两次通过，Target首6局待执行，无GPU队列 |
 
 [两卡详细计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)随后获得[执行同意](../../memory/global/requirements/decision-执行RoboTwin迁移与算子有限收口.md)。原8h/24h与各stage帽不重置。本次M39完成1380/1500 block后停止；M40首场景失败后停止，余量不是无界续跑授权。
 
-下一步：算子应优先大GEMM/Norm与资源效率，暂不扩大ready队列；RoboTwin先有可运行原渲染的兼容环境再恢复首6局。新方向/完整矩阵仍明确列缺口，不签H3/H4或正式性能。旧计划与完整进度保留在[本轮历史](history/ordered-followup-20261020/PLAN.md)。
+用户现已[恢复RoboTwin环境排查并要求保持系统驱动](../../memory/global/requirements/decision-优先修复RoboTwin环境且保持系统驱动.md)。[原场景修复结果](../../experiments/robotwin-pilot-20261020/DRIVER-INTEROP-REPAIR-RESULT.md)：A100上535配套库两次完整专家/观察成功，595兼容路径重现OIDN非法访存，客户端启动环境已修复。原174局未自动启动，下一步首6条Target完整任务。
+
+算子[对照MegaMoE审查](../../experiments/single-layer-async-gemm-20261020/MEGAMOE-GAP-REVIEW.md)完成：优先B14强基线/当前profile、B14资源专用化和基本tile效率，再K片段ready与attention子图；本次未新增算子GPU作业。原始action保留原算子。旧计划与完整进度保留[本轮历史](history/ordered-followup-20261020/PLAN.md)。
