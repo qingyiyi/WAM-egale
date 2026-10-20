@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-20T09:33:50.273752+08:00'
+updated: '2026-10-20T09:57:08.243204+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
@@ -22,6 +22,10 @@ steps:
     status: completed
   - id: M37
     status: completed
+  - id: M38
+    status: completed
+  - id: M39
+    status: pending
 ---
 # 当前有界计划
 
@@ -39,7 +43,7 @@ M37按用户最新继续授权完成有界验证；M34/M35原终态保留。
 | `M35` | completed | 同卡计时330/360，原PARTIAL不重跑 |
 | `M36` | completed | RoboTwin只读调研完成 |
 | `M37` | completed | [成本归因](../../experiments/device-contract-20261020/TASK-COST-DIAGNOSIS.md)完成；[唯一设备候选](../../experiments/device-contract-20261020/RESULT.md)四项数值NO-GO，4参考block/12原语/8heuristic，owned退出。异步整层集成未触发 |
+| `M38` | completed | [整层慢点实测](../../experiments/whole-layer-bottleneck-20261020/RESULT.md)：6签名222block/300原语，5.09–11.14倍慢；GEMM主导、静态领取无益，清理完成 |
+| `M39` | pending | 依据M38收敛GEMM/attention设备tile流水与数值边界；下一个作业另登记，不自动复用预算 |
 
-下一步M17仅审查既有质量、计时与claim缺口；没有新GPU队列。几何匹配不能复现原数值，不继续盲扫。若后续采用新算术，需单独的数值/闭环重验方案，不能继承旧证书。
-
-新算子研究需先解决Q/FFN2/attention设备数值契约与强cached B14关系；当前不追加GPU网格搜索。10/22若关键证据不足就收缩主张。保护文件、质量四false、范围与资源限制按PROGRESS和约束记忆，不覆盖state/cycle/rules。
+用户最新优先M38，先解释并量化当前慢点，不等待数值修复。所有旧终态与门不变；不做新机器人/训练/TEST或30层。

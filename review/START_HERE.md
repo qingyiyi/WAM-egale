@@ -1,5 +1,8 @@
 # 当前入口
 
+<!-- m38-entry -->
+最新整层退化profile和代码讲解在[CURRENT](CURRENT-20261020.md)顶部；原门和旧结果保持。
+
 <!-- m37-entry -->
 最新M37四原语数值NO-GO和Long/Object成本解释见[CURRENT](CURRENT-20261020.md)顶部；M34/四套旧记录仍保留。
 

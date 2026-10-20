@@ -35,3 +35,7 @@ GEMM每CTA处理64×64输出tile，K按32推进；4个计算warp分别负责32×
 ## M37：独立设备契约候选，没有替换整层实现
 
 [contract_linear.cu](csrc/contract_linear.cu)与[build_contract.py](build_contract.py)仅用于真实B2/B14的Q/FFN2同输入诊断，使用固定CUTLASS的multistage/serial split-K原语；不是第三套block主实现。公共宏几何四项匹配，但原Torch逐位四项均FAIL，重复/输入/RNG保持。见[M37结果](../../../.pipeline/experiments/device-contract-20261020/RESULT.md)。原whole_layer.cu和DSO冻结，未将该原语或异步流水接入整层，无新性能/质量PASS。
+
+## M38：慢点实测，没有替换实现
+
+[新profile](../../../.pipeline/experiments/whole-layer-bottleneck-20261020/RESULT.md)完成六真实action签名：完整block比native慢5.09–11.14倍，插桩副本GEMM61%–84%；静态领取对照配对中位数反而慢3.1%–12.8%。任务单位仍为CTA，warp固定分工；尚无加载/MMA重叠或跨阶段ready流水。[按源码讲解](../../../.pipeline/experiments/whole-layer-bottleneck-20261020/IMPLEMENTATION-GUIDE.md)。222block/300原语后清理，原逐位FAIL与主源/DSO保持；下一优先基本GEMM/attention数据通路，不能靠更复杂队列解决现有数量级差距。

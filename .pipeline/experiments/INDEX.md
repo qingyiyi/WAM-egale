@@ -25,3 +25,5 @@
 - [TF递归监督与训练覆盖](tf-training-support-20261016/EXPERIMENT.md)：2712真实query CPU审计完成；只推进TF，不将单失败病例的描述性分布差异写成已证实根因。
 
 - [M37设备数值契约与成本归因](device-contract-20261020/PLAN.md)：最新继续授权；旧M34/M35已关闭。
+
+- [M38整层算子退化profile](whole-layer-bottleneck-20261020/RESULT.md)：有界完成；GEMM/attention慢点及静态队列反事实，原未准入实现保持。

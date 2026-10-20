@@ -1,6 +1,6 @@
 # 当前短入口
 
-更新：2026-10-20T03:23:44.700467+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先[约束记忆](memory/INDEX.md)，再读当前四文；原长记录/trace按需，不展开全部旧索引。
+更新：2026-10-20T09:57:08.243204+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先[约束记忆](memory/INDEX.md)，再读当前四文；原长记录/trace按需，不展开全部旧索引。
 
 ## 已观察结果
 
@@ -28,7 +28,7 @@ M31静态子图、M32阶段内persistent、M33退化profile旧结果保留；M32
 
 ## 下一步与范围
 
-本轮已登记测量和有界样机均已终态；下一步交联合报告并讨论缺口，不自动追加GPU作业。M34本轮停止GPU扫参；若继续，先论证设备GEMM/attention原契约与成熟tile流水原语，另登记预算。shape×engine的1/3/7完整矩阵和算法/系统交互缺口不能补写为完成；普通batch/cache不算MegaTransformer创新。
+用户最新优先当前整层慢点，M38已完成[实际profile](experiments/whole-layer-bottleneck-20261020/RESULT.md)：6真实B2/B14短中长、222block/300原语，whole/native5.09–11.14倍；插桩GEMM61%–84%，静态领取反事实慢3.1%–12.8%，原Torch/native6通过、whole6逐位FAIL。86.490秒后owned退出、两卡空，无排队。下一建议M39先改善GEMM/attention数据通路，再评估ready队列；未启动新作业，门不变。
 
 M36[RoboTwin调研完成](experiments/robotwin-migration-survey-20261019/RESULT.md)：官方LingBot-VA权重/50唯一任务，100有效seed/task，三臂15000局/condition。Q32/16有效动作通道/pool静态9792需新draft/cache接口，不继承LIBERO阈值；0第二环境实验。CUDA仍私有12.4/Torch2.9 cu126，远端driver535不升级CUDA13/系统。
 

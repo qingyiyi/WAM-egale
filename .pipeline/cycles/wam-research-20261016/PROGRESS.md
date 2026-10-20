@@ -3,13 +3,13 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-20T09:33:50.273752+08:00'
-current: M37
-next: M17
+updated: '2026-10-20T09:57:08.243204+08:00'
+current: M38
+next: M39
 ---
 # 当前研究进度
 
-更新：2026-10-20T03:23:44.700467+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
+更新：2026-10-20T09:57:08.243204+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
 
 ## M17 — 四套既定评估：计算完成，审计未放行
 
@@ -50,6 +50,16 @@ GPU0 Goal→Object，GPU1 Spatial→Long；同case对照同卡，每卡单worker
 [成本归因](../../experiments/device-contract-20261020/TASK-COST-DIAGNOSIS.md)：Long全尝试1.107×、共同成功1.344×；同一task4/init49三次TF失败拉长任务，不能外推总体SR。Object共同成功/全体均1.216×，action1.575×、chunk1.341×，再受多3.4%chunk与推理外开销影响；优化reset不是主要瓶颈。共同成功只是条件指标，仍保留全attempt/SR/含失败成本。
 
 [设备候选结果](../../experiments/device-contract-20261020/RESULT.md)：远端4项公共tile/stage/split宏配置通过，唯一CUTLASS候选Q/FFN2四项原逐位仍FAIL。重复/输入/参数/RNG均通过；不是根因证明。4参考block/12原语/8heuristic，0机器人局；首次0block DSO路径实施失败保留，独立修正未重置截止。生命周期185.698秒，owned活动0；本机88/远端86保护项不变。数值门未过，停止异步整层接入与扩扫；没有新GPU队列。[资源止损](../../experiments/device-contract-20261020/RESOURCE-AND-STOP-REPORT.md)。
+
+## M38 — 当前整层退化profile：completed
+
+[实测](../../experiments/whole-layer-bottleneck-20261020/RESULT.md)：6真实B2/B14短中长KV、222block/300原语、144完整计时。whole比同输入native慢5.09–11.14倍；原Torch/native6逐位通过、whole6失败。插桩副本GEMM61%–84%，短B14 cross K/V占63.3%；同输入Torch GEMM量级快约10倍。静态领取配对中位数慢3.1%–12.8%，无队列改动收益。profile/静态有限匹配失败v1，不是数值准入。
+
+原实现1kernel，native39/35计算kernel；memory/注释单列。高寄存器/低理论occupancy不是单因，成熟GEMM同样一CTA驻留却快得多；同步单buffer和attention串行softmax有源码依据，硬件stall/流量UNKNOWN。[代码讲解](../../experiments/whole-layer-bottleneck-20261020/IMPLEMENTATION-GUIDE.md)。86.490秒生命周期、owned三个进程退出，两卡空，主源码/保护项不变，无新机器人任务。
+
+## M39 — GEMM/attention设备tile数据通路：pending
+
+建议先做真实M/N/K的SM80加载/计算流水与数值门，再考虑更复杂跨阶段ready调度。只一层、仅optimized；下一个具体作业尚未登记/启动，M38余额不延续。不是恢复数值扫参或已证明MegaTransformer收益。
 
 ## 下一步及保护
 

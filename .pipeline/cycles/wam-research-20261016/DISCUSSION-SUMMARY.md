@@ -12,8 +12,8 @@
 
 旧讨论原文保留[归档](history/M34-complete-20261020/DISCUSSION-SUMMARY.md)；保护state/cycle/rules、不升级或旧sync。当前进度以PROGRESS与实际终态为准。
 
-## 2026-10-20T09:24:01.490859+08:00：最新继续授权
+## 当前优先级
 
-用户同意继续数值契约修复，再有条件推进单层异步tile流水，并要求解释Long/Object倍数。M37独立登记，旧预算不复用。关于只报成功加速比，当前仅提出共同成功配对与全尝试/SR并列的建议，未把用户问句记作决定。[Maintain记忆](../../memory/global/requirements/decision-继续数值契约修复后验证单层异步tile流水.md)。
+用户最新要求将主要精力放在“当前实现为什么慢”，M38已实际执行，不等待数值修复。该授权只改变研究顺序，不放宽原门。M37四原语FAIL保留，不继续盲扫或自动接入失败CUTLASS候选。
 
-M37于2026-10-20T09:33:50.273752+08:00有界收口：宏几何匹配候选四项原逐位未通过，异步整层接入未触发，不自动追加配置或新数值质量验证。Long/Object成本解释与四false均可追溯；当前没有运行/排队GPU作业。
+M38结果支持先改善GEMM与attention内部流水，任务队列不是已证实的首要改动点。M39仅为下一步建议/待登记工作，无GPU队列；不把profile副本匹配失败v1写成匹配Torch。[新长期决定](../../memory/global/requirements/decision-当前优先解释并profile整层算子退化.md)。

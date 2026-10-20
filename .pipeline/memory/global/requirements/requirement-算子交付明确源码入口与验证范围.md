@@ -4,13 +4,14 @@ name: 算子交付明确源码入口与验证范围
 level: constraint
 scope: cycle:wam-research-20261016;operator_delivery
 status: active
-updated: '2026-10-19'
+updated: '2026-10-20'
 supersedes: []
 sources:
   - 用户2026-10-19再次要求提供当前源码路径以直接查看
   - 用户要求显示可复制的完整绝对路径，并再次确认测量是否覆盖Transformer而不只是attention
   - 用户要求说明目前复现代码位置、结合源码讲解实现，并统计后续算子工作
   - 用户2026-10-19需要将完整Transformer结构与输入输出形状交给其他协作者研究tile化
+  - 用户2026-10-20要求完整源码路径及可交给另一agent带读源码的prompt
 ---
 
 # 算子交付明确源码入口与验证范围
@@ -20,6 +21,8 @@ sources:
 源码入口提供可复制的完整绝对路径，不能只显示链接短标签。实现覆盖与测量覆盖分别说明：测过完整block/30层不代表整个Transformer已实现为自有CUDA；默认attention替换与可选FFN1融合也必须分列。
 
 协作交接还应提供真实block结构、参数与输入输出shape/dtype、已知stride范围、GEMM维度、共享/私有KV及DAG归约依赖，区分目标WAM block与TF draft。原fixture未公开、生产CUDA布局未保存等限制明确标注，不能让外部协作者误以为仅凭合成输入已重验全部真实场景。
+
+本次源码交接包含可直接复制给另一agent的带读prompt，引用当前主实现、冻结baseline和实测报告；明确已实现与待实现部分，避免把固定warp角色、单kernel结构误讲成已完成的异步流水或已通过精度/性能验收。
 
 后续工作按依赖列出已有成果、剩余缺口及下一优先项。当前继续遵循“先直接复制Torch完成复现，再研究优化”的已确认决定；具体子图/调度路线属于待证据支持的计划，不因列入工作清单就成为已获准启动的实验。
 

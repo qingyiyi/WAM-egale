@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [当前优先解释并profile整层算子退化](global/requirements/decision-当前优先解释并profile整层算子退化.md)（constraint，当前算子）：先测慢点，不等待数值修复；准入门不变。
+
 - [继续数值契约与异步tile](global/requirements/decision-继续数值契约修复后验证单层异步tile流水.md)（constraint，当前算子）：新有界阶段承接M34负结果；不借旧预算、不放宽质量门。
 
 - [允许远端统一测性能](global/requirements/decision-允许远端统一测量LIBERO与算子性能.md)（constraint，当前性能）：解除最终E2E必须回本机的地点限制；四套三臂完整质量/长度/成本，正式计时无争用。
