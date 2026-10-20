@@ -1,7 +1,12 @@
-"""Generate isolated whole-layer translation units without editing frozen v1."""
+"""Reproduce historical M39 controls from an explicitly pinned source file.
+
+The current whole_layer.cu is the active FA2 implementation. Rebuilding these
+historical controls requires WAM_M39_SOURCE pointing to the archived v1 source.
+"""
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path
 
 SOURCE_SHA='df8b386f302b9904ac4ef8ab08d171ef6d9e6f8143451831c3318f5e0835ef0e'
@@ -10,8 +15,12 @@ def replace_once(s,a,b):
     assert s.count(a)==1,(a,s.count(a));return s.replace(a,b)
 
 def generate(root,kinds,instrument_path=None):
-    src=Path(__file__).parent/'csrc';raw=(src/'whole_layer.cu').read_bytes()
-    assert hashlib.sha256(raw).hexdigest()==SOURCE_SHA,'frozen whole source changed'
+    src=Path(__file__).parent/'csrc'
+    source=Path(os.environ.get('WAM_M39_SOURCE',src/'whole_layer.cu'))
+    raw=source.read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==SOURCE_SHA,(
+        'Historical M39 requires WAM_M39_SOURCE with SHA '+SOURCE_SHA+
+        '; build current optimized code with build_whole_layer.py')
     root.mkdir(parents=True,exist_ok=True);manifest=[]
     for kind in kinds:
         assert kind in ('sync','async','profile')

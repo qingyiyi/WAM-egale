@@ -1,41 +1,47 @@
-# 单层、单kernel、warp分工：实验入口
+# 当前单层persistent实现：内部FA2＋双缓冲GEMM
 
-入口：[whole_layer.py](whole_layer.py) → [csrc/whole_layer.cu](csrc/whole_layer.cu)，独立构建[build_whole_layer.py](build_whole_layer.py)。**研究实现，未通过原逐位门；不接入模型默认路径。** baseline、M32 DSO及投机源码不改。
+[whole_layer.py](whole_layer.py) → [csrc/whole_layer.cu](csrc/whole_layer.cu)是当前入口。整层所有数学在一次cooperative kernel内完成；host只做参数绑定、检查与workspace分配。不调用host GEMM/SDPA或设备子kernel。**研究实现，完整block未通过原Torch逐位门，production_admitted=false，不默认安装到模型。**
 
-本版将一层全部计算放在一次`cudaLaunchCooperativeKernel`内：调制表、三次LayerNorm、四次Q/K RMSNorm、self/cross QKV与输出投影、RoPE、两种attention、FFN两层和GELU、残差、KV metadata/私有写入与恢复。host仅检查接口、绑定参数和分配workspace。不调用host cuBLASLt，不在设备里再启动子kernel。
+## 源码地图
 
-## 线程与任务
-
-一个常驻CTA有8个warp：
-
-| warp | 职责 |
+| 文件 | 作用 |
 |---|---|
-| 0 | 从当前阶段队列领取tile；全层cache metadata由首CTA首线程处理 |
-| 1 | GEMM activation或attention query加载 |
-| 2 | GEMM weight或attention K/V加载 |
-| 3–6 | BF16 Tensor Core MMA、softmax、Welford归约和pointwise |
-| 7 | GEMM bias/BF16舍入、attention在线输出合并、写回 |
+| `csrc/whole_layer.cu` | 整层DAG、队列、Norm/RoPE/调制/残差、KV、资源与launch |
+| `csrc/gemm_pipeline.cuh` | 64×64×32 WMMA GEMM，SM80 cp.async双缓冲、LD40 |
+| `csrc/fa2_stage.cuh` | self/cross FA2任务、split选择、同kernel combine |
+| `csrc/fa2_load.cuh` | FA2的逻辑KV→共享prefix/私有suffix地址适配 |
+| `fa2_codegen.py` | 从冻结vendor提取原FA2设备函数，适配worker/同步/加载 |
+| `build_whole_layer.py` | 构建独立`wam_whole_fa2_cuda`，不会加载旧whole DSO |
 
-GEMM每CTA处理64×64输出tile，K按32推进；4个计算warp分别负责32×32。attention每CTA处理一个candidate/head中的16个query，K按64推进。B14仍是14个Q16实例，各候选private KV可见性独立，不把7候选拼为可互相注意的Q112。
+上游FA2/CUTLASS及baseline冻结依赖均只读。源码来源和生成文件hash随[构建证据](../../../.pipeline/experiments/single-layer-async-gemm-20261020/fa2-evidence/generated/FA2-SOURCE.json)保存。
 
-同一阶段的tile可由任意常驻CTA领取。阶段边界用cooperative grid barrier保证完整归约/依赖ready；norm的计算warp组使用显式128线程named barrier，不让旧CTA barrier只被部分warp调用。CTA数由实际寄存器/共享内存的occupancy上限确定，禁止超额cooperative驻留导致死锁。
+## DAG、tile与线程
 
-这是**整层范围的阶段DAG执行器**，不是细粒度跨阶段流水。当前中间量仍写入global workspace；没有宣称权重/KV只从HBM读一次，没有SM90动态寄存器分配，也没有多个候选共用private KV。实际函数172寄存器/线程、59616B共享内存，理论1 CTA/SM；这不是实测achieved occupancy。
+调制表→Norm1/调制→self QKV→QK RMSNorm/RoPE→合法KV→self FA2→输出投影/门控残差→Norm2→cross QKV/QK RMSNorm→cross FA2→投影/残差→Norm3/调制→FFN1/GELU→FFN2/门控残差。
 
-## 数值与接口
+当前108个常驻CTA，每CTA256线程/8warp，仍按阶段grid barrier保证依赖；任务粒度为CTA，不是每warp独立领取整个tile。
 
-已登记真实输入为B2/B14 action Q16、B2 video Q128，D3072/H24/head128/FFN14336，三种历史长度。输入/输出BF16；调制和LayerNorm保留FP32，RoPE按原FP64算术，GEMM与GELU之间保留BF16边界。
+|阶段|warp分工|tile|
+|---|---|---|
+| GEMM | 0领任务、1/2加载A/W、3–6 WMMA、7写回bias/BF16 | 输出64×64、K32；每计算warp32×32 |
+| FA2 | 0领任务；3–6执行原FA2 load/MMA/softmax/store；其余等待 | 普通Q128/KV64；split Q64/KV128；head128 |
+| Norm | 1加载、3–6按原Welford树归约、7写回 | 完整3072维行 |
+| pointwise | 原阶段分工 | 128元素块 |
 
-新WMMA归约及在线attention与原cuBLASLt/Flash的实现顺序不同。代数一致不能推定逐位一致，也不能继承M32精度或闭环证书。原逐位/状态门不降低；若失败，只能报告实际误差并保留未准入研究实现。单kernel结构、tile恰好一次、有效KV/RNG/输出与速度分别检查。
+短Q16使用FA2合法尾块，B14是14个独立实例，不是Q112序列。公共history和私有suffix地址直接读取，没有复制14份history或跨candidate互相注意；没有新增跨候选共享tile贡献。split-KV合并使用原softmax统计合并算法并仍在同一kernel内。named barrier2限attention的128参与线程，barrier1限norm组，CTA和grid barrier保持。
 
-验证与资源证据：[M34登记](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/PLAN.md)。本机及远端9真实输入完成，结构成立但9输出原逐位门失败，不集成。详情见[M34本机结果](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/LOCAL-CORRECTNESS.md)，远端9 trace也确认单kernel、两独立进程计时相对native慢5.12–11.28倍；[完整数据](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/RESULT.md)保留。
+FA2加载仍在其四个计算warp中，尚未做额外producer/consumer warp分离；也没有跨阶段ready队列或跨CTA普通shared memory。运行时255registers/thread、82464B shared、2168B localSizeBytes、理论1CTA/SM；实测occupancy、spill流量未知。
 
-[有限阶段诊断](../../../.pipeline/experiments/single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)已完成：B14合计74.66%时间为GEMM；唯一ldm40布局挑战者比带计时v1下降6.5%–19.0%，一进程两次交错样本，仍未解决原精度或相对native的速度问题。诊断保持v1位相等不等于匹配Torch。主源码/DSO没有替换，累计600完整block调用后收口，所有算子owned进程已退出。只有profiler实际观察一次整层kernel才计结构门通过；源码中单launch语句不是运行证据。
+## 数值与实测
 
-## M37：独立设备契约候选，没有替换整层实现
+当前真实范围B2/B14 action Q16、B2 video Q128，D3072/H24/d128/FFN14336、cross512、短中长KV。BF16输入输出、FP32调制/Norm参数、原FP64 RoPE、GEMM/GELU舍入边界保留。不是任意shape/训练API。
 
-[contract_linear.cu](csrc/contract_linear.cu)与[build_contract.py](build_contract.py)仅用于真实B2/B14的Q/FFN2同输入诊断，使用固定CUTLASS的multistage/serial split-K原语；不是第三套block主实现。公共宏几何四项匹配，但原Torch逐位四项均FAIL，重复/输入/RNG保持。见[M37结果](../../../.pipeline/experiments/device-contract-20261020/RESULT.md)。原whole_layer.cu和DSO冻结，未将该原语或异步流水接入整层，无新性能/质量PASS。
+[最新完整报告](../../../.pipeline/experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：18相同Q/K/V的self/cross对照逐位PASS；9重复/输入/RNG/参数/有效KV和18写转移通过。完整block仍9逐位FAIL，relative L2约0.133%–0.563%，最大hidden绝对误差0.5–1.5。Q、FFN2有同输入独立差异；video短/中Norm2仅12/8个元素差异；长video直到GELU逐位一致、首次分歧在FFN2。
 
-## M38：慢点实测，没有替换实现
+两进程216未插桩样本：较旧async，短action慢8%–9%，长action耗时降18%–21%，长video降43%；仍为native的3.20–7.60倍耗时。18trace各一个compute kernel。不是chunk/30层/机器人E2E，也不是最强cached/Graph对照。
 
-[新profile](../../../.pipeline/experiments/whole-layer-bottleneck-20261020/RESULT.md)完成六真实action签名：完整block比native慢5.09–11.14倍，插桩副本GEMM61%–84%；静态领取对照配对中位数反而慢3.1%–12.8%。任务单位仍为CTA，warp固定分工；尚无加载/MMA重叠或跨阶段ready流水。[按源码讲解](../../../.pipeline/experiments/whole-layer-bottleneck-20261020/IMPLEMENTATION-GUIDE.md)。222block/300原语后清理，原逐位FAIL与主源/DSO保持；下一优先基本GEMM/attention数据通路，不能靠更复杂队列解决现有数量级差距。
+## 构建与调用
+
+使用固定Torch2.9提交与SM80私有CUDA工具链；设置`WAM_FA2_BUILD_ROOT`为可写构建目录，再从本目录执行`python build_whole_layer.py build_ext --build-temp ... --inplace`。在`torch.inference_mode()`内构造`WholeLayerBlock(block)`，debug返回中间量、metadata及仅初始化有效前缀的logical_slots。生产入口不改。
+
+旧M34、M37、M38和原M39双缓冲测量、失败/预算审计均保存在对应HW报告。旧PipelineBlock只用于已固定M39对照DSO；历史生成器需要原SHA源码，不用于当前FA2构建。下一步先对齐FFN2/Q/Norm2数值，再处理资源压力与细粒度依赖调度。

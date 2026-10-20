@@ -1,5 +1,7 @@
 # 当前研究实验
 
+- [M39内部FA2接续](single-layer-async-gemm-20261020/FA2-RESULT.md)：18同输入attention通过，整层仍9逐位FAIL；387block/216计时与清理齐，沿原记录无新登记。
+
 - [M39单层双缓冲](single-layer-async-gemm-20261020/RESULT.md)：9点/18状态、两进程432样本，相对旧原型下降17.9%–36.3%，原Torch门仍FAIL；资源字段240/900不一致保留，已清理。后续沿已有记录直接改optimized，不另建登记。
 
 - [M34整层单kernel](single-layer-warp-specialized-20261019/RESULT.md)：9签名各1计算kernel，原数值FAIL，耗时为native的5.12–11.28倍；[唯一布局诊断](single-layer-warp-specialized-20261019/DIAGNOSTIC-RESULT.md)后600调用收口，未准入。

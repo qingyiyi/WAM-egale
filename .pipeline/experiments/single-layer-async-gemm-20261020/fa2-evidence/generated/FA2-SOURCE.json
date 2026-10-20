@@ -1,0 +1,60 @@
+{
+  "source": "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/vendor/flash_attn/flash_fwd_kernel.h",
+  "source_sha256": "f62f9f9125bc24330b48e2cbf2fbdb369c4f9f3e326c8e66a797f8e09f934ec1",
+  "generated_sha256": "eaab9588b8afcaa6d7965342681632940d8454044b23992b5818b953b9e3943f",
+  "standard_load_replacements": [
+    [
+      "K",
+      "n_block"
+    ],
+    [
+      "V",
+      "n_block"
+    ],
+    [
+      "V",
+      "n_block"
+    ],
+    [
+      "K",
+      "n_block - 1"
+    ],
+    [
+      "V",
+      "n_block"
+    ],
+    [
+      "K",
+      "n_block - 1"
+    ]
+  ],
+  "split_load_replacements": [
+    [
+      "K",
+      "n_block - 1"
+    ],
+    [
+      "V",
+      "n_block"
+    ],
+    [
+      "V",
+      "n_block"
+    ],
+    [
+      "K",
+      "n_block - 1"
+    ],
+    [
+      "V",
+      "n_block"
+    ],
+    [
+      "K",
+      "n_block - 1"
+    ]
+  ],
+  "barrier": "named barrier 2, 128 participants (physical warps 3..6)",
+  "math_changed": false,
+  "baseline_vendor_edited": false
+}

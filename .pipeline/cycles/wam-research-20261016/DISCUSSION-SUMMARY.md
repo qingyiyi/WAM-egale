@@ -14,8 +14,8 @@
 
 ## 当前优先级
 
-用户先要求profile整层慢点，再明确继续实现；M38/M39已收口，GEMM双缓冲带来相对旧原型有限提速，仍未匹配Torch数值/速度。资源登记字段不一致作为失败保留，不能以脚本exit0替代全部审计通过。
+用户明确先在自有单层kernel内部实现FA2，再研究跨阶段同步；要求量化误差并调查RoboTwin/LIBERO差异。已完成内部self/cross/split-combine与18同输入有限逐位核验，整层仍数值NO-GO。优先处理FFN2/Q与少量Norm2误差；不因attention局部PASS签发完整block/闭环质量证书。
 
-最新指令：不考虑另一agent带读版本，直接改optimized，不再另起实验登记；这是对原“独立入口保护带读”的替代。Maintain记录在[直接在optimized迭代](../../memory/global/requirements/decision-直接在optimized迭代且不另建登记.md)。baseline/投机与既有准入门继续保护，已有本轮记录继续保留最小必要证据。
+直接在optimized迭代、不为另一agent保留额外代码版本、不另建登记；沿M39保留原始测量与失败。新阶段387block/216计时，GPU进程已清理，未启动后继优化或机器人。当前仍全阶段grid barrier，attention的4计算warp自己负责load/MMA/softmax/store，尚无跨阶段ready队列。
 
-用户询问更大tile，当前GEMM64×64×32、attention Q16/KV64。建议优先K32→64，再按形状评估N128；B2 M32不能盲目扩大M，B14不能变成跨候选互相注意。尚未运行这些候选，不把提议记为实测收益或已启动工作。
+RoboTwin只读核验：50双臂任务，Easy/Hard不是新增task；官方Target存在，draft需适配32token/16有效通道并重训/校准。只提出迁移评估，不安装环境、下载权重或启动15000局。当前四false不变。

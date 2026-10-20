@@ -10,10 +10,10 @@ import torch
 def extension():
     if torch.version.git_version != '0fabc3ba44823f257e70ce397d989c8de5e362c1':
         raise RuntimeError('整层扩展要求固定Torch2.9源码版本')
-    files = list(Path(__file__).parent.glob('wam_whole_layer_cuda*.so'))
+    files = list(Path(__file__).parent.glob('wam_whole_fa2_cuda*.so'))
     if len(files) != 1:
         raise RuntimeError('先构建 optimized/build_whole_layer.py')
-    spec = importlib.util.spec_from_file_location('wam_whole_layer_cuda', files[0])
+    spec = importlib.util.spec_from_file_location('wam_whole_fa2_cuda', files[0])
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module

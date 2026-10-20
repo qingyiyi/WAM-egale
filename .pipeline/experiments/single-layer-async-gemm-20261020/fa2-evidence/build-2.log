@@ -1,0 +1,68 @@
+W1020 11:18:04.947000 642967 site-packages/torch/utils/cpp_extension.py:117] No CUDA runtime is found, using CUDA_HOME='/root/cxz/ops/persistent-tile-20261019/cuda-12.4'
+/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/extension.py:150: UserWarning: Unknown Extension options: 'dlink', 'dlink_libraries'
+  warnings.warn(msg)
+running build_ext
+W1020 11:18:04.992000 642967 site-packages/torch/utils/cpp_extension.py:521] The detected CUDA version (12.4) has a minor version mismatch with the version that was used to compile PyTorch (12.6). Most likely this shouldn't be a problem.
+W1020 11:18:04.992000 642967 site-packages/torch/utils/cpp_extension.py:531] There are no g++ version bounds defined for CUDA version 12.4
+building 'wam_whole_fa2_cuda' extension
+[1/2] /root/cxz/ops/persistent-tile-20261019/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output '/root/cxz/ops/single-layer-async-gemm-20261020/fa2-current/build/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.o'.d -I/root/cxz/ops/single-layer-async-gemm-20261020/fa2-current/generated '-I/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc' '-I/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn' '-I/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include' -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/cxz/ops/persistent-tile-20261019/cuda-12.4/include -I/root/cxz/envs/va/include/python3.12 -c -c '/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.cu' -o '/root/cxz/ops/single-layer-async-gemm-20261020/fa2-current/build/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DUNFUSE_FMA -DFLASHATTENTION_DISABLE_DROPOUT -DFLASHATTENTION_DISABLE_ALIBI -DFLASHATTENTION_DISABLE_SOFTCAP -DFLASHATTENTION_DISABLE_LOCAL -DFLASHATTENTION_DISABLE_UNEVEN_K -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_fa2_cuda -gencode=arch=compute_80,code=sm_80 -std=c++17
+FAILED: [code=2] /root/cxz/ops/single-layer-async-gemm-20261020/fa2-current/build/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.o 
+/root/cxz/ops/persistent-tile-20261019/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output '/root/cxz/ops/single-layer-async-gemm-20261020/fa2-current/build/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.o'.d -I/root/cxz/ops/single-layer-async-gemm-20261020/fa2-current/generated '-I/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc' '-I/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn' '-I/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include' -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include -I/root/cxz/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/cxz/ops/persistent-tile-20261019/cuda-12.4/include -I/root/cxz/envs/va/include/python3.12 -c -c '/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.cu' -o '/root/cxz/ops/single-layer-async-gemm-20261020/fa2-current/build/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DUNFUSE_FMA -DFLASHATTENTION_DISABLE_DROPOUT -DFLASHATTENTION_DISABLE_ALIBI -DFLASHATTENTION_DISABLE_SOFTCAP -DFLASHATTENTION_DISABLE_LOCAL -DFLASHATTENTION_DISABLE_UNEVEN_K -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_fa2_cuda -gencode=arch=compute_80,code=sm_80 -std=c++17
+/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/fa2_stage.cuh(36): error: a value of type "const void *" cannot be assigned to an entity of type "void *"
+          f.k_ptr=f.prefix_length?f.prefix_k:f.current_k;
+                 ^
+
+/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/fa2_stage.cuh(37): error: a value of type "const void *" cannot be assigned to an entity of type "void *"
+          f.v_ptr=f.prefix_length?f.prefix_v:f.current_v;
+                 ^
+
+2 errors detected in the compilation of "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.cu".
+ninja: build stopped: subcommand failed.
+Traceback (most recent call last):
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2597, in _run_ninja_build
+    subprocess.run(
+  File "/root/cxz/envs/va/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v', '-j', '2']' returned non-zero exit status 2.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/build_whole_layer.py", line 11, in <module>
+    setup(name='wam_whole_fa2',packages=[],ext_modules=[CUDAExtension(
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/__init__.py", line 117, in setup
+    return distutils.core.setup(**attrs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 186, in setup
+    return run_commands(dist)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 202, in run_commands
+    dist.run_commands()
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1001, in run_commands
+    self.run_command(cmd)
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 97, in run
+    _build_ext.run(self)
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 367, in run
+    self.build_extensions()
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1082, in build_extensions
+    build_ext.build_extensions(self)
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 483, in build_extensions
+    self._build_extensions_serial()
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 509, in _build_extensions_serial
+    self.build_extension(ext)
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 262, in build_extension
+    _build_ext.build_extension(self, ext)
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 564, in build_extension
+    objects = self.compiler.compile(
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 866, in unix_wrap_ninja_compile
+    _write_ninja_file_and_compile_objects(
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2223, in _write_ninja_file_and_compile_objects
+    _run_ninja_build(
+  File "/root/cxz/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2614, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error compiling objects for extension

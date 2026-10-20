@@ -3,13 +3,26 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-20T10:47:10.246535+08:00'
+updated: '2026-10-20T11:30:55.620554+08:00'
 current: M39
 next: null
 ---
 # 当前研究进度
 
-更新：2026-10-20T10:47:10.246535+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
+更新：2026-10-20T11:30:55.620554+08:00。当前范围只有一层；原四套计算和新计时重复分开。[短入口](../../PROGRESS.compact.md)。
+
+| ID | 工作 | 状态 | 终态说明 | 证据 |
+|---|---|---|---|---|
+| `M17` | M17 | in_progress | 科学门另列 | 见下文 |
+| `M31` | M31 | completed | 科学门另列 | 见下文 |
+| `M32` | M32 | completed | 科学门另列 | 见下文 |
+| `M33` | M33 | completed | 科学门另列 | 见下文 |
+| `M34` | M34 | completed | 科学门另列 | 见下文 |
+| `M35` | M35 | completed | 科学门另列 | 见下文 |
+| `M36` | M36 | completed | 科学门另列 | 见下文 |
+| `M37` | M37 | completed | 科学门另列 | 见下文 |
+| `M38` | M38 | completed | 科学门另列 | 见下文 |
+| `M39` | M39 | completed | 科学门另列 | 见下文 |
 
 ## M17 — 四套既定评估：计算完成，审计未放行
 
@@ -57,13 +70,13 @@ GPU0 Goal→Object，GPU1 Spatial→Long；同case对照同卡，每卡单worker
 
 原实现1kernel，native39/35计算kernel；memory/注释单列。高寄存器/低理论occupancy不是单因，成熟GEMM同样一CTA驻留却快得多；同步单buffer和attention串行softmax有源码依据，硬件stall/流量UNKNOWN。[代码讲解](../../experiments/whole-layer-bottleneck-20261020/IMPLEMENTATION-GUIDE.md)。86.490秒生命周期、owned三个进程退出，两卡空，主源码/保护项不变，无新机器人任务。
 
-## M39 — 单层GEMM异步tile流水：completed，原数值NO-GO
+## M39 — 单层异步tile与内部FA2：completed，整层数值NO-GO
 
-[结果](../../experiments/single-layer-async-gemm-20261020/RESULT.md)：9真实签名、18合法KV转移相对失败whole有限一致；原Torch/native9通过、新async9逐位FAIL。两个独立进程432完整block计时，新双缓冲比本轮旧whole耗时下降17.9%–36.3%，但仍为native的3.33–7.84倍；同LD40同步对照加速1.14–1.51×。全部18新trace各1kernel，未测chunk/E2E。
+[内部FA2结果](../../experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：直接修改optimized，在整层单kernel内接入固定FA2 self/cross、split-KV/combine。9真实签名、18同输入attention全部逐位PASS；9重复/输入/RNG/参数、18有效KV转移和18单kernel trace通过。完整hidden仍9/9逐位FAIL，相对L2 0.133%–0.563%，最大0.5–1.5；同输入Q/FFN2独立误差和video短/中Norm2的12/8元素差异已定位，长video首次差异仅FFN2。
 
-插桩GEMM阶段快1.73–1.95×；B14短cross K/V仍52.4%，长self-attention约35%–49%。172 registers、59616B shared、理论1 CTA/SM不变，硬件stall/流量UNKNOWN。675block、264.838秒生命周期、10.68MiB，六owned进程确认退出、两卡空。[资源审计FAILED](../../experiments/single-layer-async-gemm-20261020/RESOURCE-AND-STOP-REPORT.md)：PLAN/runner900但registration240，实际超机器登记435次；原登记不改，不能写预算全通过。可选CPU反汇编因cuobjdump缺失失败也保留。
+两个进程216样本：相对旧async，短action慢8%–9%，长action耗时降18%–21%，长video降43%；仍比native慢3.20–7.60倍。108 CTA、255 registers、82464B shared、2168B local资源，非实测spill/occupancy。387block＋18SDPA＋18Linear；GPU worker生命周期69.979秒，阶段到清理836.9秒，约6.79MiB。两次CPU编译失败保留，7组父子14个PID/birth退出，两卡空；本地75/远端71保护项不变。无新机器人/训练/30层，四false保持。
 
-用户随后明确：直接修改optimized，不因另一agent带读保留独立版本，也不再另建登记。沿现有记录继续；下一候选K32→64及attention数据通路尚未实现/测量，不能称有收益。
+旧[M39双缓冲](../../experiments/single-layer-async-gemm-20261020/RESULT.md)675block、264.838秒、432样本及240/900登记不一致FAILED保留；旧预算未重置。本阶段沿既有记录承接用户FA2授权，没有新建实验登记。下一优先FFN2/Q及小量Norm2数值，再处理短Q资源压力与跨阶段就绪调度。
 
 ## 下一步及保护
 

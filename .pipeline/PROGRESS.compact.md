@@ -1,16 +1,16 @@
 # 当前短入口
 
-更新：2026-10-20T10:47:10.246535+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先[约束记忆](memory/INDEX.md)，再读当前四文；原长记录/trace按需，不展开全部旧索引。
+更新：2026-10-20T11:30:55.620554+08:00。当前Cycle：[wam-research-20261016](cycles/wam-research-20261016/PROGRESS.md)。先[约束记忆](memory/INDEX.md)，再读当前四文；原长记录/trace按需，不展开全部旧索引。
 
 ## 已观察结果
 
 四套原6000完整episode齐：每套10task×50init×T/C/P，成功数Long483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499，各臂500。[完整质量/门](experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)、[原逐局与成本](experiments/libero-four-suite-performance-20261019/RESULT.md)。八组合P50/P90都在旧长度界内，但max都>1.30；失败/800罚分、首两S严格配对FAILED、组件失败和训练/DEV曝光保留，不是独立TEST/非劣。无匹配500局MLP。
 
-当前[M39双缓冲结果](experiments/single-layer-async-gemm-20261020/RESULT.md)：仍一层/单persistent kernel，GEMM64×64×32采用LD40与cp.async双buffer。9真实签名/18合法KV转移相对失败whole有限一致；原Torch/native9逐位通过、新async9逐位FAIL。两进程432完整block样本，对本轮旧whole耗时下降17.9%–36.3%，仍比native慢3.33–7.84倍；同步LD40对照区分布局收益。插桩GEMM快1.73–1.95×，长KV self-attention现占35%–49%。[源码](../算子研究/wam_ops/optimized/csrc/gemm_pipeline.cuh)、[说明](../算子研究/wam_ops/optimized/PIPELINE.md)。
+当前[M39内部FA2](experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：直接在自有整层单kernel内接入FA2 self/cross、split/combine。9真实签名×两attention的同输入18项全部逐位PASS；18有效KV转移/重复/RNG/输入及18单kernel trace通过。整层9输出仍FAIL，相对L2 0.133%–0.563%、最大0.5–1.5；Q/FFN2独立差异，video短中Norm2各12/8元素差异；长video首次分歧为FFN2。不是完整模型质量准入。
 
-M39实际675block/264.838秒/约10.68MiB，六owned进程退出、两卡空，无GPU队列。**资源审计FAILED**：PLAN/runner900，机器registration240，实际超后者435；不改原登记。可选CPU反汇编缺cuobjdump失败保留。NCU硬件计数/SASS数量UNKNOWN；数值和全部四false不变。[清理与止损](experiments/single-layer-async-gemm-20261020/RESOURCE-AND-STOP-REPORT.md)。
+两个独立进程216样本：短action较旧async慢8%–9%，长action耗时降18%–21%、长video降43%；仍比native慢3.20–7.60倍。108CTA、255registers、82464B shared、2168B localSizeBytes；实测occupancy/流量UNKNOWN。387block＋18SDPA＋18Linear，GPU worker生命周期69.979秒、阶段836.9秒、6.79MiB，两次CPU编译失败保留，14owned PID/birth退出，两卡空。75本地/71远端保护项不变，四false保持。
 
-旧[M34](experiments/single-layer-warp-specialized-20261019/RESULT.md)原型9点逐位FAIL/18写9FAIL，5.12–11.28倍慢、600/600调用后清理；[精度定位](experiments/single-layer-warp-specialized-20261019/PRECISION-CUTS.md)Q/FFN2/video attention差异保留。旧编译/依赖/CPU失败、远端未部署保护项false均不抹除。M39只匹配失败原型，不修复旧数值或继承其他版本证书。
+旧[M39双缓冲](experiments/single-layer-async-gemm-20261020/RESULT.md)432样本/675block及PLAN900/registration240资源审计FAILED原样保留；新FA2阶段未重置旧预算。旧[M34](experiments/single-layer-warp-specialized-20261019/RESULT.md)9逐位FAIL、600调用及旧数值诊断仍有效，不能借attention局部通过改旧证书。
 
 ## 资源终态与硬截止
 
@@ -28,7 +28,7 @@ M31静态子图、M32阶段内persistent、M33退化profile旧结果保留；M32
 
 ## 下一步与范围
 
-M38[profile](experiments/whole-layer-bottleneck-20261020/RESULT.md)已完成：6签名/222block/300原语，GEMM主导、静态领取更慢。M39随后实现双缓冲并收口。用户最新要求[直接改optimized、不另建登记](memory/global/requirements/decision-直接在optimized迭代且不另建登记.md)，无需为另一agent带读冻结旧源码。沿现有记录继续，下一建议评估K64和attention数据通路，尚未执行，不能称已获收益。
+先[内部FA2](memory/global/requirements/decision-先在自有整层算子内接入FA2.md)已完成有限核验；后续直接在optimized处理FFN2/Q/Norm2数值与短Q资源压力，再考虑跨阶段ready调度。沿现有记录，不另建实验登记；后继未启动。原[M38慢点](experiments/whole-layer-bottleneck-20261020/RESULT.md)与M39双缓冲保留。
 
 M36[RoboTwin调研完成](experiments/robotwin-migration-survey-20261019/RESULT.md)：官方LingBot-VA权重/50唯一任务，100有效seed/task，三臂15000局/condition。Q32/16有效动作通道/pool静态9792需新draft/cache接口，不继承LIBERO阈值；0第二环境实验。CUDA仍私有12.4/Torch2.9 cu126，远端driver535不升级CUDA13/系统。
 

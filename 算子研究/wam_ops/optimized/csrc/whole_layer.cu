@@ -12,6 +12,8 @@
 #include <map>
 #include <optional>
 #include "norm.cuh"  // pinned Torch Welford arithmetic, read-only helper
+#define FLASH_NAMESPACE wam_whole_fa2
+#include "fa2_device_generated.cuh"
 
 namespace wam_whole_layer_v1 {
 namespace cg = cooperative_groups;
@@ -20,6 +22,9 @@ using B = __nv_bfloat16;
 using at::Tensor;
 constexpr int D=3072, H=24, HD=128, F=14336, THREADS=256;
 constexpr int MAX_STAGES=40;
+using FaStandard=Flash_fwd_kernel_traits<128,128,64,4,false,false,cutlass::bfloat16_t>;
+using FaSplit=Flash_fwd_kernel_traits<128,64,128,4,false,false,cutlass::bfloat16_t>;
+constexpr int FA_SMEM=FaStandard::kSmemSize>FaSplit::kSmemSize?FaStandard::kSmemSize:FaSplit::kSmemSize;
 enum Buf {MOD,N1,M1,SQ0,SK0,SV,SQN,SKN,SQR,SKR,SA,SO,R1,N2,
           CQ0,CK0,CV,CQ,CK,CA,CO,R2,N3,M3,F1,ACT,F2,OUT,NB};
 enum Point {TABLE,MODULATE,RESIDUAL,ROPE,GELU,INSERT,RESTORE};
@@ -35,16 +40,18 @@ struct Params {
     int b,q,c,l,fb,pool,pool_b,update,max_tasks;
     bool temb_float,cache,candidate,affine,audit;
     float eps[7];
+    float *fa_lse,*fa_lse_partial,*fa_out_partial;
+    int64_t* fa_meta; int sms; float attn_scale,attn_scale_log2;
 };
-struct GemmShared { B x[64*32],w[64*32]; float y[64*64]; };
+struct GemmShared { B x[2][64*40],w[2][64*40]; float y[64*64]; };
 struct NormShared {float x[D],y[D],reduce[6];};
 struct AttnShared {
     B q[16*128],k[64*128],v[64*128],p[16*64];
     float score[16*64],o[16*128],pv[16*128];
     float m[16],l[16],alpha[16];
 };
-union alignas(32) TileShared {GemmShared gemm;NormShared norm;AttnShared attn;float point[512];};
-struct Shared {TileShared tile;int task;};
+union alignas(32) TileShared {GemmShared gemm;NormShared norm;AttnShared attn;float point[512];char fa2_workspace[FA_SMEM];};
+struct Shared {TileShared tile;int task;wam_whole_fa2::WholeParams fa2;};
 __device__ inline int warp(){return threadIdx.x/32;}
 __device__ inline int lane(){return threadIdx.x%32;}
 __device__ inline bool compute(){return warp()>=3&&warp()<7;}
@@ -76,52 +83,7 @@ __device__ void done(const Params& p,int st){
 // Four compute warps each own a 32x32 portion of a 64x64 tile.
 // Two loader warps stage A and W separately; the store warp alone adds bias
 // and performs the public BF16 rounding. K is consumed in increasing order.
-__device__ void gemm_tile(Shared& shared,const B* a,const B* w,const B* bias,
-                         B* out,int m,int n,int k,int task){
-    auto& s=shared.tile.gemm;
-    const int cols=(n+63)/64,rm=(task/cols)*64,cn=(task%cols)*64;
-    wm::fragment<wm::accumulator,16,16,16,float> acc[4];
-    if(compute())for(int j=0;j<4;++j)wm::fill_fragment(acc[j],0.f);
-    for(int z=0;z<k;z+=32){
-        if(warp()==1)for(int i=lane();i<64*32/8;i+=32){
-            int r=i/4,c=(i%4)*8;
-            ((uint4*)s.x)[i]=(rm+r<m)?*(const uint4*)(a+(rm+r)*k+z+c):make_uint4(0,0,0,0);
-        }
-        if(warp()==2)for(int i=lane();i<64*32/8;i+=32){
-            int r=i/4,c=(i%4)*8;
-            ((uint4*)s.w)[i]=(cn+r<n)?*(const uint4*)(w+(cn+r)*k+z+c):make_uint4(0,0,0,0);
-        }
-        __syncthreads();
-        if(compute()){
-            int cw=warp()-3,m0=(cw/2)*32,n0=(cw%2)*32;
-            #pragma unroll
-            for(int t=0;t<2;++t){
-                wm::fragment<wm::matrix_a,16,16,16,B,wm::row_major> af[2];
-                wm::fragment<wm::matrix_b,16,16,16,B,wm::col_major> wf[2];
-                #pragma unroll
-                for(int j=0;j<2;++j){
-                    wm::load_matrix_sync(af[j],s.x+(m0+j*16)*32+t*16,32);
-                    wm::load_matrix_sync(wf[j],s.w+(n0+j*16)*32+t*16,32);
-                }
-                #pragma unroll
-                for(int i=0;i<2;++i)for(int j=0;j<2;++j)
-                    wm::mma_sync(acc[i*2+j],af[i],wf[j],acc[i*2+j]);
-            }
-        }
-        __syncthreads();
-    }
-    if(compute()){
-        int cw=warp()-3,m0=(cw/2)*32,n0=(cw%2)*32;
-        for(int i=0;i<2;++i)for(int j=0;j<2;++j)
-            wm::store_matrix_sync(s.y+(m0+i*16)*64+n0+j*16,acc[i*2+j],64,wm::mem_row_major);
-    }
-    __syncthreads();
-    if(warp()==7)for(int i=lane();i<4096;i+=32){
-        int r=rm+i/64,c=cn+i%64;
-        if(r<m&&c<n)out[r*n+c]=bf(__fadd_rn(s.y[i],value(bias[c])));
-    }
-    __syncthreads();
-}
+#include "gemm_pipeline.cuh"
 __device__ void linear(const Params& p,Shared& s,cg::grid_group& g,int st,
                       const B* a,int wi,B* out,int m,int n,int k){
     int ntiles=((m+63)/64)*((n+63)/64);begin(p,s,g,st,ntiles);
@@ -261,70 +223,7 @@ __device__ const B* self_kv(const Params& p,bool val,int batch,int token,int hea
 
 // Query tiles always stay within one (candidate, head) instance. B14 is NOT a
 // Q112 sequence. Candidate private suffix visibility is preserved explicitly.
-__device__ void attention_tile(const Params& p,Shared& shared,bool cross,int task){
-    auto& s=shared.tile.attn;int qt=(p.q+15)/16;
-    int qr=(task%qt)*16,head=(task/qt)%H,batch=task/(qt*H);
-    int n=cross?p.c:(p.cache?int(p.info[0])+(p.candidate?p.q:0):p.q);
-    if(p.info[1])n=0;
-    if(warp()==1)for(int i=lane();i<16*HD/8;i+=32){int r=qr+i/16,d=(i%16)*8;
-        ((uint4*)s.q)[i]=r<p.q?*(const uint4*)(bp(p,cross?CQ:SQR)+(batch*p.q+r)*D+head*HD+d):make_uint4(0,0,0,0);
-    }
-    if(warp()==7){
-        for(int i=lane();i<16*HD;i+=32)s.o[i]=0;
-        for(int r=lane();r<16;r+=32){s.m[r]=-INFINITY;s.l[r]=0;}
-    }
-    __syncthreads();
-    for(int off=0;off<n;off+=64){
-        if(warp()==2)for(int i=lane();i<64*HD/8;i+=32){int t=off+i/16,d=(i%16)*8;
-            if(t>=n){((uint4*)s.k)[i]=make_uint4(0,0,0,0);((uint4*)s.v)[i]=make_uint4(0,0,0,0);}
-            else if(cross){int64_t z=(int64_t(batch)*p.c+t)*D+head*HD+d;
-                ((uint4*)s.k)[i]=*(const uint4*)(bp(p,CK)+z);((uint4*)s.v)[i]=*(const uint4*)(bp(p,CV)+z);}
-            else{((uint4*)s.k)[i]=*(const uint4*)self_kv(p,false,batch,t,head,d);
-                 ((uint4*)s.v)[i]=*(const uint4*)self_kv(p,true,batch,t,head,d);}
-        }
-        __syncthreads();
-        if(compute()){
-            int cw=warp()-3;wm::fragment<wm::accumulator,16,16,16,float> acc;wm::fill_fragment(acc,0.f);
-            for(int d=0;d<128;d+=16){
-                wm::fragment<wm::matrix_a,16,16,16,B,wm::row_major> a;
-                wm::fragment<wm::matrix_b,16,16,16,B,wm::col_major> b;
-                wm::load_matrix_sync(a,s.q+d,128);wm::load_matrix_sync(b,s.k+cw*16*128+d,128);
-                wm::mma_sync(acc,a,b,acc);
-            }
-            wm::store_matrix_sync(s.score+cw*16,acc,64,wm::mem_row_major);
-        }
-        __syncthreads();
-        if(compute()&&ct()<16){int r=ct();float maxv=-INFINITY;
-            for(int j=0;j<64&&off+j<n;++j)maxv=fmaxf(maxv,s.score[r*64+j]*0.08838834764831845f);
-            float m=fmaxf(s.m[r],maxv),alpha=exp2f((s.m[r]-m)*1.4426950408889634f),den=0;
-            for(int j=0;j<64;++j){float z=off+j<n?exp2f((s.score[r*64+j]*0.08838834764831845f-m)*1.4426950408889634f):0;
-                den+=z;s.p[r*64+j]=bf(z);}
-            s.l[r]=s.l[r]*alpha+den;s.m[r]=m;s.alpha[r]=alpha;
-        }
-        __syncthreads();
-        if(compute()){
-            int cw=warp()-3;wm::fragment<wm::accumulator,16,16,16,float> acc[2];
-            wm::fill_fragment(acc[0],0.f);wm::fill_fragment(acc[1],0.f);
-            for(int k=0;k<64;k+=16){
-                wm::fragment<wm::matrix_a,16,16,16,B,wm::row_major> a;wm::load_matrix_sync(a,s.p+k,64);
-                for(int j=0;j<2;++j){wm::fragment<wm::matrix_b,16,16,16,B,wm::row_major> b;
-                    wm::load_matrix_sync(b,s.v+k*128+cw*32+j*16,128);wm::mma_sync(acc[j],a,b,acc[j]);}
-            }
-            for(int j=0;j<2;++j)wm::store_matrix_sync(s.pv+cw*32+j*16,acc[j],128,wm::mem_row_major);
-        }
-        __syncthreads();
-        if(warp()==7)for(int i=lane();i<16*HD;i+=32)s.o[i]=s.o[i]*s.alpha[i/HD]+s.pv[i];
-        __syncthreads();
-    }
-    if(warp()==7)for(int i=lane();i<16*HD;i+=32){int r=qr+i/HD;
-        if(r<p.q)bp(p,cross?CA:SA)[(batch*p.q+r)*D+head*HD+i%HD]=bf(n?s.o[i]/s.l[i/HD]:NAN);
-    }
-    __syncthreads();
-}
-__device__ void attention(const Params& p,Shared& s,cg::grid_group& g,int st,bool cross){
-    int n=p.b*H*((p.q+15)/16);begin(p,s,g,st,n);
-    for(int t;(t=claim(p,s,st,n))<n;){attention_tile(p,s,cross,t);done(p,st);}g.sync();
-}
+#include "fa2_stage.cuh"
 
 __global__ void whole_layer(Params p){
     extern __shared__ __align__(32) unsigned char memory[];
@@ -416,6 +315,17 @@ std::map<std::string,Tensor> forward(const std::vector<Tensor>& w,const Tensor& 
     auto visits=at::empty({audit?MAX_STAGES*p.max_tasks:1},io);
     p.queues=queues.data_ptr<int>();p.stats=stats.data_ptr<int>();p.visits=visits.data_ptr<int>();
     int device=x.get_device(),sm=0,cooperative=0,active=0;
+    p.sms=at::cuda::getCurrentDeviceProperties()->multiProcessorCount;
+    p.attn_scale=float(1.0/std::sqrt(128.0));
+    p.attn_scale_log2=float(double(p.attn_scale)*M_LOG2E);
+    int max_splits=(p.b*H*((p.q+63)/64)>=0.8f*p.sms*2)?1:
+        std::min(128,(std::max(p.pool+p.q,p.c)+127)/128);
+    auto lse=at::empty({p.b,H,p.q},fo);
+    auto partial_lse=at::empty({max_splits,p.b,H,p.q},fo);
+    auto partial_out=at::empty({max_splits,p.b,H,p.q,HD},fo);
+    auto fa_meta=at::empty({2,4},lo);
+    p.fa_lse=lse.data_ptr<float>();p.fa_lse_partial=partial_lse.data_ptr<float>();
+    p.fa_out_partial=partial_out.data_ptr<float>();p.fa_meta=fa_meta.data_ptr<int64_t>();
     C10_CUDA_CHECK(cudaDeviceGetAttribute(&sm,cudaDevAttrMultiProcessorCount,device));
     C10_CUDA_CHECK(cudaDeviceGetAttribute(&cooperative,cudaDevAttrCooperativeLaunch,device));TORCH_CHECK(cooperative,"cooperative launch required");
     C10_CUDA_CHECK(cudaFuncSetAttribute(whole_layer,cudaFuncAttributeMaxDynamicSharedMemorySize,sizeof(Shared)));
@@ -431,6 +341,8 @@ std::map<std::string,Tensor> forward(const std::vector<Tensor>& w,const Tensor& 
     // CPU resource metadata is not part of the mathematical GPU work.
     cudaFuncAttributes attr;C10_CUDA_CHECK(cudaFuncGetAttributes(&attr,whole_layer));
     result["resources"]=at::tensor({int64_t(blocks),int64_t(active),int64_t(sizeof(Shared)),int64_t(attr.numRegs),int64_t(attr.localSizeBytes),int64_t(THREADS)},at::TensorOptions().dtype(at::kLong));
+    result["attention_meta"]=fa_meta;
+    result["logical_slots"]=slots; // Only cache_info[0] entries are initialized.
     return result;
 }
 } // namespace wam_whole_layer_v1

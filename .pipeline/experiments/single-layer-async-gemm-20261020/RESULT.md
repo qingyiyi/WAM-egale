@@ -1,3 +1,5 @@
+当前后续FA2迭代见[FA2-RESULT.md](FA2-RESULT.md)；以下为原双缓冲阶段结果，原数据/失败/预算不变。
+
 # M39：单层tile GEMM双缓冲实测
 
 更新时间：2026-10-20T10:45:33.123435+08:00。计算终态 `COMPLETE_ASYNC_GEMM_RESEARCH_UNADMITTED`；原Torch精度和生产准入仍为NO-GO。**另有资源登记字段不一致，资源审计FAILED**，见[资源报告](RESOURCE-AND-STOP-REPORT.md)，不改原始登记或脚本终态。

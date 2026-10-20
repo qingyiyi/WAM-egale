@@ -1,4 +1,4 @@
-当前新增[整层单kernel研究入口](wam_ops/optimized/WHOLE_LAYER.md)：结构已由9真实输入trace确认，原数值门FAIL且比冻结native更慢，禁止默认替换。baseline及依赖冻结，优化仍只在optimized；[实测结果](../.pipeline/experiments/single-layer-warp-specialized-20261019/RESULT.md)。
+当前自有[整层单kernel入口](wam_ops/optimized/WHOLE_LAYER.md)已接入内部FA2 self/cross与split-combine；18同输入attention逐位PASS，完整block仍数值NO-GO、慢于native。最新[速度/误差](../.pipeline/experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)。以下native/M31/M32段落描述冻结对照及历史阶段；当前修改仅在optimized。
 
 # WAM完整block算子研究
 

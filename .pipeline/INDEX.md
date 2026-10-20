@@ -1,6 +1,6 @@
 # WAM 投机推理与 verifier 优化
 
-更新时间：2026-10-20T10:47:10.246535+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
+更新时间：2026-10-20T11:30:55.620554+08:00。这是项目读取入口；实验结论以链接的原始结果与登记协议为准。
 
 ## 从这里恢复
 
@@ -10,7 +10,7 @@
 
 [10/19历史阶段整理](cycles/wam-research-20261016/STATUS-20261019.md)：Long/Goal/Spatial首轮、B0有限GPU逐位、Object修复与原门缺口；旧paused72仅历史。
 
-最新[M39双缓冲结果](experiments/single-layer-async-gemm-20261020/RESULT.md)：对旧原型耗时下降17.9%–36.3%，仍比native慢3.33–7.84倍且原Torch逐位FAIL。9点/18状态/432样本，owned已清理；资源登记240/900不一致FAILED保留。按最新指令直接在optimized迭代、不为带读另建版本/登记。[M38慢点依据](experiments/whole-layer-bottleneck-20261020/RESULT.md)保留。
+最新[M39内部FA2](experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：self/cross同输入18项逐位通过，整层9输出仍FAIL；已定位Q/FFN2及少量Norm2差异。长KV改善、短action退化，仍慢native3.20–7.60倍。387block/216计时，owned清理；原M39资源审计FAILED保留。仅改optimized，原四false不变；[RoboTwin复核](experiments/robotwin-migration-survey-20261019/RESULT.md)无新环境执行。
 
 最新[M37数值契约](experiments/device-contract-20261020/RESULT.md)：唯一几何匹配候选四项原逐位FAIL，已清理、不集成；[Long/Object倍数归因](experiments/device-contract-20261020/TASK-COST-DIAGNOSIS.md)保留共同成功与全部尝试口径。
 

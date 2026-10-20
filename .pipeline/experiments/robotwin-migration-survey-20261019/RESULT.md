@@ -43,3 +43,42 @@ HF列出的Transformer约10.179GB、text encoder约11.362GB、VAE约2.819GB，�
 先收口四套LIBERO时间账本和本轮单层算子，不立即加15000局。若之后批准第二环境：优先固定官方兼容版本和现成Target，先登记6–10个不同机制任务的小面板，再单独采集/训练draft、审计动作/初态/质量；小面板明确是迁移DEV，不能代替50任务标准结果。新环境单局耗时UNKNOWN，现阶段不提供伪精确总时长。稳定后按实际单局分布估算5000局/臂预算，再决定是否扩全套。
 
 没有安装系统依赖、启动第二环境或新增训练；本调研不会自动接入现有GPU队列。
+
+## 2026-10-20补充：与LIBERO的规模及迁移工作
+
+本轮重新浏览官方任务页、LIBERO仓库、LingBot-VA仓库及RoboTwin权重页；未启动RoboTwin。下列比较以现有固定适配源码为准，未用公开main覆盖本地科研代码。
+
+| LIBERO套件 | task数 | 控制的变化/用途 |
+|---|---:|---|
+| Spatial | 10 | 空间布局和相对关系 |
+| Object | 10 | 操作对象 |
+| Goal | 10 | 任务目标 |
+| LIBERO-100 | 100 | 综合任务；拆为LIBERO-90（90）与LIBERO-10/Long（10） |
+
+总共130种；我们的四套Spatial/Object/Goal/Long覆盖40种，每任务50个init不是50个task。[LIBERO官方说明](https://github.com/Lifelong-Robot-Learning/LIBERO#benchmarking-knowledge-transfer-for-lifelong-robot-learning)。LIBERO当前单臂Franka/MuJoCo-robosuite，RoboTwin固定适配为双臂Aloha/SAPIEN；后者的双手协同、三视角、EEF位姿动作和域随机化增加了迁移内容。
+
+RoboTwin没有与上述四套一一对应的官方分类；50唯一任务在Easy/Hard条件下评测，不能计成100种。为了回答任务类型，按既有[TASKS.csv](TASKS.csv)互斥归类如下；**这是我们的工程归类，不是官方suite或论文分层指标**：
+
+| 分析类别 | 数量 | 例子 |
+|---|---:|---|
+| 抓取、摆放与容器操作 | 26 | place_object_basket、put_object_cabinet |
+| 叠放与排序 | 6 | stack_blocks_three、blocks_ranking_rgb |
+| 工具与按压 | 6 | beat_block_hammer、press_stapler |
+| 姿态调整与摇动 | 4 | adjust_bottle、shake_bottle |
+| 双臂搬运 | 3 | lift_pot、pick_dual_bottles |
+| 关节物体与开合 | 3 | open_microwave、open_laptop |
+| 双臂交接 | 2 | handover_block、handover_mic |
+
+总和50，任务名单源于固定官方评测脚本并去除多GPU补齐重复；类别之间实际行为可以重叠，上表只是固定的单标签分桶。[官方任务说明](https://robotwin-platform.github.io/doc/tasks/)。
+
+迁移建议的依赖顺序：
+
+1. 独立环境固定官方兼容commit，核查SAPIEN/Vulkan、资产、三相机渲染；现有535驱动兼容性待实机验证。
+2. 使用官方RoboTwin Target和原动作后处理，先复现完整任务baseline并保存严格匹配的有效seed、指令与初始化。官方已提供Target，无需从头训练大模型。
+3. 将draft输入/输出、位置编码改到32个action token和16有效通道；保留30维padded teacher/RNG协议。重新采集该Target监督、训练draft、校准normalizer和阈值，隔离FIT/CAL/DEV/TEST。不能直接搬LIBERO权重与tau。
+4. 适配S/T/PF2路由、完整scheduler计数、reset text bank及三相机cache；环境终止/长度按原step_lim。单层算子另需Q32/videoQ240/更长KV支持与真实输入核验，不与draft迁移同时改变数值路径。
+5. 先用6–10个跨机制任务的完整配对DEV判断迁移可行性；只有获准后扩50任务×100有效seed×三臂=15000完整episode。新DEV不是独立TEST，不改当前四项false。
+
+工程估时（推测性排期，不是已测耗时或执行授权）：环境与原Target完整复现约1–2工作日；投机/数据接口及审计约1–2工作日，资源或渲染不兼容会更久；新数据/训练/质量时间待测。15000局总GPU工作量可按单局均值t分钟估算为250t GPU小时；两卡各单worker理想墙钟125t小时。例如仅作为容量情景，t=2/5/10分钟时为500/1250/2500 GPU小时，两卡理想250/625/1250小时；这些不是RoboTwin实测，更未计数据采集、专家筛选、准备、失败长尾及争用。并行worker收益必须测量，不能按进程数线性外推。
+
+默认建议：先完成LIBERO算子数值与速度收口，第二环境作为随后有预算的迁移验证。RoboTwin可检验双臂和不同动作表示的泛化，但不会自动修复当前GEMM误差或使现有质量门通过。

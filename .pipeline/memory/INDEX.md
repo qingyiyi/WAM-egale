@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [先在自有整层算子内接入FA2](global/requirements/decision-先在自有整层算子内接入FA2.md)（constraint，当前算子）：先self/cross设备核心与误差核验，再研究跨阶段同步；RoboTwin仅调研。
+
 - [直接在optimized迭代、不另建登记](global/requirements/decision-直接在optimized迭代且不另建登记.md)（constraint，当前算子）：解除为另一agent带读冻结源码/另建版本的安排，沿现有记录保留验证证据。
 
 - [依据profile继续单层tile流水优化](global/requirements/decision-依据profile继续单层tile流水优化.md)（constraint，本轮M39）：用户已授权继续实现；其中独立带读版本/另行登记安排已被上方最新决定替代，原准入门不变。

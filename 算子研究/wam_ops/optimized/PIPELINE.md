@@ -1,3 +1,5 @@
+当前主入口已把本文件的async GEMM和[内部FA2](WHOLE_LAYER.md)合入`whole_layer.cu`。下文是M39初次双缓冲对照的历史说明。历史sync/async/profile重建须显式`WAM_M39_SOURCE`指向[原源档案](../../../.pipeline/experiments/single-layer-async-gemm-20261020/fa2-source-before/whole_layer.cu)，并核对固定SHA；不把当前FA2源代入旧生成器。
+
 # 单层GEMM双缓冲研究入口
 
 主算法：[csrc/gemm_pipeline.cuh](csrc/gemm_pipeline.cuh)。独立封装：[whole_layer_pipeline.py](whole_layer_pipeline.py)。构建：[build_pipeline.py](build_pipeline.py) / [pipeline_codegen.py](pipeline_codegen.py)。旧whole_layer.cu、旧DSO和baseline保持，供教学与同输入对照；本入口未接入模型默认路径。
