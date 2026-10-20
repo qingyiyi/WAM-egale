@@ -1,15 +1,13 @@
-# 当前Execution checkpoint
+# 最近执行 checkpoint
 
-## 2026-10-20：单卡RoboTwin迁移与算子下一步规划
+更新时间：2026-10-20T14:17:31+08:00。
 
-完成只读资源/源码/官方资料核查及[唯一详细计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)。12:03北京两卡空闲；现有va环境无SAPIEN/mplib发行包，系统Vulkan兼容性未知。计划区分84采集、90三臂DEV及算子数值→原语→就绪流水；预算与时间为建议。已保存用户规划范围记忆，未执行GPU/安装/下载/训练，不重置旧账本或更改四false。
+## 2026-10-20T14:20:35+08:00：有界验证收口与环境阻塞
 
-## 2026-10-20T11:30:55.620554+08:00：自有整层内部FA2交付与误差定位
+1. 用户明确同意两卡详细计划，登记M40独立迁移和原M39有界后继；保护项/旧预算不重置。
+2. O1九点数值修复完成；O2计时仍慢native。两个同名扩展初测INVALID，PID命名空间与清理竞态失败保留。
+3. O3完整行组ready实现并数值通过，实测更慢；bounded CAS修正空转后仍无净收益。O4依据参数副本/stack证据修正只读描述符，最终两路径有限数值通过，默认仍慢2.68–5.02倍，ready慢1.2%–6.0%。[最终结果](../../experiments/single-layer-async-gemm-20261020/FINAL-LAYER-RESULT.md)/[资源](../../experiments/single-layer-async-gemm-20261020/FOLLOWUP-STOP-REPORT.md)。
+4. RoboTwin固定源码/权重/资产/私有规划依赖准备完毕，真实原渲染连续两版本OIDN非法访存；共495.321秒，0policy/teacher。停止后继并归档，不改系统、物理或视觉配置来绕过。[阻塞](../../experiments/robotwin-pilot-20261020/ENVIRONMENT-STOP-RESULT.md)。
+5. 最终核对43owned根进程无仍匹配身份、两卡0MiB无compute进程。现无自动队列；等待兼容环境不是占卡运行。
 
-[内部FA2结果](../../experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：直接修改optimized，在整层单kernel内接入固定FA2 self/cross、split-KV/combine。9真实签名、18同输入attention全部逐位PASS；9重复/输入/RNG/参数、18相对旧async的有效KV转移和18单kernel trace通过。完整hidden仍9/9逐位FAIL，相对L2 0.133%–0.563%，最大0.5–1.5；同输入Q/FFN2独立误差和video短/中Norm2的12/8元素差异已定位，长video首次差异仅FFN2。
-
-两个进程216样本：相对旧async，短action慢8%–9%，长action耗时降18%–21%，长video降43%；仍比native慢3.20–7.60倍。108 CTA、255 registers、82464B shared、2168B local资源，非实测spill/occupancy。387block＋18SDPA＋18Linear；GPU worker生命周期69.979秒，阶段到清理836.9秒，约6.79MiB。两次CPU编译失败保留，7组父子14个PID/birth退出，两卡空；本地75/远端71保护项不变。无新机器人/训练/30层，四false保持。
-
-旧[M39双缓冲](../../experiments/single-layer-async-gemm-20261020/RESULT.md)675block、264.838秒、432样本及240/900登记不一致FAILED保留；旧预算未重置。本阶段沿既有记录承接用户FA2授权，没有新建实验登记。下一优先FFN2/Q及小量Norm2数值，再处理短Q资源压力与跨阶段就绪调度。
-
-源码直接改optimized；原baseline/依赖、投机源、原tile及state/cycle/rules保护。阶段前检查点见[history](history/M39-before-fa2-20261020/EXECUTION.md)，原双缓冲预算失败并未被本阶段成功清理覆盖。
+完整中间执行文字保留[本轮归档](history/ordered-followup-20261020/EXECUTION.md)。计算终态、有限精度与科学权限分别记录，不以脚本exit0或单kernel通过覆盖原FAILED/四false。

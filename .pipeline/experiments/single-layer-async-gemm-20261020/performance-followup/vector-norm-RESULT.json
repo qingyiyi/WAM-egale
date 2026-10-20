@@ -1,0 +1,206 @@
+{
+  "status": "COMPLETE_PRELIMINARY_NOT_FORMAL",
+  "rows": [
+    {
+      "case": "short-B2-action",
+      "vs_aligned": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 98304,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "resources": [
+        108,
+        1,
+        82464,
+        255,
+        2304,
+        256
+      ]
+    },
+    {
+      "case": "long-B14-action",
+      "vs_aligned": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          14,
+          16,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 688128,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "resources": [
+        108,
+        1,
+        82464,
+        255,
+        2304,
+        256
+      ]
+    },
+    {
+      "case": "long-B2-video",
+      "vs_aligned": {
+        "shape_match": true,
+        "dtype_match": true,
+        "finite_pass": true,
+        "shape": [
+          2,
+          128,
+          3072
+        ],
+        "dtype": "torch.bfloat16",
+        "bitwise_pass": true,
+        "tolerance_pass": true,
+        "different_bytes": 0,
+        "different_elements": 0,
+        "elements": 786432,
+        "tolerance_atol": 0.0,
+        "tolerance_rtol": 0.0,
+        "max_abs": 0.0,
+        "rel_l2": 0.0,
+        "abs_p50_p90_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quantile_status": "EXACT_ALL_ZERO"
+      },
+      "resources": [
+        108,
+        1,
+        82464,
+        255,
+        2304,
+        256
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "case": "short-B2-action",
+      "name": "old",
+      "repeat": 0,
+      "ms": 5.917695999145508,
+      "host_ms": 5.939405411481857
+    },
+    {
+      "case": "short-B2-action",
+      "name": "new",
+      "repeat": 0,
+      "ms": 5.394432067871094,
+      "host_ms": 5.415201187133789
+    },
+    {
+      "case": "short-B2-action",
+      "name": "new",
+      "repeat": 1,
+      "ms": 5.436416149139404,
+      "host_ms": 5.456223152577877
+    },
+    {
+      "case": "short-B2-action",
+      "name": "old",
+      "repeat": 1,
+      "ms": 5.394432067871094,
+      "host_ms": 5.41381910443306
+    },
+    {
+      "case": "long-B14-action",
+      "name": "old",
+      "repeat": 0,
+      "ms": 22.302719116210938,
+      "host_ms": 22.324937395751476
+    },
+    {
+      "case": "long-B14-action",
+      "name": "new",
+      "repeat": 0,
+      "ms": 21.783552169799805,
+      "host_ms": 21.805210039019585
+    },
+    {
+      "case": "long-B14-action",
+      "name": "new",
+      "repeat": 1,
+      "ms": 22.037504196166992,
+      "host_ms": 22.06080500036478
+    },
+    {
+      "case": "long-B14-action",
+      "name": "old",
+      "repeat": 1,
+      "ms": 21.833728790283203,
+      "host_ms": 21.855960600078106
+    },
+    {
+      "case": "long-B2-video",
+      "name": "old",
+      "repeat": 0,
+      "ms": 8.210432052612305,
+      "host_ms": 8.230920881032944
+    },
+    {
+      "case": "long-B2-video",
+      "name": "new",
+      "repeat": 0,
+      "ms": 8.216575622558594,
+      "host_ms": 8.235819637775421
+    },
+    {
+      "case": "long-B2-video",
+      "name": "new",
+      "repeat": 1,
+      "ms": 8.185855865478516,
+      "host_ms": 8.2050496712327
+    },
+    {
+      "case": "long-B2-video",
+      "name": "old",
+      "repeat": 1,
+      "ms": 8.165375709533691,
+      "host_ms": 8.215739391744137
+    }
+  ],
+  "full_block_calls": 18,
+  "scope": "three-input preliminary screen, one process",
+  "production_admitted": false,
+  "lifecycle_seconds": 8.894630670547485
+}

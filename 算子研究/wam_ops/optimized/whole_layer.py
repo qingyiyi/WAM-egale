@@ -1,4 +1,4 @@
-"""一层、一次 cooperative launch 的研究入口。未通过原逐位门，禁止生产替换。"""
+"""一层、一次cooperative launch；九签名有限逐位通过，尚未生产准入。"""
 from functools import lru_cache
 import importlib.util
 from pathlib import Path
@@ -23,12 +23,14 @@ class WholeLayerBlock:
     """保留原参数别名、缓存与 public forward；默认不接入任何模型。"""
     production_admitted = False
 
-    def __init__(self, block):
+    def __init__(self, block, bf16_split_reduction=True, tile_pipeline=False):
         # 只借用冻结参数绑定，不调用旧数学/DSO。
         from .native import NativeBlock
         binding = NativeBlock(block)
         self.weights, self.eps = binding.weights, binding.eps
         self.block = block
+        self.bf16_split_reduction = bool(bf16_split_reduction)
+        self.tile_pipeline = bool(tile_pipeline)
 
     def __call__(self, hidden_states, encoder_hidden_states, temb, rotary_emb,
                  update_cache=0, cache_name='pos', candidate_cache_rows=None,
@@ -39,5 +41,5 @@ class WholeLayerBlock:
         values = ([] if cache is None else
                   [cache[k] for k in ('k', 'v', 'id', 'mask', 'is_pred')])
         result = extension().forward(self.weights, hidden_states, encoder_hidden_states,
-            temb, rotary_emb, values, candidate_cache_rows, update_cache, self.eps, audit)
+            temb, rotary_emb, values, candidate_cache_rows, update_cache, self.eps, audit, self.bf16_split_reduction, self.tile_pipeline)
         return result if debug else result['output']

@@ -2,7 +2,7 @@
 kind: plan
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-20T12:09:06+08:00'
+updated: '2026-10-20T14:17:31+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 steps:
@@ -26,24 +26,27 @@ steps:
     status: completed
   - id: M39
     status: completed
+  - id: M40
+    status: blocked
 ---
 # 当前有界计划
 
-计算完成与科学验收分列；原终态/失败见[PROGRESS](PROGRESS.md)及[历史](history/M34-complete-20261020/PLAN.md)。
+计算终态不等于科学准入，四权限仍false。先按[短进度](PROGRESS.md)与实际终态恢复，不由历史计划自动启动。
 
-| ID | 状态 | 交付 / 验证 |
+| ID | 状态 | 交付/剩余 |
 |---|---|---|
-| `M17` | in_progress | 既定6000局计算结束；质量审计未准入，不开新评测 |
-| `M31` | completed | 原静态tile结果保留 |
-| `M32` | completed | 原阶段内persistent负结果保留 |
-| `M33` | completed | 原profile及反事实保留 |
-| `M34` | completed | 整层结构交付；原数值/速度NO-GO |
+| `M17` | in_progress | 原6000局计算齐，质量审计缺口保留，无新GPU队列 |
+| `M31` | completed | 静态子图有限结果保留 |
+| `M32` | completed | 阶段内persistent负结果保留 |
+| `M33` | completed | 退化profile/反事实收口 |
+| `M34` | completed | 原整层单kernel结构成立，旧精度/速度NO-GO |
 | `M35` | completed | 同卡计时330/360，原PARTIAL不重跑 |
-| `M36` | completed | RoboTwin只读调研完成 |
-| `M37` | completed | [成本归因](../../experiments/device-contract-20261020/TASK-COST-DIAGNOSIS.md)完成；[唯一设备候选](../../experiments/device-contract-20261020/RESULT.md)四项数值NO-GO，4参考block/12原语/8heuristic，owned退出。异步整层集成未触发 |
-| `M38` | completed | [整层慢点实测](../../experiments/whole-layer-bottleneck-20261020/RESULT.md)：6签名222block/300原语，5.09–11.14倍慢；GEMM主导、静态领取无益，清理完成 |
-| `M39` | completed | [内部FA2](../../experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：18同输入attention通过、整层9逐位FAIL；216计时/387block、owned清理。旧M39资源FAILED保留 |
+| `M36` | completed | RoboTwin只读官方资料核验完成 |
+| `M37` | completed | 原设备数值挑战者NO-GO与Long/Object成本归因 |
+| `M38` | completed | 原整层瓶颈测量收口 |
+| `M39` | completed | 新授权O1–O4有界后继收口：有限数值通过、速度NO-GO；完整3状态/cache矩阵未完成 |
+| `M40` | blocked | RoboTwin原渲染基础设施阻塞并停止；0policy/teacher，未启动训练/DEV |
 
-当前直接迭代四项已完成：内部FA2实现/有限核验、误差定位、RoboTwin只读复核、资源清理与证据更新。下一建议优先FFN2/Q/Norm2数值，尚未启动该后继作业；不自动扩大机器人/训练/TEST或第二环境。
+[两卡详细计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)随后获得[执行同意](../../memory/global/requirements/decision-执行RoboTwin迁移与算子有限收口.md)。原8h/24h与各stage帽不重置。本次M39完成1380/1500 block后停止；M40首场景失败后停止，余量不是无界续跑授权。
 
-2026-10-20新增[两卡并行规划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)，状态PLAN_READY_NOT_STARTED：建议GPU1负责6任务RoboTwin迁移（84采集＋90三臂DEV，GPU≤24h），GPU0负责数值→原语效率→tile就绪流水（初始GPU≤8h）。这是方案和估时，不是已启动/已获新预算；未新增实验ID，原门不变。
+下一步：算子应优先大GEMM/Norm与资源效率，暂不扩大ready队列；RoboTwin先有可运行原渲染的兼容环境再恢复首6局。新方向/完整矩阵仍明确列缺口，不签H3/H4或正式性能。旧计划与完整进度保留在[本轮历史](history/ordered-followup-20261020/PLAN.md)。

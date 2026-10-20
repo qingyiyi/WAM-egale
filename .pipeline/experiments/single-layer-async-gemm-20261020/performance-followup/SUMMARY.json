@@ -1,0 +1,279 @@
+{
+  "status": "COMPLETE_O2_NUMERICAL_PASS_PERFORMANCE_NO_GO",
+  "block_calls": 390,
+  "block_cap": 400,
+  "measured_latency_samples": 216,
+  "jobs": [
+    {
+      "job": "stage_profile",
+      "block_calls": 12,
+      "status": "COMPLETE_PROFILE_EXCLUDED_FROM_LATENCY"
+    },
+    {
+      "job": "vector_norm_screen",
+      "block_calls": 18,
+      "status": "INVALID_IMPLEMENTATION_IDENTITY"
+    },
+    {
+      "job": "wide_gemm_screen",
+      "block_calls": 18,
+      "status": "INVALID_IMPLEMENTATION_IDENTITY"
+    },
+    {
+      "job": "wide_finite_gate",
+      "block_calls": 72,
+      "status": "COMPLETE_FINITE_GATE"
+    },
+    {
+      "job": "timing1",
+      "block_calls": 0,
+      "status": "FAILED_PID_NAMESPACE_PRECHECK"
+    },
+    {
+      "job": "timing2",
+      "block_calls": 0,
+      "status": "FAILED_PID_NAMESPACE_PRECHECK"
+    },
+    {
+      "job": "timing3",
+      "block_calls": 135,
+      "status": "COMPLETE_SINGLE_LAYER_ENGINEERING_TIMING"
+    },
+    {
+      "job": "timing4",
+      "block_calls": 135,
+      "status": "COMPLETE_SINGLE_LAYER_ENGINEERING_TIMING"
+    }
+  ],
+  "rows": [
+    {
+      "case": "short-B2-action",
+      "native_ms": 1.4064639806747437,
+      "optimized_ms": 4.310528039932251,
+      "optimized_over_native": 3.0647980319156827,
+      "per_process": [
+        {
+          "native": 1.4064639806747437,
+          "new": 4.320768117904663
+        },
+        {
+          "native": 1.4069759845733643,
+          "new": 4.294143915176392
+        }
+      ],
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-short-B2-action-layer0-first.pt",
+      "resources": [
+        108,
+        1,
+        121376,
+        255,
+        2544,
+        256
+      ]
+    },
+    {
+      "case": "middle-B2-action",
+      "native_ms": 1.5498079657554626,
+      "optimized_ms": 4.465791940689087,
+      "optimized_over_native": 2.881513090244191,
+      "per_process": [
+        {
+          "native": 1.5505920052528381,
+          "new": 4.477391958236694
+        },
+        {
+          "native": 1.543615996837616,
+          "new": 4.45963191986084
+        }
+      ],
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-middle-B2-action-layer0-first.pt",
+      "resources": [
+        108,
+        1,
+        121376,
+        255,
+        2544,
+        256
+      ]
+    },
+    {
+      "case": "long-B2-action",
+      "native_ms": 1.55486398935318,
+      "optimized_ms": 4.032463908195496,
+      "optimized_over_native": 2.593451218760936,
+      "per_process": [
+        {
+          "native": 1.555840015411377,
+          "new": 4.24507212638855
+        },
+        {
+          "native": 1.4206079840660095,
+          "new": 3.8152319192886353
+        }
+      ],
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-long-B2-action-layer0-first.pt",
+      "resources": [
+        108,
+        1,
+        121376,
+        255,
+        2544,
+        256
+      ]
+    },
+    {
+      "case": "short-B14-action",
+      "native_ms": 2.2638720273971558,
+      "optimized_ms": 11.639039993286133,
+      "optimized_over_native": 5.141209331813645,
+      "per_process": [
+        {
+          "native": 2.387776017189026,
+          "new": 12.26688003540039
+        },
+        {
+          "native": 2.140128016471863,
+          "new": 10.815936088562012
+        }
+      ],
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-short-B14-action-layer0-first.pt",
+      "resources": [
+        108,
+        1,
+        121376,
+        255,
+        2544,
+        256
+      ]
+    },
+    {
+      "case": "middle-B14-action",
+      "native_ms": 2.4030081033706665,
+      "optimized_ms": 11.11292839050293,
+      "optimized_over_native": 4.624590476792391,
+      "per_process": [
+        {
+          "native": 2.403744101524353,
+          "new": 11.109471797943115
+        },
+        {
+          "native": 2.4014559984207153,
+          "new": 11.121808052062988
+        }
+      ],
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-middle-B14-action-layer0-first.pt",
+      "resources": [
+        108,
+        1,
+        121376,
+        255,
+        2544,
+        256
+      ]
+    },
+    {
+      "case": "long-B14-action",
+      "native_ms": 2.8378719091415405,
+      "optimized_ms": 11.492192268371582,
+      "optimized_over_native": 4.049581036886186,
+      "per_process": [
+        {
+          "native": 2.8378719091415405,
+          "new": 11.492192268371582
+        },
+        {
+          "native": 2.8387200832366943,
+          "new": 11.492448329925537
+        }
+      ],
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-long-B14-action-layer0-first.pt",
+      "resources": [
+        108,
+        1,
+        121376,
+        255,
+        2544,
+        256
+      ]
+    },
+    {
+      "case": "short-B2-video",
+      "native_ms": 1.4937759637832642,
+      "optimized_ms": 5.646255970001221,
+      "optimized_over_native": 3.7798546146779817,
+      "per_process": [
+        {
+          "native": 1.4953919649124146,
+          "new": 5.649168014526367
+        },
+        {
+          "native": 1.492799997329712,
+          "new": 5.64249587059021
+        }
+      ],
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/block-native-baseline-20261019/native-video-capture-attempt1/results/input-short-B2-video-layer0-first.pt",
+      "resources": [
+        108,
+        1,
+        121376,
+        255,
+        2544,
+        256
+      ]
+    },
+    {
+      "case": "middle-B2-video",
+      "native_ms": 1.584879994392395,
+      "optimized_ms": 5.784528017044067,
+      "optimized_over_native": 3.6498208302905084,
+      "per_process": [
+        {
+          "native": 1.5856959819793701,
+          "new": 5.795600175857544
+        },
+        {
+          "native": 1.584879994392395,
+          "new": 5.781615972518921
+        }
+      ],
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/block-native-baseline-20261019/native-video-capture-attempt1/results/input-middle-B2-video-layer0-first.pt",
+      "resources": [
+        108,
+        1,
+        121376,
+        255,
+        2544,
+        256
+      ]
+    },
+    {
+      "case": "long-B2-video",
+      "native_ms": 1.7115840315818787,
+      "optimized_ms": 5.956528186798096,
+      "optimized_over_native": 3.4801260568509504,
+      "per_process": [
+        {
+          "native": 1.7090719938278198,
+          "new": 5.95739221572876
+        },
+        {
+          "native": 1.7131839990615845,
+          "new": 5.950976133346558
+        }
+      ],
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/.pipeline/experiments/block-native-baseline-20261019/native-video-capture-attempt1/results/input-long-B2-video-layer0-first.pt",
+      "resources": [
+        108,
+        1,
+        121376,
+        255,
+        2544,
+        256
+      ]
+    }
+  ],
+  "scope": "standalone uncached eager single block, not strongest cached/Graph or robot performance",
+  "GPU_interference": "empty GPU0 prelaunch; one NVML context during each case; host/container PID identity mapping not independently proven; raw lists retained",
+  "old_results_retained": true,
+  "production_admitted": false
+}

@@ -9,6 +9,7 @@
 #include <cooperative_groups.h>
 #include <cuda_bf16.h>
 #include <mma.h>
+#include <cuda/atomic>
 #include <map>
 #include <optional>
 #include "norm.cuh"  // pinned Torch Welford arithmetic, read-only helper
@@ -36,21 +37,22 @@ struct Params {
     const c10::complex<float>* freq;
     B *pk,*pv; int64_t *ids,*rows,*slots,*free,*info;
     bool *mask,*pred;
-    int *queues,*visits,*stats;
+    int *queues,*visits,*stats,*ffn_counts;
     int b,q,c,l,fb,pool,pool_b,update,max_tasks;
-    bool temb_float,cache,candidate,affine,audit;
+    bool temb_float,cache,candidate,affine,audit,bf16_splits,tile_pipeline;
     float eps[7];
     float *fa_lse,*fa_lse_partial,*fa_out_partial;
     int64_t* fa_meta; int sms; float attn_scale,attn_scale_log2;
 };
-struct GemmShared { B x[2][64*40],w[2][64*40]; float y[64*64]; };
-struct NormShared {float x[D],y[D],reduce[6];};
+template<int TN,int TK>struct GemmStorage {B x[2][64*(TK+8)],w[2][TN*(TK+8)];float y[64*TN],partial_y[64*TN];};
+using GemmShared=GemmStorage<64,32>;
+struct NormShared {alignas(16) B input[D];float x[D],y[D],reduce[6];};
 struct AttnShared {
     B q[16*128],k[64*128],v[64*128],p[16*64];
     float score[16*64],o[16*128],pv[16*128];
     float m[16],l[16],alpha[16];
 };
-union alignas(32) TileShared {GemmShared gemm;NormShared norm;AttnShared attn;float point[512];char fa2_workspace[FA_SMEM];};
+union alignas(32) TileShared {GemmShared gemm;GemmStorage<128,64> gemm_wide;NormShared norm;AttnShared attn;float point[512];char fa2_workspace[FA_SMEM];};
 struct Shared {TileShared tile;int task;wam_whole_fa2::WholeParams fa2;};
 __device__ inline int warp(){return threadIdx.x/32;}
 __device__ inline int lane(){return threadIdx.x%32;}
@@ -86,12 +88,15 @@ __device__ void done(const Params& p,int st){
 #include "gemm_pipeline.cuh"
 __device__ void linear(const Params& p,Shared& s,cg::grid_group& g,int st,
                       const B* a,int wi,B* out,int m,int n,int k){
-    int ntiles=((m+63)/64)*((n+63)/64);begin(p,s,g,st,ntiles);
+    const int tn=m>=128?128:64;
+    int ntiles=((m+63)/64)*((n+tn-1)/tn);begin(p,s,g,st,ntiles);
     for(int t;(t=claim(p,s,st,ntiles))<ntiles;){
-        gemm_tile(s,a,(const B*)p.w[wi],(const B*)p.w[wi+1],out,m,n,k,t);done(p,st);
+        gemm_tile(s,a,(const B*)p.w[wi],(const B*)p.w[wi+1],out,m,n,k,t,p.bf16_splits);done(p,st);
     }
     g.sync();
 }
+
+#include "norm_device_generated.cuh"
 
 // Same vector-4 per-thread input order and Welford tree as the pinned Torch
 // helper. Logical compute coordinates are explicitly remapped to four warps;
@@ -99,9 +104,21 @@ __device__ void linear(const Params& p,Shared& s,cg::grid_group& g,int st,
 __device__ void norm_tile(Shared& sh,const B* x,void* y,const void* gamma,
                          const float* beta,float eps,bool rms,bool output_float,int row){
     auto& s=sh.tile.norm;
-    if(warp()==1)for(int i=lane();i<D;i+=32)s.x[i]=value(x[row*D+i]);
+    if(warp()==1){
+        for(int i=lane();i<D/8;i+=32)copy16_async(s.input+i*8,x+row*D+i*8,true);
+        asm volatile("cp.async.commit_group;":::"memory");
+        asm volatile("cp.async.wait_group 0;":::"memory");
+    }
     __syncthreads();
-    if(compute()){
+    if(compute())for(int v=ct();v<D/4;v+=128){
+        #pragma unroll
+        for(int j=0;j<4;++j)s.x[v*4+j]=value(s.input[v*4+j]);
+    }
+    __syncthreads();
+    if(compute() && !rms){
+        whole_norm_forward<float,float,false>(D,eps,s.x,
+            static_cast<const float*>(gamma),beta,nullptr,nullptr,s.y,s.reduce);
+    }else if(compute()){
         using namespace wam_optimized_norm;
         int tid=ct(),cw=tid/32,cl=tid%32;WelfordDataLN wd;
         for(int v=tid;v<D/4;v+=128)for(int j=0;j<4;++j)
@@ -129,8 +146,22 @@ __device__ void norm_tile(Shared& sh,const B* x,void* y,const void* gamma,
         }
     }
     __syncthreads();
-    if(warp()==7)for(int i=lane();i<D;i+=32){
-        if(output_float)((float*)y)[row*D+i]=s.y[i];else((B*)y)[row*D+i]=bf(s.y[i]);
+    if(warp()==7){
+        if(output_float){
+            for(int i=lane();i<D/4;i+=32)
+                reinterpret_cast<float4*>((float*)y+row*D)[i]=reinterpret_cast<const float4*>(s.y)[i];
+        }else{
+            for(int i=lane();i<D/8;i+=32){
+                uint32_t packed[4];
+                #pragma unroll
+                for(int j=0;j<4;++j){
+                    const unsigned lo=__bfloat16_as_ushort(bf(s.y[i*8+j*2]));
+                    const unsigned hi=__bfloat16_as_ushort(bf(s.y[i*8+j*2+1]));
+                    packed[j]=lo|(hi<<16);
+                }
+                reinterpret_cast<uint4*>((B*)y+row*D)[i]=make_uint4(packed[0],packed[1],packed[2],packed[3]);
+            }
+        }
     }
     __syncthreads();
 }
@@ -180,7 +211,7 @@ __device__ void point(const Params& p,Shared& s,cg::grid_group& g,int st,Point o
                     z=__fadd_rn(__fmul_rn(fp(p,a)[i],__fadd_rn(1.f,fp(p,MOD)[j+D])),fp(p,MOD)[j]);
                 }else if(op==RESIDUAL){float v=value(bp(p,b)[i]);
                     if(param>=0)v=__fmul_rn(v,fp(p,MOD)[(i/D*6+param)*D+i%D]);
-                    z=__fadd_rn(value(bp(p,a)[i]),v);
+                    z=__fadd_rn(value(a<0?p.x[i]:bp(p,a)[i]),v);
                 }else if(op==ROPE){int64_t r=i/64,batch=r/(p.q*H),t=(r/H)%p.q,j=i%64;
                     auto f=p.freq[((p.fb==1?0:batch)*p.q+t)*64+j];
                     double x=double(value(bp(p,a)[2*i])),y=double(value(bp(p,a)[2*i+1]));
@@ -224,8 +255,11 @@ __device__ const B* self_kv(const Params& p,bool val,int batch,int token,int hea
 // Query tiles always stay within one (candidate, head) instance. B14 is NOT a
 // Q112 sequence. Candidate private suffix visibility is preserved explicitly.
 #include "fa2_stage.cuh"
+#include "ffn_pipeline.cuh"
 
-__global__ void whole_layer(Params p){
+// All threads read the same immutable launch descriptors. Avoid an implicit
+// per-thread local copy when a device helper takes Params by reference.
+__global__ void whole_layer(const __grid_constant__ Params p){
     extern __shared__ __align__(32) unsigned char memory[];
     Shared& s=*reinterpret_cast<Shared*>(memory);auto g=cg::this_grid();
     // Workspace audit initialization is inside this same computational launch.
@@ -244,9 +278,8 @@ __global__ void whole_layer(Params p){
                point(p,s,g,st++,ROPE,SKR,SKN,0,0,int64_t(m)*D/2);}
     insert_cache(p,s,g,st++);attention(p,s,g,st++,false);
     linear(p,s,g,st++,bp(p,SA),9,bp(p,SO),m,D,D);
-    // Input x is an external tensor, passed as an alias only in this invocation.
-    Params r=p;r.a[SQ0]=(void*)p.x;
-    point(r,s,g,st++,RESIDUAL,R1,SQ0,SO,2,int64_t(m)*D);
+    // The external hidden input has an explicit operand, not a copied Params.
+    point(p,s,g,st++,RESIDUAL,R1,-1,SO,2,int64_t(m)*D);
     if(p.affine)norm(p,s,g,st++,bp(p,R1),p.a[N2],m,1,2,p.eps[1],false,false);
     linear(p,s,g,st++,bp(p,N2),13,bp(p,CQ0),m,D,D);
     linear(p,s,g,st++,p.context,15,bp(p,CK0),mc,D,D);
@@ -257,9 +290,12 @@ __global__ void whole_layer(Params p){
     point(p,s,g,st++,RESIDUAL,R2,R1,CO,-1,int64_t(m)*D);
     norm(p,s,g,st++,bp(p,R2),p.a[N3],m,-1,-1,p.eps[2],false,true);
     point(p,s,g,st++,MODULATE,M3,N3,0,3,int64_t(m)*D);
-    linear(p,s,g,st++,bp(p,M3),23,bp(p,F1),m,F,D);
-    point(p,s,g,st++,GELU,ACT,F1,0,0,int64_t(m)*F);
-    linear(p,s,g,st++,bp(p,ACT),25,bp(p,F2),m,D,F);
+    if(p.tile_pipeline){ffn_subgraph(p,s,g,st,m);st+=3;}
+    else{
+        linear(p,s,g,st++,bp(p,M3),23,bp(p,F1),m,F,D);
+        point(p,s,g,st++,GELU,ACT,F1,0,0,int64_t(m)*F);
+        linear(p,s,g,st++,bp(p,ACT),25,bp(p,F2),m,D,F);
+    }
     point(p,s,g,st++,RESIDUAL,OUT,R2,F2,5,int64_t(m)*D);
     if(p.cache&&!p.candidate&&p.info[1]==0&&p.update==0&&blockIdx.x==0&&warp()==0)
         for(int j=lane();j<p.q;j+=32)p.mask[p.free[j]]=false;
@@ -269,16 +305,17 @@ __global__ void whole_layer(Params p){
 std::map<std::string,Tensor> forward(const std::vector<Tensor>& w,const Tensor& x,
     const Tensor& context,const Tensor& temb,const std::optional<Tensor>& freq,
     const std::vector<Tensor>& cache,const std::optional<Tensor>& rows,int update,
-    const std::vector<double>& eps,bool audit){
+    const std::vector<double>& eps,bool audit,bool bf16_splits,bool tile_pipeline){
     TORCH_CHECK(w.size()==27&&eps.size()==7,"whole-layer weight schema");
     TORCH_CHECK(x.is_cuda()&&x.scalar_type()==at::kBFloat16&&x.is_contiguous()&&x.dim()==3&&x.size(2)==D,"BF16 [B,Q,3072]");
-    TORCH_CHECK((x.size(0)==2||x.size(0)==14)&&(x.size(1)==16||x.size(1)==128),"finite actual shape contract");
+    TORCH_CHECK(uintptr_t(x.data_ptr())%16==0,"input 16-byte alignment");
+    TORCH_CHECK((x.size(0)==2&&(x.size(1)==16||x.size(1)==128))||(x.size(0)==14&&x.size(1)==16),"nine actual signatures only: B2 Q16/Q128 or B14 Q16");
     TORCH_CHECK(context.is_contiguous()&&context.scalar_type()==at::kBFloat16&&context.size(0)==x.size(0)&&context.size(2)==D,"context");
     TORCH_CHECK(context.device()==x.device()&&context.size(1)>0&&uintptr_t(context.data_ptr())%16==0,"context device/alignment");
     TORCH_CHECK(temb.is_contiguous()&&(temb.scalar_type()==at::kFloat||temb.scalar_type()==at::kBFloat16)&&temb.size(0)==x.size(0)&&temb.size(-2)==6&&temb.size(-1)==D&&(temb.size(1)==1||temb.size(1)==x.size(1)),"temb");
     TORCH_CHECK(temb.device()==x.device(),"temb device");
     TORCH_CHECK(update>=0&&update<=2,"update mode");c10::cuda::CUDAGuard guard(x.device());
-    Params p{};p.b=x.size(0);p.q=x.size(1);p.c=context.size(1);p.l=temb.size(1);p.update=update;p.audit=audit;
+    Params p{};p.b=x.size(0);p.q=x.size(1);p.c=context.size(1);p.l=temb.size(1);p.update=update;p.audit=audit;p.bf16_splits=bf16_splits;p.tile_pipeline=tile_pipeline;
     p.x=(const B*)x.data_ptr();p.context=(const B*)context.data_ptr();p.temb=temb.data_ptr();p.temb_float=temb.scalar_type()==at::kFloat;
     for(int i=0;i<27;++i){TORCH_CHECK(w[i].device()==x.device()&&w[i].is_contiguous()&&!w[i].requires_grad(),"weight device/layout/grad");
         TORCH_CHECK(w[i].scalar_type()==(i<=2?at::kFloat:at::kBFloat16)||w[i].numel()==0,"explicit canonical dtype index ",i);
@@ -314,6 +351,7 @@ std::map<std::string,Tensor> forward(const std::vector<Tensor>& w,const Tensor& 
     auto queues=at::empty({MAX_STAGES},io),stats=at::empty({MAX_STAGES,3},io);
     auto visits=at::empty({audit?MAX_STAGES*p.max_tasks:1},io);
     p.queues=queues.data_ptr<int>();p.stats=stats.data_ptr<int>();p.visits=visits.data_ptr<int>();
+    auto ffn_counts=at::empty({((p.b*p.q+63)/64)*2+4},io);p.ffn_counts=ffn_counts.data_ptr<int>();
     int device=x.get_device(),sm=0,cooperative=0,active=0;
     p.sms=at::cuda::getCurrentDeviceProperties()->multiProcessorCount;
     p.attn_scale=float(1.0/std::sqrt(128.0));
@@ -342,6 +380,7 @@ std::map<std::string,Tensor> forward(const std::vector<Tensor>& w,const Tensor& 
     cudaFuncAttributes attr;C10_CUDA_CHECK(cudaFuncGetAttributes(&attr,whole_layer));
     result["resources"]=at::tensor({int64_t(blocks),int64_t(active),int64_t(sizeof(Shared)),int64_t(attr.numRegs),int64_t(attr.localSizeBytes),int64_t(THREADS)},at::TensorOptions().dtype(at::kLong));
     result["attention_meta"]=fa_meta;
+    if(tile_pipeline)result["ffn_schedule"]=ffn_counts;
     result["logical_slots"]=slots; // Only cache_info[0] entries are initialized.
     return result;
 }

@@ -1,27 +1,10 @@
 # 当前入口
 
-<!-- robotwin-operator-plan-20261020 -->
-新增[单卡RoboTwin与算子并行计划](../.pipeline/cycles/wam-research-20261016/ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)：仅规划、未启动，建议GPU1迁移/GPU0算子；阶段、预算、止损及来源见该文。历史质量门不变。
+最新已执行结果：[CURRENT-EXECUTION-20261020.md](CURRENT-EXECUTION-20261020.md)/[状态JSON](CURRENT-EXECUTION-20261020.json)。固定本文件所在commit审查，不由后续main覆盖身份。
 
-<!-- fa2-current-entry -->
-最新[内部FA2、整层误差与RoboTwin评估](CURRENT-20261020.md)在顶部。attention局部通过，完整block和四项质量权限未放行。
+当前完整单层九真实签名×两路径有限逐位通过，性能仍NO-GO；RoboTwin原渲染阻塞，0policy/teacher；两卡owned任务清理，无自动队列。四质量权限仍false，旧FAILED/retention和固定paused72身份不改。[HW短入口](../.pipeline/PROGRESS.compact.md)。
 
-
-
-
-<!-- m39-entry -->
-最新[M39双缓冲/资源审计](CURRENT-20261020.md)在顶部；原Torch数值NO-GO与四false不改，GPU已清理。
-
-
-<!-- m38-entry -->
-最新整层退化profile和代码讲解在[CURRENT](CURRENT-20261020.md)顶部；原门和旧结果保持。
-
-<!-- m37-entry -->
-最新M37四原语数值NO-GO和Long/Object成本解释见[CURRENT](CURRENT-20261020.md)顶部；M34/四套旧记录仍保留。
-
-先读[10/20当前源码与结果](CURRENT-20261020.md)。整层单kernel结构已经实测，原精度与性能门失败，600调用后算子诊断已收口；四套原6000局计算齐，新同卡计时按原登记核验终态。baseline/投机代码不改，四质量字段false。[下一轮网页审查问题](OPERATOR-NEXT-REVIEW-20261020.md)只作只读建议。
-
-以下正文和review/RESULTS.json保留4f04 paused72历史，不作为当前进度；旧FAILED、retention和固定科学身份不改。
+下方及旧RESULTS.json是固定paused72历史；此前“整层仍9失败/只读规划”的最新描述已被上方新后继接续，原始负结果未修改。
 
 ---
 

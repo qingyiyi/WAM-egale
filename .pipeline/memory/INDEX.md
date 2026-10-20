@@ -4,6 +4,8 @@
 
 ## 当前资源偏好
 
+- [执行RoboTwin迁移与算子有限收口](global/requirements/decision-执行RoboTwin迁移与算子有限收口.md)（constraint，当前Cycle）：用户已批准两卡计划；GPU1迁移≤24h、GPU0算子≤8h，先原Target/数值，再后继，旧门保护；替代此前仅规划。
+
 - [先在自有整层算子内接入FA2](global/requirements/decision-先在自有整层算子内接入FA2.md)（constraint，当前算子）：先self/cross设备核心与误差核验，再研究跨阶段同步；RoboTwin仅调研。
 
 - [直接在optimized迭代、不另建登记](global/requirements/decision-直接在optimized迭代且不另建登记.md)（constraint，当前算子）：解除为另一agent带读冻结源码/另建版本的安排，沿现有记录保留验证证据。

@@ -1,0 +1,763 @@
+{
+  "method": "deduplicate records by PID and birth_ticks; O3 timing receipt accidentally embeds dependency jobs, original retained",
+  "jobs": [
+    {
+      "name": "initial-numeric-worker",
+      "owned": {
+        "pid": 646817,
+        "birth_ticks": 706872931,
+        "pgid": 646817
+      },
+      "start": 1792470270.7505481,
+      "end": 1792470282.3819332,
+      "rc": 0,
+      "reaped": true,
+      "sources": [
+        "numeric-followup/CLEANUP.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.631385087966919
+    },
+    {
+      "name": "norm-build",
+      "owned": {
+        "pid": 647448,
+        "birth_ticks": 706901810,
+        "pgid": 647448
+      },
+      "start": 1792470559.539783,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792470675.5121355,
+      "sources": [
+        "numeric-followup/NORM-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 115.97235250473022
+    },
+    {
+      "name": "norm-gate",
+      "owned": {
+        "pid": 647711,
+        "birth_ticks": 706913408,
+        "pgid": 647711
+      },
+      "start": 1792470675.5210521,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792470686.6490443,
+      "sources": [
+        "numeric-followup/NORM-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.127992153167725
+    },
+    {
+      "name": "norm-gate-2",
+      "owned": {
+        "pid": 647961,
+        "birth_ticks": 706928197,
+        "pgid": 647961
+      },
+      "start": 1792470823.4124937,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792470834.6408486,
+      "sources": [
+        "numeric-followup/NORM-JOBS-2.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.228354930877686
+    },
+    {
+      "name": "split-build",
+      "owned": {
+        "pid": 648365,
+        "birth_ticks": 706949349,
+        "pgid": 648365
+      },
+      "start": 1792471034.9325223,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792471151.6594138,
+      "sources": [
+        "numeric-followup/SPLIT-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 116.72689151763916
+    },
+    {
+      "name": "split-gate",
+      "owned": {
+        "pid": 648679,
+        "birth_ticks": 706961023,
+        "pgid": 648679
+      },
+      "start": 1792471151.6698146,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792471162.9499838,
+      "sources": [
+        "numeric-followup/SPLIT-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.280169248580933
+    },
+    {
+      "name": "epilogue-build",
+      "owned": {
+        "pid": 648848,
+        "birth_ticks": 706971384,
+        "pgid": 648848
+      },
+      "start": 1792471255.2757196,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792471372.0611458,
+      "sources": [
+        "numeric-followup/EPILOGUE-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 116.78542613983154
+    },
+    {
+      "name": "epilogue-gate",
+      "owned": {
+        "pid": 649010,
+        "birth_ticks": 706983062,
+        "pgid": 649010
+      },
+      "start": 1792471372.064727,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792471383.242997,
+      "sources": [
+        "numeric-followup/EPILOGUE-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.178269863128662
+    },
+    {
+      "name": "initial-bias-build",
+      "owned": {
+        "pid": 649370,
+        "birth_ticks": 707000085,
+        "pgid": 649370
+      },
+      "start": 1792471542.293976,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792471659.426698,
+      "sources": [
+        "numeric-followup/INITIAL-BIAS-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 117.13272190093994
+    },
+    {
+      "name": "initial-bias-gate",
+      "owned": {
+        "pid": 649509,
+        "birth_ticks": 707011799,
+        "pgid": 649509
+      },
+      "start": 1792471659.43252,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792471670.7613828,
+      "sources": [
+        "numeric-followup/INITIAL-BIAS-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.32886290550232
+    },
+    {
+      "name": "transpose-build",
+      "owned": {
+        "pid": 649695,
+        "birth_ticks": 707022743,
+        "pgid": 649695
+      },
+      "start": 1792471768.8702452,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792471885.701696,
+      "sources": [
+        "numeric-followup/TRANSPOSE-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 116.83145070075989
+    },
+    {
+      "name": "transpose-gate",
+      "owned": {
+        "pid": 649953,
+        "birth_ticks": 707034427,
+        "pgid": 649953
+      },
+      "start": 1792471885.70531,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792471896.9842186,
+      "sources": [
+        "numeric-followup/TRANSPOSE-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.278908491134644
+    },
+    {
+      "name": "full-gate",
+      "owned": {
+        "pid": 650233,
+        "birth_ticks": 707053619,
+        "pgid": 650233
+      },
+      "start": 1792472077.6322541,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792472089.7130268,
+      "sources": [
+        "numeric-followup/FULL-GATE-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 12.080772638320923
+    },
+    {
+      "name": "q-profile",
+      "owned": {
+        "pid": 650337,
+        "birth_ticks": 707058041,
+        "pgid": 650337
+      },
+      "start": 1792472121.846658,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792472132.8259308,
+      "sources": [
+        "numeric-followup/Q-PROFILE-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 10.979272842407227
+    },
+    {
+      "name": "sliced-build",
+      "owned": {
+        "pid": 650624,
+        "birth_ticks": 707074071,
+        "pgid": 650624
+      },
+      "start": 1792472282.1484926,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792472400.1791565,
+      "sources": [
+        "numeric-followup/SLICED-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 118.03066396713257
+    },
+    {
+      "name": "sliced-gate",
+      "owned": {
+        "pid": 650764,
+        "birth_ticks": 707085874,
+        "pgid": 650764
+      },
+      "start": 1792472400.1849077,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792472411.4141612,
+      "sources": [
+        "numeric-followup/SLICED-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.22925353050232
+    },
+    {
+      "name": "full-gate-2",
+      "owned": {
+        "pid": 651189,
+        "birth_ticks": 707120922,
+        "pgid": 651189
+      },
+      "start": 1792472750.6583803,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792472762.638344,
+      "sources": [
+        "numeric-followup/FULL-GATE-2-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.979963779449463
+    },
+    {
+      "name": "reduction-order-build",
+      "owned": {
+        "pid": 651401,
+        "birth_ticks": 707139082,
+        "pgid": 651401
+      },
+      "start": 1792472932.2626297,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792473050.1805413,
+      "sources": [
+        "numeric-followup/FULL-GATE-3-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 117.91791152954102
+    },
+    {
+      "name": "full-gate-3",
+      "owned": {
+        "pid": 651551,
+        "birth_ticks": 707150874,
+        "pgid": 651551
+      },
+      "start": 1792473050.1843343,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792473062.113431,
+      "sources": [
+        "numeric-followup/FULL-GATE-3-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.929096698760986
+    },
+    {
+      "name": "aligned-build",
+      "owned": {
+        "pid": 652432,
+        "birth_ticks": 707223070,
+        "pgid": 652432
+      },
+      "start": 1792473772.1394882,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792473890.414219,
+      "sources": [
+        "numeric-followup/O2-PROFILE-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 118.27473068237305
+    },
+    {
+      "name": "profile-prepare",
+      "owned": {
+        "pid": 652682,
+        "birth_ticks": 707234898,
+        "pgid": 652682
+      },
+      "start": 1792473890.4217486,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792473890.4851518,
+      "sources": [
+        "numeric-followup/O2-PROFILE-JOBS.json"
+      ],
+      "kind": "CPU_GENERATION",
+      "seconds": 0.06340312957763672
+    },
+    {
+      "name": "profile-build",
+      "owned": {
+        "pid": 652683,
+        "birth_ticks": 707234905,
+        "pgid": 652683
+      },
+      "start": 1792473890.4867961,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792474008.8145382,
+      "sources": [
+        "numeric-followup/O2-PROFILE-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 118.32774209976196
+    },
+    {
+      "name": "profile-gate",
+      "owned": {
+        "pid": 652967,
+        "birth_ticks": 707246738,
+        "pgid": 652967
+      },
+      "start": 1792474008.8186135,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792474019.9965327,
+      "sources": [
+        "numeric-followup/O2-PROFILE-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.177919149398804
+    },
+    {
+      "name": "vector-norm-build",
+      "owned": {
+        "pid": 653459,
+        "birth_ticks": 707282201,
+        "pgid": 653459
+      },
+      "start": 1792474363.4501069,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792474481.7824569,
+      "sources": [
+        "performance-followup/O2-VECTOR-NORM-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 118.33235001564026
+    },
+    {
+      "name": "vector-norm-screen",
+      "owned": {
+        "pid": 653563,
+        "birth_ticks": 707294035,
+        "pgid": 653563
+      },
+      "start": 1792474481.7883132,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792474492.9164,
+      "sources": [
+        "performance-followup/O2-VECTOR-NORM-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.128086805343628
+    },
+    {
+      "name": "wide-gemm-build",
+      "owned": {
+        "pid": 654001,
+        "birth_ticks": 707329915,
+        "pgid": 654001
+      },
+      "start": 1792474840.5877128,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792474962.9845486,
+      "sources": [
+        "performance-followup/O2-WIDE-GEMM-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 122.3968358039856
+    },
+    {
+      "name": "wide-gemm-screen",
+      "owned": {
+        "pid": 654155,
+        "birth_ticks": 707342156,
+        "pgid": 654155
+      },
+      "start": 1792474962.9952738,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792474974.076824,
+      "sources": [
+        "performance-followup/O2-WIDE-GEMM-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.081550121307373
+    },
+    {
+      "name": "o2-finite-gate",
+      "owned": {
+        "pid": 654353,
+        "birth_ticks": 707350872,
+        "pgid": 654353
+      },
+      "start": 1792475050.1629975,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475061.8947842,
+      "sources": [
+        "performance-followup/O2-FINITE-GATE-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.731786727905273
+    },
+    {
+      "name": "o2-timing-1",
+      "owned": {
+        "pid": 654813,
+        "birth_ticks": 707365435,
+        "pgid": 654813
+      },
+      "start": 1792475195.7929292,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475206.570082,
+      "sources": [
+        "performance-followup/O2-TIMING-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 10.77715277671814
+    },
+    {
+      "name": "o2-timing-2",
+      "owned": {
+        "pid": 654863,
+        "birth_ticks": 707366513,
+        "pgid": 654863
+      },
+      "start": 1792475206.5716782,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475217.2990146,
+      "sources": [
+        "performance-followup/O2-TIMING-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 10.727336406707764
+    },
+    {
+      "name": "o2-timing-3",
+      "owned": {
+        "pid": 654990,
+        "birth_ticks": 707375086,
+        "pgid": 654990
+      },
+      "start": 1792475292.2978256,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475304.6305459,
+      "sources": [
+        "performance-followup/O2-TIMING-REPAIRED-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 12.332720279693604
+    },
+    {
+      "name": "o2-timing-4",
+      "owned": {
+        "pid": 655016,
+        "birth_ticks": 707376322,
+        "pgid": 655016
+      },
+      "start": 1792475304.661923,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475316.743224,
+      "sources": [
+        "performance-followup/O2-TIMING-REPAIRED-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 12.081300973892212
+    },
+    {
+      "name": "ready-build",
+      "owned": {
+        "pid": 655207,
+        "birth_ticks": 707394346,
+        "pgid": 655207
+      },
+      "start": 1792475484.9028337,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475609.4281702,
+      "sources": [
+        "ready-followup/O3-BUILD-GATE-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 124.52533650398254
+    },
+    {
+      "name": "ready-finite-gate",
+      "owned": {
+        "pid": 655455,
+        "birth_ticks": 707406799,
+        "pgid": 655455
+      },
+      "start": 1792475609.4296956,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475621.2637877,
+      "sources": [
+        "ready-followup/O3-BUILD-GATE-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.834092140197754
+    },
+    {
+      "name": "ready-bounded-build",
+      "owned": {
+        "pid": 655726,
+        "birth_ticks": 707422026,
+        "pgid": 655726
+      },
+      "start": 1792475761.6962755,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475886.1225364,
+      "sources": [
+        "ready-followup/O3-BOUNDED-BUILD-GATE-JOBS.json",
+        "ready-followup/O3-TIMING-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 124.42626094818115
+    },
+    {
+      "name": "ready-bounded-finite-gate",
+      "owned": {
+        "pid": 655892,
+        "birth_ticks": 707434469,
+        "pgid": 655892
+      },
+      "start": 1792475886.1321006,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475897.9112694,
+      "sources": [
+        "ready-followup/O3-BOUNDED-BUILD-GATE-JOBS.json",
+        "ready-followup/O3-TIMING-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.779168844223022
+    },
+    {
+      "name": "ready-timing-1",
+      "owned": {
+        "pid": 656060,
+        "birth_ticks": 707441896,
+        "pgid": 656060
+      },
+      "start": 1792475960.4048662,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475972.9975157,
+      "sources": [
+        "ready-followup/O3-TIMING-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 12.592649459838867
+    },
+    {
+      "name": "ready-timing-2",
+      "owned": {
+        "pid": 656086,
+        "birth_ticks": 707443163,
+        "pgid": 656086
+      },
+      "start": 1792475973.0688868,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792475985.549463,
+      "sources": [
+        "ready-followup/O3-TIMING-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 12.480576276779175
+    },
+    {
+      "name": "final-build",
+      "owned": {
+        "pid": 656320,
+        "birth_ticks": 707472160,
+        "pgid": 656320
+      },
+      "start": 1792476263.0433578,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792476387.2892444,
+      "sources": [
+        "final-followup/O4-BUILD-GATE-JOBS.json"
+      ],
+      "kind": "CPU_BUILD",
+      "seconds": 124.24588656425476
+    },
+    {
+      "name": "final-finite-gate",
+      "owned": {
+        "pid": 656474,
+        "birth_ticks": 707484586,
+        "pgid": 656474
+      },
+      "start": 1792476387.2984266,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792476399.579245,
+      "sources": [
+        "final-followup/O4-BUILD-GATE-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 12.280818462371826
+    },
+    {
+      "name": "final-timing-1",
+      "owned": {
+        "pid": 656547,
+        "birth_ticks": 707485869,
+        "pgid": 656547
+      },
+      "start": 1792476400.131094,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792476412.261227,
+      "sources": [
+        "final-followup/O4-TIMING-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 12.130132913589478
+    },
+    {
+      "name": "final-timing-2",
+      "owned": {
+        "pid": 656623,
+        "birth_ticks": 707487087,
+        "pgid": 656623
+      },
+      "start": 1792476412.3124864,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792476424.543399,
+      "sources": [
+        "final-followup/O4-TIMING-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 12.230912685394287
+    },
+    {
+      "name": "default-traces",
+      "owned": {
+        "pid": 656820,
+        "birth_ticks": 707500779,
+        "pgid": 656820
+      },
+      "start": 1792476549.2345483,
+      "rc": 0,
+      "reaped": true,
+      "end": 1792476560.3636496,
+      "sources": [
+        "final-followup/O4-DEFAULT-TRACE-JOBS.json"
+      ],
+      "kind": "GPU_WORKER_OR_RUNTIME_QUERY",
+      "seconds": 11.129101276397705
+    }
+  ],
+  "GPU_worker_lifecycle_seconds": 324.7476074695587,
+  "CPU_build_seconds": 1669.9265608787537,
+  "missing_end_count": 0,
+  "CUDA_active_seconds": "UNKNOWN: not measured",
+  "zero_GPU_launcher_failure": "initial missing-parent mkdir failure retained descriptively; exact elapsed UNKNOWN",
+  "total_block_calls": 1380,
+  "stage_caps": {
+    "O1": [
+      261,
+      300
+    ],
+    "O2": [
+      390,
+      400
+    ],
+    "O3": [
+      432,
+      500
+    ],
+    "O4": [
+      297,
+      300
+    ]
+  },
+  "CPU_generation_seconds": 0.06340312957763672
+}

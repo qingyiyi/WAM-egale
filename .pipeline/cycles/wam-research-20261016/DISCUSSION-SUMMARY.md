@@ -1,23 +1,15 @@
 # 当前讨论与授权
 
-最新用户要求先规划：远端一张GPU迁移投机侧到RoboTwin测试，同时规划算子下一步。[详细计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)已交付，建议GPU1迁移、GPU0算子，尚未执行新作业；具体预算不是执行授权。[范围记忆](../../memory/global/requirements/decision-单卡规划RoboTwin迁移并行推进算子.md)替代仅泛泛调研的建议，原安装/训练边界保留。
+用户最新明确同意按[两卡计划](ROBOTWIN-AND-OPERATOR-PLAN-20261020.md)执行并汇报，见[新执行决定](../../memory/global/requirements/decision-执行RoboTwin迁移与算子有限收口.md)。原Target/数值先行，后继依前置和预算；不再是旧“只读规划”。
 
-此前已明确算子目标：整个单层Transformer在一个persistent kernel内，把全部算子切tile交给职责不同的warp，借鉴MegaMoE。只一层，不做30层大融合。baseline及共享依赖冻结，仅修改optimized；投机代码/配置与原tile不改。
+本次M39已按有限预算收口，数值通过、速度NO-GO；M40原渲染基础设施阻塞并停止，尚无完整policy/teacher或训练。不能把“正在研究”说成GPU仍运行。具体动态事实以PROGRESS和原件为准。
 
-用户允许四套LIBERO速度统一远端测，替代旧“最终E2E必须本机”的地点条款；每卡计时单worker且无观察到争用，M34 GPU验证等对应计时卡清理，CPU实现可并行。本机可用自然空闲窗口先核对精度；不杀他人。AutoDL已归还不再连接，BAAI所有写入限~/cxz。
+用户要求整个**单层**Transformer在一个persistent kernel内，tile由职责明确的warp协作，借鉴MegaMoE；不是30层融合。baseline及依赖冻结，直接在optimized迭代，不为带读另建代码版本/研究ID。当前有完整单kernel和FFN行组就绪交接，其他阶段仍有barrier，FA2计算warp仍自行load/MMA/softmax/store。当前ready更慢，默认False；不能把结构实现当作性能创新通过。
 
-当前M34结构实测成立但精度/性能NO-GO，已按600调用有界诊断收口；没有授权放宽原门。M35原360面板因Object1实施失败最多330，原失败保留、不自动重跑或延长截止；原未启动2/3可以按既定预算接续。RoboTwin仅调研，没有新增实验/安装/权重下载权限。
+BAAI所有写入仅~/cxz，用户允许性能统一远端；系统驱动/服务/时钟不改，不杀他人。AutoDL已归还不再连接。本轮GPU0≤8h、GPU1≤24h、CPU准备10/20 18:20北京及每stage/call/存储帽保留，已停止不自动重启或追加租卡。RoboTwin需兼容原渲染的环境，已询问用户有无已跑通资源；不静默关闭去噪/光追。
 
-四质量权限保持false，旧FAILED/retention/NO_GO/paused72/96、MLP0、22缺收据/default A_off保留。不能用成功子集、调用减少、match-v1、单kernel结构或普通batch/cache宣称质量与协同加速。新训练/120/独立TEST/受阻45chunk不自动启动。
+TF64/各套权重与tau/selector等旧身份不改；PF2=SST完整policy请求，不是bonus或物理状态恢复。所有可运行的LIBERO臂同等使用完整512-token BF16 reset bank，冷启动另列；RoboTwin因0policy尚无新bank/等价证明。原始FAILED/retention/NO_GO/paused72、MLP0、22缺收据/default A_off与四质量false保留。完整6000局和计时重复不混成独立TEST。新算子有限精度不能继承为机器人质量或正式性能许可。
 
-只main公开核对源码/HW/小证据，模型/PT/KV/图像/DSO/工具链/连接配置/凭据不公开。中文正文逐段交用户飞书，不建本地初稿。10/22 go/no-go、10/23冻结、10/28表、11/01 18:00老师中文证据包；官方投稿日期见日期报告，作者profile仍UNKNOWN。
+只main公开核对源码、HW和小证据，不公开模型/PT/KV/相机/DSO/工具链/私有SASS/连接配置/凭据。论文中文逐段交用户飞书，不建本地初稿。10/22 go-no-go、10/23冻结、10/28表、11/01 18:00老师证据包；官方日期/profile UNKNOWN项见日期报告。
 
-旧讨论原文保留[归档](history/M34-complete-20261020/DISCUSSION-SUMMARY.md)；保护state/cycle/rules、不升级或旧sync。当前进度以PROGRESS与实际终态为准。
-
-## 当前优先级
-
-用户明确先在自有单层kernel内部实现FA2，再研究跨阶段同步；要求量化误差并调查RoboTwin/LIBERO差异。已完成内部self/cross/split-combine与18同输入有限逐位核验，整层仍数值NO-GO。优先处理FFN2/Q与少量Norm2误差；不因attention局部PASS签发完整block/闭环质量证书。
-
-直接在optimized迭代、不为另一agent保留额外代码版本、不另建登记；沿M39保留原始测量与失败。新阶段387block/216计时，GPU进程已清理，未启动后继优化或机器人。当前仍全阶段grid barrier，attention的4计算warp自己负责load/MMA/softmax/store，尚无跨阶段ready队列。
-
-RoboTwin只读核验：50双臂任务，Easy/Hard不是新增task；官方Target存在，draft需适配32token/16有效通道并重训/校准。只提出迁移评估，不安装环境、下载权重或启动15000局。当前四false不变。
+旧讨论与授权演变完整保留[本轮历史](history/ordered-followup-20261020/DISCUSSION-SUMMARY.md)。不要从旧“未授权/下一步”段落自动推导当前权限，也不修改保护state/cycle/rules或升级/全量sync。
