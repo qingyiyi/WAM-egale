@@ -1,0 +1,71 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792508402.1185527,
+  "deadline": 1792542517.393179,
+  "jobs": [
+    {
+      "name": "simple-gate",
+      "owned": {
+        "pid": 698816,
+        "birth_ticks": 710686075,
+        "pgid": 698816
+      },
+      "start": 1792508402.1893728,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792508414.1265328,
+      "lifecycle_seconds": 11.93716025352478,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "complex-build-r2",
+      "owned": {
+        "pid": 698829,
+        "birth_ticks": 710687269,
+        "pgid": 698829
+      },
+      "start": 1792508414.1282845,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792508534.4566498,
+      "lifecycle_seconds": 120.32836604118347,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "simple-timing1",
+      "owned": {
+        "pid": 699008,
+        "birth_ticks": 710699305,
+        "pgid": 699008
+      },
+      "start": 1792508534.4902818,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792508546.0731006,
+      "lifecycle_seconds": 11.582818984985352,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "simple-timing2",
+      "owned": {
+        "pid": 699028,
+        "birth_ticks": 710700470,
+        "pgid": 699028
+      },
+      "start": 1792508546.1401138,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792508557.8199713,
+      "lifecycle_seconds": 11.6798574924469,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('simple-timing2 failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/guard-simple-r3.py\", line 49, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: simple-timing2 failed\n",
+  "end": 1792508557.8249476,
+  "lifecycle_seconds": 155.70639538764954
+}

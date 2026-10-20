@@ -1,10 +1,10 @@
 # 当前入口
 
-最新：[CURRENT-EXECUTION-20261020.md](CURRENT-EXECUTION-20261020.md)/[状态JSON](CURRENT-EXECUTION-20261020.json)。固定本文件所在commit核对。
+最新：[简易版结果](CURRENT-EXECUTION-20261020.md)与[状态JSON](CURRENT-EXECUTION-20261020.json)。固定本文件所在commit。
 
-当前context128已完成新profile；普通单层速度仍前轮B14三KV约1.73–1.88倍native。下一步先逐阶段三路径对齐，再优化主要差距，最后真实ready调度。阶段grid.sync仍在；动态硬件counter权限不足，未知项保留。RoboTwin GPU1固定42条Target监督采集正在自动接续，目标Target48(FIT36/CAL12)，不是TF评测，训练未启动。四质量权限仍false。
+当前只维护简易完整单层persistent kernel：有限精度通过、相对复杂版无稳定退化，旧复杂活动入口移除；仍比原版慢约71%–93%。逐阶段矩阵已齐，下一步pointwise/layout→cross-K RMS/FFN1/cross-FA2→ready。当前GPU0无任务，GPU1继续固定RoboTwin Target采集。四质量权限false。
 
-[HW短入口](../.pipeline/PROGRESS.compact.md)。下方是固定paused72历史，当前后继以最新入口为准，原始记录不改。
+[HW入口](../.pipeline/PROGRESS.compact.md)。下方paused72为历史记录，不覆盖当前后继状态。
 
 ---
 

@@ -1,0 +1,23 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "process": 1,
+  "full_block_calls": 0,
+  "stage_calls": 0,
+  "rows": [],
+  "boundary": "Globaltimer intervals; A/B CUDA graph marker launches, C in-kernel stage incl queue and synchronization",
+  "marker_overhead_subtracted": false,
+  "formal_performance_permission": false,
+  "marker_empty_ms": [
+    0.002048,
+    0.001024,
+    0.002048,
+    0.001024,
+    0.001024,
+    0.001024,
+    0.001024,
+    0.001024
+  ],
+  "error": "ImportError('/rjs/cxz/\u8bba\u6587\u63a2\u7d22/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/wam_attention_cuda.cpython-312-x86_64-linux-gnu.so: cannot open shared object file: No such file or directory')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/worker.py\", line 46, in <module>\n    ref=native(*args,**kw,debug=True);out['full_block_calls']+=1\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/baseline/native.py\", line 57, in __call__\n    outputs = extension().forward(self.weights, hidden_states, encoder_hidden_states,\n              ^^^^^^^^^^^\n  File \"/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/baseline/native.py\", line 20, in extension\n    module = importlib.util.module_from_spec(spec)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 813, in module_from_spec\n  File \"<frozen importlib._bootstrap_external>\", line 1293, in create_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\nImportError: /rjs/cxz/\u8bba\u6587\u63a2\u7d22/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/wam_attention_cuda.cpython-312-x86_64-linux-gnu.so: cannot open shared object file: No such file or directory\n",
+  "lifecycle_seconds": 8.656268835067749
+}

@@ -1,0 +1,41 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792506819.7308278,
+  "deadline": 1792513717.393179,
+  "jobs": [
+    {
+      "name": "prepare",
+      "owned": {
+        "pid": 696397,
+        "birth_ticks": 710527829,
+        "pgid": 696397
+      },
+      "start": 1792506819.7326624,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792506819.7962933,
+      "lifecycle_seconds": 0.06363153457641602,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "build",
+      "owned": {
+        "pid": 696398,
+        "birth_ticks": 710527836,
+        "pgid": 696398
+      },
+      "start": 1792506819.8004575,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792506974.225879,
+      "lifecycle_seconds": 154.42542266845703,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/guard.py\", line 45, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: build failed\n",
+  "end": 1792506974.2312963,
+  "lifecycle_seconds": 154.5004687309265
+}

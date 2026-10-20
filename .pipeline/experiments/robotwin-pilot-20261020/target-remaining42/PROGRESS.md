@@ -1,7 +1,5 @@
-# 当前采集进度
+# RoboTwin固定队列进度
 
-2026-10-20T21:59:48+08:00。现场10/20 22:07:29北京：新增6/42完整终态、5成功1完整算法失败（open_microwave），当前`place_object_basket-valid02`；原首六5成功1失败保留。
+截至2026-10-20T23:14:45+08:00：新增19/42完整终态、15成功、4自然失败，当前`stack_blocks_two-valid04`；原首六5成功1失败保留。
 
-队列状态与完整计数以[现场快照](LIVE-SNAPSHOT.json)和远端`/root/cxz/robotwin/runs/target-remaining42-20261020/STATUS.json`为准。GPU1单worker自动接续固定未开始case，21:37:02启动、次日03:37:02硬截止。原首六5成功1失败保留；这是Target监督采集，非TF评估或独立成功率。
-
-旧首六4150实际query核对，新增目标30FIT/12CAL，组成Target48的FIT36/CAL12。原174局/24GPU小时总边界保留，本阶段6小时/4GiB/336000teacher帽。完整cached/uncached episode等价未测；bank复用不借用LIBERO证书。后续训练不由本guard自动启动。
+[现场](LIVE-SNAPSHOT.json)；固定42条Target自动接续，目标合并Target48 FIT36/CAL12。原首六与新增算法失败均保留。GPU1单worker，21:37:02启动、10/21 03:37:02截止，6h/4GiB/336000teacher及原24h总帽不变。复用108完整BF16 reset bank，完整episode等价尚未测；TF训练/DEV未启动。

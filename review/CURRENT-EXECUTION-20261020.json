@@ -1,112 +1,127 @@
 {
-  "schema": "current-context128-profile-and-robot-target42-v1",
-  "observed_at_beijing": "2026-10-20T22:07:29+08:00",
-  "source_baseline_commit": "f686769a327d01779c1dcdf09be6a4bdc934ffa6",
-  "historical_paused72_unchanged": true,
+  "schema": "simplified-stage-alignment-20261020-v1",
+  "source_previous_commit": "64b1afa",
   "engineering_quality_screen": false,
   "independent_test_complete": false,
   "noninferiority_established": false,
   "formal_performance_permission": false,
+  "historical_paused72_unchanged": true,
   "operator": {
-    "selected_variant": "context128",
-    "mathematical_source_changed_this_phase": false,
-    "profile_full_blocks": 24,
-    "profile_standalone_linear_calls": 150,
-    "finite_bitwise_output_intermediate_valid_KV_checks": true,
-    "last_ordinary_timing": [
+    "selected": "simplified WholeLayerBlock",
+    "finite_9_signatures_bitwise": true,
+    "active_complex_entry_removed": true,
+    "ordinary_timing_rows": [
       {
+        "process": 1,
         "case": "short",
-        "KV": 288,
-        "processes": [
-          {
-            "id": 1,
-            "native_ms": 2.631168007850647,
-            "new_ms": 4.914175987243652,
-            "ratio": 1.8676785262595044,
-            "samples_per_engine": 8
-          },
-          {
-            "id": 2,
-            "native_ms": 2.6250239610671997,
-            "new_ms": 4.897791862487793,
-            "ratio": 1.8658084402767139,
-            "samples_per_engine": 8
-          }
-        ]
+        "medians_ms": {
+          "native": 2.1253119707107544,
+          "complex": 4.122623920440674,
+          "simple": 4.097536087036133
+        },
+        "simple_over_complex": 0.9939145956825819,
+        "simple_over_native": 1.9279692315786563
       },
       {
+        "process": 1,
         "case": "middle",
-        "KV": 1152,
-        "processes": [
-          {
-            "id": 1,
-            "native_ms": 2.8144959211349487,
-            "new_ms": 5.16814398765564,
-            "ratio": 1.8362591854713293,
-            "samples_per_engine": 8
-          },
-          {
-            "id": 2,
-            "native_ms": 2.494047999382019,
-            "new_ms": 4.6768479347229,
-            "ratio": 1.875203659224578,
-            "samples_per_engine": 8
-          }
-        ]
+        "medians_ms": {
+          "native": 2.4046080112457275,
+          "complex": 4.496912002563477,
+          "simple": 4.478672027587891
+        },
+        "simple_over_complex": 0.9959438888363419,
+        "simple_over_native": 1.8625372645530183
       },
       {
+        "process": 1,
         "case": "long",
-        "KV": 2160,
-        "processes": [
-          {
-            "id": 1,
-            "native_ms": 3.0284318923950195,
-            "new_ms": 5.246703863143921,
-            "ratio": 1.7324820400681333,
-            "samples_per_engine": 8
-          },
-          {
-            "id": 2,
-            "native_ms": 2.932479977607727,
-            "new_ms": 5.095088005065918,
-            "ratio": 1.7374672781985758,
-            "samples_per_engine": 8
-          }
-        ]
+        "medians_ms": {
+          "native": 2.8410879373550415,
+          "complex": 4.898736000061035,
+          "simple": 4.865520000457764
+        },
+        "simple_over_complex": 0.9932194754722733,
+        "simple_over_native": 1.7125552280466902
+      },
+      {
+        "process": 2,
+        "case": "short",
+        "medians_ms": {
+          "native": 2.620927929878235,
+          "complex": 4.873728036880493,
+          "simple": 4.841984033584595
+        },
+        "simple_over_complex": 0.9934867101619776,
+        "simple_over_native": 1.8474312011355258
+      },
+      {
+        "process": 2,
+        "case": "middle",
+        "medians_ms": {
+          "native": 2.399488091468811,
+          "complex": 4.498687982559204,
+          "simple": 4.4696478843688965
+        },
+        "simple_over_complex": 0.9935447627613002,
+        "simple_over_native": 1.8627506009554178
+      },
+      {
+        "process": 2,
+        "case": "long",
+        "medians_ms": {
+          "native": 2.837648034095764,
+          "complex": 4.887104034423828,
+          "simple": 4.864415884017944
+        },
+        "simple_over_complex": 0.9953575470777637,
+        "simple_over_native": 1.7142421560283545
       }
     ],
-    "last_ordinary_timing_evidence": "../.pipeline/experiments/single-layer-async-gemm-20261020/larger-tile-followup/SUMMARY.json",
-    "profile_evidence": "../.pipeline/experiments/single-layer-async-gemm-20261020/context128-profile/RESULT.md",
-    "hardware_counters": "UNKNOWN_ERR_NVGPUCTRPERM",
-    "stage_grid_barriers": true,
+    "stage_result": "../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/STAGE-RESULT.md",
+    "result": "../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/RESULT.md",
+    "resources": {
+      "GPU_worker_lifecycle_seconds": 106.745201587677,
+      "CPU_prepare_build_lifecycle_seconds": 741.607631444931,
+      "unique_jobs": 18,
+      "GPU_jobs": 9,
+      "full_block_calls": 662,
+      "full_block_cap": 720,
+      "stage_calls": 4524,
+      "stage_call_cap": 6000,
+      "storage_bytes": 62181121,
+      "storage_cap": 1073741824,
+      "all_roots_reaped": true,
+      "owned_alive": 0,
+      "GPU0_empty": true,
+      "CUDA_active_seconds": "UNKNOWN",
+      "M39_prior_receipts_GPU_seconds_approx": 559.1206152720947,
+      "M39_including_this_phase_GPU_seconds_approx": 665.8658168597717,
+      "M39_cap_seconds": 36000,
+      "prior_sources": [
+        "RESOURCE-AND-STOP-REPORT.md",
+        "RESOURCE-JOBS-DEDUPLICATED.json",
+        "b14-bottleneck-followup/RESOURCE-AND-STOP.md",
+        "larger-tile-followup/RESOURCE-AND-STOP-REPORT.md",
+        "context128-profile/RESOURCE-AND-STOP.md"
+      ]
+    },
     "full_ready_DAG_implemented": false,
-    "owned_GPU_jobs_running": false,
-    "GPU_lifecycle_seconds": 23.19248080253601
+    "stage_grid_sync": true,
+    "hardware_counters": "UNKNOWN_ERR_NVGPUCTRPERM",
+    "GPU0_jobs_running": false
   },
   "robotwin": {
+    "observed_at": 1792509285.6213675,
     "status": "RUNNING_TARGET_COMPLETE_EPISODE",
-    "GPU_index": 1,
-    "fixed_remaining_target_cases": 42,
-    "new_complete": 6,
-    "new_success": 5,
-    "active_case": "place_object_basket-valid02",
-    "first6_historical_success": 5,
-    "first6_historical_failure": 1,
-    "stage": "Target supervision collection; not TF evaluation",
-    "automatic_fixed_queue": true,
+    "new_completed": 19,
+    "new_success": 15,
+    "active": "stack_blocks_two-valid04",
+    "target_only": true,
+    "automatic_queue": true,
     "automatic_training": false,
-    "goal": "Target48 FIT36/CAL12",
-    "start_beijing": "2026-10-20T21:37:02+08:00",
     "deadline_beijing": "2026-10-21T03:37:02+08:00",
-    "original_total_GPU_hour_cap": 24,
-    "new_job_lifecycle_hour_cap": 6,
-    "evidence": "../.pipeline/experiments/robotwin-pilot-20261020/target-remaining42/LIVE-SNAPSHOT.json",
-    "new_complete_algorithmic_failures": 1
-  },
-  "recommendations": [
-    "First align native / standalone owned / whole-layer embedded stages on the same inputs and accounting boundary",
-    "Then optimize measured primitive or embedding gaps",
-    "Then implement ready context K/V scheduling"
-  ],
-  "stage_alignment_status": "PLANNED_NOT_STARTED"
+    "goal": "Target48 FIT36/CAL12",
+    "evidence": "../.pipeline/experiments/robotwin-pilot-20261020/target-remaining42/LIVE-SNAPSHOT.json"
+  }
 }

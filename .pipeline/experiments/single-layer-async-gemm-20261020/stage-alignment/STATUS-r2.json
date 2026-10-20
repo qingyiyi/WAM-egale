@@ -1,0 +1,41 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792507232.1567066,
+  "deadline": 1792513717.393179,
+  "jobs": [
+    {
+      "name": "build-r2",
+      "owned": {
+        "pid": 696944,
+        "birth_ticks": 710569072,
+        "pgid": 696944
+      },
+      "start": 1792507232.1585293,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792507426.1720693,
+      "lifecycle_seconds": 194.0135407447815,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "process1",
+      "owned": {
+        "pid": 697150,
+        "birth_ticks": 710588478,
+        "pgid": 697150
+      },
+      "start": 1792507426.2220988,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792507437.1497276,
+      "lifecycle_seconds": 10.927628755569458,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('process1 failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/guard-r2.py\", line 45, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: process1 failed\n",
+  "end": 1792507437.1533544,
+  "lifecycle_seconds": 204.9966480731964
+}

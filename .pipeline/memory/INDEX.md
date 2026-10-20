@@ -1,5 +1,9 @@
 # 长期记忆索引
 
+- [算子累计预算十小时](global/requirements/decision-算子累计预算十小时.md)（constraint，M39）：旧使用计入，RoboTwin预算与截止不变。
+
+- [实验算子简洁、检查外置](global/requirements/preference-实验算子代码简洁并将检查移到外部.md)（guideline，M39）：先验证简易版，无稳定退化则仅维护简易版；核心保留必要计算逻辑，外部核验不删除。
+
 - [先逐阶段对齐再异步](global/requirements/feedback-先逐阶段对齐原版性能再做异步调度.md)（guideline，M39）：先同输入/同边界对照原版、自有阶段独立、自有阶段嵌入整层，分清原语与整层资源/调度成本，再优化与ready调度。
 
 
@@ -11,7 +15,7 @@
 
 - [继续实现并评估更大tile](global/requirements/decision-继续实现并评估更大tile.md)（constraint，M39）：用户明确接续实现/验证，允许更大tile；RoboTwin继续关注，不自动重启过期链。
 
-- [先将B14整层耗时压到Torch两倍以内](global/requirements/decision-先将B14整层耗时压到Torch两倍以内.md)（constraint，当前算子）：短/中/长KV同轮完整层均为目标；精度与公平基线不放宽，尚未达成。
+- [先将B14整层耗时压到Torch两倍以内](global/requirements/decision-先将B14整层耗时压到Torch两倍以内.md)（constraint，当前算子）：短/中/长KV同轮完整层均为目标；精度与公平基线不放宽；是否达成看当前实验结果。
 
 - [继续算子优化并先核对当前瓶颈](global/requirements/decision-继续算子优化并先核对当前瓶颈.md)（constraint，M39）：用户同意接续，区分当前实测与旧profile；明确复用成熟设备端GEMM源码并保留整层单kernel。
 

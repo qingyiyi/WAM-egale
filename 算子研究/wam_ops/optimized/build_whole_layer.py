@@ -15,8 +15,6 @@ gemm_headers=generate_gemm(generated)
 # The bounded real-fixture comparison selected 128 context rows. Action
 # projections remain 64 rows; explicit 64 reproduces the registered control.
 context_rows=int(os.environ.get('WAM_CONTEXT_TILE_M','128'))
-if context_rows not in (64,128):
-    raise ValueError('Only the two registered context tile shapes are supported')
 setup(name='wam_whole_fa2',packages=[],ext_modules=[CUDAExtension(
  name='wam_whole_fa2_cuda',sources=[str(root/'csrc/whole_layer.cu')],
  include_dirs=[str(generated),str(gemm_headers),str(root/'csrc'),str(root/'csrc/vendor/flash_attn'),str(root/'csrc/vendor/cutlass/include')],

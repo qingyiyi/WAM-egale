@@ -1,0 +1,26 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792508043.1661122,
+  "deadline": 1792542517.393179,
+  "jobs": [
+    {
+      "name": "simple-build",
+      "owned": {
+        "pid": 698024,
+        "birth_ticks": 710650173,
+        "pgid": 698024
+      },
+      "start": 1792508043.1679106,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792508060.8584738,
+      "lifecycle_seconds": 17.690563917160034,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('simple-build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/guard-simple.py\", line 45, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: simple-build failed\n",
+  "end": 1792508060.8632276,
+  "lifecycle_seconds": 17.697115659713745
+}

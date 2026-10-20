@@ -1,0 +1,41 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792508198.9870374,
+  "deadline": 1792542517.393179,
+  "jobs": [
+    {
+      "name": "simple-build-r2",
+      "owned": {
+        "pid": 698494,
+        "birth_ticks": 710665755,
+        "pgid": 698494
+      },
+      "start": 1792508198.988827,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792508314.7763984,
+      "lifecycle_seconds": 115.78757214546204,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "complex-build",
+      "owned": {
+        "pid": 698633,
+        "birth_ticks": 710677334,
+        "pgid": 698633
+      },
+      "start": 1792508314.7781327,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792508318.1970444,
+      "lifecycle_seconds": 3.418912410736084,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('complex-build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/stage-alignment/guard-simple-r2.py\", line 46, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: complex-build failed\n",
+  "end": 1792508318.2102292,
+  "lifecycle_seconds": 119.22319197654724
+}
