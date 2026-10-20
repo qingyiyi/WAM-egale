@@ -36,7 +36,7 @@ FA2加载仍在其四个计算warp中，尚未做额外producer/consumer warp分
 
 当前真实范围B2/B14 action Q16、B2 video Q128，D3072/H24/d128/FFN14336、cross512、短中长KV。BF16输入输出、FP32调制/Norm参数、原FP64 RoPE、GEMM/GELU舍入边界保留。不是任意shape/训练API。
 
-[最新完整报告](../../../.pipeline/experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：18相同Q/K/V的self/cross对照逐位PASS；9重复/输入/RNG/参数/有效KV和18写转移通过。完整block仍9逐位FAIL，relative L2约0.133%–0.563%，最大hidden绝对误差0.5–1.5。Q、FFN2有同输入独立差异；video短/中Norm2仅12/8个元素差异；长video直到GELU逐位一致、首次分歧在FFN2。
+[最新完整报告](../../../.pipeline/experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：18相同Q/K/V的self/cross对照逐位PASS；9重复/输入/RNG/参数/有效KV和18写转移相对旧async通过。完整block仍9逐位FAIL，relative L2约0.133%–0.563%，最大hidden绝对误差0.5–1.5。Q、FFN2有同输入独立差异；video短/中Norm2仅12/8个元素差异；长video直到GELU逐位一致、首次分歧在FFN2。
 
 两进程216未插桩样本：较旧async，短action慢8%–9%，长action耗时降18%–21%，长video降43%；仍为native的3.20–7.60倍耗时。18trace各一个compute kernel。不是chunk/30层/机器人E2E，也不是最强cached/Graph对照。
 

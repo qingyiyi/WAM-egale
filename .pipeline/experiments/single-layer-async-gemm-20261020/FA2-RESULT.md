@@ -6,7 +6,7 @@
 
 当前[whole_layer.cu](../../../算子研究/wam_ops/optimized/csrc/whole_layer.cu)在一个cooperative persistent kernel内完成整层。self/cross attention改为固定Torch2.9所用FA2的设备主循环、split-KV和combine；不是host调用SDPA或再启动attention kernel。固定上游FA2/CUTLASS没有修改；[fa2_codegen.py](../../../算子研究/wam_ops/optimized/fa2_codegen.py)提取原函数，调整worker索引、named barrier和KV地址。[地址加载](../../../算子研究/wam_ops/optimized/csrc/fa2_load.cuh)保持公共历史和候选私有suffix的原可见性，没有复制14份历史；[设备阶段](../../../算子研究/wam_ops/optimized/csrc/fa2_stage.cuh)保持原split heuristic和算术顺序。
 
-9个真实block0输入：action B2/B14、video B2，各短中长KV；同输入self/cross共18个对照全部与Torch Flash SDPA有限逐位相同。9次重复、输入/RNG/参数身份、tile恰好一次、metadata和有效KV，以及18个合法update1→2→0状态转移通过。native对原Torch9/9通过；整层FA2版本对原Torch仍0/9通过，所有四项质量权限保持false。无30层、chunk、闭环或新训练。
+9个真实block0输入：action B2/B14、video B2，各短中长KV；同输入self/cross共18个对照全部与Torch Flash SDPA有限逐位相同。9次重复、输入/RNG/参数身份、tile恰好一次、metadata和有效KV，以及18个合法update1→2→0状态转移相对旧M39 async原型通过；不是相对Torch的KV逐位验收。native对原Torch9/9通过；整层FA2版本对原Torch仍0/9通过，所有四项质量权限保持false。无30层、chunk、闭环或新训练。
 
 GPU实际108 CTA×256线程；GEMM仍warp0领任务、1/2双缓冲加载、3–6 WMMA、7写回。attention由warp3–6执行完整4-warp FA2 load/MMA/softmax/store，其他warp等待；尚未把FA2 loader额外拆给warp1/2。普通FA2 tile为Q128/KV64，split为Q64/KV128，短Q使用合法padding/mask；B14始终14个独立Q16实例，未跨候选注意。split counts为B2 action self短3/中9/长4，cross4；B2 video self/cross均2；B14均1。combine仍在同一kernel内通过grid barrier接续。
 

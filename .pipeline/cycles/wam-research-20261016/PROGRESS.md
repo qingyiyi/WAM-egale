@@ -72,7 +72,7 @@ GPU0 Goal→Object，GPU1 Spatial→Long；同case对照同卡，每卡单worker
 
 ## M39 — 单层异步tile与内部FA2：completed，整层数值NO-GO
 
-[内部FA2结果](../../experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：直接修改optimized，在整层单kernel内接入固定FA2 self/cross、split-KV/combine。9真实签名、18同输入attention全部逐位PASS；9重复/输入/RNG/参数、18有效KV转移和18单kernel trace通过。完整hidden仍9/9逐位FAIL，相对L2 0.133%–0.563%，最大0.5–1.5；同输入Q/FFN2独立误差和video短/中Norm2的12/8元素差异已定位，长video首次差异仅FFN2。
+[内部FA2结果](../../experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：直接修改optimized，在整层单kernel内接入固定FA2 self/cross、split-KV/combine。9真实签名、18同输入attention全部逐位PASS；9重复/输入/RNG/参数、18相对旧async的有效KV转移和18单kernel trace通过。完整hidden仍9/9逐位FAIL，相对L2 0.133%–0.563%，最大0.5–1.5；同输入Q/FFN2独立误差和video短/中Norm2的12/8元素差异已定位，长video首次差异仅FFN2。
 
 两个进程216样本：相对旧async，短action慢8%–9%，长action耗时降18%–21%，长video降43%；仍比native慢3.20–7.60倍。108 CTA、255 registers、82464B shared、2168B local资源，非实测spill/occupancy。387block＋18SDPA＋18Linear；GPU worker生命周期69.979秒，阶段到清理836.9秒，约6.79MiB。两次CPU编译失败保留，7组父子14个PID/birth退出，两卡空；本地75/远端71保护项不变。无新机器人/训练/30层，四false保持。
 

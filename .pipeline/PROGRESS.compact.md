@@ -6,7 +6,7 @@
 
 四套原6000完整episode齐：每套10task×50init×T/C/P，成功数Long483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499，各臂500。[完整质量/门](experiments/libero-four-suite-performance-20261019/QUALITY-RESULT.md)、[原逐局与成本](experiments/libero-four-suite-performance-20261019/RESULT.md)。八组合P50/P90都在旧长度界内，但max都>1.30；失败/800罚分、首两S严格配对FAILED、组件失败和训练/DEV曝光保留，不是独立TEST/非劣。无匹配500局MLP。
 
-当前[M39内部FA2](experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：直接在自有整层单kernel内接入FA2 self/cross、split/combine。9真实签名×两attention的同输入18项全部逐位PASS；18有效KV转移/重复/RNG/输入及18单kernel trace通过。整层9输出仍FAIL，相对L2 0.133%–0.563%、最大0.5–1.5；Q/FFN2独立差异，video短中Norm2各12/8元素差异；长video首次分歧为FFN2。不是完整模型质量准入。
+当前[M39内部FA2](experiments/single-layer-async-gemm-20261020/FA2-RESULT.md)：直接在自有整层单kernel内接入FA2 self/cross、split/combine。9真实签名×两attention的同输入18项全部逐位PASS；18相对旧async的有效KV转移/重复/RNG/输入及18单kernel trace通过。整层9输出仍FAIL，相对L2 0.133%–0.563%、最大0.5–1.5；Q/FFN2独立差异，video短中Norm2各12/8元素差异；长video首次分歧为FFN2。不是完整模型质量准入。
 
 两个独立进程216样本：短action较旧async慢8%–9%，长action耗时降18%–21%、长video降43%；仍比native慢3.20–7.60倍。108CTA、255registers、82464B shared、2168B localSizeBytes；实测occupancy/流量UNKNOWN。387block＋18SDPA＋18Linear，GPU worker生命周期69.979秒、阶段836.9秒、6.79MiB，两次CPU编译失败保留，14owned PID/birth退出，两卡空。75本地/71远端保护项不变，四false保持。
 
