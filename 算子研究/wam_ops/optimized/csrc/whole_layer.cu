@@ -199,25 +199,6 @@ __device__ __noinline__ void context_linear(const Params &p, Shared &s, cg::grid
     g.sync();
 }
 
-// B14 FFN固定M224；仅展开形状，保持FFN2原来的两个K7168分段及BF16提交。
-// 整个阶段只进入一次设备函数，不再每个tile调用通用形状分派函数。
-template <int TM, int N, int K>
-__device__ __noinline__ void action_ffn_linear(const Params &p, Shared &s, cg::grid_group &g,
-                                              int st, const B *a, int wi, B *out) {
-    constexpr int M = 224, count = ((M + TM - 1) / TM) * (N / 128);
-    begin_stage(p, g, st);
-    for (int t; (t = claim_tile(p, s, st)) < count;) {
-        if constexpr (TM == 128)
-            cutlass_gemm_tile<128>(s.tile.cutlass_gemm.ffn1, a, (const B *)p.w[wi],
-                (const B *)p.w[wi + 1], out, M, N, K, t, true);
-        else
-            cutlass_gemm_tile<64>(s.tile.cutlass_gemm.action, a, (const B *)p.w[wi],
-                (const B *)p.w[wi + 1], out, M, N, K, t, true);
-        finish_tile();
-    }
-    g.sync();
-}
-
 // B14 FFN2：M128输出tile共48个，每个K分两段，共96个CTA任务。
 // 各CTA独立算一段，FP32片段暂存在自己的shared；阶段代码负责有序提交。
 __device__ __forceinline__ void ffn2_partition(CutlassTile<128>::Storage &s, const __nv_bfloat16 *a,
@@ -657,15 +638,6 @@ __device__ void insert_cache(const Params &p, Shared &s, cg::grid_group &g, int 
     }
     g.sync();
 }
-__device__ const B *self_kv(const Params &p, bool val, int batch, int token, int head, int dim) {
-    if (!p.cache)
-        return bp(p, val ? SV : SKR) + (batch * p.q + token) * D + head * HD + dim;
-    if (p.candidate && token >= p.info[0])
-        return bp(p, val ? SV : SKR) + (batch * p.q + token - p.info[0]) * D + head * HD + dim;
-    int pb = p.candidate ? int(p.rows[batch]) : batch;
-    return (val ? p.pv : p.pk) + (int64_t(pb) * p.pool + p.slots[token]) * D + head * HD + dim;
-}
-
 // Query tiles always stay within one (candidate, head) instance. B14 is NOT a
 // Q112 sequence. Candidate private suffix visibility is preserved explicitly.
 #include "fa2_stage.cuh"
@@ -736,7 +708,8 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
 std::map<std::string, Tensor>
 forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, const Tensor &temb,
         const std::optional<Tensor> &freq, const std::vector<Tensor> &cache,
-        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps) {
+        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps,
+        bool debug) {
     c10::cuda::CUDAGuard guard(x.device());
     Params p{};
     p.b = x.size(0);
@@ -829,6 +802,11 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
                                                launch_args, sizeof(Shared),
                                                at::cuda::getCurrentCUDAStream()));
 
+    // 普通路径到此结束；中间量仍是计算workspace，但不再构造审计字典/资源统计。
+    std::map<std::string, Tensor> result{{"output", b[OUT].view(x.sizes())}};
+    if (!debug)
+        return result;
+
     // debug只暴露已经存在的中间量，外部脚本据此核验，不在kernel里重复检查。
     const char *names[NB] = {"modulation",    "norm1",       "modulated1",     "self_q_linear",
                              "self_k_linear", "self_v",      "self_q_norm",    "self_k_norm",
@@ -837,7 +815,6 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
                              "cross_v",       "cross_q",     "cross_k",        "cross_attention",
                              "cross_out",     "residual2",   "norm3",          "modulated3",
                              "ffn1",          "gelu",        "ffn2",           "output"};
-    std::map<std::string, Tensor> result;
     for (int i = 0; i < NB; ++i)
         result[names[i]] = b[i];
     result["output"] = b[OUT].view(x.sizes());
@@ -854,7 +831,11 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
 }
 } // namespace wam_whole_layer_v1
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
-    m.def("forward", &wam_whole_layer_v1::forward);
+    // 原始扩展调用默认保留debug字典兼容旧重放脚本；Python普通入口显式传false。
+    m.def("forward", &wam_whole_layer_v1::forward,
+          py::arg("weights"), py::arg("hidden"), py::arg("context"), py::arg("temb"),
+          py::arg("rotary"), py::arg("cache"), py::arg("rows"), py::arg("update"),
+          py::arg("eps"), py::arg("debug") = true);
     m.attr("production_admitted") = false;
     m.attr("computation_launches") = 1;
     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;

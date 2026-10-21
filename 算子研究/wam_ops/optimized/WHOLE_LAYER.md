@@ -7,7 +7,7 @@
 1. `whole_layer.py`：输入和原模型一致，返回hidden或供外部核验的中间量。
 2. `whole_layer.cu`的`whole_layer()`：依照模型顺序列出全部计算，五段中文注释给出数据流。
 3. `begin_stage → claim_tile → finish_tile`：warp0给整个CTA领取任务；tile结束后复用shared，阶段结束用grid.sync。
-4. `linear/action_projection/context_linear/action_ffn_linear/action_ffn2_parallel/norm/point/attention`：决定各阶段怎样切tile，再调用设备端计算。
+4. `linear/action_projection/context_linear/action_ffn1_tail/action_ffn2_parallel/norm/point/attention`：决定各阶段怎样切tile，再调用设备端计算。
 5. [cutlass_gemm.cuh](csrc/cutlass_gemm.cuh)、[gemm_pipeline.cuh](csrc/gemm_pipeline.cuh)、[fa2_stage.cuh](csrc/fa2_stage.cuh)：GEMM、内部FA2和合法KV寻址。
 
 ## 输入与计算
@@ -37,37 +37,18 @@ B14 FFN2在`action_ffn2_parallel`内将两个K7168分段分配给两组CTA同时
 
 ## 本次简化
 
-删除核心的重复shape/版本检查、tile访问审计计数和未启用的旧FFN-ready分支；保留边界mask、合法cache逻辑、线程同步和CUDA错误报告。只维护这条简易执行路径。
+核心没有重复shape/dtype/版本检查或tile访问审计。Python直接绑定参数，不依赖旧NativeBlock；删除无调用的action_ffn_linear和self_kv。普通调用只组装output返回值；debug=True才构造中间量字典与资源统计。保留尾块mask、合法cache逻辑、线程同步和CUDA调用失败传播。
 
 精度/状态/输入/RNG检查在外部实验脚本；核心不再支持`audit`、`tile_pipeline`、`bf16_split_reduction`开关。原BF16分段归约固定保留，不把它当可关闭的检查。
 
 历史复杂版源码和失败证据在[本轮证据目录](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/)，不作为活动优化入口；baseline、投机侧和原tile未改。
 
-## 验证与性能边界
+## 当前验证与下一步
 
-当前证据：[投影写回与整层结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESULT.md)。context投影仍用128×128/4 MMA warp；`cutlass_gemm.cuh`的context专用shared行stride136采用已在独立8warp投影中消除写bank冲突的布局（未新增4warp整层NCU），epilogue每线程处理4元素（shared为LDS.128，global仍两条32-bit store）。其他action/FFN布局保留128，避免改变分段归约。
+本轮入口精简的[结果与范围](../../../.pipeline/experiments/single-layer-async-gemm-20261020/readability-20261021/RESULT.md)已完成：九真实签名及普通/debug输出有限逐位通过；两进程三KV整层变化−0.132%～+0.103%，无稳定退化。本机/远端使用同一二进制；本次没有新增device端加速主张。
 
-两独立进程三KV完整单层Graph对照：短2.660→2.560ms，中2.872→2.774ms，长3.124→3.025ms，耗时减少约3.77%/3.42%/3.15%。这是自有修改前后同轮比较；没有用旧eager原版数混算新Graph倍数。独立256×128/8warp投影经两项写回修复后约577µs，同期原版约553µs，仍慢约4%。两种tile的结果边界分开，不能把独立收益外推为整层或E2E。
+前一版[六小投影阶段结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESULT.md)：三KV整层Graph约2.513/2.719/2.969ms，相比其上一版下降1.88%–2.08%；九真实签名输出/23共有中间量/18有效KV转移、输入/RNG有限逐位通过。该结果属于e91e09eb源码、23238b37二进制，不是当前相对Torch的新倍数，也不是30层或机器人E2E。
 
-九个真实签名（B2 action/B14 action/B2 video×三KV）、输出/23共有中间量/18有效KV转移、输入/RNG和重复输出有限逐位通过，max_abs=0。完整门在远端运行，本地复制同一DSO；不外推任意输入、闭环质量或正式生产准入。
+尚未解决：Self-Q嵌入后仍慢；旧快独立参考保留；FFN1/2独立原语仍有差距。顺序是Self-Q函数/编译边界→FFN原语→真实ready-DAG，不为凑108任务切碎tile。255寄存器、shared98848B和localSize是静态资源信息，不等于动态spill或等待成本。
 
-本轮选择源及二进制身份见该目录SELECTION.json。整层regs255/shared98848、1CTA/SM不变，localSize从1456变1464 bytes仍更快；该字段不是动态spill流量。当前FFN/小投影剩余差距须继续分解，再推进ready-DAG。原三CTA调度结果与旧负结果均保留。
-
-历史记录保留：
-
-- [FFN资源控制](../../../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-resource-control-20261021/RESULT.md)：此前专用FFN2分段并行收益0.36%–0.65%，uncached/eager原版对照属于当时源和边界，不用来推算当前Graph结果。
-
-- [Cross/FFN函数组织控制](../../../.pipeline/experiments/single-layer-async-gemm-20261020/gemm-function-control-20261021/RESULT.md)：固定tile/数学/sync，前后完整层下降9.46%–10.87%；不与本轮倍数相乘。
-- [小算子与CTA等待](../../../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)：point向量化、candidate RMS双行；旧29阶段表属于当时源。
-- [pointwise与旧FFN2负结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md)：旧generic linear内并行K独立快但整层负收益；记录不改，当前使用专用阶段组织，不声称两个版本只差单一因素。
-- [简化及阶段对齐](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/RESULT.md)：保留复杂版和负结果，仅当前简易版为活动代码。
-
-N256/8warp FFN1、pointwise8192、强制通用GEMM内联、双驻留compact B14的旧负结果均保留。当前仍阶段grid.sync，跨阶段ready未实现。早到CTA等待与其他CTA计算重叠，不等于纯barrier耗时或全部可兑现收益。
-
-最新结果：[六小投影固定形状阶段](../../../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESULT.md)。`action_projection`专门处理B14的M224、N/K3072，仍是64×128输出tile、两个K1536分段、96任务。一次设备函数完成阶段，不新增kernel，claim与grid.sync不变。Self Q/K/V/out及Cross Q/out共六处；Cross K/V的M7168不在其中。
-
-两个独立进程、短/中/长KV完整层Graph的耗时下降1.88%–2.08%，新约2.513/2.719/2.969ms。新的九签名/23共有中间量/18有效KV转移及输入/RNG有限逐位门通过；源e91e09eb、DSO23238b37已在本地与远端保持一致。不是当前版本相对Torch的新完整层倍数，也不是机器人E2E。
-
-这是部分改善：五个小投影整层内变快，Self-Q反而慢约6–7µs；新独立调用体慢于旧独立实现，旧快结果保留。localSize1464→1480B，不能声称spill减少。下一步应定位Self-Q的设备函数/编译边界代价，再FFN原语，最后ready-DAG；不凭更小的独立/整层差距宣布问题全部解决。
-
-前一轮[当前源十GEMM同前序核对](../../../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/RESULT.md)与上述早期结果均作为历史证据保留，不把各轮倍数相乘。
+历史的写回bank、函数组织、逐阶段对齐及负结果，按需从上述结果的证据链接追溯，不在本入口累加历次性能表。[简要带读Prompt](READ_CODE_PROMPT.md)。

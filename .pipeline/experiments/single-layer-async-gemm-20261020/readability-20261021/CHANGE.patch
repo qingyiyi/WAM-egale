@@ -1,0 +1,125 @@
+--- before/whole_layer.py
++++ after/whole_layer.py
+@@ -18,11 +18,22 @@
+     production_admitted = False
+ 
+     def __init__(self, block):
+-        # 只复用参数列表的绑定，不调用NativeBlock.forward。
+-        from .native import NativeBlock
+-        binding = NativeBlock(block)
+-        self.weights, self.eps = binding.weights, binding.eps
+         self.block = block
++        # 与CUDA的w[]顺序一致：调制表、Norm2、self/cross投影与RMS、FFN。
++        empty = block.scale_shift_table.new_empty(0)
++        weights = [block.scale_shift_table, getattr(block.norm2, 'weight', empty),
++                   getattr(block.norm2, 'bias', empty)]
++        for attention in (block.attn1, block.attn2):
++            for projection in (attention.to_q, attention.to_k, attention.to_v,
++                               attention.to_out[0]):
++                weights += [projection.weight, projection.bias]
++            weights += [attention.norm_q.weight, attention.norm_k.weight]
++        for projection in (block.ffn.net[0].proj, block.ffn.net[2]):
++            weights += [projection.weight, projection.bias]
++        self.weights = [value.detach() for value in weights]
++        self.eps = [block.norm1.eps, getattr(block.norm2, 'eps', block.norm1.eps),
++                    block.norm3.eps, block.attn1.norm_q.eps, block.attn1.norm_k.eps,
++                    block.attn2.norm_q.eps, block.attn2.norm_k.eps]
+ 
+     def __call__(self, hidden_states, encoder_hidden_states, temb, rotary_emb,
+                  update_cache=0, cache_name="pos", candidate_cache_rows=None,
+@@ -33,7 +44,7 @@
+         ]
+         result = extension().forward(
+             self.weights, hidden_states, encoder_hidden_states, temb, rotary_emb,
+-            values, candidate_cache_rows, update_cache, self.eps,
++            values, candidate_cache_rows, update_cache, self.eps, debug,
+         )
+         # 中间量仅供外部核验；普通调用返回与hidden同形状的输出。
+         return result if debug else result["output"]
+--- before/csrc/whole_layer.cu
++++ after/csrc/whole_layer.cu
+@@ -199,25 +199,6 @@
+     g.sync();
+ }
+ 
+-// B14 FFN固定M224；仅展开形状，保持FFN2原来的两个K7168分段及BF16提交。
+-// 整个阶段只进入一次设备函数，不再每个tile调用通用形状分派函数。
+-template <int TM, int N, int K>
+-__device__ __noinline__ void action_ffn_linear(const Params &p, Shared &s, cg::grid_group &g,
+-                                              int st, const B *a, int wi, B *out) {
+-    constexpr int M = 224, count = ((M + TM - 1) / TM) * (N / 128);
+-    begin_stage(p, g, st);
+-    for (int t; (t = claim_tile(p, s, st)) < count;) {
+-        if constexpr (TM == 128)
+-            cutlass_gemm_tile<128>(s.tile.cutlass_gemm.ffn1, a, (const B *)p.w[wi],
+-                (const B *)p.w[wi + 1], out, M, N, K, t, true);
+-        else
+-            cutlass_gemm_tile<64>(s.tile.cutlass_gemm.action, a, (const B *)p.w[wi],
+-                (const B *)p.w[wi + 1], out, M, N, K, t, true);
+-        finish_tile();
+-    }
+-    g.sync();
+-}
+-
+ // B14 FFN2：M128输出tile共48个，每个K分两段，共96个CTA任务。
+ // 各CTA独立算一段，FP32片段暂存在自己的shared；阶段代码负责有序提交。
+ __device__ __forceinline__ void ffn2_partition(CutlassTile<128>::Storage &s, const __nv_bfloat16 *a,
+@@ -657,15 +638,6 @@
+     }
+     g.sync();
+ }
+-__device__ const B *self_kv(const Params &p, bool val, int batch, int token, int head, int dim) {
+-    if (!p.cache)
+-        return bp(p, val ? SV : SKR) + (batch * p.q + token) * D + head * HD + dim;
+-    if (p.candidate && token >= p.info[0])
+-        return bp(p, val ? SV : SKR) + (batch * p.q + token - p.info[0]) * D + head * HD + dim;
+-    int pb = p.candidate ? int(p.rows[batch]) : batch;
+-    return (val ? p.pv : p.pk) + (int64_t(pb) * p.pool + p.slots[token]) * D + head * HD + dim;
+-}
+-
+ // Query tiles always stay within one (candidate, head) instance. B14 is NOT a
+ // Q112 sequence. Candidate private suffix visibility is preserved explicitly.
+ #include "fa2_stage.cuh"
+@@ -736,7 +708,8 @@
+ std::map<std::string, Tensor>
+ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, const Tensor &temb,
+         const std::optional<Tensor> &freq, const std::vector<Tensor> &cache,
+-        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps) {
++        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps,
++        bool debug) {
+     c10::cuda::CUDAGuard guard(x.device());
+     Params p{};
+     p.b = x.size(0);
+@@ -829,6 +802,11 @@
+                                                launch_args, sizeof(Shared),
+                                                at::cuda::getCurrentCUDAStream()));
+ 
++    // 普通路径到此结束；中间量仍是计算workspace，但不再构造审计字典/资源统计。
++    std::map<std::string, Tensor> result{{"output", b[OUT].view(x.sizes())}};
++    if (!debug)
++        return result;
++
+     // debug只暴露已经存在的中间量，外部脚本据此核验，不在kernel里重复检查。
+     const char *names[NB] = {"modulation",    "norm1",       "modulated1",     "self_q_linear",
+                              "self_k_linear", "self_v",      "self_q_norm",    "self_k_norm",
+@@ -837,7 +815,6 @@
+                              "cross_v",       "cross_q",     "cross_k",        "cross_attention",
+                              "cross_out",     "residual2",   "norm3",          "modulated3",
+                              "ffn1",          "gelu",        "ffn2",           "output"};
+-    std::map<std::string, Tensor> result;
+     for (int i = 0; i < NB; ++i)
+         result[names[i]] = b[i];
+     result["output"] = b[OUT].view(x.sizes());
+@@ -854,7 +831,11 @@
+ }
+ } // namespace wam_whole_layer_v1
+ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+-    m.def("forward", &wam_whole_layer_v1::forward);
++    // 原始扩展调用默认保留debug字典兼容旧重放脚本；Python普通入口显式传false。
++    m.def("forward", &wam_whole_layer_v1::forward,
++          py::arg("weights"), py::arg("hidden"), py::arg("context"), py::arg("temb"),
++          py::arg("rotary"), py::arg("cache"), py::arg("rows"), py::arg("update"),
++          py::arg("eps"), py::arg("debug") = true);
+     m.attr("production_admitted") = false;
+     m.attr("computation_launches") = 1;
+     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;

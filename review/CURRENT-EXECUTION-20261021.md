@@ -1,14 +1,21 @@
-# 当前执行证据（2026-10-21T21:17:23.588246+08:00）
+# 当前执行证据（2026-10-21T22:19:31.835566+08:00）
 
-**六小投影固定形状阶段已保留：完整B14单层三KV、两进程均减少1.88%–2.08%。** 仍是一层一个kernel，tile/数学/claim/sync不变；不是新DAG。Self-Q慢约6–7µs，新独立版本也慢于旧独立，故只称部分改善。
+**RoboTwin扩大前先诊断慢因；1800局未启动，新增160 GPU小时未批准。** 旧DEV90保留，各30局T/TF/PF2成功25/24/23；非独立TEST，四权限false。用户已把扩大目标从50改为官方每任务100次，六任务三臂1800局，未扩大到全部50任务。
 
-- [完整结果](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESULT.md)、[完整层逐格表](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/WHOLE-LAYER-COMPARISON.csv)、[旧新阶段对照](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/STAGE-BEFORE-AFTER.csv)。新短/中/长约2.513/2.719/2.969ms；没有混入旧Torch计时推新倍数。
-- [有限精度门](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/SIMPLE-GATE-RESULT.json)：9真实签名输出/23中间量/18有效KV转移及输入/RNG逐位；240阶段比较通过。不是任意输入/30层/闭环质量证明。
-- [源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)156–175行为`action_projection`与路由；源e91e09eb、DSO23238b37两机一致。baseline、原tile、投机生产不动。
-- [资源](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESOURCE-AND-STOP-REPORT.json)：GPU109.306秒，累计2483.116/36000秒；一个候选已结束，owned退出。Self-Q编译边界→FFN原语→DAG为后续顺序；没有自动第二候选。
+## 慢因与原Target复现
 
-**RoboTwin90/90完成**：6任务×5初态(valid14–18)×3臂，各30局，T25、TF连续24、TF+PF2 23。30组C/P初态/首两S审计通过，失败保留。不是每任务1初态，也不是与LIBERO每任务50初态相同规模。只属于迁移DEV，非完整RoboTwin/独立TEST，不支持质量保留主张。[终态结果](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/TERMINAL-RESULT.md)、[逐对数据](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/TERMINAL-SUMMARY.json)、[清理](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/TERMINAL-CLEANUP-CHECK.json)。累计50006.380/86400秒，原deadline不变；两GPU自有作业均结束。
+- [90局成本与完整任务profile](../.pipeline/experiments/robotwin-pilot-20261020/runtime-profile-20261021/RESULT.md)：平均客户端生命周期262.81秒；RPC外60.02%，reset90次合计1.115秒（0.0047%）。18失败局占55.11%时间，不能删除或截断来加速。
+- 一条完整成功局profile253.6秒：RPC102.5、动作72.5（内含双臂规划60.5）、动作外观察46.6、setup18.7、其余13.4。命令与未profile一致；约5.36%插桩开销，不作正式计时。
+- 可研究未用front相机和重复planner初始化/预热；尚未实施，收益未知。同步函数的39秒包含等待实际工作，不能直接当可消除开销。
+- [原canonical Target两局复现](../.pipeline/experiments/robotwin-pilot-20261020/microwave-reproduction-audit-20261021/RESULT.md)：valid14失败/valid16成功，完整命令及保存初态/首两policy/RNG与旧Target相同；11份官方固定源码相符。只证明覆盖两例，非论文全部复现，不增加独立质量N。
+- 计数语义修正：[派生表](../.pipeline/experiments/robotwin-pilot-20261020/runtime-profile-20261021/DEV90-COMMAND-SEMANTICS.json)区分提交12224/13376/13408与环境实际推进11808/12927/12958；旧actual_commands为提交调用数，旧记录/罚分不覆盖。
+- [100次具体方案](../.pipeline/experiments/robotwin-pilot-20261020/microwave-reproduction-audit-20261021/EVAL100-PLAN.md)待新吞吐/资源确认。原M40累计51483.683/86400秒，原10/22 01:26截止保留，owned退出。
 
-将六任务扩到各50初态共900局仅为建议，需明确独立分区和有界预算，未启动。已曝光5局不能改称独立TEST，且Target microwave本身1/5须核查。
+## 算子精简与后续
 
-四科学权限false；旧paused72/retention/FAILED及review/RESULTS.json保持历史身份。原始输入/DSO/大JSONL留服务器，网页镜像不能用于声称独立重算未公开张量。前派生快照commit `7bf2a4b4c0031220049408505ecc42e29759f3b8`。
+- [结果](../.pipeline/experiments/single-layer-async-gemm-20261020/readability-20261021/RESULT.md)：Python直接绑定原参数，移除两个死函数，普通返回不组装debug中间字典/资源统计。设备数学、tile、KV、同步不变，baseline/投机/原tile不动。
+- 9真实签名及9组普通/debug有限逐位通过；两进程三KV完整单层Graph变化−0.132%～+0.103%，无稳定退化，无新增设备加速主张。
+- 当前源043c7759、DSO2a8a250e，两机一致；累计2538.680/36000秒，owned退出。[源码入口](../算子研究/wam_ops/optimized/whole_layer.py)、[CUDA整层](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[带读prompt](../算子研究/wam_ops/optimized/READ_CODE_PROMPT.md)。
+- 原小投影1.88%–2.08%收益保留；Self-Q、FFN原语仍待对齐，ready-DAG未实现。不能把此前计时拼成当前Torch倍数。
+
+原paused72/retention/FAILED与review/RESULTS.json保持历史身份。LIBERO6000局是三方法各四套×500，一轮，不是每方法三seed重复。原tensor/DSO/profile留服务器，公开证据缺失范围见EXPORT-NOTES。前派生快照commit `dbf02563f3e4729541483ab069c5496e22b31bae`。

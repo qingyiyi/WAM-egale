@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[小投影部分改善与RoboTwin90终态](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
+最新：[算子精简与RoboTwin慢因](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)、[算子带读prompt](../算子研究/wam_ops/optimized/READ_CODE_PROMPT.md)。
 
-固定形状投影完整层改善1.88%–2.08%，九签名有限逐位；Self-Q及独立版本退化保留，尚未全部对齐。RoboTwin六任务各5初态，T/C/P各30局成功25/24/23，90完整与30配对审计完成。两GPU owned退出。扩大900局未启动；四权限false。以下旧TF交接保持历史身份。
+算子9签名/普通debug有限逐位、性能无稳定退化；Self-Q/FFN→DAG仍待做。RoboTwin旧DEV90完成，新增原Target两例与完整profile属于诊断，不增加质量N。模型reset约12ms/局，主要成本为推理、规划、渲染和失败长尾。1800局未启动、160GPU小时未批准；owned作业已结束、四权限false。以下旧TF交接保持历史身份。
 
 ---
 

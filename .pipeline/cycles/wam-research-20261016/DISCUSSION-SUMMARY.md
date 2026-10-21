@@ -1,9 +1,11 @@
 # 当前讨论与授权
 
-用户已明确同意先解决六小投影嵌入变慢，Maintain约束继续有效。本轮完成一个固定形状设备阶段候选并保留约2%完整层净收益；Self-Q及独立实现退化未解决，不以更换参考宣布对齐。先定位Self-Q函数边界，再FFN，最后真实DAG，保持原累计预算。
+用户要求继续精简算子，可去掉实验代码的检查并给另一agent带读prompt。仅optimized；删除死代码和普通路径debug组装，保留计算边界/同步，外部核验完成。baseline/投机生产/原tile不动；后续先Self-Q、FFN再DAG。
 
-用户随后询问QKV含义及RoboTwin是否仅每任务1初态：已解释Self Q/K/V分别输入乘不同权重；本轮RoboTwin是每任务5初态、6任务三臂90局，LIBERO各套每任务50初态。建议扩大到6×50×3只属于讨论，不是新的GPU任务/训练/TEST授权，不写成长期决定。
+用户明确RoboTwin按官方每任务100次，六任务三臂1800局目标已接受，替代50。由于需要约135GPU小时而原M40只有24小时，提交了160小时有界方案；用户未批准，而是要求先分析为何比LIBERO慢及reset能否再优化。已完成账本与整局profile，方案候选为未用front相机和planner重复初始化；收益未知，尚未改变环境或启动扩大。
 
-DEV90已完整但Target25/30、TF24/30、PF2 23/30，不支持宣称保留质量；全部失败保留，四权限false。两GPU owned已退出。仅optimized迭代，baseline/原tile/投机生产/保护文件不动，BAAI仅~/cxz。
+原DEV90、全部失败、四权限false保留。新增原Target两例与profile都是同曝光case诊断，不增加独立质量N；命令全部一致，仍不证明论文完整复现。旧actual_commands为提交调用数，新增环境实际推进字段澄清，不覆盖旧记录。
 
-[前讨论](history/small-projection-function-before-20261021/DISCUSSION-SUMMARY.md)。
+用户最新决策存入现有两条记忆；临时数字/优化设想只放证据与本Cycle。当前两线owned均退出，原预算/截止保留。BAAI所有写入仅~/cxz。
+
+[前讨论](history/readability-and-runtime-before-20261021/DISCUSSION-SUMMARY.md)。

@@ -1,713 +1,123 @@
 {
-  "observed_at": "2026-10-21T21:17:23.588246+08:00",
-  "previous_derived_snapshot_commit": "7bf2a4b4c0031220049408505ecc42e29759f3b8",
+  "observed_at": "2026-10-21T22:19:31.835566+08:00",
+  "previous_derived_snapshot_commit": "dbf02563f3e4729541483ab069c5496e22b31bae",
   "operator": {
-    "source_SHA256": "e91e09eb1cc569a90e96c0ffe9bdbaf38aa312bd86b492a0e9723b954ed46d49",
-    "binary_SHA256": "23238b3762a8596e4f832a7c8a49ef8c2e3e72407b62d8669fd325e3d99b0a6b",
-    "decision": "RETAIN_PARTIAL_IMPROVEMENT",
-    "whole_layer_latency_reduction_percent": [
-      1.8788684,
-      2.0833321
-    ],
-    "self_Q_regression_preserved": true,
-    "new_independent_projection_slower": true,
-    "gate_signatures": 9,
+    "source_SHA256": "043c77597cb16f600ac42f10ae63e7fb4dc055becfb70e2394f328fe76e4b69a",
+    "binary_SHA256": "2a8a250ee31daca7640c0ba77fd167c1f72957fe4df577abc30f4c4563d0a50a",
+    "decision": "RETAIN_SIMPLIFIED_ENTRY",
+    "finite_real_signatures": 9,
+    "ordinary_debug_comparisons": 9,
     "finite_bitwise": true,
+    "whole_layer_change_percent_range": [
+      -0.132,
+      0.103
+    ],
+    "new_speedup_claim": false,
     "ready_DAG_implemented": false,
-    "result": ".pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESULT.md",
+    "result": ".pipeline/experiments/single-layer-async-gemm-20261020/readability-20261021/RESULT.md",
     "resource": {
-      "status": "COMPLETE_RETAINED_PARTIAL_IMPROVEMENT",
-      "observed_at": "2026-10-21T21:11:23.021761+08:00",
-      "GPU_lifecycle_seconds": 109.30635833740234,
-      "CPU_prepare_build_lifecycle_seconds": 272.14990758895874,
-      "CPU_disassembly_seconds": 5.46832013130188,
-      "CUDA_active_seconds": "UNKNOWN",
-      "cumulative_prior_GPU_seconds": 2373.8093949031827,
-      "cumulative_GPU_seconds": 2483.115753240585,
+      "status": "COMPLETE_CLEANED",
+      "GPU_lifecycle_seconds": 55.56376934051514,
+      "CPU_build_seconds": 133.9496374130249,
+      "prior_GPU_lifecycle_seconds": 2483.115753240585,
+      "cumulative_GPU_lifecycle_seconds": 2538.6795225811,
       "cumulative_cap_seconds": 36000,
-      "remaining_cumulative_GPU_seconds": 33516.884246759415,
-      "phase_GPU_cap_seconds": 1800,
-      "deadline": "2026-10-21T22:23:55.336498+08:00",
-      "failures": [],
-      "CPU_report_errors": [
+      "remaining_GPU_seconds": 33461.3204774189,
+      "CUDA_active_seconds": "UNKNOWN",
+      "failed_GPU_attempts": 0,
+      "timeouts": 0,
+      "owned_cleanup": [
         {
-          "error": "KeyError candidate",
-          "reason": "report used candidate key; raw timing uses specialized",
-          "resolution": "corrected derived report reader; raw evidence unchanged; no GPU rerun"
-        }
-      ],
-      "timeouts": [],
-      "new_candidates": 1,
-      "stage_clock_exceptions": [
-        {
-          "process": 1,
-          "case": "middle",
-          "name": "cross_V",
-          "condition": "hot_single_stage",
-          "clock_before": {
-            "SM": 1410,
-            "memory": 1215
-          },
-          "clock_after": {
-            "SM": 1395,
-            "memory": 1215
-          }
+          "pid": 790015,
+          "birth_ticks": 718906884,
+          "pgid": 790015,
+          "identity_alive": false
         },
         {
-          "process": 1,
-          "case": "long",
-          "name": "cross_K",
-          "condition": "hot_single_stage",
-          "clock_before": {
-            "SM": 1410,
-            "memory": 1215
-          },
-          "clock_after": {
-            "SM": 1395,
-            "memory": 1215
-          }
+          "pid": 790016,
+          "birth_ticks": 718906887,
+          "pgid": 790016,
+          "identity_alive": false
         },
         {
-          "process": 2,
-          "case": "short",
-          "name": "cross_V",
-          "condition": "hot_single_stage",
-          "clock_before": {
-            "SM": 1410,
-            "memory": 1215
-          },
-          "clock_after": {
-            "SM": 1395,
-            "memory": 1215
-          }
+          "pid": 790202,
+          "birth_ticks": 718920286,
+          "pgid": 790202,
+          "identity_alive": false
+        },
+        {
+          "pid": 790216,
+          "birth_ticks": 718921497,
+          "pgid": 790216,
+          "identity_alive": false
+        },
+        {
+          "pid": 790237,
+          "birth_ticks": 718923686,
+          "pgid": 790237,
+          "identity_alive": false
         }
       ],
-      "cleanup": "CLEANUP-CHECK.json",
-      "owned_cleanup_pass": true,
-      "stop_reason": "One registered candidate completed; no additional candidate, GPU rerun, DAG, quality or robot task started",
-      "limitations": [
-        "Self-Q slower; partial resolution only",
-        "New independent small projections slower than previous independent implementation",
-        "Stage before/after from different processes and sessions; strongest causal evidence is paired full-layer old/new timing",
-        "Three hot-only context clock samples at 1395MHz preserved; all same-prefix primary samples and embedded boundaries 1410MHz"
-      ],
-      "four_scientific_permissions_remain_false": true,
-      "storage": {
-        "observed_at": "2026-10-21T21:14:07.115735+08:00",
-        "remote_phase_bytes": 54212191,
-        "cap_bytes": 2147483648,
-        "local_phase_bytes": 62130928
-      }
+      "protected_baseline_source_unchanged": true,
+      "protected_file_count": 7,
+      "other_GPU": "GPU1 RoboTwin diagnostic; GPU0 no external process at paired timing",
+      "deadline": "2026-10-21T22:45:04.889760+08:00"
     }
   },
   "robotwin": {
-    "status": "COMPLETE_DEV90_NOT_INDEPENDENT_TEST",
-    "arms": {
-      "T": {
-        "n": 30,
-        "success": 25,
-        "actual_commands": 12224,
-        "penalty_total": 12124,
-        "lifecycle_seconds": 8105.780439853668,
-        "request_seconds": 3583.703904779628,
-        "policy_seconds": 3402.2012231573462,
-        "action_seconds": 2226.8595068873838,
-        "valid_updates": 19850,
-        "action_seconds_per_update": 0.11218435802959112,
-        "policy_chunks": 397
-      },
-      "C": {
-        "n": 30,
-        "success": 24,
-        "actual_commands": 13376,
-        "penalty_total": 13256,
-        "lifecycle_seconds": 7536.726281881332,
-        "request_seconds": 2682.9972580363974,
-        "policy_seconds": 2485.162153976038,
-        "action_seconds": 1188.407371390611,
-        "valid_updates": 21650,
-        "action_seconds_per_update": 0.05489179544529381,
-        "policy_chunks": 433
-      },
-      "P": {
-        "n": 30,
-        "success": 23,
-        "actual_commands": 13408,
-        "penalty_total": 13268,
-        "lifecycle_seconds": 8010.5402710437775,
-        "request_seconds": 3063.173990509473,
-        "policy_seconds": 2864.9016839247197,
-        "action_seconds": 1577.8033766187727,
-        "valid_updates": 21700,
-        "action_seconds_per_update": 0.07270983302390657,
-        "policy_chunks": 434
-      }
-    },
-    "task_success": {
-      "handover_block": {
-        "T": 5,
-        "C": 5,
-        "P": 5
-      },
-      "lift_pot": {
-        "T": 5,
-        "C": 5,
-        "P": 5
-      },
-      "open_microwave": {
-        "T": 1,
-        "C": 0,
-        "P": 1
-      },
-      "place_object_basket": {
-        "T": 4,
-        "C": 4,
-        "P": 2
-      },
-      "press_stapler": {
-        "T": 5,
-        "C": 5,
-        "P": 5
-      },
-      "stack_blocks_two": {
-        "T": 5,
-        "C": 5,
-        "P": 5
-      }
-    },
-    "paired_vs_target": {
-      "C": {
-        "target_success_candidate_failure": 1,
-        "candidate_success_target_failure": 0,
-        "both_success": 24,
-        "both_success_length_ratio": {
-          "P50": 1.0,
-          "P90": 1.0,
-          "max": 1.0,
-          "quantile": "linear numpy/type7"
-        },
-        "pairs": [
-          {
-            "pair": 0,
-            "task": "place_object_basket",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 1,
-            "task": "stack_blocks_two",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 2,
-            "task": "handover_block",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 3,
-            "task": "lift_pot",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 4,
-            "task": "press_stapler",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 5,
-            "task": "open_microwave",
-            "valid_index": 14,
-            "T": false,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 6,
-            "task": "place_object_basket",
-            "valid_index": 15,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 7,
-            "task": "stack_blocks_two",
-            "valid_index": 15,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 8,
-            "task": "handover_block",
-            "valid_index": 15,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 9,
-            "task": "lift_pot",
-            "valid_index": 15,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 10,
-            "task": "press_stapler",
-            "valid_index": 15,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 11,
-            "task": "open_microwave",
-            "valid_index": 15,
-            "T": false,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 12,
-            "task": "place_object_basket",
-            "valid_index": 16,
-            "T": false,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 13,
-            "task": "stack_blocks_two",
-            "valid_index": 16,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 14,
-            "task": "handover_block",
-            "valid_index": 16,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 15,
-            "task": "lift_pot",
-            "valid_index": 16,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 16,
-            "task": "press_stapler",
-            "valid_index": 16,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 17,
-            "task": "open_microwave",
-            "valid_index": 16,
-            "T": true,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 18,
-            "task": "place_object_basket",
-            "valid_index": 17,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 19,
-            "task": "stack_blocks_two",
-            "valid_index": 17,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 20,
-            "task": "handover_block",
-            "valid_index": 17,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 21,
-            "task": "lift_pot",
-            "valid_index": 17,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 22,
-            "task": "press_stapler",
-            "valid_index": 17,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 23,
-            "task": "open_microwave",
-            "valid_index": 17,
-            "T": false,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 24,
-            "task": "place_object_basket",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 25,
-            "task": "stack_blocks_two",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 26,
-            "task": "handover_block",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 27,
-            "task": "lift_pot",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 28,
-            "task": "press_stapler",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 29,
-            "task": "open_microwave",
-            "valid_index": 18,
-            "T": false,
-            "candidate": false,
-            "ratio": null
-          }
-        ]
-      },
-      "P": {
-        "target_success_candidate_failure": 3,
-        "candidate_success_target_failure": 1,
-        "both_success": 22,
-        "both_success_length_ratio": {
-          "P50": 1.0,
-          "P90": 1.0,
-          "max": 1.0,
-          "quantile": "linear numpy/type7"
-        },
-        "pairs": [
-          {
-            "pair": 0,
-            "task": "place_object_basket",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 1,
-            "task": "stack_blocks_two",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 2,
-            "task": "handover_block",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 3,
-            "task": "lift_pot",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 4,
-            "task": "press_stapler",
-            "valid_index": 14,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 5,
-            "task": "open_microwave",
-            "valid_index": 14,
-            "T": false,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 6,
-            "task": "place_object_basket",
-            "valid_index": 15,
-            "T": true,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 7,
-            "task": "stack_blocks_two",
-            "valid_index": 15,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 8,
-            "task": "handover_block",
-            "valid_index": 15,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 9,
-            "task": "lift_pot",
-            "valid_index": 15,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 10,
-            "task": "press_stapler",
-            "valid_index": 15,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 11,
-            "task": "open_microwave",
-            "valid_index": 15,
-            "T": false,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 12,
-            "task": "place_object_basket",
-            "valid_index": 16,
-            "T": false,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 13,
-            "task": "stack_blocks_two",
-            "valid_index": 16,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 14,
-            "task": "handover_block",
-            "valid_index": 16,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 15,
-            "task": "lift_pot",
-            "valid_index": 16,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 16,
-            "task": "press_stapler",
-            "valid_index": 16,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 17,
-            "task": "open_microwave",
-            "valid_index": 16,
-            "T": true,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 18,
-            "task": "place_object_basket",
-            "valid_index": 17,
-            "T": true,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 19,
-            "task": "stack_blocks_two",
-            "valid_index": 17,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 20,
-            "task": "handover_block",
-            "valid_index": 17,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 21,
-            "task": "lift_pot",
-            "valid_index": 17,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 22,
-            "task": "press_stapler",
-            "valid_index": 17,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 23,
-            "task": "open_microwave",
-            "valid_index": 17,
-            "T": false,
-            "candidate": false,
-            "ratio": null
-          },
-          {
-            "pair": 24,
-            "task": "place_object_basket",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 25,
-            "task": "stack_blocks_two",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 26,
-            "task": "handover_block",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 27,
-            "task": "lift_pot",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 28,
-            "task": "press_stapler",
-            "valid_index": 18,
-            "T": true,
-            "candidate": true,
-            "ratio": 1.0
-          },
-          {
-            "pair": 29,
-            "task": "open_microwave",
-            "valid_index": 18,
-            "T": false,
-            "candidate": true,
-            "ratio": null
-          }
-        ]
-      }
-    },
-    "initial_checks_pass": true,
-    "C_P_prefix_audits": 30,
-    "GPU_lifecycle_seconds": 24199.408205747604,
-    "cumulative_GPU_seconds": 50006.379537820816,
-    "remaining_owned": [],
-    "returncodes_note": "Server cleanup -15; all90 clients0; not an episode crash",
-    "engineering_quality_screen": false,
-    "independent_test_complete": false,
-    "noninferiority_established": false,
-    "formal_performance_permission": false
-  },
-  "robotwin_sample": {
+    "complete_dev_episodes": 90,
     "tasks": 6,
     "initializations_per_task": 5,
-    "valid_indices": [
-      14,
-      15,
-      16,
-      17,
-      18
+    "success_by_arm": {
+      "T": 25,
+      "TF": 24,
+      "PF2": 23
+    },
+    "episodes_per_arm": 30,
+    "canonical_target_reproductions": 2,
+    "profile_complete_episodes": 1,
+    "reproductions_add_independent_quality_samples": false,
+    "mean_dev_client_lifecycle_seconds": 262.811633,
+    "reset_90_total_seconds": 1.114684,
+    "reset_percent": 0.0047,
+    "rpc_outside_percent": 60.0209,
+    "failure_time_percent": 55.11,
+    "actual_commands_legacy_meaning": "submission calls, not actual environment advances",
+    "submitted_calls_by_arm": [
+      12224,
+      13376,
+      13408
     ],
-    "arms": 3,
-    "complete_episodes": 90,
-    "expanded_900_started": false
+    "environment_advances_by_arm": [
+      11808,
+      12927,
+      12958
+    ],
+    "profile_result": ".pipeline/experiments/robotwin-pilot-20261020/runtime-profile-20261021/RESULT.md",
+    "optimizations_implemented": false,
+    "expanded_goal_episodes": 1800,
+    "expanded_goal_inits_per_task": 100,
+    "expanded_1800_started": false,
+    "additional_160_gpu_hours_authorized": false,
+    "resource": {
+      "status": "COMPLETE_COST_DIAGNOSIS_NOT_OPTIMIZATION_BENCHMARK",
+      "new_GPU_lifecycle_seconds": 285.9335436820984,
+      "prior_GPU_lifecycle_seconds": 51197.74909591675,
+      "cumulative_GPU_lifecycle_seconds": 51483.68263959885,
+      "original_cap_seconds": 86400,
+      "original_deadline": "2026-10-22T01:26:04.706686+08:00",
+      "owned_remaining": [],
+      "returncodes": [
+        -15,
+        0
+      ],
+      "full_profile_success": true,
+      "full_commands_identical": true,
+      "expanded_1800_started": false,
+      "expanded_160_GPU_hours_authorized": false
+    }
   },
+  "owned_jobs_running": false,
   "engineering_quality_screen": false,
   "independent_test_complete": false,
   "noninferiority_established": false,
