@@ -1,9 +1,8 @@
 # 当前入口
 
-最新：[FFN1结果与DEV90补启](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
+最新：[当前单层慢因诊断与RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-算子有限逐位通过，FFN1尾块完整层小幅改善0.19%–0.50%，仍慢14%–29%；当前同源嵌入差约±1.3%，未ready。
-RoboTwin DEV90已在GPU1实际运行，快照完整3/90；三臂固定队列自动接续，初次导入失败与消耗保留，获准补启但不延长截止。原科学权限四项false不变。以下旧TF交接是历史科学基线，不覆盖当前授权。
+当前单层仍慢14%–29%，三KV阶段/CTA诊断已完成且有限逐位通过；重点是原语/资源/任务粒度，不能把早到等待全算纯同步。本机NCU已完成、GPU释放，硬件计数见当前分析。RoboTwin DEV90完整16/90，后台固定队列；四权限false。以下旧TF交接是历史科学基线。
 
 ---
 

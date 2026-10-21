@@ -1,10 +1,21 @@
 # 最近Execution checkpoint
 
-## 2026-10-21T13:45:15.316595+08:00 FFN1有限结果完成，DEV90获准补启
+## 2026-10-21T14:40:28.123288+08:00 本机NCU完成，慢因证据与资源闭合
 
-- M39一个尾块候选9签名有限逐位通过，两进程三KV完整层改善0.19%–0.50%；仍慢14%–29%，未ready。当前同源嵌入差−1.23%至+0.36%，动态spill等UNKNOWN。
-- GPU53.236828秒，累计1905.463629/36000秒；owned退出，GPU0释放。[全部样本/源/资源](../../experiments/single-layer-async-gemm-20261020/ffn1-tail-control-20261021/RESULT.md)。登记模板旧文字与实际manifest差异单列，未改旧JOB。
-- M40首DEV启动加载前导入失败，0teacher/0episode/5.005915秒；用户明确批准新namespace补启，旧失败与截止保留。
-- r2真实导入链CPU通过；13:35:21启动guard，模型READY并进入固定完整任务。当前完整3/90；自动接续，后续失败不自动重试。[当前状态](../../experiments/robotwin-pilot-20261020/dev90-20261021-r2/STATUS.json)。
-- Maintain已写限定重启决定；原累计24h与10/22 01:26硬截止不变。HW修复Plan/Progress稳定ID格式与引用，仅派生语义入口，保护state/cycle/rules未触及。
-- [前执行记录](history/ffn1-tail-dev90-20261021/EXECUTION.md)。
+- 7范围计数和有限数值/有效KV核查完成；NCU worker24.244760秒、自然退出/身份消失、GPU释放。本轮88.361944秒计入累计1993.825574/36000秒，全部失败保留。
+- native/自有Cross K、FFN1活跃warp均约12.5%，自有Tensor管线更低；FFN1 DRAM2.083×、local27.42MiB。整层local路径328.02MiB；SASS有函数保存/恢复，不能全部叫spill或HBM。
+- 三KV阶段/CTA数据有限逐位通过，主要差在GEMM、Cross RMS/GELU内部；长等待含其他CTA有效工作。没有新增优化候选，也未实现ready。
+- [完整分析](../../experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/RESULT.md)、[NCU原件](../../experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/local-ncu-exclusive/NCU.csv)、[资源](../../experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/RESOURCE-AND-STOP-REPORT.json)。
+- RoboTwin16/90出现microwave PF2自然失败，T/C配对未齐，不归因；后台继续、截止不变。
+
+
+## 2026-10-21T14:20:56.166173+08:00 当前三KV阶段/CTA诊断完成，本机NCU待自然空闲
+
+- 420完整/10962阶段调用，有限逐位/有效KV/输入/RNG通过；插桩扰动约1%。[结果与边界](../../experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/TIMELINE-RESULT.md)。
+- 差距集中在Cross K/V、小投影、FFN及Cross RMS/GELU。不能把CTA计算尾部解释为纯grid barrier成本；最后到齐后释放中位约1µs。
+- 远端NCU权限失败、native Graph捕获失败、本机DSO导入失败及资源admission阻塞均保留；修复仅测量wrapper。64.117185秒GPU计入累计1969.580814/36000秒。
+- 本机当前lhw PID45224在用。用户最新允许自然空闲即profile，CPU watcher已运行，≤480秒采集+清理；原14:40:10截止不重置。
+- RoboTwin14:18完整15/90，前五组三臂通过首两S审计；GPU1继续open_microwave-valid14-P，计数推进。非独立TEST、四权限false。
+- Maintain已合并自然空闲可直接启动NCU的最新授权，替代之前等确认的临时要求。
+
+[前执行记录](history/remaining-cost-start-20261021/EXECUTION.md)。

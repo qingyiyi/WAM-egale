@@ -1,0 +1,37 @@
+{
+  "goal": "Current-source remaining gap attribution: NCU hardware counters and per-CTA full-layer stages, no optimization candidate",
+  "authorization": "User 2026-10-21 explicitly requested remaining slowdown causes; local NCU allowed; use free remote GPU0 because local has another user context",
+  "source_sha256": "df2a307241928567e2b0d80a5e6c601b8e1aedaf6e4713b693d88ce247ead11a",
+  "registered": "2026-10-21T13:55:10.030893+08:00",
+  "deadline": "2026-10-21T14:40:10.030893+08:00",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU": [
+    4,
+    5
+  ],
+  "prior_GPU_seconds": 1905.4636290740966,
+  "cumulative_GPU_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 1200,
+  "CPU_build_cap_seconds": 900,
+  "storage_cap_bytes": 1073741824,
+  "max_full_block_calls": 1200,
+  "max_stage_calls": 12000,
+  "ncu_scope": "one real middle-KV full layer and three original/own GEMM stages, kernel replay, no clock/cache control",
+  "ncu_kernel_cap": 32,
+  "formal_performance_permission": false,
+  "cleanup": "PID+birth matching owned groups only; no automatic retry; independent NCU failure does not block timing diagnosis",
+  "steps": [
+    [
+      "trace",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "-B",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-cost-20261021/trace-r2/trace_worker.py"
+      ],
+      300,
+      true
+    ]
+  ],
+  "manual_revision": "Original full NativeBlock is not Graph capturable; only active/diagnostic graph comparison retained. Same mathematical binary, no rebuild. Prior failed harness retained; manual correction under current authorized diagnosis, no queue auto-retry.",
+  "prior_attempt_GPU_seconds": 11.528103113174438
+}

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/local-ncu/ncu_worker.py", line 28, in <module>
+    old=ext('wam_stage_native_cuda',N);ours=ext('wam_stage_resource_cuda',P)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/local-ncu/ncu_worker.py", line 15, in ext
+    p=next(path.glob(name+'*.so'));s=importlib.util.spec_from_file_location(name,p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
+                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 813, in module_from_spec
+  File "<frozen importlib._bootstrap_external>", line 1293, in create_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+ImportError: /root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/wam_attention_cuda.cpython-312-x86_64-linux-gnu.so: cannot open shared object file: Permission denied

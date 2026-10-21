@@ -1,0 +1,136 @@
+{
+  "status": "COMPLETE_DIAGNOSTIC_FAILURES_PRESERVED",
+  "attempts": [
+    {
+      "attempt": "NCU-STATUS.json",
+      "stage": "ncu",
+      "GPU": true,
+      "seconds": 13.097419738769531,
+      "status": "FAILED",
+      "owned": {
+        "pid": 756263,
+        "birth_ticks": 716068535,
+        "pgid": 756263
+      },
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "TRACE-STATUS.json",
+      "stage": "prepare",
+      "GPU": false,
+      "seconds": 0.03170490264892578,
+      "status": "COMPLETE",
+      "owned": {
+        "pid": 756633,
+        "birth_ticks": 716089847,
+        "pgid": 756633
+      },
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "TRACE-STATUS.json",
+      "stage": "build",
+      "GPU": false,
+      "seconds": 132.9578821659088,
+      "status": "COMPLETE",
+      "owned": {
+        "pid": 756634,
+        "birth_ticks": 716089850,
+        "pgid": 756634
+      },
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "TRACE-STATUS.json",
+      "stage": "trace",
+      "GPU": true,
+      "seconds": 11.528103113174438,
+      "status": "FAILED",
+      "owned": {
+        "pid": 757092,
+        "birth_ticks": 716103151,
+        "pgid": 757092
+      },
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "trace-r2/TRACE-STATUS.json",
+      "stage": "trace",
+      "GPU": true,
+      "seconds": 14.233394384384155,
+      "status": "COMPLETE",
+      "owned": {
+        "pid": 757902,
+        "birth_ticks": 716134064,
+        "pgid": 757902
+      },
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "attempt": "local-ncu",
+      "GPU": true,
+      "seconds": 25.258267641067505,
+      "status": "FAILED_OR_PARTIAL",
+      "owned": {
+        "pid": 43026,
+        "birth_ticks": 1383177352,
+        "pgid": 43026
+      },
+      "root_reaped": true,
+      "identity_alive": false,
+      "admission_wall_seconds": 27.11083674430847
+    },
+    {
+      "attempt": "local-ncu-r2",
+      "GPU": false,
+      "seconds": 0,
+      "status": "FAILED_OR_PARTIAL",
+      "owned": null,
+      "root_reaped": null,
+      "identity_alive": null,
+      "admission_wall_seconds": 0.053012847900390625
+    },
+    {
+      "attempt": "local-ncu-exclusive",
+      "GPU": true,
+      "seconds": 24.244759559631348,
+      "status": "COMPLETE",
+      "owned": {
+        "pid": 76360,
+        "birth_ticks": 1383342499,
+        "pgid": 76360
+      },
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "GPU_worker_seconds": 88.36194443702698,
+  "CPU_registered_prepare_build_seconds": 132.98958706855774,
+  "prior_GPU_seconds": 1905.4636290740966,
+  "cumulative_GPU_seconds": 1993.8255735111236,
+  "cumulative_cap_seconds": 36000,
+  "known_wrapper_invocations": {
+    "full_block": 576,
+    "stage": 11118
+  },
+  "NCU_replay_passes": "UNKNOWN;7 successful profiled ranges, host invocations separately counted",
+  "new_storage_bytes": 55286468,
+  "note": "CPU-only natural-idle watcher does not reserve GPU; report waiting duration separately at termination. Source preparation/transfer/analysis wall not CUDA active. Old failures retained; remote worker subprocess birth not captured and no retrospective receipt invented.",
+  "CPU_wait_seconds": 886.5870842933655,
+  "CPU_manual_admission_failure": "0GPU;remaining517.5s below520s precondition;successful bounded capture shortened420s plus30s cleanup without resetting deadline",
+  "optimization_candidates": 0,
+  "final_local_compute_apps": "",
+  "observed_at_epoch": 1792564721.4634728,
+  "owned_local_PID_current_presence": {
+    "63171": false,
+    "76349": false,
+    "76360": false,
+    "76396": false
+  },
+  "watcher_cleanup_note": "watcher ended by its admission deadline before manual launch, based on recorded end and code; no synthetic exit0/reaped receipt. Manual SIGTERM was conditional; no claimed signal delivery."
+}

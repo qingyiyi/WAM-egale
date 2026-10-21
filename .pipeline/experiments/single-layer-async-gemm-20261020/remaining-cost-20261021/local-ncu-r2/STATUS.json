@@ -1,0 +1,9 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792562879.4950044,
+  "load_before": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 45224\n",
+  "error": "AssertionError('local GPU compute context appeared')",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/local-ncu-r2/guard.py\", line 11, in <module>\n    apps=subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid','--format=csv,noheader'],text=True);s['load_before']=apps;assert not apps.strip(),'local GPU compute context appeared'\n                                                                                                                                                    ^^^^^^^^^^^^^^^^\nAssertionError: local GPU compute context appeared\n",
+  "end": 1792562879.548005,
+  "wall_seconds": 0.053012847900390625
+}

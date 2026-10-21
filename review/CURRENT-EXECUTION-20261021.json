@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-10-21T13:45:55.363261+08:00",
+  "observed_at": "2026-10-21T14:41:26.005701+08:00",
   "operator": {
     "selection": {
       "status": "KEEP_SMALL_FINITE_IMPROVEMENT_NOT_PARITY",
@@ -213,14 +213,699 @@
         "primitive_delta_percent": "25.43859649122806"
       }
     ],
-    "GPU_cumulative_seconds": 1905.4636290740966,
+    "GPU_cumulative_seconds": 1993.8255735111236,
     "all_workers_exited": true,
     "cross_stage_ready": false,
-    "dynamic_spill_L2_DRAM_occupancy": "UNKNOWN"
+    "dynamic_spill_L2_DRAM_occupancy": "Local NCU measured7 scopes: local traffic/L2/DRAM/active warps observed; exact spill-vs-call-save allocation and causal time remainUNKNOWN",
+    "remaining_cost_timeline": {
+      "cases": [
+        {
+          "case": "short",
+          "all_intermediates_exact": true,
+          "valid_KV": true,
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "active_resources": [
+            108,
+            1,
+            98848,
+            255,
+            1456,
+            256
+          ],
+          "trace_resources": [
+            108,
+            1,
+            98848,
+            255,
+            1448,
+            256
+          ],
+          "active": 2.6665120124816895,
+          "trace": 2.695647954940796,
+          "perturbation_pct": 1.092661211452417,
+          "sum_callsite_median_us": 2673.152,
+          "sum_native_external_us": 2070.016
+        },
+        {
+          "case": "middle",
+          "all_intermediates_exact": true,
+          "valid_KV": true,
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "active_resources": [
+            108,
+            1,
+            98848,
+            255,
+            1456,
+            256
+          ],
+          "trace_resources": [
+            108,
+            1,
+            98848,
+            255,
+            1448,
+            256
+          ],
+          "active": 2.878880023956299,
+          "trace": 2.9081759452819824,
+          "perturbation_pct": 1.0176152212631573,
+          "sum_callsite_median_us": 2889.216,
+          "sum_native_external_us": 2337.792
+        },
+        {
+          "case": "long",
+          "all_intermediates_exact": true,
+          "valid_KV": true,
+          "inputs_unchanged": true,
+          "RNG_unchanged": true,
+          "active_resources": [
+            108,
+            1,
+            98848,
+            255,
+            1456,
+            256
+          ],
+          "trace_resources": [
+            108,
+            1,
+            98848,
+            255,
+            1448,
+            256
+          ],
+          "active": 3.129855990409851,
+          "trace": 3.1610560417175293,
+          "perturbation_pct": 0.9968526156883151,
+          "sum_callsite_median_us": 3138.0480000000002,
+          "sum_native_external_us": 2779.136
+        }
+      ],
+      "boundary": "Own callsite vs native external device-marker, diagnostic only. No empty-marker correction. Sum not an additive E2E attribution; barriers overlap across CTAs.",
+      "full_calls": 420,
+      "stage_calls": 10962
+    },
+    "remaining_cost_resource_snapshot": {
+      "status": "COMPLETE_DIAGNOSTIC_FAILURES_PRESERVED",
+      "attempts": [
+        {
+          "attempt": "NCU-STATUS.json",
+          "stage": "ncu",
+          "GPU": true,
+          "seconds": 13.097419738769531,
+          "status": "FAILED",
+          "owned": {
+            "pid": 756263,
+            "birth_ticks": 716068535,
+            "pgid": 756263
+          },
+          "root_reaped": true,
+          "identity_alive": false
+        },
+        {
+          "attempt": "TRACE-STATUS.json",
+          "stage": "prepare",
+          "GPU": false,
+          "seconds": 0.03170490264892578,
+          "status": "COMPLETE",
+          "owned": {
+            "pid": 756633,
+            "birth_ticks": 716089847,
+            "pgid": 756633
+          },
+          "root_reaped": true,
+          "identity_alive": false
+        },
+        {
+          "attempt": "TRACE-STATUS.json",
+          "stage": "build",
+          "GPU": false,
+          "seconds": 132.9578821659088,
+          "status": "COMPLETE",
+          "owned": {
+            "pid": 756634,
+            "birth_ticks": 716089850,
+            "pgid": 756634
+          },
+          "root_reaped": true,
+          "identity_alive": false
+        },
+        {
+          "attempt": "TRACE-STATUS.json",
+          "stage": "trace",
+          "GPU": true,
+          "seconds": 11.528103113174438,
+          "status": "FAILED",
+          "owned": {
+            "pid": 757092,
+            "birth_ticks": 716103151,
+            "pgid": 757092
+          },
+          "root_reaped": true,
+          "identity_alive": false
+        },
+        {
+          "attempt": "trace-r2/TRACE-STATUS.json",
+          "stage": "trace",
+          "GPU": true,
+          "seconds": 14.233394384384155,
+          "status": "COMPLETE",
+          "owned": {
+            "pid": 757902,
+            "birth_ticks": 716134064,
+            "pgid": 757902
+          },
+          "root_reaped": true,
+          "identity_alive": false
+        },
+        {
+          "attempt": "local-ncu",
+          "GPU": true,
+          "seconds": 25.258267641067505,
+          "status": "FAILED_OR_PARTIAL",
+          "owned": {
+            "pid": 43026,
+            "birth_ticks": 1383177352,
+            "pgid": 43026
+          },
+          "root_reaped": true,
+          "identity_alive": false,
+          "admission_wall_seconds": 27.11083674430847
+        },
+        {
+          "attempt": "local-ncu-r2",
+          "GPU": false,
+          "seconds": 0,
+          "status": "FAILED_OR_PARTIAL",
+          "owned": null,
+          "root_reaped": null,
+          "identity_alive": null,
+          "admission_wall_seconds": 0.053012847900390625
+        },
+        {
+          "attempt": "local-ncu-exclusive",
+          "GPU": true,
+          "seconds": 24.244759559631348,
+          "status": "COMPLETE",
+          "owned": {
+            "pid": 76360,
+            "birth_ticks": 1383342499,
+            "pgid": 76360
+          },
+          "root_reaped": true,
+          "identity_alive": false
+        }
+      ],
+      "GPU_worker_seconds": 88.36194443702698,
+      "CPU_registered_prepare_build_seconds": 132.98958706855774,
+      "prior_GPU_seconds": 1905.4636290740966,
+      "cumulative_GPU_seconds": 1993.8255735111236,
+      "cumulative_cap_seconds": 36000,
+      "known_wrapper_invocations": {
+        "full_block": 576,
+        "stage": 11118
+      },
+      "NCU_replay_passes": "UNKNOWN;7 successful profiled ranges, host invocations separately counted",
+      "new_storage_bytes": 55286468,
+      "note": "CPU-only natural-idle watcher does not reserve GPU; report waiting duration separately at termination. Source preparation/transfer/analysis wall not CUDA active. Old failures retained; remote worker subprocess birth not captured and no retrospective receipt invented.",
+      "CPU_wait_seconds": 886.5870842933655,
+      "CPU_manual_admission_failure": "0GPU;remaining517.5s below520s precondition;successful bounded capture shortened420s plus30s cleanup without resetting deadline",
+      "optimization_candidates": 0,
+      "final_local_compute_apps": "",
+      "observed_at_epoch": 1792564721.4634728,
+      "owned_local_PID_current_presence": {
+        "63171": false,
+        "76349": false,
+        "76360": false,
+        "76396": false
+      },
+      "watcher_cleanup_note": "watcher ended by its admission deadline before manual launch, based on recorded end and code; no synthetic exit0/reaped receipt. Manual SIGTERM was conditional; no claimed signal delivery."
+    },
+    "NCU_status": {
+      "status": "COMPLETE_NCU_GPU_RELEASED",
+      "NCU_status": "COMPLETE",
+      "watcher_terminal_before_manual": "admission deadline reached;status field had been updated toMANUAL_IDLE_ADMISSION, original timing fields retained",
+      "manual_admission_failures": [
+        "0GPU;remaining517.5s below520s precondition;successful bounded capture shortened420s plus30s cleanup without resetting deadline"
+      ],
+      "GPU_processes_after": "",
+      "observed_at_epoch": 1792564721.4651272
+    },
+    "NCU_result": {
+      "status": "OBSERVED_HARDWARE_COUNTERS",
+      "scope": "local A100, true middle B14 fixture; hot independent GEMM diagnostic; full kernel separate; not official timing",
+      "raw_csv": "NCU.csv",
+      "kernels": {
+        "measure_full_owned": {
+          "kernel": "measure_full_owned/wam_whole_layer_v1::whole_layer(wam_whole_layer_v1::Params)",
+          "grid": "(108, 1, 1)",
+          "block": "(256, 1, 1)",
+          "metrics": {
+            "dram__bytes.sum": {
+              "unit": "byte",
+              "value": "1586096256"
+            },
+            "gpu__time_duration.sum": {
+              "unit": "ns",
+              "value": "2981952"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_ld.sum": {
+              "unit": "byte",
+              "value": "181758976"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_st.sum": {
+              "unit": "byte",
+              "value": "162195648"
+            },
+            "launch__block_size": {
+              "unit": "",
+              "value": "256"
+            },
+            "launch__grid_size": {
+              "unit": "",
+              "value": "108"
+            },
+            "launch__registers_per_thread": {
+              "unit": "register/thread",
+              "value": "255"
+            },
+            "launch__shared_mem_per_block": {
+              "unit": "byte/block",
+              "value": "99872"
+            },
+            "lts__t_sectors.sum": {
+              "unit": "sector",
+              "value": "272529622"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "40.75"
+            },
+            "sm__warps_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "12.50"
+            },
+            "smsp__warp_issue_stalled_barrier_per_warp_active.pct": {
+              "unit": "%",
+              "value": "46.90"
+            },
+            "smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct": {
+              "unit": "%",
+              "value": "13.62"
+            },
+            "smsp__warps_eligible.avg.per_cycle_active": {
+              "unit": "warp",
+              "value": "0.19"
+            }
+          }
+        },
+        "measure_native_16": {
+          "kernel": "measure_native_16/ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": "(24, 28, 1)",
+          "block": "(256, 1, 1)",
+          "metrics": {
+            "dram__bytes.sum": {
+              "unit": "byte",
+              "value": "207410304"
+            },
+            "gpu__time_duration.sum": {
+              "unit": "ns",
+              "value": "560000"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_ld.sum": {
+              "unit": "byte",
+              "value": "0"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_st.sum": {
+              "unit": "byte",
+              "value": "0"
+            },
+            "launch__block_size": {
+              "unit": "",
+              "value": "256"
+            },
+            "launch__grid_size": {
+              "unit": "",
+              "value": "672"
+            },
+            "launch__registers_per_thread": {
+              "unit": "register/thread",
+              "value": "238"
+            },
+            "launch__shared_mem_per_block": {
+              "unit": "byte/block",
+              "value": "148480"
+            },
+            "lts__t_sectors.sum": {
+              "unit": "sector",
+              "value": "62241171"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "88.50"
+            },
+            "sm__warps_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "12.49"
+            },
+            "smsp__warp_issue_stalled_barrier_per_warp_active.pct": {
+              "unit": "%",
+              "value": "6.26"
+            },
+            "smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct": {
+              "unit": "%",
+              "value": "0.60"
+            },
+            "smsp__warps_eligible.avg.per_cycle_active": {
+              "unit": "warp",
+              "value": "0.32"
+            }
+          }
+        },
+        "measure_owned_16": {
+          "kernel": "measure_owned_16/void wam_resource_control::one_stage<(int)16>(wam_resource_control::Params)",
+          "grid": "(108, 1, 1)",
+          "block": "(256, 1, 1)",
+          "metrics": {
+            "dram__bytes.sum": {
+              "unit": "byte",
+              "value": "350640000"
+            },
+            "gpu__time_duration.sum": {
+              "unit": "ns",
+              "value": "673440"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_ld.sum": {
+              "unit": "byte",
+              "value": "14487552"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_st.sum": {
+              "unit": "byte",
+              "value": "14266368"
+            },
+            "launch__block_size": {
+              "unit": "",
+              "value": "256"
+            },
+            "launch__grid_size": {
+              "unit": "",
+              "value": "108"
+            },
+            "launch__registers_per_thread": {
+              "unit": "register/thread",
+              "value": "255"
+            },
+            "launch__shared_mem_per_block": {
+              "unit": "byte/block",
+              "value": "99872"
+            },
+            "lts__t_sectors.sum": {
+              "unit": "sector",
+              "value": "87274234"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "70.29"
+            },
+            "sm__warps_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "12.50"
+            },
+            "smsp__warp_issue_stalled_barrier_per_warp_active.pct": {
+              "unit": "%",
+              "value": "46.64"
+            },
+            "smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct": {
+              "unit": "%",
+              "value": "3.96"
+            },
+            "smsp__warps_eligible.avg.per_cycle_active": {
+              "unit": "warp",
+              "value": "0.26"
+            }
+          }
+        },
+        "measure_native_25": {
+          "kernel": "measure_native_25/ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": "(56, 2, 1)",
+          "block": "(256, 1, 1)",
+          "metrics": {
+            "dram__bytes.sum": {
+              "unit": "byte",
+              "value": "101345152"
+            },
+            "gpu__time_duration.sum": {
+              "unit": "ns",
+              "value": "172864"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_ld.sum": {
+              "unit": "byte",
+              "value": "0"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_st.sum": {
+              "unit": "byte",
+              "value": "0"
+            },
+            "launch__block_size": {
+              "unit": "",
+              "value": "256"
+            },
+            "launch__grid_size": {
+              "unit": "",
+              "value": "112"
+            },
+            "launch__registers_per_thread": {
+              "unit": "register/thread",
+              "value": "238"
+            },
+            "launch__shared_mem_per_block": {
+              "unit": "byte/block",
+              "value": "148480"
+            },
+            "lts__t_sectors.sum": {
+              "unit": "sector",
+              "value": "11999503"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "78.75"
+            },
+            "sm__warps_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "12.49"
+            },
+            "smsp__warp_issue_stalled_barrier_per_warp_active.pct": {
+              "unit": "%",
+              "value": "4.54"
+            },
+            "smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct": {
+              "unit": "%",
+              "value": "7.71"
+            },
+            "smsp__warps_eligible.avg.per_cycle_active": {
+              "unit": "warp",
+              "value": "0.28"
+            }
+          }
+        },
+        "measure_owned_25": {
+          "kernel": "measure_owned_25/void wam_resource_control::one_stage<(int)25>(wam_resource_control::Params)",
+          "grid": "(108, 1, 1)",
+          "block": "(256, 1, 1)",
+          "metrics": {
+            "dram__bytes.sum": {
+              "unit": "byte",
+              "value": "211068288"
+            },
+            "gpu__time_duration.sum": {
+              "unit": "ns",
+              "value": "224608"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_ld.sum": {
+              "unit": "byte",
+              "value": "14598144"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_st.sum": {
+              "unit": "byte",
+              "value": "14155776"
+            },
+            "launch__block_size": {
+              "unit": "",
+              "value": "256"
+            },
+            "launch__grid_size": {
+              "unit": "",
+              "value": "108"
+            },
+            "launch__registers_per_thread": {
+              "unit": "register/thread",
+              "value": "255"
+            },
+            "launch__shared_mem_per_block": {
+              "unit": "byte/block",
+              "value": "99872"
+            },
+            "lts__t_sectors.sum": {
+              "unit": "sector",
+              "value": "18180441"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "32.90"
+            },
+            "sm__warps_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "12.49"
+            },
+            "smsp__warp_issue_stalled_barrier_per_warp_active.pct": {
+              "unit": "%",
+              "value": "50.90"
+            },
+            "smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct": {
+              "unit": "%",
+              "value": "19.81"
+            },
+            "smsp__warps_eligible.avg.per_cycle_active": {
+              "unit": "warp",
+              "value": "0.13"
+            }
+          }
+        },
+        "measure_native_27": {
+          "kernel": "measure_native_27/ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": "(24, 2, 2)",
+          "block": "(128, 1, 1)",
+          "metrics": {
+            "dram__bytes.sum": {
+              "unit": "byte",
+              "value": "98930432"
+            },
+            "gpu__time_duration.sum": {
+              "unit": "ns",
+              "value": "111392"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_ld.sum": {
+              "unit": "byte",
+              "value": "0"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_st.sum": {
+              "unit": "byte",
+              "value": "0"
+            },
+            "launch__block_size": {
+              "unit": "",
+              "value": "128"
+            },
+            "launch__grid_size": {
+              "unit": "",
+              "value": "96"
+            },
+            "launch__registers_per_thread": {
+              "unit": "register/thread",
+              "value": "246"
+            },
+            "launch__shared_mem_per_block": {
+              "unit": "byte/block",
+              "value": "99328"
+            },
+            "lts__t_sectors.sum": {
+              "unit": "sector",
+              "value": "15776448"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "81.47"
+            },
+            "sm__warps_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "6.23"
+            },
+            "smsp__warp_issue_stalled_barrier_per_warp_active.pct": {
+              "unit": "%",
+              "value": "0.15"
+            },
+            "smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct": {
+              "unit": "%",
+              "value": "8.24"
+            },
+            "smsp__warps_eligible.avg.per_cycle_active": {
+              "unit": "warp",
+              "value": "0.19"
+            }
+          }
+        },
+        "measure_owned_27": {
+          "kernel": "measure_owned_27/void wam_resource_control::one_stage<(int)27>(wam_resource_control::Params)",
+          "grid": "(108, 1, 1)",
+          "block": "(256, 1, 1)",
+          "metrics": {
+            "dram__bytes.sum": {
+              "unit": "byte",
+              "value": "118099712"
+            },
+            "gpu__time_duration.sum": {
+              "unit": "ns",
+              "value": "146400"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_ld.sum": {
+              "unit": "byte",
+              "value": "13160448"
+            },
+            "l1tex__t_bytes_pipe_lsu_mem_local_op_st.sum": {
+              "unit": "byte",
+              "value": "12718080"
+            },
+            "launch__block_size": {
+              "unit": "",
+              "value": "256"
+            },
+            "launch__grid_size": {
+              "unit": "",
+              "value": "108"
+            },
+            "launch__registers_per_thread": {
+              "unit": "register/thread",
+              "value": "254"
+            },
+            "launch__shared_mem_per_block": {
+              "unit": "byte/block",
+              "value": "99872"
+            },
+            "lts__t_sectors.sum": {
+              "unit": "sector",
+              "value": "17067576"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "52.85"
+            },
+            "sm__warps_active.avg.pct_of_peak_sustained_active": {
+              "unit": "%",
+              "value": "12.49"
+            },
+            "smsp__warp_issue_stalled_barrier_per_warp_active.pct": {
+              "unit": "%",
+              "value": "50.86"
+            },
+            "smsp__warp_issue_stalled_long_scoreboard_per_warp_active.pct": {
+              "unit": "%",
+              "value": "9.92"
+            },
+            "smsp__warps_eligible.avg.per_cycle_active": {
+              "unit": "warp",
+              "value": "0.18"
+            }
+          }
+        }
+      }
+    }
   },
   "robotwin": {
     "status": "RUNNING_COMPLETE_DEV_EPISODE",
-    "complete_episodes": 3,
+    "complete_episodes": 16,
     "episodes": [
       {
         "episode_id": "place_object_basket-valid14-T",
@@ -278,6 +963,253 @@
         "horizon": 700,
         "lifecycle_seconds": 160.05867266654968,
         "client_returncode": 0
+      },
+      {
+        "episode_id": "stack_blocks_two-valid14-C",
+        "pair_id": 1,
+        "arm": "C",
+        "task": "stack_blocks_two",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 272,
+        "policy_chunks": 9,
+        "failure_penalty": 272,
+        "horizon": 800,
+        "lifecycle_seconds": 160.57371520996094,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "stack_blocks_two-valid14-P",
+        "pair_id": 1,
+        "arm": "P",
+        "task": "stack_blocks_two",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 272,
+        "policy_chunks": 9,
+        "failure_penalty": 272,
+        "horizon": 800,
+        "lifecycle_seconds": 163.87624526023865,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "stack_blocks_two-valid14-T",
+        "pair_id": 1,
+        "arm": "T",
+        "task": "stack_blocks_two",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 272,
+        "policy_chunks": 9,
+        "failure_penalty": 272,
+        "horizon": 800,
+        "lifecycle_seconds": 179.12658262252808,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "handover_block-valid14-P",
+        "pair_id": 2,
+        "arm": "P",
+        "task": "handover_block",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 272,
+        "policy_chunks": 9,
+        "failure_penalty": 272,
+        "horizon": 800,
+        "lifecycle_seconds": 172.4279818534851,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "handover_block-valid14-T",
+        "pair_id": 2,
+        "arm": "T",
+        "task": "handover_block",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 272,
+        "policy_chunks": 9,
+        "failure_penalty": 272,
+        "horizon": 800,
+        "lifecycle_seconds": 187.60272932052612,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "handover_block-valid14-C",
+        "pair_id": 2,
+        "arm": "C",
+        "task": "handover_block",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 272,
+        "policy_chunks": 9,
+        "failure_penalty": 272,
+        "horizon": 800,
+        "lifecycle_seconds": 159.1197063922882,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "lift_pot-valid14-T",
+        "pair_id": 3,
+        "arm": "T",
+        "task": "lift_pot",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 108.29923558235168,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "lift_pot-valid14-C",
+        "pair_id": 3,
+        "arm": "C",
+        "task": "lift_pot",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 93.54287075996399,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "lift_pot-valid14-P",
+        "pair_id": 3,
+        "arm": "P",
+        "task": "lift_pot",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 101.56650400161743,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "press_stapler-valid14-C",
+        "pair_id": 4,
+        "arm": "C",
+        "task": "press_stapler",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 82.71911215782166,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "press_stapler-valid14-P",
+        "pair_id": 4,
+        "arm": "P",
+        "task": "press_stapler",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 85.37953495979309,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "press_stapler-valid14-T",
+        "pair_id": 4,
+        "arm": "T",
+        "task": "press_stapler",
+        "valid_index": 14,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 92.85997343063354,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "open_microwave-valid14-P",
+        "pair_id": 5,
+        "arm": "P",
+        "task": "open_microwave",
+        "valid_index": 14,
+        "status": "COMPLETE_ALGORITHMIC_FAILURE",
+        "success": false,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 1520,
+        "policy_chunks": 48,
+        "failure_penalty": 1500,
+        "horizon": 1500,
+        "lifecycle_seconds": 818.8635823726654,
+        "client_returncode": 0
       }
     ],
     "pair_audits": [
@@ -290,11 +1222,51 @@
         },
         "pass_all": true,
         "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 1,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 2,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 3,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 4,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
       }
     ],
-    "active_case": "stack_blocks_two-valid14-C",
+    "active_case": "open_microwave-valid14-T",
     "server_teacher_attempted": 1483,
-    "GPU_lifecycle_seconds_snapshot": 571.5742936134338,
+    "GPU_lifecycle_seconds_snapshot": 3936.7856316566467,
     "prior_GPU_seconds": 25806.97133207321,
     "absolute_deadline": "2026-10-22T01:26:04.706686+08:00",
     "automatic_queue": true,

@@ -1,0 +1,56 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792562439.9066732,
+  "deadline": 1792564810.030893,
+  "jobs": [
+    {
+      "name": "prepare",
+      "owned": {
+        "pid": 756633,
+        "birth_ticks": 716089847,
+        "pgid": 756633
+      },
+      "start": 1792562439.9084723,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792562439.9401772,
+      "lifecycle_seconds": 0.03170490264892578,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "build",
+      "owned": {
+        "pid": 756634,
+        "birth_ticks": 716089850,
+        "pgid": 756634
+      },
+      "start": 1792562439.9415164,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792562572.8993983,
+      "lifecycle_seconds": 132.9578821659088,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "trace",
+      "owned": {
+        "pid": 757092,
+        "birth_ticks": 716103151,
+        "pgid": 757092
+      },
+      "start": 1792562572.953022,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792562584.481125,
+      "lifecycle_seconds": 11.528103113174438,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('trace failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-cost-20261021/trace_guard.py\", line 42, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: trace failed\n",
+  "end": 1792562584.4848166,
+  "lifecycle_seconds": 144.57814359664917
+}

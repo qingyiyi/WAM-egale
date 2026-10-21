@@ -1,17 +1,14 @@
-# 当前执行证据（2026-10-21T13:45:55.363261+08:00）
+# 当前执行证据（2026-10-21T14:41:26.005701+08:00）
 
-算子FFN1尾块一次候选保留：完整单层两进程三KV改善0.19%–0.50%，仍慢14%–29%。9签名有限逐位通过，max_abs=0；跨阶段ready未实现。当前独立/嵌入同边界差约−1.23%至+0.36%，不能把剩余差额全归同步。动态spill/L2/DRAM/occupancy UNKNOWN。
+当前单层数学源码仍为df2a307241928567e2b0d80a5e6c601b8e1aedaf6e4713b693d88ce247ead11a。此前完整uncached/eager B14两进程仍慢：短29%、中25%、长14%；FFN1尾块仅改善0.19%–0.50%。本轮没有新增优化候选。本机NCU已完成，24秒后GPU释放：三对GEMM的Tensor活跃更低且出现local读写，FFN1 DRAM为原版2.083倍；这是一轮hot诊断，不是正式性能或唯一根因证明。
 
-- [完整层与四阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn1-tail-control-20261021/RESULT.md)
-- [源](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)；SHA256 `df2a307241928567e2b0d80a5e6c601b8e1aedaf6e4713b693d88ce247ead11a`
-- [资源](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn1-tail-control-20261021/RESOURCE-AND-STOP-REPORT.json)、[旧登记字段说明](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn1-tail-control-20261021/REGISTRATION-NOTES.md)
+三KV阶段/CTA诊断完成420完整调用与10962阶段调用，有限逐位/有效KV/输入/RNG通过，插桩扰动约1%。剩余耗时优先定位Cross K/V、小action投影、FFN、Cross K RMS和GELU；屏障最后到齐后的释放中位约1µs，早到CTA等待混有其他CTA仍在计算，不能全称纯同步。native外侧marker与自有函数调用点边界不同；这是诊断定位，不是E2E加速表。
 
-RoboTwin DEV90：3/90完整终态，当前`stack_blocks_two-valid14-C`；状态`RUNNING_COMPLETE_DEV_EPISODE`。GPU1单worker，固定30初态×T/C/P自动接续。前启动导入错误0teacher/0episode保留；用户明确允许新namespace补启，原24h累计及10/22 01:26:04截止不变。
+- [完整慢因分析](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/RESULT.md)、[三KV时间线](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/TIMELINE-RESULT.md)
+- [阶段明细](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/STAGE-SUMMARY.csv)、[CTA等待汇总](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/BARRIER-SUMMARY.csv)、[有限逐位与插桩扰动原JSON](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/trace-r2/TRACE-RESULT.json)
+- [资源与失败](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/RESOURCE-SNAPSHOT.json)、[测量wrapper修正记录](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/HARNESS-CORRECTIONS.md)
+- [本机NCU结果](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/local-ncu-exclusive/NCU-SUMMARY.json)、[终态](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/local-ncu-exclusive/FINAL-STATUS.json)，以当前文件为准；远端NCU权限拒绝记录保留，不能以静态local字节声称动态spill已证实。
 
-- [本次补启授权/边界](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/RETRY-AUTHORIZATION.md)
-- [固定计划](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/PLAN.json)、[状态快照](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/STATUS.json)、[真实导入核查](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/CPU-IMPORT-REVIEW.json)
-- 初态、C/P首两S有效KV摘要/RNG/动作/路径与分支计数门；基础设施或隔离失败停止新局，不自动重试。
+RoboTwin固定DEV90当前快照完整16/90，状态RUNNING_COMPLETE_DEV_EPISODE，当前open_microwave-valid14-T；[STATUS](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/STATUS.json)。初态与C/P首两S审计、原失败、24h累计和10/22 01:26截止保持。GPU1后台自动接续既定完整队列，不自动重试。
 
-CURRENT18的13/18是CONT采集，不能改称新ON闭环SR。新权重部署CAL不是机器人质量门。DEV90和LIBERO既有面板非独立TEST；四项权限false。raw KV/权重/原始场景PT、profile trace不公开；不能凭仓库声称重算所有tensor。旧paused72在RESULTS.json保留。
-
-下一步：核对首完整三臂及隔离门，后台接续；算子量化原语/等待后做真实DAG补位。main是动态进度镜像，审阅时固定本次commit。
+四科学权限false；LIBERO及DEV非独立TEST。baseline、原tile和投机生产不改。原始CTA时间线/输入tensor/权重留本地；公开派生统计与源身份，不声称网页端可独立重算所有张量。旧paused72及RESULTS.json不变。
