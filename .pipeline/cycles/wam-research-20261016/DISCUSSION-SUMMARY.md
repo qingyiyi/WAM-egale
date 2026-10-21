@@ -1,17 +1,8 @@
 # 当前讨论与授权
 
-用户最新优先核对RMS/RoPE/调制/残差，查官方实现，再重出耗时表。每个子算子采用其合适tile/逻辑任务数，
-不要求每阶段凑满108；未来按真实DAG就绪从后续任务填空。当前优先对齐，不把澄清解释成立即ready授权。
-
-本轮已完成独立数学体、point/RMS有限整层集成、当前全阶段与CTA等待表，固定预热性能改善2.2%–3.0%。
-整层仍未追平native；等待分布不是纯同步或可直接兑现的速度。动态counter未知，所有初轮和失败保留。
-
-当前作业已提前终态清理，M39原10h总预算不重置。RoboTwin旧窗口已结束的事实保留；用户最新明确要求优先恢复，现由新有界窗口接CURRENT18，计原24h累计。
-四科学权限、paused72、retention/FAILED、默认A_off不改；仅optimized，保护baseline/原tile/LIBERO。
-BAAI全部写入限~/cxz，不改驱动/服务/时钟，不杀他人；GitHub只main同步小证据，不含权重/凭据。
-
-用户追问三KV覆盖：已有短/中/长全部实测，本次补同表汇总、两进程波动与退化项。下一步先同前序访存/缓存条件比较Cross KV/FFN，避免将独立热重放差值直接归因同步；此为待验证诊断，未写为长期科学结论。
-
-用户现已明确同意三步方案。先启动有界Cross KV/FFN同前序条件对照；其后调度仍以主要差距收敛或合理原因作为前置。旧“尚未同意执行后继”的表述由本确认接续，原预算/截止分别保留。
-
-最新用户原意：两卡空闲不等于迁移完成，优先给RoboTwin一张卡。已保存Maintain constraint，GPU1真实启动；自动接到ON/CAL。GPU0算子诊断已完成，CPU分析，不为占卡增加作业。DEV仍需入口审查，四权限不变。
+用户最新明确“先做1和2”：先Cross KV设备函数/编译资源控制，然后FFN；本轮已完成并保留两项。固定tile/数学/同步，真实三KV与9签名有限门；不先做跨阶段ready。
+完整单层下降9.46%–10.87%，仍慢15%–31%。函数组织控制对Cross有效，FFN只再改善约0.6%。静态SASS及插桩支持机制方向，不把动态spill/traffic当已测事实。
+下一步先剩余FFN主循环/归约/epilogue和资源成本，再最小DAG补位。每子算子采用合适tile和自然任务数，108只是worker池，不要求凑满。旧失败/负结果/截止保留。
+GPU1优先RoboTwin，已启动CURRENT18并自动接ON/CAL；DEV90尚未排队，不宣称迁移完成。原24h累计预算不重置。
+仅optimized；保护baseline/原tile/LIBERO生产、state/cycle/rules、四权限false、paused72与retention。BAAI写入限~/cxz，不改驱动/时钟/服务、不杀他人。GitHub仅main小证据。
+本轮M39累计1770.668/36000秒；GPU0本轮作业已退出。历史授权与讨论见[前检查点](history/gemm-function-control-20261021/DISCUSSION-SUMMARY.md)。

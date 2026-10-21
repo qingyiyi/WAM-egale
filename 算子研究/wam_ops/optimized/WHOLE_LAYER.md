@@ -7,7 +7,7 @@
 1. `whole_layer.py`：输入和原模型一致，返回hidden或供外部核验的中间量。
 2. `whole_layer.cu`的`whole_layer()`：依照模型顺序列出全部计算，五段中文注释给出数据流。
 3. `begin_stage → claim_tile → finish_tile`：warp0给整个CTA领取任务；tile结束后复用shared，阶段结束用grid.sync。
-4. `linear/norm/point/attention`：决定各阶段怎样切tile，再调用设备端计算。
+4. `linear/context_linear/action_ffn_linear/norm/point/attention`：决定各阶段怎样切tile，再调用设备端计算。
 5. [cutlass_gemm.cuh](csrc/cutlass_gemm.cuh)、[gemm_pipeline.cuh](csrc/gemm_pipeline.cuh)、[fa2_stage.cuh](csrc/fa2_stage.cuh)：GEMM、内部FA2和合法KV寻址。
 
 ## 输入与计算
@@ -43,11 +43,20 @@ hidden：BF16 `[B,Q,3072]`；context：BF16 `[B,512,3072]`；temb：原BF16/FP32
 
 ## 验证与性能边界
 
+当前最新是[Cross K/V与FFN函数组织控制](../../../.pipeline/experiments/single-layer-async-gemm-20261020/gemm-function-control-20261021/RESULT.md)。
+固定tile/数学/同步，Cross使用整个阶段专用设备函数，FFN仅B14固定形状；tile循环内展开CUTLASS核心，减少反复进入通用设备函数的成本。
+两独立进程直接测本轮前/最终版，短中长KV完整层下降10.84%–10.87% / 9.99%–10.13% / 9.46%–9.59%。
+最终约2.766/3.028/3.281ms，仍比native慢30.4%–30.5% / 25.8%–25.9% / 15.3%–15.4%。
+两阶段各9真实签名、23中间量、18有效KV状态及输入/RNG有限逐位通过；仍一个kernel。函数组织改变不等于新的ready调度，静态寄存器仍255，动态spill/traffic仍未知。
+FFN单独增量约0.6%，尚未性能对齐；下一步先FFN原语/资源差距。本次没有恢复此前负收益FFN2并行分段版本。
+
+以下为前轮历史，对应原件保留，不代表上述最新源：
+
 最新证据见[RMS/RoPE/调制/残差、完整阶段及CTA等待](../../../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)。
 本轮12个小算子三KV/两进程独立数学体有限逐位通过；RMS接近Torch，融合RoPE、调制和门控残差更快，直接残差仍略慢。
 原Torch表达式可能启动多个kernel，旧“独立阶段”仍带统一执行器/shared预留，二者不应混称。
 保留point向量化和candidate RMS双行直接读取后，固定60轮预热的两个独立进程，整层较本轮前改善2.2%–3.0%。
-B14短/中/长当前约3.10/3.37/3.62ms，为native的1.463–1.467/1.402–1.403/1.274–1.275倍，尚未速度对齐。
+该前轮B14短/中/长约3.10/3.37/3.62ms，为native的1.463–1.467/1.402–1.403/1.274–1.275倍，尚未速度对齐。
 这是uncached/eager单层；固定预热前的所有轮次仍保留，不能跨轮拼比例。此前table/GELU vec4改善2.7%–3.1%见[前轮结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md)，不与本轮改善直接相乘。
 
 FFN2独立M128两K分段并行也接近Torch（慢约4%–6%），但集成整层未稳定受益，短KV反慢2%–4%，

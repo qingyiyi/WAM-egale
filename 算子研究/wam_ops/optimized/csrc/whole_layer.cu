@@ -166,6 +166,39 @@ __device__ void linear(const Params &p, Shared &s, cg::grid_group &g, int st, co
     g.sync();
 }
 
+// Context的N/K均固定3072，实际M为1024或7168，无分段BF16提交。
+// 独立设备函数只移除通用GEMM的形状分派；tile、领取顺序和同步不变。
+__device__ __noinline__ void context_linear(const Params &p, Shared &s, cg::grid_group &g,
+                                           int st, int wi, B *out, int m) {
+    const int ntiles = ((m + WAM_CONTEXT_TILE_M - 1) / WAM_CONTEXT_TILE_M) * (D / 128);
+    begin_stage(p, g, st);
+    for (int t; (t = claim_tile(p, s, st)) < ntiles;) {
+        cutlass_gemm_tile<WAM_CONTEXT_TILE_M>(s.tile.cutlass_gemm.context, p.context,
+            (const B *)p.w[wi], (const B *)p.w[wi + 1], out, m, D, D, t, false);
+        finish_tile();
+    }
+    g.sync();
+}
+
+// B14 FFN固定M224；仅展开形状，保持FFN2原来的两个K7168分段及BF16提交。
+// 整个阶段只进入一次设备函数，不再每个tile调用通用形状分派函数。
+template <int TM, int N, int K>
+__device__ __noinline__ void action_ffn_linear(const Params &p, Shared &s, cg::grid_group &g,
+                                              int st, const B *a, int wi, B *out) {
+    constexpr int M = 224, count = ((M + TM - 1) / TM) * (N / 128);
+    begin_stage(p, g, st);
+    for (int t; (t = claim_tile(p, s, st)) < count;) {
+        if constexpr (TM == 128)
+            cutlass_gemm_tile<128>(s.tile.cutlass_gemm.ffn1, a, (const B *)p.w[wi],
+                (const B *)p.w[wi + 1], out, M, N, K, t, true);
+        else
+            cutlass_gemm_tile<64>(s.tile.cutlass_gemm.action, a, (const B *)p.w[wi],
+                (const B *)p.w[wi + 1], out, M, N, K, t, true);
+        finish_tile();
+    }
+    g.sync();
+}
+
 #include "norm_device_generated.cuh"
 
 // Norm tile为完整3072维行。8个warp搬入/写回，warp3–6仍按原Torch顺序归约。
@@ -575,8 +608,8 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     if (p.affine)
         norm(p, s, g, st++, bp(p, R1), p.a[N2], m, 1, 2, p.eps[1], false, false);
     linear(p, s, g, st++, bp(p, N2), 13, bp(p, CQ0), m, D, D);
-    linear(p, s, g, st++, p.context, 15, bp(p, CK0), mc, D, D);
-    linear(p, s, g, st++, p.context, 17, bp(p, CV), mc, D, D);
+    context_linear(p, s, g, st++, 15, bp(p, CK0), mc);
+    context_linear(p, s, g, st++, 17, bp(p, CV), mc);
     norm(p, s, g, st++, bp(p, CQ0), p.a[CQ], m, 21, -1, p.eps[5], true, false);
     norm(p, s, g, st++, bp(p, CK0), p.a[CK], mc, 22, -1, p.eps[6], true, false);
     attention(p, s, g, st++, true);
@@ -585,9 +618,15 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     // 4. FFN：3072→14336→3072；保留GEMM和GELU之间原有BF16舍入。
     norm(p, s, g, st++, bp(p, R2), p.a[N3], m, -1, -1, p.eps[2], false, true);
     point(p, s, g, st++, MODULATE, M3, N3, 0, 3, int64_t(m) * D);
-    linear(p, s, g, st++, bp(p, M3), 23, bp(p, F1), m, F, D);
+    if (p.candidate && m == 224)
+        action_ffn_linear<128, F, D>(p, s, g, st++, bp(p, M3), 23, bp(p, F1));
+    else
+        linear(p, s, g, st++, bp(p, M3), 23, bp(p, F1), m, F, D);
     point(p, s, g, st++, GELU, ACT, F1, 0, 0, int64_t(m) * F);
-    linear(p, s, g, st++, bp(p, ACT), 25, bp(p, F2), m, D, F);
+    if (p.candidate && m == 224)
+        action_ffn_linear<64, D, F>(p, s, g, st++, bp(p, ACT), 25, bp(p, F2));
+    else
+        linear(p, s, g, st++, bp(p, ACT), 25, bp(p, F2), m, D, F);
     // 5. 门控残差与临时KV状态恢复，输出仍为[B,Q,3072]。
     point(p, s, g, st++, RESIDUAL, OUT, R2, F2, 5, int64_t(m) * D);
     if (p.cache && !p.candidate && p.update == 0 && blockIdx.x == 0 && warp() == 0)

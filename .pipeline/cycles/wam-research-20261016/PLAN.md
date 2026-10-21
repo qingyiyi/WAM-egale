@@ -24,7 +24,8 @@ execution: EXECUTION.md
 - [x] 全部本轮进程退出，原始失败/预算/截止保留，短HW更新。
 - [x] M39：官方来源冻结、12小算子同输入核对、point/RMS整层集成、全29阶段及CTA等待表完成。
 - [x] CPU补齐短/中/长KV、12原语/两进程与完整层汇总；包括退化和波动。
-- [ ] 下一步：先以相同前序访存/缓存条件定位Cross K/V，再查FFN执行资源差距；之后按适配tile和DAG就绪填空。
+- [x] 同前序控制与Cross/FFN设备函数控制完成，保留两项修改。
+- [ ] 下一步：先FFN剩余原语/整层资源差距，再按适配tile和真实DAG设计最小ready调度。
 - minor-ops本轮已结束，GPU207.379/1800秒，M39累计1611.324/36000秒，旧截止保留。
 - [x] M40最新授权：GPU1启动固定CURRENT18；原09:30截止保留，新窗口独立登记。
 - [x] 已部署自动CURRENT完整审计→ON3000→部署CAL队列。
@@ -37,3 +38,13 @@ BAAI仅~/cxz，AutoDL已归还。保护state/cycle/rules、baseline、原tile、
 
 - [x] 同前序Cross KV/FFN两进程诊断完成（首失败保留），下一步设备函数/编译资源单因素。M39当前累计1649.673秒。
 - [ ] 当前优先M40，CURRENT18正在GPU1运行；新截止与原24h余额见current18登记，四权限false不变。
+
+## 最新执行：先做Cross KV和FFN
+
+- [x] Cross KV固定几何设备函数专门化：CPU编译资源及原9签名门、三KV两进程完整层。
+- [x] FFN1/2按Cross结果处理设备函数/执行资源；固定原数学和tile。
+- [x] 汇总所有负结果与实际收益，保留有稳定收益的版本；本轮不执行ready调度。
+
+本轮沿M39证据，GPU≤1800秒、CPU2、准备≤2400秒、存储≤1GiB；累计从1649.673/36000秒接续。GPU1 RoboTwin独立继续。
+
+本轮终态：Cross/FFN两项完成；实际GPU120.995秒，累计1770.668/36000秒，CPU准备523.226秒。12:19核验owned退出。见[结果](../../experiments/single-layer-async-gemm-20261020/gemm-function-control-20261021/RESULT.md)；历史预算起点保留。

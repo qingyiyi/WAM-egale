@@ -1,0 +1,70 @@
+{
+  "goal": "Fix existing FFN tiles/math/splits, specialize B14 paths only; other signatures unchanged",
+  "authorized": "User explicitly approved items1 and2 on 2026-10-21",
+  "registered": "2026-10-21T12:00:42.269482+08:00",
+  "deadline": "2026-10-21T14:00:42.269482+08:00",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU": [
+    4,
+    5
+  ],
+  "GPU_lifecycle_cap_seconds": 1800,
+  "CPU_build_wall_cap_seconds": 2400,
+  "new_storage_cap_bytes": 1073741824,
+  "cumulative_prior_GPU_seconds": 1649.6730344963073,
+  "cumulative_cap_seconds": 36000,
+  "full_block_cap_per_candidate": 1400,
+  "max_candidates": 3,
+  "inputs": "existing actual9 B2 action/B14 action/B2 video short/middle/long, FIXTURES paths in gate",
+  "baseline": "original Torch finite gate; same-process native / pre-change / candidate full layer",
+  "acceptance": "finite bitwise output/intermediates/valid KV/input/RNG; two processes, all3KV; retain only stable layer benefit or revert",
+  "cleanup": "only owned PID+birth, CPU build separate, no unrelated process kill",
+  "terminal_status": "PREPARED_NOT_STARTED_DEPENDS_ON_CROSS",
+  "evidence": ".pipeline/experiments/single-layer-async-gemm-20261020/gemm-function-control-20261021",
+  "stage": "B14 FFN1/FFN2 constant-shape device boundary",
+  "gpu_lifecycle_cap_seconds": 540,
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/gemm-function-control-20261021/ffn/active-build/obj"
+      ],
+      600,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/gemm-function-control-20261021/ffn/gate.py"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/gemm-function-control-20261021/ffn/timing.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/gemm-function-control-20261021/ffn/timing.py",
+        "2"
+      ],
+      180,
+      true
+    ]
+  ]
+}

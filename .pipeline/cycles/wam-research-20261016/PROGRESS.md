@@ -2,57 +2,48 @@
 kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
-current: M40
-next: M40
+current: M39
+next: M39
 status: active
-updated: '2026-10-21T11:44:03.604996+08:00'
+updated: '2026-10-21T12:25:51.468246+08:00'
 ---
 # 当前研究进度
 
-| ID | 阶段 | 状态 | 结果/证据 | 下一步 |
+|ID|阶段|状态|证据/下一步|
+|---|---|---|---|
+|M17|LIBERO|in_progress|6000局齐；保留曝光/首两S/长尾缺口，未独立TEST|
+|M39|单层对齐|in_progress|Cross KV/FFN两项完成，整层再下降9.46%–10.87%；仍慢15%–31%，先FFN原语，再ready|
+|M40|RoboTwin|in_progress|GPU1 CURRENT18→审计→ON/CAL；DEV90入口待审查，尚未排队|
+
+## M39 当前结果
+
+[完整报告](../../experiments/single-layer-async-gemm-20261020/gemm-function-control-20261021/RESULT.md) / [全部分轮与两进程](../../experiments/single-layer-async-gemm-20261020/gemm-function-control-20261021/FULL-LAYER-ALL.csv)。
+固定数学、tile、阶段同步，仅把Cross KV和B14 FFN的tile循环放入专用阶段设备函数。Cross增量8.84%–10.60%，FFN再改善0.587%–0.700%。直接最初版/最终版对照如下，不相乘分轮倍数：
+
+|KV|native ms（两进程）|最终 ms（两进程）|较本轮前下降|仍比native慢|
 |---|---|---|---|---|
-| `M17` | LIBERO | in_progress | 6000局齐，科学审计未放行 | 保留曝光/首两S/长尾缺口 |
-| `M39` | 单层对齐 | in_progress | point/RMS核对与有限集成齐，较本轮前再改善2.2%–3.0%；仍未速度对齐 | 查Cross KV/FFN资源成本，不ready |
-| `M40` | RoboTwin | in_progress | Target48、parent18及CHILD/CONT训练/固定接口CAL齐 | 新窗口接CURRENT18→ON→DEV |
+|288|2.1197/2.1207|2.7668/2.7663|10.84%–10.87%|30.44%–30.53%|
+|1152|2.4052/2.4051|3.0268/3.0285|9.99%–10.13%|25.85%–25.92%|
+|2160|2.8461/2.8441|3.2809/3.2809|9.46%–9.59%|15.28%–15.36%|
 
-## M39
+GPU0无别的compute context、GPU1机器人并行；固定60预热/交错12测量，观测SM1410MHz。uncached/eager完整单层，不是强cached/Graph、30层、chunk或E2E。
+两阶段各9真实签名、23中间量、18有效KV转移及输入/RNG有限逐位通过，输出max_abs=0。单kernel；不外推所有输入或闭环质量。
 
-[短中长KV与两进程完整汇总](../../experiments/single-layer-async-gemm-20261020/minor-ops-20261021/THREE-KV-SUMMARY.md)已补齐；三档此前均已运行，本次仅CPU统计。同前序条件两进程诊断已完成：Cross KV独立约585/594µs，嵌入约783–810µs，差距未因统一前序消失；FFN独立仍慢。下一步核编译资源/设备函数边界，不提前ready。
-[新诊断原件与失败](../../experiments/single-layer-async-gemm-20261020/gemm-context-control-20261021-r2/RESULT.md)。
+新同边界诊断：Cross K/V约792/787→609/607µs，FFN1约236→214µs、FFN2约167→159µs；三KV都测。插桩影响整体约±1%，阶段差额不可相加替代未插桩总收益；旧全29阶段表保留为旧版本。
+源码与SASS支持旧每tile进入通用函数、新每CTA每阶段进入一次，减少反复函数保存/恢复的机会；不量化动态spill。寄存器255、shared98848B、静态1CTA/SM仍在；local1472→1456B不是动态流量。NCU动态occupancy/spill/HBM/L2 UNKNOWN。
 
-[当前小算子/整层/全阶段及CTA等待证据](../../experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)。
-12小算子真实三KV两进程独立核对逐位通过；适配独立RMS接近Torch，融合RoPE/调制/门控残差更快。
-旧独立阶段仍带统一执行器，不代表原语最佳。保留point全vec4（RoPE仍FP64）与candidate RMS双行直接读取；9签名/23中间量/18有效KV/输入RNG有限逐位通过。
+本轮GPU worker生命周期120.995秒、CPU准备/编译523.226秒，M39累计1770.668/36000秒。原14:00:42截止、旧失败/预算保留；12:19所有本轮owned退出、GPU0释放。当前仍阶段grid.sync，未ready。保留Cross/FFN修改，不恢复负收益FFN2并行K；下一步先FFN主循环/分段归约/epilogue与整层资源差距。
 
-固定60轮预热、SM观测1410MHz，两进程当前B14完整层：短3.1032/3.1017ms（native2.1151/2.1197），
-中3.3658/3.3737（native2.4011/2.4049），长3.6197/3.6166（native2.8393/2.8381）。
-同轮较本次前下降2.2%–3.0%，仍慢约46%–47%/40%/27%，不是强cached/Graph或E2E。
-全部未预热轮次保留，不跨轮拼倍数。当前全29阶段表已重测，旧表不再冒充当前。
+[前轮小算子与CTA等待](../../experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)、[同前序诊断和首失败](../../experiments/single-layer-async-gemm-20261020/gemm-context-control-20261021-r2/RESULT.md)及[本轮前完整状态](history/gemm-function-control-20261021/PROGRESS.md)保留。早到CTA等待与别的CTA计算重叠，不等于纯barrier时间或可兑现收益。
 
-CTA leader屏障时间戳显示：中KV Cross K/V尾波等待P50约53µs，而最后进入至释放尾部约2–3µs；
-Self Q/FFN2各96任务，12个worker可提前等待。等待与其他CTA计算重叠，不能相加成墙钟或称纯barrier。
-固定预热后的插桩扰动短/中/长约0.39%/0.37%/1.47%，只属于诊断副本；动态spill/HBM/L2仍未知。
+## M40 持续运行
 
-用户明确：每子算子按合适tile大小和逻辑任务数，不凑108；未来按真实DAG就绪填空。当前仍顺序执行，未实现ready。
-本轮GPU生命周期207.379秒，累计1611.324/36000秒，CPU准备/构建507.174秒；该小算子阶段owned均退出；不代表当前GPU1空闲。
-baseline、原tile、LIBERO策略与科学门不动。下一步先剩余Cross KV/FFN执行资源差距与任务映射。
-
-## M40
-
-[晨间结果](../../experiments/robotwin-pilot-20261020/MORNING-RESULT-20261021.md)。
-valid08用户批准新60分钟窗口，完整运行自然失败并清理；原0动作PARTIAL不改。
-PARENT18现13成功5自然失败，FIT12/6269行、CAL6/3078行审计齐；不是配对DEV。
-CHILD2500/CONT3000各500 updates完成，首次训练解析语法失败0更新留档，修复r2完成。
-两个权重各10771已有CAL query的GPU adapter/decode BF16逐位通过；tau/normalizer不变，不等于teacher路径或闭环质量。
-用户新授权优先GPU1，11:32已启动CURRENT18，快照1/18完整、1成功；自动接监督审计→ON3000→接口CAL。DEV90仍未启动/排队，需要评估入口审查。原09:30及旧补跑截止不改。
-[当前接续与预算](../../experiments/robotwin-pilot-20261020/current18-20261021/RESULT.md)。
-新窗口启动前累计5.7624/24 GPU生命周期小时，当前持续计账。108完整text bank沿用；RoboTwin完整episode等价仍未另测。
+[接续登记](../../experiments/robotwin-pilot-20261020/current18-20261021/RESULT.md)；11:32在GPU1启动CURRENT18，12:26:32检查12/18完整、9成功，place_object_basket/valid13仍执行。此为FIT/CAL采集，不是DEV成功率。108完整512-token BF16 bank沿用；RoboTwin完整episode reset等价未另测。
+自动watch等待完整18及清理，再审计→ON3000→接口CAL；DEV90没有排队。CURRENT18新截止18:32:41，后继最晚10/22 05:30；原24h累计预算和旧截止保留，开局前累计5.7624h。
+Target48、PARENT18（13成功5自然失败）、CHILD2500/CONT3000与10771行部署CAL已完成；旧训练解析失败0更新、valid08原PARTIAL及补跑自然失败保留。CAL不等于teacher路径或闭环质量通过。
 
 ## 共同边界
 
-LIBERO T/C/P各500：Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499。
-不是独立TEST；paused72、旧默认A_off、retention/FAILED及四质量/性能权限false不变。
-下一步按小算子结果处理Cross KV/FFN和适配tile；RoboTwin GPU1优先已启动；自动队列到ON/CAL，DEV入口仍待核查。GitHub只main小证据，不含权重/原始PT/凭据。
-10/22 go-no-go，10/23冻结，10/28主表，11/01 18:00证据包。旧结果见[历史](history/pointwise-isolation-20261021/PROGRESS.md)。
-
-本次同前序诊断含首KeyError失败新增GPU38.349秒，M39累计1649.673/36000秒；数学源码未改。
+LIBERO T/C/P各500：Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499。不是独立TEST；paused72、旧默认A_off、retention/FAILED与四质量/性能权限false不变。
+每子算子按合适tile与自然任务数，不凑108；未来按真实DAG就绪填空。只改optimized，保护baseline/原tile/LIBERO生产与state/cycle/rules。
+BAAI所有写入仅~/cxz，不改驱动/服务/时钟；不杀他人。GitHub仅main小证据，无权重/PT/凭据。10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00证据包。

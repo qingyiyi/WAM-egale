@@ -1,37 +1,23 @@
-# 11:44 更新：GPU1 已恢复 RoboTwin
+# 10/21 12:26：Cross K/V与FFN两项完成
 
-CURRENT18 已完成4/18、4成功，第5局运行；沿用reset text bank。自动后继为完整数据审计→ON3000→部署接口CAL，DEV90未启动/排队。原24h累计预算、全部历史失败和四权限false不变。此为11:44快照，实时以服务器STATUS为准。
+固定本文件所在提交审阅。当前代码保留两项改动：Cross K/V整个阶段进入专用设备函数；B14 FFN固定形状展开。tile、CUTLASS算术、BF16分段、阶段同步不变。仍一个完整单层kernel，没有新ready调度。
 
-[RoboTwin接续登记](../.pipeline/experiments/robotwin-pilot-20261020/current18-20261021/RESULT.md) / [Cross KV、FFN同前序诊断](../.pipeline/experiments/single-layer-async-gemm-20261020/gemm-context-control-20261021-r2/RESULT.md)。GPU0两进程诊断完成、已释放；同前序未解释Cross KV完整层差距，动态spill归因仍未知。
+|B14历史KV|native ms（两进程范围）|最终 ms（两进程范围）|比本轮前下降|仍比native慢|
+|---|---|---|---|---|
+|288|2.1197–2.1207|2.7663–2.7668|10.84%–10.87%|30.44%–30.53%|
+|1152|2.4051–2.4052|3.0268–3.0285|9.99%–10.13%|25.85%–25.92%|
+|2160|2.8441–2.8461|3.2809–3.2809|9.46%–9.59%|15.28%–15.36%|
 
-以下为10:46小算子阶段结果，清理状态属于该历史时点。
+这是直接最初版/最终版的未插桩完整层比较，固定60预热/交错12样本，GPU0无其他compute进程，GPU1机器人同时运行；uncached/eager，不是最强cached/Graph或机器人E2E。Cross单独增量8.84%–10.60%，FFN再改善0.587%–0.700%；不把分轮收益相乘。
 
----
+两阶段各9真实签名、每格23中间量、18有效KV状态转移、输入/RNG有限逐位检查通过，最终输出max_abs=0。不是任意输入或闭环质量保证。
 
-# 10/21：RMS、RoPE、调制与残差核对完成
+阶段时间戳显示Cross约792/787→609/607µs；FFN1约236→214µs、FFN2约167→159µs。插桩影响约±1%，不把阶段差相加当未插桩总收益。SASS支持旧每tile进入通用函数、新每阶段进入一次带来函数保存/恢复摊薄；动态spill、HBM/L2与achieved occupancy仍UNKNOWN，不能写成流量减半或占用率提高。
 
-固定本文件所在commit审阅；历史paused72与四项false不变。
+[完整报告](../.pipeline/experiments/single-layer-async-gemm-20261020/gemm-function-control-20261021/RESULT.md) / [全部计时](../.pipeline/experiments/single-layer-async-gemm-20261020/gemm-function-control-20261021/FULL-LAYER-ALL.csv) / [活动源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu) / [代码说明](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)。前次小算子与CTA等待记录见[历史检查点](history/gemm-function-control-20261021/CURRENT-EXECUTION-20261021.md)。
 
-用户澄清已写入HW：每个子算子使用合适tile大小与自然任务数；108是当前常驻CTA池，不是各阶段必须凑满的tile数。未来按真实DAG就绪从后续任务补位。当前仍逐阶段grid.sync，没有新ready调度。
+下一步先FFN主循环/分段归约/epilogue和整层资源差距，再最小DAG调度。每阶段按合适tile和自然任务数，108是worker池，不要求凑满。此前FFN2并行K整层负收益保留，未恢复。
 
-12个小算子三KV/两独立进程有限逐位通过。适配独立RMS约与Torch相同，融合RoPE/调制/门控残差更快；直接残差略慢。旧“独立阶段”仍带统一执行器与shared预留，不能等同剥离数学体。
+本轮GPU worker生命周期120.995秒，CPU准备523.226秒，M39累计1770.668/36000秒，GPU0本轮进程已退出；CUDA active时间未测。GPU1 CURRENT18采集12:26:32为12/18完整、9成功，valid13下一局已运行；这不是DEV成功率。自动接审计/ON/CAL，DEV90尚未排队。
 
-活动代码保留point vec4（RoPE保留原FP64）和candidate RMS双行直接读取。两个集成阶段分别通过9真实签名、23共享中间量、18有效KV状态及输入/RNG/重复有限逐位门。
-
-固定60轮预热、交错12轮、两个独立进程，完整B14短/中/长约3.10/3.37/3.62ms，较同轮本次前改善2.2%–3.0%；相对native仍慢46%–47%/40%/27%。这是uncached/eager单层，不是最强cached/Graph、30层、chunk或E2E。所有初轮频率漂移数据保留，不跨轮拼倍数。
-
-新全29阶段和每CTA屏障时间戳已补齐。中KV Cross K/V末尾等待P50约53µs，但最晚到达至释放约2–3µs；早到等待与别的CTA计算重叠，不能给“纯同步占比”或把全部等待当可兑现收益。Self Q与FFN2各96任务，空闲12个worker是未来补位窗口。动态spill、L2/DRAM、occupancy counter仍UNKNOWN。
-
-[完整报告/全阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md) / [所有计时轮次](../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/FULL-LAYER-ALL.csv) / [CTA等待汇总](../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/CTA-WAIT-SUMMARY.csv) / [官方源码核验](../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/OFFICIAL-IMPLEMENTATIONS.md)。
-
-活动源码：[whole_layer.cu](../算子研究/wam_ops/optimized/csrc/whole_layer.cu) / [简易代码说明](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)。原FFN2并行独立体接近Torch但整层无稳定收益的负结果不变，未重新启用。baseline、原tile和LIBERO投机生产不修改。
-
-网页审阅重点：先区分Cross K/V与FFN的数学体效率、统一资源/队列与编译影响，再给最小DAG补位方案。cross K/V只依赖context可提前；RMS必须等完整行，FFN2必须等其reduction输入。不能把“填满108”当优化目标，也不能把屏障尾部测量解释成全部同步开销。
-
-本轮GPU生命周期207.379秒，CPU准备/构建507.174秒，M39累计1611.324/36000秒；全部owned进程退出。RoboTwin本轮未恢复，仍是Target48/PARENT18/CHILD/CONT/固定接口CAL完成，CURRENT18/ON/DEV待新窗口。
-
-公开快照仅含源码和小证据，不含模型权重、原始PT/KV/相机、DSO、完整profile或凭据；不能声称仅凭本仓库重算全部真实张量。旧review/RESULTS.json保持不变。
-
-发布说明：两份诊断脚本仅去除了空白行尾空格，原始执行/预检源码逐字保留在本地；原始与展示SHA和变换写入M39-MINOR-PUBLICATION-20261021.json。活动算子源、结果JSON与失败终态不变。
-
-新增[三KV完整汇总](../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/THREE-KV-SUMMARY.md)及逐进程CSV：仅CPU重算展示，三档原实验均已完成。下一步先统一Cross KV/FFN前序访存与缓存条件，现有差值不等于纯同步。
+旧paused72、FAILED/retention、baseline/原tile/投机生产代码、四项false保持。公开快照不含模型权重、原始PT/KV/相机、DSO和完整profiler/SASS；不得声称仅凭GitHub已重算全部真实tensor。

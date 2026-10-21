@@ -1,12 +1,9 @@
 # 当前入口
 
-新增：[短中长KV完整统计](../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/THREE-KV-SUMMARY.md)（CPU汇总，实验/源码未再运行）。
+最新：[Cross K/V与FFN两项结果](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-最新：[10/21小算子核对与CTA等待](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW](../.pipeline/PROGRESS.compact.md)。
-
-point/RMS有限集成后，固定预热完整层较本轮前再改善2.2%–3.0%，仍未与native速度对齐。各算子采用合适tile/任务数，未来按真实DAG补位，不要求每阶段凑108；当前未实现新ready调度。
-
-RoboTwin已获新授权并于11:32在GPU1启动CURRENT18；11:44快照4/18完成、4成功。自动接ON/CAL，DEV90未启动。GPU0诊断完成、已释放；旧paused72与四项false保持。
+固定tile/数学/同步，完整B14层本轮下降9.46%–10.87%，仍慢15%–31%；9真实签名有限逐位通过，一个kernel，未ready。先FFN剩余原语/资源差距，再DAG就绪补位；原负结果保留。
+GPU0本轮作业已退出；GPU1 CURRENT18在12:26:32完成12/18、9成功，继续采集并自动接ON/CAL，DEV90未排队。旧paused72与四项false不变。以下旧TF交接属于历史科学基线，不覆盖当前资源授权。
 
 ---
 
