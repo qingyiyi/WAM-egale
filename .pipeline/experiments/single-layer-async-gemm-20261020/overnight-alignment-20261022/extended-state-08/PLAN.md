@@ -1,0 +1,1 @@
+21个结构变体：三个真实B14完整block输入×原状/删尾1/16/32个有效history slot/中间16孔/交替CFG引用/交换CFG引用。更改双方相同的cache元数据或CFG索引，输入数值仍来自真实fixture。完整层对原Torch、Native及两次owned输出/23共有中间量、全部有效KV、输入/RNG核验。最多100次full block、240秒GPU、32MiB新产物。不是新机器人数据或完整episode。失败保留并阻止无条件集成。

@@ -1,0 +1,64 @@
+{
+  "goal": "FFN1 M128 N256 K64 three-stage eight-warp original CUTLASS core; whole-layer tradeoff incl larger shared allocation",
+  "deadline": "2026-10-22T09:00:00+08:00",
+  "cumulative_prior_GPU_seconds": 2882.025744208572,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 900,
+  "new_storage_cap_bytes": 1073741824,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/04-gemm-padded/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "ef75e57bf9ccbbede51d5ff6c07ce01de66951568304b03aca079675bf0b8113",
+  "source_sha256": "2bf47eea1959b9d051d5c69ab5ab11108fb860f71b9f7db624dd3c3dbcdb3905",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/05-ffn1-wide",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/05-ffn1-wide/build/obj"
+      ],
+      1200,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/05-ffn1-wide/gate.py"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/05-ffn1-wide/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/05-ffn1-wide/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ],
+  "sources": {
+    "csrc/whole_layer.cu": "2bf47eea1959b9d051d5c69ab5ab11108fb860f71b9f7db624dd3c3dbcdb3905",
+    "csrc/cutlass_gemm.cuh": "127879a6518278d1f8f00960a4ed116fe6592a4c64654c1003194ea7bc843dfb",
+    "csrc/gemm_pipeline.cuh": "95ecc6b5aa1264f92335374915b653b69684b87c8dc3989b656ac26f658e24dd",
+    "csrc/fa2_stage.cuh": "3738249195f4bfd6860a2ff9b284c9820d7379f70ae30f9b0010a25ca4752a04",
+    "cutlass_gemm_codegen.py": "b6c7b0fa799d7b8cb1ea341560196d4bfd3fb75bafc2ee4c1e58f70f31db8b6d",
+    "build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  }
+}

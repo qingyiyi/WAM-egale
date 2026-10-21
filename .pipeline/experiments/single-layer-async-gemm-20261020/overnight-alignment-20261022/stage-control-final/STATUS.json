@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792607035.0613828,
+  "deadline": 1792630800.0,
+  "jobs": [
+    {
+      "name": "prepare",
+      "owned": {
+        "pid": 810731,
+        "birth_ticks": 720549364,
+        "pgid": 810731
+      },
+      "start": 1792607035.0770931,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792607035.108881,
+      "lifecycle_seconds": 0.03178811073303223,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 810730,
+    "birth_ticks": 720549359,
+    "pgid": 810730
+  },
+  "error": "RuntimeError('prepare failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/stage-control-final/guard.py\", line 47, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: prepare failed\n",
+  "end": 1792607035.1127775,
+  "lifecycle_seconds": 0.05139493942260742
+}

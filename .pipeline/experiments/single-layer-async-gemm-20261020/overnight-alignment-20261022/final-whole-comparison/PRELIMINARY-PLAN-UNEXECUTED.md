@@ -1,0 +1,1 @@
+选中10版本对今晚起始2a8及三类相同uncached工作量Torch基线，3KV×2独立进程、每臂600固定warm、24交错样本；非profiler计时。重复九真实签名保证最终绑定的是实际验证DSO，扩展21结构变体在resource-envelope-control中另验。固定GPU0无争用、原预算/09:00不变。不是机器人E2E、30层或质量证书；不混入skip投影的cached baseline。

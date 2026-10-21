@@ -1,54 +1,55 @@
-# 简易版完整单层：一个 persistent kernel
+# 单层Transformer：一个persistent计算kernel
 
-当前唯一整层优化入口为[whole_layer.py](whole_layer.py) → [whole_layer.cu](csrc/whole_layer.cu)。Python绑定原参数与KV；C++分配workspace；一次cooperative launch完成完整单层。没有在kernel里再启动子kernel，也不合并30层。
+当前入口：[whole_layer.py](whole_layer.py) → [whole_layer.cu](csrc/whole_layer.cu)。Python绑定27组原参数和KV，C++准备workspace，一次cooperative计算launch完成一层；workspace初始化与host开销另计。没有设备端子kernel，不是30层大融合。
 
-## 按这个顺序读源码
+## 源码阅读顺序
 
-1. `whole_layer.py`：输入和原模型一致，返回hidden或供外部核验的中间量。
-2. `whole_layer.cu`的`whole_layer()`：依照模型顺序列出全部计算，五段中文注释给出数据流。
-3. `begin_stage → claim_tile → finish_tile`：warp0给整个CTA领取任务；tile结束后复用shared，阶段结束用grid.sync。
-4. `linear/action_projection/context_linear/action_ffn1_tail/action_ffn2_parallel/norm/point/attention`：决定各阶段怎样切tile，再调用设备端计算。
-5. [cutlass_gemm.cuh](csrc/cutlass_gemm.cuh)、[gemm_pipeline.cuh](csrc/gemm_pipeline.cuh)、[fa2_stage.cuh](csrc/fa2_stage.cuh)：GEMM、内部FA2和合法KV寻址。
+1. `whole_layer.py`绑定参数，普通调用返回hidden；`debug=True`提供外部核验所需中间量。
+2. `whole_layer.cu::whole_layer()`按模型顺序调用所有阶段。
+3. `action_projection/context_linear/action_ffn1_wide/action_ffn2_parallel`及[cutlass_gemm.cuh](csrc/cutlass_gemm.cuh)解释GEMM tile与原BF16边界。
+4. `norm/point`解释行归约与向量化逐元素计算；[fa2_stage.cuh](csrc/fa2_stage.cuh)解释内部FA2、合法共享历史和私有KV。
+5. `begin_stage/claim_tile/finish_tile`只服务仍动态分派的路径；静态阶段不再重复初始化队列。
 
-## 输入与计算
+## 输入、输出与计算链
 
-hidden：BF16 `[B,Q,3072]`；context：BF16 `[B,512,3072]`；temb：原BF16/FP32调制张量；RoPE保留原算术。输出hidden同形状、同dtype。B14对应14个独立Q16实例，候选private KV互不可见；不能解释为Q112序列。
+hidden为BF16 `[B,Q,3072]`，context为BF16 `[B,512,3072]`，temb沿原BF16/FP32调制契约，RoPE保持原算术。输出与hidden同形状、同dtype。B14是14个独立Q16实例；线性层可展平为M224，attention private可见性仍逐候选限定。
 
 `Norm1/调制 → self QKV/RMS/RoPE/FA2 → 投影/残差 → Norm2 → cross QKV/RMS/FA2 → 投影/残差 → Norm3/调制 → FFN1/GELU/FFN2 → 门控残差`。
 
-|阶段|任务划分|
-|---|---|
-|B2 action，小M32 GEMM|64×64输出tile，K32，独立加载warp与WMMA|
-|B14 action，M224 GEMM|投影64×128；FFN1/FFN2为128×128；K64，CUTLASS三级主循环；FFN2另见下文|
-|context，M7168 GEMM|128×128输出tile，K64；单次K/V投影各1344任务|
-|self/cross FA2|B14 Q16实例用Q64×KV64 tile；其余standard为Q128×KV64，需要split时Q64×KV128；连续cross K/V保留原FA2加载器|
-|Norm/RMS|行宽3072；普通Norm保持原128线程归约；candidate RMS每CTA两个独立128线程组直接读取并各算一行，224行自然形成112任务|
-|pointwise|每任务2048个逻辑单位，8个warp共同执行；GELU、BF16逐token调制表、调制与残差每线程搬运4元素；RoPE每线程处理2个复数对并保留FP64算术，RoPE任务单位为复数对|
+|B14阶段|实际GEMM M/N/K或工作量|tile及任务|warp职责|
+|---|---|---|---|
+|self Q/K/V、self out、cross Q/out|224/3072/3072|M64×N128，96输出tile；两个K1536依次计算|3–6做CUTLASS MMA，8warp共同写回|
+|cross K/V|7168/3072/3072|M128×N128、K64三级流水，各1344tile|3–6做MMA，8warp写回|
+|FFN1|224/14336/3072|M128×N256、K32三级流水，112tile；FP32结果分半复用shared写回|8warp均做MMA和写回|
+|FFN2|224/3072/14336|48个M128×N128输出tile×两K7168段＝96计算任务|3–6做MMA，按原顺序提交两段BF16|
+|self/cross attention|每实例Q16、H24、HD128|每CTA两个独立4warp组；self为受guard的G1/G2，cross仍独立实例|两个组各有workspace/参数及barrier3/4|
+|Norm/RMS|每行3072|普通Norm一行；RMS两行/CTA，静态分配|原128线程归约树；两4warp组各算一行|
+|pointwise|2048逻辑单位/tile|静态block-stride；调制/残差/GELU每次4元素；RoPE每次2复数对|8warp参与，RoPE保留FP64算术|
 
-108常驻CTA，每CTA8warp/256线程。warp0领取CTA任务，warp3–6计算。小M的warp1/2搬A/W、warp7写回；大M的4个计算warp自行加载和MMA，随后8warp共同做epilogue。普通Norm由8warp搬入/写回、3–6归约；双行RMS两个4warp组各归约一行。FA2沿用4warp设备计算。B14只读cache的mask由8warp按原物理slot顺序压紧。
+B2 action仍保留原小M32、M64×N64/K32兼容路径；本轮B2/video属于精度覆盖，没有用B14速度外推其性能。
 
-每类子算子按适合的tile大小与逻辑任务数划分，108是当前常驻worker池规模，不是每阶段必须凑满108任务。例如Self Q为96个输出tile；FFN2为48个输出tile×2个K分段=96个计算任务，candidate self RMS为112个双行任务。未来从真实DAG中把已就绪的后续tile分配给空闲worker；不会为铺满而强行切碎当前算子。
+## shared、register与同步
 
-后续依赖设计先区分：cross K/V只读就绪context和各自权重，可提前；Self Q的RMS需对应行全部3072列投影完成，不能单个输出tile完成就运行；FFN2需其完整reduction输入就绪，不能看到一个GELU tile就提前。任务不就绪时不能让全部常驻CTA占着资源自旋，阻塞真正的生产者。这些是下一步调度约束，当前未实现。
+当前108个常驻CTA，每CTA256线程/8warp；不是每个阶段必须凑108个任务，也没有跨阶段ready队列。不同阶段按自己的tile工作量执行。
 
-当前遵循用户“先对齐再调度”的要求，各阶段仍依次执行并全局同步。此前独立ready试验已经留档并撤回活动路径，不纳入当前版本。中间量仍按原BF16/FP32边界写入全局workspace，一个kernel不等于所有数据都留在shared。
+GEMM使用CUTLASS设备主循环（SM80 cp.async/MMA），不是在kernel内调用cuBLAS。通用写回用136列FP32 shared stride与向量写回；FFN1两半结果复用同一写回缓冲，避免为N256输出扩大整层shared预留。中间activation仍按原BF16/FP32边界写global workspace，一个kernel不等于全部数据留在shared。
 
-B14 FFN2在`action_ffn2_parallel`内将两个K7168分段分配给两组CTA同时计算。第0段先写BF16结果，经grid.sync后第1段按`(FP32+bias)+首段BF16`顺序归并，再写BF16；保持原舍入顺序。整个阶段是一个专用设备函数，partition/commit在内部展开。仍有阶段和归并同步，没有跨阶段ready。
+FFN2先并行算两个K7168段，第0段写BF16；经grid同步，第1段按`(FP32+bias)+第0段BF16`归并后再写BF16。保持原舍入，不能用一次FP32总和替换。
 
-## 本次简化
+静态point/norm/FFN去掉不再使用的入口队列初始化及重复全局屏障，复用上一阶段出口的输入就绪保证；双组FA2只用CTA同步发布本CTA描述符。所有必要的阶段出口、FFN2分段归并和动态队列同步保留。B14空cache-insert阶段直接返回，候选private KV从不写进公共历史；B2真实cache更新不变。这些改动不是跨阶段DAG。
 
-核心没有重复shape/dtype/版本检查或tile访问审计。Python直接绑定参数，不依赖旧NativeBlock；删除无调用的action_ffn_linear和self_kv。普通调用只组装output返回值；debug=True才构造中间量字典与资源统计。保留尾块mask、合法cache逻辑、线程同步和CUDA调用失败传播。
+G1/G2只在实际共享条件/历史的候选间复用prefix，每行private suffix仍有独立可见性。非16对齐history回退G1；当G2会增加K tile或实际CFG引用不匹配时也回退。此前short/drop1曾有2个attention中间元素差1.49e-8（最终层输出相同），原严格失败保留，不能将其忽略为PASS。
 
-精度/状态/输入/RNG检查在外部实验脚本；核心不再支持`audit`、`tile_pipeline`、`bf16_split_reduction`开关。原BF16分段归约固定保留，不把它当可关闭的检查。
+## 当前验证与剩余差距
 
-历史复杂版源码和失败证据在[本轮证据目录](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/)，不作为活动优化入口；baseline、投机侧和原tile未改。
+[夜间证据入口](../../../.pipeline/experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/PLAN.md)、[同轮完整层计时](../../../.pipeline/experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/WHOLE-LAYER-COMPARISON.csv)、[最终身份](../../../.pipeline/experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/SELECTED.json)。最终选择静态入口清理版，RMS两warp/行、小投影K并行等退化候选均已撤回，失败/负结果在证据目录保留。
 
-## 当前验证与下一步
+9真实签名（B2action/B14action/B2video×3KV）及21结构变体有限逐位通过，包括23共有中间量、普通/debug、有效KV、输入/RNG与B2合法cache状态转移；不是所有输入、所有层或线上完整模型证明。fixture是保存后的逻辑tensor契约，不能声称恢复全部原GPU alias/stride。
 
-本轮入口精简的[结果与范围](../../../.pipeline/experiments/single-layer-async-gemm-20261020/readability-20261021/RESULT.md)已完成：九真实签名及普通/debug输出有限逐位通过；两进程三KV整层变化−0.132%～+0.103%，无稳定退化。本机/远端使用同一二进制；本次没有新增device端加速主张。
+远端独占A100-SXM4，两个独立进程、固定warmup、交错完整层Graph：最终B14短/中/长约2.296/2.453/2.476ms，较夜间起始版本耗时降低8.5%/9.7%/16.8%。相同uncached工作量的guarded强对照约2.070/2.187/2.201ms，最终版仍慢10.9%–12.6%；不是对最强路径已对齐，也不是30层/任务E2E。
 
-前一版[六小投影阶段结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESULT.md)：三KV整层Graph约2.513/2.719/2.969ms，相比其上一版下降1.88%–2.08%；九真实签名输出/23共有中间量/18有效KV转移、输入/RNG有限逐位通过。该结果属于e91e09eb源码、23238b37二进制，不是当前相对Torch的新倍数，也不是30层或机器人E2E。
+[资源控制](../../../.pipeline/experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/resource-envelope-control/RESULT.md)证明固定资源限制部分原语：更多可驻留CTA使独立CrossK RMS约116–119→94us，但原版约70us；不能据此把更多CTA直接搬进当前整层。当前静态资源108CTA/1CTA每SM、100096B shared、255寄存器/线程、localSize936B；localSize不是动态spill或HBM流量。
 
-尚未解决：Self-Q嵌入后仍慢；旧快独立参考保留；FFN1/2独立原语仍有差距。顺序是Self-Q函数/编译边界→FFN原语→真实ready-DAG，不为凑108任务切碎tile。255寄存器、shared98848B和localSize是静态资源信息，不等于动态spill或等待成本。
+下一步先根据最终逐阶段/计数证据处理attention设备函数组织及原语资源限制，再考虑把独立context K/V tile提前填空位。当前未实现ready-DAG，不把普通shared-prefix/G2或缓存本身写成新贡献。baseline、投机生产和原tile保持只读；全局质量及正式TF性能四项权限仍false。
 
-历史的写回bank、函数组织、逐阶段对齐及负结果，按需从上述结果的证据链接追溯，不在本入口累加历次性能表。[简要带读Prompt](READ_CODE_PROMPT.md)。
+[简要带读Prompt](READ_CODE_PROMPT.md)。

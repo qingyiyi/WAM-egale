@@ -1,5 +1,5 @@
-// Self/cross attention共用FA2设备主循环，计算由warp3–6完成。
-// 每个任务属于一个(batch,head,query tile)，B14仍是14个独立Q16实例。
+// Self/cross attention使用FA2设备主循环。B2由warp3–6执行；B14用两个独立4warp组。
+// G1/G2只在同条件共享历史，private可见性仍逐候选限定；不是Q112序列。
 // prefix按合法slot读取，private suffix只属于自己的candidate，不能跨分支注意。
 #pragma once
 
@@ -84,7 +84,8 @@ template <int LogSplits> __device__ void fa2_combine_tile(Shared &s, int task) {
                                                               reinterpret_cast<char *>(&s.tile));
 }
 
-__device__ void attention(const Params &p, Shared &s, cg::grid_group &g, int st, bool cross) {
+__device__ void independent_attention(const Params &p, Shared &s, cg::grid_group &g, int st,
+                                      bool cross) {
     prepare_fa2(p, s, cross);
     const auto &f = s.fa2;
     const bool split = f.num_splits > 1;
@@ -109,16 +110,19 @@ __device__ void attention(const Params &p, Shared &s, cg::grid_group &g, int st,
                 // B14实际Q16：只缩小本实例query tile，不跨候选拼接query。
                 if (p.candidate && p.b == 14 && p.q == 16 && cross)
                     wam_whole_fa2::whole_standard_direct<FaCandidate, false, false, false, false,
-                                                         false, true, false, false>(f, b, h, q, memory);
+                                                         false, true, false, false>(f, b, h, q,
+                                                                                    memory);
                 else if (p.candidate && p.b == 14 && p.q == 16)
-                    wam_whole_fa2::whole_standard<FaCandidate, false, false, false, false,
-                                                  false, true, false, false>(f, b, h, q, memory);
+                    wam_whole_fa2::whole_standard<FaCandidate, false, false, false, false, false,
+                                                  true, false, false>(f, b, h, q, memory);
                 else if (cross && p.q % 128 == 0 && f.seqlen_k % 64 == 0)
                     wam_whole_fa2::whole_standard_direct<FaStandard, false, false, false, false,
-                                                         true, true, false, false>(f, b, h, q, memory);
+                                                         true, true, false, false>(f, b, h, q,
+                                                                                   memory);
                 else if (cross)
                     wam_whole_fa2::whole_standard_direct<FaStandard, false, false, false, false,
-                                                         false, true, false, false>(f, b, h, q, memory);
+                                                         false, true, false, false>(f, b, h, q,
+                                                                                    memory);
                 else if (p.q % 128 == 0 && f.seqlen_k % 64 == 0)
                     wam_whole_fa2::whole_standard<FaStandard, false, false, false, false, true,
                                                   true, false, false>(f, b, h, q, memory);
@@ -157,4 +161,114 @@ __device__ void attention(const Params &p, Shared &s, cg::grid_group &g, int st,
         finish_tile();
     }
     g.sync();
+}
+
+// B14的attention阶段：一个CTA包含两个独立4-warp组，每组执行一个合法tile。
+// 两组独享workspace/参数和barrier3/4；不跨候选共享private KV，也不跨阶段。
+// 与单组不同，此时8个warp都做FA2；GEMM、Norm阶段仍按各自映射执行。
+__device__ __noinline__ void attention_dual(const Params &p, Shared &s, cg::grid_group &g, int st,
+                                            bool cross) {
+    const int team = int(threadIdx.x) / 128, tid = int(threadIdx.x) % 128;
+    const int prefix = int(p.info[0]);
+    // 非16对齐的history尾部不进入G2；有限结构核验发现G2可改变BF16结果。
+    int group_size =
+        (prefix % 16 == 0 && (prefix + 32 + 63) / 64 == (prefix + 16 + 63) / 64) ? 2 : 1;
+    for (int cfg = 0; cfg < 2; ++cfg)
+        for (int i = 0; i < 6; i += 2)
+            if (p.rows[cfg * 7 + i] != p.rows[cfg * 7 + i + 1])
+                group_size = 1;
+    const int groups = (7 + group_size - 1) / group_size;
+    const int tasks = cross ? p.b * H : 2 * groups * H;
+    auto &f = s.group[team];
+    if (tid == 0) {
+        f = {};
+        f.b = cross ? p.b : 1;
+        f.h = f.h_k = H;
+        f.h_h_k_ratio = 1;
+        f.d = f.d_rounded = HD;
+        f.q_row_stride = f.o_row_stride = f.k_row_stride = f.v_row_stride = D;
+        f.q_head_stride = f.o_head_stride = f.k_head_stride = f.v_head_stride = HD;
+        f.seqlen_q_rounded = 128;
+        f.scale_softmax = p.attn_scale;
+        f.scale_softmax_log2 = p.attn_scale_log2;
+        f.p_dropout = 1.f;
+        f.p_dropout_in_uint8_t = 255;
+        f.rp_dropout = 1.f;
+        f.scale_softmax_rp_dropout = p.attn_scale;
+        f.window_size_left = f.window_size_right = -1;
+        f.is_bf16 = true;
+        f.is_seqlens_k_cumulative = true;
+        f.num_splits = 1;
+        if (cross) {
+            f.q_ptr = bp(p, CQ);
+            f.k_ptr = bp(p, CK);
+            f.v_ptr = bp(p, CV);
+            f.o_ptr = bp(p, CA);
+            f.q_batch_stride = f.o_batch_stride = 16 * D;
+            f.k_batch_stride = f.v_batch_stride = int64_t(p.c) * D;
+            f.seqlen_q = 16;
+            f.seqlen_k = p.c;
+            f.seqlen_k_rounded = (p.c + 127) / 128 * 128;
+            f.softmax_lse_ptr = p.fa_lse;
+        } else {
+            f.prefix_k = p.pk;
+            f.prefix_v = p.pv;
+            f.current_k = bp(p, SKR);
+            f.current_v = bp(p, SV);
+            f.k_ptr = p.pk;
+            f.v_ptr = p.pv;
+            f.valid_slots = p.slots;
+            f.prefix_length = prefix;
+            f.candidates = 7;
+            f.pk_batch = f.pv_batch = int64_t(p.pool) * D;
+            f.pk_row = f.pv_row = D;
+            f.pk_head = f.pv_head = HD;
+            f.ck_batch = f.cv_batch = 16 * D;
+            f.ck_row = f.cv_row = D;
+            f.ck_head = f.cv_head = HD;
+            f.q_batch_stride = f.o_batch_stride = f.k_batch_stride = f.v_batch_stride = 0;
+        }
+        if (blockIdx.x == 0 && team == 0) {
+            const int o = cross ? 4 : 0;
+            p.fa_meta[o] = cross ? p.c : prefix + 16;
+            p.fa_meta[o + 1] = 1;
+            p.fa_meta[o + 2] = 16;
+            p.fa_meta[o + 3] = FA_SMEM;
+        }
+    }
+    __syncthreads(); // 只发布本CTA的两个FA2描述符；跨CTA输入已由前一阶段出口完成。
+    for (int task = 2 * int(blockIdx.x) + team; task < tasks; task += 2 * int(gridDim.x)) {
+        if (cross) {
+            wam_whole_fa2::whole_direct_dual<FaCandidate, false, false, false, false, false, true,
+                                             false, false>(f, task % p.b, task / p.b, 0,
+                                                           s.tile.fa2_dual[team]);
+        } else {
+            const int group = task % (2 * groups), head = task / (2 * groups), cfg = group / groups;
+            const int local = group % groups, first = cfg * 7 + local * group_size,
+                      count = min(group_size, 7 - local * group_size);
+            if (tid == 0) {
+                f.group_base = first;
+                f.group_cfg = int(p.rows[first]);
+                f.q_ptr = bp(p, SQR) + first * 16 * D;
+                f.o_ptr = bp(p, SA) + first * 16 * D;
+                f.softmax_lse_ptr = p.fa_lse + first * H * 16;
+                f.seqlen_q = count * 16;
+                f.seqlen_k = prefix + count * 16;
+                f.seqlen_k_rounded = (f.seqlen_k + 127) / 128 * 128;
+            }
+            wam_whole_fa2::dual_group_sync();
+            wam_whole_fa2::whole_grouped_dual<FaCandidate, false, false, false, false, false, true,
+                                              false, false>(f, 0, head, 0, s.tile.fa2_dual[team]);
+        }
+        asm volatile("cp.async.wait_all;" ::: "memory");
+        wam_whole_fa2::dual_group_sync();
+    }
+    g.sync();
+}
+__device__ __forceinline__ void attention(const Params &p, Shared &s, cg::grid_group &g, int st,
+                                          bool cross) {
+    if (p.candidate && p.b == 14 && p.q == 16)
+        attention_dual(p, s, g, st, cross);
+    else
+        independent_attention(p, s, g, st, cross);
 }

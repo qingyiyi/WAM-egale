@@ -1,0 +1,1 @@
+仅大CrossK RMS改两物理warp/行、四行/CTA，各物理lane分别保留原两逻辑warp累加和shuffle顺序，寄存器内完成原offset2合并，再用两个64线程barrier完成offset1/variance发布。保留FP32 variance存取后再加eps/rsqrt，BF16输出及输入布局不变。其他小RMS仍双4warp行。原一warp/行负结果不覆盖；九签名失败立即停止，不改容差。

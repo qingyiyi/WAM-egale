@@ -1,0 +1,112 @@
+{
+  "goal": "Current source all 28 computational stages: native/owned independent and embedded; real prefix; strong self-attention controls",
+  "deadline": "2026-10-22T09:00:00+08:00",
+  "cumulative_prior_GPU_seconds": 3239.904519805191,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 900,
+  "new_storage_cap_bytes": 1073741824,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/06-embedded-guarded/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "9870081be5e52703128ebcf259994bbc20675c1870f14d01308aad7638ecccfc",
+  "source_sha256": "52120049aaa17a3d2c7163da5a664ed11f7154b1e7c06b7713fc3e73a29fb8a4",
+  "steps": [
+    [
+      "prepare",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/stage-control-current/prepare.py"
+      ],
+      30,
+      false
+    ],
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/stage-control-current/build.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/stage-control-current",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/stage-control-current/build/obj"
+      ],
+      1200,
+      false
+    ],
+    [
+      "measure1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/stage-control-current/worker.py",
+        "1"
+      ],
+      360,
+      true
+    ],
+    [
+      "measure2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/stage-control-current/worker.py",
+        "2"
+      ],
+      360,
+      true
+    ]
+  ],
+  "sources": {
+    "csrc/whole_layer.cu": "52120049aaa17a3d2c7163da5a664ed11f7154b1e7c06b7713fc3e73a29fb8a4",
+    "csrc/cutlass_gemm.cuh": "c813be7e21183ce60210001654a838d5e39de21f035f6d0790d90e972fbbdbed",
+    "csrc/gemm_pipeline.cuh": "95ecc6b5aa1264f92335374915b653b69684b87c8dc3989b656ac26f658e24dd",
+    "csrc/fa2_stage.cuh": "453ffbfa3aa92a8acafee08bdf2227ee8b1618ad27361d84592bfea7add1cf83",
+    "fa2_codegen.py": "939658fa3a04f33be5b20b60402aa69be6624cdbedf4da1dd6d61698d0fcdfe7",
+    "csrc/candidate_kernel.h": "5780b5395b1e693685db7df7320662c6ed2664b075c24f4b97ee5e025647b3c6",
+    "csrc/candidate_load.h": "5c9c55c6fa02405c30eed5fe19392613ee73f310a1e93056e9b4b1e07b1d4f84",
+    "cutlass_gemm_codegen.py": "b6c7b0fa799d7b8cb1ea341560196d4bfd3fb75bafc2ee4c1e58f70f31db8b6d",
+    "build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  },
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/08-dual-attention/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "candidate_binary_sha256": "85a4416a20d20c28441830a01888ad84c54290ce807e2e9cd2d5abd3549c971d",
+  "matrix": {
+    "stages": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "lengths": [
+      "short",
+      "middle",
+      "long"
+    ],
+    "conditions": [
+      "hot_single_stage",
+      "same_real_native_prefix"
+    ]
+  },
+  "full_block_calls_cap_per_process": 6000,
+  "stage_calls_cap_per_process": 200000
+}

@@ -1,0 +1,17 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "process": 1,
+  "full_calls": 4,
+  "rows": [],
+  "formal_performance_permission": false,
+  "torch_graph_boundary": "Existing PreparedBlock dense uncached: static slots admitted before capture; original projections/norm/RoPE/attention/FFN, no context projection cache; not dynamic original forward",
+  "binary_identity": {
+    "before": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/before/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "candidate": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/02-point-static/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "before_sha256": "2a8a250ee31daca7640c0ba77fd167c1f72957fe4df577abc30f4c4563d0a50a",
+    "candidate_sha256": "d74166235f009b60821ee2a26c4f3f3dd44295d610b8c8a65dabdb651184c6aa"
+  },
+  "error": "RuntimeError('_shared_torch_v1: \u9700\u8981\u552f\u4e00\u7684\u5df2\u6784\u5efa\u6269\u5c55')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/02-point-static/timing.py\", line 47, in <module>\n    warm=block(*a,**k) if ext is None else ext.forward(bind.weights,*a,cl,k['candidate_cache_rows'],k.get('update_cache',0),bind.eps,False);bump()\n         ^^^^^^^^^^^^^\n  File \"/root/cxz/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1775, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1786, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/wam-p0-worktree/wan_va/modules/model.py\", line 764, in forward\n    attn_output = self.attn1(norm_hidden_states,\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1775, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/envs/va/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1786, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/prepared.py\", line 96, in forward\n    output = extension('_shared_torch_v1').shared(query, self.cache['k'],\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/prepared.py\", line 26, in extension\n    raise RuntimeError(f'{name}: \u9700\u8981\u552f\u4e00\u7684\u5df2\u6784\u5efa\u6269\u5c55')\nRuntimeError: _shared_torch_v1: \u9700\u8981\u552f\u4e00\u7684\u5df2\u6784\u5efa\u6269\u5c55\n",
+  "lifecycle_seconds": 8.857815504074097
+}

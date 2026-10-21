@@ -1,0 +1,5 @@
+四类原Torch真实B14投影及已有self shared/guarded与cross attention的CUPTI launch元数据：grid/block/寄存器/shared/kernel名，输入来自同一中KV fixture并核对原输出。最多500次算子调用、180秒GPU生命周期、64MiB新增。非NCU硬件counter，无正式速度结论；原M39预算及09:00截止不变。
+
+原入口名profile.py遮蔽stdlib profile，导入链重复执行脚本导致interop线程设置失败；0实际算子调用，旧失败和2.216852秒保留。本namespace仅修正文件名，不改变数学/输入/预算/截止。
+
+第二入口运行到1次原native层后，因debug未暴露self_q_linear而退出。本次从已核验的整层副本读取完整中间量用于原投影结果检查；仍用原F.linear和已有attention采集launch。旧失败不覆盖。

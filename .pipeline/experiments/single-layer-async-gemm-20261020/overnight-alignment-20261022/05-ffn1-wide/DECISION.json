@@ -1,0 +1,23 @@
+{
+  "decision": "DO_NOT_SELECT_WHOLE_LAYER_REGRESSION",
+  "two_process_three_KV_delta_percent": [
+    2.869112267717311,
+    3.6723717859041383,
+    4.7325859759106415,
+    2.864313381569783,
+    3.7314883628342566,
+    4.555049419389334
+  ],
+  "gate": "SIMPLE-GATE-RESULT.json",
+  "observed_resources": [
+    108,
+    1,
+    148000,
+    255,
+    1464,
+    256
+  ],
+  "known": "FFN1 tile M128 N256; all 8 warps perform MMA; shared reservation increased for whole launch",
+  "hypothesis": "larger reservation and codegen affect other phases; per-phase attribution not measured yet",
+  "selected_parent": "04-gemm-padded"
+}

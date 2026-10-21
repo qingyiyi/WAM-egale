@@ -1,0 +1,1 @@
+复用已有guarded G1/G2 attention数学/可见性函数到单层persistent kernel，适配warp3–6、named barrier和已分配shared。G2只在不新增K64 tile且组内历史CFG一致时使用。候选私有KV仍隔离，不称Q112序列，不改变target/draft/接受标准。与已有guarded standalone强基线同轮比较，此移植本身不是新的调度创新。

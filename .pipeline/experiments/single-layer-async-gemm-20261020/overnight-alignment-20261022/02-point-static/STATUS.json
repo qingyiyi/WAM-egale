@@ -1,0 +1,61 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792600972.597006,
+  "deadline": 1792630800.0,
+  "jobs": [
+    {
+      "name": "build",
+      "owned": {
+        "pid": 800263,
+        "birth_ticks": 719943116,
+        "pgid": 800263
+      },
+      "start": 1792600972.5997794,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792601107.0731041,
+      "lifecycle_seconds": 134.47332525253296,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "gate",
+      "owned": {
+        "pid": 800498,
+        "birth_ticks": 719956571,
+        "pgid": 800498
+      },
+      "start": 1792601107.1458445,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792601119.176801,
+      "lifecycle_seconds": 12.030956983566284,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "measure1",
+      "owned": {
+        "pid": 800548,
+        "birth_ticks": 719957781,
+        "pgid": 800548
+      },
+      "start": 1792601119.2518647,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792601130.4306562,
+      "lifecycle_seconds": 11.178791999816895,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 800262,
+    "birth_ticks": 719943113,
+    "pgid": 800262
+  },
+  "error": "RuntimeError('measure1 failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/02-point-static/guard.py\", line 47, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: measure1 failed\n",
+  "end": 1792601130.4345982,
+  "lifecycle_seconds": 157.83759236335754
+}

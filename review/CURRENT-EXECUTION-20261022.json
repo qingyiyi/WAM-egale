@@ -1,0 +1,195 @@
+{
+  "observed_at": "2026-10-22T02:46:38.568908+08:00",
+  "previous_derived_snapshot_commit": "c09afae944a7e5e7b9eb4f282687ef68435521b4",
+  "operator": {
+    "status": "FROZEN_FINITE_VERIFIED_RESEARCH_SINGLE_LAYER",
+    "selected_trial": "11-static-stage-entry",
+    "final_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/final-whole-comparison/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "final_binary_sha256": "ac3f9e46574713fc8555428662c4ca40e1eab0c2d2ba830cc4050ccf713a4ad4",
+    "source_sha256": "0cc1944b69fd10e1aa79c16f79852de7ebd863e63a2a88b827fbb24f9e1c4ae0",
+    "sources": {
+      "csrc/whole_layer.cu": "0cc1944b69fd10e1aa79c16f79852de7ebd863e63a2a88b827fbb24f9e1c4ae0",
+      "csrc/cutlass_gemm.cuh": "170b2b71670394f560822d37a9b331e7009a9a038817083c2942c63efcaabf2b",
+      "csrc/gemm_pipeline.cuh": "95ecc6b5aa1264f92335374915b653b69684b87c8dc3989b656ac26f658e24dd",
+      "csrc/fa2_stage.cuh": "b5f4f26ce3887721ce58096cd34682ed4f6c8a9abe9b3c718a300969f39dd5ef",
+      "fa2_codegen.py": "939658fa3a04f33be5b20b60402aa69be6624cdbedf4da1dd6d61698d0fcdfe7",
+      "csrc/candidate_kernel.h": "5780b5395b1e693685db7df7320662c6ed2664b075c24f4b97ee5e025647b3c6",
+      "csrc/candidate_load.h": "5c9c55c6fa02405c30eed5fe19392613ee73f310a1e93056e9b4b1e07b1d4f84",
+      "cutlass_gemm_codegen.py": "b6c7b0fa799d7b8cb1ea341560196d4bfd3fb75bafc2ee4c1e58f70f31db8b6d",
+      "build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+    },
+    "real_signatures": 9,
+    "structural_controls": 21,
+    "all_finite_checks_passed": true,
+    "formal_performance_permission": false,
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "production_admitted": false,
+    "installed": true,
+    "ready_DAG_implemented": false,
+    "table": "WHOLE-LAYER-COMPARISON.csv",
+    "installation_evidence": [
+      "DEPLOYMENT-LOCAL.json",
+      "DEPLOYMENT-BAAI.json"
+    ]
+  },
+  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESULT.md",
+  "resource": {
+    "observed_at": "2026-10-22T02:46:38.435053+08:00",
+    "status": "NCU_WINDOW_PENDING",
+    "deadline": "2026-10-22T09:00:00+08:00",
+    "prior_M39_GPU_lifecycle_seconds": 2538.679523,
+    "remote_GPU_lifecycle_seconds": 1427.7847797870636,
+    "remote_CPU_build_prepare_seconds": 2460.9646871089935,
+    "remote_measured_at": 1792607688.302687,
+    "remote_owned_remaining": [],
+    "local_attempts": [
+      {
+        "namespace": "local-ncu-08",
+        "status": "FAILED_OR_PARTIAL",
+        "terminal": true,
+        "charged_seconds": 0.06401562690734863,
+        "GPU_worker_seconds": 0,
+        "guard_identity": {},
+        "guard_alive": false,
+        "identity_alive": null,
+        "failure": "AssertionError('local GPU occupied')"
+      },
+      {
+        "namespace": "local-ncu-final",
+        "status": "FAILED_OR_PARTIAL",
+        "terminal": true,
+        "charged_seconds": 286.3656749725342,
+        "GPU_worker_seconds": 15.047388553619385,
+        "guard_identity": {
+          "pid": 2807025,
+          "birth_ticks": 1387643418,
+          "pgid": 2807025
+        },
+        "guard_alive": false,
+        "identity_alive": false,
+        "failure": [
+          2818268
+        ]
+      },
+      {
+        "namespace": "local-ncu-final-r2",
+        "status": "WAITING_NATURAL_IDLE",
+        "terminal": false,
+        "charged_seconds": 597.9828071594238,
+        "GPU_worker_seconds": 0,
+        "guard_identity": {
+          "pid": 2822944,
+          "birth_ticks": 1387690883,
+          "pgid": 2822944
+        },
+        "guard_alive": true,
+        "identity_alive": null,
+        "failure": null
+      }
+    ],
+    "local_worker_GPU_seconds": 15.047388553619385,
+    "night_charged_seconds_including_local_wait": 2312.197277545929,
+    "cumulative_charged_seconds": 4850.876800545929,
+    "cumulative_cap_seconds": 36000,
+    "night_cap_seconds": 30000,
+    "remaining_seconds": 27687.80272245407,
+    "CUDA_active_seconds": "UNKNOWN: not measured separately; lifecycle is not CUDA active time",
+    "CPU_analysis_seconds": "UNMETERED; build/prepare values are not total CPU work",
+    "local_stored_bytes": 80514009,
+    "remote_stored_bytes_at_checkpoint": 414954314,
+    "storage_cap_bytes": 3221225472,
+    "stopped_implementation_candidates": [
+      "01 generic Self-Q",
+      "05 wide FFN1 K64",
+      "07 one-warp RMS",
+      "09 native-like small projection split",
+      "12 two-warp RMS"
+    ],
+    "precision_failure_preserved": "extended-state-08 short/drop1; repaired by08b, not changed to PASS",
+    "failed_or_partial_remote": [
+      {
+        "namespace": "01-selfq-generic",
+        "status": "FAILED_OR_PARTIAL",
+        "GPU_lifecycle_seconds": 23.26587152481079,
+        "CPU_prepare_seconds": 133.98386931419373,
+        "job_lifecycle_seconds": 157.3880970478058,
+        "owned_remaining": []
+      },
+      {
+        "namespace": "02-point-static",
+        "status": "FAILED_OR_PARTIAL",
+        "GPU_lifecycle_seconds": 23.20974898338318,
+        "CPU_prepare_seconds": 134.47332525253296,
+        "job_lifecycle_seconds": 157.83759236335754,
+        "owned_remaining": []
+      },
+      {
+        "namespace": "extended-state-08",
+        "status": "FAILED_OR_PARTIAL",
+        "GPU_lifecycle_seconds": 12.631381750106812,
+        "CPU_prepare_seconds": 0,
+        "job_lifecycle_seconds": 12.7056884765625,
+        "owned_remaining": []
+      },
+      {
+        "namespace": "native-launch-profile",
+        "status": "FAILED_OR_PARTIAL",
+        "GPU_lifecycle_seconds": 2.2168524265289307,
+        "CPU_prepare_seconds": 0,
+        "job_lifecycle_seconds": 2.2950685024261475,
+        "owned_remaining": []
+      },
+      {
+        "namespace": "native-launch-profile-fix",
+        "status": "FAILED_OR_PARTIAL",
+        "GPU_lifecycle_seconds": 10.927450895309448,
+        "CPU_prepare_seconds": 0,
+        "job_lifecycle_seconds": 11.01650333404541,
+        "owned_remaining": []
+      },
+      {
+        "namespace": "stage-control-final",
+        "status": "FAILED_OR_PARTIAL",
+        "GPU_lifecycle_seconds": 0,
+        "CPU_prepare_seconds": 0.03178811073303223,
+        "job_lifecycle_seconds": 0.05139493942260742,
+        "owned_remaining": []
+      }
+    ],
+    "ready_DAG_started": false,
+    "new_robot_experiments_started": false,
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "operator_whole_ms": {
+    "short": 2.2958080768585205,
+    "middle": 2.453248083591461,
+    "long": 2.4762880206108093
+  },
+  "uncached_guarded_relative_latency_percent": {
+    "short": 10.935183106149182,
+    "middle": 12.173719326097766,
+    "long": 12.502919170868326
+  },
+  "full_alignment_achieved": false,
+  "ready_DAG_implemented": false,
+  "robotwin": {
+    "cross_task_complete_episodes": 4,
+    "independent_quality_samples_added": 0,
+    "cumulative_GPU_lifecycle_seconds": 54718.243980407715,
+    "owned_jobs_running": false,
+    "original_deadline": "2026-10-22T01:26:04.706686+08:00",
+    "deadline_expired": true,
+    "expanded1800_started": false,
+    "additional160hours_authorized": false
+  },
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "historical_paused72": "review/RESULTS.json unchanged"
+}

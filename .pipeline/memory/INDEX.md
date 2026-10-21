@@ -1,5 +1,10 @@
 # 长期记忆索引
 
+- [算子夜间对齐至10月22日09:00](global/requirements/decision-算子夜间持续对齐至十月二十二日九点.md)（constraint，M39本次）：继续单层性能对齐，原累计10小时不重置；RoboTwin期限不变。
+
+- [算子优先寄存器/shared、减少local访问](global/requirements/preference-算子优先寄存器与共享内存并减少local访问.md)（guideline，M39）：以动态访存、整层耗时和数值共同验证，不盲目堆高资源。
+- [RoboTwin本机最多四分之一](global/requirements/decision-RoboTwin本机最多分担四分之一且结果汇回远端.md)（constraint，M40）：远端为主，本机有资源才分担，完整配对同卡、结果汇回~/cxz；预算/截止不增加。
+
 - [RoboTwin核对后按每任务100次](global/requirements/decision-RoboTwin先核对官方复现再按每任务一百次评估.md)（constraint，M40）：已批准先做相机/planner等价优化；六任务三臂1800局目标保留，新增资源未批准。
 
 - [投影写回bank布局有限归因](global/knowledge/knowledge-投影写回bank布局有限归因.md)（reference，M39）：NCU及两候选控制实验支持写回开销；4warp整层收益3.12%–3.77%，严格有限门通过，余下差距未全解释。

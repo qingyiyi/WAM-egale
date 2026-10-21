@@ -1,0 +1,130 @@
+{
+  "observed_at": "2026-10-22T02:46:38.435053+08:00",
+  "status": "NCU_WINDOW_PENDING",
+  "deadline": "2026-10-22T09:00:00+08:00",
+  "prior_M39_GPU_lifecycle_seconds": 2538.679523,
+  "remote_GPU_lifecycle_seconds": 1427.7847797870636,
+  "remote_CPU_build_prepare_seconds": 2460.9646871089935,
+  "remote_measured_at": 1792607688.302687,
+  "remote_owned_remaining": [],
+  "local_attempts": [
+    {
+      "namespace": "local-ncu-08",
+      "status": "FAILED_OR_PARTIAL",
+      "terminal": true,
+      "charged_seconds": 0.06401562690734863,
+      "GPU_worker_seconds": 0,
+      "guard_identity": {},
+      "guard_alive": false,
+      "identity_alive": null,
+      "failure": "AssertionError('local GPU occupied')"
+    },
+    {
+      "namespace": "local-ncu-final",
+      "status": "FAILED_OR_PARTIAL",
+      "terminal": true,
+      "charged_seconds": 286.3656749725342,
+      "GPU_worker_seconds": 15.047388553619385,
+      "guard_identity": {
+        "pid": 2807025,
+        "birth_ticks": 1387643418,
+        "pgid": 2807025
+      },
+      "guard_alive": false,
+      "identity_alive": false,
+      "failure": [
+        2818268
+      ]
+    },
+    {
+      "namespace": "local-ncu-final-r2",
+      "status": "WAITING_NATURAL_IDLE",
+      "terminal": false,
+      "charged_seconds": 597.9828071594238,
+      "GPU_worker_seconds": 0,
+      "guard_identity": {
+        "pid": 2822944,
+        "birth_ticks": 1387690883,
+        "pgid": 2822944
+      },
+      "guard_alive": true,
+      "identity_alive": null,
+      "failure": null
+    }
+  ],
+  "local_worker_GPU_seconds": 15.047388553619385,
+  "night_charged_seconds_including_local_wait": 2312.197277545929,
+  "cumulative_charged_seconds": 4850.876800545929,
+  "cumulative_cap_seconds": 36000,
+  "night_cap_seconds": 30000,
+  "remaining_seconds": 27687.80272245407,
+  "CUDA_active_seconds": "UNKNOWN: not measured separately; lifecycle is not CUDA active time",
+  "CPU_analysis_seconds": "UNMETERED; build/prepare values are not total CPU work",
+  "local_stored_bytes": 80514009,
+  "remote_stored_bytes_at_checkpoint": 414954314,
+  "storage_cap_bytes": 3221225472,
+  "stopped_implementation_candidates": [
+    "01 generic Self-Q",
+    "05 wide FFN1 K64",
+    "07 one-warp RMS",
+    "09 native-like small projection split",
+    "12 two-warp RMS"
+  ],
+  "precision_failure_preserved": "extended-state-08 short/drop1; repaired by08b, not changed to PASS",
+  "failed_or_partial_remote": [
+    {
+      "namespace": "01-selfq-generic",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_lifecycle_seconds": 23.26587152481079,
+      "CPU_prepare_seconds": 133.98386931419373,
+      "job_lifecycle_seconds": 157.3880970478058,
+      "owned_remaining": []
+    },
+    {
+      "namespace": "02-point-static",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_lifecycle_seconds": 23.20974898338318,
+      "CPU_prepare_seconds": 134.47332525253296,
+      "job_lifecycle_seconds": 157.83759236335754,
+      "owned_remaining": []
+    },
+    {
+      "namespace": "extended-state-08",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_lifecycle_seconds": 12.631381750106812,
+      "CPU_prepare_seconds": 0,
+      "job_lifecycle_seconds": 12.7056884765625,
+      "owned_remaining": []
+    },
+    {
+      "namespace": "native-launch-profile",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_lifecycle_seconds": 2.2168524265289307,
+      "CPU_prepare_seconds": 0,
+      "job_lifecycle_seconds": 2.2950685024261475,
+      "owned_remaining": []
+    },
+    {
+      "namespace": "native-launch-profile-fix",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_lifecycle_seconds": 10.927450895309448,
+      "CPU_prepare_seconds": 0,
+      "job_lifecycle_seconds": 11.01650333404541,
+      "owned_remaining": []
+    },
+    {
+      "namespace": "stage-control-final",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_lifecycle_seconds": 0,
+      "CPU_prepare_seconds": 0.03178811073303223,
+      "job_lifecycle_seconds": 0.05139493942260742,
+      "owned_remaining": []
+    }
+  ],
+  "ready_DAG_started": false,
+  "new_robot_experiments_started": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false
+}

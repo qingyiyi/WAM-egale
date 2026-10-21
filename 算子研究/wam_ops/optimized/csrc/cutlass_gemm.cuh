@@ -1,5 +1,6 @@
-// 一个任务计算C中的TM×128输出tile，沿K每次推进64，CUTLASS内部三级流水。
-// warp3–6执行cp.async/MMA；全部8warp写回，context用四元素向量，其余用成对写回。
+// 通用GEMM任务计算C的TM×128输出tile，K64、CUTLASS三级流水。
+// B14 FFN1的M128×N256/K32独立配置见下方CutlassWideFFN。
+// warp3–6执行cp.async/MMA；全部8warp按四元素向量写回。
 // action用TM64，context用TM128；保留原cuBLASLt的分段BF16与bias加法顺序。
 #pragma once
 
@@ -11,7 +12,7 @@ static_assert(WAM_CONTEXT_TILE_M == 64 || WAM_CONTEXT_TILE_M == 128);
 using CutlassB = cutlass::bfloat16_t;
 using CutlassRow = cutlass::layout::RowMajor;
 using CutlassCol = cutlass::layout::ColumnMajor;
-template <int TM, int Stride = 128> struct CutlassTile {
+template <int TM, int Stride = 136> struct CutlassTile {
     using Config = cutlass::gemm::device::Gemm<
         CutlassB, CutlassRow, CutlassB, CutlassCol, CutlassB, CutlassRow, float,
         cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<TM, 128, 64>,
@@ -28,21 +29,38 @@ template <int TM, int Stride = 128> struct CutlassTile {
         float result[TM * Stride];
     };
 };
+// FFN1真实M224/N14336：M128×N256输出tile，8个warp均执行MMA。
+// K32三级pipeline与分半epilogue将临时shared保持在现有整层配额内。
+struct CutlassWideFFN {
+    using Config = cutlass::gemm::device::Gemm<
+        CutlassB, CutlassRow, CutlassB, CutlassCol, CutlassB, CutlassRow, float,
+        cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<128, 256, 32>,
+        cutlass::gemm::GemmShape<64, 64, 32>, cutlass::gemm::GemmShape<16, 8, 16>,
+        cutlass::epilogue::thread::LinearCombination<CutlassB, 8, float, float>,
+        cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<>, 3>;
+    using Mma = typename Config::GemmKernel::Mma;
+    union Storage {
+        typename Mma::SharedStorage mainloop;
+        float result[128 * 136];
+    };
+};
 union CutlassGemmStorage {
+    CutlassWideFFN::Storage wide_ffn;
     typename CutlassTile<64>::Storage action;
     typename CutlassTile<128>::Storage ffn1;
-    // 仅context投影padding；FFN分段归约继续使用原128列布局。
+    // 128列结果按136列stride落shared，减少MMA accumulator转存的bank冲突。
     typename CutlassTile<WAM_CONTEXT_TILE_M, 136>::Storage context;
     float result[WAM_CONTEXT_TILE_M * 128];
 };
 
 __device__ __forceinline__ int gemm_tile_rows(int m, int n = 0) {
     // B14 FFN1的M224可用两个128行tile，减少重复读权重；K归约次序不变。
-    if (m == 224 && n == 14336) return 128;
+    if (m == 224 && n == 14336)
+        return 128;
     return m >= 1024 ? WAM_CONTEXT_TILE_M : 64;
 }
 
-template <int TM, int Stride = 128>
+template <int TM, int Stride = 136>
 __device__ __forceinline__ void cutlass_gemm_tile(typename CutlassTile<TM, Stride>::Storage &s,
                                                   const __nv_bfloat16 *a, const __nv_bfloat16 *w,
                                                   const __nv_bfloat16 *bias, __nv_bfloat16 *out,
@@ -81,25 +99,32 @@ __device__ __forceinline__ void cutlass_gemm_tile(typename CutlassTile<TM, Strid
         __syncthreads();
         if constexpr (Stride == 136) {
             // 四元素向量仅减少搬运指令；FP32加法及BF16舍入仍逐元素保持。
-            struct alignas(8) B4 { __nv_bfloat162 lo, hi; };
+            struct alignas(8) B4 {
+                __nv_bfloat162 lo, hi;
+            };
             for (int i = 4 * int(threadIdx.x); i < TM * 128; i += 4 * int(blockDim.x)) {
                 const int r = rm + i / 128, c = cn + i % 128;
                 if (r < m && c < n) {
-                    float4 z = *reinterpret_cast<const float4 *>(s.result + (i / 128) * Stride + i % 128);
+                    float4 z =
+                        *reinterpret_cast<const float4 *>(s.result + (i / 128) * Stride + i % 128);
                     if (partition == splits - 1) {
                         B4 b = *reinterpret_cast<const B4 *>(bias + c);
                         float2 lo = __bfloat1622float2(b.lo), hi = __bfloat1622float2(b.hi);
-                        z.x = __fadd_rn(z.x, lo.x); z.y = __fadd_rn(z.y, lo.y);
-                        z.z = __fadd_rn(z.z, hi.x); z.w = __fadd_rn(z.w, hi.y);
+                        z.x = __fadd_rn(z.x, lo.x);
+                        z.y = __fadd_rn(z.y, lo.y);
+                        z.z = __fadd_rn(z.z, hi.x);
+                        z.w = __fadd_rn(z.w, hi.y);
                     }
                     if (partition > 0) {
                         B4 p = *reinterpret_cast<const B4 *>(out + r * n + c);
                         float2 lo = __bfloat1622float2(p.lo), hi = __bfloat1622float2(p.hi);
-                        z.x = __fadd_rn(z.x, lo.x); z.y = __fadd_rn(z.y, lo.y);
-                        z.z = __fadd_rn(z.z, hi.x); z.w = __fadd_rn(z.w, hi.y);
+                        z.x = __fadd_rn(z.x, lo.x);
+                        z.y = __fadd_rn(z.y, lo.y);
+                        z.z = __fadd_rn(z.z, hi.x);
+                        z.w = __fadd_rn(z.w, hi.y);
                     }
-                    *reinterpret_cast<B4 *>(out + r * n + c) = {
-                        __floats2bfloat162_rn(z.x, z.y), __floats2bfloat162_rn(z.z, z.w)};
+                    *reinterpret_cast<B4 *>(out + r * n + c) = {__floats2bfloat162_rn(z.x, z.y),
+                                                                __floats2bfloat162_rn(z.z, z.w)};
                 }
             }
         } else {
@@ -108,7 +133,8 @@ __device__ __forceinline__ void cutlass_gemm_tile(typename CutlassTile<TM, Strid
             for (int i = 2 * int(threadIdx.x); i < TM * 128; i += 2 * int(blockDim.x)) {
                 const int r = rm + i / 128, c = cn + i % 128;
                 if (r < m && c < n) {
-                    float2 z = *reinterpret_cast<const float2 *>(s.result + (i / 128) * Stride + i % 128);
+                    float2 z =
+                        *reinterpret_cast<const float2 *>(s.result + (i / 128) * Stride + i % 128);
                     if (partition == splits - 1) {
                         const float2 b =
                             __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(bias + c));

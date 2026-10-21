@@ -61,8 +61,9 @@ enum Buf {
     NB
 };
 enum Point { TABLE, MODULATE, RESIDUAL, ROPE, GELU };
-// CTA内8个warp的固定分工：0领取tile；3–6计算；Norm/小M由7写回。
-// 小M的1/2分别加载A/W；大M的CUTLASS由计算warp自行加载，epilogue用全部8warp。
+// CTA共8个warp，职责按阶段变化：小投影/Context/FFN2由warp3–6做MMA；
+// FFN1的8warp均做MMA；B14 attention分两个4warp组，RMS分两组各算一行。
+// 动态队列由warp0领取；静态point/norm/FFN/双组attention不经过队列。
 // a[]是中间buffer，w[]对应whole_layer.py绑定的原始参数，均不跨候选混用。
 struct Params {
     const void *w[27];
@@ -98,42 +99,26 @@ union alignas(32) TileShared {
     NormShared norm;
     NormShared norm_pair[2]; // 两行各占4个warp；仍小于FA2已有的共享内存上限。
     char fa2_workspace[FA_SMEM];
+    char fa2_dual[2][FaCandidate::kSmemSize]; // 两个4-warp组各有独立FA2 workspace。
 };
 struct Shared {
     TileShared tile;
     int task;
     wam_whole_fa2::WholeParams fa2;
+    wam_whole_fa2::GroupParams group[2];
 };
-__device__ inline int warp() {
-    return threadIdx.x / 32;
-}
-__device__ inline int lane() {
-    return threadIdx.x % 32;
-}
-__device__ inline bool compute() {
-    return warp() >= 3 && warp() < 7;
-}
-__device__ inline int ct() {
-    return int(threadIdx.x) - 96;
-}
-__device__ inline float value(B x) {
-    return __bfloat162float(x);
-}
-__device__ inline B bf(float x) {
-    return __float2bfloat16_rn(x);
-}
-__device__ inline float *fp(const Params &p, int i) {
-    return (float *)p.a[i];
-}
-__device__ inline B *bp(const Params &p, int i) {
-    return (B *)p.a[i];
-}
-__device__ inline void group_sync() {
-    asm volatile("bar.sync 1, 128;" ::: "memory");
-}
+__device__ inline int warp() { return threadIdx.x / 32; }
+__device__ inline int lane() { return threadIdx.x % 32; }
+__device__ inline bool compute() { return warp() >= 3 && warp() < 7; }
+__device__ inline int ct() { return int(threadIdx.x) - 96; }
+__device__ inline float value(B x) { return __bfloat162float(x); }
+__device__ inline B bf(float x) { return __float2bfloat16_rn(x); }
+__device__ inline float *fp(const Params &p, int i) { return (float *)p.a[i]; }
+__device__ inline B *bp(const Params &p, int i) { return (B *)p.a[i]; }
+__device__ inline void group_sync() { asm volatile("bar.sync 1, 128;" ::: "memory"); }
 
-// 每个阶段有一个全局计数器；一个CTA一次领取一个tile，做完再领。
-// 阶段开始/结束的grid.sync保证所有前置输出完成；目前还不是跨阶段ready队列。
+// 仅动态分派阶段使用全局计数器；每CTA一次领取一个tile。
+// 静态阶段复用上一阶段的出口依赖同步，仍不是跨阶段ready队列。
 __device__ void begin_stage(const Params &p, cg::grid_group &grid, int stage) {
     if (grid.thread_rank() == 0)
         p.queues[stage] = 0;
@@ -157,12 +142,12 @@ __device__ void finish_tile() {
 // 固定形状设备函数，让编译器直接生成M64×N128的CUTLASS路径。
 // 仍是96个输出tile、原两个K1536分段及BF16提交；领取和同步均不改。
 __device__ __noinline__ void action_projection(const Params &p, Shared &s, cg::grid_group &g,
-                                              int st, const B *a, int wi, B *out) {
+                                               int st, const B *a, int wi, B *out) {
     constexpr int M = 224, tiles = ((M + 63) / 64) * (D / 128);
     begin_stage(p, g, st);
     for (int t; (t = claim_tile(p, s, st)) < tiles;) {
         cutlass_gemm_tile<64>(s.tile.cutlass_gemm.action, a, (const B *)p.w[wi],
-                             (const B *)p.w[wi + 1], out, M, D, D, t, true);
+                              (const B *)p.w[wi + 1], out, M, D, D, t, true);
         finish_tile();
     }
     g.sync();
@@ -187,13 +172,14 @@ __device__ void linear(const Params &p, Shared &s, cg::grid_group &g, int st, co
 
 // Context的N/K均固定3072，实际M为1024或7168，无分段BF16提交。
 // 独立设备函数只移除通用GEMM的形状分派；tile、领取顺序和同步不变。
-__device__ __noinline__ void context_linear(const Params &p, Shared &s, cg::grid_group &g,
-                                           int st, int wi, B *out, int m) {
+__device__ __noinline__ void context_linear(const Params &p, Shared &s, cg::grid_group &g, int st,
+                                            int wi, B *out, int m) {
     const int ntiles = ((m + WAM_CONTEXT_TILE_M - 1) / WAM_CONTEXT_TILE_M) * (D / 128);
     begin_stage(p, g, st);
     for (int t; (t = claim_tile(p, s, st)) < ntiles;) {
         cutlass_gemm_tile<WAM_CONTEXT_TILE_M, 136>(s.tile.cutlass_gemm.context, p.context,
-            (const B *)p.w[wi], (const B *)p.w[wi + 1], out, m, D, D, t, false);
+                                                   (const B *)p.w[wi], (const B *)p.w[wi + 1], out,
+                                                   m, D, D, t, false);
         finish_tile();
     }
     g.sync();
@@ -202,40 +188,48 @@ __device__ __noinline__ void context_linear(const Params &p, Shared &s, cg::grid
 // B14 FFN2：M128输出tile共48个，每个K分两段，共96个CTA任务。
 // 各CTA独立算一段，FP32片段暂存在自己的shared；阶段代码负责有序提交。
 __device__ __forceinline__ void ffn2_partition(CutlassTile<128>::Storage &s, const __nv_bfloat16 *a,
-                                const __nv_bfloat16 *w, int tile, int partition) {
-    using T = CutlassTile<128>; using Mma = T::Mma;
+                                               const __nv_bfloat16 *w, int tile, int partition) {
+    using T = CutlassTile<128>;
+    using Mma = T::Mma;
     const int physical_warp = threadIdx.x / 32, lane = threadIdx.x % 32;
     if (physical_warp >= 3 && physical_warp < 7) {
         const int thread = int(threadIdx.x) - 96, warp = physical_warp - 3;
         typename Mma::IteratorA::Params ap{CutlassRow(14336)};
         typename Mma::IteratorB::Params bp{CutlassCol(14336)};
-        typename Mma::IteratorA ai(ap, reinterpret_cast<CutlassB *>(const_cast<__nv_bfloat16 *>(a)) + partition * 7168,
-                                  {224, 7168}, thread, {(tile / 24) * 128, 0});
-        typename Mma::IteratorB bi(bp, reinterpret_cast<CutlassB *>(const_cast<__nv_bfloat16 *>(w)) + partition * 7168,
-                                  {7168, 3072}, thread, {0, (tile % 24) * 128});
+        typename Mma::IteratorA ai(
+            ap, reinterpret_cast<CutlassB *>(const_cast<__nv_bfloat16 *>(a)) + partition * 7168,
+            {224, 7168}, thread, {(tile / 24) * 128, 0});
+        typename Mma::IteratorB bi(
+            bp, reinterpret_cast<CutlassB *>(const_cast<__nv_bfloat16 *>(w)) + partition * 7168,
+            {7168, 3072}, thread, {0, (tile % 24) * 128});
         Mma mma(s.mainloop, thread, warp, lane);
-        typename Mma::FragmentC acc; acc.clear();
+        typename Mma::FragmentC acc;
+        acc.clear();
         mma(7168 / 64, acc, ai, bi, acc);
         asm volatile("bar.sync 2, 128;" ::: "memory");
-        typename Mma::Operator::IteratorC store({s.result, CutlassRow(128)}, lane);
-        store.add_tile_offset({warp % 2, warp / 2}); store.store(acc);
+        typename Mma::Operator::IteratorC store({s.result, CutlassRow(136)}, lane);
+        store.add_tile_offset({warp % 2, warp / 2});
+        store.store(acc);
     }
     __syncthreads();
 }
 
 __device__ __forceinline__ void ffn2_commit(CutlassTile<128>::Storage &s, const __nv_bfloat16 *bias,
-                             __nv_bfloat16 *out, int tile, bool second) {
+                                            __nv_bfloat16 *out, int tile, bool second) {
     for (int i = 2 * int(threadIdx.x); i < 128 * 128; i += 2 * int(blockDim.x)) {
         const int row = (tile / 24) * 128 + i / 128, col = (tile % 24) * 128 + i % 128;
         if (row < 224) {
-            float2 z = *reinterpret_cast<const float2 *>(s.result + i);
+            float2 z = *reinterpret_cast<const float2 *>(s.result + (i / 128) * 136 + i % 128);
             if (second) {
-                float2 b = __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(bias + col));
-                float2 prev = __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(out + row * 3072 + col));
+                float2 b =
+                    __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(bias + col));
+                float2 prev = __bfloat1622float2(
+                    *reinterpret_cast<const __nv_bfloat162 *>(out + row * 3072 + col));
                 z.x = __fadd_rn(__fadd_rn(z.x, b.x), prev.x);
                 z.y = __fadd_rn(__fadd_rn(z.y, b.y), prev.y);
             }
-            *reinterpret_cast<__nv_bfloat162 *>(out + row * 3072 + col) = __floats2bfloat162_rn(z.x, z.y);
+            *reinterpret_cast<__nv_bfloat162 *>(out + row * 3072 + col) =
+                __floats2bfloat162_rn(z.x, z.y);
         }
     }
     __syncthreads();
@@ -244,9 +238,9 @@ __device__ __forceinline__ void ffn2_commit(CutlassTile<128>::Storage &s, const 
 // 固定B14 FFN2的48个输出tile×两K分段。专用阶段函数包住整个过程，
 // 两个数学体在函数内展开，避免再次从通用linear逐任务进入大设备函数。
 // 只并行同一FFN2的两个原K分段；不是跨Transformer阶段ready调度。
-__device__ __noinline__ void action_ffn2_parallel(const Params &p, Shared &s,
-                                                cg::grid_group &g, int st) {
-    begin_stage(p, g, st);
+__device__ __noinline__ void action_ffn2_parallel(const Params &p, Shared &s, cg::grid_group &g,
+                                                  int st) {
+    // 静态任务无需重置队列；前一阶段出口已保证输入就绪。
     const int task = int(blockIdx.x), tile = task % 48;
     auto &workspace = s.tile.cutlass_gemm.ffn1;
     if (task < 96)
@@ -259,19 +253,53 @@ __device__ __noinline__ void action_ffn2_parallel(const Params &p, Shared &s,
     g.sync();
 }
 
-// FFN1只有224个M128×N128输出tile。216个保留大tile，最后8个
-// 输出tile各拆成两个M64任务，缩短只有少量CTA工作的最后一波。
-// 这是FFN1内部划分，不提前运行任何依赖它的Transformer阶段。
-__device__ __noinline__ void action_ffn1_tail(const Params &p, Shared &s, cg::grid_group &g, int st) {
-    begin_stage(p, g, st);
-    for (int tile = int(blockIdx.x); tile < 216; tile += int(gridDim.x))
-        cutlass_gemm_tile<128>(s.tile.cutlass_gemm.ffn1, bp(p, M3),
-            (const B *)p.w[23], (const B *)p.w[24], bp(p, F1), 224, F, D, tile, true);
-    g.sync();
-    for (int tail = int(blockIdx.x); tail < 16; tail += int(gridDim.x)) {
-        const int tile64 = (2 + tail / 8) * 112 + 104 + tail % 8;
-        cutlass_gemm_tile<64>(s.tile.cutlass_gemm.action, bp(p, M3),
-            (const B *)p.w[23], (const B *)p.w[24], bp(p, F1), 224, F, D, tile64, true);
+// FFN1 M128×N256、8个MMA warp：112个tile，K32三级流水。
+// 8warp的FP32 accumulator分两半经同一128×136 shared区写回，避免
+// 为整层抬高shared预留；完整K3072、bias和BF16舍入边界不变。
+__device__ __noinline__ void action_ffn1_wide(const Params &p, Shared &s, cg::grid_group &g,
+                                              int st) {
+    using Mma = CutlassWideFFN::Mma;
+    // 静态任务无需入口全局屏障；保留出口及分段依赖。
+    auto &workspace = s.tile.cutlass_gemm.wide_ffn;
+    for (int tile = int(blockIdx.x); tile < 112; tile += int(gridDim.x)) {
+        const int rm = (tile / 56) * 128, cn = (tile % 56) * 256;
+        const int thread = int(threadIdx.x), warp = thread / 32, lane = thread % 32;
+        typename Mma::IteratorA::Params ap{CutlassRow(D)};
+        typename Mma::IteratorB::Params bp{CutlassCol(D)};
+        typename Mma::IteratorA ai(ap, reinterpret_cast<CutlassB *>(p.a[M3]), {224, D}, thread,
+                                   {rm, 0});
+        typename Mma::IteratorB bi(bp, reinterpret_cast<CutlassB *>(const_cast<void *>(p.w[23])),
+                                   {D, F}, thread, {0, cn});
+        Mma mma(workspace.mainloop, thread, warp, lane);
+        typename Mma::FragmentC acc;
+        acc.clear();
+        mma(D / 32, acc, ai, bi, acc);
+        __syncthreads();
+        for (int half = 0; half < 2; ++half) {
+            if (warp / 4 == half) {
+                typename Mma::Operator::IteratorC store({workspace.result, CutlassRow(136)}, lane);
+                store.add_tile_offset({warp % 2, (warp % 4) / 2});
+                store.store(acc);
+            }
+            __syncthreads();
+            struct alignas(8) B4 {
+                __nv_bfloat162 lo, hi;
+            };
+            for (int i = 4 * thread; i < 128 * 128; i += 4 * THREADS) {
+                const int row = rm + i / 128, col = cn + half * 128 + i % 128;
+                if (row < 224) {
+                    float4 v = *reinterpret_cast<const float4 *>(workspace.result +
+                                                                 (i / 128) * 136 + i % 128);
+                    B4 b =
+                        *reinterpret_cast<const B4 *>(reinterpret_cast<const B *>(p.w[24]) + col);
+                    float2 lo = __bfloat1622float2(b.lo), hi = __bfloat1622float2(b.hi);
+                    *reinterpret_cast<B4 *>(reinterpret_cast<B *>(p.a[F1]) + row * F + col) = {
+                        __floats2bfloat162_rn(__fadd_rn(v.x, lo.x), __fadd_rn(v.y, lo.y)),
+                        __floats2bfloat162_rn(__fadd_rn(v.z, hi.x), __fadd_rn(v.w, hi.y))};
+                }
+            }
+            __syncthreads();
+        }
     }
     g.sync();
 }
@@ -377,8 +405,8 @@ __device__ inline void rms_pair_sync(int group) {
     else
         asm volatile("bar.sync 2, 128;" ::: "memory");
 }
-__device__ void rms_pair_tile(Shared &sh, const B *x, B *y, const B *gamma,
-                              float eps, int first_row, int rows) {
+__device__ void rms_pair_tile(Shared &sh, const B *x, B *y, const B *gamma, float eps,
+                              int first_row, int rows) {
     using namespace wam_optimized_norm;
     const int group = threadIdx.x / 128, tid = threadIdx.x % 128;
     const int row = first_row + group, cw = tid / 32, cl = tid % 32;
@@ -422,11 +450,13 @@ __device__ void rms_pair_tile(Shared &sh, const B *x, B *y, const B *gamma,
         for (int v = tid; v < D / 4; v += 128) {
             Vec values = input[v], output;
             Vec weights;
-            if (gamma) weights = reinterpret_cast<const Vec *>(gamma)[v];
+            if (gamma)
+                weights = reinterpret_cast<const Vec *>(gamma)[v];
 #pragma unroll
             for (int j = 0; j < 4; ++j) {
                 float z = rstd * value(values.val[j]);
-                if (gamma) z = value(weights.val[j]) * z;
+                if (gamma)
+                    z = value(weights.val[j]) * z;
                 output.val[j] = bf(z);
             }
             reinterpret_cast<Vec *>(y + row * D)[v] = output;
@@ -436,20 +466,19 @@ __device__ void rms_pair_tile(Shared &sh, const B *x, B *y, const B *gamma,
 }
 __device__ void norm(const Params &p, Shared &s, cg::grid_group &g, int st, const B *x, void *y,
                      int rows, int gi, int bi, float eps, bool rms, bool out_float) {
-    begin_stage(p, g, st);
+    // 静态任务无需重置队列；前一阶段出口已保证输入就绪。
     if (p.candidate && rms && !out_float && bi < 0) {
-        for (int t; (t = claim_tile(p, s, st)) < (rows + 1) / 2;) {
-            rms_pair_tile(s, x, (B *)y, gi >= 0 ? (const B *)p.w[gi] : nullptr,
-                          eps, 2 * t, rows);
-            finish_tile();
+        for (int t = int(blockIdx.x); t < (rows + 1) / 2; t += int(gridDim.x)) {
+            rms_pair_tile(s, x, (B *)y, gi >= 0 ? (const B *)p.w[gi] : nullptr, eps, 2 * t, rows);
+            // rms_pair_tile内部末尾已经同步整个CTA。
         }
         g.sync();
         return;
     }
-    for (int t; (t = claim_tile(p, s, st)) < rows;) {
+    for (int t = int(blockIdx.x); t < rows; t += int(gridDim.x)) {
         norm_tile(s, x, y, gi >= 0 ? p.w[gi] : nullptr, bi >= 0 ? (const float *)p.w[bi] : nullptr,
                   eps, rms, out_float, t);
-        finish_tile();
+        // norm_tile内部末尾已经同步整个CTA。
     }
     g.sync();
 }
@@ -537,15 +566,18 @@ __device__ void layout(const Params &p, Shared &s) {
     p.info[0] = n;
 }
 
-struct alignas(8) Point4 { B value[4]; };
+struct alignas(8) Point4 {
+    B value[4];
+};
 
-// 固定D3072的pointwise：按类型向量搬运；每元素公式、精度和任务队列不变。
+// 固定D3072的pointwise：向量搬运和静态tile分配；每元素公式与精度不变。
 __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Point op, int dst,
                       int a, int b, int param, int64_t count) {
     constexpr int tile_elements = 2048;
     const int tiles = (count + tile_elements - 1) / tile_elements;
-    begin_stage(p, g, st);
-    for (int task; (task = claim_tile(p, s, st)) < tiles;) {
+    // 静态任务无需重置队列；前一阶段出口已保证输入就绪。
+    // 每个tile独立；按CTA编号固定分配，省去每tile原子领取/广播。
+    for (int task = int(blockIdx.x); task < tiles; task += int(gridDim.x)) {
         if (op == TABLE && (p.temb_float || p.l != p.q)) {
             // 非逐token/BF16输入的兼容分支，保持原广播寻址与FP32相加。
             for (int j = threadIdx.x; j < tile_elements; j += THREADS) {
@@ -553,7 +585,8 @@ __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Poi
                 if (i < count) {
                     int cell = i % (6 * D), row = i / (6 * D), batch = row / p.q, token = row % p.q;
                     int64_t src = (int64_t(batch) * p.l + (p.l == 1 ? 0 : token)) * 6 * D + cell;
-                    float v = p.temb_float ? ((const float *)p.temb)[src] : value(((const B *)p.temb)[src]);
+                    float v = p.temb_float ? ((const float *)p.temb)[src]
+                                           : value(((const B *)p.temb)[src]);
                     fp(p, dst)[i] = __fadd_rn(((const float *)p.w[0])[cell], v);
                 }
             }
@@ -565,11 +598,14 @@ __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Poi
                     Point4 v = *reinterpret_cast<const Point4 *>(bp(p, a) + 2 * i), out;
 #pragma unroll
                     for (int c = 0; c < 2; ++c) {
-                        int64_t pair = i + c, r = pair / 64, batch = r / (p.q * H), token = (r / H) % p.q, dim = pair % 64;
+                        int64_t pair = i + c, r = pair / 64, batch = r / (p.q * H),
+                                token = (r / H) % p.q, dim = pair % 64;
                         auto f = p.freq[((p.fb == 1 ? 0 : batch) * p.q + token) * 64 + dim];
-                        double x = double(value(v.value[2 * c])), y = double(value(v.value[2 * c + 1]));
+                        double x = double(value(v.value[2 * c])),
+                               y = double(value(v.value[2 * c + 1]));
                         out.value[2 * c] = bf(float(x * double(f.real()) - y * double(f.imag())));
-                        out.value[2 * c + 1] = bf(float(x * double(f.imag()) + y * double(f.real())));
+                        out.value[2 * c + 1] =
+                            bf(float(x * double(f.imag()) + y * double(f.real())));
                     }
                     *reinterpret_cast<Point4 *>(bp(p, dst) + 2 * i) = out;
                 }
@@ -578,7 +614,8 @@ __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Poi
             for (int j = 4 * int(threadIdx.x); j < tile_elements; j += 4 * THREADS) {
                 int64_t i = int64_t(task) * tile_elements + j;
                 if (i < count) {
-                    Point4 x, y, out; float4 xf, shift, scale;
+                    Point4 x, y, out;
+                    float4 xf, shift, scale;
                     if (op == MODULATE) {
                         xf = *reinterpret_cast<const float4 *>(fp(p, a) + i);
                         int64_t mod = (i / D * 6 + param) * D + i % D;
@@ -588,37 +625,51 @@ __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Poi
                         const B *input = op == TABLE ? (const B *)p.temb : a < 0 ? p.x : bp(p, a);
                         x = *reinterpret_cast<const Point4 *>(input + i);
                     }
-                    if (op == TABLE) shift = *reinterpret_cast<const float4 *>((const float *)p.w[0] + i % (6 * D));
+                    if (op == TABLE)
+                        shift =
+                            *reinterpret_cast<const float4 *>((const float *)p.w[0] + i % (6 * D));
                     if (op == RESIDUAL) {
                         y = *reinterpret_cast<const Point4 *>(bp(p, b) + i);
-                        if (param >= 0) scale = *reinterpret_cast<const float4 *>(fp(p, MOD) + (i / D * 6 + param) * D + i % D);
+                        if (param >= 0)
+                            scale = *reinterpret_cast<const float4 *>(
+                                fp(p, MOD) + (i / D * 6 + param) * D + i % D);
                     }
 #pragma unroll
                     for (int c = 0; c < 4; ++c) {
-                        if (op == TABLE) ((float *)&shift)[c] = __fadd_rn(((float *)&shift)[c], value(x.value[c]));
+                        if (op == TABLE)
+                            ((float *)&shift)[c] =
+                                __fadd_rn(((float *)&shift)[c], value(x.value[c]));
                         else if (op == MODULATE)
-                            out.value[c] = bf(__fadd_rn(__fmul_rn(((float *)&xf)[c], __fadd_rn(1.f, ((float *)&scale)[c])), ((float *)&shift)[c]));
+                            out.value[c] = bf(__fadd_rn(
+                                __fmul_rn(((float *)&xf)[c], __fadd_rn(1.f, ((float *)&scale)[c])),
+                                ((float *)&shift)[c]));
                         else if (op == RESIDUAL) {
                             float v = value(y.value[c]);
-                            if (param >= 0) v = __fmul_rn(v, ((float *)&scale)[c]);
+                            if (param >= 0)
+                                v = __fmul_rn(v, ((float *)&scale)[c]);
                             out.value[c] = bf(__fadd_rn(value(x.value[c]), v));
                         } else {
                             float v = value(x.value[c]);
-                            constexpr float beta = M_SQRT2 * M_2_SQRTPI * float(.5), kappa = .044715;
+                            constexpr float beta = M_SQRT2 * M_2_SQRTPI * float(.5),
+                                            kappa = .044715;
                             float cube = v * v * v, inner = beta * (v + kappa * cube);
                             out.value[c] = bf(.5f * v * (1.f + c10::cuda::compat::tanh(inner)));
                         }
                     }
-                    if (op == TABLE) *reinterpret_cast<float4 *>(fp(p, dst) + i) = shift;
-                    else *reinterpret_cast<Point4 *>(bp(p, dst) + i) = out;
+                    if (op == TABLE)
+                        *reinterpret_cast<float4 *>(fp(p, dst) + i) = shift;
+                    else
+                        *reinterpret_cast<Point4 *>(bp(p, dst) + i) = out;
                 }
             }
         }
-        finish_tile();
+        // 此阶段只使用线程私有寄存器和互不重叠的输出，无shared复用屏障。
     }
     g.sync();
 }
 __device__ void insert_cache(const Params &p, Shared &s, cg::grid_group &g, int st) {
+    if (p.candidate)
+        return; // B14的private KV从不写入公共history；无写入就无队列任务。
     int count = (p.cache && !p.candidate) ? p.b * p.q * D : 0;
     constexpr int tile_elements = 2048;
     int tiles = (count + tile_elements - 1) / tile_elements;
@@ -687,7 +738,7 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     norm(p, s, g, st++, bp(p, R2), p.a[N3], m, -1, -1, p.eps[2], false, true);
     point(p, s, g, st++, MODULATE, M3, N3, 0, 3, int64_t(m) * D);
     if (p.candidate && m == 224)
-        action_ffn1_tail(p, s, g, st++);
+        action_ffn1_wide(p, s, g, st++);
     else
         linear(p, s, g, st++, bp(p, M3), 23, bp(p, F1), m, F, D);
     point(p, s, g, st++, GELU, ACT, F1, 0, 0, int64_t(m) * F);
@@ -708,8 +759,7 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
 std::map<std::string, Tensor>
 forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, const Tensor &temb,
         const std::optional<Tensor> &freq, const std::vector<Tensor> &cache,
-        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps,
-        bool debug) {
+        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps, bool debug) {
     c10::cuda::CUDAGuard guard(x.device());
     Params p{};
     p.b = x.size(0);
@@ -832,10 +882,9 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
 } // namespace wam_whole_layer_v1
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     // 原始扩展调用默认保留debug字典兼容旧重放脚本；Python普通入口显式传false。
-    m.def("forward", &wam_whole_layer_v1::forward,
-          py::arg("weights"), py::arg("hidden"), py::arg("context"), py::arg("temb"),
-          py::arg("rotary"), py::arg("cache"), py::arg("rows"), py::arg("update"),
-          py::arg("eps"), py::arg("debug") = true);
+    m.def("forward", &wam_whole_layer_v1::forward, py::arg("weights"), py::arg("hidden"),
+          py::arg("context"), py::arg("temb"), py::arg("rotary"), py::arg("cache"), py::arg("rows"),
+          py::arg("update"), py::arg("eps"), py::arg("debug") = true);
     m.attr("production_admitted") = false;
     m.attr("computation_launches") = 1;
     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;

@@ -1,0 +1,1 @@
+扩展状态门在short/drop1的self_attention发现2元素微差（最大1.4901161193847656e-08），最终层输出仍逐位相同；严格中间量门FAILED，完整原件见../extended-state-08。原KEEP_DUAL_ATTENTION_FOR_STAGE_DIAGNOSIS只表示当时用于诊断，不是最终集成放行。候选已由08b-tail-guard的非16尾部G1回退修复替代；原失败不重写。

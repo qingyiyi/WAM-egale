@@ -1,0 +1,64 @@
+{
+  "goal": "Remove pointwise per-tile queue and redundant CTA sync, fixed mathematical boundary",
+  "deadline": "2026-10-22T09:00:00+08:00",
+  "cumulative_prior_GPU_seconds": 2617.6007366268614,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 900,
+  "new_storage_cap_bytes": 1073741824,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/before/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "2a8a250ee31daca7640c0ba77fd167c1f72957fe4df577abc30f4c4563d0a50a",
+  "source_sha256": "14a69a2c3428c8b577caf0ec9093d494cb961220b5b743f1a8e40f60f97ebf98",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/02-point-static",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/02-point-static/build/obj"
+      ],
+      1200,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/02-point-static/gate.py"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/02-point-static/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/02-point-static/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ],
+  "sources": {
+    "csrc/whole_layer.cu": "14a69a2c3428c8b577caf0ec9093d494cb961220b5b743f1a8e40f60f97ebf98",
+    "csrc/cutlass_gemm.cuh": "a390df2fde77fb28648a9222a799f6ee2bfaf091dd5583715d40516378772916",
+    "csrc/gemm_pipeline.cuh": "95ecc6b5aa1264f92335374915b653b69684b87c8dc3989b656ac26f658e24dd",
+    "csrc/fa2_stage.cuh": "3738249195f4bfd6860a2ff9b284c9820d7379f70ae30f9b0010a25ca4752a04",
+    "cutlass_gemm_codegen.py": "b6c7b0fa799d7b8cb1ea341560196d4bfd3fb75bafc2ee4c1e58f70f31db8b6d",
+    "build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  }
+}

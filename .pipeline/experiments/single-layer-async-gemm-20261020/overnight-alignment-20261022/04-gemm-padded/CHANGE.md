@@ -1,0 +1,1 @@
+在已选static point/norm上，把同一MMA结果的shared行stride从128改136，其他GEMM复用原context的vec4写回。FFN2两个K分段的独立FP32结果也用136 stride，原两阶段BF16顺序不变；不改tile形状、MMA、队列或全局同步。共享Storage上限须用实际DSO确认；九签名逐位门后才计时。

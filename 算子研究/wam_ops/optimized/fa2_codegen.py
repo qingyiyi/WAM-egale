@@ -89,10 +89,24 @@ def generate(output):
                               "const int tidx = int(threadIdx.x) - 96;")
     combine = combine.replace("const int bidx = blockIdx.x;", "const int bidx = task;")
     combine = combine.replace("__syncthreads();", "whole_group_sync();")
+    group_source = (root / "candidate_kernel.h").read_text()
+    group = function(group_source, "compute_group_attn_1rowblock").replace(
+        "compute_group_attn_1rowblock", "whole_grouped")
+    pos = group.index(") {")
+    group = group[:pos] + ", char* smem_" + group[pos:]
+    group = group.replace("extern __shared__ char smem_[];", "")
+    group = group.replace("const int tidx = threadIdx.x;",
+                          "const int tidx = int(threadIdx.x) - 96;")
+    group = group.replace("__syncthreads();", "whole_group_sync();")
+    dual_group = group.replace("whole_grouped", "whole_grouped_dual").replace(
+        "int(threadIdx.x) - 96", "int(threadIdx.x) % 128").replace("whole_group_sync()", "dual_group_sync()")
+    dual_direct = direct.replace("whole_standard_direct", "whole_direct_dual").replace(
+        "int(threadIdx.x) - 96", "int(threadIdx.x) % 128").replace("whole_group_sync()", "dual_group_sync()")
+    dual_sync = '\n__device__ inline void dual_group_sync() { if(threadIdx.x<128) asm volatile("bar.sync 3, 128;" ::: "memory"); else asm volatile("bar.sync 4, 128;" ::: "memory"); }\n'
     output.mkdir(parents=True, exist_ok=True)
     text = ("// Derived from pinned FA2; licenses in csrc/vendor/flash_attn.\n"
-            "#pragma once\n#include \"fa2_load.cuh\"\nnamespace FLASH_NAMESPACE {\n"
-            + standard + "\n" + direct + "\n" + split + "\n" + combine + "\n}\n")
+            "#pragma once\n#include \"fa2_load.cuh\"\n#include \"candidate_load.h\"\nnamespace FLASH_NAMESPACE {\n"
+            + standard + "\n" + direct + "\n" + split + "\n" + combine + "\n" + group + dual_sync + dual_group + "\n" + dual_direct + "\n}\n")
     (output / "fa2_device_generated.cuh").write_text(text)
     (output / "FA2-SOURCE.json").write_text(json.dumps({
         "source": str(root / "vendor/flash_attn/flash_fwd_kernel.h"),
@@ -101,5 +115,7 @@ def generate(output):
         "standard_load_replacements": a, "split_load_replacements": b,
         "barrier": "named barrier 2, 128 participants (physical warps 3..6)",
         "math_changed": False, "baseline_vendor_edited": False,
+        "group_source_sha256": hashlib.sha256(group_source.encode()).hexdigest(),
+        "group_scope": "existing guarded G1/G2; private visibility preserved; two independent four-warp groups, barriers3/4",
     }, indent=2) + "\n")
     return output

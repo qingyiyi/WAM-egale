@@ -1,0 +1,77 @@
+{
+  "goal": "FFN1 native output geometry with K32 pipeline and half epilogue shared reuse; avoid prior148KiB whole allocation",
+  "deadline": "2026-10-22T09:00:00+08:00",
+  "cumulative_prior_GPU_seconds": 3505.5498237698057,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 720,
+  "new_storage_cap_bytes": 1073741824,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/08b-tail-guard/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "a0b975e837cb3124332d3ec6201e9148f27303ffbbd715238e899bb995d353a9",
+  "source_sha256": "f8687912a32ecc9ef051f1ff9d6ac90d9357babed27dfd93a18de0c35ce68645",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/10-ffn1-wide-k32",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/10-ffn1-wide-k32/build/obj"
+      ],
+      1200,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/10-ffn1-wide-k32/gate.py"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/10-ffn1-wide-k32/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/10-ffn1-wide-k32/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ],
+  "sources": {
+    "csrc/whole_layer.cu": "f8687912a32ecc9ef051f1ff9d6ac90d9357babed27dfd93a18de0c35ce68645",
+    "csrc/cutlass_gemm.cuh": "add07e3f4d1a7c9e6a7303e312559be4c9e966792b64fcfe431b53b72d0957cd",
+    "csrc/gemm_pipeline.cuh": "95ecc6b5aa1264f92335374915b653b69684b87c8dc3989b656ac26f658e24dd",
+    "csrc/fa2_stage.cuh": "f6cdb73d82e5f39766afb90c74ba28f42c63bd40f61f7b2282862b953a6a469e",
+    "fa2_codegen.py": "939658fa3a04f33be5b20b60402aa69be6624cdbedf4da1dd6d61698d0fcdfe7",
+    "csrc/candidate_kernel.h": "5780b5395b1e693685db7df7320662c6ed2664b075c24f4b97ee5e025647b3c6",
+    "csrc/candidate_load.h": "5c9c55c6fa02405c30eed5fe19392613ee73f310a1e93056e9b4b1e07b1d4f84",
+    "cutlass_gemm_codegen.py": "b6c7b0fa799d7b8cb1ea341560196d4bfd3fb75bafc2ee4c1e58f70f31db8b6d",
+    "build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  },
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/10-ffn1-wide-k32/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap"
+  ]
+}

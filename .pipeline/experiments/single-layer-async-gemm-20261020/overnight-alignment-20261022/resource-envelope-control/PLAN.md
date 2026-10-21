@@ -1,0 +1,1 @@
+只读当前stage device数学，外部诊断host对同一个编译stage函数比较整层shared/最小必要shared且108CTA/最小shared且occupancy可容纳CTA。point无需shared；Norm1用一个NormShared；两行RMS用两个NormShared。当前原语不访问其余Shared字段（源码核查），任何不支持stage拒绝。真实中KV，7阶段×2前序×两进程；输出/状态/RNG及输入核验。不是生产方案或独立机器人结果。GPU≤600秒、CPU构建≤1200秒、存储≤512MiB、硬截止09:00，失败留存。

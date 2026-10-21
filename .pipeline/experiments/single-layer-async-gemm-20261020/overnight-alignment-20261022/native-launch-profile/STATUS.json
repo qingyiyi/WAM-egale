@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792603682.1277595,
+  "deadline": 1792630800.0,
+  "jobs": [
+    {
+      "name": "profile",
+      "owned": {
+        "pid": 804638,
+        "birth_ticks": 720214076,
+        "pgid": 804638
+      },
+      "start": 1792603682.202034,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792603684.4188862,
+      "lifecycle_seconds": 2.2168524265289307,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 804636,
+    "birth_ticks": 720214065,
+    "pgid": 804636
+  },
+  "error": "RuntimeError('profile failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/native-launch-profile/guard.py\", line 47, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: profile failed\n",
+  "end": 1792603684.4228277,
+  "lifecycle_seconds": 2.2950685024261475
+}

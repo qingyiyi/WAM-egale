@@ -1,0 +1,1 @@
+在02 point静态tile的基础上，仅norm阶段按CTA固定分配同样的行/行对，删除每tile队列原子/广播及已有内部末尾CTA屏障之后的重复finish屏障。所有行内Welford顺序、输入/权重、精度及grid.sync不变。

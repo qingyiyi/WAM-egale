@@ -1,0 +1,166 @@
+{
+  "status": "COMPLETE_ENGINEERING_VARIANTS_NOT_QUALITY_TEST",
+  "start": 1792597496.9739091,
+  "deadline": 1792602896.9739091,
+  "episodes": [
+    {
+      "episode_id": "place_object_basket-valid14-BASELINE",
+      "pair_id": 0,
+      "arm": "T",
+      "task": "place_object_basket",
+      "valid_index": 14,
+      "status": "COMPLETE_SUCCESS",
+      "success": true,
+      "initial_checks": {
+        "physical_exact": true,
+        "used_initial_observation_exact": true
+      },
+      "actual_commands": 240,
+      "policy_chunks": 8,
+      "failure_penalty": 235,
+      "horizon": 700,
+      "lifecycle_seconds": 177.7613868713379,
+      "client_returncode": 0
+    },
+    {
+      "episode_id": "place_object_basket-valid14-COMBINED",
+      "pair_id": 0,
+      "arm": "T",
+      "task": "place_object_basket",
+      "valid_index": 14,
+      "status": "COMPLETE_SUCCESS",
+      "success": true,
+      "initial_checks": {
+        "physical_exact": true,
+        "used_initial_observation_exact": true
+      },
+      "actual_commands": 240,
+      "policy_chunks": 8,
+      "failure_penalty": 235,
+      "horizon": 700,
+      "lifecycle_seconds": 166.7527482509613,
+      "client_returncode": 0
+    },
+    {
+      "episode_id": "open_microwave-valid14-BASELINE",
+      "pair_id": 1,
+      "arm": "T",
+      "task": "open_microwave",
+      "valid_index": 14,
+      "status": "COMPLETE_ALGORITHMIC_FAILURE",
+      "success": false,
+      "initial_checks": {
+        "physical_exact": true,
+        "used_initial_observation_exact": true
+      },
+      "actual_commands": 1520,
+      "policy_chunks": 48,
+      "failure_penalty": 1500,
+      "horizon": 1500,
+      "lifecycle_seconds": 921.866779088974,
+      "client_returncode": 0
+    },
+    {
+      "episode_id": "open_microwave-valid14-COMBINED",
+      "pair_id": 1,
+      "arm": "T",
+      "task": "open_microwave",
+      "valid_index": 14,
+      "status": "COMPLETE_ALGORITHMIC_FAILURE",
+      "success": false,
+      "initial_checks": {
+        "physical_exact": true,
+        "used_initial_observation_exact": true
+      },
+      "actual_commands": 1520,
+      "policy_chunks": 48,
+      "failure_penalty": 1500,
+      "horizon": 1500,
+      "lifecycle_seconds": 887.385954618454,
+      "client_returncode": 0
+    }
+  ],
+  "pair_audits": [],
+  "owned": [
+    {
+      "pid": 797232,
+      "birth_ticks": 719595561,
+      "pgid": 797232
+    },
+    {
+      "pid": 797299,
+      "birth_ticks": 719598062,
+      "pgid": 797299
+    },
+    {
+      "pid": 797602,
+      "birth_ticks": 719616571,
+      "pgid": 797602
+    },
+    {
+      "pid": 797810,
+      "birth_ticks": 719633581,
+      "pgid": 797810
+    },
+    {
+      "pid": 798411,
+      "birth_ticks": 719726145,
+      "pgid": 798411
+    },
+    {
+      "pid": 798435,
+      "birth_ticks": 719726731,
+      "pgid": 798411
+    }
+  ],
+  "GPU_lifecycle_seconds": 2197.3624424934387,
+  "formal_performance_permission": false,
+  "independent_test_complete": false,
+  "GPU_start": 1792597497.0489159,
+  "prior_GPU_lifecycle_seconds": 52520.881537914276,
+  "server_stage": "READY",
+  "server_READY_at": 1792597522.0536323,
+  "active_case": "open_microwave-valid14-COMBINED",
+  "active_pair": 1,
+  "active_arm": "T",
+  "teacher_attempted": 8848,
+  "storage_bytes": 22008609,
+  "variant_audits": [
+    {
+      "variant": "COMBINED",
+      "fields": {
+        "commands.jsonl": true,
+        "OBS-AUDIT.jsonl": true,
+        "COMMAND-STATE-AUDIT.jsonl": true,
+        "all_server_RPC": true,
+        "terminal_and_steps": true
+      },
+      "pass_all": true,
+      "scope": "One exposed complete episode; all saved digests exact, no raw all-image/KV replay claim"
+    },
+    {
+      "variant": "COMBINED",
+      "fields": {
+        "commands.jsonl": true,
+        "OBS-AUDIT.jsonl": true,
+        "COMMAND-STATE-AUDIT.jsonl": true,
+        "all_server_RPC": true,
+        "terminal_and_steps": true
+      },
+      "pass_all": true,
+      "scope": "One exposed complete episode; all saved digests exact, no raw all-image/KV replay claim"
+    }
+  ],
+  "teacher_returned": 8848,
+  "policy_chunks": 112,
+  "end": 1792599694.4112854,
+  "wall_seconds": 2197.4373767375946,
+  "remaining_owned": [],
+  "returncodes": [
+    -15,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,1 @@
+测量修正：原动态Torch因数据依赖KV筛选无法Graph捕获；原失败保留、23.265872秒GPU消耗计入。复用已有PreparedBlock dense uncached，仅提前固定有效slot；K/V投影和所有原计算保持。两版自有完整层在同轮同输入Graph比较，原动态Eager边界另列，不能混称。未新增数学候选。

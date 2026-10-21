@@ -1,0 +1,227 @@
+{
+  "status": "COMPLETE_LAUNCH_METADATA_NOT_PERFORMANCE",
+  "calls": 219,
+  "formal_performance_permission": false,
+  "kernel_events": 7,
+  "precision": {
+    "NATIVE_STAGE_3_SelfQ": {
+      "shape_match": true,
+      "dtype_match": true,
+      "finite_pass": true,
+      "shape": [
+        688128
+      ],
+      "dtype": "torch.bfloat16",
+      "bitwise_pass": true,
+      "tolerance_pass": true,
+      "different_bytes": 0,
+      "different_elements": 0,
+      "elements": 688128,
+      "tolerance_atol": 0.0,
+      "tolerance_rtol": 0.0,
+      "max_abs": 0.0,
+      "rel_l2": 0.0,
+      "abs_p50_p90_max": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quantile_status": "EXACT_ALL_ZERO"
+    },
+    "NATIVE_STAGE_16_CrossK": {
+      "shape_match": true,
+      "dtype_match": true,
+      "finite_pass": true,
+      "shape": [
+        22020096
+      ],
+      "dtype": "torch.bfloat16",
+      "bitwise_pass": true,
+      "tolerance_pass": true,
+      "different_bytes": 0,
+      "different_elements": 0,
+      "elements": 22020096,
+      "tolerance_atol": 0.0,
+      "tolerance_rtol": 0.0,
+      "max_abs": 0.0,
+      "rel_l2": 0.0,
+      "abs_p50_p90_max": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quantile_status": "EXACT_ALL_ZERO"
+    },
+    "NATIVE_STAGE_25_FFN1": {
+      "shape_match": true,
+      "dtype_match": true,
+      "finite_pass": true,
+      "shape": [
+        3211264
+      ],
+      "dtype": "torch.bfloat16",
+      "bitwise_pass": true,
+      "tolerance_pass": true,
+      "different_bytes": 0,
+      "different_elements": 0,
+      "elements": 3211264,
+      "tolerance_atol": 0.0,
+      "tolerance_rtol": 0.0,
+      "max_abs": 0.0,
+      "rel_l2": 0.0,
+      "abs_p50_p90_max": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quantile_status": "EXACT_ALL_ZERO"
+    },
+    "NATIVE_STAGE_27_FFN2": {
+      "shape_match": true,
+      "dtype_match": true,
+      "finite_pass": true,
+      "shape": [
+        688128
+      ],
+      "dtype": "torch.bfloat16",
+      "bitwise_pass": true,
+      "tolerance_pass": true,
+      "different_bytes": 0,
+      "different_elements": 0,
+      "elements": 688128,
+      "tolerance_atol": 0.0,
+      "tolerance_rtol": 0.0,
+      "max_abs": 0.0,
+      "rel_l2": 0.0,
+      "abs_p50_p90_max": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quantile_status": "EXACT_ALL_ZERO"
+    },
+    "SELF_GUARDED": {
+      "shape_match": true,
+      "dtype_match": true,
+      "finite_pass": true,
+      "shape": [
+        688128
+      ],
+      "dtype": "torch.bfloat16",
+      "bitwise_pass": true,
+      "tolerance_pass": true,
+      "different_bytes": 0,
+      "different_elements": 0,
+      "elements": 688128,
+      "tolerance_atol": 0.0,
+      "tolerance_rtol": 0.0,
+      "max_abs": 0.0,
+      "rel_l2": 0.0,
+      "abs_p50_p90_max": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quantile_status": "EXACT_ALL_ZERO"
+    },
+    "SELF_SHARED_TORCH": {
+      "shape_match": true,
+      "dtype_match": true,
+      "finite_pass": true,
+      "shape": [
+        688128
+      ],
+      "dtype": "torch.bfloat16",
+      "bitwise_pass": true,
+      "tolerance_pass": true,
+      "different_bytes": 0,
+      "different_elements": 0,
+      "elements": 688128,
+      "tolerance_atol": 0.0,
+      "tolerance_rtol": 0.0,
+      "max_abs": 0.0,
+      "rel_l2": 0.0,
+      "abs_p50_p90_max": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quantile_status": "EXACT_ALL_ZERO"
+    },
+    "CROSS_TORCH": {
+      "shape_match": true,
+      "dtype_match": true,
+      "finite_pass": true,
+      "shape": [
+        688128
+      ],
+      "dtype": "torch.bfloat16",
+      "bitwise_pass": true,
+      "tolerance_pass": true,
+      "different_bytes": 0,
+      "different_elements": 0,
+      "elements": 688128,
+      "tolerance_atol": 0.0,
+      "tolerance_rtol": 0.0,
+      "max_abs": 0.0,
+      "rel_l2": 0.0,
+      "abs_p50_p90_max": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quantile_status": "EXACT_ALL_ZERO"
+    }
+  },
+  "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-middle-B14-action-layer0-first.pt",
+  "shapes": {
+    "NATIVE_STAGE_3_SelfQ": [
+      [
+        14,
+        16,
+        3072
+      ],
+      [
+        3072,
+        3072
+      ]
+    ],
+    "NATIVE_STAGE_16_CrossK": [
+      [
+        14,
+        512,
+        3072
+      ],
+      [
+        3072,
+        3072
+      ]
+    ],
+    "NATIVE_STAGE_25_FFN1": [
+      [
+        14,
+        16,
+        3072
+      ],
+      [
+        14336,
+        3072
+      ]
+    ],
+    "NATIVE_STAGE_27_FFN2": [
+      [
+        14,
+        16,
+        14336
+      ],
+      [
+        3072,
+        14336
+      ]
+    ]
+  },
+  "shared_prefix": 1136,
+  "guarded_group": 1,
+  "load": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 1450402\n",
+  "lifecycle_seconds": 9.128493785858154
+}

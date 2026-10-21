@@ -1,0 +1,1 @@
+仅大行数candidate RMS：每warp完整行，以4个虚拟warp重现原128线程加法树；每CTA8行。移除跨warp归约共享读写/5次局部barrier，保留每lane顺序及最终归约树、FP32和BF16边界。小行数RMS、GEMM和FA2不变。逐位门失败立即停止。

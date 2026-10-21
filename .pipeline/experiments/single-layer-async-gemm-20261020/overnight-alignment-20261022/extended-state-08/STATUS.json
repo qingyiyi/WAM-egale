@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792604589.0264904,
+  "deadline": 1792630800.0,
+  "jobs": [
+    {
+      "name": "gate",
+      "owned": {
+        "pid": 806138,
+        "birth_ticks": 720304766,
+        "pgid": 806138
+      },
+      "start": 1792604589.096887,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792604601.7282689,
+      "lifecycle_seconds": 12.631381750106812,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 806136,
+    "birth_ticks": 720304755,
+    "pgid": 806136
+  },
+  "error": "RuntimeError('gate failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/extended-state-08/guard.py\", line 47, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: gate failed\n",
+  "end": 1792604601.7321787,
+  "lifecycle_seconds": 12.7056884765625
+}

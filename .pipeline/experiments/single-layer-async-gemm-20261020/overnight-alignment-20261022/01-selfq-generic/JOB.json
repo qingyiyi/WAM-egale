@@ -1,0 +1,56 @@
+{
+  "goal": "Self-Q generic path single controlled candidate",
+  "deadline": "2026-10-22T09:00:00+08:00",
+  "cumulative_prior_GPU_seconds": 2538.679523,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 900,
+  "new_storage_cap_bytes": 1073741824,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/before/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "2a8a250ee31daca7640c0ba77fd167c1f72957fe4df577abc30f4c4563d0a50a",
+  "source_sha256": "787f0f5db79350af4cfaf5568367397b05d1f810cf8fd7f0a410e2efd2e8257d",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/01-selfq-generic",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/01-selfq-generic/build/obj"
+      ],
+      1200,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/01-selfq-generic/gate.py"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/01-selfq-generic/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/01-selfq-generic/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ]
+}

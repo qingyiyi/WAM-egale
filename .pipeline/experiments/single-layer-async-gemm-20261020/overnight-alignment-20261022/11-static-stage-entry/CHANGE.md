@@ -1,0 +1,1 @@
+仅去掉静态point/norm/FFN入口冗余global barrier/队列清零；双组attention改本CTA描述符同步，B14空insert返回。上阶段所有出口grid sync、BF16分段归并、动态队列同步及B2真实KV写入保持。不推进跨阶段任务，不宣称DAG。必须原9签名/全部有效KV等有限逐位与三KV整层验收。
