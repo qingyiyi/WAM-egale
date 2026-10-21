@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[投影写回与整层结果、RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
+最新：[剩余GEMM核对、bank机制与RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-投影shared写冲突已消除，独立投影距Torch约4%；当前4warp完整层快3.12%–3.77%，9签名有限严格门通过。选用源fdf883e，GPU0释放；RoboTwin 17:58:29完整57/90，GPU1继续。四权限false。以下旧TF交接保持历史科学基线身份。
+当前源未改；Cross/FFN无明显集成惩罚，小投影仍有。写冲突0的地址计数与旧NCU一致；前轮整层3.12%–3.77%收益与九签名有限门保留。GPU0释放；RoboTwin 20:07:50完整89/90，GPU1继续。四权限false。以下旧TF交接保持历史科学基线身份。
 
 ---
 

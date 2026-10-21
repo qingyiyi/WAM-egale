@@ -1,12 +1,12 @@
-# 最近 Execution checkpoint
+# 最近执行
 
-## 2026-10-21T18:00:18.327657+08:00 投影写回与整层收益收口
+## 2026-10-21T20:09:29.566093+08:00 当前源十阶段核对收口
 
-- 原shared写冲突2,064,384→0；padding单因素3.49%–3.66%，四元素搬运再2.75%–2.93%；独立投影距Torch仍4.07%–4.26%。两阶段分别同期对照，不混用两机时延。
-- 当前4warp整层短/中/长KV耗时减少3.12%–3.77%；9真实签名输出max_abs0、23共有中间量/有效KV/输入/RNG有限通过。选择源fdf883e及同一远端实测DSO，本地复制；没有新DAG/正式机器人性能。
-- vec4首次对照加载相同binary无效，修正paired-r2；首次整层generic dispatch漏模板导致CPU编译失败，r2修复。原件及消耗保留。
-- 本轮GPU171.141460秒，CPU编译259.945245秒；累计2305.594158/36000秒。0timeout，owned自然退出/reaped、GPU0释放。
-- M40 17:58:29完整57/90，19组审计，GPU1继续；原截止不变。
-- [结果/源](../../experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESULT.md)、[预算](../../experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESOURCE-AND-STOP-REPORT.json)、[清理](../../experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/OWNED-CLEANUP.json)。
+- 三KV、两进程主表完成；短KV首次升频1095/1290MHz，原记录保留，固定600预热补测，未改GPU频率。
+- Cross/FFN独立与整层内差约±1.5%；小投影仍有11%–58%集成增量。SASS支持固定形状编译组织的下一对照，未给spill/同步硬分账。
+- 地址枚举与旧NCU写wavefront/冲突完全相符；没有新NCU或数学改动。
+- 320输出比较逐位、8组有效状态检查；GPU68.215237秒，累计2373.809395/36000秒；owned退出/GPU0释放。CPU缺cuobjdump失败和短KV条件缺口保留。
+- RoboTwin 20:07:50完整89/90，GPU1自动继续、原deadline不变。
+- Maintain同主题约束已压缩更新，只保存用户确认的顺序与交付解释要求。
 
-[前完整执行](history/projection-gemm-core-before-20261021/EXECUTION.md)。
+[结果/资源](../../experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/RESULT.md)，[前完整执行](history/remaining-gemm-audit-before-20261021/EXECUTION.md)。

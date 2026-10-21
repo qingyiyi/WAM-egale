@@ -1,11 +1,9 @@
 # 当前讨论与授权
 
-用户同意先对齐再调度，先固定真实输入、tile与计算体区分主循环/共享搬运/epilogue，不再无依据扩CTA/warp搜索。当前两候选完成：padding136去掉共享写bank冲突，四元素搬运减少循环；局部与4warp整层均有收益，有限9签名严格门通过后保留。
+用户最新同意继续核对并要求解释改了什么、为什么能降到0。本轮没有再次改活动数学实现；核对既有padding136/四元素搬运的边界、地址机制与剩余GEMM成本。0是旧真实独立投影shared写bank conflict，不是耗时或整层全部冲突。
 
-这只是原语对齐，不是MegaTransformer调度创新。单层单kernel目标保留，尚未实现ready-DAG；先说明FFN/小投影与整层资源剩余开销，再按真实依赖提前tile。独立投影仍慢约4%，不能称全面对齐。两次实现/测量问题与修复保留，不能以PASS覆盖无效对照或旧FAILED。
+先对齐再调度的决定保持：小投影通用编译路径仍有额外整层成本，FFN自身也未达到Torch；先有限固定形状设备函数对照，再FFN，最后按真实DAG提前无依赖tile。尚未实现ready-DAG，不凭静态local数认定根因。
 
-直接修改optimized、基线及投机生产不动；本轮不新建Cycle。沿10小时累计，所有历史截止/清理收据不重写；两个计算体候选已用完，已清理GPU0。RoboTwin GPU1固定DEV90按原队列自然终态，24小时累计与10/22 01:26硬截止不变，无自动重试。
+沿M39十小时累计，当前核对完成与清理；baseline/原tile/投机生产不动。RoboTwin原固定DEV90 GPU1继续，不增加任务/预算/截止，不自动重试。四科学权限false。BAAI仅~/cxz。
 
-四科学权限false；LIBERO与当前DEV不是独立TEST。BAAI全部文件在~/cxz。
-
-[前讨论](history/projection-gemm-core-before-20261021/DISCUSSION-SUMMARY.md)。
+[前讨论](history/remaining-gemm-audit-before-20261021/DISCUSSION-SUMMARY.md)。

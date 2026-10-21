@@ -1,0 +1,95 @@
+{
+  "goal": "Audit current ten GEMM stages vs native, hot and matched native prefix; distinguish embedded cost with instrumentation control",
+  "authorization": "User latest continue checking FFN/small projections before DAG; existing M39 cumulative ten hours",
+  "registered": "2026-10-21T19:54:47.067076+08:00",
+  "deadline": "2026-10-21T21:24:47.067076+08:00",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU": [
+    4,
+    5
+  ],
+  "GPU_lifecycle_cap_seconds": 1200,
+  "CPU_build_wall_cap_seconds": 960,
+  "new_storage_cap_bytes": 2147483648,
+  "cumulative_prior_GPU_seconds": 2305.5941582393643,
+  "cumulative_cap_seconds": 36000,
+  "inputs": "preserved actual layer0 B14 action short288/middle1152/long2160; source fdf883e, all current local headers",
+  "baseline": "Torch native stages, same inputs and matching full native prefix; active full block for probe perturbation",
+  "matrix": {
+    "stages": [
+      3,
+      4,
+      5,
+      12,
+      15,
+      16,
+      17,
+      21,
+      25,
+      27
+    ],
+    "KV": [
+      288,
+      1152,
+      2160
+    ],
+    "conditions": [
+      "hot_single_stage",
+      "same_real_native_prefix",
+      "embedded_callsite"
+    ]
+  },
+  "full_block_calls_cap_per_process": 800,
+  "stage_calls_cap_per_process": 100000,
+  "max_new_candidates": 0,
+  "process_count": 2,
+  "acceptance": "All stage outputs bitwise; all common block outputs/intermediates, validKV/input/RNG preserved; no production switch. Probe perturbation explicitly reported.",
+  "cleanup": "Only PID+birth verified owned children; stop failure/timeout without automatic retry, reap and record actual status; Robot GPU1 unchanged",
+  "terminal_status": "REGISTERED",
+  "evidence_path": "/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021",
+  "steps": [
+    [
+      "prepare",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-gemm-audit-20261021/prepare.py"
+      ],
+      60,
+      false
+    ],
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-gemm-audit-20261021/build.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-gemm-audit-20261021",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-gemm-audit-20261021/build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "process1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-gemm-audit-20261021/worker.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "process2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-gemm-audit-20261021/worker.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ]
+}

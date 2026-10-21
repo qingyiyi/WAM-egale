@@ -181,3 +181,5 @@
 | 截稿与规划 | [投稿时间](global/knowledge/decision-投稿时间与研究规划.md) |
 
 历史映射见 [原记录清单](../maintenance/hw-upgrade-20261016/LEGACY-RECORD-INVENTORY.json)，仅在查旧问题时打开；不把旧 GPU 暂停、旧“未完成”或早期计划当成当前指令。
+
+本轮确认：[先核对再调度](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)、[改动与指标解释边界](global/requirements/requirement-算子交付明确源码入口与验证范围.md)均为constraint；动态数字留在M39。

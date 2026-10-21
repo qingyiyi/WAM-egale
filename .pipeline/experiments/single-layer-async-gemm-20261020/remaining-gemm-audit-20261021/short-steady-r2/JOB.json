@@ -1,0 +1,73 @@
+{
+  "goal": "Resolve transient clock mismatch in short embedded timing only; same diagnostic DSO and arithmetic, fixed600 warmup then require1410MHz at phase boundaries",
+  "authorization": "User latest continue checking FFN/small projections before DAG; existing M39 cumulative ten hours",
+  "registered": "2026-10-21T20:01:01.481166+08:00",
+  "deadline": "2026-10-21T21:24:47.067076+08:00",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU": [
+    4,
+    5
+  ],
+  "GPU_lifecycle_cap_seconds": 600,
+  "CPU_build_wall_cap_seconds": 0,
+  "new_storage_cap_bytes": 134217728,
+  "cumulative_prior_GPU_seconds": 2342.1167550754544,
+  "cumulative_cap_seconds": 36000,
+  "inputs": "Only existing short KV288 B14; no new fixture or candidate",
+  "baseline": "Torch native stages, same inputs and matching full native prefix; active full block for probe perturbation",
+  "matrix": {
+    "stages": [
+      3,
+      4,
+      5,
+      12,
+      15,
+      16,
+      17,
+      21,
+      25,
+      27
+    ],
+    "KV": [
+      288
+    ],
+    "conditions": [
+      "hot_single_stage",
+      "same_real_native_prefix",
+      "embedded_callsite"
+    ]
+  },
+  "full_block_calls_cap_per_process": 1600,
+  "stage_calls_cap_per_process": 100000,
+  "max_new_candidates": 0,
+  "process_count": 2,
+  "acceptance": "All stage outputs bitwise; all common block outputs/intermediates, validKV/input/RNG preserved; no production switch. Probe perturbation explicitly reported.",
+  "cleanup": "Only PID+birth verified owned children; stop failure/timeout without automatic retry, reap and record actual status; Robot GPU1 unchanged",
+  "terminal_status": "REGISTERED",
+  "evidence_path": "/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/short-steady-r2",
+  "steps": [
+    [
+      "process1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-gemm-audit-20261021/short-steady-r2/worker.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "process2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/remaining-gemm-audit-20261021/short-steady-r2/worker.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ],
+  "parent_job": "../JOB.json",
+  "parent_cap_remains_seconds": 1200,
+  "parent_GPU_consumed_seconds": 36.52259683609009
+}

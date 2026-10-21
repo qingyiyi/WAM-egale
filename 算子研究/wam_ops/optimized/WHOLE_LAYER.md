@@ -45,7 +45,7 @@ B14 FFN2在`action_ffn2_parallel`内将两个K7168分段分配给两组CTA同时
 
 ## 验证与性能边界
 
-当前证据：[投影写回与整层结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESULT.md)。context投影仍用128×128/4 MMA warp；`cutlass_gemm.cuh`的context专用shared行stride136消除本轮已观察的写bank冲突，epilogue每线程处理4元素（shared为LDS.128，global仍两条32-bit store）。其他action/FFN布局保留128，避免改变分段归约。
+当前证据：[投影写回与整层结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESULT.md)。context投影仍用128×128/4 MMA warp；`cutlass_gemm.cuh`的context专用shared行stride136采用已在独立8warp投影中消除写bank冲突的布局（未新增4warp整层NCU），epilogue每线程处理4元素（shared为LDS.128，global仍两条32-bit store）。其他action/FFN布局保留128，避免改变分段归约。
 
 两独立进程三KV完整单层Graph对照：短2.660→2.560ms，中2.872→2.774ms，长3.124→3.025ms，耗时减少约3.77%/3.42%/3.15%。这是自有修改前后同轮比较；没有用旧eager原版数混算新Graph倍数。独立256×128/8warp投影经两项写回修复后约577µs，同期原版约553µs，仍慢约4%。两种tile的结果边界分开，不能把独立收益外推为整层或E2E。
 
@@ -63,3 +63,5 @@ B14 FFN2在`action_ffn2_parallel`内将两个K7168分段分配给两组CTA同时
 - [简化及阶段对齐](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/RESULT.md)：保留复杂版和负结果，仅当前简易版为活动代码。
 
 N256/8warp FFN1、pointwise8192、强制通用GEMM内联、双驻留compact B14的旧负结果均保留。当前仍阶段grid.sync，跨阶段ready未实现。早到CTA等待与其他CTA计算重叠，不等于纯barrier耗时或全部可兑现收益。
+
+当前源追加核对：[十GEMM同前序/整层比较](../../../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/RESULT.md)。Cross/FFN整层内与独立设备调用点接近，小投影仍有额外成本；下一对照是固定形状的小投影阶段函数。此轮只做诊断，没有修改活动数学实现或实现ready-DAG。
