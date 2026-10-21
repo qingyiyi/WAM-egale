@@ -1,9 +1,9 @@
 # 当前入口
 
-最新：[Cross K/V与FFN两项结果](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
+最新：[同源码原因控制及FFN2结果](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-固定tile/数学/同步，完整B14层本轮下降9.46%–10.87%，仍慢15%–31%；9真实签名有限逐位通过，一个kernel，未ready。先FFN剩余原语/资源差距，再DAG就绪补位；原负结果保留。
-GPU0本轮作业已退出；GPU1 CURRENT18在12:26:32完成12/18、9成功，继续采集并自动接ON/CAL，DEV90未排队。旧paused72与四项false不变。以下旧TF交接属于历史科学基线，不覆盖当前资源授权。
+当前同callee独立/整层差约±1.4%；FFN2新候选完整层小幅改善0.36%–0.65%，仍慢15%–30%。9签名有限逐位、一个kernel，未ready；先FFN1再DAG。
+RoboTwin后台链已自然完成：18采集13成功/5失败、ON训练、11195行接口CAL齐；DEV90尚未启动/排队。原科学权限四项false不变。以下旧TF交接是历史科学基线，不覆盖当前授权。
 
 ---
 

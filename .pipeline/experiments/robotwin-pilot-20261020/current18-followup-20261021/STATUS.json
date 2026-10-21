@@ -1,9 +1,61 @@
 {
-  "status": "WAITING_COMPLETE_CURRENT18",
+  "status": "COMPLETE_CURRENT_AUDIT_ON_AND_INTERFACE_CAL",
   "start": 1792553716.4449844,
-  "jobs": [],
-  "GPU_lifecycle_seconds": 0.0,
+  "jobs": [
+    {
+      "name": "AUDIT",
+      "start": 1792558596.6162379,
+      "gpu": false,
+      "cap_seconds": 1800,
+      "owned": {
+        "pid": 750876,
+        "pgid": 750876,
+        "birth_ticks": 715705518
+      },
+      "returncode": 0,
+      "root_reaped": true,
+      "identity_alive": false,
+      "end": 1792558600.9411643,
+      "lifecycle_seconds": 4.3249266147613525
+    },
+    {
+      "name": "ON3000",
+      "start": 1792558601.0375636,
+      "gpu": true,
+      "cap_seconds": 1800,
+      "owned": {
+        "pid": 750882,
+        "pgid": 750882,
+        "birth_ticks": 715705960
+      },
+      "returncode": 0,
+      "root_reaped": true,
+      "identity_alive": false,
+      "end": 1792558609.414463,
+      "lifecycle_seconds": 8.376899719238281
+    },
+    {
+      "name": "CAL",
+      "start": 1792558609.488169,
+      "gpu": true,
+      "cap_seconds": 300,
+      "owned": {
+        "pid": 750895,
+        "pgid": 750895,
+        "birth_ticks": 715706805
+      },
+      "returncode": 0,
+      "root_reaped": true,
+      "identity_alive": false,
+      "end": 1792558629.528312,
+      "lifecycle_seconds": 20.04014301300049
+    }
+  ],
+  "GPU_lifecycle_seconds": 28.41704273223877,
   "downstream_DEV_started": false,
-  "complete_collection_episodes": 1,
-  "CPU_wait_seconds": 200.00674700737
+  "complete_collection_episodes": 17,
+  "CPU_wait_seconds": 4860.170136213303,
+  "next": "Fixed DEV90 requires its reviewed wrapper/dispatcher; not started by this script",
+  "end": 1792558629.5328736,
+  "wall_seconds": 4913.087889432907
 }

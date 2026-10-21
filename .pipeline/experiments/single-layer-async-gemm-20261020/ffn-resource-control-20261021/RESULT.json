@@ -1,0 +1,594 @@
+{
+  "status": "COMPLETE_RETAIN_SMALL_FFN2_GAIN_NOT_SPEED_PARITY",
+  "active_source": "/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu",
+  "active_source_SHA256": "0a4db2ef8f1028d0167d9f4dae12f128a6bad24782e5d89aaa0cecdf2cbfdfeb",
+  "before_source_SHA256": "0b7779635bfd79fc163abe44acd7682c92196d49ccef6d0527ddd5f4ce300aee",
+  "full_layer_comparisons": [
+    {
+      "process": 1,
+      "case": "short",
+      "native_ms": 2.116607904434204,
+      "before_ms": 2.764288067817688,
+      "after_ms": 2.7468799352645874,
+      "improvement_pct": 0.6297510290540598,
+      "slowdown_vs_native_pct": 29.77745805021279
+    },
+    {
+      "process": 1,
+      "case": "middle",
+      "native_ms": 2.4039039611816406,
+      "before_ms": 3.022528052330017,
+      "after_ms": 3.0069119930267334,
+      "improvement_pct": 0.5166555622617142,
+      "slowdown_vs_native_pct": 25.084530895680366
+    },
+    {
+      "process": 1,
+      "case": "long",
+      "native_ms": 2.8430720567703247,
+      "before_ms": 3.2747039794921875,
+      "after_ms": 3.261504054069519,
+      "improvement_pct": 0.40308759220170076,
+      "slowdown_vs_native_pct": 14.717600853723178
+    },
+    {
+      "process": 2,
+      "case": "short",
+      "native_ms": 2.118143916130066,
+      "before_ms": 2.7622400522232056,
+      "after_ms": 2.7443199157714844,
+      "improvement_pct": 0.6487537691482692,
+      "slowdown_vs_native_pct": 29.562486046059956
+    },
+    {
+      "process": 2,
+      "case": "middle",
+      "native_ms": 2.4008160829544067,
+      "before_ms": 3.024224042892456,
+      "after_ms": 3.006640076637268,
+      "improvement_pct": 0.5814372879057617,
+      "slowdown_vs_native_pct": 25.234085942032824
+    },
+    {
+      "process": 2,
+      "case": "long",
+      "native_ms": 2.83896005153656,
+      "before_ms": 3.2734720706939697,
+      "after_ms": 3.2617440223693848,
+      "improvement_pct": 0.358275496821292,
+      "slowdown_vs_native_pct": 14.89221275248298
+    }
+  ],
+  "finite_gate": {
+    "real_signatures": 9,
+    "shared_intermediates_per_signature": 23,
+    "valid_state_transitions": 18,
+    "output_max_abs": 0.0,
+    "inputs_and_RNG_unchanged": true,
+    "finite_gate_pass": true,
+    "production_admitted": false
+  },
+  "current_source_before_candidate_embedding_delta_pct": [
+    -1.327,
+    1.282
+  ],
+  "selected_stage_control": [
+    {
+      "case": "short",
+      "stage": "cross_K",
+      "native_external_us": 553.984,
+      "own_external_us": 629.76,
+      "standalone_callsite_us": 626.688,
+      "embedded_callsite_us": 624.64,
+      "embedding_delta_pct": -0.32679738562091387,
+      "own_vs_native_external_pct": 13.678373382624764
+    },
+    {
+      "case": "short",
+      "stage": "cross_V",
+      "native_external_us": 552.96,
+      "own_external_us": 629.76,
+      "standalone_callsite_us": 626.688,
+      "embedded_callsite_us": 619.52,
+      "embedding_delta_pct": -1.1437908496731986,
+      "own_vs_native_external_pct": 13.888888888888884
+    },
+    {
+      "case": "short",
+      "stage": "FFN1",
+      "native_external_us": 165.888,
+      "own_external_us": 233.472,
+      "standalone_callsite_us": 230.4,
+      "embedded_callsite_us": 228.864,
+      "embedding_delta_pct": -0.666666666666671,
+      "own_vs_native_external_pct": 40.74074074074075
+    },
+    {
+      "case": "short",
+      "stage": "FFN2",
+      "native_external_us": 116.224,
+      "own_external_us": 147.456,
+      "standalone_callsite_us": 144.384,
+      "embedded_callsite_us": 143.36,
+      "embedding_delta_pct": -0.7092198581560072,
+      "own_vs_native_external_pct": 26.87224669603523
+    },
+    {
+      "case": "middle",
+      "stage": "cross_K",
+      "native_external_us": 553.984,
+      "own_external_us": 631.296,
+      "standalone_callsite_us": 627.2,
+      "embedded_callsite_us": 624.64,
+      "embedding_delta_pct": -0.40816326530612734,
+      "own_vs_native_external_pct": 13.955637707948254
+    },
+    {
+      "case": "middle",
+      "stage": "cross_V",
+      "native_external_us": 552.96,
+      "own_external_us": 628.736,
+      "standalone_callsite_us": 625.152,
+      "embedded_callsite_us": 619.008,
+      "embedding_delta_pct": -0.9828009828009798,
+      "own_vs_native_external_pct": 13.703703703703685
+    },
+    {
+      "case": "middle",
+      "stage": "FFN1",
+      "native_external_us": 166.912,
+      "own_external_us": 234.496,
+      "standalone_callsite_us": 230.912,
+      "embedded_callsite_us": 228.352,
+      "embedding_delta_pct": -1.1086474501108667,
+      "own_vs_native_external_pct": 40.49079754601228
+    },
+    {
+      "case": "middle",
+      "stage": "FFN2",
+      "native_external_us": 116.736,
+      "own_external_us": 145.92,
+      "standalone_callsite_us": 143.36,
+      "embedded_callsite_us": 143.36,
+      "embedding_delta_pct": 0.0,
+      "own_vs_native_external_pct": 24.99999999999998
+    },
+    {
+      "case": "long",
+      "stage": "cross_K",
+      "native_external_us": 553.984,
+      "own_external_us": 629.76,
+      "standalone_callsite_us": 625.664,
+      "embedded_callsite_us": 624.64,
+      "embedding_delta_pct": -0.16366612111292644,
+      "own_vs_native_external_pct": 13.678373382624764
+    },
+    {
+      "case": "long",
+      "stage": "cross_V",
+      "native_external_us": 552.96,
+      "own_external_us": 628.736,
+      "standalone_callsite_us": 625.664,
+      "embedded_callsite_us": 619.52,
+      "embedding_delta_pct": -0.9819967266775809,
+      "own_vs_native_external_pct": 13.703703703703685
+    },
+    {
+      "case": "long",
+      "stage": "FFN1",
+      "native_external_us": 165.376,
+      "own_external_us": 231.936,
+      "standalone_callsite_us": 227.84,
+      "embedded_callsite_us": 229.376,
+      "embedding_delta_pct": 0.6741573033707926,
+      "own_vs_native_external_pct": 40.24767801857585
+    },
+    {
+      "case": "long",
+      "stage": "FFN2",
+      "native_external_us": 117.76,
+      "own_external_us": 147.456,
+      "standalone_callsite_us": 143.872,
+      "embedded_callsite_us": 142.336,
+      "embedding_delta_pct": -1.0676156583629859,
+      "own_vs_native_external_pct": 25.217391304347814
+    }
+  ],
+  "selected_instrumentation_control": [
+    {
+      "case": "short",
+      "active_ms": 2.67468798160553,
+      "diagnostic_ms": 2.678272008895874,
+      "perturbation_pct": 0.1339979584531914
+    },
+    {
+      "case": "middle",
+      "active_ms": 2.883072018623352,
+      "diagnostic_ms": 2.879487991333008,
+      "perturbation_pct": -0.12431279091167369
+    },
+    {
+      "case": "long",
+      "active_ms": 3.1380480527877808,
+      "diagnostic_ms": 3.13753604888916,
+      "perturbation_pct": -0.016315999309368667
+    }
+  ],
+  "resources": {
+    "GPU_worker_lifecycle_seconds": 81.55906367301941,
+    "CPU_prepare_build_wall_seconds": 396.7398190498352,
+    "GPU_prior_seconds": 1770.667737789154,
+    "GPU_cumulative_seconds": 1852.2268014621734,
+    "GPU_cumulative_cap_seconds": 36000,
+    "GPU_remaining_seconds": 34147.77319853783,
+    "current_GPU_cap_seconds": 1800,
+    "absolute_deadline": "2026-10-21T14:07:22.760819+08:00",
+    "job_wall_seconds": 478.6855504512787,
+    "elapsed_first_launch_to_last_exit_seconds": 705.3729884624481,
+    "CUDA_active_seconds": "UNKNOWN_NOT_INFERRED_FROM_LIFECYCLE",
+    "all_workers_reaped": true,
+    "failures_this_round": 0,
+    "timeouts_this_round": 0,
+    "candidates_tested": 1,
+    "whole_block_calls": 2706,
+    "isolated_stage_calls": 20826,
+    "cleanup": {
+      "time": "2026-10-21T12:56:12.183301+08:00",
+      "process_checks": [
+        {
+          "namespace": "isolation",
+          "job": "prepare",
+          "owned": {
+            "pid": 749305,
+            "birth_ticks": 715608708,
+            "pgid": 749305
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "isolation",
+          "job": "build",
+          "owned": {
+            "pid": 749306,
+            "birth_ticks": 715608711,
+            "pgid": 749306
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "isolation",
+          "job": "process1",
+          "owned": {
+            "pid": 749502,
+            "birth_ticks": 715621928,
+            "pgid": 749502
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "isolation",
+          "job": "process2",
+          "owned": {
+            "pid": 749560,
+            "birth_ticks": 715623339,
+            "pgid": 749560
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "candidate",
+          "job": "prepare",
+          "owned": {
+            "pid": 749887,
+            "birth_ticks": 715631714,
+            "pgid": 749887
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "candidate",
+          "job": "build",
+          "owned": {
+            "pid": 749888,
+            "birth_ticks": 715631720,
+            "pgid": 749888
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "candidate",
+          "job": "gate",
+          "owned": {
+            "pid": 750132,
+            "birth_ticks": 715644939,
+            "pgid": 750132
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "candidate",
+          "job": "timing1",
+          "owned": {
+            "pid": 750145,
+            "birth_ticks": 715646139,
+            "pgid": 750145
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "candidate",
+          "job": "timing2",
+          "owned": {
+            "pid": 750169,
+            "birth_ticks": 715647515,
+            "pgid": 750169
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "selected-profile",
+          "job": "prepare",
+          "owned": {
+            "pid": 750467,
+            "birth_ticks": 715664593,
+            "pgid": 750467
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "selected-profile",
+          "job": "build",
+          "owned": {
+            "pid": 750468,
+            "birth_ticks": 715664596,
+            "pgid": 750468
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        },
+        {
+          "namespace": "selected-profile",
+          "job": "process1",
+          "owned": {
+            "pid": 750616,
+            "birth_ticks": 715677842,
+            "pgid": 750616
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          },
+          "recorded_returncode": 0
+        }
+      ],
+      "compute_contexts": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3179260, [Not Found]\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3420835, [Not Found]\n",
+      "source_sha256": "0a4db2ef8f1028d0167d9f4dae12f128a6bad24782e5d89aaa0cecdf2cbfdfeb",
+      "bytes": 58086214,
+      "guard_checks": [
+        {
+          "namespace": "isolation",
+          "owned": {
+            "pid": 749304,
+            "birth_ticks": 715608705,
+            "time": "2026-10-21T12:40:28.489423"
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          }
+        },
+        {
+          "namespace": "candidate",
+          "owned": {
+            "pid": 749886,
+            "birth_ticks": 715631710,
+            "time": "2026-10-21T12:44:18.542196"
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          }
+        },
+        {
+          "namespace": "selected-profile",
+          "owned": {
+            "pid": 750466,
+            "birth_ticks": 715664589,
+            "time": "2026-10-21T12:49:47.330339"
+          },
+          "now": {
+            "exists": false,
+            "identity_alive": false
+          }
+        }
+      ],
+      "guard_checked_at": "2026-10-21T12:56:56.142853+08:00"
+    }
+  },
+  "single_kernel_observed": true,
+  "cross_stage_ready_implemented": false,
+  "dynamic_NCU_counters": "UNKNOWN",
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "scope": "Actual finite fixtures, uncached eager single layer, not robot E2E or strongest cached/Graph baseline",
+  "RoboTwin_snapshot": {
+    "observed_at": "2026-10-21T12:56:56.142853+08:00",
+    "CURRENT_status": "COMPLETE_CURRENT18_VISITED_COLLECTION",
+    "CURRENT_complete": 18,
+    "CURRENT_success": 13,
+    "active_case": "open_microwave-valid13",
+    "collection_GPU_lifecycle_seconds": 5028.801291465759,
+    "CURRENT_deadline": 1792578761.501327,
+    "followup": {
+      "status": "RUNNING_CAL",
+      "start": 1792553716.4449844,
+      "jobs": [
+        {
+          "name": "AUDIT",
+          "start": 1792558596.6162379,
+          "gpu": false,
+          "cap_seconds": 1800,
+          "owned": {
+            "pid": 750876,
+            "pgid": 750876,
+            "birth_ticks": 715705518
+          },
+          "returncode": 0,
+          "root_reaped": true,
+          "identity_alive": false,
+          "end": 1792558600.9411643,
+          "lifecycle_seconds": 4.3249266147613525
+        },
+        {
+          "name": "ON3000",
+          "start": 1792558601.0375636,
+          "gpu": true,
+          "cap_seconds": 1800,
+          "owned": {
+            "pid": 750882,
+            "pgid": 750882,
+            "birth_ticks": 715705960
+          },
+          "returncode": 0,
+          "root_reaped": true,
+          "identity_alive": false,
+          "end": 1792558609.414463,
+          "lifecycle_seconds": 8.376899719238281
+        },
+        {
+          "name": "CAL",
+          "start": 1792558609.488169,
+          "gpu": true,
+          "cap_seconds": 300,
+          "owned": {
+            "pid": 750895,
+            "pgid": 750895,
+            "birth_ticks": 715706805
+          }
+        }
+      ],
+      "GPU_lifecycle_seconds": 8.376899719238281,
+      "downstream_DEV_started": false,
+      "complete_collection_episodes": 17,
+      "CPU_wait_seconds": 4860.170136213303
+    },
+    "is_DEV": false,
+    "CURRENT_guard": {
+      "exists": false,
+      "identity_alive": false
+    },
+    "followup_guard": {
+      "exists": true,
+      "state": "S",
+      "birth_ticks": 715217498,
+      "identity_alive": true
+    }
+  },
+  "RoboTwin_terminal_snapshot": {
+    "observed_at": "2026-10-21T13:02:05.532612+08:00",
+    "CURRENT_status": "COMPLETE_CURRENT18_VISITED_COLLECTION",
+    "CURRENT_complete": 18,
+    "CURRENT_success": 13,
+    "CURRENT_failures": [
+      "press_stapler-valid11",
+      "open_microwave-valid11",
+      "open_microwave-valid12",
+      "press_stapler-valid13",
+      "open_microwave-valid13"
+    ],
+    "CURRENT_remaining_owned": [],
+    "CURRENT_GPU_lifecycle_seconds": 5028.801291465759,
+    "CURRENT_teacher_attempted": 13921,
+    "followup_status": "COMPLETE_CURRENT_AUDIT_ON_AND_INTERFACE_CAL",
+    "followup_GPU_lifecycle_seconds": 28.41704273223877,
+    "followup_jobs": [
+      {
+        "name": "AUDIT",
+        "returncode": 0,
+        "identity_alive": false
+      },
+      {
+        "name": "ON3000",
+        "returncode": 0,
+        "identity_alive": false
+      },
+      {
+        "name": "CAL",
+        "returncode": 0,
+        "identity_alive": false
+      }
+    ],
+    "guard_checks": [
+      {
+        "name": "current18-20261021",
+        "owned": {
+          "pid": 742925,
+          "birth_ticks": 715202016,
+          "launch_time": 1792553561.600095,
+          "existing_runs_bytes": 2530980503
+        },
+        "identity_alive": false
+      },
+      {
+        "name": "current18-followup-20261021",
+        "owned": {
+          "pid": 743316,
+          "birth_ticks": 715217498,
+          "launch_time": 1792553716.4166245
+        },
+        "identity_alive": false
+      }
+    ],
+    "GPU_ledger_consumed_seconds": 25801.965416908264,
+    "GPU_ledger_cap_seconds": 86400,
+    "compute_contexts": "",
+    "DEV90_started": false,
+    "DEV90_queued": false,
+    "is_DEV": false
+  }
+}

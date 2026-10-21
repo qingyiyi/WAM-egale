@@ -1,8 +1,8 @@
 # 当前讨论与授权
 
-用户最新明确“先做1和2”：先Cross KV设备函数/编译资源控制，然后FFN；本轮已完成并保留两项。固定tile/数学/同步，真实三KV与9签名有限门；不先做跨阶段ready。
-完整单层下降9.46%–10.87%，仍慢15%–31%。函数组织控制对Cross有效，FFN只再改善约0.6%。静态SASS及插桩支持机制方向，不把动态spill/traffic当已测事实。
-下一步先剩余FFN主循环/归约/epilogue和资源成本，再最小DAG补位。每子算子采用合适tile和自然任务数，108只是worker池，不要求凑满。旧失败/负结果/截止保留。
-GPU1优先RoboTwin，已启动CURRENT18并自动接ON/CAL；DEV90尚未排队，不宣称迁移完成。原24h累计预算不重置。
-仅optimized；保护baseline/原tile/LIBERO生产、state/cycle/rules、四权限false、paused72与retention。BAAI写入限~/cxz，不改驱动/时钟/服务、不杀他人。GitHub仅main小证据。
-本轮M39累计1770.668/36000秒；GPU0本轮作业已退出。历史授权与讨论见[前检查点](history/gemm-function-control-20261021/DISCUSSION-SUMMARY.md)。
+用户同意继续FFN原语/资源对齐后再ready，并要求明确独立快、整层慢的原因；RoboTwin继续后台。维护合并既有constraint，未重复申请已授权工作。
+前轮函数组织改动显著减轻Cross退化；当前同源同callee实测嵌入差约±1.4%，不再沿用旧大额差异。静态local不是动态spill；剩余重点为原语本身，尤其FFN1。
+本轮专用FFN2分段并行保留0.36%–0.65%完整层小幅收益，九签名有限逐位通过，仍慢15%–30%；未实现ready。每阶段合适tile/自然任务数，108只是worker池。
+RoboTwin后台链未经人工暂停，18采集/ON/CAL现已自然完成；三臂DEV90未实现排队，下一步先核查其入口与配对审计。原24h累计7.1672h，不重置旧截止/失败/预算；用户继续后台的偏好保持。
+仅optimized；保护baseline/原tile/LIBERO生产、state/cycle/rules、四权限false及旧retention。BAAI只写~/cxz，不改驱动/服务/时钟、不杀他人。GitHub只main小证据。
+[前讨论与授权](history/ffn-resource-control-20261021/DISCUSSION-SUMMARY.md)。

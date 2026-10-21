@@ -199,6 +199,66 @@ __device__ __noinline__ void action_ffn_linear(const Params &p, Shared &s, cg::g
     g.sync();
 }
 
+// B14 FFN2：M128输出tile共48个，每个K分两段，共96个CTA任务。
+// 各CTA独立算一段，FP32片段暂存在自己的shared；阶段代码负责有序提交。
+__device__ __forceinline__ void ffn2_partition(CutlassTile<128>::Storage &s, const __nv_bfloat16 *a,
+                                const __nv_bfloat16 *w, int tile, int partition) {
+    using T = CutlassTile<128>; using Mma = T::Mma;
+    const int physical_warp = threadIdx.x / 32, lane = threadIdx.x % 32;
+    if (physical_warp >= 3 && physical_warp < 7) {
+        const int thread = int(threadIdx.x) - 96, warp = physical_warp - 3;
+        typename Mma::IteratorA::Params ap{CutlassRow(14336)};
+        typename Mma::IteratorB::Params bp{CutlassCol(14336)};
+        typename Mma::IteratorA ai(ap, reinterpret_cast<CutlassB *>(const_cast<__nv_bfloat16 *>(a)) + partition * 7168,
+                                  {224, 7168}, thread, {(tile / 24) * 128, 0});
+        typename Mma::IteratorB bi(bp, reinterpret_cast<CutlassB *>(const_cast<__nv_bfloat16 *>(w)) + partition * 7168,
+                                  {7168, 3072}, thread, {0, (tile % 24) * 128});
+        Mma mma(s.mainloop, thread, warp, lane);
+        typename Mma::FragmentC acc; acc.clear();
+        mma(7168 / 64, acc, ai, bi, acc);
+        asm volatile("bar.sync 2, 128;" ::: "memory");
+        typename Mma::Operator::IteratorC store({s.result, CutlassRow(128)}, lane);
+        store.add_tile_offset({warp % 2, warp / 2}); store.store(acc);
+    }
+    __syncthreads();
+}
+
+__device__ __forceinline__ void ffn2_commit(CutlassTile<128>::Storage &s, const __nv_bfloat16 *bias,
+                             __nv_bfloat16 *out, int tile, bool second) {
+    for (int i = 2 * int(threadIdx.x); i < 128 * 128; i += 2 * int(blockDim.x)) {
+        const int row = (tile / 24) * 128 + i / 128, col = (tile % 24) * 128 + i % 128;
+        if (row < 224) {
+            float2 z = *reinterpret_cast<const float2 *>(s.result + i);
+            if (second) {
+                float2 b = __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(bias + col));
+                float2 prev = __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(out + row * 3072 + col));
+                z.x = __fadd_rn(__fadd_rn(z.x, b.x), prev.x);
+                z.y = __fadd_rn(__fadd_rn(z.y, b.y), prev.y);
+            }
+            *reinterpret_cast<__nv_bfloat162 *>(out + row * 3072 + col) = __floats2bfloat162_rn(z.x, z.y);
+        }
+    }
+    __syncthreads();
+}
+
+// 固定B14 FFN2的48个输出tile×两K分段。专用阶段函数包住整个过程，
+// 两个数学体在函数内展开，避免再次从通用linear逐任务进入大设备函数。
+// 只并行同一FFN2的两个原K分段；不是跨Transformer阶段ready调度。
+__device__ __noinline__ void action_ffn2_parallel(const Params &p, Shared &s,
+                                                cg::grid_group &g, int st) {
+    begin_stage(p, g, st);
+    const int task = int(blockIdx.x), tile = task % 48;
+    auto &workspace = s.tile.cutlass_gemm.ffn1;
+    if (task < 96)
+        ffn2_partition(workspace, bp(p, ACT), (const B *)p.w[25], tile, task / 48);
+    if (task < 48)
+        ffn2_commit(workspace, (const B *)p.w[26], bp(p, F2), tile, false);
+    g.sync(); // 第一段BF16可见；第二段FP32仍保存在各自CTA的shared。
+    if (task >= 48 && task < 96)
+        ffn2_commit(workspace, (const B *)p.w[26], bp(p, F2), tile, true);
+    g.sync();
+}
+
 #include "norm_device_generated.cuh"
 
 // Norm tile为完整3072维行。8个warp搬入/写回，warp3–6仍按原Torch顺序归约。
@@ -624,7 +684,7 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
         linear(p, s, g, st++, bp(p, M3), 23, bp(p, F1), m, F, D);
     point(p, s, g, st++, GELU, ACT, F1, 0, 0, int64_t(m) * F);
     if (p.candidate && m == 224)
-        action_ffn_linear<64, D, F>(p, s, g, st++, bp(p, ACT), 25, bp(p, F2));
+        action_ffn2_parallel(p, s, g, st++);
     else
         linear(p, s, g, st++, bp(p, ACT), 25, bp(p, F2), m, D, F);
     // 5. 门控残差与临时KV状态恢复，输出仍为[B,Q,3072]。
