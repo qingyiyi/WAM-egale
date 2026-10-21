@@ -1,0 +1,69 @@
+{
+  "status": "COMPLETE_FINITE_PROFILE",
+  "scopes": [
+    {
+      "name": "torch_K",
+      "exact_before_and_after": true,
+      "input_shape": [
+        14,
+        512,
+        3072
+      ],
+      "weight_shape": [
+        3072,
+        3072
+      ]
+    },
+    {
+      "name": "own_K",
+      "exact_before_and_after": true,
+      "input_shape": [
+        14,
+        512,
+        3072
+      ],
+      "weight_shape": [
+        3072,
+        3072
+      ]
+    },
+    {
+      "name": "torch_V",
+      "exact_before_and_after": true,
+      "input_shape": [
+        14,
+        512,
+        3072
+      ],
+      "weight_shape": [
+        3072,
+        3072
+      ]
+    },
+    {
+      "name": "own_V",
+      "exact_before_and_after": true,
+      "input_shape": [
+        14,
+        512,
+        3072
+      ],
+      "weight_shape": [
+        3072,
+        3072
+      ]
+    }
+  ],
+  "formal_performance_permission": false,
+  "boundary": "hot real projection; NCU kernel replay, no cache/clock control; distinct from remote timing",
+  "resources": [
+    147472,
+    254,
+    0,
+    1,
+    256
+  ],
+  "fixture": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-middle-B14-action-layer0-first.pt",
+  "targeted_launches": 4,
+  "lifecycle_seconds": 12.765312910079956
+}

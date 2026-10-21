@@ -1,12 +1,12 @@
-# 最近执行检查点
+# 最近 Execution checkpoint
 
-## 2026-10-21T17:04:44.011067+08:00 同计算体三调度完成
+## 2026-10-21T18:00:18.327657+08:00 投影写回与整层收益收口
 
-- 同256×128/8warp compiled kernel，普通672、108静态和108原子同前序中位数差≤0.17%；含清零原子成本增加0.17%–0.33%。原版约553µs，自有约615µs，差11.09%–11.30%仍在计算体。
-- 36投影组逐位与672tile各一次通过；两进程三B14完整层共有23中间量+output、有效KV/输入/RNG有限通过。原4warp源码/DSO保留；8warp完整层慢3.11%–5.00%。
-- 两脚本错误（旧原版整层不可capture、raw K字段接口差）已修正并保留attempt1/2；成功两进程，无timeout。本轮GPU61.039747秒、CPU187.094542秒，累计2134.452699/36000秒。owned自然退出/reaped，GPU0释放。
-- 插桩全层增加1.32%–1.40%，不将嵌入阶段差直接归local/sync。没有新NCU。
-- M40 17:02:19完整45/90、15组C/P审计通过，GPU1继续，原截止不改。
-- [结果与源](../../experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021/RESULT.md)、[账本](../../experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021/RESOURCE-AND-STOP-REPORT.json)。
+- 原shared写冲突2,064,384→0；padding单因素3.49%–3.66%，四元素搬运再2.75%–2.93%；独立投影距Torch仍4.07%–4.26%。两阶段分别同期对照，不混用两机时延。
+- 当前4warp整层短/中/长KV耗时减少3.12%–3.77%；9真实签名输出max_abs0、23共有中间量/有效KV/输入/RNG有限通过。选择源fdf883e及同一远端实测DSO，本地复制；没有新DAG/正式机器人性能。
+- vec4首次对照加载相同binary无效，修正paired-r2；首次整层generic dispatch漏模板导致CPU编译失败，r2修复。原件及消耗保留。
+- 本轮GPU171.141460秒，CPU编译259.945245秒；累计2305.594158/36000秒。0timeout，owned自然退出/reaped、GPU0释放。
+- M40 17:58:29完整57/90，19组审计，GPU1继续；原截止不变。
+- [结果/源](../../experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESULT.md)、[预算](../../experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESOURCE-AND-STOP-REPORT.json)、[清理](../../experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/OWNED-CLEANUP.json)。
 
-[前完整执行](history/projection-dispatch-before-20261021/EXECUTION.md)。
+[前完整执行](history/projection-gemm-core-before-20261021/EXECUTION.md)。

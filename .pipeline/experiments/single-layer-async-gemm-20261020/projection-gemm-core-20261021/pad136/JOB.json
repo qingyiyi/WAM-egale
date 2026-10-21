@@ -1,0 +1,60 @@
+{
+  "goal": "\u56fa\u5b9a\u771f\u5b9eB14\u6295\u5f71\uff0c\u5bf9\u7167\u4e3b\u5faa\u73af/\u5171\u4eab\u642c\u8fd0/epilogue\uff0c\u6700\u591a\u4e24\u4e2a\u7531\u8bc1\u636e\u652f\u6301\u7684\u8ba1\u7b97\u4f53\u53d8\u4f53\uff1b\u7cbe\u5ea6\u4e0e\u6574\u5c42\u9a8c\u8bc1\u540e\u51b3\u5b9a\u4fdd\u7559",
+  "registered": "2026-10-21T17:25:53.417985+08:00",
+  "deadline": "2026-10-21T19:25:53.417985+08:00",
+  "prior_GPU_seconds": 2134.452698535919,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 1800,
+  "CPU_build_cap_seconds": 2400,
+  "new_storage_cap_bytes": 2147483648,
+  "CPU": [
+    4,
+    5
+  ],
+  "GPU": {
+    "local_NCU": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36",
+    "remote_timing": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726"
+  },
+  "inputs": "\u56fa\u5b9a\u771f\u5b9e3KV B14 CrossK/V\uff1b\u5168\u5c42\u51c6\u5165\u8ffd\u52a09\u771f\u5b9e\u7b7e\u540d",
+  "max_candidates": 2,
+  "cleanup": "only PID+birth matched owned groups; preserve failure; no automatic retry",
+  "scope": "same M39 optimized; baseline/spec/old tile and4permissions unchanged",
+  "formal_performance_permission": false,
+  "candidate": "padding136 only",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "build_projection_schedule.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-gemm-core-20261021/pad136",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-gemm-core-20261021/pad136/build"
+      ],
+      600,
+      false
+    ],
+    [
+      "measure1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-gemm-core-20261021/pad136/worker.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "measure2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-gemm-core-20261021/pad136/worker.py",
+        "2"
+      ],
+      180,
+      true
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 // 一个任务计算C中的TM×128输出tile，沿K每次推进64，CUTLASS内部三级流水。
-// warp3–6共同执行cp.async/MMA；结果经shared交给全部8个warp做成对写回。
+// warp3–6执行cp.async/MMA；全部8warp写回，context用四元素向量，其余用成对写回。
 // action用TM64，context用TM128；保留原cuBLASLt的分段BF16与bias加法顺序。
 #pragma once
 
@@ -11,7 +11,7 @@ static_assert(WAM_CONTEXT_TILE_M == 64 || WAM_CONTEXT_TILE_M == 128);
 using CutlassB = cutlass::bfloat16_t;
 using CutlassRow = cutlass::layout::RowMajor;
 using CutlassCol = cutlass::layout::ColumnMajor;
-template <int TM> struct CutlassTile {
+template <int TM, int Stride = 128> struct CutlassTile {
     using Config = cutlass::gemm::device::Gemm<
         CutlassB, CutlassRow, CutlassB, CutlassCol, CutlassB, CutlassRow, float,
         cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<TM, 128, 64>,
@@ -25,13 +25,14 @@ template <int TM> struct CutlassTile {
         float, CutlassRow, typename Base::Policy, 3>;
     union Storage {
         typename Mma::SharedStorage mainloop;
-        float result[TM * 128];
+        float result[TM * Stride];
     };
 };
 union CutlassGemmStorage {
     typename CutlassTile<64>::Storage action;
     typename CutlassTile<128>::Storage ffn1;
-    typename CutlassTile<WAM_CONTEXT_TILE_M>::Storage context;
+    // 仅context投影padding；FFN分段归约继续使用原128列布局。
+    typename CutlassTile<WAM_CONTEXT_TILE_M, 136>::Storage context;
     float result[WAM_CONTEXT_TILE_M * 128];
 };
 
@@ -41,12 +42,12 @@ __device__ __forceinline__ int gemm_tile_rows(int m, int n = 0) {
     return m >= 1024 ? WAM_CONTEXT_TILE_M : 64;
 }
 
-template <int TM>
-__device__ __forceinline__ void cutlass_gemm_tile(typename CutlassTile<TM>::Storage &s,
+template <int TM, int Stride = 128>
+__device__ __forceinline__ void cutlass_gemm_tile(typename CutlassTile<TM, Stride>::Storage &s,
                                                   const __nv_bfloat16 *a, const __nv_bfloat16 *w,
                                                   const __nv_bfloat16 *bias, __nv_bfloat16 *out,
                                                   int m, int n, int k, int task, bool bf16_splits) {
-    using Mma = typename CutlassTile<TM>::Mma;
+    using Mma = typename CutlassTile<TM, Stride>::Mma;
     const int rm = (task / ((n + 127) / 128)) * TM, cn = (task % ((n + 127) / 128)) * 128;
     int splits = 1;
     if (bf16_splits && n == 3072) {
@@ -73,31 +74,56 @@ __device__ __forceinline__ void cutlass_gemm_tile(typename CutlassTile<TM>::Stor
             mma(span / 64, acc, ai, bi, acc);
             // All compute warps finish reading the input ring before aliasing it.
             asm volatile("bar.sync 2, 128;" ::: "memory");
-            typename Mma::Operator::IteratorC store({s.result, CutlassRow(128)}, lane);
+            typename Mma::Operator::IteratorC store({s.result, CutlassRow(Stride)}, lane);
             store.add_tile_offset({warp % 2, warp / 2});
             store.store(acc);
         }
         __syncthreads();
-        // All warps cooperate after MMA completes. Pair stores preserve each
-        // element's original FP32 add order and final BF16 rounding.
-        for (int i = 2 * int(threadIdx.x); i < TM * 128; i += 2 * int(blockDim.x)) {
-            const int r = rm + i / 128, c = cn + i % 128;
-            if (r < m && c < n) {
-                float2 z = *reinterpret_cast<const float2 *>(s.result + i);
-                if (partition == splits - 1) {
-                    const float2 b =
-                        __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(bias + c));
-                    z.x = __fadd_rn(z.x, b.x);
-                    z.y = __fadd_rn(z.y, b.y);
+        if constexpr (Stride == 136) {
+            // 四元素向量仅减少搬运指令；FP32加法及BF16舍入仍逐元素保持。
+            struct alignas(8) B4 { __nv_bfloat162 lo, hi; };
+            for (int i = 4 * int(threadIdx.x); i < TM * 128; i += 4 * int(blockDim.x)) {
+                const int r = rm + i / 128, c = cn + i % 128;
+                if (r < m && c < n) {
+                    float4 z = *reinterpret_cast<const float4 *>(s.result + (i / 128) * Stride + i % 128);
+                    if (partition == splits - 1) {
+                        B4 b = *reinterpret_cast<const B4 *>(bias + c);
+                        float2 lo = __bfloat1622float2(b.lo), hi = __bfloat1622float2(b.hi);
+                        z.x = __fadd_rn(z.x, lo.x); z.y = __fadd_rn(z.y, lo.y);
+                        z.z = __fadd_rn(z.z, hi.x); z.w = __fadd_rn(z.w, hi.y);
+                    }
+                    if (partition > 0) {
+                        B4 p = *reinterpret_cast<const B4 *>(out + r * n + c);
+                        float2 lo = __bfloat1622float2(p.lo), hi = __bfloat1622float2(p.hi);
+                        z.x = __fadd_rn(z.x, lo.x); z.y = __fadd_rn(z.y, lo.y);
+                        z.z = __fadd_rn(z.z, hi.x); z.w = __fadd_rn(z.w, hi.y);
+                    }
+                    *reinterpret_cast<B4 *>(out + r * n + c) = {
+                        __floats2bfloat162_rn(z.x, z.y), __floats2bfloat162_rn(z.z, z.w)};
                 }
-                if (partition > 0) {
-                    const float2 prev = __bfloat1622float2(
-                        *reinterpret_cast<const __nv_bfloat162 *>(out + r * n + c));
-                    z.x = __fadd_rn(z.x, prev.x);
-                    z.y = __fadd_rn(z.y, prev.y);
+            }
+        } else {
+            // All warps cooperate after MMA completes. Pair stores preserve each
+            // element's original FP32 add order and final BF16 rounding.
+            for (int i = 2 * int(threadIdx.x); i < TM * 128; i += 2 * int(blockDim.x)) {
+                const int r = rm + i / 128, c = cn + i % 128;
+                if (r < m && c < n) {
+                    float2 z = *reinterpret_cast<const float2 *>(s.result + (i / 128) * Stride + i % 128);
+                    if (partition == splits - 1) {
+                        const float2 b =
+                            __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(bias + c));
+                        z.x = __fadd_rn(z.x, b.x);
+                        z.y = __fadd_rn(z.y, b.y);
+                    }
+                    if (partition > 0) {
+                        const float2 prev = __bfloat1622float2(
+                            *reinterpret_cast<const __nv_bfloat162 *>(out + r * n + c));
+                        z.x = __fadd_rn(z.x, prev.x);
+                        z.y = __fadd_rn(z.y, prev.y);
+                    }
+                    *reinterpret_cast<__nv_bfloat162 *>(out + r * n + c) =
+                        __floats2bfloat162_rn(z.x, z.y);
                 }
-                *reinterpret_cast<__nv_bfloat162 *>(out + r * n + c) =
-                    __floats2bfloat162_rn(z.x, z.y);
             }
         }
         __syncthreads();

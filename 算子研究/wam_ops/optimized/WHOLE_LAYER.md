@@ -45,15 +45,17 @@ B14 FFN2在`action_ffn2_parallel`内将两个K7168分段分配给两组CTA同时
 
 ## 验证与性能边界
 
-当前证据：[FFN资源控制与完整层](../../../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-resource-control-20261021/RESULT.md)、[整层退化原因](../../../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-resource-control-20261021/CAUSE-ANALYSIS.md)。
+当前证据：[投影写回与整层结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESULT.md)。context投影仍用128×128/4 MMA warp；`cutlass_gemm.cuh`的context专用shared行stride136消除本轮已观察的写bank冲突，epilogue每线程处理4元素（shared为LDS.128，global仍两条32-bit store）。其他action/FFN布局保留128，避免改变分段归约。
 
-在前轮Cross/FFN函数专门化之后，本轮保留专用FFN2分段并行的小幅收益：两进程三KV完整层下降0.36%–0.65%；短/中/长约2.745/3.007/3.262ms，仍比native慢29.6%–29.8% / 25.1%–25.2% / 14.7%–14.9%。只指uncached/eager完整单层，不是强cached/Graph基线、30层、chunk或E2E。
+两独立进程三KV完整单层Graph对照：短2.660→2.560ms，中2.872→2.774ms，长3.124→3.025ms，耗时减少约3.77%/3.42%/3.15%。这是自有修改前后同轮比较；没有用旧eager原版数混算新Graph倍数。独立256×128/8warp投影经两项写回修复后约577µs，同期原版约553µs，仍慢约4%。两种tile的结果边界分开，不能把独立收益外推为整层或E2E。
 
-九个真实签名（B2 action/B14 action/B2 video×三KV）、每格23中间量、18有效KV转移、输入/RNG和重复输出有限逐位通过，max_abs=0。一个kernel；不外推任意输入、闭环质量或正式生产准入。
+九个真实签名（B2 action/B14 action/B2 video×三KV）、输出/23共有中间量/18有效KV转移、输入/RNG和重复输出有限逐位通过，max_abs=0。完整门在远端运行，本地复制同一DSO；不外推任意输入、闭环质量或正式生产准入。
 
-同源码、相同前序、同设备函数调用点计时，独立与整层差小于约1.4%；旧的大额集成惩罚已明显缓解。当前FFN1/FFN2仍比native原语慢，先改进原语再推进DAG。静态寄存器255、shared98848B、1CTA/SM不等于动态occupancy/spill已测；后者UNKNOWN。
+本轮选择源及二进制身份见该目录SELECTION.json。整层regs255/shared98848、1CTA/SM不变，localSize从1456变1464 bytes仍更快；该字段不是动态spill流量。当前FFN/小投影剩余差距须继续分解，再推进ready-DAG。原三CTA调度结果与旧负结果均保留。
 
 历史记录保留：
+
+- [FFN资源控制](../../../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-resource-control-20261021/RESULT.md)：此前专用FFN2分段并行收益0.36%–0.65%，uncached/eager原版对照属于当时源和边界，不用来推算当前Graph结果。
 
 - [Cross/FFN函数组织控制](../../../.pipeline/experiments/single-layer-async-gemm-20261020/gemm-function-control-20261021/RESULT.md)：固定tile/数学/sync，前后完整层下降9.46%–10.87%；不与本轮倍数相乘。
 - [小算子与CTA等待](../../../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)：point向量化、candidate RMS双行；旧29阶段表属于当时源。

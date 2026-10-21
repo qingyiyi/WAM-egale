@@ -138,7 +138,7 @@ __device__ void gemm_tile(Shared &shared, const B *a, const B *w, const B *bias,
         cutlass_gemm_tile<128>(shared.tile.cutlass_gemm.ffn1, a, w, bias, out, m,
                                n, k, task, bf16_splits);
     else if (m >= 1024)
-        cutlass_gemm_tile<WAM_CONTEXT_TILE_M>(shared.tile.cutlass_gemm.context, a, w, bias, out, m,
+        cutlass_gemm_tile<WAM_CONTEXT_TILE_M, 136>(shared.tile.cutlass_gemm.context, a, w, bias, out, m,
                                               n, k, task, bf16_splits);
     else if (m >= 128)
         cutlass_gemm_tile<64>(shared.tile.cutlass_gemm.action, a, w, bias, out, m, n, k, task,

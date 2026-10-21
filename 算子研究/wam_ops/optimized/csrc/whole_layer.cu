@@ -173,7 +173,7 @@ __device__ __noinline__ void context_linear(const Params &p, Shared &s, cg::grid
     const int ntiles = ((m + WAM_CONTEXT_TILE_M - 1) / WAM_CONTEXT_TILE_M) * (D / 128);
     begin_stage(p, g, st);
     for (int t; (t = claim_tile(p, s, st)) < ntiles;) {
-        cutlass_gemm_tile<WAM_CONTEXT_TILE_M>(s.tile.cutlass_gemm.context, p.context,
+        cutlass_gemm_tile<WAM_CONTEXT_TILE_M, 136>(s.tile.cutlass_gemm.context, p.context,
             (const B *)p.w[wi], (const B *)p.w[wi + 1], out, m, D, D, t, false);
         finish_tile();
     }

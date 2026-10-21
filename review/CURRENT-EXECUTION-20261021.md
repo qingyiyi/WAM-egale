@@ -1,13 +1,14 @@
-# 当前执行证据（2026-10-21T17:05:55.995101+08:00）
+# 当前执行证据（2026-10-21T18:01:48.432024+08:00）
 
-**同计算体三组对照已经完成，672CTA没有比108CTA显著更快。** 固定256×128/8warp投影、同一个compiled kernel、三真实KV、两独立进程：普通672CTA/108静态/108原子同前序约615µs，原版约553µs；三调度中位数差≤0.17%，原子连清零仅增加0.17%–0.33%。独立投影仍慢11.09%–11.30%，不能把原版优势归于CTA数量/领任务。
+**投影写回开销已部分解释并改善，收益进入完整单层。** 固定计算体的NCU与控制实验：shared accumulator stride128→136使写bank conflict从2,064,384变为0；四元素搬运进一步减少耗时。最终独立投影约577µs，同期Torch约553µs，仍慢约4.07%–4.26%。不能把本次实现修复包装成新调度机制。
 
-36组投影逐位max_abs0、672tile各一次；B14整层23共有中间量+output、有效KV、输入/RNG有限核对通过。当前4warp源和DSO保持，大tile8warp完整层仍慢3.11%–5.00%。没有新NCU；独立local0/插桩整层local1456不能单独证明根因，插桩本身增加1.32%–1.40%。下一步GEMM主循环/写回对齐，再真实DAG。
+当前4warp完整单层保持108CTA/阶段同步，只修改context投影写回。两独立进程B14短/中/长KV约2.660→2.560、2.872→2.774、3.124→3.025ms，耗时减少3.77%/3.42%/3.15%。9真实签名原Torch输出max_abs0、23共有中间量/有效KV/输入/RNG严格有限门通过。原始action生产不切换，尚未实现ready-DAG，不能称完整质量/E2E已通过。
 
-- [完整结果](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021/RESULT.md)、[逐进程计时](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021/TIMING-SUMMARY.csv)、[诊断源码](../算子研究/wam_ops/optimized/csrc/projection_schedule.cu)。
-- [资源/失败](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021/RESOURCE-AND-STOP-REPORT.json)：本轮GPU61.040秒包含两计时脚本失败23.611秒；累计2134.453/36000秒。0timeout，owned已退出，GPU0释放。两失败与纠正源码保留，未伪造一次通过。
-- 旧[8warp退化证据](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/RESULT.md)和旧4warp NCU保留；不能把旧计数写作新8warp结果。
+- [完整结果](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESULT.md)、[机制与资料](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/DIAGNOSTIC-NOTES.md)、[逐进程完整层计时](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/whole-pad136/r2/SUMMARY.csv)。
+- [精确选用源与DSO](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/SELECTION.json)，当前whole_layer源`fdf883e`；本地和远端复制同一远端实测DSO。
+- [预算/失败](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/RESOURCE-AND-STOP-REPORT.json)：本轮GPU171.141秒，包含首次vec4无效差分对照30.471秒；另一次CPU编译失败0GPU。修复记录、旧失败保留。累计2305.594/36000秒，owned清理、GPU0释放。
+- [代码说明](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)、[epilogue](../算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh)。下一步剩余FFN/小投影及整层资源归因，再真实DAG。
 
-RoboTwin 17:02:19快照**45/90**完整，当前lift_pot-valid16-T，guard活跃；15组C/P初态/首两S审计通过。[巡检](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/MONITOR-20261021-170219.json)。GPU1自动接续，原24h累计及10/22 01:26:04硬截止不变，不自动重试。
+RoboTwin 17:58:29快照完整**57/90**，当前`stack_blocks_two-valid17-C`，19组初态/首两S审计通过；[巡检](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/MONITOR-20261021-175829.json)。GPU1队列继续，24h累计及10/22 01:26:04.706686硬截止不变，无自动重试。
 
-四科学权限false；LIBERO/当前DEV不是独立TEST。baseline/原tile/投机生产/保护文件不改。原始张量/权重/DSO留服务器；旧paused72与review/RESULTS.json不修改。此前派生快照保留于commit `2180fdde7b103118bbffec3dc366c7a4e93d0159`，本入口只保留当前结论及证据指针。
+四科学权限false；LIBERO/当前DEV不是独立TEST。baseline/原tile/投机生产/保护文件不动。原始张量/权重/DSO留服务器；旧paused72与review/RESULTS.json不改。前派生快照在commit `32cf69b2d2a529839d465a5fc709d89f087b4987`。

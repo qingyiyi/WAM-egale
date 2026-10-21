@@ -1,0 +1,71 @@
+{
+  "observed_at": "2026-10-21T17:56:41.793869+08:00",
+  "status": "COMPLETE_FINITE_PACKAGE",
+  "phases": [
+    {
+      "phase": "local-ncu",
+      "status": "COMPLETE",
+      "GPU_lifecycle_seconds": 22.605111598968506,
+      "CPU_build_seconds": 0,
+      "source": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/local-ncu/STATUS.json"
+    },
+    {
+      "phase": "pad136-local-ncu",
+      "status": "COMPLETE",
+      "GPU_lifecycle_seconds": 18.810840606689453,
+      "CPU_build_seconds": 0,
+      "source": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/pad136-local-ncu/STATUS.json"
+    },
+    {
+      "phase": "pad136",
+      "status": "COMPLETE_ATTEMPT",
+      "GPU_lifecycle_seconds": 30.668408393859863,
+      "CPU_build_seconds": 53.99136662483215,
+      "source": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/pad136/STATUS.json"
+    },
+    {
+      "phase": "vec4",
+      "status": "COMPLETE_ATTEMPT",
+      "GPU_lifecycle_seconds": 30.471349239349365,
+      "CPU_build_seconds": 54.13908576965332,
+      "source": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/vec4/STATUS.json"
+    },
+    {
+      "phase": "vec4/paired-r2",
+      "status": "COMPLETE_ATTEMPT",
+      "GPU_lifecycle_seconds": 30.728638410568237,
+      "CPU_build_seconds": 0,
+      "source": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/vec4/paired-r2/STATUS.json"
+    },
+    {
+      "phase": "whole-pad136",
+      "status": "FAILED_OR_PARTIAL",
+      "GPU_lifecycle_seconds": 0,
+      "CPU_build_seconds": 17.848641633987427,
+      "source": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/whole-pad136/STATUS.json"
+    },
+    {
+      "phase": "whole-pad136/r2",
+      "status": "COMPLETE_ATTEMPT",
+      "GPU_lifecycle_seconds": 37.85711145401001,
+      "CPU_build_seconds": 133.96615076065063,
+      "source": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/projection-gemm-core-20261021/whole-pad136/r2/STATUS.json"
+    }
+  ],
+  "GPU_lifecycle_seconds": 171.14145970344543,
+  "CPU_build_seconds": 259.94524478912354,
+  "prior_GPU_seconds": 2134.452698535919,
+  "cumulative_GPU_seconds": 2305.5941582393643,
+  "cumulative_cap_seconds": 36000,
+  "remaining_cumulative_seconds": 33694.405841760636,
+  "current_cap_seconds": 1800,
+  "current_deadline": "2026-10-21T19:25:53.417985+08:00",
+  "CUDA_active_seconds": "UNKNOWN",
+  "local_new_evidence_bytes": 3606594,
+  "new_storage_cap_bytes": 2147483648,
+  "invalid_control_GPU_seconds": 30.471349239349365,
+  "compile_failure_CPU_seconds": 17.848641633987427,
+  "timeouts": 0,
+  "no_automatic_continuation": true,
+  "scope": "single-layer fixtures only; four scientific permissions remain false"
+}

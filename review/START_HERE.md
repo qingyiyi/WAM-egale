@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[同计算体三调度结果与RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
+最新：[投影写回与整层结果、RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-672CTA/108静态/108原子同计算体未见显著速度差；独立投影仍比Torch慢约11%。36组有限逐位通过，当前4warp整层保持，GPU0已释放。RoboTwin 17:02完整45/90，GPU1后台继续。四权限false。以下旧TF交接是历史科学基线。
+投影shared写冲突已消除，独立投影距Torch约4%；当前4warp完整层快3.12%–3.77%，9签名有限严格门通过。选用源fdf883e，GPU0释放；RoboTwin 17:58:29完整57/90，GPU1继续。四权限false。以下旧TF交接保持历史科学基线身份。
 
 ---
 

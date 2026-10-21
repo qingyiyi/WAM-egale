@@ -28,7 +28,8 @@ template <int TM> struct CutlassTile {
         float, CutlassRow, typename Base::Policy, 3>;
     union Storage {
         typename Mma::SharedStorage mainloop;
-        float result[TM * 128];
+        // 136列物理stride错开MMA lane的shared bank；逻辑tile仍为128列。
+        float result[TM * 136];
     };
 };
 union CutlassGemmStorage {
@@ -78,31 +79,31 @@ __device__ __forceinline__ void cutlass_gemm_tile(typename CutlassTile<TM>::Stor
             mma(span / 64, acc, ai, bi, acc);
             // All compute warps finish reading the input ring before aliasing it.
             asm volatile("bar.sync 2, %0;" :: "n"(32 * Tile::kWarps) : "memory");
-            typename Mma::Operator::IteratorC store({s.result, CutlassRow(128)}, lane);
+            typename Mma::Operator::IteratorC store({s.result, CutlassRow(136)}, lane);
             store.add_tile_offset({warp % Tile::kWarpRows, warp / Tile::kWarpRows});
             store.store(acc);
         }
         __syncthreads();
-        // All warps cooperate after MMA completes. Pair stores preserve each
-        // element's original FP32 add order and final BF16 rounding.
-        for (int i = 2 * int(threadIdx.x); i < TM * 128; i += 2 * int(blockDim.x)) {
+        // 四元素向量仅减少搬运指令；FP32加法及BF16舍入仍逐元素保持。
+        struct alignas(8) B4 { __nv_bfloat162 lo, hi; };
+        for (int i = 4 * int(threadIdx.x); i < TM * 128; i += 4 * int(blockDim.x)) {
             const int r = rm + i / 128, c = cn + i % 128;
             if (r < m && c < n) {
-                float2 z = *reinterpret_cast<const float2 *>(s.result + i);
+                float4 z = *reinterpret_cast<const float4 *>(s.result + (i / 128) * 136 + i % 128);
                 if (partition == splits - 1) {
-                    const float2 b =
-                        __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(bias + c));
-                    z.x = __fadd_rn(z.x, b.x);
-                    z.y = __fadd_rn(z.y, b.y);
+                    B4 b = *reinterpret_cast<const B4 *>(bias + c);
+                    float2 lo = __bfloat1622float2(b.lo), hi = __bfloat1622float2(b.hi);
+                    z.x = __fadd_rn(z.x, lo.x); z.y = __fadd_rn(z.y, lo.y);
+                    z.z = __fadd_rn(z.z, hi.x); z.w = __fadd_rn(z.w, hi.y);
                 }
                 if (partition > 0) {
-                    const float2 prev = __bfloat1622float2(
-                        *reinterpret_cast<const __nv_bfloat162 *>(out + r * n + c));
-                    z.x = __fadd_rn(z.x, prev.x);
-                    z.y = __fadd_rn(z.y, prev.y);
+                    B4 p = *reinterpret_cast<const B4 *>(out + r * n + c);
+                    float2 lo = __bfloat1622float2(p.lo), hi = __bfloat1622float2(p.hi);
+                    z.x = __fadd_rn(z.x, lo.x); z.y = __fadd_rn(z.y, lo.y);
+                    z.z = __fadd_rn(z.z, hi.x); z.w = __fadd_rn(z.w, hi.y);
                 }
-                *reinterpret_cast<__nv_bfloat162 *>(out + r * n + c) =
-                    __floats2bfloat162_rn(z.x, z.y);
+                *reinterpret_cast<B4 *>(out + r * n + c) = {
+                    __floats2bfloat162_rn(z.x, z.y), __floats2bfloat162_rn(z.z, z.w)};
             }
         }
         __syncthreads();
