@@ -1,0 +1,54 @@
+{
+  "goal": "FFN2相同BF16分段边界，独立M128两段K并行诊断；不改整层/跨阶段调度",
+  "authorization": "用户2026-10-21明确先尝试对齐两个地方",
+  "deadline": "2026-10-21T09:25:00+08:00",
+  "GPU": "remote GPU0",
+  "CPU": 2,
+  "storage_cap_bytes": 268435456,
+  "gpu_lifecycle_cap_seconds": 360,
+  "block_calls_cap": 12,
+  "stage_calls_cap": 6000,
+  "baseline": "literal Torch, aligned native, existing persistent stage, bare own math",
+  "production_changes": false,
+  "prior_gpu_seconds": 1285.849,
+  "cumulative_cap_seconds": 36000,
+  "terminal_status": "REGISTERED",
+  "cleanup": "guard PID+birth matched child, bounded deadline; no other processes",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/ffn2-parallel/build.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/ffn2-parallel",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/ffn2-parallel/build"
+      ],
+      600,
+      false
+    ],
+    [
+      "process1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/ffn2-parallel/worker.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "process2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/ffn2-parallel/worker.py",
+        "2"
+      ],
+      180,
+      true
+    ]
+  ],
+  "full_block_calls_cap": 12
+}

@@ -5,65 +5,48 @@ plan: PLAN.md
 current: M39
 next: M39
 status: active
-updated: '2026-10-21T02:34:36.439687+08:00'
+updated: '2026-10-21T09:13:44.589629+08:00'
 ---
 # 当前研究进度
 
 | ID | 阶段 | 状态 | 结果/证据 | 下一步 |
 |---|---|---|---|---|
 | `M17` | LIBERO | in_progress | 6000局齐，科学审计未放行 | 保留曝光/首两S/长尾缺口 |
-| `M39` | 单层对齐 | in_progress | 本轮有限精度通过；性能未对齐，归因报告齐 | 原语优先，不启动ready |
-| `M40` | RoboTwin | in_progress | Target48齐、parent17/18齐，GPU已退出 | 缺一FIT补跑待答复 |
+| `M39` | 单层对齐 | in_progress | vec4整层改善2.7%–3.1%；FFN2独立接近Torch，整层并行撤回 | 先查整层资源条件，不ready |
+| `M40` | RoboTwin | in_progress | Target48、parent18及CHILD/CONT训练/固定接口CAL齐 | 新窗口接CURRENT18→ON→DEV |
 
 ## M39
 
-用户要求先对齐再调度，不能用新调度掩盖原语差距。活动源码为RMS向量搬运后的顺序版；
-既有ready试验仅保留历史，当前逐阶段grid.sync。仅optimized简易单层，baseline/原tile不改。
+[最新完整证据](../../experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md)。
+真实Torch GELU为vec4 kernel；native代理是标量索引并行kernel。剥离队列和统一资源后，
+自有vec4 GELU约比Torch慢4%–6%，调制表更快但包含cast+add融合收益。
+固定108 CTA的无队列标量版仍慢，不能归因全是同步。
 
-九真实签名（B2 action/B14 action/B2 video×短中长）输出、23共享中间量、18有效KV转移、
-输入/RNG/重复有限逐位误差0。恢复源码后阶段复核也通过，不外推任意输入或机器人。
+FFN2去中间全局写回收益小且不稳定；M128串行更慢，M128两K分段并行的独立版本比Torch慢约4%–6%，
+全部真实三KV/两进程有限逐位通过。但嵌入整层无稳定收益、短KV慢2%–4%，已撤回。
+保留该负结果；不能声称FFN2整层对齐或动态spill已证实。当前仅保留table/GELU vec4，原FFN2串行与逐阶段grid.sync。
 
-两进程B14完整层：短native2.6307/2.1263ms，自有3.8656/3.3265ms（1.469/1.564倍）；
-中native2.4064/2.3986、自有3.5627/3.5607（1.481/1.485倍）；
-长native2.8402/2.8391、自有3.8112/3.8151（1.342/1.344倍）。
-保留全部轮次及1095→1410MHz状态变化；不是最强cached/Graph、30层、chunk或E2E。
+当前B14完整层短/中/长约native的1.422/1.439/1.301–1.304倍；同轮较本次前改善2.7%–3.1%。
+边界为uncached/eager单层；不是最强cached/Graph、30层、chunk或E2E。全部轮次和频率变化保留。
+两个集成版本各通过9真实签名、23共享中间量、18有效KV状态、输入/RNG/重复有限逐位；最终已恢复较快vec4源与二进制。
+108CTA、256线程、255reg、98848B shared、1CTA/SM；新FFN2整层local从1464增至1488B，仅静态相关，动态counter未知。
 
-[最新版阶段与原因](../../experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESULT.md)：中KV独立阶段cross K/V约1.06、cross attention1.11、
-FFN1 1.21、FFN2 1.41、cross-K RMS1.65、table2.58、GELU3.40倍native。
-self attention阶段约0.78倍，但原生含历史pack，不能称纯FA2核心加速。
-B仍含cooperative队列/同步/98848B shared预留，不是纯算术成本。
-C−B还包含不同编译资源/cache历史，不能当纯barrier。
-同SM周期辅助记录表明中KV关键B/C约1.40GHz，不能仅以频率解释其差距。
-
-整层256线程、255寄存器、98848B shared，1CTA/SM、108CTA。
-RMS直接向量搬运保留（完整层改善1.1%–1.7%）。
-N256、point8192、强制内联、compact B14均撤回；compact虽2CTA/SM但整层慢2%–10%，
-其中FFN2和小投影退化、attention改善。不是已证明单kernel无法对齐；动态NCU/spill流量未知。
-全部源码/证据已本地汇总；远端/本地关键源摘要一致。
-
-本轮5970/6100 block、13572/14000 stage；GPU worker生命周期619.984秒，
-CPU编译/准备3980.981秒；CUDA active未知。M39累计约1285.849秒/10小时。
-全部登记子进程退出，两卡终态无GPU计算进程。[资源与失败](../../experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESOURCE-AND-STOP.md)。
+本轮GPU生命周期118.096秒、CPU构建368.961秒，M39累计约1403.945/36000秒。
+全部owned进程退出，当前两GPU无计算进程。baseline、原tile、LIBERO投机不修改。
 
 ## M40
 
-Target48终态41成功7自然失败，PARENT2000与一次CAL齐。parent剩余17现13成功4自然失败，
-259policy chunks、12852teacher尝试/返回；只是采集，不是DEV质量比较。
-原place_object_basket/valid08为0动作接口错误PARTIAL；修复后r3八完整policy有限门通过，
-补跑仍待用户答复。固定18 CPU审计仅FIT11/12（5494行）、CAL6/6（3078行），不出完整训练包。
-后继CHILD/CONT/ON、current18、三臂DEV90未启动；不改固定分区、不自动重试。
+[晨间结果](../../experiments/robotwin-pilot-20261020/MORNING-RESULT-20261021.md)。
+valid08用户批准新60分钟窗口，完整运行自然失败并清理；原0动作PARTIAL不改。
+PARENT18现13成功5自然失败，FIT12/6269行、CAL6/3078行审计齐；不是配对DEV。
+CHILD2500/CONT3000各500 updates完成，首次训练解析语法失败0更新留档，修复r2完成。
+两个权重各10771已有CAL query的GPU adapter/decode BF16逐位通过；tau/normalizer不变，不等于teacher路径或闭环质量。
+CURRENT18/ON3000/DEV90未启动；原09:30截止不足整局+清理预留，新单局窗口不延长其他工作。
+累计5.7624/24 GPU生命周期小时。108完整text bank沿用；RoboTwin完整episode等价仍未另测。
 
-17局按原03:55截止前结束，owned清理为空；累计GPU生命周期5.6191/24小时。
-原失败、22缺收据和未知计数不补造。108完整512-token BF16 bank启用，
-RoboTwin完整episode bank等价未测。[结果与原件](../../experiments/robotwin-pilot-20261020/OVERNIGHT-RESULT-20261021.md)。
-
-## 共同边界与下一步
+## 共同边界
 
 LIBERO T/C/P各500：Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499。
-不是独立TEST；旧A_off、paused72、retention及FAILED不变。
-engineering_quality_screen、independent_test_complete、noninferiority_established、
-formal_performance_permission均false。
-
-下一步先GELU/table与FFN2阶段对齐，未启动新作业；RoboTwin固定FIT缺口待答复。
-GitHub只推main核验源码/HW/小证据。10/22 go-no-go、10/23冻结、10/28主表、11/01 18:00证据包。
-此前记录见[历史](history/alignment-rms-20261021/PROGRESS.md)。
+不是独立TEST；paused72、旧默认A_off、retention/FAILED及四质量/性能权限false不变。
+下一步先FFN2整层条件归因；RoboTwin下一窗口接已登记链。GitHub只main小证据，不含权重/原始PT/凭据。
+10/22 go-no-go，10/23冻结，10/28主表，11/01 18:00证据包。旧结果见[历史](history/pointwise-isolation-20261021/PROGRESS.md)。

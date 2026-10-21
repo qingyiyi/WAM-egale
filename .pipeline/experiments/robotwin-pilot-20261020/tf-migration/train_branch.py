@@ -27,7 +27,7 @@ deadline = min(started + 1800, datetime.datetime.fromisoformat(plan["deadline"])
 report = dict(status="PREPARING_FIXED_BRANCH", updates_completed=0, log=[],
     robot_quality_validated=False, formal_performance_permission=False,
     owned=dict(pid=os.getpid(), pgid=os.getpgid(0),
-        birth_ticks=int(Path("/proc/self/stat").read_text().rsplit(")", 1)[1].split()[19]))
+        birth_ticks=int(Path("/proc/self/stat").read_text().rsplit(")", 1)[1].split()[19])))
 
 
 def save():

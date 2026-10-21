@@ -1,0 +1,53 @@
+{
+  "goal": "真实B14三KV输入逐元素独立体与FFN2写回/tile有限对齐；不做ready调度",
+  "authorization": "用户2026-10-21明确先尝试对齐两个地方",
+  "deadline": "2026-10-21T09:25:00+08:00",
+  "GPU": "remote GPU0",
+  "CPU": 2,
+  "storage_cap_bytes": 268435456,
+  "gpu_lifecycle_cap_seconds": 600,
+  "block_calls_cap": 12,
+  "stage_calls_cap": 15000,
+  "baseline": "literal Torch, aligned native, existing persistent stage, bare own math",
+  "production_changes": false,
+  "prior_gpu_seconds": 1285.849,
+  "cumulative_cap_seconds": 36000,
+  "terminal_status": "REGISTERED",
+  "cleanup": "guard PID+birth matched child, bounded deadline; no other processes",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/build.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/build"
+      ],
+      600,
+      false
+    ],
+    [
+      "process1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/worker.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "process2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/worker.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ]
+}

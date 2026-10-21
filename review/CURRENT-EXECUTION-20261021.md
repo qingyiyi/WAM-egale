@@ -1,38 +1,36 @@
-# 10/21：先对齐，不先做调度
+# 10/21晨间：先对齐逐元素和FFN2
 
-固定本文件所在commit审阅；历史paused72结果保持原身份，不能用本页覆盖原失败或四项false。
+固定本文件所在commit审阅；历史paused72与四项false不变。
 
-当前简易整层persistent已恢复较快顺序版，仍逐阶段grid.sync，没有新增ready调度。
-九真实签名输出、23中间量、18有效KV转移、输入/RNG有限逐位误差0；完整B14层尚未速度对齐：
-短/中/长分别约native的1.47–1.56/1.48/1.34倍。计uncached/eager单层，不是strong cached/Graph、30层、chunk或机器人E2E。
+当前活动源码只保留table/GELU四元素搬运改进：完整B14单层两进程均改善2.7%–3.1%，
+相对已对齐native的短/中/长仍约慢42%/44%/30%，尚未整体速度对齐。
+九真实签名、23共享中间量、18有效KV状态与输入/RNG/重复有限逐位通过。不是任意输入证明或闭环准入。
 
-[完整两进程数据/最新阶段/原因](../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESULT.md) /
-[源身份与状态JSON](CURRENT-EXECUTION-20261021.json) /
-[资源和全部失败](../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESOURCE-AND-STOP.md)。
+真实Torch GELU是vec4 kernel；此前native代理是标量索引并行kernel。真实调制表包含cast+add两个kernel。
+剥离后自有vec4 GELU约比Torch慢4%–6%；固定108 CTA的无队列标量版仍明显慢，不能把全部差距归因同步。
+FFN2去中间全局写回没有稳定大收益；M128串行更慢，M128两段K并行的独立版本约比Torch慢4%–6%。
+但后者放回整层无稳定收益、短KV慢2%–4%，已撤回，原始源/结果保留。当前活动FFN2仍原M64串行分段。
+静态local变化不是动态spill根因证明；NCU计数未知，没有新增跨阶段ready调度。
 
-主要已知：独立阶段FFN2约1.41、GELU3.40、table2.58倍；统一kernel256线程/255reg/98848B shared/1CTA每SM。
-独立阶段仍保留cooperative队列、同步和统一shared预留，因此不是纯算术实验。
-compact双驻留方案虽然attention改善，小投影/FFN2退化，完整层慢2%–10%，已撤回。
-N256/point8192/强制内联也未选；RMS向量搬运稳定改善1.1%–1.7%已选。
-C−B不能当纯barrier，动态spill/HBM/L2/occupancy未知。没有证明单kernel理论上无法对齐。
+[算子完整报告](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md) /
+[所有独立算子数据](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/ISOLATED-STAGES.csv) /
+[完整层所有轮次](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/FULL-LAYER.csv) /
+[资源与止损](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESOURCE-AND-STOP.md)。
 
-代码从[whole_layer.py](../算子研究/wam_ops/optimized/whole_layer.py)、
-[整层顺序](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、
-[GEMM](../算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh)、
-[FA2](../算子研究/wam_ops/optimized/csrc/fa2_stage.cuh)、
-[代码说明](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)读起。
+代码：[whole_layer.cu的Point4/point](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、
+[活动GEMM](../算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh)、
+[独立FFN2并行诊断](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/ffn2-parallel/isolated_cutlass.cuh)、
+[整层未选试验](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/full-ffn2-parallel/tested-source/csrc/whole_layer.cu)。
+后两者不是活动生产入口。
 
-RoboTwin：Target48采集41成功7失败；PARENT2000完成；parent采集17/18齐、13成功4自然失败，
-固定FIT11/12、CAL6/6。原valid08在0动作接口错误PARTIAL，修复后加强policy门通过；
-补跑待用户答复，未自动重试，后继训练/current18/DEV90未启动。
-[RoboTwin结果](../.pipeline/experiments/robotwin-pilot-20261020/OVERNIGHT-RESULT-20261021.md)。
-两卡最新终态均无GPU计算进程，科学研究仍未完成。
+RoboTwin：Target48采集41成功7失败；固定parent18补齐，13成功5自然失败，FIT12/6269行与CAL6/3078行。
+两组不是相同初态，不能直接比较成功率。原0动作PARTIAL、补采自然失败和训练解析错误0更新均保留。
+修复后CHILD2500/CONT3000各500更新完成，每个权重10771已有CAL query的GPU adapter/decode逐位通过，
+tau固定不调；B2/B14 teacher与闭环质量尚未因此通过。CURRENT18、ON3000、DEV90未启动，下一窗口接续。
+[RoboTwin晨报](../.pipeline/experiments/robotwin-pilot-20261020/MORNING-RESULT-20261021.md)。两GPU已无本轮计算进程。
 
-网页版审阅请求：请依据本commit的源代码和同输入A/B/C测量，先判断剩余性能差距。
-优先检查GELU/table向量化、FFN2分段BF16 epilogue、独立stage的统一shared预留和整层资源约束。
-每条建议写清源码依据、预计影响哪个实测阶段、最小可证伪实验，以及能否保持原BF16逐位契约；
-不要跳到跨阶段ready调度，不把普通batch/cache、调用减少或静态occupancy当新贡献/实测E2E。
-保留UNKNOWN，不建议放宽门限制造PASS。
+网页审阅请求：先解释独立FFN2接近Torch而嵌入整层没有收益的原因。区分静态资源、动态访存、同步和编译影响；
+给最小可证伪实验，不能把未测spill、barrier或E2E写成结论。先对齐原语，不跳到跨阶段ready。
 
-四权限全部false，旧默认/retention/FAILED不改；baseline、LIBERO投机与原tile没有修改。
-公开仓库不含原始PT/KV/权重/DSO，不能声称仅凭此仓库独立重算了全部tensor。
+四科学权限false；baseline、原tile、LIBERO生产与旧retention/FAILED不变。
+公开快照不含权重、原始PT/KV或DSO，不可据此声称独立重算全部真实张量。

@@ -1,5 +1,7 @@
 # 长期记忆索引
 
+- [补跑RoboTwin parent valid08及新窗口](global/requirements/decision-允许补跑RoboTwin-parent-valid08并新增六十分钟窗口.md)（constraint，仅M40此局）：保留原PARTIAL；新Attempt最多60分钟、最晚10/21 10:00清理，原累计预算不增加。
+
 - [两线夜间接续至上午收口](global/requirements/decision-两线夜间接续至十月二十一日上午收口.md)（constraint，M39/M40）：10/21 09:30–10:00汇报；先原语性能再调度，迁移按既定数据链；旧截止/预算保留。
 
 - [算子累计预算十小时](global/requirements/decision-算子累计预算十小时.md)（constraint，M39）：旧使用计入，RoboTwin预算与截止不变。

@@ -425,6 +425,8 @@ __device__ void layout(const Params &p, Shared &s) {
     p.info[0] = n;
 }
 
+struct alignas(8) Point4 { B value[4]; };
+
 __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Point op, int dst,
                       int a, int b, int param, int64_t count) {
     // 一个任务覆盖2048元素；逐元素没有跨线程归约，8个warp共同搬运/计算。
@@ -433,7 +435,32 @@ __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Poi
     int tiles = (count + tile_elements - 1) / tile_elements;
     begin_stage(p, g, st);
     for (int task; (task = claim_tile(p, s, st)) < tiles;) {
-        for (int j = threadIdx.x; j < tile_elements; j += THREADS) {
+        // 每线程搬四个相邻BF16；保留原FP32算式。队列、tile和阶段同步不变。
+        if (op == GELU || (op == TABLE && !p.temb_float && p.l == p.q)) {
+            for (int j = 4 * int(threadIdx.x); j < tile_elements; j += 4 * THREADS) {
+                int64_t i = int64_t(task) * tile_elements + j;
+                if (i < count) {
+                    const B *input = op == GELU ? bp(p, a) : (const B *)p.temb;
+                    Point4 v = *reinterpret_cast<const Point4 *>(input + i);
+                    if (op == TABLE) {
+                        float4 w = *reinterpret_cast<const float4 *>((const float *)p.w[0] + i % (6 * D));
+                        float *out = &w.x;
+#pragma unroll
+                        for (int c = 0; c < 4; ++c) out[c] = __fadd_rn(out[c], value(v.value[c]));
+                        *reinterpret_cast<float4 *>(fp(p, dst) + i) = w;
+                    } else {
+#pragma unroll
+                        for (int c = 0; c < 4; ++c) {
+                            float x = value(v.value[c]);
+                            constexpr float beta = M_SQRT2 * M_2_SQRTPI * float(.5), kappa = .044715;
+                            float cube = x * x * x, inner = beta * (x + kappa * cube);
+                            v.value[c] = bf(.5f * x * (1.f + c10::cuda::compat::tanh(inner)));
+                        }
+                        *reinterpret_cast<Point4 *>(bp(p, dst) + i) = v;
+                    }
+                }
+            }
+        } else for (int j = threadIdx.x; j < tile_elements; j += THREADS) {
                 int64_t i = int64_t(task) * tile_elements + j;
                 float z = 0.f;
                 if (i < count) {

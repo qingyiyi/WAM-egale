@@ -1,12 +1,10 @@
 # 当前入口
 
-最新：[10/21先对齐结果与网页审阅请求](CURRENT-EXECUTION-20261021.md)、
-[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW](../.pipeline/PROGRESS.compact.md)。
+最新：[10/21逐元素与FFN2对齐结果](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW](../.pipeline/PROGRESS.compact.md)。
 
-当前单层有限精度逐位通过，B14完整层仍慢约34%–56%，尚未速度对齐。
-较快顺序版已恢复，新增调度暂停；完整阶段矩阵、时钟辅助记录与负结果齐。
-RoboTwin parent17/18齐，缺固定FIT一局补跑待答复，后继训练未启动。两卡最新均无GPU任务。
-下方paused72只作历史；四项false和旧失败不改。
+保留vec4整层约3%收益；独立FFN2接近Torch，但整层并行无稳定收益而撤回。
+当前完整层仍慢30%–44%，精度仅有限逐位通过。RoboTwin parent18/CHILD/CONT/固定接口CAL齐，后继闭环待新窗口。
+当前两GPU无计算进程。旧paused72与四项false保留。
 
 ---
 

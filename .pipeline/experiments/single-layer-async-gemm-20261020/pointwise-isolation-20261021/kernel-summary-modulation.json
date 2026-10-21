@@ -1,0 +1,82 @@
+[
+  {
+    "name": "void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, at::native::memory::LoadWithCast<1>, at::native::memory::StoreWithCast<1> >(int, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, at::native::memory::LoadWithCast<1>, at::native::memory::StoreWithCast<1>)",
+    "us": 25.056,
+    "args": {
+      "External id": 7,
+      "queued": 0,
+      "device": 0,
+      "context": 1,
+      "stream": 13,
+      "correlation": 13,
+      "registers per thread": 29,
+      "shared memory": 0,
+      "blocks per SM": 74.666664,
+      "warps per SM": 298.666656,
+      "grid": [
+        8064,
+        1,
+        1
+      ],
+      "block": [
+        128,
+        1,
+        1
+      ],
+      "est. achieved occupancy %": 100
+    }
+  },
+  {
+    "name": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1})",
+    "us": 22.369,
+    "args": {
+      "External id": 8,
+      "queued": 0,
+      "device": 0,
+      "context": 1,
+      "stream": 13,
+      "correlation": 24,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 149.333328,
+      "warps per SM": 597.333313,
+      "grid": [
+        16128,
+        1,
+        1
+      ],
+      "block": [
+        128,
+        1,
+        1
+      ],
+      "est. achieved occupancy %": 100
+    }
+  },
+  {
+    "name": "void wam_block::table_kernel<c10::BFloat16, float>(c10::BFloat16 const*, float const*, float*, long, int, int, int)",
+    "us": 33.953,
+    "args": {
+      "queued": 0,
+      "device": 0,
+      "context": 1,
+      "stream": 13,
+      "correlation": 36,
+      "registers per thread": 28,
+      "shared memory": 0,
+      "blocks per SM": 149.333328,
+      "warps per SM": 1194.666626,
+      "grid": [
+        16128,
+        1,
+        1
+      ],
+      "block": [
+        256,
+        1,
+        1
+      ],
+      "est. achieved occupancy %": 100
+    }
+  }
+]

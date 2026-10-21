@@ -1,30 +1,49 @@
-# WAM 当前短状态
+# 项目短状态
 
-更新2026-10-21T02:34:36.439687+08:00。按[策略](CONTEXT-POLICY.md)与[约束索引](memory/INDEX.md)读取当前Cycle，
-不全量sync旧HW。[PLAN](cycles/wam-research-20261016/PLAN.md) /
-[完整当前进度](cycles/wam-research-20261016/PROGRESS.md) /
-[EXECUTION](cycles/wam-research-20261016/EXECUTION.md)。
+更新：2026-10-21T09:13:44.589629+08:00。
 
-- 用户主线：先单层原语/性能对齐，再调度；不能用异步潜在收益掩盖差距。
-- M39：活动源码为RMS向量搬运后顺序简易版。九签名/23中间量/18有效KV转移/输入/RNG有限逐位误差0；
-  B14短/中/长完整层仍为native的1.47–1.56/1.48/1.34倍，未速度对齐。
-  [三KV阶段、全部两进程原值与原因](experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESULT.md)。
-- 独立stage仍含整层shared/队列，不等于纯算术；C−B不是纯barrier。
-  原语差距、统一资源瓶颈有证据，动态spill/HBM/L2/occupancy未知。
-  compact2CTA/SM变慢2%–10%已撤回，N256/point8192/强制内联负结果保留；无新ready。
-- GPU：最新两卡均无计算进程，owned子进程清理完成；不是研究全部完成。
-  本夜5970/6100 block、13572/14000 stage，GPU worker生命周期620.0秒；
-  M39累计约1285.8秒/10小时。CPU构建单列，CUDA active未知。
-- M40：Target48（41成功7自然失败）、PARENT2000/CAL齐；parent17/18（13成功4失败）齐。
-  固定FIT11/12、CAL6/6；缺valid08原PARTIAL补跑待答复，不重试、不缩减分区。
-  后继训练/current18/DEV90未启动。[原件与结论](experiments/robotwin-pilot-20261020/OVERNIGHT-RESULT-20261021.md)。
-  GPU累计5.619/24小时；旧截止/失败保留。
-- LIBERO6000局齐，T/C/P各500：Long483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499。
-  曝光/首两S审计/长尾缺口保留，不叫独立TEST。
-- engineering_quality_screen=false；independent_test_complete=false；
-  noninferiority_established=false；formal_performance_permission=false。
-  旧A_off默认、paused72、MLP0、22缺收据、FAILED/retention不变。
-- baseline/原tile/LIBERO投机与state/cycle/rules保护。BAAI只~/cxz，AutoDL已归还；
-  不改驱动/服务/时钟、不杀他人；GitHub仅main。
-- 下一步仍先GELU/table及FFN2阶段对齐；RoboTwin补跑待此前答复。
-  10/22 go-no-go，10/23冻结，10/28主表，11/01 18:00中文证据包。
+# 当前研究进度
+
+| ID | 阶段 | 状态 | 结果/证据 | 下一步 |
+|---|---|---|---|---|
+| `M17` | LIBERO | in_progress | 6000局齐，科学审计未放行 | 保留曝光/首两S/长尾缺口 |
+| `M39` | 单层对齐 | in_progress | vec4整层改善2.7%–3.1%；FFN2独立接近Torch，整层并行撤回 | 先查整层资源条件，不ready |
+| `M40` | RoboTwin | in_progress | Target48、parent18及CHILD/CONT训练/固定接口CAL齐 | 新窗口接CURRENT18→ON→DEV |
+
+## M39
+
+[最新完整证据](experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md)。
+真实Torch GELU为vec4 kernel；native代理是标量索引并行kernel。剥离队列和统一资源后，
+自有vec4 GELU约比Torch慢4%–6%，调制表更快但包含cast+add融合收益。
+固定108 CTA的无队列标量版仍慢，不能归因全是同步。
+
+FFN2去中间全局写回收益小且不稳定；M128串行更慢，M128两K分段并行的独立版本比Torch慢约4%–6%，
+全部真实三KV/两进程有限逐位通过。但嵌入整层无稳定收益、短KV慢2%–4%，已撤回。
+保留该负结果；不能声称FFN2整层对齐或动态spill已证实。当前仅保留table/GELU vec4，原FFN2串行与逐阶段grid.sync。
+
+当前B14完整层短/中/长约native的1.422/1.439/1.301–1.304倍；同轮较本次前改善2.7%–3.1%。
+边界为uncached/eager单层；不是最强cached/Graph、30层、chunk或E2E。全部轮次和频率变化保留。
+两个集成版本各通过9真实签名、23共享中间量、18有效KV状态、输入/RNG/重复有限逐位；最终已恢复较快vec4源与二进制。
+108CTA、256线程、255reg、98848B shared、1CTA/SM；新FFN2整层local从1464增至1488B，仅静态相关，动态counter未知。
+
+本轮GPU生命周期118.096秒、CPU构建368.961秒，M39累计约1403.945/36000秒。
+全部owned进程退出，当前两GPU无计算进程。baseline、原tile、LIBERO投机不修改。
+
+## M40
+
+[晨间结果](experiments/robotwin-pilot-20261020/MORNING-RESULT-20261021.md)。
+valid08用户批准新60分钟窗口，完整运行自然失败并清理；原0动作PARTIAL不改。
+PARENT18现13成功5自然失败，FIT12/6269行、CAL6/3078行审计齐；不是配对DEV。
+CHILD2500/CONT3000各500 updates完成，首次训练解析语法失败0更新留档，修复r2完成。
+两个权重各10771已有CAL query的GPU adapter/decode BF16逐位通过；tau/normalizer不变，不等于teacher路径或闭环质量。
+CURRENT18/ON3000/DEV90未启动；原09:30截止不足整局+清理预留，新单局窗口不延长其他工作。
+累计5.7624/24 GPU生命周期小时。108完整text bank沿用；RoboTwin完整episode等价仍未另测。
+
+## 共同边界
+
+LIBERO T/C/P各500：Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499。
+不是独立TEST；paused72、旧默认A_off、retention/FAILED及四质量/性能权限false不变。
+下一步先FFN2整层条件归因；RoboTwin下一窗口接已登记链。GitHub只main小证据，不含权重/原始PT/凭据。
+10/22 go-no-go，10/23冻结，10/28主表，11/01 18:00证据包。旧结果见[历史](cycles/wam-research-20261016/history/pointwise-isolation-20261021/PROGRESS.md)。
+
+完整计划/执行见[Cycle](cycles/wam-research-20261016/PLAN.md)。

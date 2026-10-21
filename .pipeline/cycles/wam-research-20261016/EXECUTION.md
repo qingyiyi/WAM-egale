@@ -1,11 +1,9 @@
 # 当前执行检查点
 
-## 2026-10-21T02:34:36.439687+08:00 M39 / M40
+## 2026-10-21T09:13:44.589629+08:00 M39 / M40
 
-- 目的：先对齐再调度，交付可追溯差距理由；既定RoboTwin采集按原协议完成。
-- M39：RMS向量搬运入选；point8192/内联/compact B14负结果撤回。最终三KV阶段矩阵及辅助时钟齐，
-  恢复较快源码/重新构建/有限复核通过。仍慢1.34–1.56倍，未宣称速度对齐。
-- M40：其余17采集终态齐，固定18仅缺原valid08；CPU审计明确PARTIAL，不训练。
-- 清理：两卡无GPU计算进程，登记owned子进程退出。全部失败/预算保留，动态counter未知。
-- 下一步：阶段原语仍优先，暂不ready；补跑请求待答复。同步main源码/HW/小证据。
-- 旧检查点：[归档](history/alignment-rms-20261021/EXECUTION.md)。
+- M39：真实输入剥离并核实Torch实际kernel。vec4入选；并行K的FFN2独立约慢4%–6%，整层不受益而撤回。全部数据/源与PID清理收据已归档。
+- M40：获准新窗口的valid08自然失败，parent18齐并审计；固定CHILD/CONT训练和每权重10771 query接口CAL完成。保留原PARTIAL、语法失败0更新和全部自然失败。
+- 原budget和deadline不重置。当前两GPU无计算进程；未开新episode，不截短任务。
+- 下一步：整层FFN2条件归因；新窗口接CURRENT18。科学权限仍false。
+- [报告](../../experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md) / [历史](history/pointwise-isolation-20261021/EXECUTION.md)。

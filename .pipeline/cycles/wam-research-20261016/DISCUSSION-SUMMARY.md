@@ -1,15 +1,12 @@
 # 当前讨论与授权
 
-用户要求先对齐再调度；无法对齐必须给合理、可追溯理由。当前九签名有限逐位通过，
-完整层仍慢1.34–1.56倍；原语及统一资源配置均有证据，动态spill/纯barrier占比UNKNOWN。
-当前顺序版已恢复；新增ready暂停。只维护optimized简易单层，baseline/原tile/LIBERO投机不改。
+用户最新要求先尝试对齐逐元素和FFN2，再结合远端结果汇报；先对齐再调度，失败必须给可追溯原因。
+真实Torch不是native代理。独立体能对齐不能推出只差同步：固定CTA数、shared/寄存器、编译与cache都须区分。
+仅优化简易单层optimized，baseline/原tile/LIBERO不改。
 
-夜间授权至10/21 09:30–10:00，M39累计10GPU小时、本夜3小时，M40累计24小时/174局。
-最新有限作业已终态并清理，不能把剩余预算解释为无限搜索或第二环境新方向。
+本轮已完成：vec4有完整层收益，FFN2独立接近Torch但整层无稳定收益，后者撤回。非数值失败，也未证明单kernel理论上不能对齐。
+RoboTwin新60分钟窗口只覆盖valid08，已完整终态并清理；原24h总预算不增。parent18/CHILD/CONT/固定接口CAL齐，
+后继CURRENT18需原09:30截止之外的新窗口，不能借单局许可延长全部链。所有自然失败和旧记录保留。
 
-RoboTwin Target48/PARENT2000齐、parent17/18齐。原valid08失败已修复，
-但无自动重试协议仍适用；此前补跑请求待用户答复，固定FIT不缩减、不冒称训练包完整。
-后继训练/current18/DEV90未启动。所有自然失败保留，采集成功数不是配对DEV结论。
-
-四科学权限false，旧retention/FAILED/paused72与default不变。BAAI全部写入限~/cxz；
-不改驱动/服务/时钟，不杀他人。GitHub仅main同步核验源码/HW/小证据，禁止权重或凭据外传。
+M39累计10h、M40累计24h约束仍在；余量不是无边界搜索授权。四项false、retention、原FAILED、默认A_off不变。
+HW Maintain已保存用户优先级和单局窗口；不把本轮诊断假设当长期科学结论。GitHub仅main核对源与小证据，不上传权重/凭据。

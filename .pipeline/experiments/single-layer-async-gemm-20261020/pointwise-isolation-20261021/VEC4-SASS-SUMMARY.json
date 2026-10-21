@@ -1,0 +1,14 @@
+{
+  "tool": "/usr/local/cuda/bin/cuobjdump",
+  "binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/wam_isolate_cuda.cpython-312-x86_64-linux-gnu.so",
+  "returncode": 0,
+  "function": "vector_point",
+  "global_load_store_instructions": [
+    "/*0150*/                   LDG.E.64 R10, [R2.64] ;                                           /* 0x00000006020a7981 */",
+    "/*0170*/                   LDG.E.128 R4, [R8.64] ;                                           /* 0x0000000608047981 */",
+    "/*0230*/                   STG.E.128 [R10.64], R4 ;                                          /* 0x000000040a007986 */",
+    "/*0290*/                   LDG.E.64 R2, [R2.64] ;                                            /* 0x0000000602027981 */",
+    "/*0a50*/                   STG.E.64 [R4.64], R2 ;                                            /* 0x0000000204007986 */"
+  ],
+  "first_missing_private_tool_probe_preserved": true
+}

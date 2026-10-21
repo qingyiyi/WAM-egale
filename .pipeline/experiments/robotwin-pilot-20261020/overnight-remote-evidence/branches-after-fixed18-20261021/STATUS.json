@@ -1,0 +1,33 @@
+{
+  "status": "FAILED_OR_BLOCKED_DOWNSTREAM",
+  "start": 1792544144.8374271,
+  "jobs": [
+    {
+      "name": "CHILD2500",
+      "owned": {
+        "pid": 734253,
+        "birth_ticks": 714260344,
+        "pgid": 734253
+      },
+      "start": 1792544144.8812778,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792544144.896773,
+      "lifecycle_seconds": 0.01549530029296875,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "GPU_lifecycle_seconds": 0.01549530029296875,
+  "downstream_robot_started": false,
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "error": "RuntimeError('CHILD2500 failed; no automatic retry')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/robotwin/runs/branches-after-fixed18-20261021/guard.py\", line 47, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed; no automatic retry')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: CHILD2500 failed; no automatic retry\n",
+  "end": 1792544144.9025636,
+  "wall_seconds": 0.06513690948486328
+}

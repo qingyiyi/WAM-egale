@@ -1,0 +1,52 @@
+{
+  "goal": "把逐位通过的FFN2并行K分段放回完整单层，仍顺序阶段，不新增ready",
+  "deadline": "2026-10-21T09:25:00+08:00",
+  "full_block_cap": 402,
+  "gpu_lifecycle_cap_seconds": 600,
+  "storage_cap": 419430400,
+  "cumulative_cap_seconds": 36000,
+  "steps": [
+    [
+      "active-build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/full-ffn2-parallel/active-build/obj"
+      ],
+      600,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/full-ffn2-parallel/gate.py"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/full-ffn2-parallel/timing.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/pointwise-isolation-20261021/full-ffn2-parallel/timing.py",
+        "2"
+      ],
+      180,
+      true
+    ]
+  ]
+}

@@ -23,7 +23,7 @@ hidden：BF16 `[B,Q,3072]`；context：BF16 `[B,512,3072]`；temb：原BF16/FP32
 |context，M7168 GEMM|128×128输出tile，K64；单次K/V投影各1344任务|
 |self/cross FA2|B14 Q16实例用Q64×KV64 tile；其余standard为Q128×KV64，需要split时Q64×KV128；连续cross K/V保留原FA2加载器|
 |Norm/RMS|行宽3072；普通Norm保持原128线程归约；B14长cross-K RMS每CTA两个独立128线程组算两行|
-|pointwise|每任务2048元素，8个warp共同执行；逐token temb避免冗余广播寻址|
+|pointwise|每任务2048元素，8个warp共同执行；GELU与BF16逐token调制表每线程搬运四元素；其他公式保留原路径|
 
 108常驻CTA，每CTA8warp/256线程。warp0领取CTA任务，warp3–6计算。小M的warp1/2搬A/W、warp7写回；大M的4个计算warp自行加载和MMA，随后8warp共同做epilogue。普通Norm由8warp搬入/写回、3–6归约；双行RMS两个4warp组各归约一行。FA2沿用4warp设备计算。B14只读cache的mask由8warp按原物理slot顺序压紧。
 
@@ -39,11 +39,18 @@ hidden：BF16 `[B,Q,3072]`；context：BF16 `[B,512,3072]`；temb：原BF16/FP32
 
 ## 验证与性能边界
 
-夜间逐因素证据见[当前完整结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESULT.md)及[差距归因](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/ALIGNMENT-CAUSES.md)。最新保留cross-K RMS直接四元素向量搬运，省去FP32 shared中转，归约和舍入顺序不变。完整层短/中/长分别约为native的1.47–1.56/1.48/1.34倍，**未速度对齐**，最新版三种KV阶段矩阵已完成。
+最新证据见[逐元素与FFN2剥离、整层结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md)。
+真实Torch GELU使用vec4；当前自有独立vec4约慢4%–6%，有限逐位相同。把table/GELU vec4放回整层，
+两独立进程均改善约2.7%–3.1%，已保留。当前B14短/中/长完整层约为native的1.422/1.439/1.301–1.304倍，尚未速度对齐。
+
+FFN2独立M128两K分段并行也接近Torch（慢约4%–6%），但集成整层未稳定受益，短KV反慢2%–4%，
+已撤回并恢复本次较快vec4源/DSO。活动FFN2仍为M64串行两段；不要把证据目录的诊断版本当生产入口。
+新增FFN2整层local从1464升到1488B只是静态观察，尚未证明动态spill或同步是唯一原因。
+当前仍按阶段grid.sync，不启动跨阶段ready。保留夜间[RMS等原证据](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESULT.md)。
 
 N256/8warp FFN1、pointwise8192、强制GEMM内联、双驻留compact B14均未保留。后者虽达到2CTA/SM，完整层反而慢2%–10%；已恢复当前较快顺序版，当前FFN1仍N128。不把理论并行度或原语局部收益当作完整层收益。
 
-此前结果见[简化与阶段对齐报告](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/RESULT.md)。当前简易版已完成9种真实输入：B2 action、B14 action、B2 video，各短/中/长KV。最终输出、每格23个可配对中间量、18个有效KV状态转移，以及输入/RNG/重复结果有限逐位通过。完整单层新旧版计时与阶段测量以该报告终态为准。
+此前结果见[简化与阶段对齐报告](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/RESULT.md)。当前简易版已完成9种真实输入：B2 action、B14 action、B2 video，各短/中/长KV。本轮vec4与撤回的FFN2整层版本均核验最终输出、每格23个可配对中间量、18个有效KV状态转移，以及输入/RNG/重复结果有限逐位通过。完整单层新旧版计时与阶段测量以该报告终态为准。
 
 本研究只覆盖固定SM80/Torch与有限真实输入；不是任意shape证明、生产准入、30层、完整chunk或机器人E2E。四项科学/正式性能权限仍false。NCU硬件counter权限未开放，动态occupancy/spill/HBM/L2未知。
 
