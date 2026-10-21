@@ -17,6 +17,8 @@ FFN2去中间全局写回没有稳定大收益；M128串行更慢，M128两段K�
 [完整层所有轮次](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/FULL-LAYER.csv) /
 [资源与止损](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESOURCE-AND-STOP.md)。
 
+[整体/分阶段绝对耗时与同步归因边界](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/TIME-BREAKDOWN-20261021.md)：当前完整层与vec4前阶段矩阵分列，不能将C−B当纯同步时间。
+
 代码：[whole_layer.cu的Point4/point](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、
 [活动GEMM](../算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh)、
 [独立FFN2并行诊断](../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/ffn2-parallel/isolated_cutlass.cuh)、

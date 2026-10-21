@@ -1,0 +1,21 @@
+group,stages,native_us,own_standalone_us,own_embedded_us,version,KV
+调制表,table,30.720000000000002,79.36,103.936,pre_vec4_selected_sequential,1152
+Norm1/2/3合计,norm1;norm2;norm3,40.448,53.760000000000005,64.512,pre_vec4_selected_sequential,1152
+两处调制合计,modulate1;modulate3,12.8,31.232,40.96,pre_vec4_selected_sequential,1152
+Self Q/K/V投影合计,self_Q;self_K;self_V,107.51999999999998,123.392,172.032,pre_vec4_selected_sequential,1152
+Self Q/K RMS合计,self_Q_RMS;self_K_RMS,12.288,26.624,32.768,pre_vec4_selected_sequential,1152
+Self Q/K RoPE合计,self_Q_RoPE;self_K_RoPE,12.288,30.720000000000002,33.28,pre_vec4_selected_sequential,1152
+Self attention（native含pack）,self_attention,376.32,293.88800000000003,328.192,pre_vec4_selected_sequential,1152
+Self输出投影,self_out,35.839999999999996,44.032000000000004,61.44,pre_vec4_selected_sequential,1152
+三处残差合计,residual1;residual2;residual3,17.408,43.008,67.072,pre_vec4_selected_sequential,1152
+Cross Q投影,cross_Q,35.327999999999996,40.96,57.856,pre_vec4_selected_sequential,1152
+Cross K投影,cross_K,553.984,585.216,794.624,pre_vec4_selected_sequential,1152
+Cross V投影,cross_V,553.984,585.7280000000001,787.456,pre_vec4_selected_sequential,1152
+Cross Q RMS,cross_Q_RMS,6.144,13.312,17.408,pre_vec4_selected_sequential,1152
+Cross K RMS,cross_K_RMS,73.72800000000001,121.85600000000001,99.328,pre_vec4_selected_sequential,1152
+Cross attention,cross_attention,90.112,99.84,127.488,pre_vec4_selected_sequential,1152
+Cross输出投影,cross_out,34.816,41.472,59.392,pre_vec4_selected_sequential,1152
+FFN1,FFN1,162.304,196.096,219.648,pre_vec4_selected_sequential,1152
+GELU,GELU,15.360000000000001,52.224,78.336,pre_vec4_selected_sequential,1152
+FFN2,FFN2,109.056,153.6,167.936,pre_vec4_selected_sequential,1152
+KV布局,layout,4.096,9.216000000000001,8.192,pre_vec4_selected_sequential,1152

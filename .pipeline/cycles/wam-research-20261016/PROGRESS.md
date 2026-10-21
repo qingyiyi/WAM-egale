@@ -17,6 +17,8 @@ updated: '2026-10-21T09:13:44.589629+08:00'
 
 ## M39
 
+[整体与分阶段绝对耗时、源码及同步归因边界](../../experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/TIME-BREAKDOWN-20261021.md)已补齐，纯等待比例仍未知；本次仅CPU汇总。
+
 [最新完整证据](../../experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md)。
 真实Torch GELU为vec4 kernel；native代理是标量索引并行kernel。剥离队列和统一资源后，
 自有vec4 GELU约比Torch慢4%–6%，调制表更快但包含cast+add融合收益。
