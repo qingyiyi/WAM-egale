@@ -1,0 +1,68 @@
+{
+  "goal": "Resolve six B14 small-projection integration overhead using one fixed-shape stage function; preserve tile/math/synchronization and validate complete layer",
+  "authorization": "User 2026-10-21 agrees to first resolve small projection embedded slowdown; same M39 and cumulative ten-hour budget",
+  "registered": "2026-10-21T20:53:55.336498+08:00",
+  "deadline": "2026-10-21T22:23:55.336498+08:00",
+  "cumulative_prior_GPU_seconds": 2373.8093949031827,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 1800,
+  "CPU_build_cap_seconds": 2400,
+  "new_storage_cap_bytes": 2147483648,
+  "CPU": [
+    4,
+    5
+  ],
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "inputs": "preserved B2 action/B14 action/B2 video threeKV real layer0; unchanged checkpoint/weights/fixtures",
+  "max_new_candidates": 1,
+  "acceptance": "Nine signatures bitwise common intermediate/output and validKV/RNG; two processes threeKV whole layer improves consistently; diagnostic confirms remaining stage cost with probe control",
+  "baseline": "previous fdf883e whole layer and b476388b DSO; original Torch for finite gate, paired old vs new full-layer timing",
+  "cleanup": "PID+birth owned only; preserve failures/timeouts, no automatic GPU retry; restore previous candidate if numeric failure or regression",
+  "scope": "single-layer optimized only, no ready-DAG, baseline/spec/tile/protected unchanged; all four permissions false",
+  "terminal_status": "REGISTERED",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-function-20261021",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-function-20261021/build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-function-20261021/gate.py"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-function-20261021/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "measure2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-function-20261021/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ]
+}

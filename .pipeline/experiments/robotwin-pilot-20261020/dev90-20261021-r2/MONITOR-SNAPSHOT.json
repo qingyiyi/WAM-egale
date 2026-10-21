@@ -1,7 +1,7 @@
 {
-  "observed_at": "2026-10-21T20:07:50.773743+08:00",
-  "status": "RUNNING_COMPLETE_DEV_EPISODE",
-  "completed": 89,
+  "observed_at": "2026-10-21T20:51:54.269653+08:00",
+  "status": "COMPLETE_DEV90_NOT_INDEPENDENT_TEST",
+  "completed": 90,
   "episodes": [
     {
       "episode_id": "place_object_basket-valid14-T",
@@ -2494,6 +2494,34 @@
       "S_policy_chunks": 0,
       "teacher_returned": 3792,
       "timing_scope": "instrumented exploratory; server request sum excludes client environment/startup; not E2E"
+    },
+    {
+      "episode_id": "open_microwave-valid18-C",
+      "pair_id": 29,
+      "arm": "C",
+      "task": "open_microwave",
+      "valid_index": 18,
+      "status": "COMPLETE_ALGORITHMIC_FAILURE",
+      "success": false,
+      "initial_checks": {
+        "physical_exact": true,
+        "initial_observation_exact": true
+      },
+      "actual_commands": 1520,
+      "policy_chunks": 48,
+      "failure_penalty": 1500,
+      "horizon": 1500,
+      "lifecycle_seconds": 771.0729126930237,
+      "client_returncode": 0,
+      "valid_scheduler_commits": 2400,
+      "action_seconds": 140.84135100897402,
+      "C_update_seconds": 0.058683896253739175,
+      "policy_seconds": 295.5880538811907,
+      "all_server_request_seconds": 317.5337482020259,
+      "T_policy_chunks": 0,
+      "S_policy_chunks": 48,
+      "teacher_returned": 2377,
+      "timing_scope": "instrumented exploratory; server request sum excludes client environment/startup; not E2E"
     }
   ],
   "pair_audits": [
@@ -2786,16 +2814,26 @@
       },
       "pass_all": true,
       "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+    },
+    {
+      "pair_id": 29,
+      "fields": {
+        "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+        "two_policy_chunks_present": true,
+        "C_P_initial_exact": true
+      },
+      "pass_all": true,
+      "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
     }
   ],
   "active_case": "open_microwave-valid18-C",
-  "guard_identity_alive": true,
+  "guard_identity_alive": false,
   "current_owned": [
     {
       "pid": 753354,
       "birth_ticks": 715938042,
       "pgid": 753354,
-      "same_identity_alive": true
+      "same_identity_alive": false
     },
     {
       "pid": 753421,
@@ -3509,15 +3547,15 @@
       "pid": 784811,
       "birth_ticks": 718280286,
       "pgid": 784811,
-      "same_identity_alive": true
+      "same_identity_alive": false
     }
   ],
-  "server_teacher_attempted": 76387,
-  "server_policy_chunks": 1223,
-  "GPU_lifecycle_seconds_snapshot": 23548.490495443344,
+  "server_teacher_attempted": 78418,
+  "server_policy_chunks": 1264,
+  "GPU_lifecycle_seconds_snapshot": 24199.408205747604,
   "deadline": "2026-10-22T01:26:04.706686+08:00",
   "source_requests": "/root/cxz/robotwin/runs/dev90-20261021-r2/server/requests.jsonl",
-  "request_rows": 2535,
+  "request_rows": 2618,
   "incomplete_JSON_lines": 0,
   "formal_performance_permission": false,
   "independent_test_complete": false

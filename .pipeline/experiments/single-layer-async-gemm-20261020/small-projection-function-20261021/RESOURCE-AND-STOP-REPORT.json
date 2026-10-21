@@ -1,0 +1,84 @@
+{
+  "status": "COMPLETE_RETAINED_PARTIAL_IMPROVEMENT",
+  "observed_at": "2026-10-21T21:11:23.021761+08:00",
+  "GPU_lifecycle_seconds": 109.30635833740234,
+  "CPU_prepare_build_lifecycle_seconds": 272.14990758895874,
+  "CPU_disassembly_seconds": 5.46832013130188,
+  "CUDA_active_seconds": "UNKNOWN",
+  "cumulative_prior_GPU_seconds": 2373.8093949031827,
+  "cumulative_GPU_seconds": 2483.115753240585,
+  "cumulative_cap_seconds": 36000,
+  "remaining_cumulative_GPU_seconds": 33516.884246759415,
+  "phase_GPU_cap_seconds": 1800,
+  "deadline": "2026-10-21T22:23:55.336498+08:00",
+  "failures": [],
+  "CPU_report_errors": [
+    {
+      "error": "KeyError candidate",
+      "reason": "report used candidate key; raw timing uses specialized",
+      "resolution": "corrected derived report reader; raw evidence unchanged; no GPU rerun"
+    }
+  ],
+  "timeouts": [],
+  "new_candidates": 1,
+  "stage_clock_exceptions": [
+    {
+      "process": 1,
+      "case": "middle",
+      "name": "cross_V",
+      "condition": "hot_single_stage",
+      "clock_before": {
+        "SM": 1410,
+        "memory": 1215
+      },
+      "clock_after": {
+        "SM": 1395,
+        "memory": 1215
+      }
+    },
+    {
+      "process": 1,
+      "case": "long",
+      "name": "cross_K",
+      "condition": "hot_single_stage",
+      "clock_before": {
+        "SM": 1410,
+        "memory": 1215
+      },
+      "clock_after": {
+        "SM": 1395,
+        "memory": 1215
+      }
+    },
+    {
+      "process": 2,
+      "case": "short",
+      "name": "cross_V",
+      "condition": "hot_single_stage",
+      "clock_before": {
+        "SM": 1410,
+        "memory": 1215
+      },
+      "clock_after": {
+        "SM": 1395,
+        "memory": 1215
+      }
+    }
+  ],
+  "cleanup": "CLEANUP-CHECK.json",
+  "owned_cleanup_pass": true,
+  "stop_reason": "One registered candidate completed; no additional candidate, GPU rerun, DAG, quality or robot task started",
+  "limitations": [
+    "Self-Q slower; partial resolution only",
+    "New independent small projections slower than previous independent implementation",
+    "Stage before/after from different processes and sessions; strongest causal evidence is paired full-layer old/new timing",
+    "Three hot-only context clock samples at 1395MHz preserved; all same-prefix primary samples and embedded boundaries 1410MHz"
+  ],
+  "four_scientific_permissions_remain_false": true,
+  "storage": {
+    "observed_at": "2026-10-21T21:14:07.115735+08:00",
+    "remote_phase_bytes": 54212191,
+    "cap_bytes": 2147483648,
+    "local_phase_bytes": 62130928
+  }
+}

@@ -1,0 +1,30 @@
+--- before/whole_layer.cu
++++ optimized/whole_layer.cu
+@@ -153,8 +153,27 @@
+ // 64x128 / K64. Context M>=1024: compile-selected 64/128 x128 / K64.
+ // Every path retains increasing-K and the recorded BF16/bias boundaries.
+ #include "gemm_pipeline.cuh"
++// B14的六个小投影：224行hidden，3072→3072。整个阶段只调用一次
++// 固定形状设备函数，让编译器直接生成M64×N128的CUTLASS路径。
++// 仍是96个输出tile、原两个K1536分段及BF16提交；领取和同步均不改。
++__device__ __noinline__ void action_projection(const Params &p, Shared &s, cg::grid_group &g,
++                                              int st, const B *a, int wi, B *out) {
++    constexpr int M = 224, tiles = ((M + 63) / 64) * (D / 128);
++    begin_stage(p, g, st);
++    for (int t; (t = claim_tile(p, s, st)) < tiles;) {
++        cutlass_gemm_tile<64>(s.tile.cutlass_gemm.action, a, (const B *)p.w[wi],
++                             (const B *)p.w[wi + 1], out, M, D, D, t, true);
++        finish_tile();
++    }
++    g.sync();
++}
++
+ __device__ void linear(const Params &p, Shared &s, cg::grid_group &g, int st, const B *a, int wi,
+                        B *out, int m, int n, int k) {
++    if (p.candidate && m == 224 && n == D && k == D) {
++        action_projection(p, s, g, st, a, wi, out);
++        return;
++    }
+     const int tn = m >= 128 ? 128 : 64;
+     const int tm = gemm_tile_rows(m, n);
+     int ntiles = ((m + tm - 1) / tm) * ((n + tn - 1) / tn);

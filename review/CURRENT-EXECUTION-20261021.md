@@ -1,13 +1,14 @@
-# 当前执行证据（2026-10-21T20:11:05.142202+08:00）
+# 当前执行证据（2026-10-21T21:17:23.588246+08:00）
 
-**当前源剩余GEMM核对完成，活动数学实现未再改。** Cross K/V与FFN独立/整层设备调用点差约±1.5%；小投影仍有约11%–58%的额外集成成本。FFN1自身比Torch慢约34%–35%，FFN2约25%–27%。下一步先固定形状的小投影设备函数，随后FFN原语，最后DAG；本轮未实现新候选。
+**六小投影固定形状阶段已保留：完整B14单层三KV、两进程均减少1.88%–2.08%。** 仍是一层一个kernel，tile/数学/claim/sync不变；不是新DAG。Self-Q慢约6–7µs，新独立版本也慢于旧独立，故只称部分改善。
 
-- [完整表与边界](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/RESULT.md)、[逐格CSV](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/STEADY-STAGE-COMPARISON.csv)。三KV/两进程，原短KV升频样本保留，固定600预热补短KV；插桩扰动约−0.30%至+0.06%。
-- [为什么写bank conflict为0](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/BANK-CONFLICT-EXPLANATION.md)：stride128→136将四行bank错开；源码枚举预计额外2064384→0，与旧独立K/V NCU一致。不是整层所有冲突为0，也不是性能误差为0。
-- [有限精度](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/PRECISION-SUMMARY.json)：320阶段输出比较max_abs0、8组有效状态检查；前轮九签名门仍保留，没有新增30层/闭环质量证书。
-- [资源与停止](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/RESOURCE-AND-STOP-REPORT.json)：GPU68.215秒，累计2373.809/36000秒。0GPU失败/timeout；远端cuobjdump缺失的CPU失败改用同DSO本地反汇编，原记录保留。owned退出、GPU0释放。
-- [当前主实现](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[写回实现](../算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh)。保留前轮context-only padding与vec4，当前源fdf883e，baseline/原tile/投机生产不动。
+- [完整结果](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESULT.md)、[完整层逐格表](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/WHOLE-LAYER-COMPARISON.csv)、[旧新阶段对照](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/STAGE-BEFORE-AFTER.csv)。新短/中/长约2.513/2.719/2.969ms；没有混入旧Torch计时推新倍数。
+- [有限精度门](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/SIMPLE-GATE-RESULT.json)：9真实签名输出/23中间量/18有效KV转移及输入/RNG逐位；240阶段比较通过。不是任意输入/30层/闭环质量证明。
+- [源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)156–175行为`action_projection`与路由；源e91e09eb、DSO23238b37两机一致。baseline、原tile、投机生产不动。
+- [资源](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESOURCE-AND-STOP-REPORT.json)：GPU109.306秒，累计2483.116/36000秒；一个候选已结束，owned退出。Self-Q编译边界→FFN原语→DAG为后续顺序；没有自动第二候选。
 
-RoboTwin 20:07:50完整**89/90**，`open_microwave-valid18-C`，29组C/P审计通过；[巡检](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/MONITOR-20261021-200750.json)。GPU1原队列继续，24h累计与10/22 01:26:04.706686截止不变，不自动重试。
+**RoboTwin90/90完成**：6任务×5初态(valid14–18)×3臂，各30局，T25、TF连续24、TF+PF2 23。30组C/P初态/首两S审计通过，失败保留。不是每任务1初态，也不是与LIBERO每任务50初态相同规模。只属于迁移DEV，非完整RoboTwin/独立TEST，不支持质量保留主张。[终态结果](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/TERMINAL-RESULT.md)、[逐对数据](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/TERMINAL-SUMMARY.json)、[清理](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/TERMINAL-CLEANUP-CHECK.json)。累计50006.380/86400秒，原deadline不变；两GPU自有作业均结束。
 
-四科学权限false；LIBERO与DEV不是独立TEST。旧paused72与review/RESULTS.json保留。原始输入/模型/DSO和完整SASS留服务器；公开派生表不能声称离线重验未公开张量。前派生快照commit `ca5354a35310123ce258af3d987b63572bf83181`。
+将六任务扩到各50初态共900局仅为建议，需明确独立分区和有界预算，未启动。已曝光5局不能改称独立TEST，且Target microwave本身1/5须核查。
+
+四科学权限false；旧paused72/retention/FAILED及review/RESULTS.json保持历史身份。原始输入/DSO/大JSONL留服务器，网页镜像不能用于声称独立重算未公开张量。前派生快照commit `7bf2a4b4c0031220049408505ecc42e29759f3b8`。

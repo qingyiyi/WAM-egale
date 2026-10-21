@@ -1,0 +1,594 @@
+{
+  "status": "COMPLETE_DEV90_NOT_INDEPENDENT_TEST",
+  "arms": {
+    "T": {
+      "n": 30,
+      "success": 25,
+      "actual_commands": 12224,
+      "penalty_total": 12124,
+      "lifecycle_seconds": 8105.780439853668,
+      "request_seconds": 3583.703904779628,
+      "policy_seconds": 3402.2012231573462,
+      "action_seconds": 2226.8595068873838,
+      "valid_updates": 19850,
+      "action_seconds_per_update": 0.11218435802959112,
+      "policy_chunks": 397
+    },
+    "C": {
+      "n": 30,
+      "success": 24,
+      "actual_commands": 13376,
+      "penalty_total": 13256,
+      "lifecycle_seconds": 7536.726281881332,
+      "request_seconds": 2682.9972580363974,
+      "policy_seconds": 2485.162153976038,
+      "action_seconds": 1188.407371390611,
+      "valid_updates": 21650,
+      "action_seconds_per_update": 0.05489179544529381,
+      "policy_chunks": 433
+    },
+    "P": {
+      "n": 30,
+      "success": 23,
+      "actual_commands": 13408,
+      "penalty_total": 13268,
+      "lifecycle_seconds": 8010.5402710437775,
+      "request_seconds": 3063.173990509473,
+      "policy_seconds": 2864.9016839247197,
+      "action_seconds": 1577.8033766187727,
+      "valid_updates": 21700,
+      "action_seconds_per_update": 0.07270983302390657,
+      "policy_chunks": 434
+    }
+  },
+  "task_success": {
+    "handover_block": {
+      "T": 5,
+      "C": 5,
+      "P": 5
+    },
+    "lift_pot": {
+      "T": 5,
+      "C": 5,
+      "P": 5
+    },
+    "open_microwave": {
+      "T": 1,
+      "C": 0,
+      "P": 1
+    },
+    "place_object_basket": {
+      "T": 4,
+      "C": 4,
+      "P": 2
+    },
+    "press_stapler": {
+      "T": 5,
+      "C": 5,
+      "P": 5
+    },
+    "stack_blocks_two": {
+      "T": 5,
+      "C": 5,
+      "P": 5
+    }
+  },
+  "paired_vs_target": {
+    "C": {
+      "target_success_candidate_failure": 1,
+      "candidate_success_target_failure": 0,
+      "both_success": 24,
+      "both_success_length_ratio": {
+        "P50": 1.0,
+        "P90": 1.0,
+        "max": 1.0,
+        "quantile": "linear numpy/type7"
+      },
+      "pairs": [
+        {
+          "pair": 0,
+          "task": "place_object_basket",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 1,
+          "task": "stack_blocks_two",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 2,
+          "task": "handover_block",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 3,
+          "task": "lift_pot",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 4,
+          "task": "press_stapler",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 5,
+          "task": "open_microwave",
+          "valid_index": 14,
+          "T": false,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 6,
+          "task": "place_object_basket",
+          "valid_index": 15,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 7,
+          "task": "stack_blocks_two",
+          "valid_index": 15,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 8,
+          "task": "handover_block",
+          "valid_index": 15,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 9,
+          "task": "lift_pot",
+          "valid_index": 15,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 10,
+          "task": "press_stapler",
+          "valid_index": 15,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 11,
+          "task": "open_microwave",
+          "valid_index": 15,
+          "T": false,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 12,
+          "task": "place_object_basket",
+          "valid_index": 16,
+          "T": false,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 13,
+          "task": "stack_blocks_two",
+          "valid_index": 16,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 14,
+          "task": "handover_block",
+          "valid_index": 16,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 15,
+          "task": "lift_pot",
+          "valid_index": 16,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 16,
+          "task": "press_stapler",
+          "valid_index": 16,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 17,
+          "task": "open_microwave",
+          "valid_index": 16,
+          "T": true,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 18,
+          "task": "place_object_basket",
+          "valid_index": 17,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 19,
+          "task": "stack_blocks_two",
+          "valid_index": 17,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 20,
+          "task": "handover_block",
+          "valid_index": 17,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 21,
+          "task": "lift_pot",
+          "valid_index": 17,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 22,
+          "task": "press_stapler",
+          "valid_index": 17,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 23,
+          "task": "open_microwave",
+          "valid_index": 17,
+          "T": false,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 24,
+          "task": "place_object_basket",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 25,
+          "task": "stack_blocks_two",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 26,
+          "task": "handover_block",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 27,
+          "task": "lift_pot",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 28,
+          "task": "press_stapler",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 29,
+          "task": "open_microwave",
+          "valid_index": 18,
+          "T": false,
+          "candidate": false,
+          "ratio": null
+        }
+      ]
+    },
+    "P": {
+      "target_success_candidate_failure": 3,
+      "candidate_success_target_failure": 1,
+      "both_success": 22,
+      "both_success_length_ratio": {
+        "P50": 1.0,
+        "P90": 1.0,
+        "max": 1.0,
+        "quantile": "linear numpy/type7"
+      },
+      "pairs": [
+        {
+          "pair": 0,
+          "task": "place_object_basket",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 1,
+          "task": "stack_blocks_two",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 2,
+          "task": "handover_block",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 3,
+          "task": "lift_pot",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 4,
+          "task": "press_stapler",
+          "valid_index": 14,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 5,
+          "task": "open_microwave",
+          "valid_index": 14,
+          "T": false,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 6,
+          "task": "place_object_basket",
+          "valid_index": 15,
+          "T": true,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 7,
+          "task": "stack_blocks_two",
+          "valid_index": 15,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 8,
+          "task": "handover_block",
+          "valid_index": 15,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 9,
+          "task": "lift_pot",
+          "valid_index": 15,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 10,
+          "task": "press_stapler",
+          "valid_index": 15,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 11,
+          "task": "open_microwave",
+          "valid_index": 15,
+          "T": false,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 12,
+          "task": "place_object_basket",
+          "valid_index": 16,
+          "T": false,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 13,
+          "task": "stack_blocks_two",
+          "valid_index": 16,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 14,
+          "task": "handover_block",
+          "valid_index": 16,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 15,
+          "task": "lift_pot",
+          "valid_index": 16,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 16,
+          "task": "press_stapler",
+          "valid_index": 16,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 17,
+          "task": "open_microwave",
+          "valid_index": 16,
+          "T": true,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 18,
+          "task": "place_object_basket",
+          "valid_index": 17,
+          "T": true,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 19,
+          "task": "stack_blocks_two",
+          "valid_index": 17,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 20,
+          "task": "handover_block",
+          "valid_index": 17,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 21,
+          "task": "lift_pot",
+          "valid_index": 17,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 22,
+          "task": "press_stapler",
+          "valid_index": 17,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 23,
+          "task": "open_microwave",
+          "valid_index": 17,
+          "T": false,
+          "candidate": false,
+          "ratio": null
+        },
+        {
+          "pair": 24,
+          "task": "place_object_basket",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 25,
+          "task": "stack_blocks_two",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 26,
+          "task": "handover_block",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 27,
+          "task": "lift_pot",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 28,
+          "task": "press_stapler",
+          "valid_index": 18,
+          "T": true,
+          "candidate": true,
+          "ratio": 1.0
+        },
+        {
+          "pair": 29,
+          "task": "open_microwave",
+          "valid_index": 18,
+          "T": false,
+          "candidate": true,
+          "ratio": null
+        }
+      ]
+    }
+  },
+  "initial_checks_pass": true,
+  "C_P_prefix_audits": 30,
+  "GPU_lifecycle_seconds": 24199.408205747604,
+  "cumulative_GPU_seconds": 50006.379537820816,
+  "remaining_owned": [],
+  "returncodes_note": "Server cleanup -15; all90 clients0; not an episode crash",
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false
+}

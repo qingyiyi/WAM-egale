@@ -1,9 +1,9 @@
 # 当前讨论与授权
 
-用户最新同意继续核对并要求解释改了什么、为什么能降到0。本轮没有再次改活动数学实现；核对既有padding136/四元素搬运的边界、地址机制与剩余GEMM成本。0是旧真实独立投影shared写bank conflict，不是耗时或整层全部冲突。
+用户已明确同意先解决六小投影嵌入变慢，Maintain约束继续有效。本轮完成一个固定形状设备阶段候选并保留约2%完整层净收益；Self-Q及独立实现退化未解决，不以更换参考宣布对齐。先定位Self-Q函数边界，再FFN，最后真实DAG，保持原累计预算。
 
-先对齐再调度的决定保持：小投影通用编译路径仍有额外整层成本，FFN自身也未达到Torch；先有限固定形状设备函数对照，再FFN，最后按真实DAG提前无依赖tile。尚未实现ready-DAG，不凭静态local数认定根因。
+用户随后询问QKV含义及RoboTwin是否仅每任务1初态：已解释Self Q/K/V分别输入乘不同权重；本轮RoboTwin是每任务5初态、6任务三臂90局，LIBERO各套每任务50初态。建议扩大到6×50×3只属于讨论，不是新的GPU任务/训练/TEST授权，不写成长期决定。
 
-沿M39十小时累计，当前核对完成与清理；baseline/原tile/投机生产不动。RoboTwin原固定DEV90 GPU1继续，不增加任务/预算/截止，不自动重试。四科学权限false。BAAI仅~/cxz。
+DEV90已完整但Target25/30、TF24/30、PF2 23/30，不支持宣称保留质量；全部失败保留，四权限false。两GPU owned已退出。仅optimized迭代，baseline/原tile/投机生产/保护文件不动，BAAI仅~/cxz。
 
-[前讨论](history/remaining-gemm-audit-before-20261021/DISCUSSION-SUMMARY.md)。
+[前讨论](history/small-projection-function-before-20261021/DISCUSSION-SUMMARY.md)。

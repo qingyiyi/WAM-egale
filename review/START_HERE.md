@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[剩余GEMM核对、bank机制与RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
+最新：[小投影部分改善与RoboTwin90终态](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-当前源未改；Cross/FFN无明显集成惩罚，小投影仍有。写冲突0的地址计数与旧NCU一致；前轮整层3.12%–3.77%收益与九签名有限门保留。GPU0释放；RoboTwin 20:07:50完整89/90，GPU1继续。四权限false。以下旧TF交接保持历史科学基线身份。
+固定形状投影完整层改善1.88%–2.08%，九签名有限逐位；Self-Q及独立版本退化保留，尚未全部对齐。RoboTwin六任务各5初态，T/C/P各30局成功25/24/23，90完整与30配对审计完成。两GPU owned退出。扩大900局未启动；四权限false。以下旧TF交接保持历史身份。
 
 ---
 

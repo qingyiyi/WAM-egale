@@ -7,7 +7,7 @@
 1. `whole_layer.py`：输入和原模型一致，返回hidden或供外部核验的中间量。
 2. `whole_layer.cu`的`whole_layer()`：依照模型顺序列出全部计算，五段中文注释给出数据流。
 3. `begin_stage → claim_tile → finish_tile`：warp0给整个CTA领取任务；tile结束后复用shared，阶段结束用grid.sync。
-4. `linear/context_linear/action_ffn_linear/action_ffn2_parallel/norm/point/attention`：决定各阶段怎样切tile，再调用设备端计算。
+4. `linear/action_projection/context_linear/action_ffn_linear/action_ffn2_parallel/norm/point/attention`：决定各阶段怎样切tile，再调用设备端计算。
 5. [cutlass_gemm.cuh](csrc/cutlass_gemm.cuh)、[gemm_pipeline.cuh](csrc/gemm_pipeline.cuh)、[fa2_stage.cuh](csrc/fa2_stage.cuh)：GEMM、内部FA2和合法KV寻址。
 
 ## 输入与计算
@@ -64,4 +64,10 @@ B14 FFN2在`action_ffn2_parallel`内将两个K7168分段分配给两组CTA同时
 
 N256/8warp FFN1、pointwise8192、强制通用GEMM内联、双驻留compact B14的旧负结果均保留。当前仍阶段grid.sync，跨阶段ready未实现。早到CTA等待与其他CTA计算重叠，不等于纯barrier耗时或全部可兑现收益。
 
-当前源追加核对：[十GEMM同前序/整层比较](../../../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/RESULT.md)。Cross/FFN整层内与独立设备调用点接近，小投影仍有额外成本；下一对照是固定形状的小投影阶段函数。此轮只做诊断，没有修改活动数学实现或实现ready-DAG。
+最新结果：[六小投影固定形状阶段](../../../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESULT.md)。`action_projection`专门处理B14的M224、N/K3072，仍是64×128输出tile、两个K1536分段、96任务。一次设备函数完成阶段，不新增kernel，claim与grid.sync不变。Self Q/K/V/out及Cross Q/out共六处；Cross K/V的M7168不在其中。
+
+两个独立进程、短/中/长KV完整层Graph的耗时下降1.88%–2.08%，新约2.513/2.719/2.969ms。新的九签名/23共有中间量/18有效KV转移及输入/RNG有限逐位门通过；源e91e09eb、DSO23238b37已在本地与远端保持一致。不是当前版本相对Torch的新完整层倍数，也不是机器人E2E。
+
+这是部分改善：五个小投影整层内变快，Self-Q反而慢约6–7µs；新独立调用体慢于旧独立实现，旧快结果保留。localSize1464→1480B，不能声称spill减少。下一步应定位Self-Q的设备函数/编译边界代价，再FFN原语，最后ready-DAG；不凭更小的独立/整层差距宣布问题全部解决。
+
+前一轮[当前源十GEMM同前序核对](../../../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-gemm-audit-20261021/RESULT.md)与上述早期结果均作为历史证据保留，不把各轮倍数相乘。
