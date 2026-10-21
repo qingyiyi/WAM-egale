@@ -11,3 +11,5 @@
 RoboTwin固定DEV90当前完整33/90，状态RUNNING_COMPLETE_DEV_EPISODE，当前open_microwave-valid15-P；[STATUS](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/STATUS.json)。microwave valid14三臂均失败，basket valid15只有PF2失败；初态/首两S等按原协议核查，不自动重试。GPU1后台继续，24h累计和10/22 01:26截止不变。
 
 四科学权限false，LIBERO/当前DEV非独立TEST；baseline/原tile/投机生产/保护文件不动。公开小证据和被测源码；原始输入/权重/DSO留服务器。旧paused72及review/RESULTS.json不修改。
+
+补充只读核查：[Torch真实CTA/warp与persistent区别](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/TORCH-WARP-ANALYSIS.md)。B14小投影96CTA/4warp、Cross K/V各672/8、FFN1为112/8、FFN2为96/4；672非同时驻留，当前尚无同计算体CTA数单因素对照，不能把原版优势归于CTA总数。MegaMoE固定角色与动态任务区分见该文；未新增GPU或改算子。

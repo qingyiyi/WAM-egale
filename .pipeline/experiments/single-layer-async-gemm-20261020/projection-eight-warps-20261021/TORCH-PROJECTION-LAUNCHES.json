@@ -1,0 +1,1146 @@
+{
+  "status": "READ_ONLY_EXISTING_TRACES_NO_GPU_JOB",
+  "rows": [
+    {
+      "batch": 2,
+      "KV": "short",
+      "source": ".pipeline/experiments/operator-profile-device-20261019/profile-attempt2/data/short-B2-action-layer0-first-original.trace.json",
+      "source_sha256": "2eca5566ca4ee279c7110de62f19d61ef5cdc5eeac7b6be00c39c636e67c7f96",
+      "source_date": "2026-10-19",
+      "stage_mapping": "GEMM call order matched fixed original Transformer: self Q/K/V/out, cross Q/K/V/out, FFN1/2",
+      "kernels": [
+        {
+          "stage": "self_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "self_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "self_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "self_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "cross_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "cross_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            12,
+            8,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            12,
+            8,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "ffn1",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x64_ldg8_relu_f2f_stages_64x4_tn",
+          "grid": [
+            112,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 112,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 158,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "ffn2",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x64_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            12,
+            1,
+            7
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 84,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 254,
+          "shared_bytes_profiler": 122880
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "KV": "middle",
+      "source": ".pipeline/experiments/operator-profile-device-20261019/profile-attempt2/data/middle-B2-action-layer0-first-original.trace.json",
+      "source_sha256": "3ec5dbe0a190bb7c3ef24ffba60a2086ba19ede9111e1afc56f9bbe21d0dc1a0",
+      "source_date": "2026-10-19",
+      "stage_mapping": "GEMM call order matched fixed original Transformer: self Q/K/V/out, cross Q/K/V/out, FFN1/2",
+      "kernels": [
+        {
+          "stage": "self_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "self_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "self_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "self_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "cross_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "cross_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            12,
+            8,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            12,
+            8,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "ffn1",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x64_ldg8_relu_f2f_stages_64x4_tn",
+          "grid": [
+            112,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 112,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 158,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "ffn2",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x64_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            12,
+            1,
+            7
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 84,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 254,
+          "shared_bytes_profiler": 122880
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "KV": "long",
+      "source": ".pipeline/experiments/operator-profile-device-20261019/profile-attempt2/data/long-B2-action-layer0-first-original.trace.json",
+      "source_sha256": "f5dfb5a191d00aaf1d672c379e24b47073292fa3322dca02ec36d424538fba0c",
+      "source_date": "2026-10-19",
+      "stage_mapping": "GEMM call order matched fixed original Transformer: self Q/K/V/out, cross Q/K/V/out, FFN1/2",
+      "kernels": [
+        {
+          "stage": "self_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "self_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "self_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "self_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "cross_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "cross_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            12,
+            8,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            12,
+            8,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_relu_f2f_stages_64x5_tn",
+          "grid": [
+            48,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 48,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 146,
+          "shared_bytes_profiler": 81920
+        },
+        {
+          "stage": "ffn1",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x64_ldg8_relu_f2f_stages_64x4_tn",
+          "grid": [
+            112,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 112,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 158,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "ffn2",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x64_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            12,
+            1,
+            7
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 84,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 254,
+          "shared_bytes_profiler": 122880
+        }
+      ]
+    },
+    {
+      "batch": 14,
+      "KV": "short",
+      "source": ".pipeline/experiments/operator-profile-device-20261019/profile-attempt2/data/short-B14-action-layer0-first-original.trace.json",
+      "source_sha256": "b627fa9183353d2a6a01804171b55d3d51c112feeb815925882bfe53f3049e7c",
+      "source_date": "2026-10-19",
+      "stage_mapping": "GEMM call order matched fixed original Transformer: self Q/K/V/out, cross Q/K/V/out, FFN1/2",
+      "kernels": [
+        {
+          "stage": "self_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "self_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "self_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "self_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "cross_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "cross_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            28,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 672,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            28,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 672,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "ffn1",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            56,
+            2,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 112,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "ffn2",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        }
+      ]
+    },
+    {
+      "batch": 14,
+      "KV": "middle",
+      "source": ".pipeline/experiments/operator-profile-device-20261019/profile-attempt2/data/middle-B14-action-layer0-first-original.trace.json",
+      "source_sha256": "445130cdff4259bad1a050f1acc7542eb5a5f611d582ce78c09b9185a8917658",
+      "source_date": "2026-10-19",
+      "stage_mapping": "GEMM call order matched fixed original Transformer: self Q/K/V/out, cross Q/K/V/out, FFN1/2",
+      "kernels": [
+        {
+          "stage": "self_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "self_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "self_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "self_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "cross_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "cross_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            28,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 672,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            28,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 672,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "ffn1",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            56,
+            2,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 112,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "ffn2",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        }
+      ]
+    },
+    {
+      "batch": 14,
+      "KV": "long",
+      "source": ".pipeline/experiments/operator-profile-device-20261019/profile-attempt2/data/long-B14-action-layer0-first-original.trace.json",
+      "source_sha256": "778f3dfb82fa47113215cec28d2a46c440930856901dc108c8f51bc21980408c",
+      "source_date": "2026-10-19",
+      "stage_mapping": "GEMM call order matched fixed original Transformer: self Q/K/V/out, cross Q/K/V/out, FFN1/2",
+      "kernels": [
+        {
+          "stage": "self_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "self_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "self_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "self_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "cross_q",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "cross_k",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            28,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 672,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_v",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x256_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            28,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 672,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "cross_out",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        },
+        {
+          "stage": "ffn1",
+          "kernel": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            56,
+            2,
+            1
+          ],
+          "block": [
+            256,
+            1,
+            1
+          ],
+          "CTA_total": 112,
+          "warps_per_CTA": 8,
+          "registers_per_thread": 238,
+          "shared_bytes_profiler": 147456
+        },
+        {
+          "stage": "ffn2",
+          "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_relu_f2f_stages_64x3_tn",
+          "grid": [
+            24,
+            2,
+            2
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ],
+          "CTA_total": 96,
+          "warps_per_CTA": 4,
+          "registers_per_thread": 246,
+          "shared_bytes_profiler": 98304
+        }
+      ]
+    }
+  ],
+  "scope": "Observed original implementation kernels; warp count does not identify per-warp MMA instructions; NCU20261021 CrossK/FFN1/FFN2 agrees with B14 middle launches"
+}
