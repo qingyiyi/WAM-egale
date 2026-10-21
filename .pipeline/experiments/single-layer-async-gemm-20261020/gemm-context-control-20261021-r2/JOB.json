@@ -1,0 +1,65 @@
+{
+  "goal": "Match real native prefix/cache conditions for Cross K/V and FFN1/2; measure fixed-warm embedded stages; self Q control",
+  "authorization": "用户2026-10-21同意先Cross KV、再FFN、后就绪tile调度方案；本作业为前两项有限诊断",
+  "source_commit": "c81765e8241a49f631be661baf9d12e32db98d60",
+  "registered": "2026-10-21T11:25:13.634939+08:00",
+  "deadline": "2026-10-21T12:14:16.403015+08:00",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU_affinity": [
+    4,
+    5
+  ],
+  "GPU_lifecycle_cap_seconds": 588.6711027622223,
+  "wall_clock_cap_seconds": 3600,
+  "prior_M39_seconds": 1622.653249092102,
+  "M39_cap_seconds": 36000,
+  "storage_cap_MiB": 300,
+  "inputs": "Existing input-{short,middle,long}-B14-action-layer0-first.pt; active source 63166df2ce7523f4dce3c4d37154667a23bcf33674a29ff46f257b11b9094649; frozen native/current diagnostic DSOs",
+  "matrix": {
+    "stages": [
+      3,
+      16,
+      17,
+      25,
+      27
+    ],
+    "conditions": [
+      "hot_single_stage",
+      "same_real_native_prefix"
+    ],
+    "processes": 2,
+    "repeats": 8,
+    "fixed_full_warm": 60
+  },
+  "full_block_calls_cap_per_process": 500,
+  "stage_calls_cap_per_process": 15000,
+  "cleanup": "Only PID+birth matched process group; preserve failures/timeout, no auto retry",
+  "evidence_path": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/gemm-context-control-20261021-r2",
+  "terminal_status": "REGISTERED",
+  "steps": [
+    [
+      "process1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/gemm-context-control-20261021-r2/worker.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "process2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/gemm-context-control-20261021-r2/worker.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ],
+  "parent_registered": "2026-10-21T11:14:16.403015+08:00",
+  "previous_attempt": "gemm-context-control-20261021",
+  "previous_attempt_GPU_seconds": 11.32889723777771,
+  "reviewed_fix": "Use full owned intermediate for fields not exported by native; retain native shared-intermediate/output bitwise checks and native-prefix equality"
+}

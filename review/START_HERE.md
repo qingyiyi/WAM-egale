@@ -6,7 +6,7 @@
 
 point/RMS有限集成后，固定预热完整层较本轮前再改善2.2%–3.0%，仍未与native速度对齐。各算子采用合适tile/任务数，未来按真实DAG补位，不要求每阶段凑108；当前未实现新ready调度。
 
-RoboTwin parent18/CHILD/CONT/固定接口CAL齐，后继闭环待新窗口。最新清理收据确认两GPU无计算进程；旧paused72与四项false保持。
+RoboTwin已获新授权并于11:32在GPU1启动CURRENT18；11:44快照4/18完成、4成功。自动接ON/CAL，DEV90未启动。GPU0诊断完成、已释放；旧paused72与四项false保持。
 
 ---
 

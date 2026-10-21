@@ -1,3 +1,13 @@
+# 11:44 更新：GPU1 已恢复 RoboTwin
+
+CURRENT18 已完成4/18、4成功，第5局运行；沿用reset text bank。自动后继为完整数据审计→ON3000→部署接口CAL，DEV90未启动/排队。原24h累计预算、全部历史失败和四权限false不变。此为11:44快照，实时以服务器STATUS为准。
+
+[RoboTwin接续登记](../.pipeline/experiments/robotwin-pilot-20261020/current18-20261021/RESULT.md) / [Cross KV、FFN同前序诊断](../.pipeline/experiments/single-layer-async-gemm-20261020/gemm-context-control-20261021-r2/RESULT.md)。GPU0两进程诊断完成、已释放；同前序未解释Cross KV完整层差距，动态spill归因仍未知。
+
+以下为10:46小算子阶段结果，清理状态属于该历史时点。
+
+---
+
 # 10/21：RMS、RoPE、调制与残差核对完成
 
 固定本文件所在commit审阅；历史paused72与四项false不变。

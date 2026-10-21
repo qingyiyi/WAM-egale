@@ -26,7 +26,14 @@ execution: EXECUTION.md
 - [x] CPU补齐短/中/长KV、12原语/两进程与完整层汇总；包括退化和波动。
 - [ ] 下一步：先以相同前序访存/缓存条件定位Cross K/V，再查FFN执行资源差距；之后按适配tile和DAG就绪填空。
 - minor-ops本轮已结束，GPU207.379/1800秒，M39累计1611.324/36000秒，旧截止保留。
-- [ ] M40下一窗口：CONT3000 CURRENT18→审计→ON3000→固定DEV；09:30原窗口不自动延长。
+- [x] M40最新授权：GPU1启动固定CURRENT18；原09:30截止保留，新窗口独立登记。
+- [x] 已部署自动CURRENT完整审计→ON3000→部署CAL队列。
+- [ ] 完成固定DEV90三臂入口/首两S审计核查，再接既定完整评估。
 
 M39前轮累计1403.945秒；本轮新增207.379秒，累计1611.324/36000秒。M40累计5.7624/24小时。
 BAAI仅~/cxz，AutoDL已归还。保护state/cycle/rules、baseline、原tile、LIBERO生产、四项false不变。
+
+历史准备：[GEMM同前序条件诊断](../../experiments/single-layer-async-gemm-20261020/gemm-context-control-20261021/PLAN.md)，GPU≤600秒、CPU2，该准备时尚未恢复机器人；现已由新用户优先授权接续。
+
+- [x] 同前序Cross KV/FFN两进程诊断完成（首失败保留），下一步设备函数/编译资源单因素。M39当前累计1649.673秒。
+- [ ] 当前优先M40，CURRENT18正在GPU1运行；新截止与原24h余额见current18登记，四权限false不变。

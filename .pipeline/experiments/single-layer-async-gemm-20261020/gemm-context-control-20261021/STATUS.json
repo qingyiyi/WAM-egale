@@ -1,0 +1,26 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792552656.3876538,
+  "deadline": 1792556056.403015,
+  "jobs": [
+    {
+      "name": "process1",
+      "owned": {
+        "pid": 742055,
+        "birth_ticks": 715111499,
+        "pgid": 742055
+      },
+      "start": 1792552656.426347,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792552667.755244,
+      "lifecycle_seconds": 11.32889723777771,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('process1 failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/gemm-context-control-20261021/guard.py\", line 42, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: process1 failed\n",
+  "end": 1792552667.7585657,
+  "lifecycle_seconds": 11.370912075042725
+}

@@ -1,0 +1,12 @@
+{
+  "old_attempt_retained": true,
+  "original_error": "KeyError('self_q_linear')",
+  "source_evidence": "baseline/csrc/block.cu exports normalized Q/K but not raw self_q_linear; current owned full trace exports raw projections",
+  "changes": [
+    "raw expected and prefix intermediate references use existing owned full trace",
+    "native shared intermediates/output and selected independent native stages still checked"
+  ],
+  "deadline_unchanged": "2026-10-21T12:14:16.403015+08:00",
+  "parent_GPU_cap_seconds": 600,
+  "auto_retry": false
+}

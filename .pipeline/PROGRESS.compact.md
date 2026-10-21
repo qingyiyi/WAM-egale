@@ -10,7 +10,8 @@
 
 ## M39
 
-[三KV及两进程完整统计](experiments/single-layer-async-gemm-20261020/minor-ops-20261021/THREE-KV-SUMMARY.md)已补齐，包含直接残差退化；本次仅CPU。下一步先同前序缓存条件核对Cross KV/FFN。
+[短中长KV与两进程完整汇总](experiments/single-layer-async-gemm-20261020/minor-ops-20261021/THREE-KV-SUMMARY.md)已补齐；三档此前均已运行，本次仅CPU统计。同前序条件两进程诊断已完成：Cross KV独立约585/594µs，嵌入约783–810µs，差距未因统一前序消失；FFN独立仍慢。下一步核编译资源/设备函数边界，不提前ready。
+[新诊断原件与失败](experiments/single-layer-async-gemm-20261020/gemm-context-control-20261021-r2/RESULT.md)。
 
 [当前小算子/整层/全阶段及CTA等待证据](experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)。
 12小算子真实三KV两进程独立核对逐位通过；适配独立RMS接近Torch，融合RoPE/调制/门控残差更快。
@@ -26,7 +27,7 @@ Self Q/FFN2各96任务，12个worker可提前等待。等待与其他CTA计算�
 固定预热后的插桩扰动短/中/长约0.39%/0.37%/1.47%，只属于诊断副本；动态spill/HBM/L2仍未知。
 
 用户明确：每子算子按合适tile大小和逻辑任务数，不凑108；未来按真实DAG就绪填空。当前仍顺序执行，未实现ready。
-本轮GPU生命周期207.379秒，累计1611.324/36000秒，CPU准备/构建507.174秒；全部owned退出、两GPU空闲。
+本轮GPU生命周期207.379秒，累计1611.324/36000秒，CPU准备/构建507.174秒；该小算子阶段owned均退出；不代表当前GPU1空闲。
 baseline、原tile、LIBERO策略与科学门不动。下一步先剩余Cross KV/FFN执行资源差距与任务映射。
 
 ## M40
@@ -36,14 +37,17 @@ valid08用户批准新60分钟窗口，完整运行自然失败并清理；原0�
 PARENT18现13成功5自然失败，FIT12/6269行、CAL6/3078行审计齐；不是配对DEV。
 CHILD2500/CONT3000各500 updates完成，首次训练解析语法失败0更新留档，修复r2完成。
 两个权重各10771已有CAL query的GPU adapter/decode BF16逐位通过；tau/normalizer不变，不等于teacher路径或闭环质量。
-CURRENT18/ON3000/DEV90未启动；原09:30截止不足整局+清理预留，新单局窗口不延长其他工作。
-累计5.7624/24 GPU生命周期小时。108完整text bank沿用；RoboTwin完整episode等价仍未另测。
+用户新授权优先GPU1，11:32已启动CURRENT18，快照1/18完整、1成功；自动接监督审计→ON3000→接口CAL。DEV90仍未启动/排队，需要评估入口审查。原09:30及旧补跑截止不改。
+[当前接续与预算](experiments/robotwin-pilot-20261020/current18-20261021/RESULT.md)。
+新窗口启动前累计5.7624/24 GPU生命周期小时，当前持续计账。108完整text bank沿用；RoboTwin完整episode等价仍未另测。
 
 ## 共同边界
 
 LIBERO T/C/P各500：Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499。
 不是独立TEST；paused72、旧默认A_off、retention/FAILED及四质量/性能权限false不变。
-下一步按小算子结果处理Cross KV/FFN和适配tile；RoboTwin下一窗口接已登记链。GitHub只main小证据，不含权重/原始PT/凭据。
+下一步按小算子结果处理Cross KV/FFN和适配tile；RoboTwin GPU1优先已启动；自动队列到ON/CAL，DEV入口仍待核查。GitHub只main小证据，不含权重/原始PT/凭据。
 10/22 go-no-go，10/23冻结，10/28主表，11/01 18:00证据包。旧结果见[历史](cycles/wam-research-20261016/history/pointwise-isolation-20261021/PROGRESS.md)。
+
+本次同前序诊断含首KeyError失败新增GPU38.349秒，M39累计1649.673/36000秒；数学源码未改。
 
 当前Cycle见[PLAN](cycles/wam-research-20261016/PLAN.md)。
