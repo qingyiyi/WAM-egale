@@ -259,6 +259,23 @@ __device__ __noinline__ void action_ffn2_parallel(const Params &p, Shared &s,
     g.sync();
 }
 
+// FFN1只有224个M128×N128输出tile。216个保留大tile，最后8个
+// 输出tile各拆成两个M64任务，缩短只有少量CTA工作的最后一波。
+// 这是FFN1内部划分，不提前运行任何依赖它的Transformer阶段。
+__device__ __noinline__ void action_ffn1_tail(const Params &p, Shared &s, cg::grid_group &g, int st) {
+    begin_stage(p, g, st);
+    for (int tile = int(blockIdx.x); tile < 216; tile += int(gridDim.x))
+        cutlass_gemm_tile<128>(s.tile.cutlass_gemm.ffn1, bp(p, M3),
+            (const B *)p.w[23], (const B *)p.w[24], bp(p, F1), 224, F, D, tile, true);
+    g.sync();
+    for (int tail = int(blockIdx.x); tail < 16; tail += int(gridDim.x)) {
+        const int tile64 = (2 + tail / 8) * 112 + 104 + tail % 8;
+        cutlass_gemm_tile<64>(s.tile.cutlass_gemm.action, bp(p, M3),
+            (const B *)p.w[23], (const B *)p.w[24], bp(p, F1), 224, F, D, tile64, true);
+    }
+    g.sync();
+}
+
 #include "norm_device_generated.cuh"
 
 // Norm tile为完整3072维行。8个warp搬入/写回，warp3–6仍按原Torch顺序归约。
@@ -679,7 +696,7 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     norm(p, s, g, st++, bp(p, R2), p.a[N3], m, -1, -1, p.eps[2], false, true);
     point(p, s, g, st++, MODULATE, M3, N3, 0, 3, int64_t(m) * D);
     if (p.candidate && m == 224)
-        action_ffn_linear<128, F, D>(p, s, g, st++, bp(p, M3), 23, bp(p, F1));
+        action_ffn1_tail(p, s, g, st++);
     else
         linear(p, s, g, st++, bp(p, M3), 23, bp(p, F1), m, F, D);
     point(p, s, g, st++, GELU, ACT, F1, 0, 0, int64_t(m) * F);

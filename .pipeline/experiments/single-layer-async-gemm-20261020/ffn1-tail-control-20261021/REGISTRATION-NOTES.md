@@ -1,0 +1,7 @@
+# 登记字段核对补充（原登记不改写）
+
+OBSERVED：JOB.json 的 baseline 文字含旧缩写0b777；实际保存的before源码、构建入口和SOURCE-MANIFEST都对应0a4db2ef8f1028d0167d9f4dae12f128a6bad24782e5d89aaa0cecdf2cbfdfeb。选择/报告以完整源manifest及保存的源/DSO身份为准，旧登记标签保留为文字错误，不伪造原登记已正确。
+
+profile/JOB.json沿用模板的GPU_lifecycle_cap_seconds=1800及旧cumulative_prior=1770.668；本次小写gpu_lifecycle_cap_seconds=180、单个GPU step超时180秒，实际消费13.889秒。累计报告使用前轮已审计1852.2268014621734秒再加本轮全部GPU阶段53.23682761192322秒，未借旧prior重置总账。原CPU构建step上限600秒、prepare60秒，实际各133.482和0.032秒。
+
+主候选1400完整block上限内实际1374；选后profile独立登记500完整block/7000阶段上限内实际444/6942。两者合计1818，不错误声称1818低于主候选1400。所有原JOB、STATUS、失败与截止保留。

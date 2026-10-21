@@ -1,0 +1,72 @@
+{
+  "goal": "Selected FFN1 same-prefix stage attribution, not another mathematical candidate",
+  "authorization": "User approved FFN primitive/resource work then ready, explicitly keep RoboTwin background",
+  "registered": "2026-10-21T13:26:45.960508+08:00",
+  "deadline": "2026-10-21T14:18:37.045406+08:00",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU": [
+    4,
+    5
+  ],
+  "GPU_lifecycle_cap_seconds": 1800,
+  "CPU_build_wall_cap_seconds": 2400,
+  "new_storage_cap_bytes": 1073741824,
+  "cumulative_prior_GPU_seconds": 1770.667737789154,
+  "cumulative_cap_seconds": 36000,
+  "inputs": "actual B14 short/middle/long preserved layer0 fixtures; all9 finite gate for candidate",
+  "baseline": "current selected 0b777... source/DSO and native full block; matched native prefix for stage comparisons",
+  "max_new_candidates": 0,
+  "acceptance": "finite bitwise + two processes all3KV; improvement must transmit to full layer; revert otherwise",
+  "cleanup": "PID+birth own guard jobs only; no automatic retry; all root guards recorded",
+  "scope": "existing M39 namespace, optimized only, all4 scientific permissions false",
+  "steps": [
+    [
+      "prepare",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/profile/prepare.py"
+      ],
+      60,
+      false
+    ],
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/profile/build.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/profile",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/profile/build/obj"
+      ],
+      600,
+      false
+    ],
+    [
+      "process1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/profile/worker.py",
+        "1"
+      ],
+      180,
+      true
+    ]
+  ],
+  "stage": "selected_candidate_attribution_one_process",
+  "matrix": {
+    "stages": [
+      16,
+      17,
+      25,
+      27
+    ]
+  },
+  "full_block_calls_cap_per_process": 640,
+  "stage_calls_cap_per_process": 20000,
+  "gpu_lifecycle_cap_seconds": 180,
+  "process_count": 1,
+  "full_block_calls_cap": 500,
+  "stage_calls_cap": 7000
+}

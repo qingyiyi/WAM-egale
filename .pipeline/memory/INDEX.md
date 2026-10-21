@@ -1,8 +1,10 @@
 # 长期记忆索引
 
-- [优先恢复RoboTwin一张卡](global/requirements/decision-优先恢复RoboTwin并占用远端一张卡.md)（constraint，M40）：用户再次确认RoboTwin继续后台，接CURRENT18→ON/CAL；固定DEV入口待审查，原24h预算及旧失败/截止保留。
+- [补启DEV90导入失败队列](global/requirements/decision-允许补启RoboTwinDEV90导入失败队列.md)（constraint，仅M40本次）：新namespace，原失败/5秒消耗保留；24h累计不增，仍于10/22 01:26前清理。
 
-- [先Cross KV/FFN，再就绪tile](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)（constraint，M39）：两项完成后用户同意先FFN剩余差距与整层根因核对，再最小DAG调度；原预算与保护不变。
+- [优先恢复RoboTwin一张卡](global/requirements/decision-优先恢复RoboTwin并占用远端一张卡.md)（constraint，M40）：用户确认两线继续，RoboTwin从已完成采集/ON/CAL接固定DEV90，阶段性结果及时汇报；原24h预算及旧失败/截止保留。
+
+- [先Cross KV/FFN，再就绪tile](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)（constraint，M39）：两项完成后用户同意继续FFN1原语对齐，再最小DAG调度，并及时汇报阶段结果；原预算与保护不变。
 
 - [补跑RoboTwin parent valid08及新窗口](global/requirements/decision-允许补跑RoboTwin-parent-valid08并新增六十分钟窗口.md)（constraint，仅M40此局）：保留原PARTIAL；新Attempt最多60分钟、最晚10/21 10:00清理，原累计预算不增加。
 

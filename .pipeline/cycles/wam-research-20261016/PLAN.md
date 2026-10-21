@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-21T13:04:10.565362+08:00'
+updated: '2026-10-21T13:45:15.316595+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -11,22 +11,23 @@ execution: EXECUTION.md
 
 | ID | 阶段 | 期望结果与验证 |
 |---|---|---|
-| M17 | LIBERO证据收口 | 保留6000局与曝光/首两S/长尾缺口，不追加TEST |
-| M39 | 简易单层先对齐 | 先真实原语及整层资源控制，再真实DAG补位 |
-| M40 | RoboTwin迁移 | 固定采集/训练/CAL后接三臂DEV90，分区与预算不变 |
+| `M17` | LIBERO证据收口 | 6000局与曝光/首两S/长尾缺口保留，非独立TEST |
+| `M39` | 简易单层先对齐 | 同源阶段/整层成本；原语合理后再真实DAG补位 |
+| `M40` | RoboTwin迁移 | 固定DEV90三臂完整队列，初态/首两S/成本审计 |
 
 ## 当前todo
 
-- [x] table/GELU、RMS/RoPE/调制/残差对照与有限集成；旧负结果保留。
-- [x] 同前序控制、Cross KV/FFN专用设备函数；前轮完整层改善9.46%–10.87%。
-- [x] 当前同源码独立/整层两进程三KV：嵌入差约±1.4%，不拼接旧编译路径。
-- [x] 一次专用FFN2分段并行候选：9签名门、两进程三KV完整层和选后profile；保留0.36%–0.65%小幅收益。
-- [x] 清理核验、原因/未知分列、HW/GitHub小证据整理。
-- [ ] M39下一步：先FFN1主循环/tile/数据搬运与资源差距，原语达到合理水平后再最小DAG补位。
-- [x] M40固定CURRENT18→监督审计→ON3000→GPU部署CAL自动完成，原失败保留。
-- [ ] M40下一步：审查DEV90三臂轮换、canonical T/SST、初态/RNG/首两S、成本入口，然后接固定完整评估；当前没有排队。
+- [x] 前轮逐元素/Cross/FFN组织控制及专用FFN2；负结果全部保留。
+- [x] 本轮一个FFN1尾块候选：9真实签名有限逐位、两进程三KV完整层、选后同前序profile；保留0.19%–0.50%小幅改善。
+- [x] 算子worker自然退出/回收；源同步本地optimized，baseline/投机生产不动。
+- [x] M40 CURRENT18→监督审计→ON3000→部署CAL完成；不是ON闭环SR。
+- [x] DEV90入口/路由/清单核查；首attempt加载前导入失败，0teacher/0episode保留。
+- [x] 用户明确允许本次补启；新namespace真实导入链CPU通过，GPU1模型READY并开始完整episode。
+- [ ] M40跟进固定90局：自然终态、C/P首两S隔离、成本/失败罚分。基础设施/隔离失败停队，不自动重试。
+- [ ] M39再量化GEMM主循环/搬运及阶段等待；按真实依赖设计cross K/V提前补位，不凑108任务，不称已实现ready。
+- [x] 阶段结果及首组三臂检查点已整理到HW，正在同步GitHub小证据并汇报。
 
-M39本轮GPU生命周期81.559秒、CPU准备396.740秒、1候选；累计1852.227/36000秒。登记GPU≤1800秒/CPU2/存储≤1GiB，14:07:22绝对截止保留；12:56核验本轮owned全退，未实现ready。详见[结果](../../experiments/single-layer-async-gemm-20261020/ffn-resource-control-20261021/RESULT.md)。
-M40原24h累计25801.965秒，13:02核验后台链自然结束，无worker。继续后台的用户偏好保持；不把缺少评估入口写成作业已排队。新具体DEV job需沿原预算/清单登记，并预留完整episode和清理。
+M39累计1905.463629/36000秒；本轮GPU53.236828秒、CPU准备266.815746秒，0失败/0超时，GPU0释放。本轮截止10/21 14:18:37保留，当前作业已完成。下一GPU作业先在原累计内登记有界范围，不能把旧job期限延长。见[结果](../../experiments/single-layer-async-gemm-20261020/ffn1-tail-control-20261021/RESULT.md)。
+M40补启prior25806.971332/86400秒，包含首attempt5.005915秒；DEV90固定截止10/22 01:26:04.706686，单局≤1800秒，开局预留全局+900秒清理，新增≤3GiB，单GPU1模型worker。清单30初态×3臂，不扩大任务/训练/TEST；见[批准范围](../../experiments/robotwin-pilot-20261020/dev90-20261021-r2/RETRY-AUTHORIZATION.md)及PLAN.json。
 
-保护baseline/原tile/LIBERO生产与state/cycle/rules；四权限false。BAAI所有写入仅~/cxz；不改驱动/服务/时钟，不杀他人。历史todo/预算见[前计划](history/ffn-resource-control-20261021/PLAN.md)，不重置旧起点。
+保护baseline/原tile/LIBERO生产、state/cycle/rules；四权限false。BAAI只写~/cxz，不改驱动/服务/时钟、不杀他人。历史见[前计划](history/ffn1-tail-dev90-20261021/PLAN.md)；旧预算/失败/截止不重置。

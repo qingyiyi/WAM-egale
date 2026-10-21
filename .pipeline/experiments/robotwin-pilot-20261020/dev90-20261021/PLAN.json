@@ -1,0 +1,53 @@
+{
+  "goal": "Fixed six-task paired DEV90 using frozen ON3000 T/continuous/PF2, no retraining",
+  "authorization": "User 2026-10-21 explicitly approved continuing both tracks after CURRENT18/ON/CAL",
+  "registered": "2026-10-21T13:20:41.766740+08:00",
+  "must_finish_before": "2026-10-22T05:30:00+08:00",
+  "prepare_deadline": "2026-10-21T17:30:00+08:00",
+  "execution_lifecycle_cap_seconds": 43200,
+  "storage_cap_bytes": 3221225472,
+  "total_evidence_cap_bytes": 12884901888,
+  "new_teacher_attempts_cap": 720000,
+  "episode_cap": 90,
+  "pair_cap": 30,
+  "per_episode_seconds": 1800,
+  "per_episode_teacher_attempts": 8000,
+  "cleanup_reserve_seconds": 900,
+  "GPU_uuid": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+  "CPU": {
+    "server": [
+      20,
+      21
+    ],
+    "client": [
+      16,
+      17
+    ],
+    "guard": [
+      18,
+      19
+    ]
+  },
+  "checkpoint": "/root/cxz/robotwin/runs/current18-followup-20261021/ON3000/checkpoint.pt",
+  "condition": "ON3000",
+  "tau": 0.007879490032792091,
+  "reset_bank": "/root/cxz/robotwin/runs/target-first6-3/server/text-bank.pt",
+  "eval_seed": 0,
+  "nominal_video_updates": 25,
+  "nominal_action_updates": 50,
+  "arms": {
+    "T": "canonical B2 complete action",
+    "C": "continuous S",
+    "P": "SST policy chunks; reset/cache uncounted"
+  },
+  "pair_order": "task-major within valid14..18; rotate TCP/CPT/PTC by pair index",
+  "source_math": "/root/cxz/robotwin/runs/tf-migration-20261021",
+  "prior_GPU_lifecycle_seconds": 25801.965416908264,
+  "original_total_GPU_lifecycle_cap_seconds": 86400,
+  "prefix_gate": "C/P first two returned policy actions, inputs, all valid KV digests, RNG, counters, tree path; no raw full KV persisted",
+  "abort": "Any infrastructure/identity/prefix mismatch stops new episodes; no automatic retry. Natural algorithmic failure retained and queue continues.",
+  "formal_performance_permission": false,
+  "independent_test_complete": false,
+  "engineering_quality_screen": false,
+  "noninferiority_established": false
+}

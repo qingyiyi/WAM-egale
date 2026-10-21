@@ -1,9 +1,9 @@
 # 当前入口
 
-最新：[同源码原因控制及FFN2结果](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
+最新：[FFN1结果与DEV90补启](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-当前同callee独立/整层差约±1.4%；FFN2新候选完整层小幅改善0.36%–0.65%，仍慢15%–30%。9签名有限逐位、一个kernel，未ready；先FFN1再DAG。
-RoboTwin后台链已自然完成：18采集13成功/5失败、ON训练、11195行接口CAL齐；DEV90尚未启动/排队。原科学权限四项false不变。以下旧TF交接是历史科学基线，不覆盖当前授权。
+算子有限逐位通过，FFN1尾块完整层小幅改善0.19%–0.50%，仍慢14%–29%；当前同源嵌入差约±1.3%，未ready。
+RoboTwin DEV90已在GPU1实际运行，快照完整3/90；三臂固定队列自动接续，初次导入失败与消耗保留，获准补启但不延长截止。原科学权限四项false不变。以下旧TF交接是历史科学基线，不覆盖当前授权。
 
 ---
 

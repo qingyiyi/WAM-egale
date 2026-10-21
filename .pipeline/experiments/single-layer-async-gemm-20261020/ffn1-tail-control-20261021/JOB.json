@@ -1,0 +1,79 @@
+{
+  "goal": "One FFN1 internal tail-wave tile candidate; 224 large tasks would leave 8 in third wave at 108 CTAs",
+  "authorization": "2026-10-21 user approved both tracks continuing, first FFN1 then ready",
+  "registered": "2026-10-21T13:18:37.045406+08:00",
+  "deadline": "2026-10-21T14:18:37.045406+08:00",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU": [
+    4,
+    5
+  ],
+  "GPU_lifecycle_cap_seconds": 540,
+  "CPU_build_wall_cap_seconds": 900,
+  "new_storage_cap_bytes": 1073741824,
+  "cumulative_prior_GPU_seconds": 1852.2268014621734,
+  "cumulative_cap_seconds": 36000,
+  "inputs": "actual B14 short/middle/long preserved layer0 fixtures; all9 finite gate for candidate",
+  "baseline": "current selected 0b777... source/DSO and native full block; matched native prefix for stage comparisons",
+  "max_new_candidates": 1,
+  "acceptance": "finite bitwise + two processes all3KV; improvement must transmit to full layer; revert otherwise",
+  "cleanup": "PID+birth own guard jobs only; no automatic retry; all root guards recorded",
+  "scope": "existing M39 namespace, optimized only, all4 scientific permissions false",
+  "steps": [
+    [
+      "prepare",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/prepare.py"
+      ],
+      60,
+      false
+    ],
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/build/obj"
+      ],
+      600,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/gate.py"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/timing.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn1-tail-control-20261021/timing.py",
+        "2"
+      ],
+      180,
+      true
+    ]
+  ],
+  "stage": "FFN1_216_large_plus16_half_row_tail",
+  "gpu_lifecycle_cap_seconds": 540,
+  "full_block_calls_cap": 1400
+}

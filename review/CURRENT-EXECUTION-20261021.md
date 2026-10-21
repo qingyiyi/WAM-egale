@@ -1,14 +1,17 @@
-# 当前执行：同源码嵌入控制与FFN2小幅收益
+# 当前执行证据（2026-10-21T13:45:55.363261+08:00）
 
-2026-10-21北京。本轮证实当前同源、同编译callee、同前序及调用点边界下，独立/整层阶段耗时差约±1.4%。前轮Cross函数组织改变已缓解旧的大额集成惩罚；不能拼接旧独立585–594µs与新整层数字，也不能把剩余都归给全局同步或静态local。
+算子FFN1尾块一次候选保留：完整单层两进程三KV改善0.19%–0.50%，仍慢14%–29%。9签名有限逐位通过，max_abs=0；跨阶段ready未实现。当前独立/嵌入同边界差约−1.23%至+0.36%，不能把剩余差额全归同步。动态spill/L2/DRAM/occupancy UNKNOWN。
 
-唯一新候选是专用FFN2阶段M128、48输出tile×2个K7168分段=96任务并行；保留BF16舍入与归并顺序。9真实签名/23中间量/18有效KV与输入/RNG有限逐位通过，max_abs=0；一个kernel，未ready。
-两独立进程、三KV完整层改善0.36%–0.65%；短/中/长约2.745/3.007/3.262ms，仍比native慢约29.6%–29.8% /25.1%–25.2% /14.7%–14.9%。仅uncached/eager单层，不是强cached/Graph或机器人E2E。小幅收益保留，旧generic linear并行K负结果保留。
+- [完整层与四阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn1-tail-control-20261021/RESULT.md)
+- [源](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)；SHA256 `df2a307241928567e2b0d80a5e6c601b8e1aedaf6e4713b693d88ce247ead11a`
+- [资源](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn1-tail-control-20261021/RESOURCE-AND-STOP-REPORT.json)、[旧登记字段说明](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn1-tail-control-20261021/REGISTRATION-NOTES.md)
 
-[完整报告](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-resource-control-20261021/RESULT.md)、[原因与未知](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-resource-control-20261021/CAUSE-ANALYSIS.md)、[活动源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[源码导读](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)。所有两进程/三KV原始数据可追溯；NCU动态spill/L2/HBM/achieved occupancy UNKNOWN。
+RoboTwin DEV90：3/90完整终态，当前`stack_blocks_two-valid14-C`；状态`RUNNING_COMPLETE_DEV_EPISODE`。GPU1单worker，固定30初态×T/C/P自动接续。前启动导入错误0teacher/0episode保留；用户明确允许新namespace补启，原24h累计及10/22 01:26:04截止不变。
 
-下一步先FFN1主循环/tile/资源对齐，再真实DAG补位。108是worker池，不要求每阶段凑108任务。当前M39累计1852.227/36000秒；本轮owned全退。
+- [本次补启授权/边界](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/RETRY-AUTHORIZATION.md)
+- [固定计划](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/PLAN.json)、[状态快照](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/STATUS.json)、[真实导入核查](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/CPU-IMPORT-REVIEW.json)
+- 初态、C/P首两S有效KV摘要/RNG/动作/路径与分支计数门；基础设施或隔离失败停止新局，不自动重试。
 
-RoboTwin后台链已自然完成（13:02核验）：CURRENT18为13成功5自然失败，FIT5779/CAL3502行；ON固定500更新、11195行GPU adapter/decode校准齐。不是DEV成功率；teacher B2/B14 parity未测、四权限false。[原件与清理](../.pipeline/experiments/robotwin-pilot-20261020/current18-followup-20261021/RESULT.md)。DEV90入口待审查，未启动/排队；不宣称GPU仍在运行。原24h累计7.1672h。
+CURRENT18的13/18是CONT采集，不能改称新ON闭环SR。新权重部署CAL不是机器人质量门。DEV90和LIBERO既有面板非独立TEST；四项权限false。raw KV/权重/原始场景PT、profile trace不公开；不能凭仓库声称重算所有tensor。旧paused72在RESULTS.json保留。
 
-旧paused72、FAILED/retention、baseline/原tile/LIBERO生产与四项false不变。公开包不含PT/KV/相机/权重/DSO或完整profiler/SASS；不能只凭GitHub宣称重算全部真实tensor。[前检查点](history/ffn-resource-control-20261021/CURRENT-EXECUTION-20261021.md)。
+下一步：核对首完整三臂及隔离门，后台接续；算子量化原语/等待后做真实DAG补位。main是动态进度镜像，审阅时固定本次commit。
