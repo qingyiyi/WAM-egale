@@ -1,0 +1,9 @@
+# 计时入口纠正
+
+首次attempt1在short输入的NativeBlock整层CUDA Graph捕获时报StreamCaptureUnsupported/Invalidated，完整层调用计数185，独立投影阶段尚未执行，未获得可用调度计时。GPU生命周期11.730428秒。实际进程rc1，guard停止，所有owned子进程自然退出并回收；原结果/源码/登记/日志/清理在attempt1保存。
+
+这与remaining-cost-20261021/TRACE-RESULT.json的旧捕获失败一致。本轮复用旧trace_worker时遗漏了该旧失败，属于计时脚本问题，不是数值或算法结果。纠正：原版整层仅提供真实中间量及精度参考，不捕获其整层；原版stage入口继续作为hot/同前序投影计时对照。active4/large8/trace8整层的Graph仅比较彼此及测量插桩扰动，不与原版eager混成整层加速表。
+
+人工审查后启动纠正attempt2；没有guard自动重试，不重置18:14:07截止、累计预算或900秒本轮总上限。旧失败完整保留。本轮不替换当前4warp整层，不放行任何质量权限。
+
+第二次attempt2：完整层有限中间量核对已通过，但访问原版debug未暴露的cross_k_linear字段触发KeyError，尚未执行调度投影；GPU11.880815秒，rc1/自然回收。改由原版stage直接计算raw K/V参考，并与自有已核对整层的对应raw字段比较；prefix使用完整v缓冲。无数学变化，attempt2全部保存。两次失败合计23.611243秒计入原900秒。

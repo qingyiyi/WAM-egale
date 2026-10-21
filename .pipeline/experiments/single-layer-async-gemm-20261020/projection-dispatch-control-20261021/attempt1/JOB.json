@@ -1,0 +1,72 @@
+{
+  "goal": "同256x128/8warp计算体，普通CTA/108静态循环/108原子队列；真实3KV CrossK/V同前序及嵌入资源归因",
+  "authorization": "用户明确同意三组对照，原M3910h累计",
+  "registered": "2026-10-21T16:44:07.105376+08:00",
+  "deadline": "2026-10-21T18:14:07.105376+08:00",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU": [
+    4,
+    5
+  ],
+  "GPU_lifecycle_cap_seconds": 900,
+  "CPU_build_wall_cap_seconds": 1800,
+  "new_storage_cap_bytes": 2147483648,
+  "cumulative_prior_GPU_seconds": 2073.412951059341,
+  "cumulative_cap_seconds": 36000,
+  "inputs": "固定原始input-{short,middle,long}-B14-action-layer0-first.pt;原NativeBlock权重",
+  "baseline": "current4warp与已拒绝8warp整层仅诊断；原Torch同前序stage；不改生产入口",
+  "acceptance": "三调度输出逐位、每tile恰好一次、输入/RNG/有效KV不变后才计时；两独立进程；不自动集成",
+  "cleanup": "PID+birth owned children only; failure retained; guard stops on failure; original deadlines unchanged",
+  "terminal_status": "REGISTERED_NOT_STARTED",
+  "evidence": ".pipeline/experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021",
+  "steps": [
+    [
+      "build_projection",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/build_projection_schedule.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/build/projection"
+      ],
+      600,
+      false
+    ],
+    [
+      "build_trace",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/build_trace.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/build/trace"
+      ],
+      900,
+      false
+    ],
+    [
+      "process1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/worker.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "process2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/worker.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ]
+}

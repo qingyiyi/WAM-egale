@@ -1,12 +1,14 @@
 # 长期记忆索引
 
+- [同计算体三调度有限对照](global/knowledge/knowledge-同计算体三调度有限对照.md)（reference，M39）：三调度差≤0.17%，独立投影仍慢约11%；仅本次真实输入，不推为普遍定理。
+
 - [允许本机NCU诊断](global/requirements/decision-允许本机NsightCompute做算子诊断.md)（constraint，M39）：当前慢因核查可使用本机profile；两机证据分列，原累计预算/资源保护不变。
 
 - [补启DEV90导入失败队列](global/requirements/decision-允许补启RoboTwinDEV90导入失败队列.md)（constraint，仅M40本次）：新namespace，原失败/5秒消耗保留；24h累计不增，仍于10/22 01:26前清理。
 
 - [优先恢复RoboTwin一张卡](global/requirements/decision-优先恢复RoboTwin并占用远端一张卡.md)（constraint，M40）：用户确认两线继续，RoboTwin从已完成采集/ON/CAL接固定DEV90，阶段性结果及时汇报；原24h预算及旧失败/截止保留。
 
-- [先Cross KV/FFN，再就绪tile](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)（constraint，M39）：用户要求先试投影8warp参与MMA并验证完整层收益；继续区分原语/尾波/同步/资源后再DAG；原预算与保护不变。
+- [先Cross KV/FFN，再就绪tile](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)（constraint，M39）：用户已确认并完成同计算体普通/静态/原子三调度核验；继续区分原语/尾波/同步/资源后再DAG；原预算与保护不变。
 
 - [补跑RoboTwin parent valid08及新窗口](global/requirements/decision-允许补跑RoboTwin-parent-valid08并新增六十分钟窗口.md)（constraint，仅M40此局）：保留原PARTIAL；新Attempt最多60分钟、最晚10/21 10:00清理，原累计预算不增加。
 

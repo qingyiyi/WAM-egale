@@ -1,15 +1,13 @@
-# 当前执行证据（2026-10-21T15:47:48.199638+08:00）
+# 当前执行证据（2026-10-21T17:05:55.995101+08:00）
 
-用户要求投影等待warp参与MMA，本轮已试两个Cross K/V 8warp方案：大tile256×128完整层慢3.16%–4.85%；固定128×128只改warp映射仍慢1.05%–1.33%。两个独立进程/三KV方向一致；各9真实签名/23中间量、有效KV、输入/RNG有限逐位通过max_abs0。两机活动源码和远端DSO已恢复原4warp df2a307241928567e2b0d80a5e6c601b8e1aedaf6e4713b693d88ce247ead11a，GPU0释放。
+**同计算体三组对照已经完成，672CTA没有比108CTA显著更快。** 固定256×128/8warp投影、同一个compiled kernel、三真实KV、两独立进程：普通672CTA/108静态/108原子同前序约615µs，原版约553µs；三调度中位数差≤0.17%，原子连清零仅增加0.17%–0.33%。独立投影仍慢11.09%–11.30%，不能把原版优势归于CTA数量/领任务。
 
-完整层计时不能改称投影阶段计时；本轮没有新阶段/NCU。大tile增加shared，固定tile不增，但具体MMA/shared/local因果仍UNKNOWN。小action投影未试，不外推。后续先同前序阶段归因，再真实DAG补位。等待warp数量不直接等于可回收时间；没有异步warp专职/ready调度新成果。
+36组投影逐位max_abs0、672tile各一次；B14整层23共有中间量+output、有效KV、输入/RNG有限核对通过。当前4warp源和DSO保持，大tile8warp完整层仍慢3.11%–5.00%。没有新NCU；独立local0/插桩整层local1456不能单独证明根因，插桩本身增加1.32%–1.40%。下一步GEMM主循环/写回对齐，再真实DAG。
 
-- [8warp完整结果](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/RESULT.md)、[逐进程计时表](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/TIMING-SUMMARY.csv)、[回退](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/SELECTION.json)
-- [资源及终态](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/RESOURCE-AND-STOP-REPORT.json)：本轮GPU79.587秒，M39累计2073.413/36000秒；0异常/超时，2性能负结果保留。
-- [上一轮NCU/阶段诊断](../.pipeline/experiments/single-layer-async-gemm-20261020/remaining-cost-20261021/RESULT.md)：只对应旧4warp，不能移植到8warp候选。
+- [完整结果](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021/RESULT.md)、[逐进程计时](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021/TIMING-SUMMARY.csv)、[诊断源码](../算子研究/wam_ops/optimized/csrc/projection_schedule.cu)。
+- [资源/失败](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021/RESOURCE-AND-STOP-REPORT.json)：本轮GPU61.040秒包含两计时脚本失败23.611秒；累计2134.453/36000秒。0timeout，owned已退出，GPU0释放。两失败与纠正源码保留，未伪造一次通过。
+- 旧[8warp退化证据](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/RESULT.md)和旧4warp NCU保留；不能把旧计数写作新8warp结果。
 
-RoboTwin固定DEV90当前完整33/90，状态RUNNING_COMPLETE_DEV_EPISODE，当前open_microwave-valid15-P；[STATUS](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/STATUS.json)。microwave valid14三臂均失败，basket valid15只有PF2失败；初态/首两S等按原协议核查，不自动重试。GPU1后台继续，24h累计和10/22 01:26截止不变。
+RoboTwin 17:02:19快照**45/90**完整，当前lift_pot-valid16-T，guard活跃；15组C/P初态/首两S审计通过。[巡检](../.pipeline/experiments/robotwin-pilot-20261020/dev90-20261021-r2/MONITOR-20261021-170219.json)。GPU1自动接续，原24h累计及10/22 01:26:04硬截止不变，不自动重试。
 
-四科学权限false，LIBERO/当前DEV非独立TEST；baseline/原tile/投机生产/保护文件不动。公开小证据和被测源码；原始输入/权重/DSO留服务器。旧paused72及review/RESULTS.json不修改。
-
-补充只读核查：[Torch真实CTA/warp与persistent区别](../.pipeline/experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/TORCH-WARP-ANALYSIS.md)。B14小投影96CTA/4warp、Cross K/V各672/8、FFN1为112/8、FFN2为96/4；672非同时驻留，当前尚无同计算体CTA数单因素对照，不能把原版优势归于CTA总数。MegaMoE固定角色与动态任务区分见该文；未新增GPU或改算子。
+四科学权限false；LIBERO/当前DEV不是独立TEST。baseline/原tile/投机生产/保护文件不改。原始张量/权重/DSO留服务器；旧paused72与review/RESULTS.json不修改。此前派生快照保留于commit `2180fdde7b103118bbffec3dc366c7a4e93d0159`，本入口只保留当前结论及证据指针。

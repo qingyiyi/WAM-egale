@@ -1,0 +1,18 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "process": 1,
+  "full_calls": 185,
+  "stage_calls": 0,
+  "rows": [],
+  "formal_performance_permission": false,
+  "kernel_resources": [
+    147472,
+    254,
+    0,
+    1,
+    256
+  ],
+  "error": "AcceleratorError(\"CUDA error: operation failed due to a previous error during capture\\nSearch for `cudaErrorStreamCaptureInvalidated' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\\n\")",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/worker.py\", line 60, in <module>\n    with torch.cuda.graph(g,stream=stream):y=fn()\n                                             ^^^^\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/worker.py\", line 58, in <lambda>\n    for label,fn in [('active4',lambda:active(*args,**kw,debug=True)),('large8',lambda:large.forward(*common)),('trace8',lambda:trace.forward(*common)),('native',lambda:native(*args,**kw,debug=True))]:\n                                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/native.py\", line 62, in __call__\n    outputs = extension().forward(self.weights, hidden_states, encoder_hidden_states,\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntorch.AcceleratorError: CUDA error: operation not permitted when stream is capturing\nSearch for `cudaErrorStreamCaptureUnsupported' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/worker.py\", line 60, in <module>\n    with torch.cuda.graph(g,stream=stream):y=fn()\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/cxz/envs/va/lib/python3.12/site-packages/torch/cuda/graphs.py\", line 265, in __exit__\n    self.cuda_graph.capture_end()\n  File \"/root/cxz/envs/va/lib/python3.12/site-packages/torch/cuda/graphs.py\", line 128, in capture_end\n    super().capture_end()\ntorch.AcceleratorError: CUDA error: operation failed due to a previous error during capture\nSearch for `cudaErrorStreamCaptureInvalidated' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n",
+  "lifecycle_seconds": 9.484977960586548
+}

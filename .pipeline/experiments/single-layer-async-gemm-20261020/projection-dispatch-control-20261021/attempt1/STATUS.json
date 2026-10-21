@@ -1,0 +1,56 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792572463.1537883,
+  "deadline": 1792577647.105376,
+  "jobs": [
+    {
+      "name": "build_projection",
+      "owned": {
+        "pid": 768191,
+        "birth_ticks": 717092172,
+        "pgid": 768191
+      },
+      "start": 1792572463.1556396,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792572517.1456027,
+      "lifecycle_seconds": 53.9899640083313,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "build_trace",
+      "owned": {
+        "pid": 768433,
+        "birth_ticks": 717097571,
+        "pgid": 768433
+      },
+      "start": 1792572517.1504416,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792572650.255019,
+      "lifecycle_seconds": 133.10457801818848,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "process1",
+      "owned": {
+        "pid": 768705,
+        "birth_ticks": 717110889,
+        "pgid": 768705
+      },
+      "start": 1792572650.3265479,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792572662.0569758,
+      "lifecycle_seconds": 11.730428218841553,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('process1 failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/guard.py\", line 44, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: process1 failed\n",
+  "end": 1792572662.0608075,
+  "lifecycle_seconds": 198.90701937675476
+}

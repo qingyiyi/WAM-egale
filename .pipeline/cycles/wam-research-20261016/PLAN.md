@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-21T15:46:22.848347+08:00'
+updated: '2026-10-21T17:04:44.011067+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -12,19 +12,19 @@ execution: EXECUTION.md
 | ID | 阶段 | 期望结果与验证 |
 |---|---|---|
 | `M17` | LIBERO证据收口 | 全6000局及曝光/初态/长尾缺口保留，非独立TEST |
-| `M39` | 简易单层先对齐 | 原语映射与整层资源归因；合理后再真实DAG填尾部 |
+| `M39` | 简易单层先对齐 | 先GEMM原语与整层资源归因，再真实DAG填尾部 |
 | `M40` | RoboTwin迁移 | 固定DEV90自然终态、初态/首两S与成本审计 |
 
-- [x] 三KV阶段/CTA、本机NCU完成；等待与计算分开，负结果保留。
-- [x] 用户要求投影8warp：大tile及固定tile两个有界对照，各9真实签名和两进程三KV；完整层均退化，已恢复原4warp。
-- [x] 源码/二进制回退核对、worker清理、阶段证据及HW收口。
-- [ ] M39后续若继续warp方向：同前序Cross K/V阶段计时及MMA/shared/local计数，区分主循环/写回/编译资源；不直接全面扩8warp。
-- [ ] M39小投影/RMS/GELU任务粒度及真实DAG补位，依据证据排序，108是worker池而非各阶段固定tile数。
-- [ ] M40固定DEV90自动接续与终态收口，失败不自动重试。
-- [ ] M17曝光/首两S/非独立TEST与长尾等已知缺口继续保留并总结。
+- [x] 三KV阶段/CTA与旧4warp NCU、两8warp候选完整层退化并回退。
+- [x] 同256×128计算体普通672/108静态/108原子三调度，精度/覆盖、三KV两进程hot及同前序完成；无有意义差别。
+- [x] 整层复核、插桩扰动评估、两脚本失败保留、owned清理和资源闭合。
+- [ ] 固定投影计算体，对主循环/epilogue及必要NCU/SASS对齐；不能移用旧4warp计数作新根因。
+- [ ] FFN/小投影剩余原语与资源差距；合理后按DAG提前cross K/V，不把每阶段凑108当目标。
+- [ ] M40固定DEV90自动接续、终态汇总；当前45/90，无自动重试。
+- [ ] M17曝光/首两S/非独立TEST与长尾缺口保留并总结。
 
-M39累计2073.412951/36000秒；本轮GPU79.587378秒、CPU266.718863秒，两job终态完成，GPU0释放。新GPU作业须原累计内有界登记，不能延长旧deadline。M40预算prior25806.971332/86400秒，10/22 01:26:04.706686硬截止，单局≤1800秒、开局留900秒清理，原3GiB cap不变。
+M39累计2134.452699/36000秒；本轮61.039747秒包含两脚本失败23.611243秒。GPU0释放。新阶段须沿原累计有界登记，旧截止不延长。M40 prior25806.971332/86400秒，10/22 01:26:04.706686硬截止，单局≤1800秒、开局留900秒清理、原3GiB cap。
 
-直接在optimized迭代，baseline/原tile/投机生产/保护state/cycle/rules不动，四权限false；BAAI仅~/cxz，不改驱动服务时钟、不杀他人。
+直接在optimized迭代，baseline/原tile/投机生产/保护文件不动，四权限false；BAAI仅~/cxz，不改驱动服务时钟、不杀他人。
 
-[前计划](history/projection-warps-before-20261021/PLAN.md)，[8warp结果](../../experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/RESULT.md)。
+[本轮结果](../../experiments/single-layer-async-gemm-20261020/projection-dispatch-control-20261021/RESULT.md)，[前计划](history/projection-dispatch-before-20261021/PLAN.md)。

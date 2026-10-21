@@ -1,0 +1,26 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792572805.0837216,
+  "deadline": 1792577647.105376,
+  "jobs": [
+    {
+      "name": "process1",
+      "owned": {
+        "pid": 769121,
+        "birth_ticks": 717126368,
+        "pgid": 769121
+      },
+      "start": 1792572805.1222165,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792572817.0030315,
+      "lifecycle_seconds": 11.880815267562866,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "error": "RuntimeError('process1 failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-dispatch-control-20261021/guard.py\", line 44, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: process1 failed\n",
+  "end": 1792572817.0068088,
+  "lifecycle_seconds": 11.923087358474731
+}

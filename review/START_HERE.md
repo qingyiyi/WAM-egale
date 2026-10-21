@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[投影8warp实验与RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
+最新：[同计算体三调度结果与RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-两个8warp投影方案有限逐位通过，但完整层退化，已经恢复原4warp；GPU0已释放。RoboTwin DEV90完整33/90，GPU1后台继续。四权限false。以下旧TF交接是历史科学基线。
+672CTA/108静态/108原子同计算体未见显著速度差；独立投影仍比Torch慢约11%。36组有限逐位通过，当前4warp整层保持，GPU0已释放。RoboTwin 17:02完整45/90，GPU1后台继续。四权限false。以下旧TF交接是历史科学基线。
 
 ---
 
