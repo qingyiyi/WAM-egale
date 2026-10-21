@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[当前单层慢因诊断与RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
+最新：[投影8warp实验与RoboTwin](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-当前单层仍慢14%–29%，三KV阶段/CTA诊断已完成且有限逐位通过；重点是原语/资源/任务粒度，不能把早到等待全算纯同步。本机NCU已完成、GPU释放，硬件计数见当前分析。RoboTwin DEV90完整16/90，后台固定队列；四权限false。以下旧TF交接是历史科学基线。
+两个8warp投影方案有限逐位通过，但完整层退化，已经恢复原4warp；GPU0已释放。RoboTwin DEV90完整33/90，GPU1后台继续。四权限false。以下旧TF交接是历史科学基线。
 
 ---
 

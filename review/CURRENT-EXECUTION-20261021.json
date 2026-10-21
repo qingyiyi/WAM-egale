@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-10-21T14:41:26.005701+08:00",
+  "observed_at": "2026-10-21T15:47:48.199638+08:00",
   "operator": {
     "selection": {
       "status": "KEEP_SMALL_FINITE_IMPROVEMENT_NOT_PARITY",
@@ -213,7 +213,7 @@
         "primitive_delta_percent": "25.43859649122806"
       }
     ],
-    "GPU_cumulative_seconds": 1993.8255735111236,
+    "GPU_cumulative_seconds": 2073.412951059341,
     "all_workers_exited": true,
     "cross_stage_ready": false,
     "dynamic_spill_L2_DRAM_occupancy": "Local NCU measured7 scopes: local traffic/L2/DRAM/active warps observed; exact spill-vs-call-save allocation and causal time remainUNKNOWN",
@@ -901,11 +901,107 @@
           }
         }
       }
+    },
+    "projection_eight_warps": {
+      "status": "COMPLETE_BOTH_REJECTED_PRIOR4WARP_RESTORED",
+      "large_tile_256_regression_percent": [
+        3.16,
+        4.85
+      ],
+      "fixed_tile_128_regression_percent": [
+        1.05,
+        1.33
+      ],
+      "finite_gate": "Both9signatures/23intermediates/output/allvalidKV/RNG/input bitwise max_abs0",
+      "timing_boundary": "Complete uncached eager single block; GPU0 no competitor, GPU1 robot background;2 independent processes; not robotE2E",
+      "stage_speed_change": "UNKNOWN_not_measured_this_round",
+      "evidence": ".pipeline/experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/RESULT.md",
+      "resource": {
+        "status": "COMPLETE_REJECTED_PERFORMANCE_RESTORED_PRIOR",
+        "variants": [
+          {
+            "variant": "projection-eight-warps-20261021",
+            "GPU_lifecycle_seconds": 40.24630093574524,
+            "CPU_seconds": 133.7601718902588,
+            "jobs": [
+              {
+                "name": "prepare",
+                "returncode": 0,
+                "timeout": false
+              },
+              {
+                "name": "build",
+                "returncode": 0,
+                "timeout": false
+              },
+              {
+                "name": "gate",
+                "returncode": 0,
+                "timeout": false
+              },
+              {
+                "name": "timing1",
+                "returncode": 0,
+                "timeout": false
+              },
+              {
+                "name": "timing2",
+                "returncode": 0,
+                "timeout": false
+              }
+            ]
+          },
+          {
+            "variant": "fixed-tile",
+            "GPU_lifecycle_seconds": 39.341076612472534,
+            "CPU_seconds": 132.95869064331055,
+            "jobs": [
+              {
+                "name": "prepare",
+                "returncode": 0,
+                "timeout": false
+              },
+              {
+                "name": "build",
+                "returncode": 0,
+                "timeout": false
+              },
+              {
+                "name": "gate",
+                "returncode": 0,
+                "timeout": false
+              },
+              {
+                "name": "timing1",
+                "returncode": 0,
+                "timeout": false
+              },
+              {
+                "name": "timing2",
+                "returncode": 0,
+                "timeout": false
+              }
+            ]
+          }
+        ],
+        "GPU_lifecycle_seconds": 79.58737754821777,
+        "CUDA_active_seconds": "UNKNOWN_not_equivalent_to_process_lifecycle",
+        "CPU_build_and_setup_seconds": 266.71886253356934,
+        "prior_GPU_seconds": 1993.8255735111236,
+        "cumulative_GPU_seconds": 2073.412951059341,
+        "cumulative_cap_seconds": 36000,
+        "remaining_GPU_seconds": 33926.58704894066,
+        "new_evidence_bytes": 58073922,
+        "cleanup_complete": true,
+        "failed_jobs": 0,
+        "timeouts": 0,
+        "performance_rejected_candidates": 2
+      }
     }
   },
   "robotwin": {
     "status": "RUNNING_COMPLETE_DEV_EPISODE",
-    "complete_episodes": 16,
+    "complete_episodes": 33,
     "episodes": [
       {
         "episode_id": "place_object_basket-valid14-T",
@@ -1210,6 +1306,329 @@
         "horizon": 1500,
         "lifecycle_seconds": 818.8635823726654,
         "client_returncode": 0
+      },
+      {
+        "episode_id": "open_microwave-valid14-T",
+        "pair_id": 5,
+        "arm": "T",
+        "task": "open_microwave",
+        "valid_index": 14,
+        "status": "COMPLETE_ALGORITHMIC_FAILURE",
+        "success": false,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 1520,
+        "policy_chunks": 48,
+        "failure_penalty": 1500,
+        "horizon": 1500,
+        "lifecycle_seconds": 914.0465619564056,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "open_microwave-valid14-C",
+        "pair_id": 5,
+        "arm": "C",
+        "task": "open_microwave",
+        "valid_index": 14,
+        "status": "COMPLETE_ALGORITHMIC_FAILURE",
+        "success": false,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 1520,
+        "policy_chunks": 48,
+        "failure_penalty": 1500,
+        "horizon": 1500,
+        "lifecycle_seconds": 766.7900795936584,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "place_object_basket-valid15-T",
+        "pair_id": 6,
+        "arm": "T",
+        "task": "place_object_basket",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 272,
+        "policy_chunks": 9,
+        "failure_penalty": 272,
+        "horizon": 700,
+        "lifecycle_seconds": 199.7842628955841,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "place_object_basket-valid15-C",
+        "pair_id": 6,
+        "arm": "C",
+        "task": "place_object_basket",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 272,
+        "policy_chunks": 9,
+        "failure_penalty": 272,
+        "horizon": 700,
+        "lifecycle_seconds": 174.06296110153198,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "place_object_basket-valid15-P",
+        "pair_id": 6,
+        "arm": "P",
+        "task": "place_object_basket",
+        "valid_index": 15,
+        "status": "COMPLETE_ALGORITHMIC_FAILURE",
+        "success": false,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 720,
+        "policy_chunks": 23,
+        "failure_penalty": 700,
+        "horizon": 700,
+        "lifecycle_seconds": 437.03025817871094,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "stack_blocks_two-valid15-C",
+        "pair_id": 7,
+        "arm": "C",
+        "task": "stack_blocks_two",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 304,
+        "policy_chunks": 10,
+        "failure_penalty": 304,
+        "horizon": 800,
+        "lifecycle_seconds": 168.74848294258118,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "stack_blocks_two-valid15-P",
+        "pair_id": 7,
+        "arm": "P",
+        "task": "stack_blocks_two",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 304,
+        "policy_chunks": 10,
+        "failure_penalty": 304,
+        "horizon": 800,
+        "lifecycle_seconds": 177.60913848876953,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "stack_blocks_two-valid15-T",
+        "pair_id": 7,
+        "arm": "T",
+        "task": "stack_blocks_two",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 304,
+        "policy_chunks": 10,
+        "failure_penalty": 304,
+        "horizon": 800,
+        "lifecycle_seconds": 199.01865434646606,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "handover_block-valid15-P",
+        "pair_id": 8,
+        "arm": "P",
+        "task": "handover_block",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 304,
+        "policy_chunks": 10,
+        "failure_penalty": 304,
+        "horizon": 800,
+        "lifecycle_seconds": 178.73653745651245,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "handover_block-valid15-T",
+        "pair_id": 8,
+        "arm": "T",
+        "task": "handover_block",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 304,
+        "policy_chunks": 10,
+        "failure_penalty": 304,
+        "horizon": 800,
+        "lifecycle_seconds": 201.79027915000916,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "handover_block-valid15-C",
+        "pair_id": 8,
+        "arm": "C",
+        "task": "handover_block",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 304,
+        "policy_chunks": 10,
+        "failure_penalty": 304,
+        "horizon": 800,
+        "lifecycle_seconds": 171.4696981906891,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "lift_pot-valid15-T",
+        "pair_id": 9,
+        "arm": "T",
+        "task": "lift_pot",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 108.58947706222534,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "lift_pot-valid15-C",
+        "pair_id": 9,
+        "arm": "C",
+        "task": "lift_pot",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 100.5080304145813,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "lift_pot-valid15-P",
+        "pair_id": 9,
+        "arm": "P",
+        "task": "lift_pot",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 100.13162970542908,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "press_stapler-valid15-C",
+        "pair_id": 10,
+        "arm": "C",
+        "task": "press_stapler",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 85.96331548690796,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "press_stapler-valid15-P",
+        "pair_id": 10,
+        "arm": "P",
+        "task": "press_stapler",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 88.26206922531128,
+        "client_returncode": 0
+      },
+      {
+        "episode_id": "press_stapler-valid15-T",
+        "pair_id": 10,
+        "arm": "T",
+        "task": "press_stapler",
+        "valid_index": 15,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 112,
+        "policy_chunks": 4,
+        "failure_penalty": 112,
+        "horizon": 400,
+        "lifecycle_seconds": 92.63131523132324,
+        "client_returncode": 0
       }
     ],
     "pair_audits": [
@@ -1262,11 +1681,71 @@
         },
         "pass_all": true,
         "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 5,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 6,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 7,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 8,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 9,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+      },
+      {
+        "pair_id": 10,
+        "fields": {
+          "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+          "two_policy_chunks_present": true,
+          "C_P_initial_exact": true
+        },
+        "pass_all": true,
+        "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
       }
     ],
-    "active_case": "open_microwave-valid14-T",
+    "active_case": "open_microwave-valid15-P",
     "server_teacher_attempted": 1483,
-    "GPU_lifecycle_seconds_snapshot": 3936.7856316566467,
+    "GPU_lifecycle_seconds_snapshot": 7942.15074300766,
     "prior_GPU_seconds": 25806.97133207321,
     "absolute_deadline": "2026-10-22T01:26:04.706686+08:00",
     "automatic_queue": true,

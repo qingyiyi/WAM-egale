@@ -1,0 +1,76 @@
+{
+  "goal": "One Cross K/V projection 8-MMA-warp 256x128 tile vs current4-warp128x128; finite9 and two full3KV processes",
+  "authorization": "User requests projection idle W1/W2/W7 participate MMA; M39 optimized only",
+  "registered": "2026-10-21T15:34:29.449575+08:00",
+  "deadline": "2026-10-21T16:34:29.449575+08:00",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "CPU": [
+    4,
+    5
+  ],
+  "GPU_lifecycle_cap_seconds": 540,
+  "CPU_build_wall_cap_seconds": 900,
+  "new_storage_cap_bytes": 1073741824,
+  "cumulative_prior_GPU_seconds": 1993.8255735111236,
+  "cumulative_cap_seconds": 36000,
+  "inputs": "9 actual signatures original target/B14 and video short/middle/long; fixed archived fixtures",
+  "baseline": "current4warp selected df2a307 source+DSO, native/Torch",
+  "max_new_candidates": 1,
+  "acceptance": "finite bitwise output23intermediates validKV RNG input; all3KV two interleaved-process comparison; retain only if stable wholelayer gain",
+  "cleanup": "PID+birth-matched own children; preserve failures; no automatic retry",
+  "scope": "Existing M39; no baseline/spec production or4permissions changes",
+  "steps": [
+    [
+      "prepare",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-eight-warps-20261021/prepare.py"
+      ],
+      60,
+      false
+    ],
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-eight-warps-20261021/build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-eight-warps-20261021/gate.py"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-eight-warps-20261021/timing.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/projection-eight-warps-20261021/timing.py",
+        "2"
+      ],
+      180,
+      true
+    ]
+  ]
+}

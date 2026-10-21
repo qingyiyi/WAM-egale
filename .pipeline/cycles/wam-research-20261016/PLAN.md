@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-21T13:45:15.316595+08:00'
+updated: '2026-10-21T15:46:22.848347+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -11,31 +11,20 @@ execution: EXECUTION.md
 
 | ID | 阶段 | 期望结果与验证 |
 |---|---|---|
-| `M17` | LIBERO证据收口 | 6000局与曝光/首两S/长尾缺口保留，非独立TEST |
-| `M39` | 简易单层先对齐 | 同源阶段/整层成本；原语合理后再真实DAG补位 |
-| `M40` | RoboTwin迁移 | 固定DEV90三臂完整队列，初态/首两S/成本审计 |
+| `M17` | LIBERO证据收口 | 全6000局及曝光/初态/长尾缺口保留，非独立TEST |
+| `M39` | 简易单层先对齐 | 原语映射与整层资源归因；合理后再真实DAG填尾部 |
+| `M40` | RoboTwin迁移 | 固定DEV90自然终态、初态/首两S与成本审计 |
 
-## 当前todo
+- [x] 三KV阶段/CTA、本机NCU完成；等待与计算分开，负结果保留。
+- [x] 用户要求投影8warp：大tile及固定tile两个有界对照，各9真实签名和两进程三KV；完整层均退化，已恢复原4warp。
+- [x] 源码/二进制回退核对、worker清理、阶段证据及HW收口。
+- [ ] M39后续若继续warp方向：同前序Cross K/V阶段计时及MMA/shared/local计数，区分主循环/写回/编译资源；不直接全面扩8warp。
+- [ ] M39小投影/RMS/GELU任务粒度及真实DAG补位，依据证据排序，108是worker池而非各阶段固定tile数。
+- [ ] M40固定DEV90自动接续与终态收口，失败不自动重试。
+- [ ] M17曝光/首两S/非独立TEST与长尾等已知缺口继续保留并总结。
 
-- [x] 前轮逐元素/Cross/FFN组织控制及专用FFN2；负结果全部保留。
-- [x] 本轮一个FFN1尾块候选：9真实签名有限逐位、两进程三KV完整层、选后同前序profile；保留0.19%–0.50%小幅改善。
-- [x] 算子worker自然退出/回收；源同步本地optimized，baseline/投机生产不动。
-- [x] M40 CURRENT18→监督审计→ON3000→部署CAL完成；不是ON闭环SR。
-- [x] DEV90入口/路由/清单核查；首attempt加载前导入失败，0teacher/0episode保留。
-- [x] 用户明确允许本次补启；新namespace真实导入链CPU通过，GPU1模型READY并开始完整episode。
-- [ ] M40跟进固定90局：自然终态、C/P首两S隔离、成本/失败罚分。基础设施/隔离失败停队，不自动重试。
-- [ ] M39再量化GEMM主循环/搬运及阶段等待；按真实依赖设计cross K/V提前补位，不凑108任务，不称已实现ready。
-- [x] 阶段结果及首组三臂检查点已整理到HW，正在同步GitHub小证据并汇报。
+M39累计2073.412951/36000秒；本轮GPU79.587378秒、CPU266.718863秒，两job终态完成，GPU0释放。新GPU作业须原累计内有界登记，不能延长旧deadline。M40预算prior25806.971332/86400秒，10/22 01:26:04.706686硬截止，单局≤1800秒、开局留900秒清理，原3GiB cap不变。
 
-M39累计1905.463629/36000秒；本轮GPU53.236828秒、CPU准备266.815746秒，0失败/0超时，GPU0释放。本轮截止10/21 14:18:37保留，当前作业已完成。下一GPU作业先在原累计内登记有界范围，不能把旧job期限延长。见[结果](../../experiments/single-layer-async-gemm-20261020/ffn1-tail-control-20261021/RESULT.md)。
-M40补启prior25806.971332/86400秒，包含首attempt5.005915秒；DEV90固定截止10/22 01:26:04.706686，单局≤1800秒，开局预留全局+900秒清理，新增≤3GiB，单GPU1模型worker。清单30初态×3臂，不扩大任务/训练/TEST；见[批准范围](../../experiments/robotwin-pilot-20261020/dev90-20261021-r2/RETRY-AUTHORIZATION.md)及PLAN.json。
+直接在optimized迭代，baseline/原tile/投机生产/保护state/cycle/rules不动，四权限false；BAAI仅~/cxz，不改驱动服务时钟、不杀他人。
 
-保护baseline/原tile/LIBERO生产、state/cycle/rules；四权限false。BAAI只写~/cxz，不改驱动/服务/时钟、不杀他人。历史见[前计划](history/ffn1-tail-dev90-20261021/PLAN.md)；旧预算/失败/截止不重置。
-
-## 当前慢因核查（2026-10-21）
-
-- [x] 固定df2a307源/真实三KV，420完整调用/10962阶段调用完成，有限逐位、有效KV/输入/RNG通过；CTA等待已归档。
-- [x] 本机NCU自然空闲后完成7范围计数与有限数值核查，24.245秒，GPU释放；远端权限失败/所有测量wrapper失败保留，原14:40:10截止遵守。
-- [x] 原因、未知项、优先级与资源终态写HW；GitHub同步后汇报。
-
-本次诊断最终GPU88.361944秒，M39累计1993.825574/36000秒；0优化候选。下一步GEMM有效warp/tile与local调用状态、RMS/GELU任务粒度，之后才DAG。当前源df2a307不变。
+[前计划](history/projection-warps-before-20261021/PLAN.md)，[8warp结果](../../experiments/single-layer-async-gemm-20261020/projection-eight-warps-20261021/RESULT.md)。
