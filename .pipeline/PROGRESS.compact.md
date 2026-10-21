@@ -10,6 +10,8 @@
 
 ## M39
 
+[三KV及两进程完整统计](experiments/single-layer-async-gemm-20261020/minor-ops-20261021/THREE-KV-SUMMARY.md)已补齐，包含直接残差退化；本次仅CPU。下一步先同前序缓存条件核对Cross KV/FFN。
+
 [当前小算子/整层/全阶段及CTA等待证据](experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)。
 12小算子真实三KV两进程独立核对逐位通过；适配独立RMS接近Torch，融合RoPE/调制/门控残差更快。
 旧独立阶段仍带统一执行器，不代表原语最佳。保留point全vec4（RoPE仍FP64）与candidate RMS双行直接读取；9签名/23中间量/18有效KV/输入RNG有限逐位通过。

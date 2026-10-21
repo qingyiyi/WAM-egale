@@ -101,7 +101,7 @@
 
 - [评测迁新机、本机供算子](global/requirements/decision-评测迁往新机本机用于算子对照.md)（constraint，当前Cycle）：评测迁出本机；补原始/B14短中长算子数据，持续低频等他人自然结束、空闲即接续，不重复询问；替代自动接本机400局的安排。
 
-- [算子对照完整数据](global/requirements/requirement-算子对照须提供完整性能精度数据.md)（constraint，operator-validation）：提供全部已测输入/进程/轮次的性能与误差、原始证据及缺口，不以局部通过外推整模型。
+- [算子对照完整数据](global/requirements/requirement-算子对照须提供完整性能精度数据.md)（constraint，operator-validation）：同时展示短/中/长KV、全部已测进程/轮次波动与误差；独立原语与整层分列，保留退化，不以局部通过外推整模型。
 
 - [接近预计结束时每三分钟检查](global/requirements/preference-接近阶段预计结束时每三分钟检查.md)（guideline，当前Cycle/M17）：替代全程四分钟汇报；平时休息，近阶段ETA再查，原GPU任务/guard不暂停。
 

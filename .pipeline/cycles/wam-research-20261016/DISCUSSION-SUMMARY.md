@@ -9,3 +9,5 @@
 当前作业已提前终态清理，M39原10h总预算不重置。RoboTwin上一窗口已结束，本轮不恢复其后继链。
 四科学权限、paused72、retention/FAILED、默认A_off不改；仅optimized，保护baseline/原tile/LIBERO。
 BAAI全部写入限~/cxz，不改驱动/服务/时钟，不杀他人；GitHub只main同步小证据，不含权重/凭据。
+
+用户追问三KV覆盖：已有短/中/长全部实测，本次补同表汇总、两进程波动与退化项。下一步先同前序访存/缓存条件比较Cross KV/FFN，避免将独立热重放差值直接归因同步；此为待验证诊断，未写为长期科学结论。

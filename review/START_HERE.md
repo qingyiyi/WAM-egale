@@ -1,5 +1,7 @@
 # 当前入口
 
+新增：[短中长KV完整统计](../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/THREE-KV-SUMMARY.md)（CPU汇总，实验/源码未再运行）。
+
 最新：[10/21小算子核对与CTA等待](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW](../.pipeline/PROGRESS.compact.md)。
 
 point/RMS有限集成后，固定预热完整层较本轮前再改善2.2%–3.0%，仍未与native速度对齐。各算子采用合适tile/任务数，未来按真实DAG补位，不要求每阶段凑108；当前未实现新ready调度。

@@ -5,7 +5,7 @@ plan: PLAN.md
 current: M39
 next: M39
 status: active
-updated: '2026-10-21T10:46:42.181704+08:00'
+updated: '2026-10-21T11:02:47.052904+08:00'
 ---
 # 当前研究进度
 
@@ -16,6 +16,8 @@ updated: '2026-10-21T10:46:42.181704+08:00'
 | `M40` | RoboTwin | in_progress | Target48、parent18及CHILD/CONT训练/固定接口CAL齐 | 新窗口接CURRENT18→ON→DEV |
 
 ## M39
+
+[短中长KV与两进程完整汇总](../../experiments/single-layer-async-gemm-20261020/minor-ops-20261021/THREE-KV-SUMMARY.md)已补齐；三档此前均已运行，本次仅CPU统计。下一步先统一Cross KV/FFN的前序访存与缓存条件，避免把独立热重放优势误算为整层同步。
 
 [当前小算子/整层/全阶段及CTA等待证据](../../experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)。
 12小算子真实三KV两进程独立核对逐位通过；适配独立RMS接近Torch，融合RoPE/调制/门控残差更快。

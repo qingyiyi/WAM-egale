@@ -23,3 +23,5 @@
 公开快照仅含源码和小证据，不含模型权重、原始PT/KV/相机、DSO、完整profile或凭据；不能声称仅凭本仓库重算全部真实张量。旧review/RESULTS.json保持不变。
 
 发布说明：两份诊断脚本仅去除了空白行尾空格，原始执行/预检源码逐字保留在本地；原始与展示SHA和变换写入M39-MINOR-PUBLICATION-20261021.json。活动算子源、结果JSON与失败终态不变。
+
+新增[三KV完整汇总](../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/THREE-KV-SUMMARY.md)及逐进程CSV：仅CPU重算展示，三档原实验均已完成。下一步先统一Cross KV/FFN前序访存与缓存条件，现有差值不等于纯同步。
