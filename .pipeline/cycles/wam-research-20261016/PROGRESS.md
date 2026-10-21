@@ -5,36 +5,34 @@ plan: PLAN.md
 current: M39
 next: M39
 status: active
-updated: '2026-10-21T09:13:44.589629+08:00'
+updated: '2026-10-21T10:46:42.181704+08:00'
 ---
 # 当前研究进度
 
 | ID | 阶段 | 状态 | 结果/证据 | 下一步 |
 |---|---|---|---|---|
 | `M17` | LIBERO | in_progress | 6000局齐，科学审计未放行 | 保留曝光/首两S/长尾缺口 |
-| `M39` | 单层对齐 | in_progress | vec4整层改善2.7%–3.1%；FFN2独立接近Torch，整层并行撤回 | 先查整层资源条件，不ready |
+| `M39` | 单层对齐 | in_progress | point/RMS核对与有限集成齐，较本轮前再改善2.2%–3.0%；仍未速度对齐 | 查Cross KV/FFN资源成本，不ready |
 | `M40` | RoboTwin | in_progress | Target48、parent18及CHILD/CONT训练/固定接口CAL齐 | 新窗口接CURRENT18→ON→DEV |
 
 ## M39
 
-[整体与分阶段绝对耗时、源码及同步归因边界](../../experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/TIME-BREAKDOWN-20261021.md)已补齐，纯等待比例仍未知；本次仅CPU汇总。
+[当前小算子/整层/全阶段及CTA等待证据](../../experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)。
+12小算子真实三KV两进程独立核对逐位通过；适配独立RMS接近Torch，融合RoPE/调制/门控残差更快。
+旧独立阶段仍带统一执行器，不代表原语最佳。保留point全vec4（RoPE仍FP64）与candidate RMS双行直接读取；9签名/23中间量/18有效KV/输入RNG有限逐位通过。
 
-[最新完整证据](../../experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md)。
-真实Torch GELU为vec4 kernel；native代理是标量索引并行kernel。剥离队列和统一资源后，
-自有vec4 GELU约比Torch慢4%–6%，调制表更快但包含cast+add融合收益。
-固定108 CTA的无队列标量版仍慢，不能归因全是同步。
+固定60轮预热、SM观测1410MHz，两进程当前B14完整层：短3.1032/3.1017ms（native2.1151/2.1197），
+中3.3658/3.3737（native2.4011/2.4049），长3.6197/3.6166（native2.8393/2.8381）。
+同轮较本次前下降2.2%–3.0%，仍慢约46%–47%/40%/27%，不是强cached/Graph或E2E。
+全部未预热轮次保留，不跨轮拼倍数。当前全29阶段表已重测，旧表不再冒充当前。
 
-FFN2去中间全局写回收益小且不稳定；M128串行更慢，M128两K分段并行的独立版本比Torch慢约4%–6%，
-全部真实三KV/两进程有限逐位通过。但嵌入整层无稳定收益、短KV慢2%–4%，已撤回。
-保留该负结果；不能声称FFN2整层对齐或动态spill已证实。当前仅保留table/GELU vec4，原FFN2串行与逐阶段grid.sync。
+CTA leader屏障时间戳显示：中KV Cross K/V尾波等待P50约53µs，而最后进入至释放尾部约2–3µs；
+Self Q/FFN2各96任务，12个worker可提前等待。等待与其他CTA计算重叠，不能相加成墙钟或称纯barrier。
+固定预热后的插桩扰动短/中/长约0.39%/0.37%/1.47%，只属于诊断副本；动态spill/HBM/L2仍未知。
 
-当前B14完整层短/中/长约native的1.422/1.439/1.301–1.304倍；同轮较本次前改善2.7%–3.1%。
-边界为uncached/eager单层；不是最强cached/Graph、30层、chunk或E2E。全部轮次和频率变化保留。
-两个集成版本各通过9真实签名、23共享中间量、18有效KV状态、输入/RNG/重复有限逐位；最终已恢复较快vec4源与二进制。
-108CTA、256线程、255reg、98848B shared、1CTA/SM；新FFN2整层local从1464增至1488B，仅静态相关，动态counter未知。
-
-本轮GPU生命周期118.096秒、CPU构建368.961秒，M39累计约1403.945/36000秒。
-全部owned进程退出，当前两GPU无计算进程。baseline、原tile、LIBERO投机不修改。
+用户明确：每子算子按合适tile大小和逻辑任务数，不凑108；未来按真实DAG就绪填空。当前仍顺序执行，未实现ready。
+本轮GPU生命周期207.379秒，累计1611.324/36000秒，CPU准备/构建507.174秒；全部owned退出、两GPU空闲。
+baseline、原tile、LIBERO策略与科学门不动。下一步先剩余Cross KV/FFN执行资源差距与任务映射。
 
 ## M40
 
@@ -50,5 +48,5 @@ CURRENT18/ON3000/DEV90未启动；原09:30截止不足整局+清理预留，新�
 
 LIBERO T/C/P各500：Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499。
 不是独立TEST；paused72、旧默认A_off、retention/FAILED及四质量/性能权限false不变。
-下一步先FFN2整层条件归因；RoboTwin下一窗口接已登记链。GitHub只main小证据，不含权重/原始PT/凭据。
+下一步按小算子结果处理Cross KV/FFN和适配tile；RoboTwin下一窗口接已登记链。GitHub只main小证据，不含权重/原始PT/凭据。
 10/22 go-no-go，10/23冻结，10/28主表，11/01 18:00证据包。旧结果见[历史](history/pointwise-isolation-20261021/PROGRESS.md)。

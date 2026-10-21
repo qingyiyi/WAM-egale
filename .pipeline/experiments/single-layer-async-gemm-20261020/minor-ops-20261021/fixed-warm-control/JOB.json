@@ -1,0 +1,40 @@
+{
+  "goal": "解决首轮时钟/插桩漂移：固定60预热轮，原对照和所有旧结果保留，不锁频、不挑轮",
+  "deadline": "2026-10-21T11:40:00+08:00",
+  "GPU_lifecycle_cap_seconds": 780,
+  "full_block_cap": 1800,
+  "parent_budget": "minor-ops≤1800s GPU, M39≤10h",
+  "CPU": 2,
+  "storage_cap": 67108864,
+  "steps": [
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/fixed-warm-control/timing.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/fixed-warm-control/timing.py",
+        "2"
+      ],
+      300,
+      true
+    ],
+    [
+      "instrumentation_control",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/fixed-warm-control/instrumentation_control.py"
+      ],
+      180,
+      true
+    ]
+  ]
+}

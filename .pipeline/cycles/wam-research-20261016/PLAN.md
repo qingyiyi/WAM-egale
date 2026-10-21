@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-21T09:13:44.589629+08:00'
+updated: '2026-10-21T10:46:42.181704+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -22,8 +22,10 @@ execution: EXECUTION.md
 - [x] FFN2并行K独立接近Torch，入整层未受益，保留负结果并恢复较快源/DSO。
 - [x] 用户授权补齐parent18，完整监督审计，CHILD/CONT固定训练与GPU部署接口CAL。
 - [x] 全部本轮进程退出，原始失败/预算/截止保留，短HW更新。
-- [ ] M39下一阶段：先固定整层资源条件分析FFN2，无新增ready；本轮不自动扩展搜索。
+- [x] M39：官方来源冻结、12小算子同输入核对、point/RMS整层集成、全29阶段及CTA等待表完成。
+- [ ] 下一步：用当前表定位Cross K/V与FFN执行资源成本；每算子按适配tile/任务数，未来按DAG就绪填空，不凑108。
+- minor-ops本轮已结束，GPU207.379/1800秒，M39累计1611.324/36000秒，旧截止保留。
 - [ ] M40下一窗口：CONT3000 CURRENT18→审计→ON3000→固定DEV；09:30原窗口不自动延长。
 
-本轮算子GPU118.096秒，M39累计约1403.945/10小时；M40累计5.7624/24小时。
+M39前轮累计1403.945秒；本轮新增207.379秒，累计1611.324/36000秒。M40累计5.7624/24小时。
 BAAI仅~/cxz，AutoDL已归还。保护state/cycle/rules、baseline、原tile、LIBERO生产、四项false不变。

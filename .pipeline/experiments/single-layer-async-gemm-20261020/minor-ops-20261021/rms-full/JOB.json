@@ -1,0 +1,53 @@
+{
+  "goal": "B14 self/cross-Q RMS复用已验证的双行直接读取，保持每行128线程归约；原B2不变",
+  "deadline": "2026-10-21T11:40:00+08:00",
+  "full_block_cap": 402,
+  "gpu_lifecycle_cap_seconds": 540,
+  "storage_cap": 419430400,
+  "cumulative_cap_seconds": 36000,
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--inplace",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/rms-full/active-build/obj"
+      ],
+      600,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/rms-full/gate.py"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/rms-full/timing.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/rms-full/timing.py",
+        "2"
+      ],
+      180,
+      true
+    ]
+  ],
+  "parent_budget": "minor-ops 1800 GPU seconds within M39 cumulative10h"
+}

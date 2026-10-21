@@ -257,7 +257,9 @@ __device__ void norm_tile(Shared &sh, const B *x, void *y, const void *gamma, co
     }
     __syncthreads();
 }
-// Cross-K有数千行。旧实现每CTA只用4个warp归约一行；这里8个warp
+// B14 RMS每个128线程组归约一行；256线程CTA的两个组分别处理两行。
+// 行宽3072、vec4、行内归约树均与原版一致；逻辑任务数为ceil(rows/2)。
+// 这里8个warp
 // 分成两个独立的128线程组，各算一行。没有跨阶段调度，也不改变行内归约树。
 __device__ inline void rms_pair_sync(int group) {
     if (group == 0)
@@ -325,7 +327,7 @@ __device__ void rms_pair_tile(Shared &sh, const B *x, B *y, const B *gamma,
 __device__ void norm(const Params &p, Shared &s, cg::grid_group &g, int st, const B *x, void *y,
                      int rows, int gi, int bi, float eps, bool rms, bool out_float) {
     begin_stage(p, g, st);
-    if (p.candidate && rows >= 1024 && rms && !out_float && bi < 0) {
+    if (p.candidate && rms && !out_float && bi < 0) {
         for (int t; (t = claim_tile(p, s, st)) < (rows + 1) / 2;) {
             rms_pair_tile(s, x, (B *)y, gi >= 0 ? (const B *)p.w[gi] : nullptr,
                           eps, 2 * t, rows);
@@ -427,83 +429,81 @@ __device__ void layout(const Params &p, Shared &s) {
 
 struct alignas(8) Point4 { B value[4]; };
 
+// 固定D3072的pointwise：按类型向量搬运；每元素公式、精度和任务队列不变。
 __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Point op, int dst,
                       int a, int b, int param, int64_t count) {
-    // 一个任务覆盖2048元素；逐元素没有跨线程归约，8个warp共同搬运/计算。
-    // 不改变每个元素的FP32算式或BF16舍入；GEMM/Norm的warp分工不变。
     constexpr int tile_elements = 2048;
-    int tiles = (count + tile_elements - 1) / tile_elements;
+    const int tiles = (count + tile_elements - 1) / tile_elements;
     begin_stage(p, g, st);
     for (int task; (task = claim_tile(p, s, st)) < tiles;) {
-        // 每线程搬四个相邻BF16；保留原FP32算式。队列、tile和阶段同步不变。
-        if (op == GELU || (op == TABLE && !p.temb_float && p.l == p.q)) {
+        if (op == TABLE && (p.temb_float || p.l != p.q)) {
+            // 非逐token/BF16输入的兼容分支，保持原广播寻址与FP32相加。
+            for (int j = threadIdx.x; j < tile_elements; j += THREADS) {
+                int64_t i = int64_t(task) * tile_elements + j;
+                if (i < count) {
+                    int cell = i % (6 * D), row = i / (6 * D), batch = row / p.q, token = row % p.q;
+                    int64_t src = (int64_t(batch) * p.l + (p.l == 1 ? 0 : token)) * 6 * D + cell;
+                    float v = p.temb_float ? ((const float *)p.temb)[src] : value(((const B *)p.temb)[src]);
+                    fp(p, dst)[i] = __fadd_rn(((const float *)p.w[0])[cell], v);
+                }
+            }
+        } else if (op == ROPE) {
+            // count以复数对计数；一次搬两个复数对。原模型的FP64乘加保持不变。
+            for (int j = 2 * int(threadIdx.x); j < tile_elements; j += 2 * THREADS) {
+                int64_t i = int64_t(task) * tile_elements + j;
+                if (i < count) {
+                    Point4 v = *reinterpret_cast<const Point4 *>(bp(p, a) + 2 * i), out;
+#pragma unroll
+                    for (int c = 0; c < 2; ++c) {
+                        int64_t pair = i + c, r = pair / 64, batch = r / (p.q * H), token = (r / H) % p.q, dim = pair % 64;
+                        auto f = p.freq[((p.fb == 1 ? 0 : batch) * p.q + token) * 64 + dim];
+                        double x = double(value(v.value[2 * c])), y = double(value(v.value[2 * c + 1]));
+                        out.value[2 * c] = bf(float(x * double(f.real()) - y * double(f.imag())));
+                        out.value[2 * c + 1] = bf(float(x * double(f.imag()) + y * double(f.real())));
+                    }
+                    *reinterpret_cast<Point4 *>(bp(p, dst) + 2 * i) = out;
+                }
+            }
+        } else {
             for (int j = 4 * int(threadIdx.x); j < tile_elements; j += 4 * THREADS) {
                 int64_t i = int64_t(task) * tile_elements + j;
                 if (i < count) {
-                    const B *input = op == GELU ? bp(p, a) : (const B *)p.temb;
-                    Point4 v = *reinterpret_cast<const Point4 *>(input + i);
-                    if (op == TABLE) {
-                        float4 w = *reinterpret_cast<const float4 *>((const float *)p.w[0] + i % (6 * D));
-                        float *out = &w.x;
-#pragma unroll
-                        for (int c = 0; c < 4; ++c) out[c] = __fadd_rn(out[c], value(v.value[c]));
-                        *reinterpret_cast<float4 *>(fp(p, dst) + i) = w;
+                    Point4 x, y, out; float4 xf, shift, scale;
+                    if (op == MODULATE) {
+                        xf = *reinterpret_cast<const float4 *>(fp(p, a) + i);
+                        int64_t mod = (i / D * 6 + param) * D + i % D;
+                        shift = *reinterpret_cast<const float4 *>(fp(p, MOD) + mod);
+                        scale = *reinterpret_cast<const float4 *>(fp(p, MOD) + mod + D);
                     } else {
+                        const B *input = op == TABLE ? (const B *)p.temb : a < 0 ? p.x : bp(p, a);
+                        x = *reinterpret_cast<const Point4 *>(input + i);
+                    }
+                    if (op == TABLE) shift = *reinterpret_cast<const float4 *>((const float *)p.w[0] + i % (6 * D));
+                    if (op == RESIDUAL) {
+                        y = *reinterpret_cast<const Point4 *>(bp(p, b) + i);
+                        if (param >= 0) scale = *reinterpret_cast<const float4 *>(fp(p, MOD) + (i / D * 6 + param) * D + i % D);
+                    }
 #pragma unroll
-                        for (int c = 0; c < 4; ++c) {
-                            float x = value(v.value[c]);
+                    for (int c = 0; c < 4; ++c) {
+                        if (op == TABLE) ((float *)&shift)[c] = __fadd_rn(((float *)&shift)[c], value(x.value[c]));
+                        else if (op == MODULATE)
+                            out.value[c] = bf(__fadd_rn(__fmul_rn(((float *)&xf)[c], __fadd_rn(1.f, ((float *)&scale)[c])), ((float *)&shift)[c]));
+                        else if (op == RESIDUAL) {
+                            float v = value(y.value[c]);
+                            if (param >= 0) v = __fmul_rn(v, ((float *)&scale)[c]);
+                            out.value[c] = bf(__fadd_rn(value(x.value[c]), v));
+                        } else {
+                            float v = value(x.value[c]);
                             constexpr float beta = M_SQRT2 * M_2_SQRTPI * float(.5), kappa = .044715;
-                            float cube = x * x * x, inner = beta * (x + kappa * cube);
-                            v.value[c] = bf(.5f * x * (1.f + c10::cuda::compat::tanh(inner)));
+                            float cube = v * v * v, inner = beta * (v + kappa * cube);
+                            out.value[c] = bf(.5f * v * (1.f + c10::cuda::compat::tanh(inner)));
                         }
-                        *reinterpret_cast<Point4 *>(bp(p, dst) + i) = v;
                     }
+                    if (op == TABLE) *reinterpret_cast<float4 *>(fp(p, dst) + i) = shift;
+                    else *reinterpret_cast<Point4 *>(bp(p, dst) + i) = out;
                 }
             }
-        } else for (int j = threadIdx.x; j < tile_elements; j += THREADS) {
-                int64_t i = int64_t(task) * tile_elements + j;
-                float z = 0.f;
-                if (i < count) {
-                    if (op == TABLE) {
-                        int cell = i % (6 * D);
-                        int64_t j = i; // 实际逐token temb无需再做batch/token广播地址运算。
-                        if (p.l != p.q) {
-                            int row = i / (6 * D), batch = row / p.q, t = row % p.q;
-                            j = (int64_t(batch) * p.l + (p.l == 1 ? 0 : t)) * 6 * D + cell;
-                        }
-                        float te = p.temb_float ? ((const float *)p.temb)[j]
-                                                : value(((const B *)p.temb)[j]);
-                        z = __fadd_rn(((const float *)p.w[0])[cell], te);
-                    } else if (op == MODULATE) {
-                        int64_t j = (i / D * 6 + param) * D + i % D;
-                        z = __fadd_rn(__fmul_rn(fp(p, a)[i], __fadd_rn(1.f, fp(p, MOD)[j + D])),
-                                      fp(p, MOD)[j]);
-                    } else if (op == RESIDUAL) {
-                        float v = value(bp(p, b)[i]);
-                        if (param >= 0)
-                            v = __fmul_rn(v, fp(p, MOD)[(i / D * 6 + param) * D + i % D]);
-                        z = __fadd_rn(value(a < 0 ? p.x[i] : bp(p, a)[i]), v);
-                    } else if (op == ROPE) {
-                        int64_t r = i / 64, batch = r / (p.q * H), t = (r / H) % p.q, j = i % 64;
-                        auto f = p.freq[((p.fb == 1 ? 0 : batch) * p.q + t) * 64 + j];
-                        double x = double(value(bp(p, a)[2 * i])),
-                               y = double(value(bp(p, a)[2 * i + 1]));
-                        const float real = float(x * double(f.real()) - y * double(f.imag()));
-                        const float imag = float(x * double(f.imag()) + y * double(f.real()));
-                        bp(p, dst)[2 * i] = bf(real);
-                        bp(p, dst)[2 * i + 1] = bf(imag);
-                    } else if (op == GELU) {
-                        float x = value(bp(p, a)[i]);
-                        constexpr float beta = M_SQRT2 * M_2_SQRTPI * float(.5), kappa = .044715;
-                        float cube = x * x * x, inner = beta * (x + kappa * cube);
-                        z = .5f * x * (1.f + c10::cuda::compat::tanh(inner));
-                    }
-                    if (op == TABLE)
-                        fp(p, dst)[i] = z;
-                    else if (op != ROPE)
-                        bp(p, dst)[i] = bf(z);
-                }
-            }
+        }
         finish_tile();
     }
     g.sync();

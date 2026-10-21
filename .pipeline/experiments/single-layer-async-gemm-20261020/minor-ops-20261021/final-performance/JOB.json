@@ -1,0 +1,40 @@
+{
+  "goal": "原pre-minor vs 最终小算子选定版完整层两进程；另测插桩扰动",
+  "deadline": "2026-10-21T11:40:00+08:00",
+  "GPU_lifecycle_cap_seconds": 540,
+  "full_block_cap": 360,
+  "CPU": 2,
+  "storage_cap": 134217728,
+  "parent_budget": "minor-ops≤1800s GPU within M39≤10h",
+  "steps": [
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/final-performance/timing.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/final-performance/timing.py",
+        "2"
+      ],
+      180,
+      true
+    ],
+    [
+      "instrumentation_control",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/final-performance/instrumentation_control.py"
+      ],
+      180,
+      true
+    ]
+  ]
+}

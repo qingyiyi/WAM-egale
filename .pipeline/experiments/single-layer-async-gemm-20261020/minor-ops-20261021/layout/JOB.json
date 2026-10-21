@@ -1,0 +1,50 @@
+{
+  "goal": "每算子原生布局：仅对照128/256线程vec4，不强制108CTA；4代表算子、三KV、两进程",
+  "authorization": "用户2026-10-21明确要求优先核对并更新表，可查官方实现",
+  "deadline": "2026-10-21T11:40:00+08:00",
+  "GPU": "GPU0",
+  "CPU": 2,
+  "gpu_lifecycle_cap_seconds": 1800,
+  "cumulative_cap_seconds": 36000,
+  "prior_consumed_seconds": 1403.945,
+  "storage_cap_bytes": 536870912,
+  "block_calls_cap": 12,
+  "stage_calls_cap": 9000,
+  "cleanup": "PID+birth guard reaps only owned children",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/layout/build.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/layout",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/layout/build"
+      ],
+      600,
+      false
+    ],
+    [
+      "process1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/layout/worker.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "process2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/layout/worker.py",
+        "2"
+      ],
+      180,
+      true
+    ]
+  ]
+}

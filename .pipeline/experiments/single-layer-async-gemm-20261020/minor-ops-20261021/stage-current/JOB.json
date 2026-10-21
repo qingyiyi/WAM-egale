@@ -1,0 +1,54 @@
+{
+  "goal": "选定当前版本三KV全29阶段表；CTA leader屏障等待诊断，非正式计时",
+  "deadline": "2026-10-21T11:40:00+08:00",
+  "GPU_lifecycle_cap_seconds": 600,
+  "parent_budget": "minor-ops≤1800s GPU, M39≤10h",
+  "CPU": 2,
+  "full_block_cap": 18,
+  "stage_cap": 2500,
+  "storage_cap": 536870912,
+  "steps": [
+    [
+      "prepare",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/stage-current/prepare_simple_stages.py"
+      ],
+      60,
+      false
+    ],
+    [
+      "barrier_instrument",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/stage-current/instrument_barriers.py"
+      ],
+      60,
+      false
+    ],
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/stage-current/build_simple_stages.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/stage-current",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/stage-current/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "stage1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/minor-ops-20261021/stage-current/simple_stage_worker.py",
+        "1"
+      ],
+      600,
+      true
+    ]
+  ]
+}

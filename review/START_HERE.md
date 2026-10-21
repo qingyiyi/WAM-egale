@@ -1,10 +1,10 @@
 # 当前入口
 
-最新：[10/21逐元素与FFN2对齐结果](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW](../.pipeline/PROGRESS.compact.md)。
+最新：[10/21小算子核对与CTA等待](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW](../.pipeline/PROGRESS.compact.md)。
 
-保留vec4整层约3%收益；独立FFN2接近Torch，但整层并行无稳定收益而撤回。
-当前完整层仍慢30%–44%，精度仅有限逐位通过。RoboTwin parent18/CHILD/CONT/固定接口CAL齐，后继闭环待新窗口。
-当前两GPU无计算进程。旧paused72与四项false保留。
+point/RMS有限集成后，固定预热完整层较本轮前再改善2.2%–3.0%，仍未与native速度对齐。各算子采用合适tile/任务数，未来按真实DAG补位，不要求每阶段凑108；当前未实现新ready调度。
+
+RoboTwin parent18/CHILD/CONT/固定接口CAL齐，后继闭环待新窗口。最新清理收据确认两GPU无计算进程；旧paused72与四项false保持。
 
 ---
 

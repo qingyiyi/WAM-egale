@@ -22,10 +22,14 @@ hidden：BF16 `[B,Q,3072]`；context：BF16 `[B,512,3072]`；temb：原BF16/FP32
 |B14 action，M224 GEMM|投影/FFN2为64×128；FFN1为128×128；K64，CUTLASS三级主循环|
 |context，M7168 GEMM|128×128输出tile，K64；单次K/V投影各1344任务|
 |self/cross FA2|B14 Q16实例用Q64×KV64 tile；其余standard为Q128×KV64，需要split时Q64×KV128；连续cross K/V保留原FA2加载器|
-|Norm/RMS|行宽3072；普通Norm保持原128线程归约；B14长cross-K RMS每CTA两个独立128线程组算两行|
-|pointwise|每任务2048元素，8个warp共同执行；GELU与BF16逐token调制表每线程搬运四元素；其他公式保留原路径|
+|Norm/RMS|行宽3072；普通Norm保持原128线程归约；candidate RMS每CTA两个独立128线程组直接读取并各算一行，224行自然形成112任务|
+|pointwise|每任务2048个逻辑单位，8个warp共同执行；GELU、BF16逐token调制表、调制与残差每线程搬运4元素；RoPE每线程处理2个复数对并保留FP64算术，RoPE任务单位为复数对|
 
 108常驻CTA，每CTA8warp/256线程。warp0领取CTA任务，warp3–6计算。小M的warp1/2搬A/W、warp7写回；大M的4个计算warp自行加载和MMA，随后8warp共同做epilogue。普通Norm由8warp搬入/写回、3–6归约；双行RMS两个4warp组各归约一行。FA2沿用4warp设备计算。B14只读cache的mask由8warp按原物理slot顺序压紧。
+
+每类子算子按适合的tile大小与逻辑任务数划分，108是当前常驻worker池规模，不是每阶段必须凑满108任务。例如Self Q和FFN2各96个GEMM任务，candidate self RMS为112个双行任务。未来从真实DAG中把已就绪的后续tile分配给空闲worker；不会为铺满而强行切碎当前算子。
+
+后续依赖设计先区分：cross K/V只读就绪context和各自权重，可提前；Self Q的RMS需对应行全部3072列投影完成，不能单个输出tile完成就运行；FFN2需其完整reduction输入就绪，不能看到一个GELU tile就提前。任务不就绪时不能让全部常驻CTA占着资源自旋，阻塞真正的生产者。这些是下一步调度约束，当前未实现。
 
 当前遵循用户“先对齐再调度”的要求，各阶段仍依次执行并全局同步。此前独立ready试验已经留档并撤回活动路径，不纳入当前版本。中间量仍按原BF16/FP32边界写入全局workspace，一个kernel不等于所有数据都留在shared。
 
@@ -39,14 +43,17 @@ hidden：BF16 `[B,Q,3072]`；context：BF16 `[B,512,3072]`；temb：原BF16/FP32
 
 ## 验证与性能边界
 
-最新证据见[逐元素与FFN2剥离、整层结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md)。
-真实Torch GELU使用vec4；当前自有独立vec4约慢4%–6%，有限逐位相同。把table/GELU vec4放回整层，
-两独立进程均改善约2.7%–3.1%，已保留。当前B14短/中/长完整层约为native的1.422/1.439/1.301–1.304倍，尚未速度对齐。
+最新证据见[RMS/RoPE/调制/残差、完整阶段及CTA等待](../../../.pipeline/experiments/single-layer-async-gemm-20261020/minor-ops-20261021/RESULT.md)。
+本轮12个小算子三KV/两进程独立数学体有限逐位通过；RMS接近Torch，融合RoPE、调制和门控残差更快，直接残差仍略慢。
+原Torch表达式可能启动多个kernel，旧“独立阶段”仍带统一执行器/shared预留，二者不应混称。
+保留point向量化和candidate RMS双行直接读取后，固定60轮预热的两个独立进程，整层较本轮前改善2.2%–3.0%。
+B14短/中/长当前约3.10/3.37/3.62ms，为native的1.463–1.467/1.402–1.403/1.274–1.275倍，尚未速度对齐。
+这是uncached/eager单层；固定预热前的所有轮次仍保留，不能跨轮拼比例。此前table/GELU vec4改善2.7%–3.1%见[前轮结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/pointwise-isolation-20261021/RESULT.md)，不与本轮改善直接相乘。
 
 FFN2独立M128两K分段并行也接近Torch（慢约4%–6%），但集成整层未稳定受益，短KV反慢2%–4%，
 已撤回并恢复本次较快vec4源/DSO。活动FFN2仍为M64串行两段；不要把证据目录的诊断版本当生产入口。
 新增FFN2整层local从1464升到1488B只是静态观察，尚未证明动态spill或同步是唯一原因。
-当前仍按阶段grid.sync，不启动跨阶段ready。保留夜间[RMS等原证据](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESULT.md)。
+当前仍按阶段grid.sync，不启动跨阶段ready。新CTA时间戳副本中，中KV Cross K/V结束处等待P50约53µs，最晚进入到释放约2–3µs；早到等待与其他CTA计算重叠，不能称为纯同步开销或全部可兑现的收益。新的全29阶段表已重测；保留夜间[RMS等原证据](../../../.pipeline/experiments/single-layer-async-gemm-20261020/stage-alignment/overnight/RESULT.md)。
 
 N256/8warp FFN1、pointwise8192、强制GEMM内联、双驻留compact B14均未保留。后者虽达到2CTA/SM，完整层反而慢2%–10%；已恢复当前较快顺序版，当前FFN1仍N128。不把理论并行度或原语局部收益当作完整层收益。
 

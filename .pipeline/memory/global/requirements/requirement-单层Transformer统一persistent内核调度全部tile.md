@@ -4,7 +4,7 @@ name: 单层Transformer统一persistent内核调度全部tile
 level: constraint
 scope: cycle:wam-research-20261016;operator_research
 status: active
-updated: '2026-10-19T23:13:31.424979+08:00'
+updated: '2026-10-21'
 supersedes:
   - 将M32仅attention和FFN1阶段内常驻CTA循环视为用户整层persistent目标已完成的解释
 sources:
@@ -26,3 +26,5 @@ sources:
 该澄清替代M33缺口文档中“先全组协作、warp专职分工只作后续可选优化”的完成标准；旧原型和旧测量保留，不能改称已满足。
 
 最新授权（2026-10-20T00:07:07.268346+08:00）：立即开始整层单kernel源码与CPU编译，与M35计时并行；GPU验证等待对应卡的计时队列关闭和清理，明早汇报实际速度、精度和问题。
+
+用户2026-10-21明确澄清：每个子算子采用其合适的tile大小与逻辑任务数量，不要求每阶段都铺满108个CTA，不为了凑满而改变分块。未来调度依据真实DAG就绪条件，把后续无依赖或依赖已满足的tile提前填补空闲执行资源。逻辑tile任务数与固定persistent worker数量分别说明；两者不能混称。当前优先小算子核对与整层对齐，澄清不要求立即跳过该步骤启动ready调度。
