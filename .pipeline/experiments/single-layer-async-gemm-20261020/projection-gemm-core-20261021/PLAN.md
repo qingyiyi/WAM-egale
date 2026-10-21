@@ -6,4 +6,4 @@
 - [x] 三KV K/V精度与两进程同前序计时；必要时比较主循环/写回低扰动计数。
 - [x] 有稳定收益才接入4warp整层匹配路径，9真实签名/完整层比较。
 - [x] 资源/负结果/清理及HW收口；RoboTwin继续巡检。
-- [ ] GitHub main同步并核验远端commit。
+- [x] GitHub main同步并核验远端commit：b662e955（代码与完整证据）；见PUBLICATION.json。
