@@ -1,4 +1,4 @@
-# WAM短状态（2026-10-22T02:46:38.498460+08:00）
+# WAM短状态（2026-10-22T02:57:15.434151+08:00）
 
 先读INDEX、CONTEXT-POLICY、memory约束，再按需读[Cycle四文件](cycles/wam-research-20261016/PROGRESS.md)；v15语义入口，不全量sync或全载旧索引。
 
@@ -12,9 +12,9 @@ M39先对齐单层，再依据原语/资源证据做tile ready调度。只改算
 
 9真实签名与21结构变体通过有限逐位：原Torch输出、23共有中间量、有效KV、普通/debug、输入/RNG。08 short/drop1的2个中间元素差1.49e-8旧FAILED保留，08b非16尾G1修复。最终源0cc1944b/DSOac3f9e46两机同一验证二进制，旧2a8保留。仍108CTA/256线程单层；静态分派/padded写回/双4warp attention/FFN1 N256K32/移除冗余入口同步，真实出口依赖保留，ready-DAG未实现。
 
-[逐阶段](experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/stage-control-final-r2/RESULT.md)：self-attention、Cross-K RMS、FFN/GELU为剩余显著项；独立阶段仍慢，不能全怪grid同步。资源控制支持统一shared/驻留限制是部分原因。静态local936B不是动态spill。本机最终版NCU新窗口等待自然空闲，最迟08:47:30启动、09:00清理；前窗口外部干扰0kernel，原PARTIAL保留。
+[逐阶段](experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/stage-control-final-r2/RESULT.md)：self-attention、Cross-K RMS、FFN/GELU为剩余显著项；独立阶段仍慢，不能全怪grid同步。资源控制支持统一shared/驻留限制是部分原因。静态local936B不是动态spill。本机NCU窗口均已终态；计数及是否有效见本轮RESOURCE报告，不将PARTIAL改成PASS。
 
-M39累计保守计费4850.877/36000秒（含本机等待，非CUDA active）；远端夜间GPU阶段1427.785秒、CPU构建准备2460.965秒。 09:00硬截止，本轮30000秒/新增3GiB不增。[资源状态](experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESOURCE-AND-STOP-REPORT.json)。远端GPU作业已退出；本机仅等待/诊断，不清理别人进程。
+M39累计保守计费5472.730/36000秒（含本机等待，非CUDA active）；远端夜间GPU阶段1427.785秒、CPU构建准备2460.965秒。 09:00硬截止，本轮30000秒/新增3GiB不增。[资源状态](experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESOURCE-AND-STOP-REPORT.json)。远端GPU作业已退出；本机仅等待/诊断，不清理别人进程。
 
 ## RoboTwin与LIBERO
 

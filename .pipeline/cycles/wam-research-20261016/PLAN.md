@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-22T02:46:38.498460+08:00'
+updated: '2026-10-22T02:57:15.434151+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -19,12 +19,12 @@ execution: EXECUTION.md
 - [x] 最终9真实签名＋21结构变体有限逐位；B14三KV完整层五臂同轮两独立进程。
 - [x] 3KV×28阶段两进程、原版前缀和资源控制；旧FAILED及退化候选保留。
 - [x] 最终源0cc1944b、DSOac3f9e46，两机optimized安装同一验证二进制；旧2a8保留。
-- [ ] 本机最终版NCU有界窗口收口。本机最终版NCU新窗口等待自然空闲，最迟08:47:30启动、09:00清理；前窗口外部干扰0kernel，原PARTIAL保留。
+- [x] 本机最终版NCU有界窗口收口。本机NCU窗口均已终态；计数及是否有效见本轮RESOURCE报告，不将PARTIAL改成PASS。
 - [ ] 完全对齐guarded强基线；当前仍有约11%–12.6%差距，不写完成。
 - [ ] ready-DAG（尚未实现；先解释/处理原语与统一资源成本）。
 - [x] RoboTwin两项＋修复组合、跨任务/长失败4局核验，owned清理。
 - [ ] RoboTwin扩大资源/吞吐再评估；旧截止不延长，不自动扩大。
 
-M39累计保守计费4850.877/36000秒（含本机等待，非CUDA active）；远端夜间GPU阶段1427.785秒、CPU构建准备2460.965秒。 原累计10h、本轮30000秒/3GiB/09:00不增。M40累计54718.243980/86400秒、原10/22 01:26:04.706686截止已过。四项科学权限false；paused72、A_off、旧retention/FAILED、baseline/原tile/投机生产和state/cycle/rules不动。BAAI仅~/cxz；未新建论文初稿。
+M39累计保守计费5472.730/36000秒（含本机等待，非CUDA active）；远端夜间GPU阶段1427.785秒、CPU构建准备2460.965秒。 原累计10h、本轮30000秒/3GiB/09:00不增。M40累计54718.243980/86400秒、原10/22 01:26:04.706686截止已过。四项科学权限false；paused72、A_off、旧retention/FAILED、baseline/原tile/投机生产和state/cycle/rules不动。BAAI仅~/cxz；未新建论文初稿。
 
 [夜间证据](../../experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESULT.md)、[之前完整计划](history/overnight-before-20261022/PLAN.md)。

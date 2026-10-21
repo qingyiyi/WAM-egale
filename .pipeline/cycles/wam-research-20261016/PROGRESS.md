@@ -1,6 +1,6 @@
 # 当前研究进度
 
-更新2026-10-22T02:46:38.498460+08:00。
+更新2026-10-22T02:57:15.434151+08:00。
 
 |ID|阶段|状态|证据|下一步|
 |---|---|---|---|---|
@@ -18,7 +18,7 @@ B14短/中/长KV同轮两进程CUDA Graph约2.296/2.453/2.476ms，相对本夜�
 
 中KV剩余显著项：self_attention约231 vs guarded157µs，Cross-K RMS116 vs70µs，FFN1 199 vs167µs，FFN2 138 vs117µs，GELU30 vs15µs。阶段独立运行也慢；不是全由全局同步。最小shared/更多CTA控制使RMS/GELU部分改善，但不普遍；完整层100096B shared、255regs/thread、1CTA/SM限制各阶段单独选资源。静态local936B不是动态spill字节。已有grid_constant参数标注，不重复计作新改动。
 
-本机最终版NCU新窗口等待自然空闲，最迟08:47:30启动、09:00清理；前窗口外部干扰0kernel，原PARTIAL保留。 M39累计保守计费4850.877/36000秒（含本机等待，非CUDA active）；远端夜间GPU阶段1427.785秒、CPU构建准备2460.965秒。 本轮[资源/停止账本](../../experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESOURCE-AND-STOP-REPORT.json)持续显示等待状态，09:00硬截止。远端本轮全部owned已退出。
+本机NCU窗口均已终态；计数及是否有效见本轮RESOURCE报告，不将PARTIAL改成PASS。 M39累计保守计费5472.730/36000秒（含本机等待，非CUDA active）；远端夜间GPU阶段1427.785秒、CPU构建准备2460.965秒。 本轮[资源/停止账本](../../experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESOURCE-AND-STOP-REPORT.json)持续显示等待状态，09:00硬截止。远端本轮全部owned已退出。
 
 ## M40：工程跨任务收口
 

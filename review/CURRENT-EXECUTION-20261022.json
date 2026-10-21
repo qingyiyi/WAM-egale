@@ -1,6 +1,6 @@
 {
-  "observed_at": "2026-10-22T02:46:38.568908+08:00",
-  "previous_derived_snapshot_commit": "c09afae944a7e5e7b9eb4f282687ef68435521b4",
+  "observed_at": "2026-10-22T02:57:22.081650+08:00",
+  "previous_derived_snapshot_commit": "85278471c4e752a08bc2893c57911b5130f9a4ce",
   "operator": {
     "status": "FROZEN_FINITE_VERIFIED_RESEARCH_SINGLE_LAYER",
     "selected_trial": "11-static-stage-entry",
@@ -36,8 +36,8 @@
   },
   "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESULT.md",
   "resource": {
-    "observed_at": "2026-10-22T02:46:38.435053+08:00",
-    "status": "NCU_WINDOW_PENDING",
+    "observed_at": "2026-10-22T02:57:15.365014+08:00",
+    "status": "CLOSED",
     "deadline": "2026-10-22T09:00:00+08:00",
     "prior_M39_GPU_lifecycle_seconds": 2538.679523,
     "remote_GPU_lifecycle_seconds": 1427.7847797870636,
@@ -75,29 +75,31 @@
       },
       {
         "namespace": "local-ncu-final-r2",
-        "status": "WAITING_NATURAL_IDLE",
-        "terminal": false,
-        "charged_seconds": 597.9828071594238,
-        "GPU_worker_seconds": 0,
+        "status": "FAILED_OR_PARTIAL",
+        "terminal": true,
+        "charged_seconds": 1219.8362884521484,
+        "GPU_worker_seconds": 1.2108066082000732,
         "guard_identity": {
           "pid": 2822944,
           "birth_ticks": 1387690883,
           "pgid": 2822944
         },
-        "guard_alive": true,
-        "identity_alive": null,
-        "failure": null
+        "guard_alive": false,
+        "identity_alive": false,
+        "failure": [
+          2852221
+        ]
       }
     ],
-    "local_worker_GPU_seconds": 15.047388553619385,
-    "night_charged_seconds_including_local_wait": 2312.197277545929,
-    "cumulative_charged_seconds": 4850.876800545929,
+    "local_worker_GPU_seconds": 16.258195161819458,
+    "night_charged_seconds_including_local_wait": 2934.0507588386536,
+    "cumulative_charged_seconds": 5472.730281838653,
     "cumulative_cap_seconds": 36000,
     "night_cap_seconds": 30000,
-    "remaining_seconds": 27687.80272245407,
+    "remaining_seconds": 27065.949241161346,
     "CUDA_active_seconds": "UNKNOWN: not measured separately; lifecycle is not CUDA active time",
     "CPU_analysis_seconds": "UNMETERED; build/prepare values are not total CPU work",
-    "local_stored_bytes": 80514009,
+    "local_stored_bytes": 80527829,
     "remote_stored_bytes_at_checkpoint": 414954314,
     "storage_cap_bytes": 3221225472,
     "stopped_implementation_candidates": [

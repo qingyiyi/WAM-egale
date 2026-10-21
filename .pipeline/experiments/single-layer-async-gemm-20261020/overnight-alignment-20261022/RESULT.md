@@ -1,6 +1,6 @@
 # 夜间单层性能对齐：阶段结果（2026-10-22）
 
-**已有改善，但尚未完全对齐最强 B14 同工作量基线。** 最终选中11的数学实现，注释修正后重建；本机和BAAI的 optimized 已安装同一个验证二进制。12项实现候选全部收口，不再继续无依据结构搜索；当前只剩本机NCU自然空闲窗口。该状态不是所有输入证明，也不是闭环质量放行。
+**已有改善，但尚未完全对齐最强 B14 同工作量基线。** 最终选中11的数学实现，注释修正后重建；本机和BAAI的 optimized 已安装同一个验证二进制。12项实现候选全部收口，不再继续无依据结构搜索；本机NCU窗口已终态，见[最终NCU](local-ncu-final-r2/RESULT.md)。该状态不是所有输入证明，也不是闭环质量放行。
 
 ## OBSERVED：完整单层、三种KV
 
@@ -56,7 +56,7 @@ OBSERVED：Cross-K RMS/GELU独立执行仍慢，说明并非全是跨阶段等�
 
 OBSERVED：最终完整层使用100096B动态shared、255寄存器/线程、静态localSize936B，API返回每SM可驻留1CTA。原版各阶段可独立选择tile/CTA和资源；单层统一资源配置限制轻量阶段，是有对照支持的部分原因。255/936这些静态数不等于动态spill字节，也不直接证明HBM瓶颈。
 
-HYPOTHESIS：函数边界保存/恢复、attention组织和GEMM数据复用仍有代价。旧版本有NCU动态local证据，但不能将旧字节数冒充最终版。最新NCU首次窗口被外部进程打断，0kernel数据；新有限窗口等待，取得前相关细项UNKNOWN。
+HYPOTHESIS：函数边界保存/恢复、attention组织和GEMM数据复用仍有代价。旧版本有NCU动态local证据，但不能将旧字节数冒充最终版。最新NCU首次窗口被外部进程打断，0kernel数据；最终窗口状态为COUNTERS_UNKNOWN_OR_PARTIAL，见[原始计数与边界](local-ncu-final-r2/RESULT.md)。未取得或不完整的细项仍UNKNOWN。
 
 ## 负结果与停止规则
 
@@ -66,7 +66,7 @@ HYPOTHESIS：函数边界保存/恢复、attention组织和GEMM数据复用仍�
 
 ## 下一步
 
-1. 完成最终版NCU后，将dynamic local、Tensor pipe和stall与上述stage表对应；无计数则保留UNKNOWN。
+1. 审阅[最终版NCU](local-ncu-final-r2/RESULT.md)，将有效dynamic local、Tensor pipe和stall与上述stage表对应；未取得计数保留UNKNOWN。
 2. 依据当前剩余约11%–12.6%强基线差距决定下一轮：优先函数live state、self-attention在单层资源下的组织、Cross-K RMS和FFN写回。单层统一资源有真实代价，不能保证“合成一个kernel自然不慢”。
 3. 这些原因明确后，再登记依赖就绪tile补位；不直接开始30层融合或跨阶段DAG，不以DAG掩盖原语成本。
 
