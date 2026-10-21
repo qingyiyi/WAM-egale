@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[算子精简与RoboTwin慢因](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)、[算子带读prompt](../算子研究/wam_ops/optimized/READ_CODE_PROMPT.md)。
+最新：[RoboTwin两项工程优化与组合有限结果](CURRENT-EXECUTION-20261021.md)、[状态JSON](CURRENT-EXECUTION-20261021.json)、[HW短状态](../.pipeline/PROGRESS.compact.md)。
 
-算子9签名/普通debug有限逐位、性能无稳定退化；Self-Q/FFN→DAG仍待做。RoboTwin旧DEV90完成，新增原Target两例与完整profile属于诊断，不增加质量N。模型reset约12ms/局，主要成本为推理、规划、渲染和失败长尾。1800局未启动、160GPU小时未批准；owned作业已结束、四权限false。以下旧TF交接保持历史身份。
+同一完整Target case，组合本轮243.6→225.8秒，−7.33%；所有受用观察/状态/RNG/命令/RPC有限一致。原组合0动作实施失败保留，用户批准修复补跑已完成。跨任务/失败长尾/重复性能未验，默认未改，1800局/160GPU小时未启动/未批准。四权限false，owned已退出。以下旧TF交接保持历史身份。
 
 ---
 

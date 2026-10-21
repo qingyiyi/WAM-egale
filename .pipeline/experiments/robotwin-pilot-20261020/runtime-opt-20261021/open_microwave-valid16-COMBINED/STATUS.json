@@ -1,0 +1,49 @@
+{
+  "status": "PARTIAL_OR_INVALID",
+  "start": 1792594221.1719518,
+  "case": {
+    "task": "open_microwave",
+    "valid_index": 16,
+    "seed": 10020,
+    "instruction": "Get the gray and yellow microwave with rounded edges open.",
+    "role": {
+      "stage": "ENGINEERING_EQUIVALENCE_EXPOSED_DEV",
+      "split": "DEV"
+    },
+    "initial": "/root/cxz/robotwin/runs/prefilter-4/open_microwave/valid-16/INITIAL.pt",
+    "task_step_limit": 1500,
+    "pair_id": 17,
+    "arm": "T",
+    "episode_id": "open_microwave-valid16-COMBINED",
+    "historical_reference": "/root/cxz/robotwin/runs/dev90-20261021-r2/open_microwave-valid16-T",
+    "variant": "COMBINED"
+  },
+  "policy_chunks": 0,
+  "environment_commands": 0,
+  "requests": [],
+  "render_device": {
+    "alias": "pci:0000:4e:00.0",
+    "pci": "0000:4e:00.0",
+    "name": "NVIDIA A100-SXM4-40GB",
+    "can_render": true,
+    "is_cuda": true,
+    "cuda_id": 0
+  },
+  "engineering": {
+    "variant": "COMBINED",
+    "front_omitted": false,
+    "batch_warmups_deferred": 2,
+    "batch_warmups_materialized": 0
+  },
+  "timings": {
+    "setup": 0.0,
+    "get_obs": 0.0,
+    "take_action": 0.0,
+    "audit": 0.0
+  },
+  "observation_calls": 0,
+  "error": "TypeError(\"CuroboPlanner.__init__() missing 2 required positional arguments: 'active_joints_name' and 'all_joints'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/robotwin/runs/runtime-opt-20261021/client.py\", line 182, in <module>\n    module.main(dict(task_name=case[\"task\"], task_config=\"demo_clean\",\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/evaluation/robotwin/eval_polict_client_openpi.py\", line 402, in main\n    st_seed, suc_num = eval_policy(task_name,\n  File \"/root/cxz/robotwin/runs/runtime-opt-20261021/client.py\", line 162, in policy\n    return original_policy(*args, **kwargs)\n  File \"/root/cxz/robotwin/source/lingbot-va-pinned/evaluation/robotwin/eval_polict_client_openpi.py\", line 504, in eval_policy\n    TASK_ENV.setup_demo(now_ep_num=now_id, seed=now_seed, is_test=True, **args)\n  File \"/root/cxz/robotwin/runs/runtime-opt-20261021/client.py\", line 94, in setup\n    start=time.perf_counter();result=setup_demo(*args,**kwargs)\n  File \"/root/cxz/robotwin/source/RoboTwin-pinned/envs/open_microwave.py\", line 10, in setup_demo\n    super()._init_task_env_(**kwags)\n  File \"/root/cxz/robotwin/source/RoboTwin-pinned/envs/_base_task.py\", line 122, in _init_task_env_\n    self.load_camera(**kwags)\n  File \"/root/cxz/robotwin/source/RoboTwin-pinned/envs/_base_task.py\", line 413, in load_camera\n    self.cameras.load_camera(self.scene)\n  File \"/root/cxz/robotwin/runs/runtime-opt-20261021/engineering.py\", line 47, in load_camera\n    result=original(self,*args,**kwargs)\nTypeError: CuroboPlanner.__init__() missing 2 required positional arguments: 'active_joints_name' and 'all_joints'\n",
+  "end": 1792594238.8534603,
+  "lifecycle_seconds": 17.681508779525757
+}

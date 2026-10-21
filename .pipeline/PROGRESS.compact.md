@@ -1,37 +1,23 @@
-更新时间：2026-10-21T22:14:16.314145+08:00。完整当前Cycle见[Progress](cycles/wam-research-20261016/PROGRESS.md)。
+# 当前短状态（2026-10-21T23:02:48.466096+08:00）
 
-# 当前研究进度
+先读INDEX/CONTEXT-POLICY/memory约束和当前Cycle四文件；固定v15入口，不运行旧全量sync。原state/cycle/rules、baseline、原tile、投机生产保护不变。四权限false：engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission。paused72、旧retention/FAILED和全局A_off保留。
 
-| ID | 阶段 | 状态 | 证据 | 下一步 |
-| --- | --- | --- | --- | --- |
-| `M17` | LIBERO证据收口 | in_progress | 6000局齐，非独立TEST | 曝光/首两S/长尾缺口保留 |
-| `M39` | 简易单层先对齐 | in_progress | 入口再精简，9签名及普通/debug有限逐位；性能无稳定退化 | Self-Q编译边界→FFN→DAG |
-| `M40` | RoboTwin迁移 | in_progress | DEV90+原Target两例复现+完整成本profile完成 | 先核验渲染/初始化改进，再修订100次预算 |
+## M40 RoboTwin
 
-## M39：入口精简与代码带读
+用户同意先做相机/未用batch预热工程优化，并一次性授权修复后的组合补跑；旧组合0动作闭包错误PARTIAL和17.682秒保留。最终原版/相机/预热/组合在同一曝光open_microwave valid16均完整成功，243.634/233.767/237.787/225.782秒；组合本轮−7.33%，1.079×。四臂均96观察、368调用、363实际推进、12policy/948teacher；受用观察/物理/RNG摘要、命令和全部RPC有限一致。未保存全部原始图像/KV，不外推全部输入/任务或TF质量。
 
-[本轮结果](experiments/single-layer-async-gemm-20261020/readability-20261021/RESULT.md)、[计时](experiments/single-layer-async-gemm-20261020/readability-20261021/WHOLE-LAYER-COMPARISON.csv)。Python直接绑定参数，移除两个无引用设备函数；普通forward不构造完整debug字典/资源统计。CUDA数学、tile、cache语义、sync及错误传播不变，baseline/投机/原tile不动。当前源043c7759、DSO2a8a250e，本机/远端同一验证二进制。
+相机主要省get_obs，预热主要省setup，两部分约13.82秒；客户端总省17.85秒；RPC基本相同，其余客户端时段仍有波动。固定顺序一次，仅工程信号。保留可选helper，全局默认未改。下一步跨任务/长失败与重复计时，再估1800局。
 
-9真实签名（B2action/B14action/B2video×3KV），原Torch输出/23共有中间量/18有效KV转移及输入/RNG有限逐位通过；9组普通/debug返回和状态一致。两个进程三KV整层Graph变化−0.132%～+0.103%，无稳定退化，不称新增设备端加速。完整层约2.506/2.722–2.724/2.974–2.978ms；不是相对Torch新倍数或机器人E2E。
+[结果及代码](experiments/robotwin-pilot-20261020/runtime-opt-combined-fix-20261021/RESULT.md)、[原作业与失败](experiments/robotwin-pilot-20261020/runtime-opt-20261021/RESULT.md)。本轮两作业GPU1037.199秒，M40累计52520.882/86400；原截止10/22 01:26:04.706686，不因补跑重置。owned清理，两GPU无计算任务。六任务×100×三臂1800目标保留，新增160GPU小时未批准、未启动。
 
-[前投影结果](experiments/single-layer-async-gemm-20261020/small-projection-function-20261021/RESULT.md)的1.88%–2.08%改善、Self-Q退化与旧快独立参考保留。FFN原语差距未解决，ready-DAG未实现。本轮GPU55.563769秒、CPU构建133.949637秒；M39累计2538.679523/36000秒。owned已退出。[带读prompt](../算子研究/wam_ops/optimized/READ_CODE_PROMPT.md)按入口→整层→tile→warp→数据流/同步逐段讲。
+旧DEV90：T/C/P各30局成功25/24/23；30组首两S配对通过，非独立TEST。旧actual_commands是提交调用数；真实推进另列，不覆盖旧罚分。旧90均262.81秒，模型reset12ms/局，18失败占55.11%耗时；原Target两例复现与完整profile留原证据。
 
-## M40：官方复现与慢因已获得证据
+## M39 单层算子
 
-旧DEV90六任务各5初态，T/C/P成功25/24/23，各30局；30组首两S配对通过，非独立TEST，不支持质量保留。用户已将扩大目标从50改100，六任务三臂1800局。用户对新增160GPU小时请求回复先诊断慢因，**没有批准新增预算，1800局未启动**。[具体方案](experiments/robotwin-pilot-20261020/microwave-reproduction-audit-20261021/EVAL100-PLAN.md)。
+当前源043c7759/DSO2a8a250e，两机一致。入口直接绑定参数、移除死函数、普通路径不组装debug字典；九真实签名/普通debug有限逐位，两进程三KV完整Graph变化−0.132%～+0.103%，无稳定退化。前小投影改善1.88%–2.08%及Self-Q退化保留；FFN原语尚慢，ready-DAG未实现。先Self-Q编译边界→FFN→DAG。累计2538.680/36000秒，本轮未新增算子GPU。
 
-[原Target两局核查](experiments/robotwin-pilot-20261020/microwave-reproduction-audit-20261021/RESULT.md)：固定官方11文件一致，valid14失败/valid16成功均复现；原_infer无draft Runtime，所有命令、初态与保存的首次两policy/RNG均相同。失败门最多0.048515rad，判据0.942478。只支持所覆盖两例，非paper全部复现、非新质量N；full-episode uncached bank对照UNKNOWN。
+## M17 LIBERO与日期
 
-[90局账本及完整profile](experiments/robotwin-pilot-20261020/runtime-profile-20261021/RESULT.md)：客户端平均262.81秒；RPC之外60.02%，模型reset90次合计1.115秒、仅0.0047%。18条失败占55.11%耗时；微波炉15局占48.36%。单成功局profile约253.6秒：RPC102.5，take_action72.5（其中双臂规划60.5），外部get_obs46.6，setup18.7，其余13.4。累计/嵌套口径分列；该局命令与未profile相同，插桩有约5.36%扰动，不作正式性能。
+三方法四套各500，共6000局，一轮，非独立TEST、非论文三seed重复。Long T/C/P483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499。曝光、首两S严格配对及长尾缺口仍在；不剔除失败换取加速。
 
-优化候选尚未实施：front_camera渲染/取回未被模型使用；planner每局初始化/预热17.2秒；CuRobo sync_cuda_time中的等待不能直接当39秒纯开销删掉。先保持三路受用图像/物理/RNG/命令等价核验，再谈吞吐。没有修改官方物理、成功判据、驱动或渲染质量。
-
-计数修正：原actual_commands为提交调用数，终态后会无推进返回。T/C/P提交12224/13376/13408，环境真正推进11808/12927/12958；新派生语义表分列，旧数据/罚分不改，不能说物理越过horizon1500。
-
-原两例GPU1191.369558秒，本次profile285.933544秒；M40累计51483.682640/86400秒，原10/22 01:26:04.706686硬截止不改。owned已清理，当前两GPU无本轮作业。新增160小时未授权，不自动扩大。
-
-## 共同边界
-
-四权限false、paused72、A_off、旧retention/FAILED和保护文件不动；BAAI仅~/cxz。LIBERO每方法4×10×50=2000局，三方法6000；不是论文每方法三seed重复。Long T/C/P483/484/473、Goal463/464/467、Spatial472/466/464、Object497/498/499，各500。非独立TEST。
-
-10/22阶段go/no-go、10/23冻结身份、10/28主表、11/01 18:00中文证据包；扩大不能完成时如实PARTIAL，不以进度为由放行质量门。[前完整记录](cycles/wam-research-20261016/history/readability-and-runtime-before-20261021/PROGRESS.md)。
+10/22 go/no-go、10/23冻结身份、10/28主表、11/01 18:00中文证据包。证据不足就保留缺口，不改质量门；BAAI写入仅~/cxz。当前完整入口见[Cycle](cycles/wam-research-20261016/PROGRESS.md)。

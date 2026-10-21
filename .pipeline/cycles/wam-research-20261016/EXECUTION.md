@@ -1,12 +1,10 @@
 # 最近执行
 
-## 2026-10-21T22:14:16.314145+08:00 入口精简、原Target复现与成本诊断
+## 2026-10-21T23:02:48.466096+08:00 两项工程优化收口
 
-- M39直接改optimized：去NativeBlock依赖、两死函数、正常路径的debug统计；数学/tile/sync不变。
-- 九签名与普通/debug有限逐位，完整层三KV两进程变化−0.132%～+0.103%。GPU55.564秒、CPU133.950秒，owned退出，当前两机源/DSO一致。
-- M40两条原Target完整轨迹及保存前两policy/RNG与旧T相同；valid14仍失败、valid16成功。不是新独立质量数据。
-- 用户要求先判断100次方案为何慢，未授权160GPU小时。旧90局reset仅0.0047%，client RPC外60.02%；补一条完整profile后观察规划/渲染/初始化成本。
-- profile完整成功、全部提交命令相同；GPU285.934秒，原累计51483.683/86400秒；原deadline保留，owned清理。
-- 新增计数语义：原actual_commands是调用数，真实推进另列。旧FAILED/权限/罚分不改。
+- 原版/相机/预热三个完整成功case分别243.634/233.767/237.787秒，有限全观察/状态/RNG/命令/RPC审计通过。
+- 原组合闭包引用错误0teacher/0动作PARTIAL保留；用户明确授权新namespace单局补跑，修复后225.782秒、全部同样审计通过。相对原版本轮减少7.33%，不是稳定总体或投机E2E结果。
+- 原作业781.254秒＋补跑255.945秒；M40累计52520.882/86400，原硬截止不变。两作业owned为空，原固定source未改。
+- 两项/组合为可选工程候选；其他任务、长失败及重复计时待做，1800局/160小时未启动/未批准。
 
-[算子结果](../../experiments/single-layer-async-gemm-20261020/readability-20261021/RESULT.md)、[RoboTwin慢因](../../experiments/robotwin-pilot-20261020/runtime-profile-20261021/RESULT.md)、[前执行](history/readability-and-runtime-before-20261021/EXECUTION.md)。
+[结果](../../experiments/robotwin-pilot-20261020/runtime-opt-combined-fix-20261021/RESULT.md)、[资源](../../experiments/robotwin-pilot-20261020/runtime-opt-combined-fix-20261021/RESOURCE-AND-STOP-REPORT.json)、[前执行](history/runtime-opt-before-20261021/EXECUTION.md)。

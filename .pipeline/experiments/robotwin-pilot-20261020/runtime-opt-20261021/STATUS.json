@@ -1,0 +1,159 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792593464.1136382,
+  "deadline": 1792598864.1136382,
+  "episodes": [
+    {
+      "episode_id": "open_microwave-valid16-BASELINE",
+      "pair_id": 17,
+      "arm": "T",
+      "task": "open_microwave",
+      "valid_index": 16,
+      "status": "COMPLETE_SUCCESS",
+      "success": true,
+      "initial_checks": {
+        "physical_exact": true,
+        "used_initial_observation_exact": true
+      },
+      "actual_commands": 368,
+      "policy_chunks": 12,
+      "failure_penalty": 363,
+      "horizon": 1500,
+      "lifecycle_seconds": 243.63377594947815,
+      "client_returncode": 0
+    },
+    {
+      "episode_id": "open_microwave-valid16-FRONT_ONLY",
+      "pair_id": 17,
+      "arm": "T",
+      "task": "open_microwave",
+      "valid_index": 16,
+      "status": "COMPLETE_SUCCESS",
+      "success": true,
+      "initial_checks": {
+        "physical_exact": true,
+        "used_initial_observation_exact": true
+      },
+      "actual_commands": 368,
+      "policy_chunks": 12,
+      "failure_penalty": 363,
+      "horizon": 1500,
+      "lifecycle_seconds": 233.76719737052917,
+      "client_returncode": 0
+    },
+    {
+      "episode_id": "open_microwave-valid16-LAZY_BATCH_ONLY",
+      "pair_id": 17,
+      "arm": "T",
+      "task": "open_microwave",
+      "valid_index": 16,
+      "status": "COMPLETE_SUCCESS",
+      "success": true,
+      "initial_checks": {
+        "physical_exact": true,
+        "used_initial_observation_exact": true
+      },
+      "actual_commands": 368,
+      "policy_chunks": 12,
+      "failure_penalty": 363,
+      "horizon": 1500,
+      "lifecycle_seconds": 237.78731846809387,
+      "client_returncode": 0
+    },
+    {
+      "episode_id": "open_microwave-valid16-COMBINED",
+      "pair_id": 17,
+      "arm": "T",
+      "task": "open_microwave",
+      "valid_index": 16,
+      "status": "PARTIAL_OR_INVALID",
+      "success": null,
+      "initial_checks": null,
+      "actual_commands": 0,
+      "policy_chunks": 0,
+      "failure_penalty": null,
+      "horizon": null,
+      "lifecycle_seconds": 17.681508779525757,
+      "client_returncode": 0
+    }
+  ],
+  "pair_audits": [],
+  "owned": [
+    {
+      "pid": 793477,
+      "birth_ticks": 719192271,
+      "pgid": 793477
+    },
+    {
+      "pid": 793541,
+      "birth_ticks": 719194271,
+      "pgid": 793541
+    },
+    {
+      "pid": 793936,
+      "birth_ticks": 719219283,
+      "pgid": 793936
+    },
+    {
+      "pid": 794352,
+      "birth_ticks": 719243297,
+      "pgid": 794352
+    },
+    {
+      "pid": 794771,
+      "birth_ticks": 719267812,
+      "pgid": 794771
+    }
+  ],
+  "GPU_lifecycle_seconds": 781.2536067962646,
+  "formal_performance_permission": false,
+  "independent_test_complete": false,
+  "GPU_start": 1792593464.1468482,
+  "prior_GPU_lifecycle_seconds": 51483.68263959885,
+  "server_stage": "READY",
+  "active_case": "open_microwave-valid16-COMBINED",
+  "active_pair": 17,
+  "active_arm": "T",
+  "teacher_attempted": 2844,
+  "storage_bytes": 15029801,
+  "variant_audits": [
+    {
+      "variant": "FRONT_ONLY",
+      "fields": {
+        "commands.jsonl": true,
+        "OBS-AUDIT.jsonl": true,
+        "COMMAND-STATE-AUDIT.jsonl": true,
+        "all_server_RPC": true,
+        "terminal_and_steps": true
+      },
+      "pass_all": true,
+      "scope": "One exposed complete episode; all saved digests exact, no raw all-image/KV replay claim"
+    },
+    {
+      "variant": "LAZY_BATCH_ONLY",
+      "fields": {
+        "commands.jsonl": true,
+        "OBS-AUDIT.jsonl": true,
+        "COMMAND-STATE-AUDIT.jsonl": true,
+        "all_server_RPC": true,
+        "terminal_and_steps": true
+      },
+      "pass_all": true,
+      "scope": "One exposed complete episode; all saved digests exact, no raw all-image/KV replay claim"
+    }
+  ],
+  "error": "RuntimeError('Episode infrastructure failure; no automatic retry')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/robotwin/runs/runtime-opt-20261021/guard.py\", line 112, in <module>\n    raise RuntimeError('Episode infrastructure failure; no automatic retry')\nRuntimeError: Episode infrastructure failure; no automatic retry\n",
+  "teacher_returned": 2844,
+  "policy_chunks": 36,
+  "end": 1792594245.4003658,
+  "wall_seconds": 781.286728143692,
+  "remaining_owned": [],
+  "returncodes": [
+    -15,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,11 +1,9 @@
 # 当前讨论与授权
 
-用户要求继续精简算子，可去掉实验代码的检查并给另一agent带读prompt。仅optimized；删除死代码和普通路径debug组装，保留计算边界/同步，外部核验完成。baseline/投机生产/原tile不动；后续先Self-Q、FFN再DAG。
+用户批准RoboTwin相机/未用batch预热两项工程优化，沿原M40累计24h与原10/22 01:26截止。组合首次0动作实施失败后，用户明确允许新namespace单局补跑（最多30分钟，累计不增）；该一次性授权已使用并完成，不解除其他自动重试规则。
 
-用户明确RoboTwin按官方每任务100次，六任务三臂1800局目标已接受，替代50。由于需要约135GPU小时而原M40只有24小时，提交了160小时有界方案；用户未批准，而是要求先分析为何比LIBERO慢及reset能否再优化。已完成账本与整局profile，方案候选为未用front相机和planner重复初始化；收益未知，尚未改变环境或启动扩大。
+两单项和修复组合均在同一完整曝光case有限等价；组合本轮客户端−7.33%。原失败/消耗不改，四科学权限false；不是全套稳定加速或新质量N。各正式算法臂须使用同等工程优化。保留可选helper，全球默认未改；下一步其他任务/失败长尾及重复验证，再重估1800局，新增160GPU小时仍未授权。
 
-原DEV90、全部失败、四权限false保留。新增原Target两例与profile都是同曝光case诊断，不增加独立质量N；命令全部一致，仍不证明论文完整复现。旧actual_commands为提交调用数，新增环境实际推进字段澄清，不覆盖旧记录。
+算子侧精简及有限验证保留，后续Self-Q→FFN→DAG；LIBERO6000曝光/首两S/长尾缺口保留。所有BAAI写入限~/cxz。
 
-用户最新决策存入现有两条记忆；临时数字/优化设想只放证据与本Cycle。当前两线owned均退出，原预算/截止保留。BAAI所有写入仅~/cxz。
-
-[前讨论](history/readability-and-runtime-before-20261021/DISCUSSION-SUMMARY.md)。
+[前讨论](history/runtime-opt-before-20261021/DISCUSSION-SUMMARY.md)。

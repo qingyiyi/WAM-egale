@@ -1,0 +1,14 @@
+--- runtime-opt/engineering.py
++++ runtime-opt-combined-fix/engineering.py
+@@ -42,9 +42,9 @@
+     info={'variant':variant,'front_omitted':False,'batch_warmups_deferred':0,'batch_warmups_materialized':0}
+     if variant in ('FRONT_ONLY','COMBINED'):
+         from envs.camera.camera import Camera
+-        original=Camera.load_camera
++        camera_load=Camera.load_camera
+         def load_camera(self,*args,**kwargs):
+-            result=original(self,*args,**kwargs)
++            result=camera_load(self,*args,**kwargs)
+             assert self.static_camera_name.count('front_camera')==1
+             ids=[i for i,n in enumerate(self.static_camera_name) if n!='front_camera']
+             # Keep the created camera alive to preserve scene entity construction/RNG.

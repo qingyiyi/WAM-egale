@@ -1,0 +1,57 @@
+{
+  "goal": "Separate unused-front rendering and lazy batch-planner warmup on four complete canonical Target episodes; same exposed valid16, no new quality sample",
+  "authorization": "User explicitly approves both engineering improvements after runtime diagnosis",
+  "registered": "2026-10-21T22:32:42.790719+08:00",
+  "must_finish_before": "2026-10-22T01:26:04.706686+08:00",
+  "prepare_deadline": "2026-10-21T23:02:42.790719+08:00",
+  "execution_lifecycle_cap_seconds": 5400,
+  "storage_cap_bytes": 1073741824,
+  "total_evidence_cap_bytes": 12884901888,
+  "new_teacher_attempts_cap": 32000,
+  "episode_cap": 4,
+  "pair_cap": 0,
+  "per_episode_seconds": 1200,
+  "per_episode_teacher_attempts": 8000,
+  "cleanup_reserve_seconds": 180,
+  "GPU_uuid": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+  "CPU": {
+    "server": [
+      20,
+      21
+    ],
+    "client": [
+      16,
+      17
+    ],
+    "guard": [
+      18,
+      19
+    ]
+  },
+  "reset_bank": "/root/cxz/robotwin/runs/target-first6-3/server/text-bank.pt",
+  "eval_seed": 0,
+  "nominal_video_updates": 25,
+  "nominal_action_updates": 50,
+  "arms": {
+    "T": "unpatched original Target inference; no draft Runtime installed"
+  },
+  "pair_order": "BASELINE,FRONT_ONLY,LAZY_BATCH_ONLY,COMBINED_IF_BOTH_PASS",
+  "source_math": "/root/cxz/robotwin/runs/tf-migration-20261021",
+  "prior_GPU_lifecycle_seconds": "READ_LIVE_ORIGINAL_LEDGER",
+  "original_total_GPU_lifecycle_cap_seconds": 86400,
+  "abort": "Any infrastructure/identity/prefix mismatch stops new episodes; no automatic retry. Natural algorithmic failure retained and queue continues.",
+  "formal_performance_permission": false,
+  "independent_test_complete": false,
+  "engineering_quality_screen": false,
+  "noninferiority_established": false,
+  "execution_authorization": "APPROVED_RUNTIME_OPTIMIZATION_20261021",
+  "automatic_successor": false,
+  "comparison": "Same full episode; used observations/RNG/physical/command digests at all calls; no cProfile",
+  "variants": [
+    "BASELINE",
+    "FRONT_ONLY",
+    "LAZY_BATCH_ONLY",
+    "COMBINED"
+  ],
+  "no_auto_retry": true
+}

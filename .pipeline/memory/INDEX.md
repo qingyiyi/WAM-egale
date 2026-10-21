@@ -1,6 +1,6 @@
 # 长期记忆索引
 
-- [RoboTwin核对后按每任务100次](global/requirements/decision-RoboTwin先核对官方复现再按每任务一百次评估.md)（constraint，M40）：先核对open_microwave/官方复现；六任务三臂1800局，旧DEV保留，额外资源有界说明。
+- [RoboTwin核对后按每任务100次](global/requirements/decision-RoboTwin先核对官方复现再按每任务一百次评估.md)（constraint，M40）：已批准先做相机/planner等价优化；六任务三臂1800局目标保留，新增资源未批准。
 
 - [投影写回bank布局有限归因](global/knowledge/knowledge-投影写回bank布局有限归因.md)（reference，M39）：NCU及两候选控制实验支持写回开销；4warp整层收益3.12%–3.77%，严格有限门通过，余下差距未全解释。
 
