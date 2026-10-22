@@ -1,0 +1,90 @@
+{
+  "goal": "B14 ready tile graph finite numerical/state gates and complete-layer comparison",
+  "deadline": "2026-10-22T13:13:18.599661+08:00",
+  "cumulative_prior_GPU_seconds": 6004.497041234253,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 2700,
+  "new_storage_cap_bytes": 1073741824,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/final-whole-comparison/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "ac3f9e46574713fc8555428662c4ca40e1eab0c2d2ba830cc4050ccf713a4ad4",
+  "steps": [
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/gate.py"
+      ],
+      360,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/extended.py"
+      ],
+      360,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/timing.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/timing.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ],
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap"
+  ],
+  "execution_authorization": "USER_APPROVED_NEW_WINDOW",
+  "scope": "one complete block; uncached context; no robot/full30/production permission",
+  "cleanup_reserve_seconds": 300,
+  "source_status": "CPU compiled and two-host CPU import passed; exact candidate/source validated before launch",
+  "registered_at": "2026-10-22T12:28:18.599661+08:00",
+  "input_manifest": {
+    "fixtures": "tools.block_loader.FIXTURES: input-{short,middle,long}-B{2,14}-action-layer0-first.pt plus pinned B2 video fixtures",
+    "real_signatures": 9,
+    "structural_cases": 21,
+    "timing_arms": [
+      "torch_static_uncached",
+      "shared_torch_uncached",
+      "guarded_uncached",
+      "before_selected11",
+      "same_build_staged",
+      "ready_tiles"
+    ]
+  },
+  "candidate_binary_SHA256": "3bdf1a62f1c9807560d800de4bba0525afb3184a4020eaabd6a98ae89c26d4f1",
+  "timing_full_calls_cap_per_process": 14000,
+  "sources": {
+    "算子研究/wam_ops/optimized/csrc/whole_layer.cu": "9f3bba64d913e7a560468f5016e849ef41f0778099a7afd8e3ffe1698f2bf592",
+    "算子研究/wam_ops/optimized/csrc/fa2_stage.cuh": "0164d268ce242ad47d839238cbb67dd31465112ea109e737fa9eb8452c47abaf",
+    "算子研究/wam_ops/optimized/csrc/ready_graph.h": "9006e61b1fe8fe29d6054f88cfff1275eca05f0b037d20bc88d93a70178dfebf",
+    "算子研究/wam_ops/optimized/csrc/ready_tiles.cuh": "06069e3e2e9782a0a989a7ffe44d050bdb25f085c5b0aa57284b85f1d82002ea",
+    "算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh": "170b2b71670394f560822d37a9b331e7009a9a038817083c2942c63efcaabf2b",
+    "算子研究/wam_ops/optimized/csrc/gemm_pipeline.cuh": "95ecc6b5aa1264f92335374915b653b69684b87c8dc3989b656ac26f658e24dd",
+    "算子研究/wam_ops/optimized/whole_layer.py": "d5fdc506224544693ffc4dbbb37d915efb38b217e7239a2b7b02952a559f690f",
+    "算子研究/wam_ops/optimized/build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  }
+}

@@ -37,16 +37,14 @@ class WholeLayerBlock:
 
     def __call__(self, hidden_states, encoder_hidden_states, temb, rotary_emb,
                  update_cache=0, cache_name="pos", candidate_cache_rows=None,
-                 debug=False, ready_tiles=False):
+                 debug=False):
         cache = self.block.attn1.attn_caches.get(cache_name)
         values = [] if cache is None else [
             cache[key] for key in ("k", "v", "id", "mask", "is_pred")
         ]
-        # 旧DSO仍是已验证默认路径；新调度须显式启用，不借用旧精度/速度结论。
-        options = {"ready_tiles": True} if ready_tiles else {}
         result = extension().forward(
             self.weights, hidden_states, encoder_hidden_states, temb, rotary_emb,
-            values, candidate_cache_rows, update_cache, self.eps, debug, **options,
+            values, candidate_cache_rows, update_cache, self.eps, debug,
         )
         # 中间量仅供外部核验；普通调用返回与hidden同形状的输出。
         return result if debug else result["output"]

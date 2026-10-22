@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[就绪tile源码与待验状态](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[HW短入口](../.pipeline/PROGRESS.compact.md)、[算子源码说明](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)。
+最新：[算子有限结果与回退](CURRENT-EXECUTION-20261022.md)、[当前状态JSON](CURRENT-EXECUTION-20261022.json)、[阶段公式/tile/同步](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[HW短入口](../.pipeline/PROGRESS.compact.md)。
 
-当前新ready路径源码/CPU编译完成，GPU尚未运行；默认仍已验证夜间11。旧B14短中长约2.296/2.453/2.476ms不是新调度结果。旧09:00窗口结束，新窗口待用户确认。四科学权限false；下方TF交接保持历史身份。
+新ready队列有限精度通过但性能慢56%–64%，已按用户要求恢复旧阶段同步源码，先重新规划。GPU已清理，四科学权限false；下方TF交接保留历史身份。
 
 ---
 

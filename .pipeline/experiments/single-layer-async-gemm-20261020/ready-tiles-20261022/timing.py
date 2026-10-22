@@ -33,7 +33,7 @@ B=Path(__file__).resolve().parent;process=int(sys.argv[1]);start=time.time();GPU
 os.sched_setaffinity(0,{4,5});torch.set_num_threads(2);torch.set_num_interop_threads(1)
 r=dict(status='RUNNING',process=process,full_calls=0,rows=[],formal_performance_permission=False,torch_graph_boundary='Existing PreparedBlock dense uncached: static slots admitted before capture; original projections/norm/RoPE/attention/FFN, no context projection cache; not dynamic original forward')
 def save():(B/f'TIMING-{process}.json').write_text(json.dumps(r,indent=2)+'\n')
-def bump():r['full_calls']+=1;assert r['full_calls']<=11000
+def bump():r['full_calls']+=1;assert r['full_calls']<=14000
 try:
  reg=json.loads((B/'JOB.json').read_text())
  def load_ext(path,name):
@@ -49,7 +49,7 @@ try:
    load=subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid','--format=csv,noheader'],text=True);assert len([x for x in load.splitlines() if x.startswith(GPU)])==1
    p=FIXTURES/f'input-{length}-B14-action-layer0-first.pt';f=BlockFixture(p,device_tree(decode(torch.load(p,map_location='cpu',mmap=True,weights_only=False))));a,k=f.arguments();f.install_cache(block);ref=native(*a,**k,debug=True);bump();torch.cuda.synchronize();f.install_cache(block);cache=block.attn1.attn_caches[k['cache_name']];snap=visible_snapshot(cache);cl=[cache[x] for x in ('k','v','id','mask','is_pred')];inputs=[x.clone() for x in a];cpu=torch.get_rng_state().clone();gpu=torch.cuda.get_rng_state().clone();graphs={};vals={}
    prepared=PreparedBlock(block,a,k,cache)
-   for label,ext in [('torch_static_uncached',None),('shared_torch_uncached',None),('guarded_uncached',None),('before',old),('candidate',new)]:
+   for label,ext in [('torch_static_uncached',None),('shared_torch_uncached',None),('guarded_uncached',None),('before',old),('staged',new),('candidate',new)]:
     g=torch.cuda.CUDAGraph()
     with (prepared.activate('native' if label=='shared_torch_uncached' else 'guarded' if label=='guarded_uncached' else 'dense',False) if ext is None else nullcontext()):
      for _ in range(2):
@@ -61,7 +61,7 @@ try:
     for g in graphs.values():g.replay();bump()
    torch.cuda.synchronize();row=dict(case=length,fixture=str(p),load=load,samples=[],precision={},resources={},clock_before=clocks());assert row['clock_before']['SM']==1410,row['clock_before']
    for repeat in range(24):
-    order=['torch_static_uncached','shared_torch_uncached','guarded_uncached','before','candidate'];offset=(repeat+process)%5;order=order[offset:]+order[:offset]
+    order=['torch_static_uncached','shared_torch_uncached','guarded_uncached','before','staged','candidate'];offset=(repeat+process)%6;order=order[offset:]+order[:offset]
     if repeat%2:order=order[::-1]
     for label in order:
      b,e=torch.cuda.Event(enable_timing=True),torch.cuda.Event(enable_timing=True);b.record(stream);graphs[label].replay();bump();e.record(stream);e.synchronize();row['samples'].append(dict(repeat=repeat,arm=label,ms=b.elapsed_time(e)))

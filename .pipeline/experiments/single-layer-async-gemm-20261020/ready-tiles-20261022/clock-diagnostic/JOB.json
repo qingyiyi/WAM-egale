@@ -1,0 +1,47 @@
+{
+  "goal": "Once-only clock64 attribution of ready scheduler regression, within original new45min deadline",
+  "deadline": "2026-10-22T13:13:18.599661+08:00",
+  "cumulative_prior_GPU_seconds": 6113.38940502095,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 240,
+  "new_storage_cap_bytes": 536870912,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "3bdf1a62f1c9807560d800de4bba0525afb3184a4020eaabd6a98ae89c26d4f1",
+  "steps": [
+    [
+      "profile",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/clock-diagnostic/profile.py"
+      ],
+      240,
+      true
+    ]
+  ],
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/clock-diagnostic/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "execution_authorization": "USER_APPROVED_NEW_WINDOW",
+  "scope": "instrumentation only; three real B14 block signatures; no policy/robot",
+  "cleanup_reserve_seconds": 300,
+  "source_status": "CPU instrumentation compile complete; GPU not yet run; small sources and DSO checked at admission",
+  "registered_at": "2026-10-22T12:28:18.599661+08:00",
+  "input_manifest": {
+    "real_signatures": 3,
+    "KV": [
+      "short",
+      "middle",
+      "long"
+    ],
+    "samples_per_shape": 10,
+    "full_calls_cap": 2000
+  },
+  "production_admitted": false,
+  "instrumentation_note": "CTA summed cycles are not wall-time shares; perturbation separately measured; no new optimized candidate",
+  "instrumentation_screen_abs_overhead_percent": 5,
+  "candidate_binary_SHA256": "29ef056e111a17e5af3d32006f04393deb3f42cbd5db9f8d9d3b39c49a126e32",
+  "sources": {
+    "whole_layer.cu": "10fc5e93ac8b75a176d2c973346e5ad7c37b779ac1b60d6910f0740143a555f7",
+    "ready_tiles.cuh": "0de752f80be7cb7539573ad8f21162413d90e7e644f18f6f1f60a7401c6ef862",
+    "profile.py": "1708114e797770b57dd4bc7a479bfeb8681e4d9096df7f31c4fedb3d270e5737",
+    "build.py": "8f244755906a19306fb062ce1c5194d0cea533eb3240a83b6c8065bf6ebb47c2"
+  }
+}

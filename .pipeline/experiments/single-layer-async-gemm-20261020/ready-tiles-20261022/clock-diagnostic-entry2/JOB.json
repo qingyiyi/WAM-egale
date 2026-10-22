@@ -1,0 +1,47 @@
+{
+  "goal": "Once-only clock64 attribution of ready scheduler regression, within original new45min deadline",
+  "deadline": "2026-10-22T13:13:18.599661+08:00",
+  "cumulative_prior_GPU_seconds": 6115.5807249634245,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 237.80868005752563,
+  "new_storage_cap_bytes": 536870912,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "3bdf1a62f1c9807560d800de4bba0525afb3184a4020eaabd6a98ae89c26d4f1",
+  "steps": [
+    [
+      "clock_probe",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/clock-diagnostic-entry2/clock_probe.py"
+      ],
+      230,
+      true
+    ]
+  ],
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/clock-diagnostic/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "execution_authorization": "USER_APPROVED_NEW_WINDOW",
+  "scope": "instrumentation only; three real B14 block signatures; no policy/robot",
+  "cleanup_reserve_seconds": 300,
+  "source_status": "CPU instrumentation compile complete; GPU not yet run; small sources and DSO checked at admission",
+  "registered_at": "2026-10-22T12:42:05.420940+08:00",
+  "input_manifest": {
+    "real_signatures": 3,
+    "KV": [
+      "short",
+      "middle",
+      "long"
+    ],
+    "samples_per_shape": 10,
+    "full_calls_cap": 2000
+  },
+  "production_admitted": false,
+  "instrumentation_note": "CTA summed cycles are not wall-time shares; perturbation separately measured; no new optimized candidate",
+  "instrumentation_screen_abs_overhead_percent": 5,
+  "candidate_binary_SHA256": "29ef056e111a17e5af3d32006f04393deb3f42cbd5db9f8d9d3b39c49a126e32",
+  "sources": {
+    "clock_probe.py": "287f932f13ea00270154158fa3af2d599a013d5b48718625cfaf37a7ae572b2f",
+    "guard.py": "0f0368f5bd747a914b9ab05f9abe0ae95506152d3cce1ce4d2f89fe181d2eca4",
+    "EXPECTED-TILES.json": "913984d53c09afecb05010278bf2efd01def81b0b4af872e36665eba50e2fed6"
+  },
+  "entry_correction": "Rename profile.py to clock_probe.py in a separate directory, preventing cProfile from importing our script as stdlib profile. Previous attempt preserved with zero block calls."
+}

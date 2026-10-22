@@ -1,6 +1,10 @@
 # 长期记忆索引
 
-- [当前先实现就绪tile调度](global/requirements/decision-当前优先实现依赖就绪tile调度.md)（constraint，M39）：替代先完全对齐再调度的当前顺序；保留依赖、旧证据与资源边界。
+- [回退阶段同步并重新规划](global/requirements/decision-回退阶段全局同步并重新规划tile调度.md)（constraint，M39当前）：恢复旧阶段同步源码/DSO；保留ready负结果，先规划任务粒度、合并边界，再定实现。
+
+- [就绪tile新45分钟窗口](global/requirements/decision-允许就绪tile新四十五分钟GPU验证窗口.md)（constraint，M39本次）：获准GPU0验证，原累计十小时不增、旧截止保留。
+
+- [当前先实现就绪tile调度](global/requirements/decision-当前优先实现依赖就绪tile调度.md)（历史constraint，当前顺序已被上方回退决定替代）：实现与负结果保留。
 
 - [算子夜间对齐至10月22日09:00](global/requirements/decision-算子夜间持续对齐至十月二十二日九点.md)（constraint，已结束夜间窗口）：继续单层性能对齐，原累计10小时不重置；RoboTwin期限不变。
 
@@ -191,4 +195,4 @@
 
 历史映射见 [原记录清单](../maintenance/hw-upgrade-20261016/LEGACY-RECORD-INVENTORY.json)，仅在查旧问题时打开；不把旧 GPU 暂停、旧“未完成”或早期计划当成当前指令。
 
-旧顺序已由当前就绪调度决定替代：[先核对再调度](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)、[改动与指标解释边界](global/requirements/requirement-算子交付明确源码入口与验证范围.md)均为constraint；动态数字留在M39。
+当前以回退阶段同步并重新规划为准；历史顺序见：[先核对再调度](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)、[改动与指标解释边界](global/requirements/requirement-算子交付明确源码入口与验证范围.md)均为constraint；动态数字留在M39。

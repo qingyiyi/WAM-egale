@@ -1,19 +1,27 @@
-# WAM短状态（2026-10-22T12:18:20.800737+08:00）
+# WAM短状态（2026-10-22T12:46:50.150956+08:00）
 
-当前Cycle：[M39](cycles/wam-research-20261016/PROGRESS.md)。先读INDEX/CONTEXT-POLICY/记忆约束，再按需读证据；不全量载入旧索引。
+|ID|状态|证据与下一步|
+|---|---|---|
+|M39|in_progress|ready有限精度通过、性能NO-GO；用户要求回退阶段同步并重新顶层规划|
+|M17|in_progress|LIBERO6000局齐，非独立TEST，暴露/首两S/长尾缺口|
+|M40|in_progress|工程4局与旧DEV90已归档；旧截止过期，扩大未批准|
 
-## 算子
+## M39最新结果与当前源码
 
-用户最新改为优先实现就绪tile。新源码已经完成：B14/Q16单层28节点、1次启动grid.sync、按依赖领取tile、Cross-K/V补空闲、FFN2每输出tile有序发布。CPU图24配置/原数学体比对/SM80编译/两机CPU加载通过；**GPU精度、状态与速度尚未验证**。普通节点仍按完整输入节点就绪，cached路径尚未实现；原子/fence及FFN2并行损失是待测风险。
+新ready路径9签名/81调用、21结构/84调用有限逐位与状态通过；两进程Graph完整层短/中/长3.765/3.887/3.858ms，旧11为2.292/2.457/2.477ms，回退64.22%/58.20%/55.72%。同构建顺序入口仅偏差−0.134%至+0.115%，回退集中在ready执行路径。
 
-[新结果](experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md)、[源码](../算子研究/wam_ops/optimized/csrc/ready_tiles.cuh)、[实施清单](experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/PLAN.md)。候选3bdf1a62仅证据，默认DSO仍夜间11/ac3f9e46；源码两机已同步，GPU未运行。原09:00已过，新45分钟窗口待用户确认；累计6004.497/36000秒不重置。
+[完整结果](experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md)。CTA累计领取约21%、发布约4%，不是墙钟比例；插桩扰动0.46%–1.21%。去掉grid等待没有带来整层收益。不能把已知queue开销说成唯一根因。
 
-旧11有限单层速度短/中/长2.296/2.453/2.476ms，比同工作量uncached guarded慢10.94/12.17/12.50%。9签名+21结构有限逐位通过。晨间3候选均不晋级：两项内联/路由无稳定收益，全局LTO慢约16%。[晨间结果](experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/RESULT.md)。这些不是新ready结果或机器人E2E。
+按用户新决定，optimized源码恢复阶段同步旧11、默认DSO始终ac3f9e46；ready源码与失败/负结果保留在证据ready-source。当前先讲清完整链公式、tile和39处grid同步，重新规划任务粒度与合并边界，不继续直接优化细ready队列。baseline、投机、原tile不动。
 
-## 其他主线
+12:28:18起新45分钟获准，12:43:09清理闭合，GPU worker生命周期125.117秒；整窗含CPU/等待/清理保守计费891.311秒，累计6895.808/36000秒；旧09:00和新13:13:18截止均保留，不据余额自动开新作业。CUDA active未测，所有owned退出。
 
-LIBERO6000局齐；每方法各4×10×50=2000。T/TF/PF2成功数：Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499（每臂500）。非三seed、非独立TEST，曝光/首两S/长尾缺口保留。
+## 保留的主线结果
 
-RoboTwin旧DEV90成功25/24/23（各30）；工程4局终态、无新增独立质量N。累计54718.244/86400秒，10/22 01:26截止已过；1800局/160小时未启动/未批准。当前无项目GPU作业。
+LIBERO各方法4×10×50=2000，共6000局。T/TF/PF2成功数：Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499（各500）。非三seed、非独立TEST，曝光/首两S/长尾缺口保留。
 
-baseline、投机生产、原tile、保护state/cycle/rules不动；旧FAILED、retention、paused72保留。四项科学权限false，BAAI仅~/cxz。10/22 go/no-go，10/23冻结身份，10/28主表，11/01 18:00中文证据包；证据不足收缩claim。
+RoboTwin旧DEV90：T/C/P25/24/23（各30）；跨任务工程4局已终态，不新增独立质量N。累计54718.244/86400秒、10/22 01:26:04截止不变，1800局/160h未启动/未批准。
+
+四项科学权限false；旧FAILED/retention/paused72与state/cycle/rules不动。BAAI仅~/cxz。10/22 go/no-go、10/23身份冻结、10/28主表、11/01 18:00中文证据包；证据不足收缩claim。
+
+[本轮前状态](cycles/wam-research-20261016/history/before-ready-gpu-result-20261022/PROGRESS.md)、[晨间结果](experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/RESULT.md)。

@@ -1,8 +1,8 @@
 {
-  "observed_at": "2026-10-22T12:19:40.020714+08:00",
+  "observed_at": "2026-10-22T12:48:36.445880+08:00",
   "previous_derived_snapshot_commit": "f32b53d93279f4e41ef587c7dbb0cc478df6da4e",
   "operator": {
-    "status": "FROZEN_FINITE_VERIFIED_RESEARCH_SINGLE_LAYER",
+    "status": "RESTORED_STAGE_SYNCHRONIZED_SELECTED11",
     "selected_trial": "11-static-stage-entry",
     "final_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/final-whole-comparison/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
     "final_binary_sha256": "ac3f9e46574713fc8555428662c4ca40e1eab0c2d2ba830cc4050ccf713a4ad4",
@@ -28,116 +28,60 @@
     "production_admitted": false,
     "installed": true,
     "ready_DAG_implemented": false,
-    "table": "WHOLE-LAYER-COMPARISON.csv",
+    "table": ".pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/WHOLE-LAYER-TIMING.csv",
     "installation_evidence": [
       "DEPLOYMENT-LOCAL.json",
       "DEPLOYMENT-BAAI.json"
-    ]
+    ],
+    "ready_archive": ".pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/ready-source"
   },
-  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/RESULT.md",
+  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md",
   "resource": {
-    "status": "COMPLETE_BOUNDED_SCOPE_ALIGNMENT_NOT_ACHIEVED",
-    "observed_at": "2026-10-22T07:56:26.236180+08:00",
-    "prior_charged_seconds": 5472.730281838653,
-    "segment_charged_seconds": 531.7667593955994,
-    "cumulative_charged_seconds": 6004.497041234253,
-    "total_cap_seconds": 36000,
-    "remaining_cumulative_seconds": 29995.50295876575,
-    "segment_cap_seconds": 5400,
-    "original_deadline": "2026-10-22T09:00:00+08:00",
-    "remote_GPU_worker_lifecycle_seconds": 323.2651846408844,
-    "local_GPU_worker_lifecycle_seconds": 41.04404354095459,
-    "local_conservative_charged_seconds": 208.50157475471497,
-    "CPU_prepare_seconds": 952.150630235672,
-    "CUDA_active_seconds": "UNKNOWN_NOT_MEASURED",
-    "implementation_trials": 3,
-    "implementation_amendment": "PLAN-AMENDMENT-1.md",
-    "jobs": [
+    "at": "2026-10-22T12:43:09.910527+08:00",
+    "status": "COMPLETE_FINITE_CORRECTNESS_PERFORMANCE_NO_GO",
+    "new_window_start": "2026-10-22T12:28:18.599661+08:00",
+    "new_window_deadline": "2026-10-22T13:13:18.599661+08:00",
+    "actual_cleanup_at": "2026-10-22T12:43:09.910527+08:00",
+    "GPU_worker_lifecycle_seconds": 125.11674451828003,
+    "new_window_conservative_charge_seconds": 891.3108794689178,
+    "charge_basis": "entire authorized window from admission through final verified cleanup, including CPU setup/compile, waits and failure; not additional to worker lifecycle",
+    "cumulative_prior_GPU_seconds": 6004.497041234253,
+    "cumulative_GPU_seconds": 6895.807920703171,
+    "cumulative_cap_seconds": 36000,
+    "remaining_cumulative_seconds": 29104.19207929683,
+    "old_deadline": "2026-10-22T09:00:00+08:00",
+    "CUDA_active_seconds": "UNKNOWN",
+    "GPU_window_closed": true,
+    "owned_cleanup": "ALL_OWNED_EXITED",
+    "remote_evidence_bytes": 13939254,
+    "local_evidence_bytes": 29159499,
+    "storage_cap_bytes": 1073741824,
+    "active_dso_sha256": "ac3f9e46574713fc8555428662c4ca40e1eab0c2d2ba830cc4050ccf713a4ad4",
+    "candidate_dso_sha256": "3bdf1a62f1c9807560d800de4bba0525afb3184a4020eaabd6a98ae89c26d4f1",
+    "candidate_installed": false,
+    "failures": [
       {
-        "namespace": "01-forceinline-attention",
-        "status": "COMPLETE_ATTEMPT",
-        "charged_seconds": 81.94524240493774,
-        "GPU_worker_lifecycle_seconds": 81.94524240493774,
-        "CPU_prepare_seconds": 147.7709755897522,
-        "error": null
+        "kind": "CPU build-entry import error",
+        "path": "clock-diagnostic/BUILD-STATUS.json",
+        "GPU_seconds": 0
       },
       {
-        "namespace": "02-specialize-attention-route",
-        "status": "COMPLETE_ATTEMPT",
-        "charged_seconds": 81.84679985046387,
-        "GPU_worker_lifecycle_seconds": 81.84679985046387,
-        "CPU_prepare_seconds": 144.87197732925415,
-        "error": null
-      },
-      {
-        "namespace": "03-complete-device-lto",
-        "status": "FAILED_OR_PARTIAL",
-        "charged_seconds": 0,
-        "GPU_worker_lifecycle_seconds": 0,
-        "CPU_prepare_seconds": 1.6657531261444092,
-        "error": "RuntimeError('build failed')"
-      },
-      {
-        "namespace": "03b-lto-target-fix",
-        "status": "COMPLETE_ATTEMPT",
-        "charged_seconds": 83.347088098526,
-        "GPU_worker_lifecycle_seconds": 83.347088098526,
-        "CPU_prepare_seconds": 316.1005835533142,
-        "error": null
-      },
-      {
-        "namespace": "local-ncu-current",
-        "status": "STOPPED_BEFORE_GPU_ADMISSION_POLICY",
-        "charged_seconds": 90.6013286113739,
-        "GPU_worker_lifecycle_seconds": 0,
-        "CPU_prepare_seconds": null,
-        "error": "No GPU process or memory and32W, but NVML reports constant25%; retain initial strict-util admission, register diagnostic-only observed-idle policy separately"
-      },
-      {
-        "namespace": "local-ncu-reference-fixed",
-        "status": "COMPLETE",
-        "charged_seconds": 31.58707594871521,
-        "GPU_worker_lifecycle_seconds": 19.489288091659546,
-        "CPU_prepare_seconds": null,
-        "error": null
-      },
-      {
-        "namespace": "local-ncu-stages",
-        "status": "STOPPED_NO_EXCLUSIVE_WINDOW",
-        "charged_seconds": 52.76813530921936,
-        "GPU_worker_lifecycle_seconds": 0,
-        "CPU_prepare_seconds": null,
-        "error": "hlj sglang scheduler PID3264276 entered before admission; no worker was launched; preserve profiling attempt; no counter inference"
-      },
-      {
-        "namespace": "local-ncu-visible-idle",
-        "status": "FAILED_OR_PARTIAL",
-        "charged_seconds": 33.545034885406494,
-        "GPU_worker_lifecycle_seconds": 21.554755449295044,
-        "CPU_prepare_seconds": null,
-        "error": null
-      },
-      {
-        "namespace": "lto-stage-diagnostic",
-        "status": "COMPLETE_ATTEMPT",
-        "charged_seconds": 76.12605428695679,
-        "GPU_worker_lifecycle_seconds": 76.12605428695679,
-        "CPU_prepare_seconds": 341.74134063720703,
-        "error": null
+        "kind": "Python profile.py shadows standard library; zero full block calls",
+        "path": "clock-diagnostic/RESULT.json",
+        "GPU_worker_lifecycle_seconds": 2.1913199424743652
       }
     ],
-    "cleanup_local": "FINAL-CLEANUP-LOCAL.json",
-    "cleanup_BAAI": "FINAL-CLEANUP-BAAI.json",
-    "owned_running": false,
-    "scope_stop": "All3 targeted candidates rejected; complete diagnostics and retain selected11. This is finite-scope stop, not GPU budget exhaustion; no automated new candidate or robot job.",
-    "accounting_correction": "02 launch prior omitted52.768135s CPU queue charge; original JOB retained, included in this cumulative ledger",
-    "local_evidence_bytes": 161183548,
-    "remote_evidence_bytes": 98449424
+    "timeout_count": 0,
+    "stopped": [
+      "ready scheduler promotion due +55.72% to +64.22% latency regression",
+      "no new tuning/sweep in this window",
+      "M40 restart and M17 new tasks outside current scope"
+    ]
   },
   "operator_whole_ms": {
-    "short": 2.2958080768585205,
-    "middle": 2.453248083591461,
-    "long": 2.4762880206108093
+    "short": 2.2924800515174866,
+    "middle": 2.4568320512771606,
+    "long": 2.4773120284080505
   },
   "uncached_guarded_relative_latency_percent": {
     "short": 10.935183106149182,
@@ -170,12 +114,57 @@
   "formal_performance_permission": false,
   "historical_paused72": "review/RESULTS.json unchanged",
   "ready_DAG_source_implemented": true,
-  "ready_DAG_GPU_validated": false,
+  "ready_DAG_GPU_validated": true,
   "ready_DAG_default_enabled": false,
   "operator_active_binary": "ac3f9e46574713fc8555428662c4ca40e1eab0c2d2ba830cc4050ccf713a4ad4",
   "ready_candidate_binary": "3bdf1a62f1c9807560d800de4bba0525afb3184a4020eaabd6a98ae89c26d4f1",
   "ready_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md",
-  "new_GPU_window": "PENDING_CONFIRMATION",
-  "new_GPU_seconds": 0,
-  "ready_DAG_state": "SOURCE_COMPLETE_GPU_UNVALIDATED"
+  "new_GPU_window": "COMPLETE_CLEANED",
+  "new_GPU_seconds": 125.11674451828003,
+  "ready_DAG_state": "FINITE_GPU_VERIFIED_PERFORMANCE_NO_GO_ARCHIVED_USER_REVERT",
+  "ready_DAG_validation_scope": "9 finite signatures and 21 finite structural controls only; not robot quality or universal correctness",
+  "ready_DAG_performance_pass": false,
+  "ready_DAG_active_source": false,
+  "next": "User requested stage-synchronized rollback and top-level replanning; no new GPU job",
+  "ready_timing": {
+    "aggregation": "mean of the two independent process medians; all per-process values retained",
+    "rows": [
+      {
+        "kv": "short",
+        "torch_static_uncached": 2.3162879943847656,
+        "shared_torch_uncached": 2.1040640473365784,
+        "guarded_uncached": 2.068992018699646,
+        "before": 2.2924800515174866,
+        "staged": 2.2942720651626587,
+        "candidate": 3.76473605632782,
+        "ready_vs_selected11_percent": 64.22110429426797,
+        "ready_vs_guarded_percent": 81.95991199105461,
+        "same_build_staged_vs_selected11_percent": 0.0781692143399848
+      },
+      {
+        "kv": "middle",
+        "torch_static_uncached": 3.1037440299987793,
+        "shared_torch_uncached": 2.2568960189819336,
+        "guarded_uncached": 2.1890559792518616,
+        "before": 2.4568320512771606,
+        "staged": 2.4596478939056396,
+        "candidate": 3.8865920305252075,
+        "ready_vs_selected11_percent": 58.19526729573556,
+        "ready_vs_guarded_percent": 77.54648886838889,
+        "same_build_staged_vs_selected11_percent": 0.11461274396087351
+      },
+      {
+        "kv": "long",
+        "torch_static_uncached": 4.335616111755371,
+        "shared_torch_uncached": 2.444800019264221,
+        "guarded_uncached": 2.199552059173584,
+        "before": 2.4773120284080505,
+        "staged": 2.4739840030670166,
+        "candidate": 3.8576640486717224,
+        "ready_vs_selected11_percent": 55.71974803475612,
+        "ready_vs_guarded_percent": 75.38407570681116,
+        "same_build_staged_vs_selected11_percent": -0.13434017608079385
+      }
+    ]
+  }
 }

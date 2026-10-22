@@ -1,18 +1,42 @@
 {
-  "at": "2026-10-22T12:16:15.511320+08:00",
-  "status": "SOURCE_AND_CPU_BUILD_COMPLETE_GPU_PENDING_WINDOW",
-  "GPU_started": false,
-  "new_GPU_seconds": 0,
-  "cumulative_GPU_seconds": 6004.497041234253,
+  "at": "2026-10-22T12:43:09.910527+08:00",
+  "status": "COMPLETE_FINITE_CORRECTNESS_PERFORMANCE_NO_GO",
+  "new_window_start": "2026-10-22T12:28:18.599661+08:00",
+  "new_window_deadline": "2026-10-22T13:13:18.599661+08:00",
+  "actual_cleanup_at": "2026-10-22T12:43:09.910527+08:00",
+  "GPU_worker_lifecycle_seconds": 125.11674451828003,
+  "new_window_conservative_charge_seconds": 891.3108794689178,
+  "charge_basis": "entire authorized window from admission through final verified cleanup, including CPU setup/compile, waits and failure; not additional to worker lifecycle",
+  "cumulative_prior_GPU_seconds": 6004.497041234253,
+  "cumulative_GPU_seconds": 6895.807920703171,
   "cumulative_cap_seconds": 36000,
+  "remaining_cumulative_seconds": 29104.19207929683,
   "old_deadline": "2026-10-22T09:00:00+08:00",
-  "new_window_approval": "PENDING",
-  "build_CPU_wall_seconds": 317.3212401866913,
-  "build_root_reaped": true,
-  "CUDA_active_seconds": 0,
-  "new_storage_bytes": 14150878,
+  "CUDA_active_seconds": "UNKNOWN",
+  "GPU_window_closed": true,
+  "owned_cleanup": "ALL_OWNED_EXITED",
+  "remote_evidence_bytes": 13939254,
+  "local_evidence_bytes": 29159499,
   "storage_cap_bytes": 1073741824,
   "active_dso_sha256": "ac3f9e46574713fc8555428662c4ca40e1eab0c2d2ba830cc4050ccf713a4ad4",
   "candidate_dso_sha256": "3bdf1a62f1c9807560d800de4bba0525afb3184a4020eaabd6a98ae89c26d4f1",
-  "candidate_installed": false
+  "candidate_installed": false,
+  "failures": [
+    {
+      "kind": "CPU build-entry import error",
+      "path": "clock-diagnostic/BUILD-STATUS.json",
+      "GPU_seconds": 0
+    },
+    {
+      "kind": "Python profile.py shadows standard library; zero full block calls",
+      "path": "clock-diagnostic/RESULT.json",
+      "GPU_worker_lifecycle_seconds": 2.1913199424743652
+    }
+  ],
+  "timeout_count": 0,
+  "stopped": [
+    "ready scheduler promotion due +55.72% to +64.22% latency regression",
+    "no new tuning/sweep in this window",
+    "M40 restart and M17 new tasks outside current scope"
+  ]
 }
