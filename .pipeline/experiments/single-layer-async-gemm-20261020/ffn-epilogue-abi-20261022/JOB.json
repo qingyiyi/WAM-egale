@@ -1,0 +1,19 @@
+{
+  "goal": "Sequential single-factor FFN2 vector epilogue, producer call inlining, then independent FFN versus original Torch",
+  "execution_authorization": "USER_APPROVED_FFN2_EPILOGUE_THEN_CALL_OVERHEAD",
+  "registered_at": "2026-10-22T21:06:20.408234+08:00",
+  "deadline": "2026-10-22T22:06:20.408234+08:00",
+  "lifecycle_cap_seconds": 3600,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 11295.645769822419,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "new_storage_cap_bytes": 805306368,
+  "attempt_limit": "one vector epilogue, one inline producer variant, one selected-source independent FFN diagnostic; no tile grid search",
+  "input_manifest": "same9 real signatures,36 structural controls and real B14 short/middle/long fixtures; BF16/FP32 temb controls",
+  "baseline": "original Torch, same cached final cross K/V; prior custom is internal regression only",
+  "cleanup": "only owned PID+birth verified children; preserve failed/negative results",
+  "terminal_status": "REGISTERED",
+  "formal_performance_permission": false
+}

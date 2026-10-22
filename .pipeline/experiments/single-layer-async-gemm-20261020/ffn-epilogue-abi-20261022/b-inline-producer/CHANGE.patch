@@ -1,0 +1,11 @@
+--- A-vector4
++++ B-inline-producer
+@@ -358,7 +358,7 @@
+ // FFN1前108块M128×N256、8个MMA warp，尾部12块M32×N256。
+ // 8warp的FP32 accumulator分两半经同一128×136 shared区写回，避免
+ // 为整层抬高shared预留；完整K3072、bias和BF16舍入边界不变。
+-__device__ __noinline__ void action_ffn1_produce(const Params &p, Shared &s) {
++__device__ __forceinline__ void action_ffn1_produce(const Params &p, Shared &s) {
+     using Mma = CutlassWideFFN::Mma;
+     // 静态任务无需入口全局屏障；保留出口及分段依赖。
+     auto &workspace = s.tile.cutlass_gemm.wide_ffn;

@@ -1,0 +1,84 @@
+{
+  "goal": "Selected B source independent FFN vs original Torch and diagnostic-copy full perturbation",
+  "execution_authorization": "USER_APPROVED_FFN2_EPILOGUE_THEN_CALL_OVERHEAD",
+  "registered_at": "2026-10-22T21:06:20.408234+08:00",
+  "deadline": "2026-10-22T22:06:20.408234+08:00",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 3600,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 11295.645769822419,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 805306368,
+  "local_storage_cap_bytes": 536870912,
+  "terminal_status": "REGISTERED",
+  "input_manifest": "Existing 9 real signatures plus 27 structure cases; B14 action original short/middle/long cached fixtures; add 9 actual-derived FP32/broadcast temb controls",
+  "cleanup_plan": "owned PID+birth guard only; preserve failed attempts",
+  "evidence_path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/ffn-epilogue-abi-20261022/replay",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/replay/wam_ffn_replay_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/a-vector4/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "c77ac71ac108f9ef6bca27ade792612b6096689ce1a926ee6baae17262db7ebb",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap",
+    "temb_fp32",
+    "temb_first_token",
+    "temb_first_token_fp32"
+  ],
+  "formal_performance_permission": false,
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/replay/build_replay.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/replay",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/replay/build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "replay1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/replay/replay_worker.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "replay2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/replay/replay_worker.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ],
+  "source_before_sha256": "2493c3881a7d0d839b20efc7cd0f291c56125b8bddf4e63f6d7a2c44d69646c0",
+  "mechanism": "Measurement-only full kernel with isolated FFN branch and exact real M3/R2 aliases; selected production source unchanged",
+  "sources": {
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/cutlass_gemm.cuh": "efe0b6a5f6239e555ac7d6ef703f64198c43e30ff72f7acfcd8f6285eebbf921"
+  },
+  "attempt": "SELECTED_B_FFN_REPLAY",
+  "previous_attempt_gpu_seconds": 118.422532081604,
+  "storage_account_root": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022",
+  "selected_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/b-inline-producer/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "selected_binary_SHA256": "899d70c5355a03f3710eddb09e51a19d8da722fc25193c0e5653d87039e8a84e",
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726"
+}

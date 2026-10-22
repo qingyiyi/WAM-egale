@@ -1,0 +1,111 @@
+{
+  "status": "COMPLETE_FINITE_FFN_REPLAY",
+  "rows": [
+    {
+      "kv": 288,
+      "median_ms_mean_of_two": {
+        "selected_full": 0.9231872081756592,
+        "replay_copy_full": 0.9221888065338135,
+        "custom_ffn": 0.34790400266647337,
+        "torch_ffn": 0.3194368004798889,
+        "torch_ffn1_gelu": 0.17894400358200074,
+        "torch_ffn2_residual": 0.14113280177116394
+      },
+      "speedup_ffn_vs_Torch": 0.918175123113271,
+      "slowdown_percent": 8.911685235958489,
+      "full_copy_perturbation_percent": -0.10814725691646876,
+      "per_process_copy_perturbation_percent": [
+        -0.13860632179902854,
+        -0.07766791242581617
+      ],
+      "selected_resources": [
+        108,
+        1,
+        100096,
+        255,
+        920,
+        256
+      ],
+      "replay_resources": [
+        108,
+        1,
+        100096,
+        255,
+        920,
+        256
+      ]
+    },
+    {
+      "kv": 1152,
+      "median_ms_mean_of_two": {
+        "selected_full": 1.091763186454773,
+        "replay_copy_full": 1.0895359992980957,
+        "custom_ffn": 0.3480064034461975,
+        "torch_ffn": 0.31902719736099244,
+        "torch_ffn1_gelu": 0.1792767971754074,
+        "torch_ffn2_residual": 0.13916159868240358
+      },
+      "speedup_ffn_vs_Torch": 0.9167279515599911,
+      "slowdown_percent": 9.083616169694109,
+      "full_copy_perturbation_percent": -0.2039991075271086,
+      "per_process_copy_perturbation_percent": [
+        -0.23917471271627244,
+        -0.16882515077651927
+      ],
+      "selected_resources": [
+        108,
+        1,
+        100096,
+        255,
+        920,
+        256
+      ],
+      "replay_resources": [
+        108,
+        1,
+        100096,
+        255,
+        920,
+        256
+      ]
+    },
+    {
+      "kv": 2160,
+      "median_ms_mean_of_two": {
+        "selected_full": 1.1056128025054932,
+        "replay_copy_full": 1.1041792154312133,
+        "custom_ffn": 0.34739199876785276,
+        "torch_ffn": 0.31825919151306153,
+        "torch_ffn1_gelu": 0.17838079929351808,
+        "torch_ffn2_residual": 0.13992960453033448
+      },
+      "speedup_ffn_vs_Torch": 0.9161385197180104,
+      "slowdown_percent": 9.153799177421584,
+      "full_copy_perturbation_percent": -0.1296644784712253,
+      "per_process_copy_perturbation_percent": [
+        -0.143565060406603,
+        -0.1157651842343066
+      ],
+      "selected_resources": [
+        108,
+        1,
+        100096,
+        255,
+        920,
+        256
+      ],
+      "replay_resources": [
+        108,
+        1,
+        100096,
+        255,
+        920,
+        256
+      ]
+    }
+  ],
+  "independent_processes": 2,
+  "all_finite_output_and_state_checks_passed": true,
+  "caveat": "Copy branch adds standalone initialization barrier; full-copy perturbation and resources reported; not whole episode or quality certificate",
+  "formal_performance_permission": false
+}

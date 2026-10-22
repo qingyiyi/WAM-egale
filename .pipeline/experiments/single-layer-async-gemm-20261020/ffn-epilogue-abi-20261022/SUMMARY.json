@@ -1,0 +1,455 @@
+{
+  "status": "COMPLETE_TWO_POSITIVE_IMPLEMENTATION_STEPS_AND_FFN_REPLAY",
+  "selected": {
+    "status": "SELECTED_B_FINITE_EXACT_POSITIVE_WHOLE_TIMING",
+    "stage": "b-inline-producer",
+    "source_SHA256": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
+    "binary_SHA256": "899d70c5355a03f3710eddb09e51a19d8da722fc25193c0e5653d87039e8a84e",
+    "A_change": "vector4 FFN2 epilogue/column constants",
+    "B_change": "producer forceinline only",
+    "production_admitted": false,
+    "independent_FFN": "COMPLETE_FINITE_OUTPUT_STATE_PASS",
+    "adopted_for_research": true,
+    "local_GPU_retest": false
+  },
+  "epilogue": {
+    "status": "COMPLETE_FINITE_STAGE",
+    "rows": [
+      {
+        "kv": 288,
+        "median_ms_mean_of_two": {
+          "torch_static_cached_final": 1.1258880138397216,
+          "previous_cached": 0.9470208168029786,
+          "custom_cached": 0.9317631959915161
+        },
+        "speedup_vs_Torch": 1.208341366865893,
+        "latency_reduction_percent_vs_previous": 1.611117785453775,
+        "per_process_reduction": [
+          1.6115945153153732,
+          1.6106413390426733
+        ],
+        "debug": {
+          "previous_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 90.624,
+            "last_done_after_first_ready_us": 226.304,
+            "last_done_after_last_ready_us": 136.192,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1224,
+              256
+            ]
+          },
+          "custom_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 90.112,
+            "last_done_after_first_ready_us": 210.944,
+            "last_done_after_last_ready_us": 120.832,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1232,
+              256
+            ]
+          }
+        }
+      },
+      {
+        "kv": 1152,
+        "median_ms_mean_of_two": {
+          "torch_static_cached_final": 1.9188480854034422,
+          "previous_cached": 1.1156479835510256,
+          "custom_cached": 1.1005951881408693
+        },
+        "speedup_vs_Torch": 1.743463996644188,
+        "latency_reduction_percent_vs_previous": 1.3492423804006948,
+        "per_process_reduction": [
+          1.3858295202757165,
+          1.3126485219763118
+        ],
+        "debug": {
+          "previous_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 90.112,
+            "last_done_after_first_ready_us": 226.304,
+            "last_done_after_last_ready_us": 136.192,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1224,
+              256
+            ]
+          },
+          "custom_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 89.088,
+            "last_done_after_first_ready_us": 210.944,
+            "last_done_after_last_ready_us": 121.856,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1232,
+              256
+            ]
+          }
+        }
+      },
+      {
+        "kv": 2160,
+        "median_ms_mean_of_two": {
+          "torch_static_cached_final": 3.149516773223877,
+          "previous_cached": 1.1279871940612791,
+          "custom_cached": 1.112934398651123
+        },
+        "speedup_vs_Torch": 2.8299213116613995,
+        "latency_reduction_percent_vs_previous": 1.3344828282986887,
+        "per_process_reduction": [
+          1.3528848358553835,
+          1.3160875018031315
+        ],
+        "debug": {
+          "previous_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 90.112,
+            "last_done_after_first_ready_us": 226.816,
+            "last_done_after_last_ready_us": 136.192,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1224,
+              256
+            ]
+          },
+          "custom_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 90.112,
+            "last_done_after_first_ready_us": 211.968,
+            "last_done_after_last_ready_us": 120.832,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1232,
+              256
+            ]
+          }
+        }
+      }
+    ],
+    "real_signatures": 9,
+    "structural_controls": 36,
+    "finite_calls": 225,
+    "timing_worker_accounted_calls": 7224,
+    "call_accounting_note": "includes graph capture registrations, warm/replay and debug observations, not teacher forwards",
+    "candidate_binary_SHA256": "c77ac71ac108f9ef6bca27ade792612b6096689ce1a926ee6baae17262db7ebb",
+    "fixture_identity_gate_vs_timing": "MATCH_6_OF_6",
+    "four_scientific_permissions": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "production_admitted": false
+  },
+  "producer_inline": {
+    "status": "COMPLETE_FINITE_STAGE",
+    "rows": [
+      {
+        "kv": 288,
+        "median_ms_mean_of_two": {
+          "torch_static_cached_final": 1.1257855892181396,
+          "previous_cached": 0.9334015846252441,
+          "custom_cached": 0.9238783836364746
+        },
+        "speedup_vs_Torch": 1.2185430562699593,
+        "latency_reduction_percent_vs_previous": 1.0202683545467828,
+        "per_process_reduction": [
+          1.0642971248046917,
+          0.9762516566182544
+        ],
+        "debug": {
+          "previous_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 90.112,
+            "last_done_after_first_ready_us": 211.968,
+            "last_done_after_last_ready_us": 121.856,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1232,
+              256
+            ]
+          },
+          "custom_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 87.04,
+            "last_done_after_first_ready_us": 208.896,
+            "last_done_after_last_ready_us": 121.856,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              920,
+              256
+            ]
+          }
+        }
+      },
+      {
+        "kv": 1152,
+        "median_ms_mean_of_two": {
+          "torch_static_cached_final": 1.9187712192535402,
+          "previous_cached": 1.1026688098907471,
+          "custom_cached": 1.0899200201034547
+        },
+        "speedup_vs_Torch": 1.760469744441809,
+        "latency_reduction_percent_vs_previous": 1.1561757866857203,
+        "per_process_reduction": [
+          1.174065485691933,
+          1.1382653100961426
+        ],
+        "debug": {
+          "previous_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 91.136,
+            "last_done_after_first_ready_us": 212.992,
+            "last_done_after_last_ready_us": 121.856,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1232,
+              256
+            ]
+          },
+          "custom_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 88.064,
+            "last_done_after_first_ready_us": 209.92,
+            "last_done_after_last_ready_us": 121.856,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              920,
+              256
+            ]
+          }
+        }
+      },
+      {
+        "kv": 2160,
+        "median_ms_mean_of_two": {
+          "torch_static_cached_final": 3.1461631774902346,
+          "previous_cached": 1.1140095949172975,
+          "custom_cached": 1.104972791671753
+        },
+        "speedup_vs_Torch": 2.8472766037345507,
+        "latency_reduction_percent_vs_previous": 0.8111961770145504,
+        "per_process_reduction": [
+          0.7630072986563929,
+          0.859376197055528
+        ],
+        "debug": {
+          "previous_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 90.112,
+            "last_done_after_first_ready_us": 211.968,
+            "last_done_after_last_ready_us": 121.856,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1232,
+              256
+            ]
+          },
+          "custom_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 88.064,
+            "last_done_after_first_ready_us": 209.92,
+            "last_done_after_last_ready_us": 121.856,
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              920,
+              256
+            ]
+          }
+        }
+      }
+    ],
+    "real_signatures": 9,
+    "structural_controls": 36,
+    "finite_calls": 225,
+    "timing_worker_accounted_calls": 7224,
+    "call_accounting_note": "includes graph capture registrations, warm/replay and debug observations, not teacher forwards",
+    "candidate_binary_SHA256": "899d70c5355a03f3710eddb09e51a19d8da722fc25193c0e5653d87039e8a84e",
+    "fixture_identity_gate_vs_timing": "MATCH_6_OF_6",
+    "four_scientific_permissions": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "production_admitted": false
+  },
+  "independent_FFN": {
+    "status": "COMPLETE_FINITE_FFN_REPLAY",
+    "rows": [
+      {
+        "kv": 288,
+        "median_ms_mean_of_two": {
+          "selected_full": 0.9231872081756592,
+          "replay_copy_full": 0.9221888065338135,
+          "custom_ffn": 0.34790400266647337,
+          "torch_ffn": 0.3194368004798889,
+          "torch_ffn1_gelu": 0.17894400358200074,
+          "torch_ffn2_residual": 0.14113280177116394
+        },
+        "speedup_ffn_vs_Torch": 0.918175123113271,
+        "slowdown_percent": 8.911685235958489,
+        "full_copy_perturbation_percent": -0.10814725691646876,
+        "per_process_copy_perturbation_percent": [
+          -0.13860632179902854,
+          -0.07766791242581617
+        ],
+        "selected_resources": [
+          108,
+          1,
+          100096,
+          255,
+          920,
+          256
+        ],
+        "replay_resources": [
+          108,
+          1,
+          100096,
+          255,
+          920,
+          256
+        ]
+      },
+      {
+        "kv": 1152,
+        "median_ms_mean_of_two": {
+          "selected_full": 1.091763186454773,
+          "replay_copy_full": 1.0895359992980957,
+          "custom_ffn": 0.3480064034461975,
+          "torch_ffn": 0.31902719736099244,
+          "torch_ffn1_gelu": 0.1792767971754074,
+          "torch_ffn2_residual": 0.13916159868240358
+        },
+        "speedup_ffn_vs_Torch": 0.9167279515599911,
+        "slowdown_percent": 9.083616169694109,
+        "full_copy_perturbation_percent": -0.2039991075271086,
+        "per_process_copy_perturbation_percent": [
+          -0.23917471271627244,
+          -0.16882515077651927
+        ],
+        "selected_resources": [
+          108,
+          1,
+          100096,
+          255,
+          920,
+          256
+        ],
+        "replay_resources": [
+          108,
+          1,
+          100096,
+          255,
+          920,
+          256
+        ]
+      },
+      {
+        "kv": 2160,
+        "median_ms_mean_of_two": {
+          "selected_full": 1.1056128025054932,
+          "replay_copy_full": 1.1041792154312133,
+          "custom_ffn": 0.34739199876785276,
+          "torch_ffn": 0.31825919151306153,
+          "torch_ffn1_gelu": 0.17838079929351808,
+          "torch_ffn2_residual": 0.13992960453033448
+        },
+        "speedup_ffn_vs_Torch": 0.9161385197180104,
+        "slowdown_percent": 9.153799177421584,
+        "full_copy_perturbation_percent": -0.1296644784712253,
+        "per_process_copy_perturbation_percent": [
+          -0.143565060406603,
+          -0.1157651842343066
+        ],
+        "selected_resources": [
+          108,
+          1,
+          100096,
+          255,
+          920,
+          256
+        ],
+        "replay_resources": [
+          108,
+          1,
+          100096,
+          255,
+          920,
+          256
+        ]
+      }
+    ],
+    "independent_processes": 2,
+    "all_finite_output_and_state_checks_passed": true,
+    "caveat": "Copy branch adds standalone initialization barrier; full-copy perturbation and resources reported; not whole episode or quality certificate",
+    "formal_performance_permission": false
+  },
+  "resources": {
+    "status": "COMPLETE_ADOPTED_FOR_RESEARCH_OWNED_CLEAN",
+    "registered_at": "2026-10-22T21:06:20.408234+08:00",
+    "deadline": "2026-10-22T22:06:20.408234+08:00",
+    "cleanup_at": "2026-10-22T21:23:43.354811+08:00",
+    "GPU_worker_lifecycle_seconds": 149.25335478782654,
+    "CPU_build_lifecycle_seconds": 442.12380862236023,
+    "CUDA_active_seconds": "UNKNOWN",
+    "conservative_charged_setup_wait_build_cleanup_seconds": 1042.946577,
+    "cumulative_prior_seconds": 11295.645769822419,
+    "charged_cumulative_seconds": 12338.59234682242,
+    "cumulative_cap_seconds": 36000,
+    "remaining_seconds": 23661.407653177583,
+    "remote_storage_bytes": 72802159,
+    "local_storage_bytes": 49060963,
+    "per_host_storage_cap_bytes": 805306368,
+    "failures": [],
+    "owned_cleanup": "all16 PID/birth identities absent; GPU applications empty at cleanup",
+    "local_GPU_used": false,
+    "production_admitted": false,
+    "formal_performance_permission": false
+  },
+  "production_admitted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false
+}

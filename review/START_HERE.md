@@ -1,12 +1,8 @@
-# 最新算子进度：FFN1尾部行块分摊（2026-10-22晚间）
+# 当前算子入口（2026-10-22晚间）
 
-[当前入口](CURRENT-EXECUTION-20261022.md)：有限精度通过，原Torch完整单层短/中/长1.1910/1.7241/2.7993×；本次增量约1.9%。这是算子研究结果，四项科学权限仍false。历史快照与失败原样保留；下面内容按原时间解释。
+[最新结果](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)。FFN2四元素写回与生产函数内联已保留；原Torch完整层短/中/长1.2185/1.7605/2.8473×，独立FFN仍慢约9%。有限检查通过，四项科学权限仍false。
 
-# 当前入口
-
-最新：[FFN瓶颈定位](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[完整阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)。
-
-当前R2不改。独立FFN相对原Torch约0.81×；已定位尾部生产、FFN2计算/写回及函数保存恢复开销。远端计时、本机计数分列，自有清理；四科学权限false。下方TF交接为历史，不能用其旧暂停状态覆盖当前算子执行记录。
+动态状态以当前入口和HW为准。下面是原TF交接历史快照，正文保留，不能覆盖当前算子状态；此前派生入口见[历史](history/current-before-ffn-epilogue-abi-20261022/START_HERE.md)。
 
 ---
 

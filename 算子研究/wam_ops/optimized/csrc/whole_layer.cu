@@ -230,41 +230,58 @@ __device__ __forceinline__ void ffn2_partition(CutlassTile<128>::Storage &s, con
     __syncthreads();
 }
 
+// 每线程四个相邻元素；同一线程的列不随循环变化，bias/固定调制只读一次。
+// 保留(partial2+bias)+BF16(partial1)，再BF16舍入、FP32门控残差的顺序。
 __device__ __forceinline__ void ffn2_commit(const Params &p, CutlassTile<128>::Storage &s,
                                             int tile, bool second) {
-    const B *bias = (const B *)p.w[26];
+    struct alignas(8) B4 { __nv_bfloat162 lo, hi; };
     B *out = bp(p, F2);
-    for (int i = 2 * int(threadIdx.x); i < 128 * 128; i += 2 * int(blockDim.x)) {
-        const int row = (tile / 24) * 128 + i / 128, col = (tile % 24) * 128 + i % 128;
+    const int col_in_tile = (int(threadIdx.x) % 32) * 4;
+    const int col = (tile % 24) * 128 + col_in_tile;
+    const int cell = 5 * D + col;
+    float4 bias{}, table{};
+    if (second) {
+        const B4 b = *reinterpret_cast<const B4 *>((const B *)p.w[26] + col);
+        const float2 lo = __bfloat1622float2(b.lo), hi = __bfloat1622float2(b.hi);
+        bias = {lo.x, lo.y, hi.x, hi.y};
+        table = *reinterpret_cast<const float4 *>((const float *)p.w[0] + cell);
+    }
+    for (int i = 4 * int(threadIdx.x); i < 128 * 128; i += 4 * THREADS) {
+        const int row = (tile / 24) * 128 + i / 128;
         if (row < 224) {
-            float2 z = *reinterpret_cast<const float2 *>(s.result + (i / 128) * 136 + i % 128);
+            float4 z = *reinterpret_cast<const float4 *>(s.result + (i / 128) * 136 + col_in_tile);
             if (second) {
-                float2 b =
-                    __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>(bias + col));
-                float2 prev = __bfloat1622float2(
-                    *reinterpret_cast<const __nv_bfloat162 *>(out + row * 3072 + col));
-                z.x = __fadd_rn(__fadd_rn(z.x, b.x), prev.x);
-                z.y = __fadd_rn(__fadd_rn(z.y, b.y), prev.y);
+                const B4 prev = *reinterpret_cast<const B4 *>(out + row * D + col);
+                const float2 lo = __bfloat1622float2(prev.lo), hi = __bfloat1622float2(prev.hi);
+                z.x = __fadd_rn(__fadd_rn(z.x, bias.x), lo.x);
+                z.y = __fadd_rn(__fadd_rn(z.y, bias.y), lo.y);
+                z.z = __fadd_rn(__fadd_rn(z.z, bias.z), hi.x);
+                z.w = __fadd_rn(__fadd_rn(z.w, bias.w), hi.y);
             }
-            const __nv_bfloat162 rounded = __floats2bfloat162_rn(z.x, z.y);
-            // 第一段仍落BF16供第二段读取；最终F2仅debug保存。
+            const B4 rounded = {__floats2bfloat162_rn(z.x, z.y), __floats2bfloat162_rn(z.z, z.w)};
             if (!second || p.debug_modulation)
-                *reinterpret_cast<__nv_bfloat162 *>(out + row * D + col) = rounded;
+                *reinterpret_cast<B4 *>(out + row * D + col) = rounded;
             if (second) {
-                const int batch = row / p.q, token = row % p.q, cell = 5 * D + col;
+                const int batch = row / p.q, token = row % p.q;
                 const int64_t src = (int64_t(batch) * p.l + (p.l == 1 ? 0 : token)) * 6 * D + cell;
-                float2 gate = *reinterpret_cast<const float2 *>((const float *)p.w[0] + cell);
-                const float2 t = p.temb_float
-                    ? *reinterpret_cast<const float2 *>((const float *)p.temb + src)
-                    : __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>((const B *)p.temb + src));
-                gate.x = __fadd_rn(gate.x, t.x);
-                gate.y = __fadd_rn(gate.y, t.y);
-                const float2 f = __bfloat1622float2(rounded);
-                const float2 residual = __bfloat1622float2(
-                    *reinterpret_cast<const __nv_bfloat162 *>(bp(p, R2) + row * D + col));
-                *reinterpret_cast<__nv_bfloat162 *>(bp(p, OUT) + row * D + col) =
-                    __floats2bfloat162_rn(__fadd_rn(residual.x, __fmul_rn(f.x, gate.x)),
-                                          __fadd_rn(residual.y, __fmul_rn(f.y, gate.y)));
+                float4 t;
+                if (p.temb_float) {
+                    t = *reinterpret_cast<const float4 *>((const float *)p.temb + src);
+                } else {
+                    const B4 v = *reinterpret_cast<const B4 *>((const B *)p.temb + src);
+                    const float2 lo = __bfloat1622float2(v.lo), hi = __bfloat1622float2(v.hi);
+                    t = {lo.x, lo.y, hi.x, hi.y};
+                }
+                const float4 gate = {__fadd_rn(table.x, t.x), __fadd_rn(table.y, t.y),
+                                     __fadd_rn(table.z, t.z), __fadd_rn(table.w, t.w)};
+                const float2 lo = __bfloat1622float2(rounded.lo), hi = __bfloat1622float2(rounded.hi);
+                const B4 residual = *reinterpret_cast<const B4 *>(bp(p, R2) + row * D + col);
+                const float2 rlo = __bfloat1622float2(residual.lo), rhi = __bfloat1622float2(residual.hi);
+                *reinterpret_cast<B4 *>(bp(p, OUT) + row * D + col) = {
+                    __floats2bfloat162_rn(__fadd_rn(rlo.x, __fmul_rn(lo.x, gate.x)),
+                                          __fadd_rn(rlo.y, __fmul_rn(lo.y, gate.y))),
+                    __floats2bfloat162_rn(__fadd_rn(rhi.x, __fmul_rn(hi.x, gate.z)),
+                                          __fadd_rn(rhi.y, __fmul_rn(hi.y, gate.w)))};
             }
         }
     }
@@ -341,7 +358,7 @@ __device__ __noinline__ void action_ffn1_tail(const Params &p, Shared &s, int ta
 // FFN1前108块M128×N256、8个MMA warp，尾部12块M32×N256。
 // 8warp的FP32 accumulator分两半经同一128×136 shared区写回，避免
 // 为整层抬高shared预留；完整K3072、bias和BF16舍入边界不变。
-__device__ __noinline__ void action_ffn1_produce(const Params &p, Shared &s) {
+__device__ __forceinline__ void action_ffn1_produce(const Params &p, Shared &s) {
     using Mma = CutlassWideFFN::Mma;
     // 静态任务无需入口全局屏障；保留出口及分段依赖。
     auto &workspace = s.tile.cutlass_gemm.wide_ffn;

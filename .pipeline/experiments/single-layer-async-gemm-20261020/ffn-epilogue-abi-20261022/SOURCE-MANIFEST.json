@@ -1,0 +1,20 @@
+{
+  "selected_source": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
+  "selected_binary": "899d70c5355a03f3710eddb09e51a19d8da722fc25193c0e5653d87039e8a84e",
+  "sources": {
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/cutlass_gemm.cuh": "efe0b6a5f6239e555ac7d6ef703f64198c43e30ff72f7acfcd8f6285eebbf921"
+  },
+  "original_entry_before": "91c240a5ab419ab0dc21dfdd332abbe47d48dfd3050fc975e3deeaa267585220",
+  "binary_before": "8ac0c37b01b6779d62621e6c44bb5c7a9082a37eb85a24f4898f5b2c7508b761",
+  "replay_source": {
+    "selected_source_SHA256": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
+    "diagnostic_source_SHA256": "c9a91dcc6fac06456fad0575b0099553591989dba708a5913eaa78282237d699",
+    "scope": "same full kernel with FFN-only branch and real M3/R2 aliases; full normal-path overhead and resource comparison required; no timestamps added"
+  },
+  "performance_hardware": "BAAI A100-SXM4 GPU0; no local GPU timing",
+  "clock": "1410MHz sampled by each full timing worker before/after; no clock modifications",
+  "stage_A_change": "four-element FFN2 epilogue and hoisted column constants as one implementation change",
+  "stage_B_change": "one noinline-to-forceinline directive for FFN1 producer",
+  "production_admitted": false
+}

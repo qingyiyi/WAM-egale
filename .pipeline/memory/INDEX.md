@@ -1,6 +1,6 @@
 # 长期记忆索引
 
-- [先优化FFN1尾部再处理FFN2写回](global/requirements/decision-先优化FFN1尾部再处理FFN2写回.md)（constraint，M39）：用户确认按诊断顺序推进；行块加速仍是待验证方案，原累计预算不增。
+- [先优化FFN1尾部再处理FFN2写回](global/requirements/decision-先优化FFN1尾部再处理FFN2写回.md)（constraint，M39）：用户确认尾部分摊→FFN2写回→函数开销顺序，并补测独立FFN；具体收益看Cycle，原累计预算不增。
 
 - [试验FFN四组依赖融合流水](global/requirements/decision-试验FFN四组依赖融合流水.md)（constraint，M39）：用户批准FFN局部依赖流水，保留数学和ACT缓冲，原预算不增。
 

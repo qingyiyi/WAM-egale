@@ -1,0 +1,471 @@
+{
+  "observed_at": "2026-10-22T19:54:31.429656+08:00",
+  "previous_derived_snapshot_commit": "ec15d97c81f95f86b564569b57d8e207957002ec",
+  "operator": {
+    "status": "FINITE_EXACT_FFN_TAIL_ROW_SPLIT_POSITIVE_TIMING_SIGNAL",
+    "selected_trial": "ffn-four-group-pipeline-20261022/tail-row32",
+    "selected_variant": "tail-row32 single variant",
+    "source_sha256": "91c240a5ab419ab0dc21dfdd332abbe47d48dfd3050fc975e3deeaa267585220",
+    "final_binary_sha256": "8ac0c37b01b6779d62621e6c44bb5c7a9082a37eb85a24f4898f5b2c7508b761",
+    "real_signatures": 9,
+    "structural_controls": 36,
+    "finite_checks_passed": true,
+    "installed_for_research": true,
+    "small_performance_improvement_observed": true,
+    "practical_significance_established": false,
+    "ffn_four_group_dependency_pipeline": true,
+    "warp_MMA_epilogue_overlap_implemented": false,
+    "full_transformer_ready_DAG_active": false,
+    "warm_logical_tiles_short_middle_long": [
+      3408,
+      3480,
+      3408
+    ],
+    "warm_grid_barriers_source_count": 27,
+    "final_cross_KV_cache_precomputed_on_both_arms": true,
+    "performance_baseline": "Original Torch via static slot adapter, same final cross-KV cache, warm whole single-layer CUDA Graph",
+    "local_GPU_retest_this_version": false,
+    "stage_profile_this_version": "Group debug timestamps only; no new standalone FFN timing or NCU counters",
+    "production_admitted": false,
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false,
+    "ffn_tail_row_split": true
+  },
+  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/tail-row32/RESULT.md",
+  "operator_stage_table": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/tail-row32/STAGE-MAP.md",
+  "operator_timing": [
+    {
+      "kv": 288,
+      "median_ms_mean_of_two": {
+        "torch_static_cached_final": 1.1269120216369628,
+        "previous_cached": 0.9648128032684326,
+        "custom_cached": 0.9461759805679322
+      },
+      "speedup_vs_Torch": 1.191017363345607,
+      "latency_reduction_percent_vs_R2": 1.9316516776483161,
+      "per_process_reduction": [
+        1.8484133186395302,
+        2.014739991084258
+      ],
+      "debug": {
+        "previous_cached": {
+          "n": 24,
+          "last_group_ready_after_first_us": 118.272,
+          "last_done_after_first_ready_us": 245.76,
+          "last_done_after_last_ready_us": 126.976,
+          "last_ready_groups": [
+            3
+          ],
+          "resources": [
+            108,
+            1,
+            100096,
+            255,
+            1144,
+            256
+          ]
+        },
+        "custom_cached": {
+          "n": 24,
+          "last_group_ready_after_first_us": 89.088,
+          "last_done_after_first_ready_us": 224.768,
+          "last_done_after_last_ready_us": 135.68,
+          "last_ready_groups": [
+            3
+          ],
+          "resources": [
+            108,
+            1,
+            100096,
+            255,
+            1224,
+            256
+          ]
+        }
+      }
+    },
+    {
+      "kv": 1152,
+      "median_ms_mean_of_two": {
+        "torch_static_cached_final": 1.9207423686981202,
+        "previous_cached": 1.1358208179473877,
+        "custom_cached": 1.1140352010726928
+      },
+      "speedup_vs_Torch": 1.7241307696997883,
+      "latency_reduction_percent_vs_R2": 1.9180504997315495,
+      "per_process_reduction": [
+        1.7228186164376602,
+        2.113088869027391
+      ],
+      "debug": {
+        "previous_cached": {
+          "n": 24,
+          "last_group_ready_after_first_us": 118.784,
+          "last_done_after_first_ready_us": 246.272,
+          "last_done_after_last_ready_us": 126.976,
+          "last_ready_groups": [
+            3
+          ],
+          "resources": [
+            108,
+            1,
+            100096,
+            255,
+            1144,
+            256
+          ]
+        },
+        "custom_cached": {
+          "n": 24,
+          "last_group_ready_after_first_us": 90.112,
+          "last_done_after_first_ready_us": 224.768,
+          "last_done_after_last_ready_us": 134.144,
+          "last_ready_groups": [
+            3
+          ],
+          "resources": [
+            108,
+            1,
+            100096,
+            255,
+            1224,
+            256
+          ]
+        }
+      }
+    },
+    {
+      "kv": 2160,
+      "median_ms_mean_of_two": {
+        "torch_static_cached_final": 3.153561592102051,
+        "previous_cached": 1.1478528022766112,
+        "custom_cached": 1.1265536069869997
+      },
+      "speedup_vs_Torch": 2.79930007106927,
+      "latency_reduction_percent_vs_R2": 1.8555685230168373,
+      "per_process_reduction": [
+        1.81128633326606,
+        1.8998349138016568
+      ],
+      "debug": {
+        "previous_cached": {
+          "n": 24,
+          "last_group_ready_after_first_us": 118.272,
+          "last_done_after_first_ready_us": 245.76,
+          "last_done_after_last_ready_us": 126.976,
+          "last_ready_groups": [
+            3
+          ],
+          "resources": [
+            108,
+            1,
+            100096,
+            255,
+            1144,
+            256
+          ]
+        },
+        "custom_cached": {
+          "n": 24,
+          "last_group_ready_after_first_us": 89.6,
+          "last_done_after_first_ready_us": 224.256,
+          "last_done_after_last_ready_us": 134.144,
+          "last_ready_groups": [
+            3
+          ],
+          "resources": [
+            108,
+            1,
+            100096,
+            255,
+            1224,
+            256
+          ]
+        }
+      }
+    }
+  ],
+  "operator_debug_mechanism": {
+    "source": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/tail-row32/SUMMARY.json",
+    "producer_group_counts": [
+      28,
+      28,
+      28,
+      36
+    ],
+    "FFN2_part_tasks": 96,
+    "static_local_bytes": 1224,
+    "dynamic_local_traffic": "UNKNOWN_THIS_VERSION"
+  },
+  "resources": {
+    "status": "COMPLETE_ADOPTED_FOR_RESEARCH_OWNED_CLEAN",
+    "registered_at": "2026-10-22T19:44:24.600291+08:00",
+    "deadline": "2026-10-22T20:29:24.600291+08:00",
+    "cleanup_at": "2026-10-22T19:51:15.882210+08:00",
+    "GPU_worker_lifecycle_seconds": 59.62995433807373,
+    "CPU_build_lifecycle_seconds": 147.45048570632935,
+    "CUDA_active_seconds": "UNKNOWN",
+    "conservative_charged_setup_wait_build_cleanup_seconds": 411.281919,
+    "cumulative_prior_seconds": 10884.363850822418,
+    "charged_cumulative_seconds": 11295.645769822419,
+    "cumulative_cap_seconds": 36000,
+    "remaining_seconds": 24704.35423017758,
+    "remote_storage_bytes": 24495428,
+    "local_storage_bytes": 23428467,
+    "per_host_storage_cap_bytes": 536870912,
+    "failures": [],
+    "owned_cleanup": "Guard and all five child PID/birth identities absent; no GPU apps at receipt",
+    "production_admitted": false,
+    "formal_performance_permission": false
+  },
+  "historical_robotwin_snapshot": {
+    "as_of": "2026-10-22T16:39:06.198887+08:00",
+    "cross_task_complete_episodes": 4,
+    "independent_quality_samples_added": 0,
+    "cumulative_GPU_lifecycle_seconds": 54718.243980407715,
+    "owned_jobs_running": false,
+    "original_deadline": "2026-10-22T01:26:04.706686+08:00",
+    "deadline_expired": true,
+    "expanded1800_started": false,
+    "additional160hours_authorized": false
+  },
+  "robotwin_new_work_this_turn": false,
+  "historical_paused72": "review/RESULTS.json unchanged",
+  "previous_derived_snapshot": "review/history/current-before-ffn-tail-20261022/CURRENT-EXECUTION-20261022.json",
+  "next": "FFN2 final epilogue/index then device-call save/restore; no new GPU job running",
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "ffn_diagnosis": {
+    "status": "COMPLETE_FINITE_DIAGNOSIS",
+    "rows": [
+      {
+        "case": "short",
+        "kv": 288,
+        "torch_ffn_ms": 0.319488000869751,
+        "custom_ffn_ms": 0.3954176068305969,
+        "speedup_vs_Torch": 0.807976163303787,
+        "slowdown_percent": 23.766027442076275,
+        "profile_full_span_us": 376.06399999999996,
+        "profile_isolated_span_us": 372.736,
+        "profile_share_of_layer": 0.3881007018721728
+      },
+      {
+        "case": "middle",
+        "kv": 1152,
+        "torch_ffn_ms": 0.3200768053531647,
+        "custom_ffn_ms": 0.3954176068305969,
+        "speedup_vs_Torch": 0.8094652332724541,
+        "slowdown_percent": 23.53835086372569,
+        "profile_full_span_us": 375.808,
+        "profile_isolated_span_us": 373.76,
+        "profile_share_of_layer": 0.33121233914620657
+      },
+      {
+        "case": "long",
+        "kv": 2160,
+        "torch_ffn_ms": 0.32005120515823365,
+        "custom_ffn_ms": 0.3950080037117004,
+        "speedup_vs_Torch": 0.8102397980569159,
+        "slowdown_percent": 23.420251930127268,
+        "profile_full_span_us": 377.344,
+        "profile_isolated_span_us": 374.784,
+        "profile_share_of_layer": 0.3273590398558016
+      }
+    ],
+    "counts": {
+      "independent_processes": 2,
+      "KV_lengths": 3,
+      "full_timeline_samples": 72,
+      "isolated_timeline_samples": 72
+    },
+    "production_modified": false,
+    "four_scientific_permissions": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "local_hardware_counters": "local-counters/COUNTER-SUMMARY.json",
+    "performance_machine": "BAAI A100-SXM4 only",
+    "counter_machine": "local A100-SXM4 only",
+    "precision": "Three real inputs, both independent processes, original full output and standalone FFN outputs bitwise; inputs/cache/RNG unchanged; not a new general certificate",
+    "historical_version": "R2 before this tail split; not current standalone timing"
+  },
+  "ffn_diagnosis_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/RESULT.md",
+  "current_tail_split_summary": {
+    "status": "COMPLETE_FINITE_POSITIVE_TAIL_SPLIT",
+    "rows": [
+      {
+        "kv": 288,
+        "median_ms_mean_of_two": {
+          "torch_static_cached_final": 1.1269120216369628,
+          "previous_cached": 0.9648128032684326,
+          "custom_cached": 0.9461759805679322
+        },
+        "speedup_vs_Torch": 1.191017363345607,
+        "latency_reduction_percent_vs_R2": 1.9316516776483161,
+        "per_process_reduction": [
+          1.8484133186395302,
+          2.014739991084258
+        ],
+        "debug": {
+          "previous_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 118.272,
+            "last_done_after_first_ready_us": 245.76,
+            "last_done_after_last_ready_us": 126.976,
+            "last_ready_groups": [
+              3
+            ],
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1144,
+              256
+            ]
+          },
+          "custom_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 89.088,
+            "last_done_after_first_ready_us": 224.768,
+            "last_done_after_last_ready_us": 135.68,
+            "last_ready_groups": [
+              3
+            ],
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1224,
+              256
+            ]
+          }
+        }
+      },
+      {
+        "kv": 1152,
+        "median_ms_mean_of_two": {
+          "torch_static_cached_final": 1.9207423686981202,
+          "previous_cached": 1.1358208179473877,
+          "custom_cached": 1.1140352010726928
+        },
+        "speedup_vs_Torch": 1.7241307696997883,
+        "latency_reduction_percent_vs_R2": 1.9180504997315495,
+        "per_process_reduction": [
+          1.7228186164376602,
+          2.113088869027391
+        ],
+        "debug": {
+          "previous_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 118.784,
+            "last_done_after_first_ready_us": 246.272,
+            "last_done_after_last_ready_us": 126.976,
+            "last_ready_groups": [
+              3
+            ],
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1144,
+              256
+            ]
+          },
+          "custom_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 90.112,
+            "last_done_after_first_ready_us": 224.768,
+            "last_done_after_last_ready_us": 134.144,
+            "last_ready_groups": [
+              3
+            ],
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1224,
+              256
+            ]
+          }
+        }
+      },
+      {
+        "kv": 2160,
+        "median_ms_mean_of_two": {
+          "torch_static_cached_final": 3.153561592102051,
+          "previous_cached": 1.1478528022766112,
+          "custom_cached": 1.1265536069869997
+        },
+        "speedup_vs_Torch": 2.79930007106927,
+        "latency_reduction_percent_vs_R2": 1.8555685230168373,
+        "per_process_reduction": [
+          1.81128633326606,
+          1.8998349138016568
+        ],
+        "debug": {
+          "previous_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 118.272,
+            "last_done_after_first_ready_us": 245.76,
+            "last_done_after_last_ready_us": 126.976,
+            "last_ready_groups": [
+              3
+            ],
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1144,
+              256
+            ]
+          },
+          "custom_cached": {
+            "n": 24,
+            "last_group_ready_after_first_us": 89.6,
+            "last_done_after_first_ready_us": 224.256,
+            "last_done_after_last_ready_us": 134.144,
+            "last_ready_groups": [
+              3
+            ],
+            "resources": [
+              108,
+              1,
+              100096,
+              255,
+              1224,
+              256
+            ]
+          }
+        }
+      }
+    ],
+    "real_signatures": 9,
+    "structural_controls": 36,
+    "finite_calls": 225,
+    "candidate_binary_SHA256": "8ac0c37b01b6779d62621e6c44bb5c7a9082a37eb85a24f4898f5b2c7508b761",
+    "four_scientific_permissions": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "production_admitted": false,
+    "timing_worker_accounted_calls": 7224,
+    "call_accounting_note": "timing worker count includes Graph capture registrations, warm/replay and separate debug calls; not robot teacher forwards",
+    "adopted_for_operator_research": true,
+    "new_independent_FFN_timing": "NOT_MEASURED",
+    "GPU_counters_this_trial": "NOT_MEASURED",
+    "fixture_identity_gate_vs_timing": "MATCH_6_OF_6"
+  }
+}
