@@ -1,0 +1,106 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792657553.2253017,
+  "deadline": 1792660220.33093,
+  "jobs": [
+    {
+      "name": "gate",
+      "owned": {
+        "pid": 841768,
+        "birth_ticks": 725601186,
+        "pgid": 841768
+      },
+      "start": 1792657553.295989,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792657565.2758074,
+      "lifecycle_seconds": 11.97981882095337,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "structural",
+      "owned": {
+        "pid": 841782,
+        "birth_ticks": 725602387,
+        "pgid": 841782
+      },
+      "start": 1792657565.3146124,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792657578.3452208,
+      "lifecycle_seconds": 13.030608654022217,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "baseline_gate",
+      "owned": {
+        "pid": 841833,
+        "birth_ticks": 725603698,
+        "pgid": 841833
+      },
+      "start": 1792657578.4200702,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792657589.5487185,
+      "lifecycle_seconds": 11.128648519515991,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "timing1",
+      "owned": {
+        "pid": 841847,
+        "birth_ticks": 725604816,
+        "pgid": 841847
+      },
+      "start": 1792657589.5964634,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792657618.1957343,
+      "lifecycle_seconds": 28.599271059036255,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "timing2",
+      "owned": {
+        "pid": 841872,
+        "birth_ticks": 725607678,
+        "pgid": 841872
+      },
+      "start": 1792657618.2251034,
+      "gpu": true,
+      "returncode": 0,
+      "end": 1792657646.932505,
+      "lifecycle_seconds": 28.707401514053345,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "profile",
+      "owned": {
+        "pid": 841933,
+        "birth_ticks": 725610554,
+        "pgid": 841933
+      },
+      "start": 1792657646.9808903,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792657659.7114508,
+      "lifecycle_seconds": 12.730560779571533,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 841766,
+    "birth_ticks": 725601176,
+    "pgid": 841766
+  },
+  "error": "RuntimeError('profile failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-precompute-20261022/guard.py\", line 50, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: profile failed\n",
+  "end": 1792657659.7151444,
+  "lifecycle_seconds": 106.48984289169312
+}

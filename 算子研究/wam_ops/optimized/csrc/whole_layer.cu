@@ -73,10 +73,11 @@ struct Params {
     const c10::complex<float> *freq;
     B *pk, *pv;
     int64_t *ids, *rows, *slots, *free, *info;
+    const int64_t *context_rows, *context_roots; // 条件分组独立于self历史映射。
     bool *mask, *pred;
     int *queues;
-    int b, q, c, l, fb, pool, update;
-    bool temb_float, cache, candidate, affine, debug_modulation;
+    int b, q, c, cb, l, fb, pool, update;
+    bool temb_float, cache, candidate, affine, debug_modulation, context_cached;
     float eps[7];
     float *fa_lse, *fa_lse_partial, *fa_out_partial;
     int64_t *fa_meta;
@@ -174,12 +175,18 @@ __device__ void linear(const Params &p, Shared &s, cg::grid_group &g, int st, co
 // 独立设备函数只移除通用GEMM的形状分派；tile、领取顺序和同步不变。
 __device__ __noinline__ void context_linear(const Params &p, Shared &s, cg::grid_group &g, int st,
                                             int wi, B *out, int m) {
-    const int ntiles = ((m + WAM_CONTEXT_TILE_M - 1) / WAM_CONTEXT_TILE_M) * (D / 128);
+    const int group_tiles = ((p.c + WAM_CONTEXT_TILE_M - 1) / WAM_CONTEXT_TILE_M) * (D / 128);
+    const int ntiles = p.context_roots ? p.cb * group_tiles
+                                     : ((m + WAM_CONTEXT_TILE_M - 1) / WAM_CONTEXT_TILE_M) * (D / 128);
     begin_stage(p, g, st);
     for (int t; (t = claim_tile(p, s, st)) < ntiles;) {
-        cutlass_gemm_tile<WAM_CONTEXT_TILE_M, 136>(s.tile.cutlass_gemm.context, p.context,
-                                                   (const B *)p.w[wi], (const B *)p.w[wi + 1], out,
-                                                   m, D, D, t, false);
+        const int group = p.context_roots ? t / group_tiles : 0;
+        const B *input = p.context_roots ? p.context + p.context_roots[group] * p.c * D : p.context;
+        B *output = p.context_roots ? out + group * p.c * D : out;
+        cutlass_gemm_tile<WAM_CONTEXT_TILE_M, 136>(s.tile.cutlass_gemm.context, input,
+                                                   (const B *)p.w[wi], (const B *)p.w[wi + 1], output,
+                                                   p.context_roots ? p.c : m, D, D,
+                                                   p.context_roots ? t % group_tiles : t, false);
         finish_tile();
     }
     g.sync();
@@ -750,7 +757,7 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     // 缓存只整理本次可见slot；B14不会把候选的private KV写入公共历史。
     layout(p, s);
     g.sync();
-    int st = 0, m = p.b * p.q, mc = p.b * p.c;
+    int st = 0, m = p.b * p.q, mc = p.cb * p.c;
     // 1. 调制量在M1/M3与门控残差处按需计算。debug才物化表供外部核验，
     // 后续计算不依赖该表；普通路径少一个全局阶段屏障。
     if (p.debug_modulation)
@@ -784,10 +791,15 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     if (p.affine)
         norm(p, s, g, st++, bp(p, R1), p.a[N2], m, 1, 2, p.eps[1], false, false);
     linear(p, s, g, st++, bp(p, N2), 13, bp(p, CQ0), m, D, D);
-    context_linear(p, s, g, st++, 15, bp(p, CK0), mc);
-    context_linear(p, s, g, st++, 17, bp(p, CV), mc);
+    if (!p.context_cached) {
+        context_linear(p, s, g, st, 15, bp(p, CK0), mc);
+        context_linear(p, s, g, st + 1, 17, bp(p, CV), mc);
+    }
+    st += 2;
     norm(p, s, g, st++, bp(p, CQ0), p.a[CQ], m, 21, -1, p.eps[5], true, false);
-    norm(p, s, g, st++, bp(p, CK0), p.a[CK], mc, 22, -1, p.eps[6], true, false);
+    if (!p.context_cached)
+        norm(p, s, g, st, bp(p, CK0), p.a[CK], mc, 22, -1, p.eps[6], true, false);
+    ++st;
     attention(p, s, g, st++, true);
     linear(p, s, g, st++, bp(p, CA), 19, bp(p, CO), m, D, D);
     point(p, s, g, st++, RESIDUAL, R2, R1, CO, -1, int64_t(m) * D);
@@ -816,12 +828,19 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
 std::map<std::string, Tensor>
 forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, const Tensor &temb,
         const std::optional<Tensor> &freq, const std::vector<Tensor> &cache,
-        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps, bool debug) {
+        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps, bool debug,
+        const std::optional<Tensor> &context_rows, const std::optional<Tensor> &context_roots,
+        const std::vector<Tensor> &context_kv) {
     c10::cuda::CUDAGuard guard(x.device());
     Params p{};
     p.b = x.size(0);
     p.q = x.size(1);
     p.c = context.size(1);
+    p.cb = context_roots ? context_roots->numel() : p.b;
+    if (context_roots) {
+        p.context_roots = context_roots->data_ptr<int64_t>();
+        p.context_rows = context_rows->data_ptr<int64_t>();
+    }
     p.l = temb.size(1);
     p.update = update;
     p.x = (const B *)x.data_ptr();
@@ -829,6 +848,7 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
     p.temb = temb.data_ptr();
     p.temb_float = temb.scalar_type() == at::kFloat;
     p.debug_modulation = debug;
+    p.context_cached = !context_kv.empty();
     for (int i = 0; i < 27; ++i)
         p.w[i] = w[i].data_ptr();
     for (int i = 0; i < 7; ++i)
@@ -856,8 +876,11 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
                io = bo.dtype(at::kInt);
     std::vector<Tensor> b(NB);
     for (int i = 0; i < NB; ++i) {
-        const int rows = (i == CK0 || i == CK || i == CV) ? p.b * p.c : p.b * p.q;
-        if (i == MOD)
+        const int rows = (i == CK0 || i == CK || i == CV) ? p.cb * p.c : p.b * p.q;
+        // 预计算缓存按K0/K/V排列；K0仅保留供debug审计，warm kernel读取K/V。
+        if (p.context_cached && (i == CK0 || i == CK || i == CV))
+            b[i] = context_kv[i == CK0 ? 0 : (i == CK ? 1 : 2)].view({rows, D});
+        else if (i == MOD)
             b[i] = debug ? at::empty({rows, 6, D}, fo) : at::empty({0}, fo);
         else if ((i == SQN || i == SKN) && p.candidate && p.freq && !debug)
             b[i] = at::empty({0}, bo);
@@ -925,8 +948,12 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
                              "cross_v",       "cross_q",     "cross_k",        "cross_attention",
                              "cross_out",     "residual2",   "norm3",          "modulated3",
                              "ffn1",          "gelu",        "ffn2",           "output"};
-    for (int i = 0; i < NB; ++i)
-        result[names[i]] = b[i];
+    for (int i = 0; i < NB; ++i) {
+        // debug才展开条件结果，用于与原B14中间值比较；普通路径不复制14份。
+        result[names[i]] = context_roots && (i == CK0 || i == CK || i == CV)
+                              ? b[i].view({p.cb, p.c, D}).index_select(0, *context_rows).reshape({p.b * p.c, D})
+                              : b[i];
+    }
     result["output"] = b[OUT].view(x.sizes());
     result["cache_info"] = info;
     result["logical_slots"] = slots;
@@ -944,7 +971,9 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     // 原始扩展调用默认保留debug字典兼容旧重放脚本；Python普通入口显式传false。
     m.def("forward", &wam_whole_layer_v1::forward, py::arg("weights"), py::arg("hidden"),
           py::arg("context"), py::arg("temb"), py::arg("rotary"), py::arg("cache"), py::arg("rows"),
-          py::arg("update"), py::arg("eps"), py::arg("debug") = true);
+          py::arg("update"), py::arg("eps"), py::arg("debug") = true,
+          py::arg("context_rows") = std::nullopt, py::arg("context_roots") = std::nullopt,
+          py::arg("context_kv") = std::vector<at::Tensor>{});
     m.attr("production_admitted") = false;
     m.attr("computation_launches") = 1;
     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;

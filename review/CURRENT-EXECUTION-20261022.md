@@ -1,7 +1,7 @@
-# 当前执行：RMS+RoPE融合已收口
+# 当前执行：Cross K/V预计算与阶段诊断已收口
 
-当前阶段同步版保留按需调制，新增B14 self Q/K RMS+RoPE融合。有限9签名/21结构逐位与状态通过；完整层短/中/长2.270464/2.434816/2.449152ms→2.261504/2.424576/2.438400ms，降0.395%/0.421%/0.439%，仍慢最强guarded9.32%–10.93%。普通路径少2.625MiB中间张量、336tile、两处grid同步；不是实测HBM/机器人E2E收益。
+自有及强guarded均缓存最终K（含RMS）和V。自有warm短/中/长0.957/1.124/1.140ms，对guarded0.887/1.006/1.021ms仍慢7.94%/11.70%/11.69%；自身比不预计算降低17.7%–20.6%。同分组、不预计算时差距约±2%，不能用这行掩盖最强缓存baseline。
 
-两机当前source0f79579d、DSO795be814。GPU已清理，四科学权限false，旧paused72不改。投影/attention QK/PV已核对Tensor Core源码与HMMA机器码；利用率未新测。MegaMoE双槽epilogue流水仅作参考，当前没有实现。
+9签名/27结构与三KV缓存baseline有限逐位及状态通过。逐阶段profile与正常性能分开；首次插桩漏记录入口/出口同步的FAILED保留，修复后完成。warm5304/5376tile、31grid；一层一个persistent kernel，无新ready队列。两机研究入口采用，GPU已清理，四科学权限false、旧paused72不改。
 
-[结果](../.pipeline/experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)、[优化证据索引](../.pipeline/experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)、[阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[HW](../.pipeline/PROGRESS.compact.md)。
+[结果](../.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/RESULT.md)、[完整阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/STAGE-TABLE.md)、[优化索引](../.pipeline/experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)、[HW](../.pipeline/PROGRESS.compact.md)。LingBot-VA2加速基线核验在上一项分组复用证据目录。

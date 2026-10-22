@@ -1,0 +1,24 @@
+---
+kind: plan
+mode: goal
+cycle: wam-research-20261016
+status: active
+updated: '2026-10-22T15:31:11.420822+08:00'
+progress: PROGRESS.md
+execution: EXECUTION.md
+---
+# 当前计划：逐阶段优化与证据收口
+
+- [x] M39-MOD：按需调制有限验证与采用，历史结果保留。
+- [x] M39-RR：用户批准self RMS+RoPE；实现、编译、9签名/21结构、三KV整层计时完成，两机采用。
+- [x] M39-TC：核对投影及attention QK/PV的源码与活动二进制Tensor Core指令；解释RoPE与MegaMoE固定角色。
+- [x] M39-RECORD：优化索引、版本身份、失败及资源归档；owned清理。
+- [x] M39-KV-AUDIT：按用户新顺序核查Cross K/V分组复用；源码与三档压缩fixture支持每层两CFG组，CPU完成；online RMS文献及当前实现核对完成。
+- [ ] M39-KV-IMPL：已获准在optimized实现显式context分组，保持独立RMS；CPU审查与编译。
+- [ ] M39-KV-GATE：真实9签名及结构/条件换序核验，有限逐位通过才进入计时。
+- [ ] M39-KV-PERF：三KV两进程完整层、强baseline与复用边界；更新阶段表/证据/owned清理。
+- [ ] M39-VA2：核查LingBot-VA2原文加速基线及推理框架。
+- [ ] M39：完全对齐同工作量强guarded尚未完成；不扩大系统claim。
+- [ ] M17/M40：原证据缺口及扩大资源另处理，不启动。
+
+[本轮结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)。累计7480.439/36000秒；当前作业闭合，原截止与四科学权限不变。

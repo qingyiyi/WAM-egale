@@ -1,5 +1,11 @@
 # 长期记忆索引
 
+- [自有整层读取预计算Cross K/V并对齐逐阶段耗时](global/requirements/decision-自有整层读取预计算CrossKV并对齐逐阶段耗时.md)（constraint，M39）：双方同缓存、精度后计时、冷warm与profile分列。
+
+- [实现Cross K/V复用并先精度后计时](global/requirements/decision-先实现CrossKV复用并精度通过后计时.md)（constraint，M39）：用户已批准实现；条件映射独立于历史，RMS独立，不融合tile+RMS，原累计预算不增。
+
+- [先核查Cross K/V条件复用](global/requirements/decision-先核查CrossKV按条件分组复用.md)（constraint，M39当前）：用户要求先核查第3项；只确定共享范围和已有实现，不将数学可复用视为新路径已通过，也不自动开GPU。
+
 - [先融合self Q/K的RMS与RoPE](global/requirements/decision-先融合self-QK的RMS与RoPE.md)（constraint，M39当前）：保留归约/舍入/旋转精度，先真实输入核验及同轮整层比较，不合并GEMM或恢复ready。
 
 - [持续记录优化与论文证据](global/requirements/requirement-持续记录优化改动与论文证据.md)（constraint，研究优化）：沿既有HW保存改动、版本、实测收益、精度范围与负结果；当前入口为M39优化证据索引，不新建论文初稿。

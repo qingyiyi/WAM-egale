@@ -1,0 +1,211 @@
+W1022 16:16:57.329000 4054930 site-packages/torch/utils/cpp_extension.py:117] No CUDA runtime is found, using CUDA_HOME='/usr/local/cuda-12.4'
+/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/extension.py:150: UserWarning: Unknown Extension options: 'dlink', 'dlink_libraries'
+  warnings.warn(msg)
+running build_ext
+W1022 16:16:57.413000 4054930 site-packages/torch/utils/cpp_extension.py:521] The detected CUDA version (12.4) has a minor version mismatch with the version that was used to compile PyTorch (12.6). Most likely this shouldn't be a problem.
+W1022 16:16:57.414000 4054930 site-packages/torch/utils/cpp_extension.py:531] There are no /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-c++ version bounds defined for CUDA version 12.4
+building 'wam_whole_fa2_cuda' extension
+creating /rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc
+[1/2] /usr/local/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output '/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o'.d '-I/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/build/generated' '-I/rjs/cxz/论文探索/.pipeline/cache/cutlass-v3.5.1/include' '-I/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc' '-I/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/vendor/flash_attn' '-I/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include' -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/usr/local/cuda-12.4/include -I/rjs/cxz/miniconda3/envs/va/include/python3.12 -c -c '/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu' -o '/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DWAM_CONTEXT_TILE_M=128 -DUNFUSE_FMA -DFLASHATTENTION_DISABLE_DROPOUT -DFLASHATTENTION_DISABLE_ALIBI -DFLASHATTENTION_DISABLE_SOFTCAP -DFLASHATTENTION_DISABLE_LOCAL -DFLASHATTENTION_DISABLE_UNEVEN_K -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_fa2_cuda -gencode=arch=compute_80,code=sm_80 -ccbin /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-cc -std=c++17
+FAILED: /rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o
+/usr/local/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output '/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o'.d '-I/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/build/generated' '-I/rjs/cxz/论文探索/.pipeline/cache/cutlass-v3.5.1/include' '-I/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc' '-I/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/vendor/flash_attn' '-I/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include' -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/usr/local/cuda-12.4/include -I/rjs/cxz/miniconda3/envs/va/include/python3.12 -c -c '/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu' -o '/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DWAM_CONTEXT_TILE_M=128 -DUNFUSE_FMA -DFLASHATTENTION_DISABLE_DROPOUT -DFLASHATTENTION_DISABLE_ALIBI -DFLASHATTENTION_DISABLE_SOFTCAP -DFLASHATTENTION_DISABLE_LOCAL -DFLASHATTENTION_DISABLE_UNEVEN_K -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_fa2_cuda -gencode=arch=compute_80,code=sm_80 -ccbin /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-cc -std=c++17
+nvcc warning : incompatible redefinition for option 'compiler-bindir', the last value of this option was used
+/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu(976): error: argument list for class template "cute::Tensor" is missing
+            py::arg("context_kv") = std::vector<Tensor>{});
+                                                ^
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/ptr_traits.h(119): error: static assertion failed with "pointer type defines element_type or is like SomePointer<T, Args>"
+        static_assert(!is_same<element_type, __undefined>::value,
+        ^
+          detected during:
+            instantiation of class "std::pointer_traits<_Ptr> [with _Ptr=<error-type> *]" at line 105 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h
+            instantiation of class "std::allocator_traits<_Alloc>::_Ptr<_Func, _Tp, <unnamed>> [with _Alloc=std::allocator<<error-type>>, _Func=std::__allocator_traits_base::__c_pointer, _Tp=const <error-type>, <unnamed>=void]" at line 138 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h
+            instantiation of class "std::allocator_traits<_Alloc> [with _Alloc=std::allocator<<error-type>>]" at line 50 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=std::allocator<<error-type>>, <unnamed>=<error-type>]" at line 87 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/ptr_traits.h(113): error: class "std::pointer_traits<_Ptr>::__rebind<<error-type> *, const <error-type>, void> [with _Ptr=<error-type> *]" has no member "type"
+          using rebind = typename __rebind<_Ptr, _Up>::type;
+                                                       ^
+          detected during:
+            instantiation of type "std::pointer_traits<_Ptr>::rebind<const <error-type>> [with _Ptr=<error-type> *]" at line 105 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h
+            instantiation of class "std::allocator_traits<_Alloc>::_Ptr<_Func, _Tp, <unnamed>> [with _Alloc=std::allocator<<error-type>>, _Func=std::__allocator_traits_base::__c_pointer, _Tp=const <error-type>, <unnamed>=void]" at line 138 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h
+            instantiation of class "std::allocator_traits<_Alloc> [with _Alloc=std::allocator<<error-type>>]" at line 50 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=std::allocator<<error-type>>, <unnamed>=<error-type>]" at line 87 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/ptr_traits.h(113): error: class "std::pointer_traits<_Ptr>::__rebind<<error-type> *, void, void> [with _Ptr=<error-type> *]" has no member "type"
+          using rebind = typename __rebind<_Ptr, _Up>::type;
+                                                       ^
+          detected during:
+            instantiation of type "std::pointer_traits<_Ptr>::rebind<void> [with _Ptr=<error-type> *]" at line 105 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h
+            instantiation of class "std::allocator_traits<_Alloc>::_Ptr<_Func, _Tp, <unnamed>> [with _Alloc=std::allocator<<error-type>>, _Func=std::__allocator_traits_base::__v_pointer, _Tp=void, <unnamed>=void]" at line 146 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h
+            instantiation of class "std::allocator_traits<_Alloc> [with _Alloc=std::allocator<<error-type>>]" at line 50 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=std::allocator<<error-type>>, <unnamed>=<error-type>]" at line 87 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/ptr_traits.h(113): error: class "std::pointer_traits<_Ptr>::__rebind<<error-type> *, const void, void> [with _Ptr=<error-type> *]" has no member "type"
+          using rebind = typename __rebind<_Ptr, _Up>::type;
+                                                       ^
+          detected during:
+            instantiation of type "std::pointer_traits<_Ptr>::rebind<const void> [with _Ptr=<error-type> *]" at line 105 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h
+            instantiation of class "std::allocator_traits<_Alloc>::_Ptr<_Func, _Tp, <unnamed>> [with _Alloc=std::allocator<<error-type>>, _Func=std::__allocator_traits_base::__cv_pointer, _Tp=const void, <unnamed>=void]" at line 154 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h
+            instantiation of class "std::allocator_traits<_Alloc> [with _Alloc=std::allocator<<error-type>>]" at line 50 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=std::allocator<<error-type>>, <unnamed>=<error-type>]" at line 87 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h(79): error: class "std::__allocator_traits_base::__rebind<std::allocator<<error-type>>, <error-type>, void>" has no member "type"
+        = typename __allocator_traits_base::template __rebind<_Alloc, _Up>::type;
+                                                                            ^
+          detected during:
+            instantiation of type "std::__alloc_rebind<std::allocator<<error-type>>, <error-type>>" at line 209
+            instantiation of type "std::allocator_traits<_Alloc>::rebind_alloc<<error-type>> [with _Alloc=std::allocator<<error-type>>]" at line 120 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>>::rebind<_Tp> [with _Alloc=std::allocator<<error-type>>, <unnamed>=<error-type>, _Tp=<error-type>]" at line 87 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h(47): error: a class or namespace qualified name is required
+  template<typename _Alloc, typename = typename _Alloc::value_type>
+                                                ^
+          detected during:
+            processing of template argument list for "__gnu_cxx::__alloc_traits" based on template argument <<error-type>> at line 88 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h(47): error: expected a ","
+  template<typename _Alloc, typename = typename _Alloc::value_type>
+                                                      ^
+          detected during:
+            processing of template argument list for "__gnu_cxx::__alloc_traits" based on template argument <<error-type>> at line 88 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h(91): error: a class or namespace qualified name is required
+        typedef typename _Alloc::value_type value_type;
+                         ^
+          detected during:
+            instantiation of class "std::allocator_traits<_Alloc> [with _Alloc=<error-type>]" at line 50 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=<error-type>, <unnamed>=<error-type>]" at line 88 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h(91): error: global-scope qualifier (leading "::") is not allowed
+        typedef typename _Alloc::value_type value_type;
+                               ^
+          detected during:
+            instantiation of class "std::allocator_traits<_Alloc> [with _Alloc=<error-type>]" at line 50 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=<error-type>, <unnamed>=<error-type>]" at line 88 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h(91): error: expected a ";"
+        typedef typename _Alloc::value_type value_type;
+                                            ^
+          detected during:
+            instantiation of class "std::allocator_traits<_Alloc> [with _Alloc=<error-type>]" at line 50 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=<error-type>, <unnamed>=<error-type>]" at line 88 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h(98): error: identifier "value_type" is undefined
+        using pointer = __detected_or_t<value_type*, __pointer, _Alloc>;
+                                        ^
+          detected during:
+            instantiation of class "std::allocator_traits<_Alloc> [with _Alloc=<error-type>]" at line 50 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=<error-type>, <unnamed>=<error-type>]" at line 88 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/alloc_traits.h(138): error: expected a ">"
+        using const_pointer = typename _Ptr<__c_pointer, const value_type>::type;
+                                                               ^
+          detected during:
+            instantiation of class "std::allocator_traits<_Alloc> [with _Alloc=<error-type>]" at line 50 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=<error-type>, <unnamed>=<error-type>]" at line 88 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h(56): error: class "std::allocator_traits<<error-type>>" has no member "value_type"
+      typedef typename _Base_type::value_type value_type;
+                                   ^
+          detected during:
+            instantiation of class "__gnu_cxx::__alloc_traits<_Alloc, <unnamed>> [with _Alloc=<error-type>, <unnamed>=<error-type>]" at line 88 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h(129): error: not a class or struct name
+   : public _Tp_alloc_type, public _Vector_impl_data
+            ^
+          detected during:
+            instantiation of class "std::_Vector_base<_Tp, _Alloc>::_Vector_impl [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 340
+            instantiation of class "std::_Vector_base<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 389
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h(47): error: a class or namespace qualified name is required
+  template<typename _Alloc, typename = typename _Alloc::value_type>
+                                                ^
+          detected during:
+            processing of template argument list for "__gnu_cxx::__alloc_traits" based on template argument <<error-type>> at line 411 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+/rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/ext/alloc_traits.h(47): error: expected a ","
+  template<typename _Alloc, typename = typename _Alloc::value_type>
+                                                      ^
+          detected during:
+            processing of template argument list for "__gnu_cxx::__alloc_traits" based on template argument <<error-type>> at line 411 of /rjs/cxz/miniconda3/x86_64-conda-linux-gnu/include/c++/11.2.0/bits/stl_vector.h
+            instantiation of class "std::vector<_Tp, _Alloc> [with _Tp=<error-type>, _Alloc=std::allocator<<error-type>>]" at line 976 of /rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu
+
+17 errors detected in the compilation of "/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu".
+ninja: build stopped: subcommand failed.
+Traceback (most recent call last):
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2597, in _run_ninja_build
+    subprocess.run(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v', '-j', '2']' returned non-zero exit status 1.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/rjs/cxz/论文探索/算子研究/wam_ops/optimized/build_whole_layer.py", line 18, in <module>
+    setup(name='wam_whole_fa2',packages=[],ext_modules=[CUDAExtension(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/__init__.py", line 117, in setup
+    return distutils.core.setup(**attrs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 186, in setup
+    return run_commands(dist)
+           ^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 202, in run_commands
+    dist.run_commands()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1001, in run_commands
+    self.run_command(cmd)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1020, in run_command
+    cmd_obj.run()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 97, in run
+    _build_ext.run(self)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 367, in run
+    self.build_extensions()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1082, in build_extensions
+    build_ext.build_extensions(self)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 483, in build_extensions
+    self._build_extensions_serial()
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 509, in _build_extensions_serial
+    self.build_extension(ext)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 262, in build_extension
+    _build_ext.build_extension(self, ext)
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 564, in build_extension
+    objects = self.compiler.compile(
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 866, in unix_wrap_ninja_compile
+    _write_ninja_file_and_compile_objects(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2223, in _write_ninja_file_and_compile_objects
+    _run_ninja_build(
+  File "/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2614, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error compiling objects for extension

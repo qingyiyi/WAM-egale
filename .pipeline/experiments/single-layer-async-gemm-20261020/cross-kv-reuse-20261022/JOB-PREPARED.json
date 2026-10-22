@@ -1,0 +1,30 @@
+{
+  "goal": "Cross KV per-context reuse; separate unchanged RMS; precision before timing",
+  "execution_authorization": "USER_APPROVED_CROSS_KV_REUSE",
+  "status": "CPU_IMPLEMENTATION",
+  "cpu_threads": 2,
+  "cpu_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 1800,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 7480.439281472442,
+  "cumulative_cap_seconds": 36000,
+  "local_storage_cap_bytes": 536870912,
+  "new_storage_cap_bytes": 134217728,
+  "reference_binary_SHA256": "795be814c40a152583e13a34f6cf6bb5510b1fc38f5b4cd8c26076b4dc4efd75",
+  "registered_cpu": "2026-10-22T15:57:08.866350+08:00",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap"
+  ],
+  "scope": "single block, CPU prepare excluded from Graph; two context groups; no production/robot",
+  "input_manifest": "existing 9 real signatures and B14 structural derivatives; no new sampling",
+  "terminal_status": "PENDING",
+  "cleanup_plan": "PID+birth-checked foreground CPU build and bounded owned GPU worker guard; old windows preserved"
+}

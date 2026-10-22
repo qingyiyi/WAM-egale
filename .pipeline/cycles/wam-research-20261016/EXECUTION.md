@@ -1,17 +1,10 @@
----
-kind: execution
-cycle: wam-research-20261016
-updated: '2026-10-22T15:31:11.420822+08:00'
-plan: PLAN.md
-progress: PROGRESS.md
----
-# 最近执行检查点
+# 最近执行检查点（2026-10-22T16:37:20.064075+08:00）
 
-1. Maintain保存先融合self RMS+RoPE决定，仅本次单因素。
-2. 直接修改optimized；保留原归约/BF16/FP64边界及debug中间审计，normal移除SQN/SKN物化。
-3. CPU编译308.493秒；活动before源码/SASS确认投影及attention QK/PV使用BF16 Tensor Core。
-4. 9签名81次、21结构84次有限逐位/状态通过；两进程各9408完整层调用，短/中/长延迟降0.395%/0.421%/0.439%。
-5. 15:28:28 owned全退出，无GPU失败；整窗153.757秒，累计7480.439秒。早期收尾拒绝记录保留。
-6. 两机源0f79579d/DSO795be814采用；旧已验证版保留，完整层仍慢最强guarded约9%–11%。
+1. 用户明确批准预计算后公平对照与完整逐阶段表，Maintain已保存；M39原累计预算不增。
+2. 直接修改optimized，加入context_kv，warm跳过两投影与K RMS；baseline用外部适配器同等缓存。
+3. 两项CPU构建准备失败已修复并保留；正常版编译后9签名/27结构/三KV缓存baseline逐位与状态通过。
+4. 两独立进程七臂计时完成，warm自有0.957/1.124/1.140ms；强guarded仍快7.94%–11.70%。
+5. 首profile因插桩遗漏入口/出口计数退出；原FAILED保留。补齐同两处计时helper，修复诊断版在同一截止内完成；正常GPU计时未重跑。
+6. 两机研究入口采用；完整阶段、扰动和grid等待分别归档。最终owned清理，累计8349.913/36000秒。
 
-[结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)、[前检查点](history/before-rms-rope-result-20261022/EXECUTION.md)。
+[结果](../../experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/RESULT.md)，原预算/失败/四科学权限保留。

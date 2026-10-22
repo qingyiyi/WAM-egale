@@ -1,0 +1,100 @@
+W1022 15:58:00.146000 4024409 site-packages/torch/utils/cpp_extension.py:117] No CUDA runtime is found, using CUDA_HOME='/usr/local/cuda-12.4'
+/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/setuptools/_distutils/extension.py:150: UserWarning: Unknown Extension options: 'dlink', 'dlink_libraries'
+  warnings.warn(msg)
+running build_ext
+W1022 15:58:00.266000 4024409 site-packages/torch/utils/cpp_extension.py:521] The detected CUDA version (12.4) has a minor version mismatch with the version that was used to compile PyTorch (12.6). Most likely this shouldn't be a problem.
+W1022 15:58:00.267000 4024409 site-packages/torch/utils/cpp_extension.py:531] There are no /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-c++ version bounds defined for CUDA version 12.4
+building 'wam_whole_fa2_cuda' extension
+creating /rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc
+[1/2] /usr/local/cuda-12.4/bin/nvcc --generate-dependencies-with-compile --dependency-output '/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o'.d '-I/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/build/generated' '-I/rjs/cxz/论文探索/.pipeline/cache/cutlass-v3.5.1/include' '-I/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc' '-I/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/vendor/flash_attn' '-I/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include' -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include -I/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/usr/local/cuda-12.4/include -I/rjs/cxz/miniconda3/envs/va/include/python3.12 -c -c '/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.cu' -o '/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DWAM_CONTEXT_TILE_M=128 -DUNFUSE_FMA -DFLASHATTENTION_DISABLE_DROPOUT -DFLASHATTENTION_DISABLE_ALIBI -DFLASHATTENTION_DISABLE_SOFTCAP -DFLASHATTENTION_DISABLE_LOCAL -DFLASHATTENTION_DISABLE_UNEVEN_K -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_fa2_cuda -gencode=arch=compute_80,code=sm_80 -ccbin /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-cc -std=c++17
+nvcc warning : incompatible redefinition for option 'compiler-bindir', the last value of this option was used
+ptxas info    : 30 bytes gmem, 32 bytes cmem[3]
+ptxas info    : Function properties for _ZN18wam_whole_layer_v14normERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16Pviiifbb$77
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v114context_linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiiP13__nv_bfloat16i$76
+    528 bytes stack frame, 524 bytes spill stores, 524 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116action_ffn1_wideERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi$75
+    424 bytes stack frame, 424 bytes spill stores, 424 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v120action_ffn2_parallelERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi$74
+    448 bytes stack frame, 444 bytes spill stores, 444 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v19gemm_tileERNS_6SharedEPK13__nv_bfloat16S4_S4_PS2_iiiib$73
+    536 bytes stack frame, 532 bytes spill stores, 564 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v114attention_dualERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib$72
+    480 bytes stack frame, 476 bytes spill stores, 476 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v114attention_dualERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib
+    440 bytes stack frame, 436 bytes spill stores, 436 bytes spill loads
+ptxas info    : Function properties for _ZN13wam_whole_fa214whole_standardI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb1ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    776 bytes stack frame, 880 bytes spill stores, 920 bytes spill loads
+ptxas info    : Function properties for _ZN13wam_whole_fa221whole_standard_directI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb1ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    760 bytes stack frame, 792 bytes spill stores, 816 bytes spill loads
+ptxas info    : Function properties for _ZN13wam_whole_fa214whole_standardI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    696 bytes stack frame, 780 bytes spill stores, 812 bytes spill loads
+ptxas info    : Function properties for _ZN13wam_whole_fa221whole_standard_directI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    680 bytes stack frame, 716 bytes spill stores, 756 bytes spill loads
+ptxas info    : Function properties for _ZN13wam_whole_fa214whole_standardI23Flash_fwd_kernel_traitsILi128ELi64ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    208 bytes stack frame, 204 bytes spill stores, 204 bytes spill loads
+ptxas info    : Function properties for _ZN13wam_whole_fa211whole_splitI23Flash_fwd_kernel_traitsILi128ELi64ELi128ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi128ELi4ES3_EELb0ELb0ELb0ELb0ELb1ELb0ELb1ELb0ENS_11WholeParamsEEEvRKT8_iiiiiPc
+    488 bytes stack frame, 488 bytes spill stores, 488 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v121independent_attentionERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib
+    584 bytes stack frame, 588 bytes spill stores, 640 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v111prepare_fa2ERKNS_6ParamsERNS_6SharedEb
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v110fa2_splitsEiiii
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v113rms_pair_tileERKNS_6ParamsERNS_6SharedEPK13__nv_bfloat16PS5_S7_fiiS8_
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v19norm_tileERNS_6SharedEPK13__nv_bfloat16PvPKvPKffbbi
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v19gemm_tileERNS_6SharedEPK13__nv_bfloat16S4_S4_PS2_iiiib
+    552 bytes stack frame, 552 bytes spill stores, 584 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v111finish_tileEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v110claim_tileERKNS_6ParamsERNS_6SharedEi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v111begin_stageERKNS_6ParamsERN18cooperative_groups4__v110grid_groupEi
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v120action_ffn2_parallelERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi
+    456 bytes stack frame, 452 bytes spill stores, 452 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116action_ffn1_wideERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi
+    488 bytes stack frame, 484 bytes spill stores, 484 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v114context_linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiiP13__nv_bfloat16i
+    536 bytes stack frame, 536 bytes spill stores, 536 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v112insert_cacheERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi
+    64 bytes stack frame, 64 bytes spill stores, 64 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v19norm_ropeERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEPK13__nv_bfloat16PS9_SC_if
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v117action_projectionERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16iPS9_
+    208 bytes stack frame, 204 bytes spill stores, 204 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v16linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16iPS9_iii
+    944 bytes stack frame, 1204 bytes spill stores, 1564 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v14normERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16Pviiifbb
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v15pointERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiNS_5PointEiiiil
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v16layoutERKNS_6ParamsERNS_6SharedE
+    8 bytes stack frame, 8 bytes spill stores, 8 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi5EEEvRNS_6SharedEi
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi4EEEvRNS_6SharedEi
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi3EEEvRNS_6SharedEi
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi2EEEvRNS_6SharedEi
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN13wam_whole_fa221whole_standard_directI23Flash_fwd_kernel_traitsILi128ELi64ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    272 bytes stack frame, 268 bytes spill stores, 268 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi7EEEvRNS_6SharedEi
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi6EEEvRNS_6SharedEi
+    32 bytes stack frame, 32 bytes spill stores, 32 bytes spill loads
+ptxas info    : Function properties for _ZN13wam_whole_fa211whole_splitI23Flash_fwd_kernel_traitsILi128ELi64ELi128ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi128ELi4ES3_EELb0ELb0ELb0ELb1ELb1ELb0ELb1ELb0ENS_11WholeParamsEEEvRKT8_iiiiiPc
+    480 bytes stack frame, 476 bytes spill stores, 476 bytes spill loads
+ptxas info    : Compiling entry function '_ZN18wam_whole_layer_v111whole_layerENS_6ParamsE' for 'sm_80'
+ptxas info    : Function properties for _ZN18wam_whole_layer_v111whole_layerENS_6ParamsE
+    160 bytes stack frame, 236 bytes spill stores, 1860 bytes spill loads
+ptxas info    : Used 255 registers, 1040 bytes cmem[0], 8 bytes cmem[2]
+[2/2] /usr/local/cuda-12.4/bin/nvcc '/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o' -o '/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/dlink.o' -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -dlink -L/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/lib -L/usr/local/cuda-12.4/lib64 -lcudadevrt -dlto -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_fa2_cuda -gencode=arch=compute_80,code=sm_80 -ccbin /rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-cc
+nvcc warning : incompatible redefinition for option 'compiler-bindir', the last value of this option was used
+nvlink info    : requested LTO but '/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o' not built for LTO so doing partial LTO
+nvlink warning : Ignoring -dlto option because no LTO objects found
+/rjs/cxz/miniconda3/bin/x86_64-conda-linux-gnu-c++ -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /rjs/cxz/miniconda3/include -I/rjs/cxz/miniconda3/targets/x86_64-linux/include -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib/stubs -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /rjs/cxz/miniconda3/include -I/rjs/cxz/miniconda3/targets/x86_64-linux/include -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib/stubs -pthread -B /rjs/cxz/miniconda3/envs/va/compiler_compat -shared -Wl,-rpath,/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath-link,/rjs/cxz/miniconda3/envs/va/lib -L/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath,/rjs/cxz/miniconda3/envs/va/lib -Wl,-rpath-link,/rjs/cxz/miniconda3/envs/va/lib -L/rjs/cxz/miniconda3/envs/va/lib -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,-rpath,/rjs/cxz/miniconda3/lib -Wl,-rpath-link,/rjs/cxz/miniconda3/lib -L/rjs/cxz/miniconda3/lib -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib/stubs -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /rjs/cxz/miniconda3/include -I/rjs/cxz/miniconda3/targets/x86_64-linux/include -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib/stubs -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /rjs/cxz/miniconda3/include -I/rjs/cxz/miniconda3/targets/x86_64-linux/include -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib -L/rjs/cxz/miniconda3/targets/x86_64-linux/lib/stubs /rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/whole_layer.o /rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/build/obj/rjs/cxz/论文探索/算子研究/wam_ops/optimized/csrc/dlink.o -L/rjs/cxz/miniconda3/envs/va/lib/python3.12/site-packages/torch/lib -L/usr/local/cuda-12.4/lib64 -lc10 -ltorch -ltorch_cpu -ltorch_python -lcudart -lc10_cuda -ltorch_cuda -o /rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-reuse-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so

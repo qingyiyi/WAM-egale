@@ -1,0 +1,117 @@
+--- "/rjs/cxz/\350\256\272\346\226\207\346\216\242\347\264\242/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/before/whole_layer.cu"	2026-10-22 15:57:56.043043088 +0800
++++ "/rjs/cxz/\350\256\272\346\226\207\346\216\242\347\264\242/\347\256\227\345\255\220\347\240\224\347\251\266/wam_ops/optimized/csrc/whole_layer.cu"	2026-10-22 16:19:04.638665327 +0800
+@@ -77,7 +77,7 @@
+     bool *mask, *pred;
+     int *queues;
+     int b, q, c, cb, l, fb, pool, update;
+-    bool temb_float, cache, candidate, affine, debug_modulation;
++    bool temb_float, cache, candidate, affine, debug_modulation, context_cached;
+     float eps[7];
+     float *fa_lse, *fa_lse_partial, *fa_out_partial;
+     int64_t *fa_meta;
+@@ -791,10 +791,15 @@
+     if (p.affine)
+         norm(p, s, g, st++, bp(p, R1), p.a[N2], m, 1, 2, p.eps[1], false, false);
+     linear(p, s, g, st++, bp(p, N2), 13, bp(p, CQ0), m, D, D);
+-    context_linear(p, s, g, st++, 15, bp(p, CK0), mc);
+-    context_linear(p, s, g, st++, 17, bp(p, CV), mc);
++    if (!p.context_cached) {
++        context_linear(p, s, g, st, 15, bp(p, CK0), mc);
++        context_linear(p, s, g, st + 1, 17, bp(p, CV), mc);
++    }
++    st += 2;
+     norm(p, s, g, st++, bp(p, CQ0), p.a[CQ], m, 21, -1, p.eps[5], true, false);
+-    norm(p, s, g, st++, bp(p, CK0), p.a[CK], mc, 22, -1, p.eps[6], true, false);
++    if (!p.context_cached)
++        norm(p, s, g, st, bp(p, CK0), p.a[CK], mc, 22, -1, p.eps[6], true, false);
++    ++st;
+     attention(p, s, g, st++, true);
+     linear(p, s, g, st++, bp(p, CA), 19, bp(p, CO), m, D, D);
+     point(p, s, g, st++, RESIDUAL, R2, R1, CO, -1, int64_t(m) * D);
+@@ -824,7 +829,8 @@
+ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, const Tensor &temb,
+         const std::optional<Tensor> &freq, const std::vector<Tensor> &cache,
+         const std::optional<Tensor> &rows, int update, const std::vector<double> &eps, bool debug,
+-        const std::optional<Tensor> &context_rows, const std::optional<Tensor> &context_roots) {
++        const std::optional<Tensor> &context_rows, const std::optional<Tensor> &context_roots,
++        const std::vector<Tensor> &context_kv) {
+     c10::cuda::CUDAGuard guard(x.device());
+     Params p{};
+     p.b = x.size(0);
+@@ -842,6 +848,7 @@
+     p.temb = temb.data_ptr();
+     p.temb_float = temb.scalar_type() == at::kFloat;
+     p.debug_modulation = debug;
++    p.context_cached = !context_kv.empty();
+     for (int i = 0; i < 27; ++i)
+         p.w[i] = w[i].data_ptr();
+     for (int i = 0; i < 7; ++i)
+@@ -870,7 +877,10 @@
+     std::vector<Tensor> b(NB);
+     for (int i = 0; i < NB; ++i) {
+         const int rows = (i == CK0 || i == CK || i == CV) ? p.cb * p.c : p.b * p.q;
+-        if (i == MOD)
++        // 预计算缓存按K0/K/V排列；K0仅保留供debug审计，warm kernel读取K/V。
++        if (p.context_cached && (i == CK0 || i == CK || i == CV))
++            b[i] = context_kv[i == CK0 ? 0 : (i == CK ? 1 : 2)].view({rows, D});
++        else if (i == MOD)
+             b[i] = debug ? at::empty({rows, 6, D}, fo) : at::empty({0}, fo);
+         else if ((i == SQN || i == SKN) && p.candidate && p.freq && !debug)
+             b[i] = at::empty({0}, bo);
+@@ -962,7 +972,8 @@
+     m.def("forward", &wam_whole_layer_v1::forward, py::arg("weights"), py::arg("hidden"),
+           py::arg("context"), py::arg("temb"), py::arg("rotary"), py::arg("cache"), py::arg("rows"),
+           py::arg("update"), py::arg("eps"), py::arg("debug") = true,
+-          py::arg("context_rows") = std::nullopt, py::arg("context_roots") = std::nullopt);
++          py::arg("context_rows") = std::nullopt, py::arg("context_roots") = std::nullopt,
++          py::arg("context_kv") = std::vector<at::Tensor>{});
+     m.attr("production_admitted") = false;
+     m.attr("computation_launches") = 1;
+     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;
+--- "/rjs/cxz/\350\256\272\346\226\207\346\216\242\347\264\242/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/before/whole_layer.py"	2026-10-22 16:01:11.374201599 +0800
++++ "/rjs/cxz/\350\256\272\346\226\207\346\216\242\347\264\242/\347\256\227\345\255\220\347\240\224\347\251\266/wam_ops/optimized/whole_layer.py"	2026-10-22 16:16:46.122127409 +0800
+@@ -21,6 +21,7 @@
+     def __init__(self, block):
+         self.block = block
+         self.context_rows = self.context_roots = None
++        self.context_kv = []
+         # 与CUDA的w[]顺序一致：调制表、Norm2、self/cross投影与RMS、FFN。
+         empty = block.scale_shift_table.new_empty(0)
+         weights = [block.scale_shift_table, getattr(block.norm2, 'weight', empty),
+@@ -37,13 +38,14 @@
+                     block.norm3.eps, block.attn1.norm_q.eps, block.attn1.norm_k.eps,
+                     block.attn2.norm_q.eps, block.attn2.norm_k.eps]
+ 
+-    def prepare_context(self, context):
++    def prepare_context(self, context, precompute=False):
+         """在计时/Graph外准入固定context；内容变化后必须重新调用。
+ 
+         分组只比较context的字节，不借用self-attention的历史行映射。
+         这是实验静态接口，不是自动检测在线prompt变化的缓存协议。
+         """
+         self.context_rows = self.context_roots = None
++        self.context_kv = []
+         if context.shape[0] != 14:
+             return
+         bits = context.detach().contiguous().view(torch.uint8)
+@@ -58,6 +60,11 @@
+         if len(roots) < 14:
+             self.context_rows = torch.tensor(rows, dtype=torch.int64, device=context.device)
+             self.context_roots = torch.tensor(roots, dtype=torch.int64, device=context.device)
++        if precompute:
++            compact = context if self.context_roots is None else context.index_select(0, self.context_roots)
++            attention = self.block.attn2
++            k0 = attention.to_k(compact)
++            self.context_kv = [k0, attention.norm_k(k0), attention.to_v(compact)]
+ 
+     def __call__(self, hidden_states, encoder_hidden_states, temb, rotary_emb,
+                  update_cache=0, cache_name="pos", candidate_cache_rows=None,
+@@ -67,6 +74,8 @@
+             cache[key] for key in ("k", "v", "id", "mask", "is_pred")
+         ]
+         extra = () if self.context_roots is None else (self.context_rows, self.context_roots)
++        if self.context_kv:
++            extra = (self.context_rows, self.context_roots, self.context_kv)
+         result = extension().forward(
+             self.weights, hidden_states, encoder_hidden_states, temb, rotary_emb,
+             values, candidate_cache_rows, update_cache, self.eps, debug,

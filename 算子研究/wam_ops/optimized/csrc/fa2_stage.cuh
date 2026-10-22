@@ -205,7 +205,7 @@ __device__ __noinline__ void attention_dual(const Params &p, Shared &s, cg::grid
             f.v_ptr = bp(p, CV);
             f.o_ptr = bp(p, CA);
             f.q_batch_stride = f.o_batch_stride = 16 * D;
-            f.k_batch_stride = f.v_batch_stride = int64_t(p.c) * D;
+            f.k_batch_stride = f.v_batch_stride = p.context_roots ? 0 : int64_t(p.c) * D;
             f.seqlen_q = 16;
             f.seqlen_k = p.c;
             f.seqlen_k_rounded = (p.c + 127) / 128 * 128;
@@ -239,6 +239,15 @@ __device__ __noinline__ void attention_dual(const Params &p, Shared &s, cg::grid
     __syncthreads(); // 只发布本CTA的两个FA2描述符；跨CTA输入已由前一阶段出口完成。
     for (int task = 2 * int(blockIdx.x) + team; task < tasks; task += 2 * int(gridDim.x)) {
         if (cross) {
+            if (p.context_roots) {
+                // Q和输出仍各有14行；仅K/V通过独立条件映射读紧凑结果。
+                if (tid == 0) {
+                    const int64_t offset = p.context_rows[task % p.b] * p.c * D;
+                    f.k_ptr = bp(p, CK) + offset;
+                    f.v_ptr = bp(p, CV) + offset;
+                }
+                wam_whole_fa2::dual_group_sync();
+            }
             wam_whole_fa2::whole_direct_dual<FaCandidate, false, false, false, false, false, true,
                                              false, false>(f, task % p.b, task / p.b, 0,
                                                            s.tile.fa2_dual[team]);

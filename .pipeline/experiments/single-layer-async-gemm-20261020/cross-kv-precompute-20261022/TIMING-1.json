@@ -1,0 +1,3324 @@
+{
+  "arm_semantics": {
+    "guarded_grouped_uncached": "two groups reproject every call including gather",
+    "guarded_cached_projection": "previous original-shape projection-only cache; K RMS still computed",
+    "guarded_cached_final": "full precomputed K after RMS and V",
+    "custom_cached": "new DSO cached final K/V",
+    "custom_uncached": "new DSO grouped uncached",
+    "previous_uncached": "previous DSO grouped uncached"
+  },
+  "status": "COMPLETE_FINITE_WHOLE_COMPARISON",
+  "process": 1,
+  "full_calls": 13170,
+  "rows": [
+    {
+      "case": "short",
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-short-B14-action-layer0-first.pt",
+      "load": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 3860271\n",
+      "samples": [
+        {
+          "repeat": 0,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2298239469528198
+        },
+        {
+          "repeat": 0,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9615359902381897
+        },
+        {
+          "repeat": 0,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 0,
+          "arm": "previous_uncached",
+          "ms": 1.210368037223816
+        },
+        {
+          "repeat": 0,
+          "arm": "custom_uncached",
+          "ms": 1.206272006034851
+        },
+        {
+          "repeat": 0,
+          "arm": "custom_cached",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 0,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1315200328826904
+        },
+        {
+          "repeat": 1,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.227776050567627
+        },
+        {
+          "repeat": 1,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1335680484771729
+        },
+        {
+          "repeat": 1,
+          "arm": "custom_cached",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 1,
+          "arm": "custom_uncached",
+          "ms": 1.2052479982376099
+        },
+        {
+          "repeat": 1,
+          "arm": "previous_uncached",
+          "ms": 1.2052479982376099
+        },
+        {
+          "repeat": 1,
+          "arm": "guarded_cached_final",
+          "ms": 0.9728000164031982
+        },
+        {
+          "repeat": 1,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9584640264511108
+        },
+        {
+          "repeat": 2,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 2,
+          "arm": "previous_uncached",
+          "ms": 1.2072960138320923
+        },
+        {
+          "repeat": 2,
+          "arm": "custom_uncached",
+          "ms": 1.2083200216293335
+        },
+        {
+          "repeat": 2,
+          "arm": "custom_cached",
+          "ms": 0.9584640264511108
+        },
+        {
+          "repeat": 2,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1325440406799316
+        },
+        {
+          "repeat": 2,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.227776050567627
+        },
+        {
+          "repeat": 2,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 3,
+          "arm": "guarded_cached_final",
+          "ms": 0.8857600092887878
+        },
+        {
+          "repeat": 3,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9594879746437073
+        },
+        {
+          "repeat": 3,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2257280349731445
+        },
+        {
+          "repeat": 3,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1284480094909668
+        },
+        {
+          "repeat": 3,
+          "arm": "custom_cached",
+          "ms": 0.9574400186538696
+        },
+        {
+          "repeat": 3,
+          "arm": "custom_uncached",
+          "ms": 1.2042239904403687
+        },
+        {
+          "repeat": 3,
+          "arm": "previous_uncached",
+          "ms": 1.2031999826431274
+        },
+        {
+          "repeat": 4,
+          "arm": "custom_uncached",
+          "ms": 1.2093440294265747
+        },
+        {
+          "repeat": 4,
+          "arm": "custom_cached",
+          "ms": 0.954367995262146
+        },
+        {
+          "repeat": 4,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1315200328826904
+        },
+        {
+          "repeat": 4,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2288000583648682
+        },
+        {
+          "repeat": 4,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9594879746437073
+        },
+        {
+          "repeat": 4,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 4,
+          "arm": "previous_uncached",
+          "ms": 1.2093440294265747
+        },
+        {
+          "repeat": 5,
+          "arm": "custom_uncached",
+          "ms": 1.210368037223816
+        },
+        {
+          "repeat": 5,
+          "arm": "previous_uncached",
+          "ms": 1.2083200216293335
+        },
+        {
+          "repeat": 5,
+          "arm": "guarded_cached_final",
+          "ms": 0.8847360014915466
+        },
+        {
+          "repeat": 5,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9574400186538696
+        },
+        {
+          "repeat": 5,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2247040271759033
+        },
+        {
+          "repeat": 5,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1304960250854492
+        },
+        {
+          "repeat": 5,
+          "arm": "custom_cached",
+          "ms": 0.9574400186538696
+        },
+        {
+          "repeat": 6,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1315200328826904
+        },
+        {
+          "repeat": 6,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2267520427703857
+        },
+        {
+          "repeat": 6,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9574400186538696
+        },
+        {
+          "repeat": 6,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 6,
+          "arm": "previous_uncached",
+          "ms": 1.210368037223816
+        },
+        {
+          "repeat": 6,
+          "arm": "custom_uncached",
+          "ms": 1.2113920450210571
+        },
+        {
+          "repeat": 6,
+          "arm": "custom_cached",
+          "ms": 0.9615359902381897
+        },
+        {
+          "repeat": 7,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1325440406799316
+        },
+        {
+          "repeat": 7,
+          "arm": "custom_cached",
+          "ms": 0.9615359902381897
+        },
+        {
+          "repeat": 7,
+          "arm": "custom_uncached",
+          "ms": 1.2072960138320923
+        },
+        {
+          "repeat": 7,
+          "arm": "previous_uncached",
+          "ms": 1.206272006034851
+        },
+        {
+          "repeat": 7,
+          "arm": "guarded_cached_final",
+          "ms": 0.8857600092887878
+        },
+        {
+          "repeat": 7,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9594879746437073
+        },
+        {
+          "repeat": 7,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2257280349731445
+        },
+        {
+          "repeat": 8,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 8,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 8,
+          "arm": "previous_uncached",
+          "ms": 1.2093440294265747
+        },
+        {
+          "repeat": 8,
+          "arm": "custom_uncached",
+          "ms": 1.2083200216293335
+        },
+        {
+          "repeat": 8,
+          "arm": "custom_cached",
+          "ms": 0.954367995262146
+        },
+        {
+          "repeat": 8,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1304960250854492
+        },
+        {
+          "repeat": 8,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2298239469528198
+        },
+        {
+          "repeat": 9,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9574400186538696
+        },
+        {
+          "repeat": 9,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.227776050567627
+        },
+        {
+          "repeat": 9,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1304960250854492
+        },
+        {
+          "repeat": 9,
+          "arm": "custom_cached",
+          "ms": 0.9584640264511108
+        },
+        {
+          "repeat": 9,
+          "arm": "custom_uncached",
+          "ms": 1.201151967048645
+        },
+        {
+          "repeat": 9,
+          "arm": "previous_uncached",
+          "ms": 1.2031999826431274
+        },
+        {
+          "repeat": 9,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 10,
+          "arm": "previous_uncached",
+          "ms": 1.2001279592514038
+        },
+        {
+          "repeat": 10,
+          "arm": "custom_uncached",
+          "ms": 1.2001279592514038
+        },
+        {
+          "repeat": 10,
+          "arm": "custom_cached",
+          "ms": 0.954367995262146
+        },
+        {
+          "repeat": 10,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1315200328826904
+        },
+        {
+          "repeat": 10,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2257280349731445
+        },
+        {
+          "repeat": 10,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 10,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 11,
+          "arm": "previous_uncached",
+          "ms": 1.2042239904403687
+        },
+        {
+          "repeat": 11,
+          "arm": "guarded_cached_final",
+          "ms": 0.8878080248832703
+        },
+        {
+          "repeat": 11,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9584640264511108
+        },
+        {
+          "repeat": 11,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2267520427703857
+        },
+        {
+          "repeat": 11,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1325440406799316
+        },
+        {
+          "repeat": 11,
+          "arm": "custom_cached",
+          "ms": 0.9625599980354309
+        },
+        {
+          "repeat": 11,
+          "arm": "custom_uncached",
+          "ms": 1.2031999826431274
+        },
+        {
+          "repeat": 12,
+          "arm": "custom_cached",
+          "ms": 0.9564160108566284
+        },
+        {
+          "repeat": 12,
+          "arm": "torch_static_cached_final",
+          "ms": 1.129472017288208
+        },
+        {
+          "repeat": 12,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.227776050567627
+        },
+        {
+          "repeat": 12,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 12,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 12,
+          "arm": "previous_uncached",
+          "ms": 1.2052479982376099
+        },
+        {
+          "repeat": 12,
+          "arm": "custom_uncached",
+          "ms": 1.2021759748458862
+        },
+        {
+          "repeat": 13,
+          "arm": "custom_cached",
+          "ms": 0.9584640264511108
+        },
+        {
+          "repeat": 13,
+          "arm": "custom_uncached",
+          "ms": 1.2083200216293335
+        },
+        {
+          "repeat": 13,
+          "arm": "previous_uncached",
+          "ms": 1.2052479982376099
+        },
+        {
+          "repeat": 13,
+          "arm": "guarded_cached_final",
+          "ms": 0.8857600092887878
+        },
+        {
+          "repeat": 13,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9615359902381897
+        },
+        {
+          "repeat": 13,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2288000583648682
+        },
+        {
+          "repeat": 13,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1325440406799316
+        },
+        {
+          "repeat": 14,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.227776050567627
+        },
+        {
+          "repeat": 14,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9594879746437073
+        },
+        {
+          "repeat": 14,
+          "arm": "guarded_cached_final",
+          "ms": 0.8857600092887878
+        },
+        {
+          "repeat": 14,
+          "arm": "previous_uncached",
+          "ms": 1.210368037223816
+        },
+        {
+          "repeat": 14,
+          "arm": "custom_uncached",
+          "ms": 1.2042239904403687
+        },
+        {
+          "repeat": 14,
+          "arm": "custom_cached",
+          "ms": 0.9574400186538696
+        },
+        {
+          "repeat": 14,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1325440406799316
+        },
+        {
+          "repeat": 15,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2267520427703857
+        },
+        {
+          "repeat": 15,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1304960250854492
+        },
+        {
+          "repeat": 15,
+          "arm": "custom_cached",
+          "ms": 0.9584640264511108
+        },
+        {
+          "repeat": 15,
+          "arm": "custom_uncached",
+          "ms": 1.2113920450210571
+        },
+        {
+          "repeat": 15,
+          "arm": "previous_uncached",
+          "ms": 1.2052479982376099
+        },
+        {
+          "repeat": 15,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 15,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9594879746437073
+        },
+        {
+          "repeat": 16,
+          "arm": "guarded_cached_final",
+          "ms": 0.8878080248832703
+        },
+        {
+          "repeat": 16,
+          "arm": "previous_uncached",
+          "ms": 1.2093440294265747
+        },
+        {
+          "repeat": 16,
+          "arm": "custom_uncached",
+          "ms": 1.2052479982376099
+        },
+        {
+          "repeat": 16,
+          "arm": "custom_cached",
+          "ms": 0.954367995262146
+        },
+        {
+          "repeat": 16,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1274240016937256
+        },
+        {
+          "repeat": 16,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2267520427703857
+        },
+        {
+          "repeat": 16,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9584640264511108
+        },
+        {
+          "repeat": 17,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 17,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9615359902381897
+        },
+        {
+          "repeat": 17,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2288000583648682
+        },
+        {
+          "repeat": 17,
+          "arm": "torch_static_cached_final",
+          "ms": 1.134592056274414
+        },
+        {
+          "repeat": 17,
+          "arm": "custom_cached",
+          "ms": 0.9594879746437073
+        },
+        {
+          "repeat": 17,
+          "arm": "custom_uncached",
+          "ms": 1.201151967048645
+        },
+        {
+          "repeat": 17,
+          "arm": "previous_uncached",
+          "ms": 1.1970560550689697
+        },
+        {
+          "repeat": 18,
+          "arm": "custom_uncached",
+          "ms": 1.2042239904403687
+        },
+        {
+          "repeat": 18,
+          "arm": "custom_cached",
+          "ms": 0.9564160108566284
+        },
+        {
+          "repeat": 18,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1315200328826904
+        },
+        {
+          "repeat": 18,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.227776050567627
+        },
+        {
+          "repeat": 18,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9594879746437073
+        },
+        {
+          "repeat": 18,
+          "arm": "guarded_cached_final",
+          "ms": 0.8847360014915466
+        },
+        {
+          "repeat": 18,
+          "arm": "previous_uncached",
+          "ms": 1.2083200216293335
+        },
+        {
+          "repeat": 19,
+          "arm": "custom_uncached",
+          "ms": 1.2083200216293335
+        },
+        {
+          "repeat": 19,
+          "arm": "previous_uncached",
+          "ms": 1.2083200216293335
+        },
+        {
+          "repeat": 19,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 19,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 19,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.227776050567627
+        },
+        {
+          "repeat": 19,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1325440406799316
+        },
+        {
+          "repeat": 19,
+          "arm": "custom_cached",
+          "ms": 0.9574400186538696
+        },
+        {
+          "repeat": 20,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1315200328826904
+        },
+        {
+          "repeat": 20,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2288000583648682
+        },
+        {
+          "repeat": 20,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 20,
+          "arm": "guarded_cached_final",
+          "ms": 0.8878080248832703
+        },
+        {
+          "repeat": 20,
+          "arm": "previous_uncached",
+          "ms": 1.2031999826431274
+        },
+        {
+          "repeat": 20,
+          "arm": "custom_uncached",
+          "ms": 1.2052479982376099
+        },
+        {
+          "repeat": 20,
+          "arm": "custom_cached",
+          "ms": 0.9512959718704224
+        },
+        {
+          "repeat": 21,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1325440406799316
+        },
+        {
+          "repeat": 21,
+          "arm": "custom_cached",
+          "ms": 0.9574400186538696
+        },
+        {
+          "repeat": 21,
+          "arm": "custom_uncached",
+          "ms": 1.2052479982376099
+        },
+        {
+          "repeat": 21,
+          "arm": "previous_uncached",
+          "ms": 1.2042239904403687
+        },
+        {
+          "repeat": 21,
+          "arm": "guarded_cached_final",
+          "ms": 0.886784017086029
+        },
+        {
+          "repeat": 21,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9615359902381897
+        },
+        {
+          "repeat": 21,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.227776050567627
+        },
+        {
+          "repeat": 22,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 22,
+          "arm": "guarded_cached_final",
+          "ms": 0.8847360014915466
+        },
+        {
+          "repeat": 22,
+          "arm": "previous_uncached",
+          "ms": 1.2031999826431274
+        },
+        {
+          "repeat": 22,
+          "arm": "custom_uncached",
+          "ms": 1.2031999826431274
+        },
+        {
+          "repeat": 22,
+          "arm": "custom_cached",
+          "ms": 0.9533439874649048
+        },
+        {
+          "repeat": 22,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1325440406799316
+        },
+        {
+          "repeat": 22,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.227776050567627
+        },
+        {
+          "repeat": 23,
+          "arm": "guarded_cached_projection",
+          "ms": 0.9594879746437073
+        },
+        {
+          "repeat": 23,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.2267520427703857
+        },
+        {
+          "repeat": 23,
+          "arm": "torch_static_cached_final",
+          "ms": 1.1325440406799316
+        },
+        {
+          "repeat": 23,
+          "arm": "custom_cached",
+          "ms": 0.9605119824409485
+        },
+        {
+          "repeat": 23,
+          "arm": "custom_uncached",
+          "ms": 1.206272006034851
+        },
+        {
+          "repeat": 23,
+          "arm": "previous_uncached",
+          "ms": 1.2093440294265747
+        },
+        {
+          "repeat": 23,
+          "arm": "guarded_cached_final",
+          "ms": 0.8847360014915466
+        }
+      ],
+      "precision": {
+        "torch_static_cached_final": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "guarded_grouped_uncached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "guarded_cached_projection": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "guarded_cached_final": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "previous_uncached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "custom_uncached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "custom_cached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        }
+      },
+      "resources": {
+        "torch_static_cached_final": "OMITTED_ON_NORMAL_PATH",
+        "guarded_grouped_uncached": "OMITTED_ON_NORMAL_PATH",
+        "guarded_cached_projection": "OMITTED_ON_NORMAL_PATH",
+        "guarded_cached_final": "OMITTED_ON_NORMAL_PATH",
+        "previous_uncached": "OMITTED_ON_NORMAL_PATH",
+        "custom_uncached": "OMITTED_ON_NORMAL_PATH",
+        "custom_cached": "OMITTED_ON_NORMAL_PATH"
+      },
+      "clock_before": {
+        "SM": 1410,
+        "memory": 1215
+      },
+      "cold_prepare_wall_ms": 42.80426353216171,
+      "cold_baseline_expand_wall_ms": 0.7299063727259636,
+      "cache_bytes": {
+        "custom": 18874368,
+        "baseline": 132120576
+      },
+      "precomputed_cache_unchanged": true,
+      "grouped_baseline_admitted": true,
+      "context_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "context_roots": [
+        0,
+        7
+      ],
+      "clock_after": {
+        "SM": 1410,
+        "memory": 1215
+      },
+      "cache_unchanged": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "inputs_unchanged": true,
+      "RNG_unchanged": true,
+      "median_ms": {
+        "torch_static_cached_final": 1.1315200328826904,
+        "guarded_grouped_uncached": 1.227776050567627,
+        "guarded_cached_projection": 0.9594879746437073,
+        "guarded_cached_final": 0.886784017086029,
+        "previous_uncached": 1.2057600021362305,
+        "custom_uncached": 1.2052479982376099,
+        "custom_cached": 0.9574400186538696
+      }
+    },
+    {
+      "case": "middle",
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-middle-B14-action-layer0-first.pt",
+      "load": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 3860271\n",
+      "samples": [
+        {
+          "repeat": 0,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3496320247650146
+        },
+        {
+          "repeat": 0,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0782719850540161
+        },
+        {
+          "repeat": 0,
+          "arm": "guarded_cached_final",
+          "ms": 1.0086400508880615
+        },
+        {
+          "repeat": 0,
+          "arm": "previous_uncached",
+          "ms": 1.3701119422912598
+        },
+        {
+          "repeat": 0,
+          "arm": "custom_uncached",
+          "ms": 1.3731839656829834
+        },
+        {
+          "repeat": 0,
+          "arm": "custom_cached",
+          "ms": 1.1223039627075195
+        },
+        {
+          "repeat": 0,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9240959882736206
+        },
+        {
+          "repeat": 1,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3455359935760498
+        },
+        {
+          "repeat": 1,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9251199960708618
+        },
+        {
+          "repeat": 1,
+          "arm": "custom_cached",
+          "ms": 1.1274240016937256
+        },
+        {
+          "repeat": 1,
+          "arm": "custom_uncached",
+          "ms": 1.3731839656829834
+        },
+        {
+          "repeat": 1,
+          "arm": "previous_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 1,
+          "arm": "guarded_cached_final",
+          "ms": 1.0045440196990967
+        },
+        {
+          "repeat": 1,
+          "arm": "guarded_cached_projection",
+          "ms": 1.07315194606781
+        },
+        {
+          "repeat": 2,
+          "arm": "guarded_cached_final",
+          "ms": 1.005568027496338
+        },
+        {
+          "repeat": 2,
+          "arm": "previous_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 2,
+          "arm": "custom_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 2,
+          "arm": "custom_cached",
+          "ms": 1.120255947113037
+        },
+        {
+          "repeat": 2,
+          "arm": "torch_static_cached_final",
+          "ms": 1.926144003868103
+        },
+        {
+          "repeat": 2,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3455359935760498
+        },
+        {
+          "repeat": 2,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0741759538650513
+        },
+        {
+          "repeat": 3,
+          "arm": "guarded_cached_final",
+          "ms": 1.006592035293579
+        },
+        {
+          "repeat": 3,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0741759538650513
+        },
+        {
+          "repeat": 3,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3455359935760498
+        },
+        {
+          "repeat": 3,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9220479726791382
+        },
+        {
+          "repeat": 3,
+          "arm": "custom_cached",
+          "ms": 1.120255947113037
+        },
+        {
+          "repeat": 3,
+          "arm": "custom_uncached",
+          "ms": 1.3742079734802246
+        },
+        {
+          "repeat": 3,
+          "arm": "previous_uncached",
+          "ms": 1.3701119422912598
+        },
+        {
+          "repeat": 4,
+          "arm": "custom_uncached",
+          "ms": 1.3731839656829834
+        },
+        {
+          "repeat": 4,
+          "arm": "custom_cached",
+          "ms": 1.1212799549102783
+        },
+        {
+          "repeat": 4,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9220479726791382
+        },
+        {
+          "repeat": 4,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3475840091705322
+        },
+        {
+          "repeat": 4,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0854400396347046
+        },
+        {
+          "repeat": 4,
+          "arm": "guarded_cached_final",
+          "ms": 1.0035200119018555
+        },
+        {
+          "repeat": 4,
+          "arm": "previous_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 5,
+          "arm": "custom_uncached",
+          "ms": 1.3783040046691895
+        },
+        {
+          "repeat": 5,
+          "arm": "previous_uncached",
+          "ms": 1.369088053703308
+        },
+        {
+          "repeat": 5,
+          "arm": "guarded_cached_final",
+          "ms": 1.0045440196990967
+        },
+        {
+          "repeat": 5,
+          "arm": "guarded_cached_projection",
+          "ms": 1.077247977256775
+        },
+        {
+          "repeat": 5,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3486080169677734
+        },
+        {
+          "repeat": 5,
+          "arm": "torch_static_cached_final",
+          "ms": 1.921023964881897
+        },
+        {
+          "repeat": 5,
+          "arm": "custom_cached",
+          "ms": 1.1212799549102783
+        },
+        {
+          "repeat": 6,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9220479726791382
+        },
+        {
+          "repeat": 6,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3486080169677734
+        },
+        {
+          "repeat": 6,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0741759538650513
+        },
+        {
+          "repeat": 6,
+          "arm": "guarded_cached_final",
+          "ms": 1.0076160430908203
+        },
+        {
+          "repeat": 6,
+          "arm": "previous_uncached",
+          "ms": 1.369088053703308
+        },
+        {
+          "repeat": 6,
+          "arm": "custom_uncached",
+          "ms": 1.3731839656829834
+        },
+        {
+          "repeat": 6,
+          "arm": "custom_cached",
+          "ms": 1.1192320585250854
+        },
+        {
+          "repeat": 7,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9240959882736206
+        },
+        {
+          "repeat": 7,
+          "arm": "custom_cached",
+          "ms": 1.1182080507278442
+        },
+        {
+          "repeat": 7,
+          "arm": "custom_uncached",
+          "ms": 1.3731839656829834
+        },
+        {
+          "repeat": 7,
+          "arm": "previous_uncached",
+          "ms": 1.3701119422912598
+        },
+        {
+          "repeat": 7,
+          "arm": "guarded_cached_final",
+          "ms": 1.006592035293579
+        },
+        {
+          "repeat": 7,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0751999616622925
+        },
+        {
+          "repeat": 7,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3496320247650146
+        },
+        {
+          "repeat": 8,
+          "arm": "guarded_cached_projection",
+          "ms": 1.077247977256775
+        },
+        {
+          "repeat": 8,
+          "arm": "guarded_cached_final",
+          "ms": 1.0076160430908203
+        },
+        {
+          "repeat": 8,
+          "arm": "previous_uncached",
+          "ms": 1.3742079734802246
+        },
+        {
+          "repeat": 8,
+          "arm": "custom_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 8,
+          "arm": "custom_cached",
+          "ms": 1.1212799549102783
+        },
+        {
+          "repeat": 8,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9271680116653442
+        },
+        {
+          "repeat": 8,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.346560001373291
+        },
+        {
+          "repeat": 9,
+          "arm": "guarded_cached_projection",
+          "ms": 1.077247977256775
+        },
+        {
+          "repeat": 9,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3496320247650146
+        },
+        {
+          "repeat": 9,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9292160272598267
+        },
+        {
+          "repeat": 9,
+          "arm": "custom_cached",
+          "ms": 1.1315200328826904
+        },
+        {
+          "repeat": 9,
+          "arm": "custom_uncached",
+          "ms": 1.3742079734802246
+        },
+        {
+          "repeat": 9,
+          "arm": "previous_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 9,
+          "arm": "guarded_cached_final",
+          "ms": 1.006592035293579
+        },
+        {
+          "repeat": 10,
+          "arm": "previous_uncached",
+          "ms": 1.376255989074707
+        },
+        {
+          "repeat": 10,
+          "arm": "custom_uncached",
+          "ms": 1.3701119422912598
+        },
+        {
+          "repeat": 10,
+          "arm": "custom_cached",
+          "ms": 1.1233279705047607
+        },
+        {
+          "repeat": 10,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9220479726791382
+        },
+        {
+          "repeat": 10,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3486080169677734
+        },
+        {
+          "repeat": 10,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0751999616622925
+        },
+        {
+          "repeat": 10,
+          "arm": "guarded_cached_final",
+          "ms": 1.0045440196990967
+        },
+        {
+          "repeat": 11,
+          "arm": "previous_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 11,
+          "arm": "guarded_cached_final",
+          "ms": 1.0076160430908203
+        },
+        {
+          "repeat": 11,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0782719850540161
+        },
+        {
+          "repeat": 11,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.346560001373291
+        },
+        {
+          "repeat": 11,
+          "arm": "torch_static_cached_final",
+          "ms": 1.921023964881897
+        },
+        {
+          "repeat": 11,
+          "arm": "custom_cached",
+          "ms": 1.1233279705047607
+        },
+        {
+          "repeat": 11,
+          "arm": "custom_uncached",
+          "ms": 1.3772799968719482
+        },
+        {
+          "repeat": 12,
+          "arm": "custom_cached",
+          "ms": 1.1192320585250854
+        },
+        {
+          "repeat": 12,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9230719804763794
+        },
+        {
+          "repeat": 12,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3475840091705322
+        },
+        {
+          "repeat": 12,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0762239694595337
+        },
+        {
+          "repeat": 12,
+          "arm": "guarded_cached_final",
+          "ms": 1.006592035293579
+        },
+        {
+          "repeat": 12,
+          "arm": "previous_uncached",
+          "ms": 1.3752319812774658
+        },
+        {
+          "repeat": 12,
+          "arm": "custom_uncached",
+          "ms": 1.3742079734802246
+        },
+        {
+          "repeat": 13,
+          "arm": "custom_cached",
+          "ms": 1.1182080507278442
+        },
+        {
+          "repeat": 13,
+          "arm": "custom_uncached",
+          "ms": 1.3752319812774658
+        },
+        {
+          "repeat": 13,
+          "arm": "previous_uncached",
+          "ms": 1.369088053703308
+        },
+        {
+          "repeat": 13,
+          "arm": "guarded_cached_final",
+          "ms": 1.005568027496338
+        },
+        {
+          "repeat": 13,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0762239694595337
+        },
+        {
+          "repeat": 13,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3475840091705322
+        },
+        {
+          "repeat": 13,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9271680116653442
+        },
+        {
+          "repeat": 14,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3486080169677734
+        },
+        {
+          "repeat": 14,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0751999616622925
+        },
+        {
+          "repeat": 14,
+          "arm": "guarded_cached_final",
+          "ms": 1.006592035293579
+        },
+        {
+          "repeat": 14,
+          "arm": "previous_uncached",
+          "ms": 1.371135950088501
+        },
+        {
+          "repeat": 14,
+          "arm": "custom_uncached",
+          "ms": 1.371135950088501
+        },
+        {
+          "repeat": 14,
+          "arm": "custom_cached",
+          "ms": 1.1253759860992432
+        },
+        {
+          "repeat": 14,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9230719804763794
+        },
+        {
+          "repeat": 15,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.346560001373291
+        },
+        {
+          "repeat": 15,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9251199960708618
+        },
+        {
+          "repeat": 15,
+          "arm": "custom_cached",
+          "ms": 1.1284480094909668
+        },
+        {
+          "repeat": 15,
+          "arm": "custom_uncached",
+          "ms": 1.3772799968719482
+        },
+        {
+          "repeat": 15,
+          "arm": "previous_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 15,
+          "arm": "guarded_cached_final",
+          "ms": 1.0045440196990967
+        },
+        {
+          "repeat": 15,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0751999616622925
+        },
+        {
+          "repeat": 16,
+          "arm": "guarded_cached_final",
+          "ms": 1.005568027496338
+        },
+        {
+          "repeat": 16,
+          "arm": "previous_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 16,
+          "arm": "custom_uncached",
+          "ms": 1.3752319812774658
+        },
+        {
+          "repeat": 16,
+          "arm": "custom_cached",
+          "ms": 1.1212799549102783
+        },
+        {
+          "repeat": 16,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9251199960708618
+        },
+        {
+          "repeat": 16,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3486080169677734
+        },
+        {
+          "repeat": 16,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0803200006484985
+        },
+        {
+          "repeat": 17,
+          "arm": "guarded_cached_final",
+          "ms": 1.006592035293579
+        },
+        {
+          "repeat": 17,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0751999616622925
+        },
+        {
+          "repeat": 17,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.346560001373291
+        },
+        {
+          "repeat": 17,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9302400350570679
+        },
+        {
+          "repeat": 17,
+          "arm": "custom_cached",
+          "ms": 1.1274240016937256
+        },
+        {
+          "repeat": 17,
+          "arm": "custom_uncached",
+          "ms": 1.3701119422912598
+        },
+        {
+          "repeat": 17,
+          "arm": "previous_uncached",
+          "ms": 1.3649920225143433
+        },
+        {
+          "repeat": 18,
+          "arm": "custom_uncached",
+          "ms": 1.3772799968719482
+        },
+        {
+          "repeat": 18,
+          "arm": "custom_cached",
+          "ms": 1.1233279705047607
+        },
+        {
+          "repeat": 18,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9220479726791382
+        },
+        {
+          "repeat": 18,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.346560001373291
+        },
+        {
+          "repeat": 18,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0751999616622925
+        },
+        {
+          "repeat": 18,
+          "arm": "guarded_cached_final",
+          "ms": 1.005568027496338
+        },
+        {
+          "repeat": 18,
+          "arm": "previous_uncached",
+          "ms": 1.371135950088501
+        },
+        {
+          "repeat": 19,
+          "arm": "custom_uncached",
+          "ms": 1.371135950088501
+        },
+        {
+          "repeat": 19,
+          "arm": "previous_uncached",
+          "ms": 1.368064045906067
+        },
+        {
+          "repeat": 19,
+          "arm": "guarded_cached_final",
+          "ms": 1.0035200119018555
+        },
+        {
+          "repeat": 19,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0751999616622925
+        },
+        {
+          "repeat": 19,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.358847975730896
+        },
+        {
+          "repeat": 19,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9230719804763794
+        },
+        {
+          "repeat": 19,
+          "arm": "custom_cached",
+          "ms": 1.124351978302002
+        },
+        {
+          "repeat": 20,
+          "arm": "torch_static_cached_final",
+          "ms": 1.921023964881897
+        },
+        {
+          "repeat": 20,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3475840091705322
+        },
+        {
+          "repeat": 20,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0751999616622925
+        },
+        {
+          "repeat": 20,
+          "arm": "guarded_cached_final",
+          "ms": 1.0076160430908203
+        },
+        {
+          "repeat": 20,
+          "arm": "previous_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 20,
+          "arm": "custom_uncached",
+          "ms": 1.3742079734802246
+        },
+        {
+          "repeat": 20,
+          "arm": "custom_cached",
+          "ms": 1.1233279705047607
+        },
+        {
+          "repeat": 21,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9251199960708618
+        },
+        {
+          "repeat": 21,
+          "arm": "custom_cached",
+          "ms": 1.1233279705047607
+        },
+        {
+          "repeat": 21,
+          "arm": "custom_uncached",
+          "ms": 1.3660160303115845
+        },
+        {
+          "repeat": 21,
+          "arm": "previous_uncached",
+          "ms": 1.369088053703308
+        },
+        {
+          "repeat": 21,
+          "arm": "guarded_cached_final",
+          "ms": 1.0045440196990967
+        },
+        {
+          "repeat": 21,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0751999616622925
+        },
+        {
+          "repeat": 21,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3475840091705322
+        },
+        {
+          "repeat": 22,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0782719850540161
+        },
+        {
+          "repeat": 22,
+          "arm": "guarded_cached_final",
+          "ms": 1.005568027496338
+        },
+        {
+          "repeat": 22,
+          "arm": "previous_uncached",
+          "ms": 1.3783040046691895
+        },
+        {
+          "repeat": 22,
+          "arm": "custom_uncached",
+          "ms": 1.3721599578857422
+        },
+        {
+          "repeat": 22,
+          "arm": "custom_cached",
+          "ms": 1.1233279705047607
+        },
+        {
+          "repeat": 22,
+          "arm": "torch_static_cached_final",
+          "ms": 1.9230719804763794
+        },
+        {
+          "repeat": 22,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3475840091705322
+        },
+        {
+          "repeat": 23,
+          "arm": "guarded_cached_projection",
+          "ms": 1.077247977256775
+        },
+        {
+          "repeat": 23,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3496320247650146
+        },
+        {
+          "repeat": 23,
+          "arm": "torch_static_cached_final",
+          "ms": 1.921023964881897
+        },
+        {
+          "repeat": 23,
+          "arm": "custom_cached",
+          "ms": 1.124351978302002
+        },
+        {
+          "repeat": 23,
+          "arm": "custom_uncached",
+          "ms": 1.3701119422912598
+        },
+        {
+          "repeat": 23,
+          "arm": "previous_uncached",
+          "ms": 1.3742079734802246
+        },
+        {
+          "repeat": 23,
+          "arm": "guarded_cached_final",
+          "ms": 1.0045440196990967
+        }
+      ],
+      "precision": {
+        "torch_static_cached_final": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "guarded_grouped_uncached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "guarded_cached_projection": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "guarded_cached_final": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "previous_uncached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "custom_uncached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "custom_cached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        }
+      },
+      "resources": {
+        "torch_static_cached_final": "OMITTED_ON_NORMAL_PATH",
+        "guarded_grouped_uncached": "OMITTED_ON_NORMAL_PATH",
+        "guarded_cached_projection": "OMITTED_ON_NORMAL_PATH",
+        "guarded_cached_final": "OMITTED_ON_NORMAL_PATH",
+        "previous_uncached": "OMITTED_ON_NORMAL_PATH",
+        "custom_uncached": "OMITTED_ON_NORMAL_PATH",
+        "custom_cached": "OMITTED_ON_NORMAL_PATH"
+      },
+      "clock_before": {
+        "SM": 1410,
+        "memory": 1215
+      },
+      "cold_prepare_wall_ms": 1.35127454996109,
+      "cold_baseline_expand_wall_ms": 0.30389707535505295,
+      "cache_bytes": {
+        "custom": 18874368,
+        "baseline": 132120576
+      },
+      "precomputed_cache_unchanged": true,
+      "grouped_baseline_admitted": true,
+      "context_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "context_roots": [
+        0,
+        7
+      ],
+      "clock_after": {
+        "SM": 1410,
+        "memory": 1215
+      },
+      "cache_unchanged": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "inputs_unchanged": true,
+      "RNG_unchanged": true,
+      "median_ms": {
+        "torch_static_cached_final": 1.9230719804763794,
+        "guarded_grouped_uncached": 1.3475840091705322,
+        "guarded_cached_projection": 1.0751999616622925,
+        "guarded_cached_final": 1.005568027496338,
+        "previous_uncached": 1.3721599578857422,
+        "custom_uncached": 1.3731839656829834,
+        "custom_cached": 1.1233279705047607
+      }
+    },
+    {
+      "case": "long",
+      "fixture": "/root/cxz/ops/persistent-tile-20261019/workspace/\u6295\u673a\u91c7\u6837/results/runtime/p0-operator-torch-alignment-v2-20261018-r3/process1/input-long-B14-action-layer0-first.pt",
+      "load": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 3860271\n",
+      "samples": [
+        {
+          "repeat": 0,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.358847975730896
+        },
+        {
+          "repeat": 0,
+          "arm": "guarded_cached_projection",
+          "ms": 1.094655990600586
+        },
+        {
+          "repeat": 0,
+          "arm": "guarded_cached_final",
+          "ms": 1.022976040840149
+        },
+        {
+          "repeat": 0,
+          "arm": "previous_uncached",
+          "ms": 1.385472059249878
+        },
+        {
+          "repeat": 0,
+          "arm": "custom_uncached",
+          "ms": 1.3875199556350708
+        },
+        {
+          "repeat": 0,
+          "arm": "custom_cached",
+          "ms": 1.1438080072402954
+        },
+        {
+          "repeat": 0,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1498239040374756
+        },
+        {
+          "repeat": 1,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3578239679336548
+        },
+        {
+          "repeat": 1,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1549439430236816
+        },
+        {
+          "repeat": 1,
+          "arm": "custom_cached",
+          "ms": 1.1407359838485718
+        },
+        {
+          "repeat": 1,
+          "arm": "custom_uncached",
+          "ms": 1.3875199556350708
+        },
+        {
+          "repeat": 1,
+          "arm": "previous_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 1,
+          "arm": "guarded_cached_final",
+          "ms": 1.0199040174484253
+        },
+        {
+          "repeat": 1,
+          "arm": "guarded_cached_projection",
+          "ms": 1.094655990600586
+        },
+        {
+          "repeat": 2,
+          "arm": "guarded_cached_final",
+          "ms": 1.018880009651184
+        },
+        {
+          "repeat": 2,
+          "arm": "previous_uncached",
+          "ms": 1.3957120180130005
+        },
+        {
+          "repeat": 2,
+          "arm": "custom_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 2,
+          "arm": "custom_cached",
+          "ms": 1.1407359838485718
+        },
+        {
+          "repeat": 2,
+          "arm": "torch_static_cached_final",
+          "ms": 3.156991958618164
+        },
+        {
+          "repeat": 2,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3567999601364136
+        },
+        {
+          "repeat": 2,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0915839672088623
+        },
+        {
+          "repeat": 3,
+          "arm": "guarded_cached_final",
+          "ms": 1.0209280252456665
+        },
+        {
+          "repeat": 3,
+          "arm": "guarded_cached_projection",
+          "ms": 1.094655990600586
+        },
+        {
+          "repeat": 3,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3567999601364136
+        },
+        {
+          "repeat": 3,
+          "arm": "torch_static_cached_final",
+          "ms": 3.146752119064331
+        },
+        {
+          "repeat": 3,
+          "arm": "custom_cached",
+          "ms": 1.1438080072402954
+        },
+        {
+          "repeat": 3,
+          "arm": "custom_uncached",
+          "ms": 1.3834240436553955
+        },
+        {
+          "repeat": 3,
+          "arm": "previous_uncached",
+          "ms": 1.3916159868240356
+        },
+        {
+          "repeat": 4,
+          "arm": "custom_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 4,
+          "arm": "custom_cached",
+          "ms": 1.134592056274414
+        },
+        {
+          "repeat": 4,
+          "arm": "torch_static_cached_final",
+          "ms": 3.156991958618164
+        },
+        {
+          "repeat": 4,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3598719835281372
+        },
+        {
+          "repeat": 4,
+          "arm": "guarded_cached_projection",
+          "ms": 1.090559959411621
+        },
+        {
+          "repeat": 4,
+          "arm": "guarded_cached_final",
+          "ms": 1.0219520330429077
+        },
+        {
+          "repeat": 4,
+          "arm": "previous_uncached",
+          "ms": 1.3905919790267944
+        },
+        {
+          "repeat": 5,
+          "arm": "custom_uncached",
+          "ms": 1.3864959478378296
+        },
+        {
+          "repeat": 5,
+          "arm": "previous_uncached",
+          "ms": 1.3834240436553955
+        },
+        {
+          "repeat": 5,
+          "arm": "guarded_cached_final",
+          "ms": 1.018880009651184
+        },
+        {
+          "repeat": 5,
+          "arm": "guarded_cached_projection",
+          "ms": 1.090559959411621
+        },
+        {
+          "repeat": 5,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3547519445419312
+        },
+        {
+          "repeat": 5,
+          "arm": "torch_static_cached_final",
+          "ms": 3.156991958618164
+        },
+        {
+          "repeat": 5,
+          "arm": "custom_cached",
+          "ms": 1.1386879682540894
+        },
+        {
+          "repeat": 6,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1549439430236816
+        },
+        {
+          "repeat": 6,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3578239679336548
+        },
+        {
+          "repeat": 6,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0967040061950684
+        },
+        {
+          "repeat": 6,
+          "arm": "guarded_cached_final",
+          "ms": 1.0209280252456665
+        },
+        {
+          "repeat": 6,
+          "arm": "previous_uncached",
+          "ms": 1.385472059249878
+        },
+        {
+          "repeat": 6,
+          "arm": "custom_uncached",
+          "ms": 1.3834240436553955
+        },
+        {
+          "repeat": 6,
+          "arm": "custom_cached",
+          "ms": 1.1376639604568481
+        },
+        {
+          "repeat": 7,
+          "arm": "torch_static_cached_final",
+          "ms": 3.150847911834717
+        },
+        {
+          "repeat": 7,
+          "arm": "custom_cached",
+          "ms": 1.141759991645813
+        },
+        {
+          "repeat": 7,
+          "arm": "custom_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 7,
+          "arm": "previous_uncached",
+          "ms": 1.3864959478378296
+        },
+        {
+          "repeat": 7,
+          "arm": "guarded_cached_final",
+          "ms": 1.0199040174484253
+        },
+        {
+          "repeat": 7,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0926079750061035
+        },
+        {
+          "repeat": 7,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.44486403465271
+        },
+        {
+          "repeat": 8,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0936319828033447
+        },
+        {
+          "repeat": 8,
+          "arm": "guarded_cached_final",
+          "ms": 1.0209280252456665
+        },
+        {
+          "repeat": 8,
+          "arm": "previous_uncached",
+          "ms": 1.3895679712295532
+        },
+        {
+          "repeat": 8,
+          "arm": "custom_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 8,
+          "arm": "custom_cached",
+          "ms": 1.1407359838485718
+        },
+        {
+          "repeat": 8,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1539199352264404
+        },
+        {
+          "repeat": 8,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.358847975730896
+        },
+        {
+          "repeat": 9,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0915839672088623
+        },
+        {
+          "repeat": 9,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3598719835281372
+        },
+        {
+          "repeat": 9,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1539199352264404
+        },
+        {
+          "repeat": 9,
+          "arm": "custom_cached",
+          "ms": 1.1335680484771729
+        },
+        {
+          "repeat": 9,
+          "arm": "custom_uncached",
+          "ms": 1.3834240436553955
+        },
+        {
+          "repeat": 9,
+          "arm": "previous_uncached",
+          "ms": 1.388543963432312
+        },
+        {
+          "repeat": 9,
+          "arm": "guarded_cached_final",
+          "ms": 1.0178560018539429
+        },
+        {
+          "repeat": 10,
+          "arm": "previous_uncached",
+          "ms": 1.388543963432312
+        },
+        {
+          "repeat": 10,
+          "arm": "custom_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 10,
+          "arm": "custom_cached",
+          "ms": 1.1376639604568481
+        },
+        {
+          "repeat": 10,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1539199352264404
+        },
+        {
+          "repeat": 10,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.358847975730896
+        },
+        {
+          "repeat": 10,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0956799983978271
+        },
+        {
+          "repeat": 10,
+          "arm": "guarded_cached_final",
+          "ms": 1.022976040840149
+        },
+        {
+          "repeat": 11,
+          "arm": "previous_uncached",
+          "ms": 1.3895679712295532
+        },
+        {
+          "repeat": 11,
+          "arm": "guarded_cached_final",
+          "ms": 1.0209280252456665
+        },
+        {
+          "repeat": 11,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0967040061950684
+        },
+        {
+          "repeat": 11,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3567999601364136
+        },
+        {
+          "repeat": 11,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1549439430236816
+        },
+        {
+          "repeat": 11,
+          "arm": "custom_cached",
+          "ms": 1.1386879682540894
+        },
+        {
+          "repeat": 11,
+          "arm": "custom_uncached",
+          "ms": 1.3864959478378296
+        },
+        {
+          "repeat": 12,
+          "arm": "custom_cached",
+          "ms": 1.134592056274414
+        },
+        {
+          "repeat": 12,
+          "arm": "torch_static_cached_final",
+          "ms": 3.152895927429199
+        },
+        {
+          "repeat": 12,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3547519445419312
+        },
+        {
+          "repeat": 12,
+          "arm": "guarded_cached_projection",
+          "ms": 1.090559959411621
+        },
+        {
+          "repeat": 12,
+          "arm": "guarded_cached_final",
+          "ms": 1.0178560018539429
+        },
+        {
+          "repeat": 12,
+          "arm": "previous_uncached",
+          "ms": 1.3895679712295532
+        },
+        {
+          "repeat": 12,
+          "arm": "custom_uncached",
+          "ms": 1.3864959478378296
+        },
+        {
+          "repeat": 13,
+          "arm": "custom_cached",
+          "ms": 1.1458560228347778
+        },
+        {
+          "repeat": 13,
+          "arm": "custom_uncached",
+          "ms": 1.3834240436553955
+        },
+        {
+          "repeat": 13,
+          "arm": "previous_uncached",
+          "ms": 1.3864959478378296
+        },
+        {
+          "repeat": 13,
+          "arm": "guarded_cached_final",
+          "ms": 1.0209280252456665
+        },
+        {
+          "repeat": 13,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0926079750061035
+        },
+        {
+          "repeat": 13,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3567999601364136
+        },
+        {
+          "repeat": 13,
+          "arm": "torch_static_cached_final",
+          "ms": 3.152895927429199
+        },
+        {
+          "repeat": 14,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3557759523391724
+        },
+        {
+          "repeat": 14,
+          "arm": "guarded_cached_projection",
+          "ms": 1.094655990600586
+        },
+        {
+          "repeat": 14,
+          "arm": "guarded_cached_final",
+          "ms": 1.0209280252456665
+        },
+        {
+          "repeat": 14,
+          "arm": "previous_uncached",
+          "ms": 1.385472059249878
+        },
+        {
+          "repeat": 14,
+          "arm": "custom_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 14,
+          "arm": "custom_cached",
+          "ms": 1.141759991645813
+        },
+        {
+          "repeat": 14,
+          "arm": "torch_static_cached_final",
+          "ms": 3.150847911834717
+        },
+        {
+          "repeat": 15,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3578239679336548
+        },
+        {
+          "repeat": 15,
+          "arm": "torch_static_cached_final",
+          "ms": 3.150847911834717
+        },
+        {
+          "repeat": 15,
+          "arm": "custom_cached",
+          "ms": 1.1427839994430542
+        },
+        {
+          "repeat": 15,
+          "arm": "custom_uncached",
+          "ms": 1.4192639589309692
+        },
+        {
+          "repeat": 15,
+          "arm": "previous_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 15,
+          "arm": "guarded_cached_final",
+          "ms": 1.0219520330429077
+        },
+        {
+          "repeat": 15,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0956799983978271
+        },
+        {
+          "repeat": 16,
+          "arm": "guarded_cached_final",
+          "ms": 1.0209280252456665
+        },
+        {
+          "repeat": 16,
+          "arm": "previous_uncached",
+          "ms": 1.3895679712295532
+        },
+        {
+          "repeat": 16,
+          "arm": "custom_uncached",
+          "ms": 1.393664002418518
+        },
+        {
+          "repeat": 16,
+          "arm": "custom_cached",
+          "ms": 1.1376639604568481
+        },
+        {
+          "repeat": 16,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1549439430236816
+        },
+        {
+          "repeat": 16,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3598719835281372
+        },
+        {
+          "repeat": 16,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0956799983978271
+        },
+        {
+          "repeat": 17,
+          "arm": "guarded_cached_final",
+          "ms": 1.018880009651184
+        },
+        {
+          "repeat": 17,
+          "arm": "guarded_cached_projection",
+          "ms": 1.094655990600586
+        },
+        {
+          "repeat": 17,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3557759523391724
+        },
+        {
+          "repeat": 17,
+          "arm": "torch_static_cached_final",
+          "ms": 3.155967950820923
+        },
+        {
+          "repeat": 17,
+          "arm": "custom_cached",
+          "ms": 1.1397119760513306
+        },
+        {
+          "repeat": 17,
+          "arm": "custom_uncached",
+          "ms": 1.3875199556350708
+        },
+        {
+          "repeat": 17,
+          "arm": "previous_uncached",
+          "ms": 1.3834240436553955
+        },
+        {
+          "repeat": 18,
+          "arm": "custom_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 18,
+          "arm": "custom_cached",
+          "ms": 1.1407359838485718
+        },
+        {
+          "repeat": 18,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1539199352264404
+        },
+        {
+          "repeat": 18,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.358847975730896
+        },
+        {
+          "repeat": 18,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0936319828033447
+        },
+        {
+          "repeat": 18,
+          "arm": "guarded_cached_final",
+          "ms": 1.0199040174484253
+        },
+        {
+          "repeat": 18,
+          "arm": "previous_uncached",
+          "ms": 1.3895679712295532
+        },
+        {
+          "repeat": 19,
+          "arm": "custom_uncached",
+          "ms": 1.3864959478378296
+        },
+        {
+          "repeat": 19,
+          "arm": "previous_uncached",
+          "ms": 1.381376028060913
+        },
+        {
+          "repeat": 19,
+          "arm": "guarded_cached_final",
+          "ms": 1.018880009651184
+        },
+        {
+          "repeat": 19,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0936319828033447
+        },
+        {
+          "repeat": 19,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3598719835281372
+        },
+        {
+          "repeat": 19,
+          "arm": "torch_static_cached_final",
+          "ms": 3.152895927429199
+        },
+        {
+          "repeat": 19,
+          "arm": "custom_cached",
+          "ms": 1.1397119760513306
+        },
+        {
+          "repeat": 20,
+          "arm": "torch_static_cached_final",
+          "ms": 3.1549439430236816
+        },
+        {
+          "repeat": 20,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.358847975730896
+        },
+        {
+          "repeat": 20,
+          "arm": "guarded_cached_projection",
+          "ms": 1.090559959411621
+        },
+        {
+          "repeat": 20,
+          "arm": "guarded_cached_final",
+          "ms": 1.0199040174484253
+        },
+        {
+          "repeat": 20,
+          "arm": "previous_uncached",
+          "ms": 1.3905919790267944
+        },
+        {
+          "repeat": 20,
+          "arm": "custom_uncached",
+          "ms": 1.3864959478378296
+        },
+        {
+          "repeat": 20,
+          "arm": "custom_cached",
+          "ms": 1.136639952659607
+        },
+        {
+          "repeat": 21,
+          "arm": "torch_static_cached_final",
+          "ms": 3.151871919631958
+        },
+        {
+          "repeat": 21,
+          "arm": "custom_cached",
+          "ms": 1.141759991645813
+        },
+        {
+          "repeat": 21,
+          "arm": "custom_uncached",
+          "ms": 1.385472059249878
+        },
+        {
+          "repeat": 21,
+          "arm": "previous_uncached",
+          "ms": 1.3864959478378296
+        },
+        {
+          "repeat": 21,
+          "arm": "guarded_cached_final",
+          "ms": 1.018880009651184
+        },
+        {
+          "repeat": 21,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0915839672088623
+        },
+        {
+          "repeat": 21,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3557759523391724
+        },
+        {
+          "repeat": 22,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0936319828033447
+        },
+        {
+          "repeat": 22,
+          "arm": "guarded_cached_final",
+          "ms": 1.018880009651184
+        },
+        {
+          "repeat": 22,
+          "arm": "previous_uncached",
+          "ms": 1.3875199556350708
+        },
+        {
+          "repeat": 22,
+          "arm": "custom_uncached",
+          "ms": 1.3803520202636719
+        },
+        {
+          "repeat": 22,
+          "arm": "custom_cached",
+          "ms": 1.141759991645813
+        },
+        {
+          "repeat": 22,
+          "arm": "torch_static_cached_final",
+          "ms": 3.290112018585205
+        },
+        {
+          "repeat": 22,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.3557759523391724
+        },
+        {
+          "repeat": 23,
+          "arm": "guarded_cached_projection",
+          "ms": 1.0926079750061035
+        },
+        {
+          "repeat": 23,
+          "arm": "guarded_grouped_uncached",
+          "ms": 1.358847975730896
+        },
+        {
+          "repeat": 23,
+          "arm": "torch_static_cached_final",
+          "ms": 3.151871919631958
+        },
+        {
+          "repeat": 23,
+          "arm": "custom_cached",
+          "ms": 1.141759991645813
+        },
+        {
+          "repeat": 23,
+          "arm": "custom_uncached",
+          "ms": 1.3834240436553955
+        },
+        {
+          "repeat": 23,
+          "arm": "previous_uncached",
+          "ms": 1.3844480514526367
+        },
+        {
+          "repeat": 23,
+          "arm": "guarded_cached_final",
+          "ms": 1.0209280252456665
+        }
+      ],
+      "precision": {
+        "torch_static_cached_final": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "guarded_grouped_uncached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "guarded_cached_projection": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "guarded_cached_final": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "previous_uncached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "custom_uncached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        },
+        "custom_cached": {
+          "output": {
+            "shape_match": true,
+            "dtype_match": true,
+            "finite_pass": true,
+            "shape": [
+              688128
+            ],
+            "dtype": "torch.bfloat16",
+            "bitwise_pass": true,
+            "tolerance_pass": true,
+            "different_bytes": 0,
+            "different_elements": 0,
+            "elements": 688128,
+            "tolerance_atol": 0.0,
+            "tolerance_rtol": 0.0,
+            "max_abs": 0.0,
+            "rel_l2": 0.0,
+            "abs_p50_p90_max": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quantile_status": "EXACT_ALL_ZERO"
+          }
+        }
+      },
+      "resources": {
+        "torch_static_cached_final": "OMITTED_ON_NORMAL_PATH",
+        "guarded_grouped_uncached": "OMITTED_ON_NORMAL_PATH",
+        "guarded_cached_projection": "OMITTED_ON_NORMAL_PATH",
+        "guarded_cached_final": "OMITTED_ON_NORMAL_PATH",
+        "previous_uncached": "OMITTED_ON_NORMAL_PATH",
+        "custom_uncached": "OMITTED_ON_NORMAL_PATH",
+        "custom_cached": "OMITTED_ON_NORMAL_PATH"
+      },
+      "clock_before": {
+        "SM": 1410,
+        "memory": 1215
+      },
+      "cold_prepare_wall_ms": 1.3210484758019447,
+      "cold_baseline_expand_wall_ms": 0.27226563543081284,
+      "cache_bytes": {
+        "custom": 18874368,
+        "baseline": 132120576
+      },
+      "precomputed_cache_unchanged": true,
+      "grouped_baseline_admitted": true,
+      "context_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "context_roots": [
+        0,
+        7
+      ],
+      "clock_after": {
+        "SM": 1410,
+        "memory": 1215
+      },
+      "cache_unchanged": {
+        "pass_all": true,
+        "fields": {
+          "slots": true,
+          "id": true,
+          "mask": true,
+          "is_pred": true,
+          "k": true,
+          "v": true
+        },
+        "valid_KV_finite_pass": true,
+        "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+      },
+      "inputs_unchanged": true,
+      "RNG_unchanged": true,
+      "median_ms": {
+        "torch_static_cached_final": 3.1539199352264404,
+        "guarded_grouped_uncached": 1.3578239679336548,
+        "guarded_cached_projection": 1.0936319828033447,
+        "guarded_cached_final": 1.020416021347046,
+        "previous_uncached": 1.3870079517364502,
+        "custom_uncached": 1.3844480514526367,
+        "custom_cached": 1.1407359838485718
+      }
+    }
+  ],
+  "formal_performance_permission": false,
+  "torch_graph_boundary": "Existing PreparedBlock dense uncached: static slots admitted before capture; original projections/norm/RoPE/attention/FFN, no context projection cache; not dynamic original forward",
+  "binary_identity": {
+    "previous_uncached": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-reuse-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "custom_cached": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-precompute-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "before_sha256": "cc2656e76444a7b9f32ec29acdbf57ba94d9c5d0120f1961eb9f7a5d130e1593",
+    "candidate_sha256": "0f62944795c64213dfa7106b9707a2f6ec5bd0aa41d9d008e94c2794289a0e67"
+  },
+  "lifecycle_seconds": 26.28799057006836
+}

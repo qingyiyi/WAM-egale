@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[RMS+RoPE融合结果](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[优化证据索引](../.pipeline/experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)、[完整阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)。
+最新：[预计算与完整阶段结果](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[完整阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)。
 
-当前保持阶段同步，按需调制之后再融合self Q/K RMS+RoPE；有限精度通过，完整层再快0.39%–0.44%，两机采用。最强guarded仍快约9%–11%。ready负结果保留；GPU已清理，四科学权限false。下方TF交接为历史。
+自有warm0.957/1.124/1.140ms，仍慢同缓存强guarded7.94%–11.70%。有限精度/状态通过，GPU已清理。旧失败与四科学权限false保留，下方TF交接为历史。
 
 ---
 

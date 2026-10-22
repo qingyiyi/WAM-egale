@@ -1,51 +1,86 @@
-# 当前RMS+RoPE融合版：从输入到输出
+# 预计算后完整阶段与耗时
 
-范围：在已验证按需调制版上融合B14 self Q/K RMS+RoPE的有限已验证版本，B14 action、hidden=[14,16,3072]、context=[14,512,3072]，有RoPE和affine Norm2、uncached context。M=224，Mc=7168，D=3072，F=14336；108个常驻CTA，每CTA256线程/8warp，一个完整层计算kernel。
+适用：远端A100-SXM4-40GB、B14/Q16、D3072、FFN14336；两组文本条件各512token，原有self历史短/中/长KV288/1152/2160。正常版本一层一个persistent kernel；缓存由原Torch在GPU上预计算，warm主kernel直接读最终K/V。
 
-`P_W(X)=X W^T+b`；`LN(X)=(X-mean)/sqrt(var+eps)`，Norm2另有gamma/beta；`RMS(X)=gamma*X/sqrt(mean(X²)+eps)`。下表是数学简写，真实BF16/FP32/FP64与分段舍入按源码保留，不能据公式随意重排。
+下面是独立插桩版本的CTA0阶段时间，中位数来自8轮；包含阶段内计算、任务领取、CTA/warp同步及全grid等待。最后一列是同一CTA0落在该阶段内的grid等待，不是全GPU关键路径等待占比。屏障外时间也不能全部叫作纯计算。逐CTA分布及未缓存对照见CSV。阶段分量中位数之和不等于完整层中位数。
 
-“tile数”是每阶段覆盖工作量的逻辑分块数，不是同时启动CTA数，也不都是原子领取次数。多数point/norm/FFN/attention静态block-stride；只有8个投影阶段使用动态队列。GEMM K方向内部MMA循环不另算调度任务。
+|序号|阶段|warm逻辑tile|短KV μs|中KV μs|长KV μs|中KV其中grid等待 μs|
+|---|---|---:|---:|---:|---:|---:|
+|1|LN1|224|15.36|15.87|15.36|1.02|
+|2|调制1|336|9.22|9.22|9.22|1.02|
+|3|Self Q投影|96|50.18|50.18|50.18|4.10|
+|4|Self K投影|96|46.08|46.08|46.08|3.58|
+|5|Self V投影|96|45.06|45.57|45.06|3.07|
+|6|Self Q RMS+RoPE|112|16.38|15.36|15.36|1.02|
+|7|Self K RMS+RoPE|112|14.34|14.34|14.34|1.02|
+|8|Self attention|96/168|60.42|232.96|247.81|10.24|
+|9|Self输出投影|96|50.69|47.10|47.10|4.10|
+|10|残差1|336|10.24|10.24|10.24|2.05|
+|11|LN2|224|22.53|22.53|22.53|1.02|
+|12|Cross Q投影|96|48.13|48.13|48.13|4.10|
+|13|Cross K投影|0|0.00|0.00|0.00|0.00|
+|14|Cross V投影|0|0.00|0.00|0.00|0.00|
+|15|Cross Q RMS|112|11.26|10.24|10.24|1.02|
+|16|Cross K RMS|0|0.00|0.00|0.00|0.00|
+|17|Cross attention|168|74.75|74.75|74.75|2.56|
+|18|Cross输出投影|96|49.15|48.64|48.13|4.61|
+|19|残差2|336|8.19|9.22|9.22|2.05|
+|20|LN3|224|23.55|23.04|23.04|2.05|
+|21|调制3|336|10.24|11.26|10.24|2.05|
+|22|FFN1|112|199.68|199.17|198.14|3.07|
+|23|GELU|1568|30.21|30.72|31.74|2.56|
+|24|FFN2|96|139.26|139.26|139.26|15.36|
+|25|残差3|336|11.26|10.75|11.26|2.56|
+|26|layout|—|9.22|9.22|9.22|1.02|
+|27|exit|—|1.54|2.05|2.05|1.02|
 
-|顺序|阶段/公式|一个tile及逻辑tile数|全grid同步|
-|---|---|---|---|
-|准备|整理有效history slot/layout|专用初始化，不纳入下面tile合计|后1次|
-|原1移除|普通路径不物化MOD；在3/13/24/28处按需相加|0独立tile|无|
-|2|N1=LN(X)|1行3072维；224|后1次|
-|3|M1=N1*(1+scale1)+shift1；本tile计算scale/shift|2048元素；336|后1次|
-|4|self Q0=Pq(M1)|64×128；ceil(224/64)×24=96|队列清零后1次、阶段后1次|
-|5|self K0=Pk(M1)|同上96|前后各1次|
-|6|self V=Pv(M1)|同上96|前后各1次|
-|7+9|self Qr=RoPE(BF16(RMS(Q0)))|两行/CTA tile；112；普通路径不物化Qn|后1次|
-|8+10|self Kr=RoPE(BF16(RMS(K0)))|两行；112；普通路径不物化Kn|后1次|
-|缓存入口|B14 private KV不写公共history|0任务，直接返回|0|
-|11|SA=softmax(Qr Kvisible^T/sqrt(128))Vvisible|两组4warp attention子任务/CTA tile；G2为96、G1为168|后1次|
-|12|SO=Po(SA)|64×128；96|前后各1次|
-|13|R1=X+gate1*SO；本tile计算gate1|2048元素；336|后1次|
-|14|N2=affine_LN(R1)|1行；224|后1次|
-|15|cross Q0=Pcq(N2)|64×128；96|前后各1次|
-|16|cross K0=Pck(context)|128×128；7168/128×24=1344|前后各1次|
-|17|cross V=Pcv(context)|128×128；1344|前后各1次|
-|18|cross Q=RMS(Q0)|两行；112|后1次|
-|19|cross K=RMS(K0)|两行；7168/2=3584|后1次|
-|20|CA=softmax(Q K^T/sqrt(128))V|14×24个head实例，2组/CTA tile；168|后1次|
-|21|CO=Pco(CA)|64×128；96|前后各1次|
-|22|R2=R1+CO|2048元素；336|后1次|
-|23|N3=LN(R2)|1行；224|后1次|
-|24|M3=N3*(1+scale3)+shift3；本tile计算scale/shift|2048元素；336|后1次|
-|25|F1=P1(M3)，3072→14336|128×256；ceil(224/128)×56=112|后1次|
-|26|A=GELU_tanh(F1)|2048元素；224×14336/2048=1568|后1次|
-|27|F2=P2(A)，14336→3072|128×128输出48tile×两K7168段=96计算任务|第0段BF16提交后1次；第1段提交后1次|
-|28|Y=R2+gate3*F2；本tile计算gate3|2048元素；336|后1次|
-|退出|合法cache模式收尾；B14无候选写回|不纳入tile数|末尾1次|
+## 计算公式
 
-普通路径合计G2=11576、G1=11648，相对按需调制版再少336个独立RoPE tile。debug为外部核验保存MOD/Qn/Kn，逻辑任务为13592/13664；普通/调试都使用融合RMS+RoPE，计时仅普通路径。B2仍沿原RMS和RoPE兼容分支。计数为源码推导；有限精度和性能见本轮RESULT。
+|序号|计算|
+|---|---|
+|1|LN(X)|
+|2|N1*(1+scale1)+shift1|
+|3|M1 Wqᵀ+bq|
+|4|M1 Wkᵀ+bk|
+|5|M1 Wvᵀ+bv|
+|6|RoPE(BF16(RMS(Q0)))|
+|7|RoPE(BF16(RMS(K0)))|
+|8|softmax(QrKvisibleᵀ/√128)Vvisible|
+|9|SA Woᵀ+bo|
+|10|X+gate1*SO|
+|11|affine_LN(R1)|
+|12|N2 Wcqᵀ+bcq|
+|13|预计算，warm跳过|
+|14|预计算，warm跳过|
+|15|RMS(Q0)|
+|16|已含在预计算K中|
+|17|softmax(QKgroupᵀ/√128)Vgroup|
+|18|CA Wcoᵀ+bco|
+|19|R1+CO|
+|20|LN(R2)|
+|21|N3*(1+scale3)+shift3|
+|22|M3 W1ᵀ+b1|
+|23|GELU_tanh(F1)|
+|24|A W2ᵀ+b2，原两段舍入|
+|25|R2+gate3*F2|
+|26|有效history slot布局|
+|27|退出同步|
 
-真实三KV fixture为短G2、中G1、长G2；分组取决于有效历史及CFG引用。KV长度改变attention内部循环，多数其他tile数不变。B14仍为14个Q16实例，候选没有互相attention。
+普通warm路径有22个计算阶段、G2/G1为5304/5376逻辑tile、31次grid同步；uncached分组路径仍6200/6272tile、36次。预计算移出两投影和K RMS，共896逻辑tile、5次grid同步。layout/exit单列；debug额外物化调制表。
 
-普通B14全grid共36次：layout1+25数学阶段出口+8个动态投影入口+FFN2额外中间同步1+退出1；debug因MOD为37次。各阶段内仍保留CTA/组同步及cp.async等待。去掉的是两处独立RoPE阶段出口，GEMM完成后才进行整行RMS的依赖未改变。
+Cross K0/K/V分别保留两组，每张6MiB，共18MiB；其中原始K0额外保留供审计，warm计算实际只读最终K/V共12MiB。guarded保持原接口，预先展开B14缓存，三张总126MiB；展开在cold阶段计入，warm不展开。不是容量最优生产缓存。
 
-FFN2特殊：前96个CTA分别计算48输出tile的两个K段，后12个CTA在同步处等待；第0段先写BF16，第1段FP32暂存shared，grid同步后再按(FP32+bias)+第0段BF16合并写回。它不是把两段FP32直接相加后只舍入一次。
+## 插桩扰动
 
-可以扩大调度任务而不扩大数学tile：例如CTA一次处理多行RMS或多个连续point tile，再统一领取/发布；当前阶段版静态分配已避免这些tile逐个原子领取。真正扩大GEMM tile则改变寄存器/shared、尾块和并行度，应分开讨论。合法候选融合如Norm+调制、Q/K RMS+RoPE、FFN1写回+GELU需要保留原数值边界；本轮候选已实现self Q/K RMS+RoPE；其他融合仍未实施。
+|KV|模式|正常完整层 ms|插桩Graph ms|扰动|
+|---|---|---:|---:|---:|
+|short|grouped_uncached|1.208832|1.230192|+1.77%|
+|short|cached|0.961520|0.980320|+1.96%|
+|middle|grouped_uncached|1.374480|1.396144|+1.58%|
+|middle|cached|1.128448|1.149472|+1.86%|
+|long|grouped_uncached|1.392128|1.415536|+1.68%|
+|long|cached|1.142784|1.162160|+1.70%|
 
-源码入口见optimized/csrc/whole_layer.cu中的whole_layer、modulation4、point；FA2仍为fa2_stage.cuh。
+插桩额外写全局时间戳，并清零诊断buffer，因此上表不能直接作为正常路径的绝对阶段耗时；正常整层速度单独测量。所有两模式×三KV的profile输出/共有中间量/有效KV/缓存/输入/RNG均有限核验通过。两处同步漏计的原失败保留在首PROFILE-RESULT，修复版见profile-r2。
+
+[正常完整层](../../../.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/WHOLE-LAYER-TIMING.csv)、[逐阶段CSV](../../../.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/STAGE-TIMING.csv)、[诊断汇总](../../../.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/PROFILE-SUMMARY.json)、[原始诊断](../../../.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/profile-r2/PROFILE-RESULT.json)、[结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/RESULT.md)。

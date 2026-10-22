@@ -1,0 +1,56 @@
+{
+  "goal": "Same cached Cross K/V for custom and guarded; finite gate then timing and stage decomposition",
+  "execution_authorization": "USER_APPROVED_CROSS_KV_PRECOMPUTE_AND_STAGE_TIMING",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 2700,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 7699.251076945541,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "local_storage_cap_bytes": 805306368,
+  "new_storage_cap_bytes": 268435456,
+  "terminal_status": "REGISTERED_AWAITING_ADMISSION",
+  "cleanup_plan": "owned PID+birth guard only",
+  "evidence_path": "/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022",
+  "input_manifest": "previous real 9 signatures and 27 structure cases; three B14 timing fixtures",
+  "registered_at": "2026-10-22T16:25:20.330930+08:00",
+  "deadline": "2026-10-22T17:10:20.330930+08:00",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-reuse-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "cc2656e76444a7b9f32ec29acdbf57ba94d9c5d0120f1961eb9f7a5d130e1593",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-precompute-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "candidate_binary_SHA256": "0f62944795c64213dfa7106b9707a2f6ec5bd0aa41d9d008e94c2794289a0e67",
+  "profile_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-precompute-20261022/profile-r2/profile/wam_cached_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+  "profile_binary_SHA256": "942ced181eeea27e4775b4a733e5b3b2027b0e391b4592fa16ee14ee5ea24803",
+  "sources": {
+    "算子研究/wam_ops/optimized/csrc/whole_layer.cu": "4ff17224c70d3fe0565bc94bf17530b92dc3fde3907fcae451a942febb4ccb54",
+    "算子研究/wam_ops/optimized/csrc/fa2_stage.cuh": "dce97d1a6ae8b8d27f0295e7594362be9fa34d0895ef921949270568cf889d11",
+    "算子研究/wam_ops/optimized/whole_layer.py": "5ebfa1bc7a1ef66f3ed9459fbef152bcc5f84c5c027ad7e5857381c6f49f7418",
+    "算子研究/wam_ops/optimized/build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  },
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap"
+  ],
+  "steps": [
+    [
+      "profile",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-precompute-20261022/profile-r2/profile_worker.py"
+      ],
+      360,
+      true
+    ]
+  ],
+  "phase_registered_at": "2026-10-22T16:34:20.974829+08:00",
+  "parent_job": "../JOB.json",
+  "purpose": "Correct diagnostic-only missing layout/exit barrier markers, same deadline and cumulative budget",
+  "prior_phase_worker_lifecycle_seconds": 106.17630934715271
+}

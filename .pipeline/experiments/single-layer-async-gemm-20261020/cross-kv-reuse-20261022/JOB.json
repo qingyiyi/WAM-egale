@@ -1,0 +1,105 @@
+{
+  "goal": "Cross KV per-context reuse; separate unchanged RMS; precision before timing",
+  "execution_authorization": "USER_APPROVED_CROSS_KV_REUSE",
+  "status": "REGISTERED_AWAITING_ADMISSION",
+  "cpu_threads": 2,
+  "cpu_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 1800,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 7480.439281472442,
+  "cumulative_cap_seconds": 36000,
+  "local_storage_cap_bytes": 536870912,
+  "new_storage_cap_bytes": 134217728,
+  "reference_binary_SHA256": "795be814c40a152583e13a34f6cf6bb5510b1fc38f5b4cd8c26076b4dc4efd75",
+  "registered_cpu": "2026-10-22T15:57:08.866350+08:00",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap"
+  ],
+  "scope": "single block, CPU prepare excluded from Graph; two context groups; no production/robot",
+  "input_manifest": {
+    "fixtures": "tools.block_loader.FIXTURES: existing short/middle/long B2 action, B14 action, B2 video",
+    "real_signatures": 9,
+    "structural_cases": 27,
+    "timing_arms": [
+      "torch_static_uncached",
+      "guarded_uncached",
+      "guarded_cached",
+      "before",
+      "candidate_no_reuse",
+      "candidate",
+      "guarded_grouped_uncached if admitted"
+    ],
+    "cpu_context_group_admission": "outside CUDA Graph, repeated if context changes"
+  },
+  "terminal_status": "PENDING",
+  "cleanup_plan": "PID+birth-checked foreground CPU build and bounded owned GPU worker guard; old windows preserved",
+  "registered_at": "2026-10-22T16:05:43.031227+08:00",
+  "deadline": "2026-10-22T16:35:43.031227+08:00",
+  "sources": {
+    "算子研究/wam_ops/optimized/csrc/whole_layer.cu": "bb5b63ed02a4c726abd960f5bb8d616d59410c342ec866e67481b7b27dd07357",
+    "算子研究/wam_ops/optimized/csrc/fa2_stage.cuh": "dce97d1a6ae8b8d27f0295e7594362be9fa34d0895ef921949270568cf889d11",
+    "算子研究/wam_ops/optimized/whole_layer.py": "9dca123c12ef843f643397bdcaebf067c950897f0c6406689cc53a7784d59a4d",
+    "算子研究/wam_ops/optimized/build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  },
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/rms-rope-fusion-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-reuse-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "candidate_binary_SHA256": "cc2656e76444a7b9f32ec29acdbf57ba94d9c5d0120f1961eb9f7a5d130e1593",
+  "timing_full_calls_cap_per_process": 18000,
+  "steps": [
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-reuse-20261022/gate.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-reuse-20261022/extended.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "baseline_gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-reuse-20261022/baseline_gate.py"
+      ],
+      120,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-reuse-20261022/timing.py",
+        "1"
+      ],
+      180,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-reuse-20261022/timing.py",
+        "2"
+      ],
+      180,
+      true
+    ]
+  ]
+}
