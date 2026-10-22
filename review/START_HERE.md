@@ -1,8 +1,8 @@
-# 当前算子入口（2026-10-22晚间）
+# 当前研究入口（2026-10-22夜间）
 
-[最新结果](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)。FFN2四元素写回与生产函数内联已保留；原Torch完整层短/中/长1.2185/1.7605/2.8473×，独立FFN仍慢约9%。有限检查通过，四项科学权限仍false。
+[最新结果](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)。当前B不改，FFN profile定位末组生产尾部和流水函数寄存器保存恢复；独立FFN仍慢约9%。GPU0留算子，GPU1已启动RoboTwin固定1800局准备链，160GPU小时/10天，旧证据不改，四科学权限false。
 
-动态状态以当前入口和HW为准。下面是原TF交接历史快照，正文保留，不能覆盖当前算子状态；此前派生入口见[历史](history/current-before-ffn-epilogue-abi-20261022/START_HERE.md)。
+动态状态以当前入口/HW为准；下面原TF暂停72局历史快照原样保留，不能覆盖当前状态。[此前派生入口](history/current-before-current-ffn-profile-20261022/START_HERE.md)。
 
 ---
 

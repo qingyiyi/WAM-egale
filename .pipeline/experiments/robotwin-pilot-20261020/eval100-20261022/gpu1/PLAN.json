@@ -1,0 +1,103 @@
+{
+  "goal": "Fixed six-task 100 expert-valid initializations, frozen T/TF ON3000/TF PF2; 1800 full episodes",
+  "execution_authorization": "USER_APPROVED_160_GPU_HOURS_10_DAYS_20261022",
+  "T0": "2026-10-22T22:03:22.728607+08:00",
+  "deadline": "2026-11-01T22:03:22.728607+08:00",
+  "GPU_lifecycle_cap_seconds": 576000,
+  "per_worker_lifecycle_cap_seconds": 576000,
+  "preparation_cap_seconds": 14400,
+  "per_episode_seconds": 1800,
+  "cleanup_reserve_seconds": 900,
+  "storage_cap_bytes": 12884901888,
+  "local_copy_cap_bytes": 2147483648,
+  "expert_attempt_cap_per_task": 600,
+  "episode_cap": 1800,
+  "per_episode_teacher_attempts": 8000,
+  "new_teacher_attempts_cap": 14400000,
+  "eval_seed": 0,
+  "tasks": [
+    "place_object_basket",
+    "stack_blocks_two",
+    "handover_block",
+    "lift_pot",
+    "press_stapler",
+    "open_microwave"
+  ],
+  "checkpoint": "/root/cxz/robotwin/runs/current18-followup-20261021/ON3000/checkpoint.pt",
+  "tau": 0.007879490032792091,
+  "nominal_video_updates": 25,
+  "nominal_action_updates": 50,
+  "engineering": "COMBINED explicit uniform arm setting; full512 BF16 bank; original physical/render/command semantics retained",
+  "independent_test_complete": false,
+  "engineering_quality_screen": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "old_GPU_lifecycle_seconds": 54718.24398,
+  "old_deadline": "2026-10-22T01:26:04.706686+08:00",
+  "old_ledger_preserved": true,
+  "input_exposure": "valid0..13 FIT/CAL and 14..18 DEV previously exposed, label by task/seed; current panel enlarged DEV; no training",
+  "worker_specs": {
+    "gpu0": {
+      "worker": 0,
+      "GPU_uuid": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+      "tasks": [
+        "place_object_basket",
+        "handover_block",
+        "press_stapler"
+      ],
+      "CPU": {
+        "guard": [
+          18,
+          19
+        ],
+        "client": [
+          16,
+          17
+        ],
+        "server": [
+          20,
+          21
+        ]
+      },
+      "port": 35076,
+      "master_port": 35071,
+      "status": "RESERVED_OPERATOR_DO_NOT_START"
+    },
+    "gpu1": {
+      "worker": 1,
+      "GPU_uuid": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+      "tasks": [
+        "place_object_basket",
+        "stack_blocks_two",
+        "handover_block",
+        "lift_pot",
+        "press_stapler",
+        "open_microwave"
+      ],
+      "CPU": {
+        "guard": [
+          26,
+          27
+        ],
+        "client": [
+          24,
+          25
+        ],
+        "server": [
+          28,
+          29
+        ]
+      },
+      "port": 35077,
+      "master_port": 35072
+    }
+  },
+  "active_GPU_workers": [
+    1
+  ],
+  "placement": "GPU0 reserved for operator work; GPU1 sole RoboTwin worker; no auto borrowing GPU0",
+  "reset_bank": "/root/cxz/robotwin/runs/eval100-20261022/gpu1/server/text-bank.pt",
+  "GPU_uuid": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c",
+  "storage_account_root": "/root/cxz/robotwin/runs/eval100-20261022",
+  "nominal_episode_count": 1800
+}

@@ -1,0 +1,58 @@
+{
+  "goal": "Profile selected current B FFN compute, epilogue, queue/commit and producer tail against original Torch; do not optimize production",
+  "execution_authorization": "USER_REQUEST_CURRENT_FFN_PROFILE",
+  "registered_at": "2026-10-22T21:58:50.290981+08:00",
+  "deadline": "2026-10-22T22:43:50.290981+08:00",
+  "CPU_build_cap_seconds": 600,
+  "GPU_lifecycle_cap_seconds": 2700,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 12338.59234682242,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 536870912,
+  "terminal_status": "REGISTERED",
+  "input_manifest": "Existing real B14 action layer0 short/middle/long fixtures, selected B M3/R2 and original Torch FFN weights; both precompute context K/V",
+  "cleanup_plan": "PID plus birth identity; no foreign process; no restart on failure",
+  "evidence_path": "/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/ffn-current-profile-20261022",
+  "storage_account_root": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-current-profile-20261022",
+  "previous_attempt_gpu_seconds": 0,
+  "production_admitted": false,
+  "formal_performance_permission": false,
+  "GPU": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-current-profile-20261022/build_profile.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-current-profile-20261022",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-current-profile-20261022/build/obj"
+      ],
+      600,
+      false
+    ],
+    [
+      "profile1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-current-profile-20261022/worker.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "profile2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-current-profile-20261022/worker.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ]
+}

@@ -1,9 +1,9 @@
 {
-  "observed_at": "2026-10-22T21:28:36.893393+08:00",
-  "previous_derived_snapshot_commit": "7571cf8090fb60f68c6018f3da8363cfe23adead",
-  "previous_derived_snapshot": "review/history/current-before-ffn-epilogue-abi-20261022/CURRENT-EXECUTION-20261022.json",
+  "observed_at": "2026-10-22T22:26:28.905006+08:00",
+  "previous_derived_snapshot_commit": "71a9596b86e565d3c1e4d407667d416dfae517d9",
+  "previous_derived_snapshot": "review/history/current-before-current-ffn-profile-20261022/CURRENT-EXECUTION-20261022.json",
   "operator": {
-    "status": "COMPLETE_TWO_POSITIVE_IMPLEMENTATION_STEPS_AND_FFN_REPLAY",
+    "status": "CURRENT_B_UNCHANGED_PROFILE_COMPLETE",
     "selected_trial": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-epilogue-abi-20261022",
     "selected_variant": "b-inline-producer",
     "source_sha256": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
@@ -28,16 +28,15 @@
     "FFN1_producer_inlined": true,
     "registers_per_thread": 255,
     "static_local_bytes_per_thread": 920,
-    "local_GPU_retest": false,
-    "dynamic_GPU_counters_this_trial": "UNKNOWN_NOT_MEASURED",
+    "local_GPU_retest": "NCU current standalone FFN finite output equality only; not whole-layer performance retest",
+    "dynamic_GPU_counters_this_trial": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-current-profile-20261022/local-counters/COUNTER-SUMMARY.json",
     "production_admitted": false,
     "engineering_quality_screen": false,
     "independent_test_complete": false,
     "noninferiority_established": false,
     "formal_performance_permission": false
   },
-  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-epilogue-abi-20261022/RESULT.md",
-  "operator_stage_table": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-epilogue-abi-20261022/STAGE-MAP.md",
+  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-current-profile-20261022/RESULT.md",
   "operator_timing": [
     {
       "kv": 288,
@@ -172,157 +171,7 @@
       }
     }
   ],
-  "A_implementation": {
-    "status": "COMPLETE_FINITE_STAGE",
-    "rows": [
-      {
-        "kv": 288,
-        "median_ms_mean_of_two": {
-          "torch_static_cached_final": 1.1258880138397216,
-          "previous_cached": 0.9470208168029786,
-          "custom_cached": 0.9317631959915161
-        },
-        "speedup_vs_Torch": 1.208341366865893,
-        "latency_reduction_percent_vs_previous": 1.611117785453775,
-        "per_process_reduction": [
-          1.6115945153153732,
-          1.6106413390426733
-        ],
-        "debug": {
-          "previous_cached": {
-            "n": 24,
-            "last_group_ready_after_first_us": 90.624,
-            "last_done_after_first_ready_us": 226.304,
-            "last_done_after_last_ready_us": 136.192,
-            "resources": [
-              108,
-              1,
-              100096,
-              255,
-              1224,
-              256
-            ]
-          },
-          "custom_cached": {
-            "n": 24,
-            "last_group_ready_after_first_us": 90.112,
-            "last_done_after_first_ready_us": 210.944,
-            "last_done_after_last_ready_us": 120.832,
-            "resources": [
-              108,
-              1,
-              100096,
-              255,
-              1232,
-              256
-            ]
-          }
-        }
-      },
-      {
-        "kv": 1152,
-        "median_ms_mean_of_two": {
-          "torch_static_cached_final": 1.9188480854034422,
-          "previous_cached": 1.1156479835510256,
-          "custom_cached": 1.1005951881408693
-        },
-        "speedup_vs_Torch": 1.743463996644188,
-        "latency_reduction_percent_vs_previous": 1.3492423804006948,
-        "per_process_reduction": [
-          1.3858295202757165,
-          1.3126485219763118
-        ],
-        "debug": {
-          "previous_cached": {
-            "n": 24,
-            "last_group_ready_after_first_us": 90.112,
-            "last_done_after_first_ready_us": 226.304,
-            "last_done_after_last_ready_us": 136.192,
-            "resources": [
-              108,
-              1,
-              100096,
-              255,
-              1224,
-              256
-            ]
-          },
-          "custom_cached": {
-            "n": 24,
-            "last_group_ready_after_first_us": 89.088,
-            "last_done_after_first_ready_us": 210.944,
-            "last_done_after_last_ready_us": 121.856,
-            "resources": [
-              108,
-              1,
-              100096,
-              255,
-              1232,
-              256
-            ]
-          }
-        }
-      },
-      {
-        "kv": 2160,
-        "median_ms_mean_of_two": {
-          "torch_static_cached_final": 3.149516773223877,
-          "previous_cached": 1.1279871940612791,
-          "custom_cached": 1.112934398651123
-        },
-        "speedup_vs_Torch": 2.8299213116613995,
-        "latency_reduction_percent_vs_previous": 1.3344828282986887,
-        "per_process_reduction": [
-          1.3528848358553835,
-          1.3160875018031315
-        ],
-        "debug": {
-          "previous_cached": {
-            "n": 24,
-            "last_group_ready_after_first_us": 90.112,
-            "last_done_after_first_ready_us": 226.816,
-            "last_done_after_last_ready_us": 136.192,
-            "resources": [
-              108,
-              1,
-              100096,
-              255,
-              1224,
-              256
-            ]
-          },
-          "custom_cached": {
-            "n": 24,
-            "last_group_ready_after_first_us": 90.112,
-            "last_done_after_first_ready_us": 211.968,
-            "last_done_after_last_ready_us": 120.832,
-            "resources": [
-              108,
-              1,
-              100096,
-              255,
-              1232,
-              256
-            ]
-          }
-        }
-      }
-    ],
-    "real_signatures": 9,
-    "structural_controls": 36,
-    "finite_calls": 225,
-    "timing_worker_accounted_calls": 7224,
-    "call_accounting_note": "includes graph capture registrations, warm/replay and debug observations, not teacher forwards",
-    "candidate_binary_SHA256": "c77ac71ac108f9ef6bca27ade792612b6096689ce1a926ee6baae17262db7ebb",
-    "fixture_identity_gate_vs_timing": "MATCH_6_OF_6",
-    "four_scientific_permissions": [
-      false,
-      false,
-      false,
-      false
-    ],
-    "production_admitted": false
-  },
+  "operator_timing_scope": "Prior selected B production measurement, unchanged by current profile; not new whole/chunk/E2E test",
   "independent_FFN": {
     "status": "COMPLETE_FINITE_FFN_REPLAY",
     "rows": [
@@ -434,43 +283,172 @@
     "caveat": "Copy branch adds standalone initialization barrier; full-copy perturbation and resources reported; not whole episode or quality certificate",
     "formal_performance_permission": false
   },
+  "current_profile": {
+    "status": "COMPLETE_CURRENT_FFN_PROFILE_FINITE_PASS",
+    "selected_source_SHA256": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
+    "production_source_unchanged": true,
+    "per_KV": [
+      {
+        "case": "short",
+        "producer_span_us": 208.38400000000001,
+        "consumer_after_last_producer_us": 122.624,
+        "last_consumer_partition_us": 91.648,
+        "last_consumer_mma_warp_us": 90.88,
+        "last_consumer_commit_wait_us": 1.024,
+        "last_consumer_epilogue_us": 18.432,
+        "last_consumer_publish_us": 2.048,
+        "exit_after_last_consumer_us": 6.144,
+        "consumer_begin_vs_last_producer_us": 9.216,
+        "span_us": 337.408,
+        "FFN_original_Torch_ms": 0.3191551983356476,
+        "FFN_diagnostic_off_ms": 0.3507712006568909,
+        "Torch_FFN1_GELU_ms": 0.17909760475158693,
+        "Torch_FFN2_residual_ms": 0.14105600118637085
+      },
+      {
+        "case": "middle",
+        "producer_span_us": 207.36,
+        "consumer_after_last_producer_us": 122.368,
+        "last_consumer_partition_us": 92.16,
+        "last_consumer_mma_warp_us": 91.648,
+        "last_consumer_commit_wait_us": 1.024,
+        "last_consumer_epilogue_us": 18.432,
+        "last_consumer_publish_us": 2.048,
+        "exit_after_last_consumer_us": 6.144,
+        "consumer_begin_vs_last_producer_us": 8.704,
+        "span_us": 336.12800000000004,
+        "FFN_original_Torch_ms": 0.3215615928173065,
+        "FFN_diagnostic_off_ms": 0.3512320041656494,
+        "Torch_FFN1_GELU_ms": 0.179967999458313,
+        "Torch_FFN2_residual_ms": 0.14154239892959594
+      },
+      {
+        "case": "long",
+        "producer_span_us": 209.152,
+        "consumer_after_last_producer_us": 122.88,
+        "last_consumer_partition_us": 92.416,
+        "last_consumer_mma_warp_us": 91.648,
+        "last_consumer_commit_wait_us": 1.024,
+        "last_consumer_epilogue_us": 18.432,
+        "last_consumer_publish_us": 2.048,
+        "exit_after_last_consumer_us": 6.144,
+        "consumer_begin_vs_last_producer_us": 9.216,
+        "span_us": 338.432,
+        "FFN_original_Torch_ms": 0.32107518911361693,
+        "FFN_diagnostic_off_ms": 0.34982399344444276,
+        "Torch_FFN1_GELU_ms": 0.18037760257720947,
+        "Torch_FFN2_residual_ms": 0.139520001411438
+      }
+    ],
+    "max_full_copy_perturbation_percent": 0.5355695576257258,
+    "full_instrumentation_perturbation_percent": [
+      0.3651050325473415,
+      -0.13552048483084222,
+      0.1245788411404547,
+      0.3374627324145951,
+      0.05617584137100895,
+      0.16617986890119507
+    ],
+    "resources": [
+      108,
+      1,
+      100096,
+      255,
+      920,
+      256
+    ],
+    "timeline_count": {
+      "full": 72,
+      "isolated": 72
+    },
+    "formal_performance_permission": false,
+    "production_admitted": false
+  },
   "resources": {
-    "status": "COMPLETE_ADOPTED_FOR_RESEARCH_OWNED_CLEAN",
-    "registered_at": "2026-10-22T21:06:20.408234+08:00",
-    "deadline": "2026-10-22T22:06:20.408234+08:00",
-    "cleanup_at": "2026-10-22T21:23:43.354811+08:00",
-    "GPU_worker_lifecycle_seconds": 149.25335478782654,
-    "CPU_build_lifecycle_seconds": 442.12380862236023,
-    "CUDA_active_seconds": "UNKNOWN",
-    "conservative_charged_setup_wait_build_cleanup_seconds": 1042.946577,
-    "cumulative_prior_seconds": 11295.645769822419,
-    "charged_cumulative_seconds": 12338.59234682242,
+    "status": "COMPLETE_PROFILE_OWNED_CLEANUP",
+    "GPU_worker_lifecycle_seconds": 62.11374306678772,
+    "CPU_compile_seconds": 147.25232648849487,
+    "conservative_setup_through_cleanup_seconds": 265.01759696006775,
+    "cumulative_prior_seconds": 12338.59234682242,
+    "cumulative_current_seconds": 12603.609943782487,
     "cumulative_cap_seconds": 36000,
-    "remaining_seconds": 23661.407653177583,
-    "remote_storage_bytes": 72802159,
-    "local_storage_bytes": 49060963,
-    "per_host_storage_cap_bytes": 805306368,
-    "failures": [],
-    "owned_cleanup": "all16 PID/birth identities absent; GPU applications empty at cleanup",
-    "local_GPU_used": false,
-    "production_admitted": false,
+    "remaining_seconds": 23396.39005621751,
+    "old_deadline_preserved": "2026-10-22T22:06:20.408234+08:00",
+    "new_deadline": "2026-10-22T22:43:50.290981+08:00",
+    "local_counter_deadline": "2026-10-22T22:13:13.753958+08:00",
+    "failed_or_timeout_jobs": 0,
+    "remote_owned": [
+      {
+        "pid": 858030,
+        "birth_ticks": 727604255,
+        "pgid": 858030,
+        "reaped": true,
+        "identity_alive": false
+      },
+      {
+        "pid": 858767,
+        "birth_ticks": 727618985,
+        "pgid": 858767,
+        "reaped": true,
+        "identity_alive": false
+      },
+      {
+        "pid": 858796,
+        "birth_ticks": 727620765,
+        "pgid": 858796,
+        "reaped": true,
+        "identity_alive": false
+      }
+    ],
+    "local_owned": {
+      "pid": 361161,
+      "birth_ticks": 1394702403,
+      "pgid": 361161,
+      "reaped": true,
+      "identity_alive": false
+    },
+    "CUDA_active_seconds": "UNKNOWN: profile kernel durations are replay-instrumented, not whole job active time",
+    "robotwin_excluded": "new M40 separate160GPUhour ledger",
+    "transport_events": [
+      {
+        "kind": "SSH_launcher_timeout_20s",
+        "effect": "Detached remote guard continued once; CPU build and both GPU workers completed and reaped; no rerun or duplicate GPU job",
+        "GPU_timeout": false
+      }
+    ]
+  },
+  "robotwin": {
+    "observed_at": "2026-10-22T22:22:15.861274+08:00",
+    "status": "PREPARING_EXPERT_MANIFEST",
+    "GPU_assignment": {
+      "GPU0": "reserved operator",
+      "GPU1": "RoboTwin single worker"
+    },
+    "valid_initializations": {
+      "place_object_basket": 63,
+      "stack_blocks_two": 19,
+      "handover_block": 19,
+      "lift_pot": 19,
+      "press_stapler": 19,
+      "open_microwave": 19
+    },
+    "reused_prior_initializations": 114,
+    "new_policy_episodes": 0,
+    "total_policy_plan": 1800,
+    "auto_chain": [
+      "official expert manifest",
+      "CPU source/identity review",
+      "full512 original BF16 reset bank",
+      "fixed T/C/P full episode queue"
+    ],
+    "budget_GPU_hours": 160,
+    "max_calendar_days": 10,
+    "independent_test_complete": false,
     "formal_performance_permission": false
   },
-  "historical_robotwin_snapshot": {
-    "as_of": "2026-10-22T16:39:06.198887+08:00",
-    "cross_task_complete_episodes": 4,
-    "independent_quality_samples_added": 0,
-    "cumulative_GPU_lifecycle_seconds": 54718.243980407715,
-    "owned_jobs_running": false,
-    "original_deadline": "2026-10-22T01:26:04.706686+08:00",
-    "deadline_expired": true,
-    "expanded1800_started": false,
-    "additional160hours_authorized": false
-  },
-  "robotwin_new_work_this_turn": false,
+  "robotwin_plan": ".pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/PLAN.md",
   "historical_paused72": "review/RESULTS.json unchanged",
-  "historical_R2_FFN_diagnosis": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/RESULT.md",
-  "next": "Current FFN1/FFN2 matched compute/data-movement comparison for remaining ~9%; not started",
+  "next": "Discuss FFN pipeline ABI save/restore vs producer tail; no implementation change yet. GPU1 fixed RoboTwin preparation/automatic evaluation continues.",
   "engineering_quality_screen": false,
   "independent_test_complete": false,
   "noninferiority_established": false,

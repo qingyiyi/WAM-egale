@@ -1,5 +1,6 @@
 # 长期记忆索引
 
+- [RoboTwin扩大评估160GPU小时](global/requirements/decision-RoboTwin扩大评估授权160GPU小时双卡接续.md)（constraint，M40新一期）：已授权1800局、160GPU小时/10天；最新GPU0留算子、GPU1跑RoboTwin，旧账本不改。
 - [先优化FFN1尾部再处理FFN2写回](global/requirements/decision-先优化FFN1尾部再处理FFN2写回.md)（constraint，M39）：用户确认尾部分摊→FFN2写回→函数开销顺序，并补测独立FFN；具体收益看Cycle，原累计预算不增。
 
 - [试验FFN四组依赖融合流水](global/requirements/decision-试验FFN四组依赖融合流水.md)（constraint，M39）：用户批准FFN局部依赖流水，保留数学和ACT缓冲，原预算不增。
@@ -31,7 +32,7 @@
 - [算子优先寄存器/shared、减少local访问](global/requirements/preference-算子优先寄存器与共享内存并减少local访问.md)（guideline，M39）：以动态访存、整层耗时和数值共同验证，不盲目堆高资源。
 - [RoboTwin本机最多四分之一](global/requirements/decision-RoboTwin本机最多分担四分之一且结果汇回远端.md)（constraint，M40）：远端为主，本机有资源才分担，完整配对同卡、结果汇回~/cxz；预算/截止不增加。
 
-- [RoboTwin核对后按每任务100次](global/requirements/decision-RoboTwin先核对官方复现再按每任务一百次评估.md)（constraint，M40）：已批准先做相机/planner等价优化；六任务三臂1800局目标保留，新增资源未批准。
+- [RoboTwin核对后按每任务100次](global/requirements/decision-RoboTwin先核对官方复现再按每任务一百次评估.md)（constraint，M40）：已批准先做相机/planner等价优化；六任务三臂1800局目标保留；资源状态已由新160GPU小时授权取代，见上方最新分卡决策。
 
 - [投影写回bank布局有限归因](global/knowledge/knowledge-投影写回bank布局有限归因.md)（reference，M39）：NCU及两候选控制实验支持写回开销；4warp整层收益3.12%–3.77%，严格有限门通过，余下差距未全解释。
 

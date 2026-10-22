@@ -1,11 +1,9 @@
-# 当前：FFN2写回与生产函数内联完成
+# 当前状态：2026-10-22T22:26:28.905006+08:00
 
-A四元素写回/列常量外提，完整层同轮延迟降1.611%/1.349%/1.334%；B仅内联FFN1生产函数，同轮再降1.020%/1.156%/0.811%。两项各9真实/36结构有限逐位、输入/KV/RNG通过，计时与精度fixture一致。
+当前B源码/DSO不改，FFN profile完成。FFN1末组207–209μs就绪，末FFN2计算约92μs/写回18μs/提交等待1μs；NCU local读写29.8MB。当前SASS显示绝大多数local指令在FFN流水函数入口/出口，支持保存恢复来源，但尚未做移除边界的因果对照。barrier42.5%不是可省墙钟。
 
-当前原Torch/完整单层（远端A100-SXM4 GPU0、warm Graph、双方预计算Cross K/V）：**1.2185 / 1.7605 / 2.8473×**。当前独立FFN为 **0.9182 / 0.9167 / 0.9161×**，仍慢8.9%–9.2%。这不是E2E；不能宣布FFN已经追平。
+既有选定B完整单层原Torch/自有1.2185/1.7605/2.8473×；独立FFN仍慢约9%。本次是profile，不是新性能优化或闭环质量放行。[详细结果](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-current-profile-20261022/RESULT.md)、[时间线](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-current-profile-20261022/FFN-TIMELINE.png)。
 
-生产函数独立调用消失，合计静态HMMA保留；每线程静态local1232→920B，动态流量未测。重放副本完整层扰动≤0.24%，资源一致。两轮改善百分比不直接相加，旧R2独立FFN约24%差距保留为历史。
+RoboTwin新160GPU小时/10天已获准；最新固定GPU0留算子、GPU1单worker跑1800局。GPU1正在补齐每任务19→100有效初态，后接CPU核验/full512 BF16 bank/完整T-C-P队列。尚无新完整质量结果；旧DEV90与54718.244秒/原截止保留。新面板仍扩大DEV，旧FIT/CAL/DEV暴露必须标记。[新队列计划](../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/PLAN.md)。
 
-两机研究入口采用B，16 owned身份退出，本机未GPU重测。累计12338.592/36000秒；原FAILED/截止、四项科学权限和production_admitted=false保留。下一步定位当前FFN1/FFN2计算和搬运差距；未启动新队列。
-
-[完整结果](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-epilogue-abi-20261022/RESULT.md)、[阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-epilogue-abi-20261022/STAGE-MAP.md)、[源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[HW](../.pipeline/PROGRESS.compact.md)。历史TF暂停72交接及RESULTS.json原样保留。
+所有科学权限仍false，review/RESULTS.json历史暂停72局不改。源码、baseline、投机实现与保护文件均未改。当前M39累计12603.610/36000秒。

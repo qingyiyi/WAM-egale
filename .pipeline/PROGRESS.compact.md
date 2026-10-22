@@ -1,19 +1,15 @@
-# 当前研究进度
+# 项目短入口（2026-10-22T22:19:55.013997+08:00）
 
-M39 FFN2四元素写回与FFN1生产函数内联已完成，两机研究入口采用B。A保持数学顺序，减少行循环、重复索引/bias/固定调制读取；B只移除一层生产函数调用，分块与依赖不变。各自9真实/36结构有限逐位、输入/KV/RNG通过；计时fixture与精度一致。四科学权限及production_admitted仍false。
+当前Cycle：wam-research-20261016；固定HW v15语义入口，不重置旧兼容文件。
 
-原Torch/完整单层warm Graph，短/中/长为 **1.2185 / 1.7605 / 2.8473×**。A同轮延迟降1.611%/1.349%/1.334%；B在A上同轮再降1.020%/1.156%/0.811%。两独立进程每档均改善，各轮百分比不相加成组合实测。双方预计算Cross K/V，远端A100-SXM4 GPU0；不是chunk或E2E。
+- M39：当前B FFN profile完成，源码不改。FFN1末组207–209μs，最后FFN2计算92/写回18/等待1μs；local读写29.8MB。NCU的barrier42.5%不是可直接省掉的墙钟。下一步先讨论尾部和额外流量。
+- 选定B完整单层warm Graph原Torch/自有短中长1.2185/1.7605/2.8473×；独立FFN仍慢8.9%–9.2%。双方预计算cross KV，不是chunk/E2E。
+- 本轮测量副本三KV两进程有限输出/输入/KV/RNG通过，资源一致，完整层扰动≤0.536%；非全输入等价定理。
+- 算子累计12603.610/36000秒；当前profile owned已清理。GPU0留算子，不能自动改派机器人。
+- M40：用户新批准固定六任务×100初态×T/TF/PF2=1800局，160GPU小时/10天。最新分工GPU1单worker已启动官方有效初态补齐，bank与完整队列自动接续，尚无新质量结果。T0=10/22 22:03:22，10天硬截止11/01 22:03:22，160资源小时更早触发。
+- 原RoboTwin DEV90 T25/30、TF24/30、PF223/30；原24h账本54718.244秒及10/22 01:26截止保留。新面板仍扩大DEV，已暴露FIT/CAL/DEV标记不改；不混为独立TEST。
+- M17：LIBERO四套6000局齐，严格配对/训练暴露/长尾缺口保留。
+- engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission及production_admitted仍false。baseline/投机/原tile/保护state/cycle/rules不改。
+- 10/23冻结身份，10/28主表，11/01 18:00中文证据包；证据不足收缩claim。
 
-选定源码独立FFN重放相对原Torch为 **0.9182 / 0.9167 / 0.9161×**，仍慢 **8.912% / 9.084% / 9.154%**。测量副本完整层扰动绝对值≤0.24%，资源一致、有限输出/输入/KV/RNG通过。旧R2约24%慢是历史测量，不冒充当前结果，也不能宣称FFN已追平。
-
-B的producer独立设备函数消失，合计静态HMMA保留；每线程static local1232→920B，动态local/HBM流量未测。暖数学tile3408/3480/3408、27grid；ACT仍落全局，只有FFN局部流水。baseline/投机/原tile/保护文件不改。
-
-[结果](experiments/single-layer-async-gemm-20261020/ffn-epilogue-abi-20261022/RESULT.md)、[阶段表](experiments/single-layer-async-gemm-20261020/ffn-epilogue-abi-20261022/STAGE-MAP.md)、[资源](experiments/single-layer-async-gemm-20261020/ffn-epilogue-abi-20261022/RESOURCE-AND-STOP-REPORT.json)。本轮GPU worker149.253秒，CPU编译442.124秒，保守含准备/清理1042.947秒，累计 **12338.592/36000秒**。本轮截止22:06:20与旧截止保留；16个owned身份已退出，无本轮失败/timeout；本机只同步版本，未GPU重测。
-
-| ID | 阶段 | 状态 | 当前结果 / 证据 | 下一步 |
-| --- | --- | --- | --- | --- |
-| `M39` | 单层优化 | in_progress | 两项有限正向改进；独立FFN仍慢约9% | 当前FFN1/FFN2各自同输入计算/搬运对照；尚未执行 |
-| `M17` | LIBERO证据 | blocked | 四套6000局齐；非独立TEST，首两S/暴露/长尾缺口保留 | 不恢复过期作业 |
-| `M40` | RoboTwin | blocked | 原DEV90完成；原截止过期，1800局/160h未获准 | 扩大资源独立处理 |
-
-[PLAN](cycles/wam-research-20261016/PLAN.md)；[此前状态](cycles/wam-research-20261016/history/before-ffn-epilogue-abi-20261022/PROGRESS.md)。10/22 go/no-go、10/23身份冻结、10/28主表、11/01 18:00中文证据包；证据不足收缩claim。
+入口：[Cycle](cycles/wam-research-20261016/PROGRESS.md)、[FFN](experiments/single-layer-async-gemm-20261020/ffn-current-profile-20261022/RESULT.md)、[RoboTwin新链](experiments/robotwin-pilot-20261020/eval100-20261022/PLAN.md)、[Memory](memory/INDEX.md)。只按需读取原证据，失败不删，预算不重置。
