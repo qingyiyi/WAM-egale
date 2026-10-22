@@ -1,17 +1,17 @@
 ---
 kind: execution
 cycle: wam-research-20261016
-updated: '2026-10-22T12:46:50.150956+08:00'
+updated: '2026-10-22T14:42:31.869291+08:00'
 plan: PLAN.md
 progress: PROGRESS.md
 ---
 # 最近执行检查点
 
-1. 明确45分钟授权登记，原累计十小时不增加。
-2. 9签名81次、21结构84次有限精度/状态通过。
-3. 三KV六臂两独立进程，ready慢55.72%–64.22%，性能NO-GO；同构建顺序入口近旧11。
-4. clock插桩有限诊断通过，领取广播约21% CTA周期、发布约4%；不是GPU墙钟比例。两次入口错误完整保留。
-5. 12:43:09核验全部owned退出；累计6895.808秒，当前不运行GPU。
-6. 用户要求回退阶段同步并重新规划：本机源码恢复before，远端同步与身份核查；ready原始源码和DSO留证据，默认DSO从未替换。
+1. HW Maintain保存用户按需调制融合及重测决定，仅本轮单因素，不恢复ready。
+2. 修改optimized单CUDA源：modulation4保留FP32加法，普通MOD不物化，debug只用于审计。
+3. CPU编译303.392秒；上传失败/超时保留，未改GPU截止。
+4. 81+84完整层有限逐位/状态通过；两进程各9408调用，三KV约1%同向改善。
+5. 14:38:38核验owned全部退出；GPU worker94.626秒、保守整窗430.874秒，累计7326.682秒。
+6. 两机源9edf85a2/DSO41af9a65一致，采用新版；阶段表已更新，其他阶段尚未融合。
 
-[结果](../../experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md)、[此前检查点](history/before-ready-gpu-result-20261022/EXECUTION.md)。
+[结果](../../experiments/single-layer-async-gemm-20261020/modulation-ondemand-20261022/RESULT.md)、[前检查点](history/before-modulation-result-20261022/EXECUTION.md)。

@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[算子有限结果与回退](CURRENT-EXECUTION-20261022.md)、[当前状态JSON](CURRENT-EXECUTION-20261022.json)、[阶段公式/tile/同步](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[HW短入口](../.pipeline/PROGRESS.compact.md)。
+最新：[按需调制结果](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[完整阶段公式/tile/同步](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[HW](../.pipeline/PROGRESS.compact.md)。
 
-新ready队列有限精度通过但性能慢56%–64%，已按用户要求恢复旧阶段同步源码，先重新规划。GPU已清理，四科学权限false；下方TF交接保留历史身份。
+当前是阶段同步版加按需调制，有限精度通过，完整层约快1%，已采用。之前ready队列因慢56%–64%回退，仍仅保留为负结果。GPU已清理、四科学权限false；下方TF交接保持历史身份。
 
 ---
 

@@ -1,0 +1,86 @@
+{
+  "goal": "Only fuse on-demand modulation into existing point consumers; finite precision/state and complete layer timing",
+  "deadline": "2026-10-22T15:01:27.807943+08:00",
+  "cumulative_prior_GPU_seconds": 6895.807920703171,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 1800,
+  "new_storage_cap_bytes": 134217728,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/final-whole-comparison/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "ac3f9e46574713fc8555428662c4ca40e1eab0c2d2ba830cc4050ccf713a4ad4",
+  "steps": [
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/modulation-ondemand-20261022/gate.py"
+      ],
+      360,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/modulation-ondemand-20261022/extended.py"
+      ],
+      360,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/modulation-ondemand-20261022/timing.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/modulation-ondemand-20261022/timing.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ],
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/modulation-ondemand-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap"
+  ],
+  "execution_authorization": "USER_APPROVED_MODULATION_FUSION",
+  "scope": "one complete block; uncached context; no robot/full30/production permission",
+  "cleanup_reserve_seconds": 300,
+  "source_status": "SM80 CPU build complete; source and DSO identities checked at remote admission",
+  "registered_at": "2026-10-22T14:31:27.807943+08:00",
+  "input_manifest": {
+    "fixtures": "tools.block_loader.FIXTURES: input-{short,middle,long}-B{2,14}-action-layer0-first.pt plus pinned B2 video fixtures",
+    "real_signatures": 9,
+    "structural_cases": 21,
+    "timing_arms": [
+      "torch_static_uncached",
+      "shared_torch_uncached",
+      "guarded_uncached",
+      "before_selected11",
+      "on_demand_modulation"
+    ]
+  },
+  "candidate_binary_SHA256": "41af9a655a2387e4871eb5ab5dee1a9ac0cf613fd35c66f1f076fc5ef0f20b41",
+  "timing_full_calls_cap_per_process": 14000,
+  "sources": {
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu": "9edf85a2226d31864e8e77bfdd3f2a419f1bf8c95bf562d4d8ae4661170d0051",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/fa2_stage.cuh": "b5f4f26ce3887721ce58096cd34682ed4f6c8a9abe9b3c718a300969f39dd5ef",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/whole_layer.py": "ba241942784bd521ff7f45f8fd99b14cddcfa1f8fc3571f84ef63effc0c44ac9",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  },
+  "diagnostic_debug": "materializes MOD for audit but consumers still compute on demand; all timed calls debug=false"
+}

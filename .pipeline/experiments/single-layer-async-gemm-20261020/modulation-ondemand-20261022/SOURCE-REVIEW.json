@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-22T14:27:45.332223+08:00",
+  "scope": "source review, not numerical validation",
+  "changes": [
+    "normal path MOD allocation becomes zero-sized",
+    "TABLE stage executes only for debug, never consumed",
+    "MODULATE params 0/1 and 3/4 generated in float4 helper",
+    "RESIDUAL gates 2/5 generated in helper, ungated R2 unaffected"
+  ],
+  "preserved": [
+    "__fadd_rn(table,temb) before scale/gate use",
+    "__fadd_rn(1,scale), __fmul_rn, final add and BF16 cast",
+    "temb BF16 or FP32; p.l==1 broadcast or per-token indexing",
+    "original other tiles, all downstream global barriers and private KV semantics"
+  ],
+  "normal_B14": {
+    "logical_tiles_G2": 11912,
+    "logical_tiles_G1": 11984,
+    "grid_barriers": 38,
+    "eliminated_FP32_MOD_bytes": 16515072
+  },
+  "debug_B14": {
+    "logical_tiles_G2": 13928,
+    "logical_tiles_G1": 14000,
+    "grid_barriers": 39
+  },
+  "GPU_precision": "PENDING",
+  "performance": "PENDING"
+}

@@ -1,0 +1,102 @@
+--- before/whole_layer.cu
++++ optimized/whole_layer.cu
+@@ -76,7 +76,7 @@
+     bool *mask, *pred;
+     int *queues;
+     int b, q, c, l, fb, pool, update;
+-    bool temb_float, cache, candidate, affine;
++    bool temb_float, cache, candidate, affine, debug_modulation;
+     float eps[7];
+     float *fa_lse, *fa_lse_partial, *fa_out_partial;
+     int64_t *fa_meta;
+@@ -571,6 +571,28 @@
+ };
+ 
+ // 固定D3072的pointwise：向量搬运和静态tile分配；每元素公式与精度不变。
++// 在消费位置计算4个调制参数，保持原TABLE的FP32相加与广播寻址。
++// 普通路径不再写/读完整[m,6,D]中间表；这里只返回线程私有寄存器值。
++__device__ __forceinline__ float4 modulation4(const Params &p, int64_t element, int param) {
++    const int row = element / D, col = element % D;
++    const int batch = row / p.q, token = row % p.q;
++    const int cell = param * D + col;
++    const int64_t src = (int64_t(batch) * p.l + (p.l == 1 ? 0 : token)) * 6 * D + cell;
++    float4 result = *reinterpret_cast<const float4 *>((const float *)p.w[0] + cell);
++    if (p.temb_float) {
++        const float4 t = *reinterpret_cast<const float4 *>((const float *)p.temb + src);
++#pragma unroll
++        for (int c = 0; c < 4; ++c)
++            ((float *)&result)[c] = __fadd_rn(((float *)&result)[c], ((const float *)&t)[c]);
++    } else {
++        const Point4 t = *reinterpret_cast<const Point4 *>((const B *)p.temb + src);
++#pragma unroll
++        for (int c = 0; c < 4; ++c)
++            ((float *)&result)[c] = __fadd_rn(((float *)&result)[c], value(t.value[c]));
++    }
++    return result;
++}
++
+ __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Point op, int dst,
+                       int a, int b, int param, int64_t count) {
+     constexpr int tile_elements = 2048;
+@@ -618,9 +640,8 @@
+                     float4 xf, shift, scale;
+                     if (op == MODULATE) {
+                         xf = *reinterpret_cast<const float4 *>(fp(p, a) + i);
+-                        int64_t mod = (i / D * 6 + param) * D + i % D;
+-                        shift = *reinterpret_cast<const float4 *>(fp(p, MOD) + mod);
+-                        scale = *reinterpret_cast<const float4 *>(fp(p, MOD) + mod + D);
++                        shift = modulation4(p, i, param);
++                        scale = modulation4(p, i, param + 1);
+                     } else {
+                         const B *input = op == TABLE ? (const B *)p.temb : a < 0 ? p.x : bp(p, a);
+                         x = *reinterpret_cast<const Point4 *>(input + i);
+@@ -631,8 +652,7 @@
+                     if (op == RESIDUAL) {
+                         y = *reinterpret_cast<const Point4 *>(bp(p, b) + i);
+                         if (param >= 0)
+-                            scale = *reinterpret_cast<const float4 *>(
+-                                fp(p, MOD) + (i / D * 6 + param) * D + i % D);
++                            scale = modulation4(p, i, param);
+                     }
+ #pragma unroll
+                     for (int c = 0; c < 4; ++c) {
+@@ -703,8 +723,11 @@
+     layout(p, s);
+     g.sync();
+     int st = 0, m = p.b * p.q, mc = p.b * p.c;
+-    // 1. 按token生成6组调制量，得到self-attention的输入。
+-    point(p, s, g, st++, TABLE, MOD, 0, 0, 0, int64_t(m) * 6 * D);
++    // 1. 调制量在M1/M3与门控残差处按需计算。debug才物化表供外部核验，
++    // 后续计算不依赖该表；普通路径少一个全局阶段屏障。
++    if (p.debug_modulation)
++        point(p, s, g, st, TABLE, MOD, 0, 0, 0, int64_t(m) * 6 * D);
++    ++st;
+     norm(p, s, g, st++, p.x, p.a[N1], m, -1, -1, p.eps[0], false, true);
+     point(p, s, g, st++, MODULATE, M1, N1, 0, 0, int64_t(m) * D);
+     // 2. Self attention：Q/K/V投影→Q/K的RMSNorm与RoPE→FA2→输出投影。
+@@ -771,6 +794,7 @@
+     p.context = (const B *)context.data_ptr();
+     p.temb = temb.data_ptr();
+     p.temb_float = temb.scalar_type() == at::kFloat;
++    p.debug_modulation = debug;
+     for (int i = 0; i < 27; ++i)
+         p.w[i] = w[i].data_ptr();
+     for (int i = 0; i < 7; ++i)
+@@ -800,7 +824,7 @@
+     for (int i = 0; i < NB; ++i) {
+         const int rows = (i == CK0 || i == CK || i == CV) ? p.b * p.c : p.b * p.q;
+         if (i == MOD)
+-            b[i] = at::empty({rows, 6, D}, fo);
++            b[i] = debug ? at::empty({rows, 6, D}, fo) : at::empty({0}, fo);
+         else
+             b[i] = at::empty({rows, (i == F1 || i == ACT) ? F : D}, (i == N1 || i == N3) ? fo : bo);
+         p.a[i] = b[i].data_ptr();
+@@ -857,7 +881,7 @@
+     if (!debug)
+         return result;
+ 
+-    // debug只暴露已经存在的中间量，外部脚本据此核验，不在kernel里重复检查。
++    // debug额外物化调制表以保留审计字段；普通计时路径不生成它。
+     const char *names[NB] = {"modulation",    "norm1",       "modulated1",     "self_q_linear",
+                              "self_k_linear", "self_v",      "self_q_norm",    "self_k_norm",
+                              "self_q_rope",   "self_k_rope", "self_attention", "self_out",

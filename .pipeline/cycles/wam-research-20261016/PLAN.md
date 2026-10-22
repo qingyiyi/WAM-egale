@@ -3,19 +3,20 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-22T12:46:50.150956+08:00'
+updated: '2026-10-22T14:42:31.869291+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
-# 当前计划：回退后重新做顶层规划
+# 当前计划：逐阶段讨论与有界融合
 
-- [x] M39新ready源码、CPU图与编译。
-- [x] 获批45分钟内完成9签名/21结构/三KV六臂两进程。
-- [x] 一次clock诊断、入口失败保留与清理；性能不晋级。
-- [x] 按用户要求恢复旧11阶段全局同步源码，保留ready证据；活动DSO不变。
-- [x] 逐阶段公式、tile数与同步表已完成：[STAGE-MAP](../../../算子研究/wam_ops/optimized/STAGE-MAP.md)；区分数学分块和调度任务。
-- [ ] 与用户重新讨论顶层方案：按阶段选择合适分块、可合并子图、有限跨阶段填尾波；本轮不自动实施新GPU方案。
-- [ ] M39与最强uncached guarded仍有约11%–13%差距；尚未完成完全对齐。
-- [ ] M17暴露/配对/长尾证据缺口；M40扩大资源另行处理，不启动。
+- [x] ready队列有限验证后回退，旧负结果保留。
+- [x] 用户授权按需调制单因素实现；CPU编译完成。
+- [x] 9签名、21结构有限精度/状态通过。
+- [x] 三KV五臂两独立进程比较；新版均改善约1%。
+- [x] 两机optimized采用实测新版；旧11/失败原件保留。
+- [x] owned清理、完整阶段表、资源与HW更新。
+- [ ] 下一项先讨论Norm1及其后的输入调制，尚未合并或启动新GPU。
+- [ ] M39仍慢最强guarded9.6%–11.3%，完全对齐未完成。
+- [ ] M17证据缺口与M40扩大资源另行处理，不启动。
 
-[本轮结果](../../experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md)。累计6895.808/36000秒，新窗口已闭合；M40旧截止不变。baseline/投机/原tile/保护文件不动。
+[本轮结果](../../experiments/single-layer-async-gemm-20261020/modulation-ondemand-20261022/RESULT.md)。累计7326.682/36000秒，本轮已闭合；原过期截止不重置。baseline/投机/原tile/保护文件不动。

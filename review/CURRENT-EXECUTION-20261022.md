@@ -1,7 +1,11 @@
-# 当前执行：ready验证后回退，重新规划
+# 当前执行：阶段同步版的按需调制融合
 
-新ready路径有限精度/状态通过，但完整层短/中/长3.765/3.887/3.858ms，旧11为2.292/2.457/2.477ms，慢64.22%/58.20%/55.72%。同构建顺序入口近旧11，不能把退化归于简单源码抽取。clock64插桩扰动0.46%–1.21%，领取广播约21%、发布约4%的CTA累计周期；不是墙钟占比。
+当前单项优化已完成：将temb+固定调制表的FP32加法移到两处输入调制和两处门控残差，普通路径不物化MOD。保留阶段同步，不恢复ready队列。
 
-用户要求恢复逐阶段全局同步并重新顶层规划；两机源码已恢复0cc1944b、活动DSO始终ac3f9e46。ready源码/DSO与失败留证据，不在当前活动路径。当前28数学阶段、39次grid同步；约1.4万逻辑tile多数静态分配，不等于1.4万次队列领取。
+同轮远端A100、两独立进程五臂Graph，短/中/长旧版2.292/2.459/2.472ms→新版2.269/2.435/2.449ms，下降1.005%/0.979%/0.942%。相对最强同工作量guarded仍慢9.59%/11.34%/11.27%。不是完整模型/机器人E2E。
 
-[完整结果](../.pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md)、[阶段公式/tile/同步](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[当前源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[HW](../.pipeline/PROGRESS.compact.md)。新45分钟窗口已于12:43清理，累计6895.808/36000秒，不自动开新GPU任务。四科学权限false、旧paused72身份不改。
+9真实签名和21结构有限逐位/状态通过。普通/debug一致；debug额外生成MOD以审计，计时用普通路径。普通路径少2016tile、一次grid同步、15.75MiB中间张量；不是实测HBM节省或峰值显存结论。
+
+两机当前source9edf85a2、DSO41af9a65，旧11和ready负结果保留。GPU已清理，累计7326.682/36000秒；四科学权限false，旧paused72身份不改。
+
+[结果](../.pipeline/experiments/single-layer-async-gemm-20261020/modulation-ondemand-20261022/RESULT.md)、[当前完整阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[HW](../.pipeline/PROGRESS.compact.md)。下一项先讨论Norm1与输入调制，不自动新跑。
