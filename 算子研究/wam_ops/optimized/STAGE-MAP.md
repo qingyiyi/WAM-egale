@@ -1,5 +1,7 @@
 # 预计算后完整阶段与耗时
 
+当前面向用户的展示改用[相对Torch加速比表](../../../.pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/STAGE-SPEEDUP.md)，保留tile及每tile工作量。以下绝对耗时作为原始诊断证据保留。
+
 适用：远端A100-SXM4-40GB、B14/Q16、D3072、FFN14336；两组文本条件各512token，原有self历史短/中/长KV288/1152/2160。正常版本一层一个persistent kernel；缓存由原Torch在GPU上预计算，warm主kernel直接读最终K/V。
 
 下面是独立插桩版本的CTA0阶段时间，中位数来自8轮；包含阶段内计算、任务领取、CTA/warp同步及全grid等待。最后一列是同一CTA0落在该阶段内的grid等待，不是全GPU关键路径等待占比。屏障外时间也不能全部叫作纯计算。逐CTA分布及未缓存对照见CSV。阶段分量中位数之和不等于完整层中位数。
