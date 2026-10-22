@@ -18,7 +18,7 @@ execution: EXECUTION.md
 - [x] M39-KV-GATE：真实9签名及结构/条件换序核验，有限逐位通过才进入计时。
 - [x] M39-KV-PERF：三KV两进程完整层、强baseline与复用边界；更新阶段表/证据/owned清理。
 - [x] M39-VA2：核查LingBot-VA2原文加速基线及推理框架。
-- [ ] M39：完全对齐同工作量强guarded尚未完成；不扩大系统claim。
+- [ ] M39：按最新用户决定，后续仅对比原Torch；历史guarded未追平结果保留，不扩大系统claim。
 - [ ] M17/M40：原证据缺口及扩大资源另处理，不启动。
 
 [本轮结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)。累计8349.913/36000秒；当前作业闭合，原截止与四科学权限不变。
@@ -26,3 +26,5 @@ execution: EXECUTION.md
 - [x] M39-KV-CACHE：用户新批准自有算子读取预计算K（含RMS）/V，双方同等缓存；先精度后性能，冷构建另列。
 - [x] M39-KV-STAGES：完整层、逐阶段耗时、同步等待分列；profile与正常计时独立。
 - [x] M39-TILE-TABLE：按用户反馈补齐阶段tile数量、每tile形状/工作量、K分段与attention循环口径；仅CPU源码核查及文档同步，不启动GPU。
+
+- [x] M39-GELU-AUDIT：核对GELU 1568tile来源及FFN1/GELU/FFN2/残差依赖；仅源码/旧证据分析，融合与warp重叠未实现、无新计时。

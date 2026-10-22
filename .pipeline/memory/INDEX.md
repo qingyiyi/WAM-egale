@@ -1,5 +1,7 @@
 # 长期记忆索引
 
+- [算子后续仅对比原Torch](global/requirements/decision-算子后续仅对比原Torch实现.md)（constraint，当前算子）：新测量/汇报唯一对照为原Torch，保留旧guarded证据；不改变科学权限。
+
 - [自有整层读取预计算Cross K/V并对齐逐阶段耗时](global/requirements/decision-自有整层读取预计算CrossKV并对齐逐阶段耗时.md)（constraint，M39）：双方同缓存、精度后计时、冷warm与profile分列。
 
 - [实现Cross K/V复用并先精度后计时](global/requirements/decision-先实现CrossKV复用并精度通过后计时.md)（constraint，M39）：用户已批准实现；条件映射独立于历史，RMS独立，不融合tile+RMS，原累计预算不增。
