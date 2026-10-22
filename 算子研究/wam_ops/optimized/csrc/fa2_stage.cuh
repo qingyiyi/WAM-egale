@@ -166,8 +166,9 @@ __device__ void independent_attention(const Params &p, Shared &s, cg::grid_group
 // B14的attention阶段：一个CTA包含两个独立4-warp组，每组执行一个合法tile。
 // 两组独享workspace/参数和barrier3/4；不跨候选共享private KV，也不跨阶段。
 // 与单组不同，此时8个warp都做FA2；GEMM、Norm阶段仍按各自映射执行。
-__device__ __noinline__ void attention_dual(const Params &p, Shared &s, cg::grid_group &g, int st,
-                                            bool cross) {
+struct DualAttentionLayout { int group_size, groups, tasks; };
+__device__ DualAttentionLayout prepare_attention_dual(const Params &p, Shared &s, bool cross,
+                                                       bool write_meta) {
     const int team = int(threadIdx.x) / 128, tid = int(threadIdx.x) % 128;
     const int prefix = int(p.info[0]);
     // 非16对齐的history尾部不进入G2；有限结构核验发现G2可改变BF16结果。
@@ -228,7 +229,7 @@ __device__ __noinline__ void attention_dual(const Params &p, Shared &s, cg::grid
             f.ck_head = f.cv_head = HD;
             f.q_batch_stride = f.o_batch_stride = f.k_batch_stride = f.v_batch_stride = 0;
         }
-        if (blockIdx.x == 0 && team == 0) {
+        if (write_meta && team == 0) {
             const int o = cross ? 4 : 0;
             p.fa_meta[o] = cross ? p.c : prefix + 16;
             p.fa_meta[o + 1] = 1;
@@ -237,7 +238,17 @@ __device__ __noinline__ void attention_dual(const Params &p, Shared &s, cg::grid
         }
     }
     __syncthreads(); // 只发布本CTA的两个FA2描述符；跨CTA输入已由前一阶段出口完成。
-    for (int task = 2 * int(blockIdx.x) + team; task < tasks; task += 2 * int(gridDim.x)) {
+    return {group_size, groups, tasks};
+}
+
+// 一个task包含两个原有4-warp attention tile；CTA内的屏障不能删除。
+__device__ void attention_dual_tile(const Params &p, Shared &s, bool cross, int pair,
+                                     DualAttentionLayout layout) {
+    const int team = int(threadIdx.x) / 128, tid = int(threadIdx.x) % 128;
+    const int prefix = int(p.info[0]), group_size = layout.group_size, groups = layout.groups;
+    const int task = 2 * pair + team;
+    auto &f = s.group[team];
+    if (task < layout.tasks) {
         if (cross) {
             wam_whole_fa2::whole_direct_dual<FaCandidate, false, false, false, false, false, true,
                                              false, false>(f, task % p.b, task / p.b, 0,
@@ -263,6 +274,14 @@ __device__ __noinline__ void attention_dual(const Params &p, Shared &s, cg::grid
         asm volatile("cp.async.wait_all;" ::: "memory");
         wam_whole_fa2::dual_group_sync();
     }
+    __syncthreads(); // 两组都结束才允许整个CTA领取其他类型的tile。
+}
+
+__device__ __noinline__ void attention_dual(const Params &p, Shared &s, cg::grid_group &g, int st,
+                                            bool cross) {
+    const auto layout = prepare_attention_dual(p, s, cross, blockIdx.x == 0);
+    for (int pair = int(blockIdx.x); pair < (layout.tasks + 1) / 2; pair += int(gridDim.x))
+        attention_dual_tile(p, s, cross, pair, layout);
     g.sync();
 }
 __device__ __forceinline__ void attention(const Params &p, Shared &s, cg::grid_group &g, int st,

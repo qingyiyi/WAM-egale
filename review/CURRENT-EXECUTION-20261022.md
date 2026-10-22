@@ -1,4 +1,12 @@
-# 当前执行证据（2026-10-22T08:00:56.024170+08:00）
+# 当前接续：就绪tile源码完成，GPU待验
+
+用户将当前优先级改为就绪tile调度。B14单层28节点源码已在optimized完成：仅启动时一次grid同步、按依赖领取、Cross-K/V补空闲、FFN2按输出tile有序发布。CPU图24配置、SM80编译与两机CPU加载通过；新GPU输出/中间量/有效KV/RNG与速度均未验证。原语数学体抽取保持，不等于GPU逐位证明。
+
+[结果与限制](../.pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md)、[执行器源码](../算子研究/wam_ops/optimized/csrc/ready_tiles.cuh)、[依赖图](../算子研究/wam_ops/optimized/csrc/ready_graph.h)。候选3bdf1a62仅留证据，默认ac3f9e46不变；旧下表不是新ready的速度。原09:00已过，新45分钟GPU窗口待用户确认，新GPU消耗0，原十小时累计不重置；四科学权限false。
+
+---
+
+## 旧晨间执行证据（2026-10-22T08:00:56.024170+08:00）
 
 **三项晨间候选均未晋级，仍用夜间11；单层尚未完全对齐同工作量guarded强baseline。** 源0cc1944b/DSOac3f9e46已两机核对恢复，baseline/投机/原tile不动，四科学权限false。
 

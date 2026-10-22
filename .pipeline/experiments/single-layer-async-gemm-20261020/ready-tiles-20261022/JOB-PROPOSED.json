@@ -1,0 +1,64 @@
+{
+  "goal": "B14 ready tile graph finite numerical/state gates and complete-layer comparison",
+  "deadline": null,
+  "cumulative_prior_GPU_seconds": 6004.497041234253,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 2700,
+  "new_storage_cap_bytes": 1073741824,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/overnight-alignment-20261022/final-whole-comparison/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "ac3f9e46574713fc8555428662c4ca40e1eab0c2d2ba830cc4050ccf713a4ad4",
+  "steps": [
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/gate.py"
+      ],
+      360,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/extended.py"
+      ],
+      360,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/timing.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/timing.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ],
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ready-tiles-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap"
+  ],
+  "execution_authorization": "PENDING_NEW_WINDOW",
+  "scope": "one complete block; uncached context; no robot/full30/production permission",
+  "cleanup_reserve_seconds": 300,
+  "source_status": "Source manifest is filled after CPU build; GPU guard requires explicit new-window authorization and absolute deadline."
+}

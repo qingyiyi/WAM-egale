@@ -1,11 +1,9 @@
-# 当前讨论与授权（2026-10-22T07:59:51.237516+08:00）
+# 当前讨论与授权（2026-10-22T12:18:20.800737+08:00）
 
-用户同意继续单层性能对齐至10/22 09:00，原累计10 GPU小时。先对齐，再tile ready调度；不能完全对齐需给测量和合理原因。只改optimized，baseline/原tile/投机生产不动，BAAI仅~/cxz。
+用户最新“那要不先这样吧，你看看能不能先去掉同步，实现tile调度”：当前优先实现依赖就绪调度，替代先完全对齐的顺序。仍保留必要输入/共享内存同步，不把原语慢点全归因grid barrier；不保证异步更快。
 
-本段已终态：两项设备源码对照无稳定收益；编译链新证据触发前瞻第三项LTO，精度通过却慢约16%，全部恢复11。LTO的Cross-K/V只有嵌入整层明显退化，FFN1/2改善；不能把全部慢因说成同步或认为localSize更小必然更快。当前版仍慢于同工作量uncached guarded约11%–13%。
+已完成B14单层28节点源码、CPU图审查和SM80编译；一次启动grid.sync，按节点完成释放tile，Cross-K/V提前填空。FFN2每输出tile第二段依赖第一段，可能损失原K分段并行。普通节点仍完整输入就绪，cached路径不在本次实现。
 
-下一轮建议限定FFN设备编译边界，同时保留Cross-K/V现有快路径；B14专用入口后备。未实现这两项，不继续无边界搜索。cached命中时Cross-K/V不是可领取任务，不能把无效计算当DAG补位收益。当前无ready-DAG。
+原夜间09:00已过。已准备并询问远端GPU0新45分钟窗口，计入原十小时，未获答前不启动。旧累计6004.497秒保留，新GPU0秒；候选DSO未部署。只改optimized，baseline/投机/原tile/保护文件不动；M40旧截止不变。
 
-本机/BAAI本段owned都已退出，原截止/预算未重置。M40原01:26截止已过，没有1800局/新160h批准；当前算子继续授权不转成机器人资源。四科学权限false；原FAILED/retention/paused72和保护文件不变。
-
-[此前讨论](history/morning-before-20261022/DISCUSSION-SUMMARY.md)。
+[结果](../../experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md)、[历史讨论](history/before-ready-20261022/DISCUSSION-SUMMARY.md)。

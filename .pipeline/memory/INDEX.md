@@ -1,6 +1,8 @@
 # 长期记忆索引
 
-- [算子夜间对齐至10月22日09:00](global/requirements/decision-算子夜间持续对齐至十月二十二日九点.md)（constraint，M39本次）：继续单层性能对齐，原累计10小时不重置；RoboTwin期限不变。
+- [当前先实现就绪tile调度](global/requirements/decision-当前优先实现依赖就绪tile调度.md)（constraint，M39）：替代先完全对齐再调度的当前顺序；保留依赖、旧证据与资源边界。
+
+- [算子夜间对齐至10月22日09:00](global/requirements/decision-算子夜间持续对齐至十月二十二日九点.md)（constraint，已结束夜间窗口）：继续单层性能对齐，原累计10小时不重置；RoboTwin期限不变。
 
 - [算子优先寄存器/shared、减少local访问](global/requirements/preference-算子优先寄存器与共享内存并减少local访问.md)（guideline，M39）：以动态访存、整层耗时和数值共同验证，不盲目堆高资源。
 - [RoboTwin本机最多四分之一](global/requirements/decision-RoboTwin本机最多分担四分之一且结果汇回远端.md)（constraint，M40）：远端为主，本机有资源才分担，完整配对同卡、结果汇回~/cxz；预算/截止不增加。
@@ -189,4 +191,4 @@
 
 历史映射见 [原记录清单](../maintenance/hw-upgrade-20261016/LEGACY-RECORD-INVENTORY.json)，仅在查旧问题时打开；不把旧 GPU 暂停、旧“未完成”或早期计划当成当前指令。
 
-本轮确认：[先核对再调度](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)、[改动与指标解释边界](global/requirements/requirement-算子交付明确源码入口与验证范围.md)均为constraint；动态数字留在M39。
+旧顺序已由当前就绪调度决定替代：[先核对再调度](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)、[改动与指标解释边界](global/requirements/requirement-算子交付明确源码入口与验证范围.md)均为constraint；动态数字留在M39。

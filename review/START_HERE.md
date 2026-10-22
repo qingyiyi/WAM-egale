@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[单层晨间诊断与收口](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[HW短入口](../.pipeline/PROGRESS.compact.md)、[算子源码](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)。
+最新：[就绪tile源码与待验状态](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[HW短入口](../.pipeline/PROGRESS.compact.md)、[算子源码说明](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)。
 
-当前仍用夜间11：B14三KV约2.296/2.453/2.476ms，仍比同工作量uncached guarded慢约11%–13%。晨间3候选均不晋级；当前版NCU和LTO阶段退化分解已完成，所有owned退出。ready-DAG未实现、四科学权限false。下面原TF交接保持历史身份。
+当前新ready路径源码/CPU编译完成，GPU尚未运行；默认仍已验证夜间11。旧B14短中长约2.296/2.453/2.476ms不是新调度结果。旧09:00窗口结束，新窗口待用户确认。四科学权限false；下方TF交接保持历史身份。
 
 ---
 

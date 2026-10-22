@@ -1,7 +1,7 @@
 ---
 kind: progress
 cycle: wam-research-20261016
-updated: '2026-10-22T07:59:51.237516+08:00'
+updated: '2026-10-22T12:18:56.377321+08:00'
 plan: PLAN.md
 current: M39
 next: M39
@@ -11,8 +11,16 @@ next: M39
 | ID | 阶段 | 状态 | 证据 | 下一步 |
 | --- | --- | --- | --- | --- |
 | `M17` | LIBERO | in_progress | 6000局齐，非独立TEST | 暴露/首两S/长尾缺口 |
-| `M39` | 单层先对齐 | in_progress | 当前约2.296/2.453/2.476ms；新3项均不晋级 | 按阶段控制编译影响，之后DAG |
+| `M39` | 单层就绪tile | in_progress | 新源码/CPU编译与图审查完成；旧11仍是已验证DSO | 新GPU窗口后验证精度/状态与三KV性能 |
 | `M40` | RoboTwin | in_progress | 工程4局终态、旧DEV90 | 截止已过，扩大未获新资源 |
+
+## M39 当前接续（2026-10-22T12:18:20.800737+08:00）
+
+用户最新决定先去掉不必要的全局阶段等待、实现tile调度，替代下文旧“先按阶段编译再DAG”的顺序。已在optimized实现28节点就绪队列：启动仅1次grid.sync，CTA每tile重新领取，Cross-K/V补空闲，FFN2每输出tile有序依赖。普通节点仍按整输入节点就绪，不是完整逐行流水。
+
+[结果](../../experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md)：CPU图24配置通过、原数学体抽取比对通过、SM80编译与两机CPU加载通过；新GPU精度/速度均UNKNOWN。首次远端加载缺libcudart搜索路径失败保留，已用既有va环境和runtime路径修正，不安装系统组件。
+
+新DSO3bdf1a62仅留证据，活动DSO仍ac3f9e46。源已同步远端；未启动GPU；原09:00已过，新45分钟窗口待用户确认，累计仍6004.497/36000秒。FFN2减少同tile K分段并行、原子/fence和编译开销可能抵消收益，不能用旧表替新版本背书。M17/M40不启动。
 
 ## M39 已观察结果
 

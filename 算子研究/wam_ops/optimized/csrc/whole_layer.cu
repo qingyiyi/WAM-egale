@@ -8,6 +8,7 @@
 #include <c10/cuda/CUDAMathCompat.h>
 #include <cooperative_groups.h>
 #include <cuda_bf16.h>
+#include <cuda/atomic>
 #include <cutlass/gemm/device/gemm.h>
 #include "cutlass_gemm_mainloop.cuh"
 #include <map>
@@ -65,6 +66,7 @@ enum Point { TABLE, MODULATE, RESIDUAL, ROPE, GELU };
 // FFN1的8warp均做MMA；B14 attention分两个4warp组，RMS分两组各算一行。
 // 动态队列由warp0领取；静态point/norm/FFN/双组attention不经过队列。
 // a[]是中间buffer，w[]对应whole_layer.py绑定的原始参数，均不跨候选混用。
+struct ReadyState;
 struct Params {
     const void *w[27];
     void *a[NB];
@@ -75,6 +77,7 @@ struct Params {
     int64_t *ids, *rows, *slots, *free, *info;
     bool *mask, *pred;
     int *queues;
+    ReadyState *ready;
     int b, q, c, l, fb, pool, update;
     bool temb_float, cache, candidate, affine;
     float eps[7];
@@ -104,6 +107,7 @@ union alignas(32) TileShared {
 struct Shared {
     TileShared tile;
     int task;
+    int node;
     wam_whole_fa2::WholeParams fa2;
     wam_whole_fa2::GroupParams group[2];
 };
@@ -256,12 +260,9 @@ __device__ __noinline__ void action_ffn2_parallel(const Params &p, Shared &s, cg
 // FFN1 M128×N256、8个MMA warp：112个tile，K32三级流水。
 // 8warp的FP32 accumulator分两半经同一128×136 shared区写回，避免
 // 为整层抬高shared预留；完整K3072、bias和BF16舍入边界不变。
-__device__ __noinline__ void action_ffn1_wide(const Params &p, Shared &s, cg::grid_group &g,
-                                              int st) {
+__device__ void action_ffn1_tile(const Params &p, Shared &s, int tile) {
     using Mma = CutlassWideFFN::Mma;
-    // 静态任务无需入口全局屏障；保留出口及分段依赖。
     auto &workspace = s.tile.cutlass_gemm.wide_ffn;
-    for (int tile = int(blockIdx.x); tile < 112; tile += int(gridDim.x)) {
         const int rm = (tile / 56) * 128, cn = (tile % 56) * 256;
         const int thread = int(threadIdx.x), warp = thread / 32, lane = thread % 32;
         typename Mma::IteratorA::Params ap{CutlassRow(D)};
@@ -300,7 +301,12 @@ __device__ __noinline__ void action_ffn1_wide(const Params &p, Shared &s, cg::gr
             }
             __syncthreads();
         }
-    }
+
+}
+__device__ __noinline__ void action_ffn1_wide(const Params &p, Shared &s, cg::grid_group &g,
+                                              int st) {
+    for (int tile = int(blockIdx.x); tile < 112; tile += int(gridDim.x))
+        action_ffn1_tile(p, s, tile);
     g.sync();
 }
 
@@ -571,13 +577,9 @@ struct alignas(8) Point4 {
 };
 
 // 固定D3072的pointwise：向量搬运和静态tile分配；每元素公式与精度不变。
-__device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Point op, int dst,
-                      int a, int b, int param, int64_t count) {
+__device__ void point_tile(const Params &p, Point op, int dst, int a, int b, int param,
+                            int64_t count, int task) {
     constexpr int tile_elements = 2048;
-    const int tiles = (count + tile_elements - 1) / tile_elements;
-    // 静态任务无需重置队列；前一阶段出口已保证输入就绪。
-    // 每个tile独立；按CTA编号固定分配，省去每tile原子领取/广播。
-    for (int task = int(blockIdx.x); task < tiles; task += int(gridDim.x)) {
         if (op == TABLE && (p.temb_float || p.l != p.q)) {
             // 非逐token/BF16输入的兼容分支，保持原广播寻址与FP32相加。
             for (int j = threadIdx.x; j < tile_elements; j += THREADS) {
@@ -663,8 +665,14 @@ __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Poi
                 }
             }
         }
-        // 此阶段只使用线程私有寄存器和互不重叠的输出，无shared复用屏障。
-    }
+
+}
+
+__device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Point op, int dst,
+                      int a, int b, int param, int64_t count) {
+    const int tiles = (count + 2047) / 2048;
+    for (int task = int(blockIdx.x); task < tiles; task += int(gridDim.x))
+        point_tile(p, op, dst, a, b, param, count, task);
     g.sync();
 }
 __device__ void insert_cache(const Params &p, Shared &s, cg::grid_group &g, int st) {
@@ -692,6 +700,7 @@ __device__ void insert_cache(const Params &p, Shared &s, cg::grid_group &g, int 
 // Query tiles always stay within one (candidate, head) instance. B14 is NOT a
 // Q112 sequence. Candidate private suffix visibility is preserved explicitly.
 #include "fa2_stage.cuh"
+#include "ready_tiles.cuh"
 
 // All threads read the same immutable launch descriptors. Avoid an implicit
 // per-thread local copy when a device helper takes Params by reference.
@@ -759,7 +768,8 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
 std::map<std::string, Tensor>
 forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, const Tensor &temb,
         const std::optional<Tensor> &freq, const std::vector<Tensor> &cache,
-        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps, bool debug) {
+        const std::optional<Tensor> &rows, int update, const std::vector<double> &eps, bool debug,
+        bool ready_tiles) {
     c10::cuda::CUDAGuard guard(x.device());
     Params p{};
     p.b = x.size(0);
@@ -820,6 +830,11 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
     auto slots = at::empty({std::max(p.pool, 1)}, lo), free = at::empty({p.q}, lo),
          info = at::empty({2}, lo);
     auto queues = at::empty({MAX_STAGES}, io);
+    // 新调度器仅用于B14/Q16研究入口；B2及原调用默认仍走顺序实现。
+    TORCH_CHECK(!ready_tiles || (p.candidate && p.b == 14 && p.q == 16),
+                "ready_tiles requires B14/Q16 with candidate history");
+    auto ready = at::empty({ready_tiles ? int64_t(sizeof(ReadyState)) : 0}, bo.dtype(at::kByte));
+    p.ready = ready_tiles ? reinterpret_cast<ReadyState *>(ready.data_ptr()) : nullptr;
     p.slots = slots.data_ptr<int64_t>();
     p.free = free.data_ptr<int64_t>();
     p.info = info.data_ptr<int64_t>();
@@ -842,13 +857,14 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
 
     // Cooperative grid必须全部驻留，否则grid.sync无法完成；按实际资源计算CTA数量。
     int active = 0;
-    C10_CUDA_CHECK(cudaFuncSetAttribute(whole_layer, cudaFuncAttributeMaxDynamicSharedMemorySize,
+    const void *kernel = ready_tiles ? (const void *)whole_layer_ready : (const void *)whole_layer;
+    C10_CUDA_CHECK(cudaFuncSetAttribute(kernel, cudaFuncAttributeMaxDynamicSharedMemorySize,
                                         sizeof(Shared)));
-    C10_CUDA_CHECK(cudaOccupancyMaxActiveBlocksPerMultiprocessor(&active, whole_layer, THREADS,
+    C10_CUDA_CHECK(cudaOccupancyMaxActiveBlocksPerMultiprocessor(&active, kernel, THREADS,
                                                                  sizeof(Shared)));
     const int blocks = p.sms * active;
     void *launch_args[] = {&p};
-    C10_CUDA_CHECK(cudaLaunchCooperativeKernel((void *)whole_layer, dim3(blocks), dim3(THREADS),
+    C10_CUDA_CHECK(cudaLaunchCooperativeKernel(kernel, dim3(blocks), dim3(THREADS),
                                                launch_args, sizeof(Shared),
                                                at::cuda::getCurrentCUDAStream()));
 
@@ -872,7 +888,7 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
     result["logical_slots"] = slots;
     result["attention_meta"] = fa_meta;
     cudaFuncAttributes attr;
-    C10_CUDA_CHECK(cudaFuncGetAttributes(&attr, whole_layer));
+    C10_CUDA_CHECK(cudaFuncGetAttributes(&attr, kernel));
     result["resources"] =
         at::tensor({int64_t(blocks), int64_t(active), int64_t(sizeof(Shared)),
                     int64_t(attr.numRegs), int64_t(attr.localSizeBytes), int64_t(THREADS)},
@@ -884,7 +900,8 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     // 原始扩展调用默认保留debug字典兼容旧重放脚本；Python普通入口显式传false。
     m.def("forward", &wam_whole_layer_v1::forward, py::arg("weights"), py::arg("hidden"),
           py::arg("context"), py::arg("temb"), py::arg("rotary"), py::arg("cache"), py::arg("rows"),
-          py::arg("update"), py::arg("eps"), py::arg("debug") = true);
+          py::arg("update"), py::arg("eps"), py::arg("debug") = true,
+          py::arg("ready_tiles") = false);
     m.attr("production_admitted") = false;
     m.attr("computation_launches") = 1;
     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;
