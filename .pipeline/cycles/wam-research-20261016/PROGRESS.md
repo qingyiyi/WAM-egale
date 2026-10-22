@@ -1,35 +1,41 @@
+---
+kind: progress
+cycle: wam-research-20261016
+updated: '2026-10-22T07:59:51.237516+08:00'
+plan: PLAN.md
+current: M39
+next: M39
+---
 # 当前研究进度
 
-更新2026-10-22T02:57:15.434151+08:00。
+| ID | 阶段 | 状态 | 证据 | 下一步 |
+| --- | --- | --- | --- | --- |
+| `M17` | LIBERO | in_progress | 6000局齐，非独立TEST | 暴露/首两S/长尾缺口 |
+| `M39` | 单层先对齐 | in_progress | 当前约2.296/2.453/2.476ms；新3项均不晋级 | 按阶段控制编译影响，之后DAG |
+| `M40` | RoboTwin | in_progress | 工程4局终态、旧DEV90 | 截止已过，扩大未获新资源 |
 
-|ID|阶段|状态|证据|下一步|
-|---|---|---|---|---|
-|M17|LIBERO证据收口|in_progress|6000局齐，非独立TEST|曝光/首两S/长尾缺口|
-|M39|单层先对齐|in_progress|最终完整层约2.296/2.453/2.476ms，有限逐位|NCU及剩余强基线差距，再DAG|
-|M40|RoboTwin迁移|in_progress|跨任务4局终态、owned清理|原截止已过，扩大未获新资源|
+## M39 已观察结果
 
-## M39：夜间已验证版本
+[晨间结果](../../experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/RESULT.md)、[三项对照](../../experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/THREE-TRIALS.csv)、[NCU](../../experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/local-ncu-reference-fixed/RESULT.md)、[LTO阶段表](../../experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/LTO-STAGE-CHANGE.csv)。当前仍选夜间11，源0cc1944b/DSOac3f9e46，两机已核对恢复；没有新候选装入活动路径。
 
-[结果](../../experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESULT.md)、[同轮完整层表](../../experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/WHOLE-LAYER-COMPARISON.csv)、[最终逐阶段表](../../experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/stage-control-final-r2/RESULT.md)。12项候选＋08b修复已终态。选11：静态point/norm分派，padded epilogue，嵌入已有guarded self，B14双4warp attention，FFN1 N256/K32半区写回，删除冗余静态入口同步。仍单层108CTA/256线程，阶段出口依赖保留；无ready-DAG，无30层融合。
+夜间完整层2.296/2.453/2.476ms，相对本夜开始下降8.52%/9.75%/16.81%；同工作量uncached guarded2.070/2.187/2.201ms，仍慢10.94%/12.17%/12.50%。当前晨间重复约2.29/2.46/2.48ms。都是有限输入单层、两进程Graph，不是30层/机器人E2E，也不包括cached projection比较。
 
-B14短/中/长KV同轮两进程CUDA Graph约2.296/2.453/2.476ms，相对本夜开始2.510/2.718/2.977ms下降8.52%/9.75%/16.81%。同工作量uncached guarded强基线2.070/2.187/2.201ms，仍慢约10.94%/12.17%/12.50%；未完全对齐。Torch静态原数学路径2.315/3.101/4.336ms，不挑较慢dense路径宣称超过全部最佳实现。不是机器人E2E或新有效提交成本。
+晨间FA2 forceinline约−0.05%～+0.11%，路由专化+0.11%～+0.32%，无稳定收益；全局compile+device-link LTO慢15.56%/16.15%/15.67%，拒绝。三个候选各9签名/81调用有限逐位通过，所有失败/负结果保留。原selected11的9签名+21结构变体证据继续有效，不重复声称本轮新跑了21变体。
 
-最终9真实签名（B2action/B14action/B2video×3KV）、81完整调用及21结构变体84调用通过有限逐位：原Torch输出、23共有中间量、普通/debug、有效KV更新、输入/RNG。08 short/drop1有2个中间元素差1.49e-8，原FAILED保留；08b非16尾G1修复后通过。不推论所有输入或在线策略质量。源0cc1944b、DSOac3f9e46，[两机部署身份](../../experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/SELECTED.json)。
+当前版NCU：local路径243623424B、active warp12.50%、Tensor47.93%、barrier warp stall40.67%；不是HBM同字节，也不是40.67%墙钟grid同步。无外部PID/0MiB准入但NVML残留24–25%，仅诊断。一次旧reference DSO ABI失败保留；已用远端同源码/验证DSO修复本机optimized依赖。
 
-中KV剩余显著项：self_attention约231 vs guarded157µs，Cross-K RMS116 vs70µs，FFN1 199 vs167µs，FFN2 138 vs117µs，GELU30 vs15µs。阶段独立运行也慢；不是全由全局同步。最小shared/更多CTA控制使RMS/GELU部分改善，但不普遍；完整层100096B shared、255regs/thread、1CTA/SM限制各阶段单独选资源。静态local936B不是动态spill字节。已有grid_constant参数标注，不重复计作新改动。
+LTO中KV Cross-K/V嵌入约772/768µs，原11为574/570µs；LTO独立对应约565/566µs。FFN1/2反而199→179、138→125µs。插桩完整层扰动0.23%–0.66%。支持编译上下文影响不同阶段；具体动态spill/指令缓存贡献未知。原版本统一资源限制是部分原因，不能全归因全局同步。当前108CTA/256线程、100096B动态shared、255regs、静态local936B；仍没有ready-DAG。
 
-本机NCU窗口均已终态；计数及是否有效见本轮RESOURCE报告，不将PARTIAL改成PASS。 M39累计保守计费5472.730/36000秒（含本机等待，非CUDA active）；远端夜间GPU阶段1427.785秒、CPU构建准备2460.965秒。 本轮[资源/停止账本](../../experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESOURCE-AND-STOP-REPORT.json)持续显示等待状态，09:00硬截止。远端本轮全部owned已退出。
+[资源账本](../../experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/RESOURCE-AND-STOP-REPORT.md)：本段保守计费531.767秒，累计6004.497/36000秒；CPU准备952.151秒另列，CUDA active未测。原09:00不延长；本机/BAAI owned均退出，有限范围止损，不是预算耗尽。两项→三项的新证据前瞻修订保留，不再追加实现。
 
-## M40：工程跨任务收口
+## M40 与 M17
 
-[4局结果](../../experiments/robotwin-pilot-20261020/runtime-opt-cross-task-20261021/RESULT.md)：basket valid14原版/组合均成功，177.761→166.753秒（−6.19%）；microwave valid14均失败，921.867→887.386秒（−3.74%）。全程受用观察/物理/RNG/命令/RPC摘要与终态一致；固定顺序每例一次探索性成本，不是稳定新质量N。原组合valid16四臂均成功，组合−7.33%保留。全局工程默认未改。
+RoboTwin跨任务4局：basket14原/组合均成功，177.761→166.753秒；microwave14均失败，921.867→887.386秒。受用观察/物理/RNG/命令/RPC摘要同，固定顺序单次探索性成本，不是新质量N。原累计54718.243980/86400秒与10/22 01:26:04.706686截止不变，owned空，不重启；1800局/160GPU小时未启动/未批准。旧DEV90 T/C/P各30局成功25/24/23，非独立TEST。
 
-累计54718.243980/86400秒，owned清理；原10/22 01:26:04.706686截止已过，不重启。1800局/160GPU小时未启动/未批准。本机允许最多四分之一、同case同卡、证据回传远端，当前没有本机RoboTwin worker。旧DEV90 T/C/P各30成功25/24/23，非独立TEST；提交调用与实际推进分列，旧字段/罚分不覆盖。
+LIBERO三方法各4×10×50=2000，共6000局：Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499（各500）。不是三seed重复，不是独立TEST；曝光/首两S/长尾缺口保留。
 
-## 共同边界与日期
+## 边界与节点
 
-四项科学权限false；paused72、A_off、旧retention/FAILED、baseline/原tile/投机生产和state/cycle/rules不动。BAAI仅~/cxz；未新建论文初稿。 LIBERO三方法各4×10×50=2000，共6000局；Long483/484/473，Goal463/464/467，Spatial472/466/464，Object497/498/499，各500。不是每方法三seed重复。
+四项科学权限false；paused72、A_off、retention、旧FAILED、baseline/原tile/投机生产及state/cycle/rules不动。BAAI仅~/cxz，无新论文初稿。10/22 go/no-go、10/23冻结身份、10/28主表、11/01 18:00中文证据包；证据不足收缩claim。下一步见PLAN的M39，不自动启动新GPU作业。
 
-10/22 go/no-go、10/23冻结身份、10/28主表、11/01 18:00中文证据包。质量和系统证据不足就缩小主张，不制造PASS。
-
-[本轮前完整记录](history/overnight-before-20261022/PROGRESS.md)。
+[此前完整进度](history/morning-before-20261022/PROGRESS.md)、[执行中记录](history/morning-inflight-20261022/PROGRESS.md)。

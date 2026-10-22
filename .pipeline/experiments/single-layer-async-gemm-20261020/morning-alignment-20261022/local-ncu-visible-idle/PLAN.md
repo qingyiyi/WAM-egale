@@ -1,0 +1,1 @@
+真实最终source profile，沿显式07:18继续授权。原strict-util等待未启动GPU，SIGTERM结束并保留全部等待成本。两次NVML无compute进程/显存<128MiB，pmon无C/G PID；实测0MiB、32W、util恒25%，残留util解释是推断，因此只作为硬件诊断、不称完整独占正式计时。420秒worker＋60秒清理；仍无时钟/cache控制，外部任务进入只停止owned，不重试。本次不改变任何数学/质量门。

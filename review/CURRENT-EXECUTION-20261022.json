@@ -1,6 +1,6 @@
 {
-  "observed_at": "2026-10-22T02:57:22.081650+08:00",
-  "previous_derived_snapshot_commit": "85278471c4e752a08bc2893c57911b5130f9a4ce",
+  "observed_at": "2026-10-22T08:00:56.024170+08:00",
+  "previous_derived_snapshot_commit": "f32b53d93279f4e41ef587c7dbb0cc478df6da4e",
   "operator": {
     "status": "FROZEN_FINITE_VERIFIED_RESEARCH_SINGLE_LAYER",
     "selected_trial": "11-static-stage-entry",
@@ -34,138 +34,105 @@
       "DEPLOYMENT-BAAI.json"
     ]
   },
-  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/RESULT.md",
+  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/RESULT.md",
   "resource": {
-    "observed_at": "2026-10-22T02:57:15.365014+08:00",
-    "status": "CLOSED",
-    "deadline": "2026-10-22T09:00:00+08:00",
-    "prior_M39_GPU_lifecycle_seconds": 2538.679523,
-    "remote_GPU_lifecycle_seconds": 1427.7847797870636,
-    "remote_CPU_build_prepare_seconds": 2460.9646871089935,
-    "remote_measured_at": 1792607688.302687,
-    "remote_owned_remaining": [],
-    "local_attempts": [
+    "status": "COMPLETE_BOUNDED_SCOPE_ALIGNMENT_NOT_ACHIEVED",
+    "observed_at": "2026-10-22T07:56:26.236180+08:00",
+    "prior_charged_seconds": 5472.730281838653,
+    "segment_charged_seconds": 531.7667593955994,
+    "cumulative_charged_seconds": 6004.497041234253,
+    "total_cap_seconds": 36000,
+    "remaining_cumulative_seconds": 29995.50295876575,
+    "segment_cap_seconds": 5400,
+    "original_deadline": "2026-10-22T09:00:00+08:00",
+    "remote_GPU_worker_lifecycle_seconds": 323.2651846408844,
+    "local_GPU_worker_lifecycle_seconds": 41.04404354095459,
+    "local_conservative_charged_seconds": 208.50157475471497,
+    "CPU_prepare_seconds": 952.150630235672,
+    "CUDA_active_seconds": "UNKNOWN_NOT_MEASURED",
+    "implementation_trials": 3,
+    "implementation_amendment": "PLAN-AMENDMENT-1.md",
+    "jobs": [
       {
-        "namespace": "local-ncu-08",
-        "status": "FAILED_OR_PARTIAL",
-        "terminal": true,
-        "charged_seconds": 0.06401562690734863,
-        "GPU_worker_seconds": 0,
-        "guard_identity": {},
-        "guard_alive": false,
-        "identity_alive": null,
-        "failure": "AssertionError('local GPU occupied')"
+        "namespace": "01-forceinline-attention",
+        "status": "COMPLETE_ATTEMPT",
+        "charged_seconds": 81.94524240493774,
+        "GPU_worker_lifecycle_seconds": 81.94524240493774,
+        "CPU_prepare_seconds": 147.7709755897522,
+        "error": null
       },
       {
-        "namespace": "local-ncu-final",
-        "status": "FAILED_OR_PARTIAL",
-        "terminal": true,
-        "charged_seconds": 286.3656749725342,
-        "GPU_worker_seconds": 15.047388553619385,
-        "guard_identity": {
-          "pid": 2807025,
-          "birth_ticks": 1387643418,
-          "pgid": 2807025
-        },
-        "guard_alive": false,
-        "identity_alive": false,
-        "failure": [
-          2818268
-        ]
+        "namespace": "02-specialize-attention-route",
+        "status": "COMPLETE_ATTEMPT",
+        "charged_seconds": 81.84679985046387,
+        "GPU_worker_lifecycle_seconds": 81.84679985046387,
+        "CPU_prepare_seconds": 144.87197732925415,
+        "error": null
       },
       {
-        "namespace": "local-ncu-final-r2",
+        "namespace": "03-complete-device-lto",
         "status": "FAILED_OR_PARTIAL",
-        "terminal": true,
-        "charged_seconds": 1219.8362884521484,
-        "GPU_worker_seconds": 1.2108066082000732,
-        "guard_identity": {
-          "pid": 2822944,
-          "birth_ticks": 1387690883,
-          "pgid": 2822944
-        },
-        "guard_alive": false,
-        "identity_alive": false,
-        "failure": [
-          2852221
-        ]
+        "charged_seconds": 0,
+        "GPU_worker_lifecycle_seconds": 0,
+        "CPU_prepare_seconds": 1.6657531261444092,
+        "error": "RuntimeError('build failed')"
+      },
+      {
+        "namespace": "03b-lto-target-fix",
+        "status": "COMPLETE_ATTEMPT",
+        "charged_seconds": 83.347088098526,
+        "GPU_worker_lifecycle_seconds": 83.347088098526,
+        "CPU_prepare_seconds": 316.1005835533142,
+        "error": null
+      },
+      {
+        "namespace": "local-ncu-current",
+        "status": "STOPPED_BEFORE_GPU_ADMISSION_POLICY",
+        "charged_seconds": 90.6013286113739,
+        "GPU_worker_lifecycle_seconds": 0,
+        "CPU_prepare_seconds": null,
+        "error": "No GPU process or memory and32W, but NVML reports constant25%; retain initial strict-util admission, register diagnostic-only observed-idle policy separately"
+      },
+      {
+        "namespace": "local-ncu-reference-fixed",
+        "status": "COMPLETE",
+        "charged_seconds": 31.58707594871521,
+        "GPU_worker_lifecycle_seconds": 19.489288091659546,
+        "CPU_prepare_seconds": null,
+        "error": null
+      },
+      {
+        "namespace": "local-ncu-stages",
+        "status": "STOPPED_NO_EXCLUSIVE_WINDOW",
+        "charged_seconds": 52.76813530921936,
+        "GPU_worker_lifecycle_seconds": 0,
+        "CPU_prepare_seconds": null,
+        "error": "hlj sglang scheduler PID3264276 entered before admission; no worker was launched; preserve profiling attempt; no counter inference"
+      },
+      {
+        "namespace": "local-ncu-visible-idle",
+        "status": "FAILED_OR_PARTIAL",
+        "charged_seconds": 33.545034885406494,
+        "GPU_worker_lifecycle_seconds": 21.554755449295044,
+        "CPU_prepare_seconds": null,
+        "error": null
+      },
+      {
+        "namespace": "lto-stage-diagnostic",
+        "status": "COMPLETE_ATTEMPT",
+        "charged_seconds": 76.12605428695679,
+        "GPU_worker_lifecycle_seconds": 76.12605428695679,
+        "CPU_prepare_seconds": 341.74134063720703,
+        "error": null
       }
     ],
-    "local_worker_GPU_seconds": 16.258195161819458,
-    "night_charged_seconds_including_local_wait": 2934.0507588386536,
-    "cumulative_charged_seconds": 5472.730281838653,
-    "cumulative_cap_seconds": 36000,
-    "night_cap_seconds": 30000,
-    "remaining_seconds": 27065.949241161346,
-    "CUDA_active_seconds": "UNKNOWN: not measured separately; lifecycle is not CUDA active time",
-    "CPU_analysis_seconds": "UNMETERED; build/prepare values are not total CPU work",
-    "local_stored_bytes": 80527829,
-    "remote_stored_bytes_at_checkpoint": 414954314,
-    "storage_cap_bytes": 3221225472,
-    "stopped_implementation_candidates": [
-      "01 generic Self-Q",
-      "05 wide FFN1 K64",
-      "07 one-warp RMS",
-      "09 native-like small projection split",
-      "12 two-warp RMS"
-    ],
-    "precision_failure_preserved": "extended-state-08 short/drop1; repaired by08b, not changed to PASS",
-    "failed_or_partial_remote": [
-      {
-        "namespace": "01-selfq-generic",
-        "status": "FAILED_OR_PARTIAL",
-        "GPU_lifecycle_seconds": 23.26587152481079,
-        "CPU_prepare_seconds": 133.98386931419373,
-        "job_lifecycle_seconds": 157.3880970478058,
-        "owned_remaining": []
-      },
-      {
-        "namespace": "02-point-static",
-        "status": "FAILED_OR_PARTIAL",
-        "GPU_lifecycle_seconds": 23.20974898338318,
-        "CPU_prepare_seconds": 134.47332525253296,
-        "job_lifecycle_seconds": 157.83759236335754,
-        "owned_remaining": []
-      },
-      {
-        "namespace": "extended-state-08",
-        "status": "FAILED_OR_PARTIAL",
-        "GPU_lifecycle_seconds": 12.631381750106812,
-        "CPU_prepare_seconds": 0,
-        "job_lifecycle_seconds": 12.7056884765625,
-        "owned_remaining": []
-      },
-      {
-        "namespace": "native-launch-profile",
-        "status": "FAILED_OR_PARTIAL",
-        "GPU_lifecycle_seconds": 2.2168524265289307,
-        "CPU_prepare_seconds": 0,
-        "job_lifecycle_seconds": 2.2950685024261475,
-        "owned_remaining": []
-      },
-      {
-        "namespace": "native-launch-profile-fix",
-        "status": "FAILED_OR_PARTIAL",
-        "GPU_lifecycle_seconds": 10.927450895309448,
-        "CPU_prepare_seconds": 0,
-        "job_lifecycle_seconds": 11.01650333404541,
-        "owned_remaining": []
-      },
-      {
-        "namespace": "stage-control-final",
-        "status": "FAILED_OR_PARTIAL",
-        "GPU_lifecycle_seconds": 0,
-        "CPU_prepare_seconds": 0.03178811073303223,
-        "job_lifecycle_seconds": 0.05139493942260742,
-        "owned_remaining": []
-      }
-    ],
-    "ready_DAG_started": false,
-    "new_robot_experiments_started": false,
-    "engineering_quality_screen": false,
-    "independent_test_complete": false,
-    "noninferiority_established": false,
-    "formal_performance_permission": false
+    "cleanup_local": "FINAL-CLEANUP-LOCAL.json",
+    "cleanup_BAAI": "FINAL-CLEANUP-BAAI.json",
+    "owned_running": false,
+    "scope_stop": "All3 targeted candidates rejected; complete diagnostics and retain selected11. This is finite-scope stop, not GPU budget exhaustion; no automated new candidate or robot job.",
+    "accounting_correction": "02 launch prior omitted52.768135s CPU queue charge; original JOB retained, included in this cumulative ledger",
+    "local_evidence_bytes": 161183548,
+    "remote_evidence_bytes": 98449424
   },
   "operator_whole_ms": {
     "short": 2.2958080768585205,
@@ -179,6 +146,14 @@
   },
   "full_alignment_achieved": false,
   "ready_DAG_implemented": false,
+  "morning_new_candidates_promoted": 0,
+  "morning_NCU": "4 ranges completed for selected11; diagnostic only",
+  "LTO_latency_regression_percent": [
+    15.563978640471188,
+    16.14616597524414,
+    15.668632944599192
+  ],
+  "all_morning_owned_exited": true,
   "robotwin": {
     "cross_task_complete_episodes": 4,
     "independent_quality_samples_added": 0,

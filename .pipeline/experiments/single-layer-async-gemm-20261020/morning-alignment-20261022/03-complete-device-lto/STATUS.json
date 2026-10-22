@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792625783.9142897,
+  "deadline": 1792630800.0,
+  "jobs": [
+    {
+      "name": "build",
+      "owned": {
+        "pid": 821732,
+        "birth_ticks": 722424248,
+        "pgid": 821732
+      },
+      "start": 1792625783.916649,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792625785.5824018,
+      "lifecycle_seconds": 1.6657531261444092,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 821731,
+    "birth_ticks": 722424244,
+    "pgid": 821731
+  },
+  "error": "RuntimeError('build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/morning-alignment-20261022/03-complete-device-lto/guard.py\", line 47, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: build failed\n",
+  "end": 1792625785.586091,
+  "lifecycle_seconds": 1.6718015670776367
+}

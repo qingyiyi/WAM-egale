@@ -1,11 +1,11 @@
-# 当前讨论与授权（2026-10-22T02:57:15.434151+08:00）
+# 当前讨论与授权（2026-10-22T07:59:51.237516+08:00）
 
-用户授权睡眠期间继续单层性能对齐至北京时间10/22 09:00。先对齐，无法完全对齐需给证据和合理解释；保留完整一层单kernel、tile任务和persistent CTA边界。优先register/shared，减少不必要local访存，但不以资源越大或warp越多当收益。
+用户同意继续单层性能对齐至10/22 09:00，原累计10 GPU小时。先对齐，再tile ready调度；不能完全对齐需给测量和合理原因。只改optimized，baseline/原tile/投机生产不动，BAAI仅~/cxz。
 
-当前12候选已收口，最终比夜间开始快8.5%/9.7%/16.8%，仍慢于同工作量guarded约11%–12.6%。精度仅有限fixture逐位，不等于所有在线输入质量。统一整层资源限制已获得干预证据；调用边界动态代价仍待最新NCU，不把旧计数套到新版本。本机NCU窗口均已终态；计数及是否有效见本轮RESOURCE报告，不将PARTIAL改成PASS。
+本段已终态：两项设备源码对照无稳定收益；编译链新证据触发前瞻第三项LTO，精度通过却慢约16%，全部恢复11。LTO的Cross-K/V只有嵌入整层明显退化，FFN1/2改善；不能把全部慢因说成同步或认为localSize更小必然更快。当前版仍慢于同工作量uncached guarded约11%–13%。
 
-下一步先完成本轮证据归档和剩余原因判定，再考虑依赖就绪DAG补位。没有授权扩大为30层融合、改阈值/模型/质量门或启动新训练/TEST。
+下一轮建议限定FFN设备编译边界，同时保留Cross-K/V现有快路径；B14专用入口后备。未实现这两项，不继续无边界搜索。cached命中时Cross-K/V不是可领取任务，不能把无效计算当DAG补位收益。当前无ready-DAG。
 
-RoboTwin工程4局已完整终态，原01:26截止已经结束；用户愿意当前版本先跑和本机≤1/4不等于此前未批准的160GPU小时扩大预算。当前没有机器人作业。四项科学权限false；paused72、A_off、旧retention/FAILED、baseline/原tile/投机生产和state/cycle/rules不动。BAAI仅~/cxz；未新建论文初稿。
+本机/BAAI本段owned都已退出，原截止/预算未重置。M40原01:26截止已过，没有1800局/新160h批准；当前算子继续授权不转成机器人资源。四科学权限false；原FAILED/retention/paused72和保护文件不变。
 
-[前讨论](history/overnight-before-20261022/DISCUSSION-SUMMARY.md)。
+[此前讨论](history/morning-before-20261022/DISCUSSION-SUMMARY.md)。

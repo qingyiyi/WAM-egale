@@ -1,8 +1,8 @@
 # 当前入口
 
-最新：[夜间单层对齐与RoboTwin收口](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[HW短入口](../.pipeline/PROGRESS.compact.md)、[算子源码说明](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)。
+最新：[单层晨间诊断与收口](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[HW短入口](../.pipeline/PROGRESS.compact.md)、[算子源码](../算子研究/wam_ops/optimized/WHOLE_LAYER.md)。
 
-最终B14三KV约2.296/2.453/2.476ms，比夜间开始下降8.5%/9.7%/16.8%，仍比同工作量uncached guarded慢约11%–12.6%。9签名＋21结构变体有限逐位、两机研究版同DSO；ready-DAG未实现，四权限false。NCU/资源状态以新JSON为准。RoboTwin4局工程验证已终态，原截止已过，1800局未启动。下面旧TF交接保持历史身份。
+当前仍用夜间11：B14三KV约2.296/2.453/2.476ms，仍比同工作量uncached guarded慢约11%–13%。晨间3候选均不晋级；当前版NCU和LTO阶段退化分解已完成，所有owned退出。ready-DAG未实现、四科学权限false。下面原TF交接保持历史身份。
 
 ---
 

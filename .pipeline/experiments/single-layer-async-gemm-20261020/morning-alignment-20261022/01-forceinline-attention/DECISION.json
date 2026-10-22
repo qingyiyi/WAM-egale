@@ -1,0 +1,55 @@
+{
+  "decision": "REJECT_NO_STABLE_GAIN",
+  "nine_signature_gate": true,
+  "rows": [
+    {
+      "process": 1,
+      "KV": "short",
+      "before_ms": 2.292736053466797,
+      "candidate_ms": 2.2968320846557617,
+      "latency_change_percent": 0.17865253973614603
+    },
+    {
+      "process": 1,
+      "KV": "middle",
+      "before_ms": 2.461695909500122,
+      "candidate_ms": 2.4581120014190674,
+      "latency_change_percent": -0.14558695358040108
+    },
+    {
+      "process": 1,
+      "KV": "long",
+      "before_ms": 2.471935987472534,
+      "candidate_ms": 2.4780800342559814,
+      "latency_change_percent": 0.24855201811797567
+    },
+    {
+      "process": 2,
+      "KV": "short",
+      "before_ms": 2.2947840690612793,
+      "candidate_ms": 2.2958080768585205,
+      "latency_change_percent": 0.04462327462733118
+    },
+    {
+      "process": 2,
+      "KV": "middle",
+      "before_ms": 2.4596478939056396,
+      "candidate_ms": 2.460671901702881,
+      "latency_change_percent": 0.041632292157678386
+    },
+    {
+      "process": 2,
+      "KV": "long",
+      "before_ms": 2.475008010864258,
+      "candidate_ms": 2.4739840030670166,
+      "latency_change_percent": -0.04137391849828864
+    }
+  ],
+  "retained_binary": "ac3f9e46574713fc8555428662c4ca40e1eab0c2d2ba830cc4050ccf713a4ad4",
+  "source_restored": true,
+  "reason": "At most 0.25% per-process changes with inconsistent signs; no stable improvement in all3KV",
+  "static_sass_changed_only": [
+    "_ZN18wam_whole_layer_v114attention_dualERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib$72"
+  ],
+  "static_refinement": "Original B14 dual mainloops already embedded in attention_dual; no corresponding separate dual symbols. Forced annotation only changed two local static sites, no call-frame elimination. Other out-of-line whole_standard symbols belong to other routes."
+}

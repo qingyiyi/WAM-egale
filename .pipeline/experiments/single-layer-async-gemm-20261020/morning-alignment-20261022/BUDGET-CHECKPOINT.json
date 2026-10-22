@@ -1,0 +1,46 @@
+{
+  "as_of": "2026-10-22T07:40:19.342432+08:00",
+  "status": "RUNNING_CPU_BUILD_LTO",
+  "prior_charged": 5472.730281838653,
+  "local_attempts": [
+    {
+      "namespace": "local-ncu-visible-idle",
+      "status": "FAILED_OR_PARTIAL",
+      "charged_seconds": 33.545034885406494,
+      "GPU_worker_seconds": 21.554755449295044
+    },
+    {
+      "namespace": "local-ncu-current",
+      "status": "STOPPED_BEFORE_GPU_ADMISSION_POLICY",
+      "charged_seconds": 90.6013286113739,
+      "GPU_worker_seconds": 0
+    },
+    {
+      "namespace": "local-ncu-stages",
+      "status": "STOPPED_NO_EXCLUSIVE_WINDOW",
+      "charged_seconds": 52.76813530921936,
+      "GPU_worker_seconds": 0
+    },
+    {
+      "namespace": "local-ncu-reference-fixed",
+      "status": "COMPLETE",
+      "charged_seconds": 31.58707594871521,
+      "GPU_worker_seconds": 19.489288091659546
+    }
+  ],
+  "local_charged": 208.50157475471497,
+  "local_GPU_worker": 41.04404354095459,
+  "remote_attempts_known_terminal": [
+    "01-forceinline-attention",
+    "02-specialize-attention-route",
+    "03-complete-device-lto"
+  ],
+  "remote_current": "03b-lto-target-fix",
+  "deadline": "2026-10-22T09:00:00+08:00",
+  "caps": {
+    "cumulative_seconds": 36000,
+    "segment_seconds": 5400,
+    "implementation_candidates_after_prospective_amendment": 3
+  },
+  "accounting_note": "02 launch prior omitted52.768s CPU-only local queue charge; correction here is additive, old JOB retained; all remaining budget still within cap"
+}

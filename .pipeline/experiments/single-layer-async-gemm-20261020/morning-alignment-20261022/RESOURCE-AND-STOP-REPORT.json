@@ -1,0 +1,99 @@
+{
+  "status": "COMPLETE_BOUNDED_SCOPE_ALIGNMENT_NOT_ACHIEVED",
+  "observed_at": "2026-10-22T07:56:26.236180+08:00",
+  "prior_charged_seconds": 5472.730281838653,
+  "segment_charged_seconds": 531.7667593955994,
+  "cumulative_charged_seconds": 6004.497041234253,
+  "total_cap_seconds": 36000,
+  "remaining_cumulative_seconds": 29995.50295876575,
+  "segment_cap_seconds": 5400,
+  "original_deadline": "2026-10-22T09:00:00+08:00",
+  "remote_GPU_worker_lifecycle_seconds": 323.2651846408844,
+  "local_GPU_worker_lifecycle_seconds": 41.04404354095459,
+  "local_conservative_charged_seconds": 208.50157475471497,
+  "CPU_prepare_seconds": 952.150630235672,
+  "CUDA_active_seconds": "UNKNOWN_NOT_MEASURED",
+  "implementation_trials": 3,
+  "implementation_amendment": "PLAN-AMENDMENT-1.md",
+  "jobs": [
+    {
+      "namespace": "01-forceinline-attention",
+      "status": "COMPLETE_ATTEMPT",
+      "charged_seconds": 81.94524240493774,
+      "GPU_worker_lifecycle_seconds": 81.94524240493774,
+      "CPU_prepare_seconds": 147.7709755897522,
+      "error": null
+    },
+    {
+      "namespace": "02-specialize-attention-route",
+      "status": "COMPLETE_ATTEMPT",
+      "charged_seconds": 81.84679985046387,
+      "GPU_worker_lifecycle_seconds": 81.84679985046387,
+      "CPU_prepare_seconds": 144.87197732925415,
+      "error": null
+    },
+    {
+      "namespace": "03-complete-device-lto",
+      "status": "FAILED_OR_PARTIAL",
+      "charged_seconds": 0,
+      "GPU_worker_lifecycle_seconds": 0,
+      "CPU_prepare_seconds": 1.6657531261444092,
+      "error": "RuntimeError('build failed')"
+    },
+    {
+      "namespace": "03b-lto-target-fix",
+      "status": "COMPLETE_ATTEMPT",
+      "charged_seconds": 83.347088098526,
+      "GPU_worker_lifecycle_seconds": 83.347088098526,
+      "CPU_prepare_seconds": 316.1005835533142,
+      "error": null
+    },
+    {
+      "namespace": "local-ncu-current",
+      "status": "STOPPED_BEFORE_GPU_ADMISSION_POLICY",
+      "charged_seconds": 90.6013286113739,
+      "GPU_worker_lifecycle_seconds": 0,
+      "CPU_prepare_seconds": null,
+      "error": "No GPU process or memory and32W, but NVML reports constant25%; retain initial strict-util admission, register diagnostic-only observed-idle policy separately"
+    },
+    {
+      "namespace": "local-ncu-reference-fixed",
+      "status": "COMPLETE",
+      "charged_seconds": 31.58707594871521,
+      "GPU_worker_lifecycle_seconds": 19.489288091659546,
+      "CPU_prepare_seconds": null,
+      "error": null
+    },
+    {
+      "namespace": "local-ncu-stages",
+      "status": "STOPPED_NO_EXCLUSIVE_WINDOW",
+      "charged_seconds": 52.76813530921936,
+      "GPU_worker_lifecycle_seconds": 0,
+      "CPU_prepare_seconds": null,
+      "error": "hlj sglang scheduler PID3264276 entered before admission; no worker was launched; preserve profiling attempt; no counter inference"
+    },
+    {
+      "namespace": "local-ncu-visible-idle",
+      "status": "FAILED_OR_PARTIAL",
+      "charged_seconds": 33.545034885406494,
+      "GPU_worker_lifecycle_seconds": 21.554755449295044,
+      "CPU_prepare_seconds": null,
+      "error": null
+    },
+    {
+      "namespace": "lto-stage-diagnostic",
+      "status": "COMPLETE_ATTEMPT",
+      "charged_seconds": 76.12605428695679,
+      "GPU_worker_lifecycle_seconds": 76.12605428695679,
+      "CPU_prepare_seconds": 341.74134063720703,
+      "error": null
+    }
+  ],
+  "cleanup_local": "FINAL-CLEANUP-LOCAL.json",
+  "cleanup_BAAI": "FINAL-CLEANUP-BAAI.json",
+  "owned_running": false,
+  "scope_stop": "All3 targeted candidates rejected; complete diagnostics and retain selected11. This is finite-scope stop, not GPU budget exhaustion; no automated new candidate or robot job.",
+  "accounting_correction": "02 launch prior omitted52.768135s CPU queue charge; original JOB retained, included in this cumulative ledger",
+  "local_evidence_bytes": 161183548,
+  "remote_evidence_bytes": 98449424
+}

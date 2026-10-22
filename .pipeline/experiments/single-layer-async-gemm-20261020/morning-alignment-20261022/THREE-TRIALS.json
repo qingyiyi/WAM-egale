@@ -1,0 +1,79 @@
+{
+  "aggregation": "mean of two independent-process medians; each process24rotating repeats after600warm per arm",
+  "result": [
+    {
+      "trial": "01-forceinline-attention",
+      "KV": "short",
+      "before_ms": 2.293760061264038,
+      "candidate_ms": 2.296320080757141,
+      "latency_change_percent": 0.1116079897080624,
+      "guarded_uncached_ms": 2.0684800148010254
+    },
+    {
+      "trial": "01-forceinline-attention",
+      "KV": "middle",
+      "before_ms": 2.460671901702881,
+      "candidate_ms": 2.459391951560974,
+      "latency_change_percent": -0.052016286324929606,
+      "guarded_uncached_ms": 2.1864959597587585
+    },
+    {
+      "trial": "01-forceinline-attention",
+      "KV": "long",
+      "before_ms": 2.473471999168396,
+      "candidate_ms": 2.476032018661499,
+      "latency_change_percent": 0.10349902865136595,
+      "guarded_uncached_ms": 2.200576066970825
+    },
+    {
+      "trial": "02-specialize-attention-route",
+      "KV": "short",
+      "before_ms": 2.2917120456695557,
+      "candidate_ms": 2.2942720651626587,
+      "latency_change_percent": 0.1117077295090585,
+      "guarded_uncached_ms": 2.068992018699646
+    },
+    {
+      "trial": "02-specialize-attention-route",
+      "KV": "middle",
+      "before_ms": 2.4596478939056396,
+      "candidate_ms": 2.467583954334259,
+      "latency_change_percent": 0.32265026422209075,
+      "guarded_uncached_ms": 2.1857279539108276
+    },
+    {
+      "trial": "02-specialize-attention-route",
+      "KV": "long",
+      "before_ms": 2.47680002450943,
+      "candidate_ms": 2.4816640615463257,
+      "latency_change_percent": 0.19638392234992974,
+      "guarded_uncached_ms": 2.1998080611228943
+    },
+    {
+      "trial": "03b-lto-target-fix",
+      "KV": "short",
+      "before_ms": 2.294528067111969,
+      "candidate_ms": 2.651647925376892,
+      "latency_change_percent": 15.563978640471188,
+      "guarded_uncached_ms": 2.0692480206489563
+    },
+    {
+      "trial": "03b-lto-target-fix",
+      "KV": "middle",
+      "before_ms": 2.459135890007019,
+      "candidate_ms": 2.8561920523643494,
+      "latency_change_percent": 16.14616597524414,
+      "guarded_uncached_ms": 2.1872639656066895
+    },
+    {
+      "trial": "03b-lto-target-fix",
+      "KV": "long",
+      "before_ms": 2.475264012813568,
+      "candidate_ms": 2.8631040453910828,
+      "latency_change_percent": 15.668632944599192,
+      "guarded_uncached_ms": 2.2008320689201355
+    }
+  ],
+  "comparison_scope": "complete single layer, uncached projection, same GPU and original serialized inputs; not taskE2E",
+  "all_attempts_retained": true
+}

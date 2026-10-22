@@ -50,6 +50,6 @@ G1/G2只在实际共享条件/历史的候选间复用prefix，每行private suf
 
 [资源控制](../../../.pipeline/experiments/single-layer-async-gemm-20261020/overnight-alignment-20261022/resource-envelope-control/RESULT.md)证明固定资源限制部分原语：更多可驻留CTA使独立CrossK RMS约116–119→94us，但原版约70us；不能据此把更多CTA直接搬进当前整层。当前静态资源108CTA/1CTA每SM、100096B shared、255寄存器/线程、localSize936B；localSize不是动态spill或HBM流量。
 
-下一步先根据最终逐阶段/计数证据处理attention设备函数组织及原语资源限制，再考虑把独立context K/V tile提前填空位。当前未实现ready-DAG，不把普通shared-prefix/G2或缓存本身写成新贡献。baseline、投机生产和原tile保持只读；全局质量及正式TF性能四项权限仍false。
+晨间[NCU与负结果](../../../.pipeline/experiments/single-layer-async-gemm-20261020/morning-alignment-20261022/RESULT.md)已补齐：当前local路径232.337MiB；两项源码对照无收益，全局LTO慢约16%，均撤回。LTO让FFN变快但Cross-K/V嵌入整层明显变慢，下一步应限制各阶段编译影响，而非全局打开LTO。后续DAG需区分缓存命中，缓存命中时context K/V投影不是可提前领取的任务。当前未实现ready-DAG，不把普通shared-prefix/G2或缓存本身写成新贡献。baseline、投机生产和原tile保持只读；全局质量及正式TF性能四项权限仍false。
 
 [简要带读Prompt](READ_CODE_PROMPT.md)。
