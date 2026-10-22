@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792666156.4167998,
+  "deadline": 1792668252.494633,
+  "jobs": [
+    {
+      "name": "ncu",
+      "owned": {
+        "pid": 849495,
+        "birth_ticks": 726461506,
+        "pgid": 849495
+      },
+      "start": 1792666156.498985,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792666170.039192,
+      "lifecycle_seconds": 13.540207386016846,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 849493,
+    "birth_ticks": 726461495,
+    "pgid": 849493
+  },
+  "error": "RuntimeError('ncu failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/counters/guard.py\", line 50, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: ncu failed\n",
+  "end": 1792666170.0428326,
+  "lifecycle_seconds": 13.626033067703247
+}

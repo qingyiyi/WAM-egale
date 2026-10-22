@@ -1,11 +1,17 @@
-# 当前研究进度（2026-10-22T18:16:14.446638+08:00）
+# 当前研究进度
 
-M39四组FFN依赖流水R2完成：9签名/36结构有限逐位及状态通过。两进程相对原Torchwarm完整单层Graph，短/中/长KV为1.1646/1.6808/2.7386×；比同轮此前阶段版延迟降0.342%/0.357%/0.332%，仅小幅正向信号。debug确认部分FFN2在FFN1全部完成前启动；最后组串行依赖仍在。ACT保留，数学tile3400/3472/3400不变，warm grid29→27。
+M39 FFN诊断完成；当前R2源码/DSO未改。真实短/中/长B14独立FFN（含GELU、门控残差）相对原Torch为0.8080/0.8095/0.8102×，慢23.4%–23.8%。两进程三KV有限输出/输入/KV/RNG通过；嵌入整层与独立FFN插桩span差不到1%，四科学权限false。
 
-[结果](experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/RESULT.md)、[阶段表](experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/STAGE-MAP.md)、[优化索引](experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)。R1额外串行化负结果保留；R2目录错误0调用FAILED保留，原R1二进制完整恢复后同截止新retry核验。两机研究入口采用R2，本机未另测。
+72条时间线均显示最后4个FFN1 tile拖后组3；末尾FFN2计算约68%、写回约25%、提交等待不足约1%。本机NCU诊断同计算路径local读27.54MB/写28.15MB，原Torch为0；生产SASS主要为非内联函数入口/出口寄存器保存恢复，检查的MMA区间无LDL/STL。local请求不是HBM字节，具体延迟贡献尚未量化。原Torch FFN1同样112CTA，不能只按tile数解释慢因。
 
-18:10:40 owned全部退出；本轮保守896.121秒，累计9844.678/36000秒，原18:40:44截止不变。下一步先评估最后组关键路径与同步成本，未开新GPU作业。四科学权限false，baseline/投机/原tile/保护文件不改。
+[诊断结果](experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/RESULT.md)；[时间线](experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/FFN-TIMELINE.png)。两端自有任务已退出；本机后来出现hlj任务，未干预。GPU worker98.889秒，保守含准备/清理1039.686秒，累计10884.364/36000秒；本次19:24:12硬截止与旧截止保留。PID命名空间误判、捕获未replay比较、远端NCU权限失败均保留；同DSO修正脚本后完成，本机NCU为计数补采、不混计时。
 
-M17四套LIBERO6000局齐，非独立TEST，首两S/暴露/长尾缺口保留。M40原DEV90完成，旧10/22 01:26截止过期；1800局/160h未获准。10/22 go/no-go、10/23身份冻结、10/28主表、11/01 18:00中文证据包；证据不足收缩claim。
+此前四组R2相对原Torch完整单层1.1646/1.6808/2.7386×，较同轮此前阶段版仅改善0.33%–0.36%；不是本轮新整层Torch比值。数学tile3400/3472/3400、27grid；ACT仍落全局，只有FFN局部流水。baseline/投机/原tile/保护文件不改。
 
-[PLAN](cycles/wam-research-20261016/PLAN.md)、[完整状态](cycles/wam-research-20261016/PROGRESS.md)。
+| ID | 阶段 | 状态 | 当前结果 / 证据 | 下一步 |
+| --- | --- | --- | --- | --- |
+| `M39` | 单层优化 | in_progress | FFN瓶颈定位完成，有限正确性通过 | 优先FFN1尾部工作分摊；随后FFN2写回与函数保存恢复，尚未执行 |
+| `M17` | LIBERO证据 | blocked | 四套6000局齐；非独立TEST，首两S/暴露/长尾缺口保留 | 不恢复过期作业 |
+| `M40` | RoboTwin | blocked | 原DEV90完成；原截止过期，1800局/160h未获准 | 扩大资源独立处理 |
+
+[PLAN](cycles/wam-research-20261016/PLAN.md)；[此前状态](cycles/wam-research-20261016/history/before-ffn-diagnosis-20261022/PROGRESS.md)。10/22 go/no-go、10/23身份冻结、10/28主表、11/01 18:00中文证据包；证据不足收缩claim。

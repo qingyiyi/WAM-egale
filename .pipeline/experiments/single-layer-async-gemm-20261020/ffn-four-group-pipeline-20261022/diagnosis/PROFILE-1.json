@@ -1,0 +1,14 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "process": 1,
+  "rows": [],
+  "formal_performance_permission": false,
+  "full_calls": 0,
+  "subgraph_calls": 0,
+  "activation_repr": "GELU(\n  (proj): Linear(in_features=3072, out_features=14336, bias=True)\n)",
+  "GPU": "NVIDIA A100-SXM4-40GB",
+  "source_scope": "Frozen production R2; generated instrumented copy, standalone/full routes share same kernel and resources; no optimized entry replacement",
+  "error": "AssertionError('GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 132484\\n')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/worker.py\", line 22, in <module>\n    load=gpu_apps();assert [line.split(',')[1].strip() for line in load.splitlines() if line.startswith('GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726')]==[str(os.getpid())],load\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 132484\n\n",
+  "lifecycle_seconds": 8.635108709335327
+}

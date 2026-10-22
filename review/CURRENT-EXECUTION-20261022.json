@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-10-22T18:17:15.669528+08:00",
+  "observed_at": "2026-10-22T19:00:51.389584+08:00",
   "previous_derived_snapshot_commit": "bcd7c71e342974f820543ba30dc683a63bb3e63c",
   "operator": {
     "status": "FINITE_EXACT_FOUR_GROUP_PIPELINE_SMALL_POSITIVE_TIMING_SIGNAL",
@@ -24,8 +24,8 @@
     "warm_grid_barriers_source_count": 27,
     "final_cross_KV_cache_precomputed_on_both_arms": true,
     "performance_baseline": "Original Torch via static slot adapter, same final cross-KV cache, warm whole single-layer CUDA Graph",
-    "local_GPU_retest_this_version": false,
-    "stage_profile_this_version": "NOT_RUN; debug-only group timestamps available",
+    "local_GPU_retest_this_version": "COUNTERS_ONLY_DIAGNOSTIC_COPY; no local formal whole-layer speed result",
+    "stage_profile_this_version": "FINITE_FFN_DIAGNOSIS_COMPLETE; diagnostic copy full/isolated timing; local counters separate from remote performance",
     "production_admitted": false,
     "engineering_quality_screen": false,
     "independent_test_complete": false,
@@ -227,31 +227,30 @@
     }
   ],
   "resources": {
-    "status": "COMPLETE_CLEANED_WITH_RETAINED_INFRASTRUCTURE_FAILURE",
-    "registered_at": "2026-10-22T17:55:44.193684+08:00",
-    "original_deadline": "2026-10-22T18:40:44.193684+08:00",
-    "cleanup_at": "2026-10-22T18:10:40.314298+08:00",
-    "gpu_worker_lifecycle_seconds": 136.10486125946045,
-    "cuda_active_seconds": "UNKNOWN_NOT_MEASURED",
-    "CPU_build_lifecycle_seconds": 293.35628175735474,
-    "registered_window_seconds_including_setup_build_wait_cleanup": 896.120614,
-    "cumulative_prior_seconds": 8948.557130822417,
-    "charged_cumulative_seconds": 9844.677744822417,
+    "status": "COMPLETE_DIAGNOSIS_WITH_RETAINED_INFRA_FAILURES",
+    "registered_at": "2026-10-22T18:39:12.494633+08:00",
+    "deadline": "2026-10-22T19:24:12.494633+08:00",
+    "cleanup_at": "2026-10-22T18:56:32.180739+08:00",
+    "GPU_worker_lifecycle_seconds": 98.8885087966919,
+    "CPU_build_lifecycle_seconds": 147.17265391349792,
+    "CUDA_active_seconds": "UNKNOWN",
+    "conservative_charged_setup_wait_build_cleanup_seconds": 1039.686106,
+    "cumulative_prior_seconds": 9844.677744822417,
+    "charged_cumulative_seconds": 10884.363850822418,
     "cumulative_cap_seconds": 36000,
-    "remaining_seconds": 26155.322255177583,
-    "remote_storage_bytes": 59384667,
-    "remote_storage_cap_bytes": 536870912,
-    "failed_attempts": [
-      {
-        "attempt": "r2 first validation",
-        "reason": "build-lib output directory retained parent; next(extension) raised StopIteration before block execution",
-        "full_block_calls": 0,
-        "GPU_assigned_process_lifecycle_seconds": 1.5659260749816895,
-        "evidence": "r2/STATUS.json; r2/SIMPLE-GATE-RESULT.json; r2/ARTIFACT-REPAIR.json"
-      }
+    "remaining_seconds": 25115.636149177582,
+    "remote_storage_bytes": 65870807,
+    "local_storage_bytes": 71051908,
+    "per_host_storage_cap_bytes": 536870912,
+    "owned_cleanup": "remote10 identities and local NCU root absent; no foreign kill",
+    "local_following_foreign_task": "hlj PID125308 sglang scheduler start18:52:56, after owned NCU end18:52:48",
+    "failures": [
+      "first worker incorrectly compared host NVML PID to container PID; zero block calls",
+      "first retry compared captured graph output before graph replay; invalid comparison, no numerical claim",
+      "remote NCU ERR_NVGPUCTRPERM; local bounded fallback succeeded"
     ],
-    "owned_cleanup": "all absent/reused-or-exited; no kill necessary",
-    "production_admitted": false
+    "production_modified": false,
+    "formal_performance_permission": false
   },
   "historical_robotwin_snapshot": {
     "as_of": "2026-10-22T16:39:06.198887+08:00",
@@ -266,10 +265,66 @@
   },
   "robotwin_new_work_this_turn": false,
   "historical_paused72": "review/RESULTS.json unchanged",
-  "previous_derived_snapshot": "review/history/current-before-ffn-four-group-20261022/CURRENT-EXECUTION-20261022.json",
-  "next": "Report small finite benefit, then assess final producer group to FFN2 critical path; no new GPU job launched",
+  "previous_derived_snapshot": "review/history/current-before-ffn-diagnosis-20261022/CURRENT-EXECUTION-20261022.json",
+  "next": "FFN1 tail work distribution, then FFN2 epilogue and device-call save/restore; no optimization job launched",
   "engineering_quality_screen": false,
   "independent_test_complete": false,
   "noninferiority_established": false,
-  "formal_performance_permission": false
+  "formal_performance_permission": false,
+  "ffn_diagnosis": {
+    "status": "COMPLETE_FINITE_DIAGNOSIS",
+    "rows": [
+      {
+        "case": "short",
+        "kv": 288,
+        "torch_ffn_ms": 0.319488000869751,
+        "custom_ffn_ms": 0.3954176068305969,
+        "speedup_vs_Torch": 0.807976163303787,
+        "slowdown_percent": 23.766027442076275,
+        "profile_full_span_us": 376.06399999999996,
+        "profile_isolated_span_us": 372.736,
+        "profile_share_of_layer": 0.3881007018721728
+      },
+      {
+        "case": "middle",
+        "kv": 1152,
+        "torch_ffn_ms": 0.3200768053531647,
+        "custom_ffn_ms": 0.3954176068305969,
+        "speedup_vs_Torch": 0.8094652332724541,
+        "slowdown_percent": 23.53835086372569,
+        "profile_full_span_us": 375.808,
+        "profile_isolated_span_us": 373.76,
+        "profile_share_of_layer": 0.33121233914620657
+      },
+      {
+        "case": "long",
+        "kv": 2160,
+        "torch_ffn_ms": 0.32005120515823365,
+        "custom_ffn_ms": 0.3950080037117004,
+        "speedup_vs_Torch": 0.8102397980569159,
+        "slowdown_percent": 23.420251930127268,
+        "profile_full_span_us": 377.344,
+        "profile_isolated_span_us": 374.784,
+        "profile_share_of_layer": 0.3273590398558016
+      }
+    ],
+    "counts": {
+      "independent_processes": 2,
+      "KV_lengths": 3,
+      "full_timeline_samples": 72,
+      "isolated_timeline_samples": 72
+    },
+    "production_modified": false,
+    "four_scientific_permissions": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "local_hardware_counters": "local-counters/COUNTER-SUMMARY.json",
+    "performance_machine": "BAAI A100-SXM4 only",
+    "counter_machine": "local A100-SXM4 only",
+    "precision": "Three real inputs, both independent processes, original full output and standalone FFN outputs bitwise; inputs/cache/RNG unchanged; not a new general certificate"
+  },
+  "ffn_diagnosis_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/RESULT.md"
 }

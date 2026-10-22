@@ -1,0 +1,275 @@
+{
+  "observed_at": "2026-10-22T18:17:15.669528+08:00",
+  "previous_derived_snapshot_commit": "bcd7c71e342974f820543ba30dc683a63bb3e63c",
+  "operator": {
+    "status": "FINITE_EXACT_FOUR_GROUP_PIPELINE_SMALL_POSITIVE_TIMING_SIGNAL",
+    "selected_trial": "ffn-four-group-pipeline-20261022",
+    "selected_variant": "r2/retry (R2 same binary after output-directory repair)",
+    "source_sha256": "7b7c81383a726b22d953d76a51ff6fcde60dc5f31d0e7be4d9f31a8679edbd1a",
+    "final_binary_sha256": "db2ba294e5e589aec37a40e44be0dca55c9963f0acb59147afa4a2f61bdacda3",
+    "real_signatures": 9,
+    "structural_controls": 36,
+    "finite_checks_passed": true,
+    "installed_for_research": true,
+    "small_performance_improvement_observed": true,
+    "practical_significance_established": false,
+    "ffn_four_group_dependency_pipeline": true,
+    "warp_MMA_epilogue_overlap_implemented": false,
+    "full_transformer_ready_DAG_active": false,
+    "warm_logical_tiles_short_middle_long": [
+      3400,
+      3472,
+      3400
+    ],
+    "warm_grid_barriers_source_count": 27,
+    "final_cross_KV_cache_precomputed_on_both_arms": true,
+    "performance_baseline": "Original Torch via static slot adapter, same final cross-KV cache, warm whole single-layer CUDA Graph",
+    "local_GPU_retest_this_version": false,
+    "stage_profile_this_version": "NOT_RUN; debug-only group timestamps available",
+    "production_admitted": false,
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/RESULT.md",
+  "operator_stage_table": ".pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/STAGE-MAP.md",
+  "operator_timing": [
+    {
+      "kv": "short",
+      "torch_static_cached_final": 1.1299840211868286,
+      "previous_cached": 0.9735680222511292,
+      "first_pipeline": 0.9815039932727814,
+      "custom_cached": 0.9702399969100952,
+      "previous_speedup": 1.1606626299968512,
+      "first_pipeline_speedup": 1.1512780680789154,
+      "pipeline_speedup": 1.164643825018003,
+      "change_vs_previous_percent": -0.34183798820124345,
+      "change_vs_r1_percent": -1.147626137019253,
+      "per_process_change_vs_previous_percent": [
+        -0.3154598074581183,
+        -0.36823004499962897
+      ]
+    },
+    {
+      "kv": "middle",
+      "torch_static_cached_final": 1.9233279824256897,
+      "previous_cached": 1.1484160423278809,
+      "first_pipeline": 1.1555839776992798,
+      "custom_cached": 1.144320011138916,
+      "previous_speedup": 1.6747658614442849,
+      "first_pipeline_speedup": 1.6643775091577133,
+      "pipeline_speedup": 1.6807605946796689,
+      "change_vs_previous_percent": -0.35666788324046905,
+      "change_vs_r1_percent": -0.9747423621076723,
+      "per_process_change_vs_previous_percent": [
+        -0.6233350821546968,
+        -0.08928639176644104
+      ]
+    },
+    {
+      "kv": "long",
+      "torch_static_cached_final": 3.1541759371757507,
+      "previous_cached": 1.1555839776992798,
+      "first_pipeline": 1.159936010837555,
+      "custom_cached": 1.1517439484596252,
+      "previous_speedup": 2.7295081950301747,
+      "first_pipeline_speedup": 2.7192671903497634,
+      "pipeline_speedup": 2.7386086476896487,
+      "change_vs_previous_percent": -0.3323020493326556,
+      "change_vs_r1_percent": -0.7062512329464199,
+      "per_process_change_vs_previous_percent": [
+        -0.5309774992875993,
+        -0.13309773433258787
+      ]
+    }
+  ],
+  "operator_debug_mechanism": [
+    {
+      "case": "short-B14-action",
+      "counts": [
+        28,
+        28,
+        28,
+        28,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        108,
+        108,
+        94,
+        112
+      ],
+      "resources": [
+        108,
+        1,
+        100096,
+        255,
+        1144,
+        256
+      ],
+      "early_groups": [
+        0,
+        1,
+        2
+      ],
+      "second_MMA_started_before_first_group_done": [
+        1,
+        3
+      ],
+      "first_group_start_ahead_of_last_producer_us": [
+        110.592,
+        108.544,
+        113.664,
+        -1.024
+      ],
+      "last_producer_group": 3,
+      "last_consumer_group": 3,
+      "after_last_producer_to_last_consumer_us": 131.072
+    },
+    {
+      "case": "middle-B14-action",
+      "counts": [
+        28,
+        28,
+        28,
+        28,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        108,
+        108,
+        96,
+        112
+      ],
+      "resources": [
+        108,
+        1,
+        100096,
+        255,
+        1144,
+        256
+      ],
+      "early_groups": [
+        0,
+        1,
+        2
+      ],
+      "second_MMA_started_before_first_group_done": [
+        1,
+        3
+      ],
+      "first_group_start_ahead_of_last_producer_us": [
+        111.616,
+        110.592,
+        115.712,
+        -1.024
+      ],
+      "last_producer_group": 3,
+      "last_consumer_group": 3,
+      "after_last_producer_to_last_consumer_us": 131.072
+    },
+    {
+      "case": "long-B14-action",
+      "counts": [
+        28,
+        28,
+        28,
+        28,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        108,
+        108,
+        102,
+        112
+      ],
+      "resources": [
+        108,
+        1,
+        100096,
+        255,
+        1144,
+        256
+      ],
+      "early_groups": [
+        0,
+        1,
+        2
+      ],
+      "second_MMA_started_before_first_group_done": [
+        1
+      ],
+      "first_group_start_ahead_of_last_producer_us": [
+        109.568,
+        107.52,
+        112.64,
+        -3.072
+      ],
+      "last_producer_group": 3,
+      "last_consumer_group": 3,
+      "after_last_producer_to_last_consumer_us": 133.12
+    }
+  ],
+  "resources": {
+    "status": "COMPLETE_CLEANED_WITH_RETAINED_INFRASTRUCTURE_FAILURE",
+    "registered_at": "2026-10-22T17:55:44.193684+08:00",
+    "original_deadline": "2026-10-22T18:40:44.193684+08:00",
+    "cleanup_at": "2026-10-22T18:10:40.314298+08:00",
+    "gpu_worker_lifecycle_seconds": 136.10486125946045,
+    "cuda_active_seconds": "UNKNOWN_NOT_MEASURED",
+    "CPU_build_lifecycle_seconds": 293.35628175735474,
+    "registered_window_seconds_including_setup_build_wait_cleanup": 896.120614,
+    "cumulative_prior_seconds": 8948.557130822417,
+    "charged_cumulative_seconds": 9844.677744822417,
+    "cumulative_cap_seconds": 36000,
+    "remaining_seconds": 26155.322255177583,
+    "remote_storage_bytes": 59384667,
+    "remote_storage_cap_bytes": 536870912,
+    "failed_attempts": [
+      {
+        "attempt": "r2 first validation",
+        "reason": "build-lib output directory retained parent; next(extension) raised StopIteration before block execution",
+        "full_block_calls": 0,
+        "GPU_assigned_process_lifecycle_seconds": 1.5659260749816895,
+        "evidence": "r2/STATUS.json; r2/SIMPLE-GATE-RESULT.json; r2/ARTIFACT-REPAIR.json"
+      }
+    ],
+    "owned_cleanup": "all absent/reused-or-exited; no kill necessary",
+    "production_admitted": false
+  },
+  "historical_robotwin_snapshot": {
+    "as_of": "2026-10-22T16:39:06.198887+08:00",
+    "cross_task_complete_episodes": 4,
+    "independent_quality_samples_added": 0,
+    "cumulative_GPU_lifecycle_seconds": 54718.243980407715,
+    "owned_jobs_running": false,
+    "original_deadline": "2026-10-22T01:26:04.706686+08:00",
+    "deadline_expired": true,
+    "expanded1800_started": false,
+    "additional160hours_authorized": false
+  },
+  "robotwin_new_work_this_turn": false,
+  "historical_paused72": "review/RESULTS.json unchanged",
+  "previous_derived_snapshot": "review/history/current-before-ffn-four-group-20261022/CURRENT-EXECUTION-20261022.json",
+  "next": "Report small finite benefit, then assess final producer group to FFN2 critical path; no new GPU job launched",
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false
+}

@@ -1,0 +1,46 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792665733.783578,
+  "deadline": 1792668252.494633,
+  "jobs": [
+    {
+      "name": "build",
+      "owned": {
+        "pid": 848299,
+        "birth_ticks": 726419235,
+        "pgid": 848299
+      },
+      "start": 1792665733.7861705,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792665880.958824,
+      "lifecycle_seconds": 147.17265391349792,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "profile1",
+      "owned": {
+        "pid": 848604,
+        "birth_ticks": 726433959,
+        "pgid": 848604
+      },
+      "start": 1792665881.030573,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792665891.908428,
+      "lifecycle_seconds": 10.87785530090332,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 848298,
+    "birth_ticks": 726419231,
+    "pgid": 848298
+  },
+  "error": "RuntimeError('profile1 failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/guard.py\", line 50, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: profile1 failed\n",
+  "end": 1792665891.9121282,
+  "lifecycle_seconds": 158.1285502910614
+}

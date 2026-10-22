@@ -1,0 +1,14 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "process": 1,
+  "rows": [],
+  "formal_performance_permission": false,
+  "full_calls": 11,
+  "subgraph_calls": 27,
+  "activation_repr": "GELU(\n  (proj): Linear(in_features=3072, out_features=14336, bias=True)\n)",
+  "GPU": "NVIDIA A100-SXM4-40GB",
+  "source_scope": "Frozen production R2; generated instrumented copy, standalone/full routes share same kernel and resources; no optimized entry replacement",
+  "error": "AssertionError(('production_full', {'shape_match': True, 'dtype_match': True, 'finite_pass': True, 'shape': [14, 16, 3072], 'dtype': 'torch.bfloat16', 'bitwise_pass': False, 'tolerance_pass': False, 'different_bytes': 1372643, 'different_elements': 688079, 'elements': 688128, 'tolerance_atol': 0.0, 'tolerance_rtol': 0.0, 'max_abs': 107.5, 'rel_l2': 1.0, 'abs_p50_p90_max': [0.06298828125, 0.52734375, 107.5], 'quantile_status': 'EXACT_TORCH_TYPE7'}))",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/retry/worker.py\", line 60, in <module>\n    precision[name]=compare(reference,y);assert precision[name]['bitwise_pass'],(name,precision[name])\n                                                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\nAssertionError: ('production_full', {'shape_match': True, 'dtype_match': True, 'finite_pass': True, 'shape': [14, 16, 3072], 'dtype': 'torch.bfloat16', 'bitwise_pass': False, 'tolerance_pass': False, 'different_bytes': 1372643, 'different_elements': 688079, 'elements': 688128, 'tolerance_atol': 0.0, 'tolerance_rtol': 0.0, 'max_abs': 107.5, 'rel_l2': 1.0, 'abs_p50_p90_max': [0.06298828125, 0.52734375, 107.5], 'quantile_status': 'EXACT_TORCH_TYPE7'})\n",
+  "lifecycle_seconds": 9.044158935546875
+}

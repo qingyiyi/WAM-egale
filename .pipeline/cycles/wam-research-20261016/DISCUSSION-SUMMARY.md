@@ -1,11 +1,9 @@
-# 当前讨论（2026-10-22T18:16:14.446638+08:00）
+# 当前讨论（2026-10-22T18:59:32.671003+08:00）
 
-用户批准继续融合FFN1/GELU与FFN2/残差，按四组依赖方案执行。最终R2保留原GEMM与BF16算术，28个FFN1 tile构成组，组就绪后派24个FFN2半段；两段MMA并行，第二段仅提交时等第一段。每CTA先完成自己的生产任务再消费，原108CTA下最多48个第二段等待，其余CTA继续推进。
+用户批准先定位FFN。本轮保持生产R2及调度不变，生成测量副本，做三真实B14输入×两进程独立FFN原Torch对照及整层内/独立时间线；嵌入差不到1%，独立FFN慢约24%。FFN1尾部四tile集中组3，最后一组FFN2主要为计算和写回，提交等待约1us，故不优先细化提交等待。
 
-R1过度保守地把第二段MMA也串行化，有限正确但略慢。R2纠正该依赖，并在任务全被领取后让空闲CTA进入出口屏障；两个调度改变的独立贡献未分离。最终整层相对同轮此前阶段版改善约0.33%–0.36%，两进程方向一致，幅度很小；相对原Torch1.1646/1.6808/2.7386×，不与上一轮比值直接相减。
+本机NCU补到显著local请求（诊断同计算路径），生产SASS表明主要是非内联设备函数保存恢复；未证明该访问贡献全部时间差，也不说MMA内频繁spill。FFN2最终epilogue还有通用索引/门控开销，尚未单因素归因。下一步建议FFN1尾部分摊，再单独优化写回和ABI开销，不能仅放大所有tile或直接恢复大DAG。
 
-debug确认提前消费，但最后生产和完成组均为3；部分工作提前没有移除最后组FFN1到FFN2的串行链。建议先量化这条路径及发布/等待成本，再考虑更细的段内流水。没有新增NCU或普通路径阶段profile，不把静态local1144B等同动态spill。没有声称消除ACT全局buffer或完成整层MegaMoE式warp调度。
+PID命名空间误比、Graph捕获未replay先比较、远端NCU权限失败均保留；前两项修脚本，同二进制完成，计数在本机补采且不混性能。自有任务已清理，累计10884.364/36000秒；原截止和四科学权限不变。没有新增生产优化。
 
-9签名/36结构有限逐位及状态通过。R2目录错误导致的0调用FAILED、R1负结果和二进制恢复证明保留。两个研究入口采用R2，GPU已清理，四科学权限false；新GPU工作未启动。
-
-[结果](../../experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/RESULT.md)、[阶段表](../../experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/STAGE-MAP.md)、[此前讨论](history/before-ffn-four-group-pipeline-20261022/DISCUSSION-SUMMARY.md)。
+[诊断结果](../../experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/diagnosis/RESULT.md)、[此前讨论](history/before-ffn-diagnosis-20261022/DISCUSSION-SUMMARY.md)。

@@ -1,0 +1,55 @@
+{
+  "status": "COMPLETE_FINITE_DIAGNOSIS",
+  "rows": [
+    {
+      "case": "short",
+      "kv": 288,
+      "torch_ffn_ms": 0.319488000869751,
+      "custom_ffn_ms": 0.3954176068305969,
+      "speedup_vs_Torch": 0.807976163303787,
+      "slowdown_percent": 23.766027442076275,
+      "profile_full_span_us": 376.06399999999996,
+      "profile_isolated_span_us": 372.736,
+      "profile_share_of_layer": 0.3881007018721728
+    },
+    {
+      "case": "middle",
+      "kv": 1152,
+      "torch_ffn_ms": 0.3200768053531647,
+      "custom_ffn_ms": 0.3954176068305969,
+      "speedup_vs_Torch": 0.8094652332724541,
+      "slowdown_percent": 23.53835086372569,
+      "profile_full_span_us": 375.808,
+      "profile_isolated_span_us": 373.76,
+      "profile_share_of_layer": 0.33121233914620657
+    },
+    {
+      "case": "long",
+      "kv": 2160,
+      "torch_ffn_ms": 0.32005120515823365,
+      "custom_ffn_ms": 0.3950080037117004,
+      "speedup_vs_Torch": 0.8102397980569159,
+      "slowdown_percent": 23.420251930127268,
+      "profile_full_span_us": 377.344,
+      "profile_isolated_span_us": 374.784,
+      "profile_share_of_layer": 0.3273590398558016
+    }
+  ],
+  "counts": {
+    "independent_processes": 2,
+    "KV_lengths": 3,
+    "full_timeline_samples": 72,
+    "isolated_timeline_samples": 72
+  },
+  "production_modified": false,
+  "four_scientific_permissions": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "local_hardware_counters": "local-counters/COUNTER-SUMMARY.json",
+  "performance_machine": "BAAI A100-SXM4 only",
+  "counter_machine": "local A100-SXM4 only",
+  "precision": "Three real inputs, both independent processes, original full output and standalone FFN outputs bitwise; inputs/cache/RNG unchanged; not a new general certificate"
+}
