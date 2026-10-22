@@ -1,0 +1,96 @@
+{
+  "goal": "B14 FFN1/GELU to FFN2/residual four-group dependency pipeline; unchanged GEMM and rounding, finite exactness then original Torch timing",
+  "execution_authorization": "USER_APPROVED_FFN_FOUR_GROUP_PIPELINE",
+  "registered_at": "2026-10-22T17:55:44.193684+08:00",
+  "deadline": "2026-10-22T18:40:44.193684+08:00",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 2700,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 8948.557130822417,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 536870912,
+  "local_storage_cap_bytes": 805306368,
+  "terminal_status": "REGISTERED_CPU_IMPLEMENTATION",
+  "input_manifest": "Existing 9 real signatures plus 27 structure cases; B14 action original short/middle/long cached fixtures; add 9 actual-derived FP32/broadcast temb controls",
+  "cleanup_plan": "owned PID+birth guard only; preserve failed attempts",
+  "evidence_path": "/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-fusion-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "a113972b1a6c9248f863dae93dd5af610bdbca400c97c1b6ed9cbf6dcb2e8aa5",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap",
+    "temb_fp32",
+    "temb_first_token",
+    "temb_first_token_fp32"
+  ],
+  "formal_performance_permission": false,
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/build/obj",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/gate.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/extended.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ],
+  "source_before_sha256": "659762248648e5262c1f3ab0bd58e8b6f889463b9301af90eb7b2f2b57a9d2f9",
+  "source_after_sha256": "aaee53435e405b31d86c8c928eebff9eec1f34e3d17442df550ce988fbfb2528",
+  "mechanism": "2 row blocks x 2 K7168 groups; 28 FFN1 producers -> 24 FFN2 partition consumers per group; second partition commit gated by first partition completion; ACT retained",
+  "sources": {
+    "算子研究/wam_ops/optimized/csrc/whole_layer.cu": "aaee53435e405b31d86c8c928eebff9eec1f34e3d17442df550ce988fbfb2528"
+  }
+}

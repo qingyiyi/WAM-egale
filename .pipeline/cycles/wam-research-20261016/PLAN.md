@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-22T17:44:23.726236+08:00'
+updated: '2026-10-22T18:16:14.446638+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -21,7 +21,7 @@ execution: EXECUTION.md
 - [ ] M39：按最新用户决定，后续仅对比原Torch；历史guarded未追平结果保留，不扩大系统claim。
 - [ ] M17/M40：原证据缺口及扩大资源另处理，不启动。
 
-[本轮结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)。累计8948.557/36000秒；当前作业闭合，原截止与四科学权限不变。
+[本轮结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)。累计9844.678/36000秒；当前作业闭合，原截止与四科学权限不变。
 
 - [x] M39-KV-CACHE：用户新批准自有算子读取预计算K（含RMS）/V，双方同等缓存；先精度后性能，冷构建另列。
 - [x] M39-KV-STAGES：完整层、逐阶段耗时、同步等待分列；profile与正常计时独立。
@@ -40,3 +40,5 @@ M39子项沿用上方名称，以下只补齐语义导航，不重编号历史�
 | `M39` | 单层算子对齐与优化 | 保留有限正确性、性能及负结果 | 当前FFN融合结果；后续先定位融合开销 |
 | `M17` | LIBERO证据收口 | 已有四套结果及未通过配对/独立性边界 | 原报告；不恢复过期队列 |
 | `M40` | RoboTwin迁移与证据 | 原DEV90及优化证据，扩大预算独立处理 | 原报告与累计资源；不启动1800局 |
+
+- [x] M39-FFN-PIPE：四组FFN依赖流水完成；R2有限逐位/状态通过，相对此前阶段版整层小幅改善0.33%–0.36%。R1负结果、R2目录错误FAILED及同截止retry保留；owned清理。

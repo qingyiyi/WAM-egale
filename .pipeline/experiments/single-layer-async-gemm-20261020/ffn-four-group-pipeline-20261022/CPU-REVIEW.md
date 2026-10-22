@@ -1,0 +1,9 @@
+# 四组FFN依赖流水 CPU审查
+
+当前仅B14 M224使用新流水。FFN1按原112个tile静态分配并完成本CTA全部生产任务后领取FFN2；生产期间不等待消费者。FFN2四组各24任务，原K7168计算与提交函数保持不变；第二段要求同一行块第一段24任务全部完成。只领取已就绪任务，无CTA占住未就绪任务，最后一个grid同步统一出口。
+
+ACT/F2/OUT各写线程执行device fence，CTA同步后leader通过device-scope acq_rel RMW递增完成数；消费者acquire读取就绪数，再通过CTA同步传播。领取CAS只负责唯一任务号。无任务路径再次CTA同步后重用shared task，防止leader覆盖其他warp尚未读取的任务号。计数在已有kernel入口屏障前清零，CUDA Graph每次重放重新初始化。
+
+200个独立事件调度模拟全部112生产/96消费任务恰好完成，检查分组及两段依赖，无抽象死锁；不能代替CUDA内存模型和实际GPU核验。debug记录四组计数与globaltimer时间；普通计时不写trace。原8warp FFN1、4warp FFN2算术和BF16边界未变；跨CTA依赖仍需GPU实证。
+
+增量workspace为16 int（64B）及仅debug 12 int64（96B）。普通仍保存ACT/F2部分和；未声称shared零落地或HBM访问减少。保留before源码和已验证旧DSO。

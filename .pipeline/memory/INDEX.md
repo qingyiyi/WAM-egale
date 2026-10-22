@@ -1,5 +1,7 @@
 # 长期记忆索引
 
+- [试验FFN四组依赖融合流水](global/requirements/decision-试验FFN四组依赖融合流水.md)（constraint，M39）：用户批准FFN局部依赖流水，保留数学和ACT缓冲，原预算不增。
+
 - [先融合FFN写回中的GELU与残差](global/requirements/decision-先融合FFN写回中的GELU与残差.md)（constraint，M39）：已批准B14两处写回融合，保留舍入，先精度后原Torch对照，旧累计预算不增。
 
 - [算子后续仅对比原Torch](global/requirements/decision-算子后续仅对比原Torch实现.md)（constraint，当前算子）：新测量/汇报唯一对照为原Torch，保留旧guarded证据；不改变科学权限。

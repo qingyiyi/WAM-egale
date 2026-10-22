@@ -1,0 +1,59 @@
+--- R1.cu
++++ optimized/csrc/whole_layer.cu
+@@ -355,8 +355,10 @@
+ 
+ // 仅FFN局部的四组依赖流水：先完成本CTA静态分配的FFN1 tile，
+ // 再领取已就绪的FFN2半段。ACT仍落全局buffer，不重复计算FFN1。
+-// 每组只派24个输出tile；第二K段等待同一行块第一段全部提交，
+-// 从而保留原BF16部分和、bias与残差顺序，CTA不持有未就绪任务。
++// 每组只派24个输出tile；两K段可以并行计算，第二段仅在提交时
++// 等待同一行块第一段全部提交，保留原BF16部分和、bias与残差顺序。
++// A100实测108常驻CTA，最多48个第二段CTA持有shared部分和等待；
++// 其余CTA可完成全部第一段，且每CTA先完成自己的生产任务，不形成环等。
+ __device__ __noinline__ void action_ffn_pipeline(const Params &p, Shared &s, cg::grid_group &g) {
+     action_ffn1_produce(p, s);
+     while (true) {
+@@ -365,9 +367,6 @@
+             for (int scan = 0; scan < 4; ++scan) {
+                 const int group = (int(blockIdx.x) + scan) % 4;
+                 if (DeviceCounter(p.ffn_state[group]).load(cuda::memory_order_acquire) != 28)
+-                    continue;
+-                if ((group & 1) &&
+-                    DeviceCounter(p.ffn_state[8 + group - 1]).load(cuda::memory_order_acquire) != 24)
+                     continue;
+                 auto next = DeviceCounter(p.ffn_state[4 + group]);
+                 int col = next.load(cuda::memory_order_relaxed);
+@@ -385,10 +384,15 @@
+                     break;
+                 }
+             }
+-            if (s.task == -1 &&
+-                DeviceCounter(p.ffn_state[9]).load(cuda::memory_order_acquire) == 24 &&
+-                DeviceCounter(p.ffn_state[11]).load(cuda::memory_order_acquire) == 24)
+-                s.task = -2;
++            // 全部96任务已有owner后，空闲CTA直接进入出口屏障，不反复轮询。
++            if (s.task == -1) {
++                bool all_claimed = true;
++                for (int group = 0; group < 4; ++group)
++                    all_claimed &= DeviceCounter(p.ffn_state[4 + group])
++                                       .load(cuda::memory_order_relaxed) == 24;
++                if (all_claimed)
++                    s.task = -2;
++            }
+         }
+         __syncthreads();
+         const int task = s.task;
+@@ -402,6 +406,13 @@
+         const int group = task / 24, tile = (group / 2) * 24 + task % 24;
+         auto &workspace = s.tile.cutlass_gemm.ffn1;
+         ffn2_partition(workspace, bp(p, ACT), (const B *)p.w[25], tile, group & 1);
++        if (group & 1) {
++            if (threadIdx.x == 0)
++                while (DeviceCounter(p.ffn_state[8 + group - 1])
++                           .load(cuda::memory_order_acquire) != 24)
++                    __nanosleep(128);
++            __syncthreads(); // FP32第二段仍留在本CTA shared，第一段BF16现已可见。
++        }
+         ffn2_commit(p, workspace, tile, group & 1);
+         ffn_publish(p, 8, group, 24);
+     }

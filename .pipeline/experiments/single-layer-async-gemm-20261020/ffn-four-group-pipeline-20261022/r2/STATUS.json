@@ -1,0 +1,46 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792663432.105643,
+  "deadline": 1792665644.193684,
+  "jobs": [
+    {
+      "name": "build",
+      "owned": {
+        "pid": 846307,
+        "birth_ticks": 726189068,
+        "pgid": 846307
+      },
+      "start": 1792663432.1156054,
+      "gpu": false,
+      "returncode": 0,
+      "end": 1792663579.0694923,
+      "lifecycle_seconds": 146.9538872241974,
+      "root_reaped": true,
+      "identity_alive": false
+    },
+    {
+      "name": "gate",
+      "owned": {
+        "pid": 846462,
+        "birth_ticks": 726203768,
+        "pgid": 846462
+      },
+      "start": 1792663579.1204433,
+      "gpu": true,
+      "returncode": 1,
+      "end": 1792663580.6863692,
+      "lifecycle_seconds": 1.5659260749816895,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 846306,
+    "birth_ticks": 726189064,
+    "pgid": 846306
+  },
+  "error": "RuntimeError('gate failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/r2/guard.py\", line 50, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: gate failed\n",
+  "end": 1792663580.6915627,
+  "lifecycle_seconds": 148.58591985702515
+}

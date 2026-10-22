@@ -8,6 +8,7 @@
 #include <c10/cuda/CUDAMathCompat.h>
 #include <cooperative_groups.h>
 #include <cuda_bf16.h>
+#include <cuda/atomic>
 #include <cutlass/gemm/device/gemm.h>
 #include "cutlass_gemm_mainloop.cuh"
 #include <map>
@@ -75,7 +76,8 @@ struct Params {
     int64_t *ids, *rows, *slots, *free, *info;
     const int64_t *context_rows, *context_roots; // 条件分组独立于self历史映射。
     bool *mask, *pred;
-    int *queues;
+    int *queues, *ffn_state;
+    int64_t *ffn_trace; // 仅debug记录四组就绪/开始/完成时间，不参与计时路径。
     int b, q, c, cb, l, fb, pool, update;
     bool temb_float, cache, candidate, affine, debug_modulation, context_cached;
     float eps[7];
@@ -269,29 +271,32 @@ __device__ __forceinline__ void ffn2_commit(const Params &p, CutlassTile<128>::S
     __syncthreads();
 }
 
-// 固定B14 FFN2的48个输出tile×两K分段。专用阶段函数包住整个过程，
-// 两个数学体在函数内展开，避免再次从通用linear逐任务进入大设备函数。
-// 只并行同一FFN2的两个原K分段；不是跨Transformer阶段ready调度。
-__device__ __noinline__ void action_ffn2_parallel(const Params &p, Shared &s, cg::grid_group &g,
-                                                  int st) {
-    // 静态任务无需重置队列；前一阶段出口已保证输入就绪。
-    const int task = int(blockIdx.x), tile = task % 48;
-    auto &workspace = s.tile.cutlass_gemm.ffn1;
-    if (task < 96)
-        ffn2_partition(workspace, bp(p, ACT), (const B *)p.w[25], tile, task / 48);
-    if (task < 48)
-        ffn2_commit(p, workspace, tile, false);
-    g.sync(); // 第一段BF16可见；第二段FP32仍保存在各自CTA的shared。
-    if (task >= 48 && task < 96)
-        ffn2_commit(p, workspace, tile, true);
-    g.sync();
+using DeviceCounter = cuda::atomic_ref<int, cuda::thread_scope_device>;
+__device__ __forceinline__ int64_t ffn_timestamp() {
+    int64_t t;
+    asm volatile("mov.u64 %0, %%globaltimer;" : "=l"(t));
+    return t;
+}
+
+// 每个写线程先发布ACT/F2/OUT，再由CTA leader递增完成数。
+// acq_rel RMW串起同组生产者；消费者acquire后才读取对应全局buffer。
+__device__ void ffn_publish(const Params &p, int offset, int group, int expected) {
+    __threadfence();
+    __syncthreads();
+    if (threadIdx.x == 0) {
+        const int64_t at = p.debug_modulation ? ffn_timestamp() : 0;
+        const int done = DeviceCounter(p.ffn_state[offset + group])
+                             .fetch_add(1, cuda::memory_order_acq_rel) + 1;
+        if (p.debug_modulation && done == expected)
+            p.ffn_trace[(offset == 0 ? 0 : 8) + group] = at;
+    }
+    __syncthreads();
 }
 
 // FFN1 M128×N256、8个MMA warp：112个tile，K32三级流水。
 // 8warp的FP32 accumulator分两半经同一128×136 shared区写回，避免
 // 为整层抬高shared预留；完整K3072、bias和BF16舍入边界不变。
-__device__ __noinline__ void action_ffn1_wide(const Params &p, Shared &s, cg::grid_group &g,
-                                              int st) {
+__device__ __noinline__ void action_ffn1_produce(const Params &p, Shared &s) {
     using Mma = CutlassWideFFN::Mma;
     // 静态任务无需入口全局屏障；保留出口及分段依赖。
     auto &workspace = s.tile.cutlass_gemm.wide_ffn;
@@ -343,8 +348,75 @@ __device__ __noinline__ void action_ffn1_wide(const Params &p, Shared &s, cg::gr
             }
             __syncthreads();
         }
+        // 两个128行块×两个7168通道段；每组28个256通道生产tile。
+        ffn_publish(p, 0, tile / 28, 28);
     }
-    g.sync();
+}
+
+// 仅FFN局部的四组依赖流水：先完成本CTA静态分配的FFN1 tile，
+// 再领取已就绪的FFN2半段。ACT仍落全局buffer，不重复计算FFN1。
+// 每组只派24个输出tile；两K段可以并行计算，第二段仅在提交时
+// 等待同一行块第一段全部提交，保留原BF16部分和、bias与残差顺序。
+// A100实测108常驻CTA，最多48个第二段CTA持有shared部分和等待；
+// 其余CTA可完成全部第一段，且每CTA先完成自己的生产任务，不形成环等。
+__device__ __noinline__ void action_ffn_pipeline(const Params &p, Shared &s, cg::grid_group &g) {
+    action_ffn1_produce(p, s);
+    while (true) {
+        if (threadIdx.x == 0) {
+            s.task = -1;
+            for (int scan = 0; scan < 4; ++scan) {
+                const int group = (int(blockIdx.x) + scan) % 4;
+                if (DeviceCounter(p.ffn_state[group]).load(cuda::memory_order_acquire) != 28)
+                    continue;
+                auto next = DeviceCounter(p.ffn_state[4 + group]);
+                int col = next.load(cuda::memory_order_relaxed);
+                while (col < 24 && !next.compare_exchange_weak(
+                                       col, col + 1, cuda::memory_order_relaxed)) {}
+                if (col < 24) {
+                    s.task = group * 24 + col;
+                    if (p.debug_modulation && col == 0) {
+                        p.ffn_trace[4 + group] = ffn_timestamp();
+                        int produced = 0;
+                        for (int j = 0; j < 4; ++j)
+                            produced += DeviceCounter(p.ffn_state[j]).load(cuda::memory_order_relaxed);
+                        p.ffn_state[12 + group] = produced;
+                    }
+                    break;
+                }
+            }
+            // 全部96任务已有owner后，空闲CTA直接进入出口屏障，不反复轮询。
+            if (s.task == -1) {
+                bool all_claimed = true;
+                for (int group = 0; group < 4; ++group)
+                    all_claimed &= DeviceCounter(p.ffn_state[4 + group])
+                                       .load(cuda::memory_order_relaxed) == 24;
+                if (all_claimed)
+                    s.task = -2;
+            }
+        }
+        __syncthreads();
+        const int task = s.task;
+        if (task == -2)
+            break;
+        if (task < 0) {
+            __nanosleep(128);
+            __syncthreads(); // 所有warp已读完s.task，leader才可写下一轮编号。
+            continue;
+        }
+        const int group = task / 24, tile = (group / 2) * 24 + task % 24;
+        auto &workspace = s.tile.cutlass_gemm.ffn1;
+        ffn2_partition(workspace, bp(p, ACT), (const B *)p.w[25], tile, group & 1);
+        if (group & 1) {
+            if (threadIdx.x == 0)
+                while (DeviceCounter(p.ffn_state[8 + group - 1])
+                           .load(cuda::memory_order_acquire) != 24)
+                    __nanosleep(128);
+            __syncthreads(); // FP32第二段仍留在本CTA shared，第一段BF16现已可见。
+        }
+        ffn2_commit(p, workspace, tile, group & 1);
+        ffn_publish(p, 8, group, 24);
+    }
+    g.sync(); // FFN所有输出已完成；取代FFN1出口和FFN2两处grid同步。
 }
 
 #include "norm_device_generated.cuh"
@@ -786,6 +858,10 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     extern __shared__ __align__(32) unsigned char memory[];
     Shared &s = *reinterpret_cast<Shared *>(memory);
     auto g = cg::this_grid();
+    if (blockIdx.x == 0 && threadIdx.x < 16)
+        p.ffn_state[threadIdx.x] = threadIdx.x < 12 ? 0 : -1;
+    if (p.debug_modulation && blockIdx.x == 0 && threadIdx.x < 12)
+        p.ffn_trace[threadIdx.x] = 0;
     // 缓存只整理本次可见slot；B14不会把候选的private KV写入公共历史。
     layout(p, s);
     g.sync();
@@ -839,17 +915,14 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     norm(p, s, g, st++, bp(p, R2), p.a[N3], m, -1, -1, p.eps[2], false, true);
     point(p, s, g, st++, MODULATE, M3, N3, 0, 3, int64_t(m) * D);
     const bool fused_ffn = p.candidate && m == 224;
-    if (fused_ffn)
-        action_ffn1_wide(p, s, g, st++);
-    else
+    if (fused_ffn) {
+        action_ffn_pipeline(p, s, g);
+        st += 3;
+    } else {
         linear(p, s, g, st++, bp(p, M3), 23, bp(p, F1), m, F, D);
-    if (!fused_ffn)
-        point(p, s, g, st, GELU, ACT, F1, 0, 0, int64_t(m) * F);
-    ++st;
-    if (fused_ffn)
-        action_ffn2_parallel(p, s, g, st++);
-    else
+        point(p, s, g, st++, GELU, ACT, F1, 0, 0, int64_t(m) * F);
         linear(p, s, g, st++, bp(p, ACT), 25, bp(p, F2), m, D, F);
+    }
     // 5. 门控残差与临时KV状态恢复，输出仍为[B,Q,3072]。
     if (!fused_ffn)
         point(p, s, g, st, RESIDUAL, OUT, R2, F2, 5, int64_t(m) * D);
@@ -941,11 +1014,14 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
     // slot表和任务计数属于执行所需状态；逐tile visits/stats审计已移出核心。
     auto slots = at::empty({std::max(p.pool, 1)}, lo), free = at::empty({p.q}, lo),
          info = at::empty({2}, lo);
-    auto queues = at::empty({MAX_STAGES}, io);
+    auto queues = at::empty({MAX_STAGES + 16}, io);
+    auto ffn_trace = at::empty({debug ? 12 : 0}, lo);
     p.slots = slots.data_ptr<int64_t>();
     p.free = free.data_ptr<int64_t>();
     p.info = info.data_ptr<int64_t>();
     p.queues = queues.data_ptr<int>();
+    p.ffn_state = p.queues + MAX_STAGES;
+    p.ffn_trace = debug ? ffn_trace.data_ptr<int64_t>() : nullptr;
     p.sms = at::cuda::getCurrentDeviceProperties()->multiProcessorCount;
     p.attn_scale = float(1.0 / std::sqrt(128.0));
     p.attn_scale_log2 = float(double(p.attn_scale) * M_LOG2E);
@@ -997,6 +1073,8 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
     result["cache_info"] = info;
     result["logical_slots"] = slots;
     result["attention_meta"] = fa_meta;
+    result["ffn_pipeline_state"] = queues.narrow(0, MAX_STAGES, 16);
+    result["ffn_pipeline_timestamps"] = ffn_trace;
     cudaFuncAttributes attr;
     C10_CUDA_CHECK(cudaFuncGetAttributes(&attr, whole_layer));
     result["resources"] =
@@ -1019,4 +1097,5 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     m.attr("point_tile_elements") = 2048;
     m.attr("cooperative_epilogue") = true;
     m.attr("ffn_epilogue_fused") = true;
+    m.attr("ffn_four_group_pipeline") = true;
 }

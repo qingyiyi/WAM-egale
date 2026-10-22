@@ -1,0 +1,90 @@
+{
+  "goal": "B14 FFN1/GELU to FFN2/residual four-group dependency pipeline; unchanged GEMM and rounding, finite exactness then original Torch timing",
+  "execution_authorization": "USER_APPROVED_FFN_FOUR_GROUP_PIPELINE",
+  "registered_at": "2026-10-22T17:55:44.193684+08:00",
+  "deadline": "2026-10-22T18:40:44.193684+08:00",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 2700,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 8948.557130822417,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 536870912,
+  "local_storage_cap_bytes": 805306368,
+  "terminal_status": "REGISTERED_GATE_RETRY_AFTER_PATH_REPAIR",
+  "input_manifest": "Existing 9 real signatures plus 27 structure cases; B14 action original short/middle/long cached fixtures; add 9 actual-derived FP32/broadcast temb controls",
+  "cleanup_plan": "owned PID+birth guard only; preserve failed attempts",
+  "evidence_path": "/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/r2/retry",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/r2/retry/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-fusion-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "a113972b1a6c9248f863dae93dd5af610bdbca400c97c1b6ed9cbf6dcb2e8aa5",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap",
+    "temb_fp32",
+    "temb_first_token",
+    "temb_first_token_fp32"
+  ],
+  "formal_performance_permission": false,
+  "steps": [
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/r2/retry/gate.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/r2/retry/extended.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/r2/retry/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/r2/retry/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ],
+  "source_before_sha256": "659762248648e5262c1f3ab0bd58e8b6f889463b9301af90eb7b2f2b57a9d2f9",
+  "source_after_sha256": "7b7c81383a726b22d953d76a51ff6fcde60dc5f31d0e7be4d9f31a8679edbd1a",
+  "mechanism": "Four groups; both FFN2 partitions compute on group-ready; only second commit awaits first group; 108 resident CTAs, at most48 waiting second partitions; idle exits after all tasks claimed",
+  "sources": {
+    "算子研究/wam_ops/optimized/csrc/whole_layer.cu": "7b7c81383a726b22d953d76a51ff6fcde60dc5f31d0e7be4d9f31a8679edbd1a"
+  },
+  "attempt": "R2_RELOCATED_SAME_BINARY",
+  "attempt_registered_at": "2026-10-22T18:03:23.598220+08:00",
+  "previous_attempt_gpu_seconds": 66.75378775596619,
+  "first_pipeline_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "first_pipeline_binary_sha256": "b1cd498f87c98915edb74ee41831f431beb0a46104ebdcf9ac5e3729653a7bbe",
+  "storage_account_root": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-four-group-pipeline-20261022",
+  "candidate_binary_sha256": "db2ba294e5e589aec37a40e44be0dca55c9963f0acb59147afa4a2f61bdacda3",
+  "repair": "R2 build-lib directory mismatch. No math or DSO recompilation. Preserve failed gate/STATUS, restore R1 binary exact hash from original objects, copy R2 DSO to new verification namespace. Same original deadline."
+}

@@ -16,3 +16,5 @@ sources:
 用户已批准当前B14单层optimized的FFN1+GELU及FFN2+残差3写回融合。保持原FP32运算和BF16舍入边界；先有限真实输入、有效KV及RNG核验，再以原Torch作为性能对照。沿M39原累计10小时预算，另记本次有界作业，不重置旧截止或失败。
 
 GELU、bias、门控和残差仍有普通浮点/特殊函数计算，融合不是删除这些运算。先减少中间读写和阶段同步；本次不自动恢复跨阶段ready队列或宣称已实现Tensor Core/CUDA Core重叠。baseline、投机侧及原tile不改。
+
+后续用户已明确批准[FFN四组依赖融合流水](decision-试验FFN四组依赖融合流水.md)，仅替代上方不执行FFN跨GEMM流水的阶段限制；不扩大为整层通用DAG或专职warp流水授权。

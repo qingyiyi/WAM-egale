@@ -1,19 +1,19 @@
-# 当前执行：FFN写回融合精度通过，性能小幅退化
+# 当前执行：FFN四组依赖流水，有限精度通过，整层收益很小
 
-FFN1+GELU、FFN2+门控残差3已直接实现在optimized。9真实签名/36结构条件的有限逐位及输入/有效KV/RNG验证通过；两机研究入口采用融合版，旧源码/DSO保留，本机未另做GPU计时。
+当前optimized采用R2：每组28个FFN1+GELU生产tile就绪后派24个FFN2半段任务；两K段可以并行MMA，第二段仅提交时等第一段。ACT仍落全局buffer，数学和BF16舍入不变。只有FFN局部流水，尚无整层通用DAG或固定warp角色流水。
 
-|KV|同轮融合前 / 原Torch加速比|融合后 / 原Torch加速比|
-|---|---:|---:|
-|288|1.1773×|1.1646×|
-|1152|1.7085×|1.6893×|
-|2160|2.7673×|2.7445×|
+|KV|同轮此前阶段版相对原Torch|当前R2相对原Torch|R2较此前阶段版延迟变化|
+|---|---:|---:|---:|
+|288|1.1607×|1.1646×|−0.342%|
+|1152|1.6748×|1.6808×|−0.357%|
+|2160|2.7295×|2.7386×|−0.332%|
 
-表内加速比定义均为T_Torch/T_自有。两独立进程、远端A100-SXM4、相同真实输入及最终Cross K/V缓存，warm完整单层CUDA Graph。融合本身比旧自有慢1.09%/1.14%/0.83%；不能称为融合提速，更不是30层或机器人E2E。后续唯一外部对照为原Torch；旧guarded证据保留在原报告。
+比值=T_Torch/T_自有，两独立进程、同真实输入及最终Cross K/V预计算、远端A100-SXM4 warm完整单层Graph。两进程方向一致但幅度小，不外推30层或机器人E2E。9签名/36结构有限逐位及状态通过，四科学权限和production_admitted仍false。
 
-独立GELU1568任务、残差336任务消失，warm逻辑任务3400/3472/3400，grid31→29；数学工作保留。当前MMA与GELU写回仍顺序执行，没有新专职warp或双缓冲重叠。未做本版逐阶段profile，慢因仍待分解。
+debug确认组0/1/2在最后FFN1组完成前开始消费；最后生产和最后完成仍为组3，关键串行链保留。warm数学任务3400/3472/3400不变，grid29→27，新增发布/轮询成本未定量拆分。
 
-首CPU编译变量遮蔽失败保留，修复后同截止完成。17:37:30 owned清理，累计8948.557/36000秒，原本轮18:12:32截止不变；无本轮GPU任务运行。四科学权限false、production_admitted=false，旧paused72及全部失败不改。
+R1过度串行化负结果保留。R2首验证因编译输出目录错误在0调用退出；R2产物正确安放，R1从原对象恢复且身份完全一致，再同截止新retry验证。FAILED、源版本、全部计时和原截止保留。
 
-[结果](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-epilogue-fusion-20261022/RESULT.md)、[阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[HW](../.pipeline/PROGRESS.compact.md)、[优化索引](../.pipeline/experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)。
+两机研究入口采用R2，本机未另测。18:10:40 owned全部退出，累计9844.678/36000秒；原本轮18:40:44截止不变。未恢复过期机器人队列，未新开GPU作业。
 
-下一步建议先隔离两处融合增量，再做MMA/epilogue流水；尚未启动该新作业。历史RoboTwin状态沿原报告，本轮未恢复其过期队列。
+[结果](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-four-group-pipeline-20261022/RESULT.md)、[源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[HW](../.pipeline/PROGRESS.compact.md)。下一步先评估最后组关键路径与同步成本，再决定更细流水是否值得。
