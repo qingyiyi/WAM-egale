@@ -1,0 +1,44 @@
+--- before/whole_layer.cu
++++ optimized/whole_layer.cu
+@@ -156,8 +156,12 @@
+     constexpr int M = 224, tiles = ((M + 63) / 64) * (D / 128);
+     begin_stage(p, g, st);
+     for (int t; (t = claim_tile(p, s, st)) < tiles;) {
+-        cutlass_gemm_tile<64>(s.tile.cutlass_gemm.action, a, (const B *)p.w[wi],
+-                              (const B *)p.w[wi + 1], out, M, D, D, t, true);
++        if (wi == 3 || wi == 5 || wi == 7)
++            self_qkv8_tile(s.tile.cutlass_gemm.self_qkv8, a, (const B *)p.w[wi],
++                          (const B *)p.w[wi + 1], out, t);
++        else
++            cutlass_gemm_tile<64>(s.tile.cutlass_gemm.action, a, (const B *)p.w[wi],
++                                  (const B *)p.w[wi + 1], out, M, D, D, t, true);
+         finish_tile();
+     }
+     g.sync();
+--- before/cutlass_gemm.cuh
++++ optimized/cutlass_gemm.cuh
+@@ -63,7 +63,24 @@
+         float result[32 * 264];
+     };
+ };
++// Self Q/K/V对照：仍是64×128/K64；warp输出改32×32，2×4=8warp。
++// 原CUTLASS CTA mainloop让全部256线程加载并做MMA，其他投影继续4warp。
++struct CutlassSelfQKV8 {
++    using Config = cutlass::gemm::device::Gemm<
++        CutlassB, CutlassRow, CutlassB, CutlassCol, CutlassB, CutlassRow, float,
++        cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<64, 128, 64>,
++        cutlass::gemm::GemmShape<32, 32, 64>, cutlass::gemm::GemmShape<16, 8, 16>,
++        cutlass::epilogue::thread::LinearCombination<CutlassB, 8, float, float>,
++        cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<>, 3>;
++    using Mma = typename Config::GemmKernel::Mma;
++    union Storage {
++        typename Mma::SharedStorage mainloop;
++        float result[64 * 136];
++    };
++};
++
+ union CutlassGemmStorage {
++    CutlassSelfQKV8::Storage self_qkv8;
+     CutlassWideFFN::Storage wide_ffn;
+     CutlassTailFFN::Storage tail_ffn;
+     typename CutlassTile<64>::Storage action;

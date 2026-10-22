@@ -4,7 +4,7 @@ name: 先统一访存条件对齐CrossKV与FFN再做就绪调度
 level: constraint
 scope: wam-research-20261016/M39
 status: active
-updated: '2026-10-21T20:53:55.336498+08:00'
+updated: '2026-10-23T00:58:41+08:00'
 supersedes:
   - 同主题重复追加的执行阶段描述；历史版本与证据保留
 sources:
@@ -12,6 +12,7 @@ sources:
   - 用户2026-10-21同意固定计算体检查warp参与、CTA调度和写回；不要求预设正收益
   - 用户2026-10-21确认继续核对，并解释具体改动以及为什么写bank conflict能降到0
   - 用户2026-10-21最新明确同意先解决小投影嵌入整层变慢，并要求解释小投影所指计算
+  - 用户2026-10-23确认优先Self Q/K/V，并要求核查MMA warp分工及tile大小
 ---
 # 先核对原语与整层开销，再做就绪tile调度
 
@@ -24,3 +25,5 @@ sources:
 改动仅在optimized；baseline、原tile、投机生产与保护文件不动。每次保留候选前验证短/中/长KV、数值和有效状态。已确认机制、临时假说、未知及适用范围分开；不能把寄存器数量等单一指标认定为根因，也不能以调度收益掩盖原语差距。
 
 本决定不扩大RoboTwin窗口，不放行四项科学权限。动态实验数字保存在Experiment，不写成长期约束。此前执行阶段原文见当前M39 remaining-gemm-audit-20261021/PRIOR-ALIGNMENT-DECISION.md和Cycle历史记录。
+
+用户2026-10-23在当前FFN阶段收口后明确要求优先解决Self Q/K/V投影余差，先解释MMA warp分工，并核查更多MMA warp和更大tile是否有益。适用范围仍为M39；8warp或放大tile尚非已选定实现。沿原累计预算做有限单因素核对，不把提问写成“必须扩大tile”或已验证最佳配置。

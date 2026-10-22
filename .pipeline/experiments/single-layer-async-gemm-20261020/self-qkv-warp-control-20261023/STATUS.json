@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792688355.2170742,
+  "deadline": 1792690121.082204,
+  "jobs": [
+    {
+      "name": "build",
+      "owned": {
+        "pid": 919279,
+        "birth_ticks": 728681378,
+        "pgid": 919279
+      },
+      "start": 1792688355.223536,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792688373.0110018,
+      "lifecycle_seconds": 17.787466049194336,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 919278,
+    "birth_ticks": 728681375,
+    "pgid": 919264
+  },
+  "error": "RuntimeError('build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023/guard.py\", line 50, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: build failed\n",
+  "end": 1792688373.015977,
+  "lifecycle_seconds": 17.798902988433838
+}

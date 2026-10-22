@@ -1,9 +1,11 @@
-# 当前讨论（2026-10-23T00:47:13.615406+08:00）
+# 当前讨论（2026-10-23T01:21:17.786298+08:00）
 
-用户批准先FFN外层ABI、后尾部。两项顺序单因素均有限通过并有小幅整层收益，两机采用。外层内联没有证明动态local消失；静态local从920增至1016。尾K64使末组生产相对首组约86–88μs缩为60μs，shared增加12288B，驻留不变。完整层对原Torch1.2426/1.7780/2.8859×，不得说E2E。
+用户要求优先Self QKV，核查为何W3–W6 MMA、能否全8warp或更大tile，并再次要求同步新版完整阶段表。通过Maintain更新当前M39交付约束，不把更大tile提问写成决定。
 
-最新用户要求最终完整阶段表：计算内容/公式、tile数/工作量、warp职责、同步和原Torch差距。已完成两进程当前软件阶段诊断，改良副本资源同且整层扰动≤0.462%；列明Torch热阶段与自有核内阶段的边界差异。FFN合计接近Torch，六小投影仍有明显余差；优先讨论投影设备函数/队列/写回，不能由阶段差值断言全是全局同步。当前只有FFN四组局部流水，并未实现整层MegaMoE式固定warp异步执行。
+已实际比较固定CTA64×128下4→8warp。共用函数混合分支使原4warp阶段也变慢；隔离8warp函数后当前Q/K/V约快10%–15%，整层同轮快约1.4%–1.9%，采用。不是只删warp判断，实际warp tile32×64→32×32，迭代器/同步/写回映射一起匹配。编译栈帧明显降低支持函数上下文影响，但远端无counter，未精确分摊动态spill或Tensor Core利用率。
 
-用户已确认远端不能获管理权限或访问GPU硬件计数器，已存约束，不再试提权/改驱动/远端NCU。本机有其他GPU任务，本轮NCU未启动。算子自有作业全退出；GPU1 RoboTwin固定1800局继续，当前15完整终态，旧质量权限/失败/训练暴露保留。
+新完整阶段表全部重测：当前Self QKV约0.77–0.85×Torch，其余三投影约0.65–0.72×，FFN区间约1.02×。建议下一步优先同形状Self-out/Cross-Q/out适用性，尚未运行；更大tile和联合QKV任务池未实现，不预设最佳。baseline/投机/旧tile/保护文件未动，4科学权限false。
 
-[结果与限制](../../experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/RESULT.md)、[完整阶段表](../../experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/STAGE-TABLE.md)。
+GPU0当前清理，累计16672.587/36000秒。GPU1 RoboTwin固定队列19/1800继续；microwave valid000三臂均失败保留。用户要求每次采用优化后同步整张阶段表，含tile工作量、warp、同步和原Torch加速比。
+
+[新版阶段表](../../experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/STAGE-TABLE.md)、[本轮结论](../../experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/RESULT.md)。

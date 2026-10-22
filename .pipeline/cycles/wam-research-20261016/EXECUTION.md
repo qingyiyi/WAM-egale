@@ -1,3 +1,7 @@
+## 2026-10-23T01:21:17.786298+08:00 M39独立8warp Self QKV采用与新版完整阶段表
+
+两版各9真实/36结构/225次有限门通过；混合函数整层慢1.72%–2.02%，隔离函数整层快1.769%/1.819%/1.438%。原Torch完整单层1.2661/1.8074/2.9322×。当前全阶段已重新计时，Self QKV仍慢于Torch；栈帧208→混合256→独立8B仅静态证据，动态local/利用率未知。首次漏函数CPU编译失败保留。两机采用，所有owned退出，累计16672.587/36000秒。本轮截止不变。GPU1自动队列19/1800，四false不改。[结果](../../experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/RESULT.md)、[阶段表](../../experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/STAGE-TABLE.md)。
+
 ## 2026-10-23T00:50:11.028665+08:00 M40第16局终态与自动接续
 
 open_microwave-valid000-P完整到horizon1500失败，actual_commands1520与environment_take_action_cnt1500分列保留，不改原计数语义。当前T5/5、C5/5、P5/6；本组Target和连续TF尚未配齐，不能作相对效果结论。队列正在Target同case，无自动重跑，预算/质量权限不变。[检查点](../../experiments/robotwin-pilot-20261020/eval100-20261022/CHECKPOINT-20261023-0050.json)。

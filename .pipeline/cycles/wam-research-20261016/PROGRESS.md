@@ -3,27 +3,27 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-23T00:47:13.615406+08:00'
+updated: '2026-10-23T01:21:17.786298+08:00'
 current: M39
-next: 根据当前阶段表讨论六个小投影与LN余差；GPU1继续固定RoboTwin队列，GPU0本轮已清理。
+next: 根据新版阶段表讨论Self输出与Cross Q/out同形状投影；GPU1固定机器人队列继续，GPU0已清理。
 ---
 
-# 当前研究进度（2026-10-23T00:47:13.615406+08:00）
+# 当前研究进度（2026-10-23T01:21:17.786298+08:00）
 
-M39已按批准顺序完成：外层action_ffn_pipeline强制内联，然后仅FFN1的12个M32尾tile K32→K64。每项9真实签名/36结构控制、225次有限完整调用逐位/状态通过；两进程同真实输入计时通过，两机采用。外层内联当轮完整层延迟降0.42%/0.54%/0.61%，尾K64当轮再降0.79%/0.42%/0.56%。不跨轮次相乘宣称E2E。
+M39当前采用独立8warp Self QKV：CTA仍64×128/K64，warp32×32，W0–W7均cp.async/MMA，原两段K1536与BF16/bias舍入保留；96tile/投影、108CTA、27grid同步、3408/3480/3408总tile不变。Self-out/Cross-Q/out仍原4warp。两机源码ce9d30a4…、DSO4f041cdd…；完整身份见SELECTED。
 
-当前原Torch/自有完整单层warm Graph为 **1.2426/1.7780/2.8859×**（KV288/1152/2160）。双方同最终Cross K/RMS与V预计算，原Torch静态dense history；不是最强guarded新增收益、30层或完整机器人性能。当前源码9b5dec45…、DSO2f333d8d…，完整身份见SELECTED。108CTA×8warp，112384B shared/CTA、255寄存器/线程、静态local1016B，数学tile3408/3480/3408、grid同步27。
+首版共用函数混合4/8warp：有限门通过但整层退化1.72%–2.02%，负结果保留。拆成独立设备函数后同轮完整层延迟降1.769%/1.819%/1.438%，两个进程均正向。两版各9真实签名/36结构控制、225次有限完整调用逐位/状态通过；不证明所有输入。当前原Torch/自有完整单层warm Graph **1.2661/1.8074/2.9322×**，双方同最终Cross K/RMS与V预计算、Torch静态dense history；不是最强guarded新增收益、30层或机器人E2E。
 
-新增当前阶段表两进程测量：改良插桩资源相同、完整层扰动≤0.462%，所有记录的对应阶段输出与输入/KV/RNG有限门通过。原Torch热阶段对自有核内阶段诊断：六小投影约0.68–0.74×，LN3约0.59–0.60×，FFN四段合计约1.01/1.01/1.03×，Self attention约4.60/4.52/9.27×。FFN存在重叠，不拆分相加。缓存上下文不同，这不是严格单原语或可省墙钟分解；精确生产独立FFN仍UNKNOWN。首次测量副本布局扰动和两种独立FFN副本的矛盾结果保留，不挑有利数字。
+当前完整阶段表已全部重测，两进程测量副本资源同；Self Q/K/V对原Torch约0.77/0.83–0.84/0.82–0.85×，仍未追平，但比同轮4warp对应阶段约快10%–15%。其余三小投影约0.65–0.72×，FFN共同区间约1.02×。阶段为核内区间对Torch独立热图，缓存上下文不同，不能相加分账。Self QKV设备函数静态栈帧8B、原函数208B；混合版256B。支持编译上下文影响，不把静态spill当动态HBM或将收益全归Tensor Core利用率。远端硬件计数仍不可访问。
 
-用户确认远端不允许管理权限和GPU计数器：不再尝试远端NCU、提权或改驱动。远端只用CUDAEvent/软件时间线；本机当前被他人任务占用，NCU0启动。新增GPU workers238.919秒、CPU编译904.875秒；保守计准备/等待/清理2712.273秒，累计 **15315.883/36000秒**，剩余5.746小时。10/23 00:43清理完成；旧00:58截止/失败/预算保留。四科学权限和production_admitted仍false。
+本轮CPU编译失败1次、0GPU调用，原记录保留；后续门和计时均完成。GPU workers228.965秒，CPU编译620.624秒，保守含准备/等待/清理1356.704秒，累计 **16672.587/36000秒**，剩余5.369小时。01:21已清理全部owned，GPU0空闲；本轮01:28:41与此前截止不改。本机0GPU，远端0NCU。四科学权限及production_admitted仍false。
 
-M40截至2026-10-23T00:50:11.028665+08:00：GPU1状态RUNNING_COMPLETE_DEV_EPISODE，完成16/1800，T5/5、C5/5、P5/6成功；仅早期运行状态，不能外推总体SR。5完整配对初态/首两chunk审计通过，新增open_microwave-valid000-P完整到horizon失败，原失败保留；active open_microwave-valid000-T。GPU0固定保留算子，不借GPU0。600有效初态与优化reset bank已备齐，原固定队列自动接续，每30局shard归档；实施/配对失败停止不自动重试。新160GPU小时/最长10天、T0=10/22 22:03:22；旧24小时账本与截止不改。新面板为扩大DEV，不是独立TEST。
+M40截至2026-10-23T01:18:50.673113+08:00：GPU1固定1800局扩大DEV完成19局；T6/7、C5/6、P5/6成功，6组配对审计通过。open_microwave/valid000三臂均完整失败，全部保留；当前place_object_basket-valid001-C。队列自动接续，GPU0固定留算子；优化reset bank沿用。旧24小时账本不改，新160GPU小时/最长10天、T0=10/22 22:03:22；这不是独立TEST或总体SR结论。
 
-| ID | 阶段 | 状态 | 当前证据 | 下一步 |
+|ID|阶段|状态|当前证据|下一步|
 |---|---|---|---|---|
-| `M39` | 单层算子 | in_progress | 内联/尾K64采用，完整阶段表与资源闭合 | 先讨论六小投影及小阶段差距，勿直接恢复全层ready |
-| `M17` | LIBERO证据 | blocked | 四套6000局齐；独立性/配对/长尾缺口保留 | 不恢复过期作业 |
-| `M40` | RoboTwin扩大DEV | in_progress | GPU1自动队列16/1800 | 定期核验进程/日志/完整三臂与shard |
+|`M39`|单层算子|in_progress|独立8warp Self QKV采用，新完整阶段表|讨论其余同形状三投影，暂不扩大tile或全层ready|
+|`M17`|LIBERO证据|blocked|四套6000局齐，独立性/配对/长尾缺口保留|不恢复过期队列|
+|`M40`|RoboTwin扩大DEV|in_progress|GPU1自动队列19/1800|定期核验完整终态与自动接续|
 
-[本轮结果](../../experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/RESULT.md)、[阶段表](../../experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/STAGE-TABLE.md)、[资源](../../experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/RESOURCE-AND-STOP-REPORT.json)、[RoboTwin检查点](../../experiments/robotwin-pilot-20261020/eval100-20261022/CHECKPOINT-20261023-0050.json)。10/23冻结身份与claim、10/28主表、11/01 18:00中文证据包；证据不足收缩claim，不制造PASS。
+[本轮结果](../../experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/RESULT.md)、[新版完整阶段表](../../experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/STAGE-TABLE.md)、[资源](../../experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/RESOURCE-AND-STOP-REPORT.json)、[RoboTwin检查点](../../experiments/robotwin-pilot-20261020/eval100-20261022/CHECKPOINT-20261023-0119.json)。10/23冻结身份与claim、10/28主表、11/01 18:00证据包；不足则收缩claim。

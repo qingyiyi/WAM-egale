@@ -1,0 +1,100 @@
+{
+  "goal": "8-warp SelfQKV in its own device function, preserve original other small projection function; test compiled-context confound",
+  "execution_authorization": "USER_REQUESTED_SELF_QKV_PRIORITY_FINITE_WARP_CONTROL",
+  "registered_at": "2026-10-23T01:10:56.353048+08:00",
+  "deadline": "2026-10-23T01:28:41.082204+08:00",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 1800,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 15315.88289085547,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 536870912,
+  "local_storage_cap_bytes": 268435456,
+  "terminal_status": "REGISTERED",
+  "input_manifest": "Existing 9 real signatures plus 27 structure cases; B14 action original short/middle/long cached fixtures; add 9 actual-derived FP32/broadcast temb controls",
+  "cleanup_plan": "owned PID+birth guard only; preserve failed attempts",
+  "evidence_path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023/r3-isolated/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/tail-k64/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "2f333d8d443b827fa452b8c34ac328b7b1e518c4e8d47c04415663e8cff01f19",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap",
+    "temb_fp32",
+    "temb_first_token",
+    "temb_first_token_fp32"
+  ],
+  "formal_performance_permission": false,
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023/r3-isolated",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023/r3-isolated/build/obj"
+      ],
+      600,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023/r3-isolated/gate.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023/r3-isolated/extended.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023/r3-isolated/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023/r3-isolated/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ],
+  "source_before_sha256": "9b5dec45b839bb6cb5bee69381f3da35640d53adfd087c2374b44e974184b751",
+  "mechanism": "4\u21928 MMA warps only in self QKV; also changes corresponding per-warp tile and lane mapping, not a claim of isolated hardware warp count",
+  "sources": {
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu": "ce9d30a488d7544fa808087c9f9d7fcde2c71870056f9815d5d959a355e9c247",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/cutlass_gemm.cuh": "269e87fd477708e6198d2d03806cdfb10b8fb4a59679df65320dc6c0f8de560c"
+  },
+  "attempt": "SELF_QKV_8_ISOLATED_FUNCTION",
+  "previous_attempt_gpu_seconds": 95.62,
+  "storage_account_root": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023",
+  "reason": "First build omitted helper body during source generation, compiler rejected undefined function; 0 GPU launches. Add intended helper, preserve initial failure and same deadline."
+}

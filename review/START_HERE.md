@@ -1,8 +1,8 @@
 # 当前研究入口（2026-10-23）
 
-[最新结果](CURRENT-EXECUTION-20261023.md)、[状态JSON](CURRENT-EXECUTION-20261023.json)、[完整算子阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/STAGE-TABLE.md)。外层FFN内联＋尾K64已采用，原Torch完整单层1.2426/1.7780/2.8859×；四科学权限false。GPU0本轮清理，GPU1固定RoboTwin1800局接续。远端无硬件计数器权限，不再尝试提权。
+[最新结果](CURRENT-EXECUTION-20261023.md)、[状态JSON](CURRENT-EXECUTION-20261023.json)、[新版完整阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/STAGE-TABLE.md)。独立8warp Self QKV已采用，原Torch完整单层1.2661/1.8074/2.9322×；混合函数负结果保留，四科学权限false。GPU0已清理，GPU1固定RoboTwin1800局自动接续，最新19完整终态。远端不使用硬件计数器。
 
-下面固定TF暂停72局属于历史科研快照，原RESULTS.json与retention不改；不能用当前算子有限结果改写旧质量失败。[上一派生入口](history/current-before-inline-tail-k64-20261023/START_HERE.md)。
+下面固定TF暂停72局属于历史科研快照，原RESULTS.json与retention不改；不能用当前算子有限结果改写旧质量失败。[上一派生入口](history/current-before-self-qkv-20261023/START_HERE.md)。
 
 ---
 

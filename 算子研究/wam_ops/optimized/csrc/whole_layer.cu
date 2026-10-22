@@ -151,6 +151,18 @@ __device__ void finish_tile() {
 // B14的六个小投影：224行hidden，3072→3072。整个阶段只调用一次
 // 固定形状设备函数，让编译器直接生成M64×N128的CUTLASS路径。
 // 仍是96个输出tile、原两个K1536分段及BF16提交；领取和同步均不改。
+__device__ __noinline__ void self_qkv_projection8(const Params &p, Shared &s, cg::grid_group &g,
+                                               int st, const B *a, int wi, B *out) {
+    constexpr int M = 224, tiles = ((M + 63) / 64) * (D / 128);
+    begin_stage(p, g, st);
+    for (int t; (t = claim_tile(p, s, st)) < tiles;) {
+        self_qkv8_tile(s.tile.cutlass_gemm.self_qkv8, a, (const B *)p.w[wi],
+                      (const B *)p.w[wi + 1], out, t);
+        finish_tile();
+    }
+    g.sync();
+}
+
 __device__ __noinline__ void action_projection(const Params &p, Shared &s, cg::grid_group &g,
                                                int st, const B *a, int wi, B *out) {
     constexpr int M = 224, tiles = ((M + 63) / 64) * (D / 128);
@@ -166,7 +178,10 @@ __device__ __noinline__ void action_projection(const Params &p, Shared &s, cg::g
 __device__ void linear(const Params &p, Shared &s, cg::grid_group &g, int st, const B *a, int wi,
                        B *out, int m, int n, int k) {
     if (p.candidate && m == 224 && n == D && k == D) {
-        action_projection(p, s, g, st, a, wi, out);
+        if (wi == 3 || wi == 5 || wi == 7)
+            self_qkv_projection8(p, s, g, st, a, wi, out);
+        else
+            action_projection(p, s, g, st, a, wi, out);
         return;
     }
     const int tn = m >= 128 ? 128 : 64;

@@ -44,7 +44,7 @@
 
 - [优先恢复RoboTwin一张卡](global/requirements/decision-优先恢复RoboTwin并占用远端一张卡.md)（constraint，M40）：用户确认两线继续，RoboTwin从已完成采集/ON/CAL接固定DEV90，阶段性结果及时汇报；原24h预算及旧失败/截止保留。
 
-- [先Cross KV/FFN，再就绪tile](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)（constraint，M39）：用户最新确认先解决六小投影嵌入变慢，再FFN对齐与DAG；保持同输入/数学/同步边界；原预算与保护不变。
+- [先Cross KV/FFN，再就绪tile](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)（constraint，M39）：用户最新要求当前FFN收口后先解决Self Q/K/V投影；warp/tile选择以有限实测为准；保持同输入/数学/同步边界；原预算与保护不变。
 
 - [补跑RoboTwin parent valid08及新窗口](global/requirements/decision-允许补跑RoboTwin-parent-valid08并新增六十分钟窗口.md)（constraint，仅M40此局）：保留原PARTIAL；新Attempt最多60分钟、最晚10/21 10:00清理，原累计预算不增加。
 
@@ -123,7 +123,7 @@
 
 - [算子仅baseline/optimized，投机侧不改](global/requirements/decision-算子代码只维护baseline与optimized且不改投机侧.md)（constraint，算子代码）：独立目录收拢、删除无依赖旧实现；先完成30层与性能基线，再讲解。
 
-- [算子交付明确源码与验证范围](global/requirements/requirement-算子交付明确源码入口与验证范围.md)（constraint，当前算子交付与带读）：阶段表同时列tile数、每tile工作量、相对Torch加速比与同步；原始耗时仅供追溯；提供完整路径与准确行号；结合Torch实测grid/warp及适用shape解释复现依据，区分总CTA/驻留/launch；以具体tile解释数据流、同步和限制，先答追问再推进；教学本身不触发实验；后续执行以用户最新明确批准及有界作业为准。
+- [算子交付明确源码与验证范围](global/requirements/requirement-算子交付明确源码入口与验证范围.md)（constraint，当前算子交付与带读）：每次采用新算子后同步新版完整阶段表，同时列tile数、每tile工作量、warp分工、相对Torch加速比与同步；原始耗时仅供追溯；提供完整路径与准确行号；结合Torch实测grid/warp及适用shape解释复现依据，区分总CTA/驻留/launch；以具体tile解释数据流、同步和限制，先答追问再推进；教学本身不触发实验；后续执行以用户最新明确批准及有界作业为准。
 
 - [先直接复制Torch调用链完成复现](global/requirements/decision-算子先直接复制Torch调用链完成复现.md)（constraint，当前算子基线）：先可替换的精度/性能基线，允许抄原实现；自有device基元/调度另议，计时噪声与实现正确性分列。
 
