@@ -25,3 +25,4 @@ execution: EXECUTION.md
 
 - [x] M39-KV-CACHE：用户新批准自有算子读取预计算K（含RMS）/V，双方同等缓存；先精度后性能，冷构建另列。
 - [x] M39-KV-STAGES：完整层、逐阶段耗时、同步等待分列；profile与正常计时独立。
+- [x] M39-TILE-TABLE：按用户反馈补齐阶段tile数量、每tile形状/工作量、K分段与attention循环口径；仅CPU源码核查及文档同步，不启动GPU。

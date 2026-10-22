@@ -7,3 +7,5 @@
 首次诊断漏记两处同步，曾过早怀疑旧阶段表；已向用户澄清并修复插桩，原FAILED保留。计算仍36次，warm去掉五次变31次。LingBot-VA2对比BF16 PyTorch起点、最终叠加蒸馏/FP8 TensorRT/FlashInfer，预计算已有先例。
 
 [当前结果](../../experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/RESULT.md)。没有更改生产、四科学权限或恢复过期RoboTwin。
+
+用户最新反馈要求阶段表同时提供tile数和每tile工作量。已补齐源码推导口径，不用逻辑tile总数比较不同阶段算量；后续汇报沿用此格式。
