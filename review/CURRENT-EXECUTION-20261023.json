@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-23T00:48:33.405699+08:00",
+  "as_of": "2026-10-23T00:50:11.028665+08:00",
   "operator_selected": {
     "status": "RETAIN_FINITE_RESEARCH_CANDIDATE",
     "source_sha256": "9b5dec45b839bb6cb5bee69381f3da35640d53adfd087c2374b44e974184b751",
@@ -200,9 +200,9 @@
     "robotwin": "separate authorized GPU1 campaign continues; not stopped by M39 cleanup"
   },
   "robotwin": {
-    "checked_at": "2026-10-23T00:45:25.973283+08:00",
+    "checked_at": "2026-10-23T00:50:11.028665+08:00",
     "status": "RUNNING_COMPLETE_DEV_EPISODE",
-    "completed": 15,
+    "completed": 16,
     "total": 1800,
     "counts": {
       "T": {
@@ -214,11 +214,37 @@
         "success": 5
       },
       "P": {
-        "complete": 5,
+        "complete": 6,
         "success": 5
       }
     },
-    "active_case": "open_microwave-valid000-P",
+    "last_episode": {
+      "episode_id": "open_microwave-valid000-P",
+      "pair_id": 5,
+      "arm": "P",
+      "task": "open_microwave",
+      "valid_index": 0,
+      "status": "COMPLETE_ALGORITHMIC_FAILURE",
+      "success": false,
+      "initial_checks": {
+        "physical_exact": true,
+        "initial_observation_exact": true
+      },
+      "actual_commands": 1520,
+      "environment_take_action_cnt": 1500,
+      "engineering": {
+        "variant": "COMBINED",
+        "front_omitted": true,
+        "batch_warmups_deferred": 2,
+        "batch_warmups_materialized": 0
+      },
+      "policy_chunks": 48,
+      "failure_penalty": 1500,
+      "horizon": 1500,
+      "lifecycle_seconds": 782.6584205627441,
+      "client_returncode": 0
+    },
+    "active_case": "open_microwave-valid000-T",
     "pair_audits": [
       {
         "pair_id": 0,
@@ -271,15 +297,10 @@
         "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
       }
     ],
-    "GPU_lifecycle_seconds": 9721.1467294693,
-    "storage_bytes": 2941087588,
-    "deadline": 1793253802.728607,
-    "owned_guard": {
-      "pid": 860307,
-      "birth_ticks": 727674998,
-      "pgid": 860293
-    },
-    "GPU_status": "0, 0 %, 11 MiB\n1, 78 %, 25984 MiB\n"
+    "teacher_attempted": 9950,
+    "GPU_lifecycle_seconds": 10008.259147644043,
+    "storage_bytes": 2951273612,
+    "deadline": 1793253802.728607
   },
   "engineering_quality_screen": false,
   "independent_test_complete": false,

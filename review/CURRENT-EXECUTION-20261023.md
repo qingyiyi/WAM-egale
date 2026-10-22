@@ -8,7 +8,7 @@
 
 [改动、负结果、输入及精度边界](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/RESULT.md)；[资源](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/RESOURCE-AND-STOP-REPORT.json)。累计15315.883/36000秒，算子owned已清理。用户确认远端无GPU硬件计数器权限，不再尝试提权/驱动改变；本机本次NCU0启动。
 
-RoboTwin固定1800局在GPU1继续，GPU0保留算子。10/23 00:45完成15/1800，T/C/P各5/5成功，5配对审计通过；属于早期扩大DEV状态，不是总体SR或独立TEST。600有效初态和优化reset bank已备齐，队列自动接续，当前open_microwave-valid000-P。仍受160GPU小时/10天约束，旧24小时与失败不改。
+RoboTwin固定1800局在GPU1继续，GPU0保留算子。10/23 00:50完成16/1800，T5/5、C5/5、P5/6成功，5完整配对审计通过；属于早期扩大DEV状态，不是总体SR或独立TEST。600有效初态和优化reset bank已备齐，队列自动接续，新增open_microwave-valid000-P到原horizon的完整算法失败已保留；队列当前运行同case的Target，三臂尚未配齐，不能作相对效果结论。仍受160GPU小时/10天约束，旧24小时与失败不改。
 
 下一步先审查六个小投影的函数边界、队列/两处grid与写回开销；现有数据不能断言全是同步。不要恢复大范围ready队列或为了得到PASS更改质量规则。
 
