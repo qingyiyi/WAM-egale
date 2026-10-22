@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T02:17:22.010612+08:00",
+  "updated": "2026-10-23T02:23:30.193965+08:00",
   "operator": {
     "selected": {
       "source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
@@ -400,35 +400,35 @@
     "robotwin": "New shared160h campaign, GPU0 temporarily until near10:00, GPU1 continues; separate budget"
   },
   "robotwin": {
-    "checked_at": "2026-10-23T02:12:38.420042+08:00",
-    "completed": 37,
+    "checked_at": "2026-10-23T02:23:30.193965+08:00",
+    "completed": 41,
     "total": 1800,
     "counts": {
       "T": {
-        "complete": 12,
-        "success": 11
+        "complete": 14,
+        "success": 12
       },
       "C": {
-        "complete": 12,
-        "success": 11
+        "complete": 13,
+        "success": 12
       },
       "P": {
-        "complete": 13,
-        "success": 11
+        "complete": 14,
+        "success": 12
       }
     },
-    "complete_pairs": 12,
+    "complete_pairs": 13,
     "workers": {
       "0": {
         "status": "RUNNING_COMPLETE_DEV_EPISODE",
-        "active_case": "stack_blocks_two-valid002-C",
-        "active_pair": 13,
-        "active_arm": "C",
-        "teacher_attempted": 1487,
-        "GPU_lifecycle_seconds": 533.4656360149384,
+        "active_case": "handover_block-valid002-P",
+        "active_pair": 14,
+        "active_arm": "P",
+        "teacher_attempted": 3817,
+        "GPU_lifecycle_seconds": 1184.9961183071136,
         "error": null,
         "end": null,
-        "completed": 3,
+        "completed": 6,
         "pair_audits": [
           {
             "pair_id": 12,
@@ -439,13 +439,23 @@
             },
             "pass_all": true,
             "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 13,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
           }
         ],
         "last_episode": {
-          "episode_id": "place_object_basket-valid002-P",
-          "pair_id": 12,
-          "arm": "P",
-          "task": "place_object_basket",
+          "episode_id": "stack_blocks_two-valid002-T",
+          "pair_id": 13,
+          "arm": "T",
+          "task": "stack_blocks_two",
           "valid_index": 2,
           "status": "COMPLETE_SUCCESS",
           "success": true,
@@ -453,31 +463,48 @@
             "physical_exact": true,
             "initial_observation_exact": true
           },
-          "actual_commands": 240,
-          "environment_take_action_cnt": 236,
+          "actual_commands": 304,
+          "environment_take_action_cnt": 293,
           "engineering": {
             "variant": "COMBINED",
             "front_omitted": true,
             "batch_warmups_deferred": 2,
             "batch_warmups_materialized": 0
           },
-          "policy_chunks": 8,
-          "failure_penalty": 240,
-          "horizon": 700,
-          "lifecycle_seconds": 148.87936425209045,
+          "policy_chunks": 10,
+          "failure_penalty": 304,
+          "horizon": 800,
+          "lifecycle_seconds": 184.36198663711548,
           "client_returncode": 0
+        },
+        "active_client": {
+          "status": "RUNNING_COMPLETE_EPISODE",
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          },
+          "environment_commands": 208,
+          "policy_chunks": 8,
+          "render_device": {
+            "alias": "pci:0000:47:00.0",
+            "pci": "0000:47:00.0",
+            "name": "NVIDIA A100-SXM4-40GB",
+            "can_render": true,
+            "is_cuda": true,
+            "cuda_id": 0
+          }
         }
       },
       "1": {
         "status": "RUNNING_COMPLETE_DEV_EPISODE",
-        "active_case": "open_microwave-valid001-T",
+        "active_case": "open_microwave-valid001-C",
         "active_pair": 11,
-        "active_arm": "T",
-        "teacher_attempted": 6073,
-        "GPU_lifecycle_seconds": 1780.2012841701508,
+        "active_arm": "C",
+        "teacher_attempted": 8700,
+        "GPU_lifecycle_seconds": 2431.7305130958557,
         "error": null,
         "end": null,
-        "completed": 7,
+        "completed": 8,
         "pair_audits": [
           {
             "pair_id": 9,
@@ -501,9 +528,9 @@
           }
         ],
         "last_episode": {
-          "episode_id": "open_microwave-valid001-P",
+          "episode_id": "open_microwave-valid001-T",
           "pair_id": 11,
-          "arm": "P",
+          "arm": "T",
           "task": "open_microwave",
           "valid_index": 1,
           "status": "COMPLETE_ALGORITHMIC_FAILURE",
@@ -523,7 +550,7 @@
           "policy_chunks": 48,
           "failure_penalty": 1500,
           "horizon": 1500,
-          "lifecycle_seconds": 785.6962177753448,
+          "lifecycle_seconds": 889.3775365352631,
           "client_returncode": 0
         },
         "active_client": {
@@ -532,8 +559,8 @@
             "physical_exact": true,
             "initial_observation_exact": true
           },
-          "environment_commands": 464,
-          "policy_chunks": 16,
+          "environment_commands": 48,
+          "policy_chunks": 2,
           "render_device": {
             "alias": "pci:0000:4e:00.0",
             "pci": "0000:4e:00.0",
@@ -551,9 +578,9 @@
     "engineering_quality_screen": false,
     "noninferiority_established": false,
     "independent_test_complete": false,
-    "GPU_lifecycle_seconds_including_active": 15492.751366615295,
+    "GPU_lifecycle_seconds_including_active": 16796.299441576004,
     "GPU_cap_seconds": 576000,
-    "GPU_status": "0, GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 4 %, 22348 MiB\n1, GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 61 %, 25196 MiB\n"
+    "GPU_status": "0, GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 59 %, 25218 MiB\n1, GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 68 %, 25817 MiB\n"
   },
   "robotwin_dispatch": {
     "job": {

@@ -10,6 +10,6 @@
 
 源码fb650be4…、DSOa41d778d…，02:03全部算子owned退出，累计18427.875/36000秒。GPU0/1各一个RoboTwin worker，原27局在完整pair后PAUSED保留，新原子队列去重；每pair三臂同卡，原160GPU小时/10天、T0/失败记录不改。GPU0以10/23约10:00为目标预测完整pair时长停派，已开局自然终态；GPU1继续。完整512 BF16 bank（480条）直接引用，不重复编码/保存大文件。
 
-截至2026-10-23T02:12:38.420042+08:00，合计37/1800，T11/12、C11/12、P11/13；12完整pair审计通过，GPU0首组3/3成功并初态/首两chunk通过。当前扩大DEV早期状态，不外推总体SR或独立TEST。两卡5分钟CPU只读巡检运行，无自动重试。机器人仍使用冻结评测配置，不能继承新算子性能或质量结论。
+截至2026-10-23T02:23:30.193965+08:00，合计41/1800，T12/14、C12/13、P12/14；13完整pair审计通过，GPU0通过2组。当前扩大DEV早期状态，不外推总体SR或独立TEST。两卡5分钟CPU只读巡检运行，无自动重试；机器人仍使用冻结评测配置。
 
 [完整结果](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESULT.md)、[新版完整阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md)、[身份](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/SELECTED.json)、[算子资源](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESOURCE-AND-STOP-REPORT.json)、[双卡计划](../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/PLAN.md)、[实际检查点](../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/CURRENT-CHECKPOINT.json)、[HW入口](../.pipeline/PROGRESS.compact.md)。四科学权限及production_admitted=false；旧review/RESULTS.json未改。

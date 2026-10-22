@@ -3,12 +3,12 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-23T02:12:38.420042+08:00'
+updated: '2026-10-23T02:23:30.193965+08:00'
 current: M40
 next: 巡检双卡RoboTwin与GPU0约10点自然停派；下一轮算子先讨论BF16部分和私有暂存，本轮不再启动。
 ---
 
-# 当前研究进度（2026-10-23T02:12:38.420042+08:00）
+# 当前研究进度（2026-10-23T02:23:30.193965+08:00）
 
 M39本轮已完成并交接GPU0。当前采用六个同形状投影8warp＋Self QKV联合288任务队列；CTA64×128、warp32×32、K64/3stage、两段K1536和BF16/bias边界不变。数学tile3408/3480/3408，grid同步27→23。两机源码fb650be4…、DSOa41d778d…，原始action/B2路径保持原契约。
 
@@ -28,6 +28,6 @@ M40用户新批准临时双卡：原GPU1在27局/9完整pair边界PAUSED保留�
 |---|---|---|---|---|
 |`M39`|单层算子|in_progress|六投影8warp＋QKV联合队列，两机采用及新版全表|讨论投影BF16分段部分和的CTA私有暂存；尚未实现，不在当前GPU0继续跑|
 |`M17`|LIBERO证据|blocked|四套6000局齐，独立性/配对/长尾缺口保留|不恢复过期队列|
-|`M40`|RoboTwin扩大DEV|in_progress|临时双卡，37/1800，首GPU0完整pair通过|低开销巡检，GPU0约10点自然收尾，GPU1继续|
+|`M40`|RoboTwin扩大DEV|in_progress|临时双卡，41/1800，首GPU0完整pair通过|低开销巡检，GPU0约10点自然收尾，GPU1继续|
 
 [本轮结果](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESULT.md)、[新版完整阶段表](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md)、[算子资源](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESOURCE-AND-STOP-REPORT.json)、[双卡计划](experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/PLAN.md)、[实际检查点](experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/CURRENT-CHECKPOINT.json)。10/23冻结身份与claim、10/28主表、11/01 18:00证据包；证据不足收缩claim。
