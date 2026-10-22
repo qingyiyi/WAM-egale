@@ -1,0 +1,14 @@
+--- BEFORE.cu
++++ CANDIDATE.cu
+@@ -178,10 +178,7 @@
+ __device__ void linear(const Params &p, Shared &s, cg::grid_group &g, int st, const B *a, int wi,
+                        B *out, int m, int n, int k) {
+     if (p.candidate && m == 224 && n == D && k == D) {
+-        if (wi == 3 || wi == 5 || wi == 7)
+-            self_qkv_projection8(p, s, g, st, a, wi, out);
+-        else
+-            action_projection(p, s, g, st, a, wi, out);
++        self_qkv_projection8(p, s, g, st, a, wi, out);
+         return;
+     }
+     const int tn = m >= 128 ? 128 : 64;

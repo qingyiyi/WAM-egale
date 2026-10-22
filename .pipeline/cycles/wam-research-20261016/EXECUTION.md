@@ -1,3 +1,9 @@
+## 2026-10-23T02:12:38.420042+08:00 M39六投影/QKV收口；M40临时双卡实际接续
+
+当前单层原Torch1.2967/1.8469/2.9910×，相对上版延迟降2.211%/1.995%/1.841%。三候选各225有限门通过，大M128退化、K128编译失败保留。联合QKV减少4次grid、增量很小；新全阶段重测。累计18427.875/36000秒，02:03算子owned清理，GPU0已交接无新算子。
+
+原GPU1完整27局后PAUSED，原子pair队列去重，两卡实际运行；合计37/1800、12完整pair审计通过，GPU0首组3/3成功。GPU0按预测约10点停派、完整episode自然终态；GPU1继续，总160小时/10天不增。完整reset bank直接引用，首0卡物理/像素/配对通过。四false保留。[结果](../../experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESULT.md)、[全表](../../experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md)、[双卡检查点](../../experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/CURRENT-CHECKPOINT.json)。
+
 ## 2026-10-23T01:21:17.786298+08:00 M39独立8warp Self QKV采用与新版完整阶段表
 
 两版各9真实/36结构/225次有限门通过；混合函数整层慢1.72%–2.02%，隔离函数整层快1.769%/1.819%/1.438%。原Torch完整单层1.2661/1.8074/2.9322×。当前全阶段已重新计时，Self QKV仍慢于Torch；栈帧208→混合256→独立8B仅静态证据，动态local/利用率未知。首次漏函数CPU编译失败保留。两机采用，所有owned退出，累计16672.587/36000秒。本轮截止不变。GPU1自动队列19/1800，四false不改。[结果](../../experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/RESULT.md)、[阶段表](../../experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/STAGE-TABLE.md)。

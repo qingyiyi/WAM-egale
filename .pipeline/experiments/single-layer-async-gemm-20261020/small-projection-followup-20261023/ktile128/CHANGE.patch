@@ -1,0 +1,22 @@
+--- all-six-eight/CANDIDATE.cuh
++++ ktile128/CANDIDATE.cuh
+@@ -68,8 +68,8 @@
+ struct CutlassSelfQKV8 {
+     using Config = cutlass::gemm::device::Gemm<
+         CutlassB, CutlassRow, CutlassB, CutlassCol, CutlassB, CutlassRow, float,
+-        cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<64, 128, 64>,
+-        cutlass::gemm::GemmShape<32, 32, 64>, cutlass::gemm::GemmShape<16, 8, 16>,
++        cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<64, 128, 128>,
++        cutlass::gemm::GemmShape<32, 32, 128>, cutlass::gemm::GemmShape<16, 8, 16>,
+         cutlass::epilogue::thread::LinearCombination<CutlassB, 8, float, float>,
+         cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<>, 3>;
+     using Mma = typename Config::GemmKernel::Mma;
+@@ -209,7 +209,7 @@
+                                   {span,n},thread,{0,cn});
+         Mma mma(s.mainloop,thread,warp,lane);
+         typename Mma::FragmentC acc; acc.clear();
+-        mma(span/64,acc,ai,bi,acc);
++        mma(span/128,acc,ai,bi,acc);
+         __syncthreads();
+         typename Mma::Operator::IteratorC store({s.result,CutlassRow(136)},lane);
+         store.add_tile_offset({warp%2,warp/2});

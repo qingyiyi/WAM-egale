@@ -1,0 +1,58 @@
+--- all-six-eight/CANDIDATE.cuh
++++ row128/CANDIDATE.cuh
+@@ -68,14 +68,14 @@
+ struct CutlassSelfQKV8 {
+     using Config = cutlass::gemm::device::Gemm<
+         CutlassB, CutlassRow, CutlassB, CutlassCol, CutlassB, CutlassRow, float,
+-        cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<64, 128, 64>,
+-        cutlass::gemm::GemmShape<32, 32, 64>, cutlass::gemm::GemmShape<16, 8, 16>,
++        cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<128, 128, 64>,
++        cutlass::gemm::GemmShape<32, 64, 64>, cutlass::gemm::GemmShape<16, 8, 16>,
+         cutlass::epilogue::thread::LinearCombination<CutlassB, 8, float, float>,
+         cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<>, 3>;
+     using Mma = typename Config::GemmKernel::Mma;
+     union Storage {
+         typename Mma::SharedStorage mainloop;
+-        float result[64 * 136];
++        float result[128 * 136];
+     };
+ };
+ 
+@@ -198,7 +198,7 @@
+         const B *a, const B *w, const B *bias, B *out, int task) {
+     using Mma = CutlassSelfQKV8::Mma;
+     constexpr int m=224, n=3072, k=3072, span=1536, splits=2;
+-    const int rm=(task/24)*64, cn=(task%24)*128;
++    const int rm=(task/24)*128, cn=(task%24)*128;
+     const int thread=int(threadIdx.x), warp=thread/32, lane=thread%32;
+     for (int partition=0; partition<splits; ++partition) {
+         typename Mma::IteratorA::Params ap{CutlassRow(k)};
+@@ -212,7 +212,7 @@
+         mma(span/64,acc,ai,bi,acc);
+         __syncthreads();
+         typename Mma::Operator::IteratorC store({s.result,CutlassRow(136)},lane);
+-        store.add_tile_offset({warp%2,warp/2});
++        store.add_tile_offset({warp%4,warp/4});
+         store.store(acc);
+         __syncthreads();
+ 
+@@ -220,7 +220,7 @@
+             struct alignas(8) B4 {
+                 __nv_bfloat162 lo, hi;
+             };
+-            for (int i = 4 * int(threadIdx.x); i < 64 * 128; i += 4 * int(blockDim.x)) {
++            for (int i = 4 * int(threadIdx.x); i < 128 * 128; i += 4 * int(blockDim.x)) {
+                 const int r = rm + i / 128, c = cn + i % 128;
+                 if (r < m && c < n) {
+                     float4 z =
+--- all-six-eight/CANDIDATE.cu
++++ row128/CANDIDATE.cu
+@@ -153,7 +153,7 @@
+ // 仍是96个输出tile、原两个K1536分段及BF16提交；领取和同步均不改。
+ __device__ __noinline__ void self_qkv_projection8(const Params &p, Shared &s, cg::grid_group &g,
+                                                int st, const B *a, int wi, B *out) {
+-    constexpr int M = 224, tiles = ((M + 63) / 64) * (D / 128);
++    constexpr int M = 224, tiles = ((M + 127) / 128) * (D / 128);
+     begin_stage(p, g, st);
+     for (int t; (t = claim_tile(p, s, st)) < tiles;) {
+         self_qkv8_tile(s.tile.cutlass_gemm.self_qkv8, a, (const B *)p.w[wi],

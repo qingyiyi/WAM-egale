@@ -1,6 +1,6 @@
 # 长期记忆索引
 
-- [RoboTwin扩大评估160GPU小时](global/requirements/decision-RoboTwin扩大评估授权160GPU小时双卡接续.md)（constraint，M40新一期）：已授权1800局、160GPU小时/10天；最新GPU0留算子、GPU1跑RoboTwin，旧账本不改。
+- [RoboTwin扩大评估160GPU小时](global/requirements/decision-RoboTwin扩大评估授权160GPU小时双卡接续.md)（constraint，M40新一期）：已授权1800局、160GPU小时/10天；最新先完成本轮算子，随后GPU0临时借给RoboTwin至10/23上午10点附近、GPU1持续接续，旧账本与总额不改。
 - [先优化FFN1尾部再处理FFN2写回](global/requirements/decision-先优化FFN1尾部再处理FFN2写回.md)（constraint，M39）：用户确认尾部分摊→FFN2写回→函数开销顺序，并补测独立FFN；具体收益看Cycle，原累计预算不增。 最新确认：先外层FFN函数ABI单因素验证，再处理尾部。
 
 - [试验FFN四组依赖融合流水](global/requirements/decision-试验FFN四组依赖融合流水.md)（constraint，M39）：用户批准FFN局部依赖流水，保留数学和ACT缓冲，原预算不增。

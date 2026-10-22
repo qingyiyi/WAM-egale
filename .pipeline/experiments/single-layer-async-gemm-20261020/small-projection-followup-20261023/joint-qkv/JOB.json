@@ -1,0 +1,100 @@
+{
+  "goal": "Pool independent Self Q/K/V tiles while retaining original per-projection weights/math and 64x128 output tile; remove four intervening grid barriers, compare strongest current original-Torch matched control",
+  "execution_authorization": "USER_APPROVED_PROJECTION_FOLLOWUP_AND_QKV_OPTIMIZATION_20261023",
+  "registered_at": "2026-10-23T01:50:29.266497+08:00",
+  "deadline": "2026-10-23T02:34:21.302293+08:00",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 3600,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 16672.58698485547,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 536870912,
+  "local_storage_cap_bytes": 268435456,
+  "terminal_status": "REGISTERED",
+  "input_manifest": "Existing 9 real signatures plus 27 structure cases; B14 action original short/middle/long cached fixtures; add 9 actual-derived FP32/broadcast temb controls",
+  "cleanup_plan": "owned PID+birth guard only; preserve failed attempts",
+  "evidence_path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/joint-qkv/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/all-six-eight/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "2bd1bfff7e32438ce8d4aa7cf6b771f7ae7acd9f6730d7b7187cfe53cbabc4a9",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap",
+    "temb_fp32",
+    "temb_first_token",
+    "temb_first_token_fp32"
+  ],
+  "formal_performance_permission": false,
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/joint-qkv",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/joint-qkv/build/obj"
+      ],
+      300,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/joint-qkv/gate.py"
+      ],
+      120,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/joint-qkv/extended.py"
+      ],
+      120,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/joint-qkv/timing.py",
+        "1"
+      ],
+      120,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/joint-qkv/timing.py",
+        "2"
+      ],
+      120,
+      true
+    ]
+  ],
+  "source_before_sha256": "ce9d30a488d7544fa808087c9f9d7fcde2c71870056f9815d5d959a355e9c247",
+  "mechanism": "Only route three remaining same-shape projections to existing eight-warp device function; no new tile shape",
+  "sources": {
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/cutlass_gemm.cuh": "269e87fd477708e6198d2d03806cdfb10b8fb4a59679df65320dc6c0f8de560c"
+  },
+  "attempt": "JOINT_INDEPENDENT_QKV_TILES",
+  "previous_attempt_gpu_seconds": 119.06666350364685,
+  "storage_account_root": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023",
+  "reason": "Supported larger M tile passed finite correctness but whole layer slower9\u201311%; restore original shape and test only pooling three independent QKV projections, no larger tiles or full-layer ready scheduler."
+}

@@ -1,8 +1,8 @@
 # 当前研究入口（2026-10-23）
 
-[最新结果](CURRENT-EXECUTION-20261023.md)、[状态JSON](CURRENT-EXECUTION-20261023.json)、[新版完整阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/self-qkv-warp-control-20261023/STAGE-TABLE.md)。独立8warp Self QKV已采用，原Torch完整单层1.2661/1.8074/2.9322×；混合函数负结果保留，四科学权限false。GPU0已清理，GPU1固定RoboTwin1800局自动接续，最新19完整终态。远端不使用硬件计数器。
+[最新结果](CURRENT-EXECUTION-20261023.md)、[状态JSON](CURRENT-EXECUTION-20261023.json)、[新版完整阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md)。六投影8warp＋Self QKV联合队列已采用，原Torch完整单层1.2967/1.8469/2.9910×；大tile负结果和CPU编译失败保留。两远端卡已实际运行RoboTwin，GPU0临时至10/23上午约10点自然收尾停派、GPU1继续；四科学权限false。
 
-下面固定TF暂停72局属于历史科研快照，原RESULTS.json与retention不改；不能用当前算子有限结果改写旧质量失败。[上一派生入口](history/current-before-self-qkv-20261023/START_HERE.md)。
+下面固定TF暂停72局属于历史科研快照，原RESULTS.json与retention不改；不能用当前算子有限结果改写旧质量失败。[上一派生入口](history/current-before-projection-followup-20261023/START_HERE.md)。
 
 ---
 

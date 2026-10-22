@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792690876.3196685,
+  "deadline": 1792694061.302293,
+  "jobs": [
+    {
+      "name": "build",
+      "owned": {
+        "pid": 927701,
+        "birth_ticks": 728933489,
+        "pgid": 927701
+      },
+      "start": 1792690876.3311477,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792690894.387869,
+      "lifecycle_seconds": 18.056721448898315,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 927700,
+    "birth_ticks": 728933485,
+    "pgid": 927686
+  },
+  "error": "RuntimeError('build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/ktile128/guard.py\", line 50, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: build failed\n",
+  "end": 1792690894.3912609,
+  "lifecycle_seconds": 18.071592569351196
+}

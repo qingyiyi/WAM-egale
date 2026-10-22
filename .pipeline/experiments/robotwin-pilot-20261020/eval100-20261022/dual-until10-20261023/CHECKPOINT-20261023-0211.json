@@ -1,0 +1,162 @@
+{
+  "checked_at": "2026-10-23T02:11:37.596934+08:00",
+  "completed": 36,
+  "total": 1800,
+  "counts": {
+    "T": {
+      "complete": 12,
+      "success": 11
+    },
+    "C": {
+      "complete": 12,
+      "success": 11
+    },
+    "P": {
+      "complete": 12,
+      "success": 10
+    }
+  },
+  "complete_pairs": 11,
+  "workers": {
+    "0": {
+      "status": "RUNNING_COMPLETE_DEV_EPISODE",
+      "active_case": "place_object_basket-valid002-P",
+      "active_pair": 12,
+      "active_arm": "P",
+      "teacher_attempted": 1385,
+      "GPU_lifecycle_seconds": 472.81470012664795,
+      "error": null,
+      "end": null,
+      "completed": 2,
+      "pair_audits": [],
+      "last_episode": {
+        "episode_id": "place_object_basket-valid002-C",
+        "pair_id": 12,
+        "arm": "C",
+        "task": "place_object_basket",
+        "valid_index": 2,
+        "status": "COMPLETE_SUCCESS",
+        "success": true,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 240,
+        "environment_take_action_cnt": 236,
+        "engineering": {
+          "variant": "COMBINED",
+          "front_omitted": true,
+          "batch_warmups_deferred": 2,
+          "batch_warmups_materialized": 0
+        },
+        "policy_chunks": 8,
+        "failure_penalty": 240,
+        "horizon": 700,
+        "lifecycle_seconds": 151.02439522743225,
+        "client_returncode": 0
+      },
+      "active_client": {
+        "status": "RUNNING_COMPLETE_EPISODE",
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "environment_commands": 176,
+        "policy_chunks": 6,
+        "render_device": {
+          "alias": "pci:0000:47:00.0",
+          "pci": "0000:47:00.0",
+          "name": "NVIDIA A100-SXM4-40GB",
+          "can_render": true,
+          "is_cuda": true,
+          "cuda_id": 0
+        }
+      }
+    },
+    "1": {
+      "status": "RUNNING_COMPLETE_DEV_EPISODE",
+      "active_case": "open_microwave-valid001-T",
+      "active_pair": 11,
+      "active_arm": "T",
+      "teacher_attempted": 5759,
+      "GPU_lifecycle_seconds": 1719.60973072052,
+      "error": null,
+      "end": null,
+      "completed": 7,
+      "pair_audits": [
+        {
+          "pair_id": 9,
+          "fields": {
+            "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+            "two_policy_chunks_present": true,
+            "C_P_initial_exact": true
+          },
+          "pass_all": true,
+          "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+        },
+        {
+          "pair_id": 10,
+          "fields": {
+            "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+            "two_policy_chunks_present": true,
+            "C_P_initial_exact": true
+          },
+          "pass_all": true,
+          "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+        }
+      ],
+      "last_episode": {
+        "episode_id": "open_microwave-valid001-P",
+        "pair_id": 11,
+        "arm": "P",
+        "task": "open_microwave",
+        "valid_index": 1,
+        "status": "COMPLETE_ALGORITHMIC_FAILURE",
+        "success": false,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "actual_commands": 1520,
+        "environment_take_action_cnt": 1500,
+        "engineering": {
+          "variant": "COMBINED",
+          "front_omitted": true,
+          "batch_warmups_deferred": 2,
+          "batch_warmups_materialized": 0
+        },
+        "policy_chunks": 48,
+        "failure_penalty": 1500,
+        "horizon": 1500,
+        "lifecycle_seconds": 785.6962177753448,
+        "client_returncode": 0
+      },
+      "active_client": {
+        "status": "RUNNING_COMPLETE_EPISODE",
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        },
+        "environment_commands": 368,
+        "policy_chunks": 12,
+        "render_device": {
+          "alias": "pci:0000:4e:00.0",
+          "pci": "0000:4e:00.0",
+          "name": "NVIDIA A100-SXM4-40GB",
+          "can_render": true,
+          "is_cuda": true,
+          "cuda_id": 0
+        }
+      }
+    }
+  },
+  "halt": null,
+  "soft_stops": {},
+  "formal_performance_permission": false,
+  "engineering_quality_screen": false,
+  "noninferiority_established": false,
+  "independent_test_complete": false,
+  "GPU_lifecycle_seconds_including_active": 15371.10530591011,
+  "GPU_cap_seconds": 576000,
+  "GPU_status": "0, GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 69 %, 26220 MiB\n1, GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 52 %, 25896 MiB\n"
+}

@@ -1,0 +1,99 @@
+{
+  "goal": "Reuse measured isolated eight-warp projection for Self-out/Cross-Q/Cross-out; preserve CTA tile and rounding, compare whole layer original Torch",
+  "execution_authorization": "USER_APPROVED_PROJECTION_FOLLOWUP_AND_QKV_OPTIMIZATION_20261023",
+  "registered_at": "2026-10-23T01:34:21.302293+08:00",
+  "deadline": "2026-10-23T02:34:21.302293+08:00",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 3600,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 16672.58698485547,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 536870912,
+  "local_storage_cap_bytes": 268435456,
+  "terminal_status": "REGISTERED",
+  "input_manifest": "Existing 9 real signatures plus 27 structure cases; B14 action original short/middle/long cached fixtures; add 9 actual-derived FP32/broadcast temb controls",
+  "cleanup_plan": "owned PID+birth guard only; preserve failed attempts",
+  "evidence_path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/all-six-eight/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/self-qkv-warp-control-20261023/r3-isolated/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "4f041cddcaf09d6d33e5897dd049d681a4ed1fd4dd988d27213263aa81987a3b",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap",
+    "temb_fp32",
+    "temb_first_token",
+    "temb_first_token_fp32"
+  ],
+  "formal_performance_permission": false,
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/all-six-eight",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/all-six-eight/build/obj"
+      ],
+      300,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/all-six-eight/gate.py"
+      ],
+      120,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/all-six-eight/extended.py"
+      ],
+      120,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/all-six-eight/timing.py",
+        "1"
+      ],
+      120,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023/all-six-eight/timing.py",
+        "2"
+      ],
+      120,
+      true
+    ]
+  ],
+  "source_before_sha256": "ce9d30a488d7544fa808087c9f9d7fcde2c71870056f9815d5d959a355e9c247",
+  "mechanism": "Only route three remaining same-shape projections to existing eight-warp device function; no new tile shape",
+  "sources": {
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu": "8f4b73c67750a138479fd415b0f37cfc5640d2abf9837c6fe5dccc8e8bf7fa9c",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/cutlass_gemm.cuh": "269e87fd477708e6198d2d03806cdfb10b8fb4a59679df65320dc6c0f8de560c"
+  },
+  "attempt": "ALL_SIX_ISOLATED_EIGHT_WARP",
+  "previous_attempt_gpu_seconds": 0,
+  "storage_account_root": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023"
+}

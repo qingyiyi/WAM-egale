@@ -1,0 +1,44 @@
+--- all-six-eight/CANDIDATE.cu
++++ joint-qkv/CANDIDATE.cu
+@@ -151,6 +151,23 @@
+ // B14的六个小投影：224行hidden，3072→3072。整个阶段只调用一次
+ // 固定形状设备函数，让编译器直接生成M64×N128的CUTLASS路径。
+ // 仍是96个输出tile、原两个K1536分段及BF16提交；领取和同步均不改。
++// Q/K/V只依赖同一份M1，合并独立tile队列；三份权重和输出仍各自独立。
++// 仅B14 M224使用：3×96任务、原64×128 tile和两段BF16边界。
++__device__ __noinline__ void self_qkv_projection_group(const Params &p, Shared &s,
++                                                     cg::grid_group &g, int st, const B *a) {
++    constexpr int per_projection = 96;
++    begin_stage(p, g, st);
++    for (int task; (task = claim_tile(p, s, st)) < 3 * per_projection;) {
++        const int projection = task / per_projection;
++        const int wi = 3 + 2 * projection;
++        B *out = bp(p, projection == 0 ? SQ0 : projection == 1 ? SK0 : SV);
++        self_qkv8_tile(s.tile.cutlass_gemm.self_qkv8, a, (const B *)p.w[wi],
++                      (const B *)p.w[wi + 1], out, task % per_projection);
++        finish_tile();
++    }
++    g.sync();
++}
++
+ __device__ __noinline__ void self_qkv_projection8(const Params &p, Shared &s, cg::grid_group &g,
+                                                int st, const B *a, int wi, B *out) {
+     constexpr int M = 224, tiles = ((M + 63) / 64) * (D / 128);
+@@ -952,9 +969,14 @@
+     norm(p, s, g, st++, p.x, p.a[N1], m, -1, -1, p.eps[0], false, true);
+     point(p, s, g, st++, MODULATE, M1, N1, 0, 0, int64_t(m) * D);
+     // 2. Self attention：Q/K/V投影→Q/K的RMSNorm与RoPE→FA2→输出投影。
+-    linear(p, s, g, st++, bp(p, M1), 3, bp(p, SQ0), m, D, D);
+-    linear(p, s, g, st++, bp(p, M1), 5, bp(p, SK0), m, D, D);
+-    linear(p, s, g, st++, bp(p, M1), 7, bp(p, SV), m, D, D);
++    if (p.candidate && m == 224) {
++        self_qkv_projection_group(p, s, g, st, bp(p, M1));
++        st += 3; // 后续队列编号不变，独立Q/K/V共享一个入口和出口。
++    } else {
++        linear(p, s, g, st++, bp(p, M1), 3, bp(p, SQ0), m, D, D);
++        linear(p, s, g, st++, bp(p, M1), 5, bp(p, SK0), m, D, D);
++        linear(p, s, g, st++, bp(p, M1), 7, bp(p, SV), m, D, D);
++    }
+     if (p.candidate && p.freq) {
+         norm_rope(p, s, g, bp(p, SQ0), bp(p, SQN), bp(p, SQR), 11, p.eps[3]);
+         norm_rope(p, s, g, bp(p, SK0), bp(p, SKN), bp(p, SKR), 12, p.eps[4]);
