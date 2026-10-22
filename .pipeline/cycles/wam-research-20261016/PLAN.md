@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-22T18:16:14.446638+08:00'
+updated: '2026-10-22T19:53:45.599095+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -21,7 +21,7 @@ execution: EXECUTION.md
 - [ ] M39：按最新用户决定，后续仅对比原Torch；历史guarded未追平结果保留，不扩大系统claim。
 - [ ] M17/M40：原证据缺口及扩大资源另处理，不启动。
 
-[本轮结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)。累计10884.364/36000秒；当前作业闭合，原截止与四科学权限不变。
+[本轮结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)。累计11295.646/36000秒；当前作业闭合，原截止与四科学权限不变。
 
 - [x] M39-KV-CACHE：用户新批准自有算子读取预计算K（含RMS）/V，双方同等缓存；先精度后性能，冷构建另列。
 - [x] M39-KV-STAGES：完整层、逐阶段耗时、同步等待分列；profile与正常计时独立。
@@ -44,3 +44,6 @@ M39子项沿用上方名称，以下只补齐语义导航，不重编号历史�
 - [x] M39-FFN-PIPE：四组FFN依赖流水完成；R2有限逐位/状态通过，相对此前阶段版整层小幅改善0.33%–0.36%。R1负结果、R2目录错误FAILED及同截止retry保留；owned清理。
 
 - [x] M39-FFN-DIAG：三KV两进程FFN原Torch对照、整层/独立时间线、本机NCU及生产SASS定位完成；R2不改，自有清理，失败保留。
+
+- [x] M39-FFN-TAIL：尾部四块拆为12个M32任务，有限门通过；原Torch三KV完整层1.1910/1.7241/2.7993×，本次延迟降约1.9%。两机研究采用，owned清理。
+- [ ] M39-FFN-EPILOGUE：按已确认顺序单因素处理FFN2写回/索引，再检查设备函数保存恢复；不追加分块搜索。

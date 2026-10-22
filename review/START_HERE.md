@@ -1,3 +1,7 @@
+# 最新算子进度：FFN1尾部行块分摊（2026-10-22晚间）
+
+[当前入口](CURRENT-EXECUTION-20261022.md)：有限精度通过，原Torch完整单层短/中/长1.1910/1.7241/2.7993×；本次增量约1.9%。这是算子研究结果，四项科学权限仍false。历史快照与失败原样保留；下面内容按原时间解释。
+
 # 当前入口
 
 最新：[FFN瓶颈定位](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)、[完整阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)。

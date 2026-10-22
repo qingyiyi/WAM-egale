@@ -293,14 +293,63 @@ __device__ void ffn_publish(const Params &p, int offset, int group, int expected
     __syncthreads();
 }
 
-// FFN1 M128×N256、8个MMA warp：112个tile，K32三级流水。
+// 尾部4块各有96有效行，拆成12个32行任务；所有任务仍完成整个K3072。
+// 原28个组3生产者变为24+12=36个，其他组与FFN2接口保持不变。
+__device__ __noinline__ void action_ffn1_tail(const Params &p, Shared &s, int tail) {
+    using Mma = CutlassTailFFN::Mma;
+    auto &workspace = s.tile.cutlass_gemm.tail_ffn;
+    const int rm = 128 + (tail % 3) * 32, cn = (52 + tail / 3) * 256;
+    const int thread = int(threadIdx.x), warp = thread / 32, lane = thread % 32;
+    if (warp < 4) {
+        typename Mma::IteratorA::Params ap{CutlassRow(D)};
+        typename Mma::IteratorB::Params bp{CutlassCol(D)};
+        typename Mma::IteratorA ai(ap, reinterpret_cast<CutlassB *>(p.a[M3]),
+                                  {224, D}, thread, {rm, 0});
+        typename Mma::IteratorB bi(bp, reinterpret_cast<CutlassB *>(const_cast<void *>(p.w[23])),
+                                  {D, F}, thread, {0, cn});
+        Mma mma(workspace.mainloop, thread, warp, lane);
+        typename Mma::FragmentC acc;
+        acc.clear();
+        mma(D / 32, acc, ai, bi, acc);
+        asm volatile("bar.sync 2, 128;" ::: "memory");
+        typename Mma::Operator::IteratorC store({workspace.result, CutlassRow(264)}, lane);
+        store.add_tile_offset({0, warp});
+        store.store(acc);
+    }
+    __syncthreads();
+    struct alignas(8) B4 { __nv_bfloat162 lo, hi; };
+    for (int i = 4 * thread; i < 32 * 256; i += 4 * THREADS) {
+        const int row = rm + i / 256, col = cn + i % 256;
+        const float4 v = *reinterpret_cast<const float4 *>(workspace.result +
+                                                          (i / 256) * 264 + i % 256);
+        const B4 b = *reinterpret_cast<const B4 *>(reinterpret_cast<const B *>(p.w[24]) + col);
+        const float2 lo = __bfloat1622float2(b.lo), hi = __bfloat1622float2(b.hi);
+        const B4 rounded = {
+            __floats2bfloat162_rn(__fadd_rn(v.x, lo.x), __fadd_rn(v.y, lo.y)),
+            __floats2bfloat162_rn(__fadd_rn(v.z, hi.x), __fadd_rn(v.w, hi.y))};
+        if (p.debug_modulation)
+            *reinterpret_cast<B4 *>(reinterpret_cast<B *>(p.a[F1]) + row * F + col) = rounded;
+        *reinterpret_cast<B4 *>(reinterpret_cast<B *>(p.a[ACT]) + row * F + col) = {
+            __halves2bfloat162(gelu_value(__low2bfloat16(rounded.lo)),
+                               gelu_value(__high2bfloat16(rounded.lo))),
+            __halves2bfloat162(gelu_value(__low2bfloat16(rounded.hi)),
+                               gelu_value(__high2bfloat16(rounded.hi)))};
+    }
+    ffn_publish(p, 0, 3, 36);
+}
+
+// FFN1前108块M128×N256、8个MMA warp，尾部12块M32×N256。
 // 8warp的FP32 accumulator分两半经同一128×136 shared区写回，避免
 // 为整层抬高shared预留；完整K3072、bias和BF16舍入边界不变。
 __device__ __noinline__ void action_ffn1_produce(const Params &p, Shared &s) {
     using Mma = CutlassWideFFN::Mma;
     // 静态任务无需入口全局屏障；保留出口及分段依赖。
     auto &workspace = s.tile.cutlass_gemm.wide_ffn;
-    for (int tile = int(blockIdx.x); tile < 112; tile += int(gridDim.x)) {
+    for (int tile = int(blockIdx.x); tile < 120; tile += int(gridDim.x)) {
+        if (tile >= 108) {
+            action_ffn1_tail(p, s, tile - 108);
+            continue;
+        }
         const int rm = (tile / 56) * 128, cn = (tile % 56) * 256;
         const int thread = int(threadIdx.x), warp = thread / 32, lane = thread % 32;
         typename Mma::IteratorA::Params ap{CutlassRow(D)};
@@ -348,8 +397,7 @@ __device__ __noinline__ void action_ffn1_produce(const Params &p, Shared &s) {
             }
             __syncthreads();
         }
-        // 两个128行块×两个7168通道段；每组28个256通道生产tile。
-        ffn_publish(p, 0, tile / 28, 28);
+        ffn_publish(p, 0, tile / 28, tile / 28 == 3 ? 36 : 28);
     }
 }
 
@@ -366,7 +414,8 @@ __device__ __noinline__ void action_ffn_pipeline(const Params &p, Shared &s, cg:
             s.task = -1;
             for (int scan = 0; scan < 4; ++scan) {
                 const int group = (int(blockIdx.x) + scan) % 4;
-                if (DeviceCounter(p.ffn_state[group]).load(cuda::memory_order_acquire) != 28)
+                if (DeviceCounter(p.ffn_state[group]).load(cuda::memory_order_acquire) !=
+                    (group == 3 ? 36 : 28))
                     continue;
                 auto next = DeviceCounter(p.ffn_state[4 + group]);
                 int col = next.load(cuda::memory_order_relaxed);
@@ -1098,4 +1147,5 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     m.attr("cooperative_epilogue") = true;
     m.attr("ffn_epilogue_fused") = true;
     m.attr("ffn_four_group_pipeline") = true;
+    m.attr("ffn_tail_row32") = true;
 }

@@ -44,8 +44,28 @@ struct CutlassWideFFN {
         float result[128 * 136];
     };
 };
+// 只供FFN1最后四块的96有效行拆分：32×256、4个MMA warp。
+// K32归约次序不变；使用128线程named barrier，其余warp参加写回。
+struct CutlassTailFFN {
+    using Config = cutlass::gemm::device::Gemm<
+        CutlassB, CutlassRow, CutlassB, CutlassCol, CutlassB, CutlassRow, float,
+        cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<32, 256, 32>,
+        cutlass::gemm::GemmShape<32, 64, 32>, cutlass::gemm::GemmShape<16, 8, 16>,
+        cutlass::epilogue::thread::LinearCombination<CutlassB, 8, float, float>,
+        cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<>, 3>;
+    using Base = typename Config::GemmKernel::Mma;
+    using Mma = cutlass::gemm::threadblock::WamMmaMultistage<
+        typename Base::Shape, typename Base::IteratorA, typename Base::SmemIteratorA,
+        Base::kCacheOpA, typename Base::IteratorB, typename Base::SmemIteratorB, Base::kCacheOpB,
+        float, CutlassRow, typename Base::Policy, 3>;
+    union Storage {
+        typename Mma::SharedStorage mainloop;
+        float result[32 * 264];
+    };
+};
 union CutlassGemmStorage {
     CutlassWideFFN::Storage wide_ffn;
+    CutlassTailFFN::Storage tail_ffn;
     typename CutlassTile<64>::Storage action;
     typename CutlassTile<128>::Storage ffn1;
     // 128列结果按136列stride落shared，减少MMA accumulator转存的bank冲突。
