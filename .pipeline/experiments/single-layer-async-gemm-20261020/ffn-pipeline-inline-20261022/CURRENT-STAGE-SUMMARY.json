@@ -1,0 +1,666 @@
+{
+  "status": "COMPLETE_FINITE_CURRENT_STAGE_DIAGNOSTIC",
+  "production_source": {
+    "status": "RETAIN_FINITE_RESEARCH_CANDIDATE",
+    "source_sha256": "9b5dec45b839bb6cb5bee69381f3da35640d53adfd087c2374b44e974184b751",
+    "header_sha256": "e93e7a40efd41519dc8e5d40eed9914467cdbd0dcb5bb2ced8b31a0f574f72c7",
+    "binary_sha256": "2f333d8d443b827fa452b8c34ac328b7b1e518c4e8d47c04415663e8cff01f19",
+    "selected": "outer-inline plus FFN1 tail K64/3-stage",
+    "evidence": "tail-k64/SUMMARY.json",
+    "four_scientific_permissions": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "production_admitted": false
+  },
+  "boundary": "custom CTA0 intervals include existing stage synchronization and queue costs; Torch original stage expressions timed in isolated hot CUDA Graphs on matching real intermediate inputs; not additive full-layer attribution",
+  "processes": 2,
+  "rounds_per_process_per_KV": 24,
+  "rows": [
+    {
+      "KV": 288,
+      "stages": {
+        "table": {
+          "name": "modulation",
+          "Torch_us_mean_of_process_medians": 46.89919948577881,
+          "custom_embedded_us_mean_of_process_medians": null,
+          "Torch_over_custom": null,
+          "per_process_ratio": [
+            null,
+            null
+          ]
+        },
+        "1": {
+          "name": "norm1",
+          "Torch_us_mean_of_process_medians": 13.260799646377563,
+          "custom_embedded_us_mean_of_process_medians": 15.36,
+          "Torch_over_custom": 0.8633333103110393,
+          "per_process_ratio": [
+            0.8599999515960615,
+            0.8666666690260172
+          ]
+        },
+        "2": {
+          "name": "modulated1",
+          "Torch_us_mean_of_process_medians": 15.513599663972855,
+          "custom_embedded_us_mean_of_process_medians": 10.24,
+          "Torch_over_custom": 1.514999967184849,
+          "per_process_ratio": [
+            1.5100000018719584,
+            1.5199999324977398
+          ]
+        },
+        "3": {
+          "name": "self_q_linear",
+          "Torch_us_mean_of_process_medians": 34.58560034632683,
+          "custom_embedded_us_mean_of_process_medians": 51.2,
+          "Torch_over_custom": 0.6755000067641959,
+          "per_process_ratio": [
+            0.674000009894371,
+            0.6770000036340207
+          ]
+        },
+        "4": {
+          "name": "self_k_linear",
+          "Torch_us_mean_of_process_medians": 34.86720025539398,
+          "custom_embedded_us_mean_of_process_medians": 48.128,
+          "Torch_over_custom": 0.7244680904129401,
+          "per_process_ratio": [
+            0.7234042525251813,
+            0.725531928300699
+          ]
+        },
+        "5": {
+          "name": "self_v",
+          "Torch_us_mean_of_process_medians": 34.56000089645386,
+          "custom_embedded_us_mean_of_process_medians": 47.616,
+          "Torch_over_custom": 0.7258064704396392,
+          "per_process_ratio": [
+            0.7170212871216713,
+            0.7347826360036498
+          ]
+        },
+        "6": {
+          "name": "self_q_rope",
+          "Torch_us_mean_of_process_medians": 25.600001215934753,
+          "custom_embedded_us_mean_of_process_medians": 14.847999999999999,
+          "Torch_over_custom": 1.7241380129266404,
+          "per_process_ratio": [
+            1.6666667458290856,
+            1.785714370531163
+          ]
+        },
+        "7": {
+          "name": "self_k_rope",
+          "Torch_us_mean_of_process_medians": 25.804799795150757,
+          "custom_embedded_us_mean_of_process_medians": 14.336,
+          "Torch_over_custom": 1.7999999857108508,
+          "per_process_ratio": [
+            1.7999999857108508,
+            1.7999999857108508
+          ]
+        },
+        "9": {
+          "name": "self_attention",
+          "Torch_us_mean_of_process_medians": 287.48799562454224,
+          "custom_embedded_us_mean_of_process_medians": 62.464,
+          "Torch_over_custom": 4.602458946345771,
+          "per_process_ratio": [
+            4.603278624718307,
+            4.601639267973235
+          ]
+        },
+        "10": {
+          "name": "self_out",
+          "Torch_us_mean_of_process_medians": 34.81599986553192,
+          "custom_embedded_us_mean_of_process_medians": 51.456,
+          "Torch_over_custom": 0.6766169128096222,
+          "per_process_ratio": [
+            0.6712871110343401,
+            0.6820000126026571
+          ]
+        },
+        "11": {
+          "name": "residual1",
+          "Torch_us_mean_of_process_medians": 18.7391996383667,
+          "custom_embedded_us_mean_of_process_medians": 10.24,
+          "Torch_over_custom": 1.829999964684248,
+          "per_process_ratio": [
+            1.829999964684248,
+            1.829999964684248
+          ]
+        },
+        "12": {
+          "name": "norm2",
+          "Torch_us_mean_of_process_medians": 17.715199291706085,
+          "custom_embedded_us_mean_of_process_medians": 22.528,
+          "Torch_over_custom": 0.7863636049230329,
+          "per_process_ratio": [
+            0.7863636049230329,
+            0.7863636049230329
+          ]
+        },
+        "13": {
+          "name": "cross_q_linear",
+          "Torch_us_mean_of_process_medians": 34.61120128631592,
+          "custom_embedded_us_mean_of_process_medians": 48.384,
+          "Torch_over_custom": 0.7153439419294791,
+          "per_process_ratio": [
+            0.7115789738140608,
+            0.7191489628971891
+          ]
+        },
+        "14": {
+          "name": "cross_q",
+          "Torch_us_mean_of_process_medians": 6.297599896788597,
+          "custom_embedded_us_mean_of_process_medians": 9.216,
+          "Torch_over_custom": 0.6833333221341794,
+          "per_process_ratio": [
+            0.6777777646978697,
+            0.6888888795704892
+          ]
+        },
+        "15": {
+          "name": "cross_attention",
+          "Torch_us_mean_of_process_medians": 90.52159786224365,
+          "custom_embedded_us_mean_of_process_medians": 75.264,
+          "Torch_over_custom": 1.2027210600319362,
+          "per_process_ratio": [
+            1.2109588755116072,
+            1.194594566383072
+          ]
+        },
+        "16": {
+          "name": "cross_out",
+          "Torch_us_mean_of_process_medians": 34.76479947566986,
+          "custom_embedded_us_mean_of_process_medians": 50.688,
+          "Torch_over_custom": 0.6858585755143202,
+          "per_process_ratio": [
+            0.6779999821446836,
+            0.6938775483404799
+          ]
+        },
+        "17": {
+          "name": "residual2",
+          "Torch_us_mean_of_process_medians": 5.273599922657013,
+          "custom_embedded_us_mean_of_process_medians": 8.192,
+          "Torch_over_custom": 0.6437499905587174,
+          "per_process_ratio": [
+            0.6374999884428689,
+            0.6499999926745659
+          ]
+        },
+        "18": {
+          "name": "norm3",
+          "Torch_us_mean_of_process_medians": 13.414399325847626,
+          "custom_embedded_us_mean_of_process_medians": 22.528,
+          "Torch_over_custom": 0.5954545155294578,
+          "per_process_ratio": [
+            0.5954545155294578,
+            0.5954545155294578
+          ]
+        },
+        "19": {
+          "name": "modulated3",
+          "Torch_us_mean_of_process_medians": 15.718399733304977,
+          "custom_embedded_us_mean_of_process_medians": 10.24,
+          "Torch_over_custom": 1.5349999739555642,
+          "per_process_ratio": [
+            1.5300000086426735,
+            1.539999939268455
+          ]
+        },
+        "20": {
+          "name": "output",
+          "Torch_us_mean_of_process_medians": 320.56320905685425,
+          "custom_embedded_us_mean_of_process_medians": 316.416,
+          "Torch_over_custom": 1.0131068247397548,
+          "per_process_ratio": [
+            1.012621384150195,
+            1.0135922653293146
+          ]
+        }
+      },
+      "profile_full_latency_perturbation_percent": [
+        -0.02820390800367667,
+        -0.18225639563931306,
+        -0.05077171002838554,
+        -0.1567229803245973
+      ],
+      "max_abs_profile_perturbation_percent": 0.18225639563931306,
+      "resources_equal": true,
+      "finite_state_and_all_stage_output_pass": true
+    },
+    {
+      "KV": 1152,
+      "stages": {
+        "table": {
+          "name": "modulation",
+          "Torch_us_mean_of_process_medians": 46.89919948577881,
+          "custom_embedded_us_mean_of_process_medians": null,
+          "Torch_over_custom": null,
+          "per_process_ratio": [
+            null,
+            null
+          ]
+        },
+        "1": {
+          "name": "norm1",
+          "Torch_us_mean_of_process_medians": 13.414399325847626,
+          "custom_embedded_us_mean_of_process_medians": 15.36,
+          "Torch_over_custom": 0.8733332894432049,
+          "per_process_ratio": [
+            0.8733332894432049,
+            0.8733332894432049
+          ]
+        },
+        "2": {
+          "name": "modulated1",
+          "Torch_us_mean_of_process_medians": 15.667200088500977,
+          "custom_embedded_us_mean_of_process_medians": 10.24,
+          "Torch_over_custom": 1.5300000086426735,
+          "per_process_ratio": [
+            1.5300000086426735,
+            1.5300000086426735
+          ]
+        },
+        "3": {
+          "name": "self_q_linear",
+          "Torch_us_mean_of_process_medians": 34.61120128631592,
+          "custom_embedded_us_mean_of_process_medians": 51.2,
+          "Torch_over_custom": 0.6760000251233578,
+          "per_process_ratio": [
+            0.6760000251233578,
+            0.6760000251233578
+          ]
+        },
+        "4": {
+          "name": "self_k_linear",
+          "Torch_us_mean_of_process_medians": 34.56000089645386,
+          "custom_embedded_us_mean_of_process_medians": 48.128,
+          "Torch_over_custom": 0.7180851250094302,
+          "per_process_ratio": [
+            0.7170212871216713,
+            0.7191489628971891
+          ]
+        },
+        "5": {
+          "name": "self_v",
+          "Torch_us_mean_of_process_medians": 34.86720025539398,
+          "custom_embedded_us_mean_of_process_medians": 47.104,
+          "Torch_over_custom": 0.740217396726265,
+          "per_process_ratio": [
+            0.7391304319279025,
+            0.7413043615246273
+          ]
+        },
+        "6": {
+          "name": "self_q_rope",
+          "Torch_us_mean_of_process_medians": 25.702399015426636,
+          "custom_embedded_us_mean_of_process_medians": 14.847999999999999,
+          "Torch_over_custom": 1.7310344164484535,
+          "per_process_ratio": [
+            1.673333269233505,
+            1.7928570741787553
+          ]
+        },
+        "7": {
+          "name": "self_k_rope",
+          "Torch_us_mean_of_process_medians": 25.702399015426636,
+          "custom_embedded_us_mean_of_process_medians": 14.336,
+          "Torch_over_custom": 1.7928570741787553,
+          "per_process_ratio": [
+            1.7928570741787553,
+            1.7928570741787553
+          ]
+        },
+        "9": {
+          "name": "self_attention",
+          "Torch_us_mean_of_process_medians": 1076.2752056121826,
+          "custom_embedded_us_mean_of_process_medians": 238.08,
+          "Torch_over_custom": 4.520645184862998,
+          "per_process_ratio": [
+            4.531034461126245,
+            4.510300497768263
+          ]
+        },
+        "10": {
+          "name": "self_out",
+          "Torch_us_mean_of_process_medians": 35.174399614334106,
+          "custom_embedded_us_mean_of_process_medians": 49.152,
+          "Torch_over_custom": 0.7156249921536073,
+          "per_process_ratio": [
+            0.7145833175551767,
+            0.7166666667520379
+          ]
+        },
+        "11": {
+          "name": "residual1",
+          "Torch_us_mean_of_process_medians": 18.995200097560883,
+          "custom_embedded_us_mean_of_process_medians": 9.984,
+          "Torch_over_custom": 1.9025641123358257,
+          "per_process_ratio": [
+            1.849999971454963,
+            1.9578947869472598
+          ]
+        },
+        "12": {
+          "name": "norm2",
+          "Torch_us_mean_of_process_medians": 17.766399681568146,
+          "custom_embedded_us_mean_of_process_medians": 22.528,
+          "Torch_over_custom": 0.788636349501427,
+          "per_process_ratio": [
+            0.7863636049230329,
+            0.790909094079821
+          ]
+        },
+        "13": {
+          "name": "cross_q_linear",
+          "Torch_us_mean_of_process_medians": 34.66240018606186,
+          "custom_embedded_us_mean_of_process_medians": 48.128,
+          "Torch_over_custom": 0.7202127698234263,
+          "per_process_ratio": [
+            0.7191489628971891,
+            0.7212765767496634
+          ]
+        },
+        "14": {
+          "name": "cross_q",
+          "Torch_us_mean_of_process_medians": 6.297599896788597,
+          "custom_embedded_us_mean_of_process_medians": 9.216,
+          "Torch_over_custom": 0.6833333221341794,
+          "per_process_ratio": [
+            0.6777777646978697,
+            0.6888888795704892
+          ]
+        },
+        "15": {
+          "name": "cross_attention",
+          "Torch_us_mean_of_process_medians": 90.57279825210571,
+          "custom_embedded_us_mean_of_process_medians": 75.52,
+          "Torch_over_custom": 1.1993220107535185,
+          "per_process_ratio": [
+            1.194594566383072,
+            1.2040816146094784
+          ]
+        },
+        "16": {
+          "name": "cross_out",
+          "Torch_us_mean_of_process_medians": 34.6111997961998,
+          "custom_embedded_us_mean_of_process_medians": 50.176,
+          "Torch_over_custom": 0.6897959143056401,
+          "per_process_ratio": [
+            0.6877551121371133,
+            0.6918367164741669
+          ]
+        },
+        "17": {
+          "name": "residual2",
+          "Torch_us_mean_of_process_medians": 5.247999913990498,
+          "custom_embedded_us_mean_of_process_medians": 8.192,
+          "Torch_over_custom": 0.6406249895007932,
+          "per_process_ratio": [
+            0.6312499863270205,
+            0.6499999926745659
+          ]
+        },
+        "18": {
+          "name": "norm3",
+          "Torch_us_mean_of_process_medians": 13.363199681043625,
+          "custom_embedded_us_mean_of_process_medians": 22.528,
+          "Torch_over_custom": 0.5931818040235984,
+          "per_process_ratio": [
+            0.590909092517739,
+            0.5954545155294578
+          ]
+        },
+        "19": {
+          "name": "modulated3",
+          "Torch_us_mean_of_process_medians": 15.718399733304977,
+          "custom_embedded_us_mean_of_process_medians": 10.24,
+          "Torch_over_custom": 1.5349999739555642,
+          "per_process_ratio": [
+            1.5300000086426735,
+            1.539999939268455
+          ]
+        },
+        "20": {
+          "name": "output",
+          "Torch_us_mean_of_process_medians": 318.97599697113037,
+          "custom_embedded_us_mean_of_process_medians": 315.392,
+          "Torch_over_custom": 1.0113636267601283,
+          "per_process_ratio": [
+            1.0110389489632148,
+            1.0116883045570417
+          ]
+        }
+      },
+      "profile_full_latency_perturbation_percent": [
+        -0.3026313958406357,
+        -0.46148205182676705,
+        0.1788736560255355,
+        0.053440019903749914
+      ],
+      "max_abs_profile_perturbation_percent": 0.46148205182676705,
+      "resources_equal": true,
+      "finite_state_and_all_stage_output_pass": true
+    },
+    {
+      "KV": 2160,
+      "stages": {
+        "table": {
+          "name": "modulation",
+          "Torch_us_mean_of_process_medians": 46.89919948577881,
+          "custom_embedded_us_mean_of_process_medians": null,
+          "Torch_over_custom": null,
+          "per_process_ratio": [
+            null,
+            null
+          ]
+        },
+        "1": {
+          "name": "norm1",
+          "Torch_us_mean_of_process_medians": 13.414399325847626,
+          "custom_embedded_us_mean_of_process_medians": 15.36,
+          "Torch_over_custom": 0.8733332894432049,
+          "per_process_ratio": [
+            0.8733332894432049,
+            0.8733332894432049
+          ]
+        },
+        "2": {
+          "name": "modulated1",
+          "Torch_us_mean_of_process_medians": 15.615999698638916,
+          "custom_embedded_us_mean_of_process_medians": 10.24,
+          "Torch_over_custom": 1.5249999705702066,
+          "per_process_ratio": [
+            1.5199999324977398,
+            1.5300000086426735
+          ]
+        },
+        "3": {
+          "name": "self_q_linear",
+          "Torch_us_mean_of_process_medians": 34.66240018606186,
+          "custom_embedded_us_mean_of_process_medians": 51.2,
+          "Torch_over_custom": 0.6770000036340207,
+          "per_process_ratio": [
+            0.6760000251233578,
+            0.6779999821446836
+          ]
+        },
+        "4": {
+          "name": "self_k_linear",
+          "Torch_us_mean_of_process_medians": 34.6111997961998,
+          "custom_embedded_us_mean_of_process_medians": 48.128,
+          "Torch_over_custom": 0.7191489319356673,
+          "per_process_ratio": [
+            0.7170212871216713,
+            0.7212765767496634
+          ]
+        },
+        "5": {
+          "name": "self_v",
+          "Torch_us_mean_of_process_medians": 34.66240018606186,
+          "custom_embedded_us_mean_of_process_medians": 47.104,
+          "Torch_over_custom": 0.7358695691674138,
+          "per_process_ratio": [
+            0.7347826360036498,
+            0.7369565023311778
+          ]
+        },
+        "6": {
+          "name": "self_q_rope",
+          "Torch_us_mean_of_process_medians": 25.497600436210632,
+          "custom_embedded_us_mean_of_process_medians": 14.336,
+          "Torch_over_custom": 1.7785714589990675,
+          "per_process_ratio": [
+            1.7785714589990675,
+            1.7785714589990675
+          ]
+        },
+        "7": {
+          "name": "self_k_rope",
+          "Torch_us_mean_of_process_medians": 25.651200115680695,
+          "custom_embedded_us_mean_of_process_medians": 14.336,
+          "Torch_over_custom": 1.7892857223549592,
+          "per_process_ratio": [
+            1.785714370531163,
+            1.7928570741787553
+          ]
+        },
+        "9": {
+          "name": "self_attention",
+          "Torch_us_mean_of_process_medians": 2305.664014816284,
+          "custom_embedded_us_mean_of_process_medians": 248.832,
+          "Torch_over_custom": 9.265946561600936,
+          "per_process_ratio": [
+            9.267283948483291,
+            9.264609174718583
+          ]
+        },
+        "10": {
+          "name": "self_out",
+          "Torch_us_mean_of_process_medians": 34.89280045032501,
+          "custom_embedded_us_mean_of_process_medians": 49.152,
+          "Torch_over_custom": 0.7098958424952192,
+          "per_process_ratio": [
+            0.7093750051960038,
+            0.7104166797944345
+          ]
+        },
+        "11": {
+          "name": "residual1",
+          "Torch_us_mean_of_process_medians": 18.995200097560883,
+          "custom_embedded_us_mean_of_process_medians": 9.728,
+          "Torch_over_custom": 1.952631588976242,
+          "per_process_ratio": [
+            2.055555523838848,
+            1.8600000475998968
+          ]
+        },
+        "12": {
+          "name": "norm2",
+          "Torch_us_mean_of_process_medians": 17.97119975090027,
+          "custom_embedded_us_mean_of_process_medians": 22.528,
+          "Torch_over_custom": 0.7977272616699338,
+          "per_process_ratio": [
+            0.7954545170915398,
+            0.8000000062483279
+          ]
+        },
+        "13": {
+          "name": "cross_q_linear",
+          "Torch_us_mean_of_process_medians": 34.86720025539398,
+          "custom_embedded_us_mean_of_process_medians": 48.128,
+          "Torch_over_custom": 0.7244680904129401,
+          "per_process_ratio": [
+            0.7234042525251813,
+            0.725531928300699
+          ]
+        },
+        "14": {
+          "name": "cross_q",
+          "Torch_us_mean_of_process_medians": 6.297599896788597,
+          "custom_embedded_us_mean_of_process_medians": 9.216,
+          "Torch_over_custom": 0.6833333221341794,
+          "per_process_ratio": [
+            0.6777777646978697,
+            0.6888888795704892
+          ]
+        },
+        "15": {
+          "name": "cross_attention",
+          "Torch_us_mean_of_process_medians": 90.41919708251953,
+          "custom_embedded_us_mean_of_process_medians": 75.776,
+          "Torch_over_custom": 1.1932432047418646,
+          "per_process_ratio": [
+            1.1932432047418646,
+            1.1932432047418646
+          ]
+        },
+        "16": {
+          "name": "cross_out",
+          "Torch_us_mean_of_process_medians": 34.81599986553192,
+          "custom_embedded_us_mean_of_process_medians": 50.176,
+          "Torch_over_custom": 0.6938775483404799,
+          "per_process_ratio": [
+            0.6918367164741669,
+            0.6959183802067929
+          ]
+        },
+        "17": {
+          "name": "residual2",
+          "Torch_us_mean_of_process_medians": 5.273599922657013,
+          "custom_embedded_us_mean_of_process_medians": 8.192,
+          "Torch_over_custom": 0.6437499905587174,
+          "per_process_ratio": [
+            0.6374999884428689,
+            0.6499999926745659
+          ]
+        },
+        "18": {
+          "name": "norm3",
+          "Torch_us_mean_of_process_medians": 13.414399325847626,
+          "custom_embedded_us_mean_of_process_medians": 22.528,
+          "Torch_over_custom": 0.5954545155294578,
+          "per_process_ratio": [
+            0.5954545155294578,
+            0.5954545155294578
+          ]
+        },
+        "19": {
+          "name": "modulated3",
+          "Torch_us_mean_of_process_medians": 15.769599378108978,
+          "custom_embedded_us_mean_of_process_medians": 10.751999999999999,
+          "Torch_over_custom": 1.4666666088271,
+          "per_process_ratio": [
+            1.3999999447895046,
+            1.539999939268455
+          ]
+        },
+        "20": {
+          "name": "output",
+          "Torch_us_mean_of_process_medians": 322.3039984703064,
+          "custom_embedded_us_mean_of_process_medians": 314.368,
+          "Torch_over_custom": 1.0252442948083342,
+          "per_process_ratio": [
+            1.0247556917393634,
+            1.0257328978773048
+          ]
+        }
+      },
+      "profile_full_latency_perturbation_percent": [
+        -0.0076231835471674,
+        -0.1530359557827432,
+        -0.07005907887556173,
+        -0.23422919374659346
+      ],
+      "max_abs_profile_perturbation_percent": 0.23422919374659346,
+      "resources_equal": true,
+      "finite_state_and_all_stage_output_pass": true
+    }
+  ],
+  "formal_performance_permission": false
+}

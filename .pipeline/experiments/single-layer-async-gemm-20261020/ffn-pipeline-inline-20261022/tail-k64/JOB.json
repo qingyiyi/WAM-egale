@@ -1,0 +1,99 @@
+{
+  "goal": "After outer-inline finite adoption: only increase FFN1 tail K tile 32 to64, preserve 12 output tiles/full-K accumulation/BF16 boundaries",
+  "execution_authorization": "USER_APPROVED_OUTER_INLINE_THEN_FFN1_TAIL",
+  "registered_at": "2026-10-23T00:15:32.734986+08:00",
+  "deadline": "2026-10-23T00:58:00.075451+08:00",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 3600,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 12603.609943782487,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 805306368,
+  "local_storage_cap_bytes": 536870912,
+  "terminal_status": "REGISTERED",
+  "input_manifest": "Existing 9 real signatures plus 27 structure cases; B14 action original short/middle/long cached fixtures; add 9 actual-derived FP32/broadcast temb controls",
+  "cleanup_plan": "owned PID+birth guard only; preserve failed attempts",
+  "evidence_path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/tail-k64",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/tail-k64/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "ba7659bec036f3a4028f3390d61f3c184f7696f0e9817c282ee3ad19ab0f2c90",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap",
+    "temb_fp32",
+    "temb_first_token",
+    "temb_first_token_fp32"
+  ],
+  "formal_performance_permission": false,
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/tail-k64",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/tail-k64/build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/tail-k64/gate.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/tail-k64/extended.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/tail-k64/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/tail-k64/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ],
+  "source_before_sha256": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
+  "mechanism": "Same M32/N256 and 4 compute warps; K64x48 iterations versus K32x96, same 3 pipeline stages; account increased shared allocation",
+  "sources": {
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu": "9b5dec45b839bb6cb5bee69381f3da35640d53adfd087c2374b44e974184b751",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/cutlass_gemm.cuh": "e93e7a40efd41519dc8e5d40eed9914467cdbd0dcb5bb2ced8b31a0f574f72c7"
+  },
+  "attempt": "TAIL_K64_THREE_STAGES",
+  "previous_attempt_gpu_seconds": 123.0159101486206,
+  "storage_account_root": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022"
+}

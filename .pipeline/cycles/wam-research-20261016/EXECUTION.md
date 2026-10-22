@@ -1,3 +1,15 @@
+## 2026-10-23T00:47:13.615406+08:00 M39内联＋尾K64与当前阶段表完成
+
+两项各225次有限调用通过，两机采用。原Torch完整单层1.2426/1.7780/2.8859×；当前阶段诊断两进程、资源一致、扰动≤0.462%，FFN合计约1.01×、小投影约0.68–0.74×。首插桩和独立FFN重放编译上下文变化保留，禁止择优改为生产独立FFN通过。GPU workers238.919秒、CPU编译904.875秒，保守2712.273秒，累计15315.883/36000秒；全部owned退出，GPU0空闲。远端NCU限制已Maintain，本机0启动。
+
+M40 GPU1截至00:45完成15/1800、三臂各5/5；5配对审计通过，open_microwave继续，非总体质量结论。固定队列/预算/四false不改。[阶段表](../../experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/STAGE-TABLE.md)、[资源](../../experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/RESOURCE-AND-STOP-REPORT.json)。
+
+
+## 2026-10-23T00:01:25.501131+08:00 M39外层FFN ABI单因素启动
+
+用户批准先处理外层流水设备函数的寄存器保存/恢复边界，再处理FFN1尾部。仅将action_ffn_pipeline改为forceinline，当前DSO仍为旧B，GPU0有界guard CPU编译中。新窗口至10/23 00:58，累计起点12603.609944/36000秒；9真实/36结构门通过后才三KV整层计时。GPU1已完成600有效初态并自动进入模型/reset bank加载，尚无新质量结果。
+
+[本轮JOB](../../experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/JOB.json)。
 ## 2026-10-22T22:19:55.013997+08:00 M39当前FFN profile完成；M40新队列准备运行
 
 三KV两进程＋本机NCU：FFN1末组207–209μs，末FFN2约92/18/1μs计算/写回/等待；local29.8MB。生产B不改，有限门通过；累计12603.610/36000秒，owned清理，启动通道超时已单列，未重跑。[结果](../../experiments/single-layer-async-gemm-20261020/ffn-current-profile-20261022/RESULT.md)。

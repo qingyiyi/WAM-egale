@@ -45,12 +45,12 @@ struct CutlassWideFFN {
     };
 };
 // 只供FFN1最后四块的96有效行拆分：32×256、4个MMA warp。
-// K32归约次序不变；使用128线程named barrier，其余warp参加写回。
+// K64三级流水、48次迭代；完整K与舍入不变，128线程barrier，其余warp参加写回。
 struct CutlassTailFFN {
     using Config = cutlass::gemm::device::Gemm<
         CutlassB, CutlassRow, CutlassB, CutlassCol, CutlassB, CutlassRow, float,
-        cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<32, 256, 32>,
-        cutlass::gemm::GemmShape<32, 64, 32>, cutlass::gemm::GemmShape<16, 8, 16>,
+        cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<32, 256, 64>,
+        cutlass::gemm::GemmShape<32, 64, 64>, cutlass::gemm::GemmShape<16, 8, 16>,
         cutlass::epilogue::thread::LinearCombination<CutlassB, 8, float, float>,
         cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<>, 3>;
     using Base = typename Config::GemmKernel::Mma;

@@ -327,7 +327,7 @@ __device__ __noinline__ void action_ffn1_tail(const Params &p, Shared &s, int ta
         Mma mma(workspace.mainloop, thread, warp, lane);
         typename Mma::FragmentC acc;
         acc.clear();
-        mma(D / 32, acc, ai, bi, acc);
+        mma(D / 64, acc, ai, bi, acc);
         asm volatile("bar.sync 2, 128;" ::: "memory");
         typename Mma::Operator::IteratorC store({workspace.result, CutlassRow(264)}, lane);
         store.add_tile_offset({0, warp});
@@ -424,7 +424,7 @@ __device__ __forceinline__ void action_ffn1_produce(const Params &p, Shared &s) 
 // 等待同一行块第一段全部提交，保留原BF16部分和、bias与残差顺序。
 // A100实测108常驻CTA，最多48个第二段CTA持有shared部分和等待；
 // 其余CTA可完成全部第一段，且每CTA先完成自己的生产任务，不形成环等。
-__device__ __noinline__ void action_ffn_pipeline(const Params &p, Shared &s, cg::grid_group &g) {
+__device__ __forceinline__ void action_ffn_pipeline(const Params &p, Shared &s, cg::grid_group &g) {
     action_ffn1_produce(p, s);
     while (true) {
         if (threadIdx.x == 0) {

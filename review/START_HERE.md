@@ -1,8 +1,8 @@
-# 当前研究入口（2026-10-22夜间）
+# 当前研究入口（2026-10-23）
 
-[最新结果](CURRENT-EXECUTION-20261022.md)、[状态JSON](CURRENT-EXECUTION-20261022.json)。当前B不改，FFN profile定位末组生产尾部和流水函数寄存器保存恢复；独立FFN仍慢约9%。GPU0留算子，GPU1已启动RoboTwin固定1800局准备链，160GPU小时/10天，旧证据不改，四科学权限false。
+[最新结果](CURRENT-EXECUTION-20261023.md)、[状态JSON](CURRENT-EXECUTION-20261023.json)、[完整算子阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/STAGE-TABLE.md)。外层FFN内联＋尾K64已采用，原Torch完整单层1.2426/1.7780/2.8859×；四科学权限false。GPU0本轮清理，GPU1固定RoboTwin1800局接续。远端无硬件计数器权限，不再尝试提权。
 
-动态状态以当前入口/HW为准；下面原TF暂停72局历史快照原样保留，不能覆盖当前状态。[此前派生入口](history/current-before-current-ffn-profile-20261022/START_HERE.md)。
+下面固定TF暂停72局属于历史科研快照，原RESULTS.json与retention不改；不能用当前算子有限结果改写旧质量失败。[上一派生入口](history/current-before-inline-tail-k64-20261023/START_HERE.md)。
 
 ---
 

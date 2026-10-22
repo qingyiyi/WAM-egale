@@ -1,0 +1,8 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792685064.3552384,
+  "admission": "GPU-754f96ec-4567-7af2-7048-7e8957a6eb36, 557807\n",
+  "error": "AssertionError('local GPU occupied')",
+  "traceback": "Traceback (most recent call last):\n  File \"/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022/local-counters/guard.py\", line 11, in <module>\n    apps=subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid','--format=csv,noheader'],text=True);s['admission']=apps;assert not apps.strip(),'local GPU occupied'\n                                                                                                                                                  ^^^^^^^^^^^^^^^^\nAssertionError: local GPU occupied\n",
+  "end": 1792685064.404754
+}

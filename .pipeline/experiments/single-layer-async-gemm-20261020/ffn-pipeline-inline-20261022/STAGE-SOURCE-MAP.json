@@ -1,0 +1,396 @@
+{
+  "shape": {
+    "B": 14,
+    "Q": 16,
+    "D": 3072,
+    "H": 24,
+    "head_dim": 128,
+    "FFN": 14336
+  },
+  "CTAs": 108,
+  "threads_per_CTA": 256,
+  "warps_per_CTA": 8,
+  "kv": [
+    288,
+    1152,
+    2160
+  ],
+  "rows": [
+    {
+      "stage": "可见历史layout",
+      "phase_id": 0,
+      "tile_counts": null,
+      "work": "CTA0按每轮256物理slot压紧有效历史；实际pool由输入决定",
+      "warp": "仅CTA0的W0–W7",
+      "grid_barriers": 1,
+      "formula": "slots=where(valid_mask)；保持原物理顺序"
+    },
+    {
+      "stage": "调制参数表",
+      "phase_id": null,
+      "tile_counts": [
+        0,
+        0,
+        0
+      ],
+      "work": "不再生成m×6×D表，在消费位置FP32相加",
+      "warp": "在调制/残差消费warp内计算",
+      "grid_barriers": 0,
+      "formula": "s/g/b = learned_table + temb.float()"
+    },
+    {
+      "stage": "LN1",
+      "phase_id": 1,
+      "tile_counts": [
+        224,
+        224,
+        224
+      ],
+      "work": "一行3072维的均值/方差/归一化",
+      "warp": "W3–W6归约/计算；全部8warp搬运",
+      "grid_barriers": 1,
+      "formula": "N1=(X-mean(X))/sqrt(var(X)+eps)"
+    },
+    {
+      "stage": "调制1",
+      "phase_id": 2,
+      "tile_counts": [
+        336,
+        336,
+        336
+      ],
+      "work": "2048元素，每线程2个四元素向量",
+      "warp": "W0–W7向量计算",
+      "grid_barriers": 1,
+      "formula": "M1=BF16(N1*(1+s1)+b1)"
+    },
+    {
+      "stage": "Self Q投影",
+      "phase_id": 3,
+      "tile_counts": [
+        96,
+        96,
+        96
+      ],
+      "work": "64×128输出，完整K3072；两段K1536，各24轮K64；最后M块32有效行",
+      "warp": "W0领任务；W3–W6 MMA；全部8warp写回",
+      "grid_barriers": 2,
+      "formula": "Y=M1@Wq.T+b；保留原两段BF16提交"
+    },
+    {
+      "stage": "Self K投影",
+      "phase_id": 4,
+      "tile_counts": [
+        96,
+        96,
+        96
+      ],
+      "work": "64×128输出，完整K3072；两段K1536，各24轮K64；最后M块32有效行",
+      "warp": "W0领任务；W3–W6 MMA；全部8warp写回",
+      "grid_barriers": 2,
+      "formula": "Y=M1@Wk.T+b；保留原两段BF16提交"
+    },
+    {
+      "stage": "Self V投影",
+      "phase_id": 5,
+      "tile_counts": [
+        96,
+        96,
+        96
+      ],
+      "work": "64×128输出，完整K3072；两段K1536，各24轮K64；最后M块32有效行",
+      "warp": "W0领任务；W3–W6 MMA；全部8warp写回",
+      "grid_barriers": 2,
+      "formula": "Y=M1@Wv.T+b；保留原两段BF16提交"
+    },
+    {
+      "stage": "Self Q RMS+RoPE",
+      "phase_id": 6,
+      "tile_counts": [
+        112,
+        112,
+        112
+      ],
+      "work": "两行×3072维RMS，再旋转3072复数对；RMS后先BF16舍入",
+      "warp": "W0–W3/W4–W7各算一行，归约及旋转CUDA core",
+      "grid_barriers": 1,
+      "formula": "Qn=BF16(gamma*Q/sqrt(mean(Q²)+eps)); RoPE(Qn)"
+    },
+    {
+      "stage": "Self K RMS+RoPE",
+      "phase_id": 7,
+      "tile_counts": [
+        112,
+        112,
+        112
+      ],
+      "work": "两行×3072维RMS，再旋转3072复数对；RMS后先BF16舍入",
+      "warp": "W0–W3/W4–W7各算一行，归约及旋转CUDA core",
+      "grid_barriers": 1,
+      "formula": "Kn=BF16(gamma*K/sqrt(mean(K²)+eps)); RoPE(Kn)"
+    },
+    {
+      "stage": "private KV插入",
+      "phase_id": 8,
+      "tile_counts": [
+        0,
+        0,
+        0
+      ],
+      "work": "B14只读公共历史，候选private suffix保持独立",
+      "warp": "无",
+      "grid_barriers": 0,
+      "formula": "不向公共history写入候选K/V"
+    },
+    {
+      "stage": "Self attention",
+      "phase_id": 9,
+      "tile_counts": [
+        96,
+        168,
+        96
+      ],
+      "work": "每CTA两组；每组FA2 Q64×KV64×D128，16/32有效Q；KV循环短/中/长5/18/34轮",
+      "warp": "W0–W3/W4–W7两个独立FA2组，QK/PV Tensor Core、softmax CUDA core",
+      "grid_barriers": 1,
+      "formula": "softmax(QKᵀ/sqrt(128))V；每候选仅公共prefix+自己的suffix"
+    },
+    {
+      "stage": "Self输出投影",
+      "phase_id": 10,
+      "tile_counts": [
+        96,
+        96,
+        96
+      ],
+      "work": "64×128输出，完整K3072，两段K1536",
+      "warp": "W0领任务；W3–W6 MMA；全部8warp写回",
+      "grid_barriers": 2,
+      "formula": "SO=SA@Wo.T+b"
+    },
+    {
+      "stage": "残差1",
+      "phase_id": 11,
+      "tile_counts": [
+        336,
+        336,
+        336
+      ],
+      "work": "2048元素，gate按需计算",
+      "warp": "全部8warp向量计算",
+      "grid_barriers": 1,
+      "formula": "R1=BF16(X.float()+SO*g1)"
+    },
+    {
+      "stage": "LN2",
+      "phase_id": 12,
+      "tile_counts": [
+        224,
+        224,
+        224
+      ],
+      "work": "一行3072维LN及原FP32 affine",
+      "warp": "W3–W6归约/计算；全部8warp搬运",
+      "grid_barriers": 1,
+      "formula": "N2=BF16(LN(R1.float())*gamma+beta)"
+    },
+    {
+      "stage": "Cross Q投影",
+      "phase_id": 13,
+      "tile_counts": [
+        96,
+        96,
+        96
+      ],
+      "work": "64×128输出，完整K3072，两段K1536",
+      "warp": "W0领任务；W3–W6 MMA；全部8warp写回",
+      "grid_barriers": 2,
+      "formula": "CQ0=N2@Wcq.T+b"
+    },
+    {
+      "stage": "Cross K投影",
+      "phase_id": null,
+      "tile_counts": [
+        0,
+        0,
+        0
+      ],
+      "work": "warm直接读取最终K缓存；cold本层两条件各512行，192个128×128输出tile",
+      "warp": "warm无；cold W3–W6 MMA、全部warp写回",
+      "grid_barriers": 0,
+      "formula": "CK0=context@Wck.T+b，仅条件改变时重建"
+    },
+    {
+      "stage": "Cross V投影",
+      "phase_id": null,
+      "tile_counts": [
+        0,
+        0,
+        0
+      ],
+      "work": "warm直接读取V缓存；cold192个128×128输出tile",
+      "warp": "warm无；cold W3–W6 MMA、全部warp写回",
+      "grid_barriers": 0,
+      "formula": "CV=context@Wcv.T+b，仅条件改变时重建"
+    },
+    {
+      "stage": "Cross Q RMS",
+      "phase_id": 14,
+      "tile_counts": [
+        112,
+        112,
+        112
+      ],
+      "work": "两行×3072维RMS，无RoPE",
+      "warp": "两组4warp各算一行",
+      "grid_barriers": 1,
+      "formula": "CQ=BF16(gamma*CQ0/sqrt(mean(CQ0²)+eps))"
+    },
+    {
+      "stage": "Cross K RMS",
+      "phase_id": null,
+      "tile_counts": [
+        0,
+        0,
+        0
+      ],
+      "work": "最终K已缓存；cold512个两行tile",
+      "warp": "warm无；cold两组4warp",
+      "grid_barriers": 0,
+      "formula": "CK=RMS(CK0)，缓存中包含本结果"
+    },
+    {
+      "stage": "Cross attention",
+      "phase_id": 15,
+      "tile_counts": [
+        168,
+        168,
+        168
+      ],
+      "work": "每CTA两组；每组Q16×K512×D128，8轮KV64",
+      "warp": "两个独立4warp FA2组，QK/PV Tensor Core、softmax CUDA core",
+      "grid_barriers": 1,
+      "formula": "softmax(CQ CKᵀ/sqrt(128))CV"
+    },
+    {
+      "stage": "Cross输出投影",
+      "phase_id": 16,
+      "tile_counts": [
+        96,
+        96,
+        96
+      ],
+      "work": "64×128输出，完整K3072，两段K1536",
+      "warp": "W0领任务；W3–W6 MMA；全部8warp写回",
+      "grid_barriers": 2,
+      "formula": "CO=CA@Wco.T+b"
+    },
+    {
+      "stage": "残差2",
+      "phase_id": 17,
+      "tile_counts": [
+        336,
+        336,
+        336
+      ],
+      "work": "2048元素，两BF16输入相加",
+      "warp": "全部8warp向量计算",
+      "grid_barriers": 1,
+      "formula": "R2=BF16(R1+CO)"
+    },
+    {
+      "stage": "LN3",
+      "phase_id": 18,
+      "tile_counts": [
+        224,
+        224,
+        224
+      ],
+      "work": "一行3072维LN，输出FP32",
+      "warp": "W3–W6归约/计算；全部8warp搬运",
+      "grid_barriers": 1,
+      "formula": "N3=LN(R2.float())"
+    },
+    {
+      "stage": "调制3",
+      "phase_id": 19,
+      "tile_counts": [
+        336,
+        336,
+        336
+      ],
+      "work": "2048元素，按需scale/shift",
+      "warp": "全部8warp向量计算",
+      "grid_barriers": 1,
+      "formula": "M3=BF16(N3*(1+s3)+b3)"
+    },
+    {
+      "stage": "FFN1",
+      "phase_id": 20,
+      "tile_counts": [
+        120,
+        120,
+        120
+      ],
+      "work": "108主块128×256/K32×96；12尾块32×256/K64×48；总K3072",
+      "warp": "主块8warp MMA；尾块W0–W3 MMA；8warp写回",
+      "grid_barriers": 0,
+      "formula": "F1=BF16(M3@W1.T+b1)"
+    },
+    {
+      "stage": "GELU",
+      "phase_id": null,
+      "tile_counts": [
+        0,
+        0,
+        0
+      ],
+      "work": "融合在FFN1写回，不额外启动/领取tile",
+      "warp": "全部8warp epilogue CUDA core",
+      "grid_barriers": 0,
+      "formula": "ACT=BF16(GELU(F1))；保留F1的BF16边界"
+    },
+    {
+      "stage": "FFN2",
+      "phase_id": 20,
+      "tile_counts": [
+        96,
+        96,
+        96
+      ],
+      "work": "128×128部分和，K7168/64=112轮；每个最终输出两部分，共48输出tile",
+      "warp": "W3–W6 MMA；全部8warp四元素写回；组就绪后领取",
+      "grid_barriers": 0,
+      "formula": "部分1BF16提交；部分2+bias与部分1按原顺序合并"
+    },
+    {
+      "stage": "残差3 / FFN出口",
+      "phase_id": 20,
+      "tile_counts": [
+        0,
+        0,
+        0
+      ],
+      "work": "融合在第二部分FFN2写回；四组生产28/28/28/36，消费各24；仅最终grid同步",
+      "warp": "8warp epilogue；CTA leader发布/领取/有序提交",
+      "grid_barriers": 1,
+      "formula": "OUT=BF16(R2.float()+BF16(F2).float()*g3)"
+    },
+    {
+      "stage": "最终退出",
+      "phase_id": 21,
+      "tile_counts": null,
+      "work": "当前B14没有真实cache写回/恢复工作；保留退出屏障",
+      "warp": "108 CTA全体",
+      "grid_barriers": 1,
+      "formula": "输出[B14,16,3072]"
+    }
+  ],
+  "math_tiles": [
+    3408,
+    3480,
+    3408
+  ],
+  "grid_barriers": 27,
+  "context_mode": "warm final K/RMS and V cached on both arms"
+}

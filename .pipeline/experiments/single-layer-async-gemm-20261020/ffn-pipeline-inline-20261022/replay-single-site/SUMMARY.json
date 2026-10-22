@@ -1,0 +1,112 @@
+{
+  "status": "DIAGNOSTIC_FINITE_PASS_COMPILED_CONTEXT_CHANGED",
+  "production_FFN_speedup": "UNKNOWN",
+  "reason": "Measured copy has different static local allocation and 0.67\u20131.05% whole-copy perturbation, comparable to or larger than the retained whole-layer gain; isolated measurements are not a production FFN attribution.",
+  "rows": [
+    {
+      "case": "short",
+      "median_ms": {
+        "selected_full": 0.9153023719787599,
+        "replay_copy_full": 0.9236992120742797,
+        "custom_ffn": 0.3525887906551361,
+        "previous_ffn": 0.346726393699646,
+        "torch_ffn": 0.3184639930725098,
+        "torch_ffn1_gelu": 0.17835519909858705,
+        "torch_ffn2_residual": 0.13931519985198976
+      },
+      "ffn_speedup_vs_Torch": 0.9032164422492844,
+      "full_copy_perturbation_percent": [
+        0.8106922039770259,
+        1.0241838443775908
+      ],
+      "resources": [
+        [
+          108,
+          1,
+          100096,
+          255,
+          1016,
+          256
+        ],
+        [
+          108,
+          1,
+          100096,
+          255,
+          1032,
+          256
+        ]
+      ]
+    },
+    {
+      "case": "middle",
+      "median_ms": {
+        "selected_full": 1.082470417022705,
+        "replay_copy_full": 1.091430401802063,
+        "custom_ffn": 0.3523583889007568,
+        "previous_ffn": 0.3461120009422302,
+        "torch_ffn": 0.32107519507408144,
+        "torch_ffn1_gelu": 0.1791487991809845,
+        "torch_ffn2_residual": 0.14254080057144164
+      },
+      "ffn_speedup_vs_Torch": 0.9112176840055696,
+      "full_copy_perturbation_percent": [
+        0.803820021044066,
+        0.8516655008426799
+      ],
+      "resources": [
+        [
+          108,
+          1,
+          100096,
+          255,
+          1016,
+          256
+        ],
+        [
+          108,
+          1,
+          100096,
+          255,
+          1032,
+          256
+        ]
+      ]
+    },
+    {
+      "case": "long",
+      "median_ms": {
+        "selected_full": 1.0989824056625366,
+        "replay_copy_full": 1.109119987487793,
+        "custom_ffn": 0.3532543957233429,
+        "previous_ffn": 0.34680319428443906,
+        "torch_ffn": 0.3198208034038544,
+        "torch_ffn1_gelu": 0.17863680124282838,
+        "torch_ffn2_residual": 0.1392639994621277
+      },
+      "ffn_speedup_vs_Torch": 0.9053554811369634,
+      "full_copy_perturbation_percent": [
+        0.9410675208657349,
+        0.9038350017865904
+      ],
+      "resources": [
+        [
+          108,
+          1,
+          100096,
+          255,
+          1016,
+          256
+        ],
+        [
+          108,
+          1,
+          100096,
+          255,
+          1032,
+          256
+        ]
+      ]
+    }
+  ]
+}

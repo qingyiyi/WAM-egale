@@ -1,0 +1,99 @@
+{
+  "goal": "Only inline outer action_ffn_pipeline; unchanged tile/math/dependencies; finite state gate then same-input whole-layer comparison",
+  "execution_authorization": "USER_APPROVED_OUTER_PIPELINE_INLINE_FIRST",
+  "registered_at": "2026-10-22T23:58:00.075451+08:00",
+  "deadline": "2026-10-23T00:58:00.075451+08:00",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 3600,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 12603.609943782487,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 805306368,
+  "local_storage_cap_bytes": 536870912,
+  "terminal_status": "REGISTERED",
+  "input_manifest": "Existing 9 real signatures plus 27 structure cases; B14 action original short/middle/long cached fixtures; add 9 actual-derived FP32/broadcast temb controls",
+  "cleanup_plan": "owned PID+birth guard only; preserve failed attempts",
+  "evidence_path": "/rjs/cxz/论文探索/.pipeline/experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/b-inline-producer/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "899d70c5355a03f3710eddb09e51a19d8da722fc25193c0e5653d87039e8a84e",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap",
+    "temb_fp32",
+    "temb_first_token",
+    "temb_first_token_fp32"
+  ],
+  "formal_performance_permission": false,
+  "steps": [
+    [
+      "build",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-lib",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022",
+        "--build-temp",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/build/obj"
+      ],
+      900,
+      false
+    ],
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/gate.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/extended.py"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/timing.py",
+        "1"
+      ],
+      240,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/timing.py",
+        "2"
+      ],
+      240,
+      true
+    ]
+  ],
+  "source_before_sha256": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
+  "mechanism": "Remove only outer FFN pipeline device-function ABI boundary",
+  "sources": {
+    "算子研究/wam_ops/optimized/csrc/whole_layer.cu": "ad1c1f950e775fa15ad278184bda62093d11d00ed34f22182824ccd534309521",
+    "算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh": "efe0b6a5f6239e555ac7d6ef703f64198c43e30ff72f7acfcd8f6285eebbf921"
+  },
+  "attempt": "OUTER_PIPELINE_INLINE",
+  "previous_attempt_gpu_seconds": 0,
+  "storage_account_root": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022"
+}

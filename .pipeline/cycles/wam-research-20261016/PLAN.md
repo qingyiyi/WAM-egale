@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-22T21:28:36.836450+08:00'
+updated: '2026-10-23T00:47:13.615406+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -19,9 +19,9 @@ execution: EXECUTION.md
 - [x] M39-KV-PERF：三KV两进程完整层、强baseline与复用边界；更新阶段表/证据/owned清理。
 - [x] M39-VA2：核查LingBot-VA2原文加速基线及推理框架。
 - [ ] M39：按最新用户决定，后续仅对比原Torch；历史guarded未追平结果保留，不扩大系统claim。
-- [ ] M17/M40：原证据缺口及扩大资源另处理，不启动。
+- [ ] M17/M40：M17保留原证据缺口；M40按新160小时资源在GPU1接续，不借GPU0。
 
-[本轮结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)。累计12603.610/36000秒；当前作业闭合，原截止与四科学权限不变。
+[本轮结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)。累计15315.883/36000秒；当前作业闭合，原截止与四科学权限不变。
 
 - [x] M39-KV-CACHE：用户新批准自有算子读取预计算K（含RMS）/V，双方同等缓存；先精度后性能，冷构建另列。
 - [x] M39-KV-STAGES：完整层、逐阶段耗时、同步等待分列；profile与正常计时独立。
@@ -49,4 +49,9 @@ M39子项沿用上方名称，以下只补齐语义导航，不重编号历史�
 - [x] M39-FFN-EPILOGUE：A四元素写回、B生产函数内联均有限通过并提速；当前完整层原Torch比值1.2185/1.7605/2.8473×，独立FFN仍慢约9%；两机研究采用，owned清理。
 - [x] M39-FFN-REMAINING：当前B时间线＋NCU完成，有限数值/状态通过；已定位末组生产延迟与额外local/指令，不改生产入口。
 
-- [ ] M40-EVAL100：新160GPU小时/10天资源已授权；固定1800局，GPU1已补齐有效初态中，之后bank与质量队列自动接续；最新GPU0长期保留算子。
+- [ ] M40-EVAL100：新160GPU小时/10天资源已授权；固定1800局，GPU1已补齐600有效初态与bank，固定质量队列已自动运行；最新GPU0长期保留算子。
+
+- [x] M39-FFN-OUTER-ABI：外层流水内联完成，有限门/整层对照通过并采用；后续尾K64也已完成。
+
+- [x] M39-FFN-TAIL-K64：只改12个FFN1尾块K64，有限门及三KV两进程完整层通过，两机采用。
+- [x] M39-CURRENT-STAGES：最终当前源码的计算/分块/warp/同步和原Torch阶段比值；GPU0两进程软件插桩测量已闭合，资源属性一致、扰动≤0.462%，原00:58截止保留。

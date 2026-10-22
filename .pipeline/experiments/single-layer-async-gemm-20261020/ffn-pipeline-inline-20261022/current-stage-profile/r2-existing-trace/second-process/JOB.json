@@ -1,0 +1,59 @@
+{
+  "goal": "Current selected full-layer phase timeline and original Torch same-input stage timing; measurement copy only",
+  "execution_authorization": "USER_REQUESTED_FINAL_STAGE_TABLE",
+  "registered_at": "2026-10-23T00:41:54.981001+08:00",
+  "deadline": "2026-10-23T00:58:00.075451+08:00",
+  "CPU_build_cap_seconds": 900,
+  "GPU_lifecycle_cap_seconds": 3600,
+  "cleanup_reserve_seconds": 300,
+  "cumulative_prior_GPU_seconds": 12603.609943782487,
+  "cumulative_cap_seconds": 36000,
+  "cpu_threads": 2,
+  "new_storage_cap_bytes": 805306368,
+  "local_storage_cap_bytes": 536870912,
+  "terminal_status": "REGISTERED",
+  "input_manifest": "Existing 9 real signatures plus 27 structure cases; B14 action original short/middle/long cached fixtures; add 9 actual-derived FP32/broadcast temb controls",
+  "cleanup_plan": "owned PID+birth guard only; preserve failed attempts",
+  "evidence_path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/single-layer-async-gemm-20261020/ffn-pipeline-inline-20261022",
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-abi-20261022/b-inline-producer/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "899d70c5355a03f3710eddb09e51a19d8da722fc25193c0e5653d87039e8a84e",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap",
+    "context_alternating",
+    "context_swap",
+    "temb_fp32",
+    "temb_first_token",
+    "temb_first_token_fp32"
+  ],
+  "formal_performance_permission": false,
+  "steps": [
+    [
+      "measure2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022/current-stage-profile/r2-existing-trace/worker2.py"
+      ],
+      240,
+      true
+    ]
+  ],
+  "source_before_sha256": "32bb924ebeb36363942e7377fb36bff6748a0e282e2e49246711d157120c9c55",
+  "mechanism": "Remove only outer FFN pipeline device-function ABI boundary",
+  "sources": {
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu": "ad1c1f950e775fa15ad278184bda62093d11d00ed34f22182824ccd534309521",
+    "\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/cutlass_gemm.cuh": "efe0b6a5f6239e555ac7d6ef703f64198c43e30ff72f7acfcd8f6285eebbf921"
+  },
+  "attempt": "SECOND_PROCESS_STAGE_TIMELINE",
+  "previous_attempt_gpu_seconds": 240,
+  "storage_account_root": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-pipeline-inline-20261022",
+  "production_source_sha256": "9b5dec45b839bb6cb5bee69381f3da35640d53adfd087c2374b44e974184b751",
+  "profile_source_sha256": "391e4ac09f70b2b32d81fcb52d5e513810fd6798d3a4b20e04e46db5ab41f88b",
+  "reason": "Repeat same compiled copy to check near-parity FFN diagnostic and residual small-stage gaps; no new implementation"
+}

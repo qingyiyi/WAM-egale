@@ -1,0 +1,11 @@
+--- before/whole_layer.cu
++++ optimized/whole_layer.cu
+@@ -424,7 +424,7 @@
+ // 等待同一行块第一段全部提交，保留原BF16部分和、bias与残差顺序。
+ // A100实测108常驻CTA，最多48个第二段CTA持有shared部分和等待；
+ // 其余CTA可完成全部第一段，且每CTA先完成自己的生产任务，不形成环等。
+-__device__ __noinline__ void action_ffn_pipeline(const Params &p, Shared &s, cg::grid_group &g) {
++__device__ __forceinline__ void action_ffn_pipeline(const Params &p, Shared &s, cg::grid_group &g) {
+     action_ffn1_produce(p, s);
+     while (true) {
+         if (threadIdx.x == 0) {

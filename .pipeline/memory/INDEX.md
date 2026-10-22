@@ -1,7 +1,7 @@
 # 长期记忆索引
 
 - [RoboTwin扩大评估160GPU小时](global/requirements/decision-RoboTwin扩大评估授权160GPU小时双卡接续.md)（constraint，M40新一期）：已授权1800局、160GPU小时/10天；最新GPU0留算子、GPU1跑RoboTwin，旧账本不改。
-- [先优化FFN1尾部再处理FFN2写回](global/requirements/decision-先优化FFN1尾部再处理FFN2写回.md)（constraint，M39）：用户确认尾部分摊→FFN2写回→函数开销顺序，并补测独立FFN；具体收益看Cycle，原累计预算不增。
+- [先优化FFN1尾部再处理FFN2写回](global/requirements/decision-先优化FFN1尾部再处理FFN2写回.md)（constraint，M39）：用户确认尾部分摊→FFN2写回→函数开销顺序，并补测独立FFN；具体收益看Cycle，原累计预算不增。 最新确认：先外层FFN函数ABI单因素验证，再处理尾部。
 
 - [试验FFN四组依赖融合流水](global/requirements/decision-试验FFN四组依赖融合流水.md)（constraint，M39）：用户批准FFN局部依赖流水，保留数学和ACT缓冲，原预算不增。
 
@@ -217,3 +217,5 @@
 历史映射见 [原记录清单](../maintenance/hw-upgrade-20261016/LEGACY-RECORD-INVENTORY.json)，仅在查旧问题时打开；不把旧 GPU 暂停、旧“未完成”或早期计划当成当前指令。
 
 当前以回退阶段同步并重新规划为准；历史顺序见：[先核对再调度](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)、[改动与指标解释边界](global/requirements/requirement-算子交付明确源码入口与验证范围.md)均为constraint；动态数字留在M39。
+
+- [远端不提权且不访问GPU计数器](global/rules/requirement-远端不提权且不访问GPU计数器.md)：用户确认平台限制；远端只用事件/软件时间线，NCU仅本机原授权空闲窗口。
