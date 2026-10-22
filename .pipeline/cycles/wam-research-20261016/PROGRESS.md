@@ -1,11 +1,25 @@
-# 当前研究进度（2026-10-22T16:37:20.064075+08:00）
+---
+kind: progress
+cycle: wam-research-20261016
+plan: PLAN.md
+status: active
+updated: '2026-10-22T17:44:23.726236+08:00'
+current: M39
+next: M39已完成融合核验并交付；下一步先定位两处融合的增量开销，再讨论MMA与epilogue流水，不自动开新作业。
+---
 
-M39预计算已收口：有限9签名/27结构/三KV缓存baseline逐位及状态通过。自有warm短/中/长0.957/1.124/1.140ms，对强guarded0.887/1.006/1.021ms仍慢7.94%/11.70%/11.69%；自有自身降17.7%–20.6%。不预计算时差异−1.79%/+1.82%/+2.02%。双方同缓存后差距更大，但绝对成本都降低。
+# 当前研究进度
 
-[结果](../../experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/RESULT.md)、[完整逐阶段表](../../experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/STAGE-TABLE.md)、[优化索引](../../experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)。阶段表已补齐每tile工作量、FFN2分段及attention循环。当前warm短/中/长5304/5376/5304tile、31grid；源码与旧分组路径保留。诊断漏计入口/出口同步的原FAILED保留，修复版在同窗口完成；计算代码和原门未改变。
+B14 FFN1+GELU、FFN2+门控残差3已融合并采用为研究入口；9真实签名/36结构条件的有限逐位及状态门通过。两进程同缓存、同真实输入的warm整层Graph计时：相对原Torch短/中/长KV为1.1646/1.6893/2.7445×；比自身融合前慢1.09%/1.14%/0.83%，融合收益为负。仍为阶段同步，尚未实现MMA/epilogue重叠。
 
-2026-10-22T16:36:10.992744+08:00owned全部退出，累计8349.913/36000秒。四科学权限false；baseline/投机/原tile/保护文件不动。当前先讨论GELU/FFN写回融合；tile与依赖核查完成，尚未改计算代码。后续按用户最新决定仅对比原Torch，旧guarded结果保留；不自动恢复ready或开启机器人。
+warm逻辑任务3400/3472/3400、grid同步29；baseline/投机/原tile不改。旧源码、旧DSO、首CPU编译失败保留；两机采用新DSO，本机未另做GPU计时。四项科学权限及production_admitted均false。
 
-M17四套LIBERO6000局齐，非独立TEST，暴露/首两S/长尾缺口保留。M40原DEV90完成、10/22 01:26旧截止过期，1800局/160h未获准。10/22 go/no-go、10/23身份冻结、10/28主表、11/01 18:00中文证据包；证据不足收缩claim。
+本轮于2026-10-22T17:37:30+08:00清理，原18:12:32截止保留；GPU worker生命周期65.147秒，准备/编译/等待/清理保守记598.644秒，累计8948.557/36000秒。CUDA active未单独测量。无本轮自有GPU进程，不恢复M17/M40旧队列。
 
-[PLAN](PLAN.md)、[此前状态](history/before-cross-kv-precompute-result-20261022/PROGRESS.md)。
+| ID | 阶段 | 状态 | 当前结果 / 证据 | 下一步 |
+| --- | --- | --- | --- | --- |
+| `M39` | 单层优化 | in_progress | [融合完成但性能退化](../../experiments/single-layer-async-gemm-20261020/ffn-epilogue-fusion-20261022/RESULT.md) | 先分清两处融合开销；新流水尚未实现 |
+| `M17` | LIBERO证据 | blocked | 四套6000局已完成；非独立TEST，首两S审计与暴露/长尾缺口保留 | 沿原报告处理，不自动恢复过期作业 |
+| `M40` | RoboTwin | blocked | 原DEV90完成；10/22 01:26旧截止过期，1800局/160h未获准 | 保留迁移/优化结果，扩大资源另处理 |
+
+[PLAN](PLAN.md)；[此前完整结果与未完任务](history/before-ffn-epilogue-fusion-20261022/PROGRESS.md)。本次仅交付已授权融合，不以数值门通过替代闭环质量。10/22 go/no-go、10/23身份冻结、10/28主表、11/01 18:00中文证据包；证据不足收缩claim。

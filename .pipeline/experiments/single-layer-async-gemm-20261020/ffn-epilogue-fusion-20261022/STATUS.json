@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792661363.165514,
+  "deadline": 1792663952.07652,
+  "jobs": [
+    {
+      "name": "build",
+      "owned": {
+        "pid": 844302,
+        "birth_ticks": 725982173,
+        "pgid": 844302
+      },
+      "start": 1792661363.1682336,
+      "gpu": false,
+      "returncode": 1,
+      "end": 1792661380.9562805,
+      "lifecycle_seconds": 17.788048028945923,
+      "root_reaped": true,
+      "identity_alive": false
+    }
+  ],
+  "owned_guard": {
+    "pid": 844301,
+    "birth_ticks": 725982170,
+    "pgid": 844301
+  },
+  "error": "RuntimeError('build failed')",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/ffn-epilogue-fusion-20261022/guard.py\", line 50, in <module>\n    if rc or row.get('timeout'):raise RuntimeError(name+' failed')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: build failed\n",
+  "end": 1792661380.9688723,
+  "lifecycle_seconds": 17.803358793258667
+}

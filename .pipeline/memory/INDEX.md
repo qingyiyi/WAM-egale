@@ -1,5 +1,7 @@
 # 长期记忆索引
 
+- [先融合FFN写回中的GELU与残差](global/requirements/decision-先融合FFN写回中的GELU与残差.md)（constraint，M39）：已批准B14两处写回融合，保留舍入，先精度后原Torch对照，旧累计预算不增。
+
 - [算子后续仅对比原Torch](global/requirements/decision-算子后续仅对比原Torch实现.md)（constraint，当前算子）：新测量/汇报唯一对照为原Torch，保留旧guarded证据；不改变科学权限。
 
 - [自有整层读取预计算Cross K/V并对齐逐阶段耗时](global/requirements/decision-自有整层读取预计算CrossKV并对齐逐阶段耗时.md)（constraint，M39）：双方同缓存、精度后计时、冷warm与profile分列。

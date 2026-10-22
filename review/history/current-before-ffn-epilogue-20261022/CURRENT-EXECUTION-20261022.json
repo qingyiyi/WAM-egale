@@ -1,0 +1,301 @@
+{
+  "observed_at": "2026-10-22T16:39:06.198887+08:00",
+  "previous_derived_snapshot_commit": "f32b53d93279f4e41ef587c7dbb0cc478df6da4e",
+  "operator": {
+    "status": "FINITE_VERIFIED_CROSS_KV_PRECOMPUTE",
+    "selected_trial": "cross-kv-precompute-20261022",
+    "final_binary": "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "final_binary_sha256": "0f62944795c64213dfa7106b9707a2f6ec5bd0aa41d9d008e94c2794289a0e67",
+    "source_sha256": "4ff17224c70d3fe0565bc94bf17530b92dc3fde3907fcae451a942febb4ccb54",
+    "sources": {
+      "csrc/whole_layer.cu": "4ff17224c70d3fe0565bc94bf17530b92dc3fde3907fcae451a942febb4ccb54",
+      "csrc/fa2_stage.cuh": "dce97d1a6ae8b8d27f0295e7594362be9fa34d0895ef921949270568cf889d11",
+      "whole_layer.py": "5ebfa1bc7a1ef66f3ed9459fbef152bcc5f84c5c027ad7e5857381c6f49f7418",
+      "build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+    },
+    "real_signatures": 9,
+    "structural_controls": 21,
+    "all_finite_checks_passed": true,
+    "formal_performance_permission": false,
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "production_admitted": false,
+    "installed": true,
+    "ready_DAG_implemented": false,
+    "table": ".pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/WHOLE-LAYER-TIMING.csv",
+    "installation_evidence": [
+      ".pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/DEPLOYMENT-LOCAL.json",
+      ".pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/DEPLOYMENT-BAAI.json"
+    ],
+    "ready_archive": ".pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/ready-source",
+    "normal_grid_barriers_source_count": 31,
+    "normal_logical_tiles_G2_G1": [
+      5304,
+      5376
+    ],
+    "normal_materialized_MOD": false,
+    "debug_materialized_MOD": true,
+    "normal_materialized_self_QK_norm": false,
+    "debug_materialized_self_QK_norm": true,
+    "stage_table": ".pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/STAGE-TABLE.md",
+    "explicit_precompute_required": true
+  },
+  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/RESULT.md",
+  "resource": {
+    "status": "COMPLETE_WITH_RETAINED_DIAGNOSTIC_FAILURE",
+    "at": "2026-10-22T16:37:20.064075+08:00",
+    "registered_at": "2026-10-22T16:25:20.330930+08:00",
+    "deadline": "2026-10-22T17:10:20.330930+08:00",
+    "cleanup_at": "2026-10-22T16:36:10.992744+08:00",
+    "GPU_worker_lifecycle_seconds": 127.56874537467957,
+    "conservative_window_seconds": 650.6618268489838,
+    "cumulative_seconds": 8349.912903794524,
+    "cap_seconds": 36000,
+    "remaining_seconds": 27650.087096205476,
+    "CPU_build_failures": 2,
+    "GPU_diagnostic_failures": 1,
+    "GPU_timeout_count": 0,
+    "CUDA_active_seconds": "UNKNOWN",
+    "owned_running": false,
+    "production_admitted": false,
+    "formal_performance_permission": false
+  },
+  "operator_whole_ms": {
+    "short": 0.9574400186538696,
+    "middle": 1.1238399744033813,
+    "long": 1.1402239799499512
+  },
+  "uncached_guarded_relative_latency_percent": {
+    "short": -1.7939129310560076,
+    "middle": 1.822665627482567,
+    "long": 2.016587231016098
+  },
+  "full_alignment_achieved": false,
+  "ready_DAG_implemented": true,
+  "morning_new_candidates_promoted": 0,
+  "morning_NCU": "4 ranges completed for selected11; diagnostic only",
+  "LTO_latency_regression_percent": [
+    15.563978640471188,
+    16.14616597524414,
+    15.668632944599192
+  ],
+  "all_morning_owned_exited": true,
+  "robotwin": {
+    "cross_task_complete_episodes": 4,
+    "independent_quality_samples_added": 0,
+    "cumulative_GPU_lifecycle_seconds": 54718.243980407715,
+    "owned_jobs_running": false,
+    "original_deadline": "2026-10-22T01:26:04.706686+08:00",
+    "deadline_expired": true,
+    "expanded1800_started": false,
+    "additional160hours_authorized": false
+  },
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "historical_paused72": "review/RESULTS.json unchanged",
+  "ready_DAG_source_implemented": true,
+  "ready_DAG_GPU_validated": true,
+  "ready_DAG_default_enabled": false,
+  "operator_active_binary": "0f62944795c64213dfa7106b9707a2f6ec5bd0aa41d9d008e94c2794289a0e67",
+  "ready_candidate_binary": "3bdf1a62f1c9807560d800de4bba0525afb3184a4020eaabd6a98ae89c26d4f1",
+  "ready_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md",
+  "new_GPU_window": "PRECOMPUTE_COMPLETE_WITH_RETAINED_PROFILE_FAILURE_CLEANED",
+  "new_GPU_seconds": 127.56874537467957,
+  "ready_DAG_state": "FINITE_GPU_VERIFIED_PERFORMANCE_NO_GO_ARCHIVED_USER_REVERT",
+  "ready_DAG_validation_scope": "9 finite signatures and 21 finite structural controls only; not robot quality or universal correctness",
+  "ready_DAG_performance_pass": false,
+  "ready_DAG_active_source": false,
+  "next": "Cached strong baseline retained; discuss remaining stage costs, no running GPU job",
+  "ready_timing": {
+    "aggregation": "mean of the two independent process medians; all per-process values retained",
+    "rows": [
+      {
+        "kv": "short",
+        "torch_static_uncached": 2.3162879943847656,
+        "shared_torch_uncached": 2.1040640473365784,
+        "guarded_uncached": 2.068992018699646,
+        "before": 2.2924800515174866,
+        "staged": 2.2942720651626587,
+        "candidate": 3.76473605632782,
+        "ready_vs_selected11_percent": 64.22110429426797,
+        "ready_vs_guarded_percent": 81.95991199105461,
+        "same_build_staged_vs_selected11_percent": 0.0781692143399848
+      },
+      {
+        "kv": "middle",
+        "torch_static_uncached": 3.1037440299987793,
+        "shared_torch_uncached": 2.2568960189819336,
+        "guarded_uncached": 2.1890559792518616,
+        "before": 2.4568320512771606,
+        "staged": 2.4596478939056396,
+        "candidate": 3.8865920305252075,
+        "ready_vs_selected11_percent": 58.19526729573556,
+        "ready_vs_guarded_percent": 77.54648886838889,
+        "same_build_staged_vs_selected11_percent": 0.11461274396087351
+      },
+      {
+        "kv": "long",
+        "torch_static_uncached": 4.335616111755371,
+        "shared_torch_uncached": 2.444800019264221,
+        "guarded_uncached": 2.199552059173584,
+        "before": 2.4773120284080505,
+        "staged": 2.4739840030670166,
+        "candidate": 3.8576640486717224,
+        "ready_vs_selected11_percent": 55.71974803475612,
+        "ready_vs_guarded_percent": 75.38407570681116,
+        "same_build_staged_vs_selected11_percent": -0.13434017608079385
+      }
+    ]
+  },
+  "modulation_fusion_result": {
+    "status": "COMPLETE_FINITE_WHOLE_COMPARISON",
+    "aggregation": "mean of two independent process medians; raw values retained",
+    "scope": "normal debug=false complete layer Graph; uncached context, no robot or full-model",
+    "rows": [
+      {
+        "kv": "short",
+        "torch_static_uncached": 2.3144959807395935,
+        "shared_torch_uncached": 2.1048320531845093,
+        "guarded_uncached": 2.070528030395508,
+        "before": 2.2922240495681763,
+        "candidate": 2.269184112548828,
+        "latency_change_percent": -1.0051345994597893,
+        "speedup_vs_before": 1.010153401344534,
+        "latency_change_vs_guarded_percent": 9.594464756672405,
+        "both_processes_faster": true
+      },
+      {
+        "kv": "middle",
+        "torch_static_uncached": 3.100928008556366,
+        "shared_torch_uncached": 2.257920026779175,
+        "guarded_uncached": 2.186751961708069,
+        "before": 2.4588798880577087,
+        "candidate": 2.4348159432411194,
+        "latency_change_percent": -0.9786547498095821,
+        "speedup_vs_before": 1.0098832705952123,
+        "latency_change_vs_guarded_percent": 11.343946907416424,
+        "both_processes_faster": true
+      },
+      {
+        "kv": "long",
+        "torch_static_uncached": 4.33407998085022,
+        "shared_torch_uncached": 2.4458240270614624,
+        "guarded_uncached": 2.200576066970825,
+        "before": 2.471935987472534,
+        "candidate": 2.4486400485038757,
+        "latency_change_percent": -0.94241675701634,
+        "speedup_vs_before": 1.0095138274745168,
+        "latency_change_vs_guarded_percent": 11.272683787501148,
+        "both_processes_faster": true
+      }
+    ],
+    "all_rows_faster": true,
+    "formal_performance_permission": false
+  },
+  "rms_rope_fusion_result": {
+    "status": "COMPLETE_FINITE_WHOLE_COMPARISON",
+    "aggregation": "mean of two independent process medians; raw values retained",
+    "scope": "normal debug=false complete layer Graph; uncached context, no robot or full-model",
+    "rows": [
+      {
+        "kv": "short",
+        "torch_static_uncached": 2.314751982688904,
+        "shared_torch_uncached": 2.1048320531845093,
+        "guarded_uncached": 2.0687360167503357,
+        "before": 2.2704639434814453,
+        "candidate": 2.261504054069519,
+        "latency_change_percent": -0.39462813041583056,
+        "speedup_vs_before": 1.0039619161397493,
+        "latency_change_vs_guarded_percent": 9.318155422362295,
+        "both_processes_faster": true
+      },
+      {
+        "kv": "middle",
+        "torch_static_uncached": 3.1032320261001587,
+        "shared_torch_uncached": 2.2543359994888306,
+        "guarded_uncached": 2.1857279539108276,
+        "before": 2.4348159432411194,
+        "candidate": 2.4245761036872864,
+        "latency_change_percent": -0.4205590809546855,
+        "speedup_vs_before": 1.0042233525020148,
+        "latency_change_vs_guarded_percent": 10.92762479196454,
+        "both_processes_faster": true
+      },
+      {
+        "kv": "long",
+        "torch_static_uncached": 4.3330559730529785,
+        "shared_torch_uncached": 2.4440320134162903,
+        "guarded_uncached": 2.199552059173584,
+        "before": 2.4491520524024963,
+        "candidate": 2.4383999705314636,
+        "latency_change_percent": -0.4390124271984486,
+        "speedup_vs_before": 1.004409482447906,
+        "latency_change_vs_guarded_percent": 10.85893422534494,
+        "both_processes_faster": true
+      }
+    ],
+    "all_rows_faster": true,
+    "formal_performance_permission": false
+  },
+  "cached_guarded_relative_latency_percent": {
+    "short": 7.9365077231905,
+    "middle": 11.704828575629843,
+    "long": 11.685050439826883
+  },
+  "cross_kv_precompute_result": {
+    "status": "COMPLETE_SAME_FINAL_KV_CACHE_COMPARISON",
+    "aggregation": "mean of two process medians; raw full rounds retained",
+    "rows": [
+      {
+        "kv": "short",
+        "torch_static_cached_final": 1.132032036781311,
+        "guarded_grouped_uncached": 1.2272640466690063,
+        "guarded_cached_projection": 0.9605119824409485,
+        "guarded_cached_final": 0.8870400190353394,
+        "previous_uncached": 1.2055040001869202,
+        "custom_uncached": 1.2052479982376099,
+        "custom_cached": 0.9574400186538696,
+        "uncached_gap_ms": -0.022016048431396484,
+        "cached_gap_ms": 0.07039999961853027,
+        "uncached_slow_percent": -1.7939129310560076,
+        "cached_slow_percent": 7.9365077231905,
+        "custom_cache_latency_reduction_percent": 20.560745999669837
+      },
+      {
+        "kv": "middle",
+        "torch_static_cached_final": 1.9233279824256897,
+        "guarded_grouped_uncached": 1.3483520150184631,
+        "guarded_cached_projection": 1.0762239694595337,
+        "guarded_cached_final": 1.0060800313949585,
+        "previous_uncached": 1.3721599578857422,
+        "custom_uncached": 1.372927963733673,
+        "custom_cached": 1.1238399744033813,
+        "uncached_gap_ms": 0.02457594871520996,
+        "cached_gap_ms": 0.11775994300842285,
+        "uncached_slow_percent": 1.822665627482567,
+        "cached_slow_percent": 11.704828575629843,
+        "custom_cache_latency_reduction_percent": 18.142830207412906
+      },
+      {
+        "kv": "long",
+        "torch_static_cached_final": 3.152895927429199,
+        "guarded_grouped_uncached": 1.3583359718322754,
+        "guarded_cached_projection": 1.0941439867019653,
+        "guarded_cached_final": 1.0209280252456665,
+        "previous_uncached": 1.3870079517364502,
+        "custom_uncached": 1.3857280015945435,
+        "custom_cached": 1.1402239799499512,
+        "uncached_gap_ms": 0.027392029762268066,
+        "cached_gap_ms": 0.11929595470428467,
+        "uncached_slow_percent": 2.016587231016098,
+        "cached_slow_percent": 11.685050439826883,
+        "custom_cache_latency_reduction_percent": 17.716609707106535
+      }
+    ],
+    "production_admitted": false,
+    "formal_performance_permission": false
+  }
+}

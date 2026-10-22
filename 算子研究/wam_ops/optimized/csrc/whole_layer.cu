@@ -114,6 +114,13 @@ __device__ inline bool compute() { return warp() >= 3 && warp() < 7; }
 __device__ inline int ct() { return int(threadIdx.x) - 96; }
 __device__ inline float value(B x) { return __bfloat162float(x); }
 __device__ inline B bf(float x) { return __float2bfloat16_rn(x); }
+// 输入已按原FFN1输出舍入为BF16；融合只改变数据传递，不跨越舍入边界。
+__device__ __forceinline__ B gelu_value(B x) {
+    float v = value(x);
+    constexpr float beta = M_SQRT2 * M_2_SQRTPI * float(.5), kappa = .044715;
+    float cube = v * v * v, inner = beta * (v + kappa * cube);
+    return bf(.5f * v * (1.f + c10::cuda::compat::tanh(inner)));
+}
 __device__ inline float *fp(const Params &p, int i) { return (float *)p.a[i]; }
 __device__ inline B *bp(const Params &p, int i) { return (B *)p.a[i]; }
 __device__ inline void group_sync() { asm volatile("bar.sync 1, 128;" ::: "memory"); }
@@ -221,8 +228,10 @@ __device__ __forceinline__ void ffn2_partition(CutlassTile<128>::Storage &s, con
     __syncthreads();
 }
 
-__device__ __forceinline__ void ffn2_commit(CutlassTile<128>::Storage &s, const __nv_bfloat16 *bias,
-                                            __nv_bfloat16 *out, int tile, bool second) {
+__device__ __forceinline__ void ffn2_commit(const Params &p, CutlassTile<128>::Storage &s,
+                                            int tile, bool second) {
+    const B *bias = (const B *)p.w[26];
+    B *out = bp(p, F2);
     for (int i = 2 * int(threadIdx.x); i < 128 * 128; i += 2 * int(blockDim.x)) {
         const int row = (tile / 24) * 128 + i / 128, col = (tile % 24) * 128 + i % 128;
         if (row < 224) {
@@ -235,8 +244,26 @@ __device__ __forceinline__ void ffn2_commit(CutlassTile<128>::Storage &s, const 
                 z.x = __fadd_rn(__fadd_rn(z.x, b.x), prev.x);
                 z.y = __fadd_rn(__fadd_rn(z.y, b.y), prev.y);
             }
-            *reinterpret_cast<__nv_bfloat162 *>(out + row * 3072 + col) =
-                __floats2bfloat162_rn(z.x, z.y);
+            const __nv_bfloat162 rounded = __floats2bfloat162_rn(z.x, z.y);
+            // 第一段仍落BF16供第二段读取；最终F2仅debug保存。
+            if (!second || p.debug_modulation)
+                *reinterpret_cast<__nv_bfloat162 *>(out + row * D + col) = rounded;
+            if (second) {
+                const int batch = row / p.q, token = row % p.q, cell = 5 * D + col;
+                const int64_t src = (int64_t(batch) * p.l + (p.l == 1 ? 0 : token)) * 6 * D + cell;
+                float2 gate = *reinterpret_cast<const float2 *>((const float *)p.w[0] + cell);
+                const float2 t = p.temb_float
+                    ? *reinterpret_cast<const float2 *>((const float *)p.temb + src)
+                    : __bfloat1622float2(*reinterpret_cast<const __nv_bfloat162 *>((const B *)p.temb + src));
+                gate.x = __fadd_rn(gate.x, t.x);
+                gate.y = __fadd_rn(gate.y, t.y);
+                const float2 f = __bfloat1622float2(rounded);
+                const float2 residual = __bfloat1622float2(
+                    *reinterpret_cast<const __nv_bfloat162 *>(bp(p, R2) + row * D + col));
+                *reinterpret_cast<__nv_bfloat162 *>(bp(p, OUT) + row * D + col) =
+                    __floats2bfloat162_rn(__fadd_rn(residual.x, __fmul_rn(f.x, gate.x)),
+                                          __fadd_rn(residual.y, __fmul_rn(f.y, gate.y)));
+            }
         }
     }
     __syncthreads();
@@ -253,10 +280,10 @@ __device__ __noinline__ void action_ffn2_parallel(const Params &p, Shared &s, cg
     if (task < 96)
         ffn2_partition(workspace, bp(p, ACT), (const B *)p.w[25], tile, task / 48);
     if (task < 48)
-        ffn2_commit(workspace, (const B *)p.w[26], bp(p, F2), tile, false);
+        ffn2_commit(p, workspace, tile, false);
     g.sync(); // 第一段BF16可见；第二段FP32仍保存在各自CTA的shared。
     if (task >= 48 && task < 96)
-        ffn2_commit(workspace, (const B *)p.w[26], bp(p, F2), tile, true);
+        ffn2_commit(p, workspace, tile, true);
     g.sync();
 }
 
@@ -300,9 +327,18 @@ __device__ __noinline__ void action_ffn1_wide(const Params &p, Shared &s, cg::gr
                     B4 b =
                         *reinterpret_cast<const B4 *>(reinterpret_cast<const B *>(p.w[24]) + col);
                     float2 lo = __bfloat1622float2(b.lo), hi = __bfloat1622float2(b.hi);
-                    *reinterpret_cast<B4 *>(reinterpret_cast<B *>(p.a[F1]) + row * F + col) = {
+                    B4 rounded = {
                         __floats2bfloat162_rn(__fadd_rn(v.x, lo.x), __fadd_rn(v.y, lo.y)),
                         __floats2bfloat162_rn(__fadd_rn(v.z, hi.x), __fadd_rn(v.w, hi.y))};
+                    if (p.debug_modulation)
+                        *reinterpret_cast<B4 *>(reinterpret_cast<B *>(p.a[F1]) + row * F + col) = rounded;
+                    // 已完成此输出tile的完整K归约，直接生成GELU结果。
+                    B4 activated = {
+                        __halves2bfloat162(gelu_value(__low2bfloat16(rounded.lo)),
+                                           gelu_value(__high2bfloat16(rounded.lo))),
+                        __halves2bfloat162(gelu_value(__low2bfloat16(rounded.hi)),
+                                           gelu_value(__high2bfloat16(rounded.hi)))};
+                    *reinterpret_cast<B4 *>(reinterpret_cast<B *>(p.a[ACT]) + row * F + col) = activated;
                 }
             }
             __syncthreads();
@@ -704,11 +740,7 @@ __device__ void point(const Params &p, Shared &s, cg::grid_group &g, int st, Poi
                                 v = __fmul_rn(v, ((float *)&scale)[c]);
                             out.value[c] = bf(__fadd_rn(value(x.value[c]), v));
                         } else {
-                            float v = value(x.value[c]);
-                            constexpr float beta = M_SQRT2 * M_2_SQRTPI * float(.5),
-                                            kappa = .044715;
-                            float cube = v * v * v, inner = beta * (v + kappa * cube);
-                            out.value[c] = bf(.5f * v * (1.f + c10::cuda::compat::tanh(inner)));
+                            out.value[c] = gelu_value(x.value[c]);
                         }
                     }
                     if (op == TABLE)
@@ -806,17 +838,22 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     // 4. FFN：3072→14336→3072；保留GEMM和GELU之间原有BF16舍入。
     norm(p, s, g, st++, bp(p, R2), p.a[N3], m, -1, -1, p.eps[2], false, true);
     point(p, s, g, st++, MODULATE, M3, N3, 0, 3, int64_t(m) * D);
-    if (p.candidate && m == 224)
+    const bool fused_ffn = p.candidate && m == 224;
+    if (fused_ffn)
         action_ffn1_wide(p, s, g, st++);
     else
         linear(p, s, g, st++, bp(p, M3), 23, bp(p, F1), m, F, D);
-    point(p, s, g, st++, GELU, ACT, F1, 0, 0, int64_t(m) * F);
-    if (p.candidate && m == 224)
+    if (!fused_ffn)
+        point(p, s, g, st, GELU, ACT, F1, 0, 0, int64_t(m) * F);
+    ++st;
+    if (fused_ffn)
         action_ffn2_parallel(p, s, g, st++);
     else
         linear(p, s, g, st++, bp(p, ACT), 25, bp(p, F2), m, D, F);
     // 5. 门控残差与临时KV状态恢复，输出仍为[B,Q,3072]。
-    point(p, s, g, st++, RESIDUAL, OUT, R2, F2, 5, int64_t(m) * D);
+    if (!fused_ffn)
+        point(p, s, g, st, RESIDUAL, OUT, R2, F2, 5, int64_t(m) * D);
+    ++st;
     if (p.cache && !p.candidate && p.update == 0 && blockIdx.x == 0 && warp() == 0)
         for (int j = lane(); j < p.q; j += 32)
             p.mask[p.free[j]] = false;
@@ -883,6 +920,8 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
         else if (i == MOD)
             b[i] = debug ? at::empty({rows, 6, D}, fo) : at::empty({0}, fo);
         else if ((i == SQN || i == SKN) && p.candidate && p.freq && !debug)
+            b[i] = at::empty({0}, bo);
+        else if (i == F1 && p.candidate && p.b * p.q == 224 && !debug)
             b[i] = at::empty({0}, bo);
         else
             b[i] = at::empty({rows, (i == F1 || i == ACT) ? F : D}, (i == N1 || i == N3) ? fo : bo);
@@ -979,4 +1018,5 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;
     m.attr("point_tile_elements") = 2048;
     m.attr("cooperative_epilogue") = true;
+    m.attr("ffn_epilogue_fused") = true;
 }

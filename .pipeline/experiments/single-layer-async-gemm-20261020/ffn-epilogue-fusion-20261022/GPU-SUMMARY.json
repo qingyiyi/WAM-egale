@@ -1,0 +1,69 @@
+{
+  "status": "FINITE_EXACT_PASS_PERFORMANCE_REGRESSION",
+  "rows": [
+    {
+      "kv": "short",
+      "torch_static_cached_final": 1.1304960250854492,
+      "previous_cached": 0.9602559804916382,
+      "custom_cached": 0.9707520008087158,
+      "previous_speedup": 1.1772861070926635,
+      "fused_speedup": 1.1645569868963994,
+      "fused_latency_change": 0.010930439935092906
+    },
+    {
+      "kv": "middle",
+      "torch_static_cached_final": 1.923583984375,
+      "previous_cached": 1.1258879899978638,
+      "custom_cached": 1.1386879682540894,
+      "previous_speedup": 1.708503866693391,
+      "fused_speedup": 1.6892985945257368,
+      "fused_latency_change": 0.011368784790261266
+    },
+    {
+      "kv": "long",
+      "torch_static_cached_final": 3.1575039625167847,
+      "previous_cached": 1.140991985797882,
+      "custom_cached": 1.1504639983177185,
+      "previous_speedup": 2.7673322878852473,
+      "fused_speedup": 2.7445482580366596,
+      "fused_latency_change": 0.008301559202637865
+    }
+  ],
+  "full_block_calls": [
+    5646,
+    5646
+  ],
+  "source_identity": {
+    "at": "2026-10-22T17:37:30.720747+08:00",
+    "status": "FINITE_EXACT_FUSION_RESEARCH_ENTRY_PERFORMANCE_REGRESSION_RECORDED",
+    "path": "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "a113972b1a6c9248f863dae93dd5af610bdbca400c97c1b6ed9cbf6dcb2e8aa5",
+    "production_admitted": false,
+    "performance_improvement": false,
+    "source_sha256": "659762248648e5262c1f3ab0bd58e8b6f889463b9301af90eb7b2f2b57a9d2f9",
+    "previous_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/cross-kv-precompute-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+  },
+  "resources": {
+    "status": "COMPLETE_CLEANED",
+    "gpu_worker_lifecycle_seconds": 65.14685463905334,
+    "cuda_active_seconds": "UNKNOWN_NOT_MEASURED",
+    "registered_window_seconds_including_setup_compile_wait_and_cleanup": 598.6442270278931,
+    "cumulative_prior_seconds": 8349.912903794524,
+    "charged_cumulative_seconds": 8948.557130822417,
+    "cumulative_cap_seconds": 36000,
+    "remaining_seconds": 27051.442869177583,
+    "original_deadline": "2026-10-22T18:12:32.076520+08:00",
+    "cleanup_at": "2026-10-22T17:37:30.720747+08:00",
+    "failed_attempts": [
+      {
+        "stage": "first CPU compile",
+        "reason": "CUTLASS bp iterator parameter shadowed buffer helper",
+        "GPU_calls": 0,
+        "evidence": "STATUS.json/build.log"
+      }
+    ],
+    "source_preserved": true,
+    "production_admitted": false,
+    "performance_improvement": false
+  }
+}

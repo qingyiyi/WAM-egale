@@ -17,4 +17,4 @@ sources:
 
 已有guarded结果与原始数据保留，历史报告不重写。改变后续比较范围不改变既有结果、四项科学权限或独立质量要求；仅与原Torch比较的结果只能支持相对原Torch的主张。
 
-本决定替代本Cycle此前的双baseline日常展示与新实验比较安排。用户关于FFN/GELU融合及Tensor Core/CUDA Core并行的追问仍属技术讨论，具体设计建议不写成已批准实现或已获收益。
+本决定替代本Cycle此前的双baseline日常展示与新实验比较安排。随后用户已另行批准FFN写回融合，见[融合决定](decision-先融合FFN写回中的GELU与残差.md)；跨GEMM/warp重叠仍为待验证建议，不能写成已实现或已获收益。

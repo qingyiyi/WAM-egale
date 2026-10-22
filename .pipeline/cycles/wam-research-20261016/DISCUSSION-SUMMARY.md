@@ -1,15 +1,11 @@
-# 当前讨论（2026-10-22T16:37:20.064075+08:00）
+# 当前讨论（2026-10-22T17:44:23.726236+08:00）
 
-用户先批准Cross K/V分组复用并先精度后速度，后明确要求自有也读预计算并输出完整逐阶段耗时。两项均已完成有限单层核验，RMS未与GEMM tile融合。预计算数学包括每层两组K投影、K RMS、V；Q及候选私有状态仍独立。
+当前用户要求直接融合FFN并为后续MegaMoE式流水做准备。已完成B14 FFN1+GELU和FFN2+残差3写回融合；GELU/bias/gate/残差仍是普通浮点和特殊函数计算，不能理解成没有CUDA Core相关工作。此版仍阶段同步，MMA与同tile的写回顺序执行，无新专职warp或双缓冲重叠。
 
-不预计算同分组时差距约±2%，双方缓存最终K/V后自有慢7.9%–11.7%，但自有绝对耗时降低17.7%–20.6%。须保留同缓存强baseline，不能为缩小相对差距保留重复工作。逐阶段来自独立插桩，扰动及CTA等待边界在报告中。
+9签名/36结构有限逐位及状态通过；相对原Torch完整层短/中/长KV为1.1646/1.6893/2.7445×。同轮融合前为1.1773/1.7085/2.7673×，本次融合反而慢0.83%–1.14%。独立GELU1568任务和残差336任务消失，grid31→29，但数学工作保留；新增epilogue成本尚未被流水隐藏。尾波、指令布局和寄存器影响仅是待验证假设，本版未做逐阶段profile。
 
-首次诊断漏记两处同步，曾过早怀疑旧阶段表；已向用户澄清并修复插桩，原FAILED保留。计算仍36次，warm去掉五次变31次。LingBot-VA2对比BF16 PyTorch起点、最终叠加蒸馏/FP8 TensorRT/FlashInfer，预计算已有先例。
+后续唯一外部性能对照是原Torch，保持同缓存/输入/边界；旧guarded及所有FAILED仍保留。用户要求的阶段表同时保留tile数、每tile工作量和相对Torch比值；未测的阶段比值标未测，不沿用上一版profile。
 
-[当前结果](../../experiments/single-layer-async-gemm-20261020/cross-kv-precompute-20261022/RESULT.md)。没有更改生产、四科学权限或恢复过期RoboTwin。
+建议下一步先分清两处融合增量，再考虑MMA/epilogue双缓冲。当前采用融合版是研究入口选择，不代表性能晋级或生产许可。旧源码/DSO可恢复；baseline、投机与四科学权限不改。GPU作业已闭合，不自动恢复过期机器人作业。
 
-用户最新反馈要求阶段表同时提供tile数和每tile工作量。已补齐源码推导口径，不用逻辑tile总数比较不同阶段算量；后续汇报沿用此格式。
-
-用户最新纠正：展示相对Torch加速比，不需要绝对耗时表；tile与工作量保留。完整层比值已由同轮CSV核算；最新逐阶段缺少同条件Torch计时，明确未测，不拼旧数据。原Torch静态缓存与最强guarded必须分列。
-
-最新决定：后续只与原Torch实现比较，已Maintain保存，旧guarded证据保留。用户继续讨论GELU为何1568tile以及Tensor Core/CUDA Core是否可在FFN流水中同时工作；源码与依赖分析见../../experiments/single-layer-async-gemm-20261020/GELU-TILE-AUDIT-20261022.md。两个epilogue融合及跨GEMM流水目前均为建议，未实施，不将追问写成设计冻结。
+[结果](../../experiments/single-layer-async-gemm-20261020/ffn-epilogue-fusion-20261022/RESULT.md)；[优化索引](../../experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)；[此前讨论](history/before-ffn-epilogue-result-20261022/DISCUSSION-SUMMARY.md)。
