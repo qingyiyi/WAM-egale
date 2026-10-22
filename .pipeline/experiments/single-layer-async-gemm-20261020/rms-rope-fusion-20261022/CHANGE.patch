@@ -1,0 +1,98 @@
+--- before/whole_layer.cu
++++ optimized/csrc/whole_layer.cu
+@@ -405,8 +405,8 @@
+     else
+         asm volatile("bar.sync 2, 128;" ::: "memory");
+ }
+-__device__ void rms_pair_tile(Shared &sh, const B *x, B *y, const B *gamma, float eps,
+-                              int first_row, int rows) {
++__device__ void rms_pair_tile(const Params &p, Shared &sh, const B *x, B *y, const B *gamma,
++                              float eps, int first_row, int rows, B *rotated = nullptr) {
+     using namespace wam_optimized_norm;
+     const int group = threadIdx.x / 128, tid = threadIdx.x % 128;
+     const int row = first_row + group, cw = tid / 32, cl = tid % 32;
+@@ -459,7 +459,24 @@
+                     z = value(weights.val[j]) * z;
+                 output.val[j] = bf(z);
+             }
+-            reinterpret_cast<Vec *>(y + row * D)[v] = output;
++            // RMS先按原边界舍入BF16。debug保留此中间值；普通融合路径不落地。
++            if (y)
++                reinterpret_cast<Vec *>(y + row * D)[v] = output;
++            if (rotated) {
++                Vec result;
++#pragma unroll
++                for (int c = 0; c < 2; ++c) {
++                    const int batch = row / p.q, token = row % p.q;
++                    const int dim = (2 * v + c) % 64;
++                    auto f = p.freq[((p.fb == 1 ? 0 : batch) * p.q + token) * 64 + dim];
++                    double real = double(value(output.val[2 * c]));
++                    double imag = double(value(output.val[2 * c + 1]));
++                    // 保留原模型FP64旋转及最终转换，不将RMS与旋转跨舍入合并。
++                    result.val[2 * c] = bf(float(real * double(f.real()) - imag * double(f.imag())));
++                    result.val[2 * c + 1] = bf(float(real * double(f.imag()) + imag * double(f.real())));
++                }
++                reinterpret_cast<Vec *>(rotated + row * D)[v] = result;
++            }
+         }
+     }
+     __syncthreads(); // 两行都写完后，整个CTA才复用共享空间。
+@@ -469,7 +486,7 @@
+     // 静态任务无需重置队列；前一阶段出口已保证输入就绪。
+     if (p.candidate && rms && !out_float && bi < 0) {
+         for (int t = int(blockIdx.x); t < (rows + 1) / 2; t += int(gridDim.x)) {
+-            rms_pair_tile(s, x, (B *)y, gi >= 0 ? (const B *)p.w[gi] : nullptr, eps, 2 * t, rows);
++            rms_pair_tile(p, s, x, (B *)y, gi >= 0 ? (const B *)p.w[gi] : nullptr, eps, 2 * t, rows);
+             // rms_pair_tile内部末尾已经同步整个CTA。
+         }
+         g.sync();
+@@ -480,6 +497,17 @@
+                   eps, rms, out_float, t);
+         // norm_tile内部末尾已经同步整个CTA。
+     }
++    g.sync();
++}
++
++// B14 self Q/K：每组4warp完成一行RMS，随后在寄存器旋转相邻元素。
++// 只在完整行归约后做RoPE；两阶段合为一个出口，GEMM与归约树不变。
++__device__ void norm_rope(const Params &p, Shared &s, cg::grid_group &g,
++                          const B *x, B *normalized, B *rotated, int gi, float eps) {
++    const int rows = p.b * p.q;
++    for (int t = int(blockIdx.x); t < (rows + 1) / 2; t += int(gridDim.x))
++        rms_pair_tile(p, s, x, p.debug_modulation ? normalized : nullptr,
++                      (const B *)p.w[gi], eps, 2 * t, rows, rotated);
+     g.sync();
+ }
+ 
+@@ -734,11 +762,17 @@
+     linear(p, s, g, st++, bp(p, M1), 3, bp(p, SQ0), m, D, D);
+     linear(p, s, g, st++, bp(p, M1), 5, bp(p, SK0), m, D, D);
+     linear(p, s, g, st++, bp(p, M1), 7, bp(p, SV), m, D, D);
+-    norm(p, s, g, st++, bp(p, SQ0), p.a[SQN], m, 11, -1, p.eps[3], true, false);
+-    norm(p, s, g, st++, bp(p, SK0), p.a[SKN], m, 12, -1, p.eps[4], true, false);
+-    if (p.freq) {
+-        point(p, s, g, st++, ROPE, SQR, SQN, 0, 0, int64_t(m) * D / 2);
+-        point(p, s, g, st++, ROPE, SKR, SKN, 0, 0, int64_t(m) * D / 2);
++    if (p.candidate && p.freq) {
++        norm_rope(p, s, g, bp(p, SQ0), bp(p, SQN), bp(p, SQR), 11, p.eps[3]);
++        norm_rope(p, s, g, bp(p, SK0), bp(p, SKN), bp(p, SKR), 12, p.eps[4]);
++        st += 4; // 保留后续动态投影队列的阶段编号。
++    } else {
++        norm(p, s, g, st++, bp(p, SQ0), p.a[SQN], m, 11, -1, p.eps[3], true, false);
++        norm(p, s, g, st++, bp(p, SK0), p.a[SKN], m, 12, -1, p.eps[4], true, false);
++        if (p.freq) {
++            point(p, s, g, st++, ROPE, SQR, SQN, 0, 0, int64_t(m) * D / 2);
++            point(p, s, g, st++, ROPE, SKR, SKN, 0, 0, int64_t(m) * D / 2);
++        }
+     }
+     insert_cache(p, s, g, st++);
+     attention(p, s, g, st++, false);
+@@ -825,6 +859,8 @@
+         const int rows = (i == CK0 || i == CK || i == CV) ? p.b * p.c : p.b * p.q;
+         if (i == MOD)
+             b[i] = debug ? at::empty({rows, 6, D}, fo) : at::empty({0}, fo);
++        else if ((i == SQN || i == SKN) && p.candidate && p.freq && !debug)
++            b[i] = at::empty({0}, bo);
+         else
+             b[i] = at::empty({rows, (i == F1 || i == ACT) ? F : D}, (i == N1 || i == N3) ? fo : bo);
+         p.a[i] = b[i].data_ptr();

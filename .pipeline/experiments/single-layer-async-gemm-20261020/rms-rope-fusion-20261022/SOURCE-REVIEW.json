@@ -1,0 +1,20 @@
+{
+  "status": "CPU_REVIEW_COMPLETE_GPU_PENDING",
+  "scope": "candidate self Q/K RMS+RoPE; original B2 and cross branches retained",
+  "checked": [
+    "same vec4 loop, 4warp reduction tree and gamma order",
+    "explicit BF16 normalized result before FP64 rotation",
+    "pair index (2*v+c)%64 equals original head-local pair indexing",
+    "batch=row/q and token=row%q; shared-frequency broadcast retained",
+    "debug stores normalized tensor; normal skips normalized allocation and stores",
+    "original queue stage ids retained; no new ready queue"
+  ],
+  "normal_B14_grid_barriers_source_count": 36,
+  "normal_B14_tiles_G2_G1": [
+    11576,
+    11648
+  ],
+  "eliminated_normal_intermediate_bytes": 2752512,
+  "finite_validation": "PENDING",
+  "performance": "PENDING"
+}

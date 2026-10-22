@@ -1,5 +1,9 @@
 # 长期记忆索引
 
+- [先融合self Q/K的RMS与RoPE](global/requirements/decision-先融合self-QK的RMS与RoPE.md)（constraint，M39当前）：保留归约/舍入/旋转精度，先真实输入核验及同轮整层比较，不合并GEMM或恢复ready。
+
+- [持续记录优化与论文证据](global/requirements/requirement-持续记录优化改动与论文证据.md)（constraint，研究优化）：沿既有HW保存改动、版本、实测收益、精度范围与负结果；当前入口为M39优化证据索引，不新建论文初稿。
+
 - [调制参数按需融合并重测](global/requirements/decision-调制参数按需融入消费阶段并重测.md)（constraint，M39当前）：仅将MOD加法移到消费位置，保留阶段同步，精度/状态后重测三KV并更新阶段表。
 
 - [回退阶段同步并重新规划](global/requirements/decision-回退阶段全局同步并重新规划tile调度.md)（constraint，M39当前）：恢复旧阶段同步源码/DSO；保留ready负结果，先规划任务粒度、合并边界，再定实现。

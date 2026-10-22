@@ -1,0 +1,87 @@
+{
+  "goal": "Fuse B14 self Q/K RMS+RoPE, preserve rounding and finite state; compare complete uncached layer against current modulation baseline",
+  "cumulative_prior_GPU_seconds": 7326.682117709396,
+  "cumulative_cap_seconds": 36000,
+  "GPU_lifecycle_cap_seconds": 1800,
+  "new_storage_cap_bytes": 134217728,
+  "reference_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/modulation-ondemand-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "reference_binary_SHA256": "41af9a655a2387e4871eb5ab5dee1a9ac0cf613fd35c66f1f076fc5ef0f20b41",
+  "steps": [
+    [
+      "gate",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/rms-rope-fusion-20261022/gate.py"
+      ],
+      360,
+      true
+    ],
+    [
+      "structural",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/rms-rope-fusion-20261022/extended.py"
+      ],
+      360,
+      true
+    ],
+    [
+      "timing1",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/rms-rope-fusion-20261022/timing.py",
+        "1"
+      ],
+      300,
+      true
+    ],
+    [
+      "timing2",
+      [
+        "/root/cxz/envs/va/bin/python",
+        "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/rms-rope-fusion-20261022/timing.py",
+        "2"
+      ],
+      300,
+      true
+    ]
+  ],
+  "candidate_binary": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/rms-rope-fusion-20261022/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "variants": [
+    "original",
+    "drop_1",
+    "drop_16",
+    "drop_32",
+    "holes16",
+    "cfg_alternating",
+    "cfg_swap"
+  ],
+  "execution_authorization": "USER_APPROVED_RMS_ROPE_FUSION",
+  "scope": "one complete block; uncached context; no robot/full30/production permission",
+  "cleanup_reserve_seconds": 300,
+  "source_status": "CPU build complete; awaiting remote admission",
+  "input_manifest": {
+    "fixtures": "tools.block_loader.FIXTURES: input-{short,middle,long}-B{2,14}-action-layer0-first.pt plus pinned B2 video fixtures",
+    "real_signatures": 9,
+    "structural_cases": 21,
+    "timing_arms": [
+      "torch_static_uncached",
+      "shared_torch_uncached",
+      "guarded_uncached",
+      "before_modulation",
+      "fused_rms_rope"
+    ]
+  },
+  "timing_full_calls_cap_per_process": 14000,
+  "diagnostic_debug": "Stores MOD and normalized self Q/K for audit; both paths execute fused rotation, timing normal only",
+  "local_storage_cap_bytes": 536870912,
+  "registered_at": "2026-10-22T15:25:54.929267+08:00",
+  "deadline": "2026-10-22T15:55:54.929267+08:00",
+  "sources": {
+    "算子研究/wam_ops/optimized/csrc/whole_layer.cu": "0f79579d26d29dd9b9532d8d72824eed177b64d82b0e58b8add078f6063d844b",
+    "算子研究/wam_ops/optimized/csrc/fa2_stage.cuh": "b5f4f26ce3887721ce58096cd34682ed4f6c8a9abe9b3c718a300969f39dd5ef",
+    "算子研究/wam_ops/optimized/whole_layer.py": "ba241942784bd521ff7f45f8fd99b14cddcfa1f8fc3571f84ef63effc0c44ac9",
+    "算子研究/wam_ops/optimized/build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  },
+  "candidate_binary_SHA256": "795be814c40a152583e13a34f6cf6bb5510b1fc38f5b4cd8c26076b4dc4efd75"
+}

@@ -1,11 +1,7 @@
-# 当前执行：阶段同步版的按需调制融合
+# 当前执行：RMS+RoPE融合已收口
 
-当前单项优化已完成：将temb+固定调制表的FP32加法移到两处输入调制和两处门控残差，普通路径不物化MOD。保留阶段同步，不恢复ready队列。
+当前阶段同步版保留按需调制，新增B14 self Q/K RMS+RoPE融合。有限9签名/21结构逐位与状态通过；完整层短/中/长2.270464/2.434816/2.449152ms→2.261504/2.424576/2.438400ms，降0.395%/0.421%/0.439%，仍慢最强guarded9.32%–10.93%。普通路径少2.625MiB中间张量、336tile、两处grid同步；不是实测HBM/机器人E2E收益。
 
-同轮远端A100、两独立进程五臂Graph，短/中/长旧版2.292/2.459/2.472ms→新版2.269/2.435/2.449ms，下降1.005%/0.979%/0.942%。相对最强同工作量guarded仍慢9.59%/11.34%/11.27%。不是完整模型/机器人E2E。
+两机当前source0f79579d、DSO795be814。GPU已清理，四科学权限false，旧paused72不改。投影/attention QK/PV已核对Tensor Core源码与HMMA机器码；利用率未新测。MegaMoE双槽epilogue流水仅作参考，当前没有实现。
 
-9真实签名和21结构有限逐位/状态通过。普通/debug一致；debug额外生成MOD以审计，计时用普通路径。普通路径少2016tile、一次grid同步、15.75MiB中间张量；不是实测HBM节省或峰值显存结论。
-
-两机当前source9edf85a2、DSO41af9a65，旧11和ready负结果保留。GPU已清理，累计7326.682/36000秒；四科学权限false，旧paused72身份不改。
-
-[结果](../.pipeline/experiments/single-layer-async-gemm-20261020/modulation-ondemand-20261022/RESULT.md)、[当前完整阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[源码](../算子研究/wam_ops/optimized/csrc/whole_layer.cu)、[HW](../.pipeline/PROGRESS.compact.md)。下一项先讨论Norm1与输入调制，不自动新跑。
+[结果](../.pipeline/experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)、[优化证据索引](../.pipeline/experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)、[阶段表](../算子研究/wam_ops/optimized/STAGE-MAP.md)、[HW](../.pipeline/PROGRESS.compact.md)。

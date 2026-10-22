@@ -1,0 +1,143 @@
+{
+  "status": "STATIC_BINARY_TENSOR_CORE_AUDIT",
+  "active_binary": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "sha256": "41af9a655a2387e4871eb5ab5dee1a9ac0cf613fd35c66f1f076fc5ef0f20b41",
+  "functions": [
+    {
+      "function": "_ZN18wam_whole_layer_v114context_linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiiP13__nv_bfloat16i$76",
+      "hmma_count": 128,
+      "examples": [
+        "/*2570*/                   HMMA.16816.F32.BF16 R4, R24.reuse, R28, R4 ;                      /* 0x0000001c1804723c */",
+        "/*25c0*/                   HMMA.16816.F32.BF16 R32, R24.reuse, R30, R32 ;                    /* 0x0000001e1820723c */"
+      ],
+      "demangled": "_ZN18wam_whole_layer_v114context_linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiiP13__nv_bfloat16i$76"
+    },
+    {
+      "function": "_ZN18wam_whole_layer_v116action_ffn1_wideERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi$75",
+      "hmma_count": 64,
+      "examples": [
+        "/*1a30*/                   HMMA.16816.F32.BF16 R4, R24.reuse, R28, R4 ;                      /* 0x0000001c1804723c */",
+        "/*1a70*/                   HMMA.16816.F32.BF16 R12, R24.reuse, R30, R12 ;                    /* 0x0000001e180c723c */"
+      ],
+      "demangled": "_ZN18wam_whole_layer_v116action_ffn1_wideERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi$75"
+    },
+    {
+      "function": "_ZN18wam_whole_layer_v120action_ffn2_parallelERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi$74",
+      "hmma_count": 128,
+      "examples": [
+        "/*1b40*/                   HMMA.16816.F32.BF16 R12, R24.reuse, R28, R12 ;                    /* 0x0000001c180c723c */",
+        "/*1b90*/                   HMMA.16816.F32.BF16 R32, R24.reuse, R30, R32 ;                    /* 0x0000001e1820723c */"
+      ],
+      "demangled": "_ZN18wam_whole_layer_v120action_ffn2_parallelERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi$74"
+    },
+    {
+      "function": "_ZN18wam_whole_layer_v19gemm_tileERNS_6SharedEPK13__nv_bfloat16S4_S4_PS2_iiiib$73",
+      "hmma_count": 352,
+      "examples": [
+        "/*2500*/              @!P0 HMMA.16816.F32.BF16 R160, R48.reuse, R96.reuse, R160 ;            /* 0x0000006030a0823c */",
+        "/*2510*/               @P0 HMMA.16816.F32.BF16 R224, R48, R96.reuse, R224 ;                  /* 0x0000006030e0023c */"
+      ],
+      "demangled": "_ZN18wam_whole_layer_v19gemm_tileERNS_6SharedEPK13__nv_bfloat16S4_S4_PS2_iiiib$73"
+    },
+    {
+      "function": "_ZN18wam_whole_layer_v114attention_dualERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib$72",
+      "hmma_count": 512,
+      "examples": [
+        "/*4020*/                   HMMA.16816.F32.BF16 R152, R112.reuse, R12, RZ ;                   /* 0x0000000c7098723c */",
+        "/*4050*/                   HMMA.16816.F32.BF16 R12, R112.reuse, R14, RZ ;                    /* 0x0000000e700c723c */"
+      ],
+      "demangled": "_ZN18wam_whole_layer_v114attention_dualERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib$72"
+    },
+    {
+      "function": "_ZN13wam_whole_fa214whole_standardI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb1ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc",
+      "hmma_count": 512,
+      "examples": [
+        "/*4040*/                   HMMA.16816.F32.BF16 R224, R32, R40.reuse, RZ ;                    /* 0x0000002820e0723c */",
+        "/*4050*/                   HMMA.16816.F32.BF16 R104, R12.reuse, R40, RZ ;                    /* 0x000000280c68723c */"
+      ],
+      "demangled": "void wam_whole_fa2::whole_standard<Flash_fwd_kernel_traits<128, 128, 64, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, true, true, false, false, wam_whole_fa2::WholeParams>(wam_whole_fa2::WholeParams const&, int, int, int, char*)"
+    },
+    {
+      "function": "_ZN13wam_whole_fa221whole_standard_directI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb1ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc",
+      "hmma_count": 512,
+      "examples": [
+        "/*1cc0*/                   HMMA.16816.F32.BF16 R224, R32, R40.reuse, RZ ;                    /* 0x0000002820e0723c */",
+        "/*1cf0*/                   HMMA.16816.F32.BF16 R104, R12.reuse, R40, RZ ;                    /* 0x000000280c68723c */"
+      ],
+      "demangled": "void wam_whole_fa2::whole_standard_direct<Flash_fwd_kernel_traits<128, 128, 64, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, true, true, false, false, wam_whole_fa2::WholeParams>(wam_whole_fa2::WholeParams const&, int, int, int, char*)"
+    },
+    {
+      "function": "_ZN13wam_whole_fa214whole_standardI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc",
+      "hmma_count": 512,
+      "examples": [
+        "/*4770*/                   HMMA.16816.F32.BF16 R16, R40, R32, RZ ;                           /* 0x000000202810723c */",
+        "/*47d0*/                   HMMA.16816.F32.BF16 R144, R12, R32, RZ ;                          /* 0x000000200c90723c */"
+      ],
+      "demangled": "void wam_whole_fa2::whole_standard<Flash_fwd_kernel_traits<128, 128, 64, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false, wam_whole_fa2::WholeParams>(wam_whole_fa2::WholeParams const&, int, int, int, char*)"
+    },
+    {
+      "function": "_ZN13wam_whole_fa221whole_standard_directI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc",
+      "hmma_count": 512,
+      "examples": [
+        "/*2ec0*/                   HMMA.16816.F32.BF16 R16, R40, R32, RZ ;                           /* 0x000000202810723c */",
+        "/*2f20*/                   HMMA.16816.F32.BF16 R144, R12, R32, RZ ;                          /* 0x000000200c90723c */"
+      ],
+      "demangled": "void wam_whole_fa2::whole_standard_direct<Flash_fwd_kernel_traits<128, 128, 64, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false, wam_whole_fa2::WholeParams>(wam_whole_fa2::WholeParams const&, int, int, int, char*)"
+    },
+    {
+      "function": "_ZN13wam_whole_fa214whole_standardI23Flash_fwd_kernel_traitsILi128ELi64ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc",
+      "hmma_count": 256,
+      "examples": [
+        "/*3eb0*/                   HMMA.16816.F32.BF16 R112, R144.reuse, R104, RZ ;                  /* 0x000000689070723c */",
+        "/*3ee0*/                   HMMA.16816.F32.BF16 R96, R144.reuse, R88, RZ ;                    /* 0x000000589060723c */"
+      ],
+      "demangled": "void wam_whole_fa2::whole_standard<Flash_fwd_kernel_traits<128, 64, 64, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false, wam_whole_fa2::WholeParams>(wam_whole_fa2::WholeParams const&, int, int, int, char*)"
+    },
+    {
+      "function": "_ZN13wam_whole_fa211whole_splitI23Flash_fwd_kernel_traitsILi128ELi64ELi128ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi128ELi4ES3_EELb0ELb0ELb0ELb0ELb1ELb0ELb1ELb0ENS_11WholeParamsEEEvRKT8_iiiiiPc",
+      "hmma_count": 512,
+      "examples": [
+        "/*7360*/                   HMMA.16816.F32.BF16 R104, R40.reuse, R96, RZ ;                    /* 0x000000602868723c */",
+        "/*7390*/                   HMMA.16816.F32.BF16 R96, R40.reuse, R98, RZ ;                     /* 0x000000622860723c */"
+      ],
+      "demangled": "void wam_whole_fa2::whole_split<Flash_fwd_kernel_traits<128, 64, 128, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 64, 128, 4, cutlass::bfloat16_t> >, false, false, false, false, true, false, true, false, wam_whole_fa2::WholeParams>(wam_whole_fa2::WholeParams const&, int, int, int, int, int, char*)"
+    },
+    {
+      "function": "_ZN13wam_whole_fa221whole_standard_directI23Flash_fwd_kernel_traitsILi128ELi64ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc",
+      "hmma_count": 256,
+      "examples": [
+        "/*25c0*/                   HMMA.16816.F32.BF16 R112, R144.reuse, R104, RZ ;                  /* 0x000000689070723c */",
+        "/*25f0*/                   HMMA.16816.F32.BF16 R96, R144.reuse, R88, RZ ;                    /* 0x000000589060723c */"
+      ],
+      "demangled": "void wam_whole_fa2::whole_standard_direct<Flash_fwd_kernel_traits<128, 64, 64, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false, wam_whole_fa2::WholeParams>(wam_whole_fa2::WholeParams const&, int, int, int, char*)"
+    },
+    {
+      "function": "_ZN13wam_whole_fa211whole_splitI23Flash_fwd_kernel_traitsILi128ELi64ELi128ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi128ELi4ES3_EELb0ELb0ELb0ELb1ELb1ELb0ELb1ELb0ENS_11WholeParamsEEEvRKT8_iiiiiPc",
+      "hmma_count": 512,
+      "examples": [
+        "/*71b0*/                   HMMA.16816.F32.BF16 R152, R12.reuse, R144, RZ ;                   /* 0x000000900c98723c */",
+        "/*71e0*/                   HMMA.16816.F32.BF16 R128, R12.reuse, R136, RZ ;                   /* 0x000000880c80723c */"
+      ],
+      "demangled": "void wam_whole_fa2::whole_split<Flash_fwd_kernel_traits<128, 64, 128, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 64, 128, 4, cutlass::bfloat16_t> >, false, false, false, true, true, false, true, false, wam_whole_fa2::WholeParams>(wam_whole_fa2::WholeParams const&, int, int, int, int, int, char*)"
+    },
+    {
+      "function": "_ZN18wam_whole_layer_v117action_projectionERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16iPS9_",
+      "hmma_count": 64,
+      "examples": [
+        "/*2030*/                   HMMA.16816.F32.BF16 R4, R152.reuse, R160, R4 ;                    /* 0x000000a09804723c */",
+        "/*2080*/                   HMMA.16816.F32.BF16 R32, R152.reuse, R162, R32 ;                  /* 0x000000a29820723c */"
+      ],
+      "demangled": "wam_whole_layer_v1::action_projection(wam_whole_layer_v1::Params const&, wam_whole_layer_v1::Shared&, cooperative_groups::__v1::grid_group&, int, __nv_bfloat16 const*, int, __nv_bfloat16*)"
+    },
+    {
+      "function": "_ZN18wam_whole_layer_v111whole_layerENS_6ParamsE",
+      "hmma_count": 432,
+      "examples": [
+        "/*f1d0*/              @!P0 HMMA.16816.F32.BF16 R88, R24.reuse, R106.reuse, R88 ;             /* 0x0000006a1858823c */",
+        "/*f1e0*/               @P0 HMMA.16816.F32.BF16 R56, R24, R106.reuse, R56 ;                   /* 0x0000006a1838023c */"
+      ],
+      "demangled": "wam_whole_layer_v1::whole_layer(wam_whole_layer_v1::Params)"
+    }
+  ],
+  "boundary": "Static instructions, not dynamic instruction counts or utilization; source callsites separately checked"
+}

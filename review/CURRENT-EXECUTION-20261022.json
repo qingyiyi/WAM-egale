@@ -1,14 +1,14 @@
 {
-  "observed_at": "2026-10-22T14:44:24.695171+08:00",
+  "observed_at": "2026-10-22T15:32:15.467649+08:00",
   "previous_derived_snapshot_commit": "f32b53d93279f4e41ef587c7dbb0cc478df6da4e",
   "operator": {
-    "status": "FINITE_VERIFIED_STAGE_SYNCHRONIZED_ON_DEMAND_MODULATION",
-    "selected_trial": "on-demand-modulation-20261022",
+    "status": "FINITE_VERIFIED_STAGE_SYNCHRONIZED_MODULATION_AND_RMS_ROPE",
+    "selected_trial": "rms-rope-fusion-20261022",
     "final_binary": "/root/cxz/ops/persistent-tile-20261019/workspace/算子研究/wam_ops/optimized/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
-    "final_binary_sha256": "41af9a655a2387e4871eb5ab5dee1a9ac0cf613fd35c66f1f076fc5ef0f20b41",
-    "source_sha256": "9edf85a2226d31864e8e77bfdd3f2a419f1bf8c95bf562d4d8ae4661170d0051",
+    "final_binary_sha256": "795be814c40a152583e13a34f6cf6bb5510b1fc38f5b4cd8c26076b4dc4efd75",
+    "source_sha256": "0f79579d26d29dd9b9532d8d72824eed177b64d82b0e58b8add078f6063d844b",
     "sources": {
-      "csrc/whole_layer.cu": "9edf85a2226d31864e8e77bfdd3f2a419f1bf8c95bf562d4d8ae4661170d0051",
+      "csrc/whole_layer.cu": "0f79579d26d29dd9b9532d8d72824eed177b64d82b0e58b8add078f6063d844b",
       "csrc/cutlass_gemm.cuh": "170b2b71670394f560822d37a9b331e7009a9a038817083c2942c63efcaabf2b",
       "csrc/gemm_pipeline.cuh": "95ecc6b5aa1264f92335374915b653b69684b87c8dc3989b656ac26f658e24dd",
       "csrc/fa2_stage.cuh": "b5f4f26ce3887721ce58096cd34682ed4f6c8a9abe9b3c718a300969f39dd5ef",
@@ -28,57 +28,57 @@
     "production_admitted": false,
     "installed": true,
     "ready_DAG_implemented": false,
-    "table": ".pipeline/experiments/single-layer-async-gemm-20261020/modulation-ondemand-20261022/WHOLE-LAYER-TIMING.csv",
+    "table": ".pipeline/experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/WHOLE-LAYER-TIMING.csv",
     "installation_evidence": [
-      ".pipeline/experiments/single-layer-async-gemm-20261020/modulation-ondemand-20261022/DEPLOYMENT-LOCAL.json",
-      ".pipeline/experiments/single-layer-async-gemm-20261020/modulation-ondemand-20261022/DEPLOYMENT-BAAI.json"
+      ".pipeline/experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/DEPLOYMENT-LOCAL.json",
+      ".pipeline/experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/DEPLOYMENT-BAAI.json"
     ],
     "ready_archive": ".pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/ready-source",
-    "normal_grid_barriers_source_count": 38,
+    "normal_grid_barriers_source_count": 36,
     "normal_logical_tiles_G2_G1": [
-      11912,
-      11984
+      11576,
+      11648
     ],
     "normal_materialized_MOD": false,
-    "debug_materialized_MOD": true
+    "debug_materialized_MOD": true,
+    "normal_materialized_self_QK_norm": false,
+    "debug_materialized_self_QK_norm": true
   },
-  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/modulation-ondemand-20261022/RESULT.md",
+  "operator_result": ".pipeline/experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md",
   "resource": {
-    "status": "COMPLETE_FINITE_MODULATION_PROMOTED_OWNED_CLEAN",
-    "at": "2026-10-22T14:42:31.869291+08:00",
-    "registered_at": "2026-10-22T14:31:27.807943+08:00",
-    "deadline": "2026-10-22T15:01:27.807943+08:00",
-    "cleanup_at": "2026-10-22T14:38:38.682125+08:00",
-    "GPU_worker_lifecycle_seconds": 94.62550854682922,
-    "window_conservative_charge_seconds": 430.8741970062256,
-    "charge_basis": "new window registration to verified cleanup including transfer/wait; worker subset not added again",
-    "prior_cumulative_seconds": 6895.807920703171,
-    "cumulative_seconds": 7326.682117709396,
+    "status": "COMPLETE_FINITE_RMS_ROPE_PROMOTED_OWNED_CLEAN",
+    "at": "2026-10-22T15:31:11.420822+08:00",
+    "registered_at": "2026-10-22T15:25:54.929267+08:00",
+    "deadline": "2026-10-22T15:55:54.929267+08:00",
+    "cleanup_at": "2026-10-22T15:28:28.686414+08:00",
+    "GPU_worker_lifecycle_seconds": 94.13279175758362,
+    "window_conservative_charge_seconds": 153.75716376304626,
+    "charge_basis": "registration through verified cleanup, including upload/wait; worker subset not added twice",
+    "prior_cumulative_seconds": 7326.682117709396,
+    "cumulative_seconds": 7480.439281472442,
     "cap_seconds": 36000,
-    "remaining_seconds": 28673.317882290605,
-    "CPU_build_seconds": 303.3916451931,
+    "remaining_seconds": 28519.56071852756,
+    "CPU_build_seconds": 308.49347472190857,
     "CUDA_active_seconds": "UNKNOWN",
     "GPU_experiment_failed_count": 0,
     "GPU_timeout_count": 0,
-    "transport_failures": "one publickey rejection and two55s transfer timeouts; compression with bounded240s succeeded; retained in TRANSFER-ATTEMPTS",
-    "local_evidence_bytes": 23560660,
-    "local_cap_bytes": 536870912,
-    "remote_evidence_bytes": 11586846,
-    "remote_cap_bytes": 134217728,
     "owned_running": false,
-    "no_new_GPU_jobs": true,
+    "local_evidence_bytes": 23831532,
+    "local_build_and_evidence_cap_bytes": 536870912,
+    "remote_evidence_bytes": 11716696,
+    "remote_cap_bytes": 134217728,
     "production_admitted": false,
     "formal_performance_permission": false
   },
   "operator_whole_ms": {
-    "short": 2.269184112548828,
-    "middle": 2.4348159432411194,
-    "long": 2.4486400485038757
+    "short": 2.261504054069519,
+    "middle": 2.4245761036872864,
+    "long": 2.4383999705314636
   },
   "uncached_guarded_relative_latency_percent": {
-    "short": 9.594464756672405,
-    "middle": 11.343946907416424,
-    "long": 11.272683787501148
+    "short": 9.318155422362295,
+    "middle": 10.92762479196454,
+    "long": 10.85893422534494
   },
   "full_alignment_achieved": false,
   "ready_DAG_implemented": true,
@@ -108,16 +108,16 @@
   "ready_DAG_source_implemented": true,
   "ready_DAG_GPU_validated": true,
   "ready_DAG_default_enabled": false,
-  "operator_active_binary": "41af9a655a2387e4871eb5ab5dee1a9ac0cf613fd35c66f1f076fc5ef0f20b41",
+  "operator_active_binary": "795be814c40a152583e13a34f6cf6bb5510b1fc38f5b4cd8c26076b4dc4efd75",
   "ready_candidate_binary": "3bdf1a62f1c9807560d800de4bba0525afb3184a4020eaabd6a98ae89c26d4f1",
   "ready_result": ".pipeline/experiments/single-layer-async-gemm-20261020/ready-tiles-20261022/RESULT.md",
-  "new_GPU_window": "MODULATION_COMPLETE_CLEANED",
-  "new_GPU_seconds": 94.62550854682922,
+  "new_GPU_window": "RMS_ROPE_COMPLETE_CLEANED",
+  "new_GPU_seconds": 94.13279175758362,
   "ready_DAG_state": "FINITE_GPU_VERIFIED_PERFORMANCE_NO_GO_ARCHIVED_USER_REVERT",
   "ready_DAG_validation_scope": "9 finite signatures and 21 finite structural controls only; not robot quality or universal correctness",
   "ready_DAG_performance_pass": false,
   "ready_DAG_active_source": false,
-  "next": "Discuss Norm1 and input modulation before further implementation; no running GPU job",
+  "next": "Discuss next per-stage change; no running GPU job",
   "ready_timing": {
     "aggregation": "mean of the two independent process medians; all per-process values retained",
     "rows": [
@@ -198,6 +198,51 @@
         "latency_change_percent": -0.94241675701634,
         "speedup_vs_before": 1.0095138274745168,
         "latency_change_vs_guarded_percent": 11.272683787501148,
+        "both_processes_faster": true
+      }
+    ],
+    "all_rows_faster": true,
+    "formal_performance_permission": false
+  },
+  "rms_rope_fusion_result": {
+    "status": "COMPLETE_FINITE_WHOLE_COMPARISON",
+    "aggregation": "mean of two independent process medians; raw values retained",
+    "scope": "normal debug=false complete layer Graph; uncached context, no robot or full-model",
+    "rows": [
+      {
+        "kv": "short",
+        "torch_static_uncached": 2.314751982688904,
+        "shared_torch_uncached": 2.1048320531845093,
+        "guarded_uncached": 2.0687360167503357,
+        "before": 2.2704639434814453,
+        "candidate": 2.261504054069519,
+        "latency_change_percent": -0.39462813041583056,
+        "speedup_vs_before": 1.0039619161397493,
+        "latency_change_vs_guarded_percent": 9.318155422362295,
+        "both_processes_faster": true
+      },
+      {
+        "kv": "middle",
+        "torch_static_uncached": 3.1032320261001587,
+        "shared_torch_uncached": 2.2543359994888306,
+        "guarded_uncached": 2.1857279539108276,
+        "before": 2.4348159432411194,
+        "candidate": 2.4245761036872864,
+        "latency_change_percent": -0.4205590809546855,
+        "speedup_vs_before": 1.0042233525020148,
+        "latency_change_vs_guarded_percent": 10.92762479196454,
+        "both_processes_faster": true
+      },
+      {
+        "kv": "long",
+        "torch_static_uncached": 4.3330559730529785,
+        "shared_torch_uncached": 2.4440320134162903,
+        "guarded_uncached": 2.199552059173584,
+        "before": 2.4491520524024963,
+        "candidate": 2.4383999705314636,
+        "latency_change_percent": -0.4390124271984486,
+        "speedup_vs_before": 1.004409482447906,
+        "latency_change_vs_guarded_percent": 10.85893422534494,
         "both_processes_faster": true
       }
     ],

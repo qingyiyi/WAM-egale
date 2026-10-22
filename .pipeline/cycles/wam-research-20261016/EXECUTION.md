@@ -1,17 +1,17 @@
 ---
 kind: execution
 cycle: wam-research-20261016
-updated: '2026-10-22T14:42:31.869291+08:00'
+updated: '2026-10-22T15:31:11.420822+08:00'
 plan: PLAN.md
 progress: PROGRESS.md
 ---
 # 最近执行检查点
 
-1. HW Maintain保存用户按需调制融合及重测决定，仅本轮单因素，不恢复ready。
-2. 修改optimized单CUDA源：modulation4保留FP32加法，普通MOD不物化，debug只用于审计。
-3. CPU编译303.392秒；上传失败/超时保留，未改GPU截止。
-4. 81+84完整层有限逐位/状态通过；两进程各9408调用，三KV约1%同向改善。
-5. 14:38:38核验owned全部退出；GPU worker94.626秒、保守整窗430.874秒，累计7326.682秒。
-6. 两机源9edf85a2/DSO41af9a65一致，采用新版；阶段表已更新，其他阶段尚未融合。
+1. Maintain保存先融合self RMS+RoPE决定，仅本次单因素。
+2. 直接修改optimized；保留原归约/BF16/FP64边界及debug中间审计，normal移除SQN/SKN物化。
+3. CPU编译308.493秒；活动before源码/SASS确认投影及attention QK/PV使用BF16 Tensor Core。
+4. 9签名81次、21结构84次有限逐位/状态通过；两进程各9408完整层调用，短/中/长延迟降0.395%/0.421%/0.439%。
+5. 15:28:28 owned全退出，无GPU失败；整窗153.757秒，累计7480.439秒。早期收尾拒绝记录保留。
+6. 两机源0f79579d/DSO795be814采用；旧已验证版保留，完整层仍慢最强guarded约9%–11%。
 
-[结果](../../experiments/single-layer-async-gemm-20261020/modulation-ondemand-20261022/RESULT.md)、[前检查点](history/before-modulation-result-20261022/EXECUTION.md)。
+[结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)、[前检查点](history/before-rms-rope-result-20261022/EXECUTION.md)。
