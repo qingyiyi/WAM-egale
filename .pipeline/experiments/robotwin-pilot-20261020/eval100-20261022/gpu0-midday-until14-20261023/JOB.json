@@ -1,0 +1,49 @@
+{
+  "goal": "GPU0 temporarily resumes untouched fixed RoboTwin pairs until near 14:00 Beijing; GPU1 continues",
+  "registered_at": "2026-10-23T12:06:37.544840+08:00",
+  "execution_authorization": "USER_APPROVED_GPU0_ROBOTWIN_UNTIL_APPROX_14_20261023",
+  "source": "Existing frozen eval100 dual-worker mathematical/server/client source; new orchestration namespace",
+  "shared_queue": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/PAIR-CLAIMS.json",
+  "namespace": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/gpu0-until14-20261023",
+  "GPU_uuid": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "soft_target": "2026-10-23T14:00:00+08:00",
+  "admission": "At complete-pair boundary, stop new pair after14:00 or after13:15 if observed task/arm P90 plus10%+15s predicts finishing after14:15; admitted complete episodes finish naturally",
+  "original_per_episode_cap_seconds": 1800,
+  "cleanup_reserve_seconds": 900,
+  "job_absolute_deadline": "2026-10-23T15:45:00+08:00",
+  "hard_deadline_reason": "Safety bound for an admitted worst-case three-episode pair plus cleanup; expected stop remains near14:00",
+  "shared_GPU_cap_seconds": 576000,
+  "original_T0": "2026-10-22T22:03:22.728607+08:00",
+  "original_absolute_deadline": "2026-11-01T22:03:22.728607+08:00",
+  "additional_storage_cap_bytes": 1073741824,
+  "campaign_storage_cap_bytes": 12884901888,
+  "CPU": {
+    "guard": [
+      18,
+      19
+    ],
+    "client": [
+      16,
+      17
+    ],
+    "server": [
+      20,
+      21
+    ]
+  },
+  "ports": [
+    35076,
+    35071
+  ],
+  "fixed_science": "Same600 pairs/1800episodes, target/draft/normalizer/tau/CFG/physics/render/RNG/COMBINED/reset-bank; no training or tuning",
+  "retry": "No restart of old attempt, no rerun of completed/claimed pairs, infrastructure/audit failure halts new admission",
+  "terminal_status": "PENDING_LAUNCH",
+  "cleanup": "Owned PID+birth only; server/client exit and lease close; finite CPU watcher+lossless archiver close after terminal",
+  "evidence_path": ".pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/gpu0-midday-until14-20261023",
+  "four_scientific_permissions": [
+    false,
+    false,
+    false,
+    false
+  ]
+}

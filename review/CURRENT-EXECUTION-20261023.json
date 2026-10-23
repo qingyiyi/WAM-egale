@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T10:09:05.210887+08:00",
+  "updated": "2026-10-23T12:13:08.831264+08:00",
   "operator": {
     "selected": {
       "source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
@@ -400,6 +400,393 @@
     "robotwin": "New shared160h campaign, GPU0 temporarily until near10:00, GPU1 continues; separate budget"
   },
   "robotwin": {
+    "checked_at": "2026-10-23T12:13:08.831264+08:00",
+    "completed": 285,
+    "planned": 1800,
+    "complete_pairs": 95,
+    "counts": {
+      "T": {
+        "complete": 95,
+        "success": 77
+      },
+      "C": {
+        "complete": 95,
+        "success": 74
+      },
+      "P": {
+        "complete": 95,
+        "success": 77
+      }
+    },
+    "paired_counts": {
+      "T": {
+        "complete": 95,
+        "success": 77
+      },
+      "C": {
+        "complete": 95,
+        "success": 74
+      },
+      "P": {
+        "complete": 95,
+        "success": 77
+      }
+    },
+    "halt": null,
+    "soft_stops": {
+      "gpu0": {
+        "at": 1792720946.3048294,
+        "target": 1792720800.0,
+        "next_pair": 86,
+        "predicted_seconds": 591.9075473785401,
+        "reason": "estimated next full pair would finish beyond morning window"
+      }
+    },
+    "workers": {
+      "gpu0": {
+        "status": "SOFT_MORNING_WINDOW_COMPLETE",
+        "active_case": "stack_blocks_two-valid014-T",
+        "active_pair": 85,
+        "active_arm": "T",
+        "teacher_attempted": 96003,
+        "error": null,
+        "end": 1792720947.2321014,
+        "GPU_lifecycle_seconds": 28725.871973752975,
+        "remaining_owned": [],
+        "completed": 150,
+        "pair_audits": 50
+      },
+      "gpu0-until14-20261023": {
+        "status": "RUNNING_COMPLETE_DEV_EPISODE",
+        "active_case": "place_object_basket-valid016-T",
+        "active_pair": 96,
+        "active_arm": "T",
+        "teacher_attempted": 1250,
+        "error": null,
+        "end": null,
+        "GPU_lifecycle_seconds": 337.34389781951904,
+        "remaining_owned": null,
+        "completed": 0,
+        "pair_audits": 0,
+        "server": {
+          "status": "SERVING",
+          "teacher_attempted": 1262,
+          "teacher_returned": 1262,
+          "policy_chunks": 16
+        },
+        "client": {
+          "status": "RUNNING_COMPLETE_EPISODE",
+          "environment_commands": 464,
+          "policy_chunks": 16,
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          }
+        }
+      },
+      "gpu1": {
+        "status": "RUNNING_COMPLETE_DEV_EPISODE",
+        "active_case": "open_microwave-valid015-P",
+        "active_pair": 95,
+        "active_arm": "P",
+        "teacher_attempted": 133783,
+        "error": null,
+        "end": null,
+        "GPU_lifecycle_seconds": 37808.521136283875,
+        "remaining_owned": null,
+        "completed": 108,
+        "pair_audits": 36,
+        "server": {
+          "status": "SERVING",
+          "teacher_attempted": 133785,
+          "teacher_returned": 133785,
+          "policy_chunks": 2158
+        },
+        "client": {
+          "status": "RUNNING_COMPLETE_EPISODE",
+          "environment_commands": 1360,
+          "policy_chunks": 43,
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          }
+        }
+      }
+    },
+    "GPU_used_seconds": 80103.26965975761,
+    "GPU_cap_seconds": 576000,
+    "active_budget_owners": [
+      "gpu1",
+      "gpu0-until14-20261023"
+    ],
+    "GPU_telemetry": "0, 43 %, 25434 MiB\n1, 76 %, 25874 MiB\n",
+    "midday_watch": {
+      "status": "RUNNING_CPU_ONLY_MIDDAY_WATCH",
+      "start": 1792728447.3434331,
+      "pid": 987041,
+      "birth_ticks": 732690584,
+      "GPU_used": false,
+      "polls": 2,
+      "last_check": "2026-10-23T12:12:27.357035+08:00",
+      "completed": 285
+    },
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "robotwin_dispatch": {
+    "job": {
+      "goal": "Temporary dual-GPU fixed RoboTwin pairs after operator completion, GPU0 natural finish near 10:00 Beijing",
+      "registered_at": "2026-10-23T01:42:28.932963+08:00",
+      "execution_authorization": "USER_APPROVED_TEMPORARY_DUAL_GPU_20261023",
+      "existing_campaign_GPU_cap_seconds": 576000,
+      "existing_campaign_T0": "2026-10-22T22:03:22.728607+08:00",
+      "existing_campaign_absolute_deadline": "2026-11-01T22:03:22.728607+08:00",
+      "GPU0_soft_target": "2026-10-23T10:00:00+08:00",
+      "GPU0_new_pair_rule": "After 09:15, start a full pair only if task/arm observed P90 predicted finish is no later than10:15; after10:00 no new pair; admitted complete episodes finish naturally within original1800s per-episode cap",
+      "fixed_episodes": 1800,
+      "new_training": false,
+      "new_rental": false,
+      "storage_root_cap_bytes": 12884901888,
+      "ownership": "Atomic pair claims, 3 arms same GPU; legacy completed pairs seeded, no repeats",
+      "resource_accounting": "Original shared160h ledger plus live per-worker reservations; preparation/failures/cleanup included",
+      "engineering": "Original frozen model/TF/tau/schedule/COMBINED/reset bank; full existing bank referenced, no duplicate bank save",
+      "stop": "Global infrastructure/audit failure stops new claims; no automatic retry; preserve all terminal records",
+      "four_scientific_permissions": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "source_directory": ".pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023",
+    "CPU_queue_check": {
+      "status": "PASS_CPU_ONLY_SHARED_QUEUE_CONTRACT",
+      "concurrent_pairs": 24,
+      "unique_pair_ownership": true,
+      "three_arms_same_owner": true,
+      "soft_deadline_prevents_new_pair": true,
+      "global_halt_propagates": true,
+      "total_160h_budget_admission_no_double_reservation": true,
+      "CUDA_started": false,
+      "synthetic_not_robot_results": true
+    },
+    "handoff": {
+      "status": "OPERATOR_COMPLETE_GPU0_RELEASED_TO_AUTHORIZED_ROBOTWIN",
+      "at": "2026-10-23T02:03:36.590751+08:00",
+      "operator_owned_cleaned": true,
+      "GPU0_empty": true,
+      "source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
+      "binary_sha256": "a41d778d31f8a72fb9255c2152db584f2b0c3514d3f641c6bddba826d4f06473",
+      "operator_evidence": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023",
+      "GPU0_soft_target": "2026-10-23T10:00:00+08:00",
+      "no_new_operator_GPU_jobs": true
+    },
+    "GPU0_morning_cleanup": {
+      "checked_at": "2026-10-23T10:10:30.038197+08:00",
+      "gpu0_status": "SOFT_MORNING_WINDOW_COMPLETE",
+      "ended_at": "2026-10-23T10:02:27.232101+08:00",
+      "remaining_owned_in_status": [],
+      "live_owned_birth_matched": [],
+      "zombie_owned_birth_matched": [],
+      "GPU_processes": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366, [Not Found], 21328 MiB\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 2407317, [Not Found], 4515 MiB\n",
+      "strict_completed_pairs": 85,
+      "paired_counts": {
+        "T": {
+          "success": 69,
+          "completed": 85
+        },
+        "C": {
+          "success": 66,
+          "completed": 85
+        },
+        "P": {
+          "success": 70,
+          "completed": 85
+        }
+      },
+      "storage_bytes": 3405717542,
+      "storage_cap_bytes": 12884901888
+    }
+  },
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false,
+  "robotwin_morning_summary": {
+    "as_of": "2026-10-23T10:09:05.210887+08:00",
+    "status": "GPU0_MORNING_WINDOW_CLOSED_GPU1_CONTINUES",
+    "completed_episodes": 256,
+    "planned_episodes": 1800,
+    "strict_complete_pairs": 85,
+    "strict_paired_counts": {
+      "T": {
+        "success": 69,
+        "completed": 85
+      },
+      "C": {
+        "success": 66,
+        "completed": 85
+      },
+      "P": {
+        "success": 70,
+        "completed": 85
+      }
+    },
+    "all_terminal_counts": {
+      "T": {
+        "complete": 85,
+        "success": 69
+      },
+      "C": {
+        "complete": 85,
+        "success": 66
+      },
+      "P": {
+        "complete": 86,
+        "success": 70
+      }
+    },
+    "C_P_outcomes": {
+      "rescued_C_fail_P_success": 6,
+      "lost_C_success_P_fail": 2,
+      "both_success": 64,
+      "both_failure": 13
+    },
+    "GPU0_cleanup": {
+      "checked_at": "2026-10-23T10:10:30.038197+08:00",
+      "gpu0_status": "SOFT_MORNING_WINDOW_COMPLETE",
+      "ended_at": "2026-10-23T10:02:27.232101+08:00",
+      "remaining_owned_in_status": [],
+      "live_owned_birth_matched": [],
+      "zombie_owned_birth_matched": [],
+      "GPU_processes": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366, [Not Found], 21328 MiB\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 2407317, [Not Found], 4515 MiB\n",
+      "strict_completed_pairs": 85,
+      "paired_counts": {
+        "T": {
+          "success": 69,
+          "completed": 85
+        },
+        "C": {
+          "success": 66,
+          "completed": 85
+        },
+        "P": {
+          "success": 70,
+          "completed": 85
+        }
+      },
+      "storage_bytes": 3405717542,
+      "storage_cap_bytes": 12884901888
+    },
+    "GPU1_active_at_checkpoint": "open_microwave-valid013-T",
+    "GPU_budget": {
+      "used_including_active_hours": 20.074543934928045,
+      "remaining_hours": 139.92545606507196,
+      "cap_hours": 160
+    },
+    "case_duration_based_remaining_single_worker_hours": {
+      "sum_task_arm_medians": 106.04686668879457,
+      "sum_task_arm_p90s": 136.21828199525675,
+      "not_a_statistical_interval": true,
+      "excludes_unobserved_tails_and_future_setup": true
+    },
+    "by_task": {
+      "handover_block": {
+        "T": {
+          "completed": 14,
+          "success": 14
+        },
+        "C": {
+          "completed": 14,
+          "success": 14
+        },
+        "P": {
+          "completed": 14,
+          "success": 14
+        }
+      },
+      "lift_pot": {
+        "T": {
+          "completed": 14,
+          "success": 14
+        },
+        "C": {
+          "completed": 14,
+          "success": 14
+        },
+        "P": {
+          "completed": 14,
+          "success": 14
+        }
+      },
+      "open_microwave": {
+        "T": {
+          "completed": 13,
+          "success": 3
+        },
+        "C": {
+          "completed": 13,
+          "success": 1
+        },
+        "P": {
+          "completed": 14,
+          "success": 1
+        }
+      },
+      "place_object_basket": {
+        "T": {
+          "completed": 15,
+          "success": 12
+        },
+        "C": {
+          "completed": 15,
+          "success": 11
+        },
+        "P": {
+          "completed": 15,
+          "success": 13
+        }
+      },
+      "press_stapler": {
+        "T": {
+          "completed": 14,
+          "success": 11
+        },
+        "C": {
+          "completed": 14,
+          "success": 11
+        },
+        "P": {
+          "completed": 14,
+          "success": 13
+        }
+      },
+      "stack_blocks_two": {
+        "T": {
+          "completed": 15,
+          "success": 15
+        },
+        "C": {
+          "completed": 15,
+          "success": 15
+        },
+        "P": {
+          "completed": 15,
+          "success": 15
+        }
+      }
+    },
+    "quality_permissions": {
+      "engineering_quality_screen": false,
+      "independent_test_complete": false,
+      "noninferiority_established": false,
+      "formal_performance_permission": false
+    }
+  },
+  "robotwin_previous_morning_checkpoint": {
     "checked_at": "2026-10-23T10:09:05.210887+08:00",
     "completed": 256,
     "total": 1800,
@@ -1310,24 +1697,49 @@
     "GPU_cap_seconds": 576000,
     "GPU_status": "0, GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 0 %, 11 MiB\n1, GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 57 %, 25244 MiB\n"
   },
-  "robotwin_dispatch": {
-    "job": {
-      "goal": "Temporary dual-GPU fixed RoboTwin pairs after operator completion, GPU0 natural finish near 10:00 Beijing",
-      "registered_at": "2026-10-23T01:42:28.932963+08:00",
-      "execution_authorization": "USER_APPROVED_TEMPORARY_DUAL_GPU_20261023",
-      "existing_campaign_GPU_cap_seconds": 576000,
-      "existing_campaign_T0": "2026-10-22T22:03:22.728607+08:00",
-      "existing_campaign_absolute_deadline": "2026-11-01T22:03:22.728607+08:00",
-      "GPU0_soft_target": "2026-10-23T10:00:00+08:00",
-      "GPU0_new_pair_rule": "After 09:15, start a full pair only if task/arm observed P90 predicted finish is no later than10:15; after10:00 no new pair; admitted complete episodes finish naturally within original1800s per-episode cap",
-      "fixed_episodes": 1800,
-      "new_training": false,
-      "new_rental": false,
-      "storage_root_cap_bytes": 12884901888,
-      "ownership": "Atomic pair claims, 3 arms same GPU; legacy completed pairs seeded, no repeats",
-      "resource_accounting": "Original shared160h ledger plus live per-worker reservations; preparation/failures/cleanup included",
-      "engineering": "Original frozen model/TF/tau/schedule/COMBINED/reset bank; full existing bank referenced, no duplicate bank save",
-      "stop": "Global infrastructure/audit failure stops new claims; no automatic retry; preserve all terminal records",
+  "robotwin_midday": {
+    "JOB": {
+      "goal": "GPU0 temporarily resumes untouched fixed RoboTwin pairs until near 14:00 Beijing; GPU1 continues",
+      "registered_at": "2026-10-23T12:06:37.544840+08:00",
+      "execution_authorization": "USER_APPROVED_GPU0_ROBOTWIN_UNTIL_APPROX_14_20261023",
+      "source": "Existing frozen eval100 dual-worker mathematical/server/client source; new orchestration namespace",
+      "shared_queue": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/PAIR-CLAIMS.json",
+      "namespace": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/gpu0-until14-20261023",
+      "GPU_uuid": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+      "soft_target": "2026-10-23T14:00:00+08:00",
+      "admission": "At complete-pair boundary, stop new pair after14:00 or after13:15 if observed task/arm P90 plus10%+15s predicts finishing after14:15; admitted complete episodes finish naturally",
+      "original_per_episode_cap_seconds": 1800,
+      "cleanup_reserve_seconds": 900,
+      "job_absolute_deadline": "2026-10-23T15:45:00+08:00",
+      "hard_deadline_reason": "Safety bound for an admitted worst-case three-episode pair plus cleanup; expected stop remains near14:00",
+      "shared_GPU_cap_seconds": 576000,
+      "original_T0": "2026-10-22T22:03:22.728607+08:00",
+      "original_absolute_deadline": "2026-11-01T22:03:22.728607+08:00",
+      "additional_storage_cap_bytes": 1073741824,
+      "campaign_storage_cap_bytes": 12884901888,
+      "CPU": {
+        "guard": [
+          18,
+          19
+        ],
+        "client": [
+          16,
+          17
+        ],
+        "server": [
+          20,
+          21
+        ]
+      },
+      "ports": [
+        35076,
+        35071
+      ],
+      "fixed_science": "Same600 pairs/1800episodes, target/draft/normalizer/tau/CFG/physics/render/RNG/COMBINED/reset-bank; no training or tuning",
+      "retry": "No restart of old attempt, no rerun of completed/claimed pairs, infrastructure/audit failure halts new admission",
+      "terminal_status": "PENDING_LAUNCH",
+      "cleanup": "Owned PID+birth only; server/client exit and lease close; finite CPU watcher+lossless archiver close after terminal",
+      "evidence_path": ".pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/gpu0-midday-until14-20261023",
       "four_scientific_permissions": [
         false,
         false,
@@ -1335,230 +1747,43 @@
         false
       ]
     },
-    "source_directory": ".pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023",
-    "CPU_queue_check": {
-      "status": "PASS_CPU_ONLY_SHARED_QUEUE_CONTRACT",
-      "concurrent_pairs": 24,
-      "unique_pair_ownership": true,
-      "three_arms_same_owner": true,
-      "soft_deadline_prevents_new_pair": true,
-      "global_halt_propagates": true,
-      "total_160h_budget_admission_no_double_reservation": true,
-      "CUDA_started": false,
-      "synthetic_not_robot_results": true
-    },
-    "handoff": {
-      "status": "OPERATOR_COMPLETE_GPU0_RELEASED_TO_AUTHORIZED_ROBOTWIN",
-      "at": "2026-10-23T02:03:36.590751+08:00",
-      "operator_owned_cleaned": true,
-      "GPU0_empty": true,
-      "source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
-      "binary_sha256": "a41d778d31f8a72fb9255c2152db584f2b0c3514d3f641c6bddba826d4f06473",
-      "operator_evidence": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023",
-      "GPU0_soft_target": "2026-10-23T10:00:00+08:00",
-      "no_new_operator_GPU_jobs": true
-    },
-    "GPU0_morning_cleanup": {
-      "checked_at": "2026-10-23T10:10:30.038197+08:00",
-      "gpu0_status": "SOFT_MORNING_WINDOW_COMPLETE",
-      "ended_at": "2026-10-23T10:02:27.232101+08:00",
-      "remaining_owned_in_status": [],
-      "live_owned_birth_matched": [],
-      "zombie_owned_birth_matched": [],
-      "GPU_processes": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366, [Not Found], 21328 MiB\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 2407317, [Not Found], 4515 MiB\n",
-      "strict_completed_pairs": 85,
-      "paired_counts": {
-        "T": {
-          "success": 69,
-          "completed": 85
-        },
-        "C": {
-          "success": 66,
-          "completed": 85
-        },
-        "P": {
-          "success": 70,
-          "completed": 85
-        }
+    "start_receipt": {
+      "status": "OBSERVED_REAL_COMPLETE_EPISODE_RUNNING_NOT_YET_TERMINAL",
+      "checked_at": "2026-10-23T12:13:08.831264+08:00",
+      "namespace": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/gpu0-until14-20261023",
+      "guard": {
+        "pid": 987037,
+        "birth_ticks": 732690559,
+        "pgid": 987037
       },
-      "storage_bytes": 3405717542,
-      "storage_cap_bytes": 12884901888
+      "active_case": "place_object_basket-valid016-T",
+      "teacher_returned": 1262,
+      "environment_commands": 464,
+      "initial_checks": {
+        "physical_exact": true,
+        "initial_observation_exact": true
+      },
+      "soft_target": "2026-10-23T14:00:00+08:00",
+      "no_new_case_or_retry": true,
+      "existing_reset_bank_reused": true,
+      "GPU1_continues": true,
+      "shared_cap_GPU_hours": 160,
+      "source_equal_receipt": "PREPARE-RESULT.json"
+    },
+    "preparation_accounting": {
+      "accounting_id": "MIDDAY_PREPARATION_gpu0-until14-20261023",
+      "kind": "CONSERVATIVE_NON_GPU_PREPARATION",
+      "namespace": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/gpu0-until14-20261023",
+      "start": 1792728397.54484,
+      "end": 1792728447.1134565,
+      "charged_seconds": 49.56861639022827,
+      "GPU_workers_used": false,
+      "reason": "Registered setup/wait before leased worker; original ledger/T0 unchanged"
     }
   },
-  "engineering_quality_screen": false,
-  "independent_test_complete": false,
-  "noninferiority_established": false,
-  "formal_performance_permission": false,
-  "production_admitted": false,
-  "robotwin_morning_summary": {
-    "as_of": "2026-10-23T10:09:05.210887+08:00",
-    "status": "GPU0_MORNING_WINDOW_CLOSED_GPU1_CONTINUES",
-    "completed_episodes": 256,
-    "planned_episodes": 1800,
-    "strict_complete_pairs": 85,
-    "strict_paired_counts": {
-      "T": {
-        "success": 69,
-        "completed": 85
-      },
-      "C": {
-        "success": 66,
-        "completed": 85
-      },
-      "P": {
-        "success": 70,
-        "completed": 85
-      }
-    },
-    "all_terminal_counts": {
-      "T": {
-        "complete": 85,
-        "success": 69
-      },
-      "C": {
-        "complete": 85,
-        "success": 66
-      },
-      "P": {
-        "complete": 86,
-        "success": 70
-      }
-    },
-    "C_P_outcomes": {
-      "rescued_C_fail_P_success": 6,
-      "lost_C_success_P_fail": 2,
-      "both_success": 64,
-      "both_failure": 13
-    },
-    "GPU0_cleanup": {
-      "checked_at": "2026-10-23T10:10:30.038197+08:00",
-      "gpu0_status": "SOFT_MORNING_WINDOW_COMPLETE",
-      "ended_at": "2026-10-23T10:02:27.232101+08:00",
-      "remaining_owned_in_status": [],
-      "live_owned_birth_matched": [],
-      "zombie_owned_birth_matched": [],
-      "GPU_processes": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366, [Not Found], 21328 MiB\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 2407317, [Not Found], 4515 MiB\n",
-      "strict_completed_pairs": 85,
-      "paired_counts": {
-        "T": {
-          "success": 69,
-          "completed": 85
-        },
-        "C": {
-          "success": 66,
-          "completed": 85
-        },
-        "P": {
-          "success": 70,
-          "completed": 85
-        }
-      },
-      "storage_bytes": 3405717542,
-      "storage_cap_bytes": 12884901888
-    },
-    "GPU1_active_at_checkpoint": "open_microwave-valid013-T",
-    "GPU_budget": {
-      "used_including_active_hours": 20.074543934928045,
-      "remaining_hours": 139.92545606507196,
-      "cap_hours": 160
-    },
-    "case_duration_based_remaining_single_worker_hours": {
-      "sum_task_arm_medians": 106.04686668879457,
-      "sum_task_arm_p90s": 136.21828199525675,
-      "not_a_statistical_interval": true,
-      "excludes_unobserved_tails_and_future_setup": true
-    },
-    "by_task": {
-      "handover_block": {
-        "T": {
-          "completed": 14,
-          "success": 14
-        },
-        "C": {
-          "completed": 14,
-          "success": 14
-        },
-        "P": {
-          "completed": 14,
-          "success": 14
-        }
-      },
-      "lift_pot": {
-        "T": {
-          "completed": 14,
-          "success": 14
-        },
-        "C": {
-          "completed": 14,
-          "success": 14
-        },
-        "P": {
-          "completed": 14,
-          "success": 14
-        }
-      },
-      "open_microwave": {
-        "T": {
-          "completed": 13,
-          "success": 3
-        },
-        "C": {
-          "completed": 13,
-          "success": 1
-        },
-        "P": {
-          "completed": 14,
-          "success": 1
-        }
-      },
-      "place_object_basket": {
-        "T": {
-          "completed": 15,
-          "success": 12
-        },
-        "C": {
-          "completed": 15,
-          "success": 11
-        },
-        "P": {
-          "completed": 15,
-          "success": 13
-        }
-      },
-      "press_stapler": {
-        "T": {
-          "completed": 14,
-          "success": 11
-        },
-        "C": {
-          "completed": 14,
-          "success": 11
-        },
-        "P": {
-          "completed": 14,
-          "success": 13
-        }
-      },
-      "stack_blocks_two": {
-        "T": {
-          "completed": 15,
-          "success": 15
-        },
-        "C": {
-          "completed": 15,
-          "success": 15
-        },
-        "P": {
-          "completed": 15,
-          "success": 15
-        }
-      }
-    },
-    "quality_permissions": {
-      "engineering_quality_screen": false,
-      "independent_test_complete": false,
-      "noninferiority_established": false,
-      "formal_performance_permission": false
-    }
+  "operator_DAG_design_prompt": {
+    "path": ".pipeline/experiments/single-layer-async-gemm-20261020/DAG-DESIGN-REVIEW-PROMPT-20261023.md",
+    "fixed_operator_review_commit": "319ac6a17daed34e80692796f72a97bf44f4a99f",
+    "implementation_started": false
   }
 }

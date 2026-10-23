@@ -1,3 +1,9 @@
+## 2026-10-23T12:13:08.831264+08:00 M40 GPU0中午新时段实际运行；DAG设计prompt交付
+
+用户授权GPU0接续至约14:00，新namespace去重领取未开始完整pair，GPU1继续。已实际执行place_object_basket-valid016-T，teacher returned 1262、环境命令464，初态物理/观测exact。原数学/server/client源码byte相同，只改新worker编排截止；银行直接引用，CPU watcher与归档正常。原160小时含活跃/准备22.251，T0不改；当前285/1800、95完整pair，四false。阶段仍运行，不能提前写清理完成。
+
+固定算子commit的网页版DAG设计prompt已准备，QKV交错留到统一图，静态/动态尚未定案。本轮未改算子或启动算子GPU。[启动](../../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/gpu0-midday-until14-20261023/START-RECEIPT.json)、[计划](../../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/gpu0-midday-until14-20261023/PLAN.md)、[Prompt](../../experiments/single-layer-async-gemm-20261020/DAG-DESIGN-REVIEW-PROMPT-20261023.md)。
+
 ## 2026-10-23T11:55:56.810937+08:00 M39顶层调度讨论与顺序保存
 
 用户将QKV交错派发留到完整DAG设计统一考虑；Maintain合并原回退/顶层规划决定，保留作用域、旧负结果与资源边界。静态图＋动态ready领取为讨论建议，未定案。本轮无计算源码改动、编译、GPU作业或新权限；RoboTwin数量仍以各自带时间戳检查点为准。

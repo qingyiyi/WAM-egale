@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-23T10:09:05.210887+08:00'
+updated: '2026-10-23T12:13:08.831264+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -64,3 +64,6 @@ Self QKV本轮完成：混合函数负结果保留，隔离8warp有限门及完�
 - [ ] M40-DUAL-UNTIL10：当前算子结束后，两远端卡去重运行既定完整pair；GPU0按预计任务时长在10/23约10:00自然收尾停派，GPU1继续，总160小时不增。
 
 M39本轮完成，最终同轮原Torch完整单层1.2967/1.8469/2.9910×；GPU0已真实交接，临时双卡首GPU0完整pair审计通过。M40-DUAL-UNTIL10已于10:02:27自然收尾，GPU0共150局/50组且owned清理核验完成；GPU1继续，M40总实验仍进行。
+
+- [ ] M40-MIDDAY-UNTIL14：用户中午新授权GPU0从新namespace接续未运行完整pair至约14点，GPU1继续；原160小时不增，阶段终态与清理待核验。
+- [x] M39-DAG-WEB-PROMPT：固定319ac6a算子审阅版本、真实输入/依赖/性能边界与静态动态调度问题整理；仅设计，无新算子GPU作业。
