@@ -29,3 +29,5 @@
 5. [单文件阅读包](REVIEW_PACK.md)、[真实登记的有界派生摘要](REGISTERED_EXPERIMENT_SUMMARY.json)、[增量来源manifest](SOURCE_MANIFEST.json)、[遗漏原件](OMISSIONS-20261017.md)。
 
 原始PT/NPY/相机/KV/模型权重不公开，不能声称仅凭GitHub已重算所有原始张量。服务器绝对路径是历史证据引用；在仓库中去掉`/rjs/cxz/论文探索/`前缀映射相对路径。
+
+用户最新决定：等微波炉100组三臂完整后再查原因，原队列继续；[计划与CPU完成提醒](../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/PLAN.md)。

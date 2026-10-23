@@ -7,3 +7,5 @@ M39六投影8warp＋Self QKV联合队列已采用，完整阶段表重测；原T
 [本轮结果](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESULT.md)、[当前完整阶段表](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md)、[优化索引](experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)。
 
 [网页版现状与想法交接prompt](experiments/single-layer-async-gemm-20261020/DAG-DESIGN-REVIEW-PROMPT-20261023.md)。
+
+[微波炉完整后原因核查](experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/PLAN.md)：按用户顺序继续原队列，100组三臂齐后分析；CPU完成提醒已启动。

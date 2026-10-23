@@ -23,3 +23,9 @@ PF2相对C：6组救回、4组损失成功、84共同成功、19共同失败。�
 双方同等最终Cross K/RMS、V预计算；原Torch使用静态dense history。这不是30层、chunk、机器人E2E，也不是最强guarded实现增量。源fb650be4…、DSOa41d778d…保持，M39累计18427.875/36000秒，余4.881小时；无新算子GPU作业/远端NCU。后续可讨论保持BF16边界的部分和私有暂存，尚未实现。
 
 [中午窗口结果](../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/gpu0-midday-until14-20261023/RESULT.md)、[清理与全局统计](../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/gpu0-midday-until14-20261023/AFTERNOON-CLOSE-20261023.json)、[GPU1健康](../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/gpu0-midday-until14-20261023/AFTERNOON-HEALTH-20261023.json)、[新版完整阶段表](../.pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md)、[HW入口](../.pipeline/PROGRESS.compact.md)。四科学权限与production_admitted均false，旧FAILED与review/RESULTS.json不改。[下午更新前入口](history/current-before-afternoon-close-20261023/CURRENT-EXECUTION-20261023.md)。
+
+<!-- microwave-completion-20261023 -->
+
+用户最新顺序（2026-10-23 14:52）：沿原固定队列继续，等微波炉100组三臂全部完整终态后再核原因。单CPU每5分钟完成提醒已运行，首读19组T4/C1/P2；原160GPU小时/截止不变。后台只形成证据索引，因果诊断仍待完整后执行。
+
+[计划](../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/PLAN.md)、[启动回执](../.pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/LAUNCH-RECEIPT.json)。

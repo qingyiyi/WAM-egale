@@ -8,6 +8,8 @@ current: M40
 next: GPU1继续固定RoboTwin队列与5分钟巡检；GPU0中午窗口已闭合清理，等待网页版基于现状与用户想法独立评议算子下一步。
 ---
 
+最新用户顺序：微波炉100组三臂完整后再查原因，原队列继续；CPU完成提醒已实启，首读19组T4/C1/P2（14:52）。[计划](experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/PLAN.md)。
+
 # 当前研究进度（2026-10-23T14:11:40.212610+08:00）
 
 M39本轮已完成并交接GPU0。当前采用六个同形状投影8warp＋Self QKV联合288任务队列；CTA64×128、warp32×32、K64/3stage、两段K1536和BF16/bias边界不变。数学tile3408/3480/3408，grid同步27→23。两机源码fb650be4…、DSOa41d778d…，原始action/B2路径保持原契约。

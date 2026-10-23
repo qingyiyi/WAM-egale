@@ -67,3 +67,5 @@ M39本轮完成，最终同轮原Torch完整单层1.2967/1.8469/2.9910×；GPU0�
 
 - [x] M40-MIDDAY-UNTIL14：用户中午新授权GPU0从新namespace接续未运行完整pair至约14点，GPU1继续；原160小时不增，已14:01:34完成18局/6组并清理，GPU1继续。
 - [x] M39-DAG-WEB-PROMPT：固定319ac6a源码、现状/实测边界/用户想法整理，由网页版独立判断方向与优先级；原规定详细设计的交接已被用户纠正，无新算子GPU作业。
+
+- [ ] M40-MICROWAVE-FINAL-DIAG：按用户顺序等待微波炉100组三臂完成后核查Target官方复现与投机额外失败；CPU完成提醒已启动，原队列/资源不变。[有界计划](../../experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/PLAN.md)。
