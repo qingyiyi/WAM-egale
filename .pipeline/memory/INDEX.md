@@ -21,7 +21,7 @@
 
 - [调制参数按需融合并重测](global/requirements/decision-调制参数按需融入消费阶段并重测.md)（constraint，M39当前）：仅将MOD加法移到消费位置，保留阶段同步，精度/状态后重测三KV并更新阶段表。
 
-- [回退阶段同步并重新规划](global/requirements/decision-回退阶段全局同步并重新规划tile调度.md)（constraint，M39当前）：恢复旧阶段同步源码/DSO；保留ready负结果，先规划任务粒度、合并边界，再定实现。
+- [回退阶段同步并重新规划](global/requirements/decision-回退阶段全局同步并重新规划tile调度.md)（constraint，M39当前）：保留阶段同步与ready负结果；QKV交错留到后续统一DAG设计，任务粒度/调度机制先讨论，静态或动态尚未定案。
 
 - [就绪tile新45分钟窗口](global/requirements/decision-允许就绪tile新四十五分钟GPU验证窗口.md)（constraint，M39本次）：获准GPU0验证，原累计十小时不增、旧截止保留。
 
