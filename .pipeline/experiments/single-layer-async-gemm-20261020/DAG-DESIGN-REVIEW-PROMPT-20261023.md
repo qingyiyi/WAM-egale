@@ -1,73 +1,68 @@
-# 网页版设计任务：单层WAM persistent Transformer的任务依赖图与调度
+# 给网页版的项目现状与用户想法：请独立判断下一步
 
-请用中文，基于真实源码，为我们设计完整单层Transformer的tile任务依赖图及kernel内部调度。现在只做审阅和设计，不把方案写成已实现或已获得性能收益。
+请用中文，从独立研究者的角度判断我们当前算子研究下一步该怎么走。下面分别是服务器已经确认的现状、用户提出的想法、尚未决定的问题。请你拿主意，可以质疑我们的思路、建议调整顺序或放弃某种实现。无需沿用服务器agent此前偏好的方案；是否有必要进一步做完整DAG设计，也请你先判断。
 
 仓库：https://github.com/qingyiyi/WAM-egale
-固定算子审阅commit：319ac6a17daed34e80692796f72a97bf44f4a99f
-请固定此提交读取源码和算子证据，不用main后续变化覆盖判断。main上的新增机器人排队进度与本次算子结构设计分开；历史TF质量快照的false不改。
+算子代码和已测结果固定在commit：319ac6a17daed34e80692796f72a97bf44f4a99f
+较新的main用于同步进度，本次算子判断请绑定上述版本。
 
-## 先阅读这些实际文件
+## 项目希望解决什么
 
-1. 算子研究/wam_ops/optimized/csrc/whole_layer.cu：完整层、claim_tile、self_qkv_projection_group、norm_rope、action_ffn_pipeline及同步。
-2. 算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh：self_qkv8_tile、K分段与BF16写回。
-3. 算子研究/wam_ops/optimized/csrc/fa2_stage.cuh：self/cross attention分组、就绪输入和private可见范围。
-4. 算子研究/wam_ops/optimized/whole_layer.py，以及源码真实引用的构建/设备辅助文件，按需追踪。
-5. .pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md、RESULT.md、SELECTED.json、CURRENT-STAGE-SUMMARY.json。
-6. .pipeline/memory/global/requirements/requirement-单层Transformer统一persistent内核调度全部tile.md
-7. .pipeline/memory/global/requirements/decision-回退阶段全局同步并重新规划tile调度.md
+目标模型为冻结WAM/LingBot-VA，投机在action连续去噪分支提出候选，target批量验证。我们希望研究“投机改变小规模action工作负载，进而给Transformer系统调度带来机会”这条主线，但它仍需要实验证据。
 
-若网页无法读取某个文件，请列出具体缺失路径、给出需要Codex补充的最小片段；不要假装读过，不据函数名字推断实现。关键判断引用固定提交的文件/行号。
+算子侧用户明确希望只做完整一个Transformer block：self/cross attention、norm、调制、投影、FFN和残差都在一个persistent CUDA kernel内部执行，切成合适的tile，由常驻CTA/协作warp处理。不同计算可采用不同分块，不要求每阶段都凑满108个CTA。baseline与投机生产代码保持隔离。
 
-## 目标与已知实现
+## 已经做到了什么
 
-目标：完整一个Transformer block放在一个persistent CUDA kernel中，内部包含self/cross attention、norm/调制、投影、FFN和残差，按tile或合理任务组调度。只做一层，不做30层，不退回host逐算子启动多个kernel作为最终方案。
+- 硬件为A100-SXM4、SM80、108 SM。当前108个常驻CTA，每CTA8warp/256线程；112384B shared/CTA、255寄存器/线程、静态local1016B、1CTA/SM。这些是编译/函数资源属性，不能直接等同于动态访存瓶颈占比。
+- 当前B14×Q16×D3072，24 heads、head_dim128，FFN宽14336；真实短/中/长KV为288/1152/2160。B14来自7候选×2 CFG；线性层展平为M224，attention保留各候选Q16及私有KV可见性。
+- 完整单层已放进一个persistent kernel，self/cross attention使用FA2设备计算核心，GEMM复用CUTLASS设备计算核心；多数阶段仍由grid同步分隔，FFN已有四组局部生产消费流水。尚未实现整个block的统一ready任务调度。
+- 六个M224、3072→3072投影使用64×128输出tile、8个MMA warp、warp tile32×32、K64/3stage，每投影96个输出tile。Self Q/K/V共用288任务队列，当前按Q96→K96→V96排列；三份权重/输出独立。两段K1536、BF16部分和舍入及bias顺序保持。
+- Self Q/K已融合RMS与RoPE。RMS沿每token完整3072维归约，一个128维列块完成还不足以算完整RMS。RMS后先舍入BF16，再按当前源算术执行旋转。
+- Warm路径已预计算最终Cross K（含RMS）/V，复用有明确条件边界。历史KV为只读输入，候选private suffix不互相可见。
+- FFN1+GELU、FFN2+残差写回融合，FFN1主/尾120个tile、FFN2有96个分段任务/48个最终输出tile；已有四组局部依赖流水，浮点部分和有序提交。
+- 当前完整层数学tile为3408/3480/3408，grid同步23次。数学tile、调度节点、CTA、warp不是同一个概念。
 
-A100-SXM4，SM80、108 SM。当前108常驻CTA，每CTA8warp/256线程，112384B shared/CTA、255寄存器/线程、静态local1016B、1CTA/SM。这些是当前资源属性，不是动态local流量或根因占比。远端不能提权，也不能访问NCU硬件计数器；可用CUDA Event、软件时间线、编译资源报告和有限数值核验。本机若有另获准窗口才能补硬件计数，不能作为设计必有条件。
+## 当前实测结果与不足
 
-当前输入为B14×Q16×D3072，24 heads、head_dim128，FFN宽14336，真实短/中/长KV为288/1152/2160。7候选×2 CFG；线性层可展平为M224，但attention仍保留每候选的Q16及合法共享分组，不能变成跨候选任意互相注意的Q112/Q224序列。
+同轮、双方同等Cross KV预计算、warm CUDA Graph条件下，相对原Torch静态dense-history路径，完整单层加速比为1.2967/1.8469/2.9910×。这不是最强guarded路径的增量，不是30层、完整chunk或机器人E2E收益。
 
-当前六个M224、3072→3072投影使用64×128输出tile、8个MMA warp、warp tile32×32、K64/3stage；每投影96个数学输出tile。Self Q/K/V目前共用288任务队列，task0..95算Q、96..191算K、192..287算V。三份权重和输出独立，队列入口/出口仍有grid同步。原两段K1536、段间BF16舍入、bias与累加顺序保留。
+阶段诊断中，原Torch/自有：Self QKV联合约0.86×，Self输出投影约0.71–0.80×，Cross Q约0.80–0.82×，Cross输出投影约0.74×，LN3约0.61–0.62×，FFN共同区间约1.01–1.02×。阶段参照的缓存/计时边界不同，不能相加预测整层收益。联合QKV队列本身额外收益仅0.08%–0.44%，信号很小。
 
-Self Q/K的RMS沿每token完整3072维归约，随后RoPE，RMS后先舍入BF16，旋转保留当前源算术边界。完成一个128维投影列块，不等于完整RMS输入就绪。当前64行投影块跨4个16token候选，仍需按候选/CFG/合法G1或guarded G2分组确定实际attention依赖。
+更大的128×128投影输出tile虽通过有限精度核验，但完整层慢9%–11%，已回退；此前过细ready调度原型也已撤回，负结果保留。最近三个可执行候选各有9真实签名/36结构控制/225次有限完整调用的逐位、有效状态和RNG核验，不代表对所有输入或闭环质量的证明。
 
-历史K/V为本次调用只读输入，候选private K/V保持独立；当前query的self attention需要本候选全部合法可见private K/V，不能只因某个Q行就绪就忽略未完成的key。共享历史不等于共享private suffix。
+远端无GPU硬件计数器或提权权限，可用CUDA Event、软件时间线及编译资源报告。不能假定有NCU新证据。当前GPU正用于RoboTwin既定评估，新的算子方案尚未执行。
 
-Warm路径已预计算最终Cross K（含RMS）/V；此时它们是合法缓存输入，不再生成对应计算任务。Cold路径单独设计，不能把已缓存节点再次拿来填补执行空闲，或把预计算当新增调度收益。
+## 用户的想法，尚未定案
 
-FFN1/GELU/FFN2/残差3已有四组局部依赖流水，不是完全阶段同步；FFN1有108主tile+12尾tile，FFN2为96个分段任务、48个最终输出tile，部分和提交保持原顺序。请读action_ffn_pipeline后再画图。其余多数阶段仍使用grid同步；当前完整层23次grid同步，数学tile为3408/3480/3408。数学tile数、调度节点数、常驻CTA数必须分别定义。
+用户希望以后根据完整任务依赖图安排计算：前驱全部完成、未完成前驱数降到0的任务可以被派发；暂时未就绪的任务等待，空闲执行资源继续做其他合法工作。
 
-## 当前证据的边界
+用户认为每个计算应先选合适的tile大小和数量，再在某阶段尾部无法填满执行资源时，提前做后续无依赖或依赖已满足的任务，借鉴MegaMoE的tile任务和persistent warp思想。并不要求照搬MoE的结构或固定某组warp数量。
 
-同轮、双方同等Cross KV预计算、warm CUDA Graph下，完整单层相对原Torch静态dense-history路径为1.2967/1.8469/2.9910×；不是最强guarded实现增量、30层、chunk或机器人E2E。
+例如，Q/K/V是否可以按同一行块交错派发，尽早释放该块的RMS、RoPE和attention？用户认为这个顺序应留到完整依赖图阶段统一考虑，现在不单独实施QKV交错。
 
-阶段诊断原Torch/自有：Self QKV联合约0.86×，Self输出投影约0.71–0.80×，Cross Q约0.80–0.82×，Cross输出投影约0.74×，LN3约0.61–0.62×，FFN共同区间约1.01–1.02×。阶段对照的缓存/计时边界不同，不能相加预测完整层收益。QKV联合队列本身只带来0.08%–0.44%的整层额外改善，不称显著。
+用户进一步问：通用“入度为0就可派发”的执行方式会不会带来很多额外问题？静态调度、动态调度或两者结合，哪一种更适合我们？目前没有选定方案，也没有确定必须删除所有全局同步。
 
-较大128×128输出tile虽通过有限精度门，整层慢9%–11%，已回退。先前过细的ready原型已撤回，失败和负结果保留。当前三个可执行候选分别完成9真实签名/36结构控制/225次有限完整调用核验，不证明所有输入或闭环质量。
+## 请你独立判断
 
-## 本次要你判断的问题
+基于这些现状和用户想法，你认为当前最值得做的下一步是什么，为什么？我们应该继续对齐剩余投影/小阶段的性能，还是已经值得开始调度研究？有更合理的切入点也请直接提出。
 
-用户希望最终形成任务依赖图：前驱全部完成、未完成前驱计数降到0的任务才可派发。QKV按行块交错的顺序留到这个统一设计阶段再决定，当前不单独实现交错。
+你怎么看用户的DAG/入度想法？静态、动态或混合调度在这个实际workload上各有什么代价，哪一种值得优先验证？你可以否定通用动态队列、QKV交错或其他设想。请不要为了迎合我们而保证收益。
 
-请客观比较三种可落地机制：静态分配/预排调度；静态DAG上的全动态就绪队列；静态亲和分配加有限动态补位/偷取。不要预设全动态更快，也不要将静态DAG等同于静态任务分配。
+如果需要更多证据才能决定，请指出最影响判断的未知项和最少应补什么测量。相关论文/官方实现可作为参考，但请核实硬件和问题是否相同，给出直接来源。A100不能默认采用TMA/WGMMA/UMMA。
 
-必须具体回答：
+希望收到你对当前方向、主要矛盾、优先级及下一步行动的判断，方便我们再讨论。输出形式由你决定；先得出判断，再决定是否值得展开实现设计。
 
-1. 图的最小合理节点是什么？投影输出tile、完整RMS行或行块、FA2合法任务组、FFN生产/消费组如何映射？给出节点/边/计数器规模，说明避免重新产生大量过细任务的办法。
-2. 哪些前驱是数据依赖，哪些只是当前实现的全局屏障？RMS全行归约、attention全部可见K/V、输出投影完整head维、FFN2完整归约及ordered BF16部分和分别何时就绪？输入/输出buffer别名、共享workspace复用和历史有效长度也要入图。
-3. 如果Q/K/V改为行块内交错派发，何时真正能释放RMS/RoPE和attention？普通单候选与G2合法分组、跨CFG/行块边界分别处理；不要把“连续发出”当成“已完成”。
-4. 入度计数初始化、producer完成、release发布、consumer acquire、恰好一次入队、queue head/tail、退出判定怎么做？给SM80可实现的伪代码。无任务时CTA怎么办？证明不会所有消费者占满资源而阻塞生产者；仅“图无环”不足以证明执行器无死锁。
-5. 原子热点、全图扫描、队列空转、任务切换、权重/L2局部性和关键路径怎么权衡？能否用隐式依赖/行块事件/分层队列替代每条细边原子更新？确定性优先级是否有帮助？
-6. 一个kernel内如何处理8warp GEMM、两个4warp FA2组和归约任务的不同执行契约、barrier编号、cp.async完成与union workspace生命周期？CTA/warp各自领取什么？哪些职责固定、哪些可按阶段切换？不要为“调度专职warp”无依据牺牲当前8warp MMA，也不要把混合分支造成的最大寄存器/栈帧代价忽略。
-7. 给出一条你推荐的主方案和有证据才触发的备选。解释为何适合当前形状及剩余瓶颈；如果静态策略更合适，请直接说。估算仅做可检查的成本模型，未知参数标UNKNOWN，不虚构加速比或计数器。
+## 可核查的源码与证据
 
-可查MegaMoE、其他persistent GPU任务图、CUTLASS与FlashAttention的原文/官方实现，区分硬件和算术契约。MegaMoE只借鉴调度思想；A100不能默认使用TMA/WGMMA/UMMA。外部关键判断给直接原文/官方链接及实际版本；不要只凭名称类比Transformer与MoE。
+- 算子研究/wam_ops/optimized/csrc/whole_layer.cu：完整层、claim_tile、self_qkv_projection_group、norm_rope、action_ffn_pipeline及同步。
+- 算子研究/wam_ops/optimized/csrc/cutlass_gemm.cuh：self_qkv8_tile和K分段写回。
+- 算子研究/wam_ops/optimized/csrc/fa2_stage.cuh：FA2分组、共享历史和private可见性。
+- 算子研究/wam_ops/optimized/whole_layer.py，以及其真实构建/依赖链。
+- .pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md、RESULT.md、SELECTED.json、CURRENT-STAGE-SUMMARY.json。
+- .pipeline/memory/global/requirements/requirement-单层Transformer统一persistent内核调度全部tile.md
+- .pipeline/memory/global/requirements/decision-回退阶段全局同步并重新规划tile调度.md
 
-## 请交付给Codex的设计结果
+网页若无法读取某份文件，请明确说缺少什么，不要假装已核查。区分实测事实、源码推导、假设和建议；不要改写历史FAILED或科学权限。此次交接只用于独立评议，不授权服务器执行新实验。
 
-A. 基于源码的完整单层DAG（Mermaid）及节点表：公式/输入输出、数学tile数、调度节点数、前驱、ready粒度、读写与复用生命周期、warp协作组、现有同步和可替代条件。
-B. 静态/动态/混合的比较表、选定主方案及原因；给调度器与producer/consumer伪代码和死锁/可见性论证。
-C. 最小增量实现次序，最多一个首要原型和一个备选；保持optimized内迭代、baseline/投机生产/旧tile不改。先CPU DAG核查，再有限真实输入核验，再短中长KV完整层比较。不要一次改tile、GEMM数学、归约树、缓存引擎和调度。
-D. 对照和验收：相同计算体的静态/动态/混合调度；原Torch唯一外部性能对照；单独量化队列/计数/同步与等待；同输入/资源/缓存边界，保留输出、全部有效KV/RNG及BF16边界。调度可重排独立任务，不改变同一输出的浮点归约顺序。
-E. 明确可移除和必须保留的同步、风险及停止条件。如果剩余关键路径或维护开销令收益空间很小，应建议保留简单方案，不为了去掉所有grid.sync牺牲整层速度。
-
-结论分为：源码已证实、设计推导、待实测、缺失信息。不要保证性能或质量，不把本设计当作GPU执行/预算授权，不把已有缓存或普通batch收益重新包装为新贡献。
+上一版交接把问题预先收窄成“请完成DAG设计与指定交付物”，用户已纠正；历史文本保留在commit464bf51243a5ee8c2d07c0f60c9a2be4f7fb1e52，不作为当前要求。

@@ -1,5 +1,7 @@
 # 长期记忆索引
 
+- [网页版先看现状与想法、独立判断](global/requirements/preference-网页版研究讨论先交代现状和想法由其独立判断.md)（guideline，本轮算子网页讨论）：先给事实/用户想法/未知，开放方向与顺序，不预设详细设计或方案。
+
 - [RoboTwin扩大评估160GPU小时](global/requirements/decision-RoboTwin扩大评估授权160GPU小时双卡接续.md)（constraint，M40新一期）：已授权1800局、160GPU小时/10天；上午GPU0窗口已闭合；最新中午另开namespace接续至10/23约14:00，GPU1持续接续，同pair同卡、旧账本与总额不改。
 - [先优化FFN1尾部再处理FFN2写回](global/requirements/decision-先优化FFN1尾部再处理FFN2写回.md)（constraint，M39）：用户确认尾部分摊→FFN2写回→函数开销顺序，并补测独立FFN；具体收益看Cycle，原累计预算不增。 最新确认：先外层FFN函数ABI单因素验证，再处理尾部。
 

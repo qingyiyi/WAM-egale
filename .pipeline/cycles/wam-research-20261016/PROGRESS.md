@@ -3,9 +3,9 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-23T12:13:08.831264+08:00'
+updated: '2026-10-23T12:26:41.310598+08:00'
 current: M40
-next: 两卡继续固定RoboTwin；GPU0按预计完整pair耗时约14点自然停派清理，GPU1继续；等待网页版单层DAG设计。
+next: 两卡继续固定RoboTwin；GPU0按预计完整pair耗时约14点自然停派清理，GPU1继续；等待网页版基于现状与用户想法独立判断下一步。
 ---
 
 # 当前研究进度（2026-10-23T12:13:08.831264+08:00）
@@ -24,7 +24,7 @@ M40上午GPU0已完成150局/50组并于10:02:27自然收尾；用户中午另�
 
 截至2026-10-23T12:13:08.831264+08:00，合计 **285/1800局**、95完整pair；严格同95组T77/95、C74/95、P77/95。GPU0正在place_object_basket-valid016-T，teacher returned 1262、环境命令464，初态物理/观测exact；GPU1继续open_microwave-valid015-P。无global halt，两卡真实运行，完整reset bank/COMBINED沿用，5分钟watch运行，无自动重试。含活跃与准备累计22.251/160小时，余137.749小时，阶段终态未完成、四科学权限false。
 
-用户将QKV交错派发留到完整DAG设计，静态/动态/混合尚未定案；已准备固定算子commit的网页版设计prompt，要求完整依赖、RMS全行、合法attention可见性、BF16边界、warp/CTA共享workspace与无死锁论证。
+用户将QKV交错派发留到完整DAG设计，静态/动态/混合尚未定案；网页版prompt已按用户澄清改为现状、实测限制与用户想法的中立交接，固定算子commit，方向和优先级由网页版独立判断；不预设必须展开详细DAG设计。
 
 |ID|阶段|状态|当前证据|下一步|
 |---|---|---|---|---|
