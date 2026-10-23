@@ -516,10 +516,13 @@ __device__ __forceinline__ void action_ffn_pipeline(const Params &p, Shared &s, 
 
 #include "norm_device_generated.cuh"
 
+__device__ __forceinline__ float4 modulation4(const Params &p, int64_t element, int param);
+
 // Norm tile为完整3072维行。8个warp搬入/写回，warp3–6仍按原Torch顺序归约。
 // 仅扩大搬运参与度；FP32转换、Welford树与BF16舍入顺序保持原样。
 __device__ void norm_tile(Shared &sh, const B *x, void *y, const void *gamma, const float *beta,
-                          float eps, bool rms, bool output_float, int row) {
+                          float eps, bool rms, bool output_float, int row,
+                          const Params *mod = nullptr, int mod_param = 0, B *mod_out = nullptr) {
     auto &s = sh.tile.norm;
     {
         for (int i = threadIdx.x; i < D / 8; i += THREADS)
@@ -585,7 +588,27 @@ __device__ void norm_tile(Shared &sh, const B *x, void *y, const void *gamma, co
     }
     __syncthreads();
     {
-        if (output_float) {
+        if (mod) {
+            // Row's FP32 Welford output is ready in shared. Keep the exact
+            // FP32 add/multiply order and final BF16 conversion of MODULATE.
+            for (int v = int(threadIdx.x); v < D / 4; v += THREADS) {
+                const int64_t element = int64_t(row) * D + v * 4;
+                const float4 z = reinterpret_cast<const float4 *>(s.y)[v];
+                if (mod->debug_modulation)
+                    reinterpret_cast<float4 *>((float *)y + row * D)[v] = z;
+                const float4 shift = modulation4(*mod, element, mod_param);
+                const float4 scale = modulation4(*mod, element, mod_param + 1);
+                float out[4];
+#pragma unroll
+                for (int c = 0; c < 4; ++c)
+                    out[c] = __fadd_rn(__fmul_rn(((const float *)&z)[c],
+                               __fadd_rn(1.f, ((const float *)&scale)[c])),
+                               ((const float *)&shift)[c]);
+                auto *dest = reinterpret_cast<__nv_bfloat162 *>(mod_out + element);
+                dest[0] = __floats2bfloat162_rn(out[0], out[1]);
+                dest[1] = __floats2bfloat162_rn(out[2], out[3]);
+            }
+        } else if (output_float) {
             for (int i = threadIdx.x; i < D / 4; i += THREADS)
                 reinterpret_cast<float4 *>((float *)y + row * D)[i] =
                     reinterpret_cast<const float4 *>(s.y)[i];
@@ -947,6 +970,15 @@ __device__ void insert_cache(const Params &p, Shared &s, cg::grid_group &g, int 
 // Q112 sequence. Candidate private suffix visibility is preserved explicitly.
 #include "fa2_stage.cuh"
 
+// One owner computes the complete LN row then its modulation. Only the
+// FP32 global intermediate and the intervening grid barrier disappear.
+__device__ void norm_modulate(const Params &p, Shared &s, cg::grid_group &g,
+                               const B *x, void *audit, B *out, float eps, int param) {
+    for (int row = int(blockIdx.x); row < p.b * p.q; row += int(gridDim.x))
+        norm_tile(s, x, audit, nullptr, nullptr, eps, false, true, row, &p, param, out);
+    g.sync();
+}
+
 // All threads read the same immutable launch descriptors. Avoid an implicit
 // per-thread local copy when a device helper takes Params by reference.
 __global__ void whole_layer(const __grid_constant__ Params p) {
@@ -966,8 +998,13 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     if (p.debug_modulation)
         point(p, s, g, st, TABLE, MOD, 0, 0, 0, int64_t(m) * 6 * D);
     ++st;
+    if (p.candidate && m == 224) {
+        norm_modulate(p, s, g, p.x, p.a[N1], bp(p, M1), p.eps[0], 0);
+        st += 2; // Preserve all later queue IDs.
+    } else {
     norm(p, s, g, st++, p.x, p.a[N1], m, -1, -1, p.eps[0], false, true);
     point(p, s, g, st++, MODULATE, M1, N1, 0, 0, int64_t(m) * D);
+    }
     // 2. Self attention：Q/K/V投影→Q/K的RMSNorm与RoPE→FA2→输出投影。
     if (p.candidate && m == 224) {
         self_qkv_projection_group(p, s, g, st, bp(p, M1));
@@ -1012,8 +1049,13 @@ __global__ void whole_layer(const __grid_constant__ Params p) {
     linear(p, s, g, st++, bp(p, CA), 19, bp(p, CO), m, D, D);
     point(p, s, g, st++, RESIDUAL, R2, R1, CO, -1, int64_t(m) * D);
     // 4. FFN：3072→14336→3072；保留GEMM和GELU之间原有BF16舍入。
+    if (p.candidate && m == 224) {
+        norm_modulate(p, s, g, bp(p, R2), p.a[N3], bp(p, M3), p.eps[2], 3);
+        st += 2; // Preserve all later queue IDs.
+    } else {
     norm(p, s, g, st++, bp(p, R2), p.a[N3], m, -1, -1, p.eps[2], false, true);
     point(p, s, g, st++, MODULATE, M3, N3, 0, 3, int64_t(m) * D);
+    }
     const bool fused_ffn = p.candidate && m == 224;
     if (fused_ffn) {
         action_ffn_pipeline(p, s, g);
@@ -1094,6 +1136,8 @@ forward(const std::vector<Tensor> &w, const Tensor &x, const Tensor &context, co
             b[i] = debug ? at::empty({rows, 6, D}, fo) : at::empty({0}, fo);
         else if ((i == SQN || i == SKN) && p.candidate && p.freq && !debug)
             b[i] = at::empty({0}, bo);
+        else if ((i == N1 || i == N3) && p.candidate && p.b * p.q == 224 && !debug)
+            b[i] = at::empty({0}, fo);
         else if (i == F1 && p.candidate && p.b * p.q == 224 && !debug)
             b[i] = at::empty({0}, bo);
         else
