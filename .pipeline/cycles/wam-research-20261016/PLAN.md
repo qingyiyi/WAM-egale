@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-23T02:12:38.420042+08:00'
+updated: '2026-10-23T10:09:05.210887+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -58,9 +58,9 @@ M39子项沿用上方名称，以下只补齐语义导航，不重编号历史�
 
 - [x] M39-SELF-QKV-WARP：先核对四warp映射；仅Self Q/K/V固定64×128 tile试8warp，有限精度/状态及完整层原Torch对照后保留或回退。原累计10小时不增加，不恢复旧截止。
 
-Self QKV本轮完成：混合函数负结果保留，隔离8warp有限门及完整层正向，最终全部阶段对原Torch重测、两机采用和清理。下一步同形状其他投影尚未启动。
+Self QKV本轮完成：混合函数负结果保留，隔离8warp有限门及完整层正向，最终全部阶段对原Torch重测、两机采用和清理。该检查点之后同形状其余投影已在M39-PROJECTION-FOLLOWUP完成，保留先前阶段身份。
 
 - [x] M39-PROJECTION-FOLLOWUP：获准接续三个同形状投影及一个有依据Self QKV主循环方案；有限门、完整层与新版完整阶段表，原累计10小时。
 - [ ] M40-DUAL-UNTIL10：当前算子结束后，两远端卡去重运行既定完整pair；GPU0按预计任务时长在10/23约10:00自然收尾停派，GPU1继续，总160小时不增。
 
-M39本轮完成，最终同轮原Torch完整单层1.2967/1.8469/2.9910×；GPU0已真实交接，临时双卡首GPU0完整pair审计通过。M40-DUAL-UNTIL10整体待上午自然收尾，不能先标已完成。
+M39本轮完成，最终同轮原Torch完整单层1.2967/1.8469/2.9910×；GPU0已真实交接，临时双卡首GPU0完整pair审计通过。M40-DUAL-UNTIL10已于10:02:27自然收尾，GPU0共150局/50组且owned清理核验完成；GPU1继续，M40总实验仍进行。

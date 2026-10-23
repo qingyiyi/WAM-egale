@@ -1,0 +1,639 @@
+{
+  "updated": "2026-10-23T02:23:30.193965+08:00",
+  "operator": {
+    "selected": {
+      "source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
+      "header_sha256": "269e87fd477708e6198d2d03806cdfb10b8fb4a59679df65320dc6c0f8de560c",
+      "binary_sha256": "a41d778d31f8a72fb9255c2152db584f2b0c3514d3f641c6bddba826d4f06473",
+      "status": "RETAIN_FINITE_RESEARCH_CANDIDATE",
+      "selected": "All six same-shape B14 projections use measured isolated8-warp 64x128 tile; Q/K/V share one288-task queue; prior optimizations retained",
+      "grid_synchronizations": 23,
+      "mathematical_tiles": [
+        3408,
+        3480,
+        3408
+      ],
+      "four_scientific_permissions": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "production_admitted": false,
+      "evidence": "joint-qkv, final-stages and final-comparison"
+    },
+    "result": {
+      "status": "RETAIN_ALL_SIX_EIGHT_WARP_AND_JOINT_QKV",
+      "selected_source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
+      "variants": {
+        "all-six-eight": [
+          {
+            "process": 1,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.8736256122589112,
+              "previous_cached": 0.8912384033203125,
+              "torch_static_cached_final": 1.1291647911071778
+            },
+            "latency_reduction_pct": 1.9762154543368715,
+            "torch_over_custom": 1.2925042206438129
+          },
+          {
+            "process": 1,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.0432000160217285,
+              "previous_cached": 1.060966396331787,
+              "torch_static_cached_final": 1.9183104515075684
+            },
+            "latency_reduction_pct": 1.6745469386668987,
+            "torch_over_custom": 1.838871186776911
+          },
+          {
+            "process": 1,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.0594816207885742,
+              "previous_cached": 1.0755071640014648,
+              "torch_static_cached_final": 3.1489536285400392
+            },
+            "latency_reduction_pct": 1.4900452316158441,
+            "torch_over_custom": 2.972164468692026
+          },
+          {
+            "process": 2,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.8752127647399902,
+              "previous_cached": 0.8898047924041748,
+              "torch_static_cached_final": 1.1290112018585203
+            },
+            "latency_reduction_pct": 1.6399133595086823,
+            "torch_over_custom": 1.2899848440783757
+          },
+          {
+            "process": 2,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.0431488037109375,
+              "previous_cached": 1.060915231704712,
+              "torch_static_cached_final": 1.9210239410400392
+            },
+            "latency_reduction_pct": 1.6746321914170914,
+            "torch_over_custom": 1.8415627130147827
+          },
+          {
+            "process": 2,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.05763840675354,
+              "previous_cached": 1.0763264179229735,
+              "torch_static_cached_final": 3.1517184257507322
+            },
+            "latency_reduction_pct": 1.7362772908144697,
+            "torch_over_custom": 2.9799583729424577
+          }
+        ],
+        "row128": [
+          {
+            "process": 1,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.9670144081115724,
+              "previous_cached": 0.873472023010254,
+              "torch_static_cached_final": 1.1280896186828613
+            },
+            "latency_reduction_pct": -10.70925944244241,
+            "torch_over_custom": 1.166569607670938
+          },
+          {
+            "process": 1,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.145241641998291,
+              "previous_cached": 1.0447872161865233,
+              "torch_static_cached_final": 1.9175424575805664
+            },
+            "latency_reduction_pct": -9.614821492401738,
+            "torch_over_custom": 1.6743562120520832
+          },
+          {
+            "process": 1,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.1567615985870363,
+              "previous_cached": 1.0603520393371582,
+              "torch_static_cached_final": 3.1490559577941895
+            },
+            "latency_reduction_pct": -9.09222179740845,
+            "torch_over_custom": 2.722303335138982
+          },
+          {
+            "process": 2,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.9698816299438477,
+              "previous_cached": 0.8727039813995361,
+              "torch_static_cached_final": 1.1279359817504884
+            },
+            "latency_reduction_pct": -11.135236072656628,
+            "torch_over_custom": 1.1629625172051061
+          },
+          {
+            "process": 2,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.1437056064605713,
+              "previous_cached": 1.04202241897583,
+              "torch_static_cached_final": 1.9191808700561523
+            },
+            "latency_reduction_pct": -9.758253338223021,
+            "torch_over_custom": 1.6780374767904185
+          },
+          {
+            "process": 2,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.1573247909545898,
+              "previous_cached": 1.0602496147155762,
+              "torch_static_cached_final": 3.1509504318237305
+            },
+            "latency_reduction_pct": -9.155879416665025,
+            "torch_over_custom": 2.7226155150662152
+          }
+        ],
+        "joint-qkv": [
+          {
+            "process": 1,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.871833610534668,
+              "previous_cached": 0.8746495723724366,
+              "torch_static_cached_final": 1.1290112018585206
+            },
+            "latency_reduction_pct": 0.3219531486341909,
+            "torch_over_custom": 1.2949847175152305
+          },
+          {
+            "process": 1,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.042073631286621,
+              "previous_cached": 1.042841625213623,
+              "torch_static_cached_final": 1.9185152053833008
+            },
+            "latency_reduction_pct": 0.07364434909707951,
+            "torch_over_custom": 1.8410553225634934
+          },
+          {
+            "process": 1,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.0562047958374023,
+              "previous_cached": 1.06081280708313,
+              "torch_static_cached_final": 3.1469568252563476
+            },
+            "latency_reduction_pct": 0.43438495604121163,
+            "torch_over_custom": 2.9794949214951365
+          },
+          {
+            "process": 2,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.8714240074157715,
+              "previous_cached": 0.8732160091400146,
+              "torch_static_cached_final": 1.1293696403503417
+            },
+            "latency_reduction_pct": 0.20521860633406774,
+            "torch_over_custom": 1.2960047356275093
+          },
+          {
+            "process": 2,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.0410495758056642,
+              "previous_cached": 1.043507194519043,
+              "torch_static_cached_final": 1.9207168579101563
+            },
+            "latency_reduction_pct": 0.23551526297924674,
+            "torch_over_custom": 1.8449811637680378
+          },
+          {
+            "process": 2,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.0555903911590576,
+              "previous_cached": 1.0604032039642335,
+              "torch_static_cached_final": 3.1498239517211912
+            },
+            "latency_reduction_pct": 0.45386630172217224,
+            "torch_over_custom": 2.9839452671245206
+          }
+        ],
+        "final-comparison": [
+          {
+            "process": 1,
+            "case": "short",
+            "ms": {
+              "all_six_cached": 0.8731648445129394,
+              "custom_cached": 0.8709120273590087,
+              "previous_cached": 0.8906752109527588,
+              "torch_static_cached_final": 1.1289600372314452
+            },
+            "latency_reduction_pct": 2.2188990274703335,
+            "torch_over_custom": 1.2962962983241286
+          },
+          {
+            "process": 1,
+            "case": "middle",
+            "ms": {
+              "all_six_cached": 1.042636775970459,
+              "custom_cached": 1.0412032127380373,
+              "previous_cached": 1.061580753326416,
+              "torch_static_cached_final": 1.9206144332885744
+            },
+            "latency_reduction_pct": 1.9195469138383214,
+            "torch_over_custom": 1.8446105522839888
+          },
+          {
+            "process": 1,
+            "case": "long",
+            "ms": {
+              "all_six_cached": 1.0578432083129883,
+              "custom_cached": 1.0548736095428466,
+              "previous_cached": 1.074944019317627,
+              "torch_static_cached_final": 3.1533056259155274
+            },
+            "latency_reduction_pct": 1.8671120927321483,
+            "torch_over_custom": 2.9892734043105733
+          },
+          {
+            "process": 2,
+            "case": "short",
+            "ms": {
+              "all_six_cached": 0.8741888046264649,
+              "custom_cached": 0.870348834991455,
+              "previous_cached": 0.889958381652832,
+              "torch_static_cached_final": 1.1289600372314452
+            },
+            "latency_reduction_pct": 2.2034228864678096,
+            "torch_over_custom": 1.2971351162232891
+          },
+          {
+            "process": 2,
+            "case": "middle",
+            "ms": {
+              "all_six_cached": 1.0425856113433838,
+              "custom_cached": 1.0393088340759278,
+              "previous_cached": 1.0612736225128172,
+              "torch_static_cached_final": 1.9218431472778321
+            },
+            "latency_reduction_pct": 2.0696630888538015,
+            "torch_over_custom": 1.849155019438072
+          },
+          {
+            "process": 2,
+            "case": "long",
+            "ms": {
+              "all_six_cached": 1.0561023712158204,
+              "custom_cached": 1.0552319526672362,
+              "previous_cached": 1.0747391700744628,
+              "torch_static_cached_final": 3.158067226409912
+            },
+            "latency_reduction_pct": 1.8150652688945002,
+            "torch_over_custom": 2.9927706590266583
+          }
+        ]
+      },
+      "final_direct": {
+        "short": {
+          "ms": {
+            "all_six_cached": 0.8736768245697022,
+            "custom_cached": 0.8706304311752319,
+            "previous_cached": 0.8903167963027954,
+            "torch_static_cached_final": 1.1289600372314452
+          },
+          "torch_over_custom": 1.29671557162033,
+          "reduction_vs_prior_pct": 2.2111640720825165,
+          "reduction_vs_all_six_pct": 0.34868652902299013
+        },
+        "middle": {
+          "ms": {
+            "all_six_cached": 1.0426111936569213,
+            "custom_cached": 1.0402560234069824,
+            "previous_cached": 1.0614271879196167,
+            "torch_static_cached_final": 1.9212287902832033
+          },
+          "torch_over_custom": 1.8468807169132395,
+          "reduction_vs_prior_pct": 1.9945941420748237,
+          "reduction_vs_all_six_pct": 0.22589151778413807
+        },
+        "long": {
+          "ms": {
+            "all_six_cached": 1.0569727897644043,
+            "custom_cached": 1.0550527811050414,
+            "previous_cached": 1.074841594696045,
+            "torch_static_cached_final": 3.1556864261627195
+          },
+          "torch_over_custom": 2.991022328624655,
+          "reduction_vs_prior_pct": 1.841091160656072,
+          "reduction_vs_all_six_pct": 0.18165166387972276
+        }
+      },
+      "finite_correctness": {
+        "real_signatures_per_variant": 9,
+        "structural_controls_per_variant": 36,
+        "complete_calls_per_variant": 225,
+        "passed_variants": [
+          "all-six-eight",
+          "row128",
+          "joint-qkv"
+        ],
+        "K128": "CPU_COMPILE_INELIGIBLE_ZERO_GPU_CALLS"
+      },
+      "engineering_quality_screen": false,
+      "independent_test_complete": false,
+      "noninferiority_established": false,
+      "formal_performance_permission": false,
+      "production_admitted": false
+    },
+    "stage_summary": ".pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/CURRENT-STAGE-SUMMARY.json",
+    "stage_table": ".pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md"
+  },
+  "resource": {
+    "status": "CLOSED_OPERATOR_JOBS_GPU0_HANDED_TO_ROBOTWIN",
+    "registered_start": "2026-10-23T01:34:21.302293+08:00",
+    "deadline": "2026-10-23T02:34:21.302293+08:00",
+    "closed_at": "2026-10-23T02:03:36.590751+08:00",
+    "GPU_workers_lifecycle_seconds": 250.77600693702698,
+    "CPU_build_seconds": 621.7747204303741,
+    "CUDA_active_seconds": "UNKNOWN",
+    "conservative_charge_including_preparation_waiting_CPU_and_cleanup_seconds": 1755.288458,
+    "cumulative_prior_seconds": 16672.58698485547,
+    "cumulative_used_seconds": 18427.875442855468,
+    "cumulative_cap_seconds": 36000,
+    "remaining_seconds": 17572.124557144532,
+    "new_remote_storage_bytes": 99236011,
+    "new_local_storage_bytes": 16331816,
+    "all_owned_exited": true,
+    "GPU0_empty_at_handoff": true,
+    "failed_jobs": [
+      {
+        "name": "build",
+        "owned": {
+          "pid": 927701,
+          "birth_ticks": 728933489,
+          "pgid": 927701
+        },
+        "start": 1792690876.3311477,
+        "gpu": false,
+        "returncode": 1,
+        "end": 1792690894.387869,
+        "lifecycle_seconds": 18.056721448898315,
+        "root_reaped": true,
+        "identity_alive": false
+      }
+    ],
+    "non_GPU_bookkeeping_issue": "First adoption check lacked remote top-level JOB; stopped before binary copy, uploaded same original registration then completed",
+    "remote_NCU_launches": 0,
+    "local_GPU_launches": 0,
+    "robotwin": "New shared160h campaign, GPU0 temporarily until near10:00, GPU1 continues; separate budget"
+  },
+  "robotwin": {
+    "checked_at": "2026-10-23T02:23:30.193965+08:00",
+    "completed": 41,
+    "total": 1800,
+    "counts": {
+      "T": {
+        "complete": 14,
+        "success": 12
+      },
+      "C": {
+        "complete": 13,
+        "success": 12
+      },
+      "P": {
+        "complete": 14,
+        "success": 12
+      }
+    },
+    "complete_pairs": 13,
+    "workers": {
+      "0": {
+        "status": "RUNNING_COMPLETE_DEV_EPISODE",
+        "active_case": "handover_block-valid002-P",
+        "active_pair": 14,
+        "active_arm": "P",
+        "teacher_attempted": 3817,
+        "GPU_lifecycle_seconds": 1184.9961183071136,
+        "error": null,
+        "end": null,
+        "completed": 6,
+        "pair_audits": [
+          {
+            "pair_id": 12,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 13,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          }
+        ],
+        "last_episode": {
+          "episode_id": "stack_blocks_two-valid002-T",
+          "pair_id": 13,
+          "arm": "T",
+          "task": "stack_blocks_two",
+          "valid_index": 2,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          },
+          "actual_commands": 304,
+          "environment_take_action_cnt": 293,
+          "engineering": {
+            "variant": "COMBINED",
+            "front_omitted": true,
+            "batch_warmups_deferred": 2,
+            "batch_warmups_materialized": 0
+          },
+          "policy_chunks": 10,
+          "failure_penalty": 304,
+          "horizon": 800,
+          "lifecycle_seconds": 184.36198663711548,
+          "client_returncode": 0
+        },
+        "active_client": {
+          "status": "RUNNING_COMPLETE_EPISODE",
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          },
+          "environment_commands": 208,
+          "policy_chunks": 8,
+          "render_device": {
+            "alias": "pci:0000:47:00.0",
+            "pci": "0000:47:00.0",
+            "name": "NVIDIA A100-SXM4-40GB",
+            "can_render": true,
+            "is_cuda": true,
+            "cuda_id": 0
+          }
+        }
+      },
+      "1": {
+        "status": "RUNNING_COMPLETE_DEV_EPISODE",
+        "active_case": "open_microwave-valid001-C",
+        "active_pair": 11,
+        "active_arm": "C",
+        "teacher_attempted": 8700,
+        "GPU_lifecycle_seconds": 2431.7305130958557,
+        "error": null,
+        "end": null,
+        "completed": 8,
+        "pair_audits": [
+          {
+            "pair_id": 9,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 10,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          }
+        ],
+        "last_episode": {
+          "episode_id": "open_microwave-valid001-T",
+          "pair_id": 11,
+          "arm": "T",
+          "task": "open_microwave",
+          "valid_index": 1,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          },
+          "actual_commands": 1520,
+          "environment_take_action_cnt": 1500,
+          "engineering": {
+            "variant": "COMBINED",
+            "front_omitted": true,
+            "batch_warmups_deferred": 2,
+            "batch_warmups_materialized": 0
+          },
+          "policy_chunks": 48,
+          "failure_penalty": 1500,
+          "horizon": 1500,
+          "lifecycle_seconds": 889.3775365352631,
+          "client_returncode": 0
+        },
+        "active_client": {
+          "status": "RUNNING_COMPLETE_EPISODE",
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          },
+          "environment_commands": 48,
+          "policy_chunks": 2,
+          "render_device": {
+            "alias": "pci:0000:4e:00.0",
+            "pci": "0000:4e:00.0",
+            "name": "NVIDIA A100-SXM4-40GB",
+            "can_render": true,
+            "is_cuda": true,
+            "cuda_id": 0
+          }
+        }
+      }
+    },
+    "halt": null,
+    "soft_stops": {},
+    "formal_performance_permission": false,
+    "engineering_quality_screen": false,
+    "noninferiority_established": false,
+    "independent_test_complete": false,
+    "GPU_lifecycle_seconds_including_active": 16796.299441576004,
+    "GPU_cap_seconds": 576000,
+    "GPU_status": "0, GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 59 %, 25218 MiB\n1, GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 68 %, 25817 MiB\n"
+  },
+  "robotwin_dispatch": {
+    "job": {
+      "goal": "Temporary dual-GPU fixed RoboTwin pairs after operator completion, GPU0 natural finish near 10:00 Beijing",
+      "registered_at": "2026-10-23T01:42:28.932963+08:00",
+      "execution_authorization": "USER_APPROVED_TEMPORARY_DUAL_GPU_20261023",
+      "existing_campaign_GPU_cap_seconds": 576000,
+      "existing_campaign_T0": "2026-10-22T22:03:22.728607+08:00",
+      "existing_campaign_absolute_deadline": "2026-11-01T22:03:22.728607+08:00",
+      "GPU0_soft_target": "2026-10-23T10:00:00+08:00",
+      "GPU0_new_pair_rule": "After 09:15, start a full pair only if task/arm observed P90 predicted finish is no later than10:15; after10:00 no new pair; admitted complete episodes finish naturally within original1800s per-episode cap",
+      "fixed_episodes": 1800,
+      "new_training": false,
+      "new_rental": false,
+      "storage_root_cap_bytes": 12884901888,
+      "ownership": "Atomic pair claims, 3 arms same GPU; legacy completed pairs seeded, no repeats",
+      "resource_accounting": "Original shared160h ledger plus live per-worker reservations; preparation/failures/cleanup included",
+      "engineering": "Original frozen model/TF/tau/schedule/COMBINED/reset bank; full existing bank referenced, no duplicate bank save",
+      "stop": "Global infrastructure/audit failure stops new claims; no automatic retry; preserve all terminal records",
+      "four_scientific_permissions": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "source_directory": ".pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023",
+    "CPU_queue_check": {
+      "status": "PASS_CPU_ONLY_SHARED_QUEUE_CONTRACT",
+      "concurrent_pairs": 24,
+      "unique_pair_ownership": true,
+      "three_arms_same_owner": true,
+      "soft_deadline_prevents_new_pair": true,
+      "global_halt_propagates": true,
+      "total_160h_budget_admission_no_double_reservation": true,
+      "CUDA_started": false,
+      "synthetic_not_robot_results": true
+    },
+    "handoff": {
+      "status": "OPERATOR_COMPLETE_GPU0_RELEASED_TO_AUTHORIZED_ROBOTWIN",
+      "at": "2026-10-23T02:03:36.590751+08:00",
+      "operator_owned_cleaned": true,
+      "GPU0_empty": true,
+      "source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
+      "binary_sha256": "a41d778d31f8a72fb9255c2152db584f2b0c3514d3f641c6bddba826d4f06473",
+      "operator_evidence": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023",
+      "GPU0_soft_target": "2026-10-23T10:00:00+08:00",
+      "no_new_operator_GPU_jobs": true
+    }
+  },
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false
+}

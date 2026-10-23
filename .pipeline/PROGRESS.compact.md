@@ -3,12 +3,12 @@ kind: progress
 cycle: wam-research-20261016
 plan: PLAN.md
 status: active
-updated: '2026-10-23T02:23:30.193965+08:00'
+updated: '2026-10-23T10:09:05.210887+08:00'
 current: M40
-next: 巡检双卡RoboTwin与GPU0约10点自然停派；下一轮算子先讨论BF16部分和私有暂存，本轮不再启动。
+next: GPU0上午窗口已自然闭合并清理；GPU1继续固定RoboTwin队列与低开销巡检；后续算子先讨论部分和私有暂存。
 ---
 
-# 当前研究进度（2026-10-23T02:23:30.193965+08:00）
+# 当前研究进度（2026-10-23T10:09:05.210887+08:00）
 
 M39本轮已完成并交接GPU0。当前采用六个同形状投影8warp＋Self QKV联合288任务队列；CTA64×128、warp32×32、K64/3stage、两段K1536和BF16/bias边界不变。数学tile3408/3480/3408，grid同步27→23。两机源码fb650be4…、DSOa41d778d…，原始action/B2路径保持原契约。
 
@@ -22,12 +22,12 @@ M39新增GPU workers250.776秒、CPU编译621.775秒；保守含准备/等待/�
 
 M40用户新批准临时双卡：原GPU1在27局/9完整pair边界PAUSED保留，新原子队列从剩余任务去重接续；同pair三臂始终同卡，总160GPU小时/10天、原T0和旧24小时历史不改。GPU0借用至北京时间10/23约10:00：以各任务/arm实测P90预测整组耗时，09:15后不接预计超过10:15的新组，10:00后不接新组；已开始的完整episode自然结束，原1800秒/局硬上限仍在。GPU1继续，GPU0释放后不自动开新算子。
 
-截至2026-10-23T02:23:30.193965+08:00合计 **41/1800局**，T12/14、C12/13、P12/14；13完整pair审计通过，GPU0已通过2组。当前GPU0=handover_block-valid002-P，GPU1=open_microwave-valid001-C；无global halt。当前为扩大DEV早期状态，不外推总体SR；完整reset bank直接复用、5分钟watch继续，无自动重试。
+截至2026-10-23T10:09:05.210887+08:00合计 **256/1800局**，85完整pair审计通过；严格相同85组T69/85、C66/85、P70/85（全终态额外1局P失败，P70/86）。PF2相对C救回6、损失成功2，暂不作最终质量结论。GPU0完成150局/50组，于10:02:27自然收尾且出生身份核对全部owned退出，当前空闲；GPU1继续open_microwave-valid013-T。无global halt，5分钟watch运行、完整reset bank复用。M40含活跃累计20.075/160小时，余139.925小时。剩余1544局按当前分任务/arm时长外推单worker约4.5–6天，非区间保证，不突破原预算。当前扩大DEV，不外推独立TEST。
 
 |ID|阶段|状态|当前证据|下一步|
 |---|---|---|---|---|
 |`M39`|单层算子|in_progress|六投影8warp＋QKV联合队列，两机采用及新版全表|讨论投影BF16分段部分和的CTA私有暂存；尚未实现，不在当前GPU0继续跑|
 |`M17`|LIBERO证据|blocked|四套6000局齐，独立性/配对/长尾缺口保留|不恢复过期队列|
-|`M40`|RoboTwin扩大DEV|in_progress|临时双卡，41/1800，首GPU0完整pair通过|低开销巡检，GPU0约10点自然收尾，GPU1继续|
+|`M40`|RoboTwin扩大DEV|in_progress|256/1800、85完整pair；GPU0上午停派清理完成|GPU1继续与巡检；原160小时/10天不增|
 
-[本轮结果](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESULT.md)、[新版完整阶段表](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md)、[算子资源](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESOURCE-AND-STOP-REPORT.json)、[双卡计划](experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/PLAN.md)、[实际检查点](experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/CURRENT-CHECKPOINT.json)。10/23冻结身份与claim、10/28主表、11/01 18:00证据包；证据不足收缩claim。
+[本轮结果](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESULT.md)、[新版完整阶段表](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md)、[算子资源](experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/RESOURCE-AND-STOP-REPORT.json)、[双卡计划](experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/PLAN.md)、[上午结果](experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/MORNING-RESULT-20261023.md)、[实际检查点](experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/CURRENT-CHECKPOINT.json)。10/23冻结身份与claim、10/28主表、11/01 18:00证据包；证据不足收缩claim。

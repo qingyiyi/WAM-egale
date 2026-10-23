@@ -1,3 +1,7 @@
+## 2026-10-23T10:09:05.210887+08:00 M40上午窗口已闭合，GPU1继续
+
+完整256/1800、85组配对审计通过，严格同85组T69、C66、P70成功；P相对C救回6/损失2，外加1局P失败所在组未齐。GPU0完成150局/50组，于10:02:27自然结束，PID出生身份核对owned全退出，当前0%/11MiB；GPU1继续microwave-valid013-T，无global halt，CPU watch运行。原160小时累计含活跃20.075，余139.925小时；task×arm现有时长估剩余单worker约4.5–6天，不保证且不扩预算。四false、全部失败、原截止不改；本轮无新增GPU作业。[上午结果](../../experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/MORNING-RESULT-20261023.md)。
+
 ## 2026-10-23T02:23:30.193965+08:00 M40临时双卡巡检
 
 两卡实际运行，合计41/1800，T12/14、C12/13、P12/14；13完整pair审计通过，GPU0已通过2组。无global halt，5分钟watch继续。GPU0约10点自然停派规则不变。[检查点](../../experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023/CURRENT-CHECKPOINT.json)。
