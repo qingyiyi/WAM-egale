@@ -1,0 +1,1792 @@
+{
+  "updated": "2026-10-23T12:13:08.831264+08:00",
+  "operator": {
+    "selected": {
+      "source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
+      "header_sha256": "269e87fd477708e6198d2d03806cdfb10b8fb4a59679df65320dc6c0f8de560c",
+      "binary_sha256": "a41d778d31f8a72fb9255c2152db584f2b0c3514d3f641c6bddba826d4f06473",
+      "status": "RETAIN_FINITE_RESEARCH_CANDIDATE",
+      "selected": "All six same-shape B14 projections use measured isolated8-warp 64x128 tile; Q/K/V share one288-task queue; prior optimizations retained",
+      "grid_synchronizations": 23,
+      "mathematical_tiles": [
+        3408,
+        3480,
+        3408
+      ],
+      "four_scientific_permissions": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "production_admitted": false,
+      "evidence": "joint-qkv, final-stages and final-comparison"
+    },
+    "result": {
+      "status": "RETAIN_ALL_SIX_EIGHT_WARP_AND_JOINT_QKV",
+      "selected_source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
+      "variants": {
+        "all-six-eight": [
+          {
+            "process": 1,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.8736256122589112,
+              "previous_cached": 0.8912384033203125,
+              "torch_static_cached_final": 1.1291647911071778
+            },
+            "latency_reduction_pct": 1.9762154543368715,
+            "torch_over_custom": 1.2925042206438129
+          },
+          {
+            "process": 1,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.0432000160217285,
+              "previous_cached": 1.060966396331787,
+              "torch_static_cached_final": 1.9183104515075684
+            },
+            "latency_reduction_pct": 1.6745469386668987,
+            "torch_over_custom": 1.838871186776911
+          },
+          {
+            "process": 1,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.0594816207885742,
+              "previous_cached": 1.0755071640014648,
+              "torch_static_cached_final": 3.1489536285400392
+            },
+            "latency_reduction_pct": 1.4900452316158441,
+            "torch_over_custom": 2.972164468692026
+          },
+          {
+            "process": 2,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.8752127647399902,
+              "previous_cached": 0.8898047924041748,
+              "torch_static_cached_final": 1.1290112018585203
+            },
+            "latency_reduction_pct": 1.6399133595086823,
+            "torch_over_custom": 1.2899848440783757
+          },
+          {
+            "process": 2,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.0431488037109375,
+              "previous_cached": 1.060915231704712,
+              "torch_static_cached_final": 1.9210239410400392
+            },
+            "latency_reduction_pct": 1.6746321914170914,
+            "torch_over_custom": 1.8415627130147827
+          },
+          {
+            "process": 2,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.05763840675354,
+              "previous_cached": 1.0763264179229735,
+              "torch_static_cached_final": 3.1517184257507322
+            },
+            "latency_reduction_pct": 1.7362772908144697,
+            "torch_over_custom": 2.9799583729424577
+          }
+        ],
+        "row128": [
+          {
+            "process": 1,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.9670144081115724,
+              "previous_cached": 0.873472023010254,
+              "torch_static_cached_final": 1.1280896186828613
+            },
+            "latency_reduction_pct": -10.70925944244241,
+            "torch_over_custom": 1.166569607670938
+          },
+          {
+            "process": 1,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.145241641998291,
+              "previous_cached": 1.0447872161865233,
+              "torch_static_cached_final": 1.9175424575805664
+            },
+            "latency_reduction_pct": -9.614821492401738,
+            "torch_over_custom": 1.6743562120520832
+          },
+          {
+            "process": 1,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.1567615985870363,
+              "previous_cached": 1.0603520393371582,
+              "torch_static_cached_final": 3.1490559577941895
+            },
+            "latency_reduction_pct": -9.09222179740845,
+            "torch_over_custom": 2.722303335138982
+          },
+          {
+            "process": 2,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.9698816299438477,
+              "previous_cached": 0.8727039813995361,
+              "torch_static_cached_final": 1.1279359817504884
+            },
+            "latency_reduction_pct": -11.135236072656628,
+            "torch_over_custom": 1.1629625172051061
+          },
+          {
+            "process": 2,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.1437056064605713,
+              "previous_cached": 1.04202241897583,
+              "torch_static_cached_final": 1.9191808700561523
+            },
+            "latency_reduction_pct": -9.758253338223021,
+            "torch_over_custom": 1.6780374767904185
+          },
+          {
+            "process": 2,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.1573247909545898,
+              "previous_cached": 1.0602496147155762,
+              "torch_static_cached_final": 3.1509504318237305
+            },
+            "latency_reduction_pct": -9.155879416665025,
+            "torch_over_custom": 2.7226155150662152
+          }
+        ],
+        "joint-qkv": [
+          {
+            "process": 1,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.871833610534668,
+              "previous_cached": 0.8746495723724366,
+              "torch_static_cached_final": 1.1290112018585206
+            },
+            "latency_reduction_pct": 0.3219531486341909,
+            "torch_over_custom": 1.2949847175152305
+          },
+          {
+            "process": 1,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.042073631286621,
+              "previous_cached": 1.042841625213623,
+              "torch_static_cached_final": 1.9185152053833008
+            },
+            "latency_reduction_pct": 0.07364434909707951,
+            "torch_over_custom": 1.8410553225634934
+          },
+          {
+            "process": 1,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.0562047958374023,
+              "previous_cached": 1.06081280708313,
+              "torch_static_cached_final": 3.1469568252563476
+            },
+            "latency_reduction_pct": 0.43438495604121163,
+            "torch_over_custom": 2.9794949214951365
+          },
+          {
+            "process": 2,
+            "case": "short",
+            "ms": {
+              "custom_cached": 0.8714240074157715,
+              "previous_cached": 0.8732160091400146,
+              "torch_static_cached_final": 1.1293696403503417
+            },
+            "latency_reduction_pct": 0.20521860633406774,
+            "torch_over_custom": 1.2960047356275093
+          },
+          {
+            "process": 2,
+            "case": "middle",
+            "ms": {
+              "custom_cached": 1.0410495758056642,
+              "previous_cached": 1.043507194519043,
+              "torch_static_cached_final": 1.9207168579101563
+            },
+            "latency_reduction_pct": 0.23551526297924674,
+            "torch_over_custom": 1.8449811637680378
+          },
+          {
+            "process": 2,
+            "case": "long",
+            "ms": {
+              "custom_cached": 1.0555903911590576,
+              "previous_cached": 1.0604032039642335,
+              "torch_static_cached_final": 3.1498239517211912
+            },
+            "latency_reduction_pct": 0.45386630172217224,
+            "torch_over_custom": 2.9839452671245206
+          }
+        ],
+        "final-comparison": [
+          {
+            "process": 1,
+            "case": "short",
+            "ms": {
+              "all_six_cached": 0.8731648445129394,
+              "custom_cached": 0.8709120273590087,
+              "previous_cached": 0.8906752109527588,
+              "torch_static_cached_final": 1.1289600372314452
+            },
+            "latency_reduction_pct": 2.2188990274703335,
+            "torch_over_custom": 1.2962962983241286
+          },
+          {
+            "process": 1,
+            "case": "middle",
+            "ms": {
+              "all_six_cached": 1.042636775970459,
+              "custom_cached": 1.0412032127380373,
+              "previous_cached": 1.061580753326416,
+              "torch_static_cached_final": 1.9206144332885744
+            },
+            "latency_reduction_pct": 1.9195469138383214,
+            "torch_over_custom": 1.8446105522839888
+          },
+          {
+            "process": 1,
+            "case": "long",
+            "ms": {
+              "all_six_cached": 1.0578432083129883,
+              "custom_cached": 1.0548736095428466,
+              "previous_cached": 1.074944019317627,
+              "torch_static_cached_final": 3.1533056259155274
+            },
+            "latency_reduction_pct": 1.8671120927321483,
+            "torch_over_custom": 2.9892734043105733
+          },
+          {
+            "process": 2,
+            "case": "short",
+            "ms": {
+              "all_six_cached": 0.8741888046264649,
+              "custom_cached": 0.870348834991455,
+              "previous_cached": 0.889958381652832,
+              "torch_static_cached_final": 1.1289600372314452
+            },
+            "latency_reduction_pct": 2.2034228864678096,
+            "torch_over_custom": 1.2971351162232891
+          },
+          {
+            "process": 2,
+            "case": "middle",
+            "ms": {
+              "all_six_cached": 1.0425856113433838,
+              "custom_cached": 1.0393088340759278,
+              "previous_cached": 1.0612736225128172,
+              "torch_static_cached_final": 1.9218431472778321
+            },
+            "latency_reduction_pct": 2.0696630888538015,
+            "torch_over_custom": 1.849155019438072
+          },
+          {
+            "process": 2,
+            "case": "long",
+            "ms": {
+              "all_six_cached": 1.0561023712158204,
+              "custom_cached": 1.0552319526672362,
+              "previous_cached": 1.0747391700744628,
+              "torch_static_cached_final": 3.158067226409912
+            },
+            "latency_reduction_pct": 1.8150652688945002,
+            "torch_over_custom": 2.9927706590266583
+          }
+        ]
+      },
+      "final_direct": {
+        "short": {
+          "ms": {
+            "all_six_cached": 0.8736768245697022,
+            "custom_cached": 0.8706304311752319,
+            "previous_cached": 0.8903167963027954,
+            "torch_static_cached_final": 1.1289600372314452
+          },
+          "torch_over_custom": 1.29671557162033,
+          "reduction_vs_prior_pct": 2.2111640720825165,
+          "reduction_vs_all_six_pct": 0.34868652902299013
+        },
+        "middle": {
+          "ms": {
+            "all_six_cached": 1.0426111936569213,
+            "custom_cached": 1.0402560234069824,
+            "previous_cached": 1.0614271879196167,
+            "torch_static_cached_final": 1.9212287902832033
+          },
+          "torch_over_custom": 1.8468807169132395,
+          "reduction_vs_prior_pct": 1.9945941420748237,
+          "reduction_vs_all_six_pct": 0.22589151778413807
+        },
+        "long": {
+          "ms": {
+            "all_six_cached": 1.0569727897644043,
+            "custom_cached": 1.0550527811050414,
+            "previous_cached": 1.074841594696045,
+            "torch_static_cached_final": 3.1556864261627195
+          },
+          "torch_over_custom": 2.991022328624655,
+          "reduction_vs_prior_pct": 1.841091160656072,
+          "reduction_vs_all_six_pct": 0.18165166387972276
+        }
+      },
+      "finite_correctness": {
+        "real_signatures_per_variant": 9,
+        "structural_controls_per_variant": 36,
+        "complete_calls_per_variant": 225,
+        "passed_variants": [
+          "all-six-eight",
+          "row128",
+          "joint-qkv"
+        ],
+        "K128": "CPU_COMPILE_INELIGIBLE_ZERO_GPU_CALLS"
+      },
+      "engineering_quality_screen": false,
+      "independent_test_complete": false,
+      "noninferiority_established": false,
+      "formal_performance_permission": false,
+      "production_admitted": false
+    },
+    "stage_summary": ".pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/CURRENT-STAGE-SUMMARY.json",
+    "stage_table": ".pipeline/experiments/single-layer-async-gemm-20261020/small-projection-followup-20261023/STAGE-TABLE.md"
+  },
+  "resource": {
+    "status": "CLOSED_OPERATOR_JOBS_GPU0_HANDED_TO_ROBOTWIN",
+    "registered_start": "2026-10-23T01:34:21.302293+08:00",
+    "deadline": "2026-10-23T02:34:21.302293+08:00",
+    "closed_at": "2026-10-23T02:03:36.590751+08:00",
+    "GPU_workers_lifecycle_seconds": 250.77600693702698,
+    "CPU_build_seconds": 621.7747204303741,
+    "CUDA_active_seconds": "UNKNOWN",
+    "conservative_charge_including_preparation_waiting_CPU_and_cleanup_seconds": 1755.288458,
+    "cumulative_prior_seconds": 16672.58698485547,
+    "cumulative_used_seconds": 18427.875442855468,
+    "cumulative_cap_seconds": 36000,
+    "remaining_seconds": 17572.124557144532,
+    "new_remote_storage_bytes": 99236011,
+    "new_local_storage_bytes": 16331816,
+    "all_owned_exited": true,
+    "GPU0_empty_at_handoff": true,
+    "failed_jobs": [
+      {
+        "name": "build",
+        "owned": {
+          "pid": 927701,
+          "birth_ticks": 728933489,
+          "pgid": 927701
+        },
+        "start": 1792690876.3311477,
+        "gpu": false,
+        "returncode": 1,
+        "end": 1792690894.387869,
+        "lifecycle_seconds": 18.056721448898315,
+        "root_reaped": true,
+        "identity_alive": false
+      }
+    ],
+    "non_GPU_bookkeeping_issue": "First adoption check lacked remote top-level JOB; stopped before binary copy, uploaded same original registration then completed",
+    "remote_NCU_launches": 0,
+    "local_GPU_launches": 0,
+    "robotwin": "New shared160h campaign, GPU0 temporarily until near10:00, GPU1 continues; separate budget"
+  },
+  "robotwin": {
+    "checked_at": "2026-10-23T12:13:08.831264+08:00",
+    "completed": 285,
+    "planned": 1800,
+    "complete_pairs": 95,
+    "counts": {
+      "T": {
+        "complete": 95,
+        "success": 77
+      },
+      "C": {
+        "complete": 95,
+        "success": 74
+      },
+      "P": {
+        "complete": 95,
+        "success": 77
+      }
+    },
+    "paired_counts": {
+      "T": {
+        "complete": 95,
+        "success": 77
+      },
+      "C": {
+        "complete": 95,
+        "success": 74
+      },
+      "P": {
+        "complete": 95,
+        "success": 77
+      }
+    },
+    "halt": null,
+    "soft_stops": {
+      "gpu0": {
+        "at": 1792720946.3048294,
+        "target": 1792720800.0,
+        "next_pair": 86,
+        "predicted_seconds": 591.9075473785401,
+        "reason": "estimated next full pair would finish beyond morning window"
+      }
+    },
+    "workers": {
+      "gpu0": {
+        "status": "SOFT_MORNING_WINDOW_COMPLETE",
+        "active_case": "stack_blocks_two-valid014-T",
+        "active_pair": 85,
+        "active_arm": "T",
+        "teacher_attempted": 96003,
+        "error": null,
+        "end": 1792720947.2321014,
+        "GPU_lifecycle_seconds": 28725.871973752975,
+        "remaining_owned": [],
+        "completed": 150,
+        "pair_audits": 50
+      },
+      "gpu0-until14-20261023": {
+        "status": "RUNNING_COMPLETE_DEV_EPISODE",
+        "active_case": "place_object_basket-valid016-T",
+        "active_pair": 96,
+        "active_arm": "T",
+        "teacher_attempted": 1250,
+        "error": null,
+        "end": null,
+        "GPU_lifecycle_seconds": 337.34389781951904,
+        "remaining_owned": null,
+        "completed": 0,
+        "pair_audits": 0,
+        "server": {
+          "status": "SERVING",
+          "teacher_attempted": 1262,
+          "teacher_returned": 1262,
+          "policy_chunks": 16
+        },
+        "client": {
+          "status": "RUNNING_COMPLETE_EPISODE",
+          "environment_commands": 464,
+          "policy_chunks": 16,
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          }
+        }
+      },
+      "gpu1": {
+        "status": "RUNNING_COMPLETE_DEV_EPISODE",
+        "active_case": "open_microwave-valid015-P",
+        "active_pair": 95,
+        "active_arm": "P",
+        "teacher_attempted": 133783,
+        "error": null,
+        "end": null,
+        "GPU_lifecycle_seconds": 37808.521136283875,
+        "remaining_owned": null,
+        "completed": 108,
+        "pair_audits": 36,
+        "server": {
+          "status": "SERVING",
+          "teacher_attempted": 133785,
+          "teacher_returned": 133785,
+          "policy_chunks": 2158
+        },
+        "client": {
+          "status": "RUNNING_COMPLETE_EPISODE",
+          "environment_commands": 1360,
+          "policy_chunks": 43,
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          }
+        }
+      }
+    },
+    "GPU_used_seconds": 80103.26965975761,
+    "GPU_cap_seconds": 576000,
+    "active_budget_owners": [
+      "gpu1",
+      "gpu0-until14-20261023"
+    ],
+    "GPU_telemetry": "0, 43 %, 25434 MiB\n1, 76 %, 25874 MiB\n",
+    "midday_watch": {
+      "status": "RUNNING_CPU_ONLY_MIDDAY_WATCH",
+      "start": 1792728447.3434331,
+      "pid": 987041,
+      "birth_ticks": 732690584,
+      "GPU_used": false,
+      "polls": 2,
+      "last_check": "2026-10-23T12:12:27.357035+08:00",
+      "completed": 285
+    },
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "robotwin_dispatch": {
+    "job": {
+      "goal": "Temporary dual-GPU fixed RoboTwin pairs after operator completion, GPU0 natural finish near 10:00 Beijing",
+      "registered_at": "2026-10-23T01:42:28.932963+08:00",
+      "execution_authorization": "USER_APPROVED_TEMPORARY_DUAL_GPU_20261023",
+      "existing_campaign_GPU_cap_seconds": 576000,
+      "existing_campaign_T0": "2026-10-22T22:03:22.728607+08:00",
+      "existing_campaign_absolute_deadline": "2026-11-01T22:03:22.728607+08:00",
+      "GPU0_soft_target": "2026-10-23T10:00:00+08:00",
+      "GPU0_new_pair_rule": "After 09:15, start a full pair only if task/arm observed P90 predicted finish is no later than10:15; after10:00 no new pair; admitted complete episodes finish naturally within original1800s per-episode cap",
+      "fixed_episodes": 1800,
+      "new_training": false,
+      "new_rental": false,
+      "storage_root_cap_bytes": 12884901888,
+      "ownership": "Atomic pair claims, 3 arms same GPU; legacy completed pairs seeded, no repeats",
+      "resource_accounting": "Original shared160h ledger plus live per-worker reservations; preparation/failures/cleanup included",
+      "engineering": "Original frozen model/TF/tau/schedule/COMBINED/reset bank; full existing bank referenced, no duplicate bank save",
+      "stop": "Global infrastructure/audit failure stops new claims; no automatic retry; preserve all terminal records",
+      "four_scientific_permissions": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "source_directory": ".pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/dual-until10-20261023",
+    "CPU_queue_check": {
+      "status": "PASS_CPU_ONLY_SHARED_QUEUE_CONTRACT",
+      "concurrent_pairs": 24,
+      "unique_pair_ownership": true,
+      "three_arms_same_owner": true,
+      "soft_deadline_prevents_new_pair": true,
+      "global_halt_propagates": true,
+      "total_160h_budget_admission_no_double_reservation": true,
+      "CUDA_started": false,
+      "synthetic_not_robot_results": true
+    },
+    "handoff": {
+      "status": "OPERATOR_COMPLETE_GPU0_RELEASED_TO_AUTHORIZED_ROBOTWIN",
+      "at": "2026-10-23T02:03:36.590751+08:00",
+      "operator_owned_cleaned": true,
+      "GPU0_empty": true,
+      "source_sha256": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
+      "binary_sha256": "a41d778d31f8a72fb9255c2152db584f2b0c3514d3f641c6bddba826d4f06473",
+      "operator_evidence": "/root/cxz/ops/persistent-tile-20261019/evidence/async-gemm-20261020/small-projection-followup-20261023",
+      "GPU0_soft_target": "2026-10-23T10:00:00+08:00",
+      "no_new_operator_GPU_jobs": true
+    },
+    "GPU0_morning_cleanup": {
+      "checked_at": "2026-10-23T10:10:30.038197+08:00",
+      "gpu0_status": "SOFT_MORNING_WINDOW_COMPLETE",
+      "ended_at": "2026-10-23T10:02:27.232101+08:00",
+      "remaining_owned_in_status": [],
+      "live_owned_birth_matched": [],
+      "zombie_owned_birth_matched": [],
+      "GPU_processes": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366, [Not Found], 21328 MiB\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 2407317, [Not Found], 4515 MiB\n",
+      "strict_completed_pairs": 85,
+      "paired_counts": {
+        "T": {
+          "success": 69,
+          "completed": 85
+        },
+        "C": {
+          "success": 66,
+          "completed": 85
+        },
+        "P": {
+          "success": 70,
+          "completed": 85
+        }
+      },
+      "storage_bytes": 3405717542,
+      "storage_cap_bytes": 12884901888
+    }
+  },
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false,
+  "robotwin_morning_summary": {
+    "as_of": "2026-10-23T10:09:05.210887+08:00",
+    "status": "GPU0_MORNING_WINDOW_CLOSED_GPU1_CONTINUES",
+    "completed_episodes": 256,
+    "planned_episodes": 1800,
+    "strict_complete_pairs": 85,
+    "strict_paired_counts": {
+      "T": {
+        "success": 69,
+        "completed": 85
+      },
+      "C": {
+        "success": 66,
+        "completed": 85
+      },
+      "P": {
+        "success": 70,
+        "completed": 85
+      }
+    },
+    "all_terminal_counts": {
+      "T": {
+        "complete": 85,
+        "success": 69
+      },
+      "C": {
+        "complete": 85,
+        "success": 66
+      },
+      "P": {
+        "complete": 86,
+        "success": 70
+      }
+    },
+    "C_P_outcomes": {
+      "rescued_C_fail_P_success": 6,
+      "lost_C_success_P_fail": 2,
+      "both_success": 64,
+      "both_failure": 13
+    },
+    "GPU0_cleanup": {
+      "checked_at": "2026-10-23T10:10:30.038197+08:00",
+      "gpu0_status": "SOFT_MORNING_WINDOW_COMPLETE",
+      "ended_at": "2026-10-23T10:02:27.232101+08:00",
+      "remaining_owned_in_status": [],
+      "live_owned_birth_matched": [],
+      "zombie_owned_birth_matched": [],
+      "GPU_processes": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366, [Not Found], 21328 MiB\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 2407317, [Not Found], 4515 MiB\n",
+      "strict_completed_pairs": 85,
+      "paired_counts": {
+        "T": {
+          "success": 69,
+          "completed": 85
+        },
+        "C": {
+          "success": 66,
+          "completed": 85
+        },
+        "P": {
+          "success": 70,
+          "completed": 85
+        }
+      },
+      "storage_bytes": 3405717542,
+      "storage_cap_bytes": 12884901888
+    },
+    "GPU1_active_at_checkpoint": "open_microwave-valid013-T",
+    "GPU_budget": {
+      "used_including_active_hours": 20.074543934928045,
+      "remaining_hours": 139.92545606507196,
+      "cap_hours": 160
+    },
+    "case_duration_based_remaining_single_worker_hours": {
+      "sum_task_arm_medians": 106.04686668879457,
+      "sum_task_arm_p90s": 136.21828199525675,
+      "not_a_statistical_interval": true,
+      "excludes_unobserved_tails_and_future_setup": true
+    },
+    "by_task": {
+      "handover_block": {
+        "T": {
+          "completed": 14,
+          "success": 14
+        },
+        "C": {
+          "completed": 14,
+          "success": 14
+        },
+        "P": {
+          "completed": 14,
+          "success": 14
+        }
+      },
+      "lift_pot": {
+        "T": {
+          "completed": 14,
+          "success": 14
+        },
+        "C": {
+          "completed": 14,
+          "success": 14
+        },
+        "P": {
+          "completed": 14,
+          "success": 14
+        }
+      },
+      "open_microwave": {
+        "T": {
+          "completed": 13,
+          "success": 3
+        },
+        "C": {
+          "completed": 13,
+          "success": 1
+        },
+        "P": {
+          "completed": 14,
+          "success": 1
+        }
+      },
+      "place_object_basket": {
+        "T": {
+          "completed": 15,
+          "success": 12
+        },
+        "C": {
+          "completed": 15,
+          "success": 11
+        },
+        "P": {
+          "completed": 15,
+          "success": 13
+        }
+      },
+      "press_stapler": {
+        "T": {
+          "completed": 14,
+          "success": 11
+        },
+        "C": {
+          "completed": 14,
+          "success": 11
+        },
+        "P": {
+          "completed": 14,
+          "success": 13
+        }
+      },
+      "stack_blocks_two": {
+        "T": {
+          "completed": 15,
+          "success": 15
+        },
+        "C": {
+          "completed": 15,
+          "success": 15
+        },
+        "P": {
+          "completed": 15,
+          "success": 15
+        }
+      }
+    },
+    "quality_permissions": {
+      "engineering_quality_screen": false,
+      "independent_test_complete": false,
+      "noninferiority_established": false,
+      "formal_performance_permission": false
+    }
+  },
+  "robotwin_previous_morning_checkpoint": {
+    "checked_at": "2026-10-23T10:09:05.210887+08:00",
+    "completed": 256,
+    "total": 1800,
+    "counts": {
+      "T": {
+        "complete": 85,
+        "success": 69
+      },
+      "C": {
+        "complete": 85,
+        "success": 66
+      },
+      "P": {
+        "complete": 86,
+        "success": 70
+      }
+    },
+    "complete_pairs": 85,
+    "workers": {
+      "0": {
+        "status": "SOFT_MORNING_WINDOW_COMPLETE",
+        "active_case": "stack_blocks_two-valid014-T",
+        "active_pair": 85,
+        "active_arm": "T",
+        "teacher_attempted": 96003,
+        "GPU_lifecycle_seconds": 28725.871973752975,
+        "error": null,
+        "end": 1792720947.2321014,
+        "completed": 150,
+        "pair_audits": [
+          {
+            "pair_id": 12,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 13,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 14,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 15,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 17,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 20,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 23,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 30,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 31,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 32,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 33,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 35,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 38,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 40,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 42,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 43,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 45,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 46,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 48,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 49,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 50,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 51,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 52,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 54,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 55,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 56,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 57,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 58,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 60,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 61,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 62,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 63,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 64,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 66,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 67,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 68,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 69,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 70,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 72,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 73,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 74,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 75,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 76,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 78,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 79,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 80,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 81,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 82,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 84,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 85,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          }
+        ],
+        "last_episode": {
+          "episode_id": "stack_blocks_two-valid014-T",
+          "pair_id": 85,
+          "arm": "T",
+          "task": "stack_blocks_two",
+          "valid_index": 14,
+          "status": "COMPLETE_SUCCESS",
+          "success": true,
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          },
+          "actual_commands": 272,
+          "environment_take_action_cnt": 264,
+          "engineering": {
+            "variant": "COMBINED",
+            "front_omitted": true,
+            "batch_warmups_deferred": 2,
+            "batch_warmups_materialized": 0
+          },
+          "policy_chunks": 9,
+          "failure_penalty": 272,
+          "horizon": 800,
+          "lifecycle_seconds": 171.48346972465515,
+          "client_returncode": 0
+        },
+        "active_client": {
+          "status": "COMPLETE_SUCCESS",
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          },
+          "environment_commands": 272,
+          "policy_chunks": 9,
+          "render_device": {
+            "alias": "pci:0000:47:00.0",
+            "pci": "0000:47:00.0",
+            "name": "NVIDIA A100-SXM4-40GB",
+            "can_render": true,
+            "is_cuda": true,
+            "cuda_id": 0
+          }
+        }
+      },
+      "1": {
+        "status": "RUNNING_COMPLETE_DEV_EPISODE",
+        "active_case": "open_microwave-valid013-T",
+        "active_pair": 83,
+        "active_arm": "T",
+        "teacher_attempted": 108153,
+        "GPU_lifecycle_seconds": 30365.592909812927,
+        "error": null,
+        "end": null,
+        "completed": 79,
+        "pair_audits": [
+          {
+            "pair_id": 9,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 10,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 11,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 16,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 18,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 19,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 21,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 22,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 24,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 25,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 26,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 27,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 28,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 29,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 34,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 36,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 37,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 39,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 41,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 44,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 47,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 53,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 59,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 65,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 71,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          },
+          {
+            "pair_id": 77,
+            "fields": {
+              "first_two_input_action_valid_KV_digest_RNG_path_exact": true,
+              "two_policy_chunks_present": true,
+              "C_P_initial_exact": true
+            },
+            "pass_all": true,
+            "KV_scope": "all valid KV cryptographic digests; raw full KV not retained"
+          }
+        ],
+        "last_episode": {
+          "episode_id": "open_microwave-valid013-P",
+          "pair_id": 83,
+          "arm": "P",
+          "task": "open_microwave",
+          "valid_index": 13,
+          "status": "COMPLETE_ALGORITHMIC_FAILURE",
+          "success": false,
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          },
+          "actual_commands": 1520,
+          "environment_take_action_cnt": 1500,
+          "engineering": {
+            "variant": "COMBINED",
+            "front_omitted": true,
+            "batch_warmups_deferred": 2,
+            "batch_warmups_materialized": 0
+          },
+          "policy_chunks": 48,
+          "failure_penalty": 1500,
+          "horizon": 1500,
+          "lifecycle_seconds": 791.5333309173584,
+          "client_returncode": 0
+        },
+        "active_client": {
+          "status": "RUNNING_COMPLETE_EPISODE",
+          "initial_checks": {
+            "physical_exact": true,
+            "initial_observation_exact": true
+          },
+          "environment_commands": 1168,
+          "policy_chunks": 38,
+          "render_device": {
+            "alias": "pci:0000:4e:00.0",
+            "pci": "0000:4e:00.0",
+            "name": "NVIDIA A100-SXM4-40GB",
+            "can_render": true,
+            "is_cuda": true,
+            "cuda_id": 0
+          }
+        }
+      }
+    },
+    "halt": null,
+    "soft_stops": {
+      "gpu0": {
+        "at": 1792720946.3048294,
+        "target": 1792720800.0,
+        "next_pair": 86,
+        "predicted_seconds": 591.9075473785401,
+        "reason": "estimated next full pair would finish beyond morning window"
+      }
+    },
+    "formal_performance_permission": false,
+    "engineering_quality_screen": false,
+    "noninferiority_established": false,
+    "independent_test_complete": false,
+    "GPU_lifecycle_seconds_including_active": 72268.35816574097,
+    "GPU_cap_seconds": 576000,
+    "GPU_status": "0, GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726, 0 %, 11 MiB\n1, GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 57 %, 25244 MiB\n"
+  },
+  "robotwin_midday": {
+    "JOB": {
+      "goal": "GPU0 temporarily resumes untouched fixed RoboTwin pairs until near 14:00 Beijing; GPU1 continues",
+      "registered_at": "2026-10-23T12:06:37.544840+08:00",
+      "execution_authorization": "USER_APPROVED_GPU0_ROBOTWIN_UNTIL_APPROX_14_20261023",
+      "source": "Existing frozen eval100 dual-worker mathematical/server/client source; new orchestration namespace",
+      "shared_queue": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/PAIR-CLAIMS.json",
+      "namespace": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/gpu0-until14-20261023",
+      "GPU_uuid": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+      "soft_target": "2026-10-23T14:00:00+08:00",
+      "admission": "At complete-pair boundary, stop new pair after14:00 or after13:15 if observed task/arm P90 plus10%+15s predicts finishing after14:15; admitted complete episodes finish naturally",
+      "original_per_episode_cap_seconds": 1800,
+      "cleanup_reserve_seconds": 900,
+      "job_absolute_deadline": "2026-10-23T15:45:00+08:00",
+      "hard_deadline_reason": "Safety bound for an admitted worst-case three-episode pair plus cleanup; expected stop remains near14:00",
+      "shared_GPU_cap_seconds": 576000,
+      "original_T0": "2026-10-22T22:03:22.728607+08:00",
+      "original_absolute_deadline": "2026-11-01T22:03:22.728607+08:00",
+      "additional_storage_cap_bytes": 1073741824,
+      "campaign_storage_cap_bytes": 12884901888,
+      "CPU": {
+        "guard": [
+          18,
+          19
+        ],
+        "client": [
+          16,
+          17
+        ],
+        "server": [
+          20,
+          21
+        ]
+      },
+      "ports": [
+        35076,
+        35071
+      ],
+      "fixed_science": "Same600 pairs/1800episodes, target/draft/normalizer/tau/CFG/physics/render/RNG/COMBINED/reset-bank; no training or tuning",
+      "retry": "No restart of old attempt, no rerun of completed/claimed pairs, infrastructure/audit failure halts new admission",
+      "terminal_status": "PENDING_LAUNCH",
+      "cleanup": "Owned PID+birth only; server/client exit and lease close; finite CPU watcher+lossless archiver close after terminal",
+      "evidence_path": ".pipeline/experiments/robotwin-pilot-20261020/eval100-20261022/gpu0-midday-until14-20261023",
+      "four_scientific_permissions": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    "start_receipt": {
+      "status": "OBSERVED_REAL_COMPLETE_EPISODE_RUNNING_NOT_YET_TERMINAL",
+      "checked_at": "2026-10-23T12:13:08.831264+08:00",
+      "namespace": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/gpu0-until14-20261023",
+      "guard": {
+        "pid": 987037,
+        "birth_ticks": 732690559,
+        "pgid": 987037
+      },
+      "active_case": "place_object_basket-valid016-T",
+      "teacher_returned": 1262,
+      "environment_commands": 464,
+      "initial_checks": {
+        "physical_exact": true,
+        "initial_observation_exact": true
+      },
+      "soft_target": "2026-10-23T14:00:00+08:00",
+      "no_new_case_or_retry": true,
+      "existing_reset_bank_reused": true,
+      "GPU1_continues": true,
+      "shared_cap_GPU_hours": 160,
+      "source_equal_receipt": "PREPARE-RESULT.json"
+    },
+    "preparation_accounting": {
+      "accounting_id": "MIDDAY_PREPARATION_gpu0-until14-20261023",
+      "kind": "CONSERVATIVE_NON_GPU_PREPARATION",
+      "namespace": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/gpu0-until14-20261023",
+      "start": 1792728397.54484,
+      "end": 1792728447.1134565,
+      "charged_seconds": 49.56861639022827,
+      "GPU_workers_used": false,
+      "reason": "Registered setup/wait before leased worker; original ledger/T0 unchanged"
+    }
+  },
+  "operator_DAG_design_prompt": {
+    "path": ".pipeline/experiments/single-layer-async-gemm-20261020/DAG-DESIGN-REVIEW-PROMPT-20261023.md",
+    "fixed_operator_review_commit": "319ac6a17daed34e80692796f72a97bf44f4a99f",
+    "implementation_started": false,
+    "purpose": "Neutral status/evidence and user-idea handoff; web reviewer independently judges next direction and priority",
+    "detailed_design_required": false,
+    "user_correction": "Previous prescribed detailed DAG design brief superseded; historical version at464bf51 retained"
+  }
+}

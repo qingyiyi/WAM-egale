@@ -1,8 +1,8 @@
-# 当前研究入口（2026-10-23中午）
+# 当前研究入口（2026-10-23下午）
 
-[最新执行](CURRENT-EXECUTION-20261023.md)、[状态JSON](CURRENT-EXECUTION-20261023.json)、[网页版现状与想法交接prompt](../.pipeline/experiments/single-layer-async-gemm-20261020/DAG-DESIGN-REVIEW-PROMPT-20261023.md)。GPU0已另获授权实际接续RoboTwin至约14:00，GPU1继续；原预算/固定队列不变。单层算子当前1.2967/1.8469/2.9910×warm Graph，QKV交错与调度留到统一DAG设计，尚未实施新方案。
+[最新执行](CURRENT-EXECUTION-20261023.md)、[状态JSON](CURRENT-EXECUTION-20261023.json)、[网页版现状与想法交接prompt](../.pipeline/experiments/single-layer-async-gemm-20261020/DAG-DESIGN-REVIEW-PROMPT-20261023.md)。RoboTwin340/1800、113完整pair，同组T92/C88/P90成功。GPU0中午于14:01完整收尾清理，GPU1继续；原预算/固定队列不变。当前算子完整单层warm Graph1.2967/1.8469/2.9910×，没有新增调度实现，等待网页版独立评议。
 
-下面TF暂停72局为历史科研快照，原RESULTS.json与retention不改；四科学权限false。[中午更新前入口](history/current-before-midday-allocation-20261023/START_HERE.md)。
+下面TF暂停72局为历史科研快照，原RESULTS.json与retention不改；四科学权限false。[下午更新前入口](history/current-before-afternoon-close-20261023/START_HERE.md)。
 
 ---
 

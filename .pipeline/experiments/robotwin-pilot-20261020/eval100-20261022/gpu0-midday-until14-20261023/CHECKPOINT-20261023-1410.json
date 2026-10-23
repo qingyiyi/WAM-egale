@@ -1,0 +1,136 @@
+{
+  "checked_at": "2026-10-23T14:10:23.898921+08:00",
+  "completed": 340,
+  "planned": 1800,
+  "complete_pairs": 113,
+  "counts": {
+    "T": {
+      "complete": 113,
+      "success": 92
+    },
+    "C": {
+      "complete": 113,
+      "success": 88
+    },
+    "P": {
+      "complete": 114,
+      "success": 91
+    }
+  },
+  "paired_counts": {
+    "T": {
+      "complete": 113,
+      "success": 92
+    },
+    "C": {
+      "complete": 113,
+      "success": 88
+    },
+    "P": {
+      "complete": 113,
+      "success": 90
+    }
+  },
+  "halt": null,
+  "soft_stops": {
+    "gpu0": {
+      "at": 1792720946.3048294,
+      "target": 1792720800.0,
+      "next_pair": 86,
+      "predicted_seconds": 591.9075473785401,
+      "reason": "estimated next full pair would finish beyond morning window"
+    }
+  },
+  "workers": {
+    "gpu0": {
+      "status": "SOFT_MORNING_WINDOW_COMPLETE",
+      "active_case": "stack_blocks_two-valid014-T",
+      "active_pair": 85,
+      "active_arm": "T",
+      "teacher_attempted": 96003,
+      "error": null,
+      "end": 1792720947.2321014,
+      "GPU_lifecycle_seconds": 28725.871973752975,
+      "remaining_owned": [],
+      "completed": 150,
+      "pair_audits": 50
+    },
+    "gpu0-until14-20261023": {
+      "status": "PARTIAL_SHARED_BUDGET_NO_NEXT_PAIR",
+      "active_case": "open_microwave-valid017-C",
+      "active_pair": 107,
+      "active_arm": "C",
+      "teacher_attempted": 24022,
+      "error": null,
+      "end": 1792735294.6296008,
+      "GPU_lifecycle_seconds": 6847.516371965408,
+      "remaining_owned": [],
+      "completed": 18,
+      "pair_audits": 6,
+      "server": {
+        "status": "SERVING",
+        "teacher_attempted": 24022,
+        "teacher_returned": 24022,
+        "policy_chunks": 393
+      },
+      "client": {
+        "status": "COMPLETE_ALGORITHMIC_FAILURE",
+        "environment_commands": 1520,
+        "policy_chunks": 48,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        }
+      }
+    },
+    "gpu1": {
+      "status": "RUNNING_COMPLETE_DEV_EPISODE",
+      "active_case": "open_microwave-valid018-T",
+      "active_pair": 113,
+      "active_arm": "T",
+      "teacher_attempted": 157475,
+      "error": null,
+      "end": null,
+      "GPU_lifecycle_seconds": 44844.2955095768,
+      "remaining_owned": null,
+      "completed": 145,
+      "pair_audits": 48,
+      "server": {
+        "status": "SERVING",
+        "teacher_attempted": 157475,
+        "teacher_returned": 157475,
+        "policy_chunks": 2533
+      },
+      "client": {
+        "status": "RUNNING_COMPLETE_EPISODE",
+        "environment_commands": 400,
+        "policy_chunks": 14,
+        "initial_checks": {
+          "physical_exact": true,
+          "initial_observation_exact": true
+        }
+      }
+    }
+  },
+  "GPU_used_seconds": 93644.13347101212,
+  "GPU_cap_seconds": 576000,
+  "active_budget_owners": [
+    "gpu1"
+  ],
+  "GPU_telemetry": "0, 0 %, 11 MiB\n1, 66 %, 25257 MiB\n",
+  "midday_watch": {
+    "status": "COMPLETE_MIDDAY_WORKER_TERMINAL",
+    "start": 1792728447.3434331,
+    "pid": 987041,
+    "birth_ticks": 732690584,
+    "GPU_used": false,
+    "polls": 24,
+    "last_check": "2026-10-23T14:02:27.529843+08:00",
+    "completed": 339,
+    "end": 1792735347.530609
+  },
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false
+}
