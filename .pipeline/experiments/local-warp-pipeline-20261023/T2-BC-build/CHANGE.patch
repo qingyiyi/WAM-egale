@@ -1,0 +1,179 @@
+--- A/whole_layer.cu
++++ BC/whole_layer.cu
+@@ -80,6 +80,7 @@
+     int64_t *ffn_trace; // 仅debug记录四组就绪/开始/完成时间，不参与计时路径。
+     int b, q, c, cb, l, fb, pool, update;
+     bool temb_float, cache, candidate, affine, debug_modulation, context_cached;
++    bool ffn_prepare_overlap; // B/C share one DSO: only preparation ordering differs.
+     float eps[7];
+     float *fa_lse, *fa_lse_partial, *fa_out_partial;
+     int64_t *fa_meta;
+@@ -96,7 +97,21 @@
+     alignas(16) B input[D];
+     float x[D], y[D], reduce[6];
+ };
++// Preparation belongs to this tile only. It does not alias active MMA storage.
++struct alignas(8) PreparedB4 { __nv_bfloat162 lo, hi; };
++struct FfnPrepare {
++    float4 bias[32], table[32];
++    float4 gate[256];             // First eight rows, not the complete tile.
++    PreparedB4 residual[256];
++};
++struct FfnLocalTile {
++    CutlassTile<128>::Storage math;
++    FfnPrepare prepared;
++};
++static_assert(sizeof(FfnPrepare) == 7168);
++static_assert(sizeof(FfnLocalTile) <= 112128, "Do not increase existing tile workspace");
+ union alignas(32) TileShared {
++    FfnLocalTile ffn_local;
+     GemmShared gemm;
+     CutlassGemmStorage cutlass_gemm;
+     NormShared norm;
+@@ -256,24 +271,54 @@
+         store.add_tile_offset({warp % 2, warp / 2});
+         store.store(acc);
+     }
+-    __syncthreads();
++    // Caller joins all eight warps after independent preparation.
++}
++
++// W0/W1/W2/W7 prepare only inputs independent of the current accumulator.
++// W3-W6 retain their original CUTLASS mainloop. No partial is read here.
++__device__ __forceinline__ void ffn2_prepare(const Params &p, FfnPrepare &s,
++                                             int tile, bool second) {
++    const int pw = threadIdx.x / 32;
++    if (!second || (pw >= 3 && pw < 7)) return;
++    const int tid = pw == 7 ? int(threadIdx.x) - 128 : int(threadIdx.x);
++    const int column = (tile % 24) * 128 + (tid % 32) * 4;
++    const int cell = 5 * D + column;
++    const auto b = *reinterpret_cast<const PreparedB4 *>((const B *)p.w[26] + column);
++    const float2 bl = __bfloat1622float2(b.lo), bh = __bfloat1622float2(b.hi);
++    const float4 table = *reinterpret_cast<const float4 *>((const float *)p.w[0] + cell);
++    if (tid < 32) {
++        s.bias[tid] = {bl.x, bl.y, bh.x, bh.y};
++        s.table[tid] = table;
++    }
++    for (int vector = tid; vector < 256; vector += 128) {
++        const int row = (tile / 24) * 128 + vector / 32;
++        const int64_t src = (int64_t(row / p.q) * p.l + (p.l == 1 ? 0 : row % p.q)) * 6 * D + cell;
++        float4 t;
++        if (p.temb_float) t = *reinterpret_cast<const float4 *>((const float *)p.temb + src);
++        else {
++            const auto v = *reinterpret_cast<const PreparedB4 *>((const B *)p.temb + src);
++            const float2 l = __bfloat1622float2(v.lo), h = __bfloat1622float2(v.hi);
++            t = {l.x,l.y,h.x,h.y};
++        }
++        s.gate[vector] = {__fadd_rn(table.x,t.x), __fadd_rn(table.y,t.y),
++                          __fadd_rn(table.z,t.z), __fadd_rn(table.w,t.w)};
++        s.residual[vector] = *reinterpret_cast<const PreparedB4 *>(bp(p,R2) + row * D + column);
++    }
+ }
+ 
+ // 每线程四个相邻元素；同一线程的列不随循环变化，bias/固定调制只读一次。
+ // 保留(partial2+bias)+BF16(partial1)，再BF16舍入、FP32门控残差的顺序。
+ __device__ __forceinline__ void ffn2_commit(const Params &p, CutlassTile<128>::Storage &s,
+-                                            int tile, bool second) {
+-    struct alignas(8) B4 { __nv_bfloat162 lo, hi; };
++                                            int tile, bool second, const FfnPrepare &prepared) {
++    using B4 = PreparedB4;
+     B *out = bp(p, F2);
+     const int col_in_tile = (int(threadIdx.x) % 32) * 4;
+     const int col = (tile % 24) * 128 + col_in_tile;
+     const int cell = 5 * D + col;
+     float4 bias{}, table{};
+     if (second) {
+-        const B4 b = *reinterpret_cast<const B4 *>((const B *)p.w[26] + col);
+-        const float2 lo = __bfloat1622float2(b.lo), hi = __bfloat1622float2(b.hi);
+-        bias = {lo.x, lo.y, hi.x, hi.y};
+-        table = *reinterpret_cast<const float4 *>((const float *)p.w[0] + cell);
++        bias = prepared.bias[int(threadIdx.x) % 32];
++        table = prepared.table[int(threadIdx.x) % 32];
+     }
+     for (int i = 4 * int(threadIdx.x); i < 128 * 128; i += 4 * THREADS) {
+         const int row = (tile / 24) * 128 + i / 128;
+@@ -291,6 +336,12 @@
+             if (!second || p.debug_modulation)
+                 *reinterpret_cast<B4 *>(out + row * D + col) = rounded;
+             if (second) {
++                float4 gate;
++                B4 residual;
++                if (i < 8 * 128) {
++                    gate = prepared.gate[i / 4];
++                    residual = prepared.residual[i / 4];
++                } else {
+                 const int batch = row / p.q, token = row % p.q;
+                 const int64_t src = (int64_t(batch) * p.l + (p.l == 1 ? 0 : token)) * 6 * D + cell;
+                 float4 t;
+@@ -301,10 +352,11 @@
+                     const float2 lo = __bfloat1622float2(v.lo), hi = __bfloat1622float2(v.hi);
+                     t = {lo.x, lo.y, hi.x, hi.y};
+                 }
+-                const float4 gate = {__fadd_rn(table.x, t.x), __fadd_rn(table.y, t.y),
++                gate = {__fadd_rn(table.x, t.x), __fadd_rn(table.y, t.y),
+                                      __fadd_rn(table.z, t.z), __fadd_rn(table.w, t.w)};
++                residual = *reinterpret_cast<const B4 *>(bp(p, R2) + row * D + col);
++                }
+                 const float2 lo = __bfloat1622float2(rounded.lo), hi = __bfloat1622float2(rounded.hi);
+-                const B4 residual = *reinterpret_cast<const B4 *>(bp(p, R2) + row * D + col);
+                 const float2 rlo = __bfloat1622float2(residual.lo), rhi = __bfloat1622float2(residual.hi);
+                 *reinterpret_cast<B4 *>(bp(p, OUT) + row * D + col) = {
+                     __floats2bfloat162_rn(__fadd_rn(rlo.x, __fmul_rn(lo.x, gate.x)),
+@@ -499,8 +551,18 @@
+             continue;
+         }
+         const int group = task / 24, tile = (group / 2) * 24 + task % 24;
+-        auto &workspace = s.tile.cutlass_gemm.ffn1;
+-        ffn2_partition(workspace, bp(p, ACT), (const B *)p.w[25], tile, group & 1);
++        auto &workspace = s.tile.ffn_local.math;
++        auto &prepared = s.tile.ffn_local.prepared;
++        if (!p.ffn_prepare_overlap) {
++            ffn2_prepare(p, prepared, tile, group & 1);
++            __syncthreads(); // B: explicitly serialize preparation before MMA.
++        }
++        if (compute())
++            ffn2_partition(workspace, bp(p, ACT), (const B *)p.w[25], tile, group & 1);
++        else if (p.ffn_prepare_overlap)
++            ffn2_prepare(p, prepared, tile, group & 1);
++        __syncthreads(); // Both accumulator and prepared inputs ready; buffer not reused.
++
+         if (group & 1) {
+             if (threadIdx.x == 0)
+                 while (DeviceCounter(p.ffn_state[8 + group - 1])
+@@ -508,7 +570,7 @@
+                     __nanosleep(128);
+             __syncthreads(); // FP32第二段仍留在本CTA shared，第一段BF16现已可见。
+         }
+-        ffn2_commit(p, workspace, tile, group & 1);
++        ffn2_commit(p, workspace, tile, group & 1, prepared);
+         ffn_publish(p, 8, group, 24);
+     }
+     g.sync(); // FFN所有输出已完成；取代FFN1出口和FFN2两处grid同步。
+@@ -1040,7 +1102,7 @@
+         const std::optional<Tensor> &freq, const std::vector<Tensor> &cache,
+         const std::optional<Tensor> &rows, int update, const std::vector<double> &eps, bool debug,
+         const std::optional<Tensor> &context_rows, const std::optional<Tensor> &context_roots,
+-        const std::vector<Tensor> &context_kv) {
++        const std::vector<Tensor> &context_kv, bool ffn_prepare_overlap) {
+     c10::cuda::CUDAGuard guard(x.device());
+     Params p{};
+     p.b = x.size(0);
+@@ -1058,6 +1120,7 @@
+     p.temb = temb.data_ptr();
+     p.temb_float = temb.scalar_type() == at::kFloat;
+     p.debug_modulation = debug;
++    p.ffn_prepare_overlap = ffn_prepare_overlap;
+     p.context_cached = !context_kv.empty();
+     for (int i = 0; i < 27; ++i)
+         p.w[i] = w[i].data_ptr();
+@@ -1190,7 +1253,9 @@
+           py::arg("context"), py::arg("temb"), py::arg("rotary"), py::arg("cache"), py::arg("rows"),
+           py::arg("update"), py::arg("eps"), py::arg("debug") = true,
+           py::arg("context_rows") = std::nullopt, py::arg("context_roots") = std::nullopt,
+-          py::arg("context_kv") = std::vector<at::Tensor>{});
++          py::arg("context_kv") = std::vector<at::Tensor>{}, py::arg("ffn_prepare_overlap") = true);
++    m.attr("ffn_prepare_bytes") = int(sizeof(wam_whole_layer_v1::FfnPrepare));
++    m.attr("ffn_local_tile_bytes") = int(sizeof(wam_whole_layer_v1::FfnLocalTile));
+     m.attr("production_admitted") = false;
+     m.attr("computation_launches") = 1;
+     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;

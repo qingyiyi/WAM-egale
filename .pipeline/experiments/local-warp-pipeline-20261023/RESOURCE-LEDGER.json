@@ -1,0 +1,1090 @@
+{
+  "status": "CLOSED",
+  "start": "2026-10-23T15:39:44.474401+08:00",
+  "deadline": "2026-10-25T15:39:44.474401+08:00",
+  "gpu_cap_seconds": 7200,
+  "prior_cumulative_seconds": 18427.875442855468,
+  "cumulative_cap_seconds": 36000,
+  "storage_cap_bytes": 3221225472,
+  "remote_root": "/root/cxz/ops/local-warp-pipeline-20261023",
+  "gpu": "GPU-c3fa8d6f-a1fe-2cfe-1dc9-5cf0a0779726",
+  "authorization": "User explicitly execute attached T0-T4 bounded experiments; 120 minutes GPU cumulative within old remaining",
+  "anchor": "319ac6a17daed34e80692796f72a97bf44f4a99f",
+  "document_anchor": "effd6580b43b503ce6f00b0074f8cc8570adffa1",
+  "four_scientific_permissions": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "production_admitted": false,
+  "jobs": [
+    {
+      "status": "COMPLETE",
+      "start": 1792741282.893474,
+      "registration": {
+        "goal": "T0 A/A independent graphs and matched D/G, actual three KV full-layer warm replay",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T0-process1/timing.py",
+          "1"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "A_repeat": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "D",
+          "A_repeat",
+          "G"
+        ],
+        "terminal_status": "REGISTERED",
+        "cleanup": "PID and birth checked owned child only"
+      },
+      "owned_guard": {
+        "pid": 1004272,
+        "birth": 733974137,
+        "pgid": 1004272
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3509213\n",
+      "owned_child": {
+        "pid": 1004287,
+        "birth": 733974153,
+        "pgid": 1004287
+      },
+      "child_start": 1792741282.9696968,
+      "returncode": 0,
+      "child_end": 1792741300.4071848,
+      "owned_exited": true,
+      "end": 1792741300.4073193,
+      "lifecycle_seconds": 17.513845205307007
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792741321.8902051,
+      "registration": {
+        "goal": "T0 A/A independent graphs and matched D/G, actual three KV full-layer warm replay",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T0-process2/timing.py",
+          "2"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "A_repeat": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "D",
+          "A_repeat",
+          "G"
+        ],
+        "terminal_status": "REGISTERED",
+        "cleanup": "PID and birth checked owned child only"
+      },
+      "owned_guard": {
+        "pid": 1004387,
+        "birth": 733978035,
+        "pgid": 1004387
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3509213\n",
+      "owned_child": {
+        "pid": 1004402,
+        "birth": 733978053,
+        "pgid": 1004402
+      },
+      "child_start": 1792741321.9748738,
+      "returncode": 0,
+      "child_end": 1792741339.43447,
+      "owned_exited": true,
+      "end": 1792741339.4345996,
+      "lifecycle_seconds": 17.544394493103027
+    },
+    {
+      "status": "FAILED_OR_TIMEOUT",
+      "start": 1792741712.7038782,
+      "registration": {
+        "goal": "Build only FFN2 current tile preparation variant, shared B/C DSO",
+        "gpu": false,
+        "cap_seconds": 600,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/variants/BC/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+          "build_ext",
+          "--build-lib",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build",
+          "--build-temp",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build/build/obj"
+        ],
+        "source_sha256": "b17717d8c2331974798d17d965fcdfaca5ab11e1a0d2f7d2d0f03c1267d34abf"
+      },
+      "owned_guard": {
+        "pid": 1004711,
+        "birth": 734017117,
+        "pgid": 1004711
+      },
+      "owned_child": {
+        "pid": 1004725,
+        "birth": 734017128,
+        "pgid": 1004725
+      },
+      "child_start": 1792741712.718815,
+      "returncode": 1,
+      "child_end": 1792741714.408311,
+      "owned_exited": true,
+      "end": 1792741714.4084516,
+      "lifecycle_seconds": 1.704573392868042
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792741856.9532864,
+      "registration": {
+        "goal": "Build only FFN2 current tile preparation variant, shared B/C DSO",
+        "gpu": false,
+        "cap_seconds": 600,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/variants/BC/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+          "build_ext",
+          "--build-lib",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2",
+          "--build-temp",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/build/obj"
+        ],
+        "source_sha256": "b17717d8c2331974798d17d965fcdfaca5ab11e1a0d2f7d2d0f03c1267d34abf",
+        "reason": "Harness relative TMPDIR failed before compilation; resolve absolute paths. Candidate source unchanged, preserve first failed attempt."
+      },
+      "owned_guard": {
+        "pid": 1004977,
+        "birth": 734031542,
+        "pgid": 1004977
+      },
+      "owned_child": {
+        "pid": 1004991,
+        "birth": 734031553,
+        "pgid": 1004991
+      },
+      "child_start": 1792741856.9702644,
+      "returncode": 0,
+      "child_end": 1792742008.7935183,
+      "owned_exited": true,
+      "end": 1792742008.793644,
+      "lifecycle_seconds": 151.84035754203796
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742078.2836277,
+      "registration": {
+        "goal": "Finite real correctness for FFN2 B",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-B-real/gate.py"
+        ],
+        "candidate_binary": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+        "variants": [
+          "original",
+          "drop_1",
+          "drop_16",
+          "drop_32",
+          "holes16",
+          "cfg_alternating",
+          "cfg_swap",
+          "context_alternating",
+          "context_swap",
+          "temb_fp32",
+          "temb_first_token",
+          "temb_first_token_fp32"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1005548,
+        "birth": 734053674,
+        "pgid": 1005548
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3562551\n",
+      "owned_child": {
+        "pid": 1005563,
+        "birth": 734053692,
+        "pgid": 1005563
+      },
+      "child_start": 1792742078.3581486,
+      "returncode": 0,
+      "child_end": 1792742090.3379996,
+      "owned_exited": true,
+      "end": 1792742090.3381283,
+      "lifecycle_seconds": 12.054500579833984
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742133.1025229,
+      "registration": {
+        "goal": "Finite structure correctness for FFN2 B",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-B-structure/extended.py"
+        ],
+        "candidate_binary": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+        "variants": [
+          "original",
+          "drop_1",
+          "drop_16",
+          "drop_32",
+          "holes16",
+          "cfg_alternating",
+          "cfg_swap",
+          "context_alternating",
+          "context_swap",
+          "temb_fp32",
+          "temb_first_token",
+          "temb_first_token_fp32"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1005733,
+        "birth": 734059163,
+        "pgid": 1005718
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3562551\n",
+      "owned_child": {
+        "pid": 1005735,
+        "birth": 734059177,
+        "pgid": 1005735
+      },
+      "child_start": 1792742133.2097652,
+      "returncode": 0,
+      "child_end": 1792742147.4928517,
+      "owned_exited": true,
+      "end": 1792742147.492976,
+      "lifecycle_seconds": 14.390453100204468
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742147.534644,
+      "registration": {
+        "goal": "Finite real correctness for FFN2 C",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-C-real/gate.py"
+        ],
+        "candidate_binary": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+        "variants": [
+          "original",
+          "drop_1",
+          "drop_16",
+          "drop_32",
+          "holes16",
+          "cfg_alternating",
+          "cfg_swap",
+          "context_alternating",
+          "context_swap",
+          "temb_fp32",
+          "temb_first_token",
+          "temb_first_token_fp32"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1005749,
+        "birth": 734060607,
+        "pgid": 1005718
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3562551\n",
+      "owned_child": {
+        "pid": 1005751,
+        "birth": 734060617,
+        "pgid": 1005751
+      },
+      "child_start": 1792742147.6146154,
+      "returncode": 0,
+      "child_end": 1792742159.6448267,
+      "owned_exited": true,
+      "end": 1792742159.6449575,
+      "lifecycle_seconds": 12.110313653945923
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742159.684541,
+      "registration": {
+        "goal": "Finite structure correctness for FFN2 C",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-C-structure/extended.py"
+        ],
+        "candidate_binary": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+        "variants": [
+          "original",
+          "drop_1",
+          "drop_16",
+          "drop_32",
+          "holes16",
+          "cfg_alternating",
+          "cfg_swap",
+          "context_alternating",
+          "context_swap",
+          "temb_fp32",
+          "temb_first_token",
+          "temb_first_token_fp32"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1005764,
+        "birth": 734061822,
+        "pgid": 1005718
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3562551\n",
+      "owned_child": {
+        "pid": 1005766,
+        "birth": 734061834,
+        "pgid": 1005766
+      },
+      "child_start": 1792742159.7842565,
+      "returncode": 0,
+      "child_end": 1792742174.0671759,
+      "owned_exited": true,
+      "end": 1792742174.0673096,
+      "lifecycle_seconds": 14.382768630981445
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742174.1050706,
+      "registration": {
+        "goal": "Independent diagnostic copy: first BF16 partial and software local intervals only, not adoption timing",
+        "gpu": false,
+        "cap_seconds": 600,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/variants/A_diag/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+          "build_ext",
+          "--build-lib",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-A-diag-build",
+          "--build-temp",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-A-diag-build/build/obj"
+        ],
+        "source_sha256": "73a6c1ed269587f4b987a0090d6387e0b9dfad35017168e5fe4a6b742620a5d4"
+      },
+      "owned_guard": {
+        "pid": 1005780,
+        "birth": 734063264,
+        "pgid": 1005718
+      },
+      "owned_child": {
+        "pid": 1005781,
+        "birth": 734063271,
+        "pgid": 1005781
+      },
+      "child_start": 1792742174.1476326,
+      "returncode": 0,
+      "child_end": 1792742325.415512,
+      "owned_exited": true,
+      "end": 1792742325.4156415,
+      "lifecycle_seconds": 151.3105709552765
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742325.4530725,
+      "registration": {
+        "goal": "Independent diagnostic copy: first BF16 partial and software local intervals only, not adoption timing",
+        "gpu": false,
+        "cap_seconds": 600,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/variants/BC_diag/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+          "build_ext",
+          "--build-lib",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-diag-build",
+          "--build-temp",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-diag-build/build/obj"
+        ],
+        "source_sha256": "7bc3a44863769b8e853fcf0a9bf4931b5175645827a01fefc55a2887e0b21114"
+      },
+      "owned_guard": {
+        "pid": 1006198,
+        "birth": 734078398,
+        "pgid": 1005718
+      },
+      "owned_child": {
+        "pid": 1006199,
+        "birth": 734078405,
+        "pgid": 1006199
+      },
+      "child_start": 1792742325.4857473,
+      "returncode": 0,
+      "child_end": 1792742477.6045375,
+      "owned_exited": true,
+      "end": 1792742477.6046665,
+      "lifecycle_seconds": 152.15159392356873
+    },
+    {
+      "status": "FAILED_OR_TIMEOUT",
+      "start": 1792742517.4510722,
+      "registration": {
+        "goal": "Compare exact BF16 first partial against independent A diagnostic, and local software intervals",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-diagnostic/diagnostic_worker.py"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1006612,
+        "birth": 734097598,
+        "pgid": 1006597
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3580579\n",
+      "owned_child": {
+        "pid": 1006614,
+        "birth": 734097612,
+        "pgid": 1006614
+      },
+      "child_start": 1792742517.564783,
+      "returncode": 1,
+      "child_end": 1792742529.094282,
+      "owned_exited": true,
+      "end": 1792742529.0944333,
+      "lifecycle_seconds": 11.64336109161377
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742635.5232606,
+      "registration": {
+        "goal": "Compare exact BF16 first partial against independent A diagnostic, and local software intervals",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-diagnostic-r2/diagnostic_worker.py"
+        ],
+        "reason": "First diagnostic compared uninitialized slot padding; compare declared valid extent and separately preserve raw mismatch. No numeric tolerance change."
+      },
+      "owned_guard": {
+        "pid": 1006946,
+        "birth": 734109401,
+        "pgid": 1006946
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3590377\n",
+      "owned_child": {
+        "pid": 1006961,
+        "birth": 734109415,
+        "pgid": 1006961
+      },
+      "child_start": 1792742635.5911818,
+      "returncode": 0,
+      "child_end": 1792742647.4208553,
+      "owned_exited": true,
+      "end": 1792742647.4210281,
+      "lifecycle_seconds": 11.897767543792725
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742703.530769,
+      "registration": {
+        "goal": "No-instrumentation A/B/C matched whole layer, three KV",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-timing1/timing.py",
+          "1"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "B": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "C": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "B",
+          "C"
+        ],
+        "modes": {
+          "B": false,
+          "C": true
+        }
+      },
+      "owned_guard": {
+        "pid": 1007077,
+        "birth": 734116206,
+        "pgid": 1007062
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3590377\n",
+      "owned_child": {
+        "pid": 1007079,
+        "birth": 734116220,
+        "pgid": 1007079
+      },
+      "child_start": 1792742703.637959,
+      "returncode": 0,
+      "child_end": 1792742718.6734679,
+      "owned_exited": true,
+      "end": 1792742718.6735992,
+      "lifecycle_seconds": 15.14283013343811
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742718.7125142,
+      "registration": {
+        "goal": "No-instrumentation A/B/C matched whole layer, three KV",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T2-timing2/timing.py",
+          "2"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "B": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "C": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "B",
+          "C"
+        ],
+        "modes": {
+          "B": false,
+          "C": true
+        }
+      },
+      "owned_guard": {
+        "pid": 1007129,
+        "birth": 734117724,
+        "pgid": 1007062
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3600846\n",
+      "owned_child": {
+        "pid": 1007131,
+        "birth": 734117737,
+        "pgid": 1007131
+      },
+      "child_start": 1792742718.8134973,
+      "returncode": 0,
+      "child_end": 1792742733.932793,
+      "owned_exited": true,
+      "end": 1792742733.9329212,
+      "lifecycle_seconds": 15.220407009124756
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792742913.2228694,
+      "registration": {
+        "goal": "Independent anchor-A L1 norm modulation fusion build",
+        "gpu": false,
+        "cap_seconds": 600,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/variants/L1/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+          "build_ext",
+          "--build-lib",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build",
+          "--build-temp",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/build/obj"
+        ],
+        "source_sha256": "e9598ee55ebfa5bd165746cc6aabcd3231327f1bfa84ef465b40f1b9a5f265fc"
+      },
+      "owned_guard": {
+        "pid": 1007514,
+        "birth": 734137169,
+        "pgid": 1007514
+      },
+      "owned_child": {
+        "pid": 1007528,
+        "birth": 734137183,
+        "pgid": 1007528
+      },
+      "child_start": 1792742913.2657313,
+      "returncode": 0,
+      "child_end": 1792743064.2886288,
+      "owned_exited": true,
+      "end": 1792743064.2887578,
+      "lifecycle_seconds": 151.0658884048462
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743261.1932597,
+      "registration": {
+        "goal": "Finite original-Torch correctness and state for independent L1 fusion",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-real/gate.py"
+        ],
+        "candidate_binary": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+        "variants": [
+          "original",
+          "drop_1",
+          "drop_16",
+          "drop_32",
+          "holes16",
+          "cfg_alternating",
+          "cfg_swap",
+          "context_alternating",
+          "context_swap",
+          "temb_fp32",
+          "temb_first_token",
+          "temb_first_token_fp32"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1008085,
+        "birth": 734171972,
+        "pgid": 1008070
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3631575\n",
+      "owned_child": {
+        "pid": 1008087,
+        "birth": 734171987,
+        "pgid": 1008087
+      },
+      "child_start": 1792743261.3105326,
+      "returncode": 0,
+      "child_end": 1792743273.2901604,
+      "owned_exited": true,
+      "end": 1792743273.2902849,
+      "lifecycle_seconds": 12.097025156021118
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743273.333712,
+      "registration": {
+        "goal": "Finite original-Torch correctness and state for independent L1 fusion",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-structure/extended.py"
+        ],
+        "candidate_binary": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+        "variants": [
+          "original",
+          "drop_1",
+          "drop_16",
+          "drop_32",
+          "holes16",
+          "cfg_alternating",
+          "cfg_swap",
+          "context_alternating",
+          "context_swap",
+          "temb_fp32",
+          "temb_first_token",
+          "temb_first_token_fp32"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1008140,
+        "birth": 734173186,
+        "pgid": 1008070
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3631575\n",
+      "owned_child": {
+        "pid": 1008142,
+        "birth": 734173199,
+        "pgid": 1008142
+      },
+      "child_start": 1792743273.4271605,
+      "returncode": 0,
+      "child_end": 1792743287.709984,
+      "owned_exited": true,
+      "end": 1792743287.710141,
+      "lifecycle_seconds": 14.376428842544556
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743287.748288,
+      "registration": {
+        "goal": "Same-round normal full-layer A versus independent L1",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-timing1/timing.py",
+          "1"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L1": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "L1"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1008205,
+        "birth": 734174628,
+        "pgid": 1008070
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3631575\n",
+      "owned_child": {
+        "pid": 1008207,
+        "birth": 734174642,
+        "pgid": 1008207
+      },
+      "child_start": 1792743287.861607,
+      "returncode": 0,
+      "child_end": 1792743301.7528672,
+      "owned_exited": true,
+      "end": 1792743301.7529967,
+      "lifecycle_seconds": 14.004708766937256
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743301.7906485,
+      "registration": {
+        "goal": "Same-round normal full-layer A versus independent L1",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-timing2/timing.py",
+          "2"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L1": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "L1"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1008223,
+        "birth": 734176032,
+        "pgid": 1008070
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3631575\n",
+      "owned_child": {
+        "pid": 1008226,
+        "birth": 734176046,
+        "pgid": 1008226
+      },
+      "child_start": 1792743301.9012346,
+      "returncode": 0,
+      "child_end": 1792743315.6952527,
+      "owned_exited": true,
+      "end": 1792743315.6953824,
+      "lifecycle_seconds": 13.904733896255493
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743477.348114,
+      "registration": {
+        "goal": "Independent anchor-A L13 norm modulation fusion build",
+        "gpu": false,
+        "cap_seconds": 600,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/variants/L13/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/build_whole_layer.py",
+          "build_ext",
+          "--build-lib",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build",
+          "--build-temp",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/build/obj"
+        ],
+        "source_sha256": "d714ebfe1e838d7be59e37122f0f392c92d765d4792cfb97d8f38e4260191dfb"
+      },
+      "owned_guard": {
+        "pid": 1008686,
+        "birth": 734193588,
+        "pgid": 1008671
+      },
+      "owned_child": {
+        "pid": 1008688,
+        "birth": 734193595,
+        "pgid": 1008688
+      },
+      "child_start": 1792743477.3946106,
+      "returncode": 0,
+      "child_end": 1792743627.6524837,
+      "owned_exited": true,
+      "end": 1792743627.6526098,
+      "lifecycle_seconds": 150.3044958114624
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743650.7001886,
+      "registration": {
+        "goal": "Finite original-Torch correctness and state for independent L1+L3 fusion",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-real/gate.py"
+        ],
+        "candidate_binary": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+        "variants": [
+          "original",
+          "drop_1",
+          "drop_16",
+          "drop_32",
+          "holes16",
+          "cfg_alternating",
+          "cfg_swap",
+          "context_alternating",
+          "context_swap",
+          "temb_fp32",
+          "temb_first_token",
+          "temb_first_token_fp32"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1009258,
+        "birth": 734210923,
+        "pgid": 1009243
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3655241\n",
+      "owned_child": {
+        "pid": 1009260,
+        "birth": 734210936,
+        "pgid": 1009260
+      },
+      "child_start": 1792743650.8008337,
+      "returncode": 0,
+      "child_end": 1792743662.6794875,
+      "owned_exited": true,
+      "end": 1792743662.6796227,
+      "lifecycle_seconds": 11.9794340133667
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743662.7311523,
+      "registration": {
+        "goal": "Finite original-Torch correctness and state for independent L1+L3 fusion",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-structure/extended.py"
+        ],
+        "candidate_binary": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+        "variants": [
+          "original",
+          "drop_1",
+          "drop_16",
+          "drop_32",
+          "holes16",
+          "cfg_alternating",
+          "cfg_swap",
+          "context_alternating",
+          "context_swap",
+          "temb_fp32",
+          "temb_first_token",
+          "temb_first_token_fp32"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1009273,
+        "birth": 734212126,
+        "pgid": 1009243
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3655241\n",
+      "owned_child": {
+        "pid": 1009275,
+        "birth": 734212141,
+        "pgid": 1009275
+      },
+      "child_start": 1792743662.8498926,
+      "returncode": 0,
+      "child_end": 1792743677.0815618,
+      "owned_exited": true,
+      "end": 1792743677.0816946,
+      "lifecycle_seconds": 14.350542306900024
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743677.1218495,
+      "registration": {
+        "goal": "Same-round normal full-layer A versus L1 versus L1+L3",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-timing1/timing.py",
+          "1"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L1": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L13": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "L1",
+          "L13"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1009289,
+        "birth": 734213565,
+        "pgid": 1009243
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3655241\n",
+      "owned_child": {
+        "pid": 1009291,
+        "birth": 734213580,
+        "pgid": 1009291
+      },
+      "child_start": 1792743677.2439919,
+      "returncode": 0,
+      "child_end": 1792743692.2766986,
+      "owned_exited": true,
+      "end": 1792743692.2768328,
+      "lifecycle_seconds": 15.154983282089233
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743692.3150587,
+      "registration": {
+        "goal": "Same-round normal full-layer A versus L1 versus L1+L3",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-timing2/timing.py",
+          "2"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L1": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L13": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "L1",
+          "L13"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1009308,
+        "birth": 734215085,
+        "pgid": 1009243
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3655241\n",
+      "owned_child": {
+        "pid": 1009311,
+        "birth": 734215097,
+        "pgid": 1009311
+      },
+      "child_start": 1792743692.408041,
+      "returncode": 0,
+      "child_end": 1792743707.4908235,
+      "owned_exited": true,
+      "end": 1792743707.4909508,
+      "lifecycle_seconds": 15.175892114639282
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743845.0634205,
+      "registration": {
+        "goal": "Final same-round normal full layer A/L1/L13/original Torch D/strong guarded G",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T4-final1/timing.py",
+          "1"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L1": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L13": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "L1",
+          "L13",
+          "D",
+          "G"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1009766,
+        "birth": 734230359,
+        "pgid": 1009751
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3665417\n",
+      "owned_child": {
+        "pid": 1009769,
+        "birth": 734230371,
+        "pgid": 1009769
+      },
+      "child_start": 1792743845.1459687,
+      "returncode": 0,
+      "child_end": 1792743863.6870573,
+      "owned_exited": true,
+      "end": 1792743863.6871903,
+      "lifecycle_seconds": 18.623769760131836
+    },
+    {
+      "status": "COMPLETE",
+      "start": 1792743863.729523,
+      "registration": {
+        "goal": "Final same-round normal full layer A/L1/L13/original Torch D/strong guarded G",
+        "gpu": true,
+        "cap_seconds": 180,
+        "command": [
+          "/root/cxz/envs/va/bin/python",
+          "/root/cxz/ops/local-warp-pipeline-20261023/T4-final2/timing.py",
+          "2"
+        ],
+        "binaries": {
+          "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L1": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+          "L13": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+        },
+        "arms": [
+          "A",
+          "L1",
+          "L13",
+          "D",
+          "G"
+        ]
+      },
+      "owned_guard": {
+        "pid": 1009787,
+        "birth": 734232226,
+        "pgid": 1009751
+      },
+      "prelaunch_apps": "GPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 1223366\nGPU-4acf84ff-31ce-dead-c2a4-2a122b123b8c, 3665417\n",
+      "owned_child": {
+        "pid": 1009790,
+        "birth": 734232239,
+        "pgid": 1009790
+      },
+      "child_start": 1792743863.827735,
+      "returncode": 0,
+      "child_end": 1792743882.61578,
+      "owned_exited": true,
+      "end": 1792743882.615909,
+      "lifecycle_seconds": 18.886386156082153
+    }
+  ],
+  "GPU_lifecycle_seconds": 290.45454573631287,
+  "CPU_compile_seconds": 758.3774800300598,
+  "CUDA_active_seconds": "UNKNOWN",
+  "cumulative_charged_seconds": 19476.70746862184,
+  "closed_at": "2026-10-23T16:26:34.464876+08:00",
+  "GPU_reserved_window_seconds": 2809.9904515743256,
+  "non_worker_window_seconds": 1761.1584258079529,
+  "final_cumulative_charged_seconds": 21237.865894429793,
+  "all_owned_exited": true,
+  "gpu0_empty_at_close": true,
+  "remaining_original_seconds": 14762.134105570207,
+  "remaining_this_window_seconds": 4390.009548425674,
+  "accounting_note": "\u4fdd\u5b88\u5c06\u4ece\u5f00\u59cb\u81f3GPU\u6e05\u7406\u6574\u4e2a\u5360\u7528\u7a97\u53e3\u8ba1\u5165\u672c\u8f6e120\u5206\u949f\u4e0e\u539f10\u5c0f\u65f6\u7d2f\u8ba1\uff1bworker\u751f\u547d\u5468\u671f/CPU\u7f16\u8bd1\u53e6\u5217\uff0c\u4e0d\u80fd\u76f8\u52a0\u91cd\u590d\u6536\u8d39\u3002\u975eworker\u4f59\u91cf\u542b\u51c6\u5907\u3001\u4ea4\u4e92\u3001\u6587\u732e\u3001\u6587\u4ef6\u4f20\u8f93\uff0c\u672a\u5206\u522b\u6d4bCPU active/\u6392\u961f\u3002CUDA active UNKNOWN\u3002\u539f\u9010job\u7d2f\u8ba1\u5b57\u6bb5\u4fdd\u7559\u3002"
+}

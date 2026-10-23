@@ -1,0 +1,10 @@
+{
+  "goal": "Compare exact BF16 first partial against independent A diagnostic, and local software intervals",
+  "gpu": true,
+  "cap_seconds": 180,
+  "command": [
+    "/root/cxz/envs/va/bin/python",
+    "/root/cxz/ops/local-warp-pipeline-20261023/T2-diagnostic-r2/diagnostic_worker.py"
+  ],
+  "reason": "First diagnostic compared uninitialized slot padding; compare declared valid extent and separately preserve raw mismatch. No numeric tolerance change."
+}

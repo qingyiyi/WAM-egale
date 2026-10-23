@@ -1,0 +1,24 @@
+{
+  "goal": "No-instrumentation A/B/C matched whole layer, three KV",
+  "gpu": true,
+  "cap_seconds": 180,
+  "command": [
+    "/root/cxz/envs/va/bin/python",
+    "/root/cxz/ops/local-warp-pipeline-20261023/T2-timing2/timing.py",
+    "2"
+  ],
+  "binaries": {
+    "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "B": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "C": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+  },
+  "arms": [
+    "A",
+    "B",
+    "C"
+  ],
+  "modes": {
+    "B": false,
+    "C": true
+  }
+}

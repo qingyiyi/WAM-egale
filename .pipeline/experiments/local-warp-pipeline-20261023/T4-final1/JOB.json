@@ -1,0 +1,22 @@
+{
+  "goal": "Final same-round normal full layer A/L1/L13/original Torch D/strong guarded G",
+  "gpu": true,
+  "cap_seconds": 180,
+  "command": [
+    "/root/cxz/envs/va/bin/python",
+    "/root/cxz/ops/local-warp-pipeline-20261023/T4-final1/timing.py",
+    "1"
+  ],
+  "binaries": {
+    "A": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "L1": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "L13": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so"
+  },
+  "arms": [
+    "A",
+    "L1",
+    "L13",
+    "D",
+    "G"
+  ]
+}

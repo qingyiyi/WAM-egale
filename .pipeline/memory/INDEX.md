@@ -1,5 +1,9 @@
 # 长期记忆索引
 
+- [硬件规划不依赖不可用H100](global/requirements/requirement-硬件规划不依赖当前不可用的H100.md)（constraint，算子硬件规划）：用户当前无H100；H800仅候选，未提供机器或新增执行授权。
+
+- [局部warp流水与逐项完整阶段表](global/requirements/requirement-局部warp流水每项结束输出完整阶段表.md)（constraint，本轮T0–T4）：新有限实验获准，A独立产物、GPU≤120分钟且旧累计不重置；每项结束在聊天打印全表。
+
 - [微波炉完整评测后再查原因](global/requirements/decision-微波炉完整评测后再核查失败原因.md)（constraint，M40）：继续原队列，等该任务100组三臂完整终态后先核Target官方复现、再查投机额外失败；不采纳立即暂停建议，原资源边界不变。
 
 - [网页版先看现状与想法、独立判断](global/requirements/preference-网页版研究讨论先交代现状和想法由其独立判断.md)（guideline，本轮算子网页讨论）：先给事实/用户想法/未知，开放方向与顺序，不预设详细设计或方案。

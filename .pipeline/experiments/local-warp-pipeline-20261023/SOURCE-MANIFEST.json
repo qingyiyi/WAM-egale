@@ -1,0 +1,104 @@
+{
+  "anchor": "319ac6a17daed34e80692796f72a97bf44f4a99f",
+  "document_anchor": "effd6580b43b503ce6f00b0074f8cc8570adffa1",
+  "local_worktree": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/local-warp-pipeline-20261023/worktree",
+  "mirror_head_at_start": "63dc3e25e14c408125b082852b685baf0c0c09a7",
+  "anchor_sources": {
+    "csrc/whole_layer.cu": "fb650be4d78b876b980e0866117eae21db894139aa8b7cfb5c351ba2121a1717",
+    "csrc/cutlass_gemm.cuh": "269e87fd477708e6198d2d03806cdfb10b8fb4a59679df65320dc6c0f8de560c",
+    "csrc/gemm_pipeline.cuh": "95ecc6b5aa1264f92335374915b653b69684b87c8dc3989b656ac26f658e24dd",
+    "csrc/fa2_stage.cuh": "dce97d1a6ae8b8d27f0295e7594362be9fa34d0895ef921949270568cf889d11",
+    "cutlass_gemm_codegen.py": "b6c7b0fa799d7b8cb1ea341560196d4bfd3fb75bafc2ee4c1e58f70f31db8b6d",
+    "fa2_codegen.py": "939658fa3a04f33be5b20b60402aa69be6624cdbedf4da1dd6d61698d0fcdfe7",
+    "norm_codegen.py": "9db1b01967a039032e43890f16ecdf9cdb902bdc47f7450d55f338334b52e858",
+    "whole_layer.py": "5ebfa1bc7a1ef66f3ed9459fbef152bcc5f84c5c027ad7e5857381c6f49f7418",
+    "prepared.py": "5aa9ded16a79d89a62b5d267b822e57e2d9e9c3a630b7e3d112956c155894e93",
+    "build_whole_layer.py": "19fd44bf58f1ecb7ea67216700470e0d64d5ebd8d8d7ba26ac79b9886b32b763"
+  },
+  "local_current_matches_anchor": {
+    "csrc/whole_layer.cu": true,
+    "csrc/cutlass_gemm.cuh": true,
+    "csrc/gemm_pipeline.cuh": true,
+    "csrc/fa2_stage.cuh": true,
+    "cutlass_gemm_codegen.py": true,
+    "fa2_codegen.py": true,
+    "norm_codegen.py": true,
+    "whole_layer.py": true,
+    "prepared.py": true,
+    "build_whole_layer.py": true
+  },
+  "variants": {
+    "BC": {
+      "path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/local-warp-pipeline-20261023/variants/BC/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu",
+      "sha256": "b17717d8c2331974798d17d965fcdfaca5ab11e1a0d2f7d2d0f03c1267d34abf"
+    },
+    "A_diag": {
+      "path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/local-warp-pipeline-20261023/variants/A_diag/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu",
+      "sha256": "73a6c1ed269587f4b987a0090d6387e0b9dfad35017168e5fe4a6b742620a5d4"
+    },
+    "BC_diag": {
+      "path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/local-warp-pipeline-20261023/variants/BC_diag/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu",
+      "sha256": "7bc3a44863769b8e853fcf0a9bf4931b5175645827a01fefc55a2887e0b21114"
+    },
+    "L1": {
+      "path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/local-warp-pipeline-20261023/variants/L1/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu",
+      "sha256": "e9598ee55ebfa5bd165746cc6aabcd3231327f1bfa84ef465b40f1b9a5f265fc"
+    },
+    "L13": {
+      "path": "/rjs/cxz/\u8bba\u6587\u63a2\u7d22/.pipeline/experiments/local-warp-pipeline-20261023/variants/L13/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/whole_layer.cu",
+      "sha256": "d714ebfe1e838d7be59e37122f0f392c92d765d4792cfb97d8f38e4260191dfb"
+    }
+  },
+  "protected_production_modified": false,
+  "baseline_binary_sha256": "a41d778d31f8a72fb9255c2152db584f2b0c3514d3f641c6bddba826d4f06473",
+  "retained": "L13",
+  "retained_source_commit": "1ef5b83af38d523b835f2511018334ba99a4b694",
+  "retained_binary": {
+    "path": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "164e42cb4bfe88f67277cb76f789e2c5941ce5ef0bf7b61812951a233b5304c9"
+  },
+  "production_source_and_binary_unchanged": true,
+  "worktree_now_contains": "L13 source commit; original anchor A remains in Git and remote independent A binary",
+  "timing_input_identity": "T0-process1/2 and T4-final1/2 TIMING files reference identical actual B14 layer0 fixture paths; model loaded with same block_loader; no whole-model hash was run",
+  "build": {
+    "nvcc": "12.4.99",
+    "target": "SM80",
+    "python": "3.12.14",
+    "torch": "2.9.0+cu126",
+    "driver": "535.161.08",
+    "note": "Existing toolchain mismatch warning retained, no installation or upgrade"
+  },
+  "normal_binaries": {
+    "A": {
+      "path": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "a41d778d31f8a72fb9255c2152db584f2b0c3514d3f641c6bddba826d4f06473"
+    },
+    "A_repeat": {
+      "path": "/root/cxz/ops/local-warp-pipeline-20261023/A/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "a41d778d31f8a72fb9255c2152db584f2b0c3514d3f641c6bddba826d4f06473"
+    },
+    "B": {
+      "path": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "e88283e143e17d02f5d9f5f431e3a61603f27c624dcfa8641e1bd8fbc03c94f1"
+    },
+    "C": {
+      "path": "/root/cxz/ops/local-warp-pipeline-20261023/T2-BC-build-r2/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "e88283e143e17d02f5d9f5f431e3a61603f27c624dcfa8641e1bd8fbc03c94f1"
+    },
+    "L1": {
+      "path": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L1-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "ae04b6165f9a66c45e0ef2006b88cc9caa57e18a1514843c21ed81c8a26d5467"
+    },
+    "L13": {
+      "path": "/root/cxz/ops/local-warp-pipeline-20261023/T3-L13-build/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "164e42cb4bfe88f67277cb76f789e2c5941ce5ef0bf7b61812951a233b5304c9"
+    }
+  },
+  "guarded_reference_sources_and_binary": {
+    "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/prepared.py": "5aa9ded16a79d89a62b5d267b822e57e2d9e9c3a630b7e3d112956c155894e93",
+    "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/candidate_attention.cu": "1508d74a60b93e08a09ee95f09e74367f40b55c4fe44bf9d2075a9e3da141672",
+    "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/candidate_load.h": "5c9c55c6fa02405c30eed5fe19392613ee73f310a1e93056e9b4b1e07b1d4f84",
+    "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/csrc/candidate_kernel.h": "5780b5395b1e693685db7df7320662c6ed2664b075c24f4b97ee5e025647b3c6",
+    "/root/cxz/ops/persistent-tile-20261019/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/wam_candidate_cuda.cpython-312-x86_64-linux-gnu.so": "7b476a5035957a4727998204af63ac22af2435e78997b7660814e7c4cb562f07"
+  }
+}

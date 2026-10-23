@@ -69,3 +69,7 @@ M39本轮完成，最终同轮原Torch完整单层1.2967/1.8469/2.9910×；GPU0�
 - [x] M39-DAG-WEB-PROMPT：固定319ac6a源码、现状/实测边界/用户想法整理，由网页版独立判断方向与优先级；原规定详细设计的交接已被用户纠正，无新算子GPU作业。
 
 - [ ] M40-MICROWAVE-FINAL-DIAG：按用户顺序等待微波炉100组三臂完成后核查Target官方复现与投机额外失败；CPU完成提醒已启动，原队列/资源不变。[有界计划](../../experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/PLAN.md)。
+
+- [x] M39-LOCAL-WARP：执行新授权T0–T4；[计划](../../experiments/local-warp-pipeline-20261023/PLAN.md)，严格数值、逐项完整表、独立A，GPU≤120分钟且旧累计不重置。
+
+M39-LOCAL-WARP闭合：主线不采用，副线L13仅隔离研究采用；四权限false、GPU0清理。本轮附件明确要求D/G强对照，优先于此前仅原Torch的本轮展示限制；原记录不删除。后续新方向待讨论。

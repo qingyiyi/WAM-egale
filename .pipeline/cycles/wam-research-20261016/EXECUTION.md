@@ -1,3 +1,9 @@
+## 2026-10-23T16:36:22.689192+08:00 M39局部warp有界实验闭合
+
+T0–T4完成：FFN2重叠C正常净收益INCONCLUSIVE，不采用；LN1/LN3融合L13有限225调用逐位/状态通过，完整层相对A延迟降0.687%/0.572%/0.428%，相对D1.3029/1.8530/2.9994×，中长仍慢强G3.602%/3.391%。独立源码commit1ef5b83，生产未部署。阶段本轮未插桩，完整结构/所有未测标记和失败快照均已直接聊天打印。
+
+保守占用窗口46.833分钟，workers290.455秒、CPU编译758.377秒；累计21237.866/36000秒。16:26所有owned退出、GPU0空。两次失败保留，四科学权限false。GPU1原RoboTwin继续，只读125配齐组T102/C98/P101；微波炉20组，未启动原因分析。[回传](../../experiments/local-warp-pipeline-20261023/REVIEW_RETURN.md)、[全表](../../experiments/local-warp-pipeline-20261023/STAGE-TABLE.md)、[清理](../../experiments/local-warp-pipeline-20261023/OWNED-CLEANUP.json)。
+
 ## 2026-10-23T14:11:40.212610+08:00 M40 GPU0中午窗口闭合核验
 
 14:01:34完整18局/6组后停派；6组审计全通过，owned出生身份全退出、lease闭合、GPU0显存11MiB；归档与中午watch终态。raw`PARTIAL_SHARED_BUDGET_NO_NEXT_PAIR`不改，检查原guard顺序与时刻确认由本作业截止预留触发，160小时尚余133.967，无基础设施错误/截断。GPU1及主watch继续；本次无新GPU作业。

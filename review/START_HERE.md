@@ -1,8 +1,12 @@
-# 当前研究入口（2026-10-23下午）
+# 当前研究入口：局部warp有界实验完成（2026-10-23 16:34）
 
-[最新执行](CURRENT-EXECUTION-20261023.md)、[状态JSON](CURRENT-EXECUTION-20261023.json)、[网页版现状与想法交接prompt](../.pipeline/experiments/single-layer-async-gemm-20261020/DAG-DESIGN-REVIEW-PROMPT-20261023.md)。RoboTwin340/1800、113完整pair，同组T92/C88/P90成功。GPU0中午于14:01完整收尾清理，GPU1继续；原预算/固定队列不变。当前算子完整单层warm Graph1.2967/1.8469/2.9910×，没有新增调度实现，等待网页版独立评议。
+**计时口径：本轮 A/L1/L13/D/G 全部使用外层 CUDA Graph，自有算子也被捕获和重放；双方 eager 对照未测。** [说明及源码行号](../.pipeline/experiments/local-warp-pipeline-20261023/MEASUREMENT-MODES.md)。
 
-下面TF暂停72局为历史科研快照，原RESULTS.json与retention不改；四科学权限false。[下午更新前入口](history/current-before-afternoon-close-20261023/START_HERE.md)。
+请优先读[REVIEW_RETURN](../.pipeline/experiments/local-warp-pipeline-20261023/REVIEW_RETURN.md)、[完整阶段表](../.pipeline/experiments/local-warp-pipeline-20261023/STAGE-TABLE.md)、[最终同轮对照](../.pipeline/experiments/local-warp-pipeline-20261023/FINAL-COMPARISON.md)。源码固定提交1ef5b83af38d523b835f2511018334ba99a4b694；算子研究/optimized在此公开快照显示L13，但两机原运行入口未部署该版。
+
+FFN2局部准备主线INCONCLUSIVE，不采用；LN1/LN3调制融合L13小幅改善0.4%–0.7%，中长KV仍慢强guarded约3.4%–3.6%。有限225调用/候选通过，不证明全部输入或机器人质量。四科学权限及production_admitted仍false。全部本轮GPU0 owned已退出，GPU1原RoboTwin继续；16:33配齐125组三臂，微波炉20/100组，等100组完整后才查因。原失败、旧预算起点/截止和retention不改。
+
+这是新完成的有限算子实验，替代此前“等待网页版设计”的当前状态；下方TF暂停72是历史科学快照，不改其身份/结果。此前入口保留于[history](history/current-before-local-warp-20261023/START_HERE.md)。
 
 ---
 
