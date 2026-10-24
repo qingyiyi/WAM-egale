@@ -1,0 +1,28 @@
+{
+  "source": "tools.block_loader.FIXTURES and load_block, existing saved real WAM block0 fixtures",
+  "fixture_names": [
+    "input-short-B14-action-layer0-first.pt",
+    "input-middle-B14-action-layer0-first.pt",
+    "input-long-B14-action-layer0-first.pt"
+  ],
+  "KV_lengths": [
+    288,
+    1152,
+    2160
+  ],
+  "shape": {
+    "batch": 14,
+    "Q": 16,
+    "hidden": 3072,
+    "heads": 24,
+    "head_dim": 128,
+    "cross_context": 512
+  },
+  "dtype": "BF16 model intermediates; original FP32 reductions/score boundaries unchanged",
+  "reference_A": "A.so (independent frozen wam_whole_splitk_cuda)",
+  "old_TMA": "TMA-normal.so (independent frozen wam_whole_tma_continuous_cuda)",
+  "source_identity": "candidate whole_layer.cu plus pinned current csrc/FA2/CUTLASS includes; no SHA computed per user",
+  "repeat_processes": 2,
+  "baseline": "original Torch and Guarded eager/no CUDA Graph, same warm canonical crossKV",
+  "additional_model_capture_or_training": false
+}

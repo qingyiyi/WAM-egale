@@ -4,7 +4,6 @@
 
 - [先诊断当前四MMA主循环](global/requirements/decision-先诊断当前四MMA主循环再决定优化.md)（constraint，本次M39诊断）：用户已同意输入等待/操作数与MMA主循环测量；保留现有分工、原累计余量，不自动扩warp或TMA写回。
 
-- [Paseo语音输入需要支持中文](global/requirements/requirement-Paseo语音输入需要支持中文.md)（constraint，用户工具/Paseo）：麦克风输入需要识别中文；来源为用户明确要求，不替代已有约束。
 
 - [分步实现FFN TMA流水](global/requirements/decision-分步实现FFN的TMA流水并按共享内存约束调整tile.md)（constraint，5090 FFN）：用户已批准输入→后处理→K片段就绪；容量不足允许缩小tile，旧累计预算不增。
 
