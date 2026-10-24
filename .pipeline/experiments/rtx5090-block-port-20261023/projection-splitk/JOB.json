@@ -1,0 +1,66 @@
+{
+  "id": "M39-PROJECTION-SPLITK",
+  "status": "CLOSED_REJECTED_PERFORMANCE_RESTORED_A",
+  "start": "2026-10-24T01:27:17.355600+08:00",
+  "absolute_cleanup_deadline": "2026-10-24T02:27:17.355600+08:00",
+  "wall_cap_seconds": 3600,
+  "old_cumulative_seconds": 31486.412517855468,
+  "total_cap_seconds": 36000,
+  "gpu": "existing RTX5090 only",
+  "cpu_threads": 4,
+  "storage_cap_bytes": 1073741824,
+  "call_cap": 15000,
+  "goal": "Ordered cross-CTA K partitions for Self output, Cross Q and Cross output only",
+  "reference": "frozen SPLITK-M64-FFN2 A.so / wam_whole_splitk_cuda",
+  "candidates": [
+    "PROJECTION-SPLITK"
+  ],
+  "repairs_max": 1,
+  "inputs": "three frozen B14/Q16 block0 KV288/1152/2160 fixtures; unchanged parameters and precomputed crossKV",
+  "cleanup": "owned PID+birth only; local source/binary/results return; leave instance running",
+  "production_admitted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "change_contract": {
+    "projection_weight_indices": [
+      9,
+      13,
+      19
+    ],
+    "names": [
+      "Self output",
+      "Cross Q",
+      "Cross output"
+    ],
+    "tile": [
+      64,
+      128
+    ],
+    "mma_warps": 8,
+    "K_segments": [
+      320,
+      320,
+      320,
+      320,
+      320,
+      320,
+      320,
+      320,
+      320,
+      192
+    ],
+    "tasks_per_projection": 960,
+    "reference_torch_ctas": 480,
+    "reference_torch_tile": [
+      128,
+      128
+    ],
+    "reference_torch_K_segments": 10,
+    "task_count_not_CTA_count": true
+  },
+  "candidate_outcome": "FINITE_EXACT_PASS_PERFORMANCE_REJECTED",
+  "ended": "2026-10-24T01:40:36.304385+08:00",
+  "retained": "SPLITK-M64-FFN2"
+}

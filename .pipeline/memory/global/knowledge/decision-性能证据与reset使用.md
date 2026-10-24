@@ -22,4 +22,4 @@ sources:
 
 最终text bank保留原512-token BF16，11条约44MiB；CPU7首次构建约706秒。裁padding0/11逐位失败，未用。8完整任务/4对验证动作、KV、VAE、RNG等价；reset内部127.8–154.2秒→24.8–27.5毫秒，RPC约.1秒。
 
-未来采样/质量/性能可以在等价验证后统一启用优化reset，双方baseline同样处理，首次构建/模型启动另报；不能推算并宣称新E2E已测。新TF耗时和target调用数仅诊断，正式45chunk未通过准入、未跑。
+用户10/17已明确将优化reset设为后续采样/质量/性能的项目默认，见[现行约束](../requirements/decision-实验默认启用等价reset优化.md)。双方baseline同样处理，首次构建/模型启动另报；不能推算并宣称新E2E已测。新TF耗时和target调用数仅诊断，正式45chunk未通过准入、未跑。

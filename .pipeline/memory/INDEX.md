@@ -1,5 +1,26 @@
 # 长期记忆索引
 
+- [现有5090持续使用授权](global/requirements/decision-允许持续使用现有5090开展算子研究.md)（constraint，5090算子）：用户明确取消后续5090的原十小时累计上限；旧账本保留，逐job有界，A100预算与科学门不变。
+
+- [先诊断当前四MMA主循环](global/requirements/decision-先诊断当前四MMA主循环再决定优化.md)（constraint，本次M39诊断）：用户已同意输入等待/操作数与MMA主循环测量；保留现有分工、原累计余量，不自动扩warp或TMA写回。
+
+- [Paseo语音输入需要支持中文](global/requirements/requirement-Paseo语音输入需要支持中文.md)（constraint，用户工具/Paseo）：麦克风输入需要识别中文；来源为用户明确要求，不替代已有约束。
+
+- [分步实现FFN TMA流水](global/requirements/decision-分步实现FFN的TMA流水并按共享内存约束调整tile.md)（constraint，5090 FFN）：用户已批准输入→后处理→K片段就绪；容量不足允许缩小tile，旧累计预算不增。
+
+- [按SM120实际能力优化](global/requirements/decision-按SM120实际能力优化并保持融合阶段实测对照.md)（constraint，当前5090算子）：分量诊断已收口；用户已批准四MMA＋一TMA＋三epilogue局部候选，原数值顺序/累计预算不变；当前采用版本/旧累计不变。
+
+- [A100双卡RoboTwin、算子与性能统一5090](global/requirements/decision-A100双卡专用于RoboTwin算子与性能统一5090.md)（constraint，项目资源分工）：双卡持续接续到固定完整覆盖，基础设施中断须修复接续；替代临时时段，原160小时/10天与算子预算不变。
+- [5090阶段表三方比较](global/requirements/decision-5090阶段表恢复Torch与guarded三方同条件比较.md)（constraint，算子比较）：原Torch/guarded/自有同条件eager；按实际融合阶段列三KV加速比，重叠FFN合并、冷缓存单列；先数值后计时，未测不填。
+
+- [5090先精度后性能](global/requirements/decision-5090迁移先对齐精度再调优性能.md)（constraint，当前5090算子）：用户明确先修数值，完整层/状态通过前暂停性能调优；原预算与失败保留。
+
+- [5090条件选为基准并回同步本机](global/requirements/decision-以5090为后续性能候选基准并回同步本机.md)（constraint，算子平台/交付）：用户已批准环境配置及现有算子迁移测量；双方同卡原Torch对照，源码/结果回本机；不改驱动或搬迁机器人队列。
+
+- [FFN1尾块改为两级输入流水](global/requirements/decision-FFN1尾块改为两级输入流水.md)（constraint，M39尾块）：用户批准移除第三组输入缓冲；先源码和CPU编译核对容量，原版本保留，GPU精度/性能未验。
+
+- [算子选卡与部署可迁移性](global/requirements/feedback-算子选卡须评估目标部署架构的可迁移性.md)（guideline，算子硬件规划）：先区分可复用调度与架构专用代码；原未选平台状态已由上方5090条件选择替代。
+
 - [硬件规划不依赖不可用H100](global/requirements/requirement-硬件规划不依赖当前不可用的H100.md)（constraint，算子硬件规划）：用户当前无H100；H800仅候选，未提供机器或新增执行授权。
 
 - [局部warp流水与逐项完整阶段表](global/requirements/requirement-局部warp流水每项结束输出完整阶段表.md)（constraint，本轮T0–T4）：新有限实验获准，A独立产物、GPU≤120分钟且旧累计不重置；每项结束在聊天打印全表。
@@ -115,7 +136,7 @@
 - [Transformer子图应覆盖self/cross-attention](global/requirements/feedback-Transformer子图设计应覆盖self与cross-attention.md)（guideline，本轮算子设计）：依据完整真实DAG组织tile；FFN局部实验不代表整体，具体实现仍需验证。
 
 - [tile与persistent warp为当前算子主线](global/requirements/decision-算子tile化与persistent-warp调度为主线.md)（constraint，本轮算子）：设备tile、常驻worker与依赖调度，替代旧仅路线B阶段优先级；不预设收益或扩大质量权限。
-- [MegaMoE作为思想参考](global/requirements/preference-MegaMoE作为tile调度思想参考.md)（guideline，本轮设计）：结合HW与SM80借鉴任务/warp/就绪机制，不要求复刻官方实现；具体策略仍需验证。
+- [MegaMoE作为思想参考](global/requirements/preference-MegaMoE作为tile调度思想参考.md)（guideline，本轮设计）：当前按5090/SM120借鉴任务、warp与就绪机制；FFN/TMA已获新有界执行授权，见顶部决定；不复刻SM100，结果须实际验证。
 
 - [完整native block有限对齐](global/knowledge/knowledge-完整native-block有限对齐.md)（reference，M28）：完整顺序原生链、六actual30有限逐位与两进程动态block齐；最强B14/Graph及闭环尚未验。
 - [投机去噪近邻与创新边界](global/knowledge/knowledge-投机去噪近邻与创新边界.md)（reference，2026-10-19）：直接先例已核验；潜在新增调度仍需强baseline与有效提交成本证据。

@@ -1,3 +1,9 @@
+# 当前入口：RTX5090 Self QKV迁移（2026-10-24）
+
+[最新算子结果与完整阶段表](CURRENT-RTX5090-SELF-QKV-20261024.md)。本轮所有对照均eager、无CUDA Graph；下方10/23的Graph说明仅属于旧实验。当前研究采用Self QKV TMA版本，四科学门及production_admitted仍false；旧TF暂停72等保留为历史，不能据它覆盖新的作业状态。
+
+---
+
 # 当前研究入口：局部warp有界实验完成（2026-10-23 16:34）
 
 **计时口径：本轮 A/L1/L13/D/G 全部使用外层 CUDA Graph，自有算子也被捕获和重放；双方 eager 对照未测。** [说明及源码行号](../.pipeline/experiments/local-warp-pipeline-20261023/MEASUREMENT-MODES.md)。

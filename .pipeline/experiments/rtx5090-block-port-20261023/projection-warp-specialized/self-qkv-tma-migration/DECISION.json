@@ -1,0 +1,46 @@
+{
+  "evaluated_at": "2026-10-24T13:55:51.924957+08:00",
+  "candidate": "SELF-QKV-TMA-4MMA",
+  "old": "WARP-SPECIALIZED-4MMA",
+  "finite_precision_pass": true,
+  "independent_processes": 2,
+  "whole_layer_changes": [
+    {
+      "process": 1,
+      "case": "short",
+      "delay_change_pct": -3.028460050047266
+    },
+    {
+      "process": 1,
+      "case": "middle",
+      "delay_change_pct": -2.900190248989498
+    },
+    {
+      "process": 1,
+      "case": "long",
+      "delay_change_pct": -2.2082005898080515
+    },
+    {
+      "process": 2,
+      "case": "short",
+      "delay_change_pct": -2.8561686612899484
+    },
+    {
+      "process": 2,
+      "case": "middle",
+      "delay_change_pct": -2.7162797928418247
+    },
+    {
+      "process": 2,
+      "case": "long",
+      "delay_change_pct": -2.2899196874681005
+    }
+  ],
+  "adopt_recommended": true,
+  "reason": "All three KV exact; both independent processes show whole-block latency decrease for every KV. Public stream validation still required.",
+  "production_admitted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false
+}

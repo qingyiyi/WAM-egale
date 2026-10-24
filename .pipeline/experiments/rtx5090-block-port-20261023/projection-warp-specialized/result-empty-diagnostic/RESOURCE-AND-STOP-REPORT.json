@@ -1,0 +1,68 @@
+{
+  "status": "CLOSED_DIAGNOSTIC_ONLY",
+  "previous_cumulative_seconds": 35566.41251785547,
+  "measured_lifecycle_including_return_seconds": 145.89138913154602,
+  "charged_seconds_conservative_minute_roundup": 180,
+  "cumulative_seconds": 35746.41251785547,
+  "total_cap_seconds": 36000,
+  "remaining_seconds": 253.58748214453226,
+  "wall_cap_seconds": 420,
+  "GPU_worker_lifecycle_seconds": 5.623500347137451,
+  "compile_lifecycle_seconds": 138.16008710861206,
+  "CUDA_active_seconds": "UNKNOWN",
+  "complete_block_calls": 246,
+  "call_cap": 500,
+  "storage_bytes_remote_at_exit": 15572127,
+  "storage_cap_bytes": 536870912,
+  "GPU_phase_failure_or_timeout": 0,
+  "CPU_verification_command_failures": 2,
+  "CPU_failure_details": [
+    "python3 absent in nonactivated SSH PATH",
+    "SELECTED-source backup exists locally, not remotely"
+  ],
+  "CPU_failure_evidence": [
+    "NORMAL-UNCHANGED.json",
+    "NORMAL-UNCHANGED-r1.json"
+  ],
+  "owned_children": [
+    {
+      "name": "build",
+      "identity": {
+        "pid": 34489,
+        "birth": "2625595701"
+      },
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "owned_child_exited": true
+    },
+    {
+      "name": "observe",
+      "identity": {
+        "pid": 34595,
+        "birth": "2625609517"
+      },
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "owned_child_exited": true
+    }
+  ],
+  "guard_exit": 0,
+  "after_compute_contexts": "",
+  "adopted_source_and_binary_unchanged": {
+    "whole_layer.py": true,
+    "build_whole_layer.py": true,
+    "csrc/whole_layer.cu": true,
+    "csrc/gemm_pipeline.cuh": true,
+    "csrc/cutlass_gemm.cuh": true,
+    "wam_whole_warp_specialized_cuda.cpython-312-x86_64-linux-gnu.so": true,
+    "actual_normal_baseline_binary": true
+  },
+  "sha": "NOT_COMPUTED_USER_NO_SHA",
+  "instance_shutdown": false,
+  "new_optimization_adopted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false
+}

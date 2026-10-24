@@ -3,11 +3,49 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-23T14:11:40.212610+08:00'
+updated: '2026-10-24T14:01:25.329383+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
 # 当前计划：逐阶段优化与证据收口
+
+- [ ] M39-SELF-QKV-TMA：用户已追加现有5090持续使用授权。将当前W0 TMA／W1–3 epilogue／W4–7 MMA迁移至Self Q/K/V；保留288任务、64×128 tile、十段K与舍入，独立A及候选先逐位后两进程三KV计时，公开入口两流核验；当前job限20分钟、4CPU、1GiB。原十小时账本不改，A100 RoboTwin继续原160小时预算。
+
+- [x] M39-CURRENT-MMA-MAINLOOP：用户已同意拆解当前四MMA投影的输入/操作数/主循环；独立观察副本、一次构建，最多250秒且原累计余量253.587秒不增。数值和粗细插桩扰动后解释，保留完整历史阶段表。
+
+- [x] M39-RESULT-EMPTY：用户要求先检查当前result_empty等待及TMA写回边界；仅独立观察副本、一次构建、三KV完整block，最多420秒且原累计不增。[诊断计划](../../experiments/rtx5090-block-port-20261023/projection-warp-specialized/result-empty-diagnostic/PLAN.md)。
+
+- [x] M39-PROJECTION-WARP-SPECIALIZED：用户新批准四MMA＋一TMA＋三epilogue，仅三个投影；[有界计划](../../experiments/rtx5090-block-port-20261023/projection-warp-specialized/PLAN.md)，25分钟且旧累计不增。
+
+- [x] M39-TMA-INPUT-HANDOFF：用户同意优先处理TMA发起与输入交接；[CPU源码核查与最小改法](../../experiments/rtx5090-block-port-20261023/projection-tma-components/INPUT-HANDOFF-SOURCE-REVIEW.md)已完成。八MMA warp/数值顺序保持，暂缓输出分工；GPU实现与验证未启动，旧剩余30.2分钟不增。
+
+- [x] M39-PROJECTION-TMA-COMPONENTS：用户批准先分量诊断/扰动核验，35分钟、累计不增；[计划](../../experiments/rtx5090-block-port-20261023/projection-tma-components/PLAN.md)。
+
+- [x] M39-PROJECTION-TMA-CONTINUOUS：用户批准先试跨十数值段的连续TMA输入ring，原MMA/后处理；[50分钟有界计划](../../experiments/rtx5090-block-port-20261023/projection-tma-continuous/PLAN.md)。
+
+- [x] M39-PROJECTION-SPLITK：用户批准三个小投影有序K分段，60分钟且原累计不增；见[计划](../../experiments/rtx5090-block-port-20261023/projection-splitk/PLAN.md)。
+
+- [x] M39-FFN-SPLITK：用户批准先试FFN2跨CTA的K分段计算及有序BF16提交，原主循环/tile不变；[有界计划](../../experiments/rtx5090-block-port-20261023/ffn-splitk/PLAN.md)，90分钟且累计不增。
+
+- [x] M39只读诊断续项：核对GRAIN/TMA主循环、96tile并行度、分段BF16提交和官方SM120 BF16 TMA参考，给出FFN/小投影复用方案；[源码分析](../../experiments/rtx5090-block-port-20261023/ffn-warp-pipeline/TMA-GEMM-DIAGNOSIS.md)。无新GPU任务，实施候选尚未启动。
+
+- [x] M39-FFN-TMA-PIPE：最新用户批准分步实现；[有界计划](../../experiments/rtx5090-block-port-20261023/ffn-warp-pipeline/PLAN.md)，当前采用GRAIN，原累计预算不增加。
+
+- [x] M39-SM120-TMA：用户批准基于SM120能力的有界优化，先FFN2 TMA；[计划](../../experiments/rtx5090-block-port-20261023/blackwell-tma/PLAN.md)。
+
+- [x] M39-RTX5090-EAGER-STAGES：补当前精度版三方eager、融合阶段加速比与完整层；[计划](../../experiments/rtx5090-block-port-20261023/eager-stage-comparison/PLAN.md)。
+
+- [x] M40-DUAL-5090-HANDOFF：用户新分工已生效，远端双A100接续固定RoboTwin队列；算子/性能统一5090，恢复三方阶段表，原预算不增。[交接结果](../../experiments/robotwin-pilot-20261020/eval100-20261022/dual-continuous-20261023/RESULT.md)。
+
+- [x] M39-RTX5090-PRECISION：新用户授权先修5090精度；两小时上限、旧累计不重置；[计划](../../experiments/rtx5090-block-port-20261023/precision/PLAN.md)。
+
+- [x] M39-RTX5090-PORT：用户新授权现有两槽算子移植SM120；三KV原Torch对照、完整阶段表、源码/结果回本机；2小时上限含原累计，详见[计划](../../experiments/rtx5090-block-port-20261023/PLAN.md)。
+
+- [x] M39-RTX5090-SETUP：用户批准隔离配置Torch2.9.0/CUDA13.0并尝试实例重启；60分钟/4CPU/20GiB/GPU kernel0，给出计数器命令并回传安装记录；不改驱动或恢复旧研究窗口。
+
+- [x] M39-RTX5090-ENV：按新机授权只读核查GPU/资源/软件/计数权限；保存条件选卡与回同步要求。未运行kernel/编译/软件安装；SM120环境、占用原因和源码适配未完成，不恢复旧GPU窗口。
+
+- [x] M39-FFN1-TWO-STAGE：按用户新要求仅将当前L13研究worktree的FFN1尾块输入缓冲三级改两级；CPU≤2、编译≤10分钟、新增≤512MiB、GPU0秒。核对源码差异与完整kernel编译/结构尺寸；旧T0–T4闭合与GPU账本保留，性能和精度待后续验证。
 
 - [x] M39-MOD：按需调制有限验证与采用，历史结果保留。
 - [x] M39-RR：用户批准self RMS+RoPE；实现、编译、9签名/21结构、三KV整层计时完成，两机采用。
@@ -18,8 +56,8 @@ execution: EXECUTION.md
 - [x] M39-KV-GATE：真实9签名及结构/条件换序核验，有限逐位通过才进入计时。
 - [x] M39-KV-PERF：三KV两进程完整层、强baseline与复用边界；更新阶段表/证据/owned清理。
 - [x] M39-VA2：核查LingBot-VA2原文加速基线及推理框架。
-- [ ] M39：按最新用户决定，后续仅对比原Torch；历史guarded未追平结果保留，不扩大系统claim。
-- [ ] M17/M40：M17保留原证据缺口；M40沿原160小时资源临时双卡，GPU0在算子完成后借用至10/23约10点。
+- [ ] M39：按最新决定恢复Torch/guarded/自有三方同条件eager；SM120两候选已闭合，采用M64，TMA退化；下一步讨论剩余FFN2及小投影。旧仅Torch展示规则已被替代。
+- [ ] M17/M40：M17保留原证据缺口；M40现为双A100持续接续，原160小时/10天不变。10点临时窗口为历史。
 
 [本轮结果](../../experiments/single-layer-async-gemm-20261020/rms-rope-fusion-20261022/RESULT.md)。累计18427.875/36000秒；当前作业闭合，原截止与四科学权限不变。
 
@@ -37,9 +75,16 @@ M39子项沿用上方名称，以下只补齐语义导航，不重编号历史�
 
 | ID | 阶段 | 期望结果 | 验证方式 |
 | --- | --- | --- | --- |
+| `M39-FFN-SPLITK` | FFN2有序split-K | 有限逐位通过，整层改善4.47%–5.40%，已采用 | ffn-splitk/REVIEW_RETURN.md |
 | `M39` | 单层算子对齐与优化 | 保留有限正确性、性能及负结果 | 当前FFN融合结果；后续先定位融合开销 |
+| `M39-FFN1-TWO-STAGE` | FFN1两槽候选 | CPU编译/容量已核验，GPU未测 | 两次构建原件与sizeof结果 |
+| `M39-RTX5090-ENV` | 新5090环境只读核查 | 条件选卡、软件/权限缺口、回同步要求 | maintenance/rtx5090-environment-20261023 |
+| `M39-RTX5090-PRECISION` | 5090当前原Torch精度对齐 | 三KV26中间量＋输出、两进程状态通过；新版性能未测 | experiments/rtx5090-block-port-20261023/precision |
+| `M39-RTX5090-PORT` | 5090完整层移植与三KV对照 | 有限精度、原Torch比值与阶段表 | experiments/rtx5090-block-port-20261023 |
+| `M39-RTX5090-SETUP` | 项目内5090工具链安装 | Torch2.9/cu130、SM120编译工具与本机归档 | 无GPU计算；60分钟累计安装截止不重置 |
+| `M40-DUAL-5090-HANDOFF` | 资源与对照口径交接 | 双A100已接续，5090三方阶段表 | 启动身份、真实动作、共享队列/预算与后台巡检 |
 | `M17` | LIBERO证据收口 | 已有四套结果及未通过配对/独立性边界 | 原报告；不恢复过期队列 |
-| `M40` | RoboTwin迁移与证据 | 新资源授权下固定1800局扩大DEV | 原结果保留，GPU1新链有界运行，GPU0留算子 |
+| `M40` | RoboTwin迁移与证据 | 固定1800局扩大DEV | 用户新分工为双A100接续，算子统一5090；原预算保留 |
 
 - [x] M39-FFN-PIPE：四组FFN依赖流水完成；R2有限逐位/状态通过，相对此前阶段版整层小幅改善0.33%–0.36%。R1负结果、R2目录错误FAILED及同截止retry保留；owned清理。
 
@@ -49,7 +94,7 @@ M39子项沿用上方名称，以下只补齐语义导航，不重编号历史�
 - [x] M39-FFN-EPILOGUE：A四元素写回、B生产函数内联均有限通过并提速；当前完整层原Torch比值1.2185/1.7605/2.8473×，独立FFN仍慢约9%；两机研究采用，owned清理。
 - [x] M39-FFN-REMAINING：当前B时间线＋NCU完成，有限数值/状态通过；已定位末组生产延迟与额外local/指令，不改生产入口。
 
-- [ ] M40-EVAL100：新160GPU小时/10天资源已授权；固定1800局，GPU1已补齐600有效初态与bank，固定质量队列已自动运行；最新本时段GPU0临时跑RoboTwin至约10点。
+- [ ] M40-EVAL100：新160GPU小时/10天资源已授权；固定1800局，GPU1已补齐600有效初态与bank，固定质量队列已自动运行；最新两张A100持续用于RoboTwin，算子统一5090。
 
 - [x] M39-FFN-OUTER-ABI：外层流水内联完成，有限门/整层对照通过并采用；后续尾K64也已完成。
 
@@ -73,3 +118,21 @@ M39本轮完成，最终同轮原Torch完整单层1.2967/1.8469/2.9910×；GPU0�
 - [x] M39-LOCAL-WARP：执行新授权T0–T4；[计划](../../experiments/local-warp-pipeline-20261023/PLAN.md)，严格数值、逐项完整表、独立A，GPU≤120分钟且旧累计不重置。
 
 M39-LOCAL-WARP闭合：主线不采用，副线L13仅隔离研究采用；四权限false、GPU0清理。本轮附件明确要求D/G强对照，优先于此前仅原Torch的本轮展示限制；原记录不删除。后续新方向待讨论。
+
+M39-RTX5090-PORT已完成有界测量与回传，数值门未通过；保留迁移诊断，未采用为生产实现。当前M39下一步是5090投影数值契约核对，非自动启动新调优。
+
+M39-RTX5090-PRECISION已闭合：三KV有限逐位通过并回传，原迁移失败保留。下一步重测当前代码性能，旧迁移速度不继承。
+
+M39-FFN-TMA-PIPE闭合：三个新候选均有限精度通过但慢于GRAIN，保留原GRAIN；单输出槽放得下，未缩tile；源码/结果返回、owned退出。下一步是根据已保存证据讨论主循环与交接开销，不自动追加候选。
+
+M39-FFN-SPLITK已闭合：仅K段任务化，实际采用SPLITK-M64-FFN2；原GRAIN及TMA负结果保留。下一步建议处理三个小投影，本次未启动。
+
+M39-PROJECTION-SPLITK闭合：有限逐位通过但完整层退化38.09%–42.70%，不采用；已恢复FFN2-SPLITK并重测当前阶段表、public两流。具体原因分量未定量，不自动追加实验。
+
+M39-PROJECTION-TMA-CONTINUOUS闭合：三KV有限逐位/计数通过但完整层慢1.065%–1.384%，恢复FFN2-SPLITK，候选负结果保留。后处理warp重叠未实现，下一步先分量诊断。
+
+M39-PROJECTION-TMA-COMPONENTS闭合：r0细插桩超限，r1修正通过扰动筛查；主循环观察约57微秒、后处理相关约9微秒/tile，不能作为原实现精确stall占比。采用代码未改，先讨论输入交接，再决定输出warp。
+
+M39-TMA-INPUT-HANDOFF的纯八MMA提前交接方案未单独运行；用户新批准的四MMA分工替代该实施路径。M39-PROJECTION-WARP-SPECIALIZED已闭合并研究采用，原A和失败保留。
+
+- [ ] M40-STORAGE-RACE-RESUME：用户要求持续到完整，已修复文件扫描竞态并双卡接续；一次C补齐与CPU完整覆盖watch自动接续，见[计划](../../experiments/robotwin-pilot-20261020/eval100-20261022/resume-after-storage-race-20261024/PLAN.md)。

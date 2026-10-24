@@ -1,0 +1,70 @@
+{
+  "status": "FINITE_EXACT_PASS_RESEARCH_ONLY",
+  "updated": "2026-10-23T20:33:39.096761+08:00",
+  "source": "/rjs/cxz/论文探索/.pipeline/experiments/rtx5090-block-port-20261023/workspace/算子研究/wam_ops/optimized",
+  "binary": "/rjs/cxz/论文探索/.pipeline/experiments/rtx5090-block-port-20261023/precision/build/ffn-bias-last/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "default_loader_binary": "/rjs/cxz/论文探索/.pipeline/experiments/rtx5090-block-port-20261023/workspace/算子研究/wam_ops/optimized/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "remote_source": "/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized",
+  "remote_binary": "/root/autodl-tmp/cxz/operator-sm120-20261023/precision/build/ffn-bias-last/wam_whole_fa2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "precision": [
+    "results/ffn-bias-last-data/RESULT.json",
+    "results/confirm-default-data/RESULT.json",
+    "results/confirm-custom-data/RESULT.json"
+  ],
+  "performance": "NOT_MEASURED_AFTER_NUMERIC_FIX",
+  "profile_binary": "OLD_PROFILE_DOES_NOT_MATCH_CURRENT_SOURCE",
+  "scope": "3 existing B14/Q16 block0 fixtures; shared history, readonly KV, canonical B14 precomputed crossKV",
+  "sha": "NOT_COMPUTED_USER_NO_SHA",
+  "production_admitted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "source_return_byte_comparison": [
+    {
+      "file": "build_whole_layer.py",
+      "byte_equal": true,
+      "bytes": 1664
+    },
+    {
+      "file": "whole_layer.py",
+      "byte_equal": true,
+      "bytes": 4289
+    },
+    {
+      "file": "csrc/cutlass_gemm.cuh",
+      "byte_equal": true,
+      "bytes": 14209
+    },
+    {
+      "file": "csrc/gemm_pipeline.cuh",
+      "byte_equal": true,
+      "bytes": 7545
+    },
+    {
+      "file": "csrc/whole_layer.cu",
+      "byte_equal": true,
+      "bytes": 62716
+    },
+    {
+      "file": "tools/precision_replay.py",
+      "byte_equal": true,
+      "bytes": 3113
+    },
+    {
+      "file": "tools/precision_partitions.py",
+      "byte_equal": true,
+      "bytes": 3556
+    },
+    {
+      "file": "tools/precision_contract.py",
+      "byte_equal": true,
+      "bytes": 3586
+    },
+    {
+      "file": "tools/precision_confirm.py",
+      "byte_equal": true,
+      "bytes": 6757
+    }
+  ]
+}

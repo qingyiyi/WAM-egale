@@ -1,0 +1,209 @@
+{
+  "status": "CLOSED_ADOPTED_RESEARCH_ONLY",
+  "guard": {
+    "pid": 35948,
+    "birth": "2625905056"
+  },
+  "phases": [
+    {
+      "name": "build-normal",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build_candidate.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build-temp/normal",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build/normal"
+      ],
+      "start": 1792820961.5749223,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 35949,
+        "birth": "2625905059"
+      },
+      "returncode": 0,
+      "ended": 1792821100.0359886,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 138.46106624603271
+    },
+    {
+      "name": "build-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build-temp/profile",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build/profile"
+      ],
+      "start": 1792821100.0392647,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 36060,
+        "birth": "2625918905"
+      },
+      "returncode": 0,
+      "ended": 1792821237.244663,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 137.20539832115173
+    },
+    {
+      "name": "precision",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/precision_candidate.py",
+        "--binary",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build/normal/wam_whole_qkv_tma_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_qkv_tma_cuda",
+        "--expect-tma",
+        "true",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/results/precision"
+      ],
+      "start": 1792821237.2464445,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 36172,
+        "birth": "2625932626"
+      },
+      "returncode": 0,
+      "ended": 1792821243.1188366,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 5.872392177581787
+    },
+    {
+      "name": "measure1",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/measure.py",
+        "--process",
+        "1",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/results/measure1-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build/normal/wam_whole_qkv_tma_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "SELF-QKV-TMA-4MMA",
+        "--module-name",
+        "wam_whole_qkv_tma_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/A.so",
+        "--reference-module-name",
+        "wam_whole_warp_specialized_cuda",
+        "--stages",
+        "--profile",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build/profile/wam_whole_qkv_tma_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--profile-module-name",
+        "wam_whole_qkv_tma_profile_cuda"
+      ],
+      "start": 1792821243.1228657,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 36207,
+        "birth": "2625933214"
+      },
+      "returncode": 0,
+      "ended": 1792821253.7150822,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 10.592216491699219
+    },
+    {
+      "name": "measure2",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/measure.py",
+        "--process",
+        "2",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/results/measure2-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/build/normal/wam_whole_qkv_tma_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "SELF-QKV-TMA-4MMA",
+        "--module-name",
+        "wam_whole_qkv_tma_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/A.so",
+        "--reference-module-name",
+        "wam_whole_warp_specialized_cuda"
+      ],
+      "start": 1792821253.7173388,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 36256,
+        "birth": "2625934273"
+      },
+      "returncode": 0,
+      "ended": 1792821260.9412396,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 7.22390079498291
+    },
+    {
+      "name": "public-default",
+      "start": 1792821376.731746,
+      "status": "EXITED_OK",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/precision_public.py",
+        "--binary",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/wam_whole_qkv_tma_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_qkv_tma_cuda",
+        "--expect-tma",
+        "true",
+        "--stream",
+        "default",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/results/public-default"
+      ],
+      "identity": {
+        "pid": 36361,
+        "birth": "2625946574"
+      },
+      "returncode": 0,
+      "ended": 1792821382.8059509,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 6.074204921722412
+    },
+    {
+      "name": "public-custom",
+      "start": 1792821382.8065286,
+      "status": "EXITED_OK",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/precision_public.py",
+        "--binary",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/\u7b97\u5b50\u7814\u7a76/wam_ops/optimized/wam_whole_qkv_tma_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_qkv_tma_cuda",
+        "--expect-tma",
+        "true",
+        "--stream",
+        "custom",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/projection-warp-specialized/self-qkv-tma-migration/results/public-custom"
+      ],
+      "identity": {
+        "pid": 36396,
+        "birth": "2625947182"
+      },
+      "returncode": 0,
+      "ended": 1792821388.7809796,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 5.974451065063477
+    }
+  ],
+  "ended": 1792821388.7899632,
+  "lifecycle_seconds": 427.21630930900574,
+  "storage_bytes": 28007385,
+  "public_guard": {
+    "pid": 36360,
+    "birth": "2625946568"
+  },
+  "public_start": 1792821376.7146928,
+  "public_end": 1792821388.7899623,
+  "public_lifecycle_seconds": 12.0752694606781
+}

@@ -1,0 +1,30 @@
+{
+  "id": "M39-FFN-SPLITK",
+  "status": "CLOSED_RESEARCH_ADOPTED",
+  "start": "2026-10-24T00:17:53.429826+08:00",
+  "absolute_cleanup_deadline": "2026-10-24T01:47:53.429826+08:00",
+  "wall_cap_seconds": 5400,
+  "old_cumulative_seconds": 29686.412517855468,
+  "total_cap_seconds": 36000,
+  "gpu": "existing RTX5090 only",
+  "cpu_threads": 4,
+  "storage_cap_bytes": 1073741824,
+  "call_cap": 15000,
+  "standalone_call_cap": 12000,
+  "goal": "FFN2 M64xN128 7 K2048 partitions computed across persistent CTAs, original ordered BF16 commits; same cp.async mainloop",
+  "reference": "GRAIN-M64-FFN2 independent A.so, PyInit wam_whole_grain_cuda",
+  "candidates": [
+    "SPLITK"
+  ],
+  "repairs_max": 1,
+  "inputs": "three frozen B14/Q16 block0 KV288/1152/2160 fixtures; original parameters and cache",
+  "cleanup": "owned PID+birth only; local source/binary/results return; instance remains on",
+  "production_admitted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "ended": "2026-10-24T00:45:50.961788+08:00",
+  "resource_report": "RESOURCE-AND-STOP-REPORT.json",
+  "selected": "SPLITK-M64-FFN2"
+}

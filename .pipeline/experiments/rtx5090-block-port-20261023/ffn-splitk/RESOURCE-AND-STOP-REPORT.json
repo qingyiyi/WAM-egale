@@ -1,0 +1,102 @@
+{
+  "status": "CLOSED_RESEARCH_ADOPTED",
+  "closed_at": "2026-10-24T00:45:50.961788+08:00",
+  "start": "2026-10-24T00:17:53.429826+08:00",
+  "original_absolute_cleanup_deadline": "2026-10-24T01:47:53.429826+08:00",
+  "accounting": "conservative 30 minute lifecycle charge including preparation, compilation, waiting, return and cleanup; not CUDA active time",
+  "charged_seconds": 1800,
+  "old_cumulative_seconds": 29686.412517855468,
+  "new_cumulative_seconds": 31486.412517855468,
+  "remaining_seconds": 4513.587482144532,
+  "gpu_worker_process_seconds": 55.71787929534912,
+  "compiler_process_seconds_sum": 424.6188988685608,
+  "compiler_process_sum_is_wall_time": false,
+  "cuda_active_seconds": "UNKNOWN",
+  "full_block_calls": 7389,
+  "full_block_cap": 15000,
+  "standalone_calls": 5094,
+  "standalone_cap": 12000,
+  "terminal_stages": [
+    {
+      "stage": "SPLITK-measure2",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 9.886538982391357,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "standalone1",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 6.525078535079956,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "precision",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 5.725660800933838,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "build-standalone",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 142.8335497379303,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "public-custom",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 5.681830644607544,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "standalone2",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 6.226614713668823,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "SPLITK-measure1",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 15.646079540252686,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "build-profile",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 140.70956540107727,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "public-default",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 6.026076078414917,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "build-normal",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "lifecycle_seconds": 141.07578372955322,
+      "owned_child_exited": true
+    }
+  ],
+  "gpu_failures": 0,
+  "timeouts": 0,
+  "administrative_errors": [
+    "Cleanup CPU receipt invocation twice returned 127 before environment activation (python and python3 absent from default remote PATH); fixed by sourcing existing environment, no GPU work/retry involved."
+  ],
+  "storage_bytes_before_final_reports": 48630720,
+  "storage_cap_bytes": 1073741824,
+  "owned_cleanup": "OWNED-CLEANUP.json",
+  "return_byte_check": "RETURNED-BYTE-CHECK.json",
+  "instance_shutdown": false,
+  "new_gpu_job_started": false
+}

@@ -1,0 +1,50 @@
+{
+  "id": "M39-RTX5090-PORT",
+  "status": "CLOSED_DIAGNOSTIC_NOT_QUALIFIED",
+  "goal": "当前L13两槽完整block迁移SM120，真实三KV原Torch对照与阶段表",
+  "authorization": "用户2026-10-23要求迁移到5090测试性能、加速比和阶段表",
+  "started": "2026-10-23T19:06:44.034356+08:00",
+  "absolute_cleanup_deadline": "2026-10-23T21:06:44.034356+08:00",
+  "wall_cap_seconds": 7200,
+  "cpu_threads": 4,
+  "gpu_uuid": "GPU-e5e7821f-9633-6cc8-d06c-d0d0df4c9256",
+  "source": "../local-warp-pipeline-20261023/worktree/算子研究/wam_ops/optimized",
+  "candidate": "L13 + FFN1 tail two-stage",
+  "old_operator_lifecycle_seconds": 21237.86544285547,
+  "old_operator_cap_seconds": 36000,
+  "new_storage_cap_bytes": 3221225472,
+  "full_block_forward_cap": 24000,
+  "remote_root": "/root/autodl-tmp/cxz/operator-sm120-20261023",
+  "baseline": "original Torch2.9.0 same-device, same-input, final crossKV precomputed on both arms",
+  "shapes": {
+    "B": 14,
+    "Q": 16,
+    "D": 3072,
+    "H": 24,
+    "FFN": 14336,
+    "KV": [
+      288,
+      1152,
+      2160
+    ]
+  },
+  "timing": [
+    "eager primary both arms",
+    "warm graph secondary both arms"
+  ],
+  "acceptance": "report exact output/intermediate/validKV/input/RNG; any mismatch blocks claim of precision-aligned speedup; diagnostic timing labeled",
+  "no_smoke": true,
+  "no_sha": true,
+  "no_counter_attempt": true,
+  "no_research_scope_extension": true,
+  "cleanup": "owned PID+birth only; close all workers; return source/result/logs local; original FAILED preserved",
+  "scientific_permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "closed": "2026-10-23T19:38:39.747829+08:00",
+  "result": "REVIEW_RETURN.md",
+  "resources": "RESOURCE-AND-STOP-REPORT.json"
+}

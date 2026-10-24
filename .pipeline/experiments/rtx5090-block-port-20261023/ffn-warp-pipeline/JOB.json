@@ -1,0 +1,30 @@
+{
+  "id": "M39-FFN-TMA-PIPE",
+  "status": "CLOSED_NEGATIVE_RETAIN_GRAIN",
+  "start": "2026-10-23T23:08:26.641496+08:00",
+  "absolute_cleanup_deadline": "2026-10-24T01:08:26.641496+08:00",
+  "wall_cap_seconds": 7200,
+  "old_cumulative_seconds": 27466.412517855468,
+  "total_cap_seconds": 36000,
+  "gpu": "RTX5090 existing instance only",
+  "cpu_threads": 4,
+  "storage_cap_bytes": 2147483648,
+  "call_cap": 30000,
+  "goal": "M64 input producer/consumer, then one-slot epilogue, then K2048 readiness; finite exact whole-block gates",
+  "candidates": [
+    "INPUT",
+    "EPILOGUE",
+    "KREADY"
+  ],
+  "repairs_per_candidate_max": 1,
+  "inputs": "three frozen B14/Q16 block0 short/middle/long fixtures",
+  "reference": "GRAIN-M64-FFN2",
+  "termination": "120min incl preparation/wait/compile/failure/cleanup; numerical failure stops timing; no unbounded size search",
+  "cleanup": "owned PID + birth only; local return and process receipts; instance not shutdown",
+  "production_admitted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "closed_at": "2026-10-23T23:45:25.867780+08:00"
+}

@@ -1,0 +1,121 @@
+[
+  {
+    "region": 0,
+    "name": "布局准备",
+    "work": "CTA0扫描历史布局",
+    "warps": "8W",
+    "grid": "1"
+  },
+  {
+    "region": 1,
+    "name": "LN1＋调制1",
+    "work": "224行×3072",
+    "warps": "W3–6归约；8W搬运",
+    "grid": "1"
+  },
+  {
+    "region": 2,
+    "name": "Self QKV投影",
+    "work": "288×(64×128)，每tile 9×K320＋K192",
+    "warps": "8W MMA",
+    "grid": "2"
+  },
+  {
+    "region": 3,
+    "name": "Self Q RMS＋RoPE",
+    "work": "112双行tile，每行3072",
+    "warps": "两组各4W",
+    "grid": "1"
+  },
+  {
+    "region": 4,
+    "name": "Self K RMS＋RoPE",
+    "work": "112双行tile，每行3072",
+    "warps": "两组各4W",
+    "grid": "1"
+  },
+  {
+    "region": 5,
+    "name": "Self Attention＋私有KV寻址",
+    "work": "短/中/长192/336/192逻辑tile；96/168/96双组；K64循环5/18/34",
+    "warps": "两组各4W MMA",
+    "grid": "1"
+  },
+  {
+    "region": 6,
+    "name": "Self输出投影",
+    "work": "96×(64×128)，48个K64输入；9×K320＋K192十段",
+    "warps": "W0 TMA；W1–3 epilogue；W4–7 MMA（32×64）",
+    "grid": "grid 2；tile初始化/收尾CTA 3；热循环full/empty mbarrier"
+  },
+  {
+    "region": 7,
+    "name": "残差1",
+    "work": "336×2048元素",
+    "warps": "8W向量计算",
+    "grid": "1"
+  },
+  {
+    "region": 8,
+    "name": "LN2",
+    "work": "224行×3072",
+    "warps": "W3–6归约；8W搬运",
+    "grid": "1"
+  },
+  {
+    "region": 9,
+    "name": "Cross Q投影",
+    "work": "96×(64×128)，48个K64输入；9×K320＋K192十段",
+    "warps": "W0 TMA；W1–3 epilogue；W4–7 MMA（32×64）",
+    "grid": "grid 2；tile初始化/收尾CTA 3；热循环full/empty mbarrier"
+  },
+  {
+    "region": 10,
+    "name": "Cross Q RMS",
+    "work": "112双行tile",
+    "warps": "两组各4W",
+    "grid": "1"
+  },
+  {
+    "region": 11,
+    "name": "Cross Attention",
+    "work": "336逻辑tile/168双组；Q16、K512、D128",
+    "warps": "两组各4W MMA",
+    "grid": "1"
+  },
+  {
+    "region": 12,
+    "name": "Cross输出投影",
+    "work": "96×(64×128)，48个K64输入；9×K320＋K192十段",
+    "warps": "W0 TMA；W1–3 epilogue；W4–7 MMA（32×64）",
+    "grid": "grid 2；tile初始化/收尾CTA 3；热循环full/empty mbarrier"
+  },
+  {
+    "region": 13,
+    "name": "残差2",
+    "work": "336×2048元素",
+    "warps": "8W向量计算",
+    "grid": "1"
+  },
+  {
+    "region": 14,
+    "name": "LN3＋调制3",
+    "work": "224行×3072",
+    "warps": "W3–6归约；8W搬运",
+    "grid": "1"
+  },
+  {
+    "region": 15,
+    "name": "FFN1＋GELU＋FFN2＋残差3",
+    "work": "FFN1:108×128×256＋12×32×256；FFN2:96输出tile×7K2048段=672计算任务；tile64×128",
+    "warps": "FFN1主8W/尾4W MMA；FFN2 W3–6 MMA；8W按序BF16写回",
+    "grid": "局部FFN1 ready＋96tile按序提交；FFN出口grid 1"
+  },
+  {
+    "region": 16,
+    "name": "退出同步",
+    "work": "无数学tile",
+    "warps": "全grid",
+    "grid": "1"
+  }
+]

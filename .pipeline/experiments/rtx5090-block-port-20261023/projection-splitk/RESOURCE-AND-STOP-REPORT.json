@@ -1,0 +1,272 @@
+{
+  "status": "CLOSED_REJECTED_PERFORMANCE_RESTORED_A",
+  "start": "2026-10-24T01:27:17.355600+08:00",
+  "closed_at": "2026-10-24T01:40:36.304385+08:00",
+  "original_absolute_cleanup_deadline": "2026-10-24T02:27:17.355600+08:00",
+  "charged_lifecycle_seconds": 900,
+  "accounting": "conservative 15 minute lifecycle including prep/build/wait/measure/return/cleanup, not CUDA active",
+  "old_cumulative_seconds": 31486.412517855468,
+  "new_cumulative_seconds": 32386.412517855468,
+  "remaining_seconds": 3613.5874821445323,
+  "gpu_worker_process_seconds": 54.66271424293518,
+  "compiler_process_seconds_sum": 280.7016010284424,
+  "compiler_process_sum_is_wall_time": false,
+  "cuda_active_seconds": "UNKNOWN",
+  "full_block_calls": 11469,
+  "call_cap": 15000,
+  "timeout_or_runtime_failures": 0,
+  "performance_rejected_candidates": 1,
+  "numerical_failed_candidates": 0,
+  "terminal_stages": [
+    {
+      "status": "EXITED_OK",
+      "start": 1792776783.5026608,
+      "guard": {
+        "pid": 16686,
+        "birth": "2621487247"
+      },
+      "command": [
+        "python",
+        "projection-splitk/precision_unique.py",
+        "--binary",
+        "projection-splitk/build/normal/wam_whole_projection_splitk_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_projection_splitk_cuda",
+        "--output",
+        "projection-splitk/results/precision-data"
+      ],
+      "child": {
+        "pid": 16687,
+        "birth": "2621487252"
+      },
+      "returncode": 0,
+      "ended": 1792776788.9773154,
+      "lifecycle_seconds": 5.474655389785767,
+      "owned_child_exited": true,
+      "stage": "precision"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792776958.1186175,
+      "guard": {
+        "pid": 16877,
+        "birth": "2621504708"
+      },
+      "command": [
+        "python",
+        "projection-splitk/measure_retained.py",
+        "--process",
+        "3",
+        "--label",
+        "RETAINED",
+        "--module-name",
+        "wam_whole_splitk_cuda",
+        "--candidate",
+        "workspace/算子研究/wam_ops/optimized/wam_whole_splitk_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--reference",
+        "ffn-splitk/A.so",
+        "--reference-module-name",
+        "wam_whole_grain_cuda",
+        "--profile",
+        "ffn-splitk/build/profile/wam_whole_splitk_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--profile-module-name",
+        "wam_whole_splitk_profile_cuda",
+        "--stages",
+        "--output",
+        "projection-splitk/results/RETAINED-stages-data"
+      ],
+      "child": {
+        "pid": 16878,
+        "birth": "2621504713"
+      },
+      "returncode": 0,
+      "ended": 1792776971.7070003,
+      "lifecycle_seconds": 13.588382959365845,
+      "owned_child_exited": true,
+      "stage": "RETAINED-stages"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792777049.6704574,
+      "guard": {
+        "pid": 16993,
+        "birth": "2621513863"
+      },
+      "command": [
+        "python",
+        "projection-splitk/precision_public.py",
+        "--binary",
+        "workspace/算子研究/wam_ops/optimized/wam_whole_splitk_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_splitk_cuda",
+        "--expect-projection-splitk=false",
+        "--stream",
+        "custom",
+        "--output",
+        "projection-splitk/results/public-custom-data"
+      ],
+      "child": {
+        "pid": 16994,
+        "birth": "2621513868"
+      },
+      "returncode": 0,
+      "ended": 1792777055.3955083,
+      "lifecycle_seconds": 5.725051403045654,
+      "owned_child_exited": true,
+      "stage": "public-custom"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792776621.7267573,
+      "guard": {
+        "pid": 16516,
+        "birth": "2621471070"
+      },
+      "command": [
+        "python",
+        "projection-splitk/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "projection-splitk/build/profile-temp",
+        "--build-lib",
+        "projection-splitk/build/profile"
+      ],
+      "child": {
+        "pid": 16518,
+        "birth": "2621471074"
+      },
+      "returncode": 0,
+      "ended": 1792776761.5851753,
+      "lifecycle_seconds": 139.85841822624207,
+      "owned_child_exited": true,
+      "stage": "build-profile"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792776832.0044906,
+      "guard": {
+        "pid": 16772,
+        "birth": "2621492097"
+      },
+      "command": [
+        "python",
+        "projection-splitk/measure.py",
+        "--process",
+        "2",
+        "--label",
+        "PROJECTION",
+        "--module-name",
+        "wam_whole_projection_splitk_cuda",
+        "--candidate",
+        "projection-splitk/build/normal/wam_whole_projection_splitk_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--output",
+        "projection-splitk/results/PROJECTION-measure2-data"
+      ],
+      "child": {
+        "pid": 16773,
+        "birth": "2621492102"
+      },
+      "returncode": 0,
+      "ended": 1792776841.9526994,
+      "lifecycle_seconds": 9.948209047317505,
+      "owned_child_exited": true,
+      "stage": "PROJECTION-measure2"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792777005.7781422,
+      "guard": {
+        "pid": 16943,
+        "birth": "2621509474"
+      },
+      "command": [
+        "python",
+        "projection-splitk/precision_public.py",
+        "--binary",
+        "workspace/算子研究/wam_ops/optimized/wam_whole_splitk_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_splitk_cuda",
+        "--expect-projection-splitk=false",
+        "--stream",
+        "default",
+        "--output",
+        "projection-splitk/results/public-default-data"
+      ],
+      "child": {
+        "pid": 16944,
+        "birth": "2621509479"
+      },
+      "returncode": 0,
+      "ended": 1792777012.056399,
+      "lifecycle_seconds": 6.278257369995117,
+      "owned_child_exited": true,
+      "stage": "public-default"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792776621.7473948,
+      "guard": {
+        "pid": 16517,
+        "birth": "2621471070"
+      },
+      "command": [
+        "python",
+        "workspace/算子研究/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-temp",
+        "projection-splitk/build/normal-temp",
+        "--build-lib",
+        "projection-splitk/build/normal"
+      ],
+      "child": {
+        "pid": 16519,
+        "birth": "2621471076"
+      },
+      "returncode": 0,
+      "ended": 1792776762.590577,
+      "lifecycle_seconds": 140.84318280220032,
+      "owned_child_exited": true,
+      "stage": "build-normal"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792776807.7390018,
+      "guard": {
+        "pid": 16715,
+        "birth": "2621489670"
+      },
+      "command": [
+        "python",
+        "projection-splitk/measure.py",
+        "--process",
+        "1",
+        "--label",
+        "PROJECTION",
+        "--module-name",
+        "wam_whole_projection_splitk_cuda",
+        "--candidate",
+        "projection-splitk/build/normal/wam_whole_projection_splitk_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--profile",
+        "projection-splitk/build/profile/wam_whole_projection_splitk_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--stages",
+        "--output",
+        "projection-splitk/results/PROJECTION-measure1-data"
+      ],
+      "child": {
+        "pid": 16716,
+        "birth": "2621489675"
+      },
+      "returncode": 0,
+      "ended": 1792776821.387159,
+      "lifecycle_seconds": 13.648158073425293,
+      "owned_child_exited": true,
+      "stage": "PROJECTION-measure1"
+    }
+  ],
+  "storage_bytes_before_final_reports": 37882120,
+  "storage_cap_bytes": 1073741824,
+  "cleanup": "OWNED-CLEANUP.json",
+  "source_return": "RETURNED-BYTE-CHECK.json",
+  "instance_shutdown": false,
+  "further_jobs_started": false
+}

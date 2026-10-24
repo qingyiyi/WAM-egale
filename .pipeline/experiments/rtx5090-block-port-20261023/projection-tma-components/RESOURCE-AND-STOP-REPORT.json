@@ -1,0 +1,204 @@
+{
+  "status": "CLOSED_DIAGNOSTIC_COMPLETE_RETAINED_UNCHANGED",
+  "start": "2026-10-24T10:34:10+08:00",
+  "closed_at": "2026-10-24T10:48:11.109897+08:00",
+  "original_absolute_cleanup_deadline": "2026-10-24T11:09:10+08:00",
+  "charged_lifecycle_seconds": 900,
+  "accounting": "conservative15min including preparation/compile/wait/failed measurement screen/repair/return/cleanup, not CUDA active",
+  "old_cumulative_seconds": 33286.41251785547,
+  "new_cumulative_seconds": 34186.41251785547,
+  "remaining_seconds": 1813.5874821445323,
+  "full_block_calls": 5946,
+  "call_cap": 6500,
+  "gpu_worker_process_seconds": 31.471776008605957,
+  "compiler_process_seconds": 264.8609137535095,
+  "cuda_active_seconds": "UNKNOWN",
+  "failed_runtime_or_compile_jobs": 0,
+  "failed_instrumentation_screens": 1,
+  "r0_fine_status": "LOCAL_PERTURBATION_EXCEEDED_NOT_QUANTIFIED",
+  "repairs_used": 1,
+  "terminal_stages": [
+    {
+      "status": "EXITED_OK",
+      "start": 1792809735.765044,
+      "guard": {
+        "pid": 30736,
+        "birth": "2624782473"
+      },
+      "command": [
+        "python",
+        "projection-tma-components/build_components_r1.py",
+        "build_ext",
+        "--build-temp",
+        "projection-tma-components/build/r1-temp",
+        "--build-lib",
+        "projection-tma-components/build/components-r1"
+      ],
+      "child": {
+        "pid": 30737,
+        "birth": "2624782478"
+      },
+      "returncode": 0,
+      "ended": 1792809867.808881,
+      "lifecycle_seconds": 132.04383778572083,
+      "owned_child_exited": true,
+      "stage": "build-components-r1"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792809627.2002668,
+      "guard": {
+        "pid": 30594,
+        "birth": "2624771616"
+      },
+      "command": [
+        "python",
+        "projection-tma-components/measure.py",
+        "--process",
+        "1",
+        "--output",
+        "projection-tma-components/results/measure1-data"
+      ],
+      "child": {
+        "pid": 30595,
+        "birth": "2624771621"
+      },
+      "returncode": 0,
+      "ended": 1792809635.6289628,
+      "lifecycle_seconds": 8.428696155548096,
+      "owned_child_exited": true,
+      "stage": "measure1"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792809906.8581085,
+      "guard": {
+        "pid": 30899,
+        "birth": "2624799582"
+      },
+      "command": [
+        "python",
+        "projection-tma-components/measure_r1.py",
+        "--process",
+        "4",
+        "--probe-binary",
+        "projection-tma-components/build/components-r1/wam_whole_tma_components_r1_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--probe-module",
+        "wam_whole_tma_components_r1_cuda",
+        "--rounds",
+        "10",
+        "--count",
+        "4",
+        "--warmup",
+        "5",
+        "--traces",
+        "4",
+        "--output",
+        "projection-tma-components/results/r1-measure2-data"
+      ],
+      "child": {
+        "pid": 30900,
+        "birth": "2624799587"
+      },
+      "returncode": 0,
+      "ended": 1792809914.2480881,
+      "lifecycle_seconds": 7.389979839324951,
+      "owned_child_exited": true,
+      "stage": "r1-measure2"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792809478.9304302,
+      "guard": {
+        "pid": 30479,
+        "birth": "2624756791"
+      },
+      "command": [
+        "python",
+        "projection-tma-components/build_components.py",
+        "build_ext",
+        "--build-temp",
+        "projection-tma-components/build/temp",
+        "--build-lib",
+        "projection-tma-components/build/components"
+      ],
+      "child": {
+        "pid": 30480,
+        "birth": "2624756794"
+      },
+      "returncode": 0,
+      "ended": 1792809611.7475054,
+      "lifecycle_seconds": 132.8170759677887,
+      "owned_child_exited": true,
+      "stage": "build-components"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792809660.2261138,
+      "guard": {
+        "pid": 30655,
+        "birth": "2624774919"
+      },
+      "command": [
+        "python",
+        "projection-tma-components/measure.py",
+        "--process",
+        "2",
+        "--output",
+        "projection-tma-components/results/measure2-data"
+      ],
+      "child": {
+        "pid": 30656,
+        "birth": "2624774924"
+      },
+      "returncode": 0,
+      "ended": 1792809668.4542868,
+      "lifecycle_seconds": 8.22817325592041,
+      "owned_child_exited": true,
+      "stage": "measure2"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792809877.7331014,
+      "guard": {
+        "pid": 30841,
+        "birth": "2624796670"
+      },
+      "command": [
+        "python",
+        "projection-tma-components/measure_r1.py",
+        "--process",
+        "3",
+        "--probe-binary",
+        "projection-tma-components/build/components-r1/wam_whole_tma_components_r1_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--probe-module",
+        "wam_whole_tma_components_r1_cuda",
+        "--rounds",
+        "10",
+        "--count",
+        "4",
+        "--warmup",
+        "5",
+        "--traces",
+        "4",
+        "--output",
+        "projection-tma-components/results/r1-measure1-data"
+      ],
+      "child": {
+        "pid": 30842,
+        "birth": "2624796675"
+      },
+      "returncode": 0,
+      "ended": 1792809885.158028,
+      "lifecycle_seconds": 7.4249267578125,
+      "owned_child_exited": true,
+      "stage": "r1-measure1"
+    }
+  ],
+  "storage_bytes_before_final_reports": 50707004,
+  "storage_cap_bytes": 1073741824,
+  "cleanup": "OWNED-CLEANUP.json",
+  "unchanged_byte_receipt": "CURRENT-UNCHANGED.json",
+  "instance_shutdown": false,
+  "further_optimization_started": false
+}

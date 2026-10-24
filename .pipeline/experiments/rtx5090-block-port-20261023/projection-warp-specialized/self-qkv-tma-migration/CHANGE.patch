@@ -1,0 +1,76 @@
+--- A/whole_layer.cu
++++ Self-QKV-TMA/whole_layer.cu
+@@ -63,12 +63,12 @@
+     NB
+ };
+ enum Point { TABLE, MODULATE, RESIDUAL, ROPE, GELU };
+-// CTA共8个warp，职责按阶段变化：小投影/Context/FFN2由warp3–6做MMA；
++// CTA共8个warp：SM120 action投影W0做TMA、W1–3做epilogue、W4–7做MMA；
+ // FFN1的8warp均做MMA；B14 attention分两个4warp组，RMS分两组各算一行。
+ // 动态队列由warp0领取；静态point/norm/FFN/双组attention不经过队列。
+ // a[]是中间buffer，w[]对应whole_layer.py绑定的原始参数，均不跨候选混用。
+ struct Params {
+-    alignas(64) CUtensorMap projection_maps[3][2];
++    alignas(64) CUtensorMap projection_maps[6][2];
+     int64_t *projection_trace;
+     int64_t *projection_role_trace;
+     const void *w[27];
+@@ -366,13 +366,23 @@
+ __device__ __noinline__ void self_qkv_projection_group(const Params &p, Shared &s,
+                                                      cg::grid_group &g, int st, const B *a) {
+     constexpr int per_projection = 96;
++#if __CUDA_ARCH__ >= 1200
++    // 发布前一阶段M1写入，后续TMA async proxy读取同一global输入。
++    asm volatile("fence.proxy.async.global;" ::: "memory");
++#endif
+     begin_stage(p, g, st);
+     for (int task; (task = claim_tile(p, s, st)) < 3 * per_projection;) {
+         const int projection = task / per_projection;
+         const int wi = 3 + 2 * projection;
+         B *out = bp(p, projection == 0 ? SQ0 : projection == 1 ? SK0 : SV);
++#if __CUDA_ARCH__ >= 1200
++        // Q/K/V沿用288项队列，各自权重、输出和数值分段保持独立。
++        projection_tma_tile(p, s.tile.projection_tma, 3 + projection,
++                            (const B *)p.w[wi + 1], out, task % per_projection);
++#else
+         self_qkv8_tile(s.tile.cutlass_gemm.self_qkv8, a, (const B *)p.w[wi],
+                       (const B *)p.w[wi + 1], out, task % per_projection);
++#endif
+         finish_tile();
+     }
+     g.sync();
+@@ -1581,9 +1591,9 @@
+          info = at::empty({2}, lo);
+     auto queues = at::empty({MAX_STAGES + 16 + 96}, io); // 末96项为SM120逐输出tile提交计数。
+     auto ffn_trace = at::empty({debug ? 12 : 0}, lo);
+-    auto projection_trace = at::empty({debug ? 3 * 96 * 4 : 0}, lo);
++    auto projection_trace = at::empty({debug ? 6 * 96 * 4 : 0}, lo);
+     p.projection_trace = debug ? projection_trace.data_ptr<int64_t>() : nullptr;
+-    auto projection_role_trace = at::empty({debug ? 3 * 96 * 8 * 3 : 0}, lo);
++    auto projection_role_trace = at::empty({debug ? 6 * 96 * 8 * 3 : 0}, lo);
+     p.projection_role_trace = debug ? projection_role_trace.data_ptr<int64_t>() : nullptr;
+     p.slots = slots.data_ptr<int64_t>();
+     p.free = free.data_ptr<int64_t>();
+@@ -1618,8 +1628,8 @@
+                 CU_TENSOR_MAP_FLOAT_OOB_FILL_NONE);
+             TORCH_CHECK(status == CUDA_SUCCESS, "Projection TMA tensor map status ", int(status));
+         };
+-        const int input[3] = {SA, N2, CA}, weight[3] = {9, 13, 19};
+-        for (int projection = 0; projection < 3; ++projection) {
++        const int input[6] = {SA, N2, CA, M1, M1, M1}, weight[6] = {9, 13, 19, 3, 5, 7};
++        for (int projection = 0; projection < 6; ++projection) {
+             encode(&p.projection_maps[projection][0], p.a[input[projection]], dim_a, box_a);
+             encode(&p.projection_maps[projection][1], const_cast<void *>(p.w[weight[projection]]), dim_b, box_b);
+         }
+@@ -1665,9 +1675,9 @@
+         result["ffn_splitk_commit"] = queues.narrow(0, MAX_STAGES + 16, 96);
+     result["ffn_pipeline_timestamps"] = ffn_trace;
+     if (p.candidate && p.b * p.q == 224 && at::cuda::getCurrentDeviceProperties()->major >= 12)
+-        result["projection_tma_counts"] = projection_trace.view({3, 96, 4});
++        result["projection_tma_counts"] = projection_trace.view({6, 96, 4});
+     if (debug && p.candidate && p.b * p.q == 224)
+-        result["projection_role_counts"] = projection_role_trace.view({3,96,8,3});
++        result["projection_role_counts"] = projection_role_trace.view({6,96,8,3});
+     cudaFuncAttributes attr;
+     C10_CUDA_CHECK(cudaFuncGetAttributes(&attr, whole_layer));
+     result["resources"] =

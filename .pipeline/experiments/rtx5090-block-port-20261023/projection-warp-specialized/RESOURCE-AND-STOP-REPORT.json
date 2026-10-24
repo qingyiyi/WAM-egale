@@ -1,0 +1,230 @@
+{
+  "status": "CLOSED_ADOPTED_RESEARCH_ONLY",
+  "closed_at": "2026-10-24T12:22:08.565998+08:00",
+  "original_start": "2026-10-24T11:59:47+08:00",
+  "original_absolute_cleanup_deadline": "2026-10-24T12:24:47+08:00",
+  "charged_lifecycle_seconds": 1380,
+  "accounting": "elapsed complete job window rounded up to one minute, including preparation/compile/wait/return/cleanup; not CUDA active",
+  "old_cumulative_seconds": 34186.41251785547,
+  "new_cumulative_seconds": 35566.41251785547,
+  "remaining_seconds": 433.58748214453226,
+  "full_block_calls": 3435,
+  "call_cap": 12000,
+  "all_stages": [
+    {
+      "stage": "precision",
+      "status": "EXITED_OK",
+      "start": 1792814775.40003,
+      "guard": {
+        "pid": 32982,
+        "birth": "2625286436"
+      },
+      "command": [
+        "python",
+        "projection-warp-specialized/precision_unique.py",
+        "--output",
+        "projection-warp-specialized/results/precision-data",
+        "--binary",
+        "projection-warp-specialized/build/normal/wam_whole_warp_specialized_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_warp_specialized_cuda"
+      ],
+      "child": {
+        "pid": 32983,
+        "birth": "2625286441"
+      },
+      "returncode": 0,
+      "ended": 1792814780.472091,
+      "lifecycle_seconds": 5.072061538696289,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "public-custom",
+      "status": "EXITED_OK",
+      "start": 1792815507.7072325,
+      "guard": {
+        "pid": 33482,
+        "birth": "2625359667"
+      },
+      "command": [
+        "python",
+        "projection-warp-specialized/precision_public.py",
+        "--output",
+        "projection-warp-specialized/results/public-custom-data",
+        "--binary",
+        "workspace/算子研究/wam_ops/optimized/wam_whole_warp_specialized_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_warp_specialized_cuda",
+        "--expect-tma",
+        "true",
+        "--stream",
+        "custom"
+      ],
+      "child": {
+        "pid": 33483,
+        "birth": "2625359672"
+      },
+      "returncode": 0,
+      "ended": 1792815513.1911514,
+      "lifecycle_seconds": 5.483919382095337,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "measure1",
+      "status": "EXITED_OK",
+      "start": 1792814986.774693,
+      "guard": {
+        "pid": 33142,
+        "birth": "2625307576"
+      },
+      "command": [
+        "python",
+        "projection-warp-specialized/measure.py",
+        "--process",
+        "1",
+        "--output",
+        "projection-warp-specialized/results/measure1-data",
+        "--stages",
+        "--candidate",
+        "projection-warp-specialized/build/normal/wam_whole_warp_specialized_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "WARP-SPECIALIZED-4MMA",
+        "--module-name",
+        "wam_whole_warp_specialized_cuda",
+        "--profile",
+        "projection-warp-specialized/build/profile/wam_whole_warp_specialized_profile_cuda.cpython-312-x86_64-linux-gnu.so"
+      ],
+      "child": {
+        "pid": 33143,
+        "birth": "2625307579"
+      },
+      "returncode": 0,
+      "ended": 1792814998.1682904,
+      "lifecycle_seconds": 11.393598079681396,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "build-profile",
+      "status": "EXITED_OK",
+      "start": 1792814820.7196343,
+      "guard": {
+        "pid": 33022,
+        "birth": "2625290968"
+      },
+      "command": [
+        "python",
+        "projection-warp-specialized/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "projection-warp-specialized/build/profile-temp",
+        "--build-lib",
+        "projection-warp-specialized/build/profile"
+      ],
+      "child": {
+        "pid": 33023,
+        "birth": "2625290973"
+      },
+      "returncode": 0,
+      "ended": 1792814953.4220533,
+      "lifecycle_seconds": 132.7024199962616,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "measure2",
+      "status": "EXITED_OK",
+      "start": 1792815016.139671,
+      "guard": {
+        "pid": 33200,
+        "birth": "2625310510"
+      },
+      "command": [
+        "python",
+        "projection-warp-specialized/measure.py",
+        "--process",
+        "2",
+        "--output",
+        "projection-warp-specialized/results/measure2-data",
+        "--candidate",
+        "projection-warp-specialized/build/normal/wam_whole_warp_specialized_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "WARP-SPECIALIZED-4MMA",
+        "--module-name",
+        "wam_whole_warp_specialized_cuda"
+      ],
+      "child": {
+        "pid": 33201,
+        "birth": "2625310515"
+      },
+      "returncode": 0,
+      "ended": 1792815023.6660364,
+      "lifecycle_seconds": 7.526366472244263,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "public-default",
+      "status": "EXITED_OK",
+      "start": 1792815489.2589264,
+      "guard": {
+        "pid": 33440,
+        "birth": "2625357822"
+      },
+      "command": [
+        "python",
+        "projection-warp-specialized/precision_public.py",
+        "--output",
+        "projection-warp-specialized/results/public-default-data",
+        "--binary",
+        "workspace/算子研究/wam_ops/optimized/wam_whole_warp_specialized_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_warp_specialized_cuda",
+        "--expect-tma",
+        "true",
+        "--stream",
+        "default"
+      ],
+      "child": {
+        "pid": 33441,
+        "birth": "2625357827"
+      },
+      "returncode": 0,
+      "ended": 1792815494.9048753,
+      "lifecycle_seconds": 5.645949363708496,
+      "owned_child_exited": true
+    },
+    {
+      "stage": "build-normal",
+      "status": "EXITED_OK",
+      "start": 1792814629.891068,
+      "guard": {
+        "pid": 32863,
+        "birth": "2625271885"
+      },
+      "command": [
+        "python",
+        "projection-warp-specialized/build_candidate.py",
+        "build_ext",
+        "--build-temp",
+        "projection-warp-specialized/build/normal-temp",
+        "--build-lib",
+        "projection-warp-specialized/build/normal"
+      ],
+      "child": {
+        "pid": 32864,
+        "birth": "2625271890"
+      },
+      "returncode": 0,
+      "ended": 1792814762.5140483,
+      "lifecycle_seconds": 132.6229808330536,
+      "owned_child_exited": true
+    }
+  ],
+  "GPU_worker_process_seconds": 35.12189483642578,
+  "compiler_process_seconds": 265.3254008293152,
+  "CUDA_active_seconds": "UNKNOWN",
+  "failed_GPU_runtime_or_compile": 0,
+  "algorithm_repairs": 0,
+  "CPU_preparation_command_errors": 2,
+  "owned_cleanup": "OWNED-CLEANUP.json: 14 exited identities, zero compute contexts",
+  "source_binary_byte_check": "RETURNED-BYTE-CHECK.json: six files exact",
+  "instance_shutdown": false
+}

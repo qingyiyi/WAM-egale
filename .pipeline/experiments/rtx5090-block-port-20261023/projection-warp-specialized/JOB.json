@@ -1,0 +1,32 @@
+{
+  "id": "M39-PROJECTION-WARP-SPECIALIZED",
+  "status": "CLOSED_ADOPTED_RESEARCH_ONLY",
+  "start": "2026-10-24T11:59:47+08:00",
+  "registered_at": "2026-10-24T12:00:43.468562+08:00",
+  "absolute_cleanup_deadline": "2026-10-24T12:24:47+08:00",
+  "wall_cap_seconds": 1500,
+  "cleanup_reserve_seconds": 300,
+  "old_cumulative_seconds": 34186.41251785547,
+  "total_cap_seconds": 36000,
+  "gpu": "existing RTX5090 only; single worker; no other GPU context",
+  "cpu_threads": 4,
+  "storage_cap_bytes": 1073741824,
+  "call_cap": 12000,
+  "repairs_max": 1,
+  "goal": "Three projection stages: W0 TMA/W1-3 epilogue/W4-7 MMA with full-empty mbarriers and one result slot; preserve tile,K partitions,BF16 order",
+  "retained": "SPLITK-M64-FFN2",
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false,
+  "cleanup": "owned PID+birth only; return source/binaries/results; instance remains on",
+  "actual_gpu_preflight": {
+    "time": "2026-10-24T12:03:00+08:00",
+    "device": "RTX5090",
+    "uuid": "GPU-e5e7821f-9633-6cc8-d06c-d0d0df4c9256",
+    "memory_used_MiB": 0,
+    "other_contexts": 0
+  },
+  "ended": "2026-10-24T12:22:08.565998+08:00"
+}

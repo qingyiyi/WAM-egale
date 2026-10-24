@@ -1,7 +1,7 @@
 # WAM当前入口
 
-先读[策略](CONTEXT-POLICY.md)、[约束](memory/INDEX.md)、[当前状态](PROGRESS.compact.md)、[Cycle](cycles/wam-research-20261016/PLAN.md)。固定v15，不全量sync；保护state/cycle/rules不覆盖。
+Self QKV已迁移一TMA／三epilogue／四MMA并研究采用；原Torch整层短中长1.2475/1.7553/2.1872×，比旧A延迟降2.94%/2.81%/2.25%。三KV有限逐位及公开两流通过。用户追加现有5090持续使用，旧账本保留。双A100继续RoboTwin，13:55为298/600有效完整组，两worker运行。
 
-10/23局部warpT0–T4已收口：FFN2重叠不采用；隔离研究L13小幅改进约0.4%–0.7%，中长仍慢强guarded约3.4%–3.6%。原使用入口A不变、生产未部署。GPU0已清理，旧累计不重置、四权限false。GPU1原RoboTwin继续；16:33已配齐125组三臂，微波炉20组，等100组齐后再查原因。
+先读[策略](CONTEXT-POLICY.md)、[约束](memory/INDEX.md)、[短状态](PROGRESS.compact.md)、[当前Cycle](cycles/wam-research-20261016/PLAN.md)。
 
-[回传报告](experiments/local-warp-pipeline-20261023/REVIEW_RETURN.md)、[当前完整阶段表](experiments/local-warp-pipeline-20261023/STAGE-TABLE.md)、[同轮对照](experiments/local-warp-pipeline-20261023/FINAL-COMPARISON.md)、[优化证据索引](experiments/single-layer-async-gemm-20261020/OPTIMIZATION-LEDGER.md)、[微波炉原计划](experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/PLAN.md)。
+[本轮结果](experiments/rtx5090-block-port-20261023/projection-warp-specialized/self-qkv-tma-migration/REVIEW_RETURN.md)、[完整阶段表](experiments/rtx5090-block-port-20261023/projection-warp-specialized/self-qkv-tma-migration/STAGE-TABLE.md)、[固定源码入口](experiments/rtx5090-block-port-20261023/projection-warp-specialized/self-qkv-tma-migration/SELECTED.json)、[双卡接续](experiments/robotwin-pilot-20261020/eval100-20261022/resume-after-storage-race-20261024/PLAN.md)。旧失败、预算收据及四false保留。

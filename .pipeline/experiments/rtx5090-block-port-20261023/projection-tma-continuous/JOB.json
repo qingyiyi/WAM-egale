@@ -1,0 +1,30 @@
+{
+  "id": "M39-PROJECTION-TMA-CONTINUOUS",
+  "status": "CLOSED_REJECTED_PERFORMANCE_RESTORED_A",
+  "start": "2026-10-24T09:58:17+08:00",
+  "registered_at": "2026-10-24T09:59:19.785913+08:00",
+  "absolute_cleanup_deadline": "2026-10-24T10:48:17+08:00",
+  "wall_cap_seconds": 3000,
+  "old_cumulative_seconds": 32386.412517855468,
+  "total_cap_seconds": 36000,
+  "gpu": "existing RTX5090 only",
+  "cpu_threads": 4,
+  "storage_cap_bytes": 1073741824,
+  "call_cap": 15000,
+  "repairs_max": 1,
+  "goal": "Continuous K64 TMA input ring across ten original numerical partitions for Self-out/Cross-Q/Cross-out, no dedicated epilogue warp overlap",
+  "inputs": "three frozen B14/Q16/block0 fixtures KV288/1152/2160",
+  "reference": "A.so / wam_whole_splitk_cuda, selected FFN2 split-K",
+  "candidates": [
+    "TMA-CONTINUOUS"
+  ],
+  "cleanup": "owned PID+birth only; source/binary/results returned locally; instance left on",
+  "production_admitted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "ended": "2026-10-24T10:09:30.649000+08:00",
+  "retained": "SPLITK-M64-FFN2",
+  "candidate_outcome": "FINITE_EXACT_PASS_PERFORMANCE_REJECTED"
+}

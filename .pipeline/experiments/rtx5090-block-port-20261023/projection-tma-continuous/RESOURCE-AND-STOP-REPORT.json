@@ -1,0 +1,272 @@
+{
+  "status": "CLOSED_REJECTED_PERFORMANCE_RESTORED_A",
+  "start": "2026-10-24T09:58:17+08:00",
+  "closed_at": "2026-10-24T10:09:30.649000+08:00",
+  "original_absolute_cleanup_deadline": "2026-10-24T10:48:17+08:00",
+  "charged_lifecycle_seconds": 900,
+  "accounting": "conservative 15 minutes including CPU prep/build/wait/measure/return/cleanup, not CUDA active",
+  "old_cumulative_seconds": 32386.412517855468,
+  "new_cumulative_seconds": 33286.41251785547,
+  "remaining_seconds": 2713.5874821445323,
+  "gpu_worker_process_seconds": 51.08331561088562,
+  "compiler_process_seconds_sum": 266.4163465499878,
+  "compiler_process_sum_is_wall_time": false,
+  "cuda_active_seconds": "UNKNOWN",
+  "full_block_calls": 11469,
+  "call_cap": 15000,
+  "timeout_or_runtime_failures": 0,
+  "performance_rejected_candidates": 1,
+  "numerical_failed_candidates": 0,
+  "terminal_stages": [
+    {
+      "status": "EXITED_OK",
+      "start": 1792807509.003845,
+      "guard": {
+        "pid": 29418,
+        "birth": "2624559797"
+      },
+      "command": [
+        "python",
+        "projection-tma-continuous/measure.py",
+        "--process",
+        "1",
+        "--label",
+        "TMA",
+        "--module-name",
+        "wam_whole_tma_continuous_cuda",
+        "--candidate",
+        "projection-tma-continuous/build/normal/wam_whole_tma_continuous_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--profile",
+        "projection-tma-continuous/build/profile/wam_whole_tma_continuous_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--stages",
+        "--output",
+        "projection-tma-continuous/results/TMA-measure1-data"
+      ],
+      "child": {
+        "pid": 29419,
+        "birth": "2624559802"
+      },
+      "returncode": 0,
+      "ended": 1792807521.7875812,
+      "lifecycle_seconds": 12.783737182617188,
+      "owned_child_exited": true,
+      "stage": "TMA-measure1"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792807493.2467465,
+      "guard": {
+        "pid": 29393,
+        "birth": "2624558221"
+      },
+      "command": [
+        "python",
+        "projection-tma-continuous/precision_unique.py",
+        "--binary",
+        "projection-tma-continuous/build/normal/wam_whole_tma_continuous_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_tma_continuous_cuda",
+        "--output",
+        "projection-tma-continuous/results/precision-data"
+      ],
+      "child": {
+        "pid": 29394,
+        "birth": "2624558226"
+      },
+      "returncode": 0,
+      "ended": 1792807498.220129,
+      "lifecycle_seconds": 4.973382949829102,
+      "owned_child_exited": true,
+      "stage": "precision"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792807612.8057106,
+      "guard": {
+        "pid": 29559,
+        "birth": "2624570177"
+      },
+      "command": [
+        "python",
+        "projection-tma-continuous/measure_retained.py",
+        "--process",
+        "3",
+        "--label",
+        "RETAINED",
+        "--module-name",
+        "wam_whole_splitk_cuda",
+        "--candidate",
+        "workspace/算子研究/wam_ops/optimized/wam_whole_splitk_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--reference",
+        "ffn-splitk/A.so",
+        "--reference-module-name",
+        "wam_whole_grain_cuda",
+        "--profile",
+        "ffn-splitk/build/profile/wam_whole_splitk_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--profile-module-name",
+        "wam_whole_splitk_profile_cuda",
+        "--stages",
+        "--output",
+        "projection-tma-continuous/results/RETAINED-stages-data"
+      ],
+      "child": {
+        "pid": 29560,
+        "birth": "2624570182"
+      },
+      "returncode": 0,
+      "ended": 1792807625.689485,
+      "lifecycle_seconds": 12.883774757385254,
+      "owned_child_exited": true,
+      "stage": "RETAINED-stages"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792807653.888723,
+      "guard": {
+        "pid": 29656,
+        "birth": "2624574287"
+      },
+      "command": [
+        "python",
+        "projection-tma-continuous/precision_public.py",
+        "--binary",
+        "workspace/算子研究/wam_ops/optimized/wam_whole_splitk_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_splitk_cuda",
+        "--expect-tma=false",
+        "--stream",
+        "custom",
+        "--output",
+        "projection-tma-continuous/results/public-custom-data"
+      ],
+      "child": {
+        "pid": 29657,
+        "birth": "2624574290"
+      },
+      "returncode": 0,
+      "ended": 1792807659.6645164,
+      "lifecycle_seconds": 5.775793790817261,
+      "owned_child_exited": true,
+      "stage": "public-custom"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792807531.6449268,
+      "guard": {
+        "pid": 29475,
+        "birth": "2624562061"
+      },
+      "command": [
+        "python",
+        "projection-tma-continuous/measure.py",
+        "--process",
+        "2",
+        "--label",
+        "TMA",
+        "--module-name",
+        "wam_whole_tma_continuous_cuda",
+        "--candidate",
+        "projection-tma-continuous/build/normal/wam_whole_tma_continuous_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--output",
+        "projection-tma-continuous/results/TMA-measure2-data"
+      ],
+      "child": {
+        "pid": 29476,
+        "birth": "2624562066"
+      },
+      "returncode": 0,
+      "ended": 1792807540.6351087,
+      "lifecycle_seconds": 8.990182399749756,
+      "owned_child_exited": true,
+      "stage": "TMA-measure2"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792807327.5093482,
+      "guard": {
+        "pid": 29224,
+        "birth": "2624541647"
+      },
+      "command": [
+        "python",
+        "projection-tma-continuous/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "projection-tma-continuous/build/profile-temp",
+        "--build-lib",
+        "projection-tma-continuous/build/profile"
+      ],
+      "child": {
+        "pid": 29226,
+        "birth": "2624541652"
+      },
+      "returncode": 0,
+      "ended": 1792807460.9425523,
+      "lifecycle_seconds": 133.43320441246033,
+      "owned_child_exited": true,
+      "stage": "build-profile"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792807643.9936442,
+      "guard": {
+        "pid": 29617,
+        "birth": "2624573298"
+      },
+      "command": [
+        "python",
+        "projection-tma-continuous/precision_public.py",
+        "--binary",
+        "workspace/算子研究/wam_ops/optimized/wam_whole_splitk_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_splitk_cuda",
+        "--expect-tma=false",
+        "--stream",
+        "default",
+        "--output",
+        "projection-tma-continuous/results/public-default-data"
+      ],
+      "child": {
+        "pid": 29618,
+        "birth": "2624573301"
+      },
+      "returncode": 0,
+      "ended": 1792807649.670088,
+      "lifecycle_seconds": 5.6764445304870605,
+      "owned_child_exited": true,
+      "stage": "public-default"
+    },
+    {
+      "status": "EXITED_OK",
+      "start": 1792807327.5088804,
+      "guard": {
+        "pid": 29223,
+        "birth": "2624541647"
+      },
+      "command": [
+        "python",
+        "workspace/算子研究/wam_ops/optimized/build_whole_layer.py",
+        "build_ext",
+        "--build-temp",
+        "projection-tma-continuous/build/normal-temp",
+        "--build-lib",
+        "projection-tma-continuous/build/normal"
+      ],
+      "child": {
+        "pid": 29225,
+        "birth": "2624541652"
+      },
+      "returncode": 0,
+      "ended": 1792807460.492022,
+      "lifecycle_seconds": 132.98314213752747,
+      "owned_child_exited": true,
+      "stage": "build-normal"
+    }
+  ],
+  "storage_bytes_before_final_reports": 37928549,
+  "storage_cap_bytes": 1073741824,
+  "cleanup": "OWNED-CLEANUP.json",
+  "return_byte_check": "RETURNED-BYTE-CHECK.json",
+  "instance_shutdown": false,
+  "new_gpu_jobs_started": false
+}
