@@ -1,0 +1,409 @@
+--- A/whole_layer.cu
++++ C-overlap/whole_layer.cu
+@@ -69,6 +69,8 @@
+ // a[]是中间buffer，w[]对应whole_layer.py绑定的原始参数，均不跨候选混用。
+ struct Params {
+     alignas(64) CUtensorMap projection_maps[6][2];
++    alignas(64) CUtensorMap ffn_maps[2];
++    int64_t *ffn_handoff_trace;
+     int64_t *projection_trace;
+     int64_t *projection_role_trace;
+     const void *w[27];
+@@ -103,6 +105,11 @@
+     alignas(8) uint64_t ready[2], empty[2], result_full, result_empty;
+ };
+ 
++struct alignas(1024) FfnHandoffStorage {
++    ProjectionTmaStorage data;
++    int tasks[2];
++    alignas(8) uint64_t task_full[2], task_empty[2];
++};
+ struct NormShared {
+     alignas(16) B input[D];
+     float x[D], y[D], reduce[6];
+@@ -111,6 +118,7 @@
+     GemmShared gemm;
+     CutlassGemmStorage cutlass_gemm;
+     ProjectionTmaStorage projection_tma;
++    FfnHandoffStorage ffn_handoff;
+     NormShared norm;
+     NormShared norm_pair[2]; // 两行各占4个warp；仍小于FA2已有的共享内存上限。
+     char fa2_workspace[FA_SMEM];
+@@ -575,6 +583,70 @@
+     __syncthreads();
+ }
+ 
++
++// B: same split-K tasks and commit order; only W0 becomes a TMA producer.
++__device__ __forceinline__ void ffn2_tma_partition(const Params &p, ProjectionTmaStorage &s,
++                                                 int tile, int partition) {
++    using Op = typename CutlassTile<64>::Mma::Operator;
++    const int w = int(threadIdx.x)/32, lane = int(threadIdx.x)%32;
++    const int rm = tile/24*64, cn = tile%24*128;
++    if (threadIdx.x == 0) {
++        for (int i=0;i<2;++i) {
++            asm volatile("mbarrier.init.shared::cta.b64 [%0], 1;" :: "r"(projection_smem(&s.ready[i])) : "memory");
++            asm volatile("mbarrier.init.shared::cta.b64 [%0], 4;" :: "r"(projection_smem(&s.empty[i])) : "memory");
++        }
++        asm volatile("fence.proxy.async.shared::cta;" ::: "memory");
++    }
++    __syncthreads();
++    if (w == 0) {
++        for (int step=0;step<32;++step) {
++            const int slot=step&1;
++            if (step>=2) projection_wait(&s.empty[slot],((step/2)-1)&1);
++            if (lane==0) {
++                const unsigned barrier=projection_smem(&s.ready[slot]);
++                asm volatile("mbarrier.arrive.expect_tx.shared::cta.b64 _, [%0], %1;" :: "r"(barrier),"r"(24576):"memory");
++                const int k=partition*2048+step*64;
++                asm volatile("cp.async.bulk.tensor.2d.shared::cluster.global.mbarrier::complete_tx::bytes [%0], [%1, {%2, %3}], [%4];"
++                    ::"r"(projection_smem(s.a[slot])),"l"(&p.ffn_maps[0]),"r"(k),"r"(rm),"r"(barrier):"memory");
++                asm volatile("cp.async.bulk.tensor.2d.shared::cluster.global.mbarrier::complete_tx::bytes [%0], [%1, {%2, %3}], [%4];"
++                    ::"r"(projection_smem(s.b[slot])),"l"(&p.ffn_maps[1]),"r"(k),"r"(cn),"r"(barrier):"memory");
++            }
++            __syncwarp();
++        }
++        projection_wait(&s.empty[0],1); projection_wait(&s.empty[1],1);
++    } else if (w>=3 && w<7) {
++        const int warp=w-3;
++        typename Op::FragmentC acc; acc.clear();
++        Op mma;
++        for (int step=0;step<32;++step) {
++            const int slot=step&1;
++            projection_wait(&s.ready[slot],(step/2)&1);
++            typename Op::IteratorA ai({s.a[slot],typename Op::LayoutA(64)},lane);
++            typename Op::IteratorB bi({s.b[slot],typename Op::LayoutB(64)},lane);
++            ai.add_tile_offset({warp%2,0}); bi.add_tile_offset({0,warp/2});
++            typename Op::FragmentA af[2]; typename Op::FragmentB bf[2];
++            ai.set_kgroup_index(0);bi.set_kgroup_index(0);ai.load(af[0]);bi.load(bf[0]);++ai;++bi;
++            #pragma unroll
++            for (int group=0;group<4;++group) {
++                if(group<3) {ai.set_kgroup_index(group+1);bi.set_kgroup_index(group+1);ai.load(af[(group+1)&1]);bi.load(bf[(group+1)&1]);++ai;++bi;}
++                if(group==2) {__syncwarp();if(lane==0)projection_arrive(&s.empty[slot]);}
++                typename Op::TransformedFragmentA at;typename Op::TransformedFragmentB bt;
++                mma.transform(at,bt,af[group&1],bf[group&1]);mma(acc,at,bt,acc);
++            }
++        }
++        typename Op::IteratorC store({s.result,CutlassRow(136)},lane);
++        store.add_tile_offset({warp%2,warp/2});store.store(acc);
++    }
++    __syncthreads();
++    if (threadIdx.x==0) {
++        for(int i=0;i<2;++i) {
++            asm volatile("mbarrier.inval.shared::cta.b64 [%0];" ::"r"(projection_smem(&s.ready[i])):"memory");
++            asm volatile("mbarrier.inval.shared::cta.b64 [%0];" ::"r"(projection_smem(&s.empty[i])):"memory");
++        }
++    }
++    __syncthreads();
++}
++
+ // SM120 M64粒度候选：输出tile从48变96；七段归约和提交算术不改。
+ __device__ __forceinline__ void ffn2_partition64(CutlassTile<64>::Storage &s, const __nv_bfloat16 *a,
+                                                const __nv_bfloat16 *w, int tile, int partition) {
+@@ -608,12 +680,14 @@
+     __syncthreads();
+ }
+ 
+-__device__ __forceinline__ void ffn2_commit64(const Params &p, CutlassTile<64>::Storage &s,
+-                                            int tile, int partition, int partitions = 2) {
++template<class Storage>
++__device__ __forceinline__ void ffn2_commit64(const Params &p, Storage &s,
++                                            int tile, int partition, int partitions = 2,
++                                            int worker = int(threadIdx.x), int workers = THREADS, bool cta_sync = true) {
+     const bool second = partition == partitions - 1;
+     struct alignas(8) B4 { __nv_bfloat162 lo, hi; };
+     B *out = bp(p, F2);
+-    const int col_in_tile = (int(threadIdx.x) % 32) * 4;
++    const int col_in_tile = (worker % 32) * 4;
+     const int col = (tile % 24) * 128 + col_in_tile;
+     const int cell = 5 * D + col;
+     float4 bias{}, table{};
+@@ -623,7 +697,7 @@
+         bias = {lo.x, lo.y, hi.x, hi.y};
+         table = *reinterpret_cast<const float4 *>((const float *)p.w[0] + cell);
+     }
+-    for (int i = 4 * int(threadIdx.x); i < 64 * 128; i += 4 * THREADS) {
++    for (int i = 4 * worker; i < 64 * 128; i += 4 * workers) {
+         const int row = (tile / 24) * 64 + i / 128;
+         if (row < 224) {
+             float4 z = *reinterpret_cast<const float4 *>(s.result + (i / 128) * 136 + col_in_tile);
+@@ -678,7 +752,7 @@
+             }
+         }
+     }
+-    __syncthreads();
++    if (cta_sync) __syncthreads();
+ }
+ 
+ using DeviceCounter = cuda::atomic_ref<int, cuda::thread_scope_device>;
+@@ -692,6 +766,7 @@
+ // acq_rel RMW串起同组生产者；消费者acquire后才读取对应全局buffer。
+ __device__ void ffn_publish(const Params &p, int offset, int group, int expected) {
+     __threadfence();
++    if (offset == 0) asm volatile("fence.proxy.async.global;" ::: "memory");
+     __syncthreads();
+     if (threadIdx.x == 0) {
+         const int64_t at = p.debug_modulation ? ffn_timestamp() : 0;
+@@ -816,61 +891,146 @@
+ // CTA均驻留，且每CTA先完成自己的FFN1任务；提交等待只指向更小partition，
+ // 因而不会出现等待尚未领取任务的环。FP32部分和在本CTA shared中等待提交。
+ // helper不含grid.sync，独立FFN2测量可复用；调用者负责初始化和最终汇合。
+-__device__ __forceinline__ void action_ffn2_splitk(const Params &p, Shared &s) {
+-    constexpr int columns = 24, partitions = 7, tasks_per_row = columns * partitions;
+-    while (true) {
+-        if (threadIdx.x == 0) {
+-            s.task = -1;
+-            for (int scan = 0; scan < 4; ++scan) {
+-                const int row = (int(blockIdx.x) + scan) % 4;
+-                const int first = 2 * (row / 2);
+-                if (DeviceCounter(p.ffn_state[first]).load(cuda::memory_order_acquire) != 28 ||
+-                    DeviceCounter(p.ffn_state[first + 1]).load(cuda::memory_order_acquire) !=
+-                        (row < 2 ? 28 : 36))
+-                    continue;
+-                auto next = DeviceCounter(p.ffn_state[4 + row]);
+-                int job = next.load(cuda::memory_order_relaxed);
+-                while (job < tasks_per_row && !next.compare_exchange_weak(
+-                           job, job + 1, cuda::memory_order_relaxed)) {}
+-                if (job < tasks_per_row) {
+-                    s.task = row * tasks_per_row + job;
+-                    break;
++
++// C: the original partition-major queue; only the owner warp claims tasks.
++__device__ __forceinline__ int ffn2_claim_task(const Params &p) {
++    constexpr int count=168;
++    for (;;) {
++        for(int scan=0;scan<4;++scan) {
++            const int row=(int(blockIdx.x)+scan)%4,first=2*(row/2);
++            if(DeviceCounter(p.ffn_state[first]).load(cuda::memory_order_acquire)!=28 ||
++               DeviceCounter(p.ffn_state[first+1]).load(cuda::memory_order_acquire)!=(row<2?28:36))continue;
++            auto next=DeviceCounter(p.ffn_state[4+row]);
++            int job=next.load(cuda::memory_order_relaxed);
++            while(job<count && !next.compare_exchange_weak(job,job+1,cuda::memory_order_relaxed)){}
++            if(job<count)return row*count+job;
++        }
++        if(DeviceCounter(p.ffn_state[4]).load(cuda::memory_order_relaxed)==count &&
++           DeviceCounter(p.ffn_state[5]).load(cuda::memory_order_relaxed)==count &&
++           DeviceCounter(p.ffn_state[6]).load(cuda::memory_order_relaxed)==count &&
++           DeviceCounter(p.ffn_state[7]).load(cuda::memory_order_relaxed)==count)return -2;
++        __nanosleep(128);
++    }
++}
++__device__ __forceinline__ void action_ffn2_splitk(const Params &p, Shared &shared) {
++    auto &ring=shared.tile.ffn_handoff;
++    auto &s=ring.data;
++    const int w=int(threadIdx.x)/32,lane=int(threadIdx.x)%32;
++    if(threadIdx.x==0) {
++        for(int i=0;i<2;++i) {
++            asm volatile("mbarrier.init.shared::cta.b64 [%0], 1;"::"r"(projection_smem(&s.ready[i])):"memory");
++            asm volatile("mbarrier.init.shared::cta.b64 [%0], 4;"::"r"(projection_smem(&s.empty[i])):"memory");
++            asm volatile("mbarrier.init.shared::cta.b64 [%0], 1;"::"r"(projection_smem(&ring.task_full[i])):"memory");
++            asm volatile("mbarrier.init.shared::cta.b64 [%0], 7;"::"r"(projection_smem(&ring.task_empty[i])):"memory");
++        }
++        asm volatile("mbarrier.init.shared::cta.b64 [%0], 4;"::"r"(projection_smem(&s.result_full)):"memory");
++        asm volatile("mbarrier.init.shared::cta.b64 [%0], 3;"::"r"(projection_smem(&s.result_empty)):"memory");
++        asm volatile("fence.proxy.async.shared::cta;":::"memory");
++    }
++    __syncthreads();
++    if(w==0) {
++        int q=0;
++        for(;;++q) {
++            const int ts=q&1;
++            if(q>=2)projection_wait(&ring.task_empty[ts],((q/2)-1)&1);
++            int task=-2;
++            if(lane==0)task=ffn2_claim_task(p);
++            task=__shfl_sync(0xffffffff,task,0);
++            if(lane==0) {ring.tasks[ts]=task;projection_arrive(&ring.task_full[ts]);}
++            if(task<0)break;
++            const int row=task/168,job=task%168,partition=job/24;
++            const int tile=row*24+job%24,rm=row*64,cn=(tile%24)*128;
++            for(int kstep=0;kstep<32;++kstep) {
++                const int step=q*32+kstep,slot=step&1;
++                if(step>=2)projection_wait(&s.empty[slot],((step/2)-1)&1);
++                if(lane==0) {
++                    const int k=partition*2048+kstep*64;
++                    const unsigned barrier=projection_smem(&s.ready[slot]);
++                    asm volatile("mbarrier.arrive.expect_tx.shared::cta.b64 _, [%0], %1;"::"r"(barrier),"r"(24576):"memory");
++                    asm volatile("cp.async.bulk.tensor.2d.shared::cluster.global.mbarrier::complete_tx::bytes [%0], [%1, {%2, %3}], [%4];"
++                        ::"r"(projection_smem(s.a[slot])),"l"(&p.ffn_maps[0]),"r"(k),"r"(rm),"r"(barrier):"memory");
++                    asm volatile("cp.async.bulk.tensor.2d.shared::cluster.global.mbarrier::complete_tx::bytes [%0], [%1, {%2, %3}], [%4];"
++                        ::"r"(projection_smem(s.b[slot])),"l"(&p.ffn_maps[1]),"r"(k),"r"(cn),"r"(barrier):"memory");
+                 }
+-            }
+-            // 所有任务已有owner才退出；暂时没有ready行时继续等待生产者。
+-            if (s.task == -1 &&
+-                DeviceCounter(p.ffn_state[4]).load(cuda::memory_order_relaxed) == tasks_per_row &&
+-                DeviceCounter(p.ffn_state[5]).load(cuda::memory_order_relaxed) == tasks_per_row &&
+-                DeviceCounter(p.ffn_state[6]).load(cuda::memory_order_relaxed) == tasks_per_row &&
+-                DeviceCounter(p.ffn_state[7]).load(cuda::memory_order_relaxed) == tasks_per_row)
+-                s.task = -2;
+-        }
+-        __syncthreads();
+-        const int task = s.task;
+-        if (task == -2) break;
+-        if (task < 0) { __nanosleep(128); __syncthreads(); continue; }
+-        const int row = task / tasks_per_row;
+-        const int job = task % tasks_per_row;
+-        const int partition = job / columns, tile = row * columns + job % columns;
+-        auto &workspace = s.tile.cutlass_gemm.action;
+-        ffn2_partition64(workspace, bp(p, ACT), (const B *)p.w[25], tile, partition);
+-
+-        // 各K片段可并行做MMA；只有BF16部分和、末段bias和残差提交必须有序。
+-        // acquire后经CTA同步将前一片段的全tile写入对所有写回线程可见。
+-        if (threadIdx.x == 0)
+-            while (DeviceCounter(p.ffn_state[16 + tile]).load(cuda::memory_order_acquire) != partition)
+-                __nanosleep(128);
+-        __syncthreads();
+-        ffn2_commit64(p, workspace, tile, partition, partitions);
+-        // 每个写线程先发布自己的F2/OUT，再由leader释放后继片段。
+-        __threadfence();
+-        __syncthreads();
+-        if (threadIdx.x == 0)
+-            DeviceCounter(p.ffn_state[16 + tile]).store(partition + 1, cuda::memory_order_release);
+-        __syncthreads();
+-        if (partition == partitions - 1)
+-            ffn_publish(p, 8, row, columns); // 仍只统计24个最终完成输出tile。
+-    }
++                __syncwarp();
++            }
++            if(lane==0&&p.ffn_handoff_trace) {
++                p.ffn_handoff_trace[task*4]=32;p.ffn_handoff_trace[task*4+1]=32;
++            }
++        }
++        if(q>0) {projection_wait(&s.empty[0],1);projection_wait(&s.empty[1],1);}
++    } else if(w>=4) {
++        using Op=typename CutlassTile<64>::Mma::Operator;
++        const int warp=w-4;
++        Op mma;
++        for(int q=0;;++q) {
++            const int ts=q&1;
++            projection_wait(&ring.task_full[ts],(q/2)&1);
++            const int task=ring.tasks[ts];
++            __syncwarp();if(lane==0)projection_arrive(&ring.task_empty[ts]);
++            if(task<0)break;
++            typename Op::FragmentC acc;acc.clear();
++            for(int kstep=0;kstep<32;++kstep) {
++                const int step=q*32+kstep,slot=step&1;
++                projection_wait(&s.ready[slot],(step/2)&1);
++                typename Op::IteratorA ai({s.a[slot],typename Op::LayoutA(64)},lane);
++                typename Op::IteratorB bi({s.b[slot],typename Op::LayoutB(64)},lane);
++                ai.add_tile_offset({warp%2,0});bi.add_tile_offset({0,warp/2});
++                typename Op::FragmentA af[2];typename Op::FragmentB bf[2];
++                ai.set_kgroup_index(0);bi.set_kgroup_index(0);ai.load(af[0]);bi.load(bf[0]);++ai;++bi;
++                #pragma unroll
++                for(int group=0;group<4;++group) {
++                    if(group<3){ai.set_kgroup_index(group+1);bi.set_kgroup_index(group+1);ai.load(af[(group+1)&1]);bi.load(bf[(group+1)&1]);++ai;++bi;}
++                    if(group==2){__syncwarp();if(lane==0)projection_arrive(&s.empty[slot]);}
++                    typename Op::TransformedFragmentA at;typename Op::TransformedFragmentB bt;
++                    mma.transform(at,bt,af[group&1],bf[group&1]);mma(acc,at,bt,acc);
++                }
++            }
++            // Current tile FP32 accumulators stay in registers while epilogue frees the preceding tile.
++            if(q>0)projection_wait(&s.result_empty,(q-1)&1);
++            typename Op::IteratorC store({s.result,CutlassRow(136)},lane);
++            store.add_tile_offset({warp%2,warp/2});store.store(acc);
++            __syncwarp();if(lane==0)projection_arrive(&s.result_full);
++            if(w==4&&lane==0&&p.ffn_handoff_trace)p.ffn_handoff_trace[task*4+2]=32;
++        }
++    } else {
++        for(int q=0;;++q) {
++            const int ts=q&1;
++            projection_wait(&ring.task_full[ts],(q/2)&1);
++            const int task=ring.tasks[ts];
++            __syncwarp();if(lane==0)projection_arrive(&ring.task_empty[ts]);
++            if(task<0)break;
++            const int row=task/168,job=task%168,partition=job/24,tile=row*24+job%24;
++            projection_wait(&s.result_full,q&1);
++            if(threadIdx.x==32)
++                while(DeviceCounter(p.ffn_state[16+tile]).load(cuda::memory_order_acquire)!=partition)__nanosleep(128);
++            asm volatile("bar.sync 3, 96;":::"memory");
++            ffn2_commit64(p,s,tile,partition,7,int(threadIdx.x)-32,96,false);
++            __threadfence();
++            asm volatile("bar.sync 3, 96;":::"memory");
++            if(threadIdx.x==32) {
++                DeviceCounter(p.ffn_state[16+tile]).store(partition+1,cuda::memory_order_release);
++                if(partition==6) {
++                    const int done=DeviceCounter(p.ffn_state[8+row]).fetch_add(1,cuda::memory_order_acq_rel)+1;
++                    if(done==24&&p.debug_modulation)p.ffn_trace[8+row]=ffn_timestamp();
++                }
++                if(p.ffn_handoff_trace)p.ffn_handoff_trace[task*4+3]=1;
++            }
++            __syncwarp();if(lane==0)projection_arrive(&s.result_empty);
++        }
++    }
++    __syncthreads();
++    if(threadIdx.x==0) {
++        for(int i=0;i<2;++i) {
++            asm volatile("mbarrier.inval.shared::cta.b64 [%0];"::"r"(projection_smem(&s.ready[i])):"memory");
++            asm volatile("mbarrier.inval.shared::cta.b64 [%0];"::"r"(projection_smem(&s.empty[i])):"memory");
++            asm volatile("mbarrier.inval.shared::cta.b64 [%0];"::"r"(projection_smem(&ring.task_full[i])):"memory");
++            asm volatile("mbarrier.inval.shared::cta.b64 [%0];"::"r"(projection_smem(&ring.task_empty[i])):"memory");
++        }
++        asm volatile("mbarrier.inval.shared::cta.b64 [%0];"::"r"(projection_smem(&s.result_full)):"memory");
++        asm volatile("mbarrier.inval.shared::cta.b64 [%0];"::"r"(projection_smem(&s.result_empty)):"memory");
++    }
++    __syncthreads();
+ }
+ 
+ // FFN局部生产/消费流水：ACT仍落原全局buffer，不重复计算FFN1。
+@@ -1591,6 +1751,8 @@
+          info = at::empty({2}, lo);
+     auto queues = at::empty({MAX_STAGES + 16 + 96}, io); // 末96项为SM120逐输出tile提交计数。
+     auto ffn_trace = at::empty({debug ? 12 : 0}, lo);
++    auto ffn_handoff_trace=at::zeros({debug ? 672*4 : 0},lo);
++    p.ffn_handoff_trace=debug?ffn_handoff_trace.data_ptr<int64_t>():nullptr;
+     auto projection_trace = at::empty({debug ? 6 * 96 * 4 : 0}, lo);
+     p.projection_trace = debug ? projection_trace.data_ptr<int64_t>() : nullptr;
+     auto projection_role_trace = at::empty({debug ? 6 * 96 * 8 * 3 : 0}, lo);
+@@ -1628,6 +1790,13 @@
+                 CU_TENSOR_MAP_FLOAT_OOB_FILL_NONE);
+             TORCH_CHECK(status == CUDA_SUCCESS, "Projection TMA tensor map status ", int(status));
+         };
++        const cuuint64_t fdim_a[2] = {14336,224}, fdim_b[2] = {14336,3072}, fs[1] = {14336*2};
++        for (int j=0;j<2;++j) {
++            auto status = cuTensorMapEncodeTiled(&p.ffn_maps[j],CU_TENSOR_MAP_DATA_TYPE_BFLOAT16,2,
++                j==0?p.a[ACT]:const_cast<void*>(p.w[25]),j==0?fdim_a:fdim_b,fs,j==0?box_a:box_b,elem,
++                CU_TENSOR_MAP_INTERLEAVE_NONE,CU_TENSOR_MAP_SWIZZLE_128B,CU_TENSOR_MAP_L2_PROMOTION_NONE,CU_TENSOR_MAP_FLOAT_OOB_FILL_NONE);
++            TORCH_CHECK(status==CUDA_SUCCESS,"FFN TMA map status ",int(status));
++        }
+         const int input[6] = {SA, N2, CA, M1, M1, M1}, weight[6] = {9, 13, 19, 3, 5, 7};
+         for (int projection = 0; projection < 6; ++projection) {
+             encode(&p.projection_maps[projection][0], p.a[input[projection]], dim_a, box_a);
+@@ -1674,6 +1843,7 @@
+     if (p.candidate && p.b * p.q == 224 && at::cuda::getCurrentDeviceProperties()->major >= 12)
+         result["ffn_splitk_commit"] = queues.narrow(0, MAX_STAGES + 16, 96);
+     result["ffn_pipeline_timestamps"] = ffn_trace;
++    result["ffn_handoff_counts"]=ffn_handoff_trace.view({672,4});
+     if (p.candidate && p.b * p.q == 224 && at::cuda::getCurrentDeviceProperties()->major >= 12)
+         result["projection_tma_counts"] = projection_trace.view({6, 96, 4});
+     if (debug && p.candidate && p.b * p.q == 224)
+@@ -1686,6 +1856,22 @@
+                    at::TensorOptions().dtype(at::kLong));
+     return result;
+ }
++
++std::map<std::string,int64_t> cluster_info() {
++    cudaLaunchAttribute a{};a.id=cudaLaunchAttributeClusterDimension;a.val.clusterDim={2,1,1};
++    cudaLaunchConfig_t cfg{};cfg.gridDim=dim3(170);cfg.blockDim=dim3(THREADS);
++    cfg.dynamicSmemBytes=sizeof(Shared);cfg.attrs=&a;cfg.numAttrs=1;
++    int maxsize=-1,active=-1,supported=-1;
++    auto smem=cudaFuncSetAttribute(whole_layer,cudaFuncAttributeMaxDynamicSharedMemorySize,sizeof(Shared));
++    auto sa=cudaDeviceGetAttribute(&supported,cudaDevAttrClusterLaunch,0);
++    auto ma=cudaOccupancyMaxPotentialClusterSize(&maxsize,whole_layer,&cfg);
++    auto ac=cudaOccupancyMaxActiveClusters(&active,whole_layer,&cfg);
++    cudaGetLastError();
++    return {{"cluster_launch",supported},{"attribute_status",int(sa)},{"smem_status",int(smem)},
++        {"max_cluster_size",maxsize},{"max_status",int(ma)},{"active_clusters_size2",active},
++        {"active_status",int(ac)},{"shared_bytes",int64_t(sizeof(Shared))}};
++}
++
+ } // namespace wam_whole_layer_v1
+ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+     // 原始扩展调用默认保留debug字典兼容旧重放脚本；Python普通入口显式传false。
+@@ -1694,6 +1880,7 @@
+           py::arg("update"), py::arg("eps"), py::arg("debug") = true,
+           py::arg("context_rows") = std::nullopt, py::arg("context_roots") = std::nullopt,
+           py::arg("context_kv") = std::vector<at::Tensor>{});
++    m.def("cluster_info", &wam_whole_layer_v1::cluster_info);
+     m.attr("production_admitted") = false;
+     m.attr("computation_launches") = 1;
+     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;

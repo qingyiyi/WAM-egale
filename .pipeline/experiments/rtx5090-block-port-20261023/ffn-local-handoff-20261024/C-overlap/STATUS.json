@@ -1,0 +1,173 @@
+{
+  "status": "CLOSED_REJECTED_PERFORMANCE",
+  "guard": {
+    "pid": 41491,
+    "birth": "2627140473"
+  },
+  "phases": [
+    {
+      "name": "derive-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/make_profile.py"
+      ],
+      "start": 1792833315.7452643,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41492,
+        "birth": "2627140476"
+      },
+      "returncode": 0,
+      "ended": 1792833315.8104727,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 0.06520843505859375
+    },
+    {
+      "name": "build-normal",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build_candidate.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build-temp/normal",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build/normal"
+      ],
+      "start": 1792833315.8113785,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41493,
+        "birth": "2627140482"
+      },
+      "returncode": 0,
+      "ended": 1792833451.364037,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 135.55265855789185
+    },
+    {
+      "name": "build-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build-temp/profile",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build/profile"
+      ],
+      "start": 1792833451.3651345,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41600,
+        "birth": "2627154038"
+      },
+      "returncode": 0,
+      "ended": 1792833588.672029,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 137.30689454078674
+    },
+    {
+      "name": "precision",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/precision_candidate.py",
+        "--binary",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build/normal/wam_whole_ffn_overlap_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_ffn_overlap_cuda",
+        "--expect-tma",
+        "true",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/results/precision"
+      ],
+      "start": 1792833588.6756241,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41707,
+        "birth": "2627167769"
+      },
+      "returncode": 0,
+      "ended": 1792833595.2538624,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 6.578238248825073
+    },
+    {
+      "name": "measure1",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/measure.py",
+        "--process",
+        "1",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/results/measure1-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build/normal/wam_whole_ffn_overlap_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "FFN-C-OVERLAP",
+        "--module-name",
+        "wam_whole_ffn_overlap_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/A.so",
+        "--reference-module-name",
+        "wam_whole_qkv_tma_cuda",
+        "--stages",
+        "--profile",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build/profile/wam_whole_ffn_overlap_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--profile-module-name",
+        "wam_whole_ffn_overlap_profile_cuda"
+      ],
+      "start": 1792833595.2552724,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41744,
+        "birth": "2627168427"
+      },
+      "returncode": 0,
+      "ended": 1792833606.592576,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 11.337303638458252
+    },
+    {
+      "name": "measure2",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/measure.py",
+        "--process",
+        "2",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/results/measure2-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/C-overlap/build/normal/wam_whole_ffn_overlap_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "FFN-C-OVERLAP",
+        "--module-name",
+        "wam_whole_ffn_overlap_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/A.so",
+        "--reference-module-name",
+        "wam_whole_qkv_tma_cuda"
+      ],
+      "start": 1792833606.5969925,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41793,
+        "birth": "2627169561"
+      },
+      "returncode": 0,
+      "ended": 1792833614.424661,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 7.8276684284210205
+    }
+  ],
+  "ended": 1792833614.4290385,
+  "lifecycle_seconds": 298.68571305274963,
+  "storage_bytes": 23134998,
+  "retained": "SELF-QKV-TMA-4MMA",
+  "precision": "FINITE_EXACT_PASS",
+  "adopted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false
+}

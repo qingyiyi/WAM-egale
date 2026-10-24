@@ -1,0 +1,172 @@
+{
+  "status": "CLOSED_REJECTED_PERFORMANCE",
+  "guard": {
+    "pid": 42322,
+    "birth": "2627221335"
+  },
+  "phases": [
+    {
+      "name": "derive-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/make_profile.py"
+      ],
+      "start": 1792834124.3911285,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42323,
+        "birth": "2627221340"
+      },
+      "returncode": 0,
+      "ended": 1792834124.455986,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 0.06485748291015625
+    },
+    {
+      "name": "build-normal",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build_candidate.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build-temp/normal",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build/normal"
+      ],
+      "start": 1792834124.4568512,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42324,
+        "birth": "2627221347"
+      },
+      "returncode": 0,
+      "ended": 1792834258.999287,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 134.54243564605713
+    },
+    {
+      "name": "build-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build-temp/profile",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build/profile"
+      ],
+      "start": 1792834259.0030932,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42428,
+        "birth": "2627234802"
+      },
+      "returncode": 0,
+      "ended": 1792834394.056259,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 135.0531656742096
+    },
+    {
+      "name": "precision",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/precision_candidate.py",
+        "--binary",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build/normal/wam_whole_ffn_cluster_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_ffn_cluster_cuda",
+        "--expect-tma",
+        "true",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/results/precision"
+      ],
+      "start": 1792834394.0601683,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42536,
+        "birth": "2627248307"
+      },
+      "returncode": 0,
+      "ended": 1792834399.883247,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 5.823078632354736
+    },
+    {
+      "name": "measure1",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/measure.py",
+        "--process",
+        "1",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/results/measure1-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build/normal/wam_whole_ffn_cluster_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "E-CLUSTER-PAIR",
+        "--module-name",
+        "wam_whole_ffn_cluster_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/A.so",
+        "--reference-module-name",
+        "wam_whole_qkv_tma_cuda",
+        "--stages",
+        "--profile",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build/profile/wam_whole_ffn_cluster_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--profile-module-name",
+        "wam_whole_ffn_cluster_profile_cuda"
+      ],
+      "start": 1792834399.8883424,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42571,
+        "birth": "2627248890"
+      },
+      "returncode": 0,
+      "ended": 1792834411.8795276,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 11.991185188293457
+    },
+    {
+      "name": "measure2",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/measure.py",
+        "--process",
+        "2",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/results/measure2-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build/normal/wam_whole_ffn_cluster_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "E-CLUSTER-PAIR",
+        "--module-name",
+        "wam_whole_ffn_cluster_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/A.so",
+        "--reference-module-name",
+        "wam_whole_qkv_tma_cuda"
+      ],
+      "start": 1792834411.8839433,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42624,
+        "birth": "2627250090"
+      },
+      "returncode": 0,
+      "ended": 1792834419.6219013,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 7.737957954406738
+    }
+  ],
+  "ended": 1792834419.6271007,
+  "lifecycle_seconds": 295.23656010627747,
+  "storage_bytes": 22837442,
+  "retained": "SELF-QKV-TMA-4MMA",
+  "adopted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false
+}

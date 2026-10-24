@@ -1,0 +1,210 @@
+/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/_dataclass.py:43: UserWarning: 
+                Please remove unknown `Extension` options: 'dlink','dlink_libraries'
+                this kind of usage is deprecated and may cause errors in the future.
+                
+  warnings.warn(msg)
+running build_ext
+W1024 17:31:00.400000 42428 torch/utils/cpp_extension.py:531] There are no g++ version bounds defined for CUDA version 13.0
+building 'wam_whole_ffn_cluster_profile_cuda' extension
+[1/2] /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/bin/nvcc --generate-dependencies-with-compile --dependency-output /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build-temp/profile/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.o.d -I/root/autodl-tmp/cxz/operator-sm120-20261023/build/generated-normal/generated -I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include '-I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized/csrc' '-I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn' '-I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include' -I/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/include -I/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include -I/root/autodl-tmp/cxz/envs/wam-sm120/include -I/root/miniconda3/include/python3.12 -c -c /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.cu -o /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build-temp/profile/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DWAM_CONTEXT_TILE_M=128 -DWAM_FFN_CLUSTER_PAIR=1 -DUNFUSE_FMA -DFLASHATTENTION_DISABLE_DROPOUT -DFLASHATTENTION_DISABLE_ALIBI -DFLASHATTENTION_DISABLE_SOFTCAP -DFLASHATTENTION_DISABLE_LOCAL -DFLASHATTENTION_DISABLE_UNEVEN_K -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_ffn_cluster_profile_cuda -gencode=arch=compute_120,code=sm_120 -std=c++17
+/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.cu(72): warning #1160-D: a reduction in alignment without the "packed" attribute is ignored
+      alignas(64) CUtensorMap projection_maps[6][2];
+                              ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.cu(73): warning #1160-D: a reduction in alignment without the "packed" attribute is ignored
+      alignas(64) CUtensorMap resident_maps[3];
+                              ^
+
+/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.cu(72): warning #1160-D: a reduction in alignment without the "packed" attribute is ignored
+      alignas(64) CUtensorMap projection_maps[6][2];
+                              ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.cu(73): warning #1160-D: a reduction in alignment without the "packed" attribute is ignored
+      alignas(64) CUtensorMap resident_maps[3];
+                              ^
+
+/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.cu(1923): warning #177-D: variable "launch_args" was declared but never referenced
+      void *launch_args[] = {&p};
+            ^
+
+ptxas info    : 39 bytes gmem
+ptxas info    : Function properties for _ZN18wam_whole_layer_v125self_qkv_projection_groupERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16$78
+    8 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 62.783 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v114context_linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiiP13__nv_bfloat16i$77
+    552 bytes stack frame, 544 bytes spill stores, 544 bytes spill loads
+ptxas info    : Compile time = 176.575 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v19gemm_tileERNS_6SharedEPK13__nv_bfloat16S4_S4_PS2_iiiib$76
+    504 bytes stack frame, 504 bytes spill stores, 560 bytes spill loads
+ptxas info    : Compile time = 1169.566 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v114attention_dualERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib$75
+    216 bytes stack frame, 212 bytes spill stores, 212 bytes spill loads
+ptxas info    : Compile time = 527.223 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v114attention_dualERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib
+    208 bytes stack frame, 208 bytes spill stores, 208 bytes spill loads
+ptxas info    : Compile time = 547.557 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi7EEEvRNS_6SharedEi
+    16 bytes stack frame, 16 bytes spill stores, 16 bytes spill loads
+ptxas info    : Compile time = 60.615 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi6EEEvRNS_6SharedEi
+    16 bytes stack frame, 16 bytes spill stores, 16 bytes spill loads
+ptxas info    : Compile time = 56.196 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi5EEEvRNS_6SharedEi
+    16 bytes stack frame, 16 bytes spill stores, 16 bytes spill loads
+ptxas info    : Compile time = 53.572 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi4EEEvRNS_6SharedEi
+    16 bytes stack frame, 16 bytes spill stores, 16 bytes spill loads
+ptxas info    : Compile time = 53.676 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116fa2_combine_tileILi3EEEvRNS_6SharedEi
+    16 bytes stack frame, 16 bytes spill stores, 16 bytes spill loads
+ptxas info    : Compile time = 53.666 ms
+ptxas info    : Function properties for _ZN13wam_whole_fa214whole_standardI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    704 bytes stack frame, 784 bytes spill stores, 836 bytes spill loads
+ptxas info    : Compile time = 789.277 ms
+ptxas info    : Function properties for _ZN13wam_whole_fa214whole_standardI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb1ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    824 bytes stack frame, 896 bytes spill stores, 952 bytes spill loads
+ptxas info    : Compile time = 752.559 ms
+ptxas info    : Function properties for _ZN13wam_whole_fa221whole_standard_directI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    736 bytes stack frame, 812 bytes spill stores, 800 bytes spill loads
+ptxas info    : Compile time = 628.873 ms
+ptxas info    : Function properties for _ZN13wam_whole_fa221whole_standard_directI23Flash_fwd_kernel_traitsILi128ELi128ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi128ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb1ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    728 bytes stack frame, 808 bytes spill stores, 816 bytes spill loads
+ptxas info    : Compile time = 578.385 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v121independent_attentionERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEib
+    544 bytes stack frame, 540 bytes spill stores, 556 bytes spill loads
+ptxas info    : Compile time = 2330.166 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v111prepare_fa2ERKNS_6ParamsERNS_6SharedEb
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 37.797 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v110fa2_splitsEiiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 21.223 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v113rms_pair_tileERKNS_6ParamsERNS_6SharedEPK13__nv_bfloat16PS5_S7_fiiS8_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 15.328 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v19norm_tileERNS_6SharedEPK13__nv_bfloat16PvPKvPKffbbiPKNS_6ParamsEiPS2_
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 77.029 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v116action_ffn1_tailERKNS_6ParamsERNS_6SharedEi
+    120 bytes stack frame, 116 bytes spill stores, 116 bytes spill loads
+ptxas info    : Compile time = 133.311 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v111ffn_publishERKNS_6ParamsEiii
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 2.676 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v117action_projectionERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16iPS9_
+    216 bytes stack frame, 216 bytes spill stores, 216 bytes spill loads
+ptxas info    : Compile time = 156.926 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v19gemm_tileERNS_6SharedEPK13__nv_bfloat16S4_S4_PS2_iiiib
+    496 bytes stack frame, 496 bytes spill stores, 496 bytes spill loads
+ptxas info    : Compile time = 1225.792 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v111finish_tileEv
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 0.979 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v110claim_tileERKNS_6ParamsERNS_6SharedEi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 1.793 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v111begin_stageERKNS_6ParamsERN18cooperative_groups4__v110grid_groupEi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 3.895 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v114context_linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiiP13__nv_bfloat16i
+    560 bytes stack frame, 552 bytes spill stores, 552 bytes spill loads
+ptxas info    : Compile time = 171.056 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v112insert_cacheERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 11.493 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v19norm_ropeERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEPK13__nv_bfloat16PS9_SC_if
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 19.753 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v120self_qkv_projection8ERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16iPS9_
+    72 bytes stack frame, 64 bytes spill stores, 64 bytes spill loads
+ptxas info    : Compile time = 149.883 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v16linearERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16iPS9_iii
+    872 bytes stack frame, 1136 bytes spill stores, 1372 bytes spill loads
+ptxas info    : Compile time = 1311.096 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v125self_qkv_projection_groupERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16
+    56 bytes stack frame, 48 bytes spill stores, 48 bytes spill loads
+ptxas info    : Compile time = 64.546 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v14normERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiPK13__nv_bfloat16Pviiifbb
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 89.613 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v113norm_modulateERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEPK13__nv_bfloat16PvPS9_fi
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 44.439 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v15pointERKNS_6ParamsERNS_6SharedERN18cooperative_groups4__v110grid_groupEiNS_5PointEiiiil
+    16 bytes stack frame, 16 bytes spill stores, 16 bytes spill loads
+ptxas info    : Compile time = 48.380 ms
+ptxas info    : Function properties for _ZN18wam_whole_layer_v16layoutERKNS_6ParamsERNS_6SharedE
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Compile time = 25.554 ms
+ptxas info    : Function properties for _ZN13wam_whole_fa214whole_standardI23Flash_fwd_kernel_traitsILi128ELi64ELi64ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi64ELi4ES3_EELb0ELb0ELb0ELb0ELb0ELb1ELb0ELb0ENS_11WholeParamsEEEvRKT8_iiiPc
+    208 bytes stack frame, 204 bytes spill stores, 204 bytes spill loads
+ptxas info    : Compile time = 399.612 ms
+ptxas info    : Function properties for _ZN13wam_whole_fa211whole_splitI23Flash_fwd_kernel_traitsILi128ELi64ELi128ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi128ELi4ES3_EELb0ELb0ELb0ELb0ELb1ELb0ELb1ELb0ENS_11WholeParamsEEEvRKT8_iiiiiPc
+    464 bytes stack frame, 464 bytes spill stores, 464 bytes spill loads
+ptxas info    : Compile time = 747.889 ms
+ptxas info    : Function properties for _ZN13wam_whole_fa211whole_splitI23Flash_fwd_kernel_traitsILi128ELi64ELi128ELi4ELb0ELb0EN7cutlass10bfloat16_tE19Flash_kernel_traitsILi128ELi64ELi128ELi4ES3_EELb0ELb0ELb0ELb1ELb1ELb0ELb1ELb0ENS_11WholeParamsEEEvRKT8_iiiiiPc
+    456 bytes stack frame, 456 bytes spill stores, 456 bytes spill loads
+ptxas info    : Compile time = 726.945 ms
+ptxas info    : Compiling entry function '_ZN18wam_whole_layer_v111whole_layerENS_6ParamsE' for 'sm_120'
+ptxas info    : Function properties for _ZN18wam_whole_layer_v111whole_layerENS_6ParamsE
+    240 bytes stack frame, 780 bytes spill stores, 944 bytes spill loads
+ptxas info    : Used 255 registers, used 3 barriers
+ptxas info    : Compile time = 17739.266 ms
+/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/platform/platform.h:608:33: warning: ‘long4’ is deprecated: use long4_16a or long4_32a [-Wdeprecated-declarations]
+  608 | struct alignment_of<long4> {
+      |                                 ^    
+In file included from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/driver_types.h:61,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/builtin_types.h:59,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/crt/host_runtime.h:58,
+                 from /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:213:
+/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/vector_types.h:530:98: note: declared here
+  530 | typedef __device_builtin__ struct long4 __VECTOR_TYPE_DEPRECATED__("use long4_16a or long4_32a") long4;
+      |                                                                                                  ^~~~~
+/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/platform/platform.h:612:33: warning: ‘ulong4’ is deprecated: use ulong4_16a or ulong4_32a [-Wdeprecated-declarations]
+  612 | struct alignment_of<ulong4> {
+      |                                 ^     
+In file included from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/driver_types.h:61,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/builtin_types.h:59,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/crt/host_runtime.h:58,
+                 from /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:213:
+/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/vector_types.h:531:101: note: declared here
+  531 | typedef __device_builtin__ struct ulong4 __VECTOR_TYPE_DEPRECATED__("use ulong4_16a or ulong4_32a") ulong4;
+      |                                                                                                     ^~~~~~
+/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/platform/platform.h:628:33: warning: ‘longlong4’ is deprecated: use longlong4_16a or longlong4_32a [-Wdeprecated-declarations]
+  628 | struct alignment_of<longlong4> {
+      |                                 ^        
+In file included from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/driver_types.h:61,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/builtin_types.h:59,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/crt/host_runtime.h:58,
+                 from /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:213:
+/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/vector_types.h:548:110: note: declared here
+  548 | typedef __device_builtin__ struct longlong4 __VECTOR_TYPE_DEPRECATED__("use longlong4_16a or longlong4_32a") longlong4;
+      |                                                                                                              ^~~~~~~~~
+/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/platform/platform.h:632:33: warning: ‘ulonglong4’ is deprecated: use ulonglong4_16a or ulonglong4_32a [-Wdeprecated-declarations]
+  632 | struct alignment_of<ulonglong4> {
+      |                                 ^         
+In file included from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/driver_types.h:61,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/builtin_types.h:59,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/crt/host_runtime.h:58,
+                 from /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:213:
+/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/vector_types.h:549:113: note: declared here
+  549 | typedef __device_builtin__ struct ulonglong4 __VECTOR_TYPE_DEPRECATED__("use ulonglong4_16a or ulonglong4_32a") ulonglong4;
+      |                                                                                                                 ^~~~~~~~~~
+/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/platform/platform.h:636:33: warning: ‘double4’ is deprecated: use double4_16a or double4_32a [-Wdeprecated-declarations]
+  636 | struct alignment_of<double4> {
+      |                                 ^      
+In file included from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/driver_types.h:61,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/builtin_types.h:59,
+                 from /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/crt/host_runtime.h:58,
+                 from /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:213:
+/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include/vector_types.h:559:104: note: declared here
+  559 | typedef __device_builtin__ struct double4 __VECTOR_TYPE_DEPRECATED__("use double4_16a or double4_32a") double4;
+      |                                                                                                        ^~~~~~~
+[2/2] /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/bin/nvcc /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build-temp/profile/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.o -o /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build-temp/profile/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/dlink.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -dlink -L/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/lib -L/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/lib -lcudadevrt -dlto -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_ffn_cluster_profile_cuda -gencode=arch=compute_120,code=sm_120
+nvlink info    : requested LTO but '/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build-temp/profile/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.o' not built for LTO so doing partial LTO
+nvlink warning : Ignoring -dlto option because no LTO objects found
+g++ -pthread -B /root/miniconda3/compiler_compat -fno-strict-overflow -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /root/miniconda3/include -fPIC -O2 -isystem /root/miniconda3/include -shared /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build-temp/profile/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/whole_layer_profile.o /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build-temp/profile/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/dlink.o -L/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/lib -L/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/lib -lcuda -lc10 -ltorch -ltorch_cpu -ltorch_python -lcudart -lc10_cuda -ltorch_cuda -o /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/E-cluster-pair/build/profile/wam_whole_ffn_cluster_profile_cuda.cpython-312-x86_64-linux-gnu.so

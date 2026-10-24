@@ -1,5 +1,7 @@
 # 长期记忆索引
 
+- [有界试验FFN交接与驻留](global/requirements/decision-有界试验FFN输入写回重叠及小块驻留.md)（constraint，本次M39）：已批准有限候选，先精度/能力再整层计时，非预设正收益。
+
 - [现有5090持续使用授权](global/requirements/decision-允许持续使用现有5090开展算子研究.md)（constraint，5090算子）：用户明确取消后续5090的原十小时累计上限；旧账本保留，逐job有界，A100预算与科学门不变。
 
 - [先诊断当前四MMA主循环](global/requirements/decision-先诊断当前四MMA主循环再决定优化.md)（constraint，本次M39诊断）：用户已同意输入等待/操作数与MMA主循环测量；保留现有分工、原累计余量，不自动扩warp或TMA写回。

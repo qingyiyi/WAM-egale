@@ -1,0 +1,173 @@
+{
+  "status": "CLOSED_REJECTED_PERFORMANCE",
+  "guard": {
+    "pid": 41115,
+    "birth": "2627106594"
+  },
+  "phases": [
+    {
+      "name": "derive-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/make_profile.py"
+      ],
+      "start": 1792832976.981772,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41116,
+        "birth": "2627106599"
+      },
+      "returncode": 0,
+      "ended": 1792832977.0550222,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 0.07325029373168945
+    },
+    {
+      "name": "build-normal",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build_candidate.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build-temp/normal",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build/normal"
+      ],
+      "start": 1792832977.0563653,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41117,
+        "birth": "2627106607"
+      },
+      "returncode": 0,
+      "ended": 1792833113.4605348,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 136.40416955947876
+    },
+    {
+      "name": "build-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build-temp/profile",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build/profile"
+      ],
+      "start": 1792833113.46339,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41228,
+        "birth": "2627120248"
+      },
+      "returncode": 0,
+      "ended": 1792833248.5111432,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 135.04775309562683
+    },
+    {
+      "name": "precision",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/precision_candidate.py",
+        "--binary",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build/normal/wam_whole_ffn_input_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_ffn_input_cuda",
+        "--expect-tma",
+        "true",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/results/precision"
+      ],
+      "start": 1792833248.5126894,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41335,
+        "birth": "2627133752"
+      },
+      "returncode": 0,
+      "ended": 1792833254.2343922,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 5.721702814102173
+    },
+    {
+      "name": "measure1",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/measure.py",
+        "--process",
+        "1",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/results/measure1-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build/normal/wam_whole_ffn_input_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "FFN-B-INPUT",
+        "--module-name",
+        "wam_whole_ffn_input_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/A.so",
+        "--reference-module-name",
+        "wam_whole_qkv_tma_cuda",
+        "--stages",
+        "--profile",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build/profile/wam_whole_ffn_input_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--profile-module-name",
+        "wam_whole_ffn_input_profile_cuda"
+      ],
+      "start": 1792833254.2357404,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41370,
+        "birth": "2627134325"
+      },
+      "returncode": 0,
+      "ended": 1792833265.064689,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 10.828948497772217
+    },
+    {
+      "name": "measure2",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/measure.py",
+        "--process",
+        "2",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/results/measure2-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/B-input/build/normal/wam_whole_ffn_input_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "FFN-B-INPUT",
+        "--module-name",
+        "wam_whole_ffn_input_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/A.so",
+        "--reference-module-name",
+        "wam_whole_qkv_tma_cuda"
+      ],
+      "start": 1792833265.0694153,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41421,
+        "birth": "2627135408"
+      },
+      "returncode": 0,
+      "ended": 1792833272.7460525,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 7.676637172698975
+    }
+  ],
+  "ended": 1792833272.7475014,
+  "lifecycle_seconds": 295.76691150665283,
+  "storage_bytes": 23073710,
+  "retained": "SELF-QKV-TMA-4MMA",
+  "precision": "FINITE_EXACT_PASS",
+  "adopted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false
+}

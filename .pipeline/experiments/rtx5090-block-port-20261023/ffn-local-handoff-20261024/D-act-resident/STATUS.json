@@ -1,0 +1,52 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "guard": {
+    "pid": 41855,
+    "birth": "2627171905"
+  },
+  "phases": [
+    {
+      "name": "derive-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/make_profile.py"
+      ],
+      "start": 1792833630.0910685,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41857,
+        "birth": "2627171910"
+      },
+      "returncode": 0,
+      "ended": 1792833630.156422,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 0.0653533935546875
+    },
+    {
+      "name": "build-normal",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build_candidate.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build-temp/normal",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build/normal"
+      ],
+      "start": 1792833630.1572876,
+      "status": "FAILED",
+      "identity": {
+        "pid": 41858,
+        "birth": "2627171917"
+      },
+      "returncode": 1,
+      "ended": 1792833643.3902159,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 13.232928276062012
+    }
+  ],
+  "error": "RuntimeError('build-normal FAILED')",
+  "ended": 1792833643.3907714,
+  "lifecycle_seconds": 13.301502466201782,
+  "storage_bytes": 280752
+}

@@ -1,0 +1,82 @@
+/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/_dataclass.py:43: UserWarning: 
+                Please remove unknown `Extension` options: 'dlink','dlink_libraries'
+                this kind of usage is deprecated and may cause errors in the future.
+                
+  warnings.warn(msg)
+running build_ext
+W1024 17:20:31.421000 41858 torch/utils/cpp_extension.py:531] There are no g++ version bounds defined for CUDA version 13.0
+building 'wam_whole_ffn_resident_cuda' extension
+[1/2] /root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/bin/nvcc --generate-dependencies-with-compile --dependency-output /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build-temp/normal/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.o.d -I/root/autodl-tmp/cxz/operator-sm120-20261023/build/generated-normal/generated -I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include '-I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized/csrc' '-I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn' '-I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include' -I/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/include -I/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include -I/root/autodl-tmp/cxz/envs/wam-sm120/include -I/root/miniconda3/include/python3.12 -c -c /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.cu -o /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build-temp/normal/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DWAM_CONTEXT_TILE_M=128 -DWAM_FFN_CLUSTER_PAIR=0 -DUNFUSE_FMA -DFLASHATTENTION_DISABLE_DROPOUT -DFLASHATTENTION_DISABLE_ALIBI -DFLASHATTENTION_DISABLE_SOFTCAP -DFLASHATTENTION_DISABLE_LOCAL -DFLASHATTENTION_DISABLE_UNEVEN_K -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_ffn_resident_cuda -gencode=arch=compute_120,code=sm_120 -std=c++17
+FAILED: [code=2] /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build-temp/normal/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.o 
+/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/bin/nvcc --generate-dependencies-with-compile --dependency-output /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build-temp/normal/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.o.d -I/root/autodl-tmp/cxz/operator-sm120-20261023/build/generated-normal/generated -I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include '-I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized/csrc' '-I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized/csrc/vendor/flash_attn' '-I/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/算子研究/wam_ops/optimized/csrc/vendor/cutlass/include' -I/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/include -I/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/nvidia/cu13/include -I/root/autodl-tmp/cxz/envs/wam-sm120/include -I/root/miniconda3/include/python3.12 -c -c /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.cu -o /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build-temp/normal/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -lineinfo -rdc=true --ptxas-options=-v -DWAM_CONTEXT_TILE_M=128 -DWAM_FFN_CLUSTER_PAIR=0 -DUNFUSE_FMA -DFLASHATTENTION_DISABLE_DROPOUT -DFLASHATTENTION_DISABLE_ALIBI -DFLASHATTENTION_DISABLE_SOFTCAP -DFLASHATTENTION_DISABLE_LOCAL -DFLASHATTENTION_DISABLE_UNEVEN_K -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=wam_whole_ffn_resident_cuda -gencode=arch=compute_120,code=sm_120 -std=c++17
+/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.cu(71): warning #1160-D: a reduction in alignment without the "packed" attribute is ignored
+      alignas(64) CUtensorMap projection_maps[6][2];
+                              ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.cu(72): warning #1160-D: a reduction in alignment without the "packed" attribute is ignored
+      alignas(64) CUtensorMap resident_maps[3];
+                              ^
+
+/root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/transform/pitch_linear_thread_map.h(298): error: static assertion failed with "Number of iterations must be non-zero"
+    static_assert(Iterations::kCount,
+    ^
+          detected during:
+            instantiation of class "cutlass::transform::PitchLinearWarpRakedThreadMap<Shape_, Threads, WarpThreadArrangement_, ElementsPerAccess> [with Shape_=cutlass::PitchLinearShape<32, 16>, Threads=128, WarpThreadArrangement_=cutlass::PitchLinearShape<4, 8>, ElementsPerAccess=8]" at line 51 of /root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/transform/threadblock/regular_tile_access_iterator.h
+            processing of template argument list for "cutlass::transform::threadblock::RegularTileAccessIterator" based on template arguments <cutlass::MatrixShape<16, 32>, wam_whole_layer_v1::CutlassB, cutlass::layout::RowMajorTensorOpMultiplicandCrosswise<16, 32>, 0, cutlass::transform::PitchLinearWarpRakedThreadMap<cutlass::PitchLinearShape<32, 16>, 128, cutlass::PitchLinearShape<4, 8>, 8>> at line 1467 of /root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/gemm/threadblock/default_mma_core_sm80.h
+            instantiation of class "cutlass::gemm::threadblock::DefaultMmaCore<Shape_, WarpShape_, InstructionShape_, ElementA_, cutlass::layout::RowMajor, ElementB_, cutlass::layout::ColumnMajor, ElementC_, LayoutC_, cutlass::arch::OpClassTensorOp, Stages, Operator_, false, CacheOpA, CacheOpB, cutlass::ComplexTransform::kNone, cutlass::ComplexTransform::kNone, false> [with Shape_=cutlass::gemm::GemmShape<16, 128, 32>, WarpShape_=cutlass::gemm::GemmShape<16, 32, 32>, InstructionShape_=cutlass::gemm::GemmShape<16, 8, 16>, ElementA_=wam_whole_layer_v1::CutlassB, ElementB_=wam_whole_layer_v1::CutlassB, ElementC_=float, LayoutC_=wam_whole_layer_v1::CutlassRow, Stages=3, Operator_=cutlass::arch::OpMultiplyAdd, CacheOpA=cutlass::arch::CacheOperation::Global, CacheOpB=cutlass::arch::CacheOperation::Global]" at line 541 of /root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/gemm/threadblock/default_mma.h
+            instantiation of class "cutlass::gemm::threadblock::DefaultMma<ElementA, LayoutA, kAlignmentA, ElementB, LayoutB, kAlignmentB, ElementAccumulator, LayoutC, cutlass::arch::OpClassTensorOp, ArchTag, ThreadblockShape, WarpShape, InstructionShape, Stages, Operator, false, SharedMemoryClear, GatherA, GatherB, PermuteALayout, PermuteBLayout> [with ElementA=wam_whole_layer_v1::CutlassB, LayoutA=wam_whole_layer_v1::CutlassRow, kAlignmentA=8, ElementB=wam_whole_layer_v1::CutlassB, LayoutB=wam_whole_layer_v1::CutlassCol, kAlignmentB=8, ElementAccumulator=float, LayoutC=wam_whole_layer_v1::CutlassRow, ArchTag=cutlass::arch::Sm80, ThreadblockShape=cutlass::gemm::GemmShape<16, 128, 32>, WarpShape=cutlass::gemm::GemmShape<16, 32, 32>, InstructionShape=cutlass::gemm::GemmShape<16, 8, 16>, Stages=3, Operator=cutlass::arch::OpMultiplyAdd, SharedMemoryClear=cutlass::gemm::SharedMemoryClearOption::kNone, GatherA=false, GatherB=false, PermuteALayout=cutlass::layout::NoPermute, PermuteBLayout=cutlass::layout::NoPermute]" at line 368 of /root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/gemm/kernel/default_gemm.h
+            instantiation of class "cutlass::gemm::kernel::DefaultGemm<ElementA, LayoutA, kAlignmentA, ElementB, LayoutB, kAlignmentB, ElementC, LayoutC, ElementAccumulator, cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, ThreadblockShape, WarpShape, InstructionShape, EpilogueOutputOp, ThreadblockSwizzle, Stages, SplitKSerial, Operator, SharedMemoryClear, GatherA, GatherB, ScatterD, PermuteDLayout, PermuteALayout, PermuteBLayout, void> [with ElementA=wam_whole_layer_v1::CutlassB, LayoutA=wam_whole_layer_v1::CutlassRow, kAlignmentA=8, ElementB=wam_whole_layer_v1::CutlassB, LayoutB=wam_whole_layer_v1::CutlassCol, kAlignmentB=8, ElementC=wam_whole_layer_v1::CutlassB, LayoutC=wam_whole_layer_v1::CutlassRow, ElementAccumulator=float, ThreadblockShape=cutlass::gemm::GemmShape<16, 128, 32>, WarpShape=cutlass::gemm::GemmShape<16, 32, 32>, InstructionShape=cutlass::gemm::GemmShape<16, 8, 16>, EpilogueOutputOp=cutlass::epilogue::thread::LinearCombination<wam_whole_layer_v1::CutlassB, 8, float, float, cutlass::epilogue::thread::ScaleType::Default, cutlass::FloatRoundStyle::round_to_nearest, wam_whole_layer_v1::CutlassB>, ThreadblockSwizzle=cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<1>, Stages=3, SplitKSerial=false, Operator=cutlass::arch::OpMultiplyAdd, SharedMemoryClear=cutlass::gemm::SharedMemoryClearOption::kNone, GatherA=false, GatherB=false, ScatterD=false, PermuteDLayout=cutlass::layout::NoPermute, PermuteALayout=cutlass::layout::NoPermute, PermuteBLayout=cutlass::layout::NoPermute]" at line 289 of /root/autodl-tmp/cxz/operator-sm120-20261023/workspace/.pipeline/cache/cutlass-v3.5.1/include/cutlass/gemm/device/gemm.h
+            instantiation of class "cutlass::gemm::device::Gemm<ElementA_, LayoutA_, ElementB_, LayoutB_, ElementC_, LayoutC_, ElementAccumulator_, OperatorClass_, ArchTag_, ThreadblockShape_, WarpShape_, InstructionShape_, EpilogueOutputOp_, ThreadblockSwizzle_, Stages, AlignmentA, AlignmentB, SplitKSerial, Operator_, GatherA, GatherB, ScatterD, PermuteDLayout> [with ElementA_=wam_whole_layer_v1::CutlassB, LayoutA_=wam_whole_layer_v1::CutlassRow, ElementB_=wam_whole_layer_v1::CutlassB, LayoutB_=wam_whole_layer_v1::CutlassCol, ElementC_=wam_whole_layer_v1::CutlassB, LayoutC_=wam_whole_layer_v1::CutlassRow, ElementAccumulator_=float, OperatorClass_=cutlass::arch::OpClassTensorOp, ArchTag_=cutlass::arch::Sm80, ThreadblockShape_=cutlass::gemm::GemmShape<16, 128, 32>, WarpShape_=cutlass::gemm::GemmShape<16, 32, 32>, InstructionShape_=cutlass::gemm::GemmShape<16, 8, 16>, EpilogueOutputOp_=cutlass::epilogue::thread::LinearCombination<wam_whole_layer_v1::CutlassB, 8, float, float, cutlass::epilogue::thread::ScaleType::Default, cutlass::FloatRoundStyle::round_to_nearest, wam_whole_layer_v1::CutlassB>, ThreadblockSwizzle_=cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<1>, Stages=3, AlignmentA=8, AlignmentB=8, SplitKSerial=false, Operator_=cutlass::arch::OpMultiplyAdd, GatherA=false, GatherB=false, ScatterD=false, PermuteDLayout=cutlass::layout::NoPermute]" at line 118 of /root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.cu
+
+1 error detected in the compilation of "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/whole_layer.cu".
+ninja: build stopped: subcommand failed.
+Traceback (most recent call last):
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2597, in _run_ninja_build
+    subprocess.run(
+  File "/root/miniconda3/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ninja', '-v', '-j', '4']' returned non-zero exit status 2.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build_candidate.py", line 22, in <module>
+    setup(name='wam_whole_ffn_resident',packages=[],ext_modules=[CUDAExtension(
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/__init__.py", line 117, in setup
+    return distutils.core.setup(**attrs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 168, in setup
+    return run_commands(dist)
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 184, in run_commands
+    dist.run_commands()
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1028, in run_commands
+    self.run_command(cmd)
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/dist.py", line 1106, in run_command
+    super().run_command(command)
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1047, in run_command
+    cmd_obj.run()
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 108, in run
+    _build_ext.run(self)
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 382, in run
+    self.build_extensions()
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1082, in build_extensions
+    build_ext.build_extensions(self)
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 498, in build_extensions
+    self._build_extensions_serial()
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 524, in _build_extensions_serial
+    self.build_extension(ext)
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 273, in build_extension
+    _build_ext.build_extension(self, ext)
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 585, in build_extension
+    objects = self.compiler.compile(
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 866, in unix_wrap_ninja_compile
+    _write_ninja_file_and_compile_objects(
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2223, in _write_ninja_file_and_compile_objects
+    _run_ninja_build(
+  File "/root/autodl-tmp/cxz/envs/wam-sm120/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2614, in _run_ninja_build
+    raise RuntimeError(message) from e
+RuntimeError: Error compiling objects for extension

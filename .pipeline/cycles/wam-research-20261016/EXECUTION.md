@@ -365,3 +365,23 @@ TMA分量诊断已完成，当前SPLITK-M64-FFN2五源＋DSO六份byte未改。r
 正常/profile两构建及五GPU进程成功、无timeout；2871完整block。生命周期含等待/回传434.383秒，保守480秒，新跟踪累计36406.413秒（新授权无旧总上限）；CUDA active未知。9自有身份/进程组均退出，GPU context清零，实例未关机。六源/DSO回同步本机byte一致，无SHA。完整阶段表和采用前后快照已保存；同步口径补充为TMA本体3＋领取/完成2=每成功tile显式5次CTA同步，另有末次空领取。四false及production_admitted=false。
 
 实际源码：.pipeline/experiments/rtx5090-block-port-20261023/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.cu；固定证据：projection-warp-specialized/self-qkv-tma-migration/REVIEW_RETURN.md、STAGE-TABLE.md、SELECTED.json。旧A及历史失败不改，未动baseline/投机/protected源。双A10013:55巡检298有效完整组，两worker继续原RoboTwin队列。
+
+
+## 2026-10-24T14:08:29.933406+08:00 本轮公开快照
+
+当前研究源码/结果、历史负结果与HW已推main，远端实查为459b86562a2f8b1ca075402bf096416e4cd83267；未上传凭据/权重/tensor/DSO/部署连接脚本。只同步WAM主题，不改本地其他Cycle。原科学门不变，publication收据见本轮PUBLISH-CHECKPOINT.json。5090 owned SSH master已正常关闭，实例未关机；GPU进程此前已清理。
+
+
+## 2026-10-24T17:09:23.828654+08:00 M39-FFN-HANDOFF登记
+
+用户明确同意四类FFN方案实际有限实验，Maintain保存本轮范围；冻结当前Self-QKV-TMA独立A。5090空闲、远端43GiB，本机空间紧张仅回传必要源/结果。B/C各30分钟/4CPU/1.5GiB/12000完整block，先精度再计时、逐候选全表，不动baseline/投机。双A10017:05为329有效三臂组、两worker继续。证据ffn-local-handoff-20261024/PLAN.md。
+
+
+## 2026-10-24T17:24:18.399600+08:00 M39-FFN B/C阶段结果
+
+B仅TMA输入分工、C跨任务单结果槽重叠，均真实三KV有限逐位/状态通过，两进程完整层均退化，当前A不改。B短中长+1.201%/+1.129%/+0.833%；C+0.900%/+0.603%/+0.722%。C新增672任务计数通过，不声称已量化真实重叠时长。完整阶段表已分别在聊天打印并保存snapshots。D初次device Gemm模板M16线程映射编译失败、0 GPU调用保留，已独立r1改warp原语重编。运行时当前kernel size2 cluster报告85活跃组，尚未完成DSM实际验证。证据ffn-local-handoff-20261024。
+
+
+## 2026-10-24T17:43:43.443882+08:00 M39-FFN-HANDOFF闭合
+
+四方案全部真实运行，三KV有限逐位/状态通过，两个进程整层及最后同轮FFN局部对照均无收益，保留A不变。B/C整层约+0.6%–1.2%，D2.03–2.26倍、E2.75–3.12倍A；小M造成逻辑权重tile请求增长，非HBM计数。双CTA DSM实际可用但本映射慢，保留负结果。13380完整block，生命周期和1207.323秒，1编译失败、0timeout，33身份及阶段组退出，context为空，实例开。完整表逐项打印/保存，最终A表本轮新测；资源与证据ffn-local-handoff-20261024。四false和production_admitted=false，baseline/投机/protected不动。RoboTwin17:39为335有效完整三臂组、双worker运行，原预算不变。

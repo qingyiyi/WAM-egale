@@ -1,3 +1,5 @@
+> 最新2026-10-24 FFN结果：[CURRENT-FFN-20261024.md](CURRENT-FFN-20261024.md)。四候选均无净收益、保留原A；先读此入口。旧快照身份/结果不改。
+
 # 当前入口：RTX5090 Self QKV迁移（2026-10-24）
 
 [最新算子结果与完整阶段表](CURRENT-RTX5090-SELF-QKV-20261024.md)。本轮所有对照均eager、无CUDA Graph；下方10/23的Graph说明仅属于旧实验。当前研究采用Self QKV TMA版本，四科学门及production_admitted仍false；旧TF暂停72等保留为历史，不能据它覆盖新的作业状态。

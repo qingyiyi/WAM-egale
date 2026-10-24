@@ -1,0 +1,155 @@
+--- A/whole_layer.cu
++++ B-input/whole_layer.cu
+@@ -69,6 +69,7 @@
+ // a[]是中间buffer，w[]对应whole_layer.py绑定的原始参数，均不跨候选混用。
+ struct Params {
+     alignas(64) CUtensorMap projection_maps[6][2];
++    alignas(64) CUtensorMap ffn_maps[2];
+     int64_t *projection_trace;
+     int64_t *projection_role_trace;
+     const void *w[27];
+@@ -575,6 +576,70 @@
+     __syncthreads();
+ }
+ 
++
++// B: same split-K tasks and commit order; only W0 becomes a TMA producer.
++__device__ __forceinline__ void ffn2_tma_partition(const Params &p, ProjectionTmaStorage &s,
++                                                 int tile, int partition) {
++    using Op = typename CutlassTile<64>::Mma::Operator;
++    const int w = int(threadIdx.x)/32, lane = int(threadIdx.x)%32;
++    const int rm = tile/24*64, cn = tile%24*128;
++    if (threadIdx.x == 0) {
++        for (int i=0;i<2;++i) {
++            asm volatile("mbarrier.init.shared::cta.b64 [%0], 1;" :: "r"(projection_smem(&s.ready[i])) : "memory");
++            asm volatile("mbarrier.init.shared::cta.b64 [%0], 4;" :: "r"(projection_smem(&s.empty[i])) : "memory");
++        }
++        asm volatile("fence.proxy.async.shared::cta;" ::: "memory");
++    }
++    __syncthreads();
++    if (w == 0) {
++        for (int step=0;step<32;++step) {
++            const int slot=step&1;
++            if (step>=2) projection_wait(&s.empty[slot],((step/2)-1)&1);
++            if (lane==0) {
++                const unsigned barrier=projection_smem(&s.ready[slot]);
++                asm volatile("mbarrier.arrive.expect_tx.shared::cta.b64 _, [%0], %1;" :: "r"(barrier),"r"(24576):"memory");
++                const int k=partition*2048+step*64;
++                asm volatile("cp.async.bulk.tensor.2d.shared::cluster.global.mbarrier::complete_tx::bytes [%0], [%1, {%2, %3}], [%4];"
++                    ::"r"(projection_smem(s.a[slot])),"l"(&p.ffn_maps[0]),"r"(k),"r"(rm),"r"(barrier):"memory");
++                asm volatile("cp.async.bulk.tensor.2d.shared::cluster.global.mbarrier::complete_tx::bytes [%0], [%1, {%2, %3}], [%4];"
++                    ::"r"(projection_smem(s.b[slot])),"l"(&p.ffn_maps[1]),"r"(k),"r"(cn),"r"(barrier):"memory");
++            }
++            __syncwarp();
++        }
++        projection_wait(&s.empty[0],1); projection_wait(&s.empty[1],1);
++    } else if (w>=3 && w<7) {
++        const int warp=w-3;
++        typename Op::FragmentC acc; acc.clear();
++        Op mma;
++        for (int step=0;step<32;++step) {
++            const int slot=step&1;
++            projection_wait(&s.ready[slot],(step/2)&1);
++            typename Op::IteratorA ai({s.a[slot],typename Op::LayoutA(64)},lane);
++            typename Op::IteratorB bi({s.b[slot],typename Op::LayoutB(64)},lane);
++            ai.add_tile_offset({warp%2,0}); bi.add_tile_offset({0,warp/2});
++            typename Op::FragmentA af[2]; typename Op::FragmentB bf[2];
++            ai.set_kgroup_index(0);bi.set_kgroup_index(0);ai.load(af[0]);bi.load(bf[0]);++ai;++bi;
++            #pragma unroll
++            for (int group=0;group<4;++group) {
++                if(group<3) {ai.set_kgroup_index(group+1);bi.set_kgroup_index(group+1);ai.load(af[(group+1)&1]);bi.load(bf[(group+1)&1]);++ai;++bi;}
++                if(group==2) {__syncwarp();if(lane==0)projection_arrive(&s.empty[slot]);}
++                typename Op::TransformedFragmentA at;typename Op::TransformedFragmentB bt;
++                mma.transform(at,bt,af[group&1],bf[group&1]);mma(acc,at,bt,acc);
++            }
++        }
++        typename Op::IteratorC store({s.result,CutlassRow(136)},lane);
++        store.add_tile_offset({warp%2,warp/2});store.store(acc);
++    }
++    __syncthreads();
++    if (threadIdx.x==0) {
++        for(int i=0;i<2;++i) {
++            asm volatile("mbarrier.inval.shared::cta.b64 [%0];" ::"r"(projection_smem(&s.ready[i])):"memory");
++            asm volatile("mbarrier.inval.shared::cta.b64 [%0];" ::"r"(projection_smem(&s.empty[i])):"memory");
++        }
++    }
++    __syncthreads();
++}
++
+ // SM120 M64粒度候选：输出tile从48变96；七段归约和提交算术不改。
+ __device__ __forceinline__ void ffn2_partition64(CutlassTile<64>::Storage &s, const __nv_bfloat16 *a,
+                                                const __nv_bfloat16 *w, int tile, int partition) {
+@@ -608,7 +673,8 @@
+     __syncthreads();
+ }
+ 
+-__device__ __forceinline__ void ffn2_commit64(const Params &p, CutlassTile<64>::Storage &s,
++template<class Storage>
++__device__ __forceinline__ void ffn2_commit64(const Params &p, Storage &s,
+                                             int tile, int partition, int partitions = 2) {
+     const bool second = partition == partitions - 1;
+     struct alignas(8) B4 { __nv_bfloat162 lo, hi; };
+@@ -692,6 +758,7 @@
+ // acq_rel RMW串起同组生产者；消费者acquire后才读取对应全局buffer。
+ __device__ void ffn_publish(const Params &p, int offset, int group, int expected) {
+     __threadfence();
++    if (offset == 0) asm volatile("fence.proxy.async.global;" ::: "memory");
+     __syncthreads();
+     if (threadIdx.x == 0) {
+         const int64_t at = p.debug_modulation ? ffn_timestamp() : 0;
+@@ -852,8 +919,8 @@
+         const int row = task / tasks_per_row;
+         const int job = task % tasks_per_row;
+         const int partition = job / columns, tile = row * columns + job % columns;
+-        auto &workspace = s.tile.cutlass_gemm.action;
+-        ffn2_partition64(workspace, bp(p, ACT), (const B *)p.w[25], tile, partition);
++        auto &workspace = s.tile.projection_tma;
++        ffn2_tma_partition(p, workspace, tile, partition);
+ 
+         // 各K片段可并行做MMA；只有BF16部分和、末段bias和残差提交必须有序。
+         // acquire后经CTA同步将前一片段的全tile写入对所有写回线程可见。
+@@ -1628,6 +1695,13 @@
+                 CU_TENSOR_MAP_FLOAT_OOB_FILL_NONE);
+             TORCH_CHECK(status == CUDA_SUCCESS, "Projection TMA tensor map status ", int(status));
+         };
++        const cuuint64_t fdim_a[2] = {14336,224}, fdim_b[2] = {14336,3072}, fs[1] = {14336*2};
++        for (int j=0;j<2;++j) {
++            auto status = cuTensorMapEncodeTiled(&p.ffn_maps[j],CU_TENSOR_MAP_DATA_TYPE_BFLOAT16,2,
++                j==0?p.a[ACT]:const_cast<void*>(p.w[25]),j==0?fdim_a:fdim_b,fs,j==0?box_a:box_b,elem,
++                CU_TENSOR_MAP_INTERLEAVE_NONE,CU_TENSOR_MAP_SWIZZLE_128B,CU_TENSOR_MAP_L2_PROMOTION_NONE,CU_TENSOR_MAP_FLOAT_OOB_FILL_NONE);
++            TORCH_CHECK(status==CUDA_SUCCESS,"FFN TMA map status ",int(status));
++        }
+         const int input[6] = {SA, N2, CA, M1, M1, M1}, weight[6] = {9, 13, 19, 3, 5, 7};
+         for (int projection = 0; projection < 6; ++projection) {
+             encode(&p.projection_maps[projection][0], p.a[input[projection]], dim_a, box_a);
+@@ -1686,6 +1760,22 @@
+                    at::TensorOptions().dtype(at::kLong));
+     return result;
+ }
++
++std::map<std::string,int64_t> cluster_info() {
++    cudaLaunchAttribute a{};a.id=cudaLaunchAttributeClusterDimension;a.val.clusterDim={2,1,1};
++    cudaLaunchConfig_t cfg{};cfg.gridDim=dim3(170);cfg.blockDim=dim3(THREADS);
++    cfg.dynamicSmemBytes=sizeof(Shared);cfg.attrs=&a;cfg.numAttrs=1;
++    int maxsize=-1,active=-1,supported=-1;
++    auto smem=cudaFuncSetAttribute(whole_layer,cudaFuncAttributeMaxDynamicSharedMemorySize,sizeof(Shared));
++    auto sa=cudaDeviceGetAttribute(&supported,cudaDevAttrClusterLaunch,0);
++    auto ma=cudaOccupancyMaxPotentialClusterSize(&maxsize,whole_layer,&cfg);
++    auto ac=cudaOccupancyMaxActiveClusters(&active,whole_layer,&cfg);
++    cudaGetLastError();
++    return {{"cluster_launch",supported},{"attribute_status",int(sa)},{"smem_status",int(smem)},
++        {"max_cluster_size",maxsize},{"max_status",int(ma)},{"active_clusters_size2",active},
++        {"active_status",int(ac)},{"shared_bytes",int64_t(sizeof(Shared))}};
++}
++
+ } // namespace wam_whole_layer_v1
+ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+     // 原始扩展调用默认保留debug字典兼容旧重放脚本；Python普通入口显式传false。
+@@ -1694,6 +1784,7 @@
+           py::arg("update"), py::arg("eps"), py::arg("debug") = true,
+           py::arg("context_rows") = std::nullopt, py::arg("context_roots") = std::nullopt,
+           py::arg("context_kv") = std::vector<at::Tensor>{});
++    m.def("cluster_info", &wam_whole_layer_v1::cluster_info);
+     m.attr("production_admitted") = false;
+     m.attr("computation_launches") = 1;
+     m.attr("context_tile_rows") = WAM_CONTEXT_TILE_M;

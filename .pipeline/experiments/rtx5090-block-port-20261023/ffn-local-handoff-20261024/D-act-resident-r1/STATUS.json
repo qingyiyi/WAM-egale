@@ -1,0 +1,173 @@
+{
+  "status": "CLOSED_REJECTED_PERFORMANCE",
+  "guard": {
+    "pid": 41951,
+    "birth": "2627186408"
+  },
+  "phases": [
+    {
+      "name": "derive-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/make_profile.py"
+      ],
+      "start": 1792833775.118621,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41952,
+        "birth": "2627186413"
+      },
+      "returncode": 0,
+      "ended": 1792833775.1836176,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 0.06499648094177246
+    },
+    {
+      "name": "build-normal",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build_candidate.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build-temp/normal",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build/normal"
+      ],
+      "start": 1792833775.1853945,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 41953,
+        "birth": "2627186420"
+      },
+      "returncode": 0,
+      "ended": 1792833908.9933617,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 133.80796718597412
+    },
+    {
+      "name": "build-profile",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build-temp/profile",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build/profile"
+      ],
+      "start": 1792833908.9944756,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42057,
+        "birth": "2627199801"
+      },
+      "returncode": 0,
+      "ended": 1792834043.6048245,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 134.61034893989563
+    },
+    {
+      "name": "precision",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/precision_candidate.py",
+        "--binary",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build/normal/wam_whole_ffn_resident_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--module-name",
+        "wam_whole_ffn_resident_cuda",
+        "--expect-tma",
+        "true",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/results/precision"
+      ],
+      "start": 1792834043.609922,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42161,
+        "birth": "2627213262"
+      },
+      "returncode": 0,
+      "ended": 1792834049.6335351,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 6.023613214492798
+    },
+    {
+      "name": "measure1",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/measure.py",
+        "--process",
+        "1",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/results/measure1-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build/normal/wam_whole_ffn_resident_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "D-ACT-RESIDENT",
+        "--module-name",
+        "wam_whole_ffn_resident_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/A.so",
+        "--reference-module-name",
+        "wam_whole_qkv_tma_cuda",
+        "--stages",
+        "--profile",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build/profile/wam_whole_ffn_resident_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--profile-module-name",
+        "wam_whole_ffn_resident_profile_cuda"
+      ],
+      "start": 1792834049.63751,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42196,
+        "birth": "2627213865"
+      },
+      "returncode": 0,
+      "ended": 1792834061.1351151,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 11.497605085372925
+    },
+    {
+      "name": "measure2",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/measure.py",
+        "--process",
+        "2",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/results/measure2-data",
+        "--candidate",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident-r1/build/normal/wam_whole_ffn_resident_cuda.cpython-312-x86_64-linux-gnu.so",
+        "--label",
+        "D-ACT-RESIDENT",
+        "--module-name",
+        "wam_whole_ffn_resident_cuda",
+        "--reference",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/A.so",
+        "--reference-module-name",
+        "wam_whole_qkv_tma_cuda"
+      ],
+      "start": 1792834061.1393232,
+      "status": "EXITED_OK",
+      "identity": {
+        "pid": 42247,
+        "birth": "2627215015"
+      },
+      "returncode": 0,
+      "ended": 1792834069.0158443,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 7.876521110534668
+    }
+  ],
+  "ended": 1792834069.0201697,
+  "lifecycle_seconds": 293.90321707725525,
+  "storage_bytes": 22833922,
+  "retained": "SELF-QKV-TMA-4MMA",
+  "precision": "FINITE_EXACT_PASS",
+  "adopted": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false
+}

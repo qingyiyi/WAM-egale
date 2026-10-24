@@ -1,0 +1,52 @@
+{
+  "status": "CLOSED_RETAINED_A_NO_FFN_GAIN",
+  "old_ledger_seconds": 36406.41251785547,
+  "old_receipts_preserved": true,
+  "new_authorization": "existing5090 unlimited cumulative use; each job finite",
+  "total_cap_seconds": null,
+  "job_lifecycle_seconds_sum": 1207.323061466217,
+  "compiler_lifecycle_seconds": 1095.5583214759827,
+  "GPU_worker_lifecycle_seconds": 108.07265639305115,
+  "CUDA_active_seconds": "UNKNOWN",
+  "conservative_charged_seconds": 1260,
+  "cumulative_tracked_seconds": 37666.41251785547,
+  "complete_block_calls": 13380,
+  "failed_phases": [
+    {
+      "namespace": "D-act-resident",
+      "name": "build-normal",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build_candidate.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build-temp/normal",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/ffn-local-handoff-20261024/D-act-resident/build/normal"
+      ],
+      "start": 1792833630.1572876,
+      "status": "FAILED",
+      "identity": {
+        "pid": 41858,
+        "birth": "2627171917"
+      },
+      "returncode": 1,
+      "ended": 1792833643.3902159,
+      "owned_child_exited": true,
+      "lifecycle_seconds": 13.232928276062012
+    }
+  ],
+  "timeouts": 0,
+  "performance_rejected_candidates": 4,
+  "remote_namespace_bytes": 97798693,
+  "local_namespace_bytes": 51092136,
+  "cleanup": "OWNED-CLEANUP.json",
+  "owned_audited": 33,
+  "after_compute_contexts": "",
+  "instance_shutdown": false,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false
+}

@@ -9,7 +9,9 @@ execution: EXECUTION.md
 ---
 # 当前计划：逐阶段优化与证据收口
 
-- [ ] M39-SELF-QKV-TMA：用户已追加现有5090持续使用授权。将当前W0 TMA／W1–3 epilogue／W4–7 MMA迁移至Self Q/K/V；保留288任务、64×128 tile、十段K与舍入，独立A及候选先逐位后两进程三KV计时，公开入口两流核验；当前job限20分钟、4CPU、1GiB。原十小时账本不改，A100 RoboTwin继续原160小时预算。
+- [x] M39-FFN-HANDOFF：已授权实际试验输入/跨任务写回、小ACT及双CTA方案；[本轮计划](../../experiments/rtx5090-block-port-20261023/ffn-local-handoff-20261024/PLAN.md)，先能力/有限精度后两进程整层，逐候选全表；现有5090持续授权、原账本与双A100不改。
+
+- [x] M39-SELF-QKV-TMA：用户已追加现有5090持续使用授权。将当前W0 TMA／W1–3 epilogue／W4–7 MMA迁移至Self Q/K/V；保留288任务、64×128 tile、十段K与舍入，独立A及候选先逐位后两进程三KV计时，公开入口两流核验；当前job限20分钟、4CPU、1GiB。原十小时账本不改，A100 RoboTwin继续原160小时预算。
 
 - [x] M39-CURRENT-MMA-MAINLOOP：用户已同意拆解当前四MMA投影的输入/操作数/主循环；独立观察副本、一次构建，最多250秒且原累计余量253.587秒不增。数值和粗细插桩扰动后解释，保留完整历史阶段表。
 
@@ -136,3 +138,5 @@ M39-PROJECTION-TMA-COMPONENTS闭合：r0细插桩超限，r1修正通过扰动�
 M39-TMA-INPUT-HANDOFF的纯八MMA提前交接方案未单独运行；用户新批准的四MMA分工替代该实施路径。M39-PROJECTION-WARP-SPECIALIZED已闭合并研究采用，原A和失败保留。
 
 - [ ] M40-STORAGE-RACE-RESUME：用户要求持续到完整，已修复文件扫描竞态并双卡接续；一次C补齐与CPU完整覆盖watch自动接续，见[计划](../../experiments/robotwin-pilot-20261020/eval100-20261022/resume-after-storage-race-20261024/PLAN.md)。
+
+M39-FFN-HANDOFF闭合：B/C/D/E真实有限逐位均通过但正常整层及同轮FFN均无收益，四者不采用，A六文件byte不变；D初次编译失败保留。33自有身份退出，5090 context为空，双A100继续335有效组。下一实现未启动。

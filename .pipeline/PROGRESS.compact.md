@@ -1,24 +1,22 @@
----
-kind: progress
-cycle: wam-research-20261016
-status: active
-updated: '2026-10-24T14:01:25.329383+08:00'
-plan: PLAN.md
-current: M39
-next: M39
----
-# 当前进度
+# WAM短状态入口
 
-M39采用SELF-QKV-TMA-4MMA：Self Q/K/V迁移现有W0 TMA、W1–3 epilogue、W4–7 MMA；原288输出任务、64×128 tile、9×K320+K192十段、BF16合并与K16顺序保持，其他数学/FFN不改。两个独立进程三KV完整层均改善，相对旧A延迟下降2.942%/2.808%/2.249%；同轮原Torch/新版1.2475/1.7553/2.1872×，Guarded/新版1.1021/1.0850/1.0433×。全eager、无Graph、同CrossKV缓存，单层重放而非机器人E2E。
+当前Cycle：wam-research-20261016；M39单层算子，M40 RoboTwin。2026-10-24 17:39+08检查。
 
-三份真实B14/Q16/block0、KV288/1152/2160的27中间量/输出、有效KV、输入、RNG、六投影计数有限逐位通过；公开默认及非默认流均通过。正常静态资源170CTA/每SM1CTA、100352B shared、255寄存器、784B localSize/thread不变，localSize不是动态访存计数。正常整层与独立插桩阶段分列；完整17行表本轮重测并在对话打印，FFN融合一行。同步补充：TMA函数内部3次CTA同步，领取/完成各1次，成功tile显式共5次，另有末次空领取；不是只有3次。
+当前保留SELF-QKV-TMA-4MMA：原Torch完整层KV288/1152/2160为1.2514/1.7546/2.1902×；Guarded为1.1127/1.0845/1.0453×。三方eager、无Graph、同CrossKV缓存，单层真实重放，非在线verify/机器人E2E。
 
-用户已明确取消后续现有RTX5090的原十小时累计上限。原35926.41251785547秒账本、旧截止/失败不改；本job20分钟内完成，含等待/回传生命周期434.383秒、保守480秒，跟踪累计36406.413秒但不再受旧上限阻塞。2871/12000完整block，两个构建、五GPU进程均成功，无timeout。源码/DSO六文件已回本机byte一致，无SHA；自有9个PID+出生身份和进程组均退出，5090 compute context清零，实例未关闭。每个后续作业仍单独有界，不能据此租新卡或扩大科学权限。
+本轮已实际完成FFN四方案：B一TMA输入分工、C一TMA/三写回/四MMA跨任务交接、D 64KiB ACT单CTA驻留、E双CTA cluster/DSM共享。真实三KV27中间量/输出、输入/全部有效KV/RNG和各schema有限逐位通过，但四者两进程无插桩整层及最后同轮FFN区间均慢于A，不采用。B/C整层约增0.6%–1.2%，D2.03–2.26倍、E2.75–3.12倍A；M16驻留破坏权重行复用，逻辑tile请求增加，非HBM实测。5090实际cluster2/DSM可运行；不能将可用等同高效。D首次编译失败保留。当前A源码/DSO本地远端六文件byte不变。
 
-M40双A100持续原RoboTwin固定队列。13:55:53 CPU巡检RUNNING_FIXED_QUEUE，298/600有效完整三臂组（894/1800局）、2组执行中、299未领取；两worker均运行、无新HALT。原STATUS.tmp竞态与pair281 C中断保留，尾部一次补齐已登记，跨namespace严格核对通过才计有效组。完成条件600有效组，不是worker退出；原160GPU小时/10天预算不变，当前5090追加不扩张A100预算。
+本轮13380完整block，作业生命周期和1207.323秒，编译1095.558秒，GPU工作进程生命周期108.073秒、CUDA active未知；1编译失败、0timeout，33自有身份/阶段组退出，5090 context为空，实例仍开。用户允许持续使用现有5090，旧十小时收据/截止/失败保留，逐job仍有界；不扩大A100或租新机。
 
-未知：新算子未重验其他层、在线接受、完整模型及机器人任务，未获取5090硬件计数器。融合FFN仍慢于Torch约15%–16%，三个96tile小投影仍慢约16%–19%；下一优先项是有限归因，不预设更多warp、更大tile或完整DAG一定更快。M17旧证据缺口、所有FAILED保留，engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission与production_admitted均false。
+M40双A100继续固定RoboTwin600有效三臂组（1800局），17:39为335组/1005局，2执行、262未领，两worker运行。旧STATUS竞态/pair281 C中断保留，原尾部一次补齐与跨namespace审计；原160GPU小时/10天不变。完成条件有效覆盖，不是worker退出。
 
-[本轮结果](../../experiments/rtx5090-block-port-20261023/projection-warp-specialized/self-qkv-tma-migration/REVIEW_RETURN.md)；[本轮完整阶段表](../../experiments/rtx5090-block-port-20261023/projection-warp-specialized/self-qkv-tma-migration/STAGE-TABLE.md)；[固定源码及结果入口](../../experiments/rtx5090-block-port-20261023/projection-warp-specialized/self-qkv-tma-migration/SELECTED.json)。
+质量边界保持：TF64结构为研究载体，旧TF_ON连续配方NO-GO、旧72/96 PARTIAL及三风险失败保留；不拼旧T/DEV/新50为独立TEST。PF2不同于bonus，不恢复物理状态。engineering_quality_screen=false、independent_test_complete=false、noninferiority_established=false、formal_performance_permission=false、production_admitted=false。新算子未验证其他层/在线接受/完整模型/机器人质量。
 
-[前次主循环诊断](../../experiments/rtx5090-block-port-20261023/projection-warp-specialized/mma-mainloop-diagnostic/REVIEW_RETURN.md)；[双卡接续与失败恢复](../../experiments/robotwin-pilot-20261020/eval100-20261022/resume-after-storage-race-20261024/PLAN.md)。
+下一步建议保留大M与共享全局ACT，单独定位FFN1写回/尾部及K片段ready后再选新候选；本轮未展开完整DAG/新模型。算子仅optimized，baseline/投机/原tile/protected不改。不运行smoke、不做独立SHA、不杀他人进程、不改驱动/服务/时钟；BAAI仅~/cxz写。论文中文由用户飞书整理，不新建论文草稿。11/01 18:00证据包内部节点，具体科学主张随实际证据收缩。
+
+- [完整当前进度](cycles/wam-research-20261016/PROGRESS.md)
+- [FFN结果/止损](experiments/rtx5090-block-port-20261023/ffn-local-handoff-20261024/REVIEW_RETURN.md)
+- [当前完整阶段表](experiments/rtx5090-block-port-20261023/ffn-local-handoff-20261024/STAGE-TABLE.md)
+- [固定源与结果入口](experiments/rtx5090-block-port-20261023/ffn-local-handoff-20261024/SOURCE-AND-RESULT-ENTRY.json)
+- [原Self QKV采用](experiments/rtx5090-block-port-20261023/projection-warp-specialized/self-qkv-tma-migration/REVIEW_RETURN.md)
+- [双卡持续接续](experiments/robotwin-pilot-20261020/eval100-20261022/resume-after-storage-race-20261024/PLAN.md)
