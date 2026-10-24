@@ -20,7 +20,7 @@ Long因两条已执行PARTIAL只有8共同组，旧不同FSDP T0/未配齐T/P1�
 
 M41原T0 01:15:33到06:01:46清理4.770h；95597 teacher尝试/95596返回，1664文件84.02MiB核验/fsync回传后删5090整个临时根/新权重/env/cache。174个birth身份无活跃自有work，GPU compute contexts空；原operator/env存在、实例未关。Goal传输曾因EOF外预分配短时owned36G违反34GiB，已停自有rsync回收并修复，不改cap/旧日志。
 
-M40双A100继续：455/600完整组、1365/1800局；T/TF/PF2成功368/370/375，96.146/160GPUh，两worker alive、HALT空（2026-10-25T06:04:49.750999+08:00）。281/C原授权恢复继续，406/T OOM不自动重试。微波炉100组三臂完整后再诊断，旧更早10/29 14:03 guard不变。[接续](experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)。
+M40双A100继续：459/600完整组、1377/1800局；T/TF/PF2成功371/374/378，96.887/160GPUh，两worker alive、HALT空（2026-10-25T06:27:03.821629+08:00）。281/C原授权恢复继续，406/T OOM不自动重试。微波炉100组三臂完整后再诊断，旧更早10/29 14:03 guard不变。[实查](experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/M41-CLOSURE-CHECK-20261025.json)。
 
 M39当前保留SELF-QKV-TMA-4MMA；四驻留/交接方案与PAIR2048x2均负结果。新PAIR正常整层慢6.25%–7.89%，不采用；原Torch/A三KV约1.251/1.758–1.761/2.191–2.201倍，单层同warmCrossKV/eager，未接M41任务，不乘算倍数。[结果/17阶段表](experiments/sm120-ffn-next-20261024/REVIEW_RETURN.md)。下一轮FFN/任务依赖须有界方案，未自动扩展。
 

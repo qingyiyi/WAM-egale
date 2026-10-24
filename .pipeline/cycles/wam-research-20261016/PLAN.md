@@ -12,7 +12,7 @@ execution: EXECUTION.md
 - [x] M41-RTX5090-SPEC-SPEED：44组三臂132局主表，135完整终态含3条外部比较记录，2条已执行PARTIAL保留；结果回传/整5090临时根清理完成。[结果](../../experiments/rtx5090-spec-speed-20261025/RESULT.md)。不是质量PASS。
 - [x] H02-LOCAL-STORAGE：25564文件核验归档后释放120.619GiB；TMPDIR统一，原tile/源码/失败表保留。[恢复与结果](../../maintenance/storage-placement-20261024/RESULT.md)。
 - [x] M39-SM120-FFN-NEXT：唯一PAIR2048x2整层慢6.25%–7.89%，不采用，保留SELF-QKV-TMA-4MMA。[完整结果与17阶段表](../../experiments/sm120-ffn-next-20261024/REVIEW_RETURN.md)。原四候选负结果也保留。
-- [ ] M40-EVAL100／STORAGE-RACE-RESUME：双A100持续固定六任务×100初态×三臂。当前455/600完整组，两worker alive、HALT为空；自动领取未开始pair并接续原已授权281恢复，不重跑406/T OOM。原160GPU小时/10天与更早10/29 14:03:22 guard不变。[接续与缺口](../../experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)。
+- [ ] M40-EVAL100／STORAGE-RACE-RESUME：双A100持续固定六任务×100初态×三臂。当前459/600完整组，两worker alive、HALT为空；自动领取未开始pair并接续原已授权281恢复，不重跑406/T OOM。原160GPU小时/10天与更早10/29 14:03:22 guard不变。[接续与缺口](../../experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)。
 - [ ] M40-MICROWAVE-FINAL-DIAG：等微波炉100组三臂完整后先核官方Target复现，再定位额外失败；原CPU提醒/队列继续。[计划](../../experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/PLAN.md)。
 - [ ] M39-NEXT：进一步FFN2/投影调度仍待有界方案。当前全局阶段同步保留，不自动恢复旧完整DAG、大融合或失败驻留映射。
 - [ ] M17-EVIDENCE：旧严格配对与FIT/DEV暴露缺口未追溯补齐；禁止借新速度面板改旧证书。

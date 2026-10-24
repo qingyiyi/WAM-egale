@@ -4,7 +4,7 @@
 
 ## 实际消耗
 
-- 原T0 2026-10-25T01:15:33+08:00，本轮目录删除北京时间2026-10-25T06:01:46.687919+08:00；两者间17173.688秒（4.770小时）。启动、编译/依赖、等待、失败、传输及清理均在这一原生命周期内，不重置。原10小时/10:55工作停止/11:15清理边界保留。
+- 原T0 2026-10-25T01:15:33+08:00，本轮目录删除北京时间2026-10-25T06:01:46.687919+08:00；两者间17173.688秒（4.770小时），这是GPU作业及远端资产收口区间。启动、编译/依赖、等待、失败、传输及清理均在这一原生命周期内，不重置。原10小时/10:55工作停止/11:15清理边界保留。
 - 5090单模型worker，CPU模型0–1、client2–3，准备/传输在4–7范围，未新增租机。GPU active时间UNKNOWN，不能把CUDA事件跨度或host时间称实际GPU active。
 - 共141次client进程启动尝试：135条完整自然终态，2条已teacher执行但0环境动作的Long PARTIAL，4条teacher/动作均0的client准备失败。另有未启动client的模型准备失败。所有准备失败仍计上述生命周期，不增加独立样本。
 - 原natural cap138；完整终态135，连同2条已执行PARTIAL为137。141次client进程启动不能改称141条独立自然episode，也不能隐去准备失败。主表只用44组三臂132局；当前引擎2条未配齐Long完整局和旧FSDP的1条完整Target保留在外。
@@ -31,3 +31,5 @@ A100原模型、正在运行的质量队列、可复用源导出包及本机冷�
 四项：engineering_quality_screen=false；independent_test_complete=false；noninferiority_established=false；formal_performance_permission=false。原FAILED/retention/protected state/cycle/rules及原tile未修改。
 
 固定证据：RESOURCE-AUDIT.json、REGISTRATION.json、FINAL-RETURN-ACK.json、FINAL-OWNED-PROCESS-CLEANUP.json、FINAL-REMOTE-DIRECTORY-DELETION.json、POST-CLEANUP-VERIFICATION.json。
+
+截至CPU报告/HW与发布整理检查2026-10-25T06:29:00.133606+08:00，自原T0总墙钟18807.141秒（5.224小时），仍在原10小时内；不能把4.770小时GPU作业区间称为整个租卡账单或全部CPU整理时间。

@@ -2,7 +2,7 @@
 kind: progress
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T06:14:12.252638+08:00'
+updated: '2026-10-25T06:29:00.133606+08:00'
 plan: PLAN.md
 current: M40-EVAL100
 next: M40-MICROWAVE-FINAL-DIAG
@@ -29,7 +29,7 @@ Long只有8共同三臂：两条0动作但已teacher执行的PARTIAL（21与23�
 
 本轮T0 01:15:33至06:01:46清理约4.770小时；95597 teacher尝试/95596返回。1664文件84.02MiB native传输/尺寸/fsync完成后删整个5090临时根（含新权重、bank、venv、sim/cache）。174个birth身份无活跃自有work，GPU compute context为空；原算子环境实际存在、实例未关。Goal输入一次EOF外预分配短时owned du36G违反34GiB cap，原失败保留；停自有rsync后回收并用exact-size preallocate修复，没有改cap或重置T0。Object0teacher bank绝对链接失效在新attempt复制原bank修复。
 
-M40实查2026-10-25T06:04:49.750999+08:00：455/600完整组（1365/1800局），T/C/P成功368/370/375；96.146/160 GPU小时，两worker alive，无HALT。原281/C授权尾部恢复继续，406/T OOM未授权重跑；不能据聚合成功略高覆盖新增失败/长尾。原更早10/29 guard保留。[实查](../../experiments/rtx5090-spec-speed-20261025/A100-LATEST-STATUS.json)。
+M40实查2026-10-25T06:27:03.821629+08:00：459/600完整组（1377/1800局），T/C/P成功371/374/378；96.887/160 GPU小时，两worker alive，无HALT。原281/C授权尾部恢复继续，406/T OOM未授权重跑；聚合成功不能覆盖新增失败/长尾。原更早10/29 guard保留。[结束前实查](../../experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/M41-CLOSURE-CHECK-20261025.json)。
 
 M39保留SELF-QKV-TMA-4MMA。上轮B/C交接小幅退化、M16 ACT驻留D与双CTA DSM E约2–3倍慢于A；新PAIR2048x2有限七段BF16递推/状态通过，正常整层两进程三KV慢6.25%–7.89%，NO_GO。当前A原Torch/A约1.251/1.758–1.761/2.191–2.201×，单层、同warm CrossKV、eager，不能称机器人收益。[结果/全表](../../experiments/sm120-ffn-next-20261024/REVIEW_RETURN.md)。baseline/原tile未改。
 
