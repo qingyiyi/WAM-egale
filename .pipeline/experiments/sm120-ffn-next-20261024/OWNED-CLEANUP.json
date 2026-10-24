@@ -1,0 +1,471 @@
+{
+  "checked_at": "2026-10-25T00:31:20.279372+08:00",
+  "retained_A_unchanged": {
+    "csrc/whole_layer.cu": true,
+    "csrc/cutlass_gemm.cuh": true,
+    "csrc/gemm_pipeline.cuh": true,
+    "whole_layer.py": true,
+    "build_whole_layer.py": true,
+    "wam_whole_qkv_tma_cuda.cpython-312-x86_64-linux-gnu.so": true
+  },
+  "owned_phase_processes": [
+    {
+      "namespace": "T1",
+      "phase": "derive-profile",
+      "identity": {
+        "pid": 52017,
+        "birth": "2629544306"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T1",
+      "phase": "build-diagnostic",
+      "identity": {
+        "pid": 52018,
+        "birth": "2629544312"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T1-r1",
+      "phase": "derive-profile",
+      "identity": {
+        "pid": 52116,
+        "birth": "2629565547"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T1-r1",
+      "phase": "build-diagnostic",
+      "identity": {
+        "pid": 52117,
+        "birth": "2629565553"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T1-r1",
+      "phase": "diagnose",
+      "identity": {
+        "pid": 52221,
+        "birth": "2629579025"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T2",
+      "phase": "derive-profile",
+      "identity": {
+        "pid": 52559,
+        "birth": "2629650920"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T2-r1",
+      "phase": "derive-profile",
+      "identity": {
+        "pid": 52633,
+        "birth": "2629668642"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T2-r1",
+      "phase": "build-normal",
+      "identity": {
+        "pid": 52634,
+        "birth": "2629668648"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T2-r1",
+      "phase": "build-profile",
+      "identity": {
+        "pid": 52740,
+        "birth": "2629682198"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T2-r1",
+      "phase": "precision",
+      "identity": {
+        "pid": 52847,
+        "birth": "2629696009"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T2-r1",
+      "phase": "measure1",
+      "identity": {
+        "pid": 52882,
+        "birth": "2629696582"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "T2-r1",
+      "phase": "measure2",
+      "identity": {
+        "pid": 52931,
+        "birth": "2629697716"
+      },
+      "alive_same_identity": false
+    },
+    {
+      "namespace": "paired-local-comparison",
+      "phase": "profile attribution",
+      "identity": {
+        "pid": 53090,
+        "birth": "2629724808"
+      },
+      "alive_same_identity": false
+    }
+  ],
+  "after_compute_contexts": "",
+  "instance_shutdown": false,
+  "ledgers": {
+    "T1": {
+      "status": "FAILED_OR_PARTIAL",
+      "start": 1792857354.0445678,
+      "phases": [
+        {
+          "name": "derive-profile",
+          "start": 1792857354.0458405,
+          "status": "OK",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1/make_profile.py"
+          ],
+          "identity": {
+            "pid": 52017,
+            "birth": "2629544306"
+          },
+          "returncode": 0,
+          "ended": 1792857354.110978,
+          "child_exited": true,
+          "lifecycle_seconds": 0.06513738632202148
+        },
+        {
+          "name": "build-diagnostic",
+          "start": 1792857354.1117346,
+          "status": "FAILED",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1/build_whole_profile.py",
+            "build_ext",
+            "--build-temp",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1/build/temp",
+            "--build-lib",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1/build/profile"
+          ],
+          "identity": {
+            "pid": 52018,
+            "birth": "2629544312"
+          },
+          "returncode": 1,
+          "ended": 1792857355.6791184,
+          "child_exited": true,
+          "lifecycle_seconds": 1.5673837661743164
+        }
+      ],
+      "guard": {
+        "pid": 52016,
+        "birth": "2629544303"
+      },
+      "error": "RuntimeError('build-diagnostic FAILED')",
+      "ended": 1792857355.6797023,
+      "lifecycle_seconds": 1.6351346969604492,
+      "after_compute_contexts": ""
+    },
+    "T1-r1": {
+      "status": "COMPLETE_COST_EVIDENCE_PENDING_DECISION",
+      "start": 1792857566.4537687,
+      "phases": [
+        {
+          "name": "derive-profile",
+          "start": 1792857566.4543312,
+          "status": "OK",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/make_profile.py"
+          ],
+          "identity": {
+            "pid": 52116,
+            "birth": "2629565547"
+          },
+          "returncode": 0,
+          "ended": 1792857566.5189724,
+          "child_exited": true,
+          "lifecycle_seconds": 0.06464123725891113
+        },
+        {
+          "name": "build-diagnostic",
+          "start": 1792857566.519608,
+          "status": "OK",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/build_whole_profile.py",
+            "build_ext",
+            "--build-temp",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/build/temp",
+            "--build-lib",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/build/profile"
+          ],
+          "identity": {
+            "pid": 52117,
+            "birth": "2629565553"
+          },
+          "returncode": 0,
+          "ended": 1792857701.239944,
+          "child_exited": true,
+          "lifecycle_seconds": 134.72033596038818
+        },
+        {
+          "name": "diagnose",
+          "start": 1792857701.2410166,
+          "status": "OK",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/diagnose.py",
+            "--output",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/data"
+          ],
+          "identity": {
+            "pid": 52221,
+            "birth": "2629579025"
+          },
+          "returncode": 0,
+          "ended": 1792857709.1664736,
+          "child_exited": true,
+          "lifecycle_seconds": 7.925457000732422
+        }
+      ],
+      "guard": {
+        "pid": 52115,
+        "birth": "2629565542"
+      },
+      "ended": 1792857709.1674519,
+      "lifecycle_seconds": 142.7136836051941,
+      "after_compute_contexts": ""
+    },
+    "T2": {
+      "status": "FAILED_OR_PARTIAL",
+      "guard": {
+        "pid": 52558,
+        "birth": "2629650916"
+      },
+      "phases": [
+        {
+          "name": "derive-profile",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2/make_profile.py"
+          ],
+          "start": 1792858420.1927583,
+          "status": "FAILED",
+          "identity": {
+            "pid": 52559,
+            "birth": "2629650920"
+          },
+          "returncode": 2,
+          "ended": 1792858420.2257836,
+          "owned_child_exited": true,
+          "lifecycle_seconds": 0.033025264739990234
+        }
+      ],
+      "error": "RuntimeError('derive-profile FAILED')",
+      "ended": 1792858420.226143,
+      "lifecycle_seconds": 0.03456473350524902,
+      "storage_bytes": 8032
+    },
+    "T2-r1": {
+      "status": "MEASUREMENTS_COMPLETE_PENDING_RETENTION",
+      "guard": {
+        "pid": 52632,
+        "birth": "2629668638"
+      },
+      "phases": [
+        {
+          "name": "derive-profile",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/make_profile.py"
+          ],
+          "start": 1792858597.4062061,
+          "status": "EXITED_OK",
+          "identity": {
+            "pid": 52633,
+            "birth": "2629668642"
+          },
+          "returncode": 0,
+          "ended": 1792858597.4711776,
+          "owned_child_exited": true,
+          "lifecycle_seconds": 0.0649714469909668
+        },
+        {
+          "name": "build-normal",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build_candidate.py",
+            "build_ext",
+            "--build-temp",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build-temp/normal",
+            "--build-lib",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build/normal"
+          ],
+          "start": 1792858597.4724586,
+          "status": "EXITED_OK",
+          "identity": {
+            "pid": 52634,
+            "birth": "2629668648"
+          },
+          "returncode": 0,
+          "ended": 1792858732.966552,
+          "owned_child_exited": true,
+          "lifecycle_seconds": 135.49409341812134
+        },
+        {
+          "name": "build-profile",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build_whole_profile.py",
+            "build_ext",
+            "--build-temp",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build-temp/profile",
+            "--build-lib",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build/profile"
+          ],
+          "start": 1792858732.9704847,
+          "status": "EXITED_OK",
+          "identity": {
+            "pid": 52740,
+            "birth": "2629682198"
+          },
+          "returncode": 0,
+          "ended": 1792858871.0770686,
+          "owned_child_exited": true,
+          "lifecycle_seconds": 138.10658383369446
+        },
+        {
+          "name": "precision",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/precision_candidate.py",
+            "--binary",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build/normal/wam_sm120_ffn_pair_cuda.cpython-312-x86_64-linux-gnu.so",
+            "--module-name",
+            "wam_sm120_ffn_pair_cuda",
+            "--expect-tma",
+            "true",
+            "--output",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/results/precision"
+          ],
+          "start": 1792858871.0815973,
+          "status": "EXITED_OK",
+          "identity": {
+            "pid": 52847,
+            "birth": "2629696009"
+          },
+          "returncode": 0,
+          "ended": 1792858876.8042533,
+          "owned_child_exited": true,
+          "lifecycle_seconds": 5.722656011581421
+        },
+        {
+          "name": "measure1",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/measure.py",
+            "--process",
+            "1",
+            "--output",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/results/measure1-data",
+            "--candidate",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build/normal/wam_sm120_ffn_pair_cuda.cpython-312-x86_64-linux-gnu.so",
+            "--label",
+            "PAIR2048x2",
+            "--module-name",
+            "wam_sm120_ffn_pair_cuda",
+            "--reference",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/A.so",
+            "--reference-module-name",
+            "wam_whole_qkv_tma_cuda",
+            "--stages",
+            "--profile",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build/profile/wam_sm120_ffn_pair_profile_cuda.cpython-312-x86_64-linux-gnu.so",
+            "--profile-module-name",
+            "wam_sm120_ffn_pair_profile_cuda"
+          ],
+          "start": 1792858876.8077724,
+          "status": "EXITED_OK",
+          "identity": {
+            "pid": 52882,
+            "birth": "2629696582"
+          },
+          "returncode": 0,
+          "ended": 1792858888.1387038,
+          "owned_child_exited": true,
+          "lifecycle_seconds": 11.330931425094604
+        },
+        {
+          "name": "measure2",
+          "command": [
+            "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/measure.py",
+            "--process",
+            "2",
+            "--output",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/results/measure2-data",
+            "--candidate",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T2-r1/build/normal/wam_sm120_ffn_pair_cuda.cpython-312-x86_64-linux-gnu.so",
+            "--label",
+            "PAIR2048x2",
+            "--module-name",
+            "wam_sm120_ffn_pair_cuda",
+            "--reference",
+            "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/A.so",
+            "--reference-module-name",
+            "wam_whole_qkv_tma_cuda"
+          ],
+          "start": 1792858888.143176,
+          "status": "EXITED_OK",
+          "identity": {
+            "pid": 52931,
+            "birth": "2629697716"
+          },
+          "returncode": 0,
+          "ended": 1792858895.5690162,
+          "owned_child_exited": true,
+          "lifecycle_seconds": 7.425840139389038
+        }
+      ],
+      "ended": 1792858895.5732784,
+      "lifecycle_seconds": 298.1685118675232,
+      "storage_bytes": 138843513
+    },
+    "paired-local-comparison": {
+      "status": "COMPLETE",
+      "guard": {
+        "pid": 53089,
+        "birth": "2629724804"
+      },
+      "start": 1792859159.0722828,
+      "child": {
+        "pid": 53090,
+        "birth": "2629724808"
+      },
+      "returncode": 0,
+      "child_exited": true,
+      "ended": 1792859169.0512273,
+      "lifecycle_seconds": 9.978944778442383,
+      "after_compute_contexts": "",
+      "query_returncode": 0
+    }
+  }
+}

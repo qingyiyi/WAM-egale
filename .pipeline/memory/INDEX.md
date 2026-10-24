@@ -1,11 +1,17 @@
 # 长期记忆索引
 
+- [SM120七段FFN有限接续](global/requirements/decision-SM120七段FFN先诊断提交成本再有限合并owner.md)（constraint，本轮M39）：先当前基线/数值/成本证据，最多一个设计一次修订，逐项聊天完整阶段表，不预设去掉global ACT。
+
+- [成功率与性能分机、本机轻量化](global/requirements/decision-成功率与性能分机执行并将本机改为轻量工作区.md)（constraint，资源/存储）：现有A100跑已授权质量、5090测速度；本机保留源码/HW/轻量证据，大文件核验归档后释放。
+- [Codex统一临时目录](global/requirements/requirement-Codex临时文件统一使用账户tmp目录.md)（constraint，账号临时文件）：默认/rjs/cxz/tmp；清理本账号闲置/tmp材料，保留活动锁/socket及他人文件。
+
 - [有界试验FFN交接与驻留](global/requirements/decision-有界试验FFN输入写回重叠及小块驻留.md)（constraint，本次M39）：已批准有限候选，先精度/能力再整层计时，非预设正收益。
 
 - [现有5090持续使用授权](global/requirements/decision-允许持续使用现有5090开展算子研究.md)（constraint，5090算子）：用户明确取消后续5090的原十小时累计上限；旧账本保留，逐job有界，A100预算与科学门不变。
 
 - [先诊断当前四MMA主循环](global/requirements/decision-先诊断当前四MMA主循环再决定优化.md)（constraint，本次M39诊断）：用户已同意输入等待/操作数与MMA主循环测量；保留现有分工、原累计余量，不自动扩warp或TMA写回。
 
+- [Paseo语音输入需要支持中文](global/requirements/requirement-Paseo语音输入需要支持中文.md)（constraint，用户工具/Paseo）：麦克风输入需要识别中文；来源为用户明确要求，不替代已有约束。
 
 - [分步实现FFN TMA流水](global/requirements/decision-分步实现FFN的TMA流水并按共享内存约束调整tile.md)（constraint，5090 FFN）：用户已批准输入→后处理→K片段就绪；容量不足允许缩小tile，旧累计预算不增。
 

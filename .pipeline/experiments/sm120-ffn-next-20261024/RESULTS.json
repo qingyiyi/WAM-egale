@@ -1,0 +1,158 @@
+{
+  "status": "CLOSED_NO_GO_RETAIN_A",
+  "classification": "NO_GO",
+  "at": "2026-10-25T00:36:24.168952+08:00",
+  "design": "PAIR2048x2",
+  "retained": "SELF-QKV-TMA-4MMA",
+  "adopted": false,
+  "finite_precision": "PASS: three actual block0 fixtures, seven P_s and R_s, captured intermediates/output and input/KV/RNG",
+  "normal_whole_block": [
+    {
+      "process": 1,
+      "case": "short",
+      "A_ms": 0.6930592060089111,
+      "candidate_ms": 0.7477375984191894,
+      "Torch_ms": 0.866864013671875,
+      "Guarded_ms": 0.7691839933395386,
+      "A_over_candidate": 0.9268748923073078,
+      "ratio_P10": 0.9232888943703101,
+      "ratio_P90": 0.9313029339080294,
+      "candidate_resources": [
+        170,
+        1,
+        100352,
+        255,
+        784,
+        256
+      ],
+      "regression_percent": 7.8894258868809075
+    },
+    {
+      "process": 1,
+      "case": "middle",
+      "A_ms": 0.760912013053894,
+      "candidate_ms": 0.819814395904541,
+      "Torch_ms": 1.3396512031555177,
+      "Guarded_ms": 0.8289119720458984,
+      "A_over_candidate": 0.9281515631527095,
+      "ratio_P10": 0.9266707337334008,
+      "ratio_P90": 0.9328205252991596,
+      "candidate_resources": [
+        170,
+        1,
+        100352,
+        255,
+        784,
+        256
+      ],
+      "regression_percent": 7.741024171013455
+    },
+    {
+      "process": 1,
+      "case": "long",
+      "A_ms": 0.8443104267120362,
+      "candidate_ms": 0.8971136093139649,
+      "Torch_ms": 1.850038433074951,
+      "Guarded_ms": 0.8838784217834472,
+      "A_over_candidate": 0.9411410304628998,
+      "ratio_P10": 0.9337023569093421,
+      "ratio_P90": 0.9414153689861322,
+      "candidate_resources": [
+        170,
+        1,
+        100352,
+        255,
+        784,
+        256
+      ],
+      "regression_percent": 6.25400100855773
+    },
+    {
+      "process": 2,
+      "case": "short",
+      "A_ms": 0.6928640127182006,
+      "candidate_ms": 0.7472383975982666,
+      "Torch_ms": 0.8667487621307373,
+      "Guarded_ms": 0.7690880060195923,
+      "A_over_candidate": 0.9272328816950076,
+      "ratio_P10": 0.9220109964020431,
+      "ratio_P90": 0.9304413245830045,
+      "candidate_resources": [
+        170,
+        1,
+        100352,
+        255,
+        784,
+        256
+      ],
+      "regression_percent": 7.847771551411342
+    },
+    {
+      "process": 2,
+      "case": "middle",
+      "A_ms": 0.7618720054626464,
+      "candidate_ms": 0.8164095878601074,
+      "Torch_ms": 1.3396543979644775,
+      "Guarded_ms": 0.8258848190307617,
+      "A_over_candidate": 0.9331982583149109,
+      "ratio_P10": 0.9309498213128157,
+      "ratio_P90": 0.9355775136990365,
+      "candidate_resources": [
+        170,
+        1,
+        100352,
+        255,
+        784,
+        256
+      ],
+      "regression_percent": 7.158365448057524
+    },
+    {
+      "process": 2,
+      "case": "long",
+      "A_ms": 0.8406912326812744,
+      "candidate_ms": 0.8963232040405273,
+      "Torch_ms": 1.8500864028930666,
+      "Guarded_ms": 0.8805631637573241,
+      "A_over_candidate": 0.9379331349356236,
+      "ratio_P10": 0.9347879055856259,
+      "ratio_P90": 0.9422990340506434,
+      "candidate_resources": [
+        170,
+        1,
+        100352,
+        255,
+        784,
+        256
+      ],
+      "regression_percent": 6.617408294103644
+    }
+  ],
+  "same_round_FFN_profile": [
+    {
+      "case": "short",
+      "A_ms": 0.289632,
+      "candidate_ms": 0.34543999999999997,
+      "A_over_candidate": 0.8384437239462715
+    },
+    {
+      "case": "middle",
+      "A_ms": 0.29296,
+      "candidate_ms": 0.345712,
+      "A_over_candidate": 0.8474105613921414
+    },
+    {
+      "case": "long",
+      "A_ms": 0.291872,
+      "candidate_ms": 0.34648,
+      "A_over_candidate": 0.8423920572616025
+    }
+  ],
+  "new_designs": 1,
+  "preparation_revision": 1,
+  "engineering_quality_screen": false,
+  "independent_test_complete": false,
+  "noninferiority_established": false,
+  "formal_performance_permission": false,
+  "production_admitted": false
+}

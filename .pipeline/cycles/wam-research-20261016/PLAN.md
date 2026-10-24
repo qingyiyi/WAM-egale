@@ -3,11 +3,15 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-24T14:01:25.329383+08:00'
+updated: '2026-10-25T00:52:21.577061+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
 # 当前计划：逐阶段优化与证据收口
+
+- [x] M39-SM120-FFN-NEXT：执行用户新附件T0–T3；[有限接续计划](../../experiments/sm120-ffn-next-20261024/PLAN.md)，当前SM120独立A、七段BF16递推、成本后选择至多一个候选/一次修订；逐项完整表，原资源/失败/科学门保留。
+
+- [ ] H02-LOCAL-STORAGE：按用户新资源分工进行本机轻量化；先统一/rjs/cxz/tmp并清理闲置/tmp，再处理逐字节已确认的13.21GiB公共组件重复，逐文件校验落盘确认后立即释放大文件，不等整批。CPU≤2、GPU0、不改机器人队列/投机源码/保护文件；记录真实回收量和恢复映射。见[维护计划](../../maintenance/storage-placement-20261024/PLAN.md)。
 
 - [x] M39-FFN-HANDOFF：已授权实际试验输入/跨任务写回、小ACT及双CTA方案；[本轮计划](../../experiments/rtx5090-block-port-20261023/ffn-local-handoff-20261024/PLAN.md)，先能力/有限精度后两进程整层，逐候选全表；现有5090持续授权、原账本与双A100不改。
 

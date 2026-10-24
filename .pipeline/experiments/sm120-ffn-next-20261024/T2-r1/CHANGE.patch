@@ -1,0 +1,130 @@
+--- frozen-A/whole_layer.cu
++++ PAIR2048x2/whole_layer.cu
+@@ -107,7 +107,14 @@
+     alignas(16) B input[D];
+     float x[D], y[D], reduce[6];
+ };
++// FFN2 compute的mainloop/result复用同一union；跨段BF16状态另存。
++struct FfnPairStorage {
++    CutlassTile<64>::Storage compute;
++    B running[64*128];
++};
++static_assert(sizeof(FfnPairStorage) <= 98304, "keep the frozen A TileShared budget");
+ union alignas(1024) TileShared {
++    FfnPairStorage ffn_pair;
+     GemmShared gemm;
+     CutlassGemmStorage cutlass_gemm;
+     ProjectionTmaStorage projection_tma;
+@@ -609,7 +616,9 @@
+ }
+ 
+ __device__ __forceinline__ void ffn2_commit64(const Params &p, CutlassTile<64>::Storage &s,
+-                                            int tile, int partition, int partitions = 2) {
++                                            int tile, int partition, int partitions = 2,
++                                            const B *local_previous = nullptr, B *local_next = nullptr,
++                                            bool publish_global = true) {
+     const bool second = partition == partitions - 1;
+     struct alignas(8) B4 { __nv_bfloat162 lo, hi; };
+     B *out = bp(p, F2);
+@@ -636,7 +645,8 @@
+             }
+ #endif
+             if (partition > 0) {
+-                const B4 prev = *reinterpret_cast<const B4 *>(out + row * D + col);
++                const B4 prev = *reinterpret_cast<const B4 *>(
++                    local_previous ? local_previous + i : out + row * D + col);
+                 const float2 lo = __bfloat1622float2(prev.lo), hi = __bfloat1622float2(prev.hi);
+                 z.x = __fadd_rn(z.x, lo.x);
+                 z.y = __fadd_rn(z.y, lo.y);
+@@ -652,7 +662,9 @@
+             }
+ #endif
+             const B4 rounded = {__floats2bfloat162_rn(z.x, z.y), __floats2bfloat162_rn(z.z, z.w)};
+-            if (!second || p.debug_modulation)
++            if (local_next)
++                *reinterpret_cast<B4 *>(local_next + i) = rounded;
++            if (publish_global && (!second || p.debug_modulation))
+                 *reinterpret_cast<B4 *>(out + row * D + col) = rounded;
+             if (second) {
+                 const int batch = row / p.q, token = row % p.q;
+@@ -811,13 +823,13 @@
+     }
+ }
+ 
+-// SM120 FFN2：96个输出tile × 7个K2048片段，仍使用原M64/N128/K64主循环。
+-// 每个行组按partition-major领取：前一片段一定先取得owner。所有cooperative
++// SM120 PAIR2048x2：96输出tile×4 owner组；仍计算7个K2048，M64/N128/K64不变。
++// 每个行组按group-major领取：前一组一定先取得owner。所有cooperative
+ // CTA均驻留，且每CTA先完成自己的FFN1任务；提交等待只指向更小partition，
+ // 因而不会出现等待尚未领取任务的环。FP32部分和在本CTA shared中等待提交。
+ // helper不含grid.sync，独立FFN2测量可复用；调用者负责初始化和最终汇合。
+ __device__ __forceinline__ void action_ffn2_splitk(const Params &p, Shared &s) {
+-    constexpr int columns = 24, partitions = 7, tasks_per_row = columns * partitions;
++    constexpr int columns = 24, partitions = 7, groups = 4, tasks_per_row = columns * groups;
+     while (true) {
+         if (threadIdx.x == 0) {
+             s.task = -1;
+@@ -851,30 +863,38 @@
+         if (task < 0) { __nanosleep(128); __syncthreads(); continue; }
+         const int row = task / tasks_per_row;
+         const int job = task % tasks_per_row;
+-        const int partition = job / columns, tile = row * columns + job % columns;
+-        auto &workspace = s.tile.cutlass_gemm.action;
+-        ffn2_partition64(workspace, bp(p, ACT), (const B *)p.w[25], tile, partition);
+-
+-        // 各K片段可并行做MMA；只有BF16部分和、末段bias和残差提交必须有序。
+-        // acquire后经CTA同步将前一片段的全tile写入对所有写回线程可见。
+-        if (threadIdx.x == 0)
+-            while (DeviceCounter(p.ffn_state[16 + tile]).load(cuda::memory_order_acquire) != partition)
+-                __nanosleep(128);
+-        __syncthreads();
+-        ffn2_commit64(p, workspace, tile, partition, partitions);
+-        // 每个写线程先发布自己的F2/OUT，再由leader释放后继片段。
++        const int first_partition = 2 * (job / columns), tile = row * columns + job % columns;
++        const int count = min(2, partitions-first_partition);
++        auto &workspace = s.tile.ffn_pair.compute;
++        B *running = s.tile.ffn_pair.running;
++        for (int offset=0; offset<count; ++offset) {
++            const int partition=first_partition+offset;
++            // 每一段仍独立零初始化、执行32次K64 MMA，绝不跨段连续FP32累加。
++            ffn2_partition64(workspace, bp(p, ACT), (const B *)p.w[25], tile, partition);
++            if (offset==0) {
++                if (threadIdx.x==0)
++                    while (DeviceCounter(p.ffn_state[16+tile]).load(cuda::memory_order_acquire)
++                           != first_partition) __nanosleep(128);
++                __syncthreads();
++            }
++            // 第一次显式BF16舍入留shared；第二次按原顺序合并，再发布组边界。
++            ffn2_commit64(p,workspace,tile,partition,partitions,
++                offset ? running : nullptr,
++                offset==0 && count==2 ? running : nullptr,
++                offset==count-1);
++        }
+         __threadfence();
+         __syncthreads();
+-        if (threadIdx.x == 0)
+-            DeviceCounter(p.ffn_state[16 + tile]).store(partition + 1, cuda::memory_order_release);
++        if (threadIdx.x==0)
++            DeviceCounter(p.ffn_state[16+tile]).store(first_partition+count,cuda::memory_order_release);
+         __syncthreads();
+-        if (partition == partitions - 1)
+-            ffn_publish(p, 8, row, columns); // 仍只统计24个最终完成输出tile。
++        if (first_partition+count==partitions)
++            ffn_publish(p,8,row,columns);
+     }
+ }
+ 
+ // FFN局部生产/消费流水：ACT仍落原全局buffer，不重复计算FFN1。
+-// SM120将七个K2048片段分派为独立任务；其他架构保留原两段执行路径。
++// SM120将七段分为[0,1]/[2,3]/[4,5]/[6]四组；其他架构原路径不变。
+ __device__ __forceinline__ void action_ffn_pipeline(const Params &p, Shared &s, cg::grid_group &g) {
+     action_ffn1_produce(p, s);
+ #if __CUDA_ARCH__ >= 1200
+@@ -1671,6 +1691,7 @@
+     result["logical_slots"] = slots;
+     result["attention_meta"] = fa_meta;
+     result["ffn_pipeline_state"] = queues.narrow(0, MAX_STAGES, 16);
++    result["ffn_pair_schema"] = at::tensor({4,7,96,384}, at::TensorOptions().dtype(at::kInt));
+     if (p.candidate && p.b * p.q == 224 && at::cuda::getCurrentDeviceProperties()->major >= 12)
+         result["ffn_splitk_commit"] = queues.narrow(0, MAX_STAGES + 16, 96);
+     result["ffn_pipeline_timestamps"] = ffn_trace;

@@ -1,0 +1,71 @@
+{
+  "status": "COMPLETE_COST_EVIDENCE_PENDING_DECISION",
+  "start": 1792857566.4537687,
+  "phases": [
+    {
+      "name": "derive-profile",
+      "start": 1792857566.4543312,
+      "status": "OK",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/make_profile.py"
+      ],
+      "identity": {
+        "pid": 52116,
+        "birth": "2629565547"
+      },
+      "returncode": 0,
+      "ended": 1792857566.5189724,
+      "child_exited": true,
+      "lifecycle_seconds": 0.06464123725891113
+    },
+    {
+      "name": "build-diagnostic",
+      "start": 1792857566.519608,
+      "status": "OK",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/build/temp",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/build/profile"
+      ],
+      "identity": {
+        "pid": 52117,
+        "birth": "2629565553"
+      },
+      "returncode": 0,
+      "ended": 1792857701.239944,
+      "child_exited": true,
+      "lifecycle_seconds": 134.72033596038818
+    },
+    {
+      "name": "diagnose",
+      "start": 1792857701.2410166,
+      "status": "OK",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/diagnose.py",
+        "--output",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1-r1/data"
+      ],
+      "identity": {
+        "pid": 52221,
+        "birth": "2629579025"
+      },
+      "returncode": 0,
+      "ended": 1792857709.1664736,
+      "child_exited": true,
+      "lifecycle_seconds": 7.925457000732422
+    }
+  ],
+  "guard": {
+    "pid": 52115,
+    "birth": "2629565542"
+  },
+  "ended": 1792857709.1674519,
+  "lifecycle_seconds": 142.7136836051941,
+  "after_compute_contexts": ""
+}

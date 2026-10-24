@@ -385,3 +385,35 @@ B仅TMA输入分工、C跨任务单结果槽重叠，均真实三KV有限逐位/
 ## 2026-10-24T17:43:43.443882+08:00 M39-FFN-HANDOFF闭合
 
 四方案全部真实运行，三KV有限逐位/状态通过，两个进程整层及最后同轮FFN局部对照均无收益，保留A不变。B/C整层约+0.6%–1.2%，D2.03–2.26倍、E2.75–3.12倍A；小M造成逻辑权重tile请求增长，非HBM计数。双CTA DSM实际可用但本映射慢，保留负结果。13380完整block，生命周期和1207.323秒，1编译失败、0timeout，33身份及阶段组退出，context为空，实例开。完整表逐项打印/保存，最终A表本轮新测；资源与证据ffn-local-handoff-20261024。四false和production_admitted=false，baseline/投机/protected不动。RoboTwin17:39为335有效完整三臂组、双worker运行，原预算不变。
+
+
+## 2026-10-24T17:47:41.726270+08:00 FFN公开证据快照
+
+本轮源码/正常计时/有限数值/完整表/负结果与HW已按allowlist推main并远端核实：3eb0026705e603d6268731bb26b34261acca696c。未公开凭据、权重、tensor/KV、DSO或SSH部署runner；科学门不变。publication receipt见ffn-local-handoff-20261024/PUBLISH-CHECKPOINT.json。
+
+
+## 2026-10-24T22:25:47.901040+08:00 H02临时目录与本机薄化
+
+H02本机轻量化执行中：用户明确A100跑已授权质量、5090测性能、本机保留开发/轻量证据与临时任务，已Maintain。bashrc及Codex子进程TMPDIR/TMP/TEMP统一/rjs/cxz/tmp，新login shell/Python临时文件位置已核验。闲置/tmp623项已私有归档并清除、1783文件逐字节复核，28活动/近期项保留；该批释放/tmp约80.71MiB，私有压缩归档约41.23MiB。Long/RoboTwin公共text encoder与VAE七文件cmp一致，原子hardlink保留路径/字节，释放13.2068GiB。大文件25564件冷归档正在向现有BAAI ~/cxz/backups独立目录传输，计划120.869GiB、预期本地再回收120.619GiB；全批rsync及远端清单闭合前不删源。原第一轮因远端缺rsync退出12，0数据删除；失败收据保留，项目内便携rsync已配置，第二轮沿原两小时起点接续。当前传输不代表归档完成。
+
+[存储整理入口](../../maintenance/storage-placement-20261024/PLAN.md)、BULK-STATUS.json及恢复脚本同目录。原tile、投机源码、科学四false和A100队列未修改。
+
+
+## 2026-10-24T22:43:49.345982+08:00 H02逐文件释放切换
+
+用户明确要求迁完一部分即删除本地对应部分。原无删除rsync核对PID/出生/UID后SIGTERM，退出255及断点收据保存于attempt-before-incremental-20261024，无源删除。原25564件总清单冻结，接收端已写清单；新runner实际启动rsync --remove-source-files --fsync，原归档目录/22:21:19起点/12小时总限保留。每30秒远端尺寸追加核对及已释放inode统计，未完成源保留；恢复脚本支持部分完成、显式项目内rsync路径。源码AST核验通过，无GPU作业，不动投机/原tile/保护文件/质量权限。真实进度见BULK-STATUS.json，未把预计120.619GiB报为已释放。
+
+
+## 2026-10-24T23:57:09.420249+08:00 SM120 FFN接续T0／RoboTwin实查
+
+新附件已读取，按当前SM120 A冻结六项源码/DSO并确认现场字节身份；只对附件要求的少量源/4.99MB二进制取身份，不扫描权重。NUMERIC-CONTRACT、NEGATIVE-EVIDENCE、T0全表与快照已保存并聊天完整打印。独立T1诊断补partial/MMA/等待/发布，不改A。setup两处无GPU命令错误保留于PREPARATION-ISSUES，未伪装实验通过。RoboTwin23:47实查396完整三臂组/1188局，无HALT，双A100继续，预算83.69/160 GPU小时；SR Target320/396、TF321/396、PF2326/396。现有效guard硬截止10/29 14:03，早于总10天计划，保留该更早限制不重置。快照在M40 resume namespace。
+
+
+## 2026-10-25T00:48:44.984987+08:00 M39-SM120-FFN-NEXT收口
+
+T0/T1/T2一个设计实际完成，PAIR2048x2有限七段P/R/原捕获中间量/输出与状态通过，正常整层两进程全三KV退化6.25%–7.89%，NO_GO，保留A。资源相同；同轮FFN profile退化18%–19%。5214完整block、作业生命周期452.531秒，编译进程409.888秒、GPU工作进程42.384秒、CUDA active未知。两个GPU前准备作业失败保留，T2一次定位修订；0 CUDA编译失败、0数值门失败、0 timeout。13phase/5guard身份核查已退出，5090 context为空、实例开。T3无新GPU运行，仅完整表/报告与镜像。RoboTwin00:43实查403完整组三臂、双worker无HALT，继续原队列/预算。源与原始入口：experiments/sm120-ffn-next-20261024。
+
+
+## 2026-10-25T01:02:58.552986+08:00 M40显存争用中断与未开始队列恢复
+
+pair406/T在观察VAE编码申请1.32GiB失败、当时仅271.69MiB空闲，错误列出多个其他显存上下文；这是基础设施PARTIAL，未当算法失败。C/P已自然失败至400命令，保留有效结果。BEFORE/旧HALT/旧失败未改。仅guard加入加载前24GiB、开局前6GiB准入，client/server/route/engineering/device binding/eval/shared dispatcher字节不变；新gpu1-resume-20261025-oom-r1和新watch实际启动，PID+birth记录于RECEIPT。所有等待/准备/清理进入原160小时账本，更早10/29 guard截止保留，未重试pair406/T。2026-10-25T01:01:57.546414+08:00两worker身份存活、RUNNING，405完整组/1215局，T/C/P 326/328/332；不混入四条未配齐完整臂。原pair281/C尾部一次授权恢复仍会接续；缺406/T时最多599完整组，不能宣称600/1800完成。

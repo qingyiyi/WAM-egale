@@ -1,0 +1,42 @@
+--- prior-guard.py
++++ resource-admission-guard.py
+@@ -85,18 +85,28 @@
+  state['pair_audits'].append(result);(J/f'pair-{pair:02d}-PREFIX-AUDIT.json').write_text(json.dumps(result,indent=2)+'\n');save()
+  if not result['pass_all']:raise RuntimeError('C/P first-two-policy isolation failed; preserve complete episodes, stop remaining queue')
+ 
++def wait_gpu_headroom(required_mib, phase):
++ while True:
++  free=int(subprocess.check_output(['nvidia-smi','-i',reg['GPU_uuid'],'--query-gpu=memory.free','--format=csv,noheader,nounits'],text=True).strip())
++  state['resource_admission']=dict(at=time.time(),phase=phase,free_MiB=free,required_MiB=required_mib)
++  if free>=required_mib:return
++  state.update(status='WAITING_GPU_MEMORY_HEADROOM',GPU_lifecycle_seconds=time.time()-gpu_start);save()
++  if time.time()+reg['per_episode_seconds']+reserve>=deadline or not lease.within_cap():raise TimeoutError('Original budget/deadline during GPU headroom wait')
++  time.sleep(10)
++
++
+ try:
+  state['owned_guard']=identity(os.getpid());save()
+  dep=json.loads((R/'runs/current18-followup-20261021/STATUS.json').read_text());assert dep['status']=='COMPLETE_CURRENT_AUDIT_ON_AND_INTERFACE_CAL'
+  lock=(R/f"runs/GPU{worker_cfg['worker']}-LEASE.lock").open('a');lock2=(R/f"runs/GPU{worker_cfg['worker']}.lease").open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);fcntl.flock(lock2,fcntl.LOCK_EX|fcntl.LOCK_NB)
+- apps=subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid','--format=csv,noheader'],text=True)
+- assert not any(x.startswith(reg['GPU_uuid']) for x in apps.splitlines()),'GPU1 occupied'
++ prior_consumed=lease.open();gpu_start=lease.start
++ state.update(GPU_start=gpu_start,prior_GPU_lifecycle_seconds=prior_consumed)
++ wait_gpu_headroom(24576, 'before_model')
+  common={**os.environ,'CUDA_VISIBLE_DEVICES':reg['GPU_uuid'],'OMP_NUM_THREADS':'2','MKL_NUM_THREADS':'2','PYTHONDONTWRITEBYTECODE':'1','XDG_CACHE_HOME':str(R/'cache'),'HF_HOME':str(R/'cache/hf'),'HF_HUB_OFFLINE':'1','TMPDIR':str(R/'tmp'),'CUDA_CACHE_PATH':str(R/'cache/cuda'),'TORCHINDUCTOR_CACHE_DIR':str(R/'cache/inductor'),'TORCH_EXTENSIONS_DIR':str(R/'cache/torch_extensions'),'MPLCONFIGDIR':str(R/'cache/matplotlib')}
+  common['WAM_RENDER_PCI']=worker_cfg['render_pci']
+  client_env={**common,**json.loads((R/'runs/CLIENT-ENVIRONMENT.json').read_text()),'CUDA_VISIBLE_DEVICES':reg['GPU_uuid'],'PYTHONPATH':str(J)+os.pathsep+str(B)+os.pathsep+str(R/'runs'),'OMP_NUM_THREADS':'2','MKL_NUM_THREADS':'2','PYTHONDONTWRITEBYTECODE':'1'}
+  assert not any('/compat/' in x for x in client_env['LD_LIBRARY_PATH'].split(':'))
+  model_env={**common,'RANK':'0','LOCAL_RANK':'0','WORLD_SIZE':'1','MASTER_ADDR':'127.0.0.1','MASTER_PORT':str(worker_cfg['master_port']),'PYTHONPATH':str(R/'source/lingbot-va-pinned')}
+- prior_consumed=lease.open();gpu_start=lease.start
+  state.update(status='CPU_DEPENDENCY_REVIEW',GPU_start=gpu_start,prior_GPU_lifecycle_seconds=prior_consumed,fixed_pairs=600,shared_pair_claims=True);save()
+  queue=json.loads((J/'INPUT-MANIFEST.json').read_text())
+  assert len(queue)==1800 and len({c['pair_id'] for c in queue})==600
+@@ -123,6 +133,7 @@
+   if rows is None:state.update(status=reason);break
+   active_pair=rows[0]['pair_id'];state.update(active_pair=active_pair,pair_expected_seconds=sum(x.get('estimated_seconds',0) for x in rows));save()
+   for position,case in enumerate(rows):
++   wait_gpu_headroom(6144, 'before_complete_episode')
+    name=case['episode_id'];f=J/f'{name}-CASE.json';f.write_text(json.dumps(case,indent=2)+'\n')
+    state.update(status='RUNNING_COMPLETE_DEV_EPISODE',active_case=name,active_pair=case['pair_id'],active_arm=case['arm']);save()
+    worker=launch([str(R/'envs/client/bin/python'),'-B',str(J/'client.py'),str(f),str(J/name)],client_env,J/f'{name}.log');end=time.time()+reg['per_episode_seconds']

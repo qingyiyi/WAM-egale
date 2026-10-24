@@ -1,0 +1,53 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1792857354.0445678,
+  "phases": [
+    {
+      "name": "derive-profile",
+      "start": 1792857354.0458405,
+      "status": "OK",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1/make_profile.py"
+      ],
+      "identity": {
+        "pid": 52017,
+        "birth": "2629544306"
+      },
+      "returncode": 0,
+      "ended": 1792857354.110978,
+      "child_exited": true,
+      "lifecycle_seconds": 0.06513738632202148
+    },
+    {
+      "name": "build-diagnostic",
+      "start": 1792857354.1117346,
+      "status": "FAILED",
+      "command": [
+        "/root/autodl-tmp/cxz/envs/wam-sm120/bin/python",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1/build_whole_profile.py",
+        "build_ext",
+        "--build-temp",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1/build/temp",
+        "--build-lib",
+        "/root/autodl-tmp/cxz/operator-sm120-20261023/sm120-ffn-next-20261024/T1/build/profile"
+      ],
+      "identity": {
+        "pid": 52018,
+        "birth": "2629544312"
+      },
+      "returncode": 1,
+      "ended": 1792857355.6791184,
+      "child_exited": true,
+      "lifecycle_seconds": 1.5673837661743164
+    }
+  ],
+  "guard": {
+    "pid": 52016,
+    "birth": "2629544303"
+  },
+  "error": "RuntimeError('build-diagnostic FAILED')",
+  "ended": 1792857355.6797023,
+  "lifecycle_seconds": 1.6351346969604492,
+  "after_compute_contexts": ""
+}
