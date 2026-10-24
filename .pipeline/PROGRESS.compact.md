@@ -1,24 +1,29 @@
-# WAM短状态入口
+# WAM研究短入口（2026-10-25）
 
-当前Cycle：wam-research-20261016；M39单层算子、M40 RoboTwin、H02本机轻量化。2026-10-25 01:05更新。旧state/cycle/rules、原tile、FAILED及科学门保护不变。
+先读[约束](memory/INDEX.md)，再按需读[当前Cycle](cycles/wam-research-20261016/PLAN.md)。本文件是派生摘要；原始PROGRESS、保护文件、旧FAILED/retention、原tile不改。本镜像只包含WAM当前主题。
 
-M39新附件T0–T3已收口NO_GO：基线当前SM120 SELF-QKV-TMA-4MMA，来源3eb0026705e603d6268731bb26b34261acca696c且现场源字节相同。唯一PAIR2048x2将相邻K2048段同CTA、672→384 owner，ACT仍global、FFN1不重算、七次BF16舍入不变。三真实block0 fixture七段P/R、27捕获项/输出、输入/有效KV/RNG有限逐位通过，但两个独立进程三KV无插桩整层慢6.25%–7.89%、同轮FFN慢18%–19%，不采用，当前A入口/DSO未改。
+M41已收口：[结果](experiments/rtx5090-spec-speed-20261025/RESULT.md)、[五环境表与账本](experiments/rtx5090-spec-speed-20261025/PERFORMANCE-RESULT.md)、[固定源码/原数据入口](experiments/rtx5090-spec-speed-20261025/SOURCE-AND-RESULT-ENTRY.json)。三臂T/TF/PF2，有限暴露DEV工程面板，非独立TEST/正式性能。
 
-当前同轮原Torch/A完整单层KV288/1152/2160约1.251/1.758–1.761/2.191–2.201×；Guarded/A约1.110/1.084–1.089/1.047×。三方5090/B14/Q16/eager/no Graph/warm CrossKV，单层真实重放，不是在线verifier或机器人E2E。完整17阶段表按T0/T1/T2/T3在聊天打印并保存。T1前序等待约0.2μs/任务，MMA/输入与结果交接包络25.8μs，非关键路径占比；新旧资源相同，不支持shared增大归因。DRAM/L2/动态spill未知。
+| 环境 | N | 成功T/TF/PF2 | 动作加速TF/PF2 | client任务E2E TF/PF2 |
+|---|---:|---|---:|---:|
+| long | 8 | 8/8/8 | 1.233/1.146 | 1.121/1.062 |
+| goal | 10 | 10/9/10 | 1.161/1.137 | 0.828/1.123 |
+| spatial | 10 | 9/9/9 | 1.175/1.117 | 1.065/1.013 |
+| object | 10 | 10/10/10 | 1.203/1.131 | 1.075/0.990 |
+| robotwin | 6 | 5/4/4 | 1.748/1.415 | 0.933/0.936 |
 
-本轮5214完整block、job生命周期合计452.531秒，编译409.888秒、GPU工作进程42.384秒、CUDA active未知；2次GPU前准备失败、1次定位修订，0 CUDA编译/数值失败、0 timeout。13phase与5guard核验退出，5090 context为空，实例仍开。现有5090持续使用授权有效，逐job有界，不扩A100。上轮TMA输入/跨任务epilogue/M16驻留/双CTA DSM四负结果保留，详见NEGATIVE-EVIDENCE，不重复运行或改名。
+任务E2E包含所有完整失败、每局初始化和关闭，模型已常驻；暖口径、完整policy/chunk、长度与罚分另列原表，不能混用。Goal task9 C失败/P成功；Spatial/Object PF2成功长尾1.697/1.893倍，Object P90也超1.20；Robo篮子新增失败与C订书机2.833倍长尾。Robo五case第二个S在首次PF2刷新前已不同，隔离FAILED、根因UNKNOWN；有限分数/路由通过不能作全KV/velocity等价证明。
 
-M40 01:05现场：405/600完整组三臂、1215/1800局，Target/TF/PF2成功326/328/332（同分母405）。两张A100 worker身份存活、RUNNING，队列HALT=null，自动接未开始组。00:53 pair406/T观察VAE编码显存OOM，旧PARTIAL及同组C/P自然失败保留；新GPU1 guard只加模型前24GiB/完整局前6GiB空闲准入，数学及reset bank不变。406/T未自动重试，旧pair281/C一次授权尾部恢复仍会接续；缺406/T不能报告600完整组。原160GPU小时累计约86.15，原T0与更早10/29 14:03 guard截止保留。微波炉66/100组，等100组三臂齐全再查因。并行墙钟不是正式E2E加速。
+Long因两条已执行PARTIAL只有8共同组，旧不同FSDP T0/未配齐T/P1单列；不以成功筛样。原21teacher计数滞后与23尝试/22返回保留，不重跑。Object bank绝对链接失效为0teacher/0episode准备失败，复制原44MiB后新attempt开始。
 
-H02：TMPDIR/TMP/TEMP统一/rjs/cxz/tmp；623项闲置/tmp归档清除、28活动项保留，模型公共组件逐字节核验去重释放13.2068GiB。25564大文件冷归档到BAAI ~/cxz/backups独立目录，传输校验/fsync确认后逐文件或闭合小批立即释放本地，每30秒落状态收据。原22:21起点累计12小时、10/25 10:21:19截止不变；实际释放看BULK-STATUS，不把预计120.62GiB当完成。恢复入口保留，不删唯一失败证据/代码/原tile/必要fixture。
+所有三臂沿优化full512 BF16 bank/eager/no外层Graph；reset实测约0.01%–0.03%总尝试时间。受控资产预传有CPU/IO重叠，Robo首16 shared attention含inline数值检查，尚无正式隔离重复。四字段engineering_quality_screen、independent_test_complete、noninferiority_established、formal_performance_permission均false。
 
-质量边界：TF64为研究载体，旧TF_ON连续NO-GO、72/96 PARTIAL及三风险失败保留；不拼旧T/DEV/新50为独立TEST。PF2不同于bonus，不恢复物理状态。engineering_quality_screen=false、independent_test_complete=false、noninferiority_established=false、formal_performance_permission=false、production_admitted=false。新算子未扩大验证至其他层/在线接受/完整模型/机器人闭环。
+M41原T0 01:15:33到06:01:46清理4.770h；95597 teacher尝试/95596返回，1664文件84.02MiB核验/fsync回传后删5090整个临时根/新权重/env/cache。174个birth身份无活跃自有work，GPU compute contexts空；原operator/env存在、实例未关。Goal传输曾因EOF外预分配短时owned36G违反34GiB，已停自有rsync回收并修复，不改cap/旧日志。
 
-下一步：保留当前大M与global ACT，先解释FFN2 MMA/输入交接包络，再决定新候选；本轮停止实现，不自动展开DAG、warp比例或FA2重写。baseline/投机/原tile不改，不做smoke/独立模型SHA，不杀他人进程或改驱动/服务/时钟；BAAI只写~/cxz。论文中文由用户飞书整理，不新建论文草稿。11/01 18:00中文证据包内部节点，主张随证据收缩。
+M40双A100继续：455/600完整组、1365/1800局；T/TF/PF2成功368/370/375，96.146/160GPUh，两worker alive、HALT空（2026-10-25T06:04:49.750999+08:00）。281/C原授权恢复继续，406/T OOM不自动重试。微波炉100组三臂完整后再诊断，旧更早10/29 14:03 guard不变。[接续](experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)。
 
-- [完整进度](cycles/wam-research-20261016/PROGRESS.md)
-- [本轮结果](experiments/sm120-ffn-next-20261024/REVIEW_RETURN.md)
-- [当前完整阶段表](experiments/sm120-ffn-next-20261024/STAGE-TABLE.md)
-- [固定源与原始数据](experiments/sm120-ffn-next-20261024/SOURCE-AND-RESULT-ENTRY.json)
-- [RoboTwin现场/接续](experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)
-- [存储状态与恢复](maintenance/storage-placement-20261024/PLAN.md)
+M39当前保留SELF-QKV-TMA-4MMA；四驻留/交接方案与PAIR2048x2均负结果。新PAIR正常整层慢6.25%–7.89%，不采用；原Torch/A三KV约1.251/1.758–1.761/2.191–2.201倍，单层同warmCrossKV/eager，未接M41任务，不乘算倍数。[结果/17阶段表](experiments/sm120-ffn-next-20261024/REVIEW_RETURN.md)。下一轮FFN/任务依赖须有界方案，未自动扩展。
+
+H02本机轻量化完成：25564文件逐项校验/接收端fsync后归档释放120.619GiB，runner退出；另有公共组件13.2068GiB去重和/tmp清理分别记录。默认TMPDIR=/rjs/cxz/tmp，原tile/代码/轻量失败/代表输入保留。[结果与恢复](maintenance/storage-placement-20261024/RESULT.md)。A100质量/5090性能/本机轻量开发；5090本轮无权重常驻，后续需重传。
+
+后续：M40完整覆盖与原微波炉诊断；Robo分叉前一致性定位；再据质量冻结候选/正式性能，不能盲目加训练。旧M17配对/FIT-DEV缺口仍在，M01–M04历史完成不代表整体完成。完整旧短入口在PROGRESS.compact.before-M41-20261025.md；Cycle四旧文同目录before-M41保留。

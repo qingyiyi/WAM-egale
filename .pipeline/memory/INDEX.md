@@ -1,5 +1,7 @@
 # 长期记忆索引
 
+- [5090投机测速临时迁入与清理](global/requirements/decision-5090投机测速临时迁入权重并在结果回传后清除.md)：本轮新资产回传核验后删除；下次重传，旧质量门不变。
+
 - [SM120七段FFN有限接续](global/requirements/decision-SM120七段FFN先诊断提交成本再有限合并owner.md)（constraint，本轮M39）：先当前基线/数值/成本证据，最多一个设计一次修订，逐项聊天完整阶段表，不预设去掉global ACT。
 
 - [成功率与性能分机、本机轻量化](global/requirements/decision-成功率与性能分机执行并将本机改为轻量工作区.md)（constraint，资源/存储）：现有A100跑已授权质量、5090测速度；本机保留源码/HW/轻量证据，大文件核验归档后释放。
@@ -11,7 +13,6 @@
 
 - [先诊断当前四MMA主循环](global/requirements/decision-先诊断当前四MMA主循环再决定优化.md)（constraint，本次M39诊断）：用户已同意输入等待/操作数与MMA主循环测量；保留现有分工、原累计余量，不自动扩warp或TMA写回。
 
-- [Paseo语音输入需要支持中文](global/requirements/requirement-Paseo语音输入需要支持中文.md)（constraint，用户工具/Paseo）：麦克风输入需要识别中文；来源为用户明确要求，不替代已有约束。
 
 - [分步实现FFN TMA流水](global/requirements/decision-分步实现FFN的TMA流水并按共享内存约束调整tile.md)（constraint，5090 FFN）：用户已批准输入→后处理→K片段就绪；容量不足允许缩小tile，旧累计预算不增。
 
@@ -250,7 +251,7 @@
 | tile 与 B14 verifier 接口 | [原算子基线边界](global/knowledge/decision-算子基线与接口限制.md)；[10/18真实B2/B14完整验证边界](global/knowledge/decision-真实B2与B14算子完整验证边界.md)（reference：standalone完整30层失败、shared/guarded有限六query通过，性能仍探索性） ；[去fast_math后新版本有限对齐](global/knowledge/knowledge-去fast_math后的算子有限逐位对齐.md)（reference：108attention/54block/六full30/三完整policy逐位/有效状态通过，新二进制性能待测，旧失败保留） |
 | 截稿与规划 | [投稿时间](global/knowledge/decision-投稿时间与研究规划.md) |
 
-历史映射见 [原记录清单](../maintenance/hw-upgrade-20261016/LEGACY-RECORD-INVENTORY.json)，仅在查旧问题时打开；不把旧 GPU 暂停、旧“未完成”或早期计划当成当前指令。
+旧版完整记录盘点清单仅保留在服务器；公开镜像只按需提供WAM相关证据，旧记录不因此删除。
 
 当前以回退阶段同步并重新规划为准；历史顺序见：[先核对再调度](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)、[改动与指标解释边界](global/requirements/requirement-算子交付明确源码入口与验证范围.md)均为constraint；动态数字留在M39。
 

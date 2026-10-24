@@ -1,0 +1,161 @@
+{
+  "schema": "rtx5090-spec-speed/fixed-entry-v1",
+  "status": "COMPLETE_WITH_LIMITATIONS_AND_RECORDED_FAILURES",
+  "base_public_commit": "9eb1a09508f575e15306bfa214af291d0c6b928c",
+  "no_independent_model_hash": true,
+  "hardware": {
+    "device": "NVIDIA GeForce RTX 5090",
+    "SM": "120",
+    "GPU_UUID": "GPU-e5e7821f-9633-6cc8-d06c-d0d0df4c9256",
+    "driver_observed": "580.105.08",
+    "server_torch": "2.9.0+cu130",
+    "server_python": "3.12",
+    "client_python": "3.10.16"
+  },
+  "source_snapshots": {
+    "long": [
+      {
+        "source": "raw/long/server-05/SERVER-SOURCE.py",
+        "status_record": "raw/long/server-05/STATUS.json",
+        "main_policy_rows": 398,
+        "engine": "existing best LIBERO noFSDP",
+        "torch": "2.9.0+cu130",
+        "CUDA": "13.0",
+        "device_name": "NVIDIA GeForce RTX 5090"
+      }
+    ],
+    "robotwin": [
+      {
+        "source": "raw/robotwin/server-02/SERVER-SOURCE.py",
+        "status_record": "raw/robotwin/server-02/STATUS.json",
+        "main_policy_rows": 291,
+        "engine": "canonical FSDP2",
+        "torch": "2.9.0+cu130",
+        "CUDA": "13.0",
+        "device_name": "NVIDIA GeForce RTX 5090"
+      }
+    ],
+    "goal": [
+      {
+        "source": "raw/goal/server-01/SERVER-SOURCE.py",
+        "status_record": "raw/goal/server-01/STATUS.json",
+        "main_policy_rows": 279,
+        "engine": "existing best LIBERO noFSDP",
+        "torch": "2.9.0+cu130",
+        "CUDA": "13.0",
+        "device_name": "NVIDIA GeForce RTX 5090"
+      }
+    ],
+    "spatial": [
+      {
+        "source": "raw/spatial/server-01/SERVER-SOURCE.py",
+        "status_record": "raw/spatial/server-01/STATUS.json",
+        "main_policy_rows": 339,
+        "engine": "existing best LIBERO noFSDP",
+        "torch": "2.9.0+cu130",
+        "CUDA": "13.0",
+        "device_name": "NVIDIA GeForce RTX 5090"
+      }
+    ],
+    "object": [
+      {
+        "source": "raw/object/server-02/SERVER-SOURCE.py",
+        "status_record": "raw/object/server-02/STATUS.json",
+        "main_policy_rows": 286,
+        "engine": "existing best LIBERO noFSDP",
+        "torch": "2.9.0+cu130",
+        "CUDA": "13.0",
+        "device_name": "NVIDIA GeForce RTX 5090"
+      }
+    ]
+  },
+  "input_identity_summary": "SOURCE-CHECKPOINT-SUMMARY.json",
+  "input_manifests": "raw/INPUT-MANIFESTS",
+  "actual_model_and_runtime_sources": "raw/FINAL-SOURCE",
+  "RoboTwin_checkpoint_metadata": {
+    "scope": "Read existing small checkpoint/bank metadata onCPU only; no hash or inference",
+    "draft_top_keys": [
+      "schema",
+      "specification",
+      "model_state_dict",
+      "normalization",
+      "metadata",
+      "channels"
+    ],
+    "draft_metadata": {
+      "condition": "ON3000",
+      "seed": 20260923,
+      "updates": 3000,
+      "additional_updates": 500,
+      "batch": 512,
+      "target_half": 256,
+      "observer_half": 256,
+      "lr": 3e-05,
+      "weight_decay": 0.01,
+      "optimizer_state_reset": true,
+      "normalization": "Target FIT36 fixed",
+      "selection": "fixed final update",
+      "parent_checkpoint": "/root/cxz/robotwin/runs/branches-after-fixed18-20261021-r2/CHILD2500/checkpoint.pt",
+      "observer_audit": "/root/cxz/robotwin/runs/current18-followup-20261021/AUDIT",
+      "observer_generator": "CONT3000",
+      "parameters": 56416,
+      "target_revision": "8c9dea8abbc5c91cc9e18bc3264b8915083bbe70",
+      "quality_passed": false
+    },
+    "draft_architecture": null,
+    "draft_config": null,
+    "bank_metadata": {
+      "schema": "robotwin-original-full512-text-bank/v1",
+      "source": "7c6ffa9bfc4b83582cafc860fab4c82cc7deeeeb",
+      "target_revision": "8c9dea8abbc5c91cc9e18bc3264b8915083bbe70",
+      "dtype": "bfloat16",
+      "sequence_length": 512,
+      "subset_provenance": {
+        "source": "/root/cxz/robotwin/runs/eval100-20261022/gpu1/server/text-bank.pt",
+        "source_bytes": 2013442507,
+        "source_mtime_ns": 1792684820669890865,
+        "source_entry_count": 480,
+        "selected_valid_index": 49,
+        "selected_tasks": [
+          "place_object_basket",
+          "stack_blocks_two",
+          "handover_block",
+          "lift_pot",
+          "press_stapler",
+          "open_microwave"
+        ],
+        "sequence_truncated": false,
+        "computed_or_modified_embeddings": false
+      }
+    }
+  },
+  "results": [
+    "PERFORMANCE-RESULT.md",
+    "RESULTS.json",
+    "EPISODES.csv",
+    "AUDIT-RESULT.json",
+    "CLAIM-EVIDENCE-MATRIX.md",
+    "RESOURCE-AND-CLEANUP-REPORT.md"
+  ],
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "scope": "Exposed DEV finite engineering cost panel. No new training, threshold changes, global preset changes or MegaTransformer block integration.",
+  "main_complete_three_arm_groups": 44,
+  "main_episodes": 132,
+  "returned_files": 1664,
+  "returned_bytes": 88104231,
+  "deleted_remote_root": "/root/autodl-tmp/cxz/spec-speed-20261025",
+  "actual_execution": "Single model worker; existing noFSDP LIBERO and canonical FSDP2 RoboTwin; all full512 BF16 banks; eager/no outer CUDA Graph",
+  "metric": "(SUM host round scopes + action boundary residuals + route setup) / SUM legal scheduler g; full policy and complete natural episode costs separately",
+  "known_limitations": [
+    "Long has8 complete triples, missing executed partial cases kept; old different-engine T0 excluded explicitly",
+    "RoboTwin first two S isolation fails before first PF2 target chunk in five cases; causeUNKNOWN",
+    "No complete persisted perquery latent/KV/velocity or independent B2-B14 teacher equivalence proof",
+    "Backend runtime flags not separately snapshotted beyond executed source/environment/version records",
+    "Controlled next-suite CPU/IO prefetch overlap and first16 shared Robo attention inline numerical checks are included; no independent formal repeats"
+  ]
+}
