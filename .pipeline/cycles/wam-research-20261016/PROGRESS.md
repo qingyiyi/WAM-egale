@@ -2,28 +2,32 @@
 kind: progress
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T16:38:36.211404+08:00'
+updated: '2026-10-25T18:03:34+08:00'
 plan: PLAN.md
 current: M42-MULTI-INIT
 next: M42-PAIRED-COST-RESULT
 ---
 # 当前进度
 
-## 运行中（2026-10-25T16:33:47.595962+08:00快照）
+## 资源状态（2026-10-25 17:59北京时间快照）
 
-- **本机M42**：resume05为`WAITING_EXISTING_TRANSFERS`，supervisor与watch出生身份存活；Goal16路/VAE8路恢复资产，原生校验与路径门通过后自动加载/完整评估，尚无本次新增episode。T0 15:56:53、硬截止21:56:53，旧09:45–15:45窗口/失败不改。单worker、CPU2+2、临时30GiB/结果3GiB、每局1800秒、清理600秒。[实际status](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/SUPERVISOR-STATUS.json)。
-- **双A100 M40**：556/600完整组三臂、1668/1800局，117.111/160GPU小时，两guard存活；固定队列接续。281原授权恢复未闭合、406/T旧OOM与4条未配齐完整记录单列，不自动重试。[实查](../../maintenance/hw-compact-20261025/RESOURCE-SNAPSHOT.json)。
-- **5090**：本轮算子测量已闭合，当前只读带读；实际采用A，未因讨论删除同步或集成机器人。
+- **本机M42**：resume05为`CLOSED_WITH_RESULTS`，81attempt、54完整均成功、4合格完整四臂组；清理完成。原窗口/失败不改。[结果](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/RESULT.md)。
+- **双A100 M40**：569/600完整组三臂、1707/1800局，119.952/160GPU小时，两guard存活；原281/406缺口与未配齐记录单列。[实查](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/ROBOTWIN-PROGRESS.json)。
+- **5090**：本轮FFN阶段拆分完成并采用S，17:59清理，无owned GPU进程；下一候选未启动。
 
 ## M42质量与阻塞
 
-五套83030行CAL已有限重放，主池CONT3000生成；不冒称当前ON的on-policy数据。固定Goal十task×init46/47/48×T/OLD/Q75/Q90，PFoff/full512 BF16 reset。旧18attempt中10完整均成功（T3/3、OLD3/3、Q75 2/2、Q90 2/2），7个严格初态无效case、1用户中断；**0合格完整四臂组，不能选阈值或给可靠速度结论**。
+五套83030行CAL已有限重放，主池CONT3000生成；不冒称当前ON的on-policy数据。固定Goal十task×init46/47/48×T/OLD/Q75/Q90，PFoff/full512 BF16 reset。旧18attempt中10完整均成功（T3/3、OLD3/3、Q75 2/2、Q90 2/2），7个严格初态无效case、1用户中断；**当时0合格完整四臂组**；该旧状态不覆盖resume05新4组。
 
 resume03在0teacher/0新episode因Goal VAE路径缺config失败，收尾误向自身killpg造成过时RUNNING；[独立核对归档](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume03/RECONCILE-RESULT.md)保留。用户要求修复再接续；resume04为0episode计划性传输交接，resume05沿同一新窗口，修复common链接/owned清理，不改严格初态门、tau配方或normalizer。
 
 ## M39单层系统
 
-采用SELF-QKV-TMA-4MMA A170：B14/Q16、KV288/1152/2160、warm CrossKV、eager/noGraph。历史同轮A相对原Torch整层约1.25/1.76/2.18倍；只是有限单层replay，不是机器人E2E。FFN保留global ACT、七段有序BF16运行和。
+当前采用S（FFN两阶段同步版，原A170独立保留）：B14/Q16、KV288/1152/2160、warm CrossKV、eager/noGraph。只在FFN1+GELU后加grid同步，FFN2七段BF16递推与tile/warp不变。本轮三真实fixture、27tensor/七段/有效KV/输入/RNG、两个独立进程及公开入口全部有限逐位通过。
+
+无插桩完整层原Torch/S约1.288/1.797/2.238倍，S相对A延迟下降2.25%/1.82%/1.90%；资源仍170CTA、100352B shared、255regs/thread、784B local。FFN1+GELU为0.797–0.805×Torch，FFN2+残差为1.027–1.033×；下一步先定位FFN1计算/后处理成本。2865调用、17.12分钟生命周期、约132MiB新证据，owned清理完成。[新结果/18阶段表/固定入口](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)。
+
+下面是相对旧A的历史DSM负结果，不重写为对S测量。
 
 | 已闭合研究路径 | 相对A结果 | 采用 |
 |---|---|---|
@@ -31,7 +35,7 @@ resume03在0teacher/0新episode因Goal VAE路径缺config失败，收尾误向�
 | C4混合DSM | 慢33.87%–48.11% | NO_GO |
 | C2混合DSM | 慢12.27%–15.46%；G2绕过peer DSM仍慢8.71%–10.42% | NO_GO |
 
-[最新结果/全17阶段表/源码](../../experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)。三真实fixture/27tensor/七段/有效KV/RNG有限逐位通过，不外推全部输入或闭环。2CTA恢复170CTA并比C4快，新增swizzle/主循环/交接/提交仍有成本；R0/R1观察器有扰动，硬件流量与纯DSM指令根因UNKNOWN。10413调用、17phase、105文件回传/fsync、owned清理已闭合。
+[历史DSM结果/17阶段表/源码](../../experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)。三真实fixture/27tensor/七段/有效KV/RNG有限逐位通过，不外推全部输入或闭环。2CTA恢复170CTA并比C4快，新增swizzle/主循环/交接/提交仍有成本；R0/R1观察器有扰动，硬件流量与纯DSM指令根因UNKNOWN。10413调用、17phase、105文件回传/fsync、owned清理已闭合。
 
 [FFN同步源审查](../../experiments/sm120-ffn-next-20261024/FFN-SYNC-SOURCE-REVIEW-20261025.md)：608/863、681/867可研究合并；C2单A槽974/983不能直接删。仅CPU判断，无新收益。每段FP32部分和先加前段BF16运行和，末段再bias后舍入；不存在额外独立BF16(partial)步骤。
 

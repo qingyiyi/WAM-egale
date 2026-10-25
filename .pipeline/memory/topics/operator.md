@@ -11,4 +11,4 @@
 - [七段FFN有界接续](../global/requirements/decision-SM120七段FFN先诊断提交成本再有限合并owner.md)
 - [双CTA实验范围；已完成负结果按Cycle读取](../global/requirements/decision-优先验证双CTA混合DSM并分离慢因.md)
 
-当前采用A及C2负结果见Cycle。用户最新要求先读FFN源码并讨论同步；CPU源审查提出的合并点尚未成为新性能结果。历史30层融合、旧GPU时段和旧候选不自动恢复。
+当前采用S（FFN两阶段同步版），原A及C2负结果保留，实际数据见Cycle。10/25已授权并完成两阶段修改/测量；统一warp比例和DSM细节未实施。历史30层融合、旧GPU时段和旧候选不自动恢复。

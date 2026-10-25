@@ -6,7 +6,7 @@
 |---|---|
 | 本机 Goal 门控验证 | [resume05计划](experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/PLAN.md)；状态按该目录实时读取 |
 | 双 A100 RoboTwin | [原固定队列](experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md) |
-| 5090 单层算子 | [最新双CTA结果/阶段表](experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)；[FFN同步带读](experiments/sm120-ffn-next-20261024/FFN-SYNC-SOURCE-REVIEW-20261025.md) |
+| 5090 单层算子 | [当前FFN两阶段版S/结果](experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)、[18阶段表](experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/STAGE-TABLE.md)；旧A/DSM负结果保留 |
 | 五环境投机结果 | [M41结果](experiments/rtx5090-spec-speed-20261025/RESULT.md) |
 | 中文逐段写作 | [协作Prompt](prompts/WAM-PAPER-COLLABORATION.md) |
 

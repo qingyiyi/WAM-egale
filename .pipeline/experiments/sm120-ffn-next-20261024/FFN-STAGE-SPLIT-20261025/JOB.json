@@ -1,0 +1,30 @@
+{
+  "id": "M39-FFN-STAGE-SPLIT",
+  "status": "COMPLETE_ADOPT_S",
+  "T0": "2026-10-25T17:42:35.705901+08:00",
+  "absolute_cleanup_deadline": "2026-10-25T19:12:35.705901+08:00",
+  "wall_seconds_cap": 5400,
+  "cleanup_reserve_seconds": 300,
+  "calls_cap": 7000,
+  "storage_cap_bytes": 2147483648,
+  "cpu_cores": 4,
+  "GPU": "existing RTX5090 SM120 GPU-e5e7821f-9633-6cc8-d06c-d0d0df4c9256",
+  "goal": "separate FFN1+GELU and FFN2+gate/residual by one grid barrier; quantify cost before further tuning",
+  "authorization": "用户2026-10-25: 同意先这样改，做一版测试并输出阶段表；已有5090使用许可",
+  "inputs": "same frozen block0 B14 Q16 fixtures KV288/1152/2160; warm CrossKV; original BF16 contract",
+  "baseline": "retained independent A.so, original Torch, Guarded; all eager/noGraph",
+  "variants": [
+    "S: same FFN arithmetic/tiles/warps, intermediate grid sync"
+  ],
+  "acceptance": "all 27 tensor outputs; seven FP32 partial and BF16 running sums; valid KV/input/RNG; custom stream; three KV and two independent normal timing processes",
+  "stop": "any correctness failure or resource limit stops measurement; no parameter search",
+  "cleanup": "only birth-verified owned process groups; return artifacts and verify byte identity; no shutdown",
+  "formal_performance_permission": false,
+  "calls_before_phase": 2856,
+  "actual_calls": 2865,
+  "closed_at": "2026-10-25T17:59:43.080718+08:00",
+  "cleanup_complete": true,
+  "retained": "S",
+  "A_binary_preserved": true,
+  "actual_lifecycle_seconds": 1027.3748171329498
+}
