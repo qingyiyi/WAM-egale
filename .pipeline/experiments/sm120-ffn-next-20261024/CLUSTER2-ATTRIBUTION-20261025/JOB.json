@@ -1,0 +1,37 @@
+{
+  "id": "M39-CLUSTER2-ATTRIBUTION",
+  "status": "COMPLETE_NO_GO_RETAIN_A",
+  "T0": "2026-10-25T14:55:31.337663+08:00",
+  "absolute_cleanup_deadline": "2026-10-25T16:25:31.337663+08:00",
+  "wall_seconds_cap": 5400,
+  "cleanup_reserve_seconds": 300,
+  "calls_cap": 12000,
+  "storage_cap_bytes": 1073741824,
+  "cpu_cores": 4,
+  "GPU": "existing RTX5090 SM120 only",
+  "goal": "same-large-tile cluster2 hybrid versus launch-only and DSM-bypass controls; localize overhead",
+  "inputs": "same three frozen B14/Q16/block0 fixtures, KV288/1152/2160, warm CrossKV",
+  "baseline": "independent retained A 170CTA, original Torch and project Guarded all eager/noGraph",
+  "fixed": "M64 N128 K2048 x7; original BF16 partial/commit, 4MMA warps, FFN1/globalACT and global partial retained",
+  "variants": [
+    "B2 launch cluster2 only, A device body",
+    "C2 twoCTA global/DSM hybrid, own K128 slab; eight K256 rounds per K2048",
+    "G2 DSM-bypass control: identical local staging/barriers/K32 helper but peer slab read from global ACT"
+  ],
+  "diagnostics": "cluster capacity/waves; ready/wait/DSM or global swizzle copy; TMA submit/wait; MMA+named barrier; predecessor wait/commit; per-owner task/tail",
+  "acceptance": "pre-timing complete output/27 captured tensors, seven partial/running chains, validKV/input/RNG; all three KV normal wholeblock same-round versus A/Torch; preserve numerical failures",
+  "cleanup": "owned PID+birth process groups only; no driver/counters; return sources/binaries/scalars/numeric evidence and verify sizes/fsync; GPU context clear, no instance shutdown",
+  "not_authorized_by_this_job": [
+    "robot integration",
+    "new training",
+    "new GPU rental",
+    "old FAILED changes",
+    "full DAG",
+    "changing production threshold or quality flags"
+  ],
+  "closed_at": "2026-10-25T15:48:08.464854+08:00",
+  "actual_calls": 10413,
+  "actual_lifecycle_seconds": 3157.127191,
+  "retained": "A170",
+  "cleanup_complete": true
+}

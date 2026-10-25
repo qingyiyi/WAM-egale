@@ -4,7 +4,7 @@
 
 - [5090五环境投机结果与清理](experiments/rtx5090-spec-speed-20261025/RESULT.md)：44组三臂132主表局，当前TF/PF2未获全面质量放行；所有本轮临时权重/环境核验回传后删除，原operator保留。
 - [双A100 RoboTwin持续接续](experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)：原600组/160GPUh，旧缺口不重试冒充完成。
-- [当前SM120单层结果/阶段表](experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/REVIEW_RETURN.md)：DSM8/R1及四CTA混合路径净性能负结果，保留SelfQKV四MMA A，未集成机器人路径。
+- [当前SM120单层结果/阶段表](experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)：DSM8/R1及四/双CTA混合路径净性能负结果，保留SelfQKV四MMA A，未集成机器人路径。
 - [本机冷归档与恢复](maintenance/storage-placement-20261024/RESULT.md)：25564文件核验后释放120.619GiB，代码/HW/轻量证据保留；默认/rjs/cxz/tmp。
 
 全部原始证据按需读取；派生摘要不能覆盖原失败或把四项false改为true。

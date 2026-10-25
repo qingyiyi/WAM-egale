@@ -1,4 +1,4 @@
-> 本机M42已获恢复：Goal接受阈值质量验证为主、耗时附带记录；resume03恢复临时资产后接续，原15:45:32截止不变。
+> 最新：双CTA已实测仍NO_GO保留A；本机M42原窗口准备失败已归档清理，远端两卡RoboTwin继续。
 
 # WAM研究短入口（2026-10-25）
 
@@ -22,7 +22,7 @@ Long因两条已执行PARTIAL只有8共同组，旧不同FSDP T0/未配齐T/P1�
 
 M41原T0 01:15:33到06:01:46清理4.770h；95597 teacher尝试/95596返回，1664文件84.02MiB核验/fsync回传后删5090整个临时根/新权重/env/cache。174个birth身份无活跃自有work，GPU compute contexts空；原operator/env存在、实例未关。Goal传输曾因EOF外预分配短时owned36G违反34GiB，已停自有rsync回收并修复，不改cap/旧日志。
 
-M40实查 2026-10-25T14:17:15.662513+08:00：535/600完整组三臂、1605/1800局，112.560/160GPUh；双guard alive。原281授权恢复未闭合、406/T旧OOM不重跑，4条未配齐完整记录单列。[动态实查](experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/ROBOTWIN-PROGRESS.json)。
+M40 15:42实查：549/600完整组、1647/1800局，115.389/160GPUh，两guard alive；281/406旧缺口不重跑。[动态结果](experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/ROBOTWIN-PROGRESS.json)。
 
 M39历史DSM8/B与R1数值有限通过，B整层慢49%–65%、R1仍慢31%–45%，不采用；5742调用/31.49分钟，源码与证据已回传。[历史结果](experiments/sm120-ffn-next-20261024/DSM-STREAM/REVIEW_RETURN.md)。
 
@@ -32,8 +32,11 @@ H02本机轻量化完成：25564文件逐项校验/接收端fsync后归档释放
 
 后续：M40完整覆盖与原微波炉诊断；Robo分叉前一致性定位；再据质量冻结候选/正式性能，不能盲目加训练。旧M17配对/FIT-DEV缺口仍在，M01–M04历史完成不代表整体完成。完整旧短入口在PROGRESS.compact.before-M41-20261025.md；Cycle四旧文同目录before-M41保留。
 
-M42多初态门控：固定Goal init46/47/48四臂T/OLD/Q75/Q90，旧init49门失败保留。用户暂停后已明确恢复；resume03正在恢复被原收尾清除的临时资产。原18attempt中10完整、7初态无效、1用户中断，0合格四臂组，不能选阈值或报可靠加速。继续原剩余23case/90臂，原15:45:32截止。[当前状态](experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume03/SUPERVISOR-STATUS.json)。成功率/长度/接受深度为主，耗时附带；全体失败保留。
+M42原15:45:32窗口已收口：resume03在0teacher/0新episode因Goal VAE路径缺config失败；supervisor收尾误终止自身造成RUNNING旧状态。独立核对已归档204结果文件/fsync、清理本轮临时资产12.12GiB；不重跑/不延长。原10完整/7初态无效/1中断，0合格四臂组，不能判优阈值。[终态](experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume03/RECONCILE-RESULT.md)。
 
 M39慢因追加核验：A仅170→152CTA，整层慢4.5%–15.5%；168任务的Cross约+67%–69%、中KV Self+74.6%。DSM新计时READY72–73μs、复制/交接38–39μs，不能称全为同步或纯MMA。A FFN尚慢15%，整层仍快1.25/1.76/2.18倍；保留A，下一步定位其25.8μs主循环包络。[归因与全表](experiments/sm120-ffn-next-20261024/CTA-ATTRIBUTION-20261025/REVIEW_RETURN.md)。
 
 M39新增归因作业13:10闭合：5409调用、约19分钟含编译等待与归档，42文件回传尺寸/fsync；自有GPU进程已退出。原A未改，下一工作是主循环进一步归因，不把本轮诊断闭合当作整条算子研究完成。
+
+
+M39最新双CTA：B2仅cluster启动几乎不变；C2保留M64/global ACT比A慢12.27%–15.46%，G2绕过peer DSM仍慢8.71%–10.42%。R1关键链前序提交与W2就绪等待更多，MMA包络接近；不能称DSM raw指令根因/HBM减半。10413调用/17phase，105文件回传/fsync，owned GPU空；NO_GO保留A。[结果/17阶段表/源码](experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)。

@@ -67,3 +67,19 @@ M42 resume03仍恢复临时权重/VAE；tokenizer已完成。本机主目标是�
 ## 2026-10-25T14:28:46.969973+08:00 持续论文协作Prompt
 
 用户希望网页端先理解目标、方法、源码细节与数据，再按现有进展逐段生成中文稿。Maintain合并既有中文论文偏好，不新建正文初稿。Prompt：.pipeline/prompts/WAM-PAPER-COLLABORATION.md。固定commit、实际采用/候选/负结果、质量与性能边界、增量修改已写段落和证据缺口均已写明。为便于网页版读取，48文件约2.14MB轻量上下文准备到既有main镜像，入口review/PAPER-CURRENT-CONTEXT.md；不含权重/tensor/DSO/凭据或部署runner，链接与内容扫描通过。实际发布结果见本轮maintenance回执。
+
+
+## 2026-10-25T14:41:01.798113+08:00 当前保留A汇总与下一优化顺序
+
+用户要求总结算子结果和阶段表，继续优化；另询问新网页会话写稿的开场，已给固定89ba588 Prompt/上下文及先理解再逐段方式。整理当前A完整17阶段派生快照，阶段沿本日170CTA诊断拷贝、最新整层原A另列，未冒充新测。主要缺口为FFN约15%及三个小投影14%–18%；下一步先拆FFN2主循环包络，当前无新GPU作业/新候选。入口：sm120-ffn-next-20261024/OPERATOR-RESULT-SUMMARY-20261025.md与CURRENT-A-STAGE-TABLE-20261025.md。原A/旧负结果/四false不变。
+
+
+## 2026-10-25T15:48:08.464854+08:00 双CTA实测与原窗口清理
+
+M39：完成B2/C2/G2、各三KV完整数值先门检、C2/G2两进程无插桩整层及R0/R1成本观察器。C2比A慢12.27%–15.46%，G2仍慢8.71%–10.42%；C2比同轮C4快1.19–1.30倍但仍NO_GO。B2保持170CTA、启动近似无成本。输入二次swizzle、64K32步骤/128CTA屏障+16cluster交接及有序提交组合有开销；R1关键链提交等待约26–28 vs6–7微秒，W2就绪约23–24 vs10–11微秒，MMA包络接近。无计数器不能称DSM指令/HBM根因。实际保留A；完整17阶段表已直接打印并保存。
+
+10413调用/17phase，105文件424775295字节回传核验/fsync，原A字节未改、owned/GPU为空；约52.62分钟含编译等待归档，小于原90分钟。入口../../experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md。
+
+M42检查发现resume03在14:59 VAE路径缺config准备失败（0 teacher/新episode），supervisor finally把自己的OWNED收据纳入killpg，自终止后原状态停留RUNNING。本次独立RECONCILE-STATUS保留原异常，204结果文件归档字节/fsync核验，删除仅本轮临时资产13018066237字节；未恢复GPU/未改原15:45:32截止，原10完整/7初态无效/1中断、0合格四臂组不变。
+
+M40 15:42实查549组/1647局，115.389/160GPUh，两guard alive；GPU0篮子092-C、GPU1微波炉091-P，旧281/406缺口保留。四false全保持。

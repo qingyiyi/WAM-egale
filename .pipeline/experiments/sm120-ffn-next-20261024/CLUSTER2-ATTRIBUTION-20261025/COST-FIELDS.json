@@ -1,0 +1,22 @@
+{
+  "fields": [
+    "job_begin_ns",
+    "after_row_ready_ns",
+    "after_prime_ns",
+    "leader_own_ACT_slab_load_ns",
+    "cluster_publish_ready_wait_ns",
+    "ACT_DSM_or_global_to_swizzled_shared_plus_CTA_barrier_ns",
+    "leader_W2_TMA_wait_ns",
+    "leader_next_W2_TMA_submit_ns",
+    "first_MMA_warp_through_CTA_join_ns",
+    "cluster_readers_done_wait_ns",
+    "accumulator_to_shared_plus_CTA_join_ns",
+    "predecessor_commit_wait_plus_CTA_join_ns",
+    "BF16_commit_fence_publish_and_final_cluster_ns",
+    "job_end_ns",
+    "CTA_id",
+    "job_id"
+  ],
+  "bounds": "software intervals; leader/thread96; timer/global stores perturb schedule; TMA issue and MMA can overlap; never additive critical-path percentages",
+  "sampling": "all 336 jobs x2 CTA; three raw runs per fixture; normal debug=False for cost"
+}

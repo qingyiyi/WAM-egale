@@ -1,0 +1,807 @@
+{
+  "status": "COMPLETE_NUMERIC_SOFTWARE_COST",
+  "calls": 225,
+  "rows": [
+    {
+      "case": "short",
+      "median_ms": {
+        "c2": 0.8290239870548248,
+        "g2": 0.79612797498703,
+        "c2_detail": 0.8506799936294556,
+        "g2_detail": 0.8139280080795288
+      },
+      "resources": {
+        "c2": [
+          170,
+          1,
+          100352,
+          255,
+          784,
+          256
+        ],
+        "g2": [
+          170,
+          1,
+          100352,
+          255,
+          784,
+          256
+        ],
+        "c2_detail": [
+          170,
+          1,
+          100352,
+          255,
+          792,
+          256
+        ],
+        "g2_detail": [
+          170,
+          1,
+          100352,
+          255,
+          792,
+          256
+        ]
+      },
+      "pre_timing_state": {
+        "valid_KV": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true
+      },
+      "post_state": {
+        "valid_KV": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true
+      },
+      "precision_pass": true,
+      "seven_pass": true,
+      "modes": {
+        "c2_detail": {
+          "median_us": {
+            "3": 5.504,
+            "4": 1.984,
+            "5": 9.024,
+            "6": 6.72,
+            "7": 7.36,
+            "8": 25.536,
+            "9": 2.592,
+            "10": 0.096,
+            "11": 0.192,
+            "12": 2.496,
+            "job_us": 60.576,
+            "row_ready_us": 0.352
+          },
+          "critical": [
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 74.944,
+              "jobs_total_us": 331.808,
+              "row_wait_total_us": 71.904,
+              "field_sums_us": {
+                "3": 20.352,
+                "4": 7.744,
+                "5": 32.128,
+                "6": 22.592,
+                "7": 29.888,
+                "8": 101.184,
+                "9": 10.016,
+                "10": 0.384,
+                "11": 28.192,
+                "12": 13.664
+              },
+              "observed_job_envelope_us": 407.072
+            },
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 74.848,
+              "jobs_total_us": 332.128,
+              "row_wait_total_us": 71.936,
+              "field_sums_us": {
+                "3": 20.256,
+                "4": 7.904,
+                "5": 32.448,
+                "6": 23.936,
+                "7": 29.6,
+                "8": 102.944,
+                "9": 11.104,
+                "10": 0.384,
+                "11": 27.488,
+                "12": 13.984
+              },
+              "observed_job_envelope_us": 407.264
+            },
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 75.328,
+              "jobs_total_us": 330.784,
+              "row_wait_total_us": 71.424,
+              "field_sums_us": {
+                "3": 20.32,
+                "4": 8.064,
+                "5": 32.352,
+                "6": 23.776,
+                "7": 29.44,
+                "8": 101.792,
+                "9": 9.856,
+                "10": 0.384,
+                "11": 27.136,
+                "12": 13.632
+              },
+              "observed_job_envelope_us": 406.464
+            }
+          ]
+        },
+        "g2_detail": {
+          "median_us": {
+            "3": 5.568,
+            "4": 1.984,
+            "5": 8.096,
+            "6": 2.656,
+            "7": 7.36,
+            "8": 25.216,
+            "9": 2.56,
+            "10": 0.096,
+            "11": 0.192,
+            "12": 2.432,
+            "job_us": 55.168,
+            "row_ready_us": 0.352
+          },
+          "critical": [
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 74.496,
+              "jobs_total_us": 297.696,
+              "row_wait_total_us": 72.256,
+              "field_sums_us": {
+                "3": 20.736,
+                "4": 7.776,
+                "5": 32.448,
+                "6": 10.016,
+                "7": 29.28,
+                "8": 100.064,
+                "9": 9.344,
+                "10": 0.384,
+                "11": 7.392,
+                "12": 13.536
+              },
+              "observed_job_envelope_us": 372.576
+            },
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 75.104,
+              "jobs_total_us": 297.472,
+              "row_wait_total_us": 71.776,
+              "field_sums_us": {
+                "3": 20.768,
+                "4": 7.936,
+                "5": 32.416,
+                "6": 9.984,
+                "7": 29.056,
+                "8": 100.192,
+                "9": 10.368,
+                "10": 0.416,
+                "11": 7.456,
+                "12": 13.312
+              },
+              "observed_job_envelope_us": 372.928
+            },
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 74.88,
+              "jobs_total_us": 296.864,
+              "row_wait_total_us": 72.032,
+              "field_sums_us": {
+                "3": 20.8,
+                "4": 7.712,
+                "5": 32.224,
+                "6": 10.24,
+                "7": 28.992,
+                "8": 100.544,
+                "9": 10.464,
+                "10": 0.448,
+                "11": 6.784,
+                "12": 13.504
+              },
+              "observed_job_envelope_us": 372.064
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case": "middle",
+      "median_ms": {
+        "c2": 0.8775120079517365,
+        "g2": 0.8452320098876953,
+        "c2_detail": 0.8985919952392578,
+        "g2_detail": 0.8624719977378845
+      },
+      "resources": {
+        "c2": [
+          170,
+          1,
+          100352,
+          255,
+          784,
+          256
+        ],
+        "g2": [
+          170,
+          1,
+          100352,
+          255,
+          784,
+          256
+        ],
+        "c2_detail": [
+          170,
+          1,
+          100352,
+          255,
+          792,
+          256
+        ],
+        "g2_detail": [
+          170,
+          1,
+          100352,
+          255,
+          792,
+          256
+        ]
+      },
+      "pre_timing_state": {
+        "valid_KV": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true
+      },
+      "post_state": {
+        "valid_KV": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true
+      },
+      "precision_pass": true,
+      "seven_pass": true,
+      "modes": {
+        "c2_detail": {
+          "median_us": {
+            "3": 5.536,
+            "4": 1.984,
+            "5": 9.12,
+            "6": 6.752,
+            "7": 7.36,
+            "8": 25.6,
+            "9": 2.592,
+            "10": 0.096,
+            "11": 0.192,
+            "12": 2.496,
+            "job_us": 60.768,
+            "row_ready_us": 0.352
+          },
+          "critical": [
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 75.584,
+              "jobs_total_us": 331.776,
+              "row_wait_total_us": 71.68,
+              "field_sums_us": {
+                "3": 20.448,
+                "4": 7.936,
+                "5": 32.672,
+                "6": 23.072,
+                "7": 29.28,
+                "8": 103.52,
+                "9": 10.048,
+                "10": 0.32,
+                "11": 28.384,
+                "12": 13.824
+              },
+              "observed_job_envelope_us": 407.68
+            },
+            {
+              "owner": 102,
+              "jobs": [
+                51,
+                136,
+                221,
+                306
+              ],
+              "before_first_job_us": 144.224,
+              "jobs_total_us": 262.944,
+              "row_wait_total_us": 2.688,
+              "field_sums_us": {
+                "3": 21.44,
+                "4": 8.32,
+                "5": 42.176,
+                "6": 31.808,
+                "7": 29.376,
+                "8": 102.496,
+                "9": 10.112,
+                "10": 0.384,
+                "11": 8.416,
+                "12": 14.272
+              },
+              "observed_job_envelope_us": 407.52
+            },
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 75.36,
+              "jobs_total_us": 332.768,
+              "row_wait_total_us": 71.36,
+              "field_sums_us": {
+                "3": 20.608,
+                "4": 7.52,
+                "5": 32.512,
+                "6": 23.744,
+                "7": 29.184,
+                "8": 102.784,
+                "9": 9.568,
+                "10": 0.352,
+                "11": 29.6,
+                "12": 13.632
+              },
+              "observed_job_envelope_us": 408.448
+            }
+          ]
+        },
+        "g2_detail": {
+          "median_us": {
+            "3": 5.6,
+            "4": 2.048,
+            "5": 8.112,
+            "6": 2.656,
+            "7": 7.392,
+            "8": 25.248,
+            "9": 2.56,
+            "10": 0.096,
+            "11": 0.16,
+            "12": 2.432,
+            "job_us": 55.232,
+            "row_ready_us": 0.352
+          },
+          "critical": [
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 74.656,
+              "jobs_total_us": 297.312,
+              "row_wait_total_us": 71.904,
+              "field_sums_us": {
+                "3": 20.704,
+                "4": 7.84,
+                "5": 32.096,
+                "6": 10.848,
+                "7": 29.408,
+                "8": 102.304,
+                "9": 11.04,
+                "10": 0.512,
+                "11": 6.24,
+                "12": 13.12
+              },
+              "observed_job_envelope_us": 372.352
+            },
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 74.912,
+              "jobs_total_us": 297.216,
+              "row_wait_total_us": 71.648,
+              "field_sums_us": {
+                "3": 20.576,
+                "4": 7.808,
+                "5": 32.48,
+                "6": 10.304,
+                "7": 29.568,
+                "8": 100.096,
+                "9": 9.856,
+                "10": 0.448,
+                "11": 6.848,
+                "12": 13.152
+              },
+              "observed_job_envelope_us": 372.512
+            },
+            {
+              "owner": 102,
+              "jobs": [
+                51,
+                136,
+                221,
+                306
+              ],
+              "before_first_job_us": 144.352,
+              "jobs_total_us": 227.808,
+              "row_wait_total_us": 2.528,
+              "field_sums_us": {
+                "3": 21.792,
+                "4": 8.32,
+                "5": 33.536,
+                "6": 10.656,
+                "7": 29.312,
+                "8": 101.216,
+                "9": 10.272,
+                "10": 0.448,
+                "11": 1.696,
+                "12": 14.016
+              },
+              "observed_job_envelope_us": 372.512
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case": "long",
+      "median_ms": {
+        "c2": 0.973471999168396,
+        "g2": 0.940559983253479,
+        "c2_detail": 0.9955039918422699,
+        "g2_detail": 0.9587199985980988
+      },
+      "resources": {
+        "c2": [
+          170,
+          1,
+          100352,
+          255,
+          784,
+          256
+        ],
+        "g2": [
+          170,
+          1,
+          100352,
+          255,
+          784,
+          256
+        ],
+        "c2_detail": [
+          170,
+          1,
+          100352,
+          255,
+          792,
+          256
+        ],
+        "g2_detail": [
+          170,
+          1,
+          100352,
+          255,
+          792,
+          256
+        ]
+      },
+      "pre_timing_state": {
+        "valid_KV": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true
+      },
+      "post_state": {
+        "valid_KV": {
+          "pass_all": true,
+          "fields": {
+            "slots": true,
+            "id": true,
+            "mask": true,
+            "is_pred": true,
+            "k": true,
+            "v": true
+          },
+          "valid_KV_finite_pass": true,
+          "semantics": "all metadata and all logically valid KV; invalid KV excluded"
+        },
+        "inputs_unchanged": true,
+        "RNG_unchanged": true
+      },
+      "precision_pass": true,
+      "seven_pass": true,
+      "modes": {
+        "c2_detail": {
+          "median_us": {
+            "3": 5.536,
+            "4": 1.984,
+            "5": 9.088,
+            "6": 6.752,
+            "7": 7.36,
+            "8": 25.504,
+            "9": 2.56,
+            "10": 0.096,
+            "11": 0.16,
+            "12": 2.496,
+            "job_us": 60.544,
+            "row_ready_us": 0.352
+          },
+          "critical": [
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 75.072,
+              "jobs_total_us": 331.52,
+              "row_wait_total_us": 71.616,
+              "field_sums_us": {
+                "3": 20.576,
+                "4": 7.808,
+                "5": 32.416,
+                "6": 24.256,
+                "7": 28.832,
+                "8": 102.848,
+                "9": 10.528,
+                "10": 0.352,
+                "11": 26.496,
+                "12": 13.696
+              },
+              "observed_job_envelope_us": 406.912
+            },
+            {
+              "owner": 110,
+              "jobs": [
+                55,
+                140,
+                225,
+                310
+              ],
+              "before_first_job_us": 74.816,
+              "jobs_total_us": 332.0,
+              "row_wait_total_us": 71.968,
+              "field_sums_us": {
+                "3": 20.064,
+                "4": 7.488,
+                "5": 32.48,
+                "6": 23.808,
+                "7": 29.344,
+                "8": 103.584,
+                "9": 9.472,
+                "10": 0.352,
+                "11": 28.384,
+                "12": 13.632
+              },
+              "observed_job_envelope_us": 407.168
+            },
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 75.008,
+              "jobs_total_us": 331.168,
+              "row_wait_total_us": 71.744,
+              "field_sums_us": {
+                "3": 20.608,
+                "4": 7.52,
+                "5": 33.024,
+                "6": 22.848,
+                "7": 29.088,
+                "8": 101.632,
+                "9": 10.368,
+                "10": 0.384,
+                "11": 28.704,
+                "12": 13.536
+              },
+              "observed_job_envelope_us": 406.528
+            }
+          ]
+        },
+        "g2_detail": {
+          "median_us": {
+            "3": 5.568,
+            "4": 2.016,
+            "5": 8.096,
+            "6": 2.656,
+            "7": 7.36,
+            "8": 25.184,
+            "9": 2.56,
+            "10": 0.096,
+            "11": 0.16,
+            "12": 2.4,
+            "job_us": 55.104,
+            "row_ready_us": 0.352
+          },
+          "critical": [
+            {
+              "owner": 110,
+              "jobs": [
+                55,
+                140,
+                225,
+                310
+              ],
+              "before_first_job_us": 74.56,
+              "jobs_total_us": 296.736,
+              "row_wait_total_us": 71.936,
+              "field_sums_us": {
+                "3": 20.224,
+                "4": 7.744,
+                "5": 31.36,
+                "6": 10.528,
+                "7": 29.088,
+                "8": 102.304,
+                "9": 9.632,
+                "10": 0.48,
+                "11": 7.072,
+                "12": 13.312
+              },
+              "observed_job_envelope_us": 371.648
+            },
+            {
+              "owner": 110,
+              "jobs": [
+                55,
+                140,
+                225,
+                310
+              ],
+              "before_first_job_us": 74.72,
+              "jobs_total_us": 296.48,
+              "row_wait_total_us": 71.424,
+              "field_sums_us": {
+                "3": 20.288,
+                "4": 7.808,
+                "5": 31.616,
+                "6": 10.112,
+                "7": 29.888,
+                "8": 100.16,
+                "9": 10.464,
+                "10": 0.416,
+                "11": 7.424,
+                "12": 13.056
+              },
+              "observed_job_envelope_us": 371.552
+            },
+            {
+              "owner": 112,
+              "jobs": [
+                56,
+                141,
+                226,
+                311
+              ],
+              "before_first_job_us": 74.688,
+              "jobs_total_us": 296.544,
+              "row_wait_total_us": 71.808,
+              "field_sums_us": {
+                "3": 20.992,
+                "4": 7.392,
+                "5": 32.096,
+                "6": 10.272,
+                "7": 29.408,
+                "8": 99.776,
+                "9": 11.328,
+                "10": 0.448,
+                "11": 6.4,
+                "12": 13.088
+              },
+              "observed_job_envelope_us": 371.584
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "status": "COMPLETE_NO_GO_RETAIN_A",
+  "T0": "2026-10-25T14:55:31.337663+08:00",
+  "absolute_cleanup_deadline": "2026-10-25T16:25:31.337663+08:00",
+  "closed_at": "2026-10-25T15:48:08.464854+08:00",
+  "lifecycle_seconds_including_setup_compile_wait_measure_archive_cleanup": 3157.127191,
+  "wall_seconds_cap": 5400,
+  "CUDA_active_seconds": "UNKNOWN; not inferred from lifecycle",
+  "calls": 10413,
+  "calls_cap": 12000,
+  "remaining_calls": 1587,
+  "storage": {
+    "local_bytes": 426962944,
+    "remote_bytes": 484667392,
+    "total_bytes": 911630336
+  },
+  "archive": {
+    "verified_at": 1792914247.4773836,
+    "method": "rsync native transport plus every archived relative path/size and receiver fsync; no independent whole-model hash",
+    "files": 105,
+    "bytes": 424775295,
+    "bad": [],
+    "results": [
+      {
+        "path": "results/c2-2/RESULT.json",
+        "status": "COMPLETE_EXACT_EAGER",
+        "calls": 2277
+      },
+      {
+        "path": "results/g2-3/RESULT.json",
+        "status": "COMPLETE_EXACT_EAGER",
+        "calls": 2277
+      },
+      {
+        "path": "results/detail/RESULT.json",
+        "status": "COMPLETE_NUMERIC_SOFTWARE_COST",
+        "calls": 225
+      },
+      {
+        "path": "results/detail-r1/RESULT.json",
+        "status": "COMPLETE_NUMERIC_SOFTWARE_COST",
+        "calls": 225
+      },
+      {
+        "path": "results/c2-4/RESULT.json",
+        "status": "COMPLETE_EXACT_EAGER",
+        "calls": 1707
+      },
+      {
+        "path": "results/b2-1/RESULT.json",
+        "status": "COMPLETE_EXACT_EAGER",
+        "calls": 1995
+      },
+      {
+        "path": "results/g2-5/RESULT.json",
+        "status": "COMPLETE_EXACT_EAGER",
+        "calls": 1707
+      }
+    ],
+    "retained_source_local_copy_equal": true,
+    "source_unchanged": true
+  },
+  "phase_count": 17,
+  "phase_statuses": [
+    {
+      "name": "build-b2",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81171,
+        "expected_birth": "2634981655",
+        "active": false
+      },
+      "guard": {
+        "pid": 81170,
+        "expected_birth": "2634981651",
+        "active": false
+      }
+    },
+    {
+      "name": "build-b2_profile",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81275,
+        "expected_birth": "2634994829",
+        "active": false
+      },
+      "guard": {
+        "pid": 81274,
+        "expected_birth": "2634994827",
+        "active": false
+      }
+    },
+    {
+      "name": "build-c2",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81378,
+        "expected_birth": "2635008066",
+        "active": false
+      },
+      "guard": {
+        "pid": 81377,
+        "expected_birth": "2635008061",
+        "active": false
+      }
+    },
+    {
+      "name": "build-c2_profile",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81480,
+        "expected_birth": "2635021094",
+        "active": false
+      },
+      "guard": {
+        "pid": 81479,
+        "expected_birth": "2635021090",
+        "active": false
+      }
+    },
+    {
+      "name": "build-g2",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81583,
+        "expected_birth": "2635034109",
+        "active": false
+      },
+      "guard": {
+        "pid": 81582,
+        "expected_birth": "2635034106",
+        "active": false
+      }
+    },
+    {
+      "name": "build-g2_profile",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81686,
+        "expected_birth": "2635047064",
+        "active": false
+      },
+      "guard": {
+        "pid": 81685,
+        "expected_birth": "2635047060",
+        "active": false
+      }
+    },
+    {
+      "name": "measure-b2-1",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81791,
+        "expected_birth": "2635060539",
+        "active": false
+      },
+      "guard": {
+        "pid": 81790,
+        "expected_birth": "2635060535",
+        "active": false
+      }
+    },
+    {
+      "name": "measure-c2-2",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81841,
+        "expected_birth": "2635061672",
+        "active": false
+      },
+      "guard": {
+        "pid": 81840,
+        "expected_birth": "2635061670",
+        "active": false
+      }
+    },
+    {
+      "name": "measure-g2-3",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81892,
+        "expected_birth": "2635062803",
+        "active": false
+      },
+      "guard": {
+        "pid": 81891,
+        "expected_birth": "2635062798",
+        "active": false
+      }
+    },
+    {
+      "name": "measure-c2-4",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81944,
+        "expected_birth": "2635063955",
+        "active": false
+      },
+      "guard": {
+        "pid": 81943,
+        "expected_birth": "2635063950",
+        "active": false
+      }
+    },
+    {
+      "name": "measure-g2-5",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 81992,
+        "expected_birth": "2635064767",
+        "active": false
+      },
+      "guard": {
+        "pid": 81991,
+        "expected_birth": "2635064762",
+        "active": false
+      }
+    },
+    {
+      "name": "build-c2_detail",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 82042,
+        "expected_birth": "2635065559",
+        "active": false
+      },
+      "guard": {
+        "pid": 82041,
+        "expected_birth": "2635065554",
+        "active": false
+      }
+    },
+    {
+      "name": "build-g2_detail",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 82144,
+        "expected_birth": "2635078694",
+        "active": false
+      },
+      "guard": {
+        "pid": 82143,
+        "expected_birth": "2635078689",
+        "active": false
+      }
+    },
+    {
+      "name": "measure-detail",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 82246,
+        "expected_birth": "2635091853",
+        "active": false
+      },
+      "guard": {
+        "pid": 82245,
+        "expected_birth": "2635091848",
+        "active": false
+      }
+    },
+    {
+      "name": "build-c2_detail_r1",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 82611,
+        "expected_birth": "2635171951",
+        "active": false
+      },
+      "guard": {
+        "pid": 82610,
+        "expected_birth": "2635171947",
+        "active": false
+      }
+    },
+    {
+      "name": "build-g2_detail_r1",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 82712,
+        "expected_birth": "2635184971",
+        "active": false
+      },
+      "guard": {
+        "pid": 82711,
+        "expected_birth": "2635184967",
+        "active": false
+      }
+    },
+    {
+      "name": "measure-detail-r1",
+      "status": "EXITED_OK",
+      "returncode": 0,
+      "child_exited": true,
+      "owned": {
+        "pid": 82814,
+        "expected_birth": "2635197936",
+        "active": false
+      },
+      "guard": {
+        "pid": 82813,
+        "expected_birth": "2635197932",
+        "active": false
+      }
+    }
+  ],
+  "all_owned_exited": true,
+  "GPU_contexts": "",
+  "retained_A_unchanged": true,
+  "failures_or_timeouts_GPU": 0,
+  "non_GPU_report_script_error": "local summary print lacked json import after result saved; corrected without repeating GPU work",
+  "observer_revision_used": 1,
+  "stop": "no further cluster-size search or second candidate; normal A retained",
+  "instance_shutdown": false
+}
