@@ -1,3 +1,5 @@
+> 2026-10-25 HW已精简：从[项目入口](../.pipeline/INDEX.md)按主题读取，[维护结果](../.pipeline/maintenance/hw-compact-20261025/RESULT.md)记录边界与核验；历史原文保留。GitHub作业状态是发布快照。
+
 > 2026-10-25持续论文协作：[Prompt](PAPER_COLLABORATION_PROMPT.md)、[当前方法/证据/缺口](PAPER-CURRENT-CONTEXT.md)。先记录本页所在commit；先理解再按用户指定逐段起草，不直接生成论文。
 
 # 当前研究入口（2026-10-25）

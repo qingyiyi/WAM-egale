@@ -1,12 +1,13 @@
-# WAM当前入口
+# WAM 项目入口
 
-先读[上下文策略](CONTEXT-POLICY.md)、[约束记忆](memory/INDEX.md)、[短状态](PROGRESS.compact.md)，再读[当前Cycle](cycles/wam-research-20261016/PLAN.md)。v15语义入口；原保护文件/旧记录/原tile保留，不全量sync。
+先读[读取策略](CONTEXT-POLICY.md)和[记忆入口](memory/INDEX.md)，读取现行约束后进入[WAM Cycle](cycles/wam-research-20261016/PLAN.md)。[短状态](PROGRESS.compact.md)只保留当前结果、运行作业、阻塞和下一步。原协议/原始证据优先于派生摘要；v15固定入口，不全量sync旧v12。
 
-- [5090五环境投机结果与清理](experiments/rtx5090-spec-speed-20261025/RESULT.md)：44组三臂132主表局，当前TF/PF2未获全面质量放行；所有本轮临时权重/环境核验回传后删除，原operator保留。
-- [双A100 RoboTwin持续接续](experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)：原600组/160GPUh，旧缺口不重试冒充完成。
-- [当前SM120单层结果/阶段表](experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)：DSM8/R1及四/双CTA混合路径净性能负结果，保留SelfQKV四MMA A，未集成机器人路径。
-- [本机冷归档与恢复](maintenance/storage-placement-20261024/RESULT.md)：25564文件核验后释放120.619GiB，代码/HW/轻量证据保留；默认/rjs/cxz/tmp。
+| 当前主题 | 入口 |
+|---|---|
+| 本机 Goal 门控验证 | [resume05计划](experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/PLAN.md)；状态按该目录实时读取 |
+| 双 A100 RoboTwin | [原固定队列](experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md) |
+| 5090 单层算子 | [最新双CTA结果/阶段表](experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)；[FFN同步带读](experiments/sm120-ffn-next-20261024/FFN-SYNC-SOURCE-REVIEW-20261025.md) |
+| 五环境投机结果 | [M41结果](experiments/rtx5090-spec-speed-20261025/RESULT.md) |
+| 中文逐段写作 | [协作Prompt](prompts/WAM-PAPER-COLLABORATION.md) |
 
-全部原始证据按需读取；派生摘要不能覆盖原失败或把四项false改为true。
-
-- [本机多初态均值执行](experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/PLAN.md)：固定Goal清单，用户要求失败修复后在新登记窗口接续；原账本保留；旧无效与算法失败保留。
+其他 Cycle、历史知识、旧长进度只在对应任务下读取；本入口不授权重启实验；GitHub镜像是发布时快照，不是实时作业状态。[本次精简与完整备份](maintenance/hw-compact-20261025/PLAN.md)。

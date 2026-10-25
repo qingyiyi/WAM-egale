@@ -3,29 +3,27 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T14:18:57.297284+08:00'
+updated: '2026-10-25T16:38:36.211404+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
-# 当前计划：多初态门控质量、质量接续、单层算子收口
+# WAM 当前计划
 
-- [ ] M42-RECOVERY04：最新用户要求失败分析修复再接续；新六小时有界窗口，固定Goal剩余23case/90臂、同旧阈值/严格门。见../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/PLAN.md。
+投机重组小action负载→候选感知单层调度→质量约束下成本收益是待验证因果链。质量与系统并行；单层未集成机器人。四项科学权限均false。
 
+| ID | 状态/下一动作 | 证据与依赖 |
+|---|---|---|
+| M42-MULTI-INIT | 本机固定Goal恢复准备中；完成后自动完整评估 | [resume05](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/PLAN.md)，本次T0 15:56:53、截止21:56:53；23剩余case/90臂，单worker、CPU2+2，每局1800秒/清理600秒 |
+| M42-PAIRED-COST-RESULT | 等完整终态，汇总阈值质量/长度/接受深度，成本附带 | 旧10完整/7初态无效/1中断、0合格四臂组保留；不因恢复重跑旧INVALID或改门 |
+| M40-EVAL100 | 双A100接续原600组三臂 | [原队列](../../experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)，160GPU小时/10天原预算；281/406旧缺口单列 |
+| M40-MICROWAVE-FINAL-DIAG | 等微波炉100组完整后核官方Target及额外失败 | 不提前改变当前队列；不自动重试 |
+| M39-SYNC-REVIEW | 继续FFN带读；同步合并点仅源码候选 | [审查](../../experiments/sm120-ffn-next-20261024/FFN-SYNC-SOURCE-REVIEW-20261025.md)，采用A不变；新GPU优化须有界登记/数值先行 |
+| M17-EVIDENCE-GAP | 配对/FIT-DEV暴露缺口仍未解决 | 不借DEV补签独立TEST或正式性能许可 |
+| W02 | 持续中文逐段写作，Prompt已交付 | [Prompt](../../prompts/WAM-PAPER-COLLABORATION.md)，不建本地论文正文 |
+| H03 | 已完成短入口、主题路由与历史归档；不改实验 | [维护结果](../../maintenance/hw-compact-20261025/RESULT.md) |
 
-- [x] M39-CLUSTER2-ATTRIBUTION：三KV有限精度通过；2CTA仍慢A12.27%–15.46%，NO_GO保留A。B2启动近似无影响，G2绕过peer DSM仍慢；R0/R1支持输入就绪/有序提交开销，硬件流量未知。10413调用/17phase/回传清理闭合。[结果与全阶段表](../../experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)。
+本次闭合：M39-CLUSTER2-ATTRIBUTION、CLUSTER4-HYBRID、CTA-ATTRIBUTION、DSM-STREAM均保留负结果/独立A；M41五环境面板与临时资产清理、H02本机大文件归档已完成。结果见PROGRESS，不把单候选完成当整条研究完成。
 
-- [x] W02：持续逐段中文写作Prompt及必要轻量证据包已生成、入口链接已核验；main发布回执另记于maintenance/paper-collaboration-20261025。未生成论文正文，未启动新实验。
+10/22与10/23旧节点已过，不能补称按期达成；10/28主表、11/01 18:00北京时间中文证据包仍是规划节点。外部注册/摘要/正文日期使用前查官方，不据旧计划自动启动实验。
 
-- [x] M39-CLUSTER4-HYBRID（测量/回传/清理已闭合）：三KV有限精度通过；C4整层比A慢33.87%–48.11%，NO_GO保留A。7122调用，无GPU失败/超时；原60分钟截止不变。[计划](../../experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/PLAN.md)。
-- [x] M39-CTA-ATTRIBUTION（测量与归档闭合）：用户要求继续算子并解释慢因；A设备计算不变、只比较170/152 CTA，同轮A/R1/Torch精度与无插桩整层，完整阶段表。45分钟、8000调用、4CPU，原已收口DSM不重置。[诊断计划](../../experiments/sm120-ffn-next-20261024/CTA-ATTRIBUTION-20261025/PLAN.md)。
-- [x] M39-DSM-STREAM：cluster8分片生产/消费及一次W2提前搬运R1完成；有限数值通过、整层慢31%–45%，不采用，保留A。[结果与全17阶段表](../../experiments/sm120-ffn-next-20261024/DSM-STREAM/REVIEW_RETURN.md)。5742调用、31.49分钟生命周期，源码/二进制/原始结果回传，GPU自有进程清理。不展开第二DSM设计。
-- [ ] M42-MULTI-INIT（原窗口已收口，0合格四臂组；resume03准备失败及收尾自终止已独立归档，未重试）：用户要求多个初态取有效均值。固定Goal十task×init46/47/48×T/OLD/Q75/Q90，最多120新attempt；原init49不重跑；用户确认Goal优先，其他套件须在Goal收口后按原窗口余量推进。prep02守护直接拥有传输子进程，就绪自动接完整任务→原始归档→均值→临时资产清理。[当前计划](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/prep02/PLAN.md)、[动态状态](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume03/SUPERVISOR-STATUS.json)。原09:45:32起点、15:45:32截止/清理600秒不变，准备/等待算预算。
-- [ ] M40-EVAL100：双A100固定600组三臂，535/600组、1605/1800局，112.560/160GPUh；双guard alive/HALT空。原281授权恢复、406/T OOM不重跑；原10天/更早10/29 guard不变。[实查](../../experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/ROBOTWIN-PROGRESS.json)。
-- [ ] M40-MICROWAVE-FINAL-DIAG：等微波炉100组完整后核官方Target，再查额外失败，原队列继续。
-- [x] M41五环境5090有限面板与临时资产清理；[结果](../../experiments/rtx5090-spec-speed-20261025/RESULT.md)。
-- [x] H02本机归档释放120.619GiB，源码/原tile/失败保留；[恢复](../../maintenance/storage-placement-20261024/RESULT.md)。
-- [ ] M17旧配对/FIT-DEV缺口；不以本次DEV覆盖旧证书，不自动TEST/正式45chunk。
-
-均值按初态/配对/完整终态/计时条件纳入，保留算法失败与慢成功，双方成功仅补充。全体attempt成本、有效样本N与排除原因、按task分层均报告。新panel是暴露DEV，非独立TEST，CPU独占未证明。
-
-原四false、旧FAILED/retention/state/cycle/rules/原tile保护不变。投机重组→候选感知→质量约束成本仍待证；M39没有集成机器人。历史计划和已完成索引见PLAN.before-DSM-STREAM-20261025.md、before-M41版本。
+[精简前完整进度](PROGRESS.before-HW-compact-20261025.md)；[完整事件](EXECUTION.before-HW-compact-20261025.md)；[旧计划](PLAN.before-HW-compact-20261025.md)；[旧讨论](DISCUSSION-SUMMARY.before-HW-compact-20261025.md)。
