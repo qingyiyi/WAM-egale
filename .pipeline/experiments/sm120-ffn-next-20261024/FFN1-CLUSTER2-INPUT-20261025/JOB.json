@@ -1,0 +1,33 @@
+{
+  "id": "M39-FFN1-CLUSTER2-INPUT",
+  "status": "COMPLETE_NEGATIVE_RETAIN_S",
+  "T0": "2026-10-25T19:21:26.767154+08:00",
+  "absolute_cleanup_deadline": "2026-10-25T21:01:26.767154+08:00",
+  "wall_seconds_cap": 6000,
+  "cleanup_reserve_seconds": 300,
+  "calls_cap": 9000,
+  "storage_cap_bytes": 2147483648,
+  "cpu_cores": 4,
+  "GPU": "RTX5090 SM120 GPU-e5e7821f-9633-6cc8-d06c-d0d0df4c9256",
+  "authorization": "用户：另外如果是共享A而不是共享B你也试试。既有5090持续使用许可。",
+  "goal": "Compare sharing A instead of B in FFN1 paired CTA pipeline",
+  "variants": {
+    "S": "retained FFN stage split",
+    "W": "original1T4M3E448tiles",
+    "L": "2CTA same M/different N, independent A+B",
+    "Own": "same mapping, rank0 loads A+B, rank1 B; rank0 bulk copies8KiB A",
+    "B": "independent prior sharing-B binary same-round control"
+  },
+  "inputs": "same block0 B14/Q16 KV288/1152/2160 real fixtures for precision and timing",
+  "fixed": "M64N128 K64 fullK3072;1T4M3E;BF16/bias/GELU;FFN2 sevenK2048;FFN stage grid;warmCrossKV eager noGraph",
+  "acceptance": "27 tensors, seven segments, KV/input/RNG, actual transfer/role/commit counts, two independent full-block timings all3KV; retainS unless all pass and consistent wholeblock improvement",
+  "stop": "one A-sharing design; max one localized correctness repair; optional wait observer for attribution; no tile/cluster sweep or new precision",
+  "cleanup": "birth-verified own processes; return source/raw results; no instance shutdown",
+  "calls_before_phase": 4842,
+  "formal_performance_permission": false,
+  "retained": "S",
+  "actual_calls": 5400,
+  "closed_at": "2026-10-25T19:32:24.635252+08:00",
+  "actual_lifecycle_seconds": 657.868098,
+  "cleanup_complete": true
+}

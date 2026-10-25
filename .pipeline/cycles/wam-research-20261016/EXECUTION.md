@@ -7,6 +7,8 @@ updated: '2026-10-25T18:38:14.572913+08:00'
 
 | 时间（北京时间10/25） | 检查点与证据 |
 |---|---|
+| 19:33 | 追加共享A负结果，保留S；5400调用、等待诊断/公开入口/15文件字节回传与清理完成。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md) |
+| 19:14 | 双CTA FFN1共享B D负结果，保留S；4836调用、9phase退出、15关键文件字节回传。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-WEIGHT-20261025/REVIEW_RETURN.md) |
 | 18:35 | FFN1 1T/4M/3E W完成，三KV/两进程精度与计数通过，整层慢约0.8%，保留S；TMA store未实施。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md) |
 | 17:59 | FFN阶段拆分S完成并采用：三KV/两进程/27tensor/七段/状态/公开入口通过；2865调用，GPU清理。[结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md) |
 | 17:55–17:59 | Goal resume05闭合4合格四臂组；Robo569组/1707局，两卡继续。原失败/四false不改。 |

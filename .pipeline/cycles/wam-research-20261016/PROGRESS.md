@@ -2,18 +2,18 @@
 kind: progress
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T18:38:14.572913+08:00'
+updated: '2026-10-25T19:36:51.428062+08:00'
 plan: PLAN.md
 current: M42-MULTI-INIT
 next: M42-PAIRED-COST-RESULT
 ---
 # 当前进度
 
-## 资源状态（2026-10-25 18:35北京时间快照）
+## 资源状态（2026-10-25 19:34北京时间快照）
 
 - **本机M42**：resume05为`CLOSED_WITH_RESULTS`，81attempt、54完整均成功、4合格完整四臂组；清理完成。原窗口/失败不改。[结果](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/RESULT.md)。
-- **双A100 M40**：18:35快照574/600完整组三臂、1722/1800局，121.181/160GPU小时，两guard存活；原281/406缺口保留。[实查](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/ROBOTWIN-CLOSEOUT-SNAPSHOT.json)。
-- **5090**：FFN1局部流水W测量已结束，未采用，保留S；本轮清理/回传见W的终态收据。
+- **双A100 M40**：586/600完整组三臂、1758/1800局，123.151/160GPU小时，两guard存活；原281/406缺口保留。[实查](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/ROBOTWIN-CLOSEOUT-SNAPSHOT.json)。
+- **5090**：FFN1共享B和追加共享A均已测完，未采用，保留S；进程/回传清理已闭合。
 
 ## M42质量与阻塞
 
@@ -27,7 +27,9 @@ resume03在0teacher/0新episode因Goal VAE路径缺config失败，收尾误向�
 
 无插桩完整层原Torch/S约1.288/1.797/2.238倍，S相对A延迟下降2.25%/1.82%/1.90%；资源仍170CTA、100352B shared、255regs/thread、784B local。FFN1+GELU为0.797–0.805×Torch，FFN2+残差为1.027–1.033×；下一步先定位FFN1计算/后处理成本。2865调用、17.12分钟生命周期、约132MiB新证据，owned清理完成。[新结果/18阶段表/固定入口](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)。
 
-本次FFN1局部流水W已完成：448个M64N128、1T/4M/3E，热循环使用mbarrier、完整K3072后才BF16/GELU，FFN2七段不变。三KV/两进程的27tensor、七段、状态与实际角色计数均通过；完整层相对同场S慢0.85%/0.79%/0.83%，不采用，恢复S。资源仍170CTA/100352B/255regs/784B local，不能归因occupancy下降；tile与分工同时变化，纯握手/硬件流量UNKNOWN。TMA store仅讨论、未实施。[W结果/18阶段表](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)。
+后续有限实验均保留负结果，S仍采用：W（FFN1 1T/4M/3E、448个M64N128）整层慢约0.8%；共享B在W基础上让双CTA不同M/同N共享权重，整层慢49.89%–60.62%。[W](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)；[共享B/等待证据](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-WEIGHT-20261025/REVIEW_RETURN.md)。
+
+用户追加的共享A（同M/不同N、8KiB DSM）已完成：同轮比共享B延迟减少18.76%–21.24%，但仍比S慢21.70%–26.48%，未采用。共享A FFN1约323μs，同场W约152μs；只分组/独立加载L_A约等于W。27tensor/七段/计数/状态、两进程三KV均通过；资源仍170CTA/100352B/255regs。观察器定位接收READY约1.03μs/K64、源EMPTY约1.76μs、MMA输入等待约1.35–1.37μs；相互重叠，不当纯DSM带宽。5400调用、10.96分钟生命周期、S公开入口与15文件字节回传/owned清理完成。[共享A结果/完整18阶段/源码](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md)。
 
 下面是相对旧A的历史DSM负结果，不重写为对S测量。
 

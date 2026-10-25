@@ -1,0 +1,205 @@
+{
+  "checked_at": "2026-10-25T19:00:58.012071+08:00",
+  "root": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023",
+  "complete_pairs": 579,
+  "complete_pair_episodes": 1737,
+  "goal_pairs": 600,
+  "overall": {
+    "N": 579,
+    "success": {
+      "T": 469,
+      "C": 468,
+      "P": 473
+    },
+    "actual_commands": {
+      "T": 244912,
+      "C": 244816,
+      "P": 240656
+    },
+    "failure_penalty": {
+      "T": 243016,
+      "C": 242936,
+      "P": 238876
+    }
+  },
+  "per_task": {
+    "handover_block": {
+      "N": 97,
+      "success": {
+        "T": 96,
+        "C": 97,
+        "P": 97
+      },
+      "actual_commands": {
+        "T": 27824,
+        "C": 27280,
+        "P": 27248
+      },
+      "failure_penalty": {
+        "T": 27808,
+        "C": 27280,
+        "P": 27248
+      }
+    },
+    "lift_pot": {
+      "N": 97,
+      "success": {
+        "T": 97,
+        "C": 97,
+        "P": 97
+      },
+      "actual_commands": {
+        "T": 10864,
+        "C": 10864,
+        "P": 10864
+      },
+      "failure_penalty": {
+        "T": 10864,
+        "C": 10864,
+        "P": 10864
+      }
+    },
+    "open_microwave": {
+      "N": 95,
+      "success": {
+        "T": 17,
+        "C": 15,
+        "P": 20
+      },
+      "actual_commands": {
+        "T": 126768,
+        "C": 128560,
+        "P": 124848
+      },
+      "failure_penalty": {
+        "T": 125208,
+        "C": 126960,
+        "P": 123348
+      }
+    },
+    "place_object_basket": {
+      "N": 97,
+      "success": {
+        "T": 81,
+        "C": 83,
+        "P": 83
+      },
+      "actual_commands": {
+        "T": 31888,
+        "C": 31024,
+        "P": 30896
+      },
+      "failure_penalty": {
+        "T": 31568,
+        "C": 30744,
+        "P": 30616
+      }
+    },
+    "press_stapler": {
+      "N": 96,
+      "success": {
+        "T": 81,
+        "C": 79,
+        "P": 79
+      },
+      "actual_commands": {
+        "T": 18368,
+        "C": 17888,
+        "P": 17600
+      },
+      "failure_penalty": {
+        "T": 18368,
+        "C": 17888,
+        "P": 17600
+      }
+    },
+    "stack_blocks_two": {
+      "N": 97,
+      "success": {
+        "T": 97,
+        "C": 97,
+        "P": 97
+      },
+      "actual_commands": {
+        "T": 29200,
+        "C": 29200,
+        "P": 29200
+      },
+      "failure_penalty": {
+        "T": 29200,
+        "C": 29200,
+        "P": 29200
+      }
+    }
+  },
+  "halt": null,
+  "queue_counts": {
+    "COMPLETE_PAIR": 579,
+    "FAILED_OR_PARTIAL_NO_RETRY": 2,
+    "CLAIMED": 2
+  },
+  "workers": [
+    {
+      "namespace": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/gpu0-resume-20261024-r1",
+      "status": "RUNNING_COMPLETE_DEV_EPISODE",
+      "active_case": "place_object_basket-valid097-C",
+      "teacher_attempted": 382747,
+      "GPU_lifecycle_seconds": 110710.5961470604,
+      "prior_GPU_lifecycle_seconds": 218288.60896015167,
+      "deadline": 1793253802.728607,
+      "resource_admission": null,
+      "end": null,
+      "error": null,
+      "guard_identity_alive": true
+    },
+    {
+      "namespace": "/root/cxz/robotwin/runs/eval100-20261022/dual-until10-20261023/gpu1-resume-20261025-oom-r1",
+      "status": "RUNNING_COMPLETE_DEV_EPISODE",
+      "active_case": "open_microwave-valid096-P",
+      "teacher_attempted": 223777,
+      "GPU_lifecycle_seconds": 64793.69024682045,
+      "prior_GPU_lifecycle_seconds": 263755.9345395565,
+      "deadline": 1793253802.728607,
+      "resource_admission": {
+        "at": 1792925809.592039,
+        "phase": "before_complete_episode",
+        "free_MiB": 19635,
+        "required_MiB": 6144
+      },
+      "end": null,
+      "error": null,
+      "guard_identity_alive": true
+    }
+  ],
+  "GPU_hours_used": 122.01729703300529,
+  "watch": {
+    "status": "RUNNING_FIXED_QUEUE",
+    "last_check": "2026-10-25T19:00:23.579646+08:00",
+    "recovery_launched": false,
+    "missing": null
+  },
+  "complete_unpaired_episodes": [
+    {
+      "pair_id": 281,
+      "arm": "P",
+      "success": false
+    },
+    {
+      "pair_id": 281,
+      "arm": "T",
+      "success": false
+    },
+    {
+      "pair_id": 406,
+      "arm": "C",
+      "success": false
+    },
+    {
+      "pair_id": 406,
+      "arm": "P",
+      "success": false
+    }
+  ],
+  "independent_test_complete": false,
+  "formal_performance_permission": false
+}

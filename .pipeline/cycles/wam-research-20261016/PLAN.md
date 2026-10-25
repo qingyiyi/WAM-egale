@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T18:38:14.572913+08:00'
+updated: '2026-10-25T19:36:51.428062+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -17,6 +17,8 @@ execution: EXECUTION.md
 | M42-PAIRED-COST-RESULT | 待核4组的任务覆盖、门控/长度分层；不可直接定最终阈值 | 54完整均成功，27其他attempt及完整未配齐样本单列；仍是不平衡暴露DEV |
 | M40-EVAL100 | 双A100接续原600组三臂 | [原队列](../../experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)，160GPU小时/10天原预算；281/406旧缺口单列 |
 | M40-MICROWAVE-FINAL-DIAG | 等微波炉100组完整后核官方Target及额外失败 | 不提前改变当前队列；不自动重试 |
+| M39-FFN1-CLUSTER2-INPUT | 已完成：共享A比B快19%–21%，仍比S慢22%–26%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md)，三KV/两进程/5400调用；等待诊断与清理完成 |
+| M39-FFN1-CLUSTER2-WEIGHT | 已完成；D精度通过但整层慢49.89%–60.62%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-WEIGHT-20261025/REVIEW_RETURN.md)，等待定位/三KV/两进程/4836调用，清理完成 |
 | M39-FFN1-WARP-PIPELINE | 已完成，精度通过但整层慢0.79%–0.85%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)，三KV/两进程；mbarrier热循环，TMA输出尚未实现 |
 | M39-FFN-STAGE-SPLIT | 已完成并采用S；后续W局部流水负结果保留，先定位同tile输入/结果等待与写回 | [结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)，2865调用、三KV/两进程/公开入口精度通过；完整层相对A延迟下降约1.8%–2.3%；17:59清理，不自动开下一候选 |
 | M17-EVIDENCE-GAP | 配对/FIT-DEV暴露缺口仍未解决 | 不借DEV补签独立TEST或正式性能许可 |

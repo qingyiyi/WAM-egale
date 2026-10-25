@@ -27,3 +27,7 @@ M41五环境44组三臂/132主表局已收口，TF/PF2整体质量未放行。Lo
 H02核验归档后释放120.619GiB；原tile/源码/必要失败保留，临时目录`/rjs/cxz/tmp`。[旧全文与本次精简](maintenance/hw-compact-20261025/PLAN.md)。开新任务重读实际登记/status；此页不授予额外预算。
 
 10/25 18:35：FFN1专职warp流水W（448 tile、1T/4M/3E、mbarrier）三KV/两进程精度通过，整层比S慢0.79%–0.85%，保留S；[结果](experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)。TMA输出未实施。RoboTwin574/600组、1722局，两A100继续；旧失败/四false不改。
+
+### 10/25：FFN1共享A/B实验闭合
+
+共享A比B快19%–21%，仍比S慢22%–26%；两方案不采用，保留S。三KV/两进程精度与状态通过；完整18阶段、等待诊断、源码/原始数据见[共享A结果](experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md)。A5400/B4836调用，各自预算/回传/清理闭合。19:34双A100为586组/1758局，两卡继续；本机快照GPU空闲，Goal原任务已结束。四false保持。

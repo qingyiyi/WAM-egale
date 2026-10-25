@@ -1,0 +1,33 @@
+{
+  "id": "M39-FFN1-CLUSTER2-WEIGHT",
+  "status": "COMPLETE_NEGATIVE_RETAIN_S",
+  "T0": "2026-10-25T18:57:29.746177+08:00",
+  "absolute_cleanup_deadline": "2026-10-25T20:37:29.746177+08:00",
+  "wall_seconds_cap": 6000,
+  "cleanup_reserve_seconds": 300,
+  "calls_cap": 9000,
+  "storage_cap_bytes": 2147483648,
+  "cpu_cores": 4,
+  "GPU": "RTX5090 SM120 GPU-e5e7821f-9633-6cc8-d06c-d0d0df4c9256",
+  "authorization": "用户：我同意，你先做完测试下；5090持续使用许可。仅最小双CTA共享B，不扩大输出。",
+  "goal": "Isolate cluster mapping and B-weight DSM sharing in W FFN1",
+  "variants": {
+    "S": "retained mixed120 tiles",
+    "W": "frozen independent 1T4M3E 448 tiles",
+    "L": "2CTA cluster, paired M rows/same N, independent global B",
+    "D": "same as L; rank0 loads B and bulk-copies swizzled B into rank1 local slot"
+  },
+  "inputs": "block0 B14/Q16 real KV288/1152/2160 fixtures; correctness and timing same inputs",
+  "fixed": "M64N128/K64 fullK3072 accum then bias BF16 GELU BF16; 1T4M3E; FFN1/globalACT/grid/FFN2 seven BF16 segments unchanged; warmCrossKV eager noGraph",
+  "baseline": "original Torch + same-round independent S/W/L; profile separate",
+  "acceptance": "27 tensor bitwise; seven segments; valid KV/input/RNG/custom stream; actual role/transfer/commit counts; two independent full-layer timing processes all3KV; adopt only no material regression vs S",
+  "stop": "one DSM design, at most one localized correctness repair; no output expansion, no new tile sweep; timeout/incorrect stops normal timing; expected170CTA else stop",
+  "cleanup": "birth-verified own process groups; source and results returned locally; no instance shutdown",
+  "formal_performance_permission": false,
+  "calls_before_phase": 4278,
+  "retained": "S",
+  "actual_calls": 4836,
+  "closed_at": "2026-10-25T19:14:34.922874+08:00",
+  "actual_lifecycle_seconds": 1025.176697,
+  "cleanup_complete": true
+}
