@@ -1,33 +1,24 @@
 # WAM 短状态
 
-更新：2026-10-25T18:05:45+08:00；动态作业实查：2026-10-25T17:59:00+08:00。[当前计划](cycles/wam-research-20261016/PLAN.md)、[完整当前进度](cycles/wam-research-20261016/PROGRESS.md)、[现行约束](memory/CURRENT-CONSTRAINTS.md)。
+更新：2026-10-25T20:55:39.677397+08:00。动态状态以实际job/status为准。[当前计划](cycles/wam-research-20261016/PLAN.md)、[当前完整进度](cycles/wam-research-20261016/PROGRESS.md)、[现行约束](memory/CURRENT-CONSTRAINTS.md)。
 
-## 运行与截止
+## 当前资源与截止
 
-- 本机M42：resume05已闭合；81attempt、54完整均成功、4合格完整四臂组，其余身份/初态/基础设施排除保留。不平衡暴露DEV，尚不能选最终阈值。进程清理完成，原T0/21:56截止不改。[本轮结果](experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/RESULT.md)。
-- 双A100 RoboTwin：569/600完整组、1707/1800局，119.952/160GPU小时，两guard存活。原281/406缺口与未配齐记录单列，不自动重试。[17:59实查](experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/ROBOTWIN-PROGRESS.json)。
-- 5090：FFN两阶段同步版S已测完并采用，17:59清理。2865调用；原A独立保留。
+- **5090算子**：A2共享A双K64交接已完成，4842次block/11.62分钟生命周期，精度通过但三KV整层比S慢25.92%–31.73%；保留S。owned清理、迁移IO恢复已闭合。[结果/18阶段](experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/REVIEW_RETURN.md)。
+- **5090质量迁移**：用户改为RoboTwin阈值优先。Target/VAE/9.58GB场景与客户端CuRobo已迁入/编译，服务端依赖仍准备，尚未启动完整episode。沿原本机接续窗口**21:56:53**硬截止，不能自动加6小时；每局1800秒＋600秒清理余量。原5090单worker实测占用20.8GiB，不能在32GiB上盲开双worker。[登记](experiments/suite-acceptance-calibration-20261025/rtx5090-robotwin-20261025/PLAN.md)。
+- **双A100 RoboTwin**：20:48实查，598/600完整三臂组、1794/1800局，T/C/P成功487/485/491，125.250/160GPU小时。两worker均`NO_UNCLAIMED_PAIRS`正常退出；旧281/406 PARTIAL缺口保留，不自动重试。[快照](experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/ROBOTWIN-SNAPSHOT.json)。
+- **本机Goal**：resume05已闭合，81attempt、54完整均成功、4合格四臂组；未配齐/INVALID保留。resume06的初态复现诊断因可信本地PyTorch加载兼容缺项退出，0teacher/动作，未取得新初态，后续迁移5090。本机无自有GPU作业，20:55有他人GPU任务。
 
-## 当前结论与阻塞
+## 结论、限制与下一步
 
-M42原18attempt有10完整均成功、7严格初态无效case、1用户中断，原0合格四臂组属于更早attempt；resume05现有4组，仍不能直接定最终阈值。五套83030行CAL来自CONT主池，非当前ON的on-policy数据；按已登记OLD/Q75/Q90统一比较。质量/长度/接受深度为主，耗时附带，PFoff/full512 BF16 reset不变。
+M39当前S：FFN1＋GELU写global ACT后grid同步，再FFN2七段BF16递推。B14/Q16三真实KV、有限逐位状态通过；本轮同场原Torch/S为1.286/1.789/2.229×，双方warmCrossKV/eager/noGraph，**非机器人E2E**。S的阶段历史FFN1约0.80×Torch、FFN2约1.03×。
 
-M39当前采用S（FFN两阶段同步版）：FFN1+GELU写global ACT后grid同步，再原FFN2七段BF16递推与残差；tile/warp不变。三KV/两独立进程、27tensor/七段/有效KV/输入/RNG和公开入口均有限逐位通过；完整层原Torch/S约1.288/1.797/2.238倍，相对A延迟下降2.25%/1.82%/1.90%。不是机器人E2E。[18阶段表/结果](experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)。
+W、共享B、共享A、A2及旧DSM8/C4/C2均未采用，负结果保留。A2虽把48次交接减到24次，源码中也失去step+2装载重叠，整层比旧共享A又慢3.44%–4.35%。没有NCU，不能将差值全部归因DSM带宽或宣称HBM节省。建议先对齐S的FFN1 GEMM，未启动新搜索。
 
-FFN1+GELU约0.80×Torch，FFN2+残差约1.03×；下一步先分解FFN1主体/尾块的GEMM与后处理成本，再决定tile优化。C2/G2/C4/DSM8历史NO_GO保留；没有新的DSM/HBM硬件因果证据。
+M42五套83030行CAL来自CONT主池，不是当前ON on-policy。Goal4组覆盖3task，全部4臂成功，不能据此定最终阈值；26旧初态无效的物理状态一致、仅图像3–24通道差1–2灰阶，因果/影响未定，不放宽旧门。Long旧tau来自task8/init0 B1局部误差q90，不是当前TF闭环最优证明。固定OLD/Q75/Q90完整DEV、PFoff/full512 BF16 reset，耗时仅探索性。
 
-M41五环境44组三臂/132主表局已收口，TF/PF2整体质量未放行。Long任务E2E约1.121/1.062倍；Goal连续TF与Robo两投机臂存在减速，长尾/新增失败保留。Robo第二S在刷新前分叉，隔离FAILED；Long只有8共同组。[完整分母/时间账本](experiments/rtx5090-spec-speed-20261025/PERFORMANCE-RESULT.md)。
+M41五环境44组三臂/132主表局已收口：Long E2E约1.121/1.062×；Goal/Robo新增失败、长尾和Robo首刷新前分叉FAILED保留。[分母与账本](experiments/rtx5090-spec-speed-20261025/PERFORMANCE-RESULT.md)。
 
-## 放行与下一步
+`engineering_quality_screen=false`；`independent_test_complete=false`；`noninferiority_established=false`；`formal_performance_permission=false`。原FAILED/retention/M17配对与FIT-DEV暴露不变，不启动独立TEST、正式45chunk或无限训练。
 
-`engineering_quality_screen=false`；`independent_test_complete=false`；`noninferiority_established=false`；`formal_performance_permission=false`。原M17配对/FIT-DEV缺口未解决，不启动TEST/正式45chunk或无限训练。
-
-先审计Goal四组及Robo队列，再定位FFN1分项成本；10/28主表与11/01 18:00北京时间中文证据包是规划目标，旧10/22–23节点不补称完成。中文逐段写作[Prompt](prompts/WAM-PAPER-COLLABORATION.md)已交付。
-
-H02核验归档后释放120.619GiB；原tile/源码/必要失败保留，临时目录`/rjs/cxz/tmp`。[旧全文与本次精简](maintenance/hw-compact-20261025/PLAN.md)。开新任务重读实际登记/status；此页不授予额外预算。
-
-10/25 18:35：FFN1专职warp流水W（448 tile、1T/4M/3E、mbarrier）三KV/两进程精度通过，整层比S慢0.79%–0.85%，保留S；[结果](experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)。TMA输出未实施。RoboTwin574/600组、1722局，两A100继续；旧失败/四false不改。
-
-### 10/25：FFN1共享A/B实验闭合
-
-共享A比B快19%–21%，仍比S慢22%–26%；两方案不采用，保留S。三KV/两进程精度与状态通过；完整18阶段、等待诊断、源码/原始数据见[共享A结果](experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md)。A5400/B4836调用，各自预算/回传/清理闭合。19:34双A100为586组/1758局，两卡继续；本机快照GPU空闲，Goal原任务已结束。四false保持。
+先完成现有RoboTwin迁移及剩余预算内完整DEV，归档全量Robo队列与两缺口；算子本轮已收口。10/28主表、11/01 18:00北京时间中文证据包仍为规划目标，10/22–23不补称完成。中文逐段[Prompt](prompts/WAM-PAPER-COLLABORATION.md)。H02已核验释放120.619GiB，临时目录`/rjs/cxz/tmp`，原tile/失败保留；[HW精简历史](maintenance/hw-compact-20261025/PLAN.md)。

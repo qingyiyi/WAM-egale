@@ -9,11 +9,11 @@ next: M42-PAIRED-COST-RESULT
 ---
 # 当前进度
 
-## 资源状态（2026-10-25 19:34北京时间快照）
+## 资源状态（2026-10-25 20:55北京时间快照）
 
-- **本机M42**：resume05为`CLOSED_WITH_RESULTS`，81attempt、54完整均成功、4合格完整四臂组；清理完成。原窗口/失败不改。[结果](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/RESULT.md)。
-- **双A100 M40**：586/600完整组三臂、1758/1800局，123.151/160GPU小时，两guard存活；原281/406缺口保留。[实查](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/ROBOTWIN-CLOSEOUT-SNAPSHOT.json)。
-- **5090**：FFN1共享B和追加共享A均已测完，未采用，保留S；进程/回传清理已闭合。
+- 本机无自有GPU作业；Goal resume05闭合4合格四臂组，resume06初态诊断0teacher准备失败，旧记录保留。质量线已转5090迁移。
+- 双A100队列无可领取任务：598完整组/1794局，T/C/P487/485/491，125.250/160GPU小时；两worker退出，旧2组PARTIAL不自动重试。[快照](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/ROBOTWIN-SNAPSHOT.json)。
+- 5090 A2已闭合NO_GO保留S；RoboTwin资产/客户端准备，服务端依赖安装中，GPU完整评估未启动。M42原21:56:53截止不延长，单worker避免32GiB OOM。
 
 ## M42质量与阻塞
 
@@ -30,6 +30,8 @@ resume03在0teacher/0新episode因Goal VAE路径缺config失败，收尾误向�
 后续有限实验均保留负结果，S仍采用：W（FFN1 1T/4M/3E、448个M64N128）整层慢约0.8%；共享B在W基础上让双CTA不同M/同N共享权重，整层慢49.89%–60.62%。[W](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)；[共享B/等待证据](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-WEIGHT-20261025/REVIEW_RETURN.md)。
 
 用户追加的共享A（同M/不同N、8KiB DSM）已完成：同轮比共享B延迟减少18.76%–21.24%，但仍比S慢21.70%–26.48%，未采用。共享A FFN1约323μs，同场W约152μs；只分组/独立加载L_A约等于W。27tensor/七段/计数/状态、两进程三KV均通过；资源仍170CTA/100352B/255regs。观察器定位接收READY约1.03μs/K64、源EMPTY约1.76μs、MMA输入等待约1.35–1.37μs；相互重叠，不当纯DSM带宽。5400调用、10.96分钟生命周期、S公开入口与15文件字节回传/owned清理完成。[共享A结果/完整18阶段/源码](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md)。
+
+最新A2把共享A相邻两K64合并16KiB交接，实际DSM/credit/ACK减半；三KV/两进程精度状态通过，整层却比旧共享A慢3.44%–4.35%，比S慢25.92%–31.73%，不采用。FFN1约355μs、同场独立加载W152μs，保留原S；4842调用、11.62分钟生命周期，owned清理/IO恢复闭合。[完整结果/阶段](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/REVIEW_RETURN.md)。失去step+2预取与结果一致，但未独立量化各等待贡献。
 
 下面是相对旧A的历史DSM负结果，不重写为对S测量。
 

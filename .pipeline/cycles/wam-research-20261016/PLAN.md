@@ -13,10 +13,13 @@ execution: EXECUTION.md
 
 | ID | 状态/下一动作 | 证据与依赖 |
 |---|---|---|
+| M42-5090-ROBOTWIN | 用户改优先级，迁移准备；最多双worker | [计划](../../experiments/suite-acceptance-calibration-20261025/rtx5090-robotwin-20261025/PLAN.md)，24完整局/192000forward，沿21:56截止 |
+| M42-RESUME06 | 接续授权，先诊断26个纯像素初态差异 | [计划](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume06/PLAN.md)，沿21:56截止，不放宽旧门 |
 | M42-MULTI-INIT | resume05已闭合，81attempt、4合格完整四臂组 | [本轮结果](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/RESULT.md)，原T0/21:56截止与全部INVALID保留，进程已清理 |
 | M42-PAIRED-COST-RESULT | 待核4组的任务覆盖、门控/长度分层；不可直接定最终阈值 | 54完整均成功，27其他attempt及完整未配齐样本单列；仍是不平衡暴露DEV |
 | M40-EVAL100 | 双A100接续原600组三臂 | [原队列](../../experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)，160GPU小时/10天原预算；281/406旧缺口单列 |
 | M40-MICROWAVE-FINAL-DIAG | 等微波炉100组完整后核官方Target及额外失败 | 不提前改变当前队列；不自动重试 |
+| M39-FFN1-CLUSTER2-GROUP2 | 已完成负结果：精度通过，整层比S慢25.92%–31.73%，保留S | [计划](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/PLAN.md)，60分钟/6500调用，S仍保留 |
 | M39-FFN1-CLUSTER2-INPUT | 已完成：共享A比B快19%–21%，仍比S慢22%–26%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md)，三KV/两进程/5400调用；等待诊断与清理完成 |
 | M39-FFN1-CLUSTER2-WEIGHT | 已完成；D精度通过但整层慢49.89%–60.62%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-WEIGHT-20261025/REVIEW_RETURN.md)，等待定位/三KV/两进程/4836调用，清理完成 |
 | M39-FFN1-WARP-PIPELINE | 已完成，精度通过但整层慢0.79%–0.85%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)，三KV/两进程；mbarrier热循环，TMA输出尚未实现 |
