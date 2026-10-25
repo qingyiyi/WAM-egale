@@ -48,3 +48,5 @@
 [FFN逐处同步源码带读](../.pipeline/experiments/sm120-ffn-next-20261024/FFN-SYNC-SOURCE-REVIEW-20261025.md)仅CPU源审查，未改A/未新增计时。精确FFN2递推按每段FP32部分和加之前BF16运行和，末段再bias后BF16提交；不能把历史“BF16 partial”术语理解为每个独立部分和还先经过一次额外BF16舍入。
 
 2026-10-25后续：当前S及18阶段表以[新入口](CURRENT-SM120-FFN-NEXT-20261025.md)为准；本机Goal本轮已闭合4个合格四臂组，仍是暴露DEV；双A100在17:59完成569组/1707局，继续运行。
+
+10/25 18:35新增证据：[FFN1专职warp流水W](CURRENT-SM120-FFN-NEXT-20261025.md)有限精度通过，完整层比S慢约0.8%，保留S；不能声明mbarrier流水已带来收益。TMA输出未实施。RoboTwin574/600组、1722局，两卡继续，原失败缺口保留。

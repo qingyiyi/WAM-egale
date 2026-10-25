@@ -25,3 +25,5 @@ M41五环境44组三臂/132主表局已收口，TF/PF2整体质量未放行。Lo
 先审计Goal四组及Robo队列，再定位FFN1分项成本；10/28主表与11/01 18:00北京时间中文证据包是规划目标，旧10/22–23节点不补称完成。中文逐段写作[Prompt](prompts/WAM-PAPER-COLLABORATION.md)已交付。
 
 H02核验归档后释放120.619GiB；原tile/源码/必要失败保留，临时目录`/rjs/cxz/tmp`。[旧全文与本次精简](maintenance/hw-compact-20261025/PLAN.md)。开新任务重读实际登记/status；此页不授予额外预算。
+
+10/25 18:35：FFN1专职warp流水W（448 tile、1T/4M/3E、mbarrier）三KV/两进程精度通过，整层比S慢0.79%–0.85%，保留S；[结果](experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)。TMA输出未实施。RoboTwin574/600组、1722局，两A100继续；旧失败/四false不改。

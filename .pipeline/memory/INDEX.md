@@ -4,7 +4,7 @@
 
 | 主题 | 何时读取 |
 |---|---|
-| [算子与源码讲解](topics/operator.md) | 单层persistent、FFN、同步、tile、数值/性能与阶段表 |
+| [算子与源码讲解](topics/operator.md) | 单层persistent、FFN两阶段/局部warp流水、tile、数值/性能与阶段表 |
 | [投机与质量](topics/quality.md) | TF/阈值/PF2、数据隔离、完整评估与质量门 |
 | [资源与运行](topics/resources.md) | 本机恢复、BAAI/5090、预算/清理/后台巡检 |
 | [HW与写作发布](topics/workflow.md) | 维护、历史归档、中文稿、GitHub main镜像 |

@@ -3,7 +3,7 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T18:03:34+08:00'
+updated: '2026-10-25T18:38:14.572913+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
@@ -17,7 +17,8 @@ execution: EXECUTION.md
 | M42-PAIRED-COST-RESULT | 待核4组的任务覆盖、门控/长度分层；不可直接定最终阈值 | 54完整均成功，27其他attempt及完整未配齐样本单列；仍是不平衡暴露DEV |
 | M40-EVAL100 | 双A100接续原600组三臂 | [原队列](../../experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)，160GPU小时/10天原预算；281/406旧缺口单列 |
 | M40-MICROWAVE-FINAL-DIAG | 等微波炉100组完整后核官方Target及额外失败 | 不提前改变当前队列；不自动重试 |
-| M39-FFN-STAGE-SPLIT | 已完成并采用S；下一步先定位FFN1内部GEMM/后处理成本 | [结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)，2865调用、三KV/两进程/公开入口精度通过；完整层相对A延迟下降约1.8%–2.3%；17:59清理，不自动开下一候选 |
+| M39-FFN1-WARP-PIPELINE | 已完成，精度通过但整层慢0.79%–0.85%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)，三KV/两进程；mbarrier热循环，TMA输出尚未实现 |
+| M39-FFN-STAGE-SPLIT | 已完成并采用S；后续W局部流水负结果保留，先定位同tile输入/结果等待与写回 | [结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)，2865调用、三KV/两进程/公开入口精度通过；完整层相对A延迟下降约1.8%–2.3%；17:59清理，不自动开下一候选 |
 | M17-EVIDENCE-GAP | 配对/FIT-DEV暴露缺口仍未解决 | 不借DEV补签独立TEST或正式性能许可 |
 | W02 | 持续中文逐段写作，Prompt已交付 | [Prompt](../../prompts/WAM-PAPER-COLLABORATION.md)，不建本地论文正文 |
 | H03 | 已完成短入口、主题路由与历史归档；不改实验 | [维护结果](../../maintenance/hw-compact-20261025/RESULT.md) |

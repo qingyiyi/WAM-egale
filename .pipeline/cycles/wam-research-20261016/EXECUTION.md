@@ -1,12 +1,13 @@
 ---
 kind: execution
 cycle: wam-research-20261016
-updated: '2026-10-25T18:03:34+08:00'
+updated: '2026-10-25T18:38:14.572913+08:00'
 ---
 # 最近执行检查点
 
 | 时间（北京时间10/25） | 检查点与证据 |
 |---|---|
+| 18:35 | FFN1 1T/4M/3E W完成，三KV/两进程精度与计数通过，整层慢约0.8%，保留S；TMA store未实施。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md) |
 | 17:59 | FFN阶段拆分S完成并采用：三KV/两进程/27tensor/七段/状态/公开入口通过；2865调用，GPU清理。[结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md) |
 | 17:55–17:59 | Goal resume05闭合4合格四臂组；Robo569组/1707局，两卡继续。原失败/四false不改。 |
 | 15:48 | C2/G2三KV/两进程与R0/R1完成，有限精度通过但NO_GO保留A；10413调用/17phase，105文件回传清理。[结果](../../experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md) |

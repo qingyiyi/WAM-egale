@@ -2,18 +2,18 @@
 kind: progress
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T18:03:34+08:00'
+updated: '2026-10-25T18:38:14.572913+08:00'
 plan: PLAN.md
 current: M42-MULTI-INIT
 next: M42-PAIRED-COST-RESULT
 ---
 # 当前进度
 
-## 资源状态（2026-10-25 17:59北京时间快照）
+## 资源状态（2026-10-25 18:35北京时间快照）
 
 - **本机M42**：resume05为`CLOSED_WITH_RESULTS`，81attempt、54完整均成功、4合格完整四臂组；清理完成。原窗口/失败不改。[结果](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/RESULT.md)。
-- **双A100 M40**：569/600完整组三臂、1707/1800局，119.952/160GPU小时，两guard存活；原281/406缺口与未配齐记录单列。[实查](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/ROBOTWIN-PROGRESS.json)。
-- **5090**：本轮FFN阶段拆分完成并采用S，17:59清理，无owned GPU进程；下一候选未启动。
+- **双A100 M40**：18:35快照574/600完整组三臂、1722/1800局，121.181/160GPU小时，两guard存活；原281/406缺口保留。[实查](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/ROBOTWIN-CLOSEOUT-SNAPSHOT.json)。
+- **5090**：FFN1局部流水W测量已结束，未采用，保留S；本轮清理/回传见W的终态收据。
 
 ## M42质量与阻塞
 
@@ -26,6 +26,8 @@ resume03在0teacher/0新episode因Goal VAE路径缺config失败，收尾误向�
 当前采用S（FFN两阶段同步版，原A170独立保留）：B14/Q16、KV288/1152/2160、warm CrossKV、eager/noGraph。只在FFN1+GELU后加grid同步，FFN2七段BF16递推与tile/warp不变。本轮三真实fixture、27tensor/七段/有效KV/输入/RNG、两个独立进程及公开入口全部有限逐位通过。
 
 无插桩完整层原Torch/S约1.288/1.797/2.238倍，S相对A延迟下降2.25%/1.82%/1.90%；资源仍170CTA、100352B shared、255regs/thread、784B local。FFN1+GELU为0.797–0.805×Torch，FFN2+残差为1.027–1.033×；下一步先定位FFN1计算/后处理成本。2865调用、17.12分钟生命周期、约132MiB新证据，owned清理完成。[新结果/18阶段表/固定入口](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)。
+
+本次FFN1局部流水W已完成：448个M64N128、1T/4M/3E，热循环使用mbarrier、完整K3072后才BF16/GELU，FFN2七段不变。三KV/两进程的27tensor、七段、状态与实际角色计数均通过；完整层相对同场S慢0.85%/0.79%/0.83%，不采用，恢复S。资源仍170CTA/100352B/255regs/784B local，不能归因occupancy下降；tile与分工同时变化，纯握手/硬件流量UNKNOWN。TMA store仅讨论、未实施。[W结果/18阶段表](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)。
 
 下面是相对旧A的历史DSM负结果，不重写为对S测量。
 

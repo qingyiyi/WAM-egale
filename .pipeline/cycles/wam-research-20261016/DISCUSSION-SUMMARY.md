@@ -1,13 +1,13 @@
 ---
 kind: discussion-summary
 cycle: wam-research-20261016
-updated: '2026-10-25T18:03:34+08:00'
+updated: '2026-10-25T18:38:14.572913+08:00'
 ---
 # 当前已确认的方向
 
 - 用户主线是投机改变小action负载，为候选感知单层tile/persistent调度创造机会；普通batch/cache已有收益不能重新命名为创新。是否有算法系统交互及闭环收益仍待证。
 - 系统范围是一个完整Transformer block，原始action路径保留原算子；不恢复30层大融合或已撤回实现。当前采用S（FFN两阶段同步版）；原A独立保留，DSM8、C4、C2负结果不改。
-- 用户10/25授权两阶段修改与三KV测试；[本轮结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)已通过有限精度/状态，完整层无退化。FFN1+GELU约0.80×Torch，FFN2+残差约1.03×；建议先分解FFN1成本。未统一warp比例、不变tile和七段舍入、不新增DSM；下一候选尚未启动。
+- 用户10/25授权两阶段修改与三KV测试；[本轮结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)已通过有限精度/状态，完整层无退化。FFN1+GELU约0.80×Torch，FFN2+残差约1.03×；建议先分解FFN1成本。此后用户批准仅FFN1的1T/4M/3E，W已完成并保留负结果：精度通过但整层慢约0.8%，当前仍S；不新增DSM、完整DAG或统一全层warp比例。
 - Goal固定阈值DEV的resume05已正常闭合，4个合格完整四臂组；原0组属于更早attempt历史，不改原记录。样本不平衡、暴露DEV，尚不定最终阈值；严格初态差异/完整任务失败不删除。
 - 双A100持续原RoboTwin队列；微波炉100组完整后再核官方Target/额外失败。已有160GPU小时/10天预算不重置，未授权重试不自动开。
 - 论文中文逐段由用户整理飞书；先事实/源码/证据，再写正文。当前四false、训练/DEV暴露及独立TEST缺口都要保留。
@@ -15,3 +15,5 @@ updated: '2026-10-25T18:03:34+08:00'
 待决定：在源审查后如何有界验证同步合并；Goal取得合格完整配对后的阈值选择；完整RoboTwin结果与微波炉差异。不能用新工程建议自动扩训练、TEST或正式性能。
 
 用户此次要求精简HW：只维护当前事实和短路由，历史按需；不把维护变成新研究主线。完整旧讨论见[历史](DISCUSSION-SUMMARY.before-HW-compact-20261025.md)，具体动态数字见PROGRESS/实验。
+
+用户提出用mbarrier串起TMA/MMA/E，并由TMA负责输出写回。当前W已用mbarrier做输入/结果握手，E直接写global；新增shared BF16输出槽及TMA store仍属待讨论方案，不能写成已授权采用或实测通过。
