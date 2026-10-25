@@ -1,0 +1,60 @@
+{
+  "status": "COMPLETE_NO_GO_RETAIN_A",
+  "T0": "2026-10-25T13:49:29.799972+08:00",
+  "end": "2026-10-25T14:18:28.699122+08:00",
+  "absolute_cleanup_deadline": "2026-10-25T14:49:29.799972+08:00",
+  "lifecycle_seconds_including_compilation_wait_archive": 1738.89915,
+  "lifecycle_cap_seconds": 3600,
+  "CUDA_active_seconds": "UNKNOWN",
+  "whole_block_calls": 7122,
+  "call_cap": 10000,
+  "failed_or_timeout_GPU_phases": 0,
+  "completed_phase_count": 8,
+  "archive_manifest_files": 56,
+  "archive_manifest_bytes": 369215507,
+  "local_total_bytes": 369929542,
+  "storage_cap_bytes": 1073741824,
+  "native_transfer_exit_codes": [
+    0,
+    0
+  ],
+  "size_and_fsync_verified": true,
+  "candidate_sources_equal_executed_snapshots": true,
+  "retained_A_unchanged": true,
+  "owned_birth_pins_alive": false,
+  "GPU_compute_empty_at": 1792908543.642898,
+  "instance_shutdown": false,
+  "job_results": {
+    "c4-1": {
+      "calls": 1995,
+      "status": "COMPLETE_EXACT_EAGER",
+      "process": 1
+    },
+    "b4": {
+      "calls": 1713,
+      "status": "COMPLETE_EXACT_EAGER",
+      "process": 2
+    },
+    "c4-2": {
+      "calls": 1419,
+      "status": "COMPLETE_EXACT_EAGER",
+      "process": 3
+    },
+    "c4-pre-gate": {
+      "calls": 1995,
+      "status": "COMPLETE_EXACT_EAGER",
+      "process": 4
+    }
+  },
+  "stopped_directions": [
+    "B4 cluster launch adoption",
+    "C4 hybrid DSM/global FFN adoption"
+  ],
+  "remaining_calls_unused": 2878,
+  "unused_budget_is_not_authorization_for_new_design": true,
+  "limitations": [
+    "no isolated uninstrumented C4 FFN timing; full-block repeated regression already triggers stop",
+    "initial c4-1/B4 seven-segment/state special checks after timing; final c4-pre-gate checks precede timing",
+    "no NCU/L2/HBM dynamic counters; no robot integration or quality certificate"
+  ]
+}

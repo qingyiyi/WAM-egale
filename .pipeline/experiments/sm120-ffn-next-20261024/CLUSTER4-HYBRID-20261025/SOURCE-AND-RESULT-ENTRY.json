@@ -1,0 +1,50 @@
+{
+  "retained_version": "A SELF-QKV-TMA-4MMA 170CTA",
+  "decision": "NO_GO_B4_C4",
+  "retained_source": "/rjs/cxz/论文探索/.pipeline/experiments/rtx5090-block-port-20261023/workspace/算子研究/wam_ops/optimized/csrc/whole_layer.cu",
+  "A_independent_binary": "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/A.so",
+  "A_source_snapshot": "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/A-whole_layer.cu",
+  "candidate_sources": [
+    "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/B4.cu",
+    "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/C4.cu",
+    "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/B4_profile.cu",
+    "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/C4_profile.cu"
+  ],
+  "executed_source_archive": "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/remote-return",
+  "raw_results": [
+    "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/remote-return/results/c4-1/RESULT.json",
+    "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/remote-return/results/b4/RESULT.json",
+    "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/remote-return/results/c4-2/RESULT.json",
+    "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/remote-return/results/c4-pre-gate/RESULT.json"
+  ],
+  "final_summary": "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/C4-PRE-GATE-SUMMARY.json",
+  "fixture_manifest": "see each raw RESULT.json cases and source/fixture fields; no newly generated synthetic inputs",
+  "hash_policy": "no independent SHA/model hash performed; source snapshots and native transfer/size/fsync records retained",
+  "archive_status": "COMPLETE_SIZE_FSYNC_VERIFIED",
+  "line_entries": {
+    "B4.cu": {
+      "FFN1": 754,
+      "FFN2": 819,
+      "cluster_launch": 1651
+    },
+    "C4.cu": {
+      "FFN1": 770,
+      "cluster_slab_ready": 964,
+      "cluster_readers_done": 985,
+      "cluster_commit_done": 1010,
+      "FFN_pipeline": 1016,
+      "cluster_launch": 1797
+    },
+    "measure.py": {
+      "seven_segment_gate": 182,
+      "state_gate": 189,
+      "whole_four_arm_gate": 207,
+      "timing_summary": 216
+    }
+  },
+  "archive_manifest": "/rjs/cxz/论文探索/.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/remote-return/ARCHIVE-MANIFEST.json",
+  "measurement_harness_provenance": {
+    "archived_measure_py": "final c4-pre-gate version; byte-matched to remote",
+    "initial_c4_1_B4_complete_harness_snapshot": "UNKNOWN; initial seven-segment/state-check ordering is documented in REVIEW_RETURN; candidate device sources unchanged"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "M39-CLUSTER4-HYBRID",
+  "status": "COMPLETE_NO_GO_RETAIN_A",
+  "T0": "2026-10-25T13:49:29.799972+08:00",
+  "absolute_cleanup_deadline": "2026-10-25T14:49:29.799972+08:00",
+  "wall_seconds_cap": 3600,
+  "cleanup_reserve_seconds": 300,
+  "calls_cap": 10000,
+  "storage_cap_bytes": 1073741824,
+  "cpu_cores": 4,
+  "GPU": "existing RTX5090 SM120 only; local A100 paused",
+  "goal": "4CTA local ACT reuse while retaining global FFN1 and seven BF16 segment commits",
+  "source": "retained A independent source/binary + old DSM R1 helper; old negative jobs not reopened",
+  "input_manifest": "three actual B14 block0 short/middle/long fixtures with warm crossKV",
+  "arms": [
+    "A retained 170CTA independent binary",
+    "B4 A device body + cluster4 launch only",
+    "C4 same cluster4 + FFN2 shared ACT slabs; FFN1/global partial unchanged"
+  ],
+  "acceptance": "all captured intermediates, 7 partial/running BF16 chains, inputs/RNG/valid KV exact; same-round uninstrumented FFN/fullblock versus A/Torch; retain only reproducible fullblock net benefit",
+  "bounds": "one hybrid design; at most one diagnosed correction; no full DAG, new TMA warp, robot task, threshold or global preset changes",
+  "cleanup": "birth pinned phase guards, copy sources/binaries/raw results back with native transfer and size/fsync; clear owned GPU context; no instance shutdown",
+  "decision": "RETAIN_A",
+  "whole_block_calls": 7122,
+  "failed_or_timeout_GPU_phases": 0,
+  "end": "2026-10-25T14:18:28.699122+08:00",
+  "lifecycle_seconds": 1738.89915,
+  "archive_complete": true
+}

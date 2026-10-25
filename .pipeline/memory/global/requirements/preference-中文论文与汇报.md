@@ -4,10 +4,11 @@ name: 中文论文与汇报
 level: guideline
 scope: project
 status: active
-updated: '2026-10-16T00:06:11+08:00'
+updated: '2026-10-25T14:24:49.425553+08:00'
 supersedes: []
 sources:
 - .pipeline/knowledge/records/CHAT-20261014-SPECULATIVE-TRAJECTORY-AUTODL-WRITING.yaml
+- 用户2026-10-25明确要求根据现有进展理解方法、实现和数据，持续逐段协作写论文
 ---
 
 # 中文论文与汇报
@@ -17,3 +18,7 @@ sources:
 用户偏好 Transformer draft，但结构选择必须有公平 MLP 对照与实际闭环证据。优先给有限、可复现、可否定的实验，不以猜想替代结果，不重复询问已有资源授权。
 
 网页端总计划返回后，先核查证据、依赖、预算和截止，再将决策、任务、验收和日期合并到 HW；不重复粘贴完整长回答。
+
+## 持续协作写作
+
+网页版助手先读取固定版本的当前研究与证据，理解目标、方法、实际实现和数据；用户指定小节后逐段起草、讨论与修改，不收到Prompt就直接生成论文正文或整篇初稿。新结果先核对其对已写段落的影响，更新证据与表述后继续写。长期使用的Prompt见[持续写作协作](../../../prompts/WAM-PAPER-COLLABORATION.md)。该文件是协作指令，不是本地论文初稿。用户自行整理至飞书的方式继续有效；未增加实验或资源授权。

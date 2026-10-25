@@ -3,24 +3,24 @@ kind: plan
 mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T06:14:12.252638+08:00'
+updated: '2026-10-25T14:18:57.297284+08:00'
 progress: PROGRESS.md
 execution: EXECUTION.md
 ---
-# 当前计划：质量接续、成本证据和单层算子
+# 当前计划：多初态门控质量、质量接续、单层算子收口
 
-- [x] M41-RTX5090-SPEC-SPEED：44组三臂132局主表，135完整终态含3条外部比较记录，2条已执行PARTIAL保留；结果回传/整5090临时根清理完成。[结果](../../experiments/rtx5090-spec-speed-20261025/RESULT.md)。不是质量PASS。
-- [x] H02-LOCAL-STORAGE：25564文件核验归档后释放120.619GiB；TMPDIR统一，原tile/源码/失败表保留。[恢复与结果](../../maintenance/storage-placement-20261024/RESULT.md)。
-- [x] M39-SM120-FFN-NEXT：唯一PAIR2048x2整层慢6.25%–7.89%，不采用，保留SELF-QKV-TMA-4MMA。[完整结果与17阶段表](../../experiments/sm120-ffn-next-20261024/REVIEW_RETURN.md)。原四候选负结果也保留。
-- [ ] M40-EVAL100／STORAGE-RACE-RESUME：双A100持续固定六任务×100初态×三臂。当前459/600完整组，两worker alive、HALT为空；自动领取未开始pair并接续原已授权281恢复，不重跑406/T OOM。原160GPU小时/10天与更早10/29 14:03:22 guard不变。[接续与缺口](../../experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)。
-- [ ] M40-MICROWAVE-FINAL-DIAG：等微波炉100组三臂完整后先核官方Target复现，再定位额外失败；原CPU提醒/队列继续。[计划](../../experiments/robotwin-pilot-20261020/eval100-20261022/microwave-completion-20261023/PLAN.md)。
-- [ ] M39-NEXT：进一步FFN2/投影调度仍待有界方案。当前全局阶段同步保留，不自动恢复旧完整DAG、大融合或失败驻留映射。
-- [ ] M17-EVIDENCE：旧严格配对与FIT/DEV暴露缺口未追溯补齐；禁止借新速度面板改旧证书。
+- [x] W02：持续逐段中文写作Prompt及必要轻量证据包已生成、入口链接已核验；main发布回执另记于maintenance/paper-collaboration-20261025。未生成论文正文，未启动新实验。
 
-## 依赖与主线
+- [x] M39-CLUSTER4-HYBRID（测量/回传/清理已闭合）：三KV有限精度通过；C4整层比A慢33.87%–48.11%，NO_GO保留A。7122调用，无GPU失败/超时；原60分钟截止不变。[计划](../../experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/PLAN.md)。
+- [x] M39-CTA-ATTRIBUTION（测量与归档闭合）：用户要求继续算子并解释慢因；A设备计算不变、只比较170/152 CTA，同轮A/R1/Torch精度与无插桩整层，完整阶段表。45分钟、8000调用、4CPU，原已收口DSM不重置。[诊断计划](../../experiments/sm120-ffn-next-20261024/CTA-ATTRIBUTION-20261025/PLAN.md)。
+- [x] M39-DSM-STREAM：cluster8分片生产/消费及一次W2提前搬运R1完成；有限数值通过、整层慢31%–45%，不采用，保留A。[结果与全17阶段表](../../experiments/sm120-ffn-next-20261024/DSM-STREAM/REVIEW_RETURN.md)。5742调用、31.49分钟生命周期，源码/二进制/原始结果回传，GPU自有进程清理。不展开第二DSM设计。
+- [ ] M42-MULTI-INIT（门控质量为主、耗时为附带成本；用户已恢复，resume03取回资产后接续原清单/截止）：用户要求多个初态取有效均值。固定Goal十task×init46/47/48×T/OLD/Q75/Q90，最多120新attempt；原init49不重跑；用户确认Goal优先，其他套件须在Goal收口后按原窗口余量推进。prep02守护直接拥有传输子进程，就绪自动接完整任务→原始归档→均值→临时资产清理。[当前计划](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/prep02/PLAN.md)、[动态状态](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume03/SUPERVISOR-STATUS.json)。原09:45:32起点、15:45:32截止/清理600秒不变，准备/等待算预算。
+- [ ] M40-EVAL100：双A100固定600组三臂，535/600组、1605/1800局，112.560/160GPUh；双guard alive/HALT空。原281授权恢复、406/T OOM不重跑；原10天/更早10/29 guard不变。[实查](../../experiments/sm120-ffn-next-20261024/CLUSTER4-HYBRID-20261025/ROBOTWIN-PROGRESS.json)。
+- [ ] M40-MICROWAVE-FINAL-DIAG：等微波炉100组完整后核官方Target，再查额外失败，原队列继续。
+- [x] M41五环境5090有限面板与临时资产清理；[结果](../../experiments/rtx5090-spec-speed-20261025/RESULT.md)。
+- [x] H02本机归档释放120.619GiB，源码/原tile/失败保留；[恢复](../../maintenance/storage-placement-20261024/RESULT.md)。
+- [ ] M17旧配对/FIT-DEV缺口；不以本次DEV覆盖旧证书，不自动TEST/正式45chunk。
 
-投机改变工作负载形状→候选感知执行→质量约束下有效成本，是待证因果链。M41没有集成自研单层算子，也未完成shape×engine因果矩阵；不能相乘旧倍数。TF结构可暂冻，权重/调度未全局质量放行。
+均值按初态/配对/完整终态/计时条件纳入，保留算法失败与慢成功，双方成功仅补充。全体attempt成本、有效样本N与排除原因、按task分层均报告。新panel是暴露DEV，非独立TEST，CPU独占未证明。
 
-后续优先Robo分叉前一致性诊断；新训练、独立TEST或正式45chunk不自动启动。现有四false、旧FAILED/retention、state/cycle/rules、原tile保护不变。
-
-M40-DUAL-UNTIL10等10/23临时停派时段已由用户双A100持续接续决定替代；原计划仍在[完整旧PLAN](PLAN.before-M41-20261025.md)，不是事后改原deadline。其余旧已完成项/原链接都保留于同目录before-M41文件。
+原四false、旧FAILED/retention/state/cycle/rules/原tile保护不变。投机重组→候选感知→质量约束成本仍待证；M39没有集成机器人。历史计划和已完成索引见PLAN.before-DSM-STREAM-20261025.md、before-M41版本。

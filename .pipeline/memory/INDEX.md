@@ -1,6 +1,20 @@
 # 长期记忆索引
 
-- [5090投机测速临时迁入与清理](global/requirements/decision-5090投机测速临时迁入权重并在结果回传后清除.md)：本轮新资产回传核验后删除；下次重传，旧质量门不变。
+- [四CTA与global混合复用](global/requirements/decision-四CTA集群与global混合复用验证.md)（constraint，M39）：已批准有限实验；原A保留，不强求去掉global ACT。
+
+- [本机A100恢复固定清单](global/requirements/decision-本机A100按原截止恢复固定Goal清单.md)（constraint，本机M42）：用户已明确恢复；保留暂停历史，原截止不延长。
+
+- [本机多初态速度评估](global/requirements/decision-本机速度评估采用多初态并汇总有效样本.md)（constraint，M42）：固定多初态清单，Goal优先、其余按原预算余量；有效性不按快慢/成败筛选，保留失败与长尾。
+
+- [实现DSM分片FFN并验证](global/requirements/decision-实现DSM分片FFN并以整层精度性能决定采用.md)（constraint，M39）：用户已批准代码与测量；独立A，先正确性再完整层收益，原A100预算不变。
+
+- [后台接续、每次算子汇报附三卡简报](global/requirements/preference-后台质量评估接续且算子汇报附三张A100简报.md)（constraint，当前Cycle）：前台算子持续诊断/优化并解释慢因，后台按原预算接续；单候选止损不暂停主线，三卡实查含等待。
+
+- [按套件有限校准阈值并做完整DEV](global/requirements/decision-按套件有限校准接受阈值并以完整DEV验收.md)（constraint，M42）：已授权CAL来源核对→固定其他变量的有限阈值比较→完整DEV质量/成本；旧队列不改，不逐task手调或放宽旧门。
+
+- [先核Robo分叉与成功长尾、补充chunk吞吐](global/requirements/decision-先核Robo分叉和成功长尾并补充chunk吞吐.md)（constraint，M41接续）：用户已同意该有限优先级；原双A100队列继续，阈值问题仍待讨论，不自动改tau或启动训练。
+
+- [5090投机测速临时迁入与清理](global/requirements/decision-5090投机测速临时迁入权重并在结果回传后清除.md)（constraint，5090性能）：LIBERO/RoboTwin按套临时传权重，结果回传核验后删除本轮测试目录与权重，下次重新传；不改旧质量门。
 
 - [SM120七段FFN有限接续](global/requirements/decision-SM120七段FFN先诊断提交成本再有限合并owner.md)（constraint，本轮M39）：先当前基线/数值/成本证据，最多一个设计一次修订，逐项聊天完整阶段表，不预设去掉global ACT。
 
@@ -13,6 +27,7 @@
 
 - [先诊断当前四MMA主循环](global/requirements/decision-先诊断当前四MMA主循环再决定优化.md)（constraint，本次M39诊断）：用户已同意输入等待/操作数与MMA主循环测量；保留现有分工、原累计余量，不自动扩warp或TMA写回。
 
+- [Paseo语音输入需要支持中文](global/requirements/requirement-Paseo语音输入需要支持中文.md)（constraint，用户工具/Paseo）：麦克风输入需要识别中文；来源为用户明确要求，不替代已有约束。
 
 - [分步实现FFN TMA流水](global/requirements/decision-分步实现FFN的TMA流水并按共享内存约束调整tile.md)（constraint，5090 FFN）：用户已批准输入→后处理→K片段就绪；容量不足允许缩小tile，旧累计预算不增。
 
@@ -66,7 +81,7 @@
 
 - [算子夜间对齐至10月22日09:00](global/requirements/decision-算子夜间持续对齐至十月二十二日九点.md)（constraint，已结束夜间窗口）：继续单层性能对齐，原累计10小时不重置；RoboTwin期限不变。
 
-- [算子优先寄存器/shared、减少local访问](global/requirements/preference-算子优先寄存器与共享内存并减少local访问.md)（guideline，M39）：以动态访存、整层耗时和数值共同验证，不盲目堆高资源。
+- [算子优先寄存器/shared、减少local访问](global/requirements/preference-算子优先寄存器与共享内存并减少local访问.md)（guideline，M39）：FFN优先减少ACT全局交互、局部生产消费，不强制全层单cluster；以动态访存、整层耗时和数值共同验证。
 - [RoboTwin本机最多四分之一](global/requirements/decision-RoboTwin本机最多分担四分之一且结果汇回远端.md)（constraint，M40）：远端为主，本机有资源才分担，完整配对同卡、结果汇回~/cxz；预算/截止不增加。
 
 - [RoboTwin核对后按每任务100次](global/requirements/decision-RoboTwin先核对官方复现再按每任务一百次评估.md)（constraint，M40）：已批准先做相机/planner等价优化；六任务三臂1800局目标保留；资源状态已由新160GPU小时授权取代，见上方最新分卡决策。
@@ -251,7 +266,7 @@
 | tile 与 B14 verifier 接口 | [原算子基线边界](global/knowledge/decision-算子基线与接口限制.md)；[10/18真实B2/B14完整验证边界](global/knowledge/decision-真实B2与B14算子完整验证边界.md)（reference：standalone完整30层失败、shared/guarded有限六query通过，性能仍探索性） ；[去fast_math后新版本有限对齐](global/knowledge/knowledge-去fast_math后的算子有限逐位对齐.md)（reference：108attention/54block/六full30/三完整policy逐位/有效状态通过，新二进制性能待测，旧失败保留） |
 | 截稿与规划 | [投稿时间](global/knowledge/decision-投稿时间与研究规划.md) |
 
-旧版完整记录盘点清单仅保留在服务器；公开镜像只按需提供WAM相关证据，旧记录不因此删除。
+历史映射见 [原记录清单](../maintenance/hw-upgrade-20261016/LEGACY-RECORD-INVENTORY.json)，仅在查旧问题时打开；不把旧 GPU 暂停、旧“未完成”或早期计划当成当前指令。
 
 当前以回退阶段同步并重新规划为准；历史顺序见：[先核对再调度](global/requirements/decision-先统一访存条件对齐CrossKV与FFN再做就绪调度.md)、[改动与指标解释边界](global/requirements/requirement-算子交付明确源码入口与验证范围.md)均为constraint；动态数字留在M39。
 
