@@ -1,0 +1,31 @@
+{
+  "id": "M39-FFN1-GEMM-GAP",
+  "status": "COMPLETE_DIAGNOSIS_RETAIN_S",
+  "T0": "2026-10-25T21:31:44.215929+08:00",
+  "absolute_cleanup_deadline": "2026-10-25T22:01:44.215929+08:00",
+  "wall_seconds_cap": 1800,
+  "cleanup_reserve_seconds": 120,
+  "calls_cap": 5000,
+  "storage_cap_bytes": 1073741824,
+  "cpu_cores": 4,
+  "GPU": "existing RTX5090 SM120",
+  "goal": "unchanged S FFN1 subphase diagnosis; MegaMoE mechanism gap; no optimization candidate",
+  "authorization": "用户同意先对齐S的FFN1 GEMM并分析MegaMoE差距；沿既有5090使用授权",
+  "inputs": "frozen real block0 B14 Q16 KV288/1152/2160; warmCrossKV BF16",
+  "baseline": "S normal independent binary; originalTorch eager/noGraph; oldA provenance only",
+  "variants": [
+    "S unchanged",
+    "S timestamp observer only"
+  ],
+  "acceptance": "27tensor/sevensegments/KV/RNG; two processes threeKV normal; observer perturbation separate",
+  "stop": "failure/noisy observer/resource cap stops; no architecture search",
+  "cleanup": "owned PID+birth guard only; copy result to local; no target weights",
+  "formal_performance_permission": false,
+  "calls_before_phase": 3861,
+  "closed_at": "2026-10-25T21:43:00.119212+08:00",
+  "actual_calls": 4296,
+  "actual_lifecycle_seconds": 675.9032828807831,
+  "cleanup_complete": true,
+  "retained": "S",
+  "new_designs": 0
+}

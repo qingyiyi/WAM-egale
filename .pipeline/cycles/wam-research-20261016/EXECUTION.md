@@ -7,6 +7,7 @@ updated: '2026-10-25T18:38:14.572913+08:00'
 
 | 时间（北京时间10/25） | 检查点与证据 |
 |---|---|
+| 21:43 | S版FFN1分项/MegaMoE核验完成4296调用；主循环包络约95.6%，采用S不变，owned清理。M42四臂1组后预算停止并清临时资产。[算子结果](../../experiments/sm120-ffn-next-20261024/FFN1-GEMM-GAP-20261025/REVIEW_RETURN.md) |
 | 20:49–20:53 | A2共享A双K64交接完成：4842调用、三KV/两进程，精度通过但慢于S与旧共享A，owned清理/IO恢复；双A100598组、1794局，队列无可领取任务，旧2组PARTIAL保留。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/REVIEW_RETURN.md) |
 | 19:33 | 追加共享A负结果，保留S；5400调用、等待诊断/公开入口/15文件字节回传与清理完成。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md) |
 | 19:14 | 双CTA FFN1共享B D负结果，保留S；4836调用、9phase退出、15关键文件字节回传。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-WEIGHT-20261025/REVIEW_RETURN.md) |

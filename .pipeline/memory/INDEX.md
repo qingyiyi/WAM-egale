@@ -12,3 +12,5 @@
 最新作业与数字读[当前Cycle](../cycles/wam-research-20261016/PLAN.md)及实际status，不读旧窗口推断现行授权。临时实验计划完成不代表整个研究完成。
 
 [旧完整索引](HISTORY-INDEX-20261025.md)保留原链接；全部原记录仍在`global/`，旧v12记录映射保留在原维护目录。历史入口中的“active”和截止可能已被后续指令替代，必须核对scope/source/supersedes。Paseo等其他Cycle不套用WAM科研约束；[语音输入约束](global/requirements/requirement-Paseo语音输入需要支持中文.md)仅在对应任务读取。
+
+当前算子优先级见[先对齐FFN1再推进DSM调度](global/requirements/decision-先对齐FFN1基础计算再推进DSM调度.md)，仅适用WAM Cycle。
