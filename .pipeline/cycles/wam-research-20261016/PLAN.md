@@ -13,7 +13,7 @@ execution: EXECUTION.md
 
 | ID | 状态/下一动作 | 证据与依赖 |
 |---|---|---|
-| M42-5090-ROBOTWIN | 用户改优先级，迁移准备；最多双worker | [计划](../../experiments/suite-acceptance-calibration-20261025/rtx5090-robotwin-20261025/PLAN.md)，24完整局/192000forward，沿21:56截止 |
+| M42-5090-ROBOTWIN | 已迁入并开始完整DEV；显存实测只容纳单worker | [计划](../../experiments/suite-acceptance-calibration-20261025/rtx5090-robotwin-20261025/PLAN.md)，24完整局/192000forward，沿21:56截止 |
 | M42-RESUME06 | 接续授权，先诊断26个纯像素初态差异 | [计划](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume06/PLAN.md)，沿21:56截止，不放宽旧门 |
 | M42-MULTI-INIT | resume05已闭合，81attempt、4合格完整四臂组 | [本轮结果](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/RESULT.md)，原T0/21:56截止与全部INVALID保留，进程已清理 |
 | M42-PAIRED-COST-RESULT | 待核4组的任务覆盖、门控/长度分层；不可直接定最终阈值 | 54完整均成功，27其他attempt及完整未配齐样本单列；仍是不平衡暴露DEV |

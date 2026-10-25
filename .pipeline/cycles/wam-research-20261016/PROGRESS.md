@@ -13,7 +13,7 @@ next: M42-PAIRED-COST-RESULT
 
 - 本机无自有GPU作业；Goal resume05闭合4合格四臂组，resume06初态诊断0teacher准备失败，旧记录保留。质量线已转5090迁移。
 - 双A100队列无可领取任务：598完整组/1794局，T/C/P487/485/491，125.250/160GPU小时；两worker退出，旧2组PARTIAL不自动重试。[快照](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/ROBOTWIN-SNAPSHOT.json)。
-- 5090 A2已闭合NO_GO保留S；RoboTwin资产/客户端准备，服务端依赖安装中，GPU完整评估未启动。M42原21:56:53截止不延长，单worker避免32GiB OOM。
+- 5090 A2已闭合NO_GO保留S；RoboTwin迁移完成并进入完整DEV；首个篮子valid49 Target完整失败，OLD接续；新旧Target差异保留待核，不借旧结果。M42原21:56:53截止不延长，单worker避免32GiB OOM。
 
 ## M42质量与阻塞
 

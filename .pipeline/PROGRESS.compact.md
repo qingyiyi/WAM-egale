@@ -5,7 +5,7 @@
 ## 当前资源与截止
 
 - **5090算子**：A2共享A双K64交接已完成，4842次block/11.62分钟生命周期，精度通过但三KV整层比S慢25.92%–31.73%；保留S。owned清理、迁移IO恢复已闭合。[结果/18阶段](experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/REVIEW_RETURN.md)。
-- **5090质量迁移**：用户改为RoboTwin阈值优先。Target/VAE/9.58GB场景与客户端CuRobo已迁入/编译，服务端依赖仍准备，尚未启动完整episode。沿原本机接续窗口**21:56:53**硬截止，不能自动加6小时；每局1800秒＋600秒清理余量。原5090单worker实测占用20.8GiB，不能在32GiB上盲开双worker。[登记](experiments/suite-acceptance-calibration-20261025/rtx5090-robotwin-20261025/PLAN.md)。
+- **5090质量迁移**：用户改为RoboTwin阈值优先。迁移已进入完整DEV：首个篮子valid49 Target完整失败，OLD接续，尚无完整四臂组。实际单server峰值reserved约22.13GiB，另有模拟器；采用单worker。沿原本机接续窗口**21:56:53**硬截止，不能自动加6小时；每局1800秒＋600秒清理余量。原5090单worker实测占用20.8GiB，不能在32GiB上盲开双worker。[登记](experiments/suite-acceptance-calibration-20261025/rtx5090-robotwin-20261025/PLAN.md)。
 - **双A100 RoboTwin**：20:48实查，598/600完整三臂组、1794/1800局，T/C/P成功487/485/491，125.250/160GPU小时。两worker均`NO_UNCLAIMED_PAIRS`正常退出；旧281/406 PARTIAL缺口保留，不自动重试。[快照](experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/ROBOTWIN-SNAPSHOT.json)。
 - **本机Goal**：resume05已闭合，81attempt、54完整均成功、4合格四臂组；未配齐/INVALID保留。resume06的初态复现诊断因可信本地PyTorch加载兼容缺项退出，0teacher/动作，未取得新初态，后续迁移5090。本机无自有GPU作业，20:55有他人GPU任务。
 
