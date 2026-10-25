@@ -9,4 +9,4 @@
 
 全部原始证据按需读取；派生摘要不能覆盖原失败或把四项false改为true。
 
-- [本机多初态均值执行](experiments/suite-acceptance-calibration-20261025/multi-init-20261025/prep02/PLAN.md)：固定清单，原六小时截止，自动完成评估/归档/临时资产清理；旧无效与算法失败保留。
+- [本机多初态均值执行](experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/PLAN.md)：固定Goal清单，用户要求失败修复后在新登记窗口接续；原账本保留；旧无效与算法失败保留。

@@ -1,4 +1,4 @@
-> 最新：双CTA已实测仍NO_GO保留A；本机M42原窗口准备失败已归档清理，远端两卡RoboTwin继续。
+> 最新：双CTA仍NO_GO保留A；用户新要求本机修复接续，resume05已启动并行准备/传输，单独截止21:56:53；远端两卡RoboTwin继续。
 
 # WAM研究短入口（2026-10-25）
 
@@ -40,3 +40,5 @@ M39新增归因作业13:10闭合：5409调用、约19分钟含编译等待与归
 
 
 M39最新双CTA：B2仅cluster启动几乎不变；C2保留M64/global ACT比A慢12.27%–15.46%，G2绕过peer DSM仍慢8.71%–10.42%。R1关键链前序提交与W2就绪等待更多，MMA包络接近；不能称DSM raw指令根因/HBM减半。10413调用/17phase，105文件回传/fsync，owned GPU空；NO_GO保留A。[结果/17阶段表/源码](experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)。
+
+M42恢复04：用户明确失败分析修复并正确跑起来；新T0 15:56:53、截止21:56:53，旧窗口不改。修复Goal/common链接、self-kill，先路径门再模型加载；固定剩余23case/90臂，CPU2+2/单worker，当前准备传输未称GPU运行。[作业](experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/PLAN.md)。

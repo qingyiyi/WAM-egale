@@ -9,6 +9,9 @@ execution: EXECUTION.md
 ---
 # 当前计划：多初态门控质量、质量接续、单层算子收口
 
+- [ ] M42-RECOVERY04：最新用户要求失败分析修复再接续；新六小时有界窗口，固定Goal剩余23case/90臂、同旧阈值/严格门。见../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/PLAN.md。
+
+
 - [x] M39-CLUSTER2-ATTRIBUTION：三KV有限精度通过；2CTA仍慢A12.27%–15.46%，NO_GO保留A。B2启动近似无影响，G2绕过peer DSM仍慢；R0/R1支持输入就绪/有序提交开销，硬件流量未知。10413调用/17phase/回传清理闭合。[结果与全阶段表](../../experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)。
 
 - [x] W02：持续逐段中文写作Prompt及必要轻量证据包已生成、入口链接已核验；main发布回执另记于maintenance/paper-collaboration-20261025。未生成论文正文，未启动新实验。

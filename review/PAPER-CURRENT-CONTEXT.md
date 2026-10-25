@@ -41,3 +41,8 @@
 
 
 最新[双CTA混合实验](../.pipeline/experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)为NO_GO：M64大tile对照不同于旧M16整ACT驻留E；B2启动近似无成本，C2比A慢12%–15%，G2仍慢约9%–10%。七段数值/27tensor/有效KV/RNG有限逐位通过；17phase/10413调用/105文件回传清理闭合。内部软件计时有观察器扰动，R0/R1均保留；不能把差值直接当DSM指令时间。当前A不改。
+
+
+补充（16:14）：用户要求本机失败修复后接续Goal，原15:45:32窗口不改；新登记起点15:56:53、最多至21:56:53，固定剩余23case/90臂。资产布局与self-kill包装错误已修，resume05并行恢复Goal/VAE；当前在准备，未称GPU推理或新增质量通过。[当前计划](../.pipeline/experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/PLAN.md)。原严格初态门/四false不变。
+
+[FFN逐处同步源码带读](../.pipeline/experiments/sm120-ffn-next-20261024/FFN-SYNC-SOURCE-REVIEW-20261025.md)仅CPU源审查，未改A/未新增计时。精确FFN2递推按每段FP32部分和加之前BF16运行和，末段再bias后BF16提交；不能把历史“BF16 partial”术语理解为每个独立部分和还先经过一次额外BF16舍入。

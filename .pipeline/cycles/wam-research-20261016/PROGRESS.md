@@ -90,3 +90,15 @@ M39：完成B2/C2/G2、各三KV完整数值先门检、C2/G2两进程无插桩�
 M42检查发现resume03在14:59 VAE路径缺config准备失败（0 teacher/新episode），supervisor finally把自己的OWNED收据纳入killpg，自终止后原状态停留RUNNING。本次独立RECONCILE-STATUS保留原异常，204结果文件归档字节/fsync核验，删除仅本轮临时资产13018066237字节；未恢复GPU/未改原15:45:32截止，原10完整/7初态无效/1中断、0合格四臂组不变。
 
 M40 15:42实查549组/1647局，115.389/160GPUh，两guard alive；GPU0篮子092-C、GPU1微波炉091-P，旧281/406缺口保留。四false全保持。
+
+
+## 2026-10-25T15:59:31.294533+08:00 本机失败分析后新接续
+
+用户要求本机失败分析修复并正确运行。旧VAE资产实际在common，缺Goal目录链接；旧清理枚举包含supervisor自身，已在新resume04只处理明确owned子进程，并加入真实构造路径配置核验。原15:45:32账本/失败不改。本次独立T0 2026-10-25T15:56:53.159109+08:00、截止2026-10-25T21:56:53.159109+08:00，代理取最多6小时含准备等待/清理，单worker、CPU2+2、临时30GiB/结果3GiB、每局1800秒/清理600秒，Goal固定剩余23case/90臂，旧INVALID不重跑。当前已启动准备与native资产传输，尚未声称GPU推理开始。
+
+执行入口：../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume04/PLAN.md；own PID 2617456 birth 1418425867；独立watch PID 2619191。CPU审查曾在启动前抓到旧multi02 literal，已改为唯一multi03，无GPU失败或重跑。严格初态门、tau/normalizer、PFoff及四false不改。
+
+
+## 2026-10-25T16:07:35.449918+08:00 CPU传输交接，不新增机器人尝试
+
+resume04单连接VAE仅约0.4MB/s，计划性停止准备并完整清理（0teacher/0episode）后，在resume05沿同一2026-10-25T15:56:53.159109+08:00起点/2026-10-25T21:56:53.159109+08:00截止接续。Goal16路/VAE8路分段传输，最后native rsync append-verify/fsync；旧准备收据保留TRANSPORT-HANDOFF-RESULT。新supervisor PID2637940，独立watch已登记。固定panel/arm身份multi03未执行过、配方/门不变，不重置预算。
