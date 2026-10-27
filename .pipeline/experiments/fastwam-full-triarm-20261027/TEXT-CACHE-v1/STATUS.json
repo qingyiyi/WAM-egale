@@ -1,0 +1,35 @@
+{
+  "status": "STOPPED_REQUIRES_DIAGNOSIS",
+  "pid": 1796657,
+  "start": 1793063590.8474727,
+  "jobs": [
+    {
+      "suite": "libero_10",
+      "start": 1793063592.4407094,
+      "status": "COMPLETE",
+      "root": "<RTX5090_RUNTIME>/fastwam-text-cache-20261027/libero_10",
+      "ssh_pid": 1798133,
+      "ssh_birth_ticks": "1433270230",
+      "lifecycle_seconds": 440.1031925678253,
+      "returncode": 0
+    },
+    {
+      "suite": "libero_spatial",
+      "start": 1793064036.2444353,
+      "status": "COMPLETE",
+      "root": "<RTX5090_RUNTIME>/fastwam-text-cache-20261027/libero_spatial",
+      "ssh_pid": 1822466,
+      "ssh_birth_ticks": "1433314611",
+      "lifecycle_seconds": 450.1092805862427,
+      "returncode": 0
+    }
+  ],
+  "used_original_seconds": 2760.4998922348022,
+  "new_seconds": 890.212473154068,
+  "updated": 1793064488.6369781,
+  "suite": "libero_spatial",
+  "expected_coordination_sha256": "b281a48bb26939afd236e55f5eac5c3d2bcc07e8201b67eaa014bd1c88a6a667",
+  "error": "AssertionError('coordination changed; re-read before furtherGPUlaunch')",
+  "traceback": "Traceback (most recent call last):\n  File \"<WORKSPACE>/\u6295\u673a\u91c7\u6837/fastwam-base/cached-speedcode-v1/queue_cached_speed.py\", line 114, in <module>\n    note(f'\u6295\u673a\u6587\u672c\u7f13\u5b58{suite}\u5df2\u9000\u51fa\uff0c{receipt[\"status\"]}\uff0c\u672c\u6b21{receipt[\"lifecycle_seconds\"]:.3f}\u79d2\uff0c\u539f\u7d2f\u8ba1{status[\"used_original_seconds\"]:.3f}/7200\u79d2\uff1b\u91ca\u653e5090\u3002')\n  File \"<WORKSPACE>/\u6295\u673a\u91c7\u6837/fastwam-base/cached-speedcode-v1/queue_cached_speed.py\", line 50, in note\n    coordination()\n  File \"<WORKSPACE>/\u6295\u673a\u91c7\u6837/fastwam-base/cached-speedcode-v1/queue_cached_speed.py\", line 42, in coordination\n    assert hashlib.sha256(COORD.read_bytes()).hexdigest()==expected_coord,'coordination changed; re-read before furtherGPUlaunch'\nAssertionError: coordination changed; re-read before furtherGPUlaunch\n",
+  "end": 1793064488.6369646
+}

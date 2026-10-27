@@ -1,12 +1,13 @@
-# WAM-egale：当前研究进度镜像
+# WAM-egale：FastWAM投机推理当前证据
 
-本仓库让网页版阅读服务器当前代码、HW与可公开证据，统一维护main；审查请固定commit。旧科学快照、FAILED、阈值、retention与四项false不改。
+2026-10-27公开快照，供网页版讨论。请固定commit；本地HW与原始实验目录仍是执行依据。
 
-- [最新结果：5090五环境投机成本与清理](review/CURRENT-RTX5090-SPEC-SPEED-20261025.md)
-- [短HW](.pipeline/PROGRESS.compact.md)与[当前Cycle](.pipeline/cycles/wam-research-20261016/PLAN.md)
-- [当前单层算子结果与完整17阶段表](.pipeline/experiments/sm120-ffn-next-20261024/REVIEW_RETURN.md)
-- [本机120.619GiB冷归档与恢复记录](.pipeline/maintenance/storage-placement-20261024/RESULT.md)
+- [昨晚完整简报](review/fastwam-20261027/BRIEF.md)
+- [复制给网页版的讨论Prompt](review/fastwam-20261027/WEB-DISCUSSION-PROMPT.md)
+- [6000局与原始速度数据说明](review/fastwam-20261027/DATA-README.md)
+- [当前代码导航](review/fastwam-20261027/CODE-MAP.md)、[版本和来源SHA](review/fastwam-20261027/MANIFEST.json)
+- [HW当前快照](.pipeline/INDEX.md)、[历史入口](review/history-before-fastwam-20261027/README.md)
 
-M41实际完成44组三臂132局主比较。TF/PF2动作成本下降，但失败与长度决定任务收益；Robo前分叉隔离失败。当前没有全局质量/独立TEST/非劣或正式性能放行。5090本轮新权重/env/cache与临时测试根已在核验回传后删除，原operator保留；双A100原质量队列继续。具体覆盖/时刻以各报告为准。
+LIBERO四套三臂6000局完成：target97.50%、TF97.25%、TF+PF97.20%。共同prompt缓存5090动作1.150–1.242×、完整chunk1.057–1.080×，速度只统计原DEV三臂共同成功来源。Robo仅4局canonical工程检查通过，尚无投机全量。新增Cross-KV四观测对照提示更强共同基线会缩小投机收益；未合入主版本。
 
-不上传模型权重、相机/完整KV/大tensor、编译产物或凭据。公开内容不等于完整可运行环境或新增执行授权。第三方来源/许可见NOTICE、LICENSE及各原文件。原导航保留于README-before-M41-20261025.md及review历史入口。
+全量含FIT/CAL/DEV和历史暴露，不是独立TEST；原版闭环质量与新缓存速度分版本，重复运行路径差异仍未定因，四项科学权限均false。失败、长尾和负结果保留。不上传权重、teacher/相机/KV原tensor、DSO、凭据；公开源码不等于完整部署环境。仅main作为公开进度镜像，旧结果由历史commit追溯；不生成论文正文。来源和许可见既有NOTICE/LICENSE。

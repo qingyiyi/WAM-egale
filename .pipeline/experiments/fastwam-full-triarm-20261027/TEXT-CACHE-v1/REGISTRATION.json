@@ -1,0 +1,51 @@
+{
+  "created": "2026-10-27T09:13:06.227992+08:00",
+  "suites": [
+    "libero_10",
+    "libero_spatial",
+    "libero_object",
+    "libero_goal"
+  ],
+  "prior_shared5090_seconds": 1870.2874190807343,
+  "new_total_gpu_seconds_cap": 2400,
+  "per_attempt_seconds": 600,
+  "deadline_epoch": 1793107920,
+  "remote_root": "<RTX5090_RUNTIME>/fastwam-text-cache-20261027",
+  "original_roots": {
+    "libero_10": "<RTX5090_RUNTIME>/fastwam-real-spec-speed-20261027",
+    "libero_spatial": "<RTX5090_RUNTIME>/fastwam-suite-speed-20261027/libero_spatial",
+    "libero_object": "<RTX5090_RUNTIME>/fastwam-suite-speed-20261027/libero_object",
+    "libero_goal": "<RTX5090_RUNTIME>/fastwam-suite-speed-20261027/libero_goal"
+  },
+  "coordination_sha256": "02c46f9b8fff7ef23d21057bd574ee60a6c7960fa5b31043b1995b0defd58fb8",
+  "operator_release_sha256": "380c6b1d650005b8db005e226e338f4269e10e919510c55671951ac5ae44f7c9",
+  "source_sha256": {
+    "runtime.py": "78e37f1c077771538d307563497ded3082694a372e0eab31e9e2ede0c4853636",
+    "policy_schedule.py": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+    "speed_triarm_v2.py": "a1a6c7db7658fc6f4710f410c7fe837dad78f6aac6c42c45e6045513b4ce632a",
+    "supervise_speed.py": "3e92a47e16a9984934c2bbb1048d82733c31ee08213425311afab16d90504bea",
+    "adapter.py": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+    "queue_cached_speed.py": "0d3ee7ed3bd1afe898f0c4aca96d49c0b81b8d3c55c933443f34c7f08089c641",
+    "simulation_reference.py": "8bb5e3eb8a25611be6e6cfa09a8d8dc2e7d410508479f66ad3a947936d460458",
+    "draft.py": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+    "real_speculative.py": "fbfada5d2f35e76e8b0b8c83f9d49f522b07a1a87e286e795733fc1f60e164e2",
+    "prompt_cache.py": "a8e16a55707af72b2926cba62f4e016b98aa8404bc8bfddf713a910ff262d21d"
+  },
+  "common_source_sha256": {
+    "libero_10": "58815095315885e312c09a060b616b5a72fab41e648151227e1777090dff5b19",
+    "libero_spatial": "3b97ac2ec0d4ad0f29658908e5fac7005175b2086c0b3ebfa423c9c76d5d11a6",
+    "libero_object": "7fa040934aaac9e84cfaa2d0f7adca64ec9df6da00b8f413b0441147ddd573a0",
+    "libero_goal": "8388b56316b01497812636f5ed01919132e3b743656a3dd6f635e824fa6352ae"
+  },
+  "validation": "Every retained observation: exact text context/mask, exact target/TF normalized action and selected paths/counts cached vs uncached within same loaded model; original B7 isolation/sensitivity kept",
+  "measurement": "Same original common-success source groups; 3observations/group x5repeat, both10updates; common fixed/natural traces; one synchronized phaseprofile per sourcegroup perarm, never mixed with warmmain",
+  "cache": "Per loaded model full exact prompt key/device/dtype; text only, private returned clones; before changing proprio",
+  "stop": "First technical error retained; no auto retry; source/coordination changes stop following launch; owned childbounded600s, originalshared7200s includesallprior andnew failures",
+  "quality": "Original uncached6000episodes remain original identity; no newcachedclosedloop or independentTEST claim",
+  "GPU_arms": [
+    "target",
+    "TF",
+    "TF+PF"
+  ],
+  "four_permissions_unchanged": true
+}

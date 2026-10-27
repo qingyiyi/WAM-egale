@@ -1,0 +1,26 @@
+{
+  "mean_policy_seconds": {
+    "T": {
+      "official_eager": 0.38814786086893743,
+      "torch_cached": 0.35061042931758696,
+      "native_cached": 0.18412418456541169,
+      "official_compile": 0.16299033040801683,
+      "torch_cached_compile": 0.15364939336561495
+    },
+    "S": {
+      "official_eager": 0.24764228125827178,
+      "torch_cached": 0.23533648283531267,
+      "native_cached": 0.1774002243247297,
+      "official_compile": 0.1510737125451366,
+      "torch_cached_compile": 0.14877778302050298
+    }
+  },
+  "aggregation": "equal mean of each fixed observation; 10 runs discard first; 4 observations, not episodes",
+  "prompt_and_visual_conditions": "common prompt hit and official compiled visual prefill for timing; all eager for initial numerical audit",
+  "flags": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  }
+}

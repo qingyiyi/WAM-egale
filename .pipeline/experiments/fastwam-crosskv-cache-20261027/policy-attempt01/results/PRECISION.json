@@ -1,0 +1,1670 @@
+[
+  {
+    "case": 0,
+    "arm": "T",
+    "errors": {
+      "official_eager": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "torch_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "native_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      }
+    },
+    "paths_exact": true,
+    "info": {
+      "official_eager": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "condition_rng_unchanged": true
+  },
+  {
+    "case": 0,
+    "arm": "S",
+    "errors": {
+      "official_eager": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "torch_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "native_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      }
+    },
+    "paths_exact": true,
+    "info": {
+      "official_eager": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.02946218103170395,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010600129142403603,
+              0.0036341710947453976,
+              0.012690620496869087,
+              0.0053311483934521675,
+              0.004636215046048164,
+              0.009036906063556671
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.07146327942609787,
+            "draft_seconds": 0.03999432176351547,
+            "pack_seconds": 6.125494837760925e-05,
+            "verify_seconds": 0.031069643795490265,
+            "accept_commit_seconds": 0.0003380589187145233,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.003786024171859026,
+              0.009419760666787624,
+              0.008191298693418503,
+              0.013663209974765778,
+              0.017064319923520088,
+              0.024233734235167503
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030585289001464844,
+            "draft_seconds": 0.001537952572107315,
+            "pack_seconds": 3.0297785997390747e-05,
+            "verify_seconds": 0.028751101344823837,
+            "accept_commit_seconds": 0.00026593729853630066,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.01496232207864523,
+              0.01895335130393505,
+              0.03839973360300064,
+              0.039190199226140976,
+              0.04497433826327324,
+              0.04998281970620155
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030374765396118164,
+            "draft_seconds": 0.0014737918972969055,
+            "pack_seconds": 2.8312206268310547e-05,
+            "verify_seconds": 0.028614409267902374,
+            "accept_commit_seconds": 0.00025825202465057373,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.03208804503083229,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.03319964185357094,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010600129142403603,
+              0.0036341710947453976,
+              0.012690620496869087,
+              0.0053311483934521675,
+              0.004636215046048164,
+              0.009036906063556671
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.031205635517835617,
+            "draft_seconds": 0.0017997398972511292,
+            "pack_seconds": 3.024563193321228e-05,
+            "verify_seconds": 0.029117409139871597,
+            "accept_commit_seconds": 0.00025824084877967834,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.003786024171859026,
+              0.009419760666787624,
+              0.008191298693418503,
+              0.013663209974765778,
+              0.017064319923520088,
+              0.024233734235167503
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.027448993176221848,
+            "draft_seconds": 0.001477699726819992,
+            "pack_seconds": 3.102794289588928e-05,
+            "verify_seconds": 0.025677800178527832,
+            "accept_commit_seconds": 0.00026246532797813416,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.01496232207864523,
+              0.01895335130393505,
+              0.03839973360300064,
+              0.039190199226140976,
+              0.04497433826327324,
+              0.04998281970620155
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026852332055568695,
+            "draft_seconds": 0.0014568231999874115,
+            "pack_seconds": 2.793222665786743e-05,
+            "verify_seconds": 0.025083977729082108,
+            "accept_commit_seconds": 0.0002835988998413086,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.02584133669734001,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.009041078388690948,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010600129142403603,
+              0.0036341710947453976,
+              0.012690620496869087,
+              0.0053311483934521675,
+              0.004636215046048164,
+              0.009036906063556671
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.02536022663116455,
+            "draft_seconds": 0.0015504099428653717,
+            "pack_seconds": 2.83755362033844e-05,
+            "verify_seconds": 0.007435008883476257,
+            "accept_commit_seconds": 0.016346432268619537,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.003786024171859026,
+              0.009419760666787624,
+              0.008191298693418503,
+              0.013663209974765778,
+              0.017064319923520088,
+              0.024233734235167503
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017229080200195312,
+            "draft_seconds": 0.001525435596704483,
+            "pack_seconds": 2.9459595680236816e-05,
+            "verify_seconds": 0.0025059133768081665,
+            "accept_commit_seconds": 0.013168271631002426,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.01496232207864523,
+              0.01895335130393505,
+              0.03839973360300064,
+              0.039190199226140976,
+              0.04497433826327324,
+              0.04998281970620155
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017183519899845123,
+            "draft_seconds": 0.0014835856854915619,
+            "pack_seconds": 2.769753336906433e-05,
+            "verify_seconds": 0.0025095418095588684,
+            "accept_commit_seconds": 0.013162694871425629,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0025763027369976044,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 252887040
+      }
+    },
+    "condition_rng_unchanged": true
+  },
+  {
+    "case": 1,
+    "arm": "T",
+    "errors": {
+      "official_eager": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "torch_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "native_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      }
+    },
+    "paths_exact": true,
+    "info": {
+      "official_eager": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "condition_rng_unchanged": true
+  },
+  {
+    "case": 1,
+    "arm": "S",
+    "errors": {
+      "official_eager": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "torch_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "native_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      }
+    },
+    "paths_exact": true,
+    "info": {
+      "official_eager": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.02957174926996231,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010630778037011623,
+              0.0036168009974062443,
+              0.012947364710271358,
+              0.005303091369569302,
+              0.004566553048789501,
+              0.008239297196269035
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030789189040660858,
+            "draft_seconds": 0.0016245357692241669,
+            "pack_seconds": 3.150850534439087e-05,
+            "verify_seconds": 0.02885841578245163,
+            "accept_commit_seconds": 0.0002747289836406708,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004115075804293156,
+              0.008854184299707413,
+              0.007585306651890278,
+              0.012051018886268139,
+              0.01511762198060751,
+              0.022268105298280716
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.03026842698454857,
+            "draft_seconds": 0.0014969483017921448,
+            "pack_seconds": 2.952665090560913e-05,
+            "verify_seconds": 0.02847941592335701,
+            "accept_commit_seconds": 0.00026253610849380493,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014829817228019238,
+              0.017488786950707436,
+              0.04209566116333008,
+              0.04281064495444298,
+              0.04541758820414543,
+              0.058249253779649734
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.03057553619146347,
+            "draft_seconds": 0.001492917537689209,
+            "pack_seconds": 2.9139220714569092e-05,
+            "verify_seconds": 0.028790153563022614,
+            "accept_commit_seconds": 0.00026332587003707886,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.02911302074790001,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.028737396001815796,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010630778037011623,
+              0.0036168009974062443,
+              0.012947364710271358,
+              0.005303091369569302,
+              0.004566553048789501,
+              0.008239297196269035
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.03004097193479538,
+            "draft_seconds": 0.001498643308877945,
+            "pack_seconds": 2.8934329748153687e-05,
+            "verify_seconds": 0.028258919715881348,
+            "accept_commit_seconds": 0.00025447458028793335,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004115075804293156,
+              0.008854184299707413,
+              0.007585306651890278,
+              0.012051018886268139,
+              0.01511762198060751,
+              0.022268105298280716
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026466187089681625,
+            "draft_seconds": 0.0014743469655513763,
+            "pack_seconds": 2.7991831302642822e-05,
+            "verify_seconds": 0.024707786738872528,
+            "accept_commit_seconds": 0.0002560615539550781,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014829817228019238,
+              0.017488786950707436,
+              0.04209566116333008,
+              0.04281064495444298,
+              0.04541758820414543,
+              0.058249253779649734
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026669718325138092,
+            "draft_seconds": 0.0014759600162506104,
+            "pack_seconds": 2.8431415557861328e-05,
+            "verify_seconds": 0.02490633726119995,
+            "accept_commit_seconds": 0.0002589896321296692,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.025443244725465775,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.0059679411351680756,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010630778037011623,
+              0.0036168009974062443,
+              0.012947364710271358,
+              0.005303091369569302,
+              0.004566553048789501,
+              0.008239297196269035
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.025393512099981308,
+            "draft_seconds": 0.0015147067606449127,
+            "pack_seconds": 2.8271228075027466e-05,
+            "verify_seconds": 0.006304807960987091,
+            "accept_commit_seconds": 0.017545726150274277,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004115075804293156,
+              0.008854184299707413,
+              0.007585306651890278,
+              0.012051018886268139,
+              0.01511762198060751,
+              0.022268105298280716
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017271127551794052,
+            "draft_seconds": 0.0014875046908855438,
+            "pack_seconds": 2.80626118183136e-05,
+            "verify_seconds": 0.002473156899213791,
+            "accept_commit_seconds": 0.013282403349876404,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014829817228019238,
+              0.017488786950707436,
+              0.04209566116333008,
+              0.04281064495444298,
+              0.04541758820414543,
+              0.058249253779649734
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017277702689170837,
+            "draft_seconds": 0.0014767907559871674,
+            "pack_seconds": 2.7902424335479736e-05,
+            "verify_seconds": 0.002505999058485031,
+            "accept_commit_seconds": 0.01326701045036316,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0026507973670959473,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 252887040
+      }
+    },
+    "condition_rng_unchanged": true
+  },
+  {
+    "case": 2,
+    "arm": "T",
+    "errors": {
+      "official_eager": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "torch_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "native_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      }
+    },
+    "paths_exact": true,
+    "info": {
+      "official_eager": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "condition_rng_unchanged": true
+  },
+  {
+    "case": 2,
+    "arm": "S",
+    "errors": {
+      "official_eager": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "torch_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "native_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      }
+    },
+    "paths_exact": true,
+    "info": {
+      "official_eager": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.029692694544792175,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010402376763522625,
+              0.0032844971865415573,
+              0.013226540759205818,
+              0.005635481793433428,
+              0.004382853861898184,
+              0.007727334741503
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.0333629809319973,
+            "draft_seconds": 0.0016287006437778473,
+            "pack_seconds": 3.102049231529236e-05,
+            "verify_seconds": 0.03142407909035683,
+            "accept_commit_seconds": 0.00027918070554733276,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.003965198993682861,
+              0.009290042333304882,
+              0.007748141884803772,
+              0.013418103568255901,
+              0.016078824177384377,
+              0.023368841037154198
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030379552394151688,
+            "draft_seconds": 0.0015174821019172668,
+            "pack_seconds": 3.0141323804855347e-05,
+            "verify_seconds": 0.02856651321053505,
+            "accept_commit_seconds": 0.000265415757894516,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014241276308894157,
+              0.01698538474738598,
+              0.038749873638153076,
+              0.038835559040308,
+              0.04142136126756668,
+              0.044622864574193954
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030401069670915604,
+            "draft_seconds": 0.0015016384422779083,
+            "pack_seconds": 2.8673559427261353e-05,
+            "verify_seconds": 0.028615780174732208,
+            "accept_commit_seconds": 0.0002549774944782257,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.029048793017864227,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.028858676552772522,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010402376763522625,
+              0.0032844971865415573,
+              0.013226540759205818,
+              0.005635481793433428,
+              0.004382853861898184,
+              0.007727334741503
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.02988870069384575,
+            "draft_seconds": 0.001497846096754074,
+            "pack_seconds": 2.8118491172790527e-05,
+            "verify_seconds": 0.028107568621635437,
+            "accept_commit_seconds": 0.00025516748428344727,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.003965198993682861,
+              0.009290042333304882,
+              0.007748141884803772,
+              0.013418103568255901,
+              0.016078824177384377,
+              0.023368841037154198
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026549678295850754,
+            "draft_seconds": 0.0014628022909164429,
+            "pack_seconds": 2.8364360332489014e-05,
+            "verify_seconds": 0.024792924523353577,
+            "accept_commit_seconds": 0.00026558712124824524,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014241276308894157,
+              0.01698538474738598,
+              0.038749873638153076,
+              0.038835559040308,
+              0.04142136126756668,
+              0.044622864574193954
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026829365640878677,
+            "draft_seconds": 0.0014709606766700745,
+            "pack_seconds": 2.815946936607361e-05,
+            "verify_seconds": 0.02507190778851509,
+            "accept_commit_seconds": 0.00025833770632743835,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.025457613170146942,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.005937773734331131,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010402376763522625,
+              0.0032844971865415573,
+              0.013226540759205818,
+              0.005635481793433428,
+              0.004382853861898184,
+              0.007727334741503
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.025506213307380676,
+            "draft_seconds": 0.0015274472534656525,
+            "pack_seconds": 2.874433994293213e-05,
+            "verify_seconds": 0.006384715437889099,
+            "accept_commit_seconds": 0.017565306276082993,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.003965198993682861,
+              0.009290042333304882,
+              0.007748141884803772,
+              0.013418103568255901,
+              0.016078824177384377,
+              0.023368841037154198
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017313841730356216,
+            "draft_seconds": 0.0014877021312713623,
+            "pack_seconds": 2.8252601623535156e-05,
+            "verify_seconds": 0.0024652108550071716,
+            "accept_commit_seconds": 0.013332676142454147,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014241276308894157,
+              0.01698538474738598,
+              0.038749873638153076,
+              0.038835559040308,
+              0.04142136126756668,
+              0.044622864574193954
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017274290323257446,
+            "draft_seconds": 0.0014696940779685974,
+            "pack_seconds": 2.8714537620544434e-05,
+            "verify_seconds": 0.0024566352367401123,
+            "accept_commit_seconds": 0.013319246470928192,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.002621576189994812,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 252887040
+      }
+    },
+    "condition_rng_unchanged": true
+  },
+  {
+    "case": 3,
+    "arm": "T",
+    "errors": {
+      "official_eager": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "torch_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "native_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      }
+    },
+    "paths_exact": true,
+    "info": {
+      "official_eager": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "condition_rng_unchanged": true
+  },
+  {
+    "case": 3,
+    "arm": "S",
+    "errors": {
+      "official_eager": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "torch_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      },
+      "native_cached": {
+        "byte_exact": true,
+        "max_abs": 0.0,
+        "rel_l2": 0.0
+      }
+    },
+    "paths_exact": true,
+    "info": {
+      "official_eager": {
+        "counts": {
+          "target_calls": 6,
+          "target_B1_calls": 3,
+          "target_state_rows": 24,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 4,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "rejected_trees": 1,
+          "fallback_updates": 1,
+          "depth_0": 1,
+          "boundary_target_updates": 2
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.029698967933654785,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010929092764854431,
+              0.003665721509605646,
+              0.01330239325761795,
+              0.005762074142694473,
+              0.004761615768074989,
+              0.008524066768586636
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030749045312404633,
+            "draft_seconds": 0.0016169585287570953,
+            "pack_seconds": 3.1657516956329346e-05,
+            "verify_seconds": 0.028822124004364014,
+            "accept_commit_seconds": 0.0002783052623271942,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004143022932112217,
+              0.00994101818650961,
+              0.007052491884678602,
+              0.012989171780645847,
+              0.01645384542644024,
+              0.023933209478855133
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.03028268739581108,
+            "draft_seconds": 0.0014808960258960724,
+            "pack_seconds": 2.849102020263672e-05,
+            "verify_seconds": 0.028508711606264114,
+            "accept_commit_seconds": 0.00026458874344825745,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 0,
+            "parent": 0,
+            "child": 0,
+            "g": 1,
+            "scores": [
+              0.015974195674061775,
+              0.019682686775922775,
+              0.03777559846639633,
+              0.03801625221967697,
+              0.04383803531527519,
+              0.04952797293663025
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030373338609933853,
+            "draft_seconds": 0.0014896653592586517,
+            "pack_seconds": 2.814456820487976e-05,
+            "verify_seconds": 0.028598640114068985,
+            "accept_commit_seconds": 0.00025688856840133667,
+            "synchronized": false
+          },
+          {
+            "step": 8,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.02914273738861084,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.028772730380296707,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "target_calls": 6,
+          "target_B1_calls": 3,
+          "target_state_rows": 24,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 4,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "rejected_trees": 1,
+          "fallback_updates": 1,
+          "depth_0": 1,
+          "boundary_target_updates": 2
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.028942327946424484,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010929092764854431,
+              0.003665721509605646,
+              0.01330239325761795,
+              0.005762074142694473,
+              0.004761615768074989,
+              0.008524066768586636
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030008360743522644,
+            "draft_seconds": 0.001517016440629959,
+            "pack_seconds": 2.831965684890747e-05,
+            "verify_seconds": 0.028197061270475388,
+            "accept_commit_seconds": 0.0002659633755683899,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004143022932112217,
+              0.00994101818650961,
+              0.007052491884678602,
+              0.012989171780645847,
+              0.01645384542644024,
+              0.023933209478855133
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026702843606472015,
+            "draft_seconds": 0.0014899708330631256,
+            "pack_seconds": 2.929195761680603e-05,
+            "verify_seconds": 0.024923041462898254,
+            "accept_commit_seconds": 0.00026053935289382935,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 0,
+            "parent": 0,
+            "child": 0,
+            "g": 1,
+            "scores": [
+              0.015974195674061775,
+              0.019682686775922775,
+              0.03777559846639633,
+              0.03801625221967697,
+              0.04383803531527519,
+              0.04952797293663025
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026696760207414627,
+            "draft_seconds": 0.0014737211167812347,
+            "pack_seconds": 2.7943402528762817e-05,
+            "verify_seconds": 0.024940572679042816,
+            "accept_commit_seconds": 0.00025452300906181335,
+            "synchronized": false
+          },
+          {
+            "step": 8,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.02536291629076004,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.02515474706888199,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "target_calls": 6,
+          "target_B1_calls": 3,
+          "target_state_rows": 24,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 4,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "rejected_trees": 1,
+          "fallback_updates": 1,
+          "depth_0": 1,
+          "boundary_target_updates": 2
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.005927674472332001,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010929092764854431,
+              0.003665721509605646,
+              0.01330239325761795,
+              0.005762074142694473,
+              0.004761615768074989,
+              0.008524066768586636
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.025491036474704742,
+            "draft_seconds": 0.0015242062509059906,
+            "pack_seconds": 2.8681010007858276e-05,
+            "verify_seconds": 0.006268400698900223,
+            "accept_commit_seconds": 0.01766974851489067,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004143022932112217,
+              0.00994101818650961,
+              0.007052491884678602,
+              0.012989171780645847,
+              0.01645384542644024,
+              0.023933209478855133
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017302975058555603,
+            "draft_seconds": 0.0015082135796546936,
+            "pack_seconds": 2.8852373361587524e-05,
+            "verify_seconds": 0.0024336837232112885,
+            "accept_commit_seconds": 0.013332225382328033,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 0,
+            "parent": 0,
+            "child": 0,
+            "g": 1,
+            "scores": [
+              0.015974195674061775,
+              0.019682686775922775,
+              0.03777559846639633,
+              0.03801625221967697,
+              0.04383803531527519,
+              0.04952797293663025
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017254933714866638,
+            "draft_seconds": 0.0014472603797912598,
+            "pack_seconds": 2.8293579816818237e-05,
+            "verify_seconds": 0.002446487545967102,
+            "accept_commit_seconds": 0.013332892209291458,
+            "synchronized": false
+          },
+          {
+            "step": 8,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0027932487428188324,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.002471964806318283,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 252887040
+      }
+    },
+    "condition_rng_unchanged": true
+  }
+]

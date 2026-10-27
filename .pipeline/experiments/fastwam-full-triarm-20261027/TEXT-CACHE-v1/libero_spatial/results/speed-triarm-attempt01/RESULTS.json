@@ -1,0 +1,5275 @@
+{
+  "status": "COMPLETE",
+  "trained_draft": true,
+  "forced_depths": false,
+  "tau": 0.015135519206523895,
+  "full_chunk": {
+    "N": 285,
+    "T_total_seconds": 46.588201481848955,
+    "S_total_seconds": 43.633523013442755,
+    "speedup": 1.0677157897036165,
+    "T_mean_ms": 163.46737362052266,
+    "S_mean_ms": 153.10008074892195,
+    "T_p50_ms": 162.29379922151566,
+    "S_p50_ms": 153.4104347229004,
+    "T_p90_ms": 166.9597141444683,
+    "S_p90_ms": 158.96257758140564
+  },
+  "action_denoising": {
+    "N": 285,
+    "T_total_seconds": 17.528598494827747,
+    "S_total_seconds": 14.550797816365957,
+    "speedup": 1.204648618999607,
+    "T_mean_ms": 61.50385436781666,
+    "S_mean_ms": 51.0554309346174,
+    "T_p50_ms": 61.46364286541939,
+    "S_p50_ms": 53.18456143140793,
+    "T_p90_ms": 61.53935045003891,
+    "S_p90_ms": 53.40396165847778
+  },
+  "policy_trace_replay": {
+    "fixed_target_observations": {
+      "N": 3,
+      "total_seconds": {
+        "T": 5.224081270396709,
+        "S": 4.897893253713846,
+        "P": 5.015770372003317
+      },
+      "speedup": {
+        "S": 1.066597616523294,
+        "P": 1.0415311872242254
+      },
+      "pairs": [
+        {
+          "identity": {
+            "suite": "libero_spatial",
+            "task": 0,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 1.7898153141140938,
+            "S": 1.6964203342795372,
+            "P": 1.7278309054672718
+          },
+          "chunks": {
+            "T": 11,
+            "S": 11,
+            "P": 11
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_spatial",
+            "task": 2,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 1.628457948565483,
+            "S": 1.5118047334253788,
+            "P": 1.5510104559361935
+          },
+          "chunks": {
+            "T": 10,
+            "S": 10,
+            "P": 10
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_spatial",
+            "task": 3,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 1.8058080077171326,
+            "S": 1.6896681860089302,
+            "P": 1.7369290105998516
+          },
+          "chunks": {
+            "T": 11,
+            "S": 11,
+            "P": 11
+          }
+        }
+      ],
+      "common_success_conditional": {
+        "S": {
+          "N": 3,
+          "speedup": 1.066597616523294
+        },
+        "P": {
+          "N": 3,
+          "speedup": 1.0415311872242254
+        }
+      },
+      "boundary": "raw observations already resident -> repeated complete policy with preprocessing, text/VAE/prefill/action/postprocessing; no simulator stepping"
+    },
+    "own_natural_observations": {
+      "N": 3,
+      "total_seconds": {
+        "T": 5.354346394538879,
+        "S": 5.147612847387791,
+        "P": 5.204102665185928
+      },
+      "speedup": {
+        "S": 1.0401610519827647,
+        "P": 1.0288702469991688
+      },
+      "pairs": [
+        {
+          "identity": {
+            "suite": "libero_spatial",
+            "task": 0,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 1.8044670522212982,
+            "S": 1.8753404840826988,
+            "P": 1.8800868317484856
+          },
+          "chunks": {
+            "T": 11,
+            "S": 12,
+            "P": 12
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_spatial",
+            "task": 2,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 1.669204093515873,
+            "S": 1.5294621959328651,
+            "P": 1.570835791528225
+          },
+          "chunks": {
+            "T": 10,
+            "S": 10,
+            "P": 10
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_spatial",
+            "task": 3,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 1.8806752488017082,
+            "S": 1.7428101673722267,
+            "P": 1.7531800419092178
+          },
+          "chunks": {
+            "T": 11,
+            "S": 11,
+            "P": 11
+          }
+        }
+      ],
+      "common_success_conditional": {
+        "S": {
+          "N": 3,
+          "speedup": 1.0401610519827647
+        },
+        "P": {
+          "N": 3,
+          "speedup": 1.0288702469991688
+        }
+      },
+      "boundary": "raw observations already resident -> repeated complete policy with preprocessing, text/VAE/prefill/action/postprocessing; no simulator stepping"
+    }
+  },
+  "full_counts": {
+    "target_calls": 1590,
+    "target_B1_calls": 730,
+    "target_state_rows": 6750,
+    "bootstrap_updates": 285,
+    "committed_updates": 2850,
+    "draft_calls": 2580,
+    "target_B7_calls": 860,
+    "draft_updates": 1260,
+    "bonus_updates": 565,
+    "tree_count": 860,
+    "depth_2": 565,
+    "candidate_expansions": 5160,
+    "fallback_updates": 295,
+    "depth_1": 130,
+    "boundary_target_updates": 445,
+    "rejected_trees": 165,
+    "depth_0": 165
+  },
+  "action_counts": {
+    "target_calls": 1590,
+    "target_B1_calls": 730,
+    "target_state_rows": 6750,
+    "bootstrap_updates": 285,
+    "committed_updates": 2850,
+    "draft_calls": 2580,
+    "target_B7_calls": 860,
+    "draft_updates": 1260,
+    "bonus_updates": 565,
+    "tree_count": 860,
+    "depth_2": 565,
+    "candidate_expansions": 5160,
+    "fallback_updates": 295,
+    "depth_1": 130,
+    "boundary_target_updates": 445,
+    "rejected_trees": 165,
+    "depth_0": 165
+  },
+  "C_update_T_seconds": 0.006150385436781666,
+  "C_update_S_seconds": 0.00510554309346174,
+  "separate_synchronized_profile": {
+    "input": 0,
+    "fixture": {
+      "file": "DEV-task00-init47-T-chunk-000.npz",
+      "task_description": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+      "identity": {
+        "suite": "libero_spatial",
+        "task": 0,
+        "init": 47,
+        "split": "DEV",
+        "noise_seed": 42,
+        "env_seed": 42,
+        "arm": "T"
+      },
+      "ordinal": 0,
+      "source_success": true,
+      "source_chunks": 11
+    },
+    "T": [
+      {
+        "phase": "observation_preprocess",
+        "seconds": 0.003190338611602783
+      },
+      {
+        "phase": "noise_initialization",
+        "seconds": 6.542354822158813e-05
+      },
+      {
+        "phase": "vae",
+        "seconds": 0.06219714507460594
+      },
+      {
+        "phase": "text",
+        "seconds": 6.797537207603455e-05
+      },
+      {
+        "phase": "proprio",
+        "seconds": 0.00016799196600914001
+      },
+      {
+        "phase": "visual_prepare",
+        "seconds": 0.018656626343727112
+      },
+      {
+        "phase": "visual_prefill",
+        "seconds": 0.012918006628751755
+      },
+      {
+        "phase": "scheduler_grid",
+        "seconds": 0.0001726485788822174
+      },
+      {
+        "phase": "action_denoise",
+        "seconds": 0.06418250873684883
+      },
+      {
+        "phase": "action_postprocess",
+        "seconds": 0.0003243573009967804
+      },
+      {
+        "phase": "full_policy",
+        "seconds": 0.17003179341554642
+      }
+    ],
+    "S": [
+      {
+        "phase": "observation_preprocess",
+        "seconds": 0.0029806531965732574
+      },
+      {
+        "phase": "noise_initialization",
+        "seconds": 5.772709846496582e-05
+      },
+      {
+        "phase": "vae",
+        "seconds": 0.061829231679439545
+      },
+      {
+        "phase": "text",
+        "seconds": 6.281211972236633e-05
+      },
+      {
+        "phase": "proprio",
+        "seconds": 0.0001645982265472412
+      },
+      {
+        "phase": "visual_prepare",
+        "seconds": 0.018372364342212677
+      },
+      {
+        "phase": "visual_prefill",
+        "seconds": 0.012782823294401169
+      },
+      {
+        "phase": "scheduler_grid",
+        "seconds": 0.0001659579575061798
+      },
+      {
+        "phase": "action_denoise",
+        "seconds": 0.05417060852050781
+      },
+      {
+        "phase": "action_postprocess",
+        "seconds": 0.00023140013217926025
+      },
+      {
+        "phase": "full_policy",
+        "seconds": 0.15859385579824448
+      }
+    ],
+    "rounds": [
+      {
+        "step": 0,
+        "kind": "bootstrap",
+        "g": 1,
+        "seconds": 0.007469587028026581,
+        "synchronized": true
+      },
+      {
+        "step": 1,
+        "kind": "tree",
+        "depth": 2,
+        "parent": 1,
+        "child": 0,
+        "g": 3,
+        "scores": [
+          0.01052068267017603,
+          0.0032495532650500536,
+          0.011631293222308159,
+          0.004837150685489178,
+          0.004227186553180218,
+          0.009638754650950432
+        ],
+        "tau": 0.015135519206523895,
+        "seconds": 0.013918604701757431,
+        "draft_seconds": 0.0017772577702999115,
+        "pack_seconds": 4.248321056365967e-05,
+        "verify_seconds": 0.011729296296834946,
+        "accept_commit_seconds": 0.0003695674240589142,
+        "synchronized": true
+      },
+      {
+        "step": 4,
+        "kind": "tree",
+        "depth": 2,
+        "parent": 0,
+        "child": 0,
+        "g": 3,
+        "scores": [
+          0.004175892565399408,
+          0.007296005263924599,
+          0.006899918895214796,
+          0.009602922946214676,
+          0.012243757955729961,
+          0.016706058755517006
+        ],
+        "tau": 0.015135519206523895,
+        "seconds": 0.012785762548446655,
+        "draft_seconds": 0.0016180798411369324,
+        "pack_seconds": 4.190206527709961e-05,
+        "verify_seconds": 0.010807927697896957,
+        "accept_commit_seconds": 0.0003178529441356659,
+        "synchronized": true
+      },
+      {
+        "step": 7,
+        "kind": "tree",
+        "depth": 1,
+        "parent": 0,
+        "child": 0,
+        "g": 2,
+        "scores": [
+          0.013655235059559345,
+          0.014193879440426826,
+          0.039124805480241776,
+          0.03981699049472809,
+          0.03878803551197052,
+          0.041668012738227844
+        ],
+        "tau": 0.015135519206523895,
+        "seconds": 0.012504041194915771,
+        "draft_seconds": 0.0015248842537403107,
+        "pack_seconds": 4.131346940994263e-05,
+        "verify_seconds": 0.01062634214758873,
+        "accept_commit_seconds": 0.00031150132417678833,
+        "synchronized": true
+      },
+      {
+        "step": 9,
+        "kind": "tail",
+        "g": 1,
+        "seconds": 0.007394954562187195,
+        "synchronized": true
+      }
+    ],
+    "accounting": {
+      "G": 10,
+      "T_denoise": 0.05417060852050781,
+      "T_round_sum": 0.05407295003533363,
+      "T_boundary": 9.765848517417908e-05,
+      "C_update": 0.005417060852050781
+    },
+    "cache_before": {
+      "hits": 1157,
+      "misses": 10,
+      "disabled_calls": 114,
+      "entries": 10,
+      "capacity": 64,
+      "stored_tensor_bytes": 10487040,
+      "fill_seconds": [
+        0.1833726279437542,
+        0.01924726739525795,
+        0.023581255227327347,
+        0.027239926159381866,
+        0.01949562132358551,
+        0.019385971128940582,
+        0.01914440095424652,
+        0.01939452812075615,
+        0.01949664205312729,
+        0.019492793828248978
+      ],
+      "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+    },
+    "cache_after": {
+      "hits": 1159,
+      "misses": 10,
+      "disabled_calls": 114,
+      "entries": 10,
+      "capacity": 64,
+      "stored_tensor_bytes": 10487040,
+      "fill_seconds": [
+        0.1833726279437542,
+        0.01924726739525795,
+        0.023581255227327347,
+        0.027239926159381866,
+        0.01949562132358551,
+        0.019385971128940582,
+        0.01914440095424652,
+        0.01939452812075615,
+        0.01949664205312729,
+        0.019492793828248978
+      ],
+      "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+    },
+    "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+  },
+  "phase_profiles": [
+    {
+      "input": 0,
+      "fixture": {
+        "file": "DEV-task00-init47-T-chunk-000.npz",
+        "task_description": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 0,
+          "init": 47,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 11
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.003190338611602783
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 6.542354822158813e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06219714507460594
+        },
+        {
+          "phase": "text",
+          "seconds": 6.797537207603455e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00016799196600914001
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018656626343727112
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012918006628751755
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.0001726485788822174
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06418250873684883
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0003243573009967804
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.17003179341554642
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0029806531965732574
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 5.772709846496582e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.061829231679439545
+        },
+        {
+          "phase": "text",
+          "seconds": 6.281211972236633e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.0001645982265472412
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018372364342212677
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012782823294401169
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.0001659579575061798
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05417060852050781
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00023140013217926025
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.15859385579824448
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007469587028026581,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.01052068267017603,
+            0.0032495532650500536,
+            0.011631293222308159,
+            0.004837150685489178,
+            0.004227186553180218,
+            0.009638754650950432
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.013918604701757431,
+          "draft_seconds": 0.0017772577702999115,
+          "pack_seconds": 4.248321056365967e-05,
+          "verify_seconds": 0.011729296296834946,
+          "accept_commit_seconds": 0.0003695674240589142,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.004175892565399408,
+            0.007296005263924599,
+            0.006899918895214796,
+            0.009602922946214676,
+            0.012243757955729961,
+            0.016706058755517006
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012785762548446655,
+          "draft_seconds": 0.0016180798411369324,
+          "pack_seconds": 4.190206527709961e-05,
+          "verify_seconds": 0.010807927697896957,
+          "accept_commit_seconds": 0.0003178529441356659,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 0,
+          "child": 0,
+          "g": 2,
+          "scores": [
+            0.013655235059559345,
+            0.014193879440426826,
+            0.039124805480241776,
+            0.03981699049472809,
+            0.03878803551197052,
+            0.041668012738227844
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012504041194915771,
+          "draft_seconds": 0.0015248842537403107,
+          "pack_seconds": 4.131346940994263e-05,
+          "verify_seconds": 0.01062634214758873,
+          "accept_commit_seconds": 0.00031150132417678833,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007394954562187195,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05417060852050781,
+        "T_round_sum": 0.05407295003533363,
+        "T_boundary": 9.765848517417908e-05,
+        "C_update": 0.005417060852050781
+      },
+      "cache_before": {
+        "hits": 1157,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1159,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 3,
+      "fixture": {
+        "file": "DEV-task00-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 0,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 8
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.003301795572042465
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 6.538257002830505e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06245598942041397
+        },
+        {
+          "phase": "text",
+          "seconds": 6.15827739238739e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.0001734122633934021
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018624182790517807
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012942910194396973
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.000170927494764328
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.062383294105529785
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00024203211069107056
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16849341988563538
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.003040943294763565
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 5.957856774330139e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06206441670656204
+        },
+        {
+          "phase": "text",
+          "seconds": 6.272271275520325e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00016909465193748474
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018391866236925125
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.01317097619175911
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00017332658171653748
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06109866872429848
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0002416074275970459
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.1664096601307392
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.0077086687088012695,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.010305387899279594,
+            0.003597712842747569,
+            0.011868986301124096,
+            0.005016041919589043,
+            0.004585975781083107,
+            0.009750458411872387
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.013408064842224121,
+          "draft_seconds": 0.0018145479261875153,
+          "pack_seconds": 4.194304347038269e-05,
+          "verify_seconds": 0.011199813336133957,
+          "accept_commit_seconds": 0.00035176053643226624,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.004263578914105892,
+            0.00745095731690526,
+            0.008836241438984871,
+            0.011219353415071964,
+            0.01342589408159256,
+            0.017688162624835968
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012743398547172546,
+          "draft_seconds": 0.0015761181712150574,
+          "pack_seconds": 4.0903687477111816e-05,
+          "verify_seconds": 0.010803062468767166,
+          "accept_commit_seconds": 0.00032331421971321106,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 0,
+          "parent": 1,
+          "child": 0,
+          "g": 1,
+          "scores": [
+            0.01597924530506134,
+            0.016103636473417282,
+            0.04207369685173035,
+            0.04337367042899132,
+            0.0404212661087513,
+            0.04405220225453377
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012498807162046432,
+          "draft_seconds": 0.00158672034740448,
+          "pack_seconds": 4.1678547859191895e-05,
+          "verify_seconds": 0.010564107447862625,
+          "accept_commit_seconds": 0.0003063008189201355,
+          "synchronized": true
+        },
+        {
+          "step": 8,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007452588528394699,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007186118513345718,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.06109866872429848,
+        "T_round_sum": 0.06099764630198479,
+        "T_boundary": 0.00010102242231369019,
+        "C_update": 0.006109866872429847
+      },
+      "cache_before": {
+        "hits": 1159,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1161,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 6,
+      "fixture": {
+        "file": "DEV-task01-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl next to the ramekin and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 1,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 11
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0032661929726600647
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 0.0001856088638305664
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06332424283027649
+        },
+        {
+          "phase": "text",
+          "seconds": 7.488206028938293e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00018813461065292358
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01853981241583824
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.01295248419046402
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00018307194113731384
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06238630414009094
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00026047229766845703
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.17003793641924858
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.003086548298597336
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 6.536394357681274e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06366801634430885
+        },
+        {
+          "phase": "text",
+          "seconds": 6.697326898574829e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00017564743757247925
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01852022111415863
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012851960957050323
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00016822665929794312
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.053875308483839035
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0002267397940158844
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16084552556276321
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007735628634691238,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.010187074542045593,
+            0.0028500440530478954,
+            0.01184766460210085,
+            0.0048072440549731255,
+            0.004056548234075308,
+            0.008968377485871315
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01338612288236618,
+          "draft_seconds": 0.0018073990941047668,
+          "pack_seconds": 4.338100552558899e-05,
+          "verify_seconds": 0.011188872158527374,
+          "accept_commit_seconds": 0.0003464706242084503,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.0038585602305829525,
+            0.007558304816484451,
+            0.006893702782690525,
+            0.009728449396789074,
+            0.012385344132781029,
+            0.01650312729179859
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012721214443445206,
+          "draft_seconds": 0.0015707127749919891,
+          "pack_seconds": 4.1190534830093384e-05,
+          "verify_seconds": 0.010786853730678558,
+          "accept_commit_seconds": 0.0003224574029445648,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 1,
+          "child": 1,
+          "g": 2,
+          "scores": [
+            0.015277224592864513,
+            0.014296788722276688,
+            0.04395037889480591,
+            0.036711957305669785,
+            0.04188860207796097,
+            0.03860544413328171
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012470930814743042,
+          "draft_seconds": 0.0015651844441890717,
+          "pack_seconds": 4.094839096069336e-05,
+          "verify_seconds": 0.010551322251558304,
+          "accept_commit_seconds": 0.00031347572803497314,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007471989840269089,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.053875308483839035,
+        "T_round_sum": 0.053785886615514755,
+        "T_boundary": 8.942186832427979e-05,
+        "C_update": 0.005387530848383904
+      },
+      "cache_before": {
+        "hits": 1161,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1163,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 9,
+      "fixture": {
+        "file": "DEV-task02-init47-T-chunk-000.npz",
+        "task_description": "pick up the black bowl from table center and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 2,
+          "init": 47,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 10
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.003176659345626831
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 5.8181583881378174e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06208515912294388
+        },
+        {
+          "phase": "text",
+          "seconds": 6.615743041038513e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00016278773546218872
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018415890634059906
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012885525822639465
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.0001663416624069214
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.062298860400915146
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0002571605145931244
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16792521253228188
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0030595622956752777
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 6.006285548210144e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06282702833414078
+        },
+        {
+          "phase": "text",
+          "seconds": 6.927177309989929e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.0001827739179134369
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018462464213371277
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.0129772387444973
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00017901510000228882
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05548921227455139
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00024323910474777222
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.1617312841117382
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007935982197523117,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.010009602643549442,
+            0.0033944081515073776,
+            0.011276944540441036,
+            0.004846665542572737,
+            0.004417604301124811,
+            0.009848356246948242
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.013660281896591187,
+          "draft_seconds": 0.0018736086785793304,
+          "pack_seconds": 4.242733120918274e-05,
+          "verify_seconds": 0.011369019746780396,
+          "accept_commit_seconds": 0.00037522614002227783,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.003709243144840002,
+            0.0075828260742127895,
+            0.006709200795739889,
+            0.009724768809974194,
+            0.013027331791818142,
+            0.016990434378385544
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.013160526752471924,
+          "draft_seconds": 0.0016539953649044037,
+          "pack_seconds": 4.3004751205444336e-05,
+          "verify_seconds": 0.011124104261398315,
+          "accept_commit_seconds": 0.0003394223749637604,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 1,
+          "child": 0,
+          "g": 2,
+          "scores": [
+            0.01591387204825878,
+            0.014547068625688553,
+            0.037598080933094025,
+            0.03624938428401947,
+            0.03505127504467964,
+            0.036309171468019485
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012946601957082748,
+          "draft_seconds": 0.0016214102506637573,
+          "pack_seconds": 4.268065094947815e-05,
+          "verify_seconds": 0.010953523218631744,
+          "accept_commit_seconds": 0.00032898783683776855,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.0076885223388671875,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05548921227455139,
+        "T_round_sum": 0.05539191514253616,
+        "T_boundary": 9.729713201522827e-05,
+        "C_update": 0.005548921227455139
+      },
+      "cache_before": {
+        "hits": 1163,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1165,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 12,
+      "fixture": {
+        "file": "DEV-task02-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl from table center and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 2,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 9
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.003255058079957962
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 6.69136643409729e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06387600675225258
+        },
+        {
+          "phase": "text",
+          "seconds": 7.102638483047485e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.0001917220652103424
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01856161281466484
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.013006508350372314
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00020526722073554993
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06249173730611801
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00027049705386161804
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.1703079529106617
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0031167082488536835
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 6.156787276268005e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06218455731868744
+        },
+        {
+          "phase": "text",
+          "seconds": 7.332861423492432e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00019120052456855774
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.019291505217552185
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012998376041650772
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00021889805793762207
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05602067708969116
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00025169551372528076
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16277310624718666
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007988754659891129,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.00990158598870039,
+            0.00293020810931921,
+            0.011716083623468876,
+            0.004723923746496439,
+            0.0036951033398509026,
+            0.008641405962407589
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.013779647648334503,
+          "draft_seconds": 0.0019574128091335297,
+          "pack_seconds": 4.198402166366577e-05,
+          "verify_seconds": 0.011374056339263916,
+          "accept_commit_seconds": 0.0004061944782733917,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.004305346868932247,
+            0.007033251691609621,
+            0.006403468083590269,
+            0.00902467966079712,
+            0.012363606132566929,
+            0.01618144102394581
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.013205472379922867,
+          "draft_seconds": 0.0016975216567516327,
+          "pack_seconds": 4.3705105781555176e-05,
+          "verify_seconds": 0.011062350124120712,
+          "accept_commit_seconds": 0.0004018954932689667,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 1,
+          "child": 0,
+          "g": 2,
+          "scores": [
+            0.01423716638237238,
+            0.012648760341107845,
+            0.038478538393974304,
+            0.03691544383764267,
+            0.03741224482655525,
+            0.03787128999829292
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.013174999505281448,
+          "draft_seconds": 0.0016876384615898132,
+          "pack_seconds": 4.391372203826904e-05,
+          "verify_seconds": 0.011059001088142395,
+          "accept_commit_seconds": 0.00038444623351097107,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.00777076929807663,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05602067708969116,
+        "T_round_sum": 0.05591964349150658,
+        "T_boundary": 0.00010103359818458557,
+        "C_update": 0.0056020677089691166
+      },
+      "cache_before": {
+        "hits": 1165,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1167,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 15,
+      "fixture": {
+        "file": "DEV-task03-init47-T-chunk-000.npz",
+        "task_description": "pick up the black bowl on the cookie box and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 3,
+          "init": 47,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 11
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.003296874463558197
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 6.622448563575745e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06224857270717621
+        },
+        {
+          "phase": "text",
+          "seconds": 7.114186882972717e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00018698349595069885
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018496062606573105
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.01297726109623909
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.0001818351447582245
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06240711361169815
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00025700032711029053
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.1683768294751644
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0028531216084957123
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 5.739927291870117e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.062017396092414856
+        },
+        {
+          "phase": "text",
+          "seconds": 6.514415144920349e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00016811490058898926
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01851143315434456
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.01277359202504158
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00016644969582557678
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06010076031088829
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0002011805772781372
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16490868106484413
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007340367883443832,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.009708301164209843,
+            0.0030760644003748894,
+            0.01106332615017891,
+            0.004528157413005829,
+            0.004384197760373354,
+            0.010112719610333443
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01328032836318016,
+          "draft_seconds": 0.0017826370894908905,
+          "pack_seconds": 4.237517714500427e-05,
+          "verify_seconds": 0.01111941784620285,
+          "accept_commit_seconds": 0.0003358982503414154,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.004522890318185091,
+            0.007484933361411095,
+            0.007235122378915548,
+            0.009976916015148163,
+            0.012798616662621498,
+            0.016657643020153046
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012731503695249557,
+          "draft_seconds": 0.0015700049698352814,
+          "pack_seconds": 4.198402166366577e-05,
+          "verify_seconds": 0.010800253599882126,
+          "accept_commit_seconds": 0.0003192611038684845,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 0,
+          "parent": 0,
+          "child": 1,
+          "g": 1,
+          "scores": [
+            0.016066094860434532,
+            0.01576721854507923,
+            0.03752695396542549,
+            0.03504300117492676,
+            0.03605864569544792,
+            0.03631206601858139
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012440767139196396,
+          "draft_seconds": 0.0015542618930339813,
+          "pack_seconds": 5.008280277252197e-05,
+          "verify_seconds": 0.010526776313781738,
+          "accept_commit_seconds": 0.0003096461296081543,
+          "synchronized": true
+        },
+        {
+          "step": 8,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.0071906037628650665,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007019177079200745,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.06010076031088829,
+        "T_round_sum": 0.06000274792313576,
+        "T_boundary": 9.801238775253296e-05,
+        "C_update": 0.006010076031088829
+      },
+      "cache_before": {
+        "hits": 1167,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1169,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 18,
+      "fixture": {
+        "file": "DEV-task03-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl on the cookie box and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 3,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 9
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0029771365225315094
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 5.511939525604248e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06177549809217453
+        },
+        {
+          "phase": "text",
+          "seconds": 6.084516644477844e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00012953579425811768
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01846836507320404
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012679215520620346
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00015318766236305237
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.061546728014945984
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00017121806740760803
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16585763916373253
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.002816271036863327
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.906579852104187e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06169518455862999
+        },
+        {
+          "phase": "text",
+          "seconds": 5.424767732620239e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011604279279708862
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018360216170549393
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012567657977342606
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00014486908912658691
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.051579799503088
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001498013734817505
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.15498317778110504
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007052909582853317,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.009662722237408161,
+            0.0029283349867910147,
+            0.011431562714278698,
+            0.004596160724759102,
+            0.004562273155897856,
+            0.010394388809800148
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012515224516391754,
+          "draft_seconds": 0.0016312599182128906,
+          "pack_seconds": 3.846362233161926e-05,
+          "verify_seconds": 0.0105368010699749,
+          "accept_commit_seconds": 0.00030869990587234497,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.003648704383522272,
+            0.00725971907377243,
+            0.007118358742445707,
+            0.009713560342788696,
+            0.012254812754690647,
+            0.016130562871694565
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01242375373840332,
+          "draft_seconds": 0.0015486553311347961,
+          "pack_seconds": 4.083290696144104e-05,
+          "verify_seconds": 0.010523892939090729,
+          "accept_commit_seconds": 0.00031037256121635437,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 1,
+          "child": 0,
+          "g": 2,
+          "scores": [
+            0.016160396859049797,
+            0.014971042051911354,
+            0.04013565182685852,
+            0.0375480055809021,
+            0.03707849606871605,
+            0.03806758299469948
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.0124276801943779,
+          "draft_seconds": 0.0015560165047645569,
+          "pack_seconds": 4.0706247091293335e-05,
+          "verify_seconds": 0.010523214936256409,
+          "accept_commit_seconds": 0.00030774250626564026,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007077377289533615,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.051579799503088,
+        "T_round_sum": 0.051496945321559906,
+        "T_boundary": 8.285418152809143e-05,
+        "C_update": 0.0051579799503088
+      },
+      "cache_before": {
+        "hits": 1169,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1171,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 21,
+      "fixture": {
+        "file": "DEV-task04-init47-T-chunk-000.npz",
+        "task_description": "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 4,
+          "init": 47,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 13
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0028033889830112457
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.739314317703247e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.061027590185403824
+        },
+        {
+          "phase": "text",
+          "seconds": 6.131455302238464e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011716410517692566
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01835113763809204
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012513179332017899
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013904273509979248
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.0615573525428772
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001457594335079193
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16393978521227837
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027531124651432037
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.571303725242615e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.061365026980638504
+        },
+        {
+          "phase": "text",
+          "seconds": 5.296245217323303e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00012556463479995728
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01857706531882286
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012497376650571823
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00014564022421836853
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05846723914146423
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014193356037139893
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16145089641213417
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.0070272572338581085,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.009404413402080536,
+            0.0033557654824107885,
+            0.011040421202778816,
+            0.004913534503430128,
+            0.004954125266522169,
+            0.010298472829163074
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012495417147874832,
+          "draft_seconds": 0.001630384474992752,
+          "pack_seconds": 3.9264559745788574e-05,
+          "verify_seconds": 0.010513737797737122,
+          "accept_commit_seconds": 0.0003120303153991699,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.003915945999324322,
+            0.00709144352003932,
+            0.007054994348436594,
+            0.009417588822543621,
+            0.011921037919819355,
+            0.016241256147623062
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012411598116159439,
+          "draft_seconds": 0.0015639923512935638,
+          "pack_seconds": 4.149600863456726e-05,
+          "verify_seconds": 0.01049106940627098,
+          "accept_commit_seconds": 0.00031504034996032715,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 0,
+          "parent": 1,
+          "child": 1,
+          "g": 1,
+          "scores": [
+            0.01649305783212185,
+            0.015584982000291348,
+            0.044683974236249924,
+            0.04057697951793671,
+            0.0399128757417202,
+            0.03931081295013428
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012418404221534729,
+          "draft_seconds": 0.0015752948820590973,
+          "pack_seconds": 4.116445779800415e-05,
+          "verify_seconds": 0.01049114391207695,
+          "accept_commit_seconds": 0.0003108009696006775,
+          "synchronized": true
+        },
+        {
+          "step": 8,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007028751075267792,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.006995968520641327,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05846723914146423,
+        "T_round_sum": 0.05837739631533623,
+        "T_boundary": 8.984282612800598e-05,
+        "C_update": 0.005846723914146423
+      },
+      "cache_before": {
+        "hits": 1171,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1173,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 24,
+      "fixture": {
+        "file": "DEV-task04-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 4,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 13
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027700476348400116
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.6059489250183105e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06132035329937935
+        },
+        {
+          "phase": "text",
+          "seconds": 5.377829074859619e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011270493268966675
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018480248749256134
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012499984353780746
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.0001426003873348236
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06147787347435951
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001451745629310608
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16415005177259445
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.002743098884820938
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.485994577407837e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06123422458767891
+        },
+        {
+          "phase": "text",
+          "seconds": 5.337223410606384e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011526420712471008
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018563345074653625
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012497209012508392
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013887882232666016
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05167042836546898
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014344975352287292
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.15437915548682213
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007030803710222244,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.009617715142667294,
+            0.0035448658745735884,
+            0.010847143828868866,
+            0.004627680405974388,
+            0.004556751810014248,
+            0.010100014507770538
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012582257390022278,
+          "draft_seconds": 0.0016152672469615936,
+          "pack_seconds": 3.960728645324707e-05,
+          "verify_seconds": 0.0106075219810009,
+          "accept_commit_seconds": 0.00031986087560653687,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.0037645359989255667,
+            0.007457069121301174,
+            0.006631847936660051,
+            0.009038911201059818,
+            0.01159196812659502,
+            0.015934744849801064
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01245967298746109,
+          "draft_seconds": 0.001594938337802887,
+          "pack_seconds": 4.218146204948425e-05,
+          "verify_seconds": 0.010501272976398468,
+          "accept_commit_seconds": 0.00032128021121025085,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 1,
+          "child": 0,
+          "g": 2,
+          "scores": [
+            0.01608024165034294,
+            0.014935581013560295,
+            0.04024830460548401,
+            0.037159308791160583,
+            0.03680148348212242,
+            0.03891278803348541
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012423072010278702,
+          "draft_seconds": 0.0015685856342315674,
+          "pack_seconds": 4.021450877189636e-05,
+          "verify_seconds": 0.01050756499171257,
+          "accept_commit_seconds": 0.00030670687556266785,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007091905921697617,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05167042836546898,
+        "T_round_sum": 0.05158771201968193,
+        "T_boundary": 8.271634578704834e-05,
+        "C_update": 0.005167042836546898
+      },
+      "cache_before": {
+        "hits": 1173,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1175,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 27,
+      "fixture": {
+        "file": "DEV-task05-init47-T-chunk-000.npz",
+        "task_description": "pick up the black bowl on the ramekin and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 5,
+          "init": 47,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 9
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027716681361198425
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.588812589645386e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06113874167203903
+        },
+        {
+          "phase": "text",
+          "seconds": 5.4877251386642456e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011652708053588867
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018294688314199448
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012482527643442154
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00014003366231918335
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06151651591062546
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014457106590270996
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16384245827794075
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027606189250946045
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.556402564048767e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06100669875741005
+        },
+        {
+          "phase": "text",
+          "seconds": 5.393475294113159e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011537596583366394
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01839791238307953
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.01246829703450203
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013995543122291565
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05842375382781029
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001417100429534912
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16074375808238983
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007040664553642273,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.0100548742339015,
+            0.003664609743282199,
+            0.01178907323628664,
+            0.005622982978820801,
+            0.005671076010912657,
+            0.01156862173229456
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012446999549865723,
+          "draft_seconds": 0.0016079433262348175,
+          "pack_seconds": 3.941729664802551e-05,
+          "verify_seconds": 0.010487128049135208,
+          "accept_commit_seconds": 0.0003125108778476715,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.004389897920191288,
+            0.008118866942822933,
+            0.010147226974368095,
+            0.011634026654064655,
+            0.014489091001451015,
+            0.018391329795122147
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012413937598466873,
+          "draft_seconds": 0.0015619099140167236,
+          "pack_seconds": 4.06801700592041e-05,
+          "verify_seconds": 0.010509062558412552,
+          "accept_commit_seconds": 0.00030228495597839355,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 0,
+          "parent": 0,
+          "child": 0,
+          "g": 1,
+          "scores": [
+            0.028943389654159546,
+            0.016805198043584824,
+            0.07028873264789581,
+            0.08133433014154434,
+            0.10172446817159653,
+            0.1573396623134613
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012396357953548431,
+          "draft_seconds": 0.0015506632626056671,
+          "pack_seconds": 4.050135612487793e-05,
+          "verify_seconds": 0.010502181947231293,
+          "accept_commit_seconds": 0.00030301138758659363,
+          "synchronized": true
+        },
+        {
+          "step": 8,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007052574306726456,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.006982143968343735,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05842375382781029,
+        "T_round_sum": 0.05833267793059349,
+        "T_boundary": 9.107589721679688e-05,
+        "C_update": 0.005842375382781029
+      },
+      "cache_before": {
+        "hits": 1175,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1177,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 30,
+      "fixture": {
+        "file": "DEV-task05-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl on the ramekin and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 5,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 9
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027661584317684174
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.6215951442718506e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.0616847462952137
+        },
+        {
+          "phase": "text",
+          "seconds": 5.4780393838882446e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011664628982543945
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018413864076137543
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012493744492530823
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.0001419074833393097
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06155211851000786
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014335662126541138
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16459627822041512
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027021989226341248
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.495680332183838e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06097491458058357
+        },
+        {
+          "phase": "text",
+          "seconds": 5.362182855606079e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.0001124069094657898
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018415793776512146
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012490998953580856
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00014108791947364807
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05854801833629608
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014411285519599915
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16078972816467285
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007021747529506683,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.009780867025256157,
+            0.0036010046023875475,
+            0.011080988682806492,
+            0.005723251029849052,
+            0.006327387876808643,
+            0.013203682377934456
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01254437118768692,
+          "draft_seconds": 0.0016309581696987152,
+          "pack_seconds": 3.978610038757324e-05,
+          "verify_seconds": 0.01055905595421791,
+          "accept_commit_seconds": 0.00031457096338272095,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.004026517271995544,
+            0.008826387114822865,
+            0.00800982303917408,
+            0.011491367593407631,
+            0.014969205483794212,
+            0.02045252174139023
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012445680797100067,
+          "draft_seconds": 0.0015667900443077087,
+          "pack_seconds": 4.030391573905945e-05,
+          "verify_seconds": 0.010522454977035522,
+          "accept_commit_seconds": 0.0003161318600177765,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 0,
+          "parent": 1,
+          "child": 0,
+          "g": 1,
+          "scores": [
+            0.016994193196296692,
+            0.016585957258939743,
+            0.04638789966702461,
+            0.04337713122367859,
+            0.04007468372583389,
+            0.04491389915347099
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01246129721403122,
+          "draft_seconds": 0.001575075089931488,
+          "pack_seconds": 4.190951585769653e-05,
+          "verify_seconds": 0.010538455098867416,
+          "accept_commit_seconds": 0.00030585750937461853,
+          "synchronized": true
+        },
+        {
+          "step": 8,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.00702584907412529,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.0069587938487529755,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05854801833629608,
+        "T_round_sum": 0.058457739651203156,
+        "T_boundary": 9.027868509292603e-05,
+        "C_update": 0.005854801833629608
+      },
+      "cache_before": {
+        "hits": 1177,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1179,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 33,
+      "fixture": {
+        "file": "DEV-task06-init47-T-chunk-000.npz",
+        "task_description": "pick up the black bowl next to the cookie box and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 6,
+          "init": 47,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 11
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.002762921154499054
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.577264189720154e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06162259727716446
+        },
+        {
+          "phase": "text",
+          "seconds": 5.695223808288574e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011539831757545471
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018401119858026505
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.0124938003718853
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013854727149009705
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.061541520059108734
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001427978277206421
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16441567987203598
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.002759631723165512
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.7441571950912476e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06217430904507637
+        },
+        {
+          "phase": "text",
+          "seconds": 5.492940545082092e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011359155178070068
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018399477005004883
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012486271560192108
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013872236013412476
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.051449548453092575
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014482438564300537
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.15497378259897232
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.0070429109036922455,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.009817914105951786,
+            0.0031788668129593134,
+            0.01124785840511322,
+            0.004975767340511084,
+            0.004756811074912548,
+            0.010394960641860962
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012481819838285446,
+          "draft_seconds": 0.0016384273767471313,
+          "pack_seconds": 3.876909613609314e-05,
+          "verify_seconds": 0.010493665933609009,
+          "accept_commit_seconds": 0.0003109574317932129,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.003944883123040199,
+            0.0074167256243526936,
+            0.007055024616420269,
+            0.009254083968698978,
+            0.012128329835832119,
+            0.01581892929971218
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012373078614473343,
+          "draft_seconds": 0.0015397556126117706,
+          "pack_seconds": 4.127621650695801e-05,
+          "verify_seconds": 0.0104798823595047,
+          "accept_commit_seconds": 0.00031216442584991455,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 1,
+          "child": 0,
+          "g": 2,
+          "scores": [
+            0.01565494015812874,
+            0.014991939067840576,
+            0.03731497377157211,
+            0.03595990687608719,
+            0.03623715415596962,
+            0.03674440085887909
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01238943636417389,
+          "draft_seconds": 0.001535557210445404,
+          "pack_seconds": 3.9950013160705566e-05,
+          "verify_seconds": 0.0104987733066082,
+          "accept_commit_seconds": 0.00031515583395957947,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007075659930706024,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.051449548453092575,
+        "T_round_sum": 0.05136290565133095,
+        "T_boundary": 8.66428017616272e-05,
+        "C_update": 0.005144954845309258
+      },
+      "cache_before": {
+        "hits": 1179,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1181,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 36,
+      "fixture": {
+        "file": "DEV-task06-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl next to the cookie box and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 6,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 10
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.002773132175207138
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.560127854347229e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06127545237541199
+        },
+        {
+          "phase": "text",
+          "seconds": 5.384907126426697e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011400878429412842
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018276110291481018
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012487698346376419
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013783201575279236
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06152225285768509
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001426897943019867
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16395994648337364
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.002707023173570633
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.637986421585083e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.061187341809272766
+        },
+        {
+          "phase": "text",
+          "seconds": 5.367770791053772e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011116638779640198
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01838093250989914
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012481741607189178
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.0001389533281326294
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05152056738734245
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001416131854057312
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.15433921664953232
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.00704207643866539,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.00940077006816864,
+            0.003194831544533372,
+            0.011080116033554077,
+            0.005111026577651501,
+            0.0046167755499482155,
+            0.010496187955141068
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012496240437030792,
+          "draft_seconds": 0.0016245916485786438,
+          "pack_seconds": 3.960728645324707e-05,
+          "verify_seconds": 0.010513614863157272,
+          "accept_commit_seconds": 0.00031842663884162903,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.00391272222623229,
+            0.006940529216080904,
+            0.00731205940246582,
+            0.009722371585667133,
+            0.012542596086859703,
+            0.016545040532946587
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012425597757101059,
+          "draft_seconds": 0.0015682727098464966,
+          "pack_seconds": 4.114583134651184e-05,
+          "verify_seconds": 0.010505691170692444,
+          "accept_commit_seconds": 0.0003104880452156067,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 1,
+          "child": 0,
+          "g": 2,
+          "scores": [
+            0.01605948805809021,
+            0.014760593883693218,
+            0.03491535782814026,
+            0.03389092907309532,
+            0.03294573724269867,
+            0.034183185547590256
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012415077537298203,
+          "draft_seconds": 0.0015562400221824646,
+          "pack_seconds": 4.155933856964111e-05,
+          "verify_seconds": 0.010509982705116272,
+          "accept_commit_seconds": 0.00030729547142982483,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007060311734676361,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05152056738734245,
+        "T_round_sum": 0.051439303904771805,
+        "T_boundary": 8.12634825706482e-05,
+        "C_update": 0.005152056738734245
+      },
+      "cache_before": {
+        "hits": 1181,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1183,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 39,
+      "fixture": {
+        "file": "DEV-task07-init47-T-chunk-000.npz",
+        "task_description": "pick up the black bowl on the stove and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 7,
+          "init": 47,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 11
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027745626866817474
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.4908374547958374e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06124421954154968
+        },
+        {
+          "phase": "text",
+          "seconds": 5.70639967918396e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.0001178346574306488
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018632058054208755
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012493200600147247
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013897567987442017
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06156272813677788
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00013935193419456482
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16442998871207237
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027051232755184174
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.5318156480789185e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.061420466750860214
+        },
+        {
+          "phase": "text",
+          "seconds": 5.7835131883621216e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011613219976425171
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018474411219358444
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012491296976804733
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013483688235282898
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.058482494205236435
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014490261673927307
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16144011542201042
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007028020918369293,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.01003456860780716,
+            0.0030265646055340767,
+            0.012099247425794601,
+            0.004986564163118601,
+            0.004348895978182554,
+            0.010139218531548977
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012482259422540665,
+          "draft_seconds": 0.0016251839697360992,
+          "pack_seconds": 3.987923264503479e-05,
+          "verify_seconds": 0.010502204298973083,
+          "accept_commit_seconds": 0.00031499192118644714,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.0042975046671926975,
+            0.008061512373387814,
+            0.008196561597287655,
+            0.011314944364130497,
+            0.013569983653724194,
+            0.020279396325349808
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012451179325580597,
+          "draft_seconds": 0.001597721129655838,
+          "pack_seconds": 4.224851727485657e-05,
+          "verify_seconds": 0.010496601462364197,
+          "accept_commit_seconds": 0.00031460821628570557,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 0,
+          "parent": 0,
+          "child": 0,
+          "g": 1,
+          "scores": [
+            0.015481686219573021,
+            0.02520805411040783,
+            0.05923595279455185,
+            0.09924642741680145,
+            0.09099242091178894,
+            0.13196374475955963
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012422002851963043,
+          "draft_seconds": 0.0015728622674942017,
+          "pack_seconds": 4.0568411350250244e-05,
+          "verify_seconds": 0.010497555136680603,
+          "accept_commit_seconds": 0.0003110170364379883,
+          "synchronized": true
+        },
+        {
+          "step": 8,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007036436349153519,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.006971966475248337,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.058482494205236435,
+        "T_round_sum": 0.058391865342855453,
+        "T_boundary": 9.062886238098145e-05,
+        "C_update": 0.0058482494205236435
+      },
+      "cache_before": {
+        "hits": 1183,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1185,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 42,
+      "fixture": {
+        "file": "DEV-task07-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl on the stove and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 7,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 12
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027318112552165985
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.6215951442718506e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06121450662612915
+        },
+        {
+          "phase": "text",
+          "seconds": 5.500391125679016e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.0001166313886642456
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018163498491048813
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012484218925237656
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00014054402709007263
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06154019758105278
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014578551054000854
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16379709541797638
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027118735015392303
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.4599175453186035e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06133512407541275
+        },
+        {
+          "phase": "text",
+          "seconds": 5.7462602853775024e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011761859059333801
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01870068535208702
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012514673173427582
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013976916670799255
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05860558897256851
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014899298548698425
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16186918318271637
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007176581770181656,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.010410962626338005,
+            0.003426514333114028,
+            0.012446021661162376,
+            0.005464355926960707,
+            0.004837025422602892,
+            0.009826313704252243
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012539289891719818,
+          "draft_seconds": 0.0016417019069194794,
+          "pack_seconds": 3.9171427488327026e-05,
+          "verify_seconds": 0.010548055171966553,
+          "accept_commit_seconds": 0.000310361385345459,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.004245911259204149,
+            0.007589076645672321,
+            0.0075631579384207726,
+            0.010697895660996437,
+            0.01319359801709652,
+            0.01848669908940792
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012402161955833435,
+          "draft_seconds": 0.0015556514263153076,
+          "pack_seconds": 4.147365689277649e-05,
+          "verify_seconds": 0.010492593050003052,
+          "accept_commit_seconds": 0.0003124438226222992,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 0,
+          "parent": 1,
+          "child": 1,
+          "g": 1,
+          "scores": [
+            0.021563392132520676,
+            0.01830686442553997,
+            0.069276362657547,
+            0.04900035634636879,
+            0.06153621897101402,
+            0.043796125799417496
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01239699125289917,
+          "draft_seconds": 0.00156431645154953,
+          "pack_seconds": 4.0333718061447144e-05,
+          "verify_seconds": 0.010484300553798676,
+          "accept_commit_seconds": 0.0003080405294895172,
+          "synchronized": true
+        },
+        {
+          "step": 8,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007029041647911072,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.006968159228563309,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05860558897256851,
+        "T_round_sum": 0.05851222574710846,
+        "T_boundary": 9.336322546005249e-05,
+        "C_update": 0.005860558897256851
+      },
+      "cache_before": {
+        "hits": 1185,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1187,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 45,
+      "fixture": {
+        "file": "DEV-task08-init47-T-chunk-000.npz",
+        "task_description": "pick up the black bowl next to the plate and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 8,
+          "init": 47,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 9
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027514994144439697
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.592910408973694e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.061674345284700394
+        },
+        {
+          "phase": "text",
+          "seconds": 5.8591365814208984e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011738017201423645
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01836053654551506
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012486424297094345
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013879314064979553
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.061520036309957504
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014324486255645752
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16449958458542824
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0026825852692127228
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.425644874572754e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06097332388162613
+        },
+        {
+          "phase": "text",
+          "seconds": 5.595758557319641e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011752545833587646
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018344130367040634
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012485098093748093
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.000138942152261734
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.051500678062438965
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001437552273273468
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.15359489992260933
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007054433226585388,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.009968996979296207,
+            0.0031927688978612423,
+            0.011738203465938568,
+            0.005316341295838356,
+            0.004668536130338907,
+            0.009078401140868664
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01248525083065033,
+          "draft_seconds": 0.0016435086727142334,
+          "pack_seconds": 3.987923264503479e-05,
+          "verify_seconds": 0.010496869683265686,
+          "accept_commit_seconds": 0.00030499324202537537,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.0038173655048012733,
+            0.007367426995187998,
+            0.007730437908321619,
+            0.010440467856824398,
+            0.01307139452546835,
+            0.017260130494832993
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012393712997436523,
+          "draft_seconds": 0.0015529580414295197,
+          "pack_seconds": 4.1190534830093384e-05,
+          "verify_seconds": 0.010496094822883606,
+          "accept_commit_seconds": 0.00030346959829330444,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 1,
+          "child": 0,
+          "g": 2,
+          "scores": [
+            0.014157095924019814,
+            0.01409437321126461,
+            0.04094942286610603,
+            0.03989521414041519,
+            0.039622291922569275,
+            0.039965029805898666
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012415315955877304,
+          "draft_seconds": 0.0015564784407615662,
+          "pack_seconds": 4.101172089576721e-05,
+          "verify_seconds": 0.01050252839922905,
+          "accept_commit_seconds": 0.000315297394990921,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007072180509567261,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.051500678062438965,
+        "T_round_sum": 0.051420893520116806,
+        "T_boundary": 7.978454232215881e-05,
+        "C_update": 0.005150067806243897
+      },
+      "cache_before": {
+        "hits": 1187,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1189,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 48,
+      "fixture": {
+        "file": "DEV-task08-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl next to the plate and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 8,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 9
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027193278074264526
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.497542977333069e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06146509200334549
+        },
+        {
+          "phase": "text",
+          "seconds": 5.299970507621765e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011408701539039612
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01848132535815239
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012495018541812897
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013919919729232788
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.061533745378255844
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001452900469303131
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16432958841323853
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.002699587494134903
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.662945866584778e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06155157834291458
+        },
+        {
+          "phase": "text",
+          "seconds": 5.5167824029922485e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.0001158006489276886
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018381766974925995
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012470562011003494
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013657286763191223
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.051519766449928284
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001394711434841156
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.1543465368449688
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.00704566016793251,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.00956641137599945,
+            0.0034267553128302097,
+            0.011324078775942326,
+            0.00558736827224493,
+            0.005150426644831896,
+            0.010132011026144028
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012487351894378662,
+          "draft_seconds": 0.0016270019114017487,
+          "pack_seconds": 3.870949149131775e-05,
+          "verify_seconds": 0.01050836592912674,
+          "accept_commit_seconds": 0.0003132745623588562,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.004285161849111319,
+            0.0074310763739049435,
+            0.006939881481230259,
+            0.009748588316142559,
+            0.012860069051384926,
+            0.017067313194274902
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012441050261259079,
+          "draft_seconds": 0.0015721842646598816,
+          "pack_seconds": 4.2047351598739624e-05,
+          "verify_seconds": 0.01052064448595047,
+          "accept_commit_seconds": 0.0003061741590499878,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 1,
+          "parent": 0,
+          "child": 0,
+          "g": 2,
+          "scores": [
+            0.012043122202157974,
+            0.012257811613380909,
+            0.03481687232851982,
+            0.034953415393829346,
+            0.03647705540060997,
+            0.03882762789726257
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012377742677927017,
+          "draft_seconds": 0.0015440285205841064,
+          "pack_seconds": 4.069134593009949e-05,
+          "verify_seconds": 0.010489299893379211,
+          "accept_commit_seconds": 0.00030372291803359985,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007082417607307434,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.051519766449928284,
+        "T_round_sum": 0.0514342226088047,
+        "T_boundary": 8.554384112358093e-05,
+        "C_update": 0.005151976644992828
+      },
+      "cache_before": {
+        "hits": 1189,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1191,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 51,
+      "fixture": {
+        "file": "DEV-task09-init47-T-chunk-000.npz",
+        "task_description": "pick up the black bowl on the wooden cabinet and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 9,
+          "init": 47,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 11
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027423836290836334
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.533305764198303e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06131725758314133
+        },
+        {
+          "phase": "text",
+          "seconds": 5.329400300979614e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011221691966056824
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018372826278209686
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012481164187192917
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00014140456914901733
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06153303384780884
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014552101492881775
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16415242478251457
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.002712089568376541
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.525482654571533e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06142347306013107
+        },
+        {
+          "phase": "text",
+          "seconds": 5.360320210456848e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011199712753295898
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01837187632918358
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012464728206396103
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.0001396462321281433
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.0584939680993557
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014505907893180847
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16123509407043457
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007037565112113953,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.009592453949153423,
+            0.0035354411229491234,
+            0.011119759641587734,
+            0.0053345938213169575,
+            0.005490608047693968,
+            0.011263171210885048
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012482576072216034,
+          "draft_seconds": 0.0016330666840076447,
+          "pack_seconds": 3.8776546716690063e-05,
+          "verify_seconds": 0.010496079921722412,
+          "accept_commit_seconds": 0.0003146529197692871,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.00406218133866787,
+            0.00815182738006115,
+            0.007946689613163471,
+            0.010688572190701962,
+            0.014355907216668129,
+            0.018960444256663322
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012440592050552368,
+          "draft_seconds": 0.001577913761138916,
+          "pack_seconds": 4.186108708381653e-05,
+          "verify_seconds": 0.010514415800571442,
+          "accept_commit_seconds": 0.00030640140175819397,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 0,
+          "parent": 1,
+          "child": 0,
+          "g": 1,
+          "scores": [
+            0.01573040895164013,
+            0.015239941887557507,
+            0.04074123874306679,
+            0.040404729545116425,
+            0.03725288063287735,
+            0.03931497037410736
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012403342872858047,
+          "draft_seconds": 0.00157247856259346,
+          "pack_seconds": 4.0881335735321045e-05,
+          "verify_seconds": 0.010489311069250107,
+          "accept_commit_seconds": 0.00030067190527915955,
+          "synchronized": true
+        },
+        {
+          "step": 8,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007036618888378143,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007003646343946457,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.0584939680993557,
+        "T_round_sum": 0.058404341340065,
+        "T_boundary": 8.962675929069519e-05,
+        "C_update": 0.00584939680993557
+      },
+      "cache_before": {
+        "hits": 1191,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1193,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    },
+    {
+      "input": 54,
+      "fixture": {
+        "file": "DEV-task09-init48-T-chunk-000.npz",
+        "task_description": "pick up the black bowl on the wooden cabinet and place it on the plate",
+        "identity": {
+          "suite": "libero_spatial",
+          "task": 9,
+          "init": 48,
+          "split": "DEV",
+          "noise_seed": 42,
+          "env_seed": 42,
+          "arm": "T"
+        },
+        "ordinal": 0,
+        "source_success": true,
+        "source_chunks": 12
+      },
+      "T": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.0027588345110416412
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.519522190093994e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06106569245457649
+        },
+        {
+          "phase": "text",
+          "seconds": 5.572289228439331e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011336803436279297
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.018538177013397217
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012477908283472061
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.00013761594891548157
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.06152655929327011
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.00014637038111686707
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.1640753261744976
+        }
+      ],
+      "S": [
+        {
+          "phase": "observation_preprocess",
+          "seconds": 0.002701330929994583
+        },
+        {
+          "phase": "noise_initialization",
+          "seconds": 4.5299530029296875e-05
+        },
+        {
+          "phase": "vae",
+          "seconds": 0.06136642023921013
+        },
+        {
+          "phase": "text",
+          "seconds": 5.2288174629211426e-05
+        },
+        {
+          "phase": "proprio",
+          "seconds": 0.00011302903294563293
+        },
+        {
+          "phase": "visual_prepare",
+          "seconds": 0.01856079325079918
+        },
+        {
+          "phase": "visual_prefill",
+          "seconds": 0.012478403747081757
+        },
+        {
+          "phase": "scheduler_grid",
+          "seconds": 0.0001375451683998108
+        },
+        {
+          "phase": "action_denoise",
+          "seconds": 0.05852251499891281
+        },
+        {
+          "phase": "action_postprocess",
+          "seconds": 0.0001395009458065033
+        },
+        {
+          "phase": "full_policy",
+          "seconds": 0.16148702055215836
+        }
+      ],
+      "rounds": [
+        {
+          "step": 0,
+          "kind": "bootstrap",
+          "g": 1,
+          "seconds": 0.007037505507469177,
+          "synchronized": true
+        },
+        {
+          "step": 1,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 1,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.010177476331591606,
+            0.00343316444195807,
+            0.012025001458823681,
+            0.005384078714996576,
+            0.004972410853952169,
+            0.009725026786327362
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012479521334171295,
+          "draft_seconds": 0.0016314126551151276,
+          "pack_seconds": 3.9499253034591675e-05,
+          "verify_seconds": 0.01049301028251648,
+          "accept_commit_seconds": 0.00031559914350509644,
+          "synchronized": true
+        },
+        {
+          "step": 4,
+          "kind": "tree",
+          "depth": 2,
+          "parent": 0,
+          "child": 0,
+          "g": 3,
+          "scores": [
+            0.004223870113492012,
+            0.007849148474633694,
+            0.007624395657330751,
+            0.010579408146440983,
+            0.013601288199424744,
+            0.018171990290284157
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.01242707297205925,
+          "draft_seconds": 0.0015645287930965424,
+          "pack_seconds": 4.1756778955459595e-05,
+          "verify_seconds": 0.010502848774194717,
+          "accept_commit_seconds": 0.0003179386258125305,
+          "synchronized": true
+        },
+        {
+          "step": 7,
+          "kind": "tree",
+          "depth": 0,
+          "parent": 1,
+          "child": 0,
+          "g": 1,
+          "scores": [
+            0.016165966168045998,
+            0.015563479624688625,
+            0.041718900203704834,
+            0.04141368344426155,
+            0.040953245013952255,
+            0.0431317538022995
+          ],
+          "tau": 0.015135519206523895,
+          "seconds": 0.012489568442106247,
+          "draft_seconds": 0.0015660449862480164,
+          "pack_seconds": 4.1961669921875e-05,
+          "verify_seconds": 0.01057804748415947,
+          "accept_commit_seconds": 0.000303514301776886,
+          "synchronized": true
+        },
+        {
+          "step": 8,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.007021069526672363,
+          "synchronized": true
+        },
+        {
+          "step": 9,
+          "kind": "tail",
+          "g": 1,
+          "seconds": 0.006978679448366165,
+          "synchronized": true
+        }
+      ],
+      "accounting": {
+        "G": 10,
+        "T_denoise": 0.05852251499891281,
+        "T_round_sum": 0.0584334172308445,
+        "T_boundary": 8.90977680683136e-05,
+        "C_update": 0.005852251499891281
+      },
+      "cache_before": {
+        "hits": 1193,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "cache_after": {
+        "hits": 1195,
+        "misses": 10,
+        "disabled_calls": 114,
+        "entries": 10,
+        "capacity": 64,
+        "stored_tensor_bytes": 10487040,
+        "fill_seconds": [
+          0.1833726279437542,
+          0.01924726739525795,
+          0.023581255227327347,
+          0.027239926159381866,
+          0.01949562132358551,
+          0.019385971128940582,
+          0.01914440095424652,
+          0.01939452812075615,
+          0.01949664205312729,
+          0.019492793828248978
+        ],
+        "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+      },
+      "caveat": "Separate synchronized diagnostic; loop excludes noise/grid/output; nested timers not summed."
+    }
+  ],
+  "text_cache": {
+    "hits": 1195,
+    "misses": 10,
+    "disabled_calls": 114,
+    "entries": 10,
+    "capacity": 64,
+    "stored_tensor_bytes": 10487040,
+    "fill_seconds": [
+      0.1833726279437542,
+      0.01924726739525795,
+      0.023581255227327347,
+      0.027239926159381866,
+      0.01949562132358551,
+      0.019385971128940582,
+      0.01914440095424652,
+      0.01939452812075615,
+      0.01949664205312729,
+      0.019492793828248978
+    ],
+    "boundary": "text encoder only; before per-call proprio append; both arms share identical cache"
+  },
+  "common_success_source_groups": 19,
+  "quality_claim": false,
+  "formal_performance_permission": false,
+  "limitations": [
+    "fixed-input cost, not natural episode E2E",
+    "A100 closed-loop cost is concurrent, reported separately"
+  ],
+  "start": 1793064039.6438549,
+  "end": 1793064478.4130414
+}

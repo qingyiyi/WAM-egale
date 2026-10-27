@@ -1,0 +1,130 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1793062615.61787,
+  "pid": 1761388,
+  "episodes": [
+    {
+      "name": "adjust_bottle",
+      "pid": 1761617,
+      "start": 1793062672.025577,
+      "birth_ticks": "766113059",
+      "result": {
+        "task": "adjust_bottle",
+        "status": "PARTIAL_OR_INVALID",
+        "start": 1793062672.4915648,
+        "complete": false,
+        "success": false,
+        "model_seed": 42,
+        "scene_seed_start": 4300000,
+        "instruction_type": "unseen",
+        "config": "demo_clean",
+        "invalid_attempts": [],
+        "error": "OSError('libGL.so.1: cannot open shared object file: No such file or directory')",
+        "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/code/client.py\", line 69, in <module>\n    exec(compile(text,str(source),'exec'),namespace)\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/script/eval_policy.py\", line 8, in <module>\n    from envs import CONFIGS_PATH\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/__init__.py\", line 1, in <module>\n    from .utils import *\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/__init__.py\", line 4, in <module>\n    from .save_file import *\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/save_file.py\", line 8, in <module>\n    import open3d as o3d\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 61, in <module>\n    load_cdll(str(next((Path(__file__).parent / \"cpu\").glob(\"pybind*\"))))\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 38, in load_cdll\n    return CDLL(str(path))\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/ctypes/__init__.py\", line 374, in __init__\n    self._handle = _dlopen(self._name, mode)\nOSError: libGL.so.1: cannot open shared object file: No such file or directory\n",
+        "end": 1793062674.7827585,
+        "wall_seconds": 2.291193962097168
+      },
+      "returncode": 1,
+      "end": 1793062676.0309017
+    },
+    {
+      "name": "beat_block_hammer",
+      "pid": 1761618,
+      "start": 1793062672.0260928,
+      "birth_ticks": "766113059",
+      "result": {
+        "task": "beat_block_hammer",
+        "status": "PARTIAL_OR_INVALID",
+        "start": 1793062672.4814894,
+        "complete": false,
+        "success": false,
+        "model_seed": 42,
+        "scene_seed_start": 4300000,
+        "instruction_type": "unseen",
+        "config": "demo_clean",
+        "invalid_attempts": [],
+        "error": "OSError('libGL.so.1: cannot open shared object file: No such file or directory')",
+        "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/code/client.py\", line 69, in <module>\n    exec(compile(text,str(source),'exec'),namespace)\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/script/eval_policy.py\", line 8, in <module>\n    from envs import CONFIGS_PATH\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/__init__.py\", line 1, in <module>\n    from .utils import *\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/__init__.py\", line 4, in <module>\n    from .save_file import *\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/save_file.py\", line 8, in <module>\n    import open3d as o3d\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 61, in <module>\n    load_cdll(str(next((Path(__file__).parent / \"cpu\").glob(\"pybind*\"))))\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 38, in load_cdll\n    return CDLL(str(path))\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/ctypes/__init__.py\", line 374, in __init__\n    self._handle = _dlopen(self._name, mode)\nOSError: libGL.so.1: cannot open shared object file: No such file or directory\n",
+        "end": 1793062675.218628,
+        "wall_seconds": 2.7371387481689453
+      },
+      "returncode": 1,
+      "end": 1793062676.0308998
+    }
+  ],
+  "updated": 1793062676.4451125,
+  "prior_gpu_seconds": 23786.15971183777,
+  "remaining_gpu_seconds": 62613.84028816223,
+  "gpu_cap_seconds": 5400,
+  "deadline": 1793068015.61787,
+  "server": {
+    "name": "server",
+    "pid": 1761420,
+    "start": 1793062616.0097387,
+    "birth_ticks": "766107457",
+    "returncode": -15,
+    "end": 1793062676.4450555
+  },
+  "error": "AssertionError({'task': 'adjust_bottle', 'status': 'PARTIAL_OR_INVALID', 'start': 1793062672.4915648, 'complete': False, 'success': False, 'model_seed': 42, 'scene_seed_start': 4300000, 'instruction_type': 'unseen', 'config': 'demo_clean', 'invalid_attempts': [], 'error': \"OSError('libGL.so.1: cannot open shared object file: No such file or directory')\", 'traceback': 'Traceback (most recent call last):\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/code/client.py\", line 69, in <module>\\n    exec(compile(text,str(source),\\'exec\\'),namespace)\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/script/eval_policy.py\", line 8, in <module>\\n    from envs import CONFIGS_PATH\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/__init__.py\", line 1, in <module>\\n    from .utils import *\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/__init__.py\", line 4, in <module>\\n    from .save_file import *\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/save_file.py\", line 8, in <module>\\n    import open3d as o3d\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 61, in <module>\\n    load_cdll(str(next((Path(__file__).parent / \"cpu\").glob(\"pybind*\"))))\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 38, in load_cdll\\n    return CDLL(str(path))\\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/ctypes/__init__.py\", line 374, in __init__\\n    self._handle = _dlopen(self._name, mode)\\nOSError: libGL.so.1: cannot open shared object file: No such file or directory\\n', 'end': 1793062674.7827585, 'wall_seconds': 2.291193962097168})",
+  "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/code/supervise.py\", line 75, in <module>\n    for f in as_completed([pool.submit(worker,i) for i in [0,1]]):f.result()\n                                                                  ^^^^^^^^^^\n  File \"/usr/lib/python3.12/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"/usr/lib/python3.12/concurrent/futures/thread.py\", line 58, in run\n    result = self.fn(*self.args, **self.kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/code/supervise.py\", line 49, in worker\n    assert p.returncode==0 and result['complete'],result\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'task': 'adjust_bottle', 'status': 'PARTIAL_OR_INVALID', 'start': 1793062672.4915648, 'complete': False, 'success': False, 'model_seed': 42, 'scene_seed_start': 4300000, 'instruction_type': 'unseen', 'config': 'demo_clean', 'invalid_attempts': [], 'error': \"OSError('libGL.so.1: cannot open shared object file: No such file or directory')\", 'traceback': 'Traceback (most recent call last):\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/code/client.py\", line 69, in <module>\\n    exec(compile(text,str(source),\\'exec\\'),namespace)\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/script/eval_policy.py\", line 8, in <module>\\n    from envs import CONFIGS_PATH\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/__init__.py\", line 1, in <module>\\n    from .utils import *\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/__init__.py\", line 4, in <module>\\n    from .save_file import *\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/save_file.py\", line 8, in <module>\\n    import open3d as o3d\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 61, in <module>\\n    load_cdll(str(next((Path(__file__).parent / \"cpu\").glob(\"pybind*\"))))\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 38, in load_cdll\\n    return CDLL(str(path))\\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/ctypes/__init__.py\", line 374, in __init__\\n    self._handle = _dlopen(self._name, mode)\\nOSError: libGL.so.1: cannot open shared object file: No such file or directory\\n', 'end': 1793062674.7827585, 'wall_seconds': 2.291193962097168}\n",
+  "owned": [
+    {
+      "name": "server",
+      "pid": 1761420,
+      "start": 1793062616.0097387,
+      "birth_ticks": "766107457",
+      "returncode": -15,
+      "end": 1793062676.4450555
+    },
+    {
+      "name": "adjust_bottle",
+      "pid": 1761617,
+      "start": 1793062672.025577,
+      "birth_ticks": "766113059",
+      "result": {
+        "task": "adjust_bottle",
+        "status": "PARTIAL_OR_INVALID",
+        "start": 1793062672.4915648,
+        "complete": false,
+        "success": false,
+        "model_seed": 42,
+        "scene_seed_start": 4300000,
+        "instruction_type": "unseen",
+        "config": "demo_clean",
+        "invalid_attempts": [],
+        "error": "OSError('libGL.so.1: cannot open shared object file: No such file or directory')",
+        "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/code/client.py\", line 69, in <module>\n    exec(compile(text,str(source),'exec'),namespace)\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/script/eval_policy.py\", line 8, in <module>\n    from envs import CONFIGS_PATH\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/__init__.py\", line 1, in <module>\n    from .utils import *\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/__init__.py\", line 4, in <module>\n    from .save_file import *\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/save_file.py\", line 8, in <module>\n    import open3d as o3d\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 61, in <module>\n    load_cdll(str(next((Path(__file__).parent / \"cpu\").glob(\"pybind*\"))))\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 38, in load_cdll\n    return CDLL(str(path))\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/ctypes/__init__.py\", line 374, in __init__\n    self._handle = _dlopen(self._name, mode)\nOSError: libGL.so.1: cannot open shared object file: No such file or directory\n",
+        "end": 1793062674.7827585,
+        "wall_seconds": 2.291193962097168
+      },
+      "returncode": 1,
+      "end": 1793062676.0309017
+    },
+    {
+      "name": "beat_block_hammer",
+      "pid": 1761618,
+      "start": 1793062672.0260928,
+      "birth_ticks": "766113059",
+      "result": {
+        "task": "beat_block_hammer",
+        "status": "PARTIAL_OR_INVALID",
+        "start": 1793062672.4814894,
+        "complete": false,
+        "success": false,
+        "model_seed": 42,
+        "scene_seed_start": 4300000,
+        "instruction_type": "unseen",
+        "config": "demo_clean",
+        "invalid_attempts": [],
+        "error": "OSError('libGL.so.1: cannot open shared object file: No such file or directory')",
+        "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/code/client.py\", line 69, in <module>\n    exec(compile(text,str(source),'exec'),namespace)\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/script/eval_policy.py\", line 8, in <module>\n    from envs import CONFIGS_PATH\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/__init__.py\", line 1, in <module>\n    from .utils import *\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/__init__.py\", line 4, in <module>\n    from .save_file import *\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/source/RoboTwin/envs/utils/save_file.py\", line 8, in <module>\n    import open3d as o3d\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 61, in <module>\n    load_cdll(str(next((Path(__file__).parent / \"cpu\").glob(\"pybind*\"))))\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027/client-env/lib/python3.10/site-packages/open3d/__init__.py\", line 38, in load_cdll\n    return CDLL(str(path))\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/ctypes/__init__.py\", line 374, in __init__\n    self._handle = _dlopen(self._name, mode)\nOSError: libGL.so.1: cannot open shared object file: No such file or directory\n",
+        "end": 1793062675.218628,
+        "wall_seconds": 2.7371387481689453
+      },
+      "returncode": 1,
+      "end": 1793062676.0308998
+    }
+  ],
+  "gpu_window_seconds": 60.438042640686035,
+  "end": 1793062676.4450624
+}

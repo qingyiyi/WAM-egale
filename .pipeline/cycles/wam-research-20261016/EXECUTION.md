@@ -1,24 +1,24 @@
 ---
 kind: execution
 cycle: wam-research-20261016
-updated: '2026-10-25T18:38:14.572913+08:00'
+status: active
+updated: '2026-10-27T10:11:52.929047+08:00'
 ---
-# 最近执行检查点
 
-| 时间（北京时间10/25） | 检查点与证据 |
+# 最近检查点
+
+|北京时间|实际动作与证据|
 |---|---|
-| 21:43 | S版FFN1分项/MegaMoE核验完成4296调用；主循环包络约95.6%，采用S不变，owned清理。M42四臂1组后预算停止并清临时资产。[算子结果](../../experiments/sm120-ffn-next-20261024/FFN1-GEMM-GAP-20261025/REVIEW_RETURN.md) |
-| 20:49–20:53 | A2共享A双K64交接完成：4842调用、三KV/两进程，精度通过但慢于S与旧共享A，owned清理/IO恢复；双A100598组、1794局，队列无可领取任务，旧2组PARTIAL保留。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/REVIEW_RETURN.md) |
-| 19:33 | 追加共享A负结果，保留S；5400调用、等待诊断/公开入口/15文件字节回传与清理完成。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md) |
-| 19:14 | 双CTA FFN1共享B D负结果，保留S；4836调用、9phase退出、15关键文件字节回传。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-WEIGHT-20261025/REVIEW_RETURN.md) |
-| 18:35 | FFN1 1T/4M/3E W完成，三KV/两进程精度与计数通过，整层慢约0.8%，保留S；TMA store未实施。[结果](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md) |
-| 17:59 | FFN阶段拆分S完成并采用：三KV/两进程/27tensor/七段/状态/公开入口通过；2865调用，GPU清理。[结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md) |
-| 17:55–17:59 | Goal resume05闭合4合格四臂组；Robo569组/1707局，两卡继续。原失败/四false不改。 |
-| 15:48 | C2/G2三KV/两进程与R0/R1完成，有限精度通过但NO_GO保留A；10413调用/17phase，105文件回传清理。[结果](../../experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md) |
-| 15:45 | 本机旧窗口准备失败独立核对：VAE路径与self-kill，0teacher/新episode，204结果归档与临时资产清理；旧失败不覆盖。[核对](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume03/RECONCILE-RESULT.md) |
-| 15:56–16:07 | 用户要求修复接续；新窗口至21:56，resume04计划性CPU传输交接后resume05沿同一T0/预算；原固定panel不改。[登记](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/REGISTRATION.json) |
-| 16:14 | FFN同步CPU源审查，未修改采用A或产生新速度结果。[带读](../../experiments/sm120-ffn-next-20261024/FFN-SYNC-SOURCE-REVIEW-20261025.md) |
-| 本次实查 | M42准备/双A100队列身份和进度，见[快照](../../maintenance/hw-compact-20261025/RESOURCE-SNAPSHOT.json)；快照不等于未来实时状态 |
-| 本次H03 | 重建短入口、主题路由及Cycle摘要，旧原文/保护源/运行源逐项核验见[维护结果](../../maintenance/hw-compact-20261025/RESULT.md) |
+|10/27 09:42–10:11|CrossKV缓存C0–C4完成：6/6层与8项完整动作/接受路径exact；同缓存Torch/compile公平比较，完整policy已计入构建。3owned退出，runner489.526秒；研究入口保留、生产不切换。[证据](../../experiments/fastwam-crosskv-cache-20261027/REVIEW_RETURN.md)|
+|10/27 09:46–09:53|缓存四套完成：225输入同进程exact，成本/分布和跨进程路径差异留证；Robo前三依赖失败后首四canonical4/4成功，协议/图像工程审阅通过，四科学权限未变|
+|10/27 09:38|Maintain保存flow-based动作模型研究定位；StarVLA-PI/GR00T作为有时间时的后续跨模型验证，未启动；[原文](discussions/20261027-跨模型研究范围.md)|
+|10/27 08:58–09:20|用户批准只B7 FFN2连续FP32；三层B1/B7及4真实观测接受/十步传播完成，局部快6%但整层无净收益、72边1翻转，候选不采用。首轮测量INVALID与占卡0启动保留，4owned退出；[本轮](../../experiments/fastwam-ffn2-fp32-20261027/REVIEW_RETURN.md)|
+|10/27 08:55–09:13|四套6000局审计完成，T1950/TF1945/PF1944。用户新增耗时分解与共同prompt缓存：分布/阶段图已保存，缓存独立源码/原共同成功输入在5090开始实测。Robo首attempt缺libGL保留60.438秒失败，用户目录补库后同四canonical接续|
+|10/27 08:46–08:52|用户要求加速比仅共同成功；Maintain已保存，CPU从原始计时重算四suite，源组N16/19/20/20、trace N3/3/4/4。只替换报告观察器v4，GPU作业不动，旧计时/失败/质量分母保留|
+|10/27 07:44|Goal20组DEV三臂均20/20，原10项门通过；新tau=.0145392660、TF接受80.9274%，三卡1500局全量启动，每卡两客户端；5090独占测速接续|
+|10/27 07:25–07:35|原controller只读STATUS时SSH255停止，实际110采集局完整。v2接入原状态，不重跑、不重置预算；旧失败留存。5090等待改v3、Robo等待改v3，均未重复实验|
+|10/27 07:18–07:20|Object1500局五项审计通过，T499/TF497/PF498；TF新增2败、PF新增1败，2条TF成功长尾保留。全部初始像素配对一致，v2只纠正通用文案错误；本机Robo依赖/资产CPU准备完成，0GPU|
+|10/27 06:05–06:23|Object5090 action1.218×/chunk1.064×完成，累计1425.219/7200秒；Robo队列仅调度安全空档并镜像资源扣账，未满足空档所以未启动|
+|10/27 05:50–06:00|Object DEV三臂20/20且原门通过后全量；核对算子TMA释放后5090v2有界接续；算子330组eager字节精度通过、未胜compile，未接入投机|
 
-完整原事件：[此前Execution](EXECUTION.before-HW-compact-20261025.md)，更早记录沿其归档链接读取。本文件只留检查点，不重复长汇报。
+本次短表整理前见[09:32归档](history/before-text-cache-report-20261027-0932/EXECUTION.md)。其余完整动作与失败、早期速度模拟见[本次整理前完整执行](history/before-goal-full-20261027-0750/EXECUTION.md)及其历史链接。当前结果和原始源入口见[PROGRESS](PROGRESS.md)；动态统计见[实时结果](../../experiments/fastwam-full-triarm-20261027/LIVE-RESULT.md)。四科学权限仍false，原预算/截止、失败和冻结源保留。本页不新增GPU授权。

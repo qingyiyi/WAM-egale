@@ -1,0 +1,121 @@
+{
+  "status": "PASS_CPU_SYNTHETIC_ONLY",
+  "GPU_calls": 0,
+  "shapes": {
+    "action": {
+      "shape": [
+        7,
+        32,
+        14
+      ],
+      "stride": [
+        448,
+        14,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu"
+    },
+    "timestep": {
+      "shape": [
+        7
+      ],
+      "stride": [
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu"
+    },
+    "condition": {
+      "shape": [
+        1,
+        129,
+        8
+      ],
+      "stride": [
+        1032,
+        8,
+        1
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu"
+    },
+    "condition_mask": {
+      "shape": [
+        1,
+        129
+      ],
+      "stride": [
+        129,
+        1
+      ],
+      "dtype": "torch.bool",
+      "device": "cpu"
+    },
+    "attention_mask": null,
+    "video_k": [
+      {
+        "shape": [
+          1,
+          20,
+          16
+        ],
+        "stride": [
+          320,
+          16,
+          1
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      }
+    ],
+    "video_v": [
+      {
+        "shape": [
+          1,
+          20,
+          16
+        ],
+        "stride": [
+          320,
+          16,
+          1
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      }
+    ],
+    "expanded_condition": {
+      "shape": [
+        7,
+        129,
+        8
+      ],
+      "stride": [
+        0,
+        8,
+        1
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu"
+    },
+    "expanded_first_video_k": {
+      "shape": [
+        7,
+        20,
+        16
+      ],
+      "stride": [
+        0,
+        16,
+        1
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu"
+    },
+    "compiled": false,
+    "note": "Actual input/view layout only; does not prove downstream materialization or HBM traffic."
+  },
+  "source_sha256": "d3db6434738840ae8b1209c846eda2ebcde8e079575456d2a470c3d2d0468819",
+  "actual_RoboTwin_GPU_shapes_unverified": true
+}

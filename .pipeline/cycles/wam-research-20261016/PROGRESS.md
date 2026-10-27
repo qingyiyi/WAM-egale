@@ -2,69 +2,38 @@
 kind: progress
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T19:36:51.428062+08:00'
-plan: PLAN.md
-current: M42-MULTI-INIT
-next: M42-PAIRED-COST-RESULT
+updated: '2026-10-27T10:11:52.929047+08:00'
 ---
-# 当前进度
 
-## 资源状态（2026-10-25 20:55北京时间快照）
+# WAM当前事实
 
-- 本机无自有GPU作业；Goal resume05闭合4合格四臂组，resume06初态诊断0teacher准备失败，旧记录保留。质量线已转5090迁移。
-- 双A100队列无可领取任务：598完整组/1794局，T/C/P487/485/491，125.250/160GPU小时；两worker退出，旧2组PARTIAL不自动重试。[快照](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/ROBOTWIN-SNAPSHOT.json)。
-- 5090 RoboTwin已完成篮子valid49四臂：T/OLD失败，Q75/Q90成功；严格同卡初态通过，但只有1个暴露DEV，未定tau。预算预留停止，归档212文件并清掉临时权重。算子FFN1分项诊断完成4296调用、保留S；自有GPU已清理。
+四套LIBERO共6000局已完成并通过完整数据审计：target1950/2000（97.50%）、TF1945/2000（97.25%）、TF+PF1944/2000（97.20%），缺失/PARTIAL/无效0。见[完整汇总](../../experiments/fastwam-full-triarm-20261027/FOUR-SUITES-RESULT-v1.md)；全量包含FIT/CAL/DEV暴露，不是独立TEST。非测速每卡一模型服务加两隔离客户端；所有失败/长尾保留。07:25控制器只读SSH故障独立接续记录保留，实际采集未重跑。
 
-## M42质量与阻塞
-
-五套83030行CAL已有限重放，主池CONT3000生成；不冒称当前ON的on-policy数据。固定Goal十task×init46/47/48×T/OLD/Q75/Q90，PFoff/full512 BF16 reset。旧18attempt中10完整均成功（T3/3、OLD3/3、Q75 2/2、Q90 2/2），7个严格初态无效case、1用户中断；**当时0合格完整四臂组**；该旧状态不覆盖resume05新4组。
-
-resume03在0teacher/0新episode因Goal VAE路径缺config失败，收尾误向自身killpg造成过时RUNNING；[独立核对归档](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume03/RECONCILE-RESULT.md)保留。用户要求修复再接续；resume04为0episode计划性传输交接，resume05沿同一新窗口，修复common链接/owned清理，不改严格初态门、tau配方或normalizer。
-
-## M39单层系统
-
-当前采用S（FFN两阶段同步版，原A170独立保留）：B14/Q16、KV288/1152/2160、warm CrossKV、eager/noGraph。只在FFN1+GELU后加grid同步，FFN2七段BF16递推与tile/warp不变。本轮三真实fixture、27tensor/七段/有效KV/输入/RNG、两个独立进程及公开入口全部有限逐位通过。
-
-无插桩完整层原Torch/S约1.288/1.797/2.238倍，S相对A延迟下降2.25%/1.82%/1.90%；资源仍170CTA、100352B shared、255regs/thread、784B local。FFN1+GELU为0.797–0.805×Torch，FFN2+残差为1.027–1.033×；下一步先定位FFN1计算/后处理成本。2865调用、17.12分钟生命周期、约132MiB新证据，owned清理完成。[新结果/18阶段表/固定入口](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)。
-
-后续有限实验均保留负结果，S仍采用：W（FFN1 1T/4M/3E、448个M64N128）整层慢约0.8%；共享B在W基础上让双CTA不同M/同N共享权重，整层慢49.89%–60.62%。[W](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)；[共享B/等待证据](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-WEIGHT-20261025/REVIEW_RETURN.md)。
-
-用户追加的共享A（同M/不同N、8KiB DSM）已完成：同轮比共享B延迟减少18.76%–21.24%，但仍比S慢21.70%–26.48%，未采用。共享A FFN1约323μs，同场W约152μs；只分组/独立加载L_A约等于W。27tensor/七段/计数/状态、两进程三KV均通过；资源仍170CTA/100352B/255regs。观察器定位接收READY约1.03μs/K64、源EMPTY约1.76μs、MMA输入等待约1.35–1.37μs；相互重叠，不当纯DSM带宽。5400调用、10.96分钟生命周期、S公开入口与15文件字节回传/owned清理完成。[共享A结果/完整18阶段/源码](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md)。
-
-最新A2把共享A相邻两K64合并16KiB交接，实际DSM/credit/ACK减半；三KV/两进程精度状态通过，整层却比旧共享A慢3.44%–4.35%，比S慢25.92%–31.73%，不采用。FFN1约355μs、同场独立加载W152μs，保留原S；4842调用、11.62分钟生命周期，owned清理/IO恢复闭合。[完整结果/阶段](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/REVIEW_RETURN.md)。失去step+2预取与结果一致，但未独立量化各等待贡献。
-
-下面是相对旧A的历史DSM负结果，不重写为对S测量。
-
-| 已闭合研究路径 | 相对A结果 | 采用 |
-|---|---|---|
-| DSM8/R1 | R1整层仍慢31%–45% | NO_GO |
-| C4混合DSM | 慢33.87%–48.11% | NO_GO |
-| C2混合DSM | 慢12.27%–15.46%；G2绕过peer DSM仍慢8.71%–10.42% | NO_GO |
-
-[历史DSM结果/17阶段表/源码](../../experiments/sm120-ffn-next-20261024/CLUSTER2-ATTRIBUTION-20261025/REVIEW_RETURN.md)。三真实fixture/27tensor/七段/有效KV/RNG有限逐位通过，不外推全部输入或闭环。2CTA恢复170CTA并比C4快，新增swizzle/主循环/交接/提交仍有成本；R0/R1观察器有扰动，硬件流量与纯DSM指令根因UNKNOWN。10413调用、17phase、105文件回传/fsync、owned清理已闭合。
-
-[FFN同步源审查](../../experiments/sm120-ffn-next-20261024/FFN-SYNC-SOURCE-REVIEW-20261025.md)：608/863、681/867可研究合并；C2单A槽974/983不能直接删。仅CPU判断，无新收益。每段FP32部分和先加前段BF16运行和，末段再bias后舍入；不存在额外独立BF16(partial)步骤。
-
-## M41有限五环境结果（历史，非TEST）
-
-44完整三臂组/132主表局，C/P为连续TF/PF2。E2E含完整失败与client启停、模型常驻；action列按有效更新计成本。不同N和边界不合并。
-
-| 环境/N | 成功T/C/P | action加速C/P | 任务E2E C/P |
+|已完成全量|target / TF / TF+PF（每臂500）|全体平均命令|tau / TF路径逐步接受|
 |---|---|---|---|
-| Long/8 | 8/8/8 | 1.233/1.146 | 1.121/1.062 |
-| Goal/10 | 10/9/10 | 1.161/1.137 | 0.828/1.123 |
-| Spatial/10 | 9/9/9 | 1.175/1.117 | 1.065/1.013 |
-| Object/10 | 10/10/10 | 1.203/1.131 | 1.075/0.990 |
-| RoboTwin/6 | 5/4/4 | 1.748/1.415 | 0.933/0.936 |
+|Long|477 / 477 / 473|265.976 / 265.660 / 269.820|.01541235 / 80.4432%|
+|Spatial|481 / 481 / 482|110.622 / 109.960 / 110.800|.01513552 / 79.9533%|
+|Object|499 / 497 / 498|126.958 / 128.356 / 127.684|.01373201 / 80.4090%|
+|Goal|493 / 490 / 491|108.772 / 109.722 / 109.534|.01453927 / 79.9054%|
 
-[完整账本与边界](../../experiments/rtx5090-spec-speed-20261025/PERFORMANCE-RESULT.md)。Goal新增失败；Spatial/Object的PF2成功长尾1.697/1.893倍、Robo C长尾2.833倍及篮子新增失败保留。Robo五case第二S在首PF2刷新前已不同，隔离FAILED/根因UNKNOWN；Long仅8共同组、已teacher执行的PARTIAL不重跑。全臂优化reset、首次构建另列，有限探索性成本非正式计时。临时权重/环境回传核验后已清除。
+Long共同成功TF4/468、PF5/464超过1.3倍trace，最差1.749/2.221；Spatial TF4/475、PF2/474，最差1.697/4.645。Spatial canonical较论文98.2%低2pp，根因未定，不能称复现论文SR。详见各suite RESULT-REVIEW-v1和TAIL-REVIEW-v1。全50初态包含FIT/CAL/选择暴露，不称独立TEST。
 
-## 权限、规划与历史
+Object固定final3000 checkpoint `8bbb8e95…d1d4b`；全量TF新增2败/无救回、PF新增1败/无救回。TF共同成功497对中2对trace>1.3倍（最差1.460，初始像素均一致），PF498共同成功无>1.3倍；target比论文100%低.2pp。五项数据审计均通过，缺失/PARTIAL/无效0。后续同配方，未按结果调阈值或改门；[审阅](../../experiments/fastwam-full-triarm-20261027/libero_object/RESULT-REVIEW-v2.md)。
 
-`engineering_quality_screen=false`；`independent_test_complete=false`；`noninferiority_established=false`；`formal_performance_permission=false`。原M17配对/FIT-DEV缺口、原FAILED/retention/协议保持；不启动独立TEST/正式45chunk或无限训练。
+5090速度已按用户08:46补充改为三臂共同成功条件统计：Long/Spatial/Object/Goal源组N=16/19/20/20（各原20），完整action分别1.24109×/1.20897×/1.21848×/1.20718×，完整chunk1.07165×/1.05902×/1.06363×/1.06289×。固定长度TF/PF分别1.06433/1.04348、1.06519/1.03271、1.06183/1.03985、1.06403/1.04212倍，trace配对N=3/3/4/4。使用原DEV测速观测源成功身份；不借全量重复的成功替换。四套各自`SPEED-COMMON-SUCCESS-v1.md/json`为当前主口径；旧含失败结果保留追溯，成功率和全体trace分母不改。CPU重算无新GPU，四suite原测速累计1870.287/7200秒与21:32截止不变。360条B7/B1边Spatial1翻转/0路径变化、其他0翻转，数值检查仍保留全部原输入，不因速度筛选删减。
 
-H02已归档核验后释放120.619GiB，源码/原tile/必要失败保留；[恢复路径](../../maintenance/storage-placement-20261024/RESULT.md)。中文稿逐段由用户整理飞书，证据包规划11/01 18:00北京时间；证据不足就收缩claim。
+共同prompt缓存四套独立实测已完成：[最新结果](../../experiments/fastwam-full-triarm-20261027/CURRENT-RESULT-v5.md)。Long/Spatial/Object/Goal action1.2423/1.2046/1.2290/1.1495×，chunk1.0801/1.0677/1.0713/1.0566×；225输入同进程cached/uncached条件、动作、路径与提交计数exact。1125对计时、每臂75输入同步profile，TF文本约.058ms/0.04%、GPU VAE38.7%、动作35.1%。跨独立作业路径仍有4/15/9/23个变化，未定因；Goal慢样本全部保留，不把跨作业变化全归因于缓存。原版6000局不改名为缓存质量。新增1855.370秒，5090原累计3725.658/7200秒，owned退出并释放。
 
-[精简前完整进度](PROGRESS.before-HW-compact-20261025.md)；[完整事件](EXECUTION.before-HW-compact-20261025.md)；[旧计划](PLAN.before-HW-compact-20261025.md)；[旧讨论](DISCUSSION-SUMMARY.before-HW-compact-20261025.md)。动态状态随时间变化，开新作业前重读实际status/登记，不从此快照恢复旧窗口。
+Long重复canonical存在同观测/seed输出不一致和一例原败→成功，根因未定，不能解释掉投机新增失败；[证据](../../experiments/fastwam-full-triarm-20261027/libero_10/CANONICAL-REPEAT-v2.md)。四suite在线末段step7均无两层接受，尚未改算法。
 
-更早的LIBERO全量结果、迁移与M17限制见[原完整进度](PROGRESS.before-M41-20261025.md)；本页M41是5090有限DEV，不替代原全量评测。
+RoboTwin14维权重/stats三处齐备。首四canonical现4/4完整成功，32预测/24执行、十步shift5、eager、strict加载和实际命令前缀及图像工程审阅通过；[结果](../../experiments/fastwam-robotwin-canonical-20261027/CANONICAL-REVIEW-v1.md)。前三attempt为GL/EGL/ffmpeg路径故障、0policy，全部保留；成功232.508秒，含失败与诊断累计502.120秒。所有owned退出。下一步登记Robo自身FIT/CAL/DEV并验证真实14D collector/B7；尚无预测器、阈值、三臂全量或5090速度。4局不代替官方30000局三臂面板。
+
+固定FastWAM代码7faa711、HF8eaceeb、Base+对应stats、action10/shift5。官方实体`wam_tutorial_a100/upstream/fastwam`，投机源码`投机采样/fastwam-base/`，HW兼容链接；视觉prefill一次、固定当前KV，不迁入旧full512/CFG/末端t0。LIBERO及Robo三台资产收据在small-closedloop实验，长期保留。
+
+算子最新：[chunk内CrossKV缓存](../../experiments/fastwam-crosskv-cache-20261027/REVIEW_RETURN.md)。算子chunk内CrossKV缓存已完成：6组层、4观测×T/S完整30层/10步动作/路径及条件RNG逐位一致；B1/B7分别建cache，不跨chunk复用。warm层相对同缓存eager为1.407/.925×，相对同缓存compile为.605/.459×；完整policy缓存使compile Target/投机约1.061/1.015×，自有仍慢同缓存compile约19–20%。compile新图动作relL2约.25–.37%，不能继承eager证据。显式研究入口保留、生产未改；5090已释放。
+
+前轮算子完成[B7 FFN2有限FP32对照](../../experiments/fastwam-ffn2-fp32-20261027/REVIEW_RETURN.md)：局部快6%、整层无净收益，4观测72边1翻转/1路径变化，不采用。严格TMA＋1T4M3E仍默认；原INVALID、owned退出与173.362秒成本见原报告和[归档](history/before-text-cache-report-20261027-0932/PROGRESS.md)。未接入投机，不相乘倍数。
+
+失败与历史保留：local初次加载SIGKILL/0episode/349.313秒，低内存T5 meta+assign/mmap后成功；审计初版维度错误FAILED保留；旧Long接受强制模拟728对action1.342×/chunk1.087×不是本轮真实结果；LingBot十步负结果及旧五环境质量均保留，旧队列不恢复。初始4canonical/100FIT/10CAL/20DEV的逐阶段身份、全部失败与旧检查点见[本次整理前全文](history/before-object-full-20261027-0600/PROGRESS.md)和[更早完整进度](history/before-fastwam-overnight-20261027-010743/PROGRESS.md)。
+
+四项`engineering_quality_screen`、`independent_test_complete`、`noninferiority_established`、`formal_performance_permission`均false，全局A_off不变。工程扩量检查不自动放行论文质量。原36h/72 aggregate A100h含既有消耗、24h/card；每job仍有截止、owned清理和保留要求。不写正文、不自动公开发布。

@@ -1,0 +1,205 @@
+{
+  "status": "PASS_CPU_ONLY",
+  "scheduler_sha256": "2ececce284f7b9fe876965fbf5e11ca7b69caaf693979266b0f63062a589f181",
+  "timestep": [
+    1000.0,
+    980.0,
+    952.0,
+    920.0,
+    884.0,
+    832.0,
+    768.0,
+    680.0,
+    556.0,
+    358.0
+  ],
+  "delta": [
+    -0.021728515625,
+    -0.02587890625,
+    -0.03125,
+    -0.038818359375,
+    -0.049072265625,
+    -0.06396484375,
+    -0.08740234375,
+    -0.1259765625,
+    -0.1982421875,
+    -0.357421875
+  ],
+  "modes": [
+    {
+      "mode": "reject_all",
+      "counts": {
+        "target_calls": 10,
+        "target_B1_calls": 3,
+        "target_state_rows": 52,
+        "bootstrap_updates": 1,
+        "committed_updates": 10,
+        "draft_calls": 21,
+        "target_B7_calls": 7,
+        "rejected_trees": 7,
+        "fallback_updates": 7,
+        "tree_count": 7,
+        "depth_0": 7,
+        "candidate_expansions": 42,
+        "boundary_target_updates": 2
+      },
+      "canonical_exact": true,
+      "commits": [
+        {
+          "step": 0,
+          "g": 1,
+          "kind": "bootstrap"
+        },
+        {
+          "step": 1,
+          "g": 1,
+          "kind": "tree"
+        },
+        {
+          "step": 2,
+          "g": 1,
+          "kind": "tree"
+        },
+        {
+          "step": 3,
+          "g": 1,
+          "kind": "tree"
+        },
+        {
+          "step": 4,
+          "g": 1,
+          "kind": "tree"
+        },
+        {
+          "step": 5,
+          "g": 1,
+          "kind": "tree"
+        },
+        {
+          "step": 6,
+          "g": 1,
+          "kind": "tree"
+        },
+        {
+          "step": 7,
+          "g": 1,
+          "kind": "tree"
+        },
+        {
+          "step": 8,
+          "g": 1,
+          "kind": "tail"
+        },
+        {
+          "step": 9,
+          "g": 1,
+          "kind": "tail"
+        }
+      ]
+    },
+    {
+      "mode": "accept_one",
+      "counts": {
+        "target_calls": 6,
+        "target_B1_calls": 2,
+        "target_state_rows": 30,
+        "bootstrap_updates": 1,
+        "committed_updates": 10,
+        "draft_calls": 12,
+        "target_B7_calls": 4,
+        "draft_updates": 4,
+        "fallback_updates": 4,
+        "tree_count": 4,
+        "depth_1": 4,
+        "candidate_expansions": 24,
+        "boundary_target_updates": 1
+      },
+      "canonical_exact": true,
+      "commits": [
+        {
+          "step": 0,
+          "g": 1,
+          "kind": "bootstrap"
+        },
+        {
+          "step": 1,
+          "g": 2,
+          "kind": "tree"
+        },
+        {
+          "step": 3,
+          "g": 2,
+          "kind": "tree"
+        },
+        {
+          "step": 5,
+          "g": 2,
+          "kind": "tree"
+        },
+        {
+          "step": 7,
+          "g": 2,
+          "kind": "tree"
+        },
+        {
+          "step": 9,
+          "g": 1,
+          "kind": "tail"
+        }
+      ]
+    },
+    {
+      "mode": "accept_two",
+      "counts": {
+        "target_calls": 4,
+        "target_B1_calls": 1,
+        "target_state_rows": 22,
+        "bootstrap_updates": 1,
+        "committed_updates": 10,
+        "draft_calls": 9,
+        "target_B7_calls": 3,
+        "draft_updates": 6,
+        "bonus_updates": 3,
+        "tree_count": 3,
+        "depth_2": 3,
+        "candidate_expansions": 18
+      },
+      "canonical_exact": true,
+      "commits": [
+        {
+          "step": 0,
+          "g": 1,
+          "kind": "bootstrap"
+        },
+        {
+          "step": 1,
+          "g": 3,
+          "kind": "tree"
+        },
+        {
+          "step": 4,
+          "g": 3,
+          "kind": "tree"
+        },
+        {
+          "step": 7,
+          "g": 3,
+          "kind": "tree"
+        }
+      ]
+    }
+  ],
+  "predictor_parameters": 55900,
+  "predictor_untrained": true,
+  "old_LIBERO_checkpoint_rejected": true,
+  "teacher_direction_label_shape": [
+    10,
+    32,
+    14
+  ],
+  "candidate_rows": 7,
+  "horizon": 32,
+  "synthetic_B7_audit_and_acceptance_sensitivity_checked": true,
+  "GPU_calls": 0,
+  "scope": "Synthetic target with actual BF16 scheduler; loaded-model parity, B7 numerics and closed-loop quality remain unverified."
+}

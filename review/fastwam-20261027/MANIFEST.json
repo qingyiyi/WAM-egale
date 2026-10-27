@@ -1,0 +1,2175 @@
+{
+  "schema": "fastwam-public-progress/v1",
+  "snapshot_at": "2026-10-27T10:20:15.328363+08:00",
+  "source_repository_head": "c08f33861420f5925558e4041a04afbf47bc8831",
+  "upstream_code": "7faa71108368fbb3b6885649f112af607427a2d4",
+  "checkpoint_revision": "8eaceeb24c3cc92ff2a9c9a9d266a4941b836705",
+  "original_WAM_reference": "89ba5882a7e7185ff6178541782bfb70731603bf",
+  "quality_version": "original uncached fullcode-v1, official compile and visual KV, 6000 episodes",
+  "speed_version": "cached-speedcode-v1, shared prompt cache, 225 observations /1125 paired timings",
+  "published_data": {
+    "quality_episodes": 6000,
+    "task_arm_rows": 120,
+    "paired_quality_rows": 4000,
+    "speed_pairs": 1125,
+    "robotwin_canonical_episodes": 4
+  },
+  "exclusions": [
+    "model and draft weights",
+    "teacher/action/KV/image raw tensors",
+    "compiled libraries",
+    "credentials and private connection locators",
+    "unrelated Cycle",
+    "active operator source changes"
+  ],
+  "four_permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  },
+  "sources": [
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/MANIFEST-v2.json",
+      "source_sha256": "fcc68d62ea8aa54de5b8b4c5f5b1a0761429c36a6fd27ea018be83a4acfb69e8",
+      "public_sha256": "c03eeff722026ac4d312d632da5b5eac9b7459bc72f94492304f524bb2eb5340",
+      "bytes": 3883,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/INTERFACE-MAPPING.md",
+      "source_sha256": "9e282ba1de905be5223f89d1abdd95b1459346f5f9f34133def85b4f80e1ed1d",
+      "public_sha256": "9e282ba1de905be5223f89d1abdd95b1459346f5f9f34133def85b4f80e1ed1d",
+      "bytes": 2750,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/CPU-BOUNDARIES.json",
+      "source_sha256": "e187919663874c5b7d86e61c3a66574bf4e48bef44eec64042dc5eb16f1a620a",
+      "public_sha256": "e187919663874c5b7d86e61c3a66574bf4e48bef44eec64042dc5eb16f1a620a",
+      "bytes": 11797,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/METHOD-REFERENCE-PARITY.json",
+      "source_sha256": "16133e089587414afcc49a0932bcfe54f49b054a3fe49d3cdc163a1824ba4d3b",
+      "public_sha256": "16133e089587414afcc49a0932bcfe54f49b054a3fe49d3cdc163a1824ba4d3b",
+      "bytes": 2037,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/LOSS-SOURCE-AUDIT.json",
+      "source_sha256": "2811a9c62c819bf89c929109f90aa57b96f14d373ffd1b908e315fbaccf304b7",
+      "public_sha256": "2811a9c62c819bf89c929109f90aa57b96f14d373ffd1b908e315fbaccf304b7",
+      "bytes": 252,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/SOURCE-SNAPSHOT-before-GPU-v7.json",
+      "source_sha256": "63726cc1511f20724aa80e5b3b52a52d268692ec02404bab1daa08ab677afd1b",
+      "public_sha256": "21c72780b73aefaa399ff0c47160a309c40f6cdeaf29ad4b9e407edae0cba9e3",
+      "bytes": 2228,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/PAPER-BASE-REFERENCE.json",
+      "source_sha256": "9e3696cde22c7012e4acb9810108490f0b590bd03dd8f243bcdbd5c53e693c50",
+      "public_sha256": "9e3696cde22c7012e4acb9810108490f0b590bd03dd8f243bcdbd5c53e693c50",
+      "bytes": 925,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/OVERNIGHT-PLAN.md",
+      "source_sha256": "6736e3a150c7c4c795f5abf3b5760e633cea161ec0e350dbe98a9cf514c3f881",
+      "public_sha256": "6736e3a150c7c4c795f5abf3b5760e633cea161ec0e350dbe98a9cf514c3f881",
+      "bytes": 1722,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/OVERNIGHT-EXTENSION-v1.json",
+      "source_sha256": "76e9139187b1c5a90b31ea2ff3f658ffc2ed79fbdcb778eace71e30085652a90",
+      "public_sha256": "76e9139187b1c5a90b31ea2ff3f658ffc2ed79fbdcb778eace71e30085652a90",
+      "bytes": 3859,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/PLACEMENT-v3.json",
+      "source_sha256": "8e38d513e89c6c33bc77bd91a97cc0299594444cedc67c3da1f0820c02158547",
+      "public_sha256": "8e38d513e89c6c33bc77bd91a97cc0299594444cedc67c3da1f0820c02158547",
+      "bytes": 2994,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/THREE-COPIES-COMPLETE-20261027.json",
+      "source_sha256": "8816fbc697d29d9480902eb013b98bd75e23f3299406242f436808be928d5c0c",
+      "public_sha256": "eb4655d3835f4f7f3b1bba45a5c28824fe52ccaf53c3af654cd5054cc026eb57",
+      "bytes": 1249,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/ROBOTWIN-THREE-COPIES-COMPLETE-20261027.json",
+      "source_sha256": "4c36b9eb3ce13fe311b7a8afd94c6d9609eac7ce30e195ba2f537a3a3f3d151a",
+      "public_sha256": "32c9581d2b1decc725c3581d3c637bc369859200cce28c2f474c59d6e4475c0a",
+      "bytes": 5586,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/CLAIM-EVIDENCE.md",
+      "source_sha256": "c978757bc32fcfbb2f7f39ce730c09362e77e311746940a37e7a8a4893e793f4",
+      "public_sha256": "c978757bc32fcfbb2f7f39ce730c09362e77e311746940a37e7a8a4893e793f4",
+      "bytes": 6653,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/OPERATOR-REAL-SPEED-FEEDBACK.md",
+      "source_sha256": "78f6a113945f22964ff9b0f36fde17a6ea0cfcc2825b75167c4322bad7ad63f9",
+      "public_sha256": "78f6a113945f22964ff9b0f36fde17a6ea0cfcc2825b75167c4322bad7ad63f9",
+      "bytes": 6195,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/BAAI-archive/local-server-collect-attempt01/CANONICAL-PARITY.json",
+      "source_sha256": "349a41dce5aa524228dfa72bc4937295b5db074f3b3a98e7670622410304bab5",
+      "public_sha256": "851e2e287d4eeee9c36580625e294cee638742ea55e6b13d155ce95c6499933c",
+      "bytes": 1346,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/BAAI-archive/server1-attempt03/CANONICAL-PARITY.json",
+      "source_sha256": "598146ca307bf0f81abc3cf2aba6618fa67cb8504a6e8f7a1d9959e81dd4a230",
+      "public_sha256": "5af765f1b43da4b3453166968767a14b59c911c5c3825a753b59b1ea698c0b9e",
+      "bytes": 1345,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/BAAI-archive/server0-attempt03/CANONICAL-PARITY.json",
+      "source_sha256": "bc60899a22088d9031963edfd28fc86bcdf2c2f8a9dc1f97af255679633b6627",
+      "public_sha256": "f9f2a5233e594ec482aa12cc949f61574362a1e7d3177bcf7e8e8f23e8aa06fc",
+      "bytes": 1349,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/BAAI-archive/local-server-dev-sp-attempt01/CANONICAL-PARITY.json",
+      "source_sha256": "e381355886c2cb097c1fd77407ac5240cdc63a8a6e544a1e256607736cd01009",
+      "public_sha256": "656532bb7ab7c3c313b409566793956cb77513325f472ad90604d1153e7b6302",
+      "bytes": 1342,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/BAAI-archive/local-server-attempt02/CANONICAL-PARITY.json",
+      "source_sha256": "031dfaeaa8b1a158a4177309f0c27843329e75355d217adb3d6102cd7b1774f6",
+      "public_sha256": "2d0878a844300060e38acfebad1037d565cf1a07fd4f38d01469f24ca05c05aa",
+      "bytes": 1327,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/CURRENT-RESULT-v5.md",
+      "source_sha256": "285254cdc8f5ec9ded6ae0c5d8538ed398eb26c2df329fdaa1bf11b38a65db86",
+      "public_sha256": "285254cdc8f5ec9ded6ae0c5d8538ed398eb26c2df329fdaa1bf11b38a65db86",
+      "bytes": 2008,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/FOUR-SUITES-RESULT-v1.md",
+      "source_sha256": "da0eb0f335525f523f9ccf3b2f3ec71b01271116112caa9cd97a9d34dd273790",
+      "public_sha256": "da0eb0f335525f523f9ccf3b2f3ec71b01271116112caa9cd97a9d34dd273790",
+      "bytes": 5148,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/FOUR-SUITES-RESULT-v1.json",
+      "source_sha256": "0f62cf22f093811f69c4864bbbda3163acdc6d8dedbac725bd5d882ff394a93f",
+      "public_sha256": "72acd22c4972957f5ec1cb60a54c9935ba1e2b5b975d2ef2f35d63f4fa022d7e",
+      "bytes": 255239,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/PLAN.md",
+      "source_sha256": "467d81ca0815908648b64517befa7935a16a9ecd9c882f3e6c511596971dfb31",
+      "public_sha256": "467d81ca0815908648b64517befa7935a16a9ecd9c882f3e6c511596971dfb31",
+      "bytes": 4875,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/REGISTRATION.json",
+      "source_sha256": "e3efcaa07fe1ebd7f42df6767492dbc75c197bb88f8fc573685f31534f2ff2fe",
+      "public_sha256": "b9eb56a08fa94193af6fcb70bd21694d2d098a8a5eb1ff8516077384f1822307",
+      "bytes": 2113,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/MONITOR-CURRENT.json",
+      "source_sha256": "4b7476a7fc54be795175a88c0863bf2326e7c35d552b74ebc39ea1d1f2c00f0d",
+      "public_sha256": "4b7476a7fc54be795175a88c0863bf2326e7c35d552b74ebc39ea1d1f2c00f0d",
+      "bytes": 9795,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/CAL-CARRY-COMPARISON-v2.md",
+      "source_sha256": "acd5e841ce3358b6c579099024e7b5b0fb4b05e1c9f186043acc88e122703017",
+      "public_sha256": "acd5e841ce3358b6c579099024e7b5b0fb4b05e1c9f186043acc88e122703017",
+      "bytes": 1288,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/CAL-CARRY-COMPARISON-v2.json",
+      "source_sha256": "df89c8b306a399aad3b8e266a80d578c9ee3ccbc2913aa6e28356b406c1cbf93",
+      "public_sha256": "df89c8b306a399aad3b8e266a80d578c9ee3ccbc2913aa6e28356b406c1cbf93",
+      "bytes": 2118,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/CAL-LATE-POSITION-DIAGNOSTIC-v1.md",
+      "source_sha256": "2017d802403674e541751124bf7165c9692c3dfa1f5a326d3e38f56d833e7e95",
+      "public_sha256": "2017d802403674e541751124bf7165c9692c3dfa1f5a326d3e38f56d833e7e95",
+      "bytes": 1550,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/CAL-LATE-POSITION-DIAGNOSTIC-v1.json",
+      "source_sha256": "64898d663035bac8e6831776d32f816979d2dd8403bff997a713728f724853a6",
+      "public_sha256": "64898d663035bac8e6831776d32f816979d2dd8403bff997a713728f724853a6",
+      "bytes": 778,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/SPEED-WARM-REPEAT-DIAGNOSTIC-v1.md",
+      "source_sha256": "83e745fdcb37efb0324dc64f80354eb207b518e4c61e699ab58ff0b539301262",
+      "public_sha256": "83e745fdcb37efb0324dc64f80354eb207b518e4c61e699ab58ff0b539301262",
+      "bytes": 619,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/SPEED-WARM-REPEAT-DIAGNOSTIC-v1.json",
+      "source_sha256": "8fd5d2aae356f03996954823e8958a45c56ce680f3b03e3b057f2b505c6b3e14",
+      "public_sha256": "8fd5d2aae356f03996954823e8958a45c56ce680f3b03e3b057f2b505c6b3e14",
+      "bytes": 3143,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/COMMON-SUCCESS-SPEED-REGISTRATION-v1.json",
+      "source_sha256": "bc7ecff35f375fd605bcb10ac82517140995c9fbf47ec830370ccbf005acbdd6",
+      "public_sha256": "bc7ecff35f375fd605bcb10ac82517140995c9fbf47ec830370ccbf005acbdd6",
+      "bytes": 875,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/QUALITY-FULL-TRIARM.json",
+      "source_sha256": "e2e7ad4878f3c4b2d3dd30eee43a93684c8f8d12a2f77e99d4503b9f902e023a",
+      "public_sha256": "e2e7ad4878f3c4b2d3dd30eee43a93684c8f8d12a2f77e99d4503b9f902e023a",
+      "bytes": 1091934,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/QUALITY-TRIARM.json",
+      "source_sha256": "da290049be0c64d185167733e0a4b00e7181d88dbf5e3bbb1d13f53f23668fc5",
+      "public_sha256": "da290049be0c64d185167733e0a4b00e7181d88dbf5e3bbb1d13f53f23668fc5",
+      "bytes": 53616,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/RESULT-REVIEW-v1.json",
+      "source_sha256": "5dfe2dab0b001eac52d6a936b18d01d8ce3a634ae43650503978760e795ea11f",
+      "public_sha256": "65cb796078885463cfc09533edd265689560665d7791ebd50be51df92f54b172",
+      "bytes": 15311,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/RESULT-REVIEW-v1.md",
+      "source_sha256": "97a6098084166858fb5465429d7629fb0cfad77de56be1e475b4783570723381",
+      "public_sha256": "97a6098084166858fb5465429d7629fb0cfad77de56be1e475b4783570723381",
+      "bytes": 1851,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/TAIL-REVIEW-v1.json",
+      "source_sha256": "f803b91d9d2bd5716abc44ace74dcacc6e3a7be0964fffb3d3a0d57df43cc8cf",
+      "public_sha256": "f803b91d9d2bd5716abc44ace74dcacc6e3a7be0964fffb3d3a0d57df43cc8cf",
+      "bytes": 30512,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/TAIL-REVIEW-v1.md",
+      "source_sha256": "7a0217e9d4c58cfb22e2854e90aa7b1231823fadb837f94399ba2549fa26abaf",
+      "public_sha256": "7a0217e9d4c58cfb22e2854e90aa7b1231823fadb837f94399ba2549fa26abaf",
+      "bytes": 1292,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/PANEL.json",
+      "source_sha256": "0108355877b0adeb48f3acdaa51cebc09555e5469d8de5cd2853437daec37d7b",
+      "public_sha256": "0108355877b0adeb48f3acdaa51cebc09555e5469d8de5cd2853437daec37d7b",
+      "bytes": 77256,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/REGISTRATION.json",
+      "source_sha256": "a69cd2a41cf0c20eeac4f73d4742f23941fd122b5503ec56afc6b2ad2980473b",
+      "public_sha256": "c657d84930917f30bdee9ab61c8342026ef5acf2bae8cd5d10b93bc98d907467",
+      "bytes": 404,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/CAL-CARRY-COMPARISON-v1.json",
+      "source_sha256": "da6ad774b1e6e88883e072ad6f0267a42c751b34ae02122efa20b08e1f71e921",
+      "public_sha256": "437f8c010077091aebdcaa31bd0d7d75def9290cebc913d4f4c61cf3f42a60c7",
+      "bytes": 5923,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/CAL-POSITION-REVIEW-v1.json",
+      "source_sha256": "0a350dbc6434b5b4ce624c32b15105ade503db21f341893cb411e4cbb589adbc",
+      "public_sha256": "0a350dbc6434b5b4ce624c32b15105ade503db21f341893cb411e4cbb589adbc",
+      "bytes": 3499,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/ONLINE-ACCEPTANCE-POSITION-v1.json",
+      "source_sha256": "017b4bf2b200b85d70e8bd9fb8aa37a38720406ecb1407e39935921eae4658b2",
+      "public_sha256": "a925606e1860c70a2a70564828ac266cf4495f88fc2c3610de39191e063e24f2",
+      "bytes": 17555,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/ONLINE-ACCEPTANCE-POSITION-v1.md",
+      "source_sha256": "236ee1134234af0436a728dbb5ed12a5b24427cdc0f6b4b6c2dccf6e8402e433",
+      "public_sha256": "236ee1134234af0436a728dbb5ed12a5b24427cdc0f6b4b6c2dccf6e8402e433",
+      "bytes": 919,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/SPEED-COMMON-SUCCESS-v1.json",
+      "source_sha256": "3b97ac2ec0d4ad0f29658908e5fac7005175b2086c0b3ebfa423c9c76d5d11a6",
+      "public_sha256": "3b97ac2ec0d4ad0f29658908e5fac7005175b2086c0b3ebfa423c9c76d5d11a6",
+      "bytes": 11490,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/SPEED-COMMON-SUCCESS-v1.md",
+      "source_sha256": "a04eb617d503e0bb6268cd5ae80eef10f2276212a30b61c7f6bfb05fc25319c6",
+      "public_sha256": "a04eb617d503e0bb6268cd5ae80eef10f2276212a30b61c7f6bfb05fc25319c6",
+      "bytes": 1946,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/TRAINING-archive/SELECTED.json",
+      "source_sha256": "f70beef4cb9213e755d170d63a2be27ef4ae9579fc1b10559fe1752eb6102f9e",
+      "public_sha256": "f70beef4cb9213e755d170d63a2be27ef4ae9579fc1b10559fe1752eb6102f9e",
+      "bytes": 593,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/TRAINING-archive/DATA-MANIFEST.json",
+      "source_sha256": "a145e9c2dce6a236a2d115f976c848e703eeb88594ca8bd484114d546d06b448",
+      "public_sha256": "a145e9c2dce6a236a2d115f976c848e703eeb88594ca8bd484114d546d06b448",
+      "bytes": 17862,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/TRAINING-archive/STATUS.json",
+      "source_sha256": "01388895886b3ba86f898c73ec45337af81fab763e2b73782dc07f20bcf8acce",
+      "public_sha256": "01388895886b3ba86f898c73ec45337af81fab763e2b73782dc07f20bcf8acce",
+      "bytes": 3405,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.json",
+      "source_sha256": "385dbdf4acfed44c82b2a2721445e146fc12ea5be25b14dd942886560b37cc96",
+      "public_sha256": "385dbdf4acfed44c82b2a2721445e146fc12ea5be25b14dd942886560b37cc96",
+      "bytes": 299,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.jsonl",
+      "source_sha256": "98894a9a61ca3aefbf50d4d11b4001a868f1e54524e7714a960f2b1fc9ac7992",
+      "public_sha256": "98894a9a61ca3aefbf50d4d11b4001a868f1e54524e7714a960f2b1fc9ac7992",
+      "bytes": 174277,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/ACTION-CHUNKS.jsonl",
+      "source_sha256": "8afb800961fefc10bfab949687916781229bf18a0d9b88963d1814cdac54e6ab",
+      "public_sha256": "8afb800961fefc10bfab949687916781229bf18a0d9b88963d1814cdac54e6ab",
+      "bytes": 125470,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/CONSISTENCY.json",
+      "source_sha256": "8b153a24f7cff6c29421ae2a956ab270f6c236674bbc83dbfc2cd0aba038bde0",
+      "public_sha256": "8b153a24f7cff6c29421ae2a956ab270f6c236674bbc83dbfc2cd0aba038bde0",
+      "bytes": 2925,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/FULL-CHUNKS.jsonl",
+      "source_sha256": "4a9c3b16b3421a52376a0210c88dfed97b5b19b089d1f7f5c6b27cf69090f61c",
+      "public_sha256": "4a9c3b16b3421a52376a0210c88dfed97b5b19b089d1f7f5c6b27cf69090f61c",
+      "bytes": 696737,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/MODEL-LOAD.json",
+      "source_sha256": "91c25d6c5a9f075e3a172e716fa9b1edea627ebe393334056bd6216d11884f14",
+      "public_sha256": "f1a920db9e1f2bac17d58f985fc0a7d3c5073ceb21d4900aaa69e116f6a6947d",
+      "bytes": 2120,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/POLICY-TRACES.jsonl",
+      "source_sha256": "f9748575cc65fde3ae554c2e94f9b7a0eff13bf4043133666c3e2bfff20785ec",
+      "public_sha256": "f9748575cc65fde3ae554c2e94f9b7a0eff13bf4043133666c3e2bfff20785ec",
+      "bytes": 68888,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/PROFILE-CHUNKS.jsonl",
+      "source_sha256": "fa90af0c04218c545567474f99139be319708e02f94e7512daf75e16af753e9f",
+      "public_sha256": "fa90af0c04218c545567474f99139be319708e02f94e7512daf75e16af753e9f",
+      "bytes": 86522,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/RESOLVED-CONFIG.yaml",
+      "source_sha256": "cba9ee1e8e1b48c980200e194a0856b73a39be0326b588fdd88438cb097ef37f",
+      "public_sha256": "946e1f36ff4e753b89a3fbb12ccc83c69aa063f9bbf9bb3fcc26311f6c8c4d9e",
+      "bytes": 5429,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/RESULTS.json",
+      "source_sha256": "43dc16b7c68d49fd9caaca3caee1e0b865da6a8feb23df1a4df2c35dd8df08a6",
+      "public_sha256": "43dc16b7c68d49fd9caaca3caee1e0b865da6a8feb23df1a4df2c35dd8df08a6",
+      "bytes": 145213,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/STATUS.json",
+      "source_sha256": "f5810be3d707894d95433882fdf2ac955b1f2bf85fc6c72994866a0f93f8cc4e",
+      "public_sha256": "f5810be3d707894d95433882fdf2ac955b1f2bf85fc6c72994866a0f93f8cc4e",
+      "bytes": 214,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/TEXT-CACHE-CONSISTENCY.json",
+      "source_sha256": "89a1fbfaa9799b08f9d9553a3a6bb41fcfcc05a832553f04e173f745a90af6ec",
+      "public_sha256": "89a1fbfaa9799b08f9d9553a3a6bb41fcfcc05a832553f04e173f745a90af6ec",
+      "bytes": 741,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_spatial/results/speed-triarm-attempt01/TEXT-CACHE-CONSISTENCY.jsonl",
+      "source_sha256": "8a06931be2545a034acc90b411ff34d7dc644569e279159a742c391f60fd09f2",
+      "public_sha256": "8a06931be2545a034acc90b411ff34d7dc644569e279159a742c391f60fd09f2",
+      "bytes": 27750,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/SPEED-5090/results/speed-triarm-attempt01/RESULTS.json",
+      "source_sha256": "02970f34a139b970f9dc45b7b94118a2ab2c390c68f3a2d8bb9c9917f73cdc27",
+      "public_sha256": "02970f34a139b970f9dc45b7b94118a2ab2c390c68f3a2d8bb9c9917f73cdc27",
+      "bytes": 12457,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/SPEED-5090/results/speed-triarm-attempt01/FULL-CHUNKS.jsonl",
+      "source_sha256": "39081ed8bf2829316b89dfec4a5feb88d1108829ad007df7a60294116907e510",
+      "public_sha256": "39081ed8bf2829316b89dfec4a5feb88d1108829ad007df7a60294116907e510",
+      "bytes": 736747,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/SPEED-5090/results/speed-triarm-attempt01/ACTION-CHUNKS.jsonl",
+      "source_sha256": "a488e4975f30a35476ceb3b5584b59a737f17a07824608995dd1f8d3e9c51358",
+      "public_sha256": "a488e4975f30a35476ceb3b5584b59a737f17a07824608995dd1f8d3e9c51358",
+      "bytes": 131979,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/SPEED-5090/results/speed-triarm-attempt01/POLICY-TRACES.jsonl",
+      "source_sha256": "923e20a0e9ecf1fad73584f1217f36edc95b58bd44ee08935b8bd10f36ef1872",
+      "public_sha256": "923e20a0e9ecf1fad73584f1217f36edc95b58bd44ee08935b8bd10f36ef1872",
+      "bytes": 133318,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/SPEED-5090/results/speed-triarm-attempt01/CONSISTENCY.json",
+      "source_sha256": "cd7546d7b71fd8f876a4e3793cd27d1c2d518ac9fbd482195378f78064523e6d",
+      "public_sha256": "cd7546d7b71fd8f876a4e3793cd27d1c2d518ac9fbd482195378f78064523e6d",
+      "bytes": 2933,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/SPEED-5090/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.json",
+      "source_sha256": "f9ab7b78aa05c3ce636a300ab1d57f9ac64c15781a6cba23d7cbfd2c92943254",
+      "public_sha256": "f9ab7b78aa05c3ce636a300ab1d57f9ac64c15781a6cba23d7cbfd2c92943254",
+      "bytes": 288,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_spatial/SPEED-5090/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.jsonl",
+      "source_sha256": "b680451a39f753fafc68ae2f17113b996ddff652f4da87c49204031b3c78b5d4",
+      "public_sha256": "b680451a39f753fafc68ae2f17113b996ddff652f4da87c49204031b3c78b5d4",
+      "bytes": 183451,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/QUALITY-FULL-TRIARM.json",
+      "source_sha256": "9c6acacf034445e826a207563f85904b939659e666f211986bc2670a7fe3122a",
+      "public_sha256": "9c6acacf034445e826a207563f85904b939659e666f211986bc2670a7fe3122a",
+      "bytes": 1083166,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/QUALITY-TRIARM.json",
+      "source_sha256": "ce4e63d3dd34673fde91f69aa2f20099b73180b4782f955bc50204a3786febce",
+      "public_sha256": "ce4e63d3dd34673fde91f69aa2f20099b73180b4782f955bc50204a3786febce",
+      "bytes": 53204,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/RESULT-REVIEW-v1.json",
+      "source_sha256": "6d5fa4ef5ecb601c0fc92e4bb122bb94e0b2332916ccc7a597936afa15adde65",
+      "public_sha256": "49f6491ccb3afd8105b1df3fec1a169c5d5952d5950cfff4472c2455c343d2b5",
+      "bytes": 13863,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/RESULT-REVIEW-v1.md",
+      "source_sha256": "acafc8f7d7d08de33ba20ac9765102d577e9795bb3803e2a85843df55c70eac2",
+      "public_sha256": "acafc8f7d7d08de33ba20ac9765102d577e9795bb3803e2a85843df55c70eac2",
+      "bytes": 1855,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/RESULT-REVIEW-v2.md",
+      "source_sha256": "2e202f4b93ef62d22efe82e1649abb279f9895273b15cf10309e38a6be49aa92",
+      "public_sha256": "2e202f4b93ef62d22efe82e1649abb279f9895273b15cf10309e38a6be49aa92",
+      "bytes": 2083,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/TAIL-REVIEW-v1.json",
+      "source_sha256": "c77c85fadefbdd84c58fb2c32231bce515a63aa14351290e2f6389fd4f01ee53",
+      "public_sha256": "c77c85fadefbdd84c58fb2c32231bce515a63aa14351290e2f6389fd4f01ee53",
+      "bytes": 5282,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/TAIL-REVIEW-v1.md",
+      "source_sha256": "6b4d45cefa9463b1771203f285fc67719cbfa2b99a58ceadabe8c037714711fc",
+      "public_sha256": "6b4d45cefa9463b1771203f285fc67719cbfa2b99a58ceadabe8c037714711fc",
+      "bytes": 738,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/TAIL-REVIEW-v2.md",
+      "source_sha256": "604d034b23ed400dcf9017f14eb92f105c78d33e3cb7881667d10d0a741ddad6",
+      "public_sha256": "604d034b23ed400dcf9017f14eb92f105c78d33e3cb7881667d10d0a741ddad6",
+      "bytes": 1044,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/PANEL.json",
+      "source_sha256": "166f9e2e5950eb9dea83fd236ad7b7780b75fd986ea8c46c25acb972c96b47f3",
+      "public_sha256": "166f9e2e5950eb9dea83fd236ad7b7780b75fd986ea8c46c25acb972c96b47f3",
+      "bytes": 77255,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/REGISTRATION.json",
+      "source_sha256": "a69cd2a41cf0c20eeac4f73d4742f23941fd122b5503ec56afc6b2ad2980473b",
+      "public_sha256": "c657d84930917f30bdee9ab61c8342026ef5acf2bae8cd5d10b93bc98d907467",
+      "bytes": 404,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/CAL-CARRY-COMPARISON-v1.json",
+      "source_sha256": "0db89661509205fdfc02017f8c68dcdd794cac4b50ac372ff7549d9a48bdefd0",
+      "public_sha256": "5dc69b3cf3e0cfa18c1b3cc397a6d7145d271349805d5288dacdd9d63c0b4532",
+      "bytes": 5920,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/CAL-POSITION-REVIEW-v1.json",
+      "source_sha256": "d032682620ec151e173271c5d98ea3b3afed10decc06f55e0c9c2d086c61b269",
+      "public_sha256": "d032682620ec151e173271c5d98ea3b3afed10decc06f55e0c9c2d086c61b269",
+      "bytes": 3492,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/ONLINE-ACCEPTANCE-POSITION-v1.json",
+      "source_sha256": "a536655c2fe57c8a6ebaa6ac4add48738f3b2e876efe680f709fbbf01c71d6de",
+      "public_sha256": "513de84c602c06361381c274873fb9ca183e10c4a9122099c28c8772d4bf01b3",
+      "bytes": 16603,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/SPEED-COMMON-SUCCESS-v1.json",
+      "source_sha256": "7fa040934aaac9e84cfaa2d0f7adca64ec9df6da00b8f413b0441147ddd573a0",
+      "public_sha256": "7fa040934aaac9e84cfaa2d0f7adca64ec9df6da00b8f413b0441147ddd573a0",
+      "bytes": 12499,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/SPEED-COMMON-SUCCESS-v1.md",
+      "source_sha256": "8b94f1d64a7596a8141f50c5ed9e4dcbe762bd2b6a6ad098821e3f4f70710fb2",
+      "public_sha256": "8b94f1d64a7596a8141f50c5ed9e4dcbe762bd2b6a6ad098821e3f4f70710fb2",
+      "bytes": 1943,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/TRAINING-archive/SELECTED.json",
+      "source_sha256": "5927f24b90e493518201473b5f3a6b62f558e30b0c9a961d5db9ad913702f6c2",
+      "public_sha256": "5927f24b90e493518201473b5f3a6b62f558e30b0c9a961d5db9ad913702f6c2",
+      "bytes": 595,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/TRAINING-archive/DATA-MANIFEST.json",
+      "source_sha256": "7508ec7dfd21184357af50ac4da589d67f7226b7443b36d1a2bdcb45e7192088",
+      "public_sha256": "7508ec7dfd21184357af50ac4da589d67f7226b7443b36d1a2bdcb45e7192088",
+      "bytes": 17966,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/TRAINING-archive/STATUS.json",
+      "source_sha256": "d3f00ccbb8073951e60f23eb96b85b01432a352679bb78659a6782fca12f0cca",
+      "public_sha256": "d3f00ccbb8073951e60f23eb96b85b01432a352679bb78659a6782fca12f0cca",
+      "bytes": 3404,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.json",
+      "source_sha256": "7b4a8b9a8eba0fc4ad2d0ba513d957e1fa955da9186b7f5ad780a0edcead7149",
+      "public_sha256": "7b4a8b9a8eba0fc4ad2d0ba513d957e1fa955da9186b7f5ad780a0edcead7149",
+      "bytes": 299,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.jsonl",
+      "source_sha256": "1d1a4362fd4da023a7c407f2021737d4905767cd4fc9faec665d40c04b5a68d3",
+      "public_sha256": "1d1a4362fd4da023a7c407f2021737d4905767cd4fc9faec665d40c04b5a68d3",
+      "bytes": 182237,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/ACTION-CHUNKS.jsonl",
+      "source_sha256": "60a02dc308a03c13b15dec3b6534e666b4671ff9e943337a9722f686da80d177",
+      "public_sha256": "60a02dc308a03c13b15dec3b6534e666b4671ff9e943337a9722f686da80d177",
+      "bytes": 131080,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/CONSISTENCY.json",
+      "source_sha256": "f71a7cf838001c9628f3ba2f35cf7deba3238660b459684bf84f535d7bccf394",
+      "public_sha256": "f71a7cf838001c9628f3ba2f35cf7deba3238660b459684bf84f535d7bccf394",
+      "bytes": 2966,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/FULL-CHUNKS.jsonl",
+      "source_sha256": "6aa6de5353b62a8ef798f2ba069db1b6dfc4374b4e56b8dce72818a1d771b0b3",
+      "public_sha256": "6aa6de5353b62a8ef798f2ba069db1b6dfc4374b4e56b8dce72818a1d771b0b3",
+      "bytes": 721860,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/MODEL-LOAD.json",
+      "source_sha256": "22cf3ecf0b91083874a2bb8a6b4ace8485eb9f54f8befd397a0106cfbe7c347f",
+      "public_sha256": "482dd3b124402b40c702ce911be5f0a84ea4d85fe53f56d75596c8d3406fff0b",
+      "bytes": 2120,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/POLICY-TRACES.jsonl",
+      "source_sha256": "c1f2c801aa215f4d447b61ec7a3ab7d29b683c60e54614a11a57550d5c7ab4d2",
+      "public_sha256": "c1f2c801aa215f4d447b61ec7a3ab7d29b683c60e54614a11a57550d5c7ab4d2",
+      "bytes": 104090,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/PROFILE-CHUNKS.jsonl",
+      "source_sha256": "db5d31ea75498d4d2ed5d57e6bd0a1dc2bc0d42a6ad207b89483f784291aef16",
+      "public_sha256": "db5d31ea75498d4d2ed5d57e6bd0a1dc2bc0d42a6ad207b89483f784291aef16",
+      "bytes": 90636,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/RESOLVED-CONFIG.yaml",
+      "source_sha256": "ee2c6e629734308415279b87bc74891783b6f7d57a5f228ec19d8a16c9ce6f90",
+      "public_sha256": "f753be02082cbd8889bf43972485cb10d84f21d88770cadf9c47e8d9b88fda01",
+      "bytes": 5427,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/RESULTS.json",
+      "source_sha256": "affe9486dcc00f6abaa4e2cfd1019c6b6f2fd1f3eb1d9dac24ba2e4c3dc00139",
+      "public_sha256": "affe9486dcc00f6abaa4e2cfd1019c6b6f2fd1f3eb1d9dac24ba2e4c3dc00139",
+      "bytes": 152592,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/STATUS.json",
+      "source_sha256": "28b8f52c1a4a680d847f52173f901d8bc9d4ef413286a7d266afb4b3868e2d9a",
+      "public_sha256": "28b8f52c1a4a680d847f52173f901d8bc9d4ef413286a7d266afb4b3868e2d9a",
+      "bytes": 214,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/TEXT-CACHE-CONSISTENCY.json",
+      "source_sha256": "42da3ddb985ab4b0bc0c4fba371025ab8af0e4504b4ad0bb52946aa6a9889777",
+      "public_sha256": "42da3ddb985ab4b0bc0c4fba371025ab8af0e4504b4ad0bb52946aa6a9889777",
+      "bytes": 744,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_object/results/speed-triarm-attempt01/TEXT-CACHE-CONSISTENCY.jsonl",
+      "source_sha256": "a4b19773c6053017af8283b1fab100eb2fa31e2e5194ca48572bc52265897ba2",
+      "public_sha256": "a4b19773c6053017af8283b1fab100eb2fa31e2e5194ca48572bc52265897ba2",
+      "bytes": 27946,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/SPEED-5090/results/speed-triarm-attempt01/RESULTS.json",
+      "source_sha256": "50f21330174c43c288c2a0c06e39521ba6d9594fb05f9568c503fe14501bd8f0",
+      "public_sha256": "50f21330174c43c288c2a0c06e39521ba6d9594fb05f9568c503fe14501bd8f0",
+      "bytes": 12440,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/SPEED-5090/results/speed-triarm-attempt01/FULL-CHUNKS.jsonl",
+      "source_sha256": "d7cfe645ebaf6eab98566266d0ce48f321c8094d7ecdff7faa9949191752b5f8",
+      "public_sha256": "d7cfe645ebaf6eab98566266d0ce48f321c8094d7ecdff7faa9949191752b5f8",
+      "bytes": 721795,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/SPEED-5090/results/speed-triarm-attempt01/ACTION-CHUNKS.jsonl",
+      "source_sha256": "b3c7c461d0bd987b5f7b798eb6ca45af704aae2d5fece1a88909224160a3a953",
+      "public_sha256": "b3c7c461d0bd987b5f7b798eb6ca45af704aae2d5fece1a88909224160a3a953",
+      "bytes": 131053,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/SPEED-5090/results/speed-triarm-attempt01/POLICY-TRACES.jsonl",
+      "source_sha256": "c0b4b4c70585e58c2f93f74d2cb8dd7d3de3b343dd6d536c78716bcac33585c0",
+      "public_sha256": "c0b4b4c70585e58c2f93f74d2cb8dd7d3de3b343dd6d536c78716bcac33585c0",
+      "bytes": 104195,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/SPEED-5090/results/speed-triarm-attempt01/CONSISTENCY.json",
+      "source_sha256": "87141f86cd43a9df6ec4d5c1c89feb10ba25bc3c45b660987ef57a2b0c81ce7b",
+      "public_sha256": "87141f86cd43a9df6ec4d5c1c89feb10ba25bc3c45b660987ef57a2b0c81ce7b",
+      "bytes": 2966,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/SPEED-5090/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.json",
+      "source_sha256": "8e9cdabdc63a4b0e5f59a3da7bbbfa88321798735e41563e38d2cc61fb766c69",
+      "public_sha256": "8e9cdabdc63a4b0e5f59a3da7bbbfa88321798735e41563e38d2cc61fb766c69",
+      "bytes": 288,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_object/SPEED-5090/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.jsonl",
+      "source_sha256": "d81b89b9bf7cdaac793e8120c02135fac208c28fa88088958dd247a4e78bd69d",
+      "public_sha256": "d81b89b9bf7cdaac793e8120c02135fac208c28fa88088958dd247a4e78bd69d",
+      "bytes": 182300,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/QUALITY-FULL-TRIARM.json",
+      "source_sha256": "5b8322ee94c6fe910b95a29278a8b90a3287241c97a5b7231bcd31f43cdb2e7d",
+      "public_sha256": "5b8322ee94c6fe910b95a29278a8b90a3287241c97a5b7231bcd31f43cdb2e7d",
+      "bytes": 1095661,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/QUALITY-TRIARM.json",
+      "source_sha256": "4692c3b7800feedf28c32e5955fb39db20a29daf2915fb1cfa03ada06c391551",
+      "public_sha256": "4692c3b7800feedf28c32e5955fb39db20a29daf2915fb1cfa03ada06c391551",
+      "bytes": 53814,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/RESULT-REVIEW-v1.json",
+      "source_sha256": "b8d4a9db884482d89ee725c944c3255fc35bfca682ab9f6cde4983174d581aee",
+      "public_sha256": "102aad59821c25f9d31436d6f41754b0232f676be0cafb01693d521145d91df9",
+      "bytes": 15335,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/RESULT-REVIEW-v1.md",
+      "source_sha256": "4cd5d391a0d35a763305fe014dcfa014ec19fc55901eeab2949f25c9493e9c9d",
+      "public_sha256": "4cd5d391a0d35a763305fe014dcfa014ec19fc55901eeab2949f25c9493e9c9d",
+      "bytes": 1850,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/TAIL-REVIEW-v1.json",
+      "source_sha256": "28b8efb834d815611d7f8312a7ecdd517420fb75148c7e4f4f65e6e1e123eaf0",
+      "public_sha256": "28b8efb834d815611d7f8312a7ecdd517420fb75148c7e4f4f65e6e1e123eaf0",
+      "bytes": 12804,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/TAIL-REVIEW-v1.md",
+      "source_sha256": "6af5046ff7734f7503157321405226d555dceeb9f2b06161db915978d2c696d8",
+      "public_sha256": "6af5046ff7734f7503157321405226d555dceeb9f2b06161db915978d2c696d8",
+      "bytes": 876,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/PANEL.json",
+      "source_sha256": "75085f40111a6c0216f74cd3ed2aabc13bb6081c791b962b434c7ebfa74c0c35",
+      "public_sha256": "75085f40111a6c0216f74cd3ed2aabc13bb6081c791b962b434c7ebfa74c0c35",
+      "bytes": 77253,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/REGISTRATION.json",
+      "source_sha256": "a69cd2a41cf0c20eeac4f73d4742f23941fd122b5503ec56afc6b2ad2980473b",
+      "public_sha256": "c657d84930917f30bdee9ab61c8342026ef5acf2bae8cd5d10b93bc98d907467",
+      "bytes": 404,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/CAL-CARRY-COMPARISON-v1.json",
+      "source_sha256": "9b59bf4038ea1b960f40fda1d4becf95aa505c72fe0d93700d9c313f6effd688",
+      "public_sha256": "dfe31bdb046d8a3c0c33af8f19389355c2142c5ee788d5e5d9a93f95842a37fa",
+      "bytes": 5928,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/CAL-POSITION-REVIEW-v1.json",
+      "source_sha256": "4c4ef87b5e3323310943c7b091e8e3c0e02c1312898d0708c30bf4b002dc4e5f",
+      "public_sha256": "4c4ef87b5e3323310943c7b091e8e3c0e02c1312898d0708c30bf4b002dc4e5f",
+      "bytes": 3489,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/ONLINE-ACCEPTANCE-POSITION-v1.json",
+      "source_sha256": "f5cb79064fefc23fcccd1d64b5fdb5824ddbc68e29cc5e1f2490adcee6557273",
+      "public_sha256": "a0212c699f5897285940787a55b5eef0364a941b357430aab7ed6a0d73a0a1df",
+      "bytes": 17487,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/SPEED-COMMON-SUCCESS-v1.json",
+      "source_sha256": "8388b56316b01497812636f5ed01919132e3b743656a3dd6f635e824fa6352ae",
+      "public_sha256": "8388b56316b01497812636f5ed01919132e3b743656a3dd6f635e824fa6352ae",
+      "bytes": 12466,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/SPEED-COMMON-SUCCESS-v1.md",
+      "source_sha256": "2c6d26f9351ab012abbfbb010c5322e0edc4cf775f881e2203bd2396aed7e21d",
+      "public_sha256": "2c6d26f9351ab012abbfbb010c5322e0edc4cf775f881e2203bd2396aed7e21d",
+      "bytes": 1941,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/TRAINING-archive/SELECTED.json",
+      "source_sha256": "5cd1a629796eccec2d7bada8eaf300b778f9c3bfb0e6aa2f94acde50a69ca251",
+      "public_sha256": "5cd1a629796eccec2d7bada8eaf300b778f9c3bfb0e6aa2f94acde50a69ca251",
+      "bytes": 593,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/TRAINING-archive/DATA-MANIFEST.json",
+      "source_sha256": "40b6a601ff6a95b92fa86334a0fc5f8d3668a5fa9dd5973b9ef90b07aa780095",
+      "public_sha256": "40b6a601ff6a95b92fa86334a0fc5f8d3668a5fa9dd5973b9ef90b07aa780095",
+      "bytes": 17850,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/TRAINING-archive/STATUS.json",
+      "source_sha256": "a2de1d9388b4eb85c5af158f5aecf9bbd5cf5921b3f0868d346a1ab183904787",
+      "public_sha256": "a2de1d9388b4eb85c5af158f5aecf9bbd5cf5921b3f0868d346a1ab183904787",
+      "bytes": 3397,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.json",
+      "source_sha256": "71fd642e366371c635e3754e036023340e0bb980640268e4b5158e023c7f227b",
+      "public_sha256": "71fd642e366371c635e3754e036023340e0bb980640268e4b5158e023c7f227b",
+      "bytes": 299,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.jsonl",
+      "source_sha256": "bba75738e61faef96a061c645467cc60faa3e0e16c67d59024ce6f1a48e1d358",
+      "public_sha256": "bba75738e61faef96a061c645467cc60faa3e0e16c67d59024ce6f1a48e1d358",
+      "bytes": 181071,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/ACTION-CHUNKS.jsonl",
+      "source_sha256": "060c8dde60856278933555014949e9de7bee8dbbcc1d82579b71931428366998",
+      "public_sha256": "060c8dde60856278933555014949e9de7bee8dbbcc1d82579b71931428366998",
+      "bytes": 132743,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/CONSISTENCY.json",
+      "source_sha256": "614755db95e62e0f0e21bef85bb3b06a92111d1733a18df3f34282077a6f5602",
+      "public_sha256": "614755db95e62e0f0e21bef85bb3b06a92111d1733a18df3f34282077a6f5602",
+      "bytes": 2873,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/FULL-CHUNKS.jsonl",
+      "source_sha256": "f158f3902aea6ba278363e6c26ac6be69aeb8228fe77318774b3a509c77d6f4c",
+      "public_sha256": "f158f3902aea6ba278363e6c26ac6be69aeb8228fe77318774b3a509c77d6f4c",
+      "bytes": 725374,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/MODEL-LOAD.json",
+      "source_sha256": "df7af99d2b6afcba8d58682c54d0329e21a8cc38ab8830695aa49f5ca30d2c5f",
+      "public_sha256": "71d2cf7ec183ba7f1f6a1bf5cc146ed248b0085dbca40090e5d33c7c376ba8dd",
+      "bytes": 2120,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/POLICY-TRACES.jsonl",
+      "source_sha256": "b474a84dc2d87375f3a0933ba78f3b85b1f3160667d15f2110568d41b527f433",
+      "public_sha256": "b474a84dc2d87375f3a0933ba78f3b85b1f3160667d15f2110568d41b527f433",
+      "bytes": 100305,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/PROFILE-CHUNKS.jsonl",
+      "source_sha256": "df4ccda4e1e4da9958250142cb2fc08e8aceab10cfd1a886de92ab203132fe80",
+      "public_sha256": "df4ccda4e1e4da9958250142cb2fc08e8aceab10cfd1a886de92ab203132fe80",
+      "bytes": 90689,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/RESOLVED-CONFIG.yaml",
+      "source_sha256": "cf1813dd3c0cabc4b14a9b7b96ecb292874b1d1517a0beb8a01360a127aa61d7",
+      "public_sha256": "1d35f0778d5ca9109073beccbc75572dece1ecd564dd790272c33287aed2d58a",
+      "bytes": 5423,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/RESULTS.json",
+      "source_sha256": "7444045828b4588f7837618258f4fc331901240779cedccad5d90c35dfc659c7",
+      "public_sha256": "7444045828b4588f7837618258f4fc331901240779cedccad5d90c35dfc659c7",
+      "bytes": 152883,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/STATUS.json",
+      "source_sha256": "6485447f649b62a34e956e6dbba383b0314ffcbe74915ae0a63389e149496835",
+      "public_sha256": "6485447f649b62a34e956e6dbba383b0314ffcbe74915ae0a63389e149496835",
+      "bytes": 212,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/TEXT-CACHE-CONSISTENCY.json",
+      "source_sha256": "5d051e42d6f7a5223b6d5e1b63289b8d3a9d232442822e2ddd7846c83bd10368",
+      "public_sha256": "5d051e42d6f7a5223b6d5e1b63289b8d3a9d232442822e2ddd7846c83bd10368",
+      "bytes": 745,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_goal/results/speed-triarm-attempt01/TEXT-CACHE-CONSISTENCY.jsonl",
+      "source_sha256": "c34d52db5a204c96fe5fece8a819d5562886951857dd5c4922e89751555c5145",
+      "public_sha256": "c34d52db5a204c96fe5fece8a819d5562886951857dd5c4922e89751555c5145",
+      "bytes": 26753,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/SPEED-5090/results/speed-triarm-attempt01/RESULTS.json",
+      "source_sha256": "5264b2e44d796991eac12add885ade7e6d3f982d172eb43396e60b203f1d5ed1",
+      "public_sha256": "5264b2e44d796991eac12add885ade7e6d3f982d172eb43396e60b203f1d5ed1",
+      "bytes": 12404,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/SPEED-5090/results/speed-triarm-attempt01/FULL-CHUNKS.jsonl",
+      "source_sha256": "a475eb3af735bd60ea153a4807f9464c96259452a904eba7a0e4710c04049619",
+      "public_sha256": "a475eb3af735bd60ea153a4807f9464c96259452a904eba7a0e4710c04049619",
+      "bytes": 721188,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/SPEED-5090/results/speed-triarm-attempt01/ACTION-CHUNKS.jsonl",
+      "source_sha256": "27f12f644772dbca036ab2f3288b3a2ae3dc58e821bfe6499d5b7f62ff7be7c2",
+      "public_sha256": "27f12f644772dbca036ab2f3288b3a2ae3dc58e821bfe6499d5b7f62ff7be7c2",
+      "bytes": 131796,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/SPEED-5090/results/speed-triarm-attempt01/POLICY-TRACES.jsonl",
+      "source_sha256": "d7cde9c62f9a4f02bcbbdf8b01ba30ec16fb08ca57f46d0a5b7bbd422f68f0e6",
+      "public_sha256": "d7cde9c62f9a4f02bcbbdf8b01ba30ec16fb08ca57f46d0a5b7bbd422f68f0e6",
+      "bytes": 99983,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/SPEED-5090/results/speed-triarm-attempt01/CONSISTENCY.json",
+      "source_sha256": "580a8d7a1230f1b9523ec14d4fd0c0d8dae6faf61ae911b9220b7ec05ca89d06",
+      "public_sha256": "580a8d7a1230f1b9523ec14d4fd0c0d8dae6faf61ae911b9220b7ec05ca89d06",
+      "bytes": 2868,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/SPEED-5090/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.json",
+      "source_sha256": "09218a258414b49342a375ef8e192f7cfed95e70837373dc5e7f20d10f2232e7",
+      "public_sha256": "09218a258414b49342a375ef8e192f7cfed95e70837373dc5e7f20d10f2232e7",
+      "bytes": 288,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_goal/SPEED-5090/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.jsonl",
+      "source_sha256": "078cc1100956a6ff7d3465cd8dc62caa9243d9c945bfdcc8862efb0d3acabc01",
+      "public_sha256": "078cc1100956a6ff7d3465cd8dc62caa9243d9c945bfdcc8862efb0d3acabc01",
+      "bytes": 181033,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/QUALITY-FULL-TRIARM.json",
+      "source_sha256": "4e9e0ebc0e3e6c2b158c7d9d79403117f45dc8268594afc9f39bb8c39ae1083b",
+      "public_sha256": "4e9e0ebc0e3e6c2b158c7d9d79403117f45dc8268594afc9f39bb8c39ae1083b",
+      "bytes": 1091986,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/RESULT-REVIEW-v1.json",
+      "source_sha256": "d9380150de09e6088c760c0a6627156e0390394e9a661d2890d470855683628a",
+      "public_sha256": "38e0ee3e98318ce81586debb24be00db4d74afcf076a7d23ea2ab2cb16c9830b",
+      "bytes": 15448,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/RESULT-REVIEW-v1.md",
+      "source_sha256": "cc1cb2e63e0152257776a76c08842023aa101a26db269a86768d52d3c9ca3f9e",
+      "public_sha256": "cc1cb2e63e0152257776a76c08842023aa101a26db269a86768d52d3c9ca3f9e",
+      "bytes": 1854,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/TAIL-REVIEW-v1.json",
+      "source_sha256": "c2fea14ebbf8486348247e706fb68e5991bcc049910340268135dcdff10470e3",
+      "public_sha256": "c2fea14ebbf8486348247e706fb68e5991bcc049910340268135dcdff10470e3",
+      "bytes": 45660,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/TAIL-REVIEW-v1.md",
+      "source_sha256": "38878e3819e88c366220c1252a148b54c4c468ab57f1ce10ef937d015f7404ef",
+      "public_sha256": "38878e3819e88c366220c1252a148b54c4c468ab57f1ce10ef937d015f7404ef",
+      "bytes": 978,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/PANEL.json",
+      "source_sha256": "deab26f3a831753eb78094bfb3616434833694dbdb4f9359654c0d65fcffaa3e",
+      "public_sha256": "deab26f3a831753eb78094bfb3616434833694dbdb4f9359654c0d65fcffaa3e",
+      "bytes": 77251,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/REGISTRATION.json",
+      "source_sha256": "982c8a5284240ff2bdc274ca4e4fd73d83f79d8cfc34bca43d7f62e984be09fe",
+      "public_sha256": "ab9d1cab74b553fed00417a581c3880b4965e90d2c66325f08dd8facc9ebcd5f",
+      "bytes": 404,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/CAL-CARRY-COMPARISON-v1.json",
+      "source_sha256": "8b7b7b4c82611f16dfab5028d13c0da306431625f7bbd380b53ff11b461052d9",
+      "public_sha256": "7481faca58d8e223df4e9067077c478111cfc255ccc3a84d219943619e177ead",
+      "bytes": 5963,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/CAL-POSITION-REVIEW-v1.json",
+      "source_sha256": "ceaca384d85a0cc7a3d585a57492096193bfb42a007325612eab38713b1ed6fa",
+      "public_sha256": "ceaca384d85a0cc7a3d585a57492096193bfb42a007325612eab38713b1ed6fa",
+      "bytes": 3529,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/ONLINE-ACCEPTANCE-POSITION-v1.json",
+      "source_sha256": "a81892bbd827a7b2913c96001ddd4a09f8620c99c37482fe385a098d1fa32b48",
+      "public_sha256": "dce8d70df3ffd4442946c436f3b49b5075fd9e66bc7881da6759905cada3d0da",
+      "bytes": 17879,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/ONLINE-ACCEPTANCE-POSITION-v1.md",
+      "source_sha256": "309475df60cf3bd03d7e7f527b7fb453ca4cc56ba53bd08f928b80dc1dd3e0eb",
+      "public_sha256": "309475df60cf3bd03d7e7f527b7fb453ca4cc56ba53bd08f928b80dc1dd3e0eb",
+      "bytes": 2262,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/SPEED-COMMON-SUCCESS-v1.json",
+      "source_sha256": "58815095315885e312c09a060b616b5a72fab41e648151227e1777090dff5b19",
+      "public_sha256": "58815095315885e312c09a060b616b5a72fab41e648151227e1777090dff5b19",
+      "bytes": 11427,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/SPEED-COMMON-SUCCESS-v1.md",
+      "source_sha256": "d2c594c420431c8683cf3f3aef389c664dd7961f18f85bc64d61d5315e5f12c5",
+      "public_sha256": "d2c594c420431c8683cf3f3aef389c664dd7961f18f85bc64d61d5315e5f12c5",
+      "bytes": 1945,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/CANONICAL-REPEAT-v2.json",
+      "source_sha256": "b2e71ee28a5ff0d3118825683d3e65912d7afdb107935415171e138e00de8e3f",
+      "public_sha256": "30146eecc3b984fa38a0599340e304c36e05e94c9e26ee975f3a8b9c5b7f3dbe",
+      "bytes": 29518,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/CANONICAL-REPEAT-v2.md",
+      "source_sha256": "59a86cc4bfe37f236e8aa8ce9eedc77cf89d1170b171ff059b34f4516f53ba21",
+      "public_sha256": "59a86cc4bfe37f236e8aa8ce9eedc77cf89d1170b171ff059b34f4516f53ba21",
+      "bytes": 1542,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/libero_10/CANONICAL-REPEAT-MODEL-IDENTITY.json",
+      "source_sha256": "0fe25a7f5f78600a678790588325ef3560b6e93d8af08a6d760c729fdcf124cd",
+      "public_sha256": "23c0d11b0e2755095a0c5d27a73ed15bdc16ef74348da37f6f3fc6556fb9448a",
+      "bytes": 831,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/TRAINING-archive/SELECTED.json",
+      "source_sha256": "2d922499f950c39366c9ffb87eb97a9bd1fbe08f2fa96f63a8d493cfd8c9eb91",
+      "public_sha256": "2d922499f950c39366c9ffb87eb97a9bd1fbe08f2fa96f63a8d493cfd8c9eb91",
+      "bytes": 595,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/TRAINING-archive/DATA-MANIFEST.json",
+      "source_sha256": "d4b2aa678b02b7009f1c09b14fca04baafb6d720621db102d9e4f55a5b16c0ac",
+      "public_sha256": "d4b2aa678b02b7009f1c09b14fca04baafb6d720621db102d9e4f55a5b16c0ac",
+      "bytes": 18023,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/TRAINING-archive/STATUS.json",
+      "source_sha256": "282be3227ddf8a0f950b0e2ba10d887dd691fe677df3849851b8345415e57df1",
+      "public_sha256": "282be3227ddf8a0f950b0e2ba10d887dd691fe677df3849851b8345415e57df1",
+      "bytes": 3403,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.json",
+      "source_sha256": "5261858df8c1e042b7d5ff9c9e4568385bbb205201c19f518a2a0335a532e741",
+      "public_sha256": "5261858df8c1e042b7d5ff9c9e4568385bbb205201c19f518a2a0335a532e741",
+      "bytes": 299,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.jsonl",
+      "source_sha256": "be9be8a1e337cec841c96d49e84ee538920a7b27d2de9398516356ef7281069b",
+      "public_sha256": "be9be8a1e337cec841c96d49e84ee538920a7b27d2de9398516356ef7281069b",
+      "bytes": 145751,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/ACTION-CHUNKS.jsonl",
+      "source_sha256": "2e821633a19d3dc19683c8dfe3533fcf9d89c1fbfbe801479a08ecaa0dd90185",
+      "public_sha256": "2e821633a19d3dc19683c8dfe3533fcf9d89c1fbfbe801479a08ecaa0dd90185",
+      "bytes": 104327,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/CONSISTENCY.json",
+      "source_sha256": "01be0adfc51691df1a3ae475d6fd5925b03253a791ac2c3d2c571e69c492a55f",
+      "public_sha256": "01be0adfc51691df1a3ae475d6fd5925b03253a791ac2c3d2c571e69c492a55f",
+      "bytes": 2876,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/FULL-CHUNKS.jsonl",
+      "source_sha256": "bf73929b720ca26155222ce7b80ae41de77e0d174f607d68a7eda9ab1da9b68c",
+      "public_sha256": "bf73929b720ca26155222ce7b80ae41de77e0d174f607d68a7eda9ab1da9b68c",
+      "bytes": 576942,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/MODEL-LOAD.json",
+      "source_sha256": "b7a339e45d66d9d392a76908b32a65723cba4270233d02d1f8055ab8df42989a",
+      "public_sha256": "ee758f5845739dfbf0e300409d4a63ccf0bb9c15f79301a76a8f5c0cc93b8944",
+      "bytes": 2120,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/POLICY-TRACES.jsonl",
+      "source_sha256": "9e8cd7e373da3d0576054981759a471d51d18eba49b7e305a06493aeb6362667",
+      "public_sha256": "9e8cd7e373da3d0576054981759a471d51d18eba49b7e305a06493aeb6362667",
+      "bytes": 131115,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/PROFILE-CHUNKS.jsonl",
+      "source_sha256": "29b37035e8a9a4ea439daa39b68b92d566064a35d916a2842f11b7ae926ee76d",
+      "public_sha256": "29b37035e8a9a4ea439daa39b68b92d566064a35d916a2842f11b7ae926ee76d",
+      "bytes": 72306,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/RESOLVED-CONFIG.yaml",
+      "source_sha256": "118a09d0ffbcf97d0d7ae01191eb33cdeda0d656ebe4263ba49af67b0a29c8d0",
+      "public_sha256": "69665fd1097049cc1aea4cabcf7598b3bbc0b355e82b517bd2c555de485a4542",
+      "bytes": 5419,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/RESULTS.json",
+      "source_sha256": "aa9f4cd3009727a4ea6b6c14da7a98cdd29ceca0d9049b9424f874ff4c5fcb32",
+      "public_sha256": "aa9f4cd3009727a4ea6b6c14da7a98cdd29ceca0d9049b9424f874ff4c5fcb32",
+      "bytes": 123521,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/STATUS.json",
+      "source_sha256": "fb6bffe0d1bad88e32b25e5555b02a6b2eb3a1803898349bb2fb92e9fc4008b2",
+      "public_sha256": "fb6bffe0d1bad88e32b25e5555b02a6b2eb3a1803898349bb2fb92e9fc4008b2",
+      "bytes": 212,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/TEXT-CACHE-CONSISTENCY.json",
+      "source_sha256": "118e6aaec3c32e716c56f5a9051e5cc4e9394805ce0391a8df2c9bbbdc5824c7",
+      "public_sha256": "118e6aaec3c32e716c56f5a9051e5cc4e9394805ce0391a8df2c9bbbdc5824c7",
+      "bytes": 744,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/libero_10/results/speed-triarm-attempt01/TEXT-CACHE-CONSISTENCY.jsonl",
+      "source_sha256": "242e27491124eb29dd15aac74e600de1fd3591bac641bdbd95f8c772fc51c97e",
+      "public_sha256": "242e27491124eb29dd15aac74e600de1fd3591bac641bdbd95f8c772fc51c97e",
+      "bytes": 22701,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/SPEED-5090-archive/speed-triarm-attempt01/RESULTS.json",
+      "source_sha256": "a5bc1d404e5cebd8f27a2bfdea77ed6324eecf3c065d9beb4c3c4896c6c390e3",
+      "public_sha256": "a5bc1d404e5cebd8f27a2bfdea77ed6324eecf3c065d9beb4c3c4896c6c390e3",
+      "bytes": 12409,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/SPEED-5090-archive/speed-triarm-attempt01/FULL-CHUNKS.jsonl",
+      "source_sha256": "01815e55deea8e3ed59a9ca11fdff8b3937a8e1671f32fe90805a450657b518b",
+      "public_sha256": "01815e55deea8e3ed59a9ca11fdff8b3937a8e1671f32fe90805a450657b518b",
+      "bytes": 725439,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/SPEED-5090-archive/speed-triarm-attempt01/ACTION-CHUNKS.jsonl",
+      "source_sha256": "968b564a13d7671024260be1206706bea1b72a083929023171abeaa185b72e2b",
+      "public_sha256": "968b564a13d7671024260be1206706bea1b72a083929023171abeaa185b72e2b",
+      "bytes": 130618,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/SPEED-5090-archive/speed-triarm-attempt01/POLICY-TRACES.jsonl",
+      "source_sha256": "6e2ddc1e437aca6ab05af2e4e4c175eb672c47f1683069fb76a330eb5356db3c",
+      "public_sha256": "6e2ddc1e437aca6ab05af2e4e4c175eb672c47f1683069fb76a330eb5356db3c",
+      "bytes": 194785,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/SPEED-5090-archive/speed-triarm-attempt01/CONSISTENCY.json",
+      "source_sha256": "6ae60d7c7ce6d97cb630fcedad37a41e6bc273cda334feb2d6f56480d6953e1f",
+      "public_sha256": "6ae60d7c7ce6d97cb630fcedad37a41e6bc273cda334feb2d6f56480d6953e1f",
+      "bytes": 2876,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/SPEED-5090-archive/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.json",
+      "source_sha256": "f1d107ee8bea43e51d0dbf42c1f4d144cb24f23cec6389c404121ac6aa7f47d4",
+      "public_sha256": "f1d107ee8bea43e51d0dbf42c1f4d144cb24f23cec6389c404121ac6aa7f47d4",
+      "bytes": 288,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-base-small-closedloop-20261026/SPEED-5090-archive/speed-triarm-attempt01/ACCEPTANCE-FLOATING-SENSITIVITY.jsonl",
+      "source_sha256": "4695180c5984082d89f32162e1179c5278b18582a548628df976715560658a97",
+      "public_sha256": "4695180c5984082d89f32162e1179c5278b18582a548628df976715560658a97",
+      "bytes": 182388,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REGISTRATION.json",
+      "source_sha256": "a08cd38bebebb03771f3c6c6fe369371a767b35d0d3d26d341243082f5c79577",
+      "public_sha256": "6d94333d05bc387f5cac64e7d5936f3b04c9ac45ce079ceaab2f855fccd61bc9",
+      "bytes": 3196,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/STATUS.json",
+      "source_sha256": "54c811c5a6c8540ebce28687272b54b00f6fd1216790877393674a6d30a1d784",
+      "public_sha256": "483422fc1a47c9d947ee622b74762461e85e87bf2f879511c8690214ce014221",
+      "bytes": 2022,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/CONTINUATION-v2-STATUS.json",
+      "source_sha256": "cdc125c7ddd7126eb10bd100512812933427413adede3a4cd4998d6901e285d0",
+      "public_sha256": "f31664291de0ce02d84a67a26abd0cdfe0e9fd9c55e5a138789a87c180ab2c3a",
+      "bytes": 994,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/CROSS-RUN-COMPARISON-v1.md",
+      "source_sha256": "4ff918ee89b928a3caf1c4d35014e2fc15e46bc3cf520a578816a5bc18ff2674",
+      "public_sha256": "4ff918ee89b928a3caf1c4d35014e2fc15e46bc3cf520a578816a5bc18ff2674",
+      "bytes": 1035,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/CROSS-RUN-COMPARISON-v1.json",
+      "source_sha256": "4511e9d0e82d58ffeccd301c0f5a55fd3fccd98ff687b1e8a13445c3af1cc32c",
+      "public_sha256": "4511e9d0e82d58ffeccd301c0f5a55fd3fccd98ff687b1e8a13445c3af1cc32c",
+      "bytes": 786479,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/FIGURES/INDEX.md",
+      "source_sha256": "53270fb1f891cdc96946702a59bc61b072ddbdfe0c6d163a5fd856dd7406285c",
+      "public_sha256": "53270fb1f891cdc96946702a59bc61b072ddbdfe0c6d163a5fd856dd7406285c",
+      "bytes": 308,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/FIGURES/LATENCY-DISTRIBUTIONS.pdf",
+      "source_sha256": "a747c0981370bb31e13c407f83f5cfbc33530f54a7271fd03702ac4aa21a0d43",
+      "public_sha256": "a747c0981370bb31e13c407f83f5cfbc33530f54a7271fd03702ac4aa21a0d43",
+      "bytes": 25260,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/FIGURES/LATENCY-DISTRIBUTIONS.png",
+      "source_sha256": "42e32fb89a4bc487a7327a97b4f7fd6f2c7a865914550efc498ec84bd29c3b03",
+      "public_sha256": "42e32fb89a4bc487a7327a97b4f7fd6f2c7a865914550efc498ec84bd29c3b03",
+      "bytes": 75563,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/FIGURES/LATENCY-DISTRIBUTIONS.svg",
+      "source_sha256": "6f596c22e22491cbb68458daf46716c5971aedcaea8c1d4b905be66ffcc73723",
+      "public_sha256": "6f596c22e22491cbb68458daf46716c5971aedcaea8c1d4b905be66ffcc73723",
+      "bytes": 97063,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/FIGURES/MANIFEST.json",
+      "source_sha256": "8194ecc1a3904c970841f02195e2cf5d7f594969deeddbaa9db223b4bb03e682",
+      "public_sha256": "8194ecc1a3904c970841f02195e2cf5d7f594969deeddbaa9db223b4bb03e682",
+      "bytes": 1952,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/FIGURES/PHASE-BREAKDOWN.pdf",
+      "source_sha256": "22ee99e332a509917dc4d78604537dc18fabf765fb7e538da7fe11de3ed76df7",
+      "public_sha256": "22ee99e332a509917dc4d78604537dc18fabf765fb7e538da7fe11de3ed76df7",
+      "bytes": 17446,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/FIGURES/PHASE-BREAKDOWN.png",
+      "source_sha256": "c4736dbb6ee53e092a536e3a7cad31ff525fad6a5c39567e43a906dfdcad70fb",
+      "public_sha256": "c4736dbb6ee53e092a536e3a7cad31ff525fad6a5c39567e43a906dfdcad70fb",
+      "bytes": 70985,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/FIGURES/PHASE-BREAKDOWN.svg",
+      "source_sha256": "f47f63fc67064bbda07361eda4218ee0f3fa979a7b3745277d63520240888d8e",
+      "public_sha256": "f47f63fc67064bbda07361eda4218ee0f3fa979a7b3745277d63520240888d8e",
+      "bytes": 47517,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/FIGURES/VISUAL-REVIEW.json",
+      "source_sha256": "07209b4e36511bf529bb0b93c1ae60946d2df933ad52b595e7ba1fc49c0e7215",
+      "public_sha256": "07209b4e36511bf529bb0b93c1ae60946d2df933ad52b595e7ba1fc49c0e7215",
+      "bytes": 503,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/REPORT.md",
+      "source_sha256": "05ea8e3aa26810be57ca390ec8a583bd45708d940c008151f297f47949524b28",
+      "public_sha256": "05ea8e3aa26810be57ca390ec8a583bd45708d940c008151f297f47949524b28",
+      "bytes": 3264,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/RESULT.json",
+      "source_sha256": "d96be4b58709d31fea7947806896ea9f593a53703fe989534ed0c28aa32e6665",
+      "public_sha256": "2e9dc199c375a6e8bebd712a708e6b0b866955375be39f4653921b14cd9b31f0",
+      "bytes": 228352,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/CONTRACT.md",
+      "source_sha256": "8cf3ad10435c7ab771c5d23e9130ed9c5e83ba062258f7e762334cc1d10d49ce",
+      "public_sha256": "8cf3ad10435c7ab771c5d23e9130ed9c5e83ba062258f7e762334cc1d10d49ce",
+      "bytes": 2154,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/CANONICAL-REVIEW-PROTOCOL-v1.json",
+      "source_sha256": "d7b8cc5823ad1d8dd5c6b5a31469454e84f0126b7a9364bb26f9d0aaaefd9b7e",
+      "public_sha256": "d7b8cc5823ad1d8dd5c6b5a31469454e84f0126b7a9364bb26f9d0aaaefd9b7e",
+      "bytes": 1465,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/CANONICAL-REVIEW-v1.json",
+      "source_sha256": "93ba462e0caf83f85cc89f8254370acae186d4f54838551085a37f0d737d8fe8",
+      "public_sha256": "93ba462e0caf83f85cc89f8254370acae186d4f54838551085a37f0d737d8fe8",
+      "bytes": 1315,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/CANONICAL-REVIEW-v1.md",
+      "source_sha256": "2048ce6f56dac84716ac9407c0b0dddc51529dc2950fdcd118a52345c85b7fa7",
+      "public_sha256": "2048ce6f56dac84716ac9407c0b0dddc51529dc2950fdcd118a52345c85b7fa7",
+      "bytes": 1699,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/SPEC-CPU-CONTRACT-v3.json",
+      "source_sha256": "505ae0d0699652d917b8bfb213ce9729e8172dc6eb77a7e1927e21496ab9c1f2",
+      "public_sha256": "505ae0d0699652d917b8bfb213ce9729e8172dc6eb77a7e1927e21496ab9c1f2",
+      "bytes": 4132,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/SPEC-POLICY-BRIDGE-CPU.json",
+      "source_sha256": "7d413a1e7124f8336be65749a8d5151bc53ea9e651073f76aff2a22520c5ec67",
+      "public_sha256": "7d413a1e7124f8336be65749a8d5151bc53ea9e651073f76aff2a22520c5ec67",
+      "bytes": 798,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/CALL-SHAPES-CPU-v1.json",
+      "source_sha256": "6ac2c9e02a728037d9186ea02d5b5bf7bbf3a08446881fb8f212e11b650f9417",
+      "public_sha256": "6ac2c9e02a728037d9186ea02d5b5bf7bbf3a08446881fb8f212e11b650f9417",
+      "bytes": 2006,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/QUEUE-ATTEMPT04-STATUS.json",
+      "source_sha256": "0c47541b399032476234d6908f6307e2342b19cf3235579482acea000dea316e",
+      "public_sha256": "451a5f2c620d4a75ce28b3a74fb240059a5501ef58d7eb9e45d3c6c5b8a771fe",
+      "bytes": 749,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/attempt04/REMOTE-STATUS.json",
+      "source_sha256": "6224d538fe46628d7fe71d5c25a1279981163d723ac0d11f38574ff0f569f2a7",
+      "public_sha256": "6224d538fe46628d7fe71d5c25a1279981163d723ac0d11f38574ff0f569f2a7",
+      "bytes": 12690,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/attempt04/review-v1/TECHNICAL-REVIEW.json",
+      "source_sha256": "2299e5b37871dbabbfdcf9ad23da862d5491f6268350fa0ed96c8cabd49c6d1e",
+      "public_sha256": "6dd5ed23a3096e1261515044eb3619c768c3788bb8566271e668400ad5fd04d7",
+      "bytes": 4271,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/attempt04/review-v1/blocks_ranking_rgb.png",
+      "source_sha256": "c03d4ae4d639b183ff9a32bcac179c154c71965c1915bc4c2926368f17b1b028",
+      "public_sha256": "c03d4ae4d639b183ff9a32bcac179c154c71965c1915bc4c2926368f17b1b028",
+      "bytes": 313399,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/attempt04/review-v1/beat_block_hammer.png",
+      "source_sha256": "0737d135898bc4ee5b3a3f594aa9b5c20be103f1deecec5cf445c2d05da2d3b4",
+      "public_sha256": "0737d135898bc4ee5b3a3f594aa9b5c20be103f1deecec5cf445c2d05da2d3b4",
+      "bytes": 331847,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/attempt04/review-v1/blocks_ranking_size.png",
+      "source_sha256": "31f366c868d0dfccb0828a5fca28b8283f64c09a2151a5046fff1bc7b6ff21a3",
+      "public_sha256": "31f366c868d0dfccb0828a5fca28b8283f64c09a2151a5046fff1bc7b6ff21a3",
+      "bytes": 332355,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/attempt04/review-v1/adjust_bottle.png",
+      "source_sha256": "cf21a3ac0390d57857138b02a9f42e3f8a6dd82f780576eed317562f3049b869",
+      "public_sha256": "cf21a3ac0390d57857138b02a9f42e3f8a6dd82f780576eed317562f3049b869",
+      "bytes": 349470,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/REMOTE-STATUS.json",
+      "source_sha256": "27ef715db32cb7a89a3c72dc83262234c1da1551973b7a3a74a235f937027563",
+      "public_sha256": "6ea065091baa12a57fbd3e03d634822d5ec3e4433a49b98a59ea8109cff85567",
+      "bytes": 14123,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/attempt02/REMOTE-STATUS.json",
+      "source_sha256": "fa3eb68c23c49f49437930172af0ac1a36b8ef320beb31c6f026a2bc379e361b",
+      "public_sha256": "98a9886a29d1be38ead17efbbb9ce0593619d5f62203ee6f4e35c24b53dd9c8f",
+      "bytes": 67560,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/attempt03/REMOTE-STATUS.json",
+      "source_sha256": "d3f178b1be56a48dbd7222c261b767f061d34b6c9d9b3c5bfd5c2b8210fbe2d8",
+      "public_sha256": "fcfd19dcc3073fa790bfd11cffa2908fe31d4707e8492fc7ea76dd0c033a0b8c",
+      "bytes": 12702,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/render-diagnostic01/STATUS.json",
+      "source_sha256": "3b9e2b750a655d966b5cf7748b4c4a03eefb744f8dd1374458588ab8128e3885",
+      "public_sha256": "3b9e2b750a655d966b5cf7748b4c4a03eefb744f8dd1374458588ab8128e3885",
+      "bytes": 266,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-robotwin-canonical-20261027/render-diagnostic02/STATUS.json",
+      "source_sha256": "67bd4d2fe1ed09fd61a286c0fb1bfcc8ec154ea313680f3d0568fffb9c353135",
+      "public_sha256": "67bd4d2fe1ed09fd61a286c0fb1bfcc8ec154ea313680f3d0568fffb9c353135",
+      "bytes": 267,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/runtime.py",
+      "source_sha256": "676c027fd1738f66f72d2ca6eadf2853b890557f89f01b4cc9ffeecc2534f3bd",
+      "public_sha256": "676c027fd1738f66f72d2ca6eadf2853b890557f89f01b4cc9ffeecc2534f3bd",
+      "bytes": 8016,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/adapter.py",
+      "source_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "public_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "bytes": 3903,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/draft.py",
+      "source_sha256": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+      "public_sha256": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+      "bytes": 2330,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/train.py",
+      "source_sha256": "3a1683a02937df8d1766cf071b94646eebfab971e3332c5d87e56812d43ed08c",
+      "public_sha256": "3a1683a02937df8d1766cf071b94646eebfab971e3332c5d87e56812d43ed08c",
+      "bytes": 6972,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/server.py",
+      "source_sha256": "d1794a8af30c2d027e5f4e59a5c90f5bbe59e9477b831579c1281a240b614bb0",
+      "public_sha256": "d1794a8af30c2d027e5f4e59a5c90f5bbe59e9477b831579c1281a240b614bb0",
+      "bytes": 9150,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/client.py",
+      "source_sha256": "302b9b51d6a38314bbbe37cdf2af26ac3b7f135e17401fc3883df3e98c171d2a",
+      "public_sha256": "302b9b51d6a38314bbbe37cdf2af26ac3b7f135e17401fc3883df3e98c171d2a",
+      "bytes": 6333,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/real_speculative.py",
+      "source_sha256": "6009b819a030b15be017790ad932e42f8807703ad6579fbafb35fafc6f6a6f6f",
+      "public_sha256": "6009b819a030b15be017790ad932e42f8807703ad6579fbafb35fafc6f6a6f6f",
+      "bytes": 7163,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/simulation_reference.py",
+      "source_sha256": "bb385fe30c3db158ef9718934b617c5cfa37fcf27869ba126f4ee86904a24182",
+      "public_sha256": "bb385fe30c3db158ef9718934b617c5cfa37fcf27869ba126f4ee86904a24182",
+      "bytes": 8833,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/policy_schedule.py",
+      "source_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "public_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "bytes": 313,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/check_boundaries.py",
+      "source_sha256": "933c24e132892007e1f47b6489cfd8f8af56272e79c3079c9c5c2561097dfbee",
+      "public_sha256": "933c24e132892007e1f47b6489cfd8f8af56272e79c3079c9c5c2561097dfbee",
+      "bytes": 2729,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/code/summarize_triarm.py",
+      "source_sha256": "a9548bc68bae0db3b5d0105e6b78c73cc00425409cd9b89b1d4c490569a56d2b",
+      "public_sha256": "a9548bc68bae0db3b5d0105e6b78c73cc00425409cd9b89b1d4c490569a56d2b",
+      "bytes": 9893,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/runtime.py",
+      "source_sha256": "097a25f9e1fd591b600a25e4b5163e5a75ba38df939068bb69b6ff590ace07dc",
+      "public_sha256": "097a25f9e1fd591b600a25e4b5163e5a75ba38df939068bb69b6ff590ace07dc",
+      "bytes": 8052,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/adapter.py",
+      "source_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "public_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "bytes": 3903,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/draft.py",
+      "source_sha256": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+      "public_sha256": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+      "bytes": 2330,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/train.py",
+      "source_sha256": "3a1683a02937df8d1766cf071b94646eebfab971e3332c5d87e56812d43ed08c",
+      "public_sha256": "3a1683a02937df8d1766cf071b94646eebfab971e3332c5d87e56812d43ed08c",
+      "bytes": 6972,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/server.py",
+      "source_sha256": "d1794a8af30c2d027e5f4e59a5c90f5bbe59e9477b831579c1281a240b614bb0",
+      "public_sha256": "d1794a8af30c2d027e5f4e59a5c90f5bbe59e9477b831579c1281a240b614bb0",
+      "bytes": 9150,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/client.py",
+      "source_sha256": "197c33e6f5d918306b2780f4f66dc445670e0a82091340c29e3089648c328ca4",
+      "public_sha256": "197c33e6f5d918306b2780f4f66dc445670e0a82091340c29e3089648c328ca4",
+      "bytes": 6507,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/real_speculative.py",
+      "source_sha256": "6009b819a030b15be017790ad932e42f8807703ad6579fbafb35fafc6f6a6f6f",
+      "public_sha256": "6009b819a030b15be017790ad932e42f8807703ad6579fbafb35fafc6f6a6f6f",
+      "bytes": 7163,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/simulation_reference.py",
+      "source_sha256": "bb385fe30c3db158ef9718934b617c5cfa37fcf27869ba126f4ee86904a24182",
+      "public_sha256": "bb385fe30c3db158ef9718934b617c5cfa37fcf27869ba126f4ee86904a24182",
+      "bytes": 8833,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/policy_schedule.py",
+      "source_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "public_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "bytes": 313,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/phase_worker.py",
+      "source_sha256": "1489e4da21664f564b9017e2306a299881eae18ede9878febded700c0a61fa33",
+      "public_sha256": "1489e4da21664f564b9017e2306a299881eae18ede9878febded700c0a61fa33",
+      "bytes": 8889,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/full_worker.py",
+      "source_sha256": "0c8dceab7a4cb2701d343e12b9a19eff5a570a2337e22a6ef86933153bdff63e",
+      "public_sha256": "0c8dceab7a4cb2701d343e12b9a19eff5a570a2337e22a6ef86933153bdff63e",
+      "bytes": 8260,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/summarize_full.py",
+      "source_sha256": "82b674e7a8a1c2211a0188efdb7669ebd16e2802cbbd4df1aa9b021a439f9196",
+      "public_sha256": "82b674e7a8a1c2211a0188efdb7669ebd16e2802cbbd4df1aa9b021a439f9196",
+      "bytes": 9725,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/fullcode-v1/summarize_triarm.py",
+      "source_sha256": "a9548bc68bae0db3b5d0105e6b78c73cc00425409cd9b89b1d4c490569a56d2b",
+      "public_sha256": "a9548bc68bae0db3b5d0105e6b78c73cc00425409cd9b89b1d4c490569a56d2b",
+      "bytes": 9893,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/suite-speedcode-v1/runtime.py",
+      "source_sha256": "78e37f1c077771538d307563497ded3082694a372e0eab31e9e2ede0c4853636",
+      "public_sha256": "78e37f1c077771538d307563497ded3082694a372e0eab31e9e2ede0c4853636",
+      "bytes": 8035,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/suite-speedcode-v1/adapter.py",
+      "source_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "public_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "bytes": 3903,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/suite-speedcode-v1/draft.py",
+      "source_sha256": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+      "public_sha256": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+      "bytes": 2330,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/suite-speedcode-v1/real_speculative.py",
+      "source_sha256": "fbfada5d2f35e76e8b0b8c83f9d49f522b07a1a87e286e795733fc1f60e164e2",
+      "public_sha256": "fbfada5d2f35e76e8b0b8c83f9d49f522b07a1a87e286e795733fc1f60e164e2",
+      "bytes": 7256,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/suite-speedcode-v1/simulation_reference.py",
+      "source_sha256": "8bb5e3eb8a25611be6e6cfa09a8d8dc2e7d410508479f66ad3a947936d460458",
+      "public_sha256": "8bb5e3eb8a25611be6e6cfa09a8d8dc2e7d410508479f66ad3a947936d460458",
+      "bytes": 8892,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/suite-speedcode-v1/policy_schedule.py",
+      "source_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "public_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "bytes": 313,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/suite-speedcode-v1/speed_triarm_v2.py",
+      "source_sha256": "7779d3db0360bfbf0d0ad13830c985632f245922e929bee332d10806641045db",
+      "public_sha256": "7779d3db0360bfbf0d0ad13830c985632f245922e929bee332d10806641045db",
+      "bytes": 16046,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/cached-speedcode-v1/runtime.py",
+      "source_sha256": "78e37f1c077771538d307563497ded3082694a372e0eab31e9e2ede0c4853636",
+      "public_sha256": "78e37f1c077771538d307563497ded3082694a372e0eab31e9e2ede0c4853636",
+      "bytes": 8035,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/cached-speedcode-v1/adapter.py",
+      "source_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "public_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "bytes": 3903,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/cached-speedcode-v1/draft.py",
+      "source_sha256": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+      "public_sha256": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+      "bytes": 2330,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/cached-speedcode-v1/real_speculative.py",
+      "source_sha256": "fbfada5d2f35e76e8b0b8c83f9d49f522b07a1a87e286e795733fc1f60e164e2",
+      "public_sha256": "fbfada5d2f35e76e8b0b8c83f9d49f522b07a1a87e286e795733fc1f60e164e2",
+      "bytes": 7256,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/cached-speedcode-v1/simulation_reference.py",
+      "source_sha256": "8bb5e3eb8a25611be6e6cfa09a8d8dc2e7d410508479f66ad3a947936d460458",
+      "public_sha256": "8bb5e3eb8a25611be6e6cfa09a8d8dc2e7d410508479f66ad3a947936d460458",
+      "bytes": 8892,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/cached-speedcode-v1/policy_schedule.py",
+      "source_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "public_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "bytes": 313,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/cached-speedcode-v1/speed_triarm_v2.py",
+      "source_sha256": "a1a6c7db7658fc6f4710f410c7fe837dad78f6aac6c42c45e6045513b4ce632a",
+      "public_sha256": "a1a6c7db7658fc6f4710f410c7fe837dad78f6aac6c42c45e6045513b4ce632a",
+      "bytes": 19515,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/cached-speedcode-v1/prompt_cache.py",
+      "source_sha256": "a8e16a55707af72b2926cba62f4e016b98aa8404bc8bfddf713a910ff262d21d",
+      "public_sha256": "a8e16a55707af72b2926cba62f4e016b98aa8404bc8bfddf713a910ff262d21d",
+      "bytes": 2671,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-code-v4/runtime.py",
+      "source_sha256": "6655569d86a8518f052ce3f1f9b085722bb66fd8bbf4dc19d5af0cc10a82c111",
+      "public_sha256": "6655569d86a8518f052ce3f1f9b085722bb66fd8bbf4dc19d5af0cc10a82c111",
+      "bytes": 8032,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-code-v4/server.py",
+      "source_sha256": "d057e4399b3157ea3e74840ecbc5ab70c918f523c16919bcbb0821b4056101ab",
+      "public_sha256": "d057e4399b3157ea3e74840ecbc5ab70c918f523c16919bcbb0821b4056101ab",
+      "bytes": 3094,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-code-v4/client.py",
+      "source_sha256": "f1b8d2ac9b32b993b84fa2b2ef9b1ec5346b6e5f6e534a82f0a6223e734f9af3",
+      "public_sha256": "f1b8d2ac9b32b993b84fa2b2ef9b1ec5346b6e5f6e534a82f0a6223e734f9af3",
+      "bytes": 6758,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/runtime.py",
+      "source_sha256": "6655569d86a8518f052ce3f1f9b085722bb66fd8bbf4dc19d5af0cc10a82c111",
+      "public_sha256": "6655569d86a8518f052ce3f1f9b085722bb66fd8bbf4dc19d5af0cc10a82c111",
+      "bytes": 8032,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/adapter.py",
+      "source_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "public_sha256": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+      "bytes": 3903,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/draft.py",
+      "source_sha256": "4b9142c1202a0973b2fa3faa483e221ddec2f3663e77e69dadac012c7e1beec7",
+      "public_sha256": "4b9142c1202a0973b2fa3faa483e221ddec2f3663e77e69dadac012c7e1beec7",
+      "bytes": 2503,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/train.py",
+      "source_sha256": "35a6ded9a929a968a77af2b95d1d33761330d16655eaa4b2a94546c9413372eb",
+      "public_sha256": "35a6ded9a929a968a77af2b95d1d33761330d16655eaa4b2a94546c9413372eb",
+      "bytes": 9113,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/server.py",
+      "source_sha256": "10a42a06da8cd831c1f3ce6c44dec51270367c0f1623e64eab93def274c7d3ce",
+      "public_sha256": "10a42a06da8cd831c1f3ce6c44dec51270367c0f1623e64eab93def274c7d3ce",
+      "bytes": 10566,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/client.py",
+      "source_sha256": "ed41fd92384d749e7c5ad6f53011f4a75c51902d6a7c3d8b57908d0e2b8fb08d",
+      "public_sha256": "ed41fd92384d749e7c5ad6f53011f4a75c51902d6a7c3d8b57908d0e2b8fb08d",
+      "bytes": 13654,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/verifier.py",
+      "source_sha256": "92972203a775e67ae803f73d6dd8a0e91f3e1d8269d453ea45a14bfdfc3d21f7",
+      "public_sha256": "92972203a775e67ae803f73d6dd8a0e91f3e1d8269d453ea45a14bfdfc3d21f7",
+      "bytes": 3564,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/real_speculative.py",
+      "source_sha256": "d3db6434738840ae8b1209c846eda2ebcde8e079575456d2a470c3d2d0468819",
+      "public_sha256": "d3db6434738840ae8b1209c846eda2ebcde8e079575456d2a470c3d2d0468819",
+      "bytes": 9166,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/policy_schedule.py",
+      "source_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "public_sha256": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+      "bytes": 313,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/phase_worker.py",
+      "source_sha256": "10e59acd723984aa3c1b2f73751ede8016a279b2e4bdd8f4273805e765c95391",
+      "public_sha256": "10e59acd723984aa3c1b2f73751ede8016a279b2e4bdd8f4273805e765c95391",
+      "bytes": 13716,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/summarize_quality.py",
+      "source_sha256": "01da016e89a5243849e9f6455b202fa4977f14df5be0c8a8b9f9f68faf83a755",
+      "public_sha256": "01da016e89a5243849e9f6455b202fa4977f14df5be0c8a8b9f9f68faf83a755",
+      "bytes": 12067,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/policy_bridge.py",
+      "source_sha256": "1a06c98de6a3c44b9fea2107af6f308b7090b6864d7e73a6df51f04d2a031240",
+      "public_sha256": "1a06c98de6a3c44b9fea2107af6f308b7090b6864d7e73a6df51f04d2a031240",
+      "bytes": 2307,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/check_cpu_contract.py",
+      "source_sha256": "b676d9614b3c557e277b27cab86ee2bef488613587004ea42947a49a62c1b05a",
+      "public_sha256": "b676d9614b3c557e277b27cab86ee2bef488613587004ea42947a49a62c1b05a",
+      "bytes": 5880,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-spec-v1/README.md",
+      "source_sha256": "7bf8a7ffc5a3c68d6eb3b305e24b9549c39ab31b7676356a02fa7e8af20d67e6",
+      "public_sha256": "7bf8a7ffc5a3c68d6eb3b305e24b9549c39ab31b7676356a02fa7e8af20d67e6",
+      "bytes": 4186,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": "投机采样/fastwam-base/robotwin-speed-v1/speed_triarm_v1.py",
+      "source_sha256": "6e3a2eeaf7bba9cee54c7fff60854909217795d3ccd4917a2a6e56c697518c01",
+      "public_sha256": "6e3a2eeaf7bba9cee54c7fff60854909217795d3ccd4917a2a6e56c697518c01",
+      "bytes": 15939,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-tma-warp-port-20261027/REVIEW_RETURN.md",
+      "source_sha256": "c1f5ab1263ac070bfb3a1d85fdab158f9d8eaed9d9e72226333a62f24fcaae70",
+      "public_sha256": "c1f5ab1263ac070bfb3a1d85fdab158f9d8eaed9d9e72226333a62f24fcaae70",
+      "bytes": 3536,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-tma-warp-port-20261027/STAGE-TABLE.md",
+      "source_sha256": "b0a9626e39162c190ab69527f0d0f9ad7b7e384d7e9285acc46f96b583c5cca6",
+      "public_sha256": "b0a9626e39162c190ab69527f0d0f9ad7b7e384d7e9285acc46f96b583c5cca6",
+      "bytes": 3472,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-tma-warp-port-20261027/RESOURCE-AND-STOP-REPORT.md",
+      "source_sha256": "7c8e03ad987cf2c25e7a4648048418e870f435da9ab2adc8518bbf3bfe8b691f",
+      "public_sha256": "7c8e03ad987cf2c25e7a4648048418e870f435da9ab2adc8518bbf3bfe8b691f",
+      "bytes": 1075,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-ffn2-fp32-20261027/REVIEW_RETURN.md",
+      "source_sha256": "18dc1fd3d93b8b8f375e65b6e90c94cbe8650c8ef9e42c029599f44f964a1f6a",
+      "public_sha256": "18dc1fd3d93b8b8f375e65b6e90c94cbe8650c8ef9e42c029599f44f964a1f6a",
+      "bytes": 3142,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-ffn2-fp32-20261027/STAGE-TABLE.md",
+      "source_sha256": "0d2938cce7334ded69c52f21f01ad9d823b5f8434c3ae9f0369ebebc8208996e",
+      "public_sha256": "0d2938cce7334ded69c52f21f01ad9d823b5f8434c3ae9f0369ebebc8208996e",
+      "bytes": 2999,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-ffn2-fp32-20261027/NUMERICAL-RESULT.md",
+      "source_sha256": "6146ebca54e339cead6f62e07bc9071ce8f800697b27dbb3b6bbd47d14d5c80b",
+      "public_sha256": "6146ebca54e339cead6f62e07bc9071ce8f800697b27dbb3b6bbd47d14d5c80b",
+      "bytes": 1280,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-ffn2-fp32-20261027/ACCEPTANCE-RESULT.md",
+      "source_sha256": "7f5ea6ca1a254bf362638a04fafc5e9ff4c3529ba8e475dd7dbb4c6f277b48b2",
+      "public_sha256": "7f5ea6ca1a254bf362638a04fafc5e9ff4c3529ba8e475dd7dbb4c6f277b48b2",
+      "bytes": 2030,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-ffn2-fp32-20261027/RESOURCE-AND-STOP-REPORT.md",
+      "source_sha256": "d40a800bbaf8a60a64375e52537d87aaf8eb243e981f3df18aacec19394e567e",
+      "public_sha256": "d40a800bbaf8a60a64375e52537d87aaf8eb243e981f3df18aacec19394e567e",
+      "bytes": 1347,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/PLAN.md",
+      "source_sha256": "f00e57641af297ccaf4d2ecf070e2b6f9e04892ebf079ffc7ac82f33f85b0ea8",
+      "public_sha256": "f00e57641af297ccaf4d2ecf070e2b6f9e04892ebf079ffc7ac82f33f85b0ea8",
+      "bytes": 2181,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/SUMMARY.json",
+      "source_sha256": "0f5949b849a1ad87707dd14cd93144caa32ba209224da4fdcb0f79b9012c1cec",
+      "public_sha256": "0f5949b849a1ad87707dd14cd93144caa32ba209224da4fdcb0f79b9012c1cec",
+      "bytes": 961,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/SOURCE-AUDIT.md",
+      "source_sha256": "a13d5dbe3302db28df28e34a4842c98aa60be16342b792092ae428a89ffec8cb",
+      "public_sha256": "a13d5dbe3302db28df28e34a4842c98aa60be16342b792092ae428a89ffec8cb",
+      "bytes": 1834,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/STAGE-TABLE-C1.md",
+      "source_sha256": "865d0b9597cd5edec5d1f4ec267b5ea9f941a1fca9cae272d2ef87b4d53912f7",
+      "public_sha256": "865d0b9597cd5edec5d1f4ec267b5ea9f941a1fca9cae272d2ef87b4d53912f7",
+      "bytes": 1470,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/STAGE-TABLE-C2.md",
+      "source_sha256": "7db00de006533d2ead2866b65f6665d91d656a58076f22c72f2ddea4caa6a508",
+      "public_sha256": "7db00de006533d2ead2866b65f6665d91d656a58076f22c72f2ddea4caa6a508",
+      "bytes": 2253,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/REVIEW_RETURN.md",
+      "source_sha256": "919ece24680484bf5a6b7a5959ea82cf65ffd88de63e1b5272217bd37ee3739d",
+      "public_sha256": "919ece24680484bf5a6b7a5959ea82cf65ffd88de63e1b5272217bd37ee3739d",
+      "bytes": 4942,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/STAGE-TABLE.md",
+      "source_sha256": "efc6eac69c9d21f35e92ebdc0e342dce9f2338016e1f2a906b2d616b89f9f519",
+      "public_sha256": "efc6eac69c9d21f35e92ebdc0e342dce9f2338016e1f2a906b2d616b89f9f519",
+      "bytes": 2372,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/RESOURCE-AND-STOP-REPORT.md",
+      "source_sha256": "1b172c57efcd8a26c3daa6dd6dfe8d4df9e52106876378157d96a5333fd74335",
+      "public_sha256": "1b172c57efcd8a26c3daa6dd6dfe8d4df9e52106876378157d96a5333fd74335",
+      "bytes": 1399,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/layer-attempt01/results/WHOLE.json",
+      "source_sha256": "d62f162733b755329732197c7044e662da9a7a224a0cbd0ac3f0329cb22956f2",
+      "public_sha256": "d62f162733b755329732197c7044e662da9a7a224a0cbd0ac3f0329cb22956f2",
+      "bytes": 14596,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/layer-attempt01/results/PRECISION.json",
+      "source_sha256": "351babff7a2bb0d97518eb3487346d527cea713432f9af5c51ca9def35eda824",
+      "public_sha256": "351babff7a2bb0d97518eb3487346d527cea713432f9af5c51ca9def35eda824",
+      "bytes": 7719,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/layer-attempt01/results/STAGES.json",
+      "source_sha256": "5dc434f40a96e4f8e2f6b53acfa23ac1b213b8964585f162e715d91b0c69a023",
+      "public_sha256": "5dc434f40a96e4f8e2f6b53acfa23ac1b213b8964585f162e715d91b0c69a023",
+      "bytes": 36517,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/layer-attempt01/results/STATUS.json",
+      "source_sha256": "c8d3aefecb6f1c826fb94f109f804eae3a6e8bb37c63004759c623c9f9217668",
+      "public_sha256": "c8d3aefecb6f1c826fb94f109f804eae3a6e8bb37c63004759c623c9f9217668",
+      "bytes": 211,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/policy-attempt01/results/INPUT-MANIFEST.json",
+      "source_sha256": "7216e8974984b09240c01089b87a4bb960451fb5fe25e5c58536bb36fca68715",
+      "public_sha256": "7216e8974984b09240c01089b87a4bb960451fb5fe25e5c58536bb36fca68715",
+      "bytes": 2462,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/policy-attempt01/results/POLICY-TIMINGS.json",
+      "source_sha256": "170c95615b51175f56519502f79092019642dceb33e11047a4d4ab018583fb30",
+      "public_sha256": "170c95615b51175f56519502f79092019642dceb33e11047a4d4ab018583fb30",
+      "bytes": 100606,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/policy-attempt01/results/TEACHER-QUERIES.json",
+      "source_sha256": "dadada80cd7c07eeb39182ba22d312b5c3149090a6c94eed787871ddc1eaf163",
+      "public_sha256": "dadada80cd7c07eeb39182ba22d312b5c3149090a6c94eed787871ddc1eaf163",
+      "bytes": 4839,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/policy-attempt01/results/PRECISION.json",
+      "source_sha256": "a3ed364b0046efe0e0d148f6ab8e2039a0c507f64502c214002dea0ef8dcae21",
+      "public_sha256": "a3ed364b0046efe0e0d148f6ab8e2039a0c507f64502c214002dea0ef8dcae21",
+      "bytes": 47819,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/experiments/fastwam-crosskv-cache-20261027/policy-attempt01/results/STATUS.json",
+      "source_sha256": "0ee24c5eae0028d64767d2e26abfab257b915f379182c7623f6f536d83b338be",
+      "public_sha256": "0ee24c5eae0028d64767d2e26abfab257b915f379182c7623f6f536d83b338be",
+      "bytes": 784,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/cycles/wam-research-20261016/PLAN.md",
+      "source_sha256": "24ebeabc86f83d99bdcbc2950598c91605abb2b66f3e53f38bfa375f239afe58",
+      "public_sha256": "24ebeabc86f83d99bdcbc2950598c91605abb2b66f3e53f38bfa375f239afe58",
+      "bytes": 3745,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/cycles/wam-research-20261016/PROGRESS.md",
+      "source_sha256": "2afe4e4559bdcdf5d440e38d8a58ca3bbe1786b1779c0623685e4c5570020b52",
+      "public_sha256": "2afe4e4559bdcdf5d440e38d8a58ca3bbe1786b1779c0623685e4c5570020b52",
+      "bytes": 6342,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/cycles/wam-research-20261016/EXECUTION.md",
+      "source_sha256": "e87c671d36d566f8f7f3c50f8a8f6d4d9647f149652be12b4828f9f60610811e",
+      "public_sha256": "e87c671d36d566f8f7f3c50f8a8f6d4d9647f149652be12b4828f9f60610811e",
+      "bytes": 3263,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/cycles/wam-research-20261016/DISCUSSION-SUMMARY.md",
+      "source_sha256": "579b9ba15b22d08beff148cc2851a9a7d12d61dc7cdab9d9b9d3ca4d28c7f8be",
+      "public_sha256": "ccaa655f031faa7744c4a7da5fe49150f3fb853cc6386196f9552d2b9b0af8c5",
+      "bytes": 4723,
+      "transformation": "private-locator redaction"
+    },
+    {
+      "path": ".pipeline/memory/global/requirements/requirement-FastWAM十步投机按剩余步数收缩树深并保留bonus.md",
+      "source_sha256": "9a750b78cc43f34a5f893926f907c20ccd872d567d7c75873fb23bb59538a906",
+      "public_sha256": "9a750b78cc43f34a5f893926f907c20ccd872d567d7c75873fb23bb59538a906",
+      "bytes": 3648,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/memory/global/requirements/decision-FastWAM每个chunk预计算CrossKV并公平比较.md",
+      "source_sha256": "624c5e7c559384cde40100c12c2c2be55da7b8c2dd142b3f76fd3db1b044915f",
+      "public_sha256": "624c5e7c559384cde40100c12c2c2be55da7b8c2dd142b3f76fd3db1b044915f",
+      "bytes": 1193,
+      "transformation": "byte-exact"
+    },
+    {
+      "path": ".pipeline/memory/global/requirements/decision-研究范围扩展至基于流的动作模型并候补StarVLA跨模型验证.md",
+      "source_sha256": "07f2569c49950b6df2994b88db355dc6106ef4f2ba1f1de411eb37561eb6f4da",
+      "public_sha256": "07f2569c49950b6df2994b88db355dc6106ef4f2ba1f1de411eb37561eb6f4da",
+      "bytes": 1476,
+      "transformation": "byte-exact"
+    }
+  ]
+}

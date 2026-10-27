@@ -1,0 +1,3562 @@
+[
+  {
+    "case": 0,
+    "arm": "T",
+    "timings": {
+      "official_eager": {
+        "raw_seconds": [
+          0.39235594496130943,
+          0.38364844769239426,
+          0.3833223320543766,
+          0.390579491853714,
+          0.38678601384162903,
+          0.384177777916193,
+          0.39084896445274353,
+          0.38318219408392906,
+          0.38950614631175995,
+          0.40428896620869637
+        ],
+        "mean_seconds": 0.3884822593794929,
+        "median_seconds": 0.38678601384162903,
+        "n": 9
+      },
+      "torch_cached": {
+        "raw_seconds": [
+          0.3500627167522907,
+          0.34863921254873276,
+          0.34796542301774025,
+          0.3482477404177189,
+          0.34852923080325127,
+          0.3485329709947109,
+          0.34602319076657295,
+          0.347976740449667,
+          0.36238833144307137,
+          0.3559442609548569
+        ],
+        "mean_seconds": 0.3504719001551469,
+        "median_seconds": 0.34852923080325127,
+        "n": 9
+      },
+      "native_cached": {
+        "raw_seconds": [
+          0.183846827596426,
+          0.1960100680589676,
+          0.182738296687603,
+          0.18313642218708992,
+          0.18371834605932236,
+          0.1849394217133522,
+          0.18264354020357132,
+          0.18368203192949295,
+          0.1847453936934471,
+          0.18747343122959137
+        ],
+        "mean_seconds": 0.185454105751382,
+        "median_seconds": 0.18371834605932236,
+        "n": 9
+      },
+      "official_compile": {
+        "raw_seconds": [
+          0.16231312602758408,
+          0.1641441099345684,
+          0.1623414345085621,
+          0.162041325122118,
+          0.16351044923067093,
+          0.16308559477329254,
+          0.16276738420128822,
+          0.16311221942305565,
+          0.16363142058253288,
+          0.1663147360086441
+        ],
+        "mean_seconds": 0.16343874153163698,
+        "median_seconds": 0.16311221942305565,
+        "n": 9
+      },
+      "torch_cached_compile": {
+        "raw_seconds": [
+          0.15304584428668022,
+          0.15351047739386559,
+          0.15284891799092293,
+          0.15272293612360954,
+          0.15370416641235352,
+          0.15330326184630394,
+          0.15304958820343018,
+          0.15381896495819092,
+          0.15370923653244972,
+          0.15834909304976463
+        ],
+        "mean_seconds": 0.15389073805676567,
+        "median_seconds": 0.15351047739386559,
+        "n": 9
+      }
+    },
+    "last_counts": {
+      "official_eager": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "official_compile": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached_compile": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "warmup_seconds": {
+      "official_eager": 34.994145065546036,
+      "torch_cached": 0.7031523026525974,
+      "native_cached": 0.37888316437602043,
+      "official_compile": 35.02589897811413,
+      "torch_cached_compile": 31.64431720227003
+    },
+    "compiled_cached_vs_official_compiled": {
+      "byte_exact": false,
+      "max_abs": 0.0078125,
+      "rel_l2": 0.0037038451991975307
+    },
+    "compiled_cached_vs_official_eager": {
+      "byte_exact": false,
+      "max_abs": 0.015625,
+      "rel_l2": 0.007826832123100758
+    },
+    "compiled_paths": {
+      "official_compile": [],
+      "torch_cached_compile": []
+    }
+  },
+  {
+    "case": 0,
+    "arm": "S",
+    "timings": {
+      "official_eager": {
+        "raw_seconds": [
+          0.2497967630624771,
+          0.24846884235739708,
+          0.2509645186364651,
+          0.2519977204501629,
+          0.24461086839437485,
+          0.24465788155794144,
+          0.2412651926279068,
+          0.24213118478655815,
+          0.2417544201016426,
+          0.2434549182653427
+        ],
+        "mean_seconds": 0.24547839413086572,
+        "median_seconds": 0.24461086839437485,
+        "n": 9
+      },
+      "torch_cached": {
+        "raw_seconds": [
+          0.23734554648399353,
+          0.2342851348221302,
+          0.23670191690325737,
+          0.23702400922775269,
+          0.23304089158773422,
+          0.23437826335430145,
+          0.23261601477861404,
+          0.23065443709492683,
+          0.2306576818227768,
+          0.23135516792535782
+        ],
+        "mean_seconds": 0.23341261305742794,
+        "median_seconds": 0.23304089158773422,
+        "n": 9
+      },
+      "native_cached": {
+        "raw_seconds": [
+          0.18246141076087952,
+          0.18118799477815628,
+          0.17544076591730118,
+          0.18011511117219925,
+          0.17722111195325851,
+          0.1781938336789608,
+          0.1767200455069542,
+          0.17522461712360382,
+          0.17525402829051018,
+          0.17556144669651985
+        ],
+        "mean_seconds": 0.17721321723527378,
+        "median_seconds": 0.1767200455069542,
+        "n": 9
+      },
+      "official_compile": {
+        "raw_seconds": [
+          0.15507232397794724,
+          0.15981488302350044,
+          0.1523531675338745,
+          0.1549951732158661,
+          0.1504073701798916,
+          0.15118052065372467,
+          0.14873719587922096,
+          0.14817413687705994,
+          0.14859425276517868,
+          0.1484297588467598
+        ],
+        "mean_seconds": 0.1514096065527863,
+        "median_seconds": 0.1504073701798916,
+        "n": 9
+      },
+      "torch_cached_compile": {
+        "raw_seconds": [
+          0.1508110649883747,
+          0.1476343385875225,
+          0.15180733054876328,
+          0.15201841667294502,
+          0.1481880582869053,
+          0.15394121408462524,
+          0.14700129255652428,
+          0.14650988578796387,
+          0.15141979232430458,
+          0.1466405652463436
+        ],
+        "mean_seconds": 0.14946232156621087,
+        "median_seconds": 0.1481880582869053,
+        "n": 9
+      }
+    },
+    "last_counts": {
+      "official_eager": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.02979985997080803,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010564804077148438,
+              0.00351447775028646,
+              0.01288180984556675,
+              0.005467230454087257,
+              0.00469815032556653,
+              0.008902385830879211
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.0309576578438282,
+            "draft_seconds": 0.0014927349984645844,
+            "pack_seconds": 2.8662383556365967e-05,
+            "verify_seconds": 0.029179204255342484,
+            "accept_commit_seconds": 0.00025705620646476746,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.0038097777869552374,
+              0.009473058395087719,
+              0.008436547592282295,
+              0.014073841273784637,
+              0.017326688393950462,
+              0.024530962109565735
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.031066887080669403,
+            "draft_seconds": 0.0014835484325885773,
+            "pack_seconds": 3.063678741455078e-05,
+            "verify_seconds": 0.029283083975315094,
+            "accept_commit_seconds": 0.00026961788535118103,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.015390903688967228,
+              0.018693972378969193,
+              0.036881931126117706,
+              0.037911444902420044,
+              0.04447489604353905,
+              0.04986744374036789
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030888065695762634,
+            "draft_seconds": 0.001496288925409317,
+            "pack_seconds": 2.9481947422027588e-05,
+            "verify_seconds": 0.029098432511091232,
+            "accept_commit_seconds": 0.0002638623118400574,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.029613390564918518,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.029927894473075867,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010564804077148438,
+              0.00351447775028646,
+              0.01288180984556675,
+              0.005467230454087257,
+              0.00469815032556653,
+              0.008902385830879211
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.03040473535656929,
+            "draft_seconds": 0.001506846398115158,
+            "pack_seconds": 2.856925129890442e-05,
+            "verify_seconds": 0.02860039472579956,
+            "accept_commit_seconds": 0.0002689249813556671,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.0038097777869552374,
+              0.009473058395087719,
+              0.008436547592282295,
+              0.014073841273784637,
+              0.017326688393950462,
+              0.024530962109565735
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.027133561670780182,
+            "draft_seconds": 0.001492675393819809,
+            "pack_seconds": 2.9910355806350708e-05,
+            "verify_seconds": 0.025350384414196014,
+            "accept_commit_seconds": 0.0002605915069580078,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.015390903688967228,
+              0.018693972378969193,
+              0.036881931126117706,
+              0.037911444902420044,
+              0.04447489604353905,
+              0.04986744374036789
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026888366788625717,
+            "draft_seconds": 0.0014944635331630707,
+            "pack_seconds": 2.9638409614562988e-05,
+            "verify_seconds": 0.02510438859462738,
+            "accept_commit_seconds": 0.0002598762512207031,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.025585252791643143,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.005962420254945755,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010564804077148438,
+              0.00351447775028646,
+              0.01288180984556675,
+              0.005467230454087257,
+              0.00469815032556653,
+              0.008902385830879211
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.035878006368875504,
+            "draft_seconds": 0.0015203729271888733,
+            "pack_seconds": 2.884119749069214e-05,
+            "verify_seconds": 0.006227388978004456,
+            "accept_commit_seconds": 0.028101403266191483,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.0038097777869552374,
+              0.009473058395087719,
+              0.008436547592282295,
+              0.014073841273784637,
+              0.017326688393950462,
+              0.024530962109565735
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017334330826997757,
+            "draft_seconds": 0.0015123970806598663,
+            "pack_seconds": 3.0137598514556885e-05,
+            "verify_seconds": 0.002478979527950287,
+            "accept_commit_seconds": 0.013312816619873047,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.015390903688967228,
+              0.018693972378969193,
+              0.036881931126117706,
+              0.037911444902420044,
+              0.04447489604353905,
+              0.04986744374036789
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.01727815344929695,
+            "draft_seconds": 0.0014667510986328125,
+            "pack_seconds": 3.0212104320526123e-05,
+            "verify_seconds": 0.0024979226291179657,
+            "accept_commit_seconds": 0.013283267617225647,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.00261848047375679,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 252887040
+      },
+      "official_compile": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.0012281574308872223,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010011858306825161,
+              0.003325169440358877,
+              0.011594424024224281,
+              0.004765930585563183,
+              0.004453705623745918,
+              0.009693644940853119
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.025636490434408188,
+            "draft_seconds": 0.0015835762023925781,
+            "pack_seconds": 3.321841359138489e-05,
+            "verify_seconds": 0.0016535744071006775,
+            "accept_commit_seconds": 0.022366121411323547,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.0036505309399217367,
+              0.009386430494487286,
+              0.007020372897386551,
+              0.012902379967272282,
+              0.016226783394813538,
+              0.023565247654914856
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.011949509382247925,
+            "draft_seconds": 0.001505572348833084,
+            "pack_seconds": 3.074854612350464e-05,
+            "verify_seconds": 0.0016173459589481354,
+            "accept_commit_seconds": 0.0087958425283432,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.013888982124626637,
+              0.018812721595168114,
+              0.03451138362288475,
+              0.034969113767147064,
+              0.042806848883628845,
+              0.048969440162181854
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.011881709098815918,
+            "draft_seconds": 0.0015023685991764069,
+            "pack_seconds": 3.0256807804107666e-05,
+            "verify_seconds": 0.0015478208661079407,
+            "accept_commit_seconds": 0.008801262825727463,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0012323260307312012,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached_compile": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.004827938973903656,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010066797956824303,
+              0.003422931768000126,
+              0.011697076261043549,
+              0.0048120529390871525,
+              0.004433691501617432,
+              0.009661749005317688
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.025449778884649277,
+            "draft_seconds": 0.0015832483768463135,
+            "pack_seconds": 2.7906149625778198e-05,
+            "verify_seconds": 0.007213536649942398,
+            "accept_commit_seconds": 0.016625087708234787,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.0036081967409700155,
+              0.009373066015541553,
+              0.0068408590741455555,
+              0.012562521733343601,
+              0.01619921624660492,
+              0.02352532558143139
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.00983811542391777,
+            "draft_seconds": 0.0015530027449131012,
+            "pack_seconds": 3.1653791666030884e-05,
+            "verify_seconds": 0.001959957182407379,
+            "accept_commit_seconds": 0.006293501704931259,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.013355981558561325,
+              0.01875077188014984,
+              0.03356727212667465,
+              0.035364460200071335,
+              0.04194493591785431,
+              0.048364922404289246
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.009808886796236038,
+            "draft_seconds": 0.0015517212450504303,
+            "pack_seconds": 2.9813498258590698e-05,
+            "verify_seconds": 0.0019440539181232452,
+            "accept_commit_seconds": 0.006283298134803772,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0015021003782749176,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "warmup_seconds": {
+      "official_eager": 0.4937300905585289,
+      "torch_cached": 0.46302100270986557,
+      "native_cached": 0.3527433015406132,
+      "official_compile": 68.80600696057081,
+      "torch_cached_compile": 54.48795308917761
+    },
+    "compiled_cached_vs_official_compiled": {
+      "byte_exact": false,
+      "max_abs": 0.0078125,
+      "rel_l2": 0.003671248909085989
+    },
+    "compiled_cached_vs_official_eager": {
+      "byte_exact": false,
+      "max_abs": 0.015625,
+      "rel_l2": 0.007383227348327637
+    },
+    "compiled_paths": {
+      "official_compile": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          1,
+          0,
+          0
+        ],
+        [
+          9,
+          null,
+          null,
+          null
+        ]
+      ],
+      "torch_cached_compile": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          1,
+          0,
+          0
+        ],
+        [
+          9,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  {
+    "case": 1,
+    "arm": "T",
+    "timings": {
+      "official_eager": {
+        "raw_seconds": [
+          0.3865412324666977,
+          0.3929828628897667,
+          0.38506607711315155,
+          0.400665532797575,
+          0.3988832198083401,
+          0.39161650836467743,
+          0.3865971826016903,
+          0.3855578154325485,
+          0.38715997338294983,
+          0.39080723747611046
+        ],
+        "mean_seconds": 0.39103737887408996,
+        "median_seconds": 0.39080723747611046,
+        "n": 9
+      },
+      "torch_cached": {
+        "raw_seconds": [
+          0.3486717976629734,
+          0.3544459566473961,
+          0.3495071567595005,
+          0.3620612770318985,
+          0.34762192890048027,
+          0.34872448444366455,
+          0.3489888086915016,
+          0.3494984470307827,
+          0.3513721711933613,
+          0.35215432196855545
+        ],
+        "mean_seconds": 0.3515971725185712,
+        "median_seconds": 0.3495071567595005,
+        "n": 9
+      },
+      "native_cached": {
+        "raw_seconds": [
+          0.1834241785109043,
+          0.18312186002731323,
+          0.18342358618974686,
+          0.1837610863149166,
+          0.1825944222509861,
+          0.18226702883839607,
+          0.18264684453606606,
+          0.1826239675283432,
+          0.1852043755352497,
+          0.18377404659986496
+        ],
+        "mean_seconds": 0.18326857975787586,
+        "median_seconds": 0.18312186002731323,
+        "n": 9
+      },
+      "official_compile": {
+        "raw_seconds": [
+          0.16194966435432434,
+          0.16192897036671638,
+          0.16323425620794296,
+          0.16307571530342102,
+          0.1628424972295761,
+          0.16195108368992805,
+          0.16223717480897903,
+          0.1621425524353981,
+          0.1639212742447853,
+          0.1623486950993538
+        ],
+        "mean_seconds": 0.16263135770956674,
+        "median_seconds": 0.1623486950993538,
+        "n": 9
+      },
+      "torch_cached_compile": {
+        "raw_seconds": [
+          0.15314041450619698,
+          0.1531633734703064,
+          0.1536078006029129,
+          0.1529979445040226,
+          0.15298061817884445,
+          0.1530117392539978,
+          0.15289827808737755,
+          0.15310877189040184,
+          0.15425432473421097,
+          0.15583550184965134
+        ],
+        "mean_seconds": 0.15353981695241398,
+        "median_seconds": 0.15310877189040184,
+        "n": 9
+      }
+    },
+    "last_counts": {
+      "official_eager": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "official_compile": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached_compile": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "warmup_seconds": {
+      "official_eager": 0.8004092536866665,
+      "torch_cached": 0.7000595778226852,
+      "native_cached": 0.37277481332421303,
+      "official_compile": 0.32702017202973366,
+      "torch_cached_compile": 0.3088909313082695
+    },
+    "compiled_cached_vs_official_compiled": {
+      "byte_exact": false,
+      "max_abs": 0.0078125,
+      "rel_l2": 0.003362645860761404
+    },
+    "compiled_cached_vs_official_eager": {
+      "byte_exact": false,
+      "max_abs": 0.015625,
+      "rel_l2": 0.009715348482131958
+    },
+    "compiled_paths": {
+      "official_compile": [],
+      "torch_cached_compile": []
+    }
+  },
+  {
+    "case": 1,
+    "arm": "S",
+    "timings": {
+      "official_eager": {
+        "raw_seconds": [
+          0.2407735474407673,
+          0.2463701255619526,
+          0.24497273191809654,
+          0.24558981508016586,
+          0.2483888603746891,
+          0.24942690879106522,
+          0.24215663596987724,
+          0.288235817104578,
+          0.2442573681473732,
+          0.24174517393112183
+        ],
+        "mean_seconds": 0.25012704854210216,
+        "median_seconds": 0.24558981508016586,
+        "n": 9
+      },
+      "torch_cached": {
+        "raw_seconds": [
+          0.230274960398674,
+          0.23113828897476196,
+          0.2317339926958084,
+          0.24423423409461975,
+          0.23796764016151428,
+          0.2380618192255497,
+          0.23139629140496254,
+          0.2337452583014965,
+          0.23258082941174507,
+          0.2304195649921894
+        ],
+        "mean_seconds": 0.2345864354736275,
+        "median_seconds": 0.23258082941174507,
+        "n": 9
+      },
+      "native_cached": {
+        "raw_seconds": [
+          0.17514478042721748,
+          0.1755838803946972,
+          0.1756463386118412,
+          0.17833826690912247,
+          0.18244203925132751,
+          0.17529931291937828,
+          0.1759444624185562,
+          0.1756858266890049,
+          0.17599710449576378,
+          0.1756281591951847
+        ],
+        "mean_seconds": 0.17672948787609735,
+        "median_seconds": 0.1756858266890049,
+        "n": 9
+      },
+      "official_compile": {
+        "raw_seconds": [
+          0.14826543256640434,
+          0.14896119385957718,
+          0.14902561530470848,
+          0.14983781427145004,
+          0.15351920947432518,
+          0.1484631821513176,
+          0.14879562705755234,
+          0.14942756667733192,
+          0.15035485103726387,
+          0.1483984738588333
+        ],
+        "mean_seconds": 0.14964261485470665,
+        "median_seconds": 0.14902561530470848,
+        "n": 9
+      },
+      "torch_cached_compile": {
+        "raw_seconds": [
+          0.14627370238304138,
+          0.1475510373711586,
+          0.14760907739400864,
+          0.1486276127398014,
+          0.1504906825721264,
+          0.14709561318159103,
+          0.1470060981810093,
+          0.1474158950150013,
+          0.1533943936228752,
+          0.14646553620696068
+        ],
+        "mean_seconds": 0.14840621625383696,
+        "median_seconds": 0.1475510373711586,
+        "n": 9
+      }
+    },
+    "last_counts": {
+      "official_eager": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.029886774718761444,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.01047773752361536,
+              0.0034743384458124638,
+              0.01279654260724783,
+              0.005471359007060528,
+              0.004554912447929382,
+              0.00837361253798008
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030673176050186157,
+            "draft_seconds": 0.0014826878905296326,
+            "pack_seconds": 2.8233975172042847e-05,
+            "verify_seconds": 0.028905075043439865,
+            "accept_commit_seconds": 0.0002571791410446167,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004342849366366863,
+              0.009233778342604637,
+              0.007891764864325523,
+              0.012447708286345005,
+              0.015550930984318256,
+              0.022578595206141472
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030722659081220627,
+            "draft_seconds": 0.001484561711549759,
+            "pack_seconds": 3.0055642127990723e-05,
+            "verify_seconds": 0.028950192034244537,
+            "accept_commit_seconds": 0.00025784969329833984,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014912014827132225,
+              0.017929330468177795,
+              0.045229338109493256,
+              0.046351268887519836,
+              0.04704500362277031,
+              0.060477662831544876
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030657339841127396,
+            "draft_seconds": 0.0015025213360786438,
+            "pack_seconds": 3.0159950256347656e-05,
+            "verify_seconds": 0.028866153210401535,
+            "accept_commit_seconds": 0.00025850534439086914,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.029305167496204376,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.029788777232170105,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.01047773752361536,
+              0.0034743384458124638,
+              0.01279654260724783,
+              0.005471359007060528,
+              0.004554912447929382,
+              0.00837361253798008
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030251726508140564,
+            "draft_seconds": 0.0015149712562561035,
+            "pack_seconds": 2.9008835554122925e-05,
+            "verify_seconds": 0.02845073863863945,
+            "accept_commit_seconds": 0.00025700777769088745,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004342849366366863,
+              0.009233778342604637,
+              0.007891764864325523,
+              0.012447708286345005,
+              0.015550930984318256,
+              0.022578595206141472
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026924096047878265,
+            "draft_seconds": 0.0014815814793109894,
+            "pack_seconds": 3.0171126127243042e-05,
+            "verify_seconds": 0.02515321597456932,
+            "accept_commit_seconds": 0.0002591274678707123,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014912014827132225,
+              0.017929330468177795,
+              0.045229338109493256,
+              0.046351268887519836,
+              0.04704500362277031,
+              0.060477662831544876
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.02699241042137146,
+            "draft_seconds": 0.0014732666313648224,
+            "pack_seconds": 3.0405819416046143e-05,
+            "verify_seconds": 0.025218728929758072,
+            "accept_commit_seconds": 0.00027000904083251953,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.025646191090345383,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.005934860557317734,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.01047773752361536,
+              0.0034743384458124638,
+              0.01279654260724783,
+              0.005471359007060528,
+              0.004554912447929382,
+              0.00837361253798008
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.03589721396565437,
+            "draft_seconds": 0.0015207119286060333,
+            "pack_seconds": 2.7913600206375122e-05,
+            "verify_seconds": 0.006244923919439316,
+            "accept_commit_seconds": 0.02810366451740265,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004342849366366863,
+              0.009233778342604637,
+              0.007891764864325523,
+              0.012447708286345005,
+              0.015550930984318256,
+              0.022578595206141472
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017334192991256714,
+            "draft_seconds": 0.001506071537733078,
+            "pack_seconds": 3.038346767425537e-05,
+            "verify_seconds": 0.002471521496772766,
+            "accept_commit_seconds": 0.013326216489076614,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014912014827132225,
+              0.017929330468177795,
+              0.045229338109493256,
+              0.046351268887519836,
+              0.04704500362277031,
+              0.060477662831544876
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017297174781560898,
+            "draft_seconds": 0.0014853812754154205,
+            "pack_seconds": 3.232806921005249e-05,
+            "verify_seconds": 0.0025064535439014435,
+            "accept_commit_seconds": 0.013273011893033981,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0025925934314727783,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 252887040
+      },
+      "official_compile": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.0013051331043243408,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.009971150197088718,
+              0.003093207022175193,
+              0.011516189202666283,
+              0.004428633954375982,
+              0.003993194550275803,
+              0.009144610725343227
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.02555810660123825,
+            "draft_seconds": 0.0015645846724510193,
+            "pack_seconds": 2.90796160697937e-05,
+            "verify_seconds": 0.0018525421619415283,
+            "accept_commit_seconds": 0.02211190015077591,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004069112241268158,
+              0.00836116448044777,
+              0.0067759123630821705,
+              0.011413835920393467,
+              0.014229264110326767,
+              0.021578464657068253
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.01201716810464859,
+            "draft_seconds": 0.00151028111577034,
+            "pack_seconds": 3.0219554901123047e-05,
+            "verify_seconds": 0.0016749054193496704,
+            "accept_commit_seconds": 0.008801762014627457,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.013639580458402634,
+              0.016612662002444267,
+              0.039361096918582916,
+              0.04348223656415939,
+              0.04111619293689728,
+              0.057652320712804794
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.011933833360671997,
+            "draft_seconds": 0.0015232674777507782,
+            "pack_seconds": 2.9791146516799927e-05,
+            "verify_seconds": 0.0015837065875530243,
+            "accept_commit_seconds": 0.008797068148851395,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0013022944331169128,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached_compile": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.004951979964971542,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.009951472282409668,
+              0.00304493703879416,
+              0.011586635373532772,
+              0.004332422278821468,
+              0.003944383002817631,
+              0.009016508236527443
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.025338701903820038,
+            "draft_seconds": 0.0015714503824710846,
+            "pack_seconds": 2.857297658920288e-05,
+            "verify_seconds": 0.0072821564972400665,
+            "accept_commit_seconds": 0.016456522047519684,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004068813286721706,
+              0.00822270568460226,
+              0.006892773322761059,
+              0.011470310389995575,
+              0.014360141940414906,
+              0.02166915126144886
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.009844034910202026,
+            "draft_seconds": 0.0015327893197536469,
+            "pack_seconds": 3.0517578125e-05,
+            "verify_seconds": 0.0019895508885383606,
+            "accept_commit_seconds": 0.006291177123785019,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.01424923911690712,
+              0.017257023602724075,
+              0.03978531435132027,
+              0.04408726841211319,
+              0.04204766824841499,
+              0.0571410171687603
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.009817060083150864,
+            "draft_seconds": 0.0015291422605514526,
+            "pack_seconds": 3.0271708965301514e-05,
+            "verify_seconds": 0.0019510462880134583,
+            "accept_commit_seconds": 0.006306599825620651,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0015642940998077393,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "warmup_seconds": {
+      "official_eager": 0.4838881492614746,
+      "torch_cached": 0.4606778919696808,
+      "native_cached": 0.3535894826054573,
+      "official_compile": 0.2963755205273628,
+      "torch_cached_compile": 0.29320870339870453
+    },
+    "compiled_cached_vs_official_compiled": {
+      "byte_exact": false,
+      "max_abs": 0.0078125,
+      "rel_l2": 0.0024992788676172495
+    },
+    "compiled_cached_vs_official_eager": {
+      "byte_exact": false,
+      "max_abs": 0.015625,
+      "rel_l2": 0.008886747993528843
+    },
+    "compiled_paths": {
+      "official_compile": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          1,
+          0,
+          0
+        ],
+        [
+          9,
+          null,
+          null,
+          null
+        ]
+      ],
+      "torch_cached_compile": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          1,
+          0,
+          0
+        ],
+        [
+          9,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  {
+    "case": 2,
+    "arm": "T",
+    "timings": {
+      "official_eager": {
+        "raw_seconds": [
+          0.38301461935043335,
+          0.39020031318068504,
+          0.38717180490493774,
+          0.38565632700920105,
+          0.3902909643948078,
+          0.39363647997379303,
+          0.3865494653582573,
+          0.3869310952723026,
+          0.3864007592201233,
+          0.38609542697668076
+        ],
+        "mean_seconds": 0.3881036262545321,
+        "median_seconds": 0.3869310952723026,
+        "n": 9
+      },
+      "torch_cached": {
+        "raw_seconds": [
+          0.3471001908183098,
+          0.3503538444638252,
+          0.34870467334985733,
+          0.3500385023653507,
+          0.3551253415644169,
+          0.34905871748924255,
+          0.3529540002346039,
+          0.34777263924479485,
+          0.3478844575583935,
+          0.352268286049366
+        ],
+        "mean_seconds": 0.35046227359109455,
+        "median_seconds": 0.3500385023653507,
+        "n": 9
+      },
+      "native_cached": {
+        "raw_seconds": [
+          0.1827390417456627,
+          0.18457800894975662,
+          0.18557452782988548,
+          0.1831718124449253,
+          0.18270355090498924,
+          0.1842111237347126,
+          0.18426759541034698,
+          0.1847984492778778,
+          0.18295836076140404,
+          0.1844034232199192
+        ],
+        "mean_seconds": 0.1840740947259797,
+        "median_seconds": 0.18426759541034698,
+        "n": 9
+      },
+      "official_compile": {
+        "raw_seconds": [
+          0.16197986528277397,
+          0.16351472586393356,
+          0.1651930920779705,
+          0.16233596578240395,
+          0.1623988151550293,
+          0.16262468695640564,
+          0.16312120109796524,
+          0.16370027512311935,
+          0.16254328936338425,
+          0.16329002380371094
+        ],
+        "mean_seconds": 0.16319134169154698,
+        "median_seconds": 0.16312120109796524,
+        "n": 9
+      },
+      "torch_cached_compile": {
+        "raw_seconds": [
+          0.15364700183272362,
+          0.15475847199559212,
+          0.15569503232836723,
+          0.15265685692429543,
+          0.15294625610113144,
+          0.153696458786726,
+          0.15367021784186363,
+          0.1541392058134079,
+          0.15303923562169075,
+          0.15306930616497993
+        ],
+        "mean_seconds": 0.15374122684200606,
+        "median_seconds": 0.15367021784186363,
+        "n": 9
+      }
+    },
+    "last_counts": {
+      "official_eager": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "official_compile": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached_compile": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "warmup_seconds": {
+      "official_eager": 0.777328833937645,
+      "torch_cached": 0.6948817186057568,
+      "native_cached": 0.3659234307706356,
+      "official_compile": 0.32646525278687477,
+      "torch_cached_compile": 0.305955957621336
+    },
+    "compiled_cached_vs_official_compiled": {
+      "byte_exact": false,
+      "max_abs": 0.0078125,
+      "rel_l2": 0.003322956617921591
+    },
+    "compiled_cached_vs_official_eager": {
+      "byte_exact": false,
+      "max_abs": 0.015625,
+      "rel_l2": 0.008757831528782845
+    },
+    "compiled_paths": {
+      "official_compile": [],
+      "torch_cached_compile": []
+    }
+  },
+  {
+    "case": 2,
+    "arm": "S",
+    "timings": {
+      "official_eager": {
+        "raw_seconds": [
+          0.24260007962584496,
+          0.24208932742476463,
+          0.24563854932785034,
+          0.24219584465026855,
+          0.24248607456684113,
+          0.2494756318628788,
+          0.24931121990084648,
+          0.24274630472064018,
+          0.24211811646819115,
+          0.24224330857396126
+        ],
+        "mean_seconds": 0.24425604194402695,
+        "median_seconds": 0.24248607456684113,
+        "n": 9
+      },
+      "torch_cached": {
+        "raw_seconds": [
+          0.2331019975244999,
+          0.23103350400924683,
+          0.2314898483455181,
+          0.23054489865899086,
+          0.23057560622692108,
+          0.25582076609134674,
+          0.23961282521486282,
+          0.23096991702914238,
+          0.23056574910879135,
+          0.23088310286402702
+        ],
+        "mean_seconds": 0.2346106908387608,
+        "median_seconds": 0.23096991702914238,
+        "n": 9
+      },
+      "native_cached": {
+        "raw_seconds": [
+          0.17555060982704163,
+          0.1755286306142807,
+          0.1755596548318863,
+          0.1753022000193596,
+          0.176677905023098,
+          0.1760213002562523,
+          0.17681127786636353,
+          0.1782742775976658,
+          0.1752629205584526,
+          0.1755773238837719
+        ],
+        "mean_seconds": 0.1761128322945701,
+        "median_seconds": 0.1755773238837719,
+        "n": 9
+      },
+      "official_compile": {
+        "raw_seconds": [
+          0.14827682822942734,
+          0.14842838048934937,
+          0.14821785688400269,
+          0.14835496991872787,
+          0.15029317513108253,
+          0.14898879826068878,
+          0.15188652649521828,
+          0.15040592104196548,
+          0.1483507640659809,
+          0.1485571376979351
+        ],
+        "mean_seconds": 0.14927594777610567,
+        "median_seconds": 0.1485571376979351,
+        "n": 9
+      },
+      "torch_cached_compile": {
+        "raw_seconds": [
+          0.14683661609888077,
+          0.146982092410326,
+          0.14648465812206268,
+          0.14655769616365433,
+          0.14648441225290298,
+          0.14840812236070633,
+          0.14979484304785728,
+          0.14800065755844116,
+          0.14647909626364708,
+          0.14646926522254944
+        ],
+        "mean_seconds": 0.14729564926690525,
+        "median_seconds": 0.14655769616365433,
+        "n": 9
+      }
+    },
+    "last_counts": {
+      "official_eager": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.029722772538661957,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.01055300235748291,
+              0.00332347652874887,
+              0.013361158780753613,
+              0.0056840805336833,
+              0.004338868428021669,
+              0.0076982565224170685
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030703306198120117,
+            "draft_seconds": 0.001489352434873581,
+            "pack_seconds": 2.8133392333984375e-05,
+            "verify_seconds": 0.028929453343153,
+            "accept_commit_seconds": 0.000256367027759552,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.0040772282518446445,
+              0.00884633231908083,
+              0.006852251943200827,
+              0.012427437119185925,
+              0.015290696173906326,
+              0.022607378661632538
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030586063861846924,
+            "draft_seconds": 0.0014863386750221252,
+            "pack_seconds": 2.9612332582473755e-05,
+            "verify_seconds": 0.02881013974547386,
+            "accept_commit_seconds": 0.00025997310876846313,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.01429422665387392,
+              0.017227644100785255,
+              0.03732851520180702,
+              0.03734773397445679,
+              0.04056635871529579,
+              0.04446673393249512
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030581146478652954,
+            "draft_seconds": 0.0014836378395557404,
+            "pack_seconds": 3.0215829610824585e-05,
+            "verify_seconds": 0.02880900353193283,
+            "accept_commit_seconds": 0.00025828927755355835,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.02935262769460678,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.029813669621944427,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.01055300235748291,
+              0.00332347652874887,
+              0.013361158780753613,
+              0.0056840805336833,
+              0.004338868428021669,
+              0.0076982565224170685
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.0300552099943161,
+            "draft_seconds": 0.00151124969124794,
+            "pack_seconds": 2.8185546398162842e-05,
+            "verify_seconds": 0.028262462466955185,
+            "accept_commit_seconds": 0.00025331228971481323,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.0040772282518446445,
+              0.00884633231908083,
+              0.006852251943200827,
+              0.012427437119185925,
+              0.015290696173906326,
+              0.022607378661632538
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.02680772915482521,
+            "draft_seconds": 0.0014820210635662079,
+            "pack_seconds": 3.030523657798767e-05,
+            "verify_seconds": 0.025026589632034302,
+            "accept_commit_seconds": 0.00026881322264671326,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.01429422665387392,
+              0.017227644100785255,
+              0.03732851520180702,
+              0.03734773397445679,
+              0.04056635871529579,
+              0.04446673393249512
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026810891926288605,
+            "draft_seconds": 0.0014702826738357544,
+            "pack_seconds": 2.954155206680298e-05,
+            "verify_seconds": 0.025052271783351898,
+            "accept_commit_seconds": 0.00025879591703414917,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.025602877140045166,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.0059359148144721985,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.01055300235748291,
+              0.00332347652874887,
+              0.013361158780753613,
+              0.0056840805336833,
+              0.004338868428021669,
+              0.0076982565224170685
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.03593110293149948,
+            "draft_seconds": 0.0015109889209270477,
+            "pack_seconds": 2.8409063816070557e-05,
+            "verify_seconds": 0.006257668137550354,
+            "accept_commit_seconds": 0.02813403680920601,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.0040772282518446445,
+              0.00884633231908083,
+              0.006852251943200827,
+              0.012427437119185925,
+              0.015290696173906326,
+              0.022607378661632538
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017316214740276337,
+            "draft_seconds": 0.0014885328710079193,
+            "pack_seconds": 2.946704626083374e-05,
+            "verify_seconds": 0.0024905502796173096,
+            "accept_commit_seconds": 0.013307664543390274,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.01429422665387392,
+              0.017227644100785255,
+              0.03732851520180702,
+              0.03734773397445679,
+              0.04056635871529579,
+              0.04446673393249512
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.01728137582540512,
+            "draft_seconds": 0.0014851242303848267,
+            "pack_seconds": 3.0007213354110718e-05,
+            "verify_seconds": 0.002484697848558426,
+            "accept_commit_seconds": 0.013281546533107758,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.002622373402118683,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 252887040
+      },
+      "official_compile": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.0011806152760982513,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.00990341417491436,
+              0.0028740873094648123,
+              0.011873453855514526,
+              0.004518077243119478,
+              0.003821839578449726,
+              0.008816963993012905
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.025737572461366653,
+            "draft_seconds": 0.0015750490128993988,
+            "pack_seconds": 2.8364360332489014e-05,
+            "verify_seconds": 0.0015998929738998413,
+            "accept_commit_seconds": 0.022534266114234924,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.0034692948684096336,
+              0.008217617869377136,
+              0.006296815816313028,
+              0.011913515627384186,
+              0.014980967156589031,
+              0.022443480789661407
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.011948008090257645,
+            "draft_seconds": 0.001539573073387146,
+            "pack_seconds": 3.008916974067688e-05,
+            "verify_seconds": 0.0015543662011623383,
+            "accept_commit_seconds": 0.008823979645967484,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.014353741891682148,
+              0.017459215596318245,
+              0.037836842238903046,
+              0.039124999195337296,
+              0.03806047886610031,
+              0.04284217581152916
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.011920098215341568,
+            "draft_seconds": 0.0015204139053821564,
+            "pack_seconds": 2.9809772968292236e-05,
+            "verify_seconds": 0.0015350356698036194,
+            "accept_commit_seconds": 0.0088348388671875,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0011775046586990356,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached_compile": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.004825826734304428,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010215796530246735,
+              0.0031270557083189487,
+              0.012313198298215866,
+              0.004854660946875811,
+              0.003987213131040335,
+              0.008701390586793423
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.02552046999335289,
+            "draft_seconds": 0.0015706978738307953,
+            "pack_seconds": 2.8789043426513672e-05,
+            "verify_seconds": 0.007216610014438629,
+            "accept_commit_seconds": 0.016704373061656952,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.003695662599056959,
+              0.00829413440078497,
+              0.006585969123989344,
+              0.011844601482152939,
+              0.014427511021494865,
+              0.021845832467079163
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.009831242263317108,
+            "draft_seconds": 0.0015384964644908905,
+            "pack_seconds": 3.030151128768921e-05,
+            "verify_seconds": 0.001949366182088852,
+            "accept_commit_seconds": 0.0063130781054496765,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.013652656227350235,
+              0.016955366358160973,
+              0.03726806864142418,
+              0.039035502821207047,
+              0.03868298605084419,
+              0.043609268963336945
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.009837917983531952,
+            "draft_seconds": 0.0015376955270767212,
+            "pack_seconds": 2.944841980934143e-05,
+            "verify_seconds": 0.001961667090654373,
+            "accept_commit_seconds": 0.006309106945991516,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0014751739799976349,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "warmup_seconds": {
+      "official_eager": 0.48762284591794014,
+      "torch_cached": 0.4649185687303543,
+      "native_cached": 0.35535846650600433,
+      "official_compile": 0.29813602194190025,
+      "torch_cached_compile": 0.29352210834622383
+    },
+    "compiled_cached_vs_official_compiled": {
+      "byte_exact": false,
+      "max_abs": 0.0078125,
+      "rel_l2": 0.0034854894038289785
+    },
+    "compiled_cached_vs_official_eager": {
+      "byte_exact": false,
+      "max_abs": 0.015625,
+      "rel_l2": 0.008922119624912739
+    },
+    "compiled_paths": {
+      "official_compile": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          1,
+          0,
+          0
+        ],
+        [
+          9,
+          null,
+          null,
+          null
+        ]
+      ],
+      "torch_cached_compile": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          1,
+          0,
+          0
+        ],
+        [
+          9,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  {
+    "case": 3,
+    "arm": "T",
+    "timings": {
+      "official_eager": {
+        "raw_seconds": [
+          0.3874199762940407,
+          0.38388828560709953,
+          0.3859374597668648,
+          0.38500554859638214,
+          0.3858810141682625,
+          0.3838592544198036,
+          0.38396893441677094,
+          0.3837893456220627,
+          0.38484666123986244,
+          0.3875371068716049
+        ],
+        "mean_seconds": 0.38496817896763486,
+        "median_seconds": 0.38484666123986244,
+        "n": 9
+      },
+      "torch_cached": {
+        "raw_seconds": [
+          0.35106654092669487,
+          0.34955115988850594,
+          0.34932009503245354,
+          0.350554920732975,
+          0.34898732602596283,
+          0.34901735559105873,
+          0.35046999529004097,
+          0.34979652240872383,
+          0.3494725003838539,
+          0.3520234636962414
+        ],
+        "mean_seconds": 0.3499103710055351,
+        "median_seconds": 0.34955115988850594,
+        "n": 9
+      },
+      "native_cached": {
+        "raw_seconds": [
+          0.18359918892383575,
+          0.18281682580709457,
+          0.18287505954504013,
+          0.18455876782536507,
+          0.1836298704147339,
+          0.18364186584949493,
+          0.18297459930181503,
+          0.18353432044386864,
+          0.1847294606268406,
+          0.1845388524234295
+        ],
+        "mean_seconds": 0.18369995802640915,
+        "median_seconds": 0.1836298704147339,
+        "n": 9
+      },
+      "official_compile": {
+        "raw_seconds": [
+          0.16266905516386032,
+          0.1621255986392498,
+          0.162002082914114,
+          0.16308534890413284,
+          0.1627890020608902,
+          0.16255345195531845,
+          0.16276472061872482,
+          0.16289299726486206,
+          0.1626131646335125,
+          0.16347255930304527
+        ],
+        "mean_seconds": 0.16269988069931665,
+        "median_seconds": 0.16276472061872482,
+        "n": 9
+      },
+      "torch_cached_compile": {
+        "raw_seconds": [
+          0.15325452759861946,
+          0.15257874503731728,
+          0.1530526615679264,
+          0.15400873869657516,
+          0.15488624945282936,
+          0.15314573422074318,
+          0.15285956859588623,
+          0.15297768265008926,
+          0.15292952582240105,
+          0.15439321845769882
+        ],
+        "mean_seconds": 0.1534257916112741,
+        "median_seconds": 0.1530526615679264,
+        "n": 9
+      }
+    },
+    "last_counts": {
+      "official_eager": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      },
+      "official_compile": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached_compile": {
+        "counts": {
+          "committed_updates": 10,
+          "target_B1_calls": 10
+        },
+        "rounds": [],
+        "cache_build_batches": [
+          1
+        ],
+        "cross_cache_bytes": 47818752,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "warmup_seconds": {
+      "official_eager": 0.7689378447830677,
+      "torch_cached": 0.700402271002531,
+      "native_cached": 0.3674267418682575,
+      "official_compile": 0.3266690820455551,
+      "torch_cached_compile": 0.30672184377908707
+    },
+    "compiled_cached_vs_official_compiled": {
+      "byte_exact": false,
+      "max_abs": 0.0078125,
+      "rel_l2": 0.0036201057955622673
+    },
+    "compiled_cached_vs_official_eager": {
+      "byte_exact": false,
+      "max_abs": 0.015625,
+      "rel_l2": 0.00810311734676361
+    },
+    "compiled_paths": {
+      "official_compile": [],
+      "torch_cached_compile": []
+    }
+  },
+  {
+    "case": 3,
+    "arm": "S",
+    "timings": {
+      "official_eager": {
+        "raw_seconds": [
+          0.2490757368505001,
+          0.25016915053129196,
+          0.2480381615459919,
+          0.2570766769349575,
+          0.2509908452630043,
+          0.24965038150548935,
+          0.24751564860343933,
+          0.25175588950514793,
+          0.24960707873106003,
+          0.2515649311244488
+        ],
+        "mean_seconds": 0.25070764041609234,
+        "median_seconds": 0.25016915053129196,
+        "n": 9
+      },
+      "torch_cached": {
+        "raw_seconds": [
+          0.2364511415362358,
+          0.23738296702504158,
+          0.2352447286248207,
+          0.23949968442320824,
+          0.23831229284405708,
+          0.238211028277874,
+          0.24272223934531212,
+          0.24125176668167114,
+          0.2384960986673832,
+          0.23750492185354233
+        ],
+        "mean_seconds": 0.23873619197143447,
+        "median_seconds": 0.23831229284405708,
+        "n": 9
+      },
+      "native_cached": {
+        "raw_seconds": [
+          0.17638397961854935,
+          0.17928705736994743,
+          0.1779210865497589,
+          0.1781030297279358,
+          0.18286371231079102,
+          0.1837737336754799,
+          0.17556969076395035,
+          0.17471017315983772,
+          0.18277520313858986,
+          0.1809045523405075
+        ],
+        "mean_seconds": 0.1795453598929776,
+        "median_seconds": 0.17928705736994743,
+        "n": 9
+      },
+      "official_compile": {
+        "raw_seconds": [
+          0.1492275521159172,
+          0.15366892889142036,
+          0.15003368258476257,
+          0.16677526384592056,
+          0.15280339866876602,
+          0.15333006903529167,
+          0.15604407340288162,
+          0.14927352219820023,
+          0.1496298611164093,
+          0.15414132922887802
+        ],
+        "mean_seconds": 0.15396668099694782,
+        "median_seconds": 0.15333006903529167,
+        "n": 9
+      },
+      "torch_cached_compile": {
+        "raw_seconds": [
+          0.1470549777150154,
+          0.14750098437070847,
+          0.14805308356881142,
+          0.14851070567965508,
+          0.14855005964636803,
+          0.1478797160089016,
+          0.1541331261396408,
+          0.14775241911411285,
+          0.15292935445904732,
+          0.1542130559682846
+        ],
+        "mean_seconds": 0.1499469449950589,
+        "median_seconds": 0.14851070567965508,
+        "n": 9
+      }
+    },
+    "last_counts": {
+      "official_eager": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.02995844930410385,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010845622047781944,
+              0.003618342336267233,
+              0.013266179710626602,
+              0.005591779015958309,
+              0.0046447752974927425,
+              0.008384191431105137
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.03923444822430611,
+            "draft_seconds": 0.0015157945454120636,
+            "pack_seconds": 2.8289854526519775e-05,
+            "verify_seconds": 0.03740457445383072,
+            "accept_commit_seconds": 0.0002857893705368042,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004043957218527794,
+              0.0094197578728199,
+              0.007001933176070452,
+              0.012725562788546085,
+              0.01581505313515663,
+              0.023263845592737198
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.031008802354335785,
+            "draft_seconds": 0.0015421956777572632,
+            "pack_seconds": 3.049522638320923e-05,
+            "verify_seconds": 0.029179614037275314,
+            "accept_commit_seconds": 0.00025649741291999817,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 1,
+            "g": 2,
+            "scores": [
+              0.015115800313651562,
+              0.019306547939777374,
+              0.036514464765787125,
+              0.03622821345925331,
+              0.043729785829782486,
+              0.04763247072696686
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.030518393963575363,
+            "draft_seconds": 0.0014854781329631805,
+            "pack_seconds": 2.9843300580978394e-05,
+            "verify_seconds": 0.028744738548994064,
+            "accept_commit_seconds": 0.0002583339810371399,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.029361754655838013,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.03595750033855438,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010845622047781944,
+              0.003618342336267233,
+              0.013266179710626602,
+              0.005591779015958309,
+              0.0046447752974927425,
+              0.008384191431105137
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.0301658995449543,
+            "draft_seconds": 0.0015124492347240448,
+            "pack_seconds": 2.8781592845916748e-05,
+            "verify_seconds": 0.02836732566356659,
+            "accept_commit_seconds": 0.000257343053817749,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004043957218527794,
+              0.0094197578728199,
+              0.007001933176070452,
+              0.012725562788546085,
+              0.01581505313515663,
+              0.023263845592737198
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026848305016756058,
+            "draft_seconds": 0.0015093088150024414,
+            "pack_seconds": 3.039836883544922e-05,
+            "verify_seconds": 0.02505071461200714,
+            "accept_commit_seconds": 0.000257883220911026,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 1,
+            "g": 2,
+            "scores": [
+              0.015115800313651562,
+              0.019306547939777374,
+              0.036514464765787125,
+              0.03622821345925331,
+              0.043729785829782486,
+              0.04763247072696686
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.026902157813310623,
+            "draft_seconds": 0.0014638714492321014,
+            "pack_seconds": 2.9638409614562988e-05,
+            "verify_seconds": 0.025148268789052963,
+            "accept_commit_seconds": 0.0002603791654109955,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0256226547062397,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      },
+      "native_cached": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.006005905568599701,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010845622047781944,
+              0.003618342336267233,
+              0.013266179710626602,
+              0.005591779015958309,
+              0.0046447752974927425,
+              0.008384191431105137
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.035817936062812805,
+            "draft_seconds": 0.0015167631208896637,
+            "pack_seconds": 2.849102020263672e-05,
+            "verify_seconds": 0.006273198872804642,
+            "accept_commit_seconds": 0.027999483048915863,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004043957218527794,
+              0.0094197578728199,
+              0.007001933176070452,
+              0.012725562788546085,
+              0.01581505313515663,
+              0.023263845592737198
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017361871898174286,
+            "draft_seconds": 0.001489780843257904,
+            "pack_seconds": 2.9847025871276855e-05,
+            "verify_seconds": 0.0024881958961486816,
+            "accept_commit_seconds": 0.013354048132896423,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 1,
+            "g": 2,
+            "scores": [
+              0.015115800313651562,
+              0.019306547939777374,
+              0.036514464765787125,
+              0.03622821345925331,
+              0.043729785829782486,
+              0.04763247072696686
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.017330750823020935,
+            "draft_seconds": 0.001476578414440155,
+            "pack_seconds": 3.0003488063812256e-05,
+            "verify_seconds": 0.002483755350112915,
+            "accept_commit_seconds": 0.013340413570404053,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.002616751939058304,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 252887040
+      },
+      "official_compile": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.0012952238321304321,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010360130108892918,
+              0.0032566068693995476,
+              0.012056425213813782,
+              0.004985997918993235,
+              0.00451859412714839,
+              0.009615166112780571
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.025561567395925522,
+            "draft_seconds": 0.001563284546136856,
+            "pack_seconds": 2.82973051071167e-05,
+            "verify_seconds": 0.0017736777663230896,
+            "accept_commit_seconds": 0.02219630777835846,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004130406305193901,
+              0.009065835736691952,
+              0.007484572008252144,
+              0.012764882296323776,
+              0.015679791569709778,
+              0.023105382919311523
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.012042209506034851,
+            "draft_seconds": 0.001544114202260971,
+            "pack_seconds": 2.9917806386947632e-05,
+            "verify_seconds": 0.0016659051179885864,
+            "accept_commit_seconds": 0.008802272379398346,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.013120156712830067,
+              0.017617907375097275,
+              0.03234536573290825,
+              0.034494105726480484,
+              0.03933209553360939,
+              0.045744046568870544
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.011956047266721725,
+            "draft_seconds": 0.001545630395412445,
+            "pack_seconds": 2.9187649488449097e-05,
+            "verify_seconds": 0.0015536993741989136,
+            "accept_commit_seconds": 0.008827529847621918,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0012822486460208893,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [],
+        "cross_cache_bytes": 0,
+        "native_video_materialization_bytes": 0
+      },
+      "torch_cached_compile": {
+        "counts": {
+          "target_calls": 5,
+          "target_B1_calls": 2,
+          "target_state_rows": 23,
+          "bootstrap_updates": 1,
+          "committed_updates": 10,
+          "draft_calls": 9,
+          "target_B7_calls": 3,
+          "draft_updates": 5,
+          "bonus_updates": 2,
+          "tree_count": 3,
+          "depth_2": 2,
+          "candidate_expansions": 18,
+          "fallback_updates": 1,
+          "depth_1": 1,
+          "boundary_target_updates": 1
+        },
+        "rounds": [
+          {
+            "step": 0,
+            "kind": "bootstrap",
+            "g": 1,
+            "seconds": 0.00535539910197258,
+            "synchronized": false
+          },
+          {
+            "step": 1,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 1,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.010407313704490662,
+              0.003306875703856349,
+              0.012186527252197266,
+              0.004980260971933603,
+              0.004373105242848396,
+              0.009465595707297325
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.024783942848443985,
+            "draft_seconds": 0.0015865564346313477,
+            "pack_seconds": 2.9433518648147583e-05,
+            "verify_seconds": 0.006958167999982834,
+            "accept_commit_seconds": 0.016209784895181656,
+            "synchronized": false
+          },
+          {
+            "step": 4,
+            "kind": "tree",
+            "depth": 2,
+            "parent": 0,
+            "child": 0,
+            "g": 3,
+            "scores": [
+              0.004168834537267685,
+              0.009128337725996971,
+              0.007219347171485424,
+              0.01245402917265892,
+              0.015412782318890095,
+              0.022797342389822006
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.010058607906103134,
+            "draft_seconds": 0.0015447549521923065,
+            "pack_seconds": 3.024190664291382e-05,
+            "verify_seconds": 0.0021941475570201874,
+            "accept_commit_seconds": 0.0062894634902477264,
+            "synchronized": false
+          },
+          {
+            "step": 7,
+            "kind": "tree",
+            "depth": 1,
+            "parent": 0,
+            "child": 0,
+            "g": 2,
+            "scores": [
+              0.01352770533412695,
+              0.01687963679432869,
+              0.03257110342383385,
+              0.03498421981930733,
+              0.03856067359447479,
+              0.0450192391872406
+            ],
+            "tau": 0.015412352979183197,
+            "seconds": 0.009874165058135986,
+            "draft_seconds": 0.0015332363545894623,
+            "pack_seconds": 3.0063092708587646e-05,
+            "verify_seconds": 0.0020097829401493073,
+            "accept_commit_seconds": 0.006301082670688629,
+            "synchronized": false
+          },
+          {
+            "step": 9,
+            "kind": "tail",
+            "g": 1,
+            "seconds": 0.0016440115869045258,
+            "synchronized": false
+          }
+        ],
+        "cache_build_batches": [
+          1,
+          7
+        ],
+        "cross_cache_bytes": 382550016,
+        "native_video_materialization_bytes": 0
+      }
+    },
+    "warmup_seconds": {
+      "official_eager": 0.5005059763789177,
+      "torch_cached": 0.4678816720843315,
+      "native_cached": 0.3525492735207081,
+      "official_compile": 0.30183930322527885,
+      "torch_cached_compile": 0.2987867519259453
+    },
+    "compiled_cached_vs_official_compiled": {
+      "byte_exact": false,
+      "max_abs": 0.0078125,
+      "rel_l2": 0.0037172783631831408
+    },
+    "compiled_cached_vs_official_eager": {
+      "byte_exact": false,
+      "max_abs": 0.015625,
+      "rel_l2": 0.00817811768501997
+    },
+    "compiled_paths": {
+      "official_compile": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          1,
+          0,
+          0
+        ],
+        [
+          9,
+          null,
+          null,
+          null
+        ]
+      ],
+      "torch_cached_compile": [
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          1,
+          0,
+          0
+        ],
+        [
+          9,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  }
+]

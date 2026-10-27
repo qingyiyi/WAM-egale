@@ -1,0 +1,144 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "start": 1793064897.3378243,
+  "pid": 1764851,
+  "episodes": [
+    {
+      "name": "beat_block_hammer",
+      "pid": 1765148,
+      "start": 1793064953.755988,
+      "birth_ticks": "766341232",
+      "result": {
+        "task": "beat_block_hammer",
+        "status": "PARTIAL_OR_INVALID",
+        "start": 1793064954.219797,
+        "complete": false,
+        "success": false,
+        "model_seed": 42,
+        "scene_seed_start": 4300000,
+        "instruction_type": "unseen",
+        "config": "demo_clean",
+        "invalid_attempts": [],
+        "attempted_seed": 4300000,
+        "error": "FileNotFoundError(2, 'No such file or directory')",
+        "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/code/client.py\", line 81, in <module>\n    namespace['main'](dict(task_name=args.task,task_config='demo_clean',ckpt_setting='fastwam-base-8eaceeb',policy_name='fastwam_rpc',instruction_type='unseen',eval_num_episodes=1,seed=42,eval_output_dir=str(OUT/'official'),skip_get_obs_within_replan=True))\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 211, in main\n    st_seed, suc_num = eval_policy(task_name,\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 342, in eval_policy\n    \"-f\",\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 971, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 1863, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'\n",
+        "end": 1793064995.9495232,
+        "wall_seconds": 41.72972655296326
+      },
+      "returncode": 1,
+      "end": 1793065007.765042
+    },
+    {
+      "name": "adjust_bottle",
+      "pid": 1765147,
+      "start": 1793064953.7555468,
+      "birth_ticks": "766341232",
+      "result": {
+        "task": "adjust_bottle",
+        "status": "PARTIAL_OR_INVALID",
+        "start": 1793064954.2168624,
+        "complete": false,
+        "success": false,
+        "model_seed": 42,
+        "scene_seed_start": 4300000,
+        "instruction_type": "unseen",
+        "config": "demo_clean",
+        "invalid_attempts": [
+          {
+            "seed": 4300000,
+            "reason": "expert_setup_exception_logged"
+          }
+        ],
+        "attempted_seed": 4300001,
+        "error": "FileNotFoundError(2, 'No such file or directory')",
+        "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/code/client.py\", line 81, in <module>\n    namespace['main'](dict(task_name=args.task,task_config='demo_clean',ckpt_setting='fastwam-base-8eaceeb',policy_name='fastwam_rpc',instruction_type='unseen',eval_num_episodes=1,seed=42,eval_output_dir=str(OUT/'official'),skip_get_obs_within_replan=True))\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 211, in main\n    st_seed, suc_num = eval_policy(task_name,\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 342, in eval_policy\n    \"-f\",\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 971, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 1863, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'\n",
+        "end": 1793065005.0949187,
+        "wall_seconds": 50.87805652618408
+      },
+      "returncode": 1,
+      "end": 1793065007.7650445
+    }
+  ],
+  "updated": 1793065008.2294242,
+  "prior_gpu_seconds": 23945.27784371376,
+  "remaining_gpu_seconds": 62454.72215628624,
+  "gpu_cap_seconds": 5240.881868124008,
+  "deadline": 1793070138.2196925,
+  "server": {
+    "name": "server",
+    "pid": 1764917,
+    "start": 1793064897.7381532,
+    "birth_ticks": "766335630",
+    "returncode": -15,
+    "end": 1793065008.229389
+  },
+  "error": "AssertionError({'task': 'beat_block_hammer', 'status': 'PARTIAL_OR_INVALID', 'start': 1793064954.219797, 'complete': False, 'success': False, 'model_seed': 42, 'scene_seed_start': 4300000, 'instruction_type': 'unseen', 'config': 'demo_clean', 'invalid_attempts': [], 'attempted_seed': 4300000, 'error': \"FileNotFoundError(2, 'No such file or directory')\", 'traceback': 'Traceback (most recent call last):\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/code/client.py\", line 81, in <module>\\n    namespace[\\'main\\'](dict(task_name=args.task,task_config=\\'demo_clean\\',ckpt_setting=\\'fastwam-base-8eaceeb\\',policy_name=\\'fastwam_rpc\\',instruction_type=\\'unseen\\',eval_num_episodes=1,seed=42,eval_output_dir=str(OUT/\\'official\\'),skip_get_obs_within_replan=True))\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 211, in main\\n    st_seed, suc_num = eval_policy(task_name,\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 342, in eval_policy\\n    \"-f\",\\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 971, in __init__\\n    self._execute_child(args, executable, preexec_fn, close_fds,\\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 1863, in _execute_child\\n    raise child_exception_type(errno_num, err_msg, err_filename)\\nFileNotFoundError: [Errno 2] No such file or directory: \\'ffmpeg\\'\\n', 'end': 1793064995.9495232, 'wall_seconds': 41.72972655296326})",
+  "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/code/supervise.py\", line 76, in <module>\n    for f in as_completed([pool.submit(worker,i) for i in [0,1]]):f.result()\n                                                                  ^^^^^^^^^^\n  File \"/usr/lib/python3.12/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"/usr/lib/python3.12/concurrent/futures/thread.py\", line 58, in run\n    result = self.fn(*self.args, **self.kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/code/supervise.py\", line 50, in worker\n    assert p.returncode==0 and result['complete'],result\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'task': 'beat_block_hammer', 'status': 'PARTIAL_OR_INVALID', 'start': 1793064954.219797, 'complete': False, 'success': False, 'model_seed': 42, 'scene_seed_start': 4300000, 'instruction_type': 'unseen', 'config': 'demo_clean', 'invalid_attempts': [], 'attempted_seed': 4300000, 'error': \"FileNotFoundError(2, 'No such file or directory')\", 'traceback': 'Traceback (most recent call last):\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/code/client.py\", line 81, in <module>\\n    namespace[\\'main\\'](dict(task_name=args.task,task_config=\\'demo_clean\\',ckpt_setting=\\'fastwam-base-8eaceeb\\',policy_name=\\'fastwam_rpc\\',instruction_type=\\'unseen\\',eval_num_episodes=1,seed=42,eval_output_dir=str(OUT/\\'official\\'),skip_get_obs_within_replan=True))\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 211, in main\\n    st_seed, suc_num = eval_policy(task_name,\\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 342, in eval_policy\\n    \"-f\",\\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 971, in __init__\\n    self._execute_child(args, executable, preexec_fn, close_fds,\\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 1863, in _execute_child\\n    raise child_exception_type(errno_num, err_msg, err_filename)\\nFileNotFoundError: [Errno 2] No such file or directory: \\'ffmpeg\\'\\n', 'end': 1793064995.9495232, 'wall_seconds': 41.72972655296326}\n",
+  "owned": [
+    {
+      "name": "server",
+      "pid": 1764917,
+      "start": 1793064897.7381532,
+      "birth_ticks": "766335630",
+      "returncode": -15,
+      "end": 1793065008.229389
+    },
+    {
+      "name": "adjust_bottle",
+      "pid": 1765147,
+      "start": 1793064953.7555468,
+      "birth_ticks": "766341232",
+      "result": {
+        "task": "adjust_bottle",
+        "status": "PARTIAL_OR_INVALID",
+        "start": 1793064954.2168624,
+        "complete": false,
+        "success": false,
+        "model_seed": 42,
+        "scene_seed_start": 4300000,
+        "instruction_type": "unseen",
+        "config": "demo_clean",
+        "invalid_attempts": [
+          {
+            "seed": 4300000,
+            "reason": "expert_setup_exception_logged"
+          }
+        ],
+        "attempted_seed": 4300001,
+        "error": "FileNotFoundError(2, 'No such file or directory')",
+        "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/code/client.py\", line 81, in <module>\n    namespace['main'](dict(task_name=args.task,task_config='demo_clean',ckpt_setting='fastwam-base-8eaceeb',policy_name='fastwam_rpc',instruction_type='unseen',eval_num_episodes=1,seed=42,eval_output_dir=str(OUT/'official'),skip_get_obs_within_replan=True))\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 211, in main\n    st_seed, suc_num = eval_policy(task_name,\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 342, in eval_policy\n    \"-f\",\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 971, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 1863, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'\n",
+        "end": 1793065005.0949187,
+        "wall_seconds": 50.87805652618408
+      },
+      "returncode": 1,
+      "end": 1793065007.7650445
+    },
+    {
+      "name": "beat_block_hammer",
+      "pid": 1765148,
+      "start": 1793064953.755988,
+      "birth_ticks": "766341232",
+      "result": {
+        "task": "beat_block_hammer",
+        "status": "PARTIAL_OR_INVALID",
+        "start": 1793064954.219797,
+        "complete": false,
+        "success": false,
+        "model_seed": 42,
+        "scene_seed_start": 4300000,
+        "instruction_type": "unseen",
+        "config": "demo_clean",
+        "invalid_attempts": [],
+        "attempted_seed": 4300000,
+        "error": "FileNotFoundError(2, 'No such file or directory')",
+        "traceback": "Traceback (most recent call last):\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/code/client.py\", line 81, in <module>\n    namespace['main'](dict(task_name=args.task,task_config='demo_clean',ckpt_setting='fastwam-base-8eaceeb',policy_name='fastwam_rpc',instruction_type='unseen',eval_num_episodes=1,seed=42,eval_output_dir=str(OUT/'official'),skip_get_obs_within_replan=True))\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 211, in main\n    st_seed, suc_num = eval_policy(task_name,\n  File \"<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt03/source/RoboTwin/script/eval_policy.py\", line 342, in eval_policy\n    \"-f\",\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 971, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"<A100_RUNTIME>/envs/libero-va/lib/python3.10/subprocess.py\", line 1863, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'\n",
+        "end": 1793064995.9495232,
+        "wall_seconds": 41.72972655296326
+      },
+      "returncode": 1,
+      "end": 1793065007.765042
+    }
+  ],
+  "gpu_window_seconds": 110.49416589736938,
+  "end": 1793065008.2293923
+}

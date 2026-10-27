@@ -1,36 +1,26 @@
 ---
 kind: plan
-mode: goal
 cycle: wam-research-20261016
 status: active
-updated: '2026-10-25T19:36:51.428062+08:00'
-progress: PROGRESS.md
-execution: EXECUTION.md
+updated: '2026-10-27T10:11:52.929047+08:00'
 ---
-# WAM 当前计划
 
-投机重组小action负载→候选感知单层调度→质量约束下成本收益是待验证因果链。质量与系统并行；单层未集成机器人。四项科学权限均false。
+# WAM当前计划
 
-| ID | 状态/下一动作 | 证据与依赖 |
-|---|---|---|
-| M42-5090-ROBOTWIN | 已完成1组四臂后预算停止，归档清理；剩余未启动 | [计划](../../experiments/suite-acceptance-calibration-20261025/rtx5090-robotwin-20261025/PLAN.md)，24完整局/192000forward，沿21:56截止 |
-| M42-RESUME06 | 接续授权，先诊断26个纯像素初态差异 | [计划](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume06/PLAN.md)，沿21:56截止，不放宽旧门 |
-| M42-MULTI-INIT | resume05已闭合，81attempt、4合格完整四臂组 | [本轮结果](../../experiments/suite-acceptance-calibration-20261025/multi-init-20261025/resume05/RESULT.md)，原T0/21:56截止与全部INVALID保留，进程已清理 |
-| M42-PAIRED-COST-RESULT | 待核4组的任务覆盖、门控/长度分层；不可直接定最终阈值 | 54完整均成功，27其他attempt及完整未配齐样本单列；仍是不平衡暴露DEV |
-| M40-EVAL100 | 双A100接续原600组三臂 | [原队列](../../experiments/robotwin-pilot-20261020/eval100-20261022/external-oom-20261025/PLAN.md)，160GPU小时/10天原预算；281/406旧缺口单列 |
-| M40-MICROWAVE-FINAL-DIAG | 等微波炉100组完整后核官方Target及额外失败 | 不提前改变当前队列；不自动重试 |
-| M39-FFN1-GEMM-GAP | 完成4296调用，95.6%主体tile时间在GEMM加载/计算包络；S不变 | [30分钟/5000调用计划](../../experiments/sm120-ffn-next-20261024/FFN1-GEMM-GAP-20261025/PLAN.md)，不新增设计 |
-| M39-FFN1-CLUSTER2-GROUP2 | 已完成负结果：精度通过，整层比S慢25.92%–31.73%，保留S | [计划](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-GROUP2-20261025/PLAN.md)，60分钟/6500调用，S仍保留 |
-| M39-FFN1-CLUSTER2-INPUT | 已完成：共享A比B快19%–21%，仍比S慢22%–26%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-INPUT-20261025/REVIEW_RETURN.md)，三KV/两进程/5400调用；等待诊断与清理完成 |
-| M39-FFN1-CLUSTER2-WEIGHT | 已完成；D精度通过但整层慢49.89%–60.62%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-CLUSTER2-WEIGHT-20261025/REVIEW_RETURN.md)，等待定位/三KV/两进程/4836调用，清理完成 |
-| M39-FFN1-WARP-PIPELINE | 已完成，精度通过但整层慢0.79%–0.85%，保留S | [结果](../../experiments/sm120-ffn-next-20261024/FFN1-WARP-PIPELINE-20261025/REVIEW_RETURN.md)，三KV/两进程；mbarrier热循环，TMA输出尚未实现 |
-| M39-FFN-STAGE-SPLIT | 已完成并采用S；后续W局部流水负结果保留，先定位同tile输入/结果等待与写回 | [结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)，2865调用、三KV/两进程/公开入口精度通过；完整层相对A延迟下降约1.8%–2.3%；17:59清理，不自动开下一候选 |
-| M17-EVIDENCE-GAP | 配对/FIT-DEV暴露缺口仍未解决 | 不借DEV补签独立TEST或正式性能许可 |
-| W02 | 持续中文逐段写作，Prompt已交付 | [Prompt](../../prompts/WAM-PAPER-COLLABORATION.md)，不建本地论文正文 |
-| H03 | 已完成短入口、主题路由与历史归档；不改实验 | [维护结果](../../maintenance/hw-compact-20261025/RESULT.md) |
+当前主验证平台为固定Base FastWAM。用户已授权三张A100继续投机实验，小筛查无问题后自动进入全量target/TF/TF+PF；不再等待LingBot十步或VA2完整资产。四科学权限仍false。
 
-本次闭合：M39-CLUSTER2-ATTRIBUTION、CLUSTER4-HYBRID、CTA-ATTRIBUTION、DSM-STREAM均保留负结果/独立A；M41五环境面板与临时资产清理、H02本机大文件归档已完成。结果见PROGRESS，不把单候选完成当整条研究完成。
+|工作|当前安排与入口|
+|---|---|
+|投机小闭环|[夜间清单](../../experiments/fastwam-base-small-closedloop-20261026/OVERNIGHT-PLAN.md)：100FIT/10CAL和20组三臂完成；T17/TF19/PF18，新tau=.01541235，原登记扩量门通过|
+|三卡并行|[PLACEMENT-v3](../../experiments/fastwam-base-small-closedloop-20261026/PLACEMENT-v3.json)：本机30FIT/3CAL+4组三臂；远端70FIT/7CAL+16组三臂；非测速尽量每卡两个隔离环境客户端共享一模型|
+|条件全量|[四suite共6000局全部审计完成](../../experiments/fastwam-full-triarm-20261027/FOUR-SUITES-RESULT-v1.md)：每suite各500组三臂，同配方各100FIT/10CAL/20DEV先行；合计T1950/TF1945/PF1944（每臂2000）。完整50初态含训练/选择暴露，不称独立TEST。|
+|真实速度|[共同prompt缓存四套已完成](../../experiments/fastwam-full-triarm-20261027/CURRENT-RESULT-v5.md)：Long/Spatial/Object/Goal action1.242/1.205/1.229/1.150×，chunk1.080/1.068/1.071/1.057×；源组N16/19/20/20。原未缓存计时保留。跨进程路径差异未定因，缓存新版本不冒充原版全量质量。|
+|RoboTwin|[首四canonical审阅通过](../../experiments/fastwam-robotwin-canonical-20261027/CANONICAL-REVIEW-v1.md)：4/4完整成功，14维/24执行/十步协议与图像检查通过；含失败/诊断累计502.120秒。下一步登记自身FIT/CAL/DEV并核验真实14维采集和B7，尚未训练或扩量。|
+|算子另会话|[chunk内Cross KV缓存完成](../../experiments/fastwam-crosskv-cache-20261027/REVIEW_RETURN.md)：算子chunk内CrossKV缓存已完成：6组层、4观测×T/S完整30层/10步动作/路径及条件RNG逐位一致；B1/B7分别建cache，不跨chunk复用。warm层相对同缓存eager为1.407/.925×，相对同缓存compile为.605/.459×；完整policy缓存使compile Target/投机约1.061/1.015×，自有仍慢同缓存compile约19–20%。compile新图动作relL2约.25–.37%，不能继承eager证据。显式研究入口保留、生产未改；5090已释放。 下一步优先B7视觉KV布局/复制与输出投影、FFN2并行度；前轮FP32不采用。|
+|共同文本缓存|三臂共同优化已完成，225输入同进程条件/动作/路径exact；主计时1125对、每臂75次同步profile。文本约0.06ms。VAE在GPU且未改；[分布和成本](../../experiments/fastwam-full-triarm-20261027/TEXT-CACHE-v1/REVIEW-4suites-v1/REPORT.md)。|
+|论文证据|只维护[主张证据](../../experiments/fastwam-base-small-closedloop-20261026/CLAIM-EVIDENCE.md)，不生成正文；冻结target+小模块、batch/cache/compile本身不称创新|
+|后续跨模型|FastWAM之后，有时间和资源时补StarVLA-PI、StarVLA-GR00T；研究范围为flow-based robotic action models，尚未启动。[决定](../../memory/global/requirements/decision-研究范围扩展至基于流的动作模型并候补StarVLA跨模型验证.md)|
 
-10/22与10/23旧节点已过，不能补称按期达成；10/28主表、11/01 18:00北京时间中文证据包仍是规划节点。外部注册/摘要/正文日期使用前查官方，不据旧计划自动启动实验。
+原小规模截止10/27 21:32保留；[夜间扩展](../../experiments/fastwam-base-small-closedloop-20261026/OVERNIGHT-EXTENSION-v1.json)另登记36h wall/72 aggregate A100h上限并含已有消耗，5090投机2GPUh。旧实验全部暂停，不因剩余额度重启。保护state/cycle/rules和原tile不动。
 
-[精简前完整进度](PROGRESS.before-HW-compact-20261025.md)；[完整事件](EXECUTION.before-HW-compact-20261025.md)；[旧计划](PLAN.before-HW-compact-20261025.md)；[旧讨论](DISCUSSION-SUMMARY.before-HW-compact-20261025.md)。
+[整理前完整计划](history/before-fastwam-overnight-20261027-010743/PLAN.md)保留所有历史M39/M40/M41/M42节点与证据入口；旧M01–M04完成不代表当前研究完成。

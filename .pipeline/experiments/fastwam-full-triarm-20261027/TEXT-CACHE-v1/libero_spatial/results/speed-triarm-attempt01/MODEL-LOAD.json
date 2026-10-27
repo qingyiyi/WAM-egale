@@ -1,0 +1,69 @@
+{
+  "seconds": 42.96926220878959,
+  "strict_inventory": [
+    {
+      "module": "WanTextEncoder",
+      "keys": 242,
+      "missing": [],
+      "unexpected": []
+    },
+    {
+      "module": "WanVideoVAE38",
+      "keys": 196,
+      "missing": [],
+      "unexpected": []
+    },
+    {
+      "module": "MoT",
+      "keys": 1649,
+      "missing": [],
+      "unexpected": []
+    },
+    {
+      "module": "Linear",
+      "keys": 2,
+      "missing": [],
+      "unexpected": []
+    }
+  ],
+  "torch": "2.9.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "allocated_bytes": 24831867392,
+  "model_paths": {
+    "video_dit": "SKIPPED_PRETRAIN",
+    "vae": "<RTX5090_RUNTIME>/fastwam-long-acceptance-20261026/assets/Wan-AI/Wan2.2-TI2V-5B/Wan2.2_VAE.pth",
+    "text_encoder": "<RTX5090_RUNTIME>/fastwam-long-acceptance-20261026/assets/Wan-AI/Wan2.2-TI2V-5B/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "<RTX5090_RUNTIME>/fastwam-long-acceptance-20261026/assets/Wan-AI/Wan2.1-T2V-1.3B/google/umt5-xxl/",
+    "action_dit_backbone": "SKIPPED_PRETRAIN"
+  },
+  "low_memory_loading": {
+    "T5_meta_assign": true,
+    "mmap_files": [
+      {
+        "path": "<RTX5090_RUNTIME>/fastwam-long-acceptance-20261026/assets/Wan-AI/Wan2.2-TI2V-5B/models_t5_umt5-xxl-enc-bf16.pth",
+        "mmap": true
+      },
+      {
+        "path": "<RTX5090_RUNTIME>/fastwam-long-acceptance-20261026/assets/Wan-AI/Wan2.2-TI2V-5B/models_t5_umt5-xxl-enc-bf16.pth",
+        "mmap": true
+      },
+      {
+        "path": "<RTX5090_RUNTIME>/fastwam-long-acceptance-20261026/assets/Wan-AI/Wan2.2-TI2V-5B/Wan2.2_VAE.pth",
+        "mmap": true
+      },
+      {
+        "path": "<RTX5090_RUNTIME>/fastwam-long-acceptance-20261026/assets/Wan-AI/Wan2.2-TI2V-5B/Wan2.2_VAE.pth",
+        "mmap": true
+      },
+      {
+        "path": "<RTX5090_RUNTIME>/fastwam-long-acceptance-20261026/assets/yuanty/fastwam/libero_uncond_2cam224.pt",
+        "mmap": true
+      }
+    ],
+    "peak_host_RSS_KiB": 20359492,
+    "scope": "loading only; all checkpoint keys required; T5 has no non-checkpoint buffers"
+  },
+  "tf32_matmul": false,
+  "tf32_cudnn": true
+}

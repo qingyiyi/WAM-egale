@@ -1,27 +1,38 @@
 ---
 kind: discussion-summary
 cycle: wam-research-20261016
-updated: '2026-10-25T18:38:14.572913+08:00'
+status: active
+updated: '2026-10-27T10:11:52.929047+08:00'
 ---
-# 当前已确认的方向
 
-- 用户主线是投机改变小action负载，为候选感知单层tile/persistent调度创造机会；普通batch/cache已有收益不能重新命名为创新。是否有算法系统交互及闭环收益仍待证。
-- 系统范围是一个完整Transformer block，原始action路径保留原算子；不恢复30层大融合或已撤回实现。当前采用S（FFN两阶段同步版）；原A独立保留，DSM8、C4、C2负结果不改。
-- 用户10/25授权两阶段修改与三KV测试；[本轮结果](../../experiments/sm120-ffn-next-20261024/FFN-STAGE-SPLIT-20261025/REVIEW_RETURN.md)已通过有限精度/状态，完整层无退化。FFN1+GELU约0.80×Torch，FFN2+残差约1.03×；建议先分解FFN1成本。此后用户批准仅FFN1的1T/4M/3E，W已完成并保留负结果：精度通过但整层慢约0.8%，当前仍S；不新增DSM、完整DAG或统一全层warp比例。
-- Goal固定阈值DEV的resume05已正常闭合，4个合格完整四臂组；原0组属于更早attempt历史，不改原记录。样本不平衡、暴露DEV，尚不定最终阈值；严格初态差异/完整任务失败不删除。
-- 双A100持续原RoboTwin队列；微波炉100组完整后再核官方Target/额外失败。已有160GPU小时/10天预算不重置，未授权重试不自动开。
-- 论文中文逐段由用户整理飞书；先事实/源码/证据，再写正文。当前四false、训练/DEV暴露及独立TEST缺口都要保留。
+# 已确认的当前决定
 
-待决定：在源审查后如何有界验证同步合并；Goal取得合格完整配对后的阈值选择；完整RoboTwin结果与微波炉差异。不能用新工程建议自动扩训练、TEST或正式性能。
+用户睡前授权三张A100继续实验，筛查无问题后自动进行全量，并要求最后汇报target/TF/TF+PF成功率、trace、新阈值/接受率及5090加速，持续更新HW。[Maintain夜间决定](../../memory/global/requirements/decision-FastWAM夜间三卡推进并在筛查通过后自动全量三臂评估.md)。它覆盖先前“小规模之外等待确认”，不把科学权限自动设为true。
 
-用户此次要求精简HW：只维护当前事实和短路由，历史按需；不把维护变成新研究主线。完整旧讨论见[历史](DISCUSSION-SUMMARY.before-HW-compact-20261025.md)，具体动态数字见PROGRESS/实验。
+最新原文：
 
-用户提出用mbarrier串起TMA/MMA/E，并由TMA负责输出写回。当前W已用mbarrier做输入/结果握手，E直接写global；新增shared BF16输出槽及TMA store仍属待讨论方案，不能写成已授权采用或实测通过。
+> 只要不测速都尽量每卡两woker并行eval
 
-用户随后明确同意最小双CTA共享B测试，覆盖此前W作业“不新增DSM”的当前执行范围，旧W/C2证据不改。新D已有限通过数值但整层退化，保留S；不将用户预期会快当结论，不自动扩成四输出、多cluster或TMA store。新L控制保留，尚未作为采用版。
+[长期偏好](../../memory/global/requirements/preference-非测速任务尽量每卡两个隔离worker并行评估.md)：覆盖所有非测速采集与评估，单路须实际资源原因；可以两环境客户端共享一模型，环境/RNG/可变状态/输出隔离，测速保持独占。
 
-用户追加共享A与共享B比较：两方案同轮正常计时已完成，A优于B但仍不如S，不采用。后续若继续，应先降低每K64的输入交接/回收等待；本轮不自行追加第三种设计。具体范围/预算/失败保持各自独立。
+FastWAM Base固定平台与十步/shift5、原版checkpoint/stats身份不变。目标为候选去噪状态→target并行验证→合法scheduler路径提交→真实成本及闭环质量证据。不迁入LingBot旧full512 reset bank/CFG B2/B14/末端t0额外forward。VA2部署资产复现边界不写成架构/量化未公开，也不否定VA1历史研究。
 
-用户要求在迁移准备期间完成已讨论算子实验。A2仅修改FFN1共享A交接，FFN2不变；本轮负结果/保留S见独立结果，不继续第三种设计。质量迁移与GPU算子计时错开，自有传输计时中暂停后恢复。
+本会话只负责投机；用户另会话负责算子，当前要求完整persistent迁移且以原Torch eager精度为gold，直接改现有optimized；算子候选不能直接算本轮投机加速，也不能相乘倍数。5090窗口按[共享协调记录](../../experiments/fastwam-base-small-closedloop-20261026/COORDINATION.md)交接。
 
-用户同意先对齐S的FFN1基础GEMM，再推进DSM调度；本轮核对固定MegaMoE源及分项成本，S不改。正式决定见memory对应记录；硬件/流水差距是证据解释，不把推测写成采用条件。
+代码在HW之外，与LingBot同级；三处权重长期保留。新tau只用FastWAM CAL重新测定；旧Long约80%接受效果只用于历史速度模拟，不强制新模型接受。PF2按历史两完整投机chunk后一次canonical，不能恢复已偏离的机器人状态。全量官方面板含训练/选择暴露，不能改名独立TEST。
+
+四权限仍false；保留失败、PARTIAL、原预算/截止、所有历史负结果及WAM固定参考；不租新卡、不提权/驱动/服务/计数器、不杀他人进程，BAAI写入仅<A100_RUNTIME>。只维护同一篇论文证据与受影响段落，不自动写正文或公开推送。
+
+[整理前完整讨论与全部原文](history/before-fastwam-overnight-20261027-010743/DISCUSSION-SUMMARY.md)保留夜间授权全文、之前资源与方法变更和历史边界。
+
+用户10/27追加要求先迁回TMA＋1T4M3E＋mbarrier并保持精度；已按原Torch eager逐字节完成，保留新研究实现。投影/FFN用此分工，norm/attention不强制统一；阶段grid同步保留。对应[Maintain](../../memory/global/requirements/requirement-FastWAM完整persistent迁移先精度后阶段性能.md)。
+
+用户10/27 08:46补充原文：“补充一下，加速比只计算都成功的任务，不成功的不要计算”。按[Maintain新要求](../../memory/global/requirements/requirement-加速比只统计共同成功的配对任务.md)保存为约束：三臂主表统一采用共同成功交集，按测速原始观测源episode身份筛选，报N和条件性；全体质量、失败和原始计时保留。只重算CPU汇总，不重复占GPU；旧含失败速度主表由新口径替代。
+
+用户随后要求“prompt部分你也可以采样之前的缓存方式加速，去掉影响”。按[文本缓存共同优化](../../memory/global/requirements/decision-FastWAM文本缓存作为三臂共同优化.md)执行：三臂同用，只缓存文本、proprio每次重新追加；独立版本、条件/动作/接受路径检查和真实测速，不直接减旧时间。用户询问VAE设备后已沿实际加载链确认GPU BF16，Base图像编码走eager；本会话尚未改VAE或算子。
+
+算子有限误差评估、FFN2对照授权及未采用结果见[本次归档](history/before-text-cache-report-20261027-0932/DISCUSSION-SUMMARY.md)；未设生产容差，严格版仍默认。
+
+用户10/27要求研究不局限WAM，面向flow-based robotic action models；FastWAM之后，时间和资源允许时补StarVLA-PI、StarVLA-GR00T。未启动新实验，当前预算与优先级不变。见[原文与Maintain记录](discussions/20261027-跨模型研究范围.md)。
+
+用户算子会话询问prompt缓存后能否直接读取cross KV并明确同意执行；[决定](../../memory/global/requirements/decision-FastWAM每个chunk预计算CrossKV并公平比较.md)。仅chunk内分别B1/B7；双方共同缓存，不改生产/阈值。实际结果见[缓存收口](../../experiments/fastwam-crosskv-cache-20261027/REVIEW_RETURN.md)，eager逐位通过不代表compile或机器人新版质量通过。

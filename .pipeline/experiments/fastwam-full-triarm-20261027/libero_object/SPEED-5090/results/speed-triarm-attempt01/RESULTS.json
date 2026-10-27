@@ -1,0 +1,501 @@
+{
+  "status": "COMPLETE",
+  "trained_draft": true,
+  "forced_depths": false,
+  "tau": 0.013732009567320347,
+  "full_chunk": {
+    "N": 300,
+    "T_total_seconds": 55.17236972972751,
+    "S_total_seconds": 51.87164697051048,
+    "speedup": 1.0636325035349952,
+    "T_mean_ms": 183.90789909909168,
+    "S_mean_ms": 172.9054899017016,
+    "T_p50_ms": 182.71712586283684,
+    "S_p50_ms": 172.62636311352253,
+    "T_p90_ms": 188.01731690764427,
+    "S_p90_ms": 178.95585410296917
+  },
+  "action_denoising": {
+    "N": 300,
+    "T_total_seconds": 18.34410648792982,
+    "S_total_seconds": 15.054850433021784,
+    "speedup": 1.2184848045845265,
+    "T_mean_ms": 61.14702162643273,
+    "S_mean_ms": 50.18283477673928,
+    "T_p50_ms": 61.03686988353729,
+    "S_p50_ms": 47.469789162278175,
+    "T_p90_ms": 61.15712560713291,
+    "S_p90_ms": 53.53012718260288
+  },
+  "policy_trace_replay": {
+    "fixed_target_observations": {
+      "N": 4,
+      "total_seconds": {
+        "T": 9.356283240020275,
+        "S": 8.811494801193476,
+        "P": 8.997722275555134
+      },
+      "speedup": {
+        "S": 1.0618270169952333,
+        "P": 1.0398501924691845
+      },
+      "pairs": [
+        {
+          "identity": {
+            "suite": "libero_object",
+            "task": 0,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 2.3790829218924046,
+            "S": 2.247924529016018,
+            "P": 2.297194566577673
+          },
+          "chunks": {
+            "T": 13,
+            "S": 13,
+            "P": 13
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_object",
+            "task": 1,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 2.368719432502985,
+            "S": 2.2432711981236935,
+            "P": 2.2902149334549904
+          },
+          "chunks": {
+            "T": 13,
+            "S": 13,
+            "P": 13
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_object",
+            "task": 2,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 2.1948179826140404,
+            "S": 2.0677660182118416,
+            "P": 2.1162503473460674
+          },
+          "chunks": {
+            "T": 12,
+            "S": 12,
+            "P": 12
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_object",
+            "task": 3,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 2.413662903010845,
+            "S": 2.2525330558419228,
+            "P": 2.294062428176403
+          },
+          "chunks": {
+            "T": 13,
+            "S": 13,
+            "P": 13
+          }
+        }
+      ],
+      "common_success_conditional": {
+        "S": {
+          "N": 4,
+          "speedup": 1.0618270169952333
+        },
+        "P": {
+          "N": 4,
+          "speedup": 1.0398501924691845
+        }
+      },
+      "boundary": "raw observations already resident -> repeated complete policy with preprocessing, text/VAE/prefill/action/postprocessing; no simulator stepping"
+    },
+    "own_natural_observations": {
+      "N": 4,
+      "total_seconds": {
+        "T": 9.416816342622042,
+        "S": 8.64636941626668,
+        "P": 8.81178679689765
+      },
+      "speedup": {
+        "S": 1.0891064086280997,
+        "P": 1.0686613918005148
+      },
+      "pairs": [
+        {
+          "identity": {
+            "suite": "libero_object",
+            "task": 0,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 2.395834494382143,
+            "S": 2.061129279434681,
+            "P": 2.1175420731306076
+          },
+          "chunks": {
+            "T": 13,
+            "S": 12,
+            "P": 12
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_object",
+            "task": 1,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 2.406167544424534,
+            "S": 2.247864257544279,
+            "P": 2.288055531680584
+          },
+          "chunks": {
+            "T": 13,
+            "S": 13,
+            "P": 13
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_object",
+            "task": 2,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 2.21810270473361,
+            "S": 2.068832363933325,
+            "P": 2.105431489646435
+          },
+          "chunks": {
+            "T": 12,
+            "S": 12,
+            "P": 12
+          }
+        },
+        {
+          "identity": {
+            "suite": "libero_object",
+            "task": 3,
+            "init": 47,
+            "seed": 42
+          },
+          "source_success": {
+            "T": true,
+            "S": true,
+            "P": true
+          },
+          "seconds": {
+            "T": 2.3967115990817547,
+            "S": 2.268543515354395,
+            "P": 2.3007577024400234
+          },
+          "chunks": {
+            "T": 13,
+            "S": 13,
+            "P": 13
+          }
+        }
+      ],
+      "common_success_conditional": {
+        "S": {
+          "N": 4,
+          "speedup": 1.0891064086280997
+        },
+        "P": {
+          "N": 4,
+          "speedup": 1.0686613918005148
+        }
+      },
+      "boundary": "raw observations already resident -> repeated complete policy with preprocessing, text/VAE/prefill/action/postprocessing; no simulator stepping"
+    }
+  },
+  "full_counts": {
+    "target_calls": 1625,
+    "target_B1_calls": 720,
+    "target_state_rows": 7055,
+    "bootstrap_updates": 300,
+    "committed_updates": 3000,
+    "draft_calls": 2715,
+    "target_B7_calls": 905,
+    "draft_updates": 1375,
+    "bonus_updates": 595,
+    "tree_count": 905,
+    "depth_2": 595,
+    "candidate_expansions": 5430,
+    "fallback_updates": 310,
+    "depth_1": 185,
+    "boundary_target_updates": 420,
+    "rejected_trees": 125,
+    "depth_0": 125
+  },
+  "action_counts": {
+    "target_calls": 1625,
+    "target_B1_calls": 720,
+    "target_state_rows": 7055,
+    "bootstrap_updates": 300,
+    "committed_updates": 3000,
+    "draft_calls": 2715,
+    "target_B7_calls": 905,
+    "draft_updates": 1375,
+    "bonus_updates": 595,
+    "tree_count": 905,
+    "depth_2": 595,
+    "candidate_expansions": 5430,
+    "fallback_updates": 310,
+    "depth_1": 185,
+    "boundary_target_updates": 420,
+    "rejected_trees": 125,
+    "depth_0": 125
+  },
+  "C_update_T_seconds": 0.0061147021626432735,
+  "C_update_S_seconds": 0.005018283477673928,
+  "separate_synchronized_profile": {
+    "T": [
+      {
+        "phase": "observation_preprocess",
+        "seconds": 0.0028985105454921722
+      },
+      {
+        "phase": "noise_initialization",
+        "seconds": 4.9851834774017334e-05
+      },
+      {
+        "phase": "vae",
+        "seconds": 0.06299016624689102
+      },
+      {
+        "phase": "text",
+        "seconds": 0.019803348928689957
+      },
+      {
+        "phase": "proprio",
+        "seconds": 0.00010582804679870605
+      },
+      {
+        "phase": "visual_prepare",
+        "seconds": 0.01823362335562706
+      },
+      {
+        "phase": "visual_prefill",
+        "seconds": 0.01256495714187622
+      },
+      {
+        "phase": "scheduler_grid",
+        "seconds": 0.00014273077249526978
+      },
+      {
+        "phase": "action_denoise",
+        "seconds": 0.06331000477075577
+      },
+      {
+        "phase": "action_postprocess",
+        "seconds": 0.00022907182574272156
+      },
+      {
+        "phase": "full_policy",
+        "seconds": 0.1877804696559906
+      }
+    ],
+    "S": [
+      {
+        "phase": "observation_preprocess",
+        "seconds": 0.002717960625886917
+      },
+      {
+        "phase": "noise_initialization",
+        "seconds": 4.720315337181091e-05
+      },
+      {
+        "phase": "vae",
+        "seconds": 0.06306306645274162
+      },
+      {
+        "phase": "text",
+        "seconds": 0.01944972202181816
+      },
+      {
+        "phase": "proprio",
+        "seconds": 0.00010127201676368713
+      },
+      {
+        "phase": "visual_prepare",
+        "seconds": 0.017954733222723007
+      },
+      {
+        "phase": "visual_prefill",
+        "seconds": 0.012535039335489273
+      },
+      {
+        "phase": "scheduler_grid",
+        "seconds": 0.0001444108784198761
+      },
+      {
+        "phase": "action_denoise",
+        "seconds": 0.05291375517845154
+      },
+      {
+        "phase": "action_postprocess",
+        "seconds": 0.00014946237206459045
+      },
+      {
+        "phase": "full_policy",
+        "seconds": 0.17639316618442535
+      }
+    ],
+    "rounds": [
+      {
+        "step": 0,
+        "kind": "bootstrap",
+        "g": 1,
+        "seconds": 0.007039930671453476,
+        "synchronized": true
+      },
+      {
+        "step": 1,
+        "kind": "tree",
+        "depth": 2,
+        "parent": 1,
+        "child": 0,
+        "g": 3,
+        "scores": [
+          0.009712577797472477,
+          0.0030432569328695536,
+          0.010775696486234665,
+          0.004158945754170418,
+          0.004184701945632696,
+          0.010192541405558586
+        ],
+        "tau": 0.013732009567320347,
+        "seconds": 0.013365183025598526,
+        "draft_seconds": 0.00163978710770607,
+        "pack_seconds": 4.0240585803985596e-05,
+        "verify_seconds": 0.011355392634868622,
+        "accept_commit_seconds": 0.00032976269721984863,
+        "synchronized": true
+      },
+      {
+        "step": 4,
+        "kind": "tree",
+        "depth": 2,
+        "parent": 0,
+        "child": 0,
+        "g": 3,
+        "scores": [
+          0.0035624918527901173,
+          0.007985803298652172,
+          0.006474662572145462,
+          0.010004322975873947,
+          0.012685256078839302,
+          0.01833229325711727
+        ],
+        "tau": 0.013732009567320347,
+        "seconds": 0.012750845402479172,
+        "draft_seconds": 0.0015874579548835754,
+        "pack_seconds": 4.2110681533813477e-05,
+        "verify_seconds": 0.01080775260925293,
+        "accept_commit_seconds": 0.00031352415680885315,
+        "synchronized": true
+      },
+      {
+        "step": 7,
+        "kind": "tree",
+        "depth": 1,
+        "parent": 0,
+        "child": 0,
+        "g": 2,
+        "scores": [
+          0.012104799970984459,
+          0.016121160238981247,
+          0.029025467112660408,
+          0.032332222908735275,
+          0.033779483288526535,
+          0.041238002479076385
+        ],
+        "tau": 0.013732009567320347,
+        "seconds": 0.012604489922523499,
+        "draft_seconds": 0.0015810318291187286,
+        "pack_seconds": 4.2673200368881226e-05,
+        "verify_seconds": 0.010664809495210648,
+        "accept_commit_seconds": 0.0003159753978252411,
+        "synchronized": true
+      },
+      {
+        "step": 9,
+        "kind": "tail",
+        "g": 1,
+        "seconds": 0.007065553218126297,
+        "synchronized": true
+      }
+    ],
+    "accounting": {
+      "G": 10,
+      "T_denoise": 0.05291375517845154,
+      "T_round_sum": 0.05282600224018097,
+      "T_boundary": 8.775293827056885e-05,
+      "C_update": 0.005291375517845154
+    },
+    "caveat": "Separate synchronized diagnostic; nested timers are not summed. Main speed uses uninstrumented full boundaries."
+  },
+  "quality_claim": false,
+  "formal_performance_permission": false,
+  "limitations": [
+    "fixed-input cost, not natural episode E2E",
+    "A100 closed-loop cost is concurrent, reported separately"
+  ],
+  "start": 1793051823.9775229,
+  "end": 1793052262.9861035
+}

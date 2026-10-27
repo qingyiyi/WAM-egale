@@ -1,0 +1,42 @@
+{
+  "schema": "fastwam-full-triarm/v1",
+  "created": "2026-10-27T01:04:29.676602+08:00",
+  "status": "PREPARED_CONDITIONAL_NO_FULL_GPU",
+  "authorization": "<WORKSPACE>/.pipeline/experiments/fastwam-base-small-closedloop-20261026/OVERNIGHT-EXTENSION-v1.json",
+  "dependency": "small20 T/S/P complete engineering gate must pass; each new suite its own same-recipe FIT/CAL and20-group screen",
+  "deadline_epoch": 1793162607.787745,
+  "A100_aggregate_cap_seconds": 259200,
+  "prior_consumption_included": true,
+  "source_commit": "7faa71108368fbb3b6885649f112af607427a2d4",
+  "weights_revision": "8eaceeb24c3cc92ff2a9c9a9d266a4941b836705",
+  "weights": "libero_uncond_2cam224.pt",
+  "stats": "libero_uncond_2cam224_dataset_stats.json",
+  "suites": [
+    "libero_10",
+    "libero_spatial",
+    "libero_object",
+    "libero_goal"
+  ],
+  "N_per_suite": 500,
+  "arm_episodes_per_suite": 1500,
+  "full_episode_cap": 6000,
+  "source_sha256": {
+    "train.py": "3a1683a02937df8d1766cf071b94646eebfab971e3332c5d87e56812d43ed08c",
+    "server.py": "d1794a8af30c2d027e5f4e59a5c90f5bbe59e9477b831579c1281a240b614bb0",
+    "runtime.py": "097a25f9e1fd591b600a25e4b5163e5a75ba38df939068bb69b6ff590ace07dc",
+    "summarize_triarm.py": "a9548bc68bae0db3b5d0105e6b78c73cc00425409cd9b89b1d4c490569a56d2b",
+    "policy_schedule.py": "e5690e26ab707d60da3150a7c22fd4ca37a4875a504feb41af17bb02b9ede04a",
+    "adapter.py": "26891eb3903b325da3d823096a076535ee9289bfcffbe741b56ae28542ae56ab",
+    "simulation_reference.py": "bb385fe30c3db158ef9718934b617c5cfa37fcf27869ba126f4ee86904a24182",
+    "draft.py": "e919b1935ef20dd7484829be89b835a843fcc3b5b087eb4a56ea36eac5f06f3d",
+    "client.py": "197c33e6f5d918306b2780f4f66dc445670e0a82091340c29e3089648c328ca4",
+    "real_speculative.py": "6009b819a030b15be017790ad932e42f8807703ad6579fbafb35fafc6f6a6f6f",
+    "full_worker.py": "0c8dceab7a4cb2701d343e12b9a19eff5a570a2337e22a6ef86933153bdff63e"
+  },
+  "permissions": {
+    "engineering_quality_screen": false,
+    "independent_test_complete": false,
+    "noninferiority_established": false,
+    "formal_performance_permission": false
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "fastwam-small-fixed-identity/v2",
+  "created": "2026-10-27T00:05:34.500959+08:00",
+  "official_code": {
+    "repository": "https://github.com/yuantianyuan01/FastWAM",
+    "commit": "7faa71108368fbb3b6885649f112af607427a2d4",
+    "path": "<WORKSPACE>/wam_tutorial_a100/upstream/fastwam"
+  },
+  "historical_method": {
+    "repository": "https://github.com/qingyiyi/WAM-egale",
+    "reference": "89ba5882a7e7185ff6178541782bfb70731603bf",
+    "import_chain": "INTERFACE-MAPPING.md"
+  },
+  "weights": {
+    "repo": "yuanty/fastwam",
+    "revision": "8eaceeb24c3cc92ff2a9c9a9d266a4941b836705",
+    "filename": "libero_uncond_2cam224.pt",
+    "bytes": 12041735140,
+    "stats": "libero_uncond_2cam224_dataset_stats.json",
+    "stats_bytes": 40939,
+    "stats_revision": "8eaceeb24c3cc92ff2a9c9a9d266a4941b836705",
+    "stats_sha256": "30f81ad7d5076e97323e3328bce003e01a04cb21327b5bacd21bb72846768638"
+  },
+  "components": {
+    "vae_t5_repo": "Wan-AI/Wan2.2-TI2V-5B",
+    "vae_t5_revision": "921dbaf3f1674a56f47e83fb80a34bac8a8f203e",
+    "tokenizer_repo": "Wan-AI/Wan2.1-T2V-1.3B",
+    "tokenizer_revision": "37ec512624d61f7aa208f7ea8140a131f93afc9a"
+  },
+  "protocol": {
+    "action_updates": 10,
+    "action_horizon": 32,
+    "replan_actions": 10,
+    "action_dim": 7,
+    "proprio_dim": 8,
+    "text_positions": 128,
+    "proprio_positions": 1,
+    "video_prefill": 1,
+    "future_video_denoising": 0,
+    "terminal_persistent_commit": false,
+    "sigma_shift": 5.0,
+    "target_dtype": "BF16",
+    "draft_dtype": "FP32 output cast BF16",
+    "scoring_dtype": "FP32",
+    "grid_receipt": "results/*/CANONICAL-PARITY.json scheduler actual timestep/delta_sigma; pending GPU",
+    "noise_seed": 42,
+    "noise_per_call": "new CPU generator seed42 each policy call",
+    "env_seed": 42,
+    "env": "LIBERO libero_10",
+    "wait_steps": 30,
+    "horizon_environment_actions": 700,
+    "renderer": "official MSAA unchanged",
+    "normalize_and_gripper": "official preprocessing; denormalize,2x-1,invert,sign once"
+  },
+  "panel": {
+    "path": "PANEL.json",
+    "sha256": "c7af8bd8f7b7ff2b0a5d5b7700f067e643a3cba4e82e8bbf5ea37286380570d6",
+    "FIT": 100,
+    "CAL": 10,
+    "DEV_pairs": 20,
+    "TEST": 0,
+    "placement": "PLACEMENT-v2.json",
+    "exposure": "historically exposed official panel remains DEV"
+  },
+  "versions": {
+    "model_python": "3.12",
+    "torch": "2.9.0+cu126",
+    "transformers": "4.49.0",
+    "diffusers": "0.36.0",
+    "hydra": "1.3.2",
+    "simulator_python": "3.10",
+    "mujoco": "3.3.2",
+    "robosuite": "1.4.0",
+    "libero_source_parity": "LIBERO-SOURCE-PARITY.json"
+  },
+  "cache_compile": {
+    "text_cache": false,
+    "visual_kv": "fixed current observation within policy call",
+    "action_kv": "recomputed each forward",
+    "compiled_baseline": "official compile_action_infer=True",
+    "eager": "cold semantic check only",
+    "server_thread": "one stable model thread; two independent EGL clients queue requests, preserving CUDA Graph TLS caches"
+  },
+  "timing": {
+    "A100": "concurrent quality timings ancillary, no speed claim",
+    "RTX5090": "not run; requires operator handoff and exclusive GPU",
+    "phases": "text,VAE,visual_prepare,visual_prefill,scheduler/noise,action_denoise,postprocess,full policy",
+    "cold": "model load,canonical eager/compile checks and speculative validation separate",
+    "formal_performance_permission": false
+  },
+  "hardware_placement": "PLACEMENT-v2.json; actual device/runtime in each server_identity and MODEL-LOAD.json",
+  "run_window": "REGISTRATION.json; actual epoch start/end in supervisor and episode records",
+  "source_snapshot": "SOURCE-SNAPSHOT-before-GPU-v7.json",
+  "status_at_creation": "LOCAL_MODEL_LOADING_REMOTE_READY_FOR_PILOT_HANDOFF",
+  "previous": "MANIFEST-v1.json",
+  "retention_receipt": "THREE-COPIES-COMPLETE-20261027.json",
+  "updated": 1793031898.630258
+}

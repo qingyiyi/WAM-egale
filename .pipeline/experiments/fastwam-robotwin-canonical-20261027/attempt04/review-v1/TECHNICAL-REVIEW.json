@@ -1,0 +1,116 @@
+{
+  "status": "WAITING_AGENT_VISUAL_REVIEW",
+  "created": 1793065805.7287827,
+  "rows": [
+    {
+      "task": "adjust_bottle",
+      "complete": true,
+      "success": true,
+      "scene_seed": 4300001,
+      "commands": 118,
+      "chunks": 5,
+      "horizon": 400,
+      "invalid_attempts": [
+        {
+          "seed": 4300000,
+          "reason": "expert_setup_exception_logged"
+        }
+      ],
+      "instruction": "Pick up the plastic soda bottle from the table head-up.",
+      "wall_seconds": 69.29127264022827,
+      "policy_seconds": 3.3698922572657466,
+      "raw_source": "<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt04/results/episodes/adjust_bottle",
+      "contacts": "adjust_bottle.png",
+      "terminal_frame_caveat": "Saved policy observations precede action execution; last contact is not necessarily the terminal frame."
+    },
+    {
+      "task": "beat_block_hammer",
+      "complete": true,
+      "success": true,
+      "scene_seed": 4300000,
+      "commands": 105,
+      "chunks": 5,
+      "horizon": 400,
+      "invalid_attempts": [],
+      "instruction": "Pick the hammer with black handle up and hit the block",
+      "wall_seconds": 59.33718204498291,
+      "policy_seconds": 4.383274106308818,
+      "raw_source": "<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt04/results/episodes/beat_block_hammer",
+      "contacts": "beat_block_hammer.png",
+      "terminal_frame_caveat": "Saved policy observations precede action execution; last contact is not necessarily the terminal frame."
+    },
+    {
+      "task": "blocks_ranking_rgb",
+      "complete": true,
+      "success": true,
+      "scene_seed": 4300000,
+      "commands": 436,
+      "chunks": 19,
+      "horizon": 1200,
+      "invalid_attempts": [],
+      "instruction": "Arrange red block, green block, and blue block from left to right in a row.",
+      "wall_seconds": 100.19608783721924,
+      "policy_seconds": 13.466080115176737,
+      "raw_source": "<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt04/results/episodes/blocks_ranking_rgb",
+      "contacts": "blocks_ranking_rgb.png",
+      "terminal_frame_caveat": "Saved policy observations precede action execution; last contact is not necessarily the terminal frame."
+    },
+    {
+      "task": "blocks_ranking_size",
+      "complete": true,
+      "success": true,
+      "scene_seed": 4300000,
+      "commands": 445,
+      "chunks": 19,
+      "horizon": 1200,
+      "invalid_attempts": [],
+      "instruction": "Place large block, medium block, and small block in order at the table's center.",
+      "wall_seconds": 100.48843455314636,
+      "policy_seconds": 15.81228549964726,
+      "raw_source": "<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt04/results/episodes/blocks_ranking_size",
+      "contacts": "blocks_ranking_size.png",
+      "terminal_frame_caveat": "Saved policy observations precede action execution; last contact is not necessarily the terminal frame."
+    }
+  ],
+  "errors": [],
+  "technical_conditions": {
+    "all_four_valid_complete": true,
+    "minimum_successes": true,
+    "strict_model_loading": true,
+    "finite_commands_and_exact_commit_prefix": true,
+    "registered_eager_ten_step_grid": true
+  },
+  "technical_pass": true,
+  "canonical_review_passed": false,
+  "configured_official_scheduler": {
+    "t": [
+      1000.0,
+      980.0,
+      952.0,
+      920.0,
+      884.0,
+      832.0,
+      768.0,
+      680.0,
+      556.0,
+      358.0
+    ],
+    "delta": [
+      -0.021728515625,
+      -0.02587890625,
+      -0.03125,
+      -0.038818359375,
+      -0.049072265625,
+      -0.06396484375,
+      -0.08740234375,
+      -0.1259765625,
+      -0.1982421875,
+      -0.357421875
+    ]
+  },
+  "GPU_calls_for_this_audit": 0,
+  "model_load_source": "<A100_RUNTIME>/fastwam-robotwin-canonical-20261027-attempt04/results/server-attempt01/MODEL-LOAD.json",
+  "protocol_sha256": "d7b8cc5823ad1d8dd5c6b5a31469454e84f0126b7a9364bb26f9d0aaaefd9b7e",
+  "script_sha256": "a7fac4af803975e29eada13dd9e1db2a5eeb44d80b8fec5b3c498dfa7c1c1b68",
+  "limitations": "Four-task engineering pilot, not paper success-rate reproduction. Original eager canonical only; loaded-model collector/compiled/B7 checks remain mandatory when the prepared speculative server is first used."
+}
